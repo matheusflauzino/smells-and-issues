@@ -1,0 +1,899 @@
+repository,state,title,label,body
+trishika/DroidUPnP,open,XML external entity (XXE) vulnerability: Out-of-Band XXE in SSDP Processing,[],"The XML parser don't disable the inline DTDs parsing by default or do not provide a mean to disable it AFAIK.
+
+The XML parsing engine in SSDP/UPNP functionality is vulnerable to an XML External Entity Processing (XXE) attack. Unauthenticated attackers on the same LAN can use this vulnerability to:
+ 
+- Access arbitrary files from the filesystem with the same permission as the user account running UMS.
+- Initiate SMB connections to capture NetNTLM challenge/response and crack to clear-text password.
+- Initiate SMB connections to relay NetNTLM challenge/response and achieve Remote Command Execution in Windows domains.
+ 
+Exploitation can be demonstrated using evil-ssdp (https://gitlab.com/initstring/evil-ssdp)."
+trishika/DroidUPnP,open,Cast m3u8 url to DLNA telivision,[],"Hi,
+Can I use this to cast a m3u8 url to DLNA telivision? If yes, how can I do that?"
+trishika/DroidUPnP,open,Enable sharing content of the android device over tethering interface,[],"See issue:
+https://github.com/occasionaldevshare/DroidUPnP/issues/1
+
+See pull request:
+https://github.com/trishika/DroidUPnP/pull/73
+
+And by the way, congratulations for the awesome app  ;)  I will keep using it  ;)"
+trishika/DroidUPnP,open,Enable directory service over tethering interfaces,[],See issue https://github.com/occasionaldevshare/DroidUPnP/issues/1
+trishika/DroidUPnP,open,add chinese simplified translation,[],add chinese simplified translation
+trishika/DroidUPnP,open,operate with local files.db ,[],"Sorry for contacting devs that way - don't find an another way:
+
+Is it possible (theoretically first of all) to operate on a local files.db - so that (static) files.db is on the client side, while files are located on the server?
+
+Background is: the HDD is connected to a router via an extremly slow USB connection. This is fast enough to stream mp3, but navigation with a 30..120MB files.db (covering my collection) is extremly slow or impossible.
+"
+trishika/DroidUPnP,open,Extend local webserver to provide files from internal/external storage via directory structure,[],"Hi there,
+
+I extended the local webserver included in DroidUPnP to show a new folder ""Directories"" which includes all storage volumes (internal and external) and their directory trees recursively. The feature may be disabled in the settings.
+
+Only media files and folders will be shown. File type detection will be based on content (default) or file extension (faster) which can be configured in the settings.
+
+Another speed optimization would be to not count the number of directory entries (not implemented).
+
+Currently only reduced meta data is provided (no length of audio/videos, resolution of pictures/videos).
+
+Unfortunately I had to increase the API level to 24 which works for my devices, but might not be suitable for others. This was mostly due to recent extensions of the StorageManager API. I'm also not happy to use an inofficial API here (getPath). Alternatives could be
+- using heuristical approaches (known paths)
+- parsing vold or mount output
+- using Environment parameters for internal / external storage (missing some edge cases with more volumes)
+- disabling the directory feature for API < 24
+- using one of the above as fallback for API < 24.
+
+I tested with Kodi media center only.
+
+Is anyone interested in merging this feature into the main branch?
+
+Best regards,
+Stephan Ritscher"
+trishika/DroidUPnP,open,Other Render can't  find the device,[],"when i open the app,i can't find the device by use another device that is a render"
+trishika/DroidUPnP,closed,Not playing and question about Upnp,[],"Hey
+On a Redmi4A with Android 6
+
+The app is not playing any mp3 when clicked. It shows all files but does not play.
+Long pressing it shows options to play it from some other app.
+
+I would like to ask about the Upnp behaviour.
+When you have to stream audio, does this mean the DroidUpnp becomes a server? A control point will show everything, audio list, control playback, etc.
+But to play music, stream them to the Upnp renderer does it have to become a server?"
+trishika/DroidUPnP,open,Improve spanish translation,[],
+trishika/DroidUPnP,open,IllegalArgumentException: Action can not be null,[],"//package name: org.droidupnp
+//version: 2.2.0
+ java.lang.IllegalArgumentException: Action can not be null
+ 	at org.fourthline.cling.model.action.ActionInvocation.<init>(ActionInvocation.java:76)
+ 	at org.fourthline.cling.model.action.ActionInvocation.<init>(ActionInvocation.java:46)
+ 	at org.fourthline.cling.support.renderingcontrol.callback.GetVolume.<init>(GetVolume.java:41)
+ 	at org.fourthline.cling.support.renderingcontrol.callback.GetVolume.<init>(GetVolume.java:37)
+ 	at org.droidupnp.controller.cling.RendererCommand$12.<init>(RendererCommand.java:425)
+ 	at org.droidupnp.controller.cling.RendererCommand.updateVolume(RendererCommand.java:425)
+ 	at org.droidupnp.controller.cling.RendererCommand.updateFull(RendererCommand.java:467)
+ 	at org.droidupnp.view.RendererFragment.startControlPoint(RendererFragment.java:198)
+ 	at org.droidupnp.view.RendererFragment.update(RendererFragment.java:266)
+ 	at java.util.Observable.notifyObservers(Observable.java:138)
+ 	at java.util.Observable.notifyObservers(Observable.java:113)
+ 	at org.droidupnp.model.CObservable.notifyAllObservers(CObservable.java:29)
+ 	at org.droidupnp.model.cling.UpnpServiceController.setSelectedRenderer(UpnpServiceController.java:81)
+ 	at org.droidupnp.view.RendererDeviceFragment.select(RendererDeviceFragment.java:79)
+ 	at org.droidupnp.view.RendererDeviceFragment.select(RendererDeviceFragment.java:73)
+ 	at org.droidupnp.view.RendererDeviceFragment.onListItemClick(RendererDeviceFragment.java:86)
+ 	at android.app.ListFragment$2.onItemClick(ListFragment.java:160)
+ 	at android.widget.AdapterView.performItemClick(AdapterView.java:298)
+ 	at android.widget.AbsListView.performItemClick(AbsListView.java:1100)
+ 	at android.widget.AbsListView$PerformClick.run(AbsListView.java:2788)
+ 	at android.widget.AbsListView$1.run(AbsListView.java:3463)
+ 	at android.os.Handler.handleCallback(Handler.java:730)
+ 	at android.os.Handler.dispatchMessage(Handler.java:92)
+ 	at android.os.Looper.loop(Looper.java:137)
+ 	at android.app.ActivityThread.main(ActivityThread.java:5103)
+ 	at java.lang.reflect.Method.invokeNative(Native Method)
+ 	at java.lang.reflect.Method.invoke(Method.java:525)
+ 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+ 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+ 	at dalvik.system.NativeStart.main(Native Method)"
+trishika/DroidUPnP,open,NullPointerException,[],"//package name: org.droidupnp
+//version: 2.3.0
+ java.lang.NullPointerException
+ 	at android.preference.PreferenceManager.getDefaultSharedPreferencesName(PreferenceManager.java:374)
+ 	at android.preference.PreferenceManager.getDefaultSharedPreferences(PreferenceManager.java:369)
+ 	at org.droidupnp.view.SettingsActivity.getSettingContentDirectoryName(SettingsActivity.java:99)
+ 	at org.droidupnp.view.SettingsActivity$ContentDirectorySettingsFragment.onSharedPreferenceChanged(SettingsActivity.java:236)
+ 	at android.app.SharedPreferencesImpl$EditorImpl.notifyListeners(SharedPreferencesImpl.java:475)
+ 	at android.app.SharedPreferencesImpl$EditorImpl.apply(SharedPreferencesImpl.java:385)
+ 	at android.preference.Preference.tryCommit(Preference.java:1350)
+ 	at android.preference.Preference.persistString(Preference.java:1383)
+ 	at android.preference.EditTextPreference.setText(EditTextPreference.java:88)
+ 	at android.preference.EditTextPreference.onDialogClosed(EditTextPreference.java:142)
+ 	at android.preference.DialogPreference.onDismiss(DialogPreference.java:383)
+ 	at android.app.Dialog$ListenersHandler.handleMessage(Dialog.java:1232)
+ 	at android.os.Handler.dispatchMessage(Handler.java:99)
+ 	at android.os.Looper.loop(Looper.java:137)
+ 	at android.app.ActivityThread.main(ActivityThread.java:5103)
+ 	at java.lang.reflect.Method.invokeNative(Native Method)
+ 	at java.lang.reflect.Method.invoke(Method.java:525)
+ 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+ 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+ 	at dalvik.system.NativeStart.main(Native Method)"
+trishika/DroidUPnP,open,Update of F-Droid built,[],"Hi!
+I opened an issue for the F-Droid built:
+https://gitlab.com/fdroid/fdroiddata/issues/793
+There are problems with some dependencies. Can you help to solve them?"
+trishika/DroidUPnP,closed,Added permission request on Android 6.0+,[],
+trishika/DroidUPnP,open,F-Droid build of v2.4.0 broken due to clang failing,[],https://f-droid.org/wiki/page/org.droidupnp
+trishika/DroidUPnP,open,Play Audio file from SD card,[],"Hello Trishika,
+Thanks for such a great UPnP repository. I want to play audio file (mp3) which is stored on SD card. I want to play it. I tried with launchItem() method, but not getting what it is required as Input. Please help me out over this.
+"
+trishika/DroidUPnP,open,ExceptionInInitializerError: Caused by: java.lang.NullPointerException,[],"Hi:
+When I run DroidUPnP app on xiaomi pad,sometimes it will crash:
+
+03-13 13:49:08.089: E/AndroidRuntime(4360): FATAL EXCEPTION: cling-3
+03-13 13:49:08.089: E/AndroidRuntime(4360): Process: org.droidupnp, PID: 4360
+03-13 13:49:08.089: E/AndroidRuntime(4360): java.lang.ExceptionInInitializerError
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:711)
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64)
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95)
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	at org.eclipse.jetty.server.Server.doStart(Server.java:282)
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64)
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	at org.fourthline.cling.transport.impl.jetty.JettyServletContainer.startIfNotRunning(JettyServletContainer.java:141)
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	at org.fourthline.cling.transport.impl.AsyncServletStreamServerImpl.run(AsyncServletStreamServerImpl.java:92)
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	at java.lang.Thread.run(Thread.java:841)
+03-13 13:49:08.089: E/AndroidRuntime(4360): Caused by: java.lang.NullPointerException
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	at org.eclipse.jetty.util.StringUtil.asciiToLowerCase(StringUtil.java:106)
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	at org.eclipse.jetty.http.MimeTypes.<clinit>(MimeTypes.java:138)
+03-13 13:49:08.089: E/AndroidRuntime(4360): 	... 10 more
+
+What can be done to fix this problem ?Thanks for your help."
+trishika/DroidUPnP,open,Storage permission not requested for local content directory server,[],"For the local content directory to work the app needs the storage permission, and from Marshmallow onwards this isn't granted when the app is installed.  It should be requested at runtime when required, however it isn't and as such when you open any of the three media categories they appear empty.  The app needs to check if this permission is available and request it from the user if not."
+trishika/DroidUPnP,open,Multiple audio tracks mixed together,[],"Hi!
+When streaming videos with multiple audio tracks to my kodi machine, kodi sees only one track. But all tracks are mixed. I streamed videos from media.ccc.de and hear german and english mixed together. I am not really sure, if this is a upnp or a kodi issue."
+trishika/DroidUPnP,open,getting internal server error when try to play a file that is on the device,[],"I am not able to play any file that is on the device. I get an Internal server error 
+
+`E/RendererCommand: Fail to play ! Error: Playing failed (HTTP response was: 500 Internal Server Error)``
+
+here is the log 
+
+```
+E/RendererCommand: TrackMetadata : TrackMetadata [id=a-187, title=036-YaSin, artist=Ala'shry Omran, genre=, artURI=res=http://192.168.1.152:8192/a-187.mp3, itemClass=object.item.audioItem]
+ E/RendererCommand: Set uri to http://192.168.1.152:8192/a-187.mp3
+</DIDL-Lite>
+ I/RendererCommand: URI successfully set !
+ I/MediaServer: Serve uri : /a-187.mp3
+ E/MediaServer: media of id is 187
+ E/MediaServer: Ask for audio
+ I/MediaServer: Will serve /mnt/sdcard/Download/036.mp3
+ W/System.err: java.net.SocketException
+ W/System.err:     at fi.iki.elonen.NanoHTTPD$HTTPSession.execute(NanoHTTPD.java:723)
+ W/System.err:     at fi.iki.elonen.NanoHTTPD$1$1.run(NanoHTTPD.java:160)
+ W/System.err:     at java.lang.Thread.run(Thread.java:856)
+ E/RendererCommand: Fail to play ! Error: Playing failed (HTTP response was: 500 Internal Server Error)
+        04-12 14:25:32.244 2122-2146/system_process W/ProcessStats: Skipping unknown process pid 6401
+ W/StreamClient: HTTP request failed: (OutgoingActionRequestMessage) POST http://192.168.1.18:49494/upnp/control/rendertransport1
+        org.eclipse.jetty.io.EofException: early EOF
+        at org.eclipse.jetty.client.AbstractHttpConnection$Handler.earlyEOF(AbstractHttpConnection.java:352)
+        at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:323)
+        at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:235)
+        at org.eclipse.jetty.client.AsyncHttpConnection.handle(AsyncHttpConnection.java:135)
+        at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:668)
+        at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1080)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:573)
+        at java.lang.Thread.run(Thread.java:856)
+ W/RendererCommand: Fail to get position info ! Error: Current state of service prevents invoking that action. Connection error or no response received.
+ I/StreamServer: HttpServlet.service(): id:  24, request URI: /upnp/dev/00000000-0000-0000-0000-00000000000a/desc
+ I/StreamServer: AsyncListener.onComplete(): id:  24, duration:   63, response: HTTP/1.1 200 
+```
+
+If I open the  http://192.168.1.152:8192/a-187.mp3 in my browser I get the file.
+
+**Please note that my device has no wifi option but has a Rj45 lan jack. 
+192.168.1.18 is the renderer's IP**
+"
+trishika/DroidUPnP,open,Crash when selecting renderer: Action can not be null,[],"I'm using DroidUPnP from F-Droid in version 2.3.0.
+
+When selecting a certain UPnP renderer, DroidUPnP crashes instantly. It's a dreambox 7080 satellite receiver.
+
+It announces itself that way:
+
+```
+$ gssdp-discover --timeout 3 |grep -A1 Renderer
+  USN:      uuid:e25832fd-942b-404d-a678-dcfea3cf0f27::urn:schemas-upnp-org:device:MediaRenderer:2
+  Location: http://192.168.3.42:60507/e25832fd-942b-404d-a678-dcfea3cf0f27/description-2.xml
+```
+
+The device description XML is the following:
+
+``` xml
+$ curl -s http://192.168.3.42:60507/e25832fd-942b-404d-a678-dcfea3cf0f27/description-2.xml | xmllint --format -
+<?xml version=""1.0"" encoding=""utf-8""?>
+<root xmlns=""urn:schemas-upnp-org:device-1-0"" xmlns:sec=""http://www.sec.co.kr"">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <device>
+    <dlna:X_DLNADOC xmlns:dlna=""urn:schemas-dlna-org:device-1-0"">DMR-1.50</dlna:X_DLNADOC>
+    <dlna:X_DLNADOC xmlns:dlna=""urn:schemas-dlna-org:device-1-0"">M-DMR-1.50</dlna:X_DLNADOC>
+    <dlna:X_DLNACAP xmlns:dlna=""urn:schemas-dlna-org:device-1-0"">playcontainer-0-1</dlna:X_DLNACAP>
+    <deviceType>urn:schemas-upnp-org:device:MediaRenderer:2</deviceType>
+    <friendlyName>dm7080</friendlyName>
+    <manufacturer>dreambox</manufacturer>
+    <manufacturerURL>http://www.dreambox.de</manufacturerURL>
+    <modelDescription>Dreambox MediaRenderer</modelDescription>
+    <modelName>dm7080</modelName>
+    <modelNumber>dm7080</modelNumber>
+    <modelURL>http://www.dreambox.de</modelURL>
+    <serialNumber>0000001</serialNumber>
+    <UDN>uuid:e25832fd-942b-404d-a678-dcfea3cf0f27</UDN>
+    <UPC/>
+    <presentationURL/>
+    <serviceList>
+      <service>
+        <serviceType>urn:schemas-upnp-org:service:ConnectionManager:2</serviceType>
+        <serviceId>urn:upnp-org:serviceId:ConnectionManager</serviceId>
+        <SCPDURL>/e25832fd-942b-404d-a678-dcfea3cf0f27/ConnectionManager/scpd.xml</SCPDURL>
+        <controlURL>/e25832fd-942b-404d-a678-dcfea3cf0f27/ConnectionManager/control</controlURL>
+        <eventSubURL>/e25832fd-942b-404d-a678-dcfea3cf0f27/ConnectionManager/subscribe</eventSubURL>
+      </service>
+      <service>
+        <serviceType>urn:schemas-upnp-org:service:RenderingControl:2</serviceType>
+        <serviceId>urn:upnp-org:serviceId:RenderingControl</serviceId>
+        <SCPDURL>/e25832fd-942b-404d-a678-dcfea3cf0f27/RenderingControl/scpd.xml</SCPDURL>
+        <controlURL>/e25832fd-942b-404d-a678-dcfea3cf0f27/RenderingControl/control</controlURL>
+        <eventSubURL>/e25832fd-942b-404d-a678-dcfea3cf0f27/RenderingControl/subscribe</eventSubURL>
+      </service>
+      <service>
+        <serviceType>urn:schemas-upnp-org:service:AVTransport:2</serviceType>
+        <serviceId>urn:upnp-org:serviceId:AVTransport</serviceId>
+        <SCPDURL>/e25832fd-942b-404d-a678-dcfea3cf0f27/AVTransport/scpd.xml</SCPDURL>
+        <controlURL>/e25832fd-942b-404d-a678-dcfea3cf0f27/AVTransport/control</controlURL>
+        <eventSubURL>/e25832fd-942b-404d-a678-dcfea3cf0f27/AVTransport/subscribe</eventSubURL>
+      </service>
+    </serviceList>
+  </device>
+</root>
+```
+
+When selecting the renderer, `adb logcat` shows the following messages:
+
+```
+I RendererFragment: Renderer changed !!! dreambox dm7080
+V RendererCommand: Resume
+D RendererCommand: Update state !
+D AndroidRuntime: Shutting down VM
+E AndroidRuntime: FATAL EXCEPTION: main
+E AndroidRuntime: Process: org.droidupnp, PID: 17038
+E AndroidRuntime: java.lang.IllegalArgumentException: Action can not be null
+E AndroidRuntime:   at org.fourthline.cling.model.action.ActionInvocation.<init>(ActionInvocation.java:76)
+E AndroidRuntime:   at org.fourthline.cling.model.action.ActionInvocation.<init>(ActionInvocation.java:46)
+E AndroidRuntime:   at org.fourthline.cling.support.renderingcontrol.callback.GetVolume.<init>(GetVolume.java:41)
+E AndroidRuntime:   at org.fourthline.cling.support.renderingcontrol.callback.GetVolume.<init>(GetVolume.java:37)
+E AndroidRuntime:   at org.droidupnp.controller.cling.RendererCommand$12.<init>(RendererCommand.java:425)
+E AndroidRuntime:   at org.droidupnp.controller.cling.RendererCommand.updateVolume(RendererCommand.java:425)
+E AndroidRuntime:   at org.droidupnp.controller.cling.RendererCommand.updateFull(RendererCommand.java:467)
+E AndroidRuntime:   at org.droidupnp.view.RendererFragment.startControlPoint(RendererFragment.java:198)
+E AndroidRuntime:   at org.droidupnp.view.RendererFragment.update(RendererFragment.java:269)
+E AndroidRuntime:   at java.util.Observable.notifyObservers(Observable.java:138)
+E AndroidRuntime:   at java.util.Observable.notifyObservers(Observable.java:113)
+E AndroidRuntime:   at org.droidupnp.model.CObservable.notifyAllObservers(CObservable.java:29)
+E AndroidRuntime:   at org.droidupnp.model.cling.UpnpServiceController.setSelectedRenderer(UpnpServiceController.java:81)
+E AndroidRuntime:   at org.droidupnp.view.RendererDeviceFragment.select(RendererDeviceFragment.java:79)
+E AndroidRuntime:   at org.droidupnp.view.RendererDeviceFragment.select(RendererDeviceFragment.java:73)
+E AndroidRuntime:   at org.droidupnp.view.RendererDeviceFragment.onListItemClick(RendererDeviceFragment.java:86)
+E AndroidRuntime:   at android.app.ListFragment$2.onItemClick(ListFragment.java:160)
+E AndroidRuntime:   at android.widget.AdapterView.performItemClick(AdapterView.java:310)
+E AndroidRuntime:   at android.widget.AbsListView.performItemClick(AbsListView.java:1145)
+E AndroidRuntime:   at android.widget.AbsListView$PerformClick.run(AbsListView.java:3066)
+E AndroidRuntime:   at android.widget.AbsListView$3.run(AbsListView.java:3903)
+E AndroidRuntime:   at android.os.Handler.handleCallback(Handler.java:739)
+E AndroidRuntime:   at android.os.Handler.dispatchMessage(Handler.java:95)
+E AndroidRuntime:   at android.os.Looper.loop(Looper.java:148)
+E AndroidRuntime:   at android.app.ActivityThread.main(ActivityThread.java:5466)
+E AndroidRuntime:   at java.lang.reflect.Method.invoke(Native Method)
+E AndroidRuntime:   at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+E AndroidRuntime:   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+```
+"
+trishika/DroidUPnP,open,Allow browsing folders or collections of pictures and videos,[],"I would like to be able to view my pictures and videos in folders or collections.  Currently all pictures and videos fall under two folders (""Photos/All"" and ""Videos/All"").
+
+In a few UPnP servers I use, data are sorted in different collections: ""By folder"", ""By date"", ""By artist""…  I think it makes a lot of sense.
+"
+trishika/DroidUPnP,open,Thumbnail,[],"Rebased changes from @escoand to latest master with some small improvements.
+- Support for UPNP AlbumArt (tested with kodi)
+- Images are now cached
+
+This change will slightly increase the height of all list items. Please let me know if you think that might be a problem. 
+"
+trishika/DroidUPnP,open,Cannot play files on the device Internal server error,[],"When i try to play file from the device it fails , in logs it would say `Fail to play ! Error: Playing failed (HTTP response was: 500 Internal Server Error)`
+
+Although I get the `uri of file Set uri to http://192.168.1.227:8192/a-979.mp3`
+if i access this url from my pc I can play the file in chrome
+"
+trishika/DroidUPnP,closed,Update French translation,[],"Typos, spelling, translation, diacritics
+"
+trishika/DroidUPnP,open,Update strings.xml,[],"Translation was not complete and not entirely right
+"
+trishika/DroidUPnP,open,Broadcast on multiple renderers at a time.,[],"Is it possible to broadcast on multiple renderer devices at a time ? I have seen this in iTunes of Apple which provides such functionality with AirPlay.
+"
+trishika/DroidUPnP,open,make local renderer more discoverable,[],"I use DroidUPnP for streaming to the tablet. However long press is not really a common interaction on android and therefore hard to discover. 
+
+The best solution (as in logical, IMHO) would be adding a ""Local Renderer"" to the list of available Players.  But rather call it ""Play on Device"" to avoid technical terms.
+
+Another less preferable solution would be adding a option to preferences like:
+
+**Default Playback**
+- On Device
+- Selected Player
+
+the unselected option is then available on long-press.
+"
+trishika/DroidUPnP,closed,"subtitle support, tested with xbmc/kodi",[],"Works seamlessly in my environment (serviio-xbmc on raspberry pi, needs a recentish kodi build, mine is 13.2).
+it's not minimal: I could have added a single subtitle resource and two protocolinfo (as soon as you have more than a <res> node you need that to classify them) but I thought this would be more flexible (i.e. support multiple subtitle streams).
+After stopping the subtitle info is lost, couldn't understand how to fix that: I reckon the issue is that cling doesn't return current position metadata, the only workaround I can think of is to store it but looks a bit too invasive.
+Pausing and seeking work fine.
+"
+trishika/DroidUPnP,closed,German language update,[],
+trishika/DroidUPnP,closed,Please continue the changelog,[],"Please restart adding ""what's new"" info to the [releases](https://github.com/trishika/DroidUPnP/releases). It is much easier to read than the Git log.
+"
+trishika/DroidUPnP,open,Player intent,"[Label(name=""enhancement"")]","hi!
+It would be nice, if DroidUPnP would provide a player intent
+to play content from within other apps on a remote device.
+"
+trishika/DroidUPnP,closed,Can not detect Light demo of Cling library,[],"Hi, I'm learning to make Android control point with Cling library and find your interesting project.
+
+Maybe it's trivial, but can you tell me why Droidupnp application can not detect the Light demo app in Cling library (the app with a light bulb)? I think as the workbench, a control point need to detect all UPnP devices in the same local network?
+
+Thank you very much!
+"
+trishika/DroidUPnP,closed,Update strings.xml,[],"updated some German translations to sound more natural
+"
+trishika/DroidUPnP,open,Exception Crash on exit,[],"09-10 14:10:26.691: D/dalvikvm(8919): GC_FOR_ALLOC freed 628K, 10% free 10100K/11128K, paused 62ms, total 63ms
+09-10 14:10:27.552: D/dalvikvm(4178): GC_EXPLICIT freed 600K, 10% free 11645K/12872K, paused 5ms+10ms, total 74ms
+09-10 14:10:27.562: I/ActivityManager(690): Killing 4178:com.tencent.mobileqqi/u0a66 (adj 15): empty #17
+09-10 14:10:27.692: D/wpa_supplicant(935): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+09-10 14:10:27.692: D/wpa_supplicant(935): wlan0: Control interface command 'SIGNAL_POLL'
+09-10 14:10:27.692: D/wpa_supplicant(935): nl80211: survey data missing!
+09-10 14:10:28.813: D/dalvikvm(690): GC_FOR_ALLOC freed 2304K, 21% free 26450K/33080K, paused 74ms, total 78ms
+09-10 14:10:28.823: V/Main(8919): Pause activity
+09-10 14:10:28.823: D/Cling.ServiceListener(8919): remove listener
+09-10 14:10:28.823: D/Cling.ServiceListener(8919): remove listener Safe
+09-10 14:10:28.823: D/Cling.ServiceListener(8919): remove listener
+09-10 14:10:28.823: D/Cling.ServiceListener(8919): remove listener Safe
+09-10 14:10:28.833: I/Cling.ServiceListener(8919): Service disconnected
+09-10 14:10:28.843: D/org.droidupnp.model.cling.UpnpService(8919): Unbind
+09-10 14:10:28.843: I/UpnpServiceImpl(8919): >>> Shutting down UPnP service...
+09-10 14:10:28.893: W/HandlerScheduledExecuto(1014): Task does not implement UiTask. Consider using NamedUiRunnable for eww@42b022e8
+09-10 14:10:28.903: D/AndroidRuntime(8919): Shutting down VM
+09-10 14:10:28.903: W/dalvikvm(8919): threadid=1: thread exiting with uncaught exception (group=0x41cd7b90)
+09-10 14:10:28.923: D/dalvikvm(8919): GC_FOR_ALLOC freed 501K, 10% free 10110K/11128K, paused 15ms, total 15ms
+09-10 14:10:28.923: E/AndroidRuntime(8919): FATAL EXCEPTION: main
+09-10 14:10:28.923: E/AndroidRuntime(8919): Process: org.droidupnp, PID: 8919
+09-10 14:10:28.923: E/AndroidRuntime(8919): java.lang.RuntimeException: Unable to stop service org.droidupnp.model.cling.UpnpService@4259bee8: android.os.NetworkOnMainThreadException
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at android.app.ActivityThread.handleStopService(ActivityThread.java:2730)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at android.app.ActivityThread.access$2100(ActivityThread.java:135)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1499)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at android.os.Handler.dispatchMessage(Handler.java:102)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at android.os.Looper.loop(Looper.java:137)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at android.app.ActivityThread.main(ActivityThread.java:4998)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at java.lang.reflect.Method.invokeNative(Native Method)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at java.lang.reflect.Method.invoke(Method.java:515)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:777)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:593)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at dalvik.system.NativeStart.main(Native Method)
+09-10 14:10:28.923: E/AndroidRuntime(8919): Caused by: android.os.NetworkOnMainThreadException
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at android.os.StrictMode$AndroidBlockGuardPolicy.onNetwork(StrictMode.java:1145)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at libcore.io.BlockGuardOs.sendto(BlockGuardOs.java:175)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at libcore.io.IoBridge.sendto(IoBridge.java:466)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at java.net.PlainDatagramSocketImpl.send(PlainDatagramSocketImpl.java:182)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at java.net.DatagramSocket.send(DatagramSocket.java:281)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.transport.impl.DatagramIOImpl.send(DatagramIOImpl.java:152)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.transport.impl.DatagramIOImpl.send(DatagramIOImpl.java:145)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.transport.RouterImpl.send(RouterImpl.java:265)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.transport.SwitchableRouterImpl.send(SwitchableRouterImpl.java:198)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.protocol.async.SendingNotification.sendMessages(SendingNotification.java:111)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.protocol.async.SendingNotification.execute(SendingNotification.java:85)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.protocol.async.SendingNotificationByebye.execute(SendingNotificationByebye.java:51)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.protocol.SendingAsync.run(SendingAsync.java:44)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.registry.LocalItems.advertiseByebye(LocalItems.java:234)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.registry.LocalItems.remove(LocalItems.java:137)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.registry.LocalItems.removeAll(LocalItems.java:164)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.registry.LocalItems.shutdown(LocalItems.java:208)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.registry.RegistryImpl.shutdown(RegistryImpl.java:380)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.UpnpServiceImpl.shutdown(UpnpServiceImpl.java:131)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.fourthline.cling.android.AndroidUpnpServiceImpl.onDestroy(AndroidUpnpServiceImpl.java:101)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at org.droidupnp.model.cling.UpnpService.onDestroy(UpnpService.java:46)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     at android.app.ActivityThread.handleStopService(ActivityThread.java:2713)
+09-10 14:10:28.923: E/AndroidRuntime(8919):     ... 10 more
+09-10 14:10:28.994: W/LocationOracleImpl(2357): Best location was null
+09-10 14:10:30.695: D/wpa_supplicant(935): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+09-10 14:10:30.695: D/wpa_supplicant(935): wlan0: Control interface command 'SIGNAL_POLL'
+09-10 14:10:30.705: D/wpa_supplicant(935): nl80211: survey data missing!
+09-10 14:10:30.965: D/dalvikvm(2821): GC_FOR_ALLOC freed 893K, 9% free 12456K/13688K, paused 52ms, total 53ms
+09-10 14:10:33.708: D/wpa_supplicant(935): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+09-10 14:10:33.708: D/wpa_supplicant(935): wlan0: Control interface command 'SIGNAL_POLL'
+09-10 14:10:33.708: D/wpa_supplicant(935): nl80211: survey data missing!
+09-10 14:10:36.721: D/wpa_supplicant(935): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+09-10 14:10:36.721: D/wpa_supplicant(935): wlan0: Control interface command 'SIGNAL_POLL'
+09-10 14:10:36.731: D/wpa_supplicant(935): nl80211: survey data missing!
+09-10 14:10:36.791: D/dalvikvm(2821): GC_FOR_ALLOC freed 887K, 10% free 12455K/13688K, paused 52ms, total 52ms
+09-10 14:10:38.273: D/dalvikvm(8919): GC_FOR_ALLOC freed 519K, 10% free 10097K/11128K, paused 16ms, total 16ms
+09-10 14:10:38.283: V/DeviceDiscovery(8919): New device detected : Samsung Electronics BD-D5700 1.0
+09-10 14:10:38.283: V/DeviceDiscovery(8919): New device detected : Samsung Electronics BD-D5700 1.0
+09-10 14:10:38.313: V/DeviceDiscovery(8919): New device detected : Samsung Electronics BD-D5700 1.0
+09-10 14:10:38.313: V/DeviceDiscovery(8919): New device detected : Samsung Electronics BD-D5700 1.0
+09-10 14:10:39.404: W/ActivityManager(690): Activity destroy timeout for ActivityRecord{42cfb998 u0 org.droidupnp/.Main t77 f}
+09-10 14:10:39.734: D/wpa_supplicant(935): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+09-10 14:10:39.734: D/wpa_supplicant(935): wlan0: Control interface command 'SIGNAL_POLL'
+09-10 14:10:39.744: D/wpa_supplicant(935): nl80211: survey data missing!
+09-10 14:10:40.555: D/dalvikvm(8919): GC_FOR_ALLOC freed 466K, 9% free 10140K/11128K, paused 18ms, total 18ms
+09-10 14:10:40.575: V/DeviceDiscovery(8919): New device detected : Sony Corporation Internet TV Box NSZ-GT1
+09-10 14:10:40.575: V/DeviceDiscovery(8919): New device detected : Sony Corporation Internet TV Box NSZ-GT1
+09-10 14:10:40.615: V/DeviceDiscovery(8919): New device detected : Sony Corporation Internet TV Box NSZ-GT1
+09-10 14:10:40.615: V/DeviceDiscovery(8919): New device detected : Sony Corporation Internet TV Box NSZ-GT1
+09-10 14:10:42.747: D/wpa_supplicant(935): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+09-10 14:10:42.747: D/wpa_supplicant(935): wlan0: Control interface command 'SIGNAL_POLL'
+09-10 14:10:42.757: D/wpa_supplicant(935): nl80211: survey data missing!
+09-10 14:10:42.777: D/dalvikvm(2821): GC_FOR_ALLOC freed 886K, 10% free 12455K/13688K, paused 58ms, total 58ms
+09-10 14:10:42.827: D/dalvikvm(2821): GC_FOR_ALLOC freed 837K, 9% free 12457K/13688K, paused 26ms, total 26ms
+09-10 14:10:43.277: D/dalvikvm(8919): GC_FOR_ALLOC freed 540K, 10% free 10107K/11128K, paused 15ms, total 16ms
+09-10 14:10:43.297: V/DeviceDiscovery(8919): New device detected : PacketVideo TwonkyServer 7.3.2
+09-10 14:10:43.297: V/DeviceDiscovery(8919): New device detected : PacketVideo TwonkyServer 7.3.2
+09-10 14:10:43.328: V/DeviceDiscovery(8919): New device detected : PacketVideo Twonky NMC Queue Handler 7.3.2
+09-10 14:10:43.328: V/DeviceDiscovery(8919): New device detected : PacketVideo Twonky NMC Queue Handler 7.3.2
+09-10 14:10:43.338: V/DeviceDiscovery(8919): New device detected : PacketVideo Twonky NMC Queue Handler 7.3.2
+09-10 14:10:43.338: V/DeviceDiscovery(8919): New device detected : PacketVideo Twonky NMC Queue Handler 7.3.2
+09-10 14:10:43.388: D/dalvikvm(8919): GC_FOR_ALLOC freed 467K, 9% free 10151K/11128K, paused 16ms, total 16ms
+09-10 14:10:43.588: D/dalvikvm(8919): GC_FOR_ALLOC freed 536K, 9% free 10127K/11128K, paused 16ms, total 16ms
+09-10 14:10:43.718: V/DeviceDiscovery(8919): New device detected : PacketVideo TwonkyServer 7.3.2
+09-10 14:10:43.718: V/DeviceDiscovery(8919): New device detected : PacketVideo TwonkyServer 7.3.2
+09-10 14:10:43.718: V/UpnpDeviceListFragment(8919): New device detected : PacketVideo TwonkyServer 7.3.2
+09-10 14:10:45.770: D/wpa_supplicant(935): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+09-10 14:10:45.770: D/wpa_supplicant(935): wlan0: Control interface command 'SIGNAL_POLL'
+09-10 14:10:45.770: D/wpa_supplicant(935): nl80211: survey data missing!
+09-10 14:10:47.602: D/dalvikvm(8919): GC_FOR_ALLOC freed 466K, 9% free 10172K/11128K, paused 16ms, total 17ms
+09-10 14:10:47.612: V/DeviceDiscovery(8919): New device detected : Sony Corporation Internet TV Box NSZ-GT1
+09-10 14:10:47.622: V/DeviceDiscovery(8919): New device detected : Sony Corporation Internet TV Box NSZ-GT1
+09-10 14:10:48.032: D/dalvikvm(2821): GC_FOR_ALLOC freed 877K, 9% free 12457K/13688K, paused 27ms, total 27ms
+09-10 14:10:48.763: D/wpa_supplicant(935): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+09-10 14:10:48.763: D/wpa_supplicant(935): wlan0: Control interface command 'SIGNAL_POLL'
+09-10 14:10:48.773: D/wpa_supplicant(935): nl80211: survey data missing!
+09-10 14:10:48.883: D/dalvikvm(8919): GC_FOR_ALLOC freed 489K, 9% free 10194K/11128K, paused 15ms, total 16ms
+09-10 14:10:49.003: D/dalvikvm(8919): GC_FOR_ALLOC freed 481K, 9% free 10225K/11128K, paused 15ms, total 15ms
+09-10 14:10:49.043: V/DeviceDiscovery(8919): New device detected : Sony Corporation Internet TV Box NSZ-GT1
+09-10 14:10:49.043: V/DeviceDiscovery(8919): New device detected : Sony Corporation Internet TV Box NSZ-GT1
+09-10 14:10:49.043: V/UpnpDeviceListFragment(8919): New device detected : Sony Corporation Internet TV Box NSZ-GT1
+09-10 14:10:49.163: D/dalvikvm(8919): GC_FOR_ALLOC freed 565K, 9% free 10172K/11128K, paused 32ms, total 33ms
+09-10 14:10:51.786: D/wpa_supplicant(935): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+09-10 14:10:51.786: D/wpa_supplicant(935): wlan0: Control interface command 'SIGNAL_POLL'
+09-10 14:10:51.796: D/wpa_supplicant(935): nl80211: survey data missing!
+09-10 14:10:53.437: D/dalvikvm(2821): GC_FOR_ALLOC freed 989K, 9% free 12457K/13688K, paused 48ms, total 48ms
+09-10 14:10:54.799: D/wpa_supplicant(935): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+09-10 14:10:54.799: D/wpa_supplicant(935): wlan0: Control interface command 'SIGNAL_POLL'
+09-10 14:10:54.809: D/wpa_supplicant(935): nl80211: survey data missing!
+09-10 14:10:57.241: D/dalvikvm(8919): GC_FOR_ALLOC freed 481K, 9% free 10203K/11128K, paused 19ms, total 20ms
+09-10 14:10:57.812: D/wpa_supplicant(935): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+09-10 14:10:57.812: D/wpa_supplicant(935): wlan0: Control interface command 'SIGNAL_POLL'
+09-10 14:10:57.832: D/wpa_supplicant(935): nl80211: survey data missing!
+09-10 14:10:58.612: I/PowerManagerService(690): Going to sleep due to screen timeout...
+09-10 14:10:58.622: I/Sensors(327): DSPS file:sns_smgr_sol.c(1230):SMGR: One val: 1
+09-10 14:10:58.713: D/dalvikvm(2821): GC_FOR_ALLOC freed 878K, 9% free 12457K/13688K, paused 74ms, total 75ms
+09-10 14:10:59.143: I/Sensors(327): sns_pwr.c(417):sns_pwr_set_cpu_latency: hz -1
+09-10 14:10:59.143: I/Sensors(327): DSPS file:sns_smgr_sol.c(1230):SMGR: One val: 0
+09-10 14:10:59.143: I/Sensors(327): DSPS file:sns_smgr_md.c(597):Send power vote 0 due to request from client 0 at time 629454155
+09-10 14:10:59.223: W/ProcessCpuTracker(690): Skipping unknown process pid 9087
+09-10 14:10:59.223: W/ProcessCpuTracker(690): Skipping unknown process pid 9089
+09-10 14:10:59.223: W/ProcessCpuTracker(690): Skipping unknown process pid 9090
+09-10 14:10:59.273: D/wpa_supplicant(935): RX ctrl_iface - hexdump(len=23): 44 52 49 56 45 52 20 53 45 54 53 55 53 50 45 4e 44 4d 4f 44 45 20 31
+09-10 14:10:59.273: D/wpa_supplicant(935): wlan0: Control interface command 'DRIVER SETSUSPENDMODE 1'
+09-10 14:10:59.283: D/wpa_supplicant(935): wpa_driver_nl80211_driver_cmd SETSUSPENDMODE 1 len = 0, 16
+09-10 14:10:59.283: D/LightsService(690): Excessive delay setting light: 150ms
+09-10 14:10:59.293: D/SurfaceFlinger(179): Screen released, type=0 flinger=0x406de450
+09-10 14:10:59.293: D/qdhwcomposer(179): hwc_blank: Blanking display: 0
+09-10 14:10:59.453: D/qdhwcomposer(179): hwc_blank: Done blanking display: 0
+09-10 14:10:59.453: D/SurfaceControl(690): Excessive delay in blankDisplay() while turning screen off: 167ms
+09-10 14:10:59.463: I/LockScreenService(8093): WIIKII=onReceive==action=android.intent.action.SCREEN_OFF
+09-10 14:11:00.654: I/Sensors(327): sns_pwr.c(307):releasing wakelock
+09-10 14:11:03.998: D/dalvikvm(2821): GC_FOR_ALLOC freed 888K, 9% free 12457K/13688K, paused 95ms, total 97ms
+09-10 14:11:04.418: D/BackupManagerService(690): Now staging backup of android
+09-10 14:11:04.768: D/dalvikvm(834): GC_FOR_ALLOC freed 2512K, 49% free 14813K/28500K, paused 72ms, total 76ms
+09-10 14:11:04.929: W/AccountAuthenticator(1138): confirmCredentials(Account {name=jayachandra.sontela@gmail.com, type=com.google})
+09-10 14:11:04.929: W/AccountAuthenticator(1138): java.lang.NullPointerException
+09-10 14:11:04.929: W/AccountAuthenticator(1138):   at android.os.Bundle.putAll(Bundle.java:313)
+09-10 14:11:04.929: W/AccountAuthenticator(1138):   at android.content.Intent.putExtras(Intent.java:6145)
+09-10 14:11:04.929: W/AccountAuthenticator(1138):   at com.google.android.gsf.loginservice.GoogleLoginService$AccountAuthenticatorImpl.multiProcessHopFix(GoogleLoginService.java:541)
+09-10 14:11:04.929: W/AccountAuthenticator(1138):   at com.google.android.gsf.loginservice.GoogleLoginService$AccountAuthenticatorImpl.confirmCredentials(GoogleLoginService.java:383)
+09-10 14:11:04.929: W/AccountAuthenticator(1138):   at android.accounts.AbstractAccountAuthenticator$Transport.confirmCredentials(AbstractAccountAuthenticator.java:150)
+09-10 14:11:04.929: W/AccountAuthenticator(1138):   at android.accounts.IAccountAuthenticator$Stub.onTransact(IAccountAuthenticator.java:89)
+09-10 14:11:04.929: W/AccountAuthenticator(1138):   at android.os.Binder.execTransact(Binder.java:404)
+09-10 14:11:04.929: W/AccountAuthenticator(1138):   at dalvik.system.NativeStart.run(Native Method)
+09-10 14:11:04.949: V/KeyguardHostView(834): hide transport, gen:28
+09-10 14:11:04.949: V/KeyguardHostView(834): music state changed: 2
+09-10 14:11:05.189: D/dalvikvm(834): GC_FOR_ALLOC freed 1414K, 47% free 15336K/28500K, paused 35ms, total 35ms
+09-10 14:11:05.219: I/Choreographer(834): Skipped 57 frames!  The application may be doing too much work on its main thread.
+09-10 14:11:05.239: D/PhoneStatusBar(834): disable: < EXPAND\* icons alerts TICKER\* system_info BACK\* HOME\* RECENT\* CLOCK\* search >
+09-10 14:11:09.994: D/dalvikvm(2821): GC_FOR_ALLOC freed 875K, 9% free 12456K/13688K, paused 96ms, total 97ms
+09-10 14:11:15.229: D/dalvikvm(2821): GC_FOR_ALLOC freed 880K, 9% free 12456K/13688K, paused 101ms, total 103ms
+09-10 14:11:20.894: D/dalvikvm(2821): GC_FOR_ALLOC freed 886K, 9% free 12456K/13688K, paused 98ms, total 99ms
+09-10 14:11:27.020: D/dalvikvm(2821): GC_FOR_ALLOC freed 855K, 10% free 12455K/13688K, paused 95ms, total 97ms
+09-10 14:11:32.926: D/dalvikvm(2821): GC_FOR_ALLOC freed 884K, 9% free 12456K/13688K, paused 105ms, total 106ms
+09-10 14:11:39.002: D/dalvikvm(2821): GC_FOR_ALLOC freed 886K, 9% free 12456K/13688K, paused 102ms, total 104ms
+09-10 14:11:45.088: D/dalvikvm(2821): GC_FOR_ALLOC freed 885K, 9% free 12456K/13688K, paused 96ms, total 97ms
+09-10 14:11:50.503: D/dalvikvm(2821): GC_FOR_ALLOC freed 885K, 9% free 12456K/13688K, paused 95ms, total 96ms
+09-10 14:11:56.269: D/dalvikvm(2821): GC_FOR_ALLOC freed 983K, 9% free 12456K/13688K, paused 108ms, total 109ms
+09-10 14:12:01.984: D/dalvikvm(2821): GC_FOR_ALLOC freed 885K, 10% free 12455K/13688K, paused 95ms, total 96ms
+09-10 14:12:03.476: D/dalvikvm(2190): GC_FOR_ALLOC freed 1445K, 11% free 13267K/14892K, paused 153ms, total 153ms
+09-10 14:12:07.950: D/dalvikvm(2821): GC_FOR_ALLOC freed 885K, 10% free 12455K/13688K, paused 96ms, total 97ms
+09-10 14:12:08.120: D/dalvikvm(2821): GC_FOR_ALLOC freed 837K, 9% free 12457K/13688K, paused 95ms, total 96ms
+09-10 14:12:13.656: D/dalvikvm(2821): GC_FOR_ALLOC freed 876K, 9% free 12457K/13688K, paused 102ms, total 103ms
+09-10 14:12:18.210: D/ConnectivityService(690): Sampling interval elapsed, updating statistics ..
+09-10 14:12:18.260: D/ConnectivityService(690): Done.
+09-10 14:12:18.260: D/ConnectivityService(690): Setting timer for 720seconds
+09-10 14:12:18.310: W/MSF.C.NetworkTraffic(1479): [E]param_WIFIChatFlow_b_246129
+09-10 14:12:18.310: W/MSF.C.NetworkTraffic(1479): [E]param_WIFIChatFlow_mb_2171329
+09-10 14:12:19.221: W/Settings(1479): Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+09-10 14:12:19.391: D/dalvikvm(2821): GC_FOR_ALLOC freed 885K, 9% free 12457K/13688K, paused 96ms, total 97ms
+09-10 14:12:25.367: D/dalvikvm(2821): GC_FOR_ALLOC freed 876K, 9% free 12457K/13688K, paused 95ms, total 96ms
+"
+trishika/DroidUPnP,closed,German translation update,[],
+trishika/DroidUPnP,closed,dlna+rtsp,[],"Can the DLNA support rtsp ?   i' m sorry, my english is poor!  are you understand ?
+if dlna support rtsp , you can do it !    i think this idea is available, is right ？
+waiting for you to do it !   ^_^  ^_^  ^_^ !
+"
+trishika/DroidUPnP,closed,Allow deactivation of own device announcements.,[],"It should be possible to not announce own existence to others in the network and still be possible to play content from own library.
+"
+trishika/DroidUPnP,closed,exception ,"[Label(name=""bug"")]","04-03 17:08:45.460: D/libEGL(11331): loaded /vendor/lib/egl/libEGL_POWERVR_SGX544_115.so
+04-03 17:08:45.490: D/libEGL(11331): loaded /vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so
+04-03 17:08:45.500: D/libEGL(11331): loaded /vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so
+04-03 17:08:45.560: D/OpenGLRenderer(11331): Enabling debug mode 0
+04-03 17:08:46.530: I/UpnpServiceImpl(11331): >>> Starting UPnP service...
+04-03 17:08:46.530: I/UpnpServiceImpl(11331): Using configuration: com.ebus.srpcdlna.cling.android.UpnpService$1
+04-03 17:08:46.540: I/Router(11331): Creating Router: org.fourthline.cling.android.AndroidRouter
+04-03 17:08:46.570: D/dalvikvm(11331): GC_CONCURRENT freed 330K, 19% free 4290K/5260K, paused 2ms+2ms, total 20ms
+04-03 17:08:46.580: D/dalvikvm(11331): WAIT_FOR_CONCURRENT_GC blocked 13ms
+04-03 17:08:46.600: I/MulticastReceiver(11331): Creating wildcard socket (for receiving multicast datagrams) on port: 1900
+04-03 17:08:46.600: I/MulticastReceiver(11331): Joining multicast group: /239.255.255.250:1900 on network interface: wlan0
+04-03 17:08:46.600: W/dalvikvm(11331): Unable to resolve superclass of Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl$1; (1063)
+04-03 17:08:46.600: W/dalvikvm(11331): Link of class 'Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl$1;' failed
+04-03 17:08:46.600: E/dalvikvm(11331): Could not find class 'org.fourthline.cling.transport.impl.AsyncServletStreamServerImpl$1', referenced from method org.fourthline.cling.transport.impl.AsyncServletStreamServerImpl.createServlet
+04-03 17:08:46.600: W/dalvikvm(11331): VFY: unable to resolve new-instance 1988 (Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl$1;) in Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl;
+04-03 17:08:46.600: D/dalvikvm(11331): VFY: replacing opcode 0x22 at 0x0000
+04-03 17:08:46.600: W/dalvikvm(11331): VFY: unable to find class referenced in signature (Ljavax/servlet/Servlet;)
+04-03 17:08:46.600: W/dalvikvm(11331): VFY: unable to find class referenced in signature (Ljavax/servlet/Servlet;)
+04-03 17:08:46.600: W/dalvikvm(11331): VFY: unable to find class referenced in signature (Ljavax/servlet/http/HttpServletRequest;)
+04-03 17:08:46.600: W/dalvikvm(11331): Unable to resolve superclass of Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl$1; (1063)
+04-03 17:08:46.600: W/dalvikvm(11331): Link of class 'Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl$1;' failed
+04-03 17:08:46.600: D/dalvikvm(11331): DexOpt: unable to opt direct call 0x2e1e at 0x02 in Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl;.createServlet
+04-03 17:08:46.600: W/dalvikvm(11331): VFY: unable to find class referenced in signature (Ljavax/servlet/http/HttpServletRequest;)
+04-03 17:08:46.610: W/dalvikvm(11331): VFY: unable to find class referenced in signature (Ljavax/servlet/http/HttpServletRequest;)
+04-03 17:08:46.610: W/dalvikvm(11331): VFY: unable to find class referenced in signature (Ljavax/servlet/http/HttpServletRequest;)
+04-03 17:08:46.610: E/dalvikvm(11331): Could not find class 'org.eclipse.jetty.server.Request', referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.isConnectionOpen
+04-03 17:08:46.610: W/dalvikvm(11331): VFY: unable to resolve check-cast 1203 (Lorg/eclipse/jetty/server/Request;) in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;
+04-03 17:08:46.610: D/dalvikvm(11331): VFY: replacing opcode 0x1f at 0x0001
+04-03 17:08:46.610: E/dalvikvm(11331): Could not find class 'org.eclipse.jetty.server.bio.SocketConnector', referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.addConnector
+04-03 17:08:46.610: W/dalvikvm(11331): VFY: unable to resolve new-instance 1205 (Lorg/eclipse/jetty/server/bio/SocketConnector;) in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;
+04-03 17:08:46.610: D/dalvikvm(11331): VFY: replacing opcode 0x22 at 0x0001
+04-03 17:08:46.610: W/dalvikvm(11331): VFY: unable to find class referenced in signature (Ljavax/servlet/Servlet;)
+04-03 17:08:46.610: I/dalvikvm(11331): Could not find method org.eclipse.jetty.server.Server.getHandler, referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.registerServlet
+04-03 17:08:46.610: W/dalvikvm(11331): VFY: unable to resolve virtual method 6431: Lorg/eclipse/jetty/server/Server;.getHandler ()Lorg/eclipse/jetty/server/Handler;
+04-03 17:08:46.610: D/dalvikvm(11331): VFY: replacing opcode 0x6e at 0x0003
+04-03 17:08:46.610: E/dalvikvm(11331): Could not find class 'org.eclipse.jetty.server.Server', referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.resetServer
+04-03 17:08:46.610: W/dalvikvm(11331): VFY: unable to resolve new-instance 1204 (Lorg/eclipse/jetty/server/Server;) in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;
+04-03 17:08:46.610: D/dalvikvm(11331): VFY: replacing opcode 0x22 at 0x0000
+04-03 17:08:46.610: I/dalvikvm(11331): Could not find method org.eclipse.jetty.server.Server.getThreadPool, referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.setExecutorService
+04-03 17:08:46.610: W/dalvikvm(11331): VFY: unable to resolve virtual method 6432: Lorg/eclipse/jetty/server/Server;.getThreadPool ()Lorg/eclipse/jetty/util/thread/ThreadPool;
+04-03 17:08:46.610: D/dalvikvm(11331): VFY: replacing opcode 0x6e at 0x0005
+04-03 17:08:46.610: I/dalvikvm(11331): Could not find method org.eclipse.jetty.server.Server.isStarted, referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.startIfNotRunning
+04-03 17:08:46.610: W/dalvikvm(11331): VFY: unable to resolve virtual method 6433: Lorg/eclipse/jetty/server/Server;.isStarted ()Z
+04-03 17:08:46.610: D/dalvikvm(11331): VFY: replacing opcode 0x6e at 0x0003
+04-03 17:08:46.610: I/dalvikvm(11331): Could not find method org.eclipse.jetty.server.Server.isStopped, referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.stopIfRunning
+04-03 17:08:46.610: W/dalvikvm(11331): VFY: unable to resolve virtual method 6435: Lorg/eclipse/jetty/server/Server;.isStopped ()Z
+04-03 17:08:46.610: D/dalvikvm(11331): VFY: replacing opcode 0x6e at 0x0003
+04-03 17:08:46.610: D/dalvikvm(11331): DexOpt: unable to opt direct call 0x192a at 0x03 in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;.addConnector
+04-03 17:08:46.610: D/dalvikvm(11331): DexOpt: unable to opt direct call 0x192f at 0x22 in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;.registerServlet
+04-03 17:08:46.610: D/dalvikvm(11331): DexOpt: unable to opt direct call 0x1932 at 0x32 in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;.registerServlet
+04-03 17:08:46.610: D/dalvikvm(11331): DexOpt: unable to opt direct call 0x191d at 0x02 in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;.resetServer
+04-03 17:08:46.610: W/dalvikvm(11331): Unable to resolve superclass of Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer$1; (1208)
+04-03 17:08:46.610: W/dalvikvm(11331): Link of class 'Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer$1;' failed
+04-03 17:08:46.610: D/dalvikvm(11331): DexOpt: unable to opt direct call 0x2f73 at 0x11 in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;.setExecutorService
+04-03 17:08:46.610: W/dalvikvm(11331): Exception Ljava/lang/NoClassDefFoundError; thrown while initializing Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;
+04-03 17:08:46.610: D/AndroidRuntime(11331): Shutting down VM
+04-03 17:08:46.610: W/dalvikvm(11331): threadid=1: thread exiting with uncaught exception (group=0x40b12930)
+04-03 17:08:46.620: E/AndroidRuntime(11331): FATAL EXCEPTION: main
+04-03 17:08:46.620: E/AndroidRuntime(11331): java.lang.ExceptionInInitializerError
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at org.fourthline.cling.android.AndroidUpnpServiceConfiguration.createStreamServer(AndroidUpnpServiceConfiguration.java:112)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at org.fourthline.cling.transport.RouterImpl.startAddressBasedTransports(RouterImpl.java:427)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at org.fourthline.cling.transport.RouterImpl.enable(RouterImpl.java:132)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at org.fourthline.cling.android.AndroidRouter.enable(AndroidRouter.java:92)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at org.fourthline.cling.UpnpServiceImpl.<init>(UpnpServiceImpl.java:87)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at org.fourthline.cling.android.AndroidUpnpServiceImpl$1.<init>(AndroidUpnpServiceImpl.java:54)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at org.fourthline.cling.android.AndroidUpnpServiceImpl.onCreate(AndroidUpnpServiceImpl.java:54)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at android.app.ActivityThread.handleCreateService(ActivityThread.java:2529)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at android.app.ActivityThread.access$1600(ActivityThread.java:141)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1316)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at android.os.Handler.dispatchMessage(Handler.java:99)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at android.os.Looper.loop(Looper.java:137)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at android.app.ActivityThread.main(ActivityThread.java:5041)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at java.lang.reflect.Method.invokeNative(Native Method)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at java.lang.reflect.Method.invoke(Method.java:511)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:817)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:584)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at dalvik.system.NativeStart.main(Native Method)
+04-03 17:08:46.620: E/AndroidRuntime(11331): Caused by: java.lang.NoClassDefFoundError: org.eclipse.jetty.server.Server
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at org.fourthline.cling.transport.impl.jetty.JettyServletContainer.resetServer(JettyServletContainer.java:132)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at org.fourthline.cling.transport.impl.jetty.JettyServletContainer.<init>(JettyServletContainer.java:56)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    at org.fourthline.cling.transport.impl.jetty.JettyServletContainer.<clinit>(JettyServletContainer.java:54)
+04-03 17:08:46.620: E/AndroidRuntime(11331):    ... 18 more
+04-03 17:08:46.640: D/dalvikvm(11331): GC_CONCURRENT freed 383K, 20% free 4297K/5320K, paused 2ms+2ms, total 18ms
+04-03 17:09:13.580: D/libEGL(12465): loaded /vendor/lib/egl/libEGL_POWERVR_SGX544_115.so
+04-03 17:09:13.640: D/libEGL(12465): loaded /vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so
+04-03 17:09:13.670: D/libEGL(12465): loaded /vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so
+04-03 17:09:13.780: D/OpenGLRenderer(12465): Enabling debug mode 0
+04-03 17:09:19.950: I/UpnpServiceImpl(12465): >>> Starting UPnP service...
+04-03 17:09:19.950: I/UpnpServiceImpl(12465): Using configuration: com.ebus.srpcdlna.cling.android.UpnpService$1
+04-03 17:09:19.970: I/Router(12465): Creating Router: org.fourthline.cling.android.AndroidRouter
+04-03 17:09:20.020: D/dalvikvm(12465): GC_CONCURRENT freed 327K, 19% free 4289K/5256K, paused 3ms+1ms, total 22ms
+04-03 17:09:20.020: D/dalvikvm(12465): WAIT_FOR_CONCURRENT_GC blocked 13ms
+04-03 17:09:20.040: I/MulticastReceiver(12465): Creating wildcard socket (for receiving multicast datagrams) on port: 1900
+04-03 17:09:20.040: I/MulticastReceiver(12465): Joining multicast group: /239.255.255.250:1900 on network interface: wlan0
+04-03 17:09:20.050: W/dalvikvm(12465): Unable to resolve superclass of Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl$1; (1063)
+04-03 17:09:20.050: W/dalvikvm(12465): Link of class 'Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl$1;' failed
+04-03 17:09:20.050: E/dalvikvm(12465): Could not find class 'org.fourthline.cling.transport.impl.AsyncServletStreamServerImpl$1', referenced from method org.fourthline.cling.transport.impl.AsyncServletStreamServerImpl.createServlet
+04-03 17:09:20.050: W/dalvikvm(12465): VFY: unable to resolve new-instance 1988 (Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl$1;) in Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl;
+04-03 17:09:20.050: D/dalvikvm(12465): VFY: replacing opcode 0x22 at 0x0000
+04-03 17:09:20.050: W/dalvikvm(12465): VFY: unable to find class referenced in signature (Ljavax/servlet/Servlet;)
+04-03 17:09:20.050: W/dalvikvm(12465): VFY: unable to find class referenced in signature (Ljavax/servlet/Servlet;)
+04-03 17:09:20.050: W/dalvikvm(12465): VFY: unable to find class referenced in signature (Ljavax/servlet/http/HttpServletRequest;)
+04-03 17:09:20.050: W/dalvikvm(12465): Unable to resolve superclass of Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl$1; (1063)
+04-03 17:09:20.050: W/dalvikvm(12465): Link of class 'Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl$1;' failed
+04-03 17:09:20.060: D/dalvikvm(12465): DexOpt: unable to opt direct call 0x2e1e at 0x02 in Lorg/fourthline/cling/transport/impl/AsyncServletStreamServerImpl;.createServlet
+04-03 17:09:20.060: W/dalvikvm(12465): VFY: unable to find class referenced in signature (Ljavax/servlet/http/HttpServletRequest;)
+04-03 17:09:20.060: W/dalvikvm(12465): VFY: unable to find class referenced in signature (Ljavax/servlet/http/HttpServletRequest;)
+04-03 17:09:20.060: W/dalvikvm(12465): VFY: unable to find class referenced in signature (Ljavax/servlet/http/HttpServletRequest;)
+04-03 17:09:20.060: E/dalvikvm(12465): Could not find class 'org.eclipse.jetty.server.Request', referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.isConnectionOpen
+04-03 17:09:20.060: W/dalvikvm(12465): VFY: unable to resolve check-cast 1203 (Lorg/eclipse/jetty/server/Request;) in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;
+04-03 17:09:20.060: D/dalvikvm(12465): VFY: replacing opcode 0x1f at 0x0001
+04-03 17:09:20.060: E/dalvikvm(12465): Could not find class 'org.eclipse.jetty.server.bio.SocketConnector', referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.addConnector
+04-03 17:09:20.060: W/dalvikvm(12465): VFY: unable to resolve new-instance 1205 (Lorg/eclipse/jetty/server/bio/SocketConnector;) in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;
+04-03 17:09:20.060: D/dalvikvm(12465): VFY: replacing opcode 0x22 at 0x0001
+04-03 17:09:20.060: W/dalvikvm(12465): VFY: unable to find class referenced in signature (Ljavax/servlet/Servlet;)
+04-03 17:09:20.060: I/dalvikvm(12465): Could not find method org.eclipse.jetty.server.Server.getHandler, referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.registerServlet
+04-03 17:09:20.060: W/dalvikvm(12465): VFY: unable to resolve virtual method 6431: Lorg/eclipse/jetty/server/Server;.getHandler ()Lorg/eclipse/jetty/server/Handler;
+04-03 17:09:20.060: D/dalvikvm(12465): VFY: replacing opcode 0x6e at 0x0003
+04-03 17:09:20.060: E/dalvikvm(12465): Could not find class 'org.eclipse.jetty.server.Server', referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.resetServer
+04-03 17:09:20.060: W/dalvikvm(12465): VFY: unable to resolve new-instance 1204 (Lorg/eclipse/jetty/server/Server;) in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;
+04-03 17:09:20.060: D/dalvikvm(12465): VFY: replacing opcode 0x22 at 0x0000
+04-03 17:09:20.060: I/dalvikvm(12465): Could not find method org.eclipse.jetty.server.Server.getThreadPool, referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.setExecutorService
+04-03 17:09:20.060: W/dalvikvm(12465): VFY: unable to resolve virtual method 6432: Lorg/eclipse/jetty/server/Server;.getThreadPool ()Lorg/eclipse/jetty/util/thread/ThreadPool;
+04-03 17:09:20.060: D/dalvikvm(12465): VFY: replacing opcode 0x6e at 0x0005
+04-03 17:09:20.060: I/dalvikvm(12465): Could not find method org.eclipse.jetty.server.Server.isStarted, referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.startIfNotRunning
+04-03 17:09:20.060: W/dalvikvm(12465): VFY: unable to resolve virtual method 6433: Lorg/eclipse/jetty/server/Server;.isStarted ()Z
+04-03 17:09:20.060: D/dalvikvm(12465): VFY: replacing opcode 0x6e at 0x0003
+04-03 17:09:20.060: I/dalvikvm(12465): Could not find method org.eclipse.jetty.server.Server.isStopped, referenced from method org.fourthline.cling.transport.impl.jetty.JettyServletContainer.stopIfRunning
+04-03 17:09:20.060: W/dalvikvm(12465): VFY: unable to resolve virtual method 6435: Lorg/eclipse/jetty/server/Server;.isStopped ()Z
+04-03 17:09:20.060: D/dalvikvm(12465): VFY: replacing opcode 0x6e at 0x0003
+04-03 17:09:20.060: D/dalvikvm(12465): DexOpt: unable to opt direct call 0x192a at 0x03 in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;.addConnector
+04-03 17:09:20.060: D/dalvikvm(12465): DexOpt: unable to opt direct call 0x192f at 0x22 in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;.registerServlet
+04-03 17:09:20.060: D/dalvikvm(12465): DexOpt: unable to opt direct call 0x1932 at 0x32 in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;.registerServlet
+04-03 17:09:20.060: D/dalvikvm(12465): DexOpt: unable to opt direct call 0x191d at 0x02 in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;.resetServer
+04-03 17:09:20.060: W/dalvikvm(12465): Unable to resolve superclass of Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer$1; (1208)
+04-03 17:09:20.060: W/dalvikvm(12465): Link of class 'Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer$1;' failed
+04-03 17:09:20.060: D/dalvikvm(12465): DexOpt: unable to opt direct call 0x2f73 at 0x11 in Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;.setExecutorService
+04-03 17:09:20.060: W/dalvikvm(12465): Exception Ljava/lang/NoClassDefFoundError; thrown while initializing Lorg/fourthline/cling/transport/impl/jetty/JettyServletContainer;
+04-03 17:09:20.060: D/AndroidRuntime(12465): Shutting down VM
+04-03 17:09:20.060: W/dalvikvm(12465): threadid=1: thread exiting with uncaught exception (group=0x40b12930)
+04-03 17:09:20.080: E/AndroidRuntime(12465): FATAL EXCEPTION: main
+04-03 17:09:20.080: E/AndroidRuntime(12465): java.lang.ExceptionInInitializerError
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at org.fourthline.cling.android.AndroidUpnpServiceConfiguration.createStreamServer(AndroidUpnpServiceConfiguration.java:112)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at org.fourthline.cling.transport.RouterImpl.startAddressBasedTransports(RouterImpl.java:427)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at org.fourthline.cling.transport.RouterImpl.enable(RouterImpl.java:132)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at org.fourthline.cling.android.AndroidRouter.enable(AndroidRouter.java:92)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at org.fourthline.cling.UpnpServiceImpl.<init>(UpnpServiceImpl.java:87)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at org.fourthline.cling.android.AndroidUpnpServiceImpl$1.<init>(AndroidUpnpServiceImpl.java:54)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at org.fourthline.cling.android.AndroidUpnpServiceImpl.onCreate(AndroidUpnpServiceImpl.java:54)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at android.app.ActivityThread.handleCreateService(ActivityThread.java:2529)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at android.app.ActivityThread.access$1600(ActivityThread.java:141)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1316)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at android.os.Handler.dispatchMessage(Handler.java:99)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at android.os.Looper.loop(Looper.java:137)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at android.app.ActivityThread.main(ActivityThread.java:5041)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at java.lang.reflect.Method.invokeNative(Native Method)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at java.lang.reflect.Method.invoke(Method.java:511)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:817)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:584)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at dalvik.system.NativeStart.main(Native Method)
+04-03 17:09:20.080: E/AndroidRuntime(12465): Caused by: java.lang.NoClassDefFoundError: org.eclipse.jetty.server.Server
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at org.fourthline.cling.transport.impl.jetty.JettyServletContainer.resetServer(JettyServletContainer.java:132)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at org.fourthline.cling.transport.impl.jetty.JettyServletContainer.<init>(JettyServletContainer.java:56)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    at org.fourthline.cling.transport.impl.jetty.JettyServletContainer.<clinit>(JettyServletContainer.java:54)
+04-03 17:09:20.080: E/AndroidRuntime(12465):    ... 18 more
+04-03 17:09:20.120: D/dalvikvm(12465): GC_CONCURRENT freed 383K, 20% free 4295K/5316K, paused 13ms+2ms, total 27ms
+
+thank you!
+"
+trishika/DroidUPnP,open,play all files in a folder,"[Label(name=""enhancement"")]","Currently only 1 file plays, would be nice if when playing a file in a folder (album) when it finishes, move on to play the next one.
+
+I'm guessing this will require hooking into a callback that fires when tracks finish playing - not sure if there is anything like that in the src at the moment?
+"
+trishika/DroidUPnP,open,Playback with (LG) TV is not working,"[Label(name=""bug"")]","When I'm trying to playback media content with DroidUPnP on my (LG) TV nothing happens, the playback status bar is shown but nothing else happens.
+"
+trishika/DroidUPnP,closed,Hide renderer fragment when stopped,[],"If once shown it never hides anymore.
+"
+trishika/DroidUPnP,open,initial thumbnail support,"[Label(name=""enhancement"")]","Thumbnail is loaded (if available) asynchronously and resized to size of default icons.
+Successfully tested with Plex Media Server.
+
+It's only a first approach and there are some things missing:
+- no caching - thumbs will be reloaded on every scroll or refresh (major)
+- thumb optimized (larger, ...) list view needed ???
+- and more ...
+"
+trishika/DroidUPnP,open,Order by Track Number,"[Label(name=""enhancement"")]","Great job with the app, it is perfect for me apart from my DLNA server doesn't organise audio files by track number so my client needs to have this functionality which is missing. It would be great if you could have the option to order audio files by track number (taking into account disc number too if it exists) rather than alphabetically by title.
+"
+trishika/DroidUPnP,closed,Added option for local playback,"[Label(name=""enhancement"")]","This is a solution for issue #31
+
+Long press on a item will show the option ""Launch local viewer"":
+-  remote/local music items will launch the default music player and play it
+-  remote/local video items will launch the default video player and play it
+-  remote pictures will NOT work, not supported using android apps
+-  local pictures will launch the default picture viewer
+
+Long press on a directory result in a toast: ""No action available""
+"
+trishika/DroidUPnP,open,Allow to stream from another UPnP device to the smartphone/tablet,"[Label(name=""enhancement"")]","Right now, DroidUPnP is only able to transmit files from the Android device to be played in another UPnP/DLNA-compatible device. Some other programs, like [YAACC](http://www.yaacc.de/), are able to do the opposite, that is to stream a file from the other device back to the Android device, is it possible to do so here?
+"
+trishika/DroidUPnP,closed,Fixed translation of values-es/strings.sml,[],"The earlier translation seemed to be machine-made, this one has been corrected.
+"
+trishika/DroidUPnP,closed,Correct language support,[],"the dutch translation was faulty named as german
+i've added the german translation
+"
+trishika/DroidUPnP,closed,When changing orientation or locking screen browsing position is flush,"[Label(name=""bug"")]","Procedure : 
+- Select bowsing tab
+- Browse the tree
+- Rotate screen or lock/unlock screen
+-  Browsing position is not restore instead you are back to root
+"
+trishika/DroidUPnP,closed,Activity org.droidupnp.Main has leaked ServiceConnection org.droidupnp.controller.cling.ServiceListener$1@4152edd0 that was originally bound here,"[Label(name=""bug"")]","Leak android service
+
+04-09 21:03:31.458: D/ServiceDiscoveryFragment(25676): Activity created
+04-09 21:03:31.458: I/Cling.ServiceListener(25676): Add Listener !
+04-09 21:03:31.458: I/Cling.ServiceListener(25676): Add Listener Safe !
+04-09 21:03:31.458: D/RendererCommand(25676): Update state !
+04-09 21:03:31.458: I/ServiceDiscoveryFragment(25676): New device detected : Samsung Electronics LE32D550 1.0
+04-09 21:03:31.458: I/ServiceDiscoveryFragment(25676): New device detected : Samsung Electronics LE32D550 AllShare1.0
+04-09 21:03:31.458: I/RendererCommand(25676): State updater interrupt, current state running
+04-09 21:03:31.458: I/ServiceDiscoveryFragment(25676): New device detected : Team XBMC XBMC Media Center 12.1 Git:0d373cc
+04-09 21:03:31.468: I/ServiceDiscoveryFragment(25676): New device detected : Justin Maggard Windows Media Connect compatible (MiniDLNA) 1
+04-09 21:03:31.468: I/ServiceDiscoveryFragment(25676): New device detected : Justin Maggard Windows Media Connect compatible (MiniDLNA) 1
+04-09 21:03:31.468: I/ServiceDiscoveryFragment(25676): Moe is selected at position 1
+04-09 21:03:31.468: D/ServiceDiscoveryFragment(25676): onCreated
+04-09 21:03:31.468: D/ServiceDiscoveryFragment(25676): Activity created
+04-09 21:03:31.468: I/Cling.ServiceListener(25676): Add Listener !
+04-09 21:03:31.468: I/Cling.ServiceListener(25676): Add Listener Safe !
+04-09 21:03:31.468: I/ServiceDiscoveryFragment(25676): New device detected : Samsung Electronics LE32D550 1.0
+04-09 21:03:31.468: I/ServiceDiscoveryFragment(25676): New device detected : Samsung Electronics LE32D550 AllShare1.0
+04-09 21:03:31.468: I/ServiceDiscoveryFragment(25676): [TV]LE32D550 is selected at position 0
+04-09 21:03:31.468: I/ServiceDiscoveryFragment(25676): New device detected : Team XBMC XBMC Media Center 12.1 Git:0d373cc
+04-09 21:03:31.468: I/ServiceDiscoveryFragment(25676): New device detected : Justin Maggard Windows Media Connect compatible (MiniDLNA) 1
+04-09 21:03:31.468: I/ServiceDiscoveryFragment(25676): New device detected : Justin Maggard Windows Media Connect compatible (MiniDLNA) 1
+04-09 21:03:31.498: D/RendererCommand(25676): Receive position info ! (PositionInfo) Track: 0 RelTime: 0:00:00 Duration: 0:00:00 Percent: 0
+04-09 21:03:31.518: E/ActivityThread(25676): Activity org.droidupnp.Main has leaked ServiceConnection org.droidupnp.controller.cling.ServiceListener$1@4152edd0 that was originally bound here
+04-09 21:03:31.518: E/ActivityThread(25676): android.app.ServiceConnectionLeaked: Activity org.droidupnp.Main has leaked ServiceConnection org.droidupnp.controller.cling.ServiceListener$1@41>
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.app.LoadedApk$ServiceDispatcher.<init>(LoadedApk.java:969)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.app.LoadedApk.getServiceDispatcher(LoadedApk.java:863)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.app.ContextImpl.bindService(ContextImpl.java:1418)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.app.ContextImpl.bindService(ContextImpl.java:1407)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.content.ContextWrapper.bindService(ContextWrapper.java:473)
+04-09 21:03:31.518: E/ActivityThread(25676):    at org.droidupnp.controller.cling.ServiceController.<init>(ServiceController.java:53)
+04-09 21:03:31.518: E/ActivityThread(25676):    at org.droidupnp.controller.cling.Factory.createUpnpServiceController(Factory.java:68)
+04-09 21:03:31.518: E/ActivityThread(25676):    at org.droidupnp.Main.onCreate(Main.java:73)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.app.Activity.performCreate(Activity.java:5104)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1080)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2144)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2230)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.app.ActivityThread.access$600(ActivityThread.java:141)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1234)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.os.Handler.dispatchMessage(Handler.java:99)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.os.Looper.loop(Looper.java:137)
+04-09 21:03:31.518: E/ActivityThread(25676):    at android.app.ActivityThread.main(ActivityThread.java:5041)
+04-09 21:03:31.518: E/ActivityThread(25676):    at java.lang.reflect.Method.invokeNative(Native Method)
+04-09 21:03:31.518: E/ActivityThread(25676):    at java.lang.reflect.Method.invoke(Method.java:511)
+04-09 21:03:31.518: E/ActivityThread(25676):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)
+04-09 21:03:31.518: E/ActivityThread(25676):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)
+04-09 21:03:31.518: E/ActivityThread(25676):    at dalvik.system.NativeStart.main(Native Method)
+04-09 21:03:31.538: D/dalvikvm(25676): GC_CONCURRENT freed 449K, 6% free 10188K/10756K, paused 2ms+4ms, total 29ms
+04-09 21:03:31.578: I/UpnpServiceImpl(25676): >>> Shutting down UPnP service...
+04-09 21:03:31.598: I/Router(25676): WiFi multicast lock released
+04-09 21:03:31.598: I/Router(25676): WiFi lock released
+04-09 21:03:31.618: I/JettyServletContainer(25676): Stopping Jetty server...
+04-09 21:03:31.618: I/Server(25676): Graceful shutdown SocketConnector@10.10.1.12:48873
+04-09 21:03:31.628: I/Server(25676): Graceful shutdown o.e.j.s.ServletContextHandler{/upnp,null}
+04-09 21:03:32.619: I/ContextHandler(25676): stopped o.e.j.s.ServletContextHandler{/upnp,null}
+04-09 21:03:32.629: I/UpnpServiceImpl(25676): <<< UPnP service shutdown completed
+"
+trishika/DroidUPnP,closed,Renderer selector popup,"[Label(name=""enhancement"")]","Use for example to : 
+- Select renderer when trying to play and no renderer selected
+- ?
+"
+trishika/DroidUPnP,closed,Crash when immediatly selected fresh discover content directory and browsing (auto for tablet),"[Label(name=""bug"")]","Most probably due to the fact that we first get a partial upnp object from cling atr the beginning. Need to only display it when full object ready.
+"
+trishika/DroidUPnP,open,Create a widget to control renderer,"[Label(name=""enhancement"")]","Google music like widget to control renderer.
+Firstly with player command and track information and for later cover display.
+"
+trishika/DroidUPnP,closed,State should not be updated if app is pause/stop,"[Label(name=""bug"")]",
+trishika/DroidUPnP,closed,Add possibility to refresh tab from menu,"[Label(name=""enhancement"")]","Add refresh option in menu. This will allow to manually refresh list of device for example.
+"
+trishika/DroidUPnP,closed,Issue when changing orientation,"[Label(name=""bug"")]","When changing orientitation of device got : 
+
+   RuntimeException : Unable to destroy activity
+"
+trishika/DroidUPnP,open,Display sound preview when draging sound bar,"[Label(name=""enhancement"")]","When draging sound bar we should find a way to display the sound level we are going to.
+"
+trishika/DroidUPnP,open,Time preview when dragging seek bar,"[Label(name=""enhancement"")]","When draging seek bar we should update the time in consequence
+"
+trishika/DroidUPnP,closed,Add local content directory server,"[Label(name=""enhancement"")]","We can add the feature of a local content directory to be available to use local media file.
+
+Put an option to be able to deactivate this feature.
+"
+trishika/DroidUPnP,closed,Download not available cover on the net,"[Label(name=""enhancement"")]","When cover is not available on content directory we could download it.
+
+Put the possibility to deactivate this feature with an option.
+"
+trishika/DroidUPnP,open,Option to put in pause renderer if we have an incoming call,"[Label(name=""enhancement"")]","Optionnally, we can put in pause the renderer when a call is receive.
+Same option can also be proposed for outgoing call even if it at less interest.
+"
+trishika/DroidUPnP,open,Register to renderer change notification instead of polling,"[Label(name=""bug"")]","Currently renderer state update are done by polling the renderer. But there is a notification service where we can register to do that. 
+We need to use it.
+"
+trishika/DroidUPnP,closed,Do a icon/logo,"[Label(name=""enhancement"")]","App logo needed for the market :)
+"
+trishika/DroidUPnP,closed,Allow theme switch to a holo.light theme,"[Label(name=""enhancement"")]","New theme based on Holo.light
+
+Need configuration field to do the switch.
+Need different icon color (play, pause...)
+"
+trishika/DroidUPnP,closed,Create option menu,"[Label(name=""enhancement"")]","Find option to put in it
+"
+trishika/DroidUPnP,closed,Create an about menu,"[Label(name=""enhancement"")]","In it display : 
+- Version
+- Copyright
+- Ref to cling
+"
+trishika/DroidUPnP,closed,Compile with maven,"[Label(name=""enhancement"")]","Currently compilation is done throught eclipse. And dependencies have do be download manual.
+
+A maven configuration file should be create to ease the compilation task.
+"
+trishika/DroidUPnP,closed,Content directory & Renderer do not stay select when changing tabs,"[Label(name=""bug"")]","Select state of element in list should stay when moving from tab to tab.
+This is currently a bug that is not fix because I can't find a way to visualy re-select an element in  a ListView.
+"
+trishika/DroidUPnP,open,Create a interactive notification to control renderer,"[Label(name=""enhancement"")]","An android extended notification could be use to basically control the renderer : 
+- Play/Pause
+- Next
+- Prev
+
+And also display metadata of curently playing media.
+"
+trishika/DroidUPnP,open,Be able to do research in content directory,"[Label(name=""enhancement"")]","Feature to do research in content directory are present in cling, so could be cool to use it.
+"
+trishika/DroidUPnP,closed,Add loading popup when loading content directory content,"[Label(name=""enhancement"")]","When browsing content directory, it could be long to grab element, so we should add a popup showing it's loading.
+"
+trishika/DroidUPnP,open,Change renderer volume with physical button,"[Label(name=""enhancement"")]","Would be a nice feature to be able to change the volume with physical button of phone/tablet.
+
+We shoud perhaps add an animation for that.
+"
+trishika/DroidUPnP,open,Display cover in renderer pane,"[Label(name=""enhancement"")]","When playing multimedia, we could grab the cover on the renderer and display it.
+"
+trishika/DroidUPnP,open,When seeking there is display glitch on interface,"[Label(name=""bug"")]","Sometimes when seeking the cursor move back from a time to his initial position. It should stay a the seek position.
+"
+trishika/DroidUPnP,closed,When we load an element from a content directory to a renderer METADATA are not display,"[Label(name=""bug"")]","Instead of metadata we see file name uri
+"
+trishika/DroidUPnP,open,Handle a local playlist,"[Label(name=""enhancement"")]","We should be able to handle a local playlist. Gather element from one or multiple content directory and put them on the same playlist.
+
+Playlist should be usable even if Renderer change in between.
+
+Some player command to implement : 
+- Next
+- Prev
+- Shuffle
+- Repeat
+"

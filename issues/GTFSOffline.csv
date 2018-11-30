@@ -1,0 +1,121 @@
+repository,state,title,label,body
+wbrenna/GTFSOffline,open,Bug in location manager,"[Label(name=""bug"")]","If only one location service is enabled, the alternate service is queried (GPS/NETWORK). This probably means location services won't work if one of the two is turned off. Fix required in LocationHelper.java."
+wbrenna/GTFSOffline,open,"closest stops not found, even though they are in the db","[Label(name=""enhancement"")]","Did a sqlite search for the stop that is literally across the street from me. There it is, in the stops table. Yet, when I load up the app and search for stops, it only shows ones that are over 2 miles away."
+wbrenna/GTFSOffline,closed,rtd denver,[],"greetings. I've been trying to get rtd denver's gtfs data to work, but it's not. dunno where to begin to figure out why not, since i'm quite new to android, although my phone is not: this is in a zte n817 running android v4.4.4.x. Hoping a kind programmer might take a look at rtd's data and clue me in whether the fault is theirs, mine or other :)
+thanks in advance. rtd's gtfs page is here
+http://www.rtd-denver.com/gtfs-developer-guide.shtml"
+wbrenna/GTFSOffline,closed,use standard sqlite3 binary location,[],"having it point to an old android SDK binary won't fit most people's use cases
+/usr/bin/sqlite3 would be a common location for this binary on linux"
+wbrenna/GTFSOffline,open,[FR] Maps,"[Label(name=""enhancement"")]","Privacy preserving maps could be implemented by using [mapsforge](https://github.com/mapsforge/mapsforge) which uses OpenStreetMap vector data rendered locally similar to OsmAnd. Mapsforge files are stored in a shared directory so they can be used by multiple applications.
+
+An example of an app that uses mapsforge is [SatStat](https://github.com/mvglasow/satstat) which also has an integrated downloader. If you don't wish to add an internet permission, the files could be added via drag and drop."
+wbrenna/GTFSOffline,open,Search feature,"[Label(name=""enhancement"")]",I noticed the search feature is absent in this fork. Was this a privacy decision or to keep it simple? Would it be something you'd consider adding in the future?
+wbrenna/GTFSOffline,closed,[FR] Centro database,"[Label(name=""enhancement"")]",Would it be possible to add the [Centro](http://www.centro.org/CentroGTFS/CentroGTFS.zip) system to your database [list](http://wbrenna.ca/gdrivefilelist.txt)? My attempts to create a db were unsuccessful.
+wbrenna/GTFSOffline,closed,Add to F-Droid,"[Label(name=""enhancement"")]","A Submissions Queue thread has been created for it: https://f-droid.org/forums/topic/grtransit-android-app/
+"
+wbrenna/GTFSOffline,closed,Null Pointer Exception moving DB,"[Label(name=""bug"")]","```
+java.lang.RuntimeException: An error occured while executing doInBackground()
+at android.os.AsyncTask$3.done(AsyncTask.java:300)
+at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:355)
+at java.util.concurrent.FutureTask.setException(FutureTask.java:222)
+at java.util.concurrent.FutureTask.run(FutureTask.java:242)
+at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:231)
+at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)
+at java.lang.Thread.run(Thread.java:841)
+Caused by: java.lang.NullPointerException
+at com.wbrenna.gtfsoffline.UpdateActivity$DBMover.doInBackground(UpdateActivity.java:134)
+at com.wbrenna.gtfsoffline.UpdateActivity$DBMover.doInBackground(UpdateActivity.java:1)
+at android.os.AsyncTask$2.call(AsyncTask.java:288)
+at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+... 4 more
+```
+"
+wbrenna/GTFSOffline,closed,Statically link hourtoggle,"[Label(name=""enhancement"")]","Hourtoggle should be equal to the lookahead time in order to make things more efficient. Currently breaks on lookahead > 8 since hourtoggle = 8.
+"
+wbrenna/GTFSOffline,closed,Errors and empty db file when running mksql3db.sh,[],"Hello,
+
+I get errors when launching DB generation script under Ubuntu 12.04 LTS. I only get a nearly empty file whereas GTFS data is OK:
+
+`nicolas@spiralo2:~/transports/GTFSOffline/data$ ./mksql3db.sh aTER.db ../../GTFS-viz/gtfs-data/ter/*.txt`
+`using database version 7`
+`../../GTFS-viz/gtfs-data/ter/agency.txt`
+`../../GTFS-viz/gtfs-data/ter/calendar_dates.txt`
+`../../GTFS-viz/gtfs-data/ter/calendar.txt`
+`../../GTFS-viz/gtfs-data/ter/routes.txt`
+`../../GTFS-viz/gtfs-data/ter/stops.txt`
+`../../GTFS-viz/gtfs-data/ter/stop_times.txt`
+`../../GTFS-viz/gtfs-data/ter/transfers.txt`
+`../../GTFS-viz/gtfs-data/ter/trips.txt`
+`Checking for missing calendar_dates.txt or calendar.txt...`
+`WARNING: Could not find calendar_dates.txt. Creating an empty table for holiday data...`
+`WARNING: Could not find calendar.txt. Creating an empty table for regular data...`
+`Creating indices...`
+`Error: near line 1: no such table: main.stops`
+`Error: near line 2: no such table: main.routes`
+`Error: near line 3: no such table: main.trips`
+`Error: near line 4: no such table: main.trips`
+`Error: near line 5: no such table: main.stop_times`
+`Error: near line 6: no such table: main.stops`
+`Indices created. Renaming and cleaning up...`
+`aTER.db:    93.8%`
+`-rw-r--r-- 1 nicolas nicolas 6144 août  13 14:34 aTER.db`
+`-rw-rw-r-- 1 nicolas nicolas  412 août  13 14:34 aTER.db.gz`
+`-rw-rw-r-- 1 nicolas nicolas   37 août  13 14:34 aTER.db.version`
+`7 0 fe02b00de4d4fe2a93d2bd98e8c02387`
+
+aTER.db is ""empty"":
+
+`nicolas@spiralo2:~/transports/GTFSOffline/data$ more aTER.db`
+`SQLite format 3`
+`dar_dates_datecalendar_datesCREATE INDEX calendar_dates_date on calendar_dates ( date )?`
+`?itablecalendarcalen`
+`darCREATE TABLE``calendar(service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_`
+`date)d))?tablecalendar_datescalendar_datesCREATE TABLE``calendar_dates(service_id,date,exception_type)l--?`
+`tab`
+`leandroid_metadataandroid_metadataCREATE TABLE ""android_metadata"" (""locale"" TEXT DEFAULT``'en_US')`
+
+Still I have GTFS data:
+
+`nicolas@spiralo2:~/transports/GTFSOffline/data$ ls -l ../../GTFS-viz/gtfs-data/ter/`
+`total 13072`
+`-rw-rw-r-- 1 nicolas nicolas      116 juil.  7 09:35 agency.txt`
+`-rw-rw-r-- 1 nicolas nicolas   292597 juil.  7 09:35 calendar_dates.txt`
+`-rw-rw-r-- 1 nicolas nicolas   127098 juil.  7 09:35 calendar.txt`
+`-rw-rw-r-- 1 nicolas nicolas    75653 juil.  7 09:35 routes.txt`
+`-rw-rw-r-- 1 nicolas nicolas   473513 juil.  7 09:35 stops.txt`
+`-rw-rw-r-- 1 nicolas nicolas 11309282 juil.  7 09:35 stop_times.txt`
+`-rw-rw-r-- 1 nicolas nicolas       57 juil.  7 09:35 transfers.txt`
+`-rw-rw-r-- 1 nicolas nicolas  1081951 juil.  7 09:35 trips.txt`
+`nicolas@spiralo2:~/transports/GTFSOffline/data$`
+
+Do you know where the problem comes from?
+
+Thanks for your help.
+"
+wbrenna/GTFSOffline,closed,More options for closest stops,"[Label(name=""enhancement"")]","10 is sometimes (rarely) too few. Create some settings like 30 and 90 maybe, in case you need to look far away (or at large bus terminals).
+"
+wbrenna/GTFSOffline,closed,Erroneous Favourite Stops,"[Label(name=""bug"")]","Testing with TTC STN and GRT, if I turn only TTC on, the Favourites tab gives TTC favourites with STN and GRT stop names.
+"
+wbrenna/GTFSOffline,closed,List Stops more Nicely,"[Label(name=""enhancement"")]","Put the Stop Number up next to the Stop Name, and use Route Number in the yellow box so it's easier to see. Add a direction to the route.
+"
+wbrenna/GTFSOffline,closed,Time ordering breaks in Far Future,"[Label(name=""bug"")]","Set the lookahead time to 8 hours and notice that 7.5 hour-away trips are returned before 19 minute-away ones. Tested 10.49PM on a Monday.
+"
+wbrenna/GTFSOffline,closed,"When no Location can be found, app crashes","[Label(name=""bug"")]","Fix in Location Helper!
+"
+wbrenna/GTFSOffline,closed,Copy from Downloads,"[Label(name=""enhancement"")]","Now that the app is using an external storage permission, maybe just let it copy all *.db.gz from Downloads folder and do the gunzip itself.
+"
+wbrenna/GTFSOffline,open,Hash past stops more efficiently,"[Label(name=""enhancement"")]","Some queries can be avoided by hashing past stops a little more intelligently.
+"
+wbrenna/GTFSOffline,closed,Leaked Databases,"[Label(name=""bug"")]","Even slowly changing tabs leaks databases. Sometimes it still reports database leaks that have been removed from the system! It could be an onPostExecute not being reached due to a screen rotation or something like that...
+
+At the worst I can try taking the closeDB out of onPostExecute and putting it immediately after all database queries.
+"
+wbrenna/GTFSOffline,open,Trip Ending Alert,"[Label(name=""enhancement""), Label(name=""wontfix"")]","Sometimes it will state a new bus departure when it is that route's end-of-line. This should be checked for and no longer displayed.
+"
+wbrenna/GTFSOffline,closed,Add Multi-Day Feature,"[Label(name=""enhancement"")]","At 1am does not find 6am routes, even if set to look 8 hours ahead.
+"
+wbrenna/GTFSOffline,closed,DB Change is Messed Up,"[Label(name=""bug"")]","When the DBs are changed in preferences, it sometimes just shows new tabs without loading the new DB or changing the DB for the tab.
+"
+wbrenna/GTFSOffline,closed,Add Stale Database Warning,"[Label(name=""enhancement"")]","For each database, search calendar.txt and if the end dates are all before our date, just give a fixed warning.
+"

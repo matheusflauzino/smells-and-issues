@@ -1,0 +1,124 @@
+repository,state,title,label,body
+Tortel/SysLog,open,Syslog Play Store Description: ADB Permission Option for Non-root Devices Missing,[],"Even more people could enjoy [Syslog](https://play.google.com/store/apps/details?id=com.tortel.syslog) if the app description in Play Store would include the adb set permission option.
+
+This worked perfectly on un-rooted S5 Mini G800H & S5 G900M both running Android stock 6.0.1 and S5 G900M running LineageOS 15.1:
+
+adb shell pm grant com.tortel.syslog android.permission.READ_LOGS
+
+User review by Shahab Jafri in your Play page also mentions it.
+
+You could check the example of [BetterBatteryStats](https://play.google.com/store/apps/details?id=com.asksven.betterbatterystats) > Unrooted devices chapter & it's [BBS unrooted devices FAQ page](http://better.asksven.org/nonroot-devices/) for inspiration.
+
+Thanks for implementing the [issue 21](https://github.com/Tortel/SysLog/issues/21) suggestion.
+
+_Edit:_ the screen captures also need to be updated. Current in Play page vs. Syslog 2.1.6:
+
+
+![syslog_play_store](https://user-images.githubusercontent.com/33857747/46860285-543be000-cdcd-11e8-9d71-9e6417411a7b.png)
+"
+Tortel/SysLog,closed,New logo design for the project,[],"Hi, I want to design a new logo for the project completely free..."
+Tortel/SysLog,closed,Add Proper Log's Name in the App Please,[],"I like to recommend Syslog in different forums to newbies because it makes sharing logs for troubleshooting so much easier for them but it's a pain to explain every time that Kernel log = dmesg, Last kernel log= last_kmsg, main log = logcat.
+
+So why not add in parenthesis **in the app itself** the actual real log's name output like what you did in the [Syslog description in Google Play](https://play.google.com/store/apps/details?id=com.tortel.syslog&hl=en)?
+
+> * Kernel logs (dmsg)
+    * Last kernel log (last_kmsg, if device supports it)
+    * Main log (Logcat)
+
+Suggestion in red in the attachment:
+
+![syslog_logs_real_name_note](https://user-images.githubusercontent.com/33857747/34669883-86c74f1e-f439-11e7-87cd-3096f236dc4d.png)
+
+Anyway thank you for this awesome app & for keeping it up-to-date.
+"
+Tortel/SysLog,closed,F-Droid version,[],"Hello. I saw that on F-Droid the app is ""still"" for some time, while on the Play Store there are other versions ... is it possible to update it?"
+Tortel/SysLog,open,Tablet support,[],"Hello,
+
+The screen content fits not the Display size of my tablet.
+Please add   supports-screens android:xlargeScreens=""true""  in Android.Manifest.xml
+
+With kind regards,
+Christoph Heilmann
+"
+Tortel/SysLog,closed,Adapting SysLog into a service to run in background,[],"Hi
+
+I'm working on adapting your sysLog code in to a simple app that launch a background services to collect the system log and send it back to the app and to remote server.
+But I don't know where to collect the system log, I´m looking into the LiveLogActivity.class that inside has the LiveLogFragment (extend from Fragment) but they need an Activity to work... (onCreateView) 
+I think the mTermSession is getting the data but again it works with and Activity...
+
+so there is any simple way to get the log data from a services without need of an Activity?
+
+thanks in advance."
+Tortel/SysLog,closed,Stuck on Working,[],"When I try to take log, even just for the Kernel it gets stuck on the Working screen."
+Tortel/SysLog,open,Live logcat coloring,[],"I somewhat remember to have seen the live logs in color. However, as I started SysLog just now, the live logs were just black and white.
+
+Is this expected to be like that? Perhaps I saw it on a different app, although I can't remember which it could have been.
+
+And if expected, are there any chances to get the coloring added?
+
+Thanks"
+Tortel/SysLog,closed,Cannot take log,[],"I have a bug when I take log, directory is not created and logs are not saved.
+
+I think the problem lies in Utils.java, you should use
+
+`if(!outPath.mkdirs() || !outPath.isDirectory()){`
+
+instead of
+
+`if(!outPath.mkdirs() && !outPath.isDirectory()){`
+
+Thanks for your very useful app.
+"
+Tortel/SysLog,closed,"Include a Changelog Link, within the F-Droid App', on Info' Page; 2.0.1.",[],"Include a Changelog Link, within the F-Droid App', on Info' Page.  Not present, as of: 2.0.1.
+"
+Tortel/SysLog,closed,SysLog: Grant read uri permission to intent,[],"- Fixes empty shared ZIPs
+"
+Tortel/SysLog,closed,Adopted Storage,"[Label(name=""bug"")]","Currently, adopted storage mucks things up.
+Need to come up with a way to detect and work around this
+
+This has some information on how its mounted:
+http://nelenkov.blogspot.com/2015/06/decrypting-android-m-adopted-storage.html
+"
+Tortel/SysLog,closed,[Request] audit log,[],"`/data/misc/audit/audit.log`
+
+On many devices this contains a log of SELinux audit failures that may not be present in logcat and/or dmesg output, and can be very handy to help diagnose issues related to security for root apps.
+"
+Tortel/SysLog,closed,F-Droid support,[],"Could you submit SysLog on F-Droid store please?
+
+[Submission queue](https://f-droid.org/forums/forum/submission-queue/)
+[About F-Droid](https://f-droid.org/about/)
+"
+Tortel/SysLog,closed,[Request] Translucent status bar,[],"Lollipop users have a nice darker status bar, it will be great if you could bring translucent status bar for Kitkat users.
+I've found this doc: [Translucent system bars](https://developer.android.com/about/versions/android-4.4.html#UI), I hope it will help you.
+Of course it's not a hight priority.
+Thanks in advance.
+"
+Tortel/SysLog,open,[Request] Per-app logcat feature,[],"Add per-app logcat feature would be useful for checking log for a specific app quickly.
+Is it possible or difficult to implement?
+Thanks in advance.
+"
+Tortel/SysLog,open,[Request] Read live logcat feature,[],"Add an option ""Read Log"" for read directly log in app would be useful. 
+Is it possible or difficult to implement?
+Thanks in advance.
+"
+Tortel/SysLog,closed,File name append text allows invalid characters,"[Label(name=""bug"")]","Check for any characters that aren't valid on FAT/ext4 and strip them.
+"
+Tortel/SysLog,closed,Option for filtering strings,"[Label(name=""enhancement"")]","Add an option to filter specific strings, such as phone numbers, from all logs.
+
+Will need:
+- A check for sed (Probably the best way to do it)
+- Some way of managing this list
+- Adding in the logic to apply the list at runtime
+"
+Tortel/SysLog,closed,Notify that modem logs contain personal information,"[Label(name=""enhancement"")]","Modem logs contain phone numbers/IMEIs
+"
+Tortel/SysLog,closed,Permission Errors,"[Label(name=""bug"")]","Be more verbose with the chown command, as it fails on some devices.
+
+Should change it from chown /path/\* to chown each file individually
+"
+Tortel/SysLog,closed,Check storage free space,"[Label(name=""enhancement"")]","It should have a check for at least 5mb free on the primary storage, and warn the user that it may fail with less.
+Additionally, on a failure check that there is free space, it may have failed because there was no space left
+"
+Tortel/SysLog,open,Automatically Take log,"[Label(name=""enhancement"")]","There is a way to automatically take logs and save them on sd-card ? 
+I think it's a good feature to add.
+"

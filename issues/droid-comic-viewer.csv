@@ -1,0 +1,98 @@
+repository,state,title,label,body
+robotmedia/droid-comic-viewer,open,Nook buttons,[],"Hello! I use ""ACV"" version v1.4.1.4 on my nook (Android 1.6). As far as I know, your app is the best way to read CBZ on this ancient Android version.
+
+If I had one wish, it would be that page turn would work with the nook's physical buttons. They actually work with most apps, I'm not sure why they won't work with yours. I can help diagnose/test the issue if you do not have a nook.
+
+Thanks!"
+robotmedia/droid-comic-viewer,open,The source code is uncompilable,[],"After I import your project into the eclipse, it is uncompilable with some errors.
+In your AndroidManifest.xml, there is android:targetSdkVersion=""13""
+
+(1)Using:API 13:
+file:SuperImageView.java
+line 225:  
+error:This method is not overriding anything with the current build target, but will in API level 16 (current target is 13): net.robotmedia.acv.ui.widget.SuperImageView#getMaxWidth
+
+But in API 16:
+line 225:  
+error:The return type is incompatible with ImageView.getMaxWidth()
+
+(2)
+
+How can I get the Android Billing Library?
+Can I prase the source code of the https://github.com/robotmedia/AndroidBillingLibrary/tree/0153cf5bf3f41c79220bf8bdfa226e86e4dfd537 into your project?
+Can you discuss it more?
+
+(3)
+Using: API 13:
+file:BuildUtils.java
+line 27:
+error:CE_CREAM_SANDWICH cannot be resolved or is not a field
+"
+robotmedia/droid-comic-viewer,open,App cannot access external storage like detachable microSD cards.,[],"I have installed ACV 1.4.1.4 from F-Droid. Unfortunately I can't access the external sd card. It can only access contents within /storage/emulated/0.
+"
+robotmedia/droid-comic-viewer,open,Avoid EBUSY when loading images from temp dir,[],"Rather than deleting the temp directory, delete all of the files inside that directory.  On some Androids (5.0 on my Nexus 4, never on previous versions) subsequent accesses to the deleted directory will return EBUSY which means files don't load properly.
+"
+robotmedia/droid-comic-viewer,open,F-Droid repository contains an outdated copy,[],"F-Droid repository contains an outdated copy that don't support CBR at all (Google play has beta CBR support)
+Could not find were to report this very minor thing, sorry
+"
+robotmedia/droid-comic-viewer,open,Truncated error message; `Unable to load image. This gene`,[],"The text displayed is only `Unable to load image. This gene` (partial ""e"").
+
+Gingerbread phone with a small screen (480×800), its an old'ish phone so small everything including memory :-) The device is a http://en.wikipedia.org/wiki/HTC_Desire.
+
+Message text is truncated when moving to (page 46) of a comic.
+
+From grep'ing the source code it looks like `res\values\strings.xml` line 61:
+
+```
+<string name=""dialog_page_error_text"">Unable to load image. This generally happens because of an out of memory error.\n\nFor CBR/RAR files, try extracting into a folder and open the folder with a long tap.\n\nFor the rest, closing ACV and trying again after a while might help.</string>
+```
+"
+robotmedia/droid-comic-viewer,open,Crash on phones without Google Play,[],"Steps to reproduce:
+1. open Menu
+2. select Settings
+3. select About
+4. select Google Play listing
+
+On a phone without Google Play Store, this would cause a crash.
+You may catch the exception, and then use this type of url to show the product on google play:
+http://play.google.com/store/apps/details?id=<package_name>
+
+On phones sold on some markets, the Google Services are not present, so this may be a serious problem.
+"
+robotmedia/droid-comic-viewer,open,Crash when long-pressing a folder,[],"Crash on Nexus 4, ACV 1.4.1.4:
+1. start the app
+2. click menu
+3. choose ""open""
+4. go to directories like /mnt
+5. long-press a folder, like ""secure""
+6. crash
+
+The reason is that, when you don't have permission, File.list() would return null. But this is not checked. The problem happens in src/net/robotmedia/acv/ui/SDBrowserActivity.java:111, where you called file.list() and later used the result. The return code may be null.
+
+In this case, it's due to permission, so maybe it's not that interesting. However, it may also return null due to other reasons. Anyway, showing an error message is better than crashing.
+"
+robotmedia/droid-comic-viewer,closed,Allow Android file managers to open ZIPs with ACV.,[],"Some file explorers like Solid Explorer are currently only aware of ZIP-files. And as ACV handles these anyway I added the corresponding intent-filter. I also added the file pattern match for the now four filetypes in case a device is missing the mime-types.
+"
+robotmedia/droid-comic-viewer,closed,Create temporary directory in the right subdirectories,[],"This patch creates the temporary directory on the sdcard in the correct location. As the min sdk version for ACV is below the API Level for Context.getExternalFilesDir() I build the directory string myself.
+"
+robotmedia/droid-comic-viewer,open,App not properly handling premium status after data wipe,[],"I bought the premium version when it came out. When JB came out I had to wipe /data. Now I'm unable to get the app to accept that I have already bought it, even though Market pops up a message saying I already own it. In other apps I noticed that the same message comes up but clicking ok usually takes me back to the app and unlocks whatever functionality that purchase enabled.
+
+It seems ACV app does not properly handle that response.
+"
+robotmedia/droid-comic-viewer,closed,Settings refactoring & premium in-app billing,[],
+robotmedia/droid-comic-viewer,open,Thumbnails list doesn't work,"[Label(name=""feature"")]",
+robotmedia/droid-comic-viewer,open,Offline help / User manual,"[Label(name=""feature"")]","Currently the user manual is an online web. If the user is offline she can't access the help contents.
+"
+robotmedia/droid-comic-viewer,closed,App2SD,"[Label(name=""feature"")]",
+robotmedia/droid-comic-viewer,open,"Use a 'proper' cache dir as temp dir, instead of /mnt/sdcard/acv","[Label(name=""feature"")]","http://developer.android.com/reference/android/content/Context.html#getCacheDir()
+
+Possibly add .nomedia to prevent images being added to the Gallery when Media Scanner does its job.
+"
+robotmedia/droid-comic-viewer,open,Optimise image loading code,[],"Currently the entire images are loaded and then downsampled if required. This could be optimised by not loading the entire image if possible (then adjusting to match the maximum size).
+
+Also the code for loading images is scattered & somehow duplicated in several files (RarComic.getBitmapFromFileHeaderIfNeeded, ZipComic.getBitmapFromEntryIfNeeded, FolderComic.resampleAndSave) so that could maybe be refactored.
+"
+robotmedia/droid-comic-viewer,closed,Update junrar with latest version,"[Label(name=""feature"")]","Update junrar with latest version from github: https://github.com/edmund-wagner/junrar
+
+This might even fix the out of memory error with some CBR files.
+"

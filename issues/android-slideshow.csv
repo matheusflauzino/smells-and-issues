@@ -1,0 +1,505 @@
+repository,state,title,label,body
+ScreamingHawk/android-slideshow,open,Add donate button,"[Label(name=""enhancement"")]","Add a button in the About page to donate (somehow). 
+
+Options:
+* PayPal
+* Bitcoin
+* Other cypto
+* In app purchase
+* Buy donation app (Need to also build the app)"
+ScreamingHawk/android-slideshow,open,#114 Rotating Phone Restarts Application fixed,[],
+ScreamingHawk/android-slideshow,closed,Handle null pointer exception during loading of image,[],
+ScreamingHawk/android-slideshow,closed,Add back button to Credits activity,[],I think this activity has to have a back button in appBar. I missed it when I tried to use the app
+ScreamingHawk/android-slideshow,closed,add missing items in Russian translation,[],Some strings were not available in the Russian translation. I added them.
+ScreamingHawk/android-slideshow,open,Add slideshow animations,"[Label(name=""enhancement""), Label(name=""help wanted"")]","Add animations to slideshow. 
+
+* Slide
+* Cross fade
+* Flip
+* Blur
+etc
+
+Happy for this to be a Glide only setting. Should be configurable and off by default"
+ScreamingHawk/android-slideshow,closed,Last Modified Date should include year,"[Label(name=""bug""), Label(name=""good first issue"")]","The last modified date should include the year. 
+
+Easy fix. Related code: https://github.com/ScreamingHawk/android-slideshow/blob/master/app/src/main/java/link/standen/michael/slideshow/ImageActivity.java#L557"
+ScreamingHawk/android-slideshow,closed,Fix the status bar which is white in the list view,[],
+ScreamingHawk/android-slideshow,open,Additional Logging,"[Label(name=""enhancement""), Label(name=""good first issue""), Label(name=""help wanted"")]","Should log the following for each image (at debug level). 
+
+* File path (full)
+* File name
+* Size
+* Dimensions
+
+Should log the following at info level at the start of a slideshow:
+
+* All the configurable settings"
+ScreamingHawk/android-slideshow,closed,Status bar is white in list view,"[Label(name=""bug""), Label(name=""good first issue""), Label(name=""help wanted"")]","The status bar is white in the list view where it should be blue. 
+
+This is a regression error I assume was introduced by updating the support libraries. If this is the case I'd like to fix forwards and not revert the support libraries. 
+
+Should be a relatively easy fix. "
+ScreamingHawk/android-slideshow,closed,Handle NullPointerException on ImageActivity.loadImage,"[Label(name=""bug""), Label(name=""good first issue""), Label(name=""help wanted"")]","```
+Caused by: java.lang.NullPointerException: 
+  at link.standen.michael.slideshow.ImageActivity.loadImage (ImageActivity.java:548)
+  at link.standen.michael.slideshow.ImageActivity.onCreate (ImageActivity.java:330)
+  at android.app.Activity.performCreate (Activity.java:7090)
+```
+
+Untested but this error could possibly occur when the user selects ""Play From Here"" when there is nothing in the folder. Would be nice if this `NullPointerException` was caught and the user was bounced back to the list view with a toast saying:
+
+> No images found
+
+or similar"
+ScreamingHawk/android-slideshow,closed,Fix sort order for Play From Here,[],
+ScreamingHawk/android-slideshow,closed,Fix sort order for Play From Here,"[Label(name=""enhancement""), Label(name=""good first issue""), Label(name=""help wanted"")]","The `Play From Here` button currently sorts alphabetically by filename when it should sort alphabetically by path. 
+
+This should be an easy fix by changing this line: https://github.com/ScreamingHawk/android-slideshow/blob/master/app/src/main/java/link/standen/michael/slideshow/util/FileItemHelper.java#L68
+
+e.g.
+
+```
+a/
+  1.jpg
+  2.jpg
+b/
+  1.jpg
+  2.jpg
+c/
+  1.jpg
+  2.jpg
+```
+
+Current:
+```
+a/1.jpg
+b/1.jpg
+c/1.jpg
+a/2.jpg
+b/2.jpg
+c/2.jpg
+```
+
+Expected:
+```
+a/1.jpg
+a/2.jpg
+b/1.jpg
+b/2.jpg
+c/1.jpg
+c/2.jpg
+```"
+ScreamingHawk/android-slideshow,closed,Add travis ci,"[Label(name=""enhancement"")]",https://docs.travis-ci.com/user/getting-started/
+ScreamingHawk/android-slideshow,closed,# 26 Vietnamese translation,[],Translated the strings.xml into vietnamese.
+ScreamingHawk/android-slideshow,closed,Change Log pop up appears twice,"[Label(name=""bug""), Label(name=""good first issue"")]","When using the `autoStart` feature, the change log pop up appears twice. 
+
+A check needs to be added to see if the pop up is currently shown and not show it if it is. 
+
+Would be nice to have this pop up on the ImageActivity too but that's a nice to have extra. "
+ScreamingHawk/android-slideshow,open,Rotating Phone Restarts Application,"[Label(name=""bug""), Label(name=""help wanted"")]","***Expected Behavior***
+
+Just like some similar apps, regardless of the orientation, users should be able to use the App without any errors 
+
+***Actual Behavior***
+
+When in a folder of where pictures are stored, and the device orientation goes landscape, it would take users to the root folder and start all over again..... 
+
+
+
+***How to produce the bug***
+
+* Open the app 
+* Locate and select any folder where images are stored 
+* Rotate screen
+* It would take you to the root folder where you have to start all over again 
+
+ 
+
+***TEST TOOLS***
+
+* Operating system : Android 6.0
+* Phone : Infinix hot s
+* Slideshow v2.5.0
+
+
+***Recording of the bug is showned below......***
+
+
+
+Watch the video below to see how it behaves.... 
+
+https://youtu.be/JQQi_rgEZB0
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@beckysophie/slideshow-app-goes-to-the-root-folder-unexpectedly"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+ScreamingHawk/android-slideshow,closed,Crossfade,"[Label(name=""enhancement"")]","Would be cool to have a crossfade between images. 
+
+Note: Glide only. "
+ScreamingHawk/android-slideshow,open,Crash when viewing high quality images,"[Label(name=""bug""), Label(name=""question"")]","
+#### Expected behavior
+
++ The App should be able to view a slideshow of any directory. 
+
+#### Actual behavior
+
++ The App is not able to view a slideshow of high quality images, when we open any high quality image directory The App Crashes and we are not able to view slideshow of high quality image directory. 
+
+#### How to reproduce
+
+[Download](https://f-droid.org/app/link.standen.michael.slideshow) the App. 
+
++ Launch the app. 
+
++ Open any high quality image directory. 
+
++ Click on any image, after few seconds app Crashes and we are not able to view slideshow of high-quality image directory. 
+
+
+* Application : Slideshow, Version :2.5.0
+
+* Operating system:Android Nougat (7.0)
+
+#### Recording Of The Bug
+https://youtu.be/evad02j1MAs    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@wanizubair/slideshow-stopped-while-opening-any-high-quality-image-directory-for-slideshow-view"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+ScreamingHawk/android-slideshow,closed, #26 Swedish translations,[],
+ScreamingHawk/android-slideshow,closed,#106 Added null check to image loading,[],"I just added the the null check and the `callback.clearLoadingSnackbar();`
+Maybe if you want I could add some logging similar to how it is in GlideImageStrategy.java: 
+`Log.e(TAG, ""Error loading image"", e);`"
+ScreamingHawk/android-slideshow,closed,Image orientation,"[Label(name=""bug"")]",I have image libraries with mixed portrait and landscape images. It would be most convenient if Slideshow could automatically orient these correctly. I can't seem to find any existing option for this aside from unlocking phone orientation and turning it as needed per picture. 
+ScreamingHawk/android-slideshow,open,Add WebM support,"[Label(name=""enhancement""), Label(name=""help wanted"")]",I think it would be awesome if the App could play .webm files. 
+ScreamingHawk/android-slideshow,open,Handle IllegalArgumentException in Glide load/preload,"[Label(name=""bug""), Label(name=""help wanted"")]","```
+java.lang.IllegalArgumentException: 
+  at com.bumptech.glide.manager.RequestManagerRetriever.assertNotDestroyed (RequestManagerRetriever.java:134)
+  at com.bumptech.glide.manager.RequestManagerRetriever.get (RequestManagerRetriever.java:102)
+  at com.bumptech.glide.manager.RequestManagerRetriever.get (RequestManagerRetriever.java:87)
+  at com.bumptech.glide.Glide.with (Glide.java:657)
+  at link.standen.michael.slideshow.strategy.image.GlideImageStrategy.preload (GlideImageStrategy.java:42)
+  at link.standen.michael.slideshow.ImageActivity.loadImage (ImageActivity.java:501)
+```
+
+```
+java.lang.IllegalArgumentException: 
+ at com.bumptech.glide.manager.RequestManagerRetriever.assertNotDestroyed (RequestManagerRetriever.java:134)
+  at com.bumptech.glide.manager.RequestManagerRetriever.get (RequestManagerRetriever.java:102)
+  at com.bumptech.glide.manager.RequestManagerRetriever.get (RequestManagerRetriever.java:87)
+  at com.bumptech.glide.Glide.with (Glide.java:657)
+  at link.standen.michael.slideshow.strategy.image.GlideImageStrategy.load (GlideImageStrategy.java:56)
+  at link.standen.michael.slideshow.ImageActivity.loadImage (ImageActivity.java:506)
+```
+
+Not sure what state the application is in at the point that this becomes a problem. "
+ScreamingHawk/android-slideshow,closed,Handle NullPointerException in CustomImageStrategy.load,"[Label(name=""bug""), Label(name=""good first issue""), Label(name=""help wanted"")]","```
+Caused by: java.lang.NullPointerException: 
+  at link.standen.michael.slideshow.strategy.image.CustomImageStrategy.load (CustomImageStrategy.java:74)
+  at link.standen.michael.slideshow.ImageActivity.loadImage (ImageActivity.java:506)
+  at link.standen.michael.slideshow.ImageActivity.onCreate (ImageActivity.java:304)
+```
+
+I imagine this should be a trivial fix. If anyone wants to pick it up before I get to it, go for it. "
+ScreamingHawk/android-slideshow,open,Handle IllegalArgumentException when using Share feature,"[Label(name=""bug""), Label(name=""help wanted"")]","Error happening at this point: 
+
+```
+at android.support.v4.content.FileProvider$SimplePathStrategy.getUriForFile (FileProvider.java:712)
+at android.support.v4.content.FileProvider.getUriForFile (FileProvider.java:401)
+at link.standen.michael.slideshow.ImageActivity.shareImage (ImageActivity.java:613)
+```
+
+Unsure what state the application is in to have an error at this point. "
+ScreamingHawk/android-slideshow,open,Handle Error: `android.graphics.Canvas.throwIfCannotDraw`,"[Label(name=""bug""), Label(name=""help wanted"")]",There are many instances of users getting the `android.graphics.Canvas.throwIfCannotDraw` Exception. This needs to be handled somehow. 
+ScreamingHawk/android-slideshow,open,Move slideshow loading to background thread,"[Label(name=""bug"")]","Some users are seeing this error: `Input dispatching timed out`
+
+When clicked, offload the loading to a background thread:
+
+```
+Thread t = new Thread(){
+    public void run(){
+        your_stuff();
+    }
+};
+t.start();
+```
+
+Then disable the list view and replace with a loading message (see Phone Saver loading message)"
+ScreamingHawk/android-slideshow,open,Option to change background color,"[Label(name=""enhancement"")]",When images don't fit the aspect ratio there will be bars on either side that currently is always a specific shade of grey. It would be nice to have the option to change this color to something like black or another color that would fit better with the slideshow on certain tablets.
+ScreamingHawk/android-slideshow,open,Add support for EXIF orientation,"[Label(name=""enhancement""), Label(name=""good first issue""), Label(name=""help wanted"")]",Some pictures that have an EXIF orientation tag do not appear to be rotated correctly. It would be nice to add support for this so some pictures don't show up sideways.
+ScreamingHawk/android-slideshow,closed,Build failure: Could not find com.android.tools.build:gradle:3.0.1,"[Label(name=""bug"")]","Hi,
+
+F-Droid maintainer here. Slideshow [fails to build](https://f-droid.org/wiki/page/link.standen.michael.slideshow/lastbuild_41) since 2.2.1:
+
+> Could not resolve all files for configuration ':classpath'.
+> Could not find com.android.tools.build:gradle:3.0.1.
+
+Steps to reproduce:
+
+1. `cd app`
+2. `gradle assembleRelease`
+
+The problem here is that Android Gradle plugin 3.0.1 is available only in Google Maven repo, not JCenter. Please adjust your [top-level build.gradle](https://developer.android.com/studio/build/index.html#top-level)."
+ScreamingHawk/android-slideshow,closed,Pause Feature shouldn't work when controls are visible,"[Label(name=""bug"")]",Double clicking shouldn't pause/resume the slideshow when the controls are visible. 
+ScreamingHawk/android-slideshow,open,Slideshow from multiple folders,"[Label(name=""enhancement"")]","My use case is a digital photoframe. 
+(Similar to apps like dayframe of fotoo.)
+
+It would be nice to be able to select multiple folders."
+ScreamingHawk/android-slideshow,open,Controls Tutorial,"[Label(name=""enhancement"")]","People are going to have to stumble across the double click functionality. I've even had someone not realise they can swipe and single click to go back!
+
+Need some kind of tutorial on first use to show the new features. "
+ScreamingHawk/android-slideshow,closed,Pause slideshow,"[Label(name=""enhancement"")]","Add the ability to pause a slideshow without showing the controls. 
+
+* Add an option to enable this
+* Click to pause
+* Double click / swipe up /down to show controls
+
+This is highly requested feature"
+ScreamingHawk/android-slideshow,closed,Picture in picture causes crashes,"[Label(name=""bug"")]","Selecting picture in picture is causing a crash for devices that do not support it. 
+
+Ideally this option should be hidden when the device doesn't support it. But at the very least it shouldn't crash."
+ScreamingHawk/android-slideshow,closed,Add ai asset files,[],
+ScreamingHawk/android-slideshow,open,Upgrade Glide to v4,"[Label(name=""enhancement"")]","Glide is currently using v3. 
+
+Would be good to upgrade to v4. There is significant change for this. "
+ScreamingHawk/android-slideshow,closed,Quick delete,"[Label(name=""enhancement"")]","Add an option to skip the ""are you sure"" dialog when deleting images. 
+
+Option: `Warn before deleting` 
+Default: `true`
+Description: `Show a warning pop up before deleting a file`"
+ScreamingHawk/android-slideshow,closed,Support slide delay of fractions of a second,"[Label(name=""bug"")]",I think there is an integer conversion happening too early which rounds the delay down to the nearest second. This shouldn't be happening. 
+ScreamingHawk/android-slideshow,closed,Modified various Chinese translations,[],"Hi there,I have found your project very interesting, however the translation in chinese have many faults so I modified some of the translation,and added some setences that haven't translated.
+I hope you like this version of translation and accept my PR :)
+Thank you!"
+ScreamingHawk/android-slideshow,open,Configurable Scaling Mode,"[Label(name=""enhancement""), Label(name=""help wanted"")]","Currently the slideshow app uses a fit to screen scaling mode. 
+
+Would be good to allow the user to select between:
+
+* Fit to Screen
+* Fill Screen
+* Original Size"
+ScreamingHawk/android-slideshow,open,Cannot browse to external USB drive,"[Label(name=""bug""), Label(name=""help wanted"")]",I have connected an external drive via USB-OTG and cannot browse to it.
+ScreamingHawk/android-slideshow,closed,Tag for v2.2.0 missing,"[Label(name=""bug"")]","For the F-droid build to be able to effectively upgrade to newer version it would be helpful if you could add the tag for the 2.2.0 release (and then for the following versions).
+
+The new versions will than be automatically picked up, build and diustributed shortly after you add the new tag.
+
+The tag should always correspond to the version name, i.e. tagging version 2.2.0 as v2.2.0."
+ScreamingHawk/android-slideshow,closed,#26 Thai translation,[],
+ScreamingHawk/android-slideshow,closed,#26 Dutch translation update,[],Sorry it took a while.
+ScreamingHawk/android-slideshow,open,Do not show List Activity when entering picture in picture mode,"[Label(name=""bug""), Label(name=""help wanted"")]","When entering picture in picture mode, the previous list activity is shown. 
+
+It would be good if the application closed the List Activity instead, while keeping it available in the back stack. "
+ScreamingHawk/android-slideshow,closed,Correct ImageActivity title,"[Label(name=""bug"")]","The title for `ImageActivity` is currently `ImageActivity`. This previously was not visible, but is now with picture in picture support. 
+
+**Steps to reproduce**
+
+1. Start slideshow
+2. Enter picture in picture
+3. Close remaining application
+4. Expanding picture in picture mode to full application
+5. Use the Overview (Square bottom nav) button
+6. See title in incorrect"
+ScreamingHawk/android-slideshow,closed,Fix minor typos in Spanish translation,[],"@uzluisf did all of the heavy lifting, I just fixed some minor typos and evened out the wording."
+ScreamingHawk/android-slideshow,closed,#26 Updated Spanish translation with new settings,[],
+ScreamingHawk/android-slideshow,closed,Allow use of old image loading strategy,"[Label(name=""enhancement"")]","Add back in the old image loading strategy and add a setting for which to use. 
+
+Glide performance is questionable, but required for GIF support. "
+ScreamingHawk/android-slideshow,closed,Convert to Strategy pattern,"[Label(name=""enhancement"")]","Convert the image loading to a strategy pattern. 
+
+* Flexibility when adding support for more features and ways to load
+* Easy to add the old loading method back in
+* Reduce the code size of the `ImageActivity`"
+ScreamingHawk/android-slideshow,closed,Fix positioning of snackbar when slideshow stopped,"[Label(name=""bug"")]","When an image takes a long time to load a snackbar appears warning the user. 
+
+This snackbar isn't positioned correctly when the slideshow is stopped. "
+ScreamingHawk/android-slideshow,closed,Fix black spaces between images,"[Label(name=""bug"")]",There are periods of black spaces when using Glide. I think I'm clearing the image view cache when I shouldn't be...
+ScreamingHawk/android-slideshow,closed,Translate new settings to Russian,[],
+ScreamingHawk/android-slideshow,closed,Long load notification,"[Label(name=""enhancement"")]","I've noticed with GIF support, that some images take a significant amount of time to load (30 seconds+). Would be nice to have a notification (`snackbar` so it persists) when an image is taking too long to load. 
+
+Would be nice to have a setting to skip images that take too long to load as well. "
+ScreamingHawk/android-slideshow,closed,Make preloading images a configurable option,"[Label(name=""enhancement"")]","Related #73 
+
+Make image preloading a configurable option. 
+
+Default: on"
+ScreamingHawk/android-slideshow,closed,Timing Issue,"[Label(name=""bug""), Label(name=""enhancement"")]","The time for which a slide is shown does not match the configuration time selected. 
+
+The timer starts when the image is displayed. When the timer ends, the new image begins loading. This causes the current image to be show during the loading period which sometimes is a considerable amount of time. This causes the image to be shown for a duration longer than intended. 
+
+**Planned Fix**
+
+* Create a second image view that is hidden behind the first
+* Begin loading the new image into the hidden image view
+* When the timer ends **and** if the image has loaded, switch the visibility of the two image views
+* Repeat"
+ScreamingHawk/android-slideshow,closed,Picture in Picture,"[Label(name=""enhancement"")]","Add picture in picture feature. 
+
+Click a button to enter pip mode. See if it works for the entire app. If so button is in the drop menu, otherwise it's a button on the slideshow, and a setting to show/hide it. "
+ScreamingHawk/android-slideshow,closed,Change Log,"[Label(name=""enhancement""), Label(name=""good first issue"")]",This application changes a lot. Should have a change log. 
+ScreamingHawk/android-slideshow,closed,Add AutoStart feature,"[Label(name=""enhancement"")]","A user has requested the ability to automatically start the slideshow when opened. 
+
+The slideshow should begin from the last seen image and remember if the `Play from here` button was used. 
+
+* No intention to retain order of slides when `random` option is enabled"
+ScreamingHawk/android-slideshow,closed,#26 portuguese translaction,[],"Requesting the Pull with Portuguese Translaction.
+Thank you @ScreamingHawk "
+ScreamingHawk/android-slideshow,closed,#26 zh translation,[],just have a few more sentences of technical translation to go through
+ScreamingHawk/android-slideshow,closed,Thumbnail sometimes doesn't show until row falls off screen,"[Label(name=""bug"")]",This is a timing issue where the imageView and the holder haven't synchronized before the thumbnail generation is complete. 
+ScreamingHawk/android-slideshow,closed,New thumbnail generation sometimes overwrite with wrong image,"[Label(name=""bug"")]",The new thumbnail generation sometimes overwrite the thumbnail with the wrong image. This includes overwriting the `Play from Here icon` and folder icons. 
+ScreamingHawk/android-slideshow,closed,Location image details should only show path,"[Label(name=""bug"")]",The image name is visible in the header always. Sometimes the file name is long and so the folder path is not visible. Showing the folder path was the primary reason behind adding the full path to the image details
+ScreamingHawk/android-slideshow,closed,Add setting to open app in the last folder used if enabled,"[Label(name=""enhancement"")]","User requested feature: 
+
+>Start the app in the same directory that was used last
+
+This is a great idea, as I almost always use the same folder as well. 
+
+Going to make this an optional setting defaulted to disabled. "
+ScreamingHawk/android-slideshow,closed,Hide translator credits when using English,"[Label(name=""bug"")]",The English translator credits should not be shown for English
+ScreamingHawk/android-slideshow,closed,Make list items bigger in Saver view,"[Label(name=""invalid""), Label(name=""wontfix"")]",I miss-click a lot when trying to save things. If the buttons were bigger this wouldn't happen so often
+ScreamingHawk/android-slideshow,closed,Added credits for Swedish translation,[],
+ScreamingHawk/android-slideshow,closed,Add ellipse for long filenames,"[Label(name=""enhancement"")]",When filenames are too long they simply drop off the list view. It would be better to add an ellipse to show that there is more not shown. 
+ScreamingHawk/android-slideshow,closed,Check file content type when no file extension,"[Label(name=""enhancement"")]","When no file extension has been provided, Slideshow doesn't know if it is an image. 
+
+Slideshow can be smarter than this. "
+ScreamingHawk/android-slideshow,closed,#26 Update Dutch translation,[],Added the credits for the Dutch translation
+ScreamingHawk/android-slideshow,closed,#26 Danish Translation,[],I think it succeeded this time. 
+ScreamingHawk/android-slideshow,closed,#26 Danish translation,[],"Looks like an aweful lot of commits. If i messed something up, please tell me. "
+ScreamingHawk/android-slideshow,closed,#24 Translators deserve more credit - French,[],"Thank you Michael,
+
+Here come some updates and  missing keks in string.xml.
+
+Thomas"
+ScreamingHawk/android-slideshow,closed,Additional Spanish translations,[],"This addresses @ScreamingHawk's latest comments on issue #26, in reference to a new string to be translated. I've taken the opportunity to improve other existing Spanish translations.
+
+As a bonus, I've fixed a small typo in the README.md file."
+ScreamingHawk/android-slideshow,closed,updated japanese,[],Hello!
+ScreamingHawk/android-slideshow,closed,Thumbnail display could be better,"[Label(name=""bug""), Label(name=""enhancement"")]","Thumbnails are slow to load and do not update unless they fall off the screen and are redrawn. 
+
+This could be improved. "
+ScreamingHawk/android-slideshow,closed,Add directory to image details view,"[Label(name=""enhancement""), Label(name=""help wanted"")]","In the settings there is a ""show image details"" option. When enabled a bunch of details are added to the slideshow in a translucent box. With the addition of the ""Please from here"" button, the directory could be different for each image. Would be nice to have the directory show up in this details list so someone can tell where the image is located. 
+
+Help wanted, unless I get around to doing it myself. "
+ScreamingHawk/android-slideshow,closed,Share feature broken in Android O beta,"[Label(name=""bug"")]",Share feature is broken in the Android O beta release. Needs to be fixed. 
+ScreamingHawk/android-slideshow,open,Zoom images when paused,"[Label(name=""enhancement""), Label(name=""help wanted"")]",When paused it would be cool if the images could be zoomed using two finger action
+ScreamingHawk/android-slideshow,closed,Autoplay GIFs,"[Label(name=""enhancement"")]","Sometimes the slideshow happens across animated images (such as GIFs) but only displays a static thumbnail for them. 
+
+It would be nice if the app instead played the GIF entirely before sliding to the next image. "
+ScreamingHawk/android-slideshow,closed,japanese translation,[],Hello!
+ScreamingHawk/android-slideshow,closed,#26 Improve Spanish translation,[],"Here's my modest contribution to improving the Spanish translation.
+
+Thanks for the opportunity of submitting my first pull request!"
+ScreamingHawk/android-slideshow,closed,Promo images,[],
+ScreamingHawk/android-slideshow,closed,Update launcher icon to gallery icon with purple play button,[],
+ScreamingHawk/android-slideshow,closed,Update icons,[],
+ScreamingHawk/android-slideshow,closed,#26 <russian> translation,[],"Added translation for play_folder, pref_title_play_from_here and pref_description_play_from_here Strings."
+ScreamingHawk/android-slideshow,closed,Added #26 swedish (sv) language support.,[],I have translated the app into swedish.
+ScreamingHawk/android-slideshow,closed,"Updated Spanish translation for the ""Play Slideshow from here"" button",[],
+ScreamingHawk/android-slideshow,closed,"#26 update Dutch translation for the ""play from here"" button",[],
+ScreamingHawk/android-slideshow,closed,#26 Added Arabic translation of Play sub-folders,[],"Hey, I Added Arabic translation of Play sub-folders.
+Keep up the great work 👍 "
+ScreamingHawk/android-slideshow,closed,#26 Danish translation,[],New strings translated and fixed a few of the old ones. 
+ScreamingHawk/android-slideshow,closed,Play sub-folders,"[Label(name=""enhancement"")]","Is there a way to play sub-folders as well. All the way down the tree?
+
+Also, let's say I'm at a level where I don't have any images in that folder, but I do in the sub-folders and want to play all images contained in all folders. Maybe a little ""Play"" icon in the lower right, like how G-Mail has the ""+"" icon down there to go to compose view?"
+ScreamingHawk/android-slideshow,closed,#26 es translation. Missing translation. ,[],"In the app, I noticed that I've missed a translation so I just fixed it and committed the change. However, you'll notice 3 commits and that's because in the first commit my usual github username didn't appear. I used the second commit to revert the first commit but I still don't know if it was a good idea. The last commit is just fine. I hope this doesn't cause any trouble."
+ScreamingHawk/android-slideshow,closed,Add russian translation,[],Add Russian translation for the app
+ScreamingHawk/android-slideshow,closed,#26 Danish translation,[],
+ScreamingHawk/android-slideshow,closed,Spanish translation,[],
+ScreamingHawk/android-slideshow,closed,#26 nl translation,[],"Hi, did the translation for Dutch (could/can be used for Belgium (Flemish part) and The Netherlands). Let me know if I missed anything."
+ScreamingHawk/android-slideshow,closed,Arabic translation,[],Arabic string.xml
+ScreamingHawk/android-slideshow,closed,Translations #26 - French,[],French string.xml
+ScreamingHawk/android-slideshow,closed,Issue #26 German translation,[],I've completed the German translation.
+ScreamingHawk/android-slideshow,closed,Translate app to Italian,[],See #26
+ScreamingHawk/android-slideshow,open,Translations,"[Label(name=""good first issue""), Label(name=""help wanted"")]","Slideshow is at a stable point in development and I don't expect to see many/any changes to the strings.xml for a while. 
+
+Would be nice is some bilingual people could translate the application into various languages. 
+
+**Completed languages:**
+* English
+* Lithuanian: @mobtechpd
+* Italian: @laura-barluzzi
+* German: @SentToDevNull
+* French: @thlabbe 
+* Arabic: @aym3nb
+* Dutch: @zephyrict, Dave
+* Spanish: @uzluisf, @lbaca 
+* Danish: @KristianTurner 
+* Russian: @JekRock, @BalabanovGit , @Yahhi 
+* Japanese: @naofum 
+* Swedish: @cadii 
+* Chinese: @wardbradt, @Liuxi-G 
+* Portuguese: @MelkyFB 
+* Thai: @batenzar 
+
+Any language is appreciated, but I have installs in the following non-English countries: 
+* India
+* Germany
+* Australia :P
+* Brazil
+* Belarus
+* Georgia
+* Hong Kong
+* Indonesia
+* Iran
+* Russia
+* Thailand
+* Tanzania
+* Vietnam"
+ScreamingHawk/android-slideshow,closed,Image Details not updating on setting change,"[Label(name=""bug"")]","Two problems I've noticed while updating the settings for `Show image details`. 
+
+When image details are off, navigate to an image and start the slideshow, pause slideshow, navigate to settings and turn details on. 
+
+1. Image details do not appear, thin grey box is visible with no details populated. 
+
+When slideshow changes image, image details are shown. Pause slideshow. 
+
+2. Image details are not displayed when slideshow is paused. "
+ScreamingHawk/android-slideshow,open,Update Play Store Promo Images,"[Label(name=""enhancement""), Label(name=""good first issue""), Label(name=""help wanted"")]","The images suck. I want better ones. 
+
+Make a folder in the repository root named `promo_images` and populate as follows:
+
+|Location|Image Count|Size|Type|Description|
+|----------|----------|----------|----------|----------|
+|`promo_images/Screenshots/Phone/`|2-7|1280×720 or 720x1280|JPEG or 24-bit PNG (no alpha)|Screenshots of the application on a phone|
+|`promo_images/Screenshots/Tablet/`|2-7|1280×720 or 720x1280|JPEG or 24-bit PNG (no alpha)|Screenshots of the application on a tablet (7 inch **and** 10 inch)|
+|`promo_images/Hi-res_Icon/`|1|512x512|32-bit PNG (with alpha)|High resolution image of the icon|
+|`promo_images/Feature_Graphic/`|1|1024x500|JPG or 24-bit PNG (no alpha)|Image for the banner on the Play Store|
+|`promo_images/Promo_Graphic/`|1|180x120|JPG or 24-bit PNG (no alpha)|No idea where this is used (Optional)|
+
+"
+ScreamingHawk/android-slideshow,closed,Updated lithuanian translation,[],Updated lithuanian strings.xml
+ScreamingHawk/android-slideshow,closed,"[GT-N7100/Android 4.4.2/Rooted] ""/(inaccessable)""",[],"F-Droid finally updated Slideshow (1.1.5) extSdCard and UsbDrive work great. Thanks.
+
+FYI, I hit the back button while in /storage I get /(inaccessable); getting back requires flipping root off, exiting setting, entering setting, and flipping root on again.
+
+"
+ScreamingHawk/android-slideshow,closed,Fix translations,[],"Build fails for translation issues. While AS ignores them, they should either be fixed or made non-breaking on your side. E.g. I do:
+
+`echo -e ""android { lintOptions { disable 'MissingTranslation'\n\ndisable 'ExtraTranslation' } }"" >> app/build.gradle`"
+ScreamingHawk/android-slideshow,closed,Lithuanian strings xml file,[],Lithuanian translation
+ScreamingHawk/android-slideshow,closed,Fast Scroll,"[Label(name=""enhancement""), Label(name=""wontfix"")]","When viewing a slideshow swiping through images one at a time can be time consuming. 
+
+The current solution is to return to the list view and scroll through to find the image to start from and then click on it to restart the slideshow at that position. 
+
+Proposed solution: Add a list of thumbnails in a list that can be ""flung"" to scroll quickly through multiple images. 
+
+Opinions welcome. "
+ScreamingHawk/android-slideshow,closed,Handle Image Too Large error,"[Label(name=""bug"")]","This exception is causing the application to crash: 
+
+java.lang.RuntimeException: Canvas: trying to draw too large(xxxbytes) bitmap.
+	at android.view.DisplayListCanvas.throwIfCannotDraw(DisplayListCanvas.java:260)
+	at android.graphics.Canvas.drawBitmap(Canvas.java:1415)
+	at android.graphics.drawable.BitmapDrawable.draw(BitmapDrawable.java:528)"
+ScreamingHawk/android-slideshow,closed,Reset slide change timer on manual slide change,"[Label(name=""bug"")]","When manually changing a slide (by swiping) the timer for automatically changing to the next slide is not reset. This means that the image that is swiped to is not displayed for as long as other images, and can make swiping through multiple images annoying as the slideshow continues to try to progress. "
+ScreamingHawk/android-slideshow,closed,Add buttons to get the app,[],
+ScreamingHawk/android-slideshow,closed,Request: Slideshow from extSdCard and UsbDrive,"[Label(name=""enhancement"")]",Request: Slideshow from extSdCard and UsbDrive
+ScreamingHawk/android-slideshow,closed,Share button,"[Label(name=""enhancement"")]",There have been a few times where I've wanted to share a photo I've been viewing during a slideshow. There should be a button for this
+ScreamingHawk/android-slideshow,closed,Random order doesn't start on the selected image,"[Label(name=""bug"")]","When selecting an image to begin a slideshow, if you have the random order preference enabled you do not start on the selected image. "
+ScreamingHawk/android-slideshow,closed,Reload preferences when returning to activity,"[Label(name=""bug"")]","When viewing a slideshow, if you navigate to the settings activity, change some settings, and then navigate back, you would expect the preferences to be updated immediately. They do not. This should be fixed. "
+ScreamingHawk/android-slideshow,closed,Out of memory error,"[Label(name=""bug"")]",Out of memory error when viewing long lists of files with thumbnails and when viewing slideshows with many images
+ScreamingHawk/android-slideshow,closed,Do not automatically resume the slideshow once manually stopped,"[Label(name=""bug"")]","When the user has stopped an image for viewing, deleting etc, the slideshow should not automatically resume. "
+ScreamingHawk/android-slideshow,closed,Overlay image meta data,"[Label(name=""enhancement"")]","When viewing images in a slideshow, I'm sometimes interested in the image meta data (size, dimensions, name etc) It would be nice to have an option to overlay the meta data on the image during the slideshow. "
+ScreamingHawk/android-slideshow,closed,Add ability to have slideshow stop once full rotation is complete,"[Label(name=""enhancement"")]",Currently the application will start the slideshow from the beginning again once all the images have been shown. This is good default behaviour. It would be nice to add an option to have the slideshow stop once all images have been shown. 
+ScreamingHawk/android-slideshow,closed,Update launcher icon to newly designed icon,[],
+ScreamingHawk/android-slideshow,closed,New icon,"[Label(name=""help wanted"")]","The current icon is generated from one of the example Creative Commons images built in to android studio. The new icon should be flat, minimal and simple. "
+ScreamingHawk/android-slideshow,closed,Unnecessary padding around scroll view in list view,"[Label(name=""bug"")]",On the list view there is additional padding around the scrolling view. The extra blank space at the bottom makes it appear as if the list is complete on certain screen sizes. Scrolling 'off the screen' is better to imply there are more items in the list. 
+ScreamingHawk/android-slideshow,closed,Remember scroll position when leaving and returning to app in list view,"[Label(name=""bug"")]","When changing application and changing back,  the position of the scrollbar should be retained"
+ScreamingHawk/android-slideshow,closed,Random slideshow order setting,"[Label(name=""enhancement"")]",Add a setting that has a slideshow process in a randomized order
+ScreamingHawk/android-slideshow,closed,Configurable slide timings,"[Label(name=""enhancement"")]",The time between slides needs to be configurable in the settings. The default values seem either too fast or too slow depending on the usage. 
+ScreamingHawk/android-slideshow,closed,Delete button need are you sure confirmation dialog,"[Label(name=""enhancement"")]",Deleting an image is a permanent thing. There should be a dialog option to ask if the user is sure before proceeding. 

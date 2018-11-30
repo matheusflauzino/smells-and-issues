@@ -1,0 +1,1337 @@
+repository,state,title,label,body
+MCMrARM/revolution-irc,open,Crashes after establishing connection.,"[Label(name=""bug"")]","Steps to reproduce:
+
+1. Set a server.
+2. See msg about connecting to the server.
+3. After connection is established the crash message appears.
+4. Restart the app.
+5. After connection establishing crash is repeating.
+
+IRC-server: **irc.librairc.net**
+
+Huawei Honor 4C
+Android 4.4.2 KitKat
+
+UPD: Tried with SSL enabled/disabled. No difference.
+UPD2: Just reinstalled the app. No success, the error persist."
+MCMrARM/revolution-irc,open,Android Material redesign,"[Label(name=""enhancement"")]","Android P has pretty much started a notable Material redesign. While, I do not like the new changes, the application still probably should be redesigned in order to be more consistent with the system.
+
+I'd like to hear your opinion on this in this issue."
+MCMrARM/revolution-irc,open,Ignored Queries Still Create Tabs,"[Label(name=""bug"")]","As the title says, when ignoring a user, their queries still create new tabs. Could be specific to certain nicks ($status does this, from a ZNC bouncer)."
+MCMrARM/revolution-irc,open,Language rework,[],"Was going to land a Norwegian Bokmål translation, and figured I might aswell have a look at the source strings. Would be great if this app could be registered on http://hosted.weblate.org/ instead of having to update manually.
+
+https://docs.weblate.org/en/latest/devel/index.html"
+MCMrARM/revolution-irc,open,Twitch compatibility,"[Label(name=""question"")]","Hello,
+
+First thx for super irc client. But i have a question about compatibility with twitch irc server. When i connect on server in to the room i can not see user."
+MCMrARM/revolution-irc,open,Implement authentication with CertFP,"[Label(name=""enhancement"")]","This is useful for  [authentication with ZNC](https://wiki.znc.in/Certauth). Authentication in this manner means users of ZNC can enable [Auth Only Via Module](https://github.com/znc/znc/commit/42939c998f7eb73629d4fd2f13c27d2a6fb09dc9) disabling password authentication for extra security. Also mentioned in [RFC7194](https://tools.ietf.org/html/rfc7194#section-2.2.20).
+
+Some networks such as [OFTC](https://www.oftc.net/NickServ/CertFP/), [Freenode](https://freenode.net/kb/answer/certfp) and [Rizon](https://wiki.rizon.net/index.php?title=CertFP) also use this method to authenticate (there are many other networks that also use it)."
+MCMrARM/revolution-irc,open,Notifications are unreadable on Honor 7 Lite Silver,"[Label(name=""bug"")]","On my mobile (Honor 7 Lite Silver), notifications are showing like shown below (it's ""hello Urbanecm"" written there). Can you fix it, please?
+
+![screenshot_20181016-170258](https://user-images.githubusercontent.com/10050467/47027039-f873ad00-d166-11e8-80c0-11d5b6684e96.png)
+"
+MCMrARM/revolution-irc,open,Issues with notification sound and LED,"[Label(name=""bug"")]","Reported in an E-Mail. Notification sound and LED does not work, however the popup notification does show.
+Device: Xiaomi Redmi 3S android 6.01 MMB29M MIUI GLOBAL 9.6.1.0."
+MCMrARM/revolution-irc,open,Save unsent composed text,"[Label(name=""enhancement"")]","Problem: input text is lost if up or down swipe occurs before it's sent.
+
+Possible solution: save unsubmitted text as the newest history, if the input buffer is not empty when up or down is swiped.
+
+Ideally it would be tagged such that if it's submitted, it's only saved once.
+
+If it's recalled and then edited to clear the text, erase it from the history.
+
+Also, have an option to keep separate history for each tab, and keep a separate composition buffer, by auto-saving in a similar manner which switching tabs."
+MCMrARM/revolution-irc,open,Make everything clickable,"[Label(name=""enhancement"")]","Well, long-clickable, and _almost_ everything.
+
+If you long-press on something that looks like a `#channelname`, bring up a menu of all the commands that reference the `${channel}` or `${channels}` special variables.
+
+If you long-press on something that looks like a `mention:` or `@mention`, or is actually a nick from one of your channels, bring up a menu of all the commands that reference the `${member}` or `${members}` special variables.
+
+If you long-press on your own nick, being up a menu of all the commands that reference the `${nick}` special variable, plus all the ones that reference `${member}` or `${members}`.
+
+
+Also, document all the special variables, and what chunks of text they match against.
+
+I suggest adding these, which would match against a mention or nick, but would return the corresponding output from `/whois`.
+* `${gecos}`
+* `${user}`
+* `${hostname}`
+
+* `${me}`
+* `${my}`
+* `${mine}`
+"
+MCMrARM/revolution-irc,open,Make /WHOIS output copyable,"[Label(name=""enhancement"")]","Following on from #37, /WHOIS output is currently captured and reported as a pop-up form, which is much nicer than before where it was hidden on the SERVER tab. The problem is that it's view-only; it cannot be copied, nor does it link anywhere.
+
+It would be useful to be able to copy the username, account, gecos, and hostname so they can be used to formulate a QUIET or BAN or KLINE.
+
+Allowing the /WHOIS report details in the SERVER tab to be unfolded, and then fixing #107 so it can be copied, would help somewhat, although one is still left with having to switch between the SERVER tab and the channel you want to quiet the user in."
+MCMrARM/revolution-irc,closed,Gets the context that contains view on onClick() without the wrapper of android.support.v7.widget.TintContextWrapper,[],"Fix for https://github.com/MCMrARM/revolution-irc/issues/161
+Tested it on an emulator with KitKat 4.4 (api 19) and Lollipop 5.0.1 (api 21) and it worked fine on both, the dialog was displayed correctly on KitKat, and doesn't seem to introduce any regressions on Lollipop."
+MCMrARM/revolution-irc,closed,android.support.v7.widget.TintContextWrapper cannot be cast to io.mrarm.irc.MainActivity,"[Label(name=""bug"")]","logcat:
+```
+E/MessageQueue-JNI( 2331): Exception in MessageQueue callback: handleReceiveCallback
+E/MessageQueue-JNI( 2331): java.lang.ClassCastException: android.support.v7.widget.TintContextWrapper cannot be cast to io.mrarm.irc.MainActivity
+E/MessageQueue-JNI( 2331): 	at io.mrarm.irc.util.LinkHelper$ChannelLinkSpan.onClick(LinkHelper.java:50)
+```
+
+On devices previous to Lollipop if the user touch a highlighted channel the application will crash. As the logcat says the error is indeed here: https://github.com/MCMrARM/revolution-irc/blob/e8ef05e106d8a296110601e32b2902c6d9f97de6/app/src/main/java/io/mrarm/irc/util/LinkHelper.java#L50"
+MCMrARM/revolution-irc,closed,Adds png versions of ic_reply.xml and use them on pre-Lollipop devices,[],"This fixes https://github.com/MCMrARM/revolution-irc/issues/156
+I tested it on an emulator with kitkat and lollipop and it worked fine on both, no crashes"
+MCMrARM/revolution-irc,open,Updated Simplified Chinese(zh-rCN),[],
+MCMrARM/revolution-irc,closed,Add language,[],"Request to add a new language, I have already translated. Thanks :)
+[values-zh-rCN.zip](https://github.com/MCMrARM/revolution-irc/files/2395434/values-zh-rCN.zip)
+"
+MCMrARM/revolution-irc,open,Database leak,"[Label(name=""bug"")]","On Android Oreo, I have received the following message in logcat:
+
+    09-17 13:05:28.135 11514 11523 W SQLiteConnectionPool: A SQLiteConnection object for database '/storage/emulated/0/Android/data/io.mrarm.irc/files/chat-logs/foo-bar-id/messages-2018-09-17.db' was leaked!  Please fix your application to end transactions in progress properly and to close the database when it is no longer needed."
+MCMrARM/revolution-irc,closed,Notifications crash the application on Android 4.4 or lower,"[Label(name=""bug"")]","Revolution IRC 0.4.1 will crash if a NOTICE message is received, whether is sent by a bot when joining a channel that is configured to send a message on user join, or a notice send by a user, the application will crash.
+
+Edit: Android version: 4.2.2"
+MCMrARM/revolution-irc,open,Queries without text try to send,"[Label(name=""bug"")]","The help text for /query shows:
+
+    /query <target> [message...]
+
+Indicating that message is optional. This can be used to simply open a query tab.
+
+However, when doing such a /query without a message, the server responds with ""No text to send"". Furthermore, an empty fake message will be shown in the corresponding query tab."
+MCMrARM/revolution-irc,open,Show whois in queries right slide-in,"[Label(name=""enhancement"")]","When swiping in from the right while a channel is open, it shows the topic and user list. Queries get no such slide-in. I propose that whois information for the current query contact could be shown here."
+MCMrARM/revolution-irc,open,Message misplacement,"[Label(name=""bug"")]","Messages sent to users are sometimes written into ""SERVER"" dialog, not the actual chat."
+MCMrARM/revolution-irc,closed,Offline messages not shown when reconnected after losing connection (using ZNC),"[Label(name=""bug"")]","I am connected to ZNC. When I click on ""Disconnect and close"" then reactivate the connection, it shows messages sent to me while I was offline. When I suddenly lose connection (e.g. WiFi turns off) and then it automatically reconnects, offline messages are not shown. Thanks."
+MCMrARM/revolution-irc,open,Add quick jump arrow buttons,"[Label(name=""enhancement"")]","Add buttons to quickly jump between channels with notifications (like in AndChat).
+
+Requested in a Google Play review/Email."
+MCMrARM/revolution-irc,open,Bans possibly result in a window that you can't close,"[Label(name=""bug"")]","From a Google Play review, not verified."
+MCMrARM/revolution-irc,open,Default channel,"[Label(name=""enhancement"")]","Requested in a Google Play review.
+
+When opening a network, a different tab than the server should be possible to be selected as the one to open."
+MCMrARM/revolution-irc,open,/notify command,"[Label(name=""enhancement"")]",Requested in a Google Play review.
+MCMrARM/revolution-irc,closed,Message Auto Split,"[Label(name=""duplicate""), Label(name=""enhancement"")]",When you write something too large for one message can you have it auto split and send in two segments. I'm pretty sure HexChat had this feature.
+MCMrARM/revolution-irc,closed,Unable to remove heads-up notification.,"[Label(name=""enhancement"")]","I would like to have my notifications to act just like the setting ""High"" on Oreo notifications: vibrate/sound but no heads-up notification (the banner that appears at the top of the screen and displays the message).
+The ""notification"" menu on my phone for Revolution IRC does not display Oreo settings but rather ""activate sound"", ""ignore busy settings"", etc. If I disable the sound, I have no heads-up notification but no vibration either. If I activate it, I have both, no matter how I configure the notifications in-app.
+Strangely enough, the notification category for the status of the app allows Oreo settings. Shouldn't the notifications from messages/notices etc allow it too ?
+Many thanks.
+PS I'm on a OnePlus 5T"
+MCMrARM/revolution-irc,open,Some misc information is not shown in the WHOIS dialog,"[Label(name=""enhancement"")]",Split from #37
+MCMrARM/revolution-irc,closed,Interface message formats control the wrong type of message ,"[Label(name=""bug""), Label(name=""invalid"")]","Device: Samsung Galaxy S8
+Model number: SM-G950U
+OS: Android 8.0.0
+
+Settings >> Interface >> Message Format >> (see below)
+
+-- Message format
+This seems like it should control the appearance of any message sent by any nick on any channel. However, this solely controls the appearance of messages sent by the user's nick on any given channel.
+
+-- Message with mention format
+This should control the appearance of messages sent by other nicks that mention your nick in the message text. However, this controls all messages sent by nicks other than the user's, regardless of the existence of any mention in the message."
+MCMrARM/revolution-irc,open,"Notification sound, vibration and LED won't work on Samsung Galaxy S3","[Label(name=""bug"")]","Device info:
+Device: Samsung Galaxy S3
+Model number: GT-I9505T
+OS: Android 4.4.4 KitKat
+
+Message notifications will appear in the notification tray but the LED won't do anything and there is no vibration or sound, (phone was not on silent). Tried setting priority to ""highest"".
+
+Sound, vibration and LED confirmed working on Samsung Note 4.
+
+
+"
+MCMrARM/revolution-irc,open,Auto joining channels triggers before NickServ authentication,"[Label(name=""enhancement"")]","The app attempts to automatically join channels before it runs my user specified commands, which I use for NickServ auth. This prevents me from automatically joining channels, because the command needs to be run after NickServ auth."
+MCMrARM/revolution-irc,open,Keyboard unusable,"[Label(name=""bug"")]","Using the May 2018 GBoard keyboard release (sorry, no copy paste from Google play and the version string is ridiculous) on LineageOS 15.1.0 (Android 8.1.0).
+
+The keyboard is completely unusable in revolution IRC. It seems after entering a word to be in a state where any new entry is discarded. So every second word is discarded. Also backspace doesn't autorepeat if you hold it down and random other characters are dropped.
+
+The keyboard works fine in other words apps so I'm guessing it has something to do with the nick auto complete but I've tried disabling all those options and it doesn't help."
+MCMrARM/revolution-irc,closed,Publish 0.3.3 to GooglePlay,[],
+MCMrARM/revolution-irc,open,missing PONG,"[Label(name=""bug""), Label(name=""can't reproduce"")]","At random intervals I receive ""quit: kurahaupo has disconnected (Ping timeout: 260 seconds)"" in each channel, followed by "":ERROR :Closing link {…my hostname…} (Ping timeout 260 seconds)"" in the server tab. And then the TCP session is torn down, triggering auto-reconnection.
+
+After discussion with freenode staff, it seems most likely that the client is failing to send PONG."
+MCMrARM/revolution-irc,open,Hide specific channels,"[Label(name=""enhancement"")]",Requested in an email.
+MCMrARM/revolution-irc,closed,It's possible that the Remember certificate option is not visible,"[Label(name=""bug"")]","A report from an email.
+
+Most likely the text is too long, and it returns in us getting limited by the max dialog height."
+MCMrARM/revolution-irc,closed,Display kicks in channel buffers,[],"This PR fixes desyncs caused by missing kick handling, as mentioned in https://github.com/MCMrARM/revolution-irc/issues/108#issuecomment-386821295
+
+This depends on two PRs sent to chatlib and chatlib-android-storage:
+- https://github.com/MCMrARM/chatlib/pull/2
+- https://github.com/MCMrARM/chatlib-android-storage/pull/1"
+MCMrARM/revolution-irc,closed,No notifications,[],"When connecting o a server, I get a bunch of notifications, but after that, when messages come in, no notifications pop up or make a sound.
+
+I've checked in settings and all notification types are checked.
+
+What could I be missing?"
+MCMrARM/revolution-irc,closed,click on continue without password crashes the app while Restore a Backup file,"[Label(name=""bug"")]","#### Expected behavior
+it shouldn't crash when i click on continue without password for **Restore a Backup** .
+
+#### Actual behavior
+for **Restore a Backup** i select  file from **Google Drive** and when i click on continue without password crashes the app .
+
+#### How to reproduce
+* download the app and run it 
+* click on (+) and Add a new server
+* then go to settings and click on Backup and click on **Create a new Backup** and save it to your Google Drive with password
+
+* then try to restore without password
+* and note the bug.
+
+> Browser/App version: Revolution Irc V0.3.2
+ Operating system: android 6.0
+
+#### Recording Of The Bug
+https://www.youtube.com/watch?v=AogE81y9MiQ
+"
+MCMrARM/revolution-irc,open,App crashes on changing screen orientation during creating back up,"[Label(name=""bug"")]","#### Expected behavior<br>
+The app is supposed to be stable during screen rotation and I should be able to create a back up.<br>
+#### Actual behavior<br>
+But the app crashes on changing screen orientation before choosing a folder for creating a back up and clicking on save.<br>
+#### How to reproduce<br>
+1. Install the app from fdroid.<br>
+2. Launch the app.<br>
+3. Click on three vertical dots from top right corner of the app and go to settings.<br>
+4. Now click on Backup option.<br>
+5. Click on &quot;Create a new back up&quot; option. Continue without entering any passwords.<br>
+6. Now choose a folder to create you back up.<br>
+Now change the screen orientation to landscape mode.<br>
+7. Now save the back up clicking on save option. (If the app didn&apos;t crash here it will crash on clickimg finish option)<br>
+The app crashes.<br>
+* App Version: 0.3.2<br>
+* Device: Samsung Galaxy J5<br>
+* Operating System: Android 6.0.1<br>
+#### Recording Of The Bug<br>
+https://youtu.be/nAksc5a7VlU"
+MCMrARM/revolution-irc,open,Adding scroll bar & new message indicator,"[Label(name=""enhancement"")]","as this client keeps all the messages transferred in the server, when i need to see older message, i should scroll the screen up all the time.
+there is no scroll bar, so i just had to swipe and swipe..
+so adding scroll bar would be a nice idea.
++ if possible, like HexChat(windows irc client), the line which indicates the last message i saw would be nice too.
+
+another suggestion.. new message indicator.
+currently there's no function like that, this cause us to miss the lastest messages, as the screen doesn't change if the screen is scrolled up.. so if there's new message, making one button that pulls the screen down emerge would be perfect..
+
+thank you for reading, sorry for some wrong english."
+MCMrARM/revolution-irc,open,Hide channel list,"[Label(name=""enhancement"")]",Requested in an email.
+MCMrARM/revolution-irc,open,Add an option to show the app icon in the notifications bar,"[Label(name=""enhancement"")]",Requested in an E-Mail.
+MCMrARM/revolution-irc,closed,Donations,[],"Do you accept donations for this project anywhere?
+
+If not yet, but might, personally I find it convenient to donate small sums for my Android apps on [Liberapay](https://liberapay.com/), given also that at least when SEPA transfers are available to someone, the fees are much less ridiculous than PayPal, or to just tap the Bitcoin donation icon in F-Droid when apps offer that (but that depends on how feasible small Bitcoin transactions are at a given time, which has a tendency to change in interesting ways).
+
+In any case, I know F-Droid ""supports"" a certain number of donation platforms, in terms of placing neat-looking shortcuts to them in an app's description if the developers ask to have that included in the metadata."
+MCMrARM/revolution-irc,closed,Add Exit to the notification,"[Label(name=""enhancement"")]",This has been mentioned by me in #71 
+MCMrARM/revolution-irc,closed,Default Port should already be filled in,"[Label(name=""enhancement"")]","The default port number, 6667, should already be filled in for us."
+MCMrARM/revolution-irc,closed,Can't deal with irc: links ,"[Label(name=""enhancement"")]","Can't deal with irc: protocol links like 
+irc://irc.debian.org/#debconf-team properly.
+"
+MCMrARM/revolution-irc,open,No link to GitHub from inside the app,"[Label(name=""enhancement"")]",There is no link to here on Github from inside the app.
+MCMrARM/revolution-irc,open,"Add documentation on getting started, etc.","[Label(name=""enhancement"")]","There should be some documentation for those who are just starting out with your app. Like for example, how to actually setup the app and how to join a group using the `/join` command..
+
+BTW, consider merging #66 which adds a readme. It's been more than 3 months. And nice app! 
+
+P.s. is there a way to download stuff in the app? "
+MCMrARM/revolution-irc,open,Don't reconnect when changing trivial server settings,"[Label(name=""enhancement"")]","It's kind of annoying when it disconnects/reconnects me to the server if I just want to add an autojoin channel or set the command to run when it first connects, since those don't even affect the current connection."
+MCMrARM/revolution-irc,closed,Long text can't be read easily,"[Label(name=""enhancement"")]","To read a long message you'd have to scroll around in the textbox, which makes up for a bad UX. I image the field should automatically expand to span multiple lines, like in the multiline mode.
+
+Feature requested in a Google Play review."
+MCMrARM/revolution-irc,closed,Allow copying information from dialogs (WHOIS),"[Label(name=""enhancement"")]","Yesterday there was an issue where I had to copy-paste IP address to ban harmful user. I started by `/whois nick` which suddenly popped up a dialog including all the information and I didn't find any way (long pressing) to copy hostname or IP address from it and I couldn't keep the dialog open for manually typing the IP address either.
+
+Luckily I was able to do what I wanted to using network services, but I believe this shouldn't happen and I should be able to easily copy information from WHOIS and other similar commands like on any other IRC client."
+MCMrARM/revolution-irc,open,Format menu isn't usable on Fire OS.,"[Label(name=""bug"")]","Possibly outside of scope, feel free to close if so.
+
+I can't seem to activate the context menu's Format button in order to format my own text. Long pressing brings up the text selection bar at the top of the screen, and touching the three dots in the top right causes the ""Format"" option to display for a moment but also unselects my text/cancels the ""Format"" context menu option, so the button isn't usable.
+
+I'm unsure how closely any of this mirrors stock Android. This is my only Android device so I'm completely unfamiliar with what the expected behaviors are. Unexpected incompatibilities are probably to be expected with Fire OS, so if you consider this to be my/Amazon's problem then that's perfectly understandable.
+
+![screenshot_2018-03-16-16-53-44](https://user-images.githubusercontent.com/5259025/37505779-ac669e38-293a-11e8-84de-97a92dba4aaa.png)
+
+**EDIT:** Actually, I just managed to format some text but it involved using a Bluetooth keyboard and still doesn't really quite work properly.
+
+![screenshot_2018-03-16-17-32-39](https://user-images.githubusercontent.com/5259025/37506901-2a143b88-2940-11e8-83e2-b65522f053f2.png)
+
+By typing on a Bluetooth keyboard, then hitting Ctrl+A, I can use Revolution's own context menu rather than the Text Selection bar's one to select Format (I'm now realizing this is probably how people are expected to do formatting). The Text Selection bar is obscuring the top of Revolution such that I can't touch its context menu button while text is selected via touch. However, I can use it if I select text using a keyboard. However, this leads to my next issue:
+
+![screenshot_2018-03-16-17-37-25](https://user-images.githubusercontent.com/5259025/37507020-bd249bde-2940-11e8-9eb1-40b9d523543d.png)
+
+When I select text with Shift and the cursor keys, the Format option doesn't appear in the context menu at all. This is an unusual enough use case that I wonder if it might even be an issue on stock Android. Seems like something that'd be worth testing with a Bluetooth keyboard, Android and Revolution on a more normal device.
+"
+MCMrARM/revolution-irc,closed,Can't find any way to read spoilered messages.,"[Label(name=""enhancement"")]","By spoilered messages, I mean messages where the user has set the same foreground and background colors on their text. Usually this would be a job for text selection, but I can select and copy and paste and resend a spoilered message without ever being able to see what it originally said."
+MCMrARM/revolution-irc,closed,Windows-1251 encoding support,"[Label(name=""enhancement"")]",From a Google Play review.
+MCMrARM/revolution-irc,closed,Dowloaded it and couldn't even get it to START on Undernet,[],"Extremely disappointed, running it on Android, got it all set up (so I thought), with nicks, login commands, the whole bit, went to run the Undernet server, and it puked. Can't seem to get any colors right, I can find no support to help me along with questions, 63 mb and and it doesn't even RUN?! Wasted over half an hour pissing around with this and got nowhere. Totally fail. "
+MCMrARM/revolution-irc,closed,Use long-lived TCP connections.,"[Label(name=""bug"")]","Right now, Android puts the network to sleep for intervals which appear to be greater than the ping timeout of the network connection, and Revolution IRC doesn't override this for PING responses.
+
+Theoretically, the messages would sit in the server send-que (tcp level packet que) until they were received by the client (the network is brought back from sleep). However, either the client would need to blindly send PONGs at constant intervals to try and keep the connection alive, or would need to override the battery-saving network sleep and receive packets (even if at set intervals relating to the ping timeout)."
+MCMrARM/revolution-irc,open,Add /clear command,"[Label(name=""enhancement"")]","- add /clear command that wipes/clears the scrollback buffer of current window, like on EPIC/ircii(?)/ScrollZ/mIRC/Irssi/(He)XChat et al.
+
+Reasoning (apart from ""other clients have it too""):
+If you want a clean overview of a new part of the channel conversation, it is _nice_ to be able to remove all the clutter from the previous conversation up to this point. Especially since a certain amount of channel history is kept and being displayed after re-joining a channel. Or, more importantly, if you just communicated state secrets within a channel, or pasted passwords, rocket silo codes, etc. etc."
+MCMrARM/revolution-irc,open,Make nick/user list pinnable,"[Label(name=""enhancement"")]","- as with the channel list, make the user/nick list pin'able
+- alternatively, add config option to always expand it
+
+Reasoning: On desktop UI's, such as Chromebooks, and probably tablets in landscape mode, there is a lot of virtually unused screen estate (used only for very long messages), while the current list of users is not visible and needs to be swiped into the screen manually each time.
+
+Attached example screenshots.
+
+![screenshot 2018-03-07 at 02 10 06](https://user-images.githubusercontent.com/21268333/37066469-38ae8e08-21ae-11e8-9c92-3e3716ee6e1f.png)
+
+
+![screenshot 2018-03-07 at 02 09 47](https://user-images.githubusercontent.com/21268333/37066452-22f0c874-21ae-11e8-8bca-f08e3873dbbd.png)
+"
+MCMrARM/revolution-irc,open,Logs everything,"[Label(name=""enhancement"")]","The app appears to log everything, I can see the entire buffer playback in logcat. Worse still, it also logs passwords sent to the server:
+
+    System.out: Sent: PASS ....
+
+It probably shouldn't be doing this."
+MCMrARM/revolution-irc,open,Warn about addressing an absent nick,"[Label(name=""enhancement"")]","One of the problems of using an IRC from a phone or tablet is that typing is slow, so one is much more likely (compared with IRC from traditional devices) to encounter the situation where you're writing something to another user in a channel, and they leave or quit before you hit send.
+
+Ideally, as soon as a nick is fully mentioned at the start of a message (with nick+colon), a check would be done to whether the user is currently in the channel, and as the message is being typed this check would be repeated periodically.
+
+If at any time while typing, the other nick leaves or quits, give a strong visual warning; I suggest turning the text entry area red, if that's not too hard to implement.
+
+Then the user could immediate stop wasting effort typing a message that the intended recipient will never see.
+
+If the same behaviour could be done in PM sessions, that would be a bonus, but I suspect it would be much more difficult without ""leave"" or ""quit"" notifications from the server."
+MCMrARM/revolution-irc,open,Show quit messages in pm,"[Label(name=""enhancement"")]","If a person quits or pings out while you are in the pm tab there's no way of knowing unless you check for their nick in a channel or doing a whois.
+
+Display quit messages in pm tabs and print an error message if the user tries to pm a non existent nick."
+MCMrARM/revolution-irc,open,Use volume keys to quickly adjust the font size for a server.,"[Label(name=""enhancement"")]",
+MCMrARM/revolution-irc,closed,"When kicked, show the kick message in the channel kicked from","[Label(name=""enhancement"")]","As @kurahaupo mentioned in #100:
+> When a user is kicked from a channel, it would be helpful to display that in the channel rather than in the server tab."
+MCMrARM/revolution-irc,open,copy text from server tab,"[Label(name=""enhancement"")]",It would be useful to be able to copy text from the server tab in the same manner as copying from other tabs.
+MCMrARM/revolution-irc,closed,unresponsive blank tab after device unlocked,"[Label(name=""bug"")]","When the device locks with revolutionIRC in the foreground, upon unlocking it shows a channel tab, but no text, and most UI elements are unresponsive.
+However tapping ◀◼◼ returns to the connection list (via the device's home screen), and normal behaviour resumes."
+MCMrARM/revolution-irc,closed,sort channel participants case-insensitively,"[Label(name=""enhancement"")]","Nicks are not case sensitive, so it would be helpful to sort them caae insensitively too."
+MCMrARM/revolution-irc,open,Support for sending and receiving CTCPs? ,"[Label(name=""enhancement"")]","Something I use a lot is CTCP ping, and sometimes I use other CTCPs. While I tried to make an alias command for CTCPs, I still can't receive them.
+Interestingly, this client does tell me when someone pings me, and responds, but I can't send pings of my own.
+
+(sorry if I sound rude or anything, I'm half asleep when I'm writing this. ^^;;) 
+"
+MCMrARM/revolution-irc,open,@ is impractical for mentioning when the target requires @ to be mentioned,"[Label(name=""default behaviour"")]","At first I didn't understand at all that I need to type @ to start autocompleting nick until I hit it accidentally or in order to mention Telegram/Slack user which both require `@username` for mentioning, username isn't enough.
+
+Now I am doing the mistake of `@TGuser` and when the user is also on IRC, I mention the IRC connection as RevolutionIRC stealthily removes the @ from the message.
+
+I don't know how this should be implemented, my first though would be it being lesser evil of just having the @ visible for other users, but then I thought that it's likely that some clients ignore `@nick` being the same as `nick` and it would probably lead to complaints from users saying that everyone tells them that they don't need the @ in IRC."
+MCMrARM/revolution-irc,closed,"Long messages appear to be send, but go nowhere.","[Label(name=""bug"")]","1. Go to https://lipsum.com/feed/html and copy the first paragraph
+
+```
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id mauris ligula. Curabitur sem orci, convallis id fringilla id, mollis eu lorem. Nulla at justo a ligula ornare rutrum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi vehicula dui nunc, nec mollis turpis egestas non. Pellentesque nunc enim, sollicitudin vitae est at, posuere vehicula ex. Vestibulum non ligula neque. Fusce rutrum magna lorem, id pharetra est efficitur sed. Praesent ut ultricies sem, nec convallis dui. 
+```
+
+2. Paste it to Revolution IRC and send it.
+3. Look at the channel with another client.
+
+Expected result: the message is sent and probably cut to smaller pieces as it's so long.
+
+What happens instead: the message looks like it's sent, but no one else can see it."
+MCMrARM/revolution-irc,closed,Make topic urls clickable,"[Label(name=""enhancement"")]",Highlight urls inside channel topics and let the user interact with them.
+MCMrARM/revolution-irc,open,Don't open notices in their own new tab,"[Label(name=""enhancement"")]",Add an option to disable opening new tabs for notices. Just print them in the window the user is currently looking at using - notice - or something similar
+MCMrARM/revolution-irc,closed,Command history,"[Label(name=""enhancement"")]","Add an option to be able to swipe on the message input bar to get the previous command/message that was entered.
+
+Keep a brief history of the messages the user typed so that he'll be able to swipe through them.
+
+A good example is this app: https://play.google.com/store/apps/details?id=com.countercultured.irc4android"
+MCMrARM/revolution-irc,closed,Rich text typing,"[Label(name=""enhancement"")]",I mean color and other formating codes.
+MCMrARM/revolution-irc,open,Proxy support,"[Label(name=""enhancement"")]",I guess this app should support working through SOCKS proxies. Please make sure that DNS requests are also made through proxy if it is used.
+MCMrARM/revolution-irc,open,"After pinning and then unpinning the left panel, the half of the screen remains empty","[Label(name=""bug""), Label(name=""can't reproduce"")]",
+MCMrARM/revolution-irc,open,Networks presets,"[Label(name=""enhancement"")]","Some other IRC clients have presets: connection settings for well-known networks.
+They usually contain: hostname, port, a flag to mark whether TLS used, encoding. I guess we also need a public key hash.
+
+I guess that the gase of presets should not be baked into the app, but there should be an activity to import it from a file or URL. On the app's first start it should be suggested to import the base of presets."
+MCMrARM/revolution-irc,open,Use a better color picker,"[Label(name=""enhancement"")]",It may be good to add a color picker allowing  to choose any color. There are libraries for that.
+MCMrARM/revolution-irc,open,Implement IRC server public key pinning as an additional security measure,"[Label(name=""enhancement"")]",
+MCMrARM/revolution-irc,open,Disallow insecure ciphersuites,"[Label(name=""enhancement"")]"," like the ones using RC4, RSA-1024, and hash functions which are not collision-resistant in non-HMAC (HMAC doesn't require collision resistance) usage."
+MCMrARM/revolution-irc,open,Provide a way to completely disable history,"[Label(name=""enhancement"")]",Also no access to the files/folders on sdcard should be done (I prefer to keep access to sdcard disallowed).
+MCMrARM/revolution-irc,open,Support share intent for images,"[Label(name=""enhancement"")]",App should use some sort of image hosting service to upload users screenshots / photos and input the resulting URL into IRC.
+MCMrARM/revolution-irc,closed,Duplicate notifications,"[Label(name=""bug""), Label(name=""duplicate"")]","From an E-Mail:
+> Added custom notification rule to get notifications from all messages
+> but disconnecting and reconnecting causes notifications come up twice,
+> three times, four times, as i disconnect and reconnect more.
+> 
+>  Force stopping application fixes the issue but I think it doesn't
+> close connection properly.
+> 
+>  (Tested on my inspIRCd server.)
+> 
+>  Thanks. 😊"
+MCMrARM/revolution-irc,open,/names #channel,"[Label(name=""enhancement"")]",From a Google Play comment.
+MCMrARM/revolution-irc,closed,How do I list users on a channel?,"[Label(name=""question"")]","I am not able to know who  is on, on a server"
+MCMrARM/revolution-irc,open,Adding 'About' tab,"[Label(name=""enhancement"")]","This IRC app is my favourite so far. 
+I was searching for the ""About"" tab but there is no such thing in the application. 
+Maybe adding it with actual version, links to GitHub, name of developper and other stuff might be an idea."
+MCMrARM/revolution-irc,open,Updated de (German) translation,[],Commit made via Stringlate
+MCMrARM/revolution-irc,closed,Auto run on boot,"[Label(name=""duplicate""), Label(name=""enhancement"")]",Automatically start after powering on 
+MCMrARM/revolution-irc,closed,[REQUEST] dcc support,"[Label(name=""enhancement"")]","As title says, I'd like a dcc support.
+Nice app btw, thanks!"
+MCMrARM/revolution-irc,open,Add OP option,"[Label(name=""enhancement"")]","When clicking on a user, add an add op feature or voice etc, you can first verify if user is an op first"
+MCMrARM/revolution-irc,open,Option to search channel for word,"[Label(name=""enhancement"")]",A search feature in channel
+MCMrARM/revolution-irc,open,Make auto join channels more accessible,"[Label(name=""enhancement"")]",It's a hassle to find the autojoin channel list !
+MCMrARM/revolution-irc,open,[REQUEST] Connecting to TLS-encrypted networks,"[Label(name=""enhancement"")]","one of the servers I frequent with the box I usually keep irssi connected on requires TLS as the encryption standard for various reasons since the owner of the server is pretty tinfoil-hatted about such things. 
+
+Specifically, the server uses **TLSv1.2-ECDHE-RSA-AES256-GCM-SHA384-256bits** encryption, so says the server status page. 
+
+I don't really see any other IRC clients for Android supporting this-- it might be a good selling point of your client over others to allow for it, since SSL has had problems in the past and everyone will start moving towards this in the future of things as time goes on.
+
+## EDIT: Okay, TLS connections DO work, they just take a LOT of time to process, for some reason. Might want to get that checked out.
+"
+MCMrARM/revolution-irc,open,Allow ignoring usesr actions,"[Label(name=""enhancement"")]","The Ignore list can ignore channel messages, private messages and channel/private notices.
+
+It would be cool if it also had an option to ignore user actions, such as ""foo joined"", ""foo quit"" and all the other things that can happen to an user.
+
+Thanks!"
+MCMrARM/revolution-irc,open,Can't disable notification sound,"[Label(name=""bug"")]","Maybe this is specific to my phone model (LG G4 H810 on Android 6.0) because the same bug appeared in Riot.im. If I attempt to configure a notification rule and choose ""silent"" for the notification sound, the option is reverted immediately when I leave the configuration screen for that rule and return."
+MCMrARM/revolution-irc,open,Swiped notifications return,"[Label(name=""bug"")]","When a notification for a query or channel message is swiped away, it'll return as soon as the app / server manager is opened. The only way to get rid of it for good is to visit the source (the tab) of the notification."
+MCMrARM/revolution-irc,open,Automatic connect after restart,"[Label(name=""enhancement"")]","After restarting the device, the application should connect to the servers. "
+MCMrARM/revolution-irc,open,Crash on connecting to gitter,"[Label(name=""bug"")]",Connecting to the `irc.gitter.im` server using version 0.3.2 results in crash. Check https://irc.gitter.im/  for instructions on how to connect. Let me know if more information is needed.
+MCMrARM/revolution-irc,open,Cannot connect to ZNC bouncer,"[Label(name=""question"")]","Doesn't work, no info, no error message, no log. I don't even know how to debug, since it just says ""disconnected""."
+MCMrARM/revolution-irc,open,Don't treat queries as channels,"[Label(name=""enhancement"")]","The ""Manage servers"" screen counts the number of open tabs, but calls them ""channels"". This isn't correct, as a tab can also be a query.
+
+Imo, queries should simply be ignored in the count, as they do not represent the ""state"" of your user on a server."
+MCMrARM/revolution-irc,closed,Add Exit to normal menu,"[Label(name=""enhancement""), Label(name=""wontfix"")]","When in a chat tab, it's not possible to exit the application. There is no ""Exit"" button in the menu. One has to go to ""Manage servers"" first to find an exit button in the menu."
+MCMrARM/revolution-irc,open,No open channels -> Can't switch to server in menu,"[Label(name=""enhancement"")]","When a server is open that has 0 tabs, it becomes impossible to switch to it from the left-side menu. Tapping the server name only expands/collapses the (empty) channel list.
+
+One has to go to ""Manage servers"" to be able to reach it again.
+
+Ideally, when there's 0 tabs, tapping the server name should go to the server instead of expanding/collapsing an empty tree."
+MCMrARM/revolution-irc,closed,Queries: Other person always highlighted,"[Label(name=""enhancement"")]","In queries, the other person always appears as red, probably since they always trigger a highlight. This is unnecessary."
+MCMrARM/revolution-irc,closed,Chat log boxes become empty,"[Label(name=""bug"")]","Under certain circumstances (I haven't managed to reproduce this reliably yet), a bug is triggered.
+
+As a result, the chat log boxes under all tabs and on all networks show up empty. It doesn't matter if someone has written something in them.
+
+The only exception are Server tabs, these still show their proper content.
+
+The only solution so far is to restart the app."
+MCMrARM/revolution-irc,open,Allow separate notification rules when app is in the foreground,"[Label(name=""enhancement"")]","Split from #64 
+
+It would be great if notifications were configurable separately for when the app is in the foreground. In such a case for example I do not need vibrations or sounds, a visual indicator in the app is enough."
+MCMrARM/revolution-irc,closed,Create README.md,[],"Hi,
+
+This small and useless PR adds a README, with the description from F-Droid, and two buttons to get your app :)"
+MCMrARM/revolution-irc,open,Show notices in the channel,"[Label(name=""enhancement"")]","It seems channel notices are currently treated as queries, showing up as a separate tab in the channel switcher. I think private notices do the same. I'm not sure if that is how it's meant to be."
+MCMrARM/revolution-irc,closed,Configurable notification behavior,"[Label(name=""bug""), Label(name=""invalid"")]","It would be great if the notification behavior (the default one) could be configurable. Things such as vibration pattern, sound, notification light color, which are currently only available for custom notifications.
+
+In addition, it should also be configurable separately for when the app is in the foreground. In such a case for example I do not need vibrations or sounds, a visual indicator in the app is enough."
+MCMrARM/revolution-irc,open,Thick channel selector and input box,"[Label(name=""enhancement"")]",The channel selector and input box have quite a bit of wasted space around them. Could this be reduced somewhat to allow for a bit more space for text?
+MCMrARM/revolution-irc,closed,@nick does not trigger highlight,"[Label(name=""bug"")]","Many users who are used to different chat applications tend to write @nick when they wish to notify you.
+
+Unfortunately this does not trigger a highlight in this app."
+MCMrARM/revolution-irc,open,Use a different keyboard action (duplicate send button),"[Label(name=""enhancement"")]","Android can mark a text input box as being a chat box (such as the one used by the messaging app). This makes the keyboard not have a ""Send"" button (it's then used for something else, such as emoticons)
+
+This would be a good idea for this app too, as it already has a dedicated send button in the input box. It would avoid accidently sending incomplete messages when hitting the keyboard's send button."
+MCMrARM/revolution-irc,closed,Add notification ignore,"[Label(name=""enhancement""), Label(name=""invalid"")]","It would be nice if you could ignore notifications from certain nicks or patterns. Basically a ""negative"" custom rule.
+
+This is to avoid getting pointlessly pinged by services such as NickServ"
+MCMrARM/revolution-irc,open,Multiple notifications overlap,"[Label(name=""enhancement"")]","On the first connection to my bouncer, I get a flood of messages, among them queries. When this happens, this app tries to play about 50 notifications at once (including sound and vibration)
+
+I think this is unintended. My proposal is a timeout (0.25s?) that becomes active when a notification plays and ignores further notifications. This is so that notifications don't overlap faster than any human can react anyway."
+MCMrARM/revolution-irc,open,Does not reconnect on connection loss,"[Label(name=""bug"")]","Hello and thank you very much for making this app. So far this is shaping up to be the best IRC app I've used so far, and I can tell that a lot of thinking went into the UI and its functionality. Please keep it up, as this is great!
+
+My internet connection tends to reset periodically. When this happens while the app is connected to a network, it does not notice. It acts as if it was still connected for many hours, missing everything that's being said.
+
+If there's no other way, pinging the server periodically would be the last resort to figure out if you're connected."
+MCMrARM/revolution-irc,open,Option to indent nicknames,"[Label(name=""enhancement"")]","It's be nice if this could have something similar to weechat for indenting handle names.
+
+Rather than:
+
+```
+someone: hey, what's up?
+someoneElse: not much, you?
+```
+
+, be able to do this:
+
+```
+    someone: hey, what's up?
+someoneElse: not much, you?
+```
+
+This, along with more message format options would be nice. I tried editing the message thing manually, but copying what I think was the indent symbol only copied ""l""."
+MCMrARM/revolution-irc,closed,"[Chromebook/Tablet UI]: Text box not in focus after returning from ""Manage Servers""","[Label(name=""enhancement"")]","Hi, we've discussed this briefly on IRC - issue is as follows:
+
+-> You are connected to a server and joined a channel already
+-> You click/tap ""Manage Servers"" in the drawer
+-> After this, you select the channel you're currently in again
+-> The channel opens, but the text box is not in focus, i.e. you can't type.
+
+Like I said, this is not a biggie; but it requires you to raise your hand from the keyboard and manually touch the text box in order to activate the cursor. I had tried to hit ""tab"", and also the CTRL-L convention that browsers use in order to jump to the text/URL box, but those do not work.
+
+My device is a Chromebook Plus (so with touch screen, which should give a similar experience as a large Android tablet with a keyboard, such as the Pixel C). I don't know how usable the client is on older Chromebooks that now have Android app support but no touchscreen. I also have a Samsung CB3 (Android apps but no touchscreen), that I could use for testing though."
+MCMrARM/revolution-irc,open,[Request] Darker dark theme,"[Label(name=""enhancement"")]","The provided dark theme doesn't make use of the color black!
+
+I'd like to make use of my AMOLED display :)"
+MCMrARM/revolution-irc,open,Option to mark all channels as read,"[Label(name=""enhancement"")]",
+MCMrARM/revolution-irc,open,"Add server tab to the ""channels list"" and name it Status Window/Server Window/whatever","[Label(name=""enhancement"")]","When using sensitive commands on IRC, i like to write them all in the server window. But currently in order to get into the server window, we need to open the menu, choose the 1st channel on the list and then swipe to the right. Making it visible on above all channels, would make things easier."
+MCMrARM/revolution-irc,closed,Add ident@host to join/part/quit messages,"[Label(name=""enhancement"")]","Right now, when someone joins/parts/quits, the messages are just like: nick joined/parted/quited.
+For channel operators, having something like `nick (ident@host) has joined` would be great, for ban purposes or even to control trolls."
+MCMrARM/revolution-irc,closed,Incorrect colors when copying,[],"So, when I copy someone's messages and paste them and send them, they do appear weird in other clients, like here, a message I echoed was received with green background on weechat ![Green Text BG](https://i.imgur.com/gFrQSo6.png)
+The normal message had no formatting whatsoever. (It's not because of the highlight of that person) "
+MCMrARM/revolution-irc,open,New message marker,"[Label(name=""enhancement"")]","When new messages are shown, a line separating the old messages from new should be shown."
+MCMrARM/revolution-irc,closed,New join/part messages are not hidden,"[Label(name=""bug"")]","Activating the ""Hide Join/Part messages"" options removes all join and part messages that exist at the time the option is activated, but any new joins/parts after that are displayed normally.  
+The process can be repeated (i.e. disabling and reenabling the option) with the same result."
+MCMrARM/revolution-irc,open,Allow copying lines without nick colour or other formatting,"[Label(name=""enhancement"")]",
+MCMrARM/revolution-irc,closed,Post-connection commands,"[Label(name=""enhancement"")]","Plenty of IRC clients have an option to execute IRC commands after joining a channel and so I would like to add this feature to my client. However, I'm not quite sure about the use-cases -- NickServ support will be implemented first and I don't really see why would anyone need this.
+
+If you want this feature, please comment on this issue what would you use it for."
+MCMrARM/revolution-irc,open,Allow custom paths for chat logs,"[Label(name=""enhancement"")]","Allow using custom paths for chat log storage, for example for using SD card as the storage for chat logs."
+MCMrARM/revolution-irc,open,Updated pl-PL (Polish (Poland)) translation,[],"Commit made via Stringlate
+
+Now, I have a feeling like I'm missing out on something. There are some values I haven't translated cause they were highly confusing, and it would probably be nice to be able to handle numeric cases other than just one and other, because Polish is naturally confusing.
+
+Also I forgot to undo that app_name translation, I'll get on it in a minute."
+MCMrARM/revolution-irc,closed,How can I translate it to a foreign language?,"[Label(name=""question"")]","Well, how can I do...
+My classmate wants to use it, but he is not so good at English."
+MCMrARM/revolution-irc,closed,Crashes master-issue (0.3.1),"[Label(name=""bug"")]","This is a master issue for random crashes for I have collected on Google Play that have no actual issues opened yet.
+
+
+- [ ] ChannelData.addMessage crash (from JoinCommandHandler, QuitCommandHandler, PartCommandHandler)
+```
+java.lang.RuntimeException: 
+  at io.mrarm.chatlib.irc.ChannelData.addMessage (ChannelData.java:243)
+  at io.mrarm.chatlib.irc.ChannelData.addMessage (ChannelData.java:252)
+  at io.mrarm.chatlib.irc.handlers.JoinCommandHandler.handle (JoinCommandHandler.java:36)
+  at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+  at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+  at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+  at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+  at java.lang.Thread.run (Thread.java:761)
+Caused by: java.util.concurrent.ExecutionException: 
+  at java.util.concurrent.FutureTask.report (FutureTask.java:94)
+  at java.util.concurrent.FutureTask.get (FutureTask.java:164)
+  at io.mrarm.chatlib.irc.ChannelData.addMessage (ChannelData.java:241)
+```
+<details><summary>Other similar crashes</summary><p>
+
+```
+java.lang.RuntimeException: 
+  at io.mrarm.chatlib.irc.ChannelData.addMessage (ChannelData.java:243)
+  at io.mrarm.chatlib.irc.ChannelData.addMessage (ChannelData.java:252)
+  at io.mrarm.chatlib.irc.handlers.QuitCommandHandler.handle (QuitCommandHandler.java:32)
+  at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+  at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+  at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+  at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+  at java.lang.Thread.run (Thread.java:761)
+Caused by: java.util.concurrent.ExecutionException: 
+  at java.util.concurrent.FutureTask.report (FutureTask.java:94)
+  at java.util.concurrent.FutureTask.get (FutureTask.java:164)
+  at io.mrarm.chatlib.irc.ChannelData.addMessage (ChannelData.java:241)
+```
+
+```
+java.lang.RuntimeException: 
+  at io.mrarm.chatlib.irc.ChannelData.addMessage (ChannelData.java:243)
+  at io.mrarm.chatlib.irc.ChannelData.addMessage (ChannelData.java:252)
+  at io.mrarm.chatlib.irc.handlers.PartCommandHandler.handle (PartCommandHandler.java:37)
+  at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+  at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+  at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+  at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+  at java.lang.Thread.run (Thread.java:761)
+Caused by: java.util.concurrent.ExecutionException: 
+  at java.util.concurrent.FutureTask.report (FutureTask.java:94)
+  at java.util.concurrent.FutureTask.get (FutureTask.java:164)
+  at io.mrarm.chatlib.irc.ChannelData.addMessage (ChannelData.java:241)
+```
+
+```
+java.lang.RuntimeException: 
+  at io.mrarm.chatlib.irc.filters.ZNCPlaybackMessageFilter.onBatchEnd (ZNCPlaybackMessageFilter.java:78)
+  at io.mrarm.chatlib.irc.cap.BatchCapability.handle (BatchCapability.java:60)
+  at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+  at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+  at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+  at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+  at java.lang.Thread.run (Thread.java:761)
+Caused by: java.util.concurrent.ExecutionException: 
+  at java.util.concurrent.FutureTask.report (FutureTask.java:94)
+  at java.util.concurrent.FutureTask.get (FutureTask.java:164)
+  at io.mrarm.chatlib.irc.filters.ZNCPlaybackMessageFilter.onBatchEnd (ZNCPlaybackMessageFilter.java:76)
+```
+
+</p></details>
+<br>
+
+
+- [x] ~~mChannelsListeners java.util.ConcurrentModificationException~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/b97696b0c8463b04e4dbc41aad8d2c39771dc260)
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.util.ConcurrentModificationException: 
+    at java.util.ArrayList$Itr.next (ArrayList.java:831)
+    at io.mrarm.irc.ServerConnectionInfo.setChannels (ServerConnectionInfo.java:306)
+    at io.mrarm.irc.ServerConnectionInfo$1.onChannelListChanged (ServerConnectionInfo.java:76)
+    at io.mrarm.chatlib.irc.ServerConnectionData.onChannelJoined (ServerConnectionData.java:118)
+    at io.mrarm.chatlib.irc.handlers.JoinCommandHandler.handle (JoinCommandHandler.java:26)
+    at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+    at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+    at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+    at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+    at java.lang.Thread.run (Thread.java:761)
+  ```
+
+  </p></details><br>
+
+- [x] ~~NamesReplyCommandHandler -> ChannelData.setMembers~~ (fixed with https://github.com/MCMrARM/chatlib/commit/ba600971ec050d224911771d2a7f6faccc58957d)
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.NullPointerException: 
+    at io.mrarm.chatlib.irc.ChannelData.setMembers (ChannelData.java:117)
+    at io.mrarm.chatlib.irc.handlers.NamesReplyCommandHandler.handle (NamesReplyCommandHandler.java:72)
+    at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+    at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+    at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+    at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+    at java.lang.Thread.run (Thread.java:761)
+  ```
+  </p></details><br>
+
+- [x] ~~NoSuchChannelException from QuitCommandHandler~~ (fixed with https://github.com/MCMrARM/chatlib/commit/8928d083646b9c0b2dfb4313472f8d04615c76a5)
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.RuntimeException: 
+    at io.mrarm.chatlib.irc.handlers.QuitCommandHandler.handle (QuitCommandHandler.java:35)
+    at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+    at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+    at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+    at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+    at java.lang.Thread.run (Thread.java:761)
+  Caused by: io.mrarm.chatlib.NoSuchChannelException: 
+    at io.mrarm.chatlib.irc.ServerConnectionData.getJoinedChannelData (ServerConnectionData.java:94)
+    at io.mrarm.chatlib.irc.handlers.QuitCommandHandler.handle (QuitCommandHandler.java:30)
+  ```
+  </p></details><br>
+
+
+- [x] ~~ChannelData.removeMember from PartCommandHandler~~ (fixed with https://github.com/MCMrARM/chatlib/commit/74be4ca7cf6bdc37624329c831ff694d3256a9a9)
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.NullPointerException: 
+    at io.mrarm.chatlib.irc.ChannelData.removeMember (ChannelData.java:100)
+    at io.mrarm.chatlib.irc.handlers.PartCommandHandler.handle (PartCommandHandler.java:36)
+    at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+    at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+    at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+    at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+    at java.lang.Thread.run (Thread.java:762)
+  ```
+  </p></details><br>
+
+
+- [x] ~~UserBottomSheetDialog message button crash~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/d66d2a07f14df1b7de9e1213ccc63c6c64c7b95d)
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.NullPointerException: 
+    at io.mrarm.irc.dialog.UserBottomSheetDialog.lambda$create$4$UserBottomSheetDialog (UserBottomSheetDialog.java:149)
+    at io.mrarm.irc.dialog.UserBottomSheetDialog$$Lambda$1.onClick (Unknown Source)
+    at android.view.View.performClick (View.java:5669)
+    at android.view.View$PerformClick.run (View.java:22549)
+    at android.os.Handler.handleCallback (Handler.java:751)
+    at android.os.Handler.dispatchMessage (Handler.java:95)
+    at android.os.Looper.loop (Looper.java:154)
+    at android.app.ActivityThread.main (ActivityThread.java:6290)
+    at java.lang.reflect.Method.invoke (Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run (ZygoteInit.java:886)
+    at com.android.internal.os.ZygoteInit.main (ZygoteInit.java:776)
+  ```
+  </p></details><br>
+
+
+- [x] ~~Finalizer crash~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/c72d7c95c15add73ee65ec3f97deb31091284a8b)
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.util.concurrent.TimeoutException: 
+    at java.lang.Object.wait (Native Method)
+    at io.mrarm.irc.util.SettableFuture.get (SettableFuture.java:36)
+    at io.mrarm.irc.config.NotificationCountStorage.close (NotificationCountStorage.java:80)
+    at io.mrarm.irc.config.NotificationCountStorage.finalize (NotificationCountStorage.java:89)
+    at java.lang.Daemons$FinalizerDaemon.doFinalize (Daemons.java:222)
+    at java.lang.Daemons$FinalizerDaemon.run (Daemons.java:209)
+    at java.lang.Thread.run (Thread.java:761)
+  ```
+  ```
+  java.util.concurrent.TimeoutException: 
+    at java.lang.Object.wait (Native Method)
+    at io.mrarm.irc.util.SettableFuture.get (SettableFuture.java:36)
+    at io.mrarm.irc.config.NotificationCountStorage.close (NotificationCountStorage.java:80)
+    at io.mrarm.irc.config.NotificationCountStorage.finalize (NotificationCountStorage.java:89)
+    at java.lang.Daemons$FinalizerDaemon.doFinalize (Daemons.java:250)
+    at java.lang.Daemons$FinalizerDaemon.runInternal (Daemons.java:237)
+    at java.lang.Daemons$Daemon.run (Daemons.java:103)
+    at java.lang.Thread.run (Thread.java:764)
+  ```
+  </p></details><br>
+
+
+- [x] ~~MessageCommandHandler parameter out-of-bounds exception~~ (fixed with https://github.com/MCMrARM/chatlib/commit/bf243a260da1d09bb921cd7634e30d1116f8c317)
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.IndexOutOfBoundsException: 
+    at java.util.ArrayList.throwIndexOutOfBoundsException (ArrayList.java:255)
+    at java.util.ArrayList.get (ArrayList.java:308)
+    at io.mrarm.chatlib.irc.handlers.MessageCommandHandler.handle (MessageCommandHandler.java:46)
+    at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+    at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+    at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+    at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+    at java.lang.Thread.run (Thread.java:818)
+  ```
+  </p></details><br>
+
+
+- [x] ~~WelcomeCommandHandler parameter out-of-bounds exception~~ (fixed with https://github.com/MCMrARM/chatlib/commit/bf243a260da1d09bb921cd7634e30d1116f8c317)
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.IndexOutOfBoundsException: 
+    at java.util.ArrayList.throwIndexOutOfBoundsException (ArrayList.java:255)
+    at java.util.ArrayList.get (ArrayList.java:308)
+    at io.mrarm.chatlib.irc.handlers.WelcomeCommandHandler.handle (WelcomeCommandHandler.java:43)
+    at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+    at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+    at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+    at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+    at java.lang.Thread.run (Thread.java:848)
+  ```
+  </p></details><br>
+
+
+- [x] ~~SQLiteMessageStorageApi.open NPE~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/74ecca3c14ddd0dd94bd1743f0a9179192a1e665)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.RuntimeException: 
+    at android.app.ActivityThread.performLaunchActivity (ActivityThread.java:2678)
+    at android.app.ActivityThread.handleLaunchActivity (ActivityThread.java:2743)
+    at android.app.ActivityThread.-wrap12 (ActivityThread.java)
+    at android.app.ActivityThread$H.handleMessage (ActivityThread.java:1490)
+    at android.os.Handler.dispatchMessage (Handler.java:102)
+    at android.os.Looper.loop (Looper.java:154)
+    at android.app.ActivityThread.main (ActivityThread.java:6165)
+    at java.lang.reflect.Method.invoke (Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run (ZygoteInit.java:888)
+    at com.android.internal.os.ZygoteInit.main (ZygoteInit.java:778)
+  Caused by: java.lang.NullPointerException: 
+    at io.mrarm.chatlib.android.storage.SQLiteMessageStorageApi.open (SQLiteMessageStorageApi.java:89)
+    at io.mrarm.chatlib.android.storage.SQLiteMessageStorageApi.<init> (SQLiteMessageStorageApi.java:45)
+    at io.mrarm.irc.ServerConnectionInfo.connect (ServerConnectionInfo.java:111)
+    at io.mrarm.irc.ServerConnectionManager.createConnection (ServerConnectionManager.java:196)
+    at io.mrarm.irc.ServerConnectionManager.<init> (ServerConnectionManager.java:84)
+    at io.mrarm.irc.ServerConnectionManager.getInstance (ServerConnectionManager.java:51)
+    at io.mrarm.irc.MainActivity.onCreate (MainActivity.java:62)
+    at android.app.Activity.performCreate (Activity.java:6687)
+    at android.app.Instrumentation.callActivityOnCreate (Instrumentation.java:1140)
+    at android.app.ActivityThread.performLaunchActivity (ActivityThread.java:2631)
+   ```
+
+  ```
+  java.lang.RuntimeException: 
+    at android.app.ActivityThread.handleCreateService (ActivityThread.java)
+    at android.app.ActivityThread.access$2000 (ActivityThread.java)
+    at android.app.ActivityThread$H.handleMessage (ActivityThread.java)
+    at android.os.Handler.dispatchMessage (Handler.java)
+    at android.os.Looper.loop (Looper.java)
+    at android.app.ActivityThread.main (ActivityThread.java)
+    at java.lang.reflect.Method.invoke (Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run (ZygoteInit.java)
+    at com.android.internal.os.ZygoteInit.main (ZygoteInit.java)
+  Caused by: java.lang.NullPointerException: 
+    at io.mrarm.chatlib.android.storage.SQLiteMessageStorageApi.open (SQLiteMessageStorageApi.java:89)
+    at io.mrarm.chatlib.android.storage.SQLiteMessageStorageApi.<init> (SQLiteMessageStorageApi.java:45)
+    at io.mrarm.irc.ServerConnectionInfo.connect (ServerConnectionInfo.java:111)
+    at io.mrarm.irc.ServerConnectionManager.createConnection (ServerConnectionManager.java:196)
+    at io.mrarm.irc.ServerConnectionManager.<init> (ServerConnectionManager.java:84)
+    at io.mrarm.irc.ServerConnectionManager.getInstance (ServerConnectionManager.java:51)
+    at io.mrarm.irc.ChatLogStorageManager.<init> (ChatLogStorageManager.java:60)
+    at io.mrarm.irc.ChatLogStorageManager.getInstance (ChatLogStorageManager.java:44)
+    at io.mrarm.irc.IRCService.onCreate (IRCService.java:50)
+  ```
+  </p></details><br>
+
+
+- [x] ~~ModeCommandHandler.addMode NPE~~ (fixed with https://github.com/MCMrARM/chatlib/commit/3dea12d539fbf5d5109039d138a5bd92d4f1bbdf)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.NullPointerException: 
+    at io.mrarm.chatlib.irc.handlers.ModeCommandHandler.addMode (ModeCommandHandler.java:112)
+    at io.mrarm.chatlib.irc.handlers.ModeCommandHandler.handleChannelModes (ModeCommandHandler.java:64)
+    at io.mrarm.chatlib.irc.handlers.ModeCommandHandler.handle (ModeCommandHandler.java:35)
+    at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+    at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+    at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+    at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+    at java.lang.Thread.run (Thread.java:762)
+  ```
+  </p></details><br>
+
+
+- [x] ~~ChatMessagesAdapter.clearSelection NPE~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/b6a52705fe44c7ce81fc8aac1534af789f163c3f)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.NullPointerException: 
+    at io.mrarm.irc.chat.ChatMessagesAdapter.clearSelection (ChatMessagesAdapter.java:85)
+    at io.mrarm.irc.chat.ChatMessagesFragment$MessagesActionModeCallback.onDestroyActionMode (ChatMessagesFragment.java:460)
+    at android.support.v7.app.AppCompatDelegateImplV9$ActionModeCallbackWrapperV9.onDestroyActionMode (AppCompatDelegateImplV9.java:1796)
+    at android.support.v7.view.StandaloneActionMode.finish (StandaloneActionMode.java:110)
+    at android.support.v7.widget.ActionBarContextView$1.onClick (ActionBarContextView.java:172)
+    at android.view.View.performClick (View.java:5617)
+    at android.view.View$PerformClick.run (View.java:22271)
+    at android.os.Handler.handleCallback (Handler.java:751)
+    at android.os.Handler.dispatchMessage (Handler.java:95)
+    at android.os.Looper.loop (Looper.java:154)
+    at android.app.ActivityThread.main (ActivityThread.java:6153)
+    at java.lang.reflect.Method.invoke (Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run (ZygoteInit.java:868)
+    at com.android.internal.os.ZygoteInit.main (ZygoteInit.java:758)
+  ```
+
+  ```
+  java.lang.NullPointerException: 
+    at io.mrarm.irc.chat.ChatMessagesAdapter.clearSelection (ChatMessagesAdapter.java:85)
+    at io.mrarm.irc.chat.ChatMessagesFragment$MessagesActionModeCallback.onDestroyActionMode (ChatMessagesFragment.java:460)
+    at android.support.v7.app.AppCompatDelegateImplV9$ActionModeCallbackWrapperV9.onDestroyActionMode (AppCompatDelegateImplV9.java:1796)
+    at android.support.v7.view.StandaloneActionMode.finish (StandaloneActionMode.java:110)
+    at android.support.v7.app.AppCompatDelegateImplV9.onBackPressed (AppCompatDelegateImplV9.java:889)
+    at android.support.v7.app.AppCompatDelegateImplV9.onKeyUp (AppCompatDelegateImplV9.java:975)
+    at android.support.v7.app.AppCompatDelegateImplV9.dispatchKeyEvent (AppCompatDelegateImplV9.java:953)
+    at android.support.v7.app.AppCompatDelegateImplBase$AppCompatWindowCallbackBase.dispatchKeyEvent (AppCompatDelegateImplBase.java:315)
+    at android.support.v7.view.WindowCallbackWrapper.dispatchKeyEvent (WindowCallbackWrapper.java:58)
+    at com.android.internal.policy.DecorView.dispatchKeyEvent (DecorView.java:351)
+    at android.view.ViewRootImpl$ViewPostImeInputStage.processKeyEvent (ViewRootImpl.java:4714)
+    at android.view.ViewRootImpl$ViewPostImeInputStage.onProcess (ViewRootImpl.java:4586)
+    at android.view.ViewRootImpl$InputStage.deliver (ViewRootImpl.java:4128)
+    at android.view.ViewRootImpl$InputStage.onDeliverToNext (ViewRootImpl.java:4181)
+    at android.view.ViewRootImpl$InputStage.forward (ViewRootImpl.java:4147)
+    at android.view.ViewRootImpl$AsyncInputStage.forward (ViewRootImpl.java:4274)
+    at android.view.ViewRootImpl$InputStage.apply (ViewRootImpl.java:4155)
+    at android.view.ViewRootImpl$AsyncInputStage.apply (ViewRootImpl.java:4331)
+    at android.view.ViewRootImpl$InputStage.deliver (ViewRootImpl.java:4128)
+    at android.view.ViewRootImpl$InputStage.onDeliverToNext (ViewRootImpl.java:4181)
+    at android.view.ViewRootImpl$InputStage.forward (ViewRootImpl.java:4147)
+    at android.view.ViewRootImpl$InputStage.apply (ViewRootImpl.java:4155)
+    at android.view.ViewRootImpl$InputStage.deliver (ViewRootImpl.java:4128)
+    at android.view.ViewRootImpl$InputStage.onDeliverToNext (ViewRootImpl.java:4181)
+    at android.view.ViewRootImpl$InputStage.forward (ViewRootImpl.java:4147)
+    at android.view.ViewRootImpl$AsyncInputStage.forward (ViewRootImpl.java:4307)
+    at android.view.ViewRootImpl$ImeInputStage.onFinishedInputEvent (ViewRootImpl.java:4468)
+    at android.view.inputmethod.InputMethodManager$PendingEvent.run (InputMethodManager.java:2435)
+    at android.view.inputmethod.InputMethodManager.invokeFinishedInputEventCallback (InputMethodManager.java:1998)
+    at android.view.inputmethod.InputMethodManager.finishedInputEvent (InputMethodManager.java:1989)
+    at android.view.inputmethod.InputMethodManager$ImeInputEventSender.onInputEventFinished (InputMethodManager.java:2412)
+    at android.view.InputEventSender.dispatchInputEventFinished (InputEventSender.java:141)
+    at android.os.MessageQueue.nativePollOnce (Native Method)
+    at android.os.MessageQueue.next (MessageQueue.java:325)
+    at android.os.Looper.loop (Looper.java:142)
+    at android.app.ActivityThread.main (ActivityThread.java:6541)
+    at java.lang.reflect.Method.invoke (Native Method)
+    at com.android.internal.os.Zygote$MethodAndArgsCaller.run (Zygote.java:240)
+    at com.android.internal.os.ZygoteInit.main (ZygoteInit.java:767)
+  ```
+  </p></details><br>
+
+
+- [x] ~~Dialogs - invalid current fragment~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/9fe7b4d13cfbe450df8edbc4f94df7ce666e99a0)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.ClassCastException: 
+    at io.mrarm.irc.MainActivity.lambda$onOptionsItemSelected$3$MainActivity (MainActivity.java:346)
+    at io.mrarm.irc.MainActivity$$Lambda$3.onClick (Unknown Source)
+    at android.support.v7.app.AlertController$ButtonHandler.handleMessage (AlertController.java:162)
+    at android.os.Handler.dispatchMessage (Handler.java:102)
+    at android.os.Looper.loop (Looper.java:154)
+    at android.app.ActivityThread.main (ActivityThread.java:6119)
+    at java.lang.reflect.Method.invoke (Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run (ZygoteInit.java:886)
+    at com.android.internal.os.ZygoteInit.main (ZygoteInit.java:776)
+  ```
+  </p></details><br>
+
+
+- [x] ~~ChatAutoCompleteEditText.terminateNickToken out-of-bounds crash~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/41fa17a0ecc57011bde5de7919b4e802394165c6)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.IndexOutOfBoundsException: 
+    at android.text.SpannableStringBuilder.charAt (SpannableStringBuilder.java:119)
+    at io.mrarm.irc.view.ChatAutoCompleteEditText.terminateNickToken (ChatAutoCompleteEditText.java:358)
+    at io.mrarm.irc.view.ChatAutoCompleteEditText.onItemClick (ChatAutoCompleteEditText.java:254)
+    at io.mrarm.irc.chat.ChatSuggestionsAdapter$ItemHolder.lambda$new$0$ChatSuggestionsAdapter$ItemHolder (ChatSuggestionsAdapter.java:110)
+    at io.mrarm.irc.chat.ChatSuggestionsAdapter$ItemHolder$$Lambda$0.onClick (Unknown Source)
+    at android.view.View.performClick (View.java:5721)
+    at android.widget.TextView.performClick (TextView.java:10936)
+    at android.view.View$PerformClick.run (View.java:22620)
+    at android.os.Handler.handleCallback (Handler.java:739)
+    at android.os.Handler.dispatchMessage (Handler.java:95)
+    at android.os.Looper.loop (Looper.java:148)
+    at android.app.ActivityThread.main (ActivityThread.java:7409)
+    at java.lang.reflect.Method.invoke (Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run (ZygoteInit.java:1230)
+    at com.android.internal.os.ZygoteInit.main (ZygoteInit.java:1120)
+    at de.robv.android.xposed.XposedBridge.main (XposedBridge.java:102)
+  ```
+  </p></details><br>
+
+
+- [x] ~~Channel list button in Join channel dialog NPE after activity destroy and reopen~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/4f6422d1a9b45635420283c500c59f02cbe07e53)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.NullPointerException: 
+    at io.mrarm.irc.MainActivity.lambda$onOptionsItemSelected$3$MainActivity (MainActivity.java:346)
+    at io.mrarm.irc.MainActivity$$Lambda$3.onClick (Unknown Source)
+    at android.support.v7.app.AlertController$ButtonHandler.handleMessage (AlertController.java:162)
+    at android.os.Handler.dispatchMessage (Handler.java:102)
+    at android.os.Looper.loop (Looper.java:154)
+    at android.app.ActivityThread.main (ActivityThread.java:6334)
+    at java.lang.reflect.Method.invoke (Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run (ZygoteInit.java:886)
+    at com.android.internal.os.ZygoteInit.main (ZygoteInit.java:776)
+  ```
+  </p></details><br>
+
+
+- [x] ~~SpannableStringBuilder.setSpan from FormattableEditText$1.afterTextChanged crash~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/a7b5b4b383dd72d91b5d2949c36b5be2c7d8b8a1)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.RuntimeException: 
+    at android.text.SpannableStringBuilder.setSpan (SpannableStringBuilder.java:693)
+    at android.text.SpannableStringBuilder.setSpan (SpannableStringBuilder.java:677)
+    at io.mrarm.irc.view.FormattableEditText$1.afterTextChanged (FormattableEditText.java:94)
+    at android.widget.TextView.sendAfterTextChanged (TextView.java:8211)
+    at android.widget.TextView$ChangeWatcher.afterTextChanged (TextView.java:10394)
+    at android.text.SpannableStringBuilder.sendAfterTextChanged (SpannableStringBuilder.java:1218)
+    at android.text.SpannableStringBuilder.replace (SpannableStringBuilder.java:579)
+    at android.text.SpannableStringBuilder.delete (SpannableStringBuilder.java:230)
+    at android.text.SpannableStringBuilder.delete (SpannableStringBuilder.java:229)
+    at android.text.method.BaseKeyListener.backspaceOrForwardDelete (BaseKeyListener.java:347)
+    at android.text.method.BaseKeyListener.backspace (BaseKeyListener.java:68)
+    at android.text.method.BaseKeyListener.onKeyDown (BaseKeyListener.java:456)
+    at android.text.method.QwertyKeyListener.onKeyDown (QwertyKeyListener.java:357)
+    at android.text.method.TextKeyListener.onKeyDown (TextKeyListener.java:136)
+    at android.widget.TextView.doKeyDown (TextView.java:6293)
+    at android.widget.TextView.onKeyDown (TextView.java:6079)
+    at io.mrarm.irc.view.ChatAutoCompleteEditText.onKeyDown (ChatAutoCompleteEditText.java:319)
+    at android.view.KeyEvent.dispatch (KeyEvent.java:2708)
+  ...
+  ```
+  </p></details><br>
+
+
+- [x] ~~ChatMessagesFragment NPE (closed server)~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/8442f1e350be85458cb1790eae84334af605372b)
+
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.RuntimeException: 
+    at android.app.ActivityThread.performLaunchActivity (ActivityThread.java:2684)
+    at android.app.ActivityThread.handleLaunchActivity (ActivityThread.java:2751)
+    at android.app.ActivityThread.-wrap12 (ActivityThread.java)
+    at android.app.ActivityThread$H.handleMessage (ActivityThread.java:1496)
+    at android.os.Handler.dispatchMessage (Handler.java:102)
+    at android.os.Looper.loop (Looper.java:154)
+    at android.app.ActivityThread.main (ActivityThread.java:6186)
+    at java.lang.reflect.Method.invoke (Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run (ZygoteInit.java:889)
+    at com.android.internal.os.ZygoteInit.main (ZygoteInit.java:779)
+  Caused by: java.lang.NullPointerException: 
+    at io.mrarm.irc.chat.ChatMessagesFragment.onCreate (ChatMessagesFragment.java:150)
+    at android.support.v4.app.Fragment.performCreate (Fragment.java:2246)
+    at android.support.v4.app.FragmentManagerImpl.moveToState (FragmentManager.java:1377)
+    at android.support.v4.app.FragmentManagerImpl.moveFragmentToExpectedState (FragmentManager.java:1750)
+    at android.support.v4.app.FragmentManagerImpl.moveToState (FragmentManager.java:1819)
+    at android.support.v4.app.FragmentManagerImpl.dispatchStateChange (FragmentManager.java:3227)
+    at android.support.v4.app.FragmentManagerImpl.dispatchCreate (FragmentManager.java:3176)
+    at android.support.v4.app.Fragment.restoreChildFragmentState (Fragment.java:1350)
+    at android.support.v4.app.Fragment.onCreate (Fragment.java:1321)
+    at android.support.v4.app.Fragment.performCreate (Fragment.java:2246)
+    at android.support.v4.app.FragmentManagerImpl.moveToState (FragmentManager.java:1377)
+    at android.support.v4.app.FragmentManagerImpl.moveFragmentToExpectedState (FragmentManager.java:1750)
+    at android.support.v4.app.FragmentManagerImpl.moveToState (FragmentManager.java:1819)
+    at android.support.v4.app.FragmentManagerImpl.dispatchStateChange (FragmentManager.java:3227)
+    at android.support.v4.app.FragmentManagerImpl.dispatchCreate (FragmentManager.java:3176)
+    at android.support.v4.app.FragmentController.dispatchCreate (FragmentController.java:181)
+    at android.support.v4.app.FragmentActivity.onCreate (FragmentActivity.java:331)
+    at android.support.v7.app.AppCompatActivity.onCreate (AppCompatActivity.java:84)
+    at io.mrarm.irc.ThemedActivity.onCreate (ThemedActivity.java:31)
+    at io.mrarm.irc.MainActivity.onCreate (MainActivity.java:68)
+    at android.app.Activity.performCreate (Activity.java:6684)
+    at android.app.Instrumentation.callActivityOnCreate (Instrumentation.java:1119)
+    at android.app.ActivityThread.performLaunchActivity (ActivityThread.java:2637)
+  ```
+  </p></details><br>
+
+- [x] ~~ReconnectIntervalSetting dialog random crash~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/6eda8f43b8d3f0d7b996c62959392d94ff28f401)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.IllegalStateException: 
+    at android.support.v7.widget.RecyclerView.assertNotInLayoutOrScroll (RecyclerView.java:2689)
+    at android.support.v7.widget.RecyclerView$RecyclerViewDataObserver.onItemRangeRemoved (RecyclerView.java:5108)
+    at android.support.v7.widget.RecyclerView$AdapterDataObservable.notifyItemRangeRemoved (RecyclerView.java:11600)
+    at android.support.v7.widget.RecyclerView$Adapter.notifyItemRemoved (RecyclerView.java:6948)
+    at io.mrarm.irc.setting.ReconnectIntervalSetting$RulesAdapter$RuleViewHolder.lambda$new$3$ReconnectIntervalSetting$RulesAdapter$RuleViewHolder (ReconnectIntervalSetting.java:258)
+    at io.mrarm.irc.setting.ReconnectIntervalSetting$RulesAdapter$RuleViewHolder$$Lambda$2.afterTextChanged (Unknown Source)
+    at io.mrarm.irc.util.SimpleTextWatcher.afterTextChanged (SimpleTextWatcher.java:24)
+    at android.widget.TextView.sendAfterTextChanged (TextView.java:9435)
+    at android.widget.TextView.setText (TextView.java:5086)
+    at android.widget.TextView.setText (TextView.java:4902)
+    at android.widget.EditText.setText (EditText.java:128)
+    at android.widget.TextView.setText (TextView.java:4877)
+    at io.mrarm.irc.setting.ReconnectIntervalSetting$RulesAdapter$RuleViewHolder.bind (ReconnectIntervalSetting.java:314)
+    at io.mrarm.irc.setting.ReconnectIntervalSetting$RulesAdapter.onBindViewHolder (ReconnectIntervalSetting.java:170)
+    at android.support.v7.widget.RecyclerView$Adapter.onBindViewHolder (RecyclerView.java:6508)
+    at android.support.v7.widget.RecyclerView$Adapter.bindViewHolder (RecyclerView.java:6541)
+  ```
+  </p></details><br>
+
+
+- [x] ~~ChatMessagesFragment.copySelectedMessages NPE~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/161375d7963083ca9872320ae6855b2aebde3ee1)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.NullPointerException: 
+    at io.mrarm.irc.chat.ChatMessagesFragment.copySelectedMessages (ChatMessagesFragment.java:421)
+    at io.mrarm.irc.chat.ChatMessagesFragment$MessagesActionModeCallback.onActionItemClicked (ChatMessagesFragment.java:449)
+    at android.support.v7.app.AppCompatDelegateImplV9$ActionModeCallbackWrapperV9.onActionItemClicked (AppCompatDelegateImplV9.java:1791)
+    at android.support.v7.view.StandaloneActionMode.onMenuItemSelected (StandaloneActionMode.java:140)
+    at android.support.v7.view.menu.MenuBuilder.dispatchMenuItemSelected (MenuBuilder.java:822)
+    at android.support.v7.view.menu.MenuItemImpl.invoke (MenuItemImpl.java:171)
+    at android.support.v7.view.menu.MenuBuilder.performItemAction (MenuBuilder.java:973)
+    at android.support.v7.view.menu.MenuBuilder.performItemAction (MenuBuilder.java:963)
+    at android.support.v7.widget.ActionMenuView.invokeItem (ActionMenuView.java:624)
+    at android.support.v7.view.menu.ActionMenuItemView.onClick (ActionMenuItemView.java:150)
+    at android.view.View.performClick (View.java:5612)
+    at android.view.View$PerformClick.run (View.java:22285)
+    at android.os.Handler.handleCallback (Handler.java:751)
+    at android.os.Handler.dispatchMessage (Handler.java:95)
+    at android.os.Looper.loop (Looper.java:154)
+    at android.app.ActivityThread.main (ActivityThread.java:6123)
+    at java.lang.reflect.Method.invoke (Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run (ZygoteInit.java:867)
+    at com.android.internal.os.ZygoteInit.main (ZygoteInit.java:757)
+  ```
+  </p></details><br>
+
+
+- [x] ~~ExceptionInInitializerError in ServerConnectionManager.createConnection~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/c8e695f772bf45ee0076367c68e3cac08cdb9db6 https://github.com/MCMrARM/revolution-irc/commit/6443c2ecd7b11e1a486bdafa4a93b8cb64b62e31)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.RuntimeException: 
+    at android.os.AsyncTask$3.done (AsyncTask.java:318)
+    at java.util.concurrent.FutureTask.finishCompletion (FutureTask.java:354)
+    at java.util.concurrent.FutureTask.setException (FutureTask.java:223)
+    at java.util.concurrent.FutureTask.run (FutureTask.java:242)
+    at android.os.AsyncTask$SerialExecutor$1.run (AsyncTask.java:243)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1133)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:607)
+    at java.lang.Thread.run (Thread.java:761)
+  Caused by: java.lang.ExceptionInInitializerError: 
+    at io.mrarm.irc.ServerConnectionManager.createConnection (ServerConnectionManager.java:195)
+    at io.mrarm.irc.ServerConnectionManager.<init> (ServerConnectionManager.java:84)
+    at io.mrarm.irc.ServerConnectionManager.getInstance (ServerConnectionManager.java:51)
+    at io.mrarm.irc.StorageSettingsAdapter$RemoveDataTask.doInBackground (StorageSettingsAdapter.java:429)
+    at io.mrarm.irc.StorageSettingsAdapter$RemoveDataTask.doInBackground (StorageSettingsAdapter.java:408)
+    at android.os.AsyncTask$2.call (AsyncTask.java:304)
+    at java.util.concurrent.FutureTask.run (FutureTask.java:237)
+  ```
+  </p></details><br>
+
+
+- [x] ~~MessagePrefix out-of-bounds~~ (fixed with https://github.com/MCMrARM/chatlib/commit/a7f1a7ad329ed84b6c2d045ec404adffaf57f27a)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.StringIndexOutOfBoundsException: 
+    at java.lang.String.substring (String.java:1975)
+    at io.mrarm.chatlib.irc.MessagePrefix.<init> (MessagePrefix.java:22)
+    at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:42)
+    at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+    at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (Unknown Source)
+    at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source:2)
+    at java.lang.Thread.run (Thread.java:764)
+  ```
+  </p></details><br>
+
+
+- [x] ~~onMessage callback NPE~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/9eb63eb01331a24046947297520179cb6077cea7)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.NullPointerException: 
+    at io.mrarm.irc.chat.ChatMessagesFragment.lambda$onMessage$5$ChatMessagesFragment (ChatMessagesFragment.java:354)
+    at io.mrarm.irc.chat.ChatMessagesFragment$$Lambda$3.run (Unknown Source)
+    at android.os.Handler.handleCallback (Handler.java:761)
+    at android.os.Handler.dispatchMessage (Handler.java:98)
+    at android.os.Looper.loop (Looper.java:156)
+    at android.app.ActivityThread.main (ActivityThread.java:6523)
+    at java.lang.reflect.Method.invoke (Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run (ZygoteInit.java:942)
+    at com.android.internal.os.ZygoteInit.main (ZygoteInit.java:832)
+  ```
+  </p></details><br>
+
+
+- [x] ~~ConcurrentModificationException in CommandHandlerList~~ (hopefully fixed with https://github.com/MCMrARM/chatlib/commit/fd14ef5acca66626c41e0bff8222489b100e44da)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.util.ConcurrentModificationException: 
+    at java.util.HashMap$HashIterator.nextEntry (HashMap.java:851)
+    at java.util.HashMap$ValueIterator.next (HashMap.java:879)
+    at io.mrarm.chatlib.irc.CommandHandlerList.notifyDisconnected (CommandHandlerList.java:81)
+    at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:129)
+    at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+    at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+    at java.lang.Thread.run (Thread.java:776)
+  ```
+  </p></details><br>
+
+
+- [x] ~~addMessage -> createCollapsedMessagesView crash~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/fea7963f72264f3f193db189556a25304e93eb16)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.RuntimeException: 
+    at io.mrarm.chatlib.irc.ChannelData.addMessage (ChannelData.java:243)
+    at io.mrarm.chatlib.irc.ChannelData.addMessage (ChannelData.java:252)
+    at io.mrarm.chatlib.irc.handlers.MessageCommandHandler.handle (MessageCommandHandler.java:79)
+    at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+    at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+    at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection 
+  (IRCConnection.java)
+    at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+    at java.lang.Thread.run (Thread.java:761)
+  Caused by: java.util.concurrent.ExecutionException: 
+    at java.util.concurrent.FutureTask.report (FutureTask.java:94)
+    at java.util.concurrent.FutureTask.get (FutureTask.java:164)
+    at io.mrarm.chatlib.irc.ChannelData.addMessage (ChannelData.java:241)
+  Caused by: java.lang.ArrayIndexOutOfBoundsException: 
+    at java.util.ArrayList.get (ArrayList.java:413)
+    at io.mrarm.irc.ChannelNotificationManager.createCollapsedMessagesView (ChannelNotificationManager.java:182)
+    at io.mrarm.irc.ChannelNotificationManager.showNotification (ChannelNotificationManager.java:122)
+    at io.mrarm.irc.NotificationManager.processMessage (NotificationManager.java:52)
+    at io.mrarm.irc.IRCService.onMessage (IRCService.java:122)
+    at io.mrarm.irc.IRCService.lambda$onConnectionAdded$0$IRCService (IRCService.java:129)
+    at io.mrarm.irc.IRCService$$Lambda$0.onMessage (Unknown Source)
+    at io.mrarm.chatlib.android.storage.SQLiteMessageStorageApi.lambda$addMessage$0$SQLiteMessageStorageApi (SQLiteMessageStorageApi.java:117)
+    at io.mrarm.chatlib.android.storage.SQLiteMessageStorageApi$$Lambda$0.call (Unknown Source)
+    at io.mrarm.chatlib.util.SimpleRequestExecutor.lambda$queue$1$SimpleRequestExecutor (SimpleRequestExecutor.java:38)
+    at io.mrarm.chatlib.util.SimpleRequestExecutor$$Lambda$1.call (Unknown Source)
+    at java.util.concurrent.FutureTask.run (FutureTask.java:237)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1133)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:607)
+  ```
+  </p></details><br>
+
+
+- [x] ~~NickCommandHandler sender = null crash~~ (fixed with https://github.com/MCMrARM/chatlib/commit/70df9ee25a813b000f79061e49367c6083b78e38)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.NullPointerException: 
+    at io.mrarm.chatlib.irc.handlers.NickCommandHandler.handle (NickCommandHandler.java:36)
+    at io.mrarm.chatlib.irc.MessageHandler.handleLine (MessageHandler.java:50)
+    at io.mrarm.chatlib.irc.IRCConnection.handleInput (IRCConnection.java:112)
+    at io.mrarm.chatlib.irc.IRCConnection.bridge$lambda$0$IRCConnection (IRCConnection.java)
+    at io.mrarm.chatlib.irc.IRCConnection$$Lambda$9.run (Unknown Source)
+    at java.lang.Thread.run (Thread.java:761)
+  ```
+  </p></details><br>
+
+
+- [x] ~~Pattern.quote NPE from NotificationRule.setMatchText~~ (fixed with https://github.com/MCMrARM/revolution-irc/commit/1048080f736e403a0b51566729c265b86008bbb4)
+
+  <details><summary>Crash</summary><p>
+
+  ```
+  java.lang.NullPointerException: 
+    at java.util.regex.Pattern.quote (Pattern.java:1279)
+    at io.mrarm.irc.config.NotificationRule.setMatchText (NotificationRule.java:77)
+    at io.mrarm.irc.EditNotificationSettingsActivity.save (EditNotificationSettingsActivity.java:257)
+    at io.mrarm.irc.EditNotificationSettingsActivity.save (EditNotificationSettingsActivity.java:293)
+    at io.mrarm.irc.EditNotificationSettingsActivity.onOptionsItemSelected (EditNotificationSettingsActivity.java:221)
+    at android.app.Activity.onMenuItemSelected (Activity.java:3450)
+  ```
+  </p></details><br>"
+MCMrARM/revolution-irc,closed,NickServ auth,"[Label(name=""enhancement"")]",Add support for using NickServ auth in addition to SASL. This was required in a Google Play beta review.
+MCMrARM/revolution-irc,closed,Duplicate queries,"[Label(name=""bug"")]","It is possible to have two queries with a single users due to case mismatch. Easiest way to reproduce:
+```
+/msg ChanServ HELP
+/msg chanserv HELP
+```"
+MCMrARM/revolution-irc,closed,Notification bug,"[Label(name=""bug"")]",Disconnecting from all networks and leaving the app sometimes shows the notification still but with 0 networks connected. I can't reproduce it every time so not sure what is causing it
+MCMrARM/revolution-irc,closed,Short loss in connection causing connection to be dropped completely,"[Label(name=""enhancement"")]","I recently noticed that whenever my phone loses signal for a short time (even if it's only a a second or less on a spotty wifi connection), the app immediately considers every server disconnected and tries reconnecting from scratch instead of just waiting until the connection is back. It would be a good idea to have a timeout for when the connection should be considered lost."
+MCMrARM/revolution-irc,open,Incomplete /VERSION output,"[Label(name=""enhancement"")]","Earlier today I was missing information on how many channels I can join on this network (`CHANLIMIT=#&:50`) and I had no idea how to get that information out of Revolution as it only insisted giving me the one line on the bottom.
+
+WeeChat:
+
+```
+-- charybdis-4-rc7(unknown). roubaix-fr.pirateirc.net (eIKMpSZ6 TS6ow 0FR)
+-- KNOCK ETRACE SAFELIST ELIST=CTU MONITOR=100 FNC WHOX CHANTYPES=#& EXCEPTS INVEX CHANMODES=eIbq,k,flj,ACFLOPQScgimnprstz CHANLIMIT=#&:50 :are supported by this server
+-- PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=PirateIRC STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 NICKLEN=15 MAXNICKLEN=15 CHANNELLEN=50 TOPICLEN=390 DEAF=D :are supported by this server
+-- TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,&acjmorsuxz| CLIENTVER=3.0 :are supported by this server
+```
+
+Revolution:
+
+```
+-- charybdis-4-rc7(unknown). roubaix-fr.pirateirc.net (eIKMpSZ6 TS6ow 0FR)
+```"
+MCMrARM/revolution-irc,closed,/whois nick nick only shows two line response rather than the full response ,"[Label(name=""enhancement"")]","When I run `/whois nick nick` (on charybdis-4-rc7) I expect to see the same as with any other client (Weechat):
+
+* user@host: Real Name
+* channel list
+* IRC server and description
+* SSL connection if it's used
+* SSL certificate fingerprint if used
+* the actual host where the user is connecting from
+* idle time
+* NickServ username
+
+What I see instead is:
+
+* SSL certificate fingerprint if used
+* the actual host where the user is connecting from
+
+I am oper and I mainly use Revolution IRC for connecting to ZNC which is opered."
+MCMrARM/revolution-irc,closed,/msg yourself causes all future messages to appear in query with yourself,"[Label(name=""bug""), Label(name=""duplicate"")]","1. /msg yournick hi
+2. someone else messages you
+3. you see the messages in query with yournick
+
+I am not entirelyy sure if this is this issue or the method to reproduce it, but after doing this and reconnecting to ZNC, I see two queries with my nick and third with person I actually messaged to."
+MCMrARM/revolution-irc,open,Revolution appears to decode non-UTF-8 charset,"[Label(name=""bug""), Label(name=""can't reproduce"")]","> Where are Revolution IRC charsets configured? I just noticed that it's decoding something else than UTF-8 and I hope that it's at least sending UTF-8. I don't like messages getting decoded from other charsets as I run multiple relay bots and if someone is using wrong charset, I cannot immediately see that from Revolution.
+> Mikaela: if the character encodings are an issue for you, please open an GitHub issue
+"
+MCMrARM/revolution-irc,closed,Ignore topic if it was shown recently after re-connection,"[Label(name=""enhancement"")]","Sometimes when on a spotty network you tend to connect and reconnect and after a while the timeline can be cluttered with nothing but the topic repeating itself when the previous line was exactly the same, something similar but not that often happens with ChanServ messages.
+
+So, maybe a option to ignore the topic all the times or just showing it once per day would be good?
+
+Cheers"
+MCMrARM/revolution-irc,closed,Open active channel instead of server list after returning to the app,"[Label(name=""bug""), Label(name=""reproduced"")]","First of all, great app.  I'm enjoying it a lot after years of looking for a good replacement for AndChat.  The interface is intuitive and it has all the features a modern IRC clients should have.
+
+But it be great if the app could remember what channel I was in before minimizing so it's just there after maximizing it again instead of returning to the server list, especially when you're only connected to one server."
+MCMrARM/revolution-irc,open,Hardware scroll through sent messages and commands,"[Label(name=""enhancement"")]",It'd be great if say the volume buttons could be utilized in place for up and down keyboard buttons to scroll through the history of sent messages commands in the input box. And if that history could be per channel instead of globally like it is now
+MCMrARM/revolution-irc,closed,Send as raw doesn't clear input,"[Label(name=""bug"")]","When sending an unrecognized command you get the prompt ""No such command was found. Send as raw"" if you press send as raw the input doesn't get cleared as it does when messages or other commands are sent, it'd be great if it did"
+MCMrARM/revolution-irc,open,Option to change the character added after autocompleting a nick,"[Label(name=""enhancement"")]","So, if I start to type a nick, then press the autovomplete button, or double tap the input, the result will be `<nick>: `, which poses a problem if I try to mention multiple people (`<nick>: <nick2>: <nick3>:`) Personally I'd rather have commas `, `or nothing (just a space)  ` ` preferably, a setting for this would be nice!"
+MCMrARM/revolution-irc,closed,Selected font not used in input,"[Label(name=""enhancement"")]","I've selected the monospace font, but the sans serif font is still used in the input box"
+MCMrARM/revolution-irc,open,Clearer indication of mentions in app,"[Label(name=""enhancement"")]","So, neither in the navbar at the top (where you scroll between channels) not in the side menu, there isn't any clear indication of what channels you have been mentioned in, they look the same as any channel that have received a message. It'd be great if there were some clear indicator (like changing the colour of the channel name in those menus) that would indicate that you've been mentioned in that channel"
+MCMrARM/revolution-irc,closed,Nick's status isn't shown,"[Label(name=""enhancement"")]","So, it'd be great if we could have `@` for operators and `+` for voiced users, currently it only shows
+`[HH:mm] <Nick> message` whereas I'd love if it showed `[HH:mm] <@Nick> message` for channel operators. Like it's visible in the channels nicklist"
+MCMrARM/revolution-irc,closed,Messages ending up in the wrong window,"[Label(name=""bug"")]","So, I had twl query windows open, I `/msg dax Some message`, when he replied it ended up in the query window I had with myself (for testing purposes, duh) see below
+
+![screenshot_20171104-210321_01_01](https://user-images.githubusercontent.com/10356719/32409040-1a3d5d38-c1a4-11e7-9227-e6345fcd6cf4.jpg)
+"
+MCMrARM/revolution-irc,closed,Maxlength messages,"[Label(name=""enhancement"")]","It'd be nice if the app either automatically split messages longer than the maximum allowed length, or stopped you from typing longer than it. Right now it just cuts and the complete message doesn't come through"
+MCMrARM/revolution-irc,open,Topic is black in dark theme,"[Label(name=""bug"")]","I've set my message colour to white, however, I can't seem to be able to change the colour of channel's topics, they're always black, which is hard to read when using the dark theme."
+MCMrARM/revolution-irc,open,Wrong color on ^C,"[Label(name=""bug""), Label(name=""can't reproduce"")]","^C in dark theme revert the text colour to black instead of white (my set message colour) but only in notices
+"
+MCMrARM/revolution-irc,closed,Adding or editing a server crashes the app when primary colour is not default,"[Label(name=""bug"")]","When you change the primary or accent colour in the settings, adding or editing a server crashes the app; also occurs when trying to add new command aliases or custom notification rules. Also, there doesn't seem to be a way to change the colours back to ""Default"".
+
+Using a Samsung Galaxy J3 (SM-J320F) on Android 5.1.1."
+MCMrARM/revolution-irc,open,Automatically focus new channels on join,"[Label(name=""bug""), Label(name=""enhancement"")]","When znc is replaying my backlog, its much easier to see when the backlog replay ends when a JOIN message automatically focuses the newly created channel tab. Also useful for noticing new PMs. "
+MCMrARM/revolution-irc,closed,Option to sort channels alphabetically automatically ,"[Label(name=""enhancement"")]","Title says it all, honestly. When znc autojoins me to all my channels it'd be great if the channels were inserted in sorted order."
+MCMrARM/revolution-irc,open,Memory leak,"[Label(name=""bug"")]","It looks like I have a memory leak in the application... Just after starting the application the memory usage is just above 100MB. After leaving the application for a day it starts to consume over 200MB. One time the application crashed because of an out of memory error, with the application trying to consume over 600MB."
+MCMrARM/revolution-irc,closed,Problem showing the words.,"[Label(name=""bug""), Label(name=""reproduced"")]",The letters which are coloured won't be appeared.
+MCMrARM/revolution-irc,closed,Multiple notifications,"[Label(name=""bug"")]","I've been receiving multiple notifications for a single message on my Pixel 2 XL, eg:
+
+https://imgur.com/lC8jmBT"
+MCMrARM/revolution-irc,closed,getActivity() can be null in ChatMessagesFragment,"[Label(name=""bug"")]",getActivity() can be null in ChatMessagesFragment and cause a crash. Bug caused by https://github.com/MCMrARM/revolution-irc/commit/2cb6eaceec7b53719042ee1f31d4f70a318785dc
+MCMrARM/revolution-irc,closed,Sometimes the app fails to reconnect to servers,"[Label(name=""bug"")]","Sometimes the app is stuck while reconnecting to a server and the server connections are stuck in the ""Disconnected"" state. You have to reopen the application to fix this.
+
+I think this was caused by adding a safecheck in IRCConnection.connect (in 0.3.0) to prevent duplicate network connections on a single instance from happening (as I suspected that was happening, looking at one of the crashes)."
+MCMrARM/revolution-irc,closed,AWAY support,"[Label(name=""enhancement"")]",I added a command alias for myself but it would be nice to have it available by default.
+MCMrARM/revolution-irc,closed,App switcher window header doesn't match color scheme,"[Label(name=""bug"")]","I chose a nice teal color in the settings:
+![screenshot_2017-10-21-12-49-34](https://user-images.githubusercontent.com/18179456/31853877-57c10d5e-b65e-11e7-8d0b-ae732bb83269.png)
+
+But the app switcher stays purple:
+![screenshot_2017-10-21-12-50-29](https://user-images.githubusercontent.com/18179456/31853881-6f75fb26-b65e-11e7-9af4-8554ec572933.png)
+"
+MCMrARM/revolution-irc,open,Don't send notifications on NOTICEs,"[Label(name=""default behaviour"")]","[The IRC RFC says:](https://tools.ietf.org/html/rfc1459#section-4.4.2)
+
+```
+4.4.2 Notice
+
+      Command: NOTICE
+   Parameters: <nickname> <text>
+
+   The NOTICE message is used similarly to PRIVMSG.  The difference
+   between NOTICE and PRIVMSG is that automatic replies must never be
+   sent in response to a NOTICE message.  This rule applies to servers
+   too - they must not send any error reply back to the client on
+   receipt of a notice.  The object of this rule is to avoid loops
+   between a client automatically sending something in response to
+   something it received.  This is typically used by automatons (clients
+   with either an AI or other interactive program controlling their
+   actions) which are always seen to be replying lest they end up in a
+   loop with another automaton.
+
+   See PRIVMSG for more details on replies and examples.
+```
+
+and I see this generally interpreted that NOTICE is a less important message than PRIVMSG while Revolution IRC appears to send a notification and also vibrates and plays the notification sound.
+
+In spirit of the RFC, my bot is sending all messages as notices except messages it relays from other networks and [Matrix](https://matrix.org) has copied this behaviour and their [IRC bridge](https://github.com/matrix-org/matrix-appservice-irc) causes all bot messages to appear as NOTICEs at IRC.
+
+I think the easiest way to reproduce this on freenode is possibly to invite either `mijris[m]` or `ivar[m]` (Matrix bots) into any channel and saying `!ping` where they reply by saying `pong! <ISO8601 date>`. They accept all invites. (They also shouldn't rejoin after kicked.)"
+MCMrARM/revolution-irc,closed,Username autocompletion errors,"[Label(name=""bug"")]","Usually I use the auto-complete feature a lot but the keyboard auto-correct dont like it. It keeps the typed letters without keeping the whole username. 
+For example if I type ""Fox"" and I press the auto-complete it will write ""Foxlider"" but as soon as I press the spacebar key it will keep ""Fox"".
+I think it's possible to correct it since AndChat's auto-complete works"
+MCMrARM/revolution-irc,closed,Overly optimistic notification state,"[Label(name=""enhancement"")]","Notification shows that the user is connected to a network while connecting or when connection attempt failed.
+https://i.imgur.com/9DFQIDF.jpg"
+MCMrARM/revolution-irc,closed,Target Android O,"[Label(name=""enhancement""), Label(name=""low priority"")]","I'd really love to target Android O instead of N but the new notification channel system introduced in O has a fundamental flaw that makes it harder for this application to adapt it.
+After creating a notification channel you can't change it in an way. To make things even worse, the channel is stored on the device forever and even if you delete and recreate it, it's settings will be restored. The recommended (and in fact, the only) way to change settings is to direct the user to the Settings app and let user manage the channel options there. But, you can't change the LED color or vibration pattern settings in that menu. The new Settings interface is way more annoying for the user, as currently the options are easily accessible under the notification options in the app and this would require adding an ugly link to go to settings to change those.
+
+Solutions I can think of:
+1. Wait for the next Android release, hope that it becomes more advanced (why do I doubt that...) and then make some sort of a broken Android O support workaround while properly supporting the next release.
+2. Create a new unique notification channel every time the settings are changed. Con: we waste a small amount of storage each time.
+3. Use the NotificationListenerService to edit the channels. Con: requires to be enabled manually by the user in settings, and can be suspicious as it gives the app full notification access."
+MCMrARM/revolution-irc,closed,I might be doing something wrong?,[],"I've compiled the apk with Android Studio Preview.
+It connects to znc 1.7.x but it stalls when you try to do something else.
+Any idea?
+Thanks in advance
+
+Note: using android 5.1"
+MCMrARM/revolution-irc,closed,How to compile?,"[Label(name=""question"")]","I'd like to know how to compile the apk, so I can use it to connect to my znc's.
+Thanks in advance."
+MCMrARM/revolution-irc,closed,ZNC: Cannot send messages/commands until MOTD is received,"[Label(name=""bug"")]",
+MCMrARM/revolution-irc,closed,Do not attempt reconnect when there is no internet connection,"[Label(name=""enhancement"")]",Do not attempt to reconnect to the servers if Android reports no internet connectivity. This should prevent us from pointlessly wasting battery.
+MCMrARM/revolution-irc,open,Add README and CONTRIBUTING files.,"[Label(name=""enhancement"")]",Consider adleing a readme and contributing doc so that people may know what is needed to contribute.
+MCMrARM/revolution-irc,closed,Crash when connecting to a ZNC 1.7 bouncer,"[Label(name=""bug""), Label(name=""reproduced"")]","App don't connect to passworded server (as zncs) and crashes.
+If you try to reopen the app, it crashes again (maybe while it's trying to connect?).
+Except that, seems very interesting.
+Any update soon?"
+MCMrARM/revolution-irc,closed,Easier switching between servers,"[Label(name=""enhancement"")]","As far as I can tell, when connected to multiple servers, the only way to switch between them or check for activity on the other ones is to open up the side panel. A gesture to switch servers or a button to quickly do so would be really nice (maybe lock open the side panel somehow?). My ideal interface would be something like a 'bar' of selectable servers next to the current server name (maybe even with activity indicators) but that seems like it'd be a lot more complicated.
+
+This is also by far the best IRC client I've used on Android so far. Thank you for all the hard work you've put into it!"
+MCMrARM/revolution-irc,closed,User modes aren't working,"[Label(name=""bug"")]","I gave some feedback on the Play store about this, but I figured I'd put this here as well - and give some details about further attempts.
+
+Originally, I noticed I could not set user modes for myself (such as `+p`) using the `/mode` command. However, I'm also noticing that I can't set them with `/raw` either.
+
+Typing in `/raw MODE Tynach +p` causes a thing to pop up saying that no such command was found, but it lets me 'send as raw'... After which the server pops this message back at me:
+
+> ```421 Tynach raw :Unknown command```
+
+I finally got it to work by making my own custom command alias, but I feel like this sort of thing should be built in. I poked around the code a bit and saw [CommandAliasManager.java][1], and am tempted to simply send a pull request with an additional `mode` line... But I feel like it'd be more intuitive to users if the two could be merged somehow.
+
+[1]: https://github.com/MCMrARM/revolution-irc/blob/master/app/src/main/java/io/mrarm/irc/config/CommandAliasManager.java"

@@ -1,0 +1,207 @@
+repository,state,title,label,body
+Zanshinmu/Wifi-Fixer,open,Fix Maven central repository URL,[],Fixes #39
+Zanshinmu/Wifi-Fixer,open,insecure gradle,[],"Your gradle uses an insecure URL:
+
+~~~
+repositories {
+        maven { url 'http://repo1.maven.org/maven2' }
+~~~
+
+This can easily be solved by replacing `http` with `https`. Could you please do so – if the app is still maintained, that is?"
+Zanshinmu/Wifi-Fixer,closed,Update for Droid Maxx,[],Update
+Zanshinmu/Wifi-Fixer,closed,Master,[],
+Zanshinmu/Wifi-Fixer,open,Reconnect to point automaticaly,[],It'll be nice if the program could reconnect to point automaticaly
+Zanshinmu/Wifi-Fixer,closed,Master,[],Test pull request
+Zanshinmu/Wifi-Fixer,closed,Wif-fixer is disconnecting.,[],"It keeps disconnecting from my cell phone
+ Droid Maxx 
+Version: Android version 4.4.4"
+Zanshinmu/Wifi-Fixer,open,Please add russian language,[],"Good day!
+
+I do not know why fans with 4pda not add translation here, but [Russian localization is already in the nature](http://4pda.ru/forum/index.php?s=&showtopic=227184&view=findpost&p=53795382)! Please add it to the repository.
+
+"
+Zanshinmu/Wifi-Fixer,closed,Good ,[],Goodmorne
+Zanshinmu/Wifi-Fixer,open,Allow entering HTTP endpoint (IP/hostname) for testing if network works. ,[],"Entering host(s) used for testing (including default gateway or public ones like google.com) would make it easier to use it in an environment like a school. Our gateways don't respond to HTTP since they don't behave like a home AP, they're lacking web admin console, etc.
+"
+Zanshinmu/Wifi-Fixer,open,Idea: Fold in capabilities from PrivacyPolice re: multipoint security / disabling,[],"@Zanshinmu @All
+
+https://github.com/BramBonne/privacypolice has very similar multipoint detection capabilities as Wifi-Fixer has, with a slightly different focus: it's to _prevent_ from connecting to certain repeaters for security purposes.  I propose to include this capability in Wifi Fixer for both security & performance reasons: if 1 could mark a MAC address as ""do-not-connect"" (or conversely be prompted to whitelist it, as PrivacyPolice does), it would solve a lot of public vs private wifi issues.
+
+Here's an example: In my area, a lot of businesses choose to have public wifi via AT&T (attwifi) or Comcast/Xfinity (xfinitywifi), &, when in business, that wifi is completely open. But, when at home, my neighbors, having either AT&T or Comcast/Xfinity, have both their own (secured) SSIDs, but also the same semi-open SSIDs (attwifi or xfinitywifi), which my device now ignores because of Privacy Police, but Wifi Fixer would try to connect to automatically at home, which then fails there, after much attempting.
+
+What do you think?
+
+P.S.:  I helped you test initial multipoint capabilities many moons ago via a very long e-mail chain.  I'm very happy & thankful to see the feature at this level of maturity.
+"
+Zanshinmu/Wifi-Fixer,open,Galaxy Note 3 Sign-In Connections Resetting Before Successful Sign-In,[],"Local grocery store and airport require sign-in via web page to accept terms of service but the Fixer tries to reassociate before the sign-in can be completed. Removing Fixer allows normal login. Samsung SM-900A, Android 4.3
+"
+Zanshinmu/Wifi-Fixer,closed,Networks with no SSID not showing correctly in Local Networks sub-fragment,[],
+Zanshinmu/Wifi-Fixer,closed,Excessive battery use in scan mode,"[Label(name=""Accepted"")]",
+Zanshinmu/Wifi-Fixer,open,"After LocalNetworksFragment backstack restoration on orientation change or switched to, ""ghost"" fragments may persist",[],
+Zanshinmu/Wifi-Fixer,closed,Beta: Connect intent received three times,"[Label(name=""Accepted""), Label(name=""Closed"")]",
+Zanshinmu/Wifi-Fixer,closed,Networks with no SSID show in LocalNetworks but disappear when long-pressed,"[Label(name=""Accepted"")]",
+Zanshinmu/Wifi-Fixer,closed,HTTP Header check ignores useful response codes,"[Label(name=""Accepted"")]",
+Zanshinmu/Wifi-Fixer,closed,Hostup.getHostup() not returning accurate pass/fail under some circumstances,"[Label(name=""Accepted"")]","First sub-issue resolved: critical timeout allows ""late"" check thread response. 
+"
+Zanshinmu/Wifi-Fixer,closed,beta: excessive memory use after restored instance ,"[Label(name=""Accepted"")]","Steps to reproduce: scroll back and forth in viewpager, long-tap on a few networks in local. Press home.
+
+Wait several minutes.  
+
+Return to app via multitasking button
+Restored instance will have excessive memory use.  
+"
+Zanshinmu/Wifi-Fixer,closed,Beta: TabListener can be used when ActionMode active in LocalNetworksFragment,"[Label(name=""Accepted""), Label(name=""Closed"")]",
+Zanshinmu/Wifi-Fixer,closed,Beta: Ongoing Status Notification icon missing on Gingerbread,"[Label(name=""Accepted"")]","Seems to be a bug in the compatibility library.  
+"
+Zanshinmu/Wifi-Fixer,closed,Toggling wifi sleep policy causes FC,"[Label(name=""Accepted"")]","```
+05-25 12:42:21.160  3703  3703 W dalvikvm: threadid=1: thread exiting with uncaught exception (group=0x400207d8)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime: FATAL EXCEPTION: main
+05-25 12:42:21.640  3703  3703 E AndroidRuntime: java.lang.StackOverflowError
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at java.util.TreeSet.<init>(TreeSet.java:76)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.apache.harmony.nio.internal.LockManager.<init>(LockManager.java:41)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.apache.harmony.nio.internal.FileChannelImpl.<init>(FileChannelImpl.java:73)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.apache.harmony.nio.internal.WriteOnlyFileChannel.<init>(WriteOnlyFileChannel.java:39)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.apache.harmony.nio.FileChannelFactory.getFileChannel(FileChannelFactory.java:43)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at java.io.FileOutputStream.<init>(FileOutputStream.java:100)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at java.io.FileOutputStream.<init>(FileOutputStream.java:69)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at android.app.ContextImpl$SharedPreferencesImpl.createFileOutputStream(ContextImpl.java:2866)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at android.app.ContextImpl$SharedPreferencesImpl.writeFileLocked(ContextImpl.java:2904)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at android.app.ContextImpl$SharedPreferencesImpl.access$300(ContextImpl.java:2656)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at android.app.ContextImpl$SharedPreferencesImpl$EditorImpl.commit(ContextImpl.java:2841)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.legacy.EditorHelperLegacy.vcommit(EditorHelperLegacy.java:26)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.legacy.EditorDetector.commit(EditorDetector.java:41)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.prefs.PrefUtil.writeString(PrefUtil.java:326)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.prefs.PrefUtil.setPolicy(PrefUtil.java:391)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.ui.PrefActivity.processPrefChange(PrefActivity.java:171)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.ui.PrefActivity.onSharedPreferenceChanged(PrefActivity.java:69)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at android.app.ContextImpl$SharedPreferencesImpl$EditorImpl.commit(ContextImpl.java:2849)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.legacy.EditorHelperLegacy.vcommit(EditorHelperLegacy.java:26)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.legacy.EditorDetector.commit(EditorDetector.java:41)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.prefs.PrefUtil.writeString(PrefUtil.java:326)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.prefs.PrefUtil.setPolicy(PrefUtil.java:391)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.ui.PrefActivity.processPrefChange(PrefActivity.java:171)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.ui.PrefActivity.onSharedPreferenceChanged(PrefActivity.java:69)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at android.app.ContextImpl$SharedPreferencesImpl$EditorImpl.commit(ContextImpl.java:2849)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.legacy.EditorHelperLegacy.vcommit(EditorHelperLegacy.java:26)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.legacy.EditorDetector.commit(EditorDetector.java:41)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.prefs.PrefUtil.writeString(PrefUtil.java:326)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.prefs.PrefUtil.setPolicy(PrefUtil.java:391)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.ui.PrefActivity.processPrefChange(PrefActivity.java:171)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.ui.PrefActivity.onSharedPreferenceChanged(PrefActivity.java:69)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at android.app.ContextImpl$SharedPreferencesImpl$EditorImpl.commit(ContextImpl.java:2849)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.legacy.EditorHelperLegacy.vcommit(EditorHelperLegacy.java:26)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.legacy.EditorDetector.commit(EditorDetector.java:41)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.prefs.PrefUtil.writeString(PrefUtil.java:326)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.prefs.PrefUtil.setPolicy(PrefUtil.java:391)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.ui.PrefActivity.processPrefChange(PrefActivity.java:171)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.ui.PrefActivity.onSharedPreferenceChanged(PrefActivity.java:69)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at android.app.ContextImpl$SharedPreferencesImpl$EditorImpl.commit(ContextImpl.java:2849)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.legacy.EditorHelperLegacy.vcommit(EditorHelperLegacy.java:26)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.legacy.EditorDetector.commit(EditorDetector.java:41)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.prefs.PrefUtil.writeString(PrefUtil.java:326)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.prefs.PrefUtil.setPolicy(PrefUtil.java:391)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.ui.PrefActivity.processPrefChange(PrefActivity.java:171)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.ui.PrefActivity.onSharedPreferenceChanged(PrefActivity.java:69)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at android.app.ContextImpl$SharedPreferencesImpl$EditorImpl.commit(ContextImpl.java:2849)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.legacy.EditorHelperLegacy.vcommit(EditorHelperLegacy.java:26)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.legacy.EditorDetector.commit(EditorDetector.java:41)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.prefs.PrefUtil.writeString(PrefUtil.java:326)
+05-25 12:42:21.640  3703  3703 E AndroidRuntime:    at org.wahtod.wififixer.prefs.PrefUtil.setPolicy(PrefUtil.java
+05-25 12:42:21.870   153   167 E         : Dumpstate > /data/log/dumpstate_app_error
+05-25 12:42:21.870   153   333 W ActivityManager:   Force finishing activity org.wahtod.wififixer/.ui.PrefActivity
+05-25 12:42:22.272   101   143 V AudioFlinger: Audio hardware entering standby, mixer 0xbc70, mSuspended 0
+```
+"
+Zanshinmu/Wifi-Fixer,open,Wifi Fixer does not create native WifiConfigurations which are able to connect to all supported network types across all supported versions of Android,"[Label(name=""Accepted"")]",
+Zanshinmu/Wifi-Fixer,open,"Samsung Galaxy S3 LTE and UK ""Eduroam"" wifi network","[Label(name=""Accepted"")]","If you are a higher education student in the UK chances are you can use the Eduroam wifi network. This allows you to use your network ID and password for your ""home"" Uni network to connect to the Eduroam network in other places where the network exists i.e. at another Uni campus. Its a federated login, effectively.
+
+Anyway, wifi fixer seems to throw a spanner in the works when connecting to this network and I would constantly get Authentication Errors. The device would associate, but never connect.
+
+Uninstalling wifi fixer allowed me to connect without a problem
+
+The network where I am uses PEAP (EAP method) and MSCHAPV2 (Phase 2 auth).
+
+Wifi fixer didn't cause a problem with my home wifi router and worked as expected.
+
+I can provide more details if you describe what is required.
+
+Maybe this is related to the S3 phone itself or the Android version (4.1.1), as my previous Android phone (HTC desire HD) used wifi fixer, and quite happily connected to the Eduroam network.
+"
+Zanshinmu/Wifi-Fixer,closed,"Wifi Fixer causes phone to ""forget"" wifi credentials","[Label(name=""Accepted"")]","I have an issue with Wifi Fixer on an HTC Desire C running Android version 4.0.3.  In essence, the phone keeps ""forgetting"" the credentials for WiFi networks.  Uninstalling the Wifi Fixer app, clearing the cache and restarting the phone restores normal operation.
+
+I can provide you with the detailed steps to reproduce this issue but I thought I'd post a brief summary first in case you are already familiar with it.
+
+Regards
+
+Nick
+"
+Zanshinmu/Wifi-Fixer,closed,Tries to fix connection too soon with adhoc network.,"[Label(name=""Closed"")]","I am currently using mobile broadband with Windows 8. I have adhoc network which is hosted by Windows 8 and where my phone is connected. WiFi fixer on that phone just tries to fix the connection because it takes some seconds for the connection to be established.
+When I disable WiFi fixer service, the phone connects to the adhoc network fine.
+"
+Zanshinmu/Wifi-Fixer,closed,"Android 4.2, network names not recognized","[Label(name=""Accepted"")]","Issue: Undocumented changes in Android 4.2's WifiConfiguration/ScanResult objects causing network names to not be recognized. 
+
+Cause: 
+Prior to Android 4.2, ScanResult.ssid  and WifiConfiguration.ssid strings were quoted. 
+
+In 4.2 both are quoted, which causes ssid-based lookups to fail. 
+"
+Zanshinmu/Wifi-Fixer,closed,-255 dBm on Android 4.0.x to 4.1.x,"[Label(name=""Accepted"")]","Affects:  Jelly Bean, not all devices
+
+Looked in AOSP source,  unchecked values from calls to native code could conceivably set rssi to default (-255) value.   Think some driver revisions/builds have a bug or are reporting an unexpected value. 
+
+Issue:
+Occasionally WifiManager misreports .getRssi() as -255.   The issue will resolve itself if screen is turned off (device sleep)    
+"
+Zanshinmu/Wifi-Fixer,closed,"Gives ""force close"" messages on Impression I10 tablet.",[],"When opened, WiFi fixer gives window, which only offers ""force close"" button.
+
+Version: 0.9.5.2 (Installed from F-Droid)
+Device: Impression I10
+Android: 2.3.1
+"
+Zanshinmu/Wifi-Fixer,closed,Wifi is staying on even when screen is off on Galaxy S3 and draining battery,[],"I'm using version 0.9.5.1 on my galaxy S3 and seeing the issue with wifi staying on all the time.  I verified looking at the battery history details (touching the graph on settings->battery)
+
+Setting the profile to max battery helped but it's still keeping the wifi on when the screen is off and I'm driving.
+"
+Zanshinmu/Wifi-Fixer,closed,Galaxy Nexus,"[Label(name=""Accepted"")]","This app just fails and is constantly resetting and giving me no response warnings to send to google.. grrr
+"
+Zanshinmu/Wifi-Fixer,closed,Samsung Galaxy S3 device restart with wifi,[],"While using Wifi, I've been continuously facing problems of device freeze, restart and the cycle continuous till the device has restarted at least 5 - 10 times. There are no restarts when I use gprs (mobile data).
+I came across Wifi Fixer, which initially appeared to be the solution, restarts did not happen for a while.
+But suddenly restarts have begun again even with Wifi Fixer ON.
+
+Since you're far more experienced in this, I would like to ask, is this Wifi issue due to android ICS ? Could it be a problem with the device ?
+
+Log has been sent via email.
+
+I appreciate your time & am looking forward to your response.
+"
+Zanshinmu/Wifi-Fixer,closed,wifi,[],"ive reeboted both the broad band and the tablet but still no joy carnt connect via WiFi
+"
+Zanshinmu/Wifi-Fixer,closed,"WiFi off,  would not turn on",[],"Had been using the table and noticed some activity for wifi fixer.  When I went to send email I noticed that no wifi was working.  I investigated the Wifi fixer status and noted wifi was off, attempts to restart wifi failed.  I waited 12 mintues for log to be written then rebooted the tablet.  The tablet was then fine and I submitted the log via email.
+
+Stephen
+"
+Zanshinmu/Wifi-Fixer,closed,Deleting access point deletes wrong one,"[Label(name=""Accepted""), Label(name=""Closed"")]","If you long press an access point, then choose delete, wifi-fixer may delete that AP, but may delete a different one.
+Sent log by email - I set up AP test1 and test2, deleted test1 OK, but when I deleted test2, it said deleted NULL. Which is better than deleting the wrong AP, but still wrong.
+"
+Zanshinmu/Wifi-Fixer,closed,http header network check never times out,"[Label(name=""Accepted"")]","Expected result: time out exception by REACHABLE
+
+Actual result: no exception, time out setting ignored.
+
+This seems to be a framework/java bug.
+
+Researching workarounds. 
+"
+Zanshinmu/Wifi-Fixer,closed,known networks,"[Label(name=""Accepted"")]","all of a sudden the app doesn't seem to remember its networks?
+"
+Zanshinmu/Wifi-Fixer,closed,Service doesn't always start at boot.,"[Label(name=""Accepted""), Label(name=""Closed"")]","0.8.0b\* Service fails to start at boot, enabled in preferences.
+
+expected result:  service boots after 2 minutes 
+"
+Zanshinmu/Wifi-Fixer,closed,"scanning->connecting->disconnect loop on network with one SSID, multiple BSSIDs","[Label(name=""Accepted"")]","0.8.0beta
+
+scanning->connecting->disconnect loop on network with one SSID, multiple BSSIDs
+
+To reproduce: enter range after leaving and disconnecting on described network
+
+Expected result: connection
+"

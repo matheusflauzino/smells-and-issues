@@ -1,0 +1,195 @@
+repository,state,title,label,body
+mannd/epmobile,closed,Changelog not updated since version 2.13 n/t,[],
+mannd/epmobile,closed,Update README.md,[],"This small and useless PR adds two buttons to get the app easily on F-Droid and Google Play Store
+
+Thanks for this app (my sister use it) ;)"
+mannd/epmobile,closed,Create LICENSE,[],
+mannd/epmobile,closed,add ATRIA stroke and bleeding risk scores,"[Label(name=""enhancement"")]","http://jaha.ahajournals.org/cgi/doi/10.1161/JAHA.113.000250
+http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3698792/
+"
+mannd/epmobile,closed,add SAMe-TT2R score,"[Label(name=""enhancement"")]","https://en.wikipedia.org/wiki/SAMe-TT2R2_score
+On Oct 25, 2015, at 4:52 PM, Mattia Laffi mattialaffi@gmail.com wrote:
+
+I suggest you to add this score.
+
+Regards, Mattia Laffi.
+
+For reference: 
+- Updated European Heart Rhythm Association Practical Guide on the use of non-vitamin K antagonist anticoagulants in patients with non-valvular atrial fibrillation - pag.4
+
+-Apostolakis S, Sullivan RM, Olshansky B, Lip GY. Factors affecting quality of anticoagulation control among patients with atrial fibrillation on warfarin: the SAMe-TT(2)R(2) score. Chest 2013;144:1555–63.
+- Ruiz-Ortiz M, Bertomeu V, Cequier A, Marin F, Anguita M. Validation of the SAMe-TT2R2 score in a nationwide population of nonvalvular atrial fibrillation patients on vitamin K antagonists. Thromb Haemost 2015;114
+- Abumuaileq RR, Abu-Assi E, Raposeiras-Roubin S, Lopez-Lopez A, Redondo-Dieguez A, Alvarez-Iglesias D et al. Evaluation of SAMe-TT2R2 risk score for predicting the quality of anticoagulation control in a real-world cohort of patients with non-valvular atrial fibrillation on vitamin-K antagonists. Europace 2015;17:711–7.
+"
+mannd/epmobile,closed,"HCM calculator, other algorithms requested","[Label(name=""feature request"")]","From: Gustavo Maid gfmaid@gmail.com
+Subject: 
+To: mannd@epstudiossoftware.com
+Date: Fri, 13 Mar 2015 08:39:47 -0300 (9 weeks, 4 days, 6 hours ago)
+
+Hi, Congratulations for yor software.
+Its possible add risk calculator for hypertrophic cardiomyopathy ?
+
+http://www.doc2do.com/hcm/webHCM.html
+
+And its possible add the ACC Algorithm, the Brugada Algorithm, and
+Vereckei
+algorithm for Wide Complex Tachycardia
+
+http://en.ecgpedia.org/wiki/Approach_to_the_Wide_Complex_Tachycardia
+
+Thank a lot
+"
+mannd/epmobile,closed,add pacing maneuvers,"[Label(name=""enhancement"")]","such as RVA vs base pacing, paraHisian pacing, etc.
+"
+mannd/epmobile,closed,add ability to select appropriate body weight measurement a la ios version,[],"see iOS version of Weight Calculator.
+"
+mannd/epmobile,closed,Coding,"[Label(name=""enhancement"")]","Module with new billing codes needed.
+For V2.2
+"
+mannd/epmobile,closed,add greater than 75 y/o warnings to dabigatran,[],
+mannd/epmobile,open,complete list of LQTS subtypes,"[Label(name=""enhancement"")]","LQTS subtype list should be complete
+"
+mannd/epmobile,closed,add warfarin tablet sizes,[],"increase number of warfarin tablet sizes available for the warfarin calculator
+"
+mannd/epmobile,closed,apixaban mentions,[],"make sure apixaban listed wherever the others are
+"
+mannd/epmobile,closed,java.lang.ClassNotFoundException,[],"Exception class
+java.lang.ClassNotFoundException
+Source method
+PathClassLoader.findClass()
+
+v1.4
+Feb 1, 2013 9:39:25 PM
+1 reports/week
+2 reports
+java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{org.epstudios.epmobile/org.epstudios.epmobile.EpMobile}: java.lang.ClassNotFoundException: org.epstudios.epmobile.EpMobile in loader dalvik.system.PathClassLoader[/data/app/org.epstudios.epmobile-2.apk]
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2709)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2803)
+at android.app.ActivityThread.access$2300(ActivityThread.java:135)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2136)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:144)
+at android.app.ActivityThread.main(ActivityThread.java:4937)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:521)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:868)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:626)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.ClassNotFoundException: org.epstudios.epmobile.EpMobile in loader dalvik.system.PathClassLoader[/data/app/org.epstudios.epmobile-2.apk]
+at dalvik.system.PathClassLoader.findClass(PathClassLoader.java:243)
+at java.lang.ClassLoader.loadClass(ClassLoader.java:573)
+at java.lang.ClassLoader.loadClass(ClassLoader.java:532)
+at android.app.Instrumentation.newActivity(Instrumentation.java:1036)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:
+
+see: http://stackoverflow.com/questions/3781151/java-lang-classnotfoundexception-on-working-app
+
+We have a couple of projects where this issue was logged from time to time on the Android Market. I found the following issues in the manifests:
+
+```
+If the package name is com.test then activities names should be .ActivityName (with a leading dot), not just ActivityName.
+
+For some classes, those that appeared in the logs most often, the class name was specified as com.test.Name while it should have been .Name.
+```
+
+I guess many implementations of android handle these minor issues successfully (this is why the exception never happened in testing), while others few are throwing the exception.
+share|improve this answer
+
+answered Oct 11 '11 at 15:01
+Alex
+411
+
+1    
+
+Good catch. I also had problems with the name attribute of application, where most devices worked just fine with ""MyApplicationSubclass"", but some would crash on launch. Changing to ""my.package.MyApplicationSubclass"" fixed the issue. Some versions/vendors are more tolerant to others on these issues. – nobre Aug 30 '12 at 18:54
+
+Not sure there is a specific fix for this, see stackoverflow link.  Have had 2 crashes like this so far -- rare.
+"
+mannd/epmobile,closed,ActionBar crash,[],"getActionBar() in EpListActivity (and presumably EpActivity) can return null, causing exception and crash.  ? test for null.
+"
+mannd/epmobile,closed,Warfarin crash,[],"INR 3.4
+5 mg tabs
+15 mg/wk
+INR 2-3
+crashes.  Works on iOS for some reason.
+"
+mannd/epmobile,closed,CL Calculator rotation problem,[],"Radio button out of sync with hint with device rotation
+"
+mannd/epmobile,closed,Home button,[],"Implement Home button (i.e. Up action)
+"
+mannd/epmobile,closed,Dose table oddities,[],"V1.2 on my phone Warfarin Calculator with INR 3.9, weekly dose 47, tab size 7.5 and target 2.5 gives half tabs on Mon and Wed, but simulator does Mon and Fri (correct), and IOS also correct.  May need to reinstall to find out.  Reinstalled 1.3.  Hey it looks like V1.3 has regressions in DoseCalculator.java!  Not sure.. need to investigate further.  V1.2 had correct behavior.
+"
+mannd/epmobile,closed,missing question marks in Milstein algorithm,[],"some missing ?s
+"
+mannd/epmobile,closed,misspelling,[],"strings.xml
+Bala r should be Bala R.
+"
+mannd/epmobile,closed,vt instructions text,[],"update text in the outflow and annular vt instructions to match ios version
+"
+mannd/epmobile,closed,missing period in epi vt,[],"after )  look for it
+"
+mannd/epmobile,closed,typo in ARVC/D 2010,[],"terminal activation .... should read measured, not measure
+"
+mannd/epmobile,closed,LVH criteria slight error,[],"LAE should be defined as P terminal force in V1 >= 1 mm and >-= 40 msec.
+"
+mannd/epmobile,closed,LQT1 wrong gene,[],"should be KVLQT1 (KCNQ1) not KVLQT2
+"
+mannd/epmobile,closed,Change units for creatinine in options,[],"Dear sir, madam,
+
+Thank you so much for you great product! As a cardiologist in Denmark
+I really like to work with it, as reference as well as with education
+to our residents.
+
+Would it be possible to use umol/l for kidneyfunction i future releases?
+
+kind regards,
+Willem Gielen
+"
+mannd/epmobile,closed,list out of order,[],"Long QT menu not in alphabetical order
+"
+mannd/epmobile,closed,Normal EP values,[],"Change SRT/SCL to SNRT/SCL
+Change CSNRT to Corrected SNRT if it will fit
+"
+mannd/epmobile,closed,show weekly doses for warfarin,[],"per iOS version, show weekly warfarin dose after percentage dose range in Warfarin Calculator
+"
+mannd/epmobile,closed,cycle length conversion truncates result,[],"Need to round up, change formula from 60000 / n to Math.round(60000.0 / n)
+"
+mannd/epmobile,closed,Dabigatran Calculator slightly off,[],"protected int getDose(double crClr) {
+    if (crClr >= 30)    // should be crCl > 30
+         return 150;
+"
+mannd/epmobile,closed,Dofetilide calculator slightly off,[],"CrCl 40 - 60 is 250 mcg bid       // program uses > 40
+CrCl 20 - <40 is 125 mcg bid    // program uses  20 to 40
+CrCl < 20 is verboten                 // program uses <= 20
+
+Easy fix for next release!
+"
+mannd/epmobile,closed,Warfarin stack overflow,[],"A single warfarin module stack overflow error in reported on the Android developer's page.  Here is part of error report:
+java.lang.StackOverflowError
+at org.epstudios.epmobile.DoseCalculator.allHalfTablets(DoseCalculator.java:102)
+at org.epstudios.epmobile.DoseCalculator.tryDoses(DoseCalculator.java:70)
+at org.epstudios.epmobile.DoseCalculator.tryDoses(DoseCalculator.java:79)
+at org.epstudios.epmobile.DoseCalculator.tryDoses(DoseCalculator.java:79)
+at org.epstudios.epmobile.DoseCalculator.tryDoses(DoseCalculator.java:79)
+etc.
+
+This can be reproduced with the following:
+INR = 5, weekly dose = 35 tablet size = 7.5
+
+Here is the problem:  we are never getting to day 6,  because of this
+
+```
+       if (nextDay >= NUM_DAYS - 1)
+            nextDay = 0;
+```
+
+Therefore we can get stuck because we never get to all half doses, day 6 is stuck at 1.0 tab.  So the loop never ends.
+
+Additional changes:
+
+tryDoses method returns void
+don't need to zero array if allHalfTabs or allDoubleTabs
+allow zero tabs by:  (iOS version)
+            if (value > 0.0)    // ok to allow zero tabs
+                [doses insertObject:[NSNumber numberWithFloat:(value - 0.5)] atIndex:orderedDays[nextDay]];
+"

@@ -1,0 +1,275 @@
+repository,state,title,label,body
+koelleChristian/trickytripper,open,NPE on create payment,"[Label(name=""not reproduceable"")]","Steps to reproduce:
+
+create a trip -> long click the trip -> swipe the tab from ""Travelers"" to ""Report"", and click menu option ""create payment""
+
+Exception trace:
+
+java.lang.NullPointerException: Attempt to invoke virtual method 'android.app.Application android.support.v4.app.FragmentActivity.getApplication()' on a null object reference
+        at de.koelle.christian.trickytripper.activities.a.c(ParticipantTabActivity.java:96)
+        at de.koelle.christian.trickytripper.activities.a.a(ParticipantTabActivity.java:36)
+        at de.koelle.christian.trickytripper.activities.a$b.a(ParticipantTabActivity.java:154)
+        at android.support.v7.app.AppCompatDelegateImplV9$b.a(AppCompatDelegateImplV9.java:1790)
+        at android.support.v7.app.q$a.a(WindowDecorActionBar.java:1101)
+        at android.support.v7.view.menu.h.a(MenuBuilder.java:817)
+        at android.support.v7.view.menu.j.b(MenuItemImpl.java:156)
+        at android.support.v7.view.menu.h.a(MenuBuilder.java:964)
+        at android.support.v7.view.menu.m.onItemClick(MenuPopup.java:127)
+        at android.widget.AdapterView.performItemClick(AdapterView.java:310)
+        at android.widget.AbsListView.performItemClick(AbsListView.java:1145)
+        at android.widget.AbsListView$PerformClick.run(AbsListView.java:3042)
+        at android.widget.AbsListView$3.run(AbsListView.java:3879)
+        at android.os.Handler.handleCallback(Handler.java:739)
+        at android.os.Handler.dispatchMessage(Handler.java:95)
+        at android.os.Looper.loop(Looper.java:148)
+        at android.app.ActivityThread.main(ActivityThread.java:5417)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+
+App Version: 1.5.8
+
+Device: Android 6.0 emulator
+
+"
+koelleChristian/trickytripper,closed,"Improve the ""Divide rest among blanks"" button","[Label(name=""Don't understand"")]","When a distribution of an expense is in progress, often, there is on the bill some items (drinks...) that need to be share between some of the people only.
+
+It could be great to have a button ""Divide amount between people"" :
+- you can select the amount to add
+- you can select/unselect people concerned by the division
+- after it's done, each selected people has his amount increased by the division result
+
+![4](https://user-images.githubusercontent.com/20357783/46890410-0ecbf100-ce67-11e8-9a06-605829c20cca.png)
+
+Big thanks for you great app ! :)
+"
+koelleChristian/trickytripper,open,Ability to add an amount to an already written amount,"[Label(name=""enhancement"")]","When the distribution of an expense is in progress, often, there is on the bill more than one line for a person.
+
+Now, I have to sum up all expenses for each people and the add the sum inside Tricky Tripper.
+
+It could be great if near the ""amount"" textbox a ""+"" button permit to add to the value of the textbox a new value.
+"
+koelleChristian/trickytripper,open,Allow money transfert without creating an expense,"[Label(name=""enhancement"")]","Now, if someone give money to someone else not linked to something bought, I have to create a expense ""A => B"" in the ""Other"" category.
+
+But in the report table, it will be noted as an expense from A paid by B.
+
+Is there a good way to add a money transfer or a refunding ?
+"
+koelleChristian/trickytripper,open,Ability to manage the category list,"[Label(name=""enhancement"")]",I don't know how to add or remove a category. Is it possible ?
+koelleChristian/trickytripper,open,Delete an operation does not update the user list,"[Label(name=""bug"")]","The money balance in the user fragment is not updated after an operation is deleted.
+
+I have to close and open the app to have the money balance recalculated."
+koelleChristian/trickytripper,open,Improve export: filename and extension,"[Label(name=""Won't do"")]","Hi,
+
+export function seems not to work in the same way for different applications.
+I tested: Telegram, WhatsApp, MEGA, Outlook, Tutanota, Protonmail, and Email (LineageOS email app)
+
+- Telegram: exported and succesfully sent file as `File`, without extension
+- WhatsApp: exported and succesfully sent file as `Untitled`, without extension
+- MEGA: opening folder chooser, but not uploading file at all
+- Outlook: creates email draft and attaches a file but with `attachment` name and without extension
+- Tutanota: not exporting file neither creating a new email draft at all: it opens email list
+- Protonmail: creates email draft but not attaches nothing
+- Email: creates email draft and attaches a file with meaningful name and extension (expected behavior?)
+
+Info: F-Droid build. Version: 1.5.9
+Android 8.1
+
+Thank you, the app is great and **very** useful"
+koelleChristian/trickytripper,closed,Exchange rate import broken,"[Label(name=""bug"")]",Importing exchange rates doesn't create an exchange rate entry in the app currently. It seems to be downloading them though and doesn't show an error.
+koelleChristian/trickytripper,open,"Add a ""split evenly among..."" option","[Label(name=""bug"")]","When creating an expense, an option to split the bill evenly among a selection of users like Tricount's behavior (see screenshot) would spare a custom split and a human calculation.
+![screenshot_20180902-115211_tricount](https://user-images.githubusercontent.com/3638968/44954252-f51ead80-aea7-11e8-9689-4521789cc364.jpg)
+"
+koelleChristian/trickytripper,open,Small spanish translation,[],this is the real pull request.
+koelleChristian/trickytripper,open,Newspanish,[],the translation you asked for.
+koelleChristian/trickytripper,closed,Replace fixed export possibilities with Application Chooser and Android Storage Access Framework,"[Label(name=""enhancement"")]",
+koelleChristian/trickytripper,open,"add ""weight"" to travelers","[Label(name=""enhancement"")]","There is a feature missing that was a problem during my last calculation. We had a group of ""person groups"", meaning 4 Families, some with 3 children, some without. Children are not paying, and partners share the same purse, so I created a ""traveler"" for each family. We wanted to split the money in a ""fair"" way, so that a family with more ""eaters"" (=children) pays more than a family with just two adults.
+
+In my understanding, I would say, I needed a ""weight"" per traveler (=persons in this calculation group) that mirrors the relative payment. A family with 2 parents and 3 children would have ""weight"" 5, a single person would have ""weight"" 1 - and the couple without children would have ""weight"" 2 - the payments should then be split according to this weight: 5:1:2.
+
+This would be a big improvement IMHO to this (already excellent) software. The weight could be a property of a traveler, when creating it, and changed later, let's say, because the group decides that one child in a traveler subgroup is so small that it does not count - so decreasing the weight should update the splitting accordingly, automatically."
+koelleChristian/trickytripper,closed,Spanish translation of currencies,[],Some months ago I promised to make a translation of the currencies into Spanish. Unfortunately I did not have any time to do it til now...
+koelleChristian/trickytripper,open,Month selector,"[Label(name=""pending"")]","Hi,
+
+Thank you for your amazing work, this app is very well designed and useful.
+
+I noticed that when adding a new entry, the date selector does not give me the opportunity to change the month. I can change the date within the current month, change the year, select the time, but don't see any button to scroll or change months.
+
+![screenshot_tt](https://cloud.githubusercontent.com/assets/22911491/23829512/534592f0-0758-11e7-91db-44522e8869a0.png)
+
+Any clue?
+
+Best
+"
+koelleChristian/trickytripper,open,Android automatic refactor - ObsoleteLayoutParam,[],"Hi,
+
+I am developing a tool to automatically refactor Android applications with the goal of improving energy efficiency.
+This pull request has the changes generated while applying the rule ""ObsoleteLayoutParam"".
+
+While developing your application's views you might be specifying attributes in a view's artefact that are not necessary due to the nature of its parent. In this PR, those attributes were replaced by a comment.
+
+I have made a previous validation of the changes and they seem correct.
+Unfortunately, this tool is not able keep the original whitespace of the files, so comparison without ignoring whitespace might be confusing.
+Please consider the changes and let me know if you agree with them.
+
+Best,
+Luis"
+koelleChristian/trickytripper,closed,Rounding error,[],"Hi, useful app. Thanks so much!
+You have a rounding error:
+With 3 people (A,B,C), try adding 10 to A, 20 to B, 20 to C and then 10 to A. You'll see the error in 1 cent. When adding more payments, the error increases."
+koelleChristian/trickytripper,closed,Rename journey,[],Would it be possible to rename a journey ?
+koelleChristian/trickytripper,closed,Deleting active journey leads to crash,"[Label(name=""bug"")]","Deleting the currently active journey leads to unintended Programm shutdown
+"
+koelleChristian/trickytripper,closed,Add autocomplete suggestions to description input,[],"During a trip, there may be multiple payments with identical
+descriptions (e.g. 'errands at the supermarket'). Until now, users had
+to enter the description manually every time. This change enhances the
+description input with autocomplete suggestions, which are collected
+from all existing payments in the trip. This way, the user can simply
+select a suggestion if he wants to use the same description again.
+"
+koelleChristian/trickytripper,closed,Added support for ownCloud export,[],"Hi,
+
+as my main file sharing system is ownCloud, I added support for exporting to the ownCloud android app (https://play.google.com/store/apps/details?id=com.owncloud.android&hl=de, source available at https://github.com/owncloud/android).
+
+regards,
+Oliver
+"
+koelleChristian/trickytripper,closed,ExtraTranslation error,"[Label(name=""bug"")]","I get some ExtraTranslation lint errors. Please either fix them or disable them with  `android { lintOptions { disable 'ExtraTranslation' } }` in your build.gradle:
+
+```
+   Explanation for issues of type ""ExtraTranslation"":
+   If a string appears in a specific language translation file, but there is
+   no corresponding string in the default locale, then this string is probably
+   unused. (It's technically possible that your application is only intended
+   to run in a specific locale, but it's still a good idea to provide a
+   fallback.).
+
+   Note that these strings can lead to crashes if the string is looked up on
+   any locale not providing a translation, so it's important to clean them
+   up.
+```
+"
+koelleChristian/trickytripper,closed,Small improvements in the Spanish translation.,[],"I translated the strings which were not still translated.
+"
+koelleChristian/trickytripper,closed,Add spanish translations,[],"Thnaks a lot for your app. I just translate it to Spanish. (I hope everything worked, this is the 1. time I made a pull request...).
+"
+koelleChristian/trickytripper,open,Balance in export to mail,"[Label(name=""enhancement"")]","When exporting to GMail from Tricky Tripper 1.5.5 (F-Droid), I found that, as I was writing some lines as a preface to the attached files, I didn't remember the final balance for each traveler, and I couldn't go back to look it up without leaving GMail.
+Could you include the balance for each traveler as text in the mail message instead of _...see exported files attached._? Otherwise, a way to work in Tricky Tripper without losing the mail message would do as well.
+
+Thanks for the program.
+"
+koelleChristian/trickytripper,closed,Export to Boxer,"[Label(name=""enhancement"")]","When exporting to mail from Tricky Tripper 1.5.5 (F-Droid), the only mail service offered is GMail. However I use mainly Boxer 2.8.1 (it is included in CyanogenOS 13.0) and it doesn't appear. I don't know if the cause is some API that Boxer does not implement, but I'd like to export to Boxer from Tricky Tripper.
+
+Anyway, thanks for the program and for making it open source.
+"
+koelleChristian/trickytripper,open,Split evenly is reinterpreted as Custom split,"[Label(name=""enhancement"")]","When reviewing payments in TrickyTripper 1.5.5 from F-Droid, I noticed that, while I entered them as _Split evenly_ in the edit they appear as _Custom split_ with an equal amount. I think that is confusing and makes to check if the amounts are equal and whether I had entered some error inadvertently.
+I can understand that, when splitting an odd number between two people, a _Split even_ is converted to a _Custom split_ with one traveller taking the remainder, but it should be avoided if the amounts are equal.
+
+Anyway, thanks for the program and for making it open source.
+"
+koelleChristian/trickytripper,open,Interface to create exchange rate,"[Label(name=""enhancement"")]","When I was updating an exchange rate in Tricky Tripper 1.5.5 from F-Droid, I was a bit confused by the interface. I wanted to set it as 1 GBP =  0,8667 EUR as my bank statement showed.
+The interface is:
+
+_field1_
+`>>`
+GBP Rate EUR
+`<<`
+_field2_
+Description
+_field3_
+
+I doubted and finally wrote 0,8667 in the _field2_ which is the right place. But I was confused by the >> << characters.
+Maybe a better interface is:
+
+_field1_ GBP 
+`=`
+_field2_  EUR
+Description
+_field3_
+
+or some other layout that makes clear what each field means.
+
+In any case, thanks for the program and for making it open source.
+"
+koelleChristian/trickytripper,open,Setting time in the interface,"[Label(name=""enhancement"")]","When using Tricky Tripper 1.5.5 from F-Droid I noticed that I can date a payment as from ""_Now_"" or from a certain date. However I don't see how I can set the time, only the date; the time remains as that of now, which can be confusing. I would like to have an easy way to do it and also to set it to an ""_empty_"", ""_irrelevant_"" or ""_unknown_"" value.
+Thanks for the program and for making it open source.
+"
+koelleChristian/trickytripper,open,Decimal separator in CSV export,"[Label(name=""enhancement"")]","Hello, I used Tricky Tripper 1.5.5 from F-Droid in my last trip and had some nuisance that you may want to look on.
+I exported the report to CSV and sent it through GMail. I am using a Spanish locale so the export uses comma , a as a decimal separator and tabs as cell separators.
+From the GMail web site, I noticed that the GMail preview split the cell as if comma were the cell separator instead of tabs. When opened in Google Spreadsheet, it is still misinterpreted as if comma were the cell separator. Downloading and opening in LibreOffice allows me to choose the decimal and cell separators, so there is no problem.
+So it is not a big nuisance and more a lack of features on Google's part, but maybe you want to rethink the export format. I understand that the Android interface rules disapprove cluttering the interface with many options so maybe the tradeoffs are against letting users to choose.
+In any case, thanks for the program and for making it open source.
+"
+koelleChristian/trickytripper,closed,Improving french translation xavier scheuer,[],"Hi 
+Here are suggestions from xavier scheuer (as discussed by email), they seem good improvement for french translations : they are more accurate and more complete.
+Best regards, Nicolas.
+"
+koelleChristian/trickytripper,open,Date entry broken on CM 12.1 (Android 5.1.1),"[Label(name=""not reproduceable"")]","In the date entry dialog of Tricky Tripper 1.5.5, I can only change the day of the month, the year (only one by one, no scrolling after tapping the year), and the time, but not the month (impossible to scroll). Also, the dialog looks a little ugly. Turning to landscape doesn't improve things. I have no idea if this bug is related to bug #5 which refers to Android 6.0.
+![screenshot_2016-06-01-23-16-07](https://cloud.githubusercontent.com/assets/19696994/15726230/345d5e02-283f-11e6-8d36-fd759f84048b.png)
+"
+koelleChristian/trickytripper,closed,Delete and rename travelers,[],"Please, allow for deleting and renaming travelers.
+"
+koelleChristian/trickytripper,closed,Added button Get it on F-Droid,[],
+koelleChristian/trickytripper,closed,Many small corrections on french language,[],"Some strings were still in english.
+Also many typo fixed.
+"
+koelleChristian/trickytripper,closed,Initial work on french language support,[],"Not all is done, but most visible screens are ok.
+Tested ok on Nexus 5.
+
+Best regards, Nicolas
+"
+koelleChristian/trickytripper,closed,NPE on canResultBeCalculated,[],"```
+java.lang.NullPointerException: Attempt to invoke virtual method 'double java.lang.Double.doubleValue()' on a null object reference
+    at de.koelle.christian.trickytripper.activities.CurrencyCalculatorActivity.canResultBeCalculated(Unknown Source)
+    at de.koelle.christian.trickytripper.activities.CurrencyCalculatorActivity.onPrepareOptionsMenu(Unknown Source)
+    at android.app.Activity.onPreparePanel(Activity.java:2868)
+
+```
+"
+koelleChristian/trickytripper,closed,No time entry possible on Android 6.0,"[Label(name=""bug"")]","The entry of the date is possible on Android 6. But there is no mask to change the time. The application always chooses the actual time only.
+"
+koelleChristian/trickytripper,open,"Allow negative amounts (""earnings"")","[Label(name=""enhancement"")]","Sometimes, the travel company gets cash, and does not only spend it -- for example if you're offering spare car seats in a car pooling, when leaving some location earlier, ...
+
+Tricky Tripper should enable you to enter _negative_ amounts, which display group earnings.
+"
+koelleChristian/trickytripper,open,Prompt for confirmation before discarding unsaved changes,"[Label(name=""enhancement"")]","Losing unsaved changes, for instance, when editing a payment, can easily happen especially to new users since
+- there is no indication of whether the currently viewed payment has been changed
+- it is not clear that changes made are not saved automatically
+- there is no confirmation prompt or warning when leaving the edit dialog without saving changes first
+
+I think, a good solution here would be to fix the latter by adding a prompt.
+Additionally, an indicator for unsaved changes would be nice to have. Maybe simply do it by disabling the save button as long as nothing has been changed (or more precisely: as long as the shown data matches the stored data)?
+"
+koelleChristian/trickytripper,closed,Get android-async-http from mavenCentral/jCenter,"[Label(name=""incompatibility"")]","To get this app updated on FDroid, I tried to remove the jar file and replace it with adding `compile ""com.loopj.android:android-async-http:1.4.7@aar""` to app/build.gradle, but it fails to build:
+
+```
+:app:compileReleaseJava/home/krt/src/fdroiddata/build/de.koelle.christian.trickytripper/app/src/main/java/de/koelle/christian/common/json/AsyncJsonParser.java:23: error: method sendSuccessMessage in class AsyncHttpResponseHandler cannot be applied to given types;
+                super.sendSuccessMessage(arg0);
+                     ^
+  required: int,String
+  found: String
+  reason: actual and formal argument lists differ in length
+/home/krt/src/fdroiddata/build/de.koelle.christian.trickytripper/app/src/main/java/de/koelle/christian/common/json/AsyncJsonParser.java:21: error: method does not override or implement a method from a supertype
+            @Override
+            ^
+/home/krt/src/fdroiddata/build/de.koelle.christian.trickytripper/app/src/main/java/de/koelle/christian/common/http/AsyncHttpParser.java:20: error: method sendSuccessMessage in class AsyncHttpResponseHandler cannot be applied to given types;
+                super.sendSuccessMessage(arg0);
+                     ^
+  required: int,String
+  found: String
+  reason: actual and formal argument lists differ in length
+/home/krt/src/fdroiddata/build/de.koelle.christian.trickytripper/app/src/main/java/de/koelle/christian/common/http/AsyncHttpParser.java:18: error: method does not override or implement a method from a supertype
+            @Override
+            ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+4 errors
+ FAILED
+```
+
+Note that 1.4.3 is the first version available from there but has issue requiring me to touch the manifest and then still failing. I assume using the newer versions will require changes to the app itself.
+"
+koelleChristian/trickytripper,closed,F-Droid Entry points to the wrong Website,[],"Points to http://tricktripper.blogspot.de, which seems to be a typo.
+"

@@ -1,0 +1,593 @@
+repository,state,title,label,body
+freezy/android-xbmcremote,open,Rotation support...,[],"It's hacky, but it minimizes the changes to do in the code. The logic (respan a command) is in line with Android recommendations however. And now the screen rotation works.
+
+Disclaimer: I've tested it only with music files.
+"
+freezy/android-xbmcremote,open,Fix NPEs found in the UI,[],"Trivial fix. Tested in real conditions.
+"
+freezy/android-xbmcremote,open,Fix for #112 - NPE in android.text.StaticLayout.calculateEllipsis,[],"I tested it with android 5.0.1 on a Nexus 5, it fixes the issue.
+"
+freezy/android-xbmcremote,open,Refactored InfoManager,[],"Extracted DirectoryParams from getDirectory to increase Cohesion
+"
+freezy/android-xbmcremote,open, Refactoring Large Method getCoverByThumbnailSize in AbstractManager ,[],"Patch [0/1]
+- Refactoring Class AbstractManager 
+
+Patch [1/1]
+- Extract method getCoverByThumbnailSize() from getCover()
+"
+freezy/android-xbmcremote,open,Refactor Large Class Abstract Manager,[],"Added a patchset for the refactoring in the patchset folder, here is a rundown:
+
+[PATCH 0/3] 
+- AbstractManager is a Large Class (Code Smell) and it has more than one responsibility.
+  Therefore, we extracted Sort attributes and methods to a new class called SortPreferenceMedia.
+
+[PATCH 1/3] Added Preferences For IDE to Ignore File
+- Added files to the .gitignore from the preferences that were created by Android Studio
+
+[PATCH 2/3] Refactored AbstractManager
+- Extracted KEY_SORT attributes to a new class called SortPreferenceMedia
+- Removed Interface ISortableManager from the child classes of AbstractManager
+
+PATCH 3/3] Removed Sort Methods From AbstractManager
+- Removed Unnecessary method getSortOrder from AbstractManager
+"
+freezy/android-xbmcremote,open,Translate res/values to Portuguese,[],"This is the first step towards translating the entire UI to other
+languages.  Lots need to be done still as there are many strings hard
+coded in the code and in the layout files as well.
+
+More patches are needed, first to replace all hard coded strings with appropriate string resource elements and then a translation of each resource file.
+"
+freezy/android-xbmcremote,open,Album covers are getting shuffled on list fling,[],"When I fling music albums/movies cover images are shuffled 
+"
+freezy/android-xbmcremote,open,NPE StaticLayout.CalculateEllipses when viewing movie folders,[],"I'm getting this error when viewing the Folders for our movies.  I have done some investigation into this issue but don't feel comfortable to issue a pull request for the fix required.
+
+The line I believe in question is on line 21 of android-xbmcremote / res / layout / titlebar.xml.
+
+Here is the link of the fix that I believe would fix the issue I'm having.
+https://code.google.com/p/android/issues/detail?id=33868
+
+![screenshot_2014-08-19-08-09-49](https://cloud.githubusercontent.com/assets/2992359/3969836/c1036eaa-27c4-11e4-8144-97ba7c6782c9.png)
+![screenshot_2014-08-19-08-10-13](https://cloud.githubusercontent.com/assets/2992359/3969837/c63ead3a-27c4-11e4-8c04-13fb022cb246.png)
+"
+freezy/android-xbmcremote,closed,"Prevent artists, genres and compilations tabs (in music library) from",[],"showing a NullPointerException in case the music library is empty.
+
+This should fix the following issue:
+#102 NullPointerException
+"
+freezy/android-xbmcremote,open,switched to gradle build system,[],"i switched from eclipse adt to android studio and gradle build system. since android-studio is available as beta release maybe you want to switch to the new android build system. it's far more flexible as eclipse adt and ant.
+the project structure that i changed is now in the default form of an android studio project.
+"
+freezy/android-xbmcremote,open,Missing configuration buttons on galaxy s5,[],"It is imposible to configurate app on galaxy s5. Configuration buttons (add host, settings etc.) Are missing.
+"
+freezy/android-xbmcremote,open,Adding profiles support.,[],"Adding support for changing profiles within the remote control.
+Solves issue 655.
+"
+freezy/android-xbmcremote,open,Update the version on Play Store or F-Droid,[],"Both sources only carry version 1.0.9 from January 2013. Maybe a newer version would fix some of the problems I see when connecting to my Raspbmc with XBMC from 2013-12-04?
+"
+freezy/android-xbmcremote,closed,"show action overflow in system navigation, again. Fixes #105",[],"If current activity doesn't use actionbar and the device doesn't have a
+hardware menu button, the system must add the action overflow button
+beside the system navigation, because otherwise the options become
+inaccessible.
+I implemented a solution based on this blogpost:
+http://android-developers.blogspot.de/2012/01/say-goodbye-to-menu-button.html
+[...] if you set minSdkVersion to 10 or lower, set targetSdkVersion to
+11, 12, or 13, and you do not use ActionBar, the system will add the
+legacy overflow button [...] if the device itself doesn't feature a
+hardware menu button, thus making the options accessible.
+This solves issue #105 where one could not access the options of
+RemoteActivity (and others) on newer devices that don't feature a
+hardware menu button (which is basically all devices except Samsung's)
+"
+freezy/android-xbmcremote,closed,Remote Control options menu is gone,[],"In the latest version the legacy android menu button was removed for the ""Remote Control"" activity, but since that activity is not using an actionbar, there is no way left to access that activity's menu, most importantly the ""Text Entry"" option.
+"
+freezy/android-xbmcremote,closed,Fixes issue #101,[],"Fixes issue #101: Sharing videos from youtube app to xbmcremote stopped working because
+Intent.EXTRA_TEXT contained more than just the url and the url itself
+changed to a short version (youtu.be/videoID)
+"
+freezy/android-xbmcremote,open,Socket Timeout errors,[],"https://code.google.com/p/android-xbmcremote/issues/detail?id=618
+
+Bug still exists in latest XBMC Remote 1.0.9 from Play store.
+"
+freezy/android-xbmcremote,open,NullPointerException,[],"install raspbmc
+do not set up music
+connect with remote and click Music
+popup ""NullPointerException""
+"
+freezy/android-xbmcremote,open,Can no longer play from YouTube,[],"Trying to share a video from YouTube to XBMC remote results in just a blank screen, back is possible to return to YouTube. No confirmation to open link.
+
+Possibly due to YouTube's share content change in one of the updates as sharing from a YouTube page on browser still works.  
+"
+freezy/android-xbmcremote,open,Add a mark as watched/unwatched option to longpress dialogue,[],"Both the Movies and Shows don't have an option to manually set them as watched/unwatched. I would really be able to do so for my own overview
+"
+freezy/android-xbmcremote,open,"Update link to ""Developers Website"" in Google Play listing",[],"In the current listing ""Visit Developers Website"" links to the Google Code project instead of this Github one. Since there isn't a link to this project on the Google Code project as well, it has a serious impact on issues bieng reported and developers contributing, as they cannot find the proper project.
+
+As this is a very easy fix with a lot of potential gain, I hope this gets a high priority from the owners of the Google Play Developer account and/or those of the Google Code repository. 
+"
+freezy/android-xbmcremote,closed,Fixed remote bug (screen rotate = no keyup event),[],"The button_up event was not being sent to XBMC after a screen rotate in the remote.
+Also, the timer for setting_send_repeats mode was not canceled after a
+screen rotate, causing it to run indefinitely. Fixed by remembering the
+current button being pressed, cleaning up the KeyPressTask, and sending
+button_up events where appropriate.
+
+Fixes issue #97 
+"
+freezy/android-xbmcremote,closed,Scrolling stuck after screen rotate,[],"I submitted this bug to the original repository 3.5 years ago and it was never resolved.
+
+https://code.google.com/p/android-xbmcremote/issues/detail?id=413
+
+The issue is that because the activity is recreated when the screen rotates, the ACTION_UP event is never sent and therefore the timrKeyPress in RemoteController.java is never canceled.
+
+I will be fixing this and issuing a pull request momentarily.
+"
+freezy/android-xbmcremote,open,More language,[],"I could translate apps to French but the preferences XML need to be rewrite to include r.sting instead of direct text values.
+
+Will make a push request with code when working in my eclipse.
+"
+freezy/android-xbmcremote,open,SMS Display on TV shows wrong contact image,[],"Love the display of sms texts on the tv, however it seems to always show my own contact picture, rather than the picture of the sender of the text.
+"
+freezy/android-xbmcremote,closed,Allow using widget on the lock screen,[],
+freezy/android-xbmcremote,closed,Fix building with ant,[],"Also add the lib-src directory to the sources to compile.
+"
+freezy/android-xbmcremote,open,stops running,[],"After installed getting message program stopped.Not sure what to do now
+"
+freezy/android-xbmcremote,open,"Fix ""Shutdown"" not working & fix NPE in Pictures",[],"Shutdown uses the EventServer and this brings up the shutdown
+dialog where you need to choose what to do. This behaviour is not
+inline with what we experience on iOS client and makes it hard to
+shut down a system from remote as the selection might end up in
+dialog close or the first item. Convert the call to JSON-RPC
+instead. This will gracefully shutdown the XBMC server and power
+off the system
+"
+freezy/android-xbmcremote,closed,Now playing: Handle duration == -1 in remaining time,[],"Here unknown durations are given as -1, so handle that
+when formatting the remaining time.
+"
+freezy/android-xbmcremote,closed,Work/fix empty lists/sections,[],"Fixes several cases where listing an empty section (No movies, tv episodes, empty playlists etc.) triggers NullPointerExceptions.
+"
+freezy/android-xbmcremote,closed,Avoid NullPointerExceptions in empty sections,[],"When a section is empty, the result list is omitted from the Json but
+the Json result still contains a ""limits"" element. Thus checking for
+result.size() == 0 is not robust enough. So check for the actual list
+element to exist.
+"
+freezy/android-xbmcremote,open,Adding songs to playlist queue,[],"When the ""Action on selection"" setting is set to ""Queue Song"", XBMC interrupts the currently playing song to play the new selection.
+"
+freezy/android-xbmcremote,open,Working PAUSEPLAY/FORWARD/REVERSE hardware keys integration ,[],"(Tested with pebble) on sdk version 8 and above, still runs on 3+. Yo dawg I heard you like remote controls so I added remote control hooks for your remote control so you can control it remotely.
+"
+freezy/android-xbmcremote,open,rotating phone while in folders shows no media found,[],"If you go to watch your movies, then files (bottom right), go into a folder then rotate the phone, the result shows ""no media found"" and does not return when you rotate the phone back the way it was. 
+
+This works in both starting rotation positions
+12.2 stable ( from android store)
+git: 20130502-32b1a5e
+"
+freezy/android-xbmcremote,open,Invalid params on TV shows,[],"Hi
+since a few days I have problem with the app when I try to go in the section TV shows I have an error message : ""Invalid params"". Same when I want to dowload posters.
+I actually have a folder declarded as category tv shows and it works nice in xbmc. I use the remote control to navigate and it was better with the direct link in the app.
+The app worked fine at start but I don't know why not now. I have take screenshot of the problem :
+![screenshot_2013-06-30-21-27-38](https://f.cloud.github.com/assets/4896006/727904/a539f7f6-e1cb-11e2-9e53-314af474e8fc.png)
+![screenshot_2013-06-30-21-24-02](https://f.cloud.github.com/assets/4896006/727905/b289d296-e1cb-11e2-98eb-85df1c8172a2.png)
+
+Sorry for my engrish ^^
+"
+freezy/android-xbmcremote,open,Update UI to be more holo-like,[],"Hi, 
+
+first of all I'd like to thank you for that cool remote. What's bugging me a little is the old - school UI. Is anyone currently working on that or do you need help? Maybe I'm the only one who thinks that the UI needs some polish... 
+
+I could help you developing a new UI. :) 
+"
+freezy/android-xbmcremote,open,No Pull Requests are being merged,[],"I came here to do a little bit of work on the Android app, but no pull requests have been merged for months. **Is this project dead?** There's not much point doing anything other than writing this todo list if nothing is being merged...
+
+Things I was going to look at:
+- Sometimes XBMC gets into a headspin of rapid clicks which aren't happening from my remote
+- The remote spits outs exception after exception when the XBMC server is unavailable (mine switches itself off after two hours no use).
+- Ant build scripts.. (which are actually done but unmerged over [here](https://github.com/freezy/android-xbmcremote/pull/74)!)
+"
+freezy/android-xbmcremote,open,"Now Playing does not work with a paylist of ""files""",[],"I'm listening to audiobooks which I do not wish to add to my music library. So I always selected the folder via the ""Music"" -> ""Files"" menu (Queue/Play folder).
+After the update to frodo and the recent XBMC Remote version from Play Store this does not longer work as expected.
+
+The files are added to the playlist and playback starts but I cant select another track in the playlist and the ""Now Playing"" screen shows no information and does not allow so skip/seek within the playing track.
+"
+freezy/android-xbmcremote,closed,Notification poller,[],"I've ported across code from hjhamala as per his comment: https://github.com/freezy/android-xbmcremote/pull/38#commitcomment-1581707
+"
+freezy/android-xbmcremote,closed,The Artists list does not get sorted,[],"After adding a new album (and the corresponding artist) to the library the artist shows up in the artists list of the xbmc remote, but is put at the bottom. This results in an unsorted list which is not convenient to use.  In xbmc 12.1 (latest stable version of Openelec on Raspberry pi) that I am using they are sorted properly.
+
+I have cleared the cache of the app, but this does not fix the issue. The artists keep being sorted based on the moment they were added to the library rather than based on their name.
+"
+freezy/android-xbmcremote,closed,Some fixes,[],"A couple of minor fixes:
+
+Fixed now playing for files not in the library
+Fixed queuing music tracks
+Fixed always starting at the start of an album when selecting a song to play rather than queuing the album and playing from the selected track
+
+(not sure why there's so many commits making up this request but the file changes are only those from the last 3 commit)
+"
+freezy/android-xbmcremote,open,Possible fix for null context on resume,[],"Happened on several occasions with current master code but cannot be reliably reproduced. The stack trace always looks exactly the same:
+
+USER_COMMENT=null
+ANDROID_VERSION=4.1.2
+APP_VERSION_NAME=0.9.0
+BRAND=Google
+PHONE_MODEL=Nexus S
+CUSTOM_DATA=
+STACK_TRACE=java.lang.RuntimeException: Unable to resume activity
+{org.xbmc.android.remote/org.xbmc.android.remote.presentation.activity.NowPlayingActivity}:
+java.lang.NullPointerException
+android.app.ActivityThread.performResumeActivity(ActivityThread.java:2701)
+android.app.ActivityThread.handleResumeActivity(ActivityThread.java:2729)
+android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2215)
+
+Caused by: java.lang.NullPointerException
+at android.content.ComponentName.<init>(ComponentName.java:75)
+at android.content.Intent.<init>(Intent.java:3324)
+org.xbmc.android.jsonrpc.io.ConnectionManager.bindService(ConnectionManager.java:221)
+org.xbmc.android.jsonrpc.io.ConnectionManager.call(ConnectionManager.java:161)
+org.xbmc.android.remote.business.cm.AbstractManager.callRaw(AbstractManager.java:112)
+org.xbmc.android.remote.business.cm.ControlManager.getCurrentlyPlaying(ControlManager.java:154)
+org.xbmc.android.remote.business.NowPlayingPollerThread.subscribe(NowPlayingPollerThread.java:121)
+org.xbmc.android.remote.presentation.controller.NowPlayingController.onActivityResume(NowPlayingController.java:218)
+org.xbmc.android.remote.presentation.activity.NowPlayingActivity.onResume(NowPlayingActivity.java:260)
+android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1184)
+"
+freezy/android-xbmcremote,closed,"Pressing 'play' in ""Now Playing"" causes played item to restart",[],"Not much more to add then told in title. 
+1. Start a video
+2. Go to ""Now Playing""
+3. Hit the 'pause' button
+4. Hit the 'play' button
+"
+freezy/android-xbmcremote,open,Publish to Amazon (for Kindle Fire),[],"I know I could build from source, or install to a regular Android device, back up the .apk and sideload it to a kindle but hey... I'm lazy. the new ICS based Kindles are great little tablets and (especially if any of this http://forum.xbmc.org/showthread.php?tid=143242 comes true) I'd like to use it as the remote for my Raspberry Pi...
+
+Kindle appstore is free to submit, and if it's a standard Andsroid app should be pretty much ready to go [https://developer.amazon.com/welcome.html] - if there's a ready built .apk somewhere I can grab and sideload happy to test it out and report back...
+"
+freezy/android-xbmcremote,closed,Ant build scripts,[],"Generated by:
+  android update project -p <path> -n android-xbmcremote
+
+For build apk in commandline (without Eclipse).
+"
+freezy/android-xbmcremote,closed,Added support for Xperial Play(and gamepads) as remote,[],"I love using my Xperia play as a remote for XBMC but I was feeling I could do so much more if I could use the physical buttons. 
+
+I have added support for most of the basic functionality in the 'remote control' screen, so a user can have a similar experience as controlling netflix from their ps3 controller.
+
+The only problem I encountered is the behaviour of the X(ps3) or A(xbox) button of the Xperia play. This button would be called because the KeyDown event was been intercepted by the parent view. For this reason I had to forcefully move the focus to the 'select' button after every keyUp event and then I had to make the 'select' button call it's behavior independably. It should not affect anyone that is using the touch interface. It would only cause conflict in the weird case someone is using another keyboard or keypad to control the phone, which would be improbable and impractical. 
+
+FYI:
+
+The changes are not as big as the diff make it to be. I was working on eclipse and I forgot I autoformated a layout file. The real changes only happened to the *.java files.
+"
+freezy/android-xbmcremote,open,JSONRPC failed,[],"when use jsonrpc , Movie directory can't be enter. Log message in xbmc.log as:
+
+19:37:10 T:2758789952   DEBUG: JSONRPC: Incoming request: {""jsonrpc"":""2.0"",""id"":""3722001967211620453"",""method"":""Files.GetDirectory"",""params"":{""directory"":""/media/diske/Media/"",""media"":""video"",""sort"":{""ignorearticle"":false,""method"":""file"",""order"":""ascending""},""properties"":[""mimetype"",""file""]}}
+19:37:10 T:2758789952   DEBUG: JSONRPC: Calling files.getdirectory
+19:37:10 T:2758789952   DEBUG: JSONRPC: Value does not match any of the enum values in type
+19:37:10 T:2758789952   DEBUG: JSONRPC: Array element at index 0 does not match in type properties
+"
+freezy/android-xbmcremote,closed,No 'watched' mark,[],"When I can browse through Tvshows, it doesn't show the watched mark, which is a bit annoying when you try to find the next ep you didnt see yet.
+"
+freezy/android-xbmcremote,closed,Connection semi-works,[],"Most of the time the connection seems to half-working. When opening the app, it shows that it is ""connecting"", but it just doesnt get connected. Meanwhile using the app as remote control works perfectly in this state.
+
+Edit: After re-starting the app it sometimes gets into 'full' connection.
+"
+freezy/android-xbmcremote,open,App constantly trying to send crash report,[],"Yesterday I used the remote to watch a few episodes. Then I closed XBMC before closing the remote app. I then got a Android selection popup to choose an activity to handle sending a crash report. No matter what I chose (even cancel) right after I made a choice, I got another selection popup. There was no way to either actually send the crash report or to stop the app from trying to send a crash report. I had to reboot my phone to make it stop because after every press/action another selection popup appeared.
+
+I didn't have time to reproduce it yet.
+"
+freezy/android-xbmcremote,closed,Status Update Fixes,[],"I was getting OutOfMemory errors in status updates, so I changed them to only update on change. This led me down the path of issues with the Now Playing screen, so there are fixes for Pictures, TV Shows, and Movies in here as well.
+"
+freezy/android-xbmcremote,open,Add Video queuing,[],"Currently you can't queue tv shows or videos, only play them directly.
+"
+freezy/android-xbmcremote,closed,TV Episode View Details missing information,[],"When you view details on a TV show most of the additional details are missing.
+"
+freezy/android-xbmcremote,open,Tablet mode,[],"I love using the android remote on my tablet, but there's so much more information that could be displayed. I'd love to start brainstorming what we could do with the various screens on a tablet.
+
+I'm thinking it would be nice to be able to see the playlist at all times on a tablet (and perhaps drag and drop things onto it).
+"
+freezy/android-xbmcremote,open,Add ratings,[],"It would be lovely to have the ability to rate from the Now Playing screen.
+"
+freezy/android-xbmcremote,open,button to enable party mode,[],"It would be good to have a button to enable party mode directly from
+The app.  Also to be able to queue a song to play after the current song in the party 
+Mode playlist.
+"
+freezy/android-xbmcremote,closed,Play doesn't work in Now Playing screen,[],"Fixed the play/pause button on the NowPlayingScreen. 
+"
+freezy/android-xbmcremote,closed,Fix for Runtime of movies displayed in seconds,[],"This simply divides by 60. It appears to be the exact same behavior as Eden. 
+
+https://github.com/freezy/android-xbmcremote/issues/58
+
+Not quite sure why the duration doesn't match the now playing numbers, but the behavior matches between Eden and Frodo currently.
+"
+freezy/android-xbmcremote,closed,Pressing play after pausing it in now playing restarts video ,[],"If you pause the video in now playing and press play again to resume it restarts the video 
+Also when paused there's no current time info displayed 
+"
+freezy/android-xbmcremote,closed,No movie actors in Movie -> Actors,[],"well, what the title says. There are no actors listed/found in Movies -> Actors, while they are shown nicely in the movie details.
+"
+freezy/android-xbmcremote,closed,Runtime of movies displayed in seconds,[],"The runtime of movies/videos is displayed in seconds and not converted to a more human readable format. I don't have a link to the PR in XBMC at hand that changed that behavior - but returning the runtime in seconds instead of the raw unparsed string is new in Frodo.
+"
+freezy/android-xbmcremote,closed,Play doesn't work in Now Playing screen,[],"Pausing a movie works, but after that pressing play has no effect. There's also no corresponding JSON-RPC request in the xbmc log.
+"
+freezy/android-xbmcremote,closed,Watched status isn't shown for tvshows/season/episodes,[],"v0.9.0
+"
+freezy/android-xbmcremote,closed,No album cover displayed when playing music,[],"v0.9.0
+(other client does display it)
+"
+freezy/android-xbmcremote,closed,Now playing time displayed as --2:-026 (when playing music),[],"Version 0.9.0
+"
+freezy/android-xbmcremote,closed,Let's try this again,[],"The previous version couldn't run on earlier android versions (specifically Froyo). I fixed that. I'll try to start using issues to track changes from here on out.
+"
+freezy/android-xbmcremote,closed,JSONRPC take 2,[],"This is my implementation for Frodo using the xbmc-jsonrpc libraries. There are a few new features in here, like fan art that I couldn't help add.
+
+Currently you simply mark that a connection needs jsonrpc in the host settings. I'll probably add an auto detection routine in the coming days, but this makes backwards compatability easy. My current setup is still using Eden and my dev box is Frodo, and I'm not having trouble switching back and forth.
+"
+freezy/android-xbmcremote,closed,The makeover is much needed,[],"Good job on starting on it. Just a small change which makes the project buildable on other machines than yours
+"
+freezy/android-xbmcremote,open,Added support for Sony SmartWatch,[],"In order to build the project, you will need to download and import the
+Smart Extension SDK from
+http://developer.sonymobile.com/downloads/tool/smart-extension-sdk/
+
+Supported features:
+- Display of the playing media on the watch
+- Single touch to Play/Pause
+- Swipe left to go backward by 30 seconds
+- Swipe right to go forward by 30 seconds
+- Swipe up to play previous media of the playlist
+- Swipe down to play the next media of the playlist
+"
+freezy/android-xbmcremote,closed,IO Exception when starting the remote control,[],"This issue was previously documented [here](http://code.google.com/p/android-xbmcremote/issues/detail?id=670) (I'm not the original reporter). Resubmitting on github, since I cannot find the issue here.
+
+_Including the description of the original bug below_
+
+**What steps will reproduce the problem?**
+1. Start XBMC Remote
+2. Start remote control (sometime error even without starting remote control)
+3. Error message shows:
+I/O Exception (java.io.FileNotFoundException)
+http://192.168.2.30:8080/
+xbmcCmds/xbmcHttp?command=GetSystemInfo(120)
+
+**What is the expected output? What do you see instead?**
+No error message.
+
+**What version of XBMC Remote are you using?**
+v0.8.8-beta1 build 808
+
+**Which Android device are you using (and which ROM, if custom)?**
+JB
+"
+freezy/android-xbmcremote,closed,JSONRPC API Support,[],"JSONRPC support added for Eden and somewhat for Frodo. You can enable and disable it in the settings.
+"
+freezy/android-xbmcremote,open,Fix remove from playlist,[],"A little mistake in HTTP protocol prevent remove from playlist working (inversed arguments)
+"
+freezy/android-xbmcremote,open,Option to queue whole album on play song,[],"When we play a song, if it belong to an album, the whole album is queue in the playlist.
+With this feature, there is no way to add only one song in the playlist.
+And then, we can't create a playlist manually. (i.e. with only some selected songs in it)
+
+This patch add an option to enable/disable this feature. This option is activated by default so xbmc-remote still have the same behavior by default.
+"
+freezy/android-xbmcremote,closed,Option to queue whole album on play song,[],"When we play a song, if it belong to an album, the whole album is queue in the playlist.
+With this feature, there is no way to add only one song in the playlist.
+And then, we can't create a playlist manually. (i.e. with only some selected songs in it)
+
+This patch add an option to enable/disable this feature. This option is activated by default so xbmc-remote still have the same behavior by default.
+"
+freezy/android-xbmcremote,open,"""Play on XBMC"" no longer shows up in apps that used to support it",[],"On recent build, apps that launch a video player no longer show ""Play on XBMC"" as an option in their pop-up menus.
+
+Some looking around shows this is related to changes to the intent-filters in AndroidManifest.xml .
+I don't know exactly why, but reverting part of commit 503c1d265c77fe94101cc1283e302455bcb6e6cf 's changes to AndroidManifest.xml resolves the problem, the apps show ""Play on XBMC"" in their pop-up menus again.
+
+A few affected apps:
+- Gemist! (Dutch app)
+- TVGids.nl 2.0 (Dutch app)
+
+There are probably more. YouTube is not affected.
+"
+freezy/android-xbmcremote,open,ending phone converstation does not resume palyback,[],"What steps will reproduce the problem?
+1. Play a movie/serie
+2. Get incoming call that pauses the movie
+3. Talk for a few minutes will dim the screen or even turn it off (depending on your sleep settings)
+4. After hanging up it seems like the app sends a play command. Instead of resuming the playback it will turn on the screen
+
+What is the expected output? What do you see instead?
+I expected XBMC to start playback
+
+What version of XBMC Remote are you using?
+version v0.8.8-beta1 revision 808
+
+Which Android device are you using (and which ROM, if custom)?
+android version 2.3.7
+CyanogenMod-7-10022011-NIGHTLY-Blade
+
+Which XBMC revision are you running and on which platform?
+XBMC:11.0 (Mar 12 2012)
+platform: windows 7
+
+Please provide any additional information below.
+The same thing would happen when you manually press the play button after the screen has dimmed/turned off. It will just wake up and not start playing yet. It seems like it can be solved by sending a play command twice
+"
+freezy/android-xbmcremote,closed,use cover art/thumbnails in notifications on platforms that support it,[],"These patches allow the xbmc remote to display thumbnails using the richer notification APIs available in newer Android versions.
+- Below Honeycomb, notifications appear as they always have.
+- On Honeycomb and up, they use the large icon functionality of the [Notification.Builder](http://developer.android.com/reference/android/app/Notification.Builder.html) API. They look like [this](https://dl.dropbox.com/u/9634624/screenshots/xbmcremote_ICS.png).
+- On Jelly Bean and up, they expand on the large icon notifications with [Notification.BigPictureStyle](http://developer.android.com/reference/android/app/Notification.BigPictureStyle.html). They look like [this](https://dl.dropbox.com/u/9634624/screenshots/xbmcremote_JB.png). When collapsed, they're identical to the large icon version.
+
+Jelly Bean also adds the ability to add actions to the notification, which could be useful for quick access to playback controls (like the current Google Music app). I wasn't immediately sure of the best way to do this and decided not to include it, but it's an easy addition from here.
+"
+freezy/android-xbmcremote,closed,IMDb Integration,[],"(Added IMDb feature to relevant context menus of Movies list, Movie
+details, TV shows list, TV show details)
+"
+freezy/android-xbmcremote,closed,IMDb Integration,[],"Solved my issue.
+Can be deleted.
+"
+freezy/android-xbmcremote,open,Make libraries searchable,[],"I'm opening a ticket for feature request 368 in the code.google's page (http://code.google.com/p/android-xbmcremote/issues/detail?id=368).
+
+This feature would be very useful for the Use case of using the remote as a music media player (ie, playing songs without needing to use the server's keyboard).. Searching the song library would be a great addition.
+"
+freezy/android-xbmcremote,closed,"Don't poll XBMC for ""Now playing"" info if screen is off.",[],"If the user wants ""Now playing"" info to appear in their notification
+area, make sure we don't poll XBMC every second while the screen is off,
+as any new information cannot be seen until the screen is turned back on
+anyway.
+"
+freezy/android-xbmcremote,open,Fixed TV shows not showing up in new XBMC nightly builds,[],"The database structure of XBMC was changed with this commit: https://github.com/xbmc/xbmc/commit/aacfed85daba2737c368ccc33aeaa7793889d203
+"
+freezy/android-xbmcremote,closed,TV shows do not show up with nightly build,[],"The app works fine for everything, but TV shows do not show up when using it with the latest nightly build (1495cbeb771bb5dde20a83a50d23c89a50e6f5c1). Not sure why this is, everything is ok in XBMC.
+
+It could be due to this commit: https://github.com/xbmc/xbmc/commit/aacfed85daba2737c368ccc33aeaa7793889d203
+
+XBMC debug log:
+
+10:48:52 T:140709043975936   DEBUG: webserver: request received for /xbmcCmds/xbmcHttp?command=GetSystemInfo(120)
+10:48:52 T:140709716850464   DEBUG: HttpApi Start command: GetSystemInfo  paras: GetSystemInfo; 120
+10:48:53 T:140709043975936   DEBUG: webserver: request received for /xbmcCmds/xbmcHttp?command=QueryVideoDatabase(SELECT+tvshow.idShow%2C+tvshow.c00%2C+%22%22+AS+c01%2C+ROUND%28tvshow.c04%2C+2%29%2C+tvshow.c05%2C+tvshow.c08%2C+tvshow.c13%2C+tvshow.c14%2C%09%09paths.strPath%2C%09%09counts.totalcount+AS+totalCount%2C%09%09counts.watchedcount+AS+watchedCount%2C%09%09counts.totalcount+%3D+counts.watchedcount+AS+watched%09FROM+%28%09%09select+min%28tvshow.idShow%29+as+idShow%2C+tvshow.c00+from+tvshow%09%09group+by+tvshow.c00%09%29+showNames%09LEFT+OUTER+join+tvshow+on+showNames.idShow+%3D+tvshow.idShow%09LEFT+OUTER+join+%28%09%09SELECT+min%28tvshow.idShow%29+as+idShow%2C+tvshow.c00%2C+count%281%29+AS+totalcount%2C+count%28files.playCount%29+AS+watchedcount+%09FROM+tvshow%09%09JOIN+tvshowlinkepisode+ON+tvshow.idShow+%3D+tvshowlinkepisode.idShow%09%09JOIN+episode+ON+episode.idEpisode+%3D+tvshowlinkepisode.idEpisode%09%09JOIN+files+ON+files.idFile+%3D+episode.idFile%09%09GROUP+BY+tvshow.c00%09%29+counts+ON+tvshow.idShow+%3D+counts.idShow%09LEFT+OUTER+join+%28%09%09SELECT+tvshow.idShow%2C+strPath+%09%09FROM+tvshow%09%09JOIN+tvshowlinkpath+ON+tvshow.idShow+%3D+tvshowlinkpath.idShow%09%09JOIN+path+ON+path.idpath+%3D+tvshowlinkpath.idPath%09%09WHERE+path.idPath+in+%28SELECT+max%28idPath%29+FROM+tvshowlinkpath+GROUP+BY+idShow%29%09%29++paths+on+tvshow.idShow+%3D+paths.idShow++ORDER+BY+CASE+WHEN+tvshow.c15+IS+NULL+OR+tvshow.c15+%3D+%27%27+THEN+replace%28lower%28tvshow.c00%29%2C%27the+%27%2C%27%27%29+ELSE+replace%28lower%28tvshow.c15%29%2C%27the+%27%2C%27%27%29+END+ASC)
+10:48:53 T:140709716850464   DEBUG: HttpApi Start command: QueryVideoDatabase  paras: [not recorded]
+10:48:53 T:140709716850464   ERROR: SQL: SQL error or missing database
+                                            Query: SELECT tvshow.idShow, tvshow.c00, """" AS c01, ROUND(tvshow.c04, 2), tvshow.c05, tvshow.c08, tvshow.c13, tvshow.c14,       paths.strPath,      counts.totalcount AS totalCount,        counts.watchedcount AS watchedCount,        counts.totalcount = counts.watchedcount AS watched  FROM (      select min(tvshow.idShow) as idShow, tvshow.c00 from tvshow     group by tvshow.c00 ) showNames LEFT OUTER join tvshow on showNames.idShow = tvshow.idShow  LEFT OUTER join (       SELECT min(tvshow.idShow) as idShow, tvshow.c00, count(1) AS totalcount, count(files.playCount) AS watchedcount     FROM tvshow     JOIN tvshowlinkepisode ON tvshow.idShow = tvshowlinkepisode.idShow      JOIN episode ON episode.idEpisode = tvshowlinkepisode.idEpisode     JOIN files ON files.idFile = episode.idFile     GROUP BY tvshow.c00 ) counts ON tvshow.idShow = counts.idShow   LEFT OUTER join (       SELECT tvshow.idShow, strPath       FROM tvshow     JOIN tvshowlinkpath ON tvshow.idShow = tvshowlinkpath.idShow        JOIN path ON path.idpath = tvshowlinkpath.idPath        WHERE path.idPath in (SELECT max(idPath) FROM tvshowlinkpath GROUP BY idShow)   )  paths on tvshow.idShow = paths.idShow  ORDER BY CASE WHEN tvshow.c15 IS NULL OR tvshow.c15 = '' THEN replace(lower(tvshow.c00),'the ','') ELSE replace(lower(tvshow.c15),'the ','') END ASC
+10:48:53 T:140709716850464   ERROR: GetArbitraryQuery failed
+
+This issue has also been posted on google-code page, not sure which page it should be posted to. Delete whichever one is not needed.
+http://code.google.com/p/android-xbmcremote/issues/detail?id=637&sort=-id&colspec=ID%20Type%20Status%20Priority%20Reporter%20Owner%20Summary%20Milestone
+
+The issue was indeed with the changed table structure in the db. This commit fixes it: https://github.com/tsubus/android-xbmcremote/commit/7635572275a4bd4283589136e334a452b6a78f51
+"
+freezy/android-xbmcremote,open,Add setting to keep screen on,[],"Add a setting to keep the screen on while the app is running. I find this useful, so I thought others might as well.
+"
+freezy/android-xbmcremote,closed,CHG: Allow to play rtmp:// links via the share menu,[],"This allows rtmp:// link to be sent to XBMC.
+"
+freezy/android-xbmcremote,open,Runtime sorting for movies,[],"Hi,
+
+I have implemented runtime sorting for movies. Could you please review the changes and give me your feedback?
+
+/Christian
+"
+freezy/android-xbmcremote,open,Added 'auto rotate' settings in preference screen as per request 226 in tracker,[],"implemented enhancement http://code.google.com/p/android-xbmcremote/issues/detail?id=226
+"
+freezy/android-xbmcremote,open,Crash on startup - Android 1.5,[],"I get a crash on startup using Android 1.5  (yes, yes, I know, but that's what I've got right now)
+I get ""Sorry! The application XBMC Remote (process org.xbmc.android.remote) has stopped unexpectedly.  Please try again.""
+each time I try to start the app.
+Using xbmcremote version 0.8.8-beta1
+Phone: Motorola MB300 (""Backflip"")
+Android version 1.5
+Thanks.
+
+(nb <a href=""http://code.google.com/p/android-xbmcremote/issues/detail?id=601"">Issue 601 on Google Code</a> notes the app also crashes at startup on Android 1.6)
+"
+freezy/android-xbmcremote,closed,Leading or trailing spaces in host address during host configuration,[],"During host configuration I faced the problem, that I accidently typed a trailing whitespace character after the host name. This caused a exception when trying to connect to the XBMC server. I just added .trim() to the host address field to remove leading and trailing spaces from the host name.
+"
+freezy/android-xbmcremote,closed,Normal thumbs,[],"Use centre crop to get the original thumbs in target aspect ratio before resizing
+- this makes all images normalized by their aspect ratio, looks better in listview
+  Add code to handle 4:3 images in getTargetDimensions method
+  Remove the (now) redundant getDimensions menthod
+"
+freezy/android-xbmcremote,closed,Centre crop thumbs,[],"Use centre crop to get the original thumbs in target aspect ratio before resizing
+- this makes all images normalized by their aspect ratio, looks better in listview
+  Add code to handle 4:3 images in getTargetDimensions method
+  Remove the (now) redundant getDimensions menthod
+"
+freezy/android-xbmcremote,closed,"Fixed issues with Specials in TV Seasons, display of thumbnail on now playing screen, Added pre-fetching of covers on lists",[],"Season 0 now interpreted as ""Specials"" this is in line with XBMC and fixes cover art for the Specials season as well as the displayed text
+moved the download code for the now playing screen into the connection class and use the methods there to get the connection.  this fixes a problem with 401 being returned from XBMC when requesting the thumbnail
+Added pre-fetching of covers that are in cache (from disk to mem).  And load covers from memCache synchronously when an item id drawn.  This prevents the flashing from the 'default' to the final cover when scrolling a list.  
+"
+freezy/android-xbmcremote,closed,Fixed issues with Specials in TV Seasons,[],"'Season 0' now shows as 'Specials' everywhere
+Thumbnails load properly for Specials
+"
+freezy/android-xbmcremote,open,Mixed up Button Actions in Album Details,[],"The Actions of the 'Play' and 'Queue' Button in DialogFactory.java / getAlbumDetail() are mixed up.
+The Play button queues an album, the queue button plays the album ;)
+
+``` java
+queueButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                musicManager.play(new DataResponse<Boolean>(), album, context);
+            }
+});
+playButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                musicManager.addToPlaylist(new DataResponse<Boolean>(), album, context);
+            }
+});
+```
+"
+freezy/android-xbmcremote,closed,Added the ability to play movies from IMDB app using the Share feature,[],"Click ""Play on XBMC"" from the share menu within IMDB now works.
+In order to make this work, I added the movie's IMDB Id to the movie object
+"
+freezy/android-xbmcremote,closed,Fixed YouTube Parsing to Workt with -'s in id,[],"previously the regex only supported /w. I have added - to the regex. For example see: http://www.youtube.com/watch?v=u-yLGIH7W9Y
+"
+freezy/android-xbmcremote,closed,AppWidget for XBMC Remote,[],"Hi,
+
+I added an AppWidget with few controls in order to control xbmc from the homescreen of my devices. This is i think very important (ar least for me).
+That's a first shot, working pretty well though.
+
+![""Screencap of the home""](http://tof.canardpc.com/view/ada6d9af-87cb-41fb-850c-3f1ad94b32e7.jpg)
+
+Maybe you could be interrested by this feature. If you are, told me, i can do some improvements.
+
+And thx for this awesome app :)
+"
+freezy/android-xbmcremote,closed,Remove the forced portrait orientation for some activities,[],"Some activities had their orientation fixed to portait mode, which can be annoying on a tablet device where landscape is the default orientation.
+
+Most of the screens already supported landscape mode, but the tv show list, grid, details and playlist didn't.
+
+The only two activities that remain in portrait are the remote control in gesture mode and the about page, since these will require a new design to work in landscape.
+"
+freezy/android-xbmcremote,closed,added new xhdpi layout to fix the layouterror in the sliding tabs on the...,[],"... GNx
+"
+freezy/android-xbmcremote,closed,fixed NowPlaying not showing infos on second start,[],
+freezy/android-xbmcremote,closed,NowPlaying now showing infos on second startup,[],"The NowPlayingPollerThread was already running and didn't send COVER_CHANGED or PLAYLIST_ITEM_CHANGED messages. So on start up of the NowPlayingController everything is updated.
+"
+freezy/android-xbmcremote,closed,Close the http connection after each request and manually add the auth header,[],"This fixes the EOFException in ICS by adding the connection close header to each http request. This also adds the auth header to each request instead of using the http authenticator.
+"
+freezy/android-xbmcremote,closed,NullPointerException on Android Ice Cream Sandwich 4.0.3,[],"After upgrade from Gingerbraead to Ice Cream Sandwich (4.0.3), kernel 3.0.8.gb55e9ac android-build@apa28 #1, build number IML74K on a Nexus S I9020XXKI1 (I9020T), get consistent NullPointerExecption on every button press. Standard remote control sometimes works, but all library functions do not work since upgrade. Also, app gets stuck in force close loop sometimes.
+"
+freezy/android-xbmcremote,closed,Fixed issue with sending videos to YouTube. Also changed targetSdkVersion,[],"I fixed the bug here: http://forum.xbmc.org/showthread.php?t=113974
+
+also: android:targetSdkVersion used to be 9, but that version is obsolete and has been replaced with 10
+"
+freezy/android-xbmcremote,open,"Forcing portrait orientation when device is ""upside=down""",[],"On my Sony Tablet S, what the device thinks is ""right side up"" is the exact opposite of what _I_ think is right side up. Consequently, using this setting for an activity:
+
+```
+android:screenOrientation=""portrait""
+```
+
+causes the activity to appear upside-down to me. But simply changing the manifest to use:
+
+```
+android:screenOrientation=""sensorPortrait"" 
+```
+
+instead will fix the problem. It will still force the activity in portrait mode, but allows the device to be used ""upside-down"" as well.
+"
+freezy/android-xbmcremote,open,Cannot connect to device with no internet connection,[],"If you have your XBMC box and Android device connected to a WIFI that is not connected to the internet, your android device will not connect to the XBMC box correctly. You can only use the remote, you cannot browse your media collection nor does it show the links for them.
+"
+freezy/android-xbmcremote,closed,Two minor changes: Layouts and Sorting for Movies and TV,[],"Movie and TVShow lists now ignore 'The' in titles.
+
+Movie and Episode Details layouts always display the Play button.
+"
+freezy/android-xbmcremote,closed,"Sort media ignoring ""The""",[],"Currently in the list of Movies, TV Shows, and Music in the app everything is arranged alphabetically regardless of it starting with the word ""The"". This results in shows being in unexpected positions as well as a large chunk of movies being in the T section that are not normally there.
+"
+freezy/android-xbmcremote,closed,Force to show the connecting dialog until the wifi connection fully established.,[],
+freezy/android-xbmcremote,closed,Cleaned up display of the Send Text dialog.,[],"Now handles orientation changes correctly.
+"
+freezy/android-xbmcremote,open,Port deprecated HTTP API to the new JSON RPC API,[],"Old and busted: http://wiki.xbmc.org/index.php?title=Web_Server_HTTP_API
+New and sexy: http://wiki.xbmc.org/index.php?title=JSON_RPC
+
+From the first link: 
+
+> As of the Dharma release of XBMC, this API is deprecated. Use the JSON RPC interface instead.
+
+What are the ramifications of this? I found out about the current situation when I was looking to find out how to implement directory sorting in file mode. Turns out sorting is only supported in the new JSON version. Looking through the code, in it's lovely MVC format, it looks like the only bits that need to change are the URL builder and data deserializer. I can't imagine it's a huge effort? I'm willing to take it on to achieve my goal of file sorting =) Busy at the moment so should have it done within the month I'd imagine. Thoughts? 
+"
+freezy/android-xbmcremote,open,Implement Boxee JSON RPC to support library browsing,[],"With the new Boxee JSON RPC it should be possible to implement directory browsing and playing.
+This enables users to listen to music without turning on tv using boxee box.
+
+http://developer.boxee.tv/JSON_RPC
+"
+freezy/android-xbmcremote,closed,QR code support (issue 411),[],"Didn't know commits got automatically added to the pull request. Limiting this to just the QR code change (hopefully).
+"
+freezy/android-xbmcremote,closed,QR code support (issue 411),[],"I hope I'm doing this pull request right...
+"
+freezy/android-xbmcremote,closed,Fixes issue 549 - Null String in NowPlaying Notification,[],
+freezy/android-xbmcremote,open,Moving the Eclipse project into a directory,[],"Hi,
+
+I want to factor out the simple remote / event client code into it's own app that would be smaller, simpler, and easier to build and maintain (think of XBMC Remote lite).
+
+Standard android way of doing that is to create 3 separate android ""projects"", one that would be an android library and would contain shared resources and base class sources, and another two, one for each app => hence the move of the app into a directory, so that other xbmc remote apps that share resources and sources could also be tracked within the same repository (ie. there might be a dedicated tablet app in the future).
+
+Thanks,
+-s
+"
+freezy/android-xbmcremote,closed,"Make the ""Play on XBMC"" dialog optional",[],"This adds a preference that leaves it on by default but allows one to turn it off. Should be committed after the youtube support pull request, as this commit is dependent on that.
+"
+freezy/android-xbmcremote,closed,Add support for playing Youtube videos,[],"Fairly simple commit, though it does depend on the Youtube plugin being installed on the XBMC host. I don't think we can actually check for that anyway so this is the best solution I can come up with.
+"

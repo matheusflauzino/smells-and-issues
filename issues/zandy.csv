@@ -1,0 +1,704 @@
+repository,state,title,label,body
+ajlyon/zandy,closed,link DOIs to recommended resolver,[],"Hello and 1k thanks for working on this neat app :-)
+
+Please consider using the [news, secure resolver](https://www.doi.org/doi_handbook/3_Resolution.html#3.8) when generating DOI links.
+
+Cheers!"
+ajlyon/zandy,closed,Move to v3 API #138 (in progress),[],"Fixes #138 
+
+Using retrofit2 and gson.
+under new api package.
+Tests."
+ajlyon/zandy,closed,use-switch-instead-of-if,[],
+ajlyon/zandy,closed,remove reference of handlers on destroy,[],
+ajlyon/zandy,closed,149 lint cleanup,[],Fixes: #149
+ajlyon/zandy,closed,General Lint cleanup,[],
+ajlyon/zandy,closed,add passing of gradle properties through commandline,[],"Fixes: #147
+
+Usage:
+
+./gradlew connectedcheck -PtestUserId=******* -PtestUserKeyReadonly=*******"
+ajlyon/zandy,closed,Allow passing of gradle properties for test parameters through commandline,[],
+ajlyon/zandy,closed,Project is using an incompatible version of Android Gradle plugin #145,[],"Fixes #145
+
+changed build.grade"
+ajlyon/zandy,closed,Project is using an incompatible version of Android Gradle plugin,[],"Android Studio 3.0.1
+Build #AI-171.4443003, built on November 9, 2017
+JRE: 1.8.0_152-release-915-b01 amd64
+JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
+Linux 4.13.13-300.fc27.x86_64"
+ajlyon/zandy,open,Indication of sync in progress,"[Label(name=""interface"")]",
+ajlyon/zandy,open,WIP Revamp ui,[],"Primarily a visual reskin to be ""largely standard"" for 2017.
+![image](https://user-images.githubusercontent.com/224208/32141264-10115668-bc39-11e7-9a55-64e03f5196aa.png)
+
+Proper reinvigoration is more than this, but focusing on item presentation and workflows for items.
+"
+ajlyon/zandy,open,Subcollection parenting is not correctly synced,"[Label(name=""api""), Label(name=""bug"")]","Reported via email:
+> I have a problem syncing subcollections.
+> When I move a subcollection in zotero, this is not reflected in Zandy, not even a week later. Items in that are subsequently added to the subcollection appear in the subcollection at it's original location in Zandy, so the collection contents are managed properly, their location not.
+"
+ajlyon/zandy,closed,Rearrange tests to include old tests,[],
+ajlyon/zandy,closed,Initialize prefs before starting activity in logged in test,[],
+ajlyon/zandy,closed,Bump tools + add some basic tests,[],
+ajlyon/zandy,open,Move to v3 API,"[Label(name=""api"")]",Move to V3 API and its support for better syncing and partial syncs
+ajlyon/zandy,closed,"Formatting, lint and deprecation",[],
+ajlyon/zandy,closed,Attachment names,[],
+ajlyon/zandy,closed,"Gradle updates, general style fixes",[],
+ajlyon/zandy,open,NOT FOR MERGE | Zotable changeset,[],"From code hosted at https://drive.google.com/file/d/0B2k1aKFvEwTxRHZPU3FfT0hLWU0/view
+App at https://play.google.com/store/apps/details?id=com.mattrobertson.zotable.app
+"
+ajlyon/zandy,closed,Missing items and collections,[],"I have some items and collections missing in Zandy. They are available on my computers with firefox+zotero. In addition, some items are not shown all collections they belong to. For instance, one item is show in only two collections although it is really in three (all these collections are in zandy). 
+
+Also, ""View Collections"" shows incorrect number of items for most collections. It shows 0 items for most and ""Stale data"". When clicked, the items are shown (at least those that are not missing from Zandy). If clicking ""Sync"" in such a collection, I get an error ""Unfortunately, Zandy has stopped"" and Zandy restarts. This happens with collections that are shown 0 items although they have items.
+
+I suppose all these problems are caused by some invalid data in some items. Any ideas?
+
+I'm using Zandy 1.3.7 from F-Droid.
+"
+ajlyon/zandy,open,F-droid version,[],"[F-droid](http://f-droid.org) [isn't compiling new versions of Zandy](https://f-droid.org/wiki/page/com.gimranov.zandy.app) because it pulls in unfree binaries; crashlytics, swing (at least that is the concern with crashlytics).
+
+F-droid is a really great market, and is gaining steam and quality, and it would really be great to have Zandy included. Would it be possible to make a f-droid branch, like [aLogCatRoot has done](https://github.com/pedja1/aLogcatRoot/issues/1)?
+"
+ajlyon/zandy,closed,IllegalArgumentException when adding new note attachment,[],"# Description
+
+Adding a new note to an existing library item results in Zandy force closing.  I believe it's because of a a parameter being set to null in the SQL query.
+# Repro Steps
+1. Click on a library item
+2. Click on attachments
+3. Press the plus button
+4. Type something into the note dialog box
+5. Press ""Ok button""
+6. Error dialog pops up, ""Unfortunately, Zandy has stopped
+## Expected Outcome
+
+The note gets added to the zotero library
+## Actual Outcome
+
+Zandy force closes
+# Supplemental Information
+
+`02-27 21:56:31.065    4649-4649/com.gimranov.zandy.app E/AndroidRuntime﹕ FATAL EXCEPTION: main
+    Process: com.gimranov.zandy.app, PID: 4649
+    java.lang.IllegalArgumentException: the bind value at index 1 is null
+            at android.database.sqlite.SQLiteProgram.bindString(SQLiteProgram.java:164)
+            at android.database.sqlite.SQLiteProgram.bindAllArgsAsStrings(SQLiteProgram.java:200)
+            at android.database.sqlite.SQLiteDirectCursorDriver.query(SQLiteDirectCursorDriver.java:47)
+            at android.database.sqlite.SQLiteDatabase.rawQueryWithFactory(SQLiteDatabase.java:1316)
+            at android.database.sqlite.SQLiteDatabase.queryWithFactory(SQLiteDatabase.java:1163)
+            at android.database.sqlite.SQLiteDatabase.query(SQLiteDatabase.java:1034)
+            at android.database.sqlite.SQLiteDatabase.query(SQLiteDatabase.java:1240)
+            at com.gimranov.zandy.app.data.Database.query(Database.java:57)
+            at com.gimranov.zandy.app.data.Attachment.load(Attachment.java:223)
+            at com.gimranov.zandy.app.AttachmentActivity$9.onClick(AttachmentActivity.java:350)
+            at com.android.internal.app.AlertController$ButtonHandler.handleMessage(AlertController.java:160)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:135)
+            at android.app.ActivityThread.main(ActivityThread.java:5221)
+            at java.lang.reflect.Method.invoke(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:372)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:899)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:694)
+`
+"
+ajlyon/zandy,open,WebDAV Digest Authentication,"[Label(name=""webdav"")]","Apparently Android's HttpURLConnection only supports basic authentication, not digest.
+https://code.google.com/p/android/issues/detail?id=11140
+So to support digest, it looks like you'd have to do something trickier. Maybe this?
+https://gist.github.com/slightfoot/5624590
+Or we could just wait for someone in Android to fix it; but given the lack of progress in 4 years I don't feel so hopeful.
+
+In the meantime, could you at least warn users on the forum or the users guide that digest auth doesn't work but basic over https does? (This tested on Zandy 1.4.1 on Android 4.4.2 with Apache 2.4/mod_dav.)
+"
+ajlyon/zandy,open,Support a local linked attachement base directory,[],"I have my paper library setup as linked attachments sorted into a human readable file structure. It would be awesome if I could tell Zandy to look for attachments in a folder on my android storage device.
+
+This folder would obviously be kept in sync by a different mechanism.
+
+p.s. On a more ambitious note, this dir happens to be on a WebDAV server, it would be cool if the base dir could be on that server rather than on the local storage device.
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 633,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 48
+- Impacted devices: 9
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52e4b449e2c70d5d81b7bfaa](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52e4b449e2c70d5d81b7bfaa)
+"
+ajlyon/zandy,closed,XMLResponseParser.java line 382,[],"#### in com.gimranov.zandy.app.XMLResponseParser.parse
+- Number of crashes: 49
+- Impacted devices: 24
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52e53351e2c70d5d81b806f7](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52e53351e2c70d5d81b806f7)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 586,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 49
+- Impacted devices: 6
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de7c71e2c70d5d81b3d25f](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de7c71e2c70d5d81b3d25f)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 646,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 48
+- Impacted devices: 10
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52e62c7fe2c70d5d81b88a9e](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52e62c7fe2c70d5d81b88a9e)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 585,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 54
+- Impacted devices: 9
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52e4bd3ae2c70d5d81b7c3e4](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52e4bd3ae2c70d5d81b7c3e4)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 592,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 48
+- Impacted devices: 4
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52e4b44ae2c70d5d81b7bfac](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52e4b44ae2c70d5d81b7bfac)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 658,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52deee1ee2c70d5d81b419ae](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52deee1ee2c70d5d81b419ae)
+"
+ajlyon/zandy,closed,Database.java line 60,[],"#### in com.gimranov.zandy.app.data.Database.query
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dec2c3e2c70d5d81b40039](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dec2c3e2c70d5d81b40039)
+"
+ajlyon/zandy,closed,XMLResponseParser.java line 382,[],"#### in com.gimranov.zandy.app.XMLResponseParser.parse
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52debd89e2c70d5d81b3fd50](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52debd89e2c70d5d81b3fd50)
+"
+ajlyon/zandy,closed,ItemActivity.java line 551,[],"#### in com.gimranov.zandy.app.ItemActivity.getCursor
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dea460e2c70d5d81b3ee5d](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dea460e2c70d5d81b3ee5d)
+"
+ajlyon/zandy,closed,ServerCredentials.java line 93,[],"#### in com.gimranov.zandy.app.ServerCredentials.prep
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dea28fe2c70d5d81b3ed2d](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dea28fe2c70d5d81b3ed2d)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 657,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de9d77e2c70d5d81b3e997](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de9d77e2c70d5d81b3e997)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 615,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de9d77e2c70d5d81b3e995](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de9d77e2c70d5d81b3e995)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 604,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de9d77e2c70d5d81b3e996](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de9d77e2c70d5d81b3e996)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 586,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de7c71e2c70d5d81b3d25f](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de7c71e2c70d5d81b3d25f)
+"
+ajlyon/zandy,closed,ThreadEnforcer.java line 47,[],"#### in com.squareup.otto.ThreadEnforcer$2.enforce
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de64ede2c70d5d81b3c2e9](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de64ede2c70d5d81b3c2e9)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 603,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de63f8e2c70d5d81b3c268](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de63f8e2c70d5d81b3c268)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 647,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de54aee2c70d5d81b3b9c8](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de54aee2c70d5d81b3b9c8)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 634,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de54aee2c70d5d81b3b9c7](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de54aee2c70d5d81b3b9c7)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 601,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de269be2c70d5d81b3a314](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52de269be2c70d5d81b3a314)
+"
+ajlyon/zandy,closed,ItemDataActivity.java line 290,[],"#### in com.gimranov.zandy.app.ItemDataActivity$8.onClick
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dd9422e2c70d5d81b358aa](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dd9422e2c70d5d81b358aa)
+"
+ajlyon/zandy,closed,MainActivity.java line 297,[],"#### in com.gimranov.zandy.app.MainActivity$2.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dd5c30e2c70d5d81b33a90](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dd5c30e2c70d5d81b33a90)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 632,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dc27eae2c70d5d81b29772](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dc27eae2c70d5d81b29772)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 642,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dc11eae2c70d5d81b28c6e](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dc11eae2c70d5d81b28c6e)
+"
+ajlyon/zandy,closed,MainActivity.java line 299,[],"#### in com.gimranov.zandy.app.MainActivity$2.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dbf48ee2c70d5d81b27adc](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dbf48ee2c70d5d81b27adc)
+"
+ajlyon/zandy,closed,MainActivity.java line 184,[],"#### in com.gimranov.zandy.app.MainActivity.startOAuth
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dbf480e2c70d5d81b27ad2](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dbf480e2c70d5d81b27ad2)
+"
+ajlyon/zandy,closed,AttachmentActivity.java line 587,[],"#### in com.gimranov.zandy.app.AttachmentActivity$ProgressThread.run
+- Number of crashes: 1
+- Impacted devices: 1
+
+There's a lot more information about this crash on crashlytics.com:
+[https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dbe6b2e2c70d5d81b271be](https://crashlytics.com/gimranovcom/android/apps/com.gimranov.zandy.app/issues/52dbe6b2e2c70d5d81b271be)
+"
+ajlyon/zandy,closed,Couldn't write downloaded file,[],"Hi,
+
+I am trying to get Zandy to download attachments from my owncloud WebDav server. I have set it up in settings and everytime I select an attachemnt I get the message ""Couldn't write downloaded file"". I went through the steps in Issue #66 and stored my CA to the Android CA store.
+
+I am running 4.2.2 (CM 10.1) on the Nexus 4.
+
+Any assistance you can give me in debugging this would be great.
+
+Stuart
+"
+ajlyon/zandy,closed,alphabetical order (capital?),[],"As you can see in this photo, some times the alphabetical order is wrong, I think is for capital word...
+![Screenshot_2013-02-25-12-47-03](https://f.cloud.github.com/assets/1794097/191645/69873b5c-7f41-11e2-9726-2af6d823b378.jpg)
+"
+ajlyon/zandy,closed,Save sort preference,[],"When I set a sort (""Title, then year"" for exemple), then I exit from zandy and re-enter the sort is changed. Can you add an option in preference to save the sort?
+
+I try this on asus TF300TL android 4.1.1
+"
+ajlyon/zandy,closed,wrong extension for downloaded PDFs,[],"As written here:
+http://www.gimranov.com/forum/index.php?p=/discussion/39/wrong-extension-for-downloaded-pdfs
+
+I'm trying to download PDFs saved on my Zotero account for viewing in my android. When I download the attachment by doing a long tap on the ""attachment"" entry, it downloads the PDF but then the viewer gives a message that it's not a valid PDF file.
+
+When I went to the folder on the SD card where the files are saved, it turns out that the problem is that they are saved with _PDF at the end (e.g. _MJW2SJV5Full_Text_PDF). When I change the _PDF to .PDF, the file opens correctly in the adobe reader.
+
+I have this problem with Nexus 7 (Android 4.2.1) and Samsung Galaxy S (Android 2.3.5).
+"
+ajlyon/zandy,closed,Switched long and short click actions for AttachmentActivity and CollectionActivity (#89),[],"Implemented this a while ago but finally decided to learn how to use GitHub to share with others.  Helps to access attachments quickly.
+"
+ajlyon/zandy,closed,"plz, provide  direct link to an .apk for those that do not have google play client on their devices",[],"plz, provide  direct link to an .apk for those that do not have google play client on their devices
+"
+ajlyon/zandy,open,Two-way WebDAV PDF sync,[],"I'm having a problem syncing to the WebDAV server and saw this on the user guide:
+
+""Zandy’s support for WebDAV is brand-new, and it’s currently limited to opening PDFs. This is largely an artificial limitation, and it should be lifted in the coming week or so.""
+
+Very much looking forward to this feature.
+"
+ajlyon/zandy,open,Changes in items updated on another machine do not propagate to Zandy via Sync,[],
+ajlyon/zandy,closed,Add by identifier not working,[],"Hi,
+
+When I use ""Add by identifier"" and enter an ISBN, whether 9-digit or 12-digit, it simply says ""Searching..."" and never seems to finish. I'm using a Motorola Xoom and I do have the barcode scanner installed (if that matters).
+"
+ajlyon/zandy,closed,Attachments won't download,[],"I hadn't had a problem with this in the past, but now I can't seem to download any PDF attachments in Zandy.  My attachments are stored at a webdav host, specifically smestorage.
+
+I tried uinstalling and then reinstalling, to no avail.
+"
+ajlyon/zandy,closed,Can't scan magazines - error fetching metadata,[],"When trying to scan a magazine, I get a short ""error fetching metadata"" message. Books import fine, though.
+
+Possibly related:
+http://forums.zotero.org/discussion/13176/issn/
+"
+ajlyon/zandy,closed,Zotero articles get duplicated,[],"When I give read/write access to my zandy API key, I found that articles I visited with Zandy would get duplicated.  I stopped this behaviour by only giving this particular api key only read privileges.  Is there any way to fix this?  It would be great to be able to add notes or add references without worrying about duplicating existing records.
+"
+ajlyon/zandy,closed,Long-click behaviour for Collections and PDF attachments,[],"Issue:
+I use zandy to access my repository and the pdf attachments from my webdav server.  But right now it takes 2-clicks and 2-long-clicks to read each file.
+
+Long-clicking on collection items in order to view the contents of a collection is frustrating.  I don't know who uses subcollections, but I imagine more people have items in a collection than sub-collections.
+
+Long-clicking to download any pdf attachment is also very frustrating.  
+
+Suggested solution:
+I suggest for collections:
+long-clicking to list subcollections
+short-clicking to list items
+
+long-clicking to view notes
+short-clicking to download pdf attachments
+"
+ajlyon/zandy,closed,Error when downloading PDF attachments from WEBDAV,[],"Problem:
+Receiving dialog box 'View this online?' when trying to download a pdf attachment from a webdav server.  When ""view"" option is selected, the error ""No application available to open URI:"" is given.  
+
+Summary:
+I was able to make a few changes to the source code to default to my desired behaviour.  However, I'm not sure what the root cause of this problem is.  Making both changes have helped me access my webdav repository. 
+
+Suggested Solution:
+As a quick fix, I suggest you make the following change to AttachmentActivity.java:
+int linkMode = row.content.optInt(""linkMode"", Attachment.MODE_LINKED_URL);
+to 
+int linkMode = row.content.optInt(""linkMode"", Attachment.MODE_IMPORTED_URL);
+
+For some reason or another, the linkMode variable is not assigned, and so I guess the default is to assume the attachment is to follow an URL.  This change would make it default to download from the URL.  Fortunately, downloaded files will not be re-downloaded with this fix, and local copies will be accessed.
+
+This will fix the download issue, but then another problem is that Zandy doesn't not open the pdf.  Again, I don't know why, but it seems that the MimeType variable is not assigned or identified when the pdf attachment is downloaded.  I suggest the following fix to AttachmentActivity.java:
+String mimeType = att.content.optString(""mimeType"",null);
+to
+String mimeType = att.content.optString(""mimeType"",""application/pdf"");
+"
+ajlyon/zandy,closed,Fix oauth errors in latest versions of android,[],"Network io causes exceptions in android >3.0.
+
+This commit allows users of ics/honeycomb to use oauth to log into zotero instead of having to manually enter api keys in the settings page.
+"
+ajlyon/zandy,closed,moved file storage to Android/data/com.gimranov.zandy folder,[],"also made use of defined cache directory.
+These changes prevent cluttering the base directory of the sdcard as recommended in android documentation.
+http://developer.android.com/guide/topics/data/data-storage.html#filesExternal
+
+(with previous merge left intact)
+"
+ajlyon/zandy,closed,moved file storage to Android/data/com.gimranov.zandy folder,[],"also made use of defined cache directory.
+These changes prevent cluttering the base directory of the sdcard as recommended in android documentation.
+http://developer.android.com/guide/topics/data/data-storage.html#filesExternal
+"
+ajlyon/zandy,closed,A very small change in the classpath to remove hard-coded paths to oAuth libraries.,[],"Put external jars in the libs folder in zandy/app
+"
+ajlyon/zandy,closed,Catch OAuth errors,"[Label(name=""bug"")]","Crash reported here: http://www.gimranov.com/avram/w/zandy-user-guide/comment-page-1#comment-1132
+
+This looks like it's a timestamp issue: http://groups.google.com/group/signpost-users/browse_thread/thread/a902c7eeb0be666d?pli=1
+
+We should be able to catch this and show an error message to the user instead of crashing outright.
+"
+ajlyon/zandy,closed,Pull down collections efficiently,"[Label(name=""api"")]","use format=keys to avoid unnecessary content=json collection requests
+"
+ajlyon/zandy,closed,Generate l10n files from Zotero codebase,[],"Write a script to generate Zandy-usable localized strings for the basic terms like item types and fields.
+"
+ajlyon/zandy,closed,Item memberships don't sync reliably to server,"[Label(name=""bug"")]","Probably because they can be garbage-collected. Time to implement a membership sync status that exists in the DB, or a request queue that exists in the DB.
+"
+ajlyon/zandy,closed,Clear database,[],"Option to clear Zandy's local DB, so that people can do a completely fresh sync. Useful for testing and whatnot. To be added to an advanced / troubleshooting section of the settings.
+"
+ajlyon/zandy,open,Improve UI/UX for mobile,[],"I have been drawing up some UI flows in my down time. This is some of what I came up with.
+![Ui Mockup](http://i.imgur.com/5tvYf.jpg)
+"
+ajlyon/zandy,closed,Update res/values/strings.xml,[],"This is a first translation to Fench. basic and to be read again and probably corrected.
+"
+ajlyon/zandy,closed,This probably adds some sweet things,[],
+ajlyon/zandy,closed,Proxy redirection,[],"One very cool feature of the Zotero addon on Firefox is that it has the ability of automatically redirecting to an institutional proxy in order to access payable content (eg. IEEE, ACM, etc..). It'd be nice if Zandy had that option, so that the user can configure the string that links (associated to each bibliography entry) should be transformed to.  
+"
+ajlyon/zandy,open,Citations to clipboard,[],"[Discussion on Zotero forums](http://forums.zotero.org/discussion/20932/thank-you-for-providing-a-bridge-from-windows-to-android/#Item_3) suggests that it would be useful to push in-text citations and bibliography-formatted citations to the clipboard; specified use case is Google Docs, but this would be useful anywhere.
+
+Two ways to do this: make the API server do it, or embed citeproc-js in a WebView. The latter would also entail translating from Zotero JSON to citeproc-js JSON, but it's doable (we could request the citeproc-js JSON from the server, but then we might as well request a formatted cite).
+"
+ajlyon/zandy,closed,Suggestion: preview only for long abstracts,[],"If entry has somewhat long abstract, it takes a while to scroll through down to attachments. It would be nice to show just a snippet in the list instead of the complete abstract and show full version once clicked.
+"
+ajlyon/zandy,open,Rework aggressive syncing,"[Label(name=""api""), Label(name=""bug"")]","Aggressive syncing is currently based on a misunderstanding that led me to believe that a collection with modified items will show up as modified. We should instead request the most recently modified items (`/items`), requesting more pages until we get to items unmodified since our last sync. This means maintaining a last-sync timestamp. I believe this will address the reported issue with notes created on the server not showing up in Zandy; I think they aren't showing up unless the item's attachment view is the origin of the sync request.
+"
+ajlyon/zandy,closed,Out-of-memory crash on large sync,"[Label(name=""bug"")]","There have been reports of out-of-memory crashes when running particularly large syncs. Apparently something isn't being GC'ed correctly during the sync process...
+"
+ajlyon/zandy,open,Server-side deletes don't propagate,"[Label(name=""api"")]","Maybe we can do a background process that goes through collections and items, looking for updates?
+"
+ajlyon/zandy,closed,Scan directory for attachment files,[],"See http://forums.zotero.org/discussion/20728/working-with-academic-pdfs-using-zoterozotfilezandy-and-a-laptop-and-android-reader/#Item_2
+
+We'd want to require that the files have the key in their filename, but we could definitely do this.
+"
+ajlyon/zandy,closed,Settings verification,"[Label(name=""webdav"")]","We need a way to check that settings are valid-- check that the Zotero.org user ID and key are valid, and that the WebDAV server is set up correctly. This is particularly important for debugging the many WebDAV setups out there, and the opaque aspects of the Zotero API.
+"
+ajlyon/zandy,closed,Download non-PDF attachments from WebDAV,"[Label(name=""webdav"")]","We currently limit ourselves to .pdf when extracting from the ZIP files, for no good reason. This should be fixed.
+"
+ajlyon/zandy,closed,Detect self-signed SSL certs and allow their manual installation,"[Label(name=""webdav"")]","Many people running their own WebDAV setups use self-signed SSL certificates. Android does not provide a way of installing such certificates system-level, so we'll need to add support for them in our application. We can probably do this with a try/catch for the WebDAV connection (which we need anyway for better error reporting), and a new certificate install apparatus. It appears that we can set up our own SSLContext and specify additional allowed certificates, which we'll likely want to do.
+
+Issue summary: http://www.mcbsys.com/techblog/2010/12/android-certificates/
+SSLContext: http://code.google.com/p/android/issues/detail?id=11231#c15
+"
+ajlyon/zandy,closed,Write service for async tasks,[],"Need for sync progress (#23), bulk attachment fetching (#64), faster multistage syncing (#37).
+
+In general, this is the way things should be done, so that syncs aren't dependent on the hosting Activity.
+
+Also makes possible: periodic sync polling, more?
+"
+ajlyon/zandy,open,"create, rename, and delete collections","[Label(name=""api"")]","Moved from #40
+"
+ajlyon/zandy,open,Download all attachments,"[Label(name=""api""), Label(name=""webdav"")]","Someone searched on Google for ""i want zandy zotero to download all pdfs on my device and let me access them offline"" and landed on the Zandy pages at gimranov.com. It's possible to do what the searcher wants, but it's a bit of a pain. I could see the utility of it, so let's plan on eventually making it possible to queue all the attachments for a given collection for download.
+
+This necessarily comes after making downloads properly asynchronous.
+"
+ajlyon/zandy,closed,add by identifier,[],"We could add ISBN lookup fairly easily:
+http://xisbn.worldcat.org/webservices/xid/isbn/0674081250?method=getMetadata&fl=*&format=json&count=1
+
+The JSON is very simple:
+`{
+ ""stat"":""ok"",
+ ""list"":[{
+    ""url"":[""http://www.worldcat.org/oclc/20824015?referer=xid""],
+    ""publisher"":""Harvard University Press"",
+    ""form"":[""BA""],
+    ""lccn"":[""89049648""],
+    ""lang"":""eng"",
+    ""city"":""Cambridge, Mass."",
+    ""author"":""Stanisław Baranczak."",
+    ""ed"":""1. print."",
+    ""year"":""1990"",
+    ""isbn"":[""0674081250""],
+    ""title"":""Breathing under water and other East European essays"",
+    ""oclcnum"":[""20824015"",
+     ""243448469"",
+     ""440936262"",
+     ""469918817"",
+     ""493363350"",
+     ""630686428""]}]}`
+
+This would make book scanning a straightforward proposition, at the risk of undermining the Scanner for Zotero project.
+"
+ajlyon/zandy,closed,Sync initiated from locally-created item causes crash,"[Label(name=""bug"")]",
+ajlyon/zandy,closed,"Crash on sync after adding item from ""Share page""","[Label(name=""bug"")]","There have been reports of NullPointerExceptions at APIRequest.java:266, apparently triggered when running a sync after adding a note to an item. This may or may not be limited to when we're adding notes to unsaved (new) items, as those from ""share page"".
+
+`java.lang.RuntimeException: An error occured while executing doInBackground()
+at android.os.AsyncTask$3.done(AsyncTask.java:266)
+at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:273)
+at java.util.concurrent.FutureTask.setException(FutureTask.java:124)
+at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:307)
+at java.util.concurrent.FutureTask.run(FutureTask.java:137)
+at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1081)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:574)
+at java.lang.Thread.run(Thread.java:1020)
+Caused by: java.lang.NullPointerException
+at com.gimranov.zandy.app.task.APIRequest.add(APIRequest.java:266)
+at com.gimranov.zandy.app.task.APIRequest.update(APIRequest.java:308)
+at com.gimranov.zandy.app.task.ZoteroAPITask.doFetch(ZoteroAPITask.java:203)
+at com.gimranov.zandy.app.task.ZoteroAPITask.doFetch(ZoteroAPITask.java:167)
+at com.gimranov.zandy.app.task.ZoteroAPITask.doInBackground(ZoteroAPITask.java:115)
+at com.gimranov.zandy.app.task.ZoteroAPITask.doInBackground(ZoteroAPITask.java:1)
+at android.os.AsyncTask$2.call(AsyncTask.java:252)
+at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305)
+... 4 more`
+"
+ajlyon/zandy,closed,Expose WebDAV attachments,[],
+ajlyon/zandy,closed,Database connection safety,"[Label(name=""bug""), Label(name=""db"")]","It looks like the current practice of giving DB objects to all the major classes, like Item, Attachment, etc, is a bad idea:
+Crash report for 1.1.1: ""was clicking thru subcollections rapidly, trying to sync them, suddenly zandy just crashed.""
+
+Stacktrace:
+
+```
+android.database.sqlite.SQLiteMisuseException: library routine called out of sequence: , while compiling: SELECT collection_name, collection_parent, etag, dirty, _id, collection_key, collection_size, timestamp FROM collections WHERE collection_parent=?
+at android.database.sqlite.SQLiteCompiledSql.native_compile(Native Method)
+at android.database.sqlite.SQLiteCompiledSql.compile(SQLiteCompiledSql.java:92)
+at android.database.sqlite.SQLiteCompiledSql.<init>(SQLiteCompiledSql.java:65)
+at android.database.sqlite.SQLiteProgram.<init>(SQLiteProgram.java:83)
+at android.database.sqlite.SQLiteQuery.<init>(SQLiteQuery.java:49)
+at android.database.sqlite.SQLiteDirectCursorDriver.query(SQLiteDirectCursorDriver.java:42)
+at android.database.sqlite.SQLiteDatabase.rawQueryWithFactory(SQLiteDatabase.java:1356)
+at android.database.sqlite.SQLiteDatabase.queryWithFactory(SQLiteDatabase.java:1235)
+at android.database.sqlite.SQLiteDatabase.query(SQLiteDatabase.java:1189)
+at android.database.sqlite.SQLiteDatabase.query(SQLiteDatabase.java:1309)
+at com.gimranov.zandy.app.data.Database.query(Database.java:32)
+at com.gimranov.zandy.app.data.ItemCollection.getSubcollections(ItemCollection.java:371)
+at com.gimranov.zandy.app.data.CollectionAdapter.bindView(CollectionAdapter.java:66)
+at android.widget.CursorAdapter.getView(CursorAdapter.java:186)
+at android.widget.AbsListView.obtainView(AbsListView.java:1446)
+at android.widget.ListView.makeAndAddView(ListView.java:1745)
+at android.widget.ListView.fillSpecific(ListView.java:1290)
+at android.widget.ListView.layoutChildren(ListView.java:1576)
+at android.widget.AbsListView.onLayout(AbsListView.java:1273)
+at android.view.View.layout(View.java:7192)
+at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1254)
+at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1130)
+at android.widget.LinearLayout.onLayout(LinearLayout.java:1047)
+at android.view.View.layout(View.java:7192)
+at android.widget.FrameLayout.onLayout(FrameLayout.java:338)
+at android.view.View.layout(View.java:7192)
+at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1254)
+at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1130)
+at android.widget.LinearLayout.onLayout(LinearLayout.java:1047)
+at android.view.View.layout(View.java:7192)
+at android.widget.FrameLayout.onLayout(FrameLayout.java:338)
+at android.view.View.layout(View.java:7192)
+at android.view.ViewRoot.performTraversals(ViewRoot.java:1145)
+at android.view.ViewRoot.handleMessage(ViewRoot.java:1865)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:130)
+at android.app.ActivityThread.main(ActivityThread.java:3835)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:507)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:847)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:605)
+at dalvik.system.NativeStart.main(Native Method)
+```
+"
+ajlyon/zandy,closed,Case insensitive searching for non-ASCII characters,"[Label(name=""bug""), Label(name=""db"")]","We're using Sqlite's native LIKE for searches, which doesn't support case-insensitive searches for non-ASCII characters. We should fix this somehow.
+http://www.sqlite.org/lang_expr.html#like
+"
+ajlyon/zandy,open,Add search field to main screen,"[Label(name=""interface"")]",
+ajlyon/zandy,closed,Prevent attachment name collisions,"[Label(name=""bug"")]",
+ajlyon/zandy,open,Tags and titles of attachments,"[Label(name=""api""), Label(name=""db""), Label(name=""interface"")]",
+ajlyon/zandy,closed,Standalone notes,"[Label(name=""interface"")]","Started in #10, but standalone notes haven't yet been enabled.
+"
+ajlyon/zandy,open,Read-only mode,"[Label(name=""api""), Label(name=""interface"")]","We should detect when a key is read-only and not allow local editing when that is the case. We can make this a checkbox in settings, actually, which would let people turn off editing to put Zandy in browse-only mode at times.
+
+Detecting read-only keys, won't be entirely trivial, but I think attempting to create and delete a test item would be a safe approach.
+"
+ajlyon/zandy,closed,Alternate workflows for attachments,"[Label(name=""api""), Label(name=""intents"")]","The BibUp iPhone app from Fribourg demonstrates that innovative thinking makes it possible to get around the current lack of attachment uploading in the Zotero API.
+
+We could support uploading attachments to an intermediate server, and have a small Zotero plugin handle retrieving them and attaching them to the proper item. We could just mark the item with a special tag that provided the info needed for the plugin to go and retrieve the attachment and attach it using desktop Zotero.
+
+I don't know what we would do for the intermediate server, since I can't very well do that on my budget hosting at gimranov.com, and the server costs could rack up if the feature were to take off. For now, food for thought.
+
+This could be used for attaching any local items that happen to be on the Android device (PDFs, whatever), but also for more innovative things, like photos. The latter case leads us towards a new workflow for archival and library ad hoc digitization...
+"
+ajlyon/zandy,open,Annotation,"[Label(name=""api""), Label(name=""helpwanted""), Label(name=""intents"")]","PDF and other attachment annotation is a killer app for tablets. I don't think we'll be able to build it into Zandy without going for a commercial library, which isn't an option for this open source app. Still, it'd be great to support sending our files to another app and getting the annotations back, so that we can save them as notes.
+"
+ajlyon/zandy,closed,Delete notes,[],
+ajlyon/zandy,closed,offline Zotero database,[],"Does Zandy also work with an offline Zotero database?
+"
+ajlyon/zandy,open,Handle related items,"[Label(name=""api"")]","I'm not sure we have any way of dealing with related items in the current API, actually. But I use them, and I want them to work.
+"
+ajlyon/zandy,closed,Improve attachments UI,"[Label(name=""interface"")]","- We currently put the attachment count in the Attachments field of ItemDataActivity-- we should instead provide a more verbose summary
+- The summary in the attachment list should be more informative and attractive
+- Add handling for link attachments
+"
+ajlyon/zandy,open,Rich text editing for notes,"[Label(name=""interface"")]","As of 7aa16800e4579c32af3b9ea7e8e55071725016e8, rich text notes are displayed properly. We need a way to edit them as rich text; the status quo is that they are edited as raw HTML. Current thinking is to do this with `SpannableString`, either by writing our own implementation or by importing someone else's, like `droid-writer`.
+"
+ajlyon/zandy,closed,item sorting,[],"Sort items by something other than the default of year, then title.
+Added in 39dc599ce06cb0c1e237b18a233eae0eb41f122a
+"
+ajlyon/zandy,closed,collection issues with database,[],"Current source code is non-functional (2011/10/11), zandy app crashes upon sync operation (or anything that touches the item table in the SQL database).
+
+Fix:  either rename the ""item_children"" field in the Item table to ""children"", or adjust all the SQL statements to say ""item_children"" instead of ""children"".  After making this correction, I can begin to see some of my items in the first collection (all subsequent collections still fail to load).
+
+Can provide patches if necessary.
+"
+ajlyon/zandy,closed,Use translators,[],"If we wanted, we could embed Rhino to use the existing translators on pages, which would be pretty cool. It looks like most of the work has been done for us, as Simon has done a lot to make translators a pretty self-contained part of Zotero.
+"
+ajlyon/zandy,closed,Localization,"[Label(name=""helpwanted""), Label(name=""interface"")]","Localization would be great, but first we need to internationalize. Not now, but maybe when the strings and general layout of the project settle down a bit.
+"
+ajlyon/zandy,closed,Collection management,"[Label(name=""api""), Label(name=""interface"")]","Items need to be put in and taken out of collections, and we need to be able to create, rename, and delete collections.
+"
+ajlyon/zandy,open,Provide an interface for tablets,"[Label(name=""interface"")]","It would be great if Zandy had a better interface when used on a tablet. (1) The big buttons on the start screen are really big on a tablet. Some icons would be much better there (there are a lot of free android icon sets to use); (2) in the ""view item"" activity, it would be good to display label + data for each field in one row for tablets.
+
+I think the way to go here are seperate layout directories in /res for the different screen sizes.
+"
+ajlyon/zandy,closed,Don't display empty fields in view item activity,"[Label(name=""interface"")]","Having all these empty fields show up doesn't add anything and makes it more difficult to see the data which is useful.
+"
+ajlyon/zandy,closed,Sync first with content = empty for quick setup,"[Label(name=""interface"")]","I have also worked on an Android app which I now will discontinue due to the availability of a good open source app, but I have noticed that syncing first with the content=empty parameter (which gives you at least the title of the item and a few other data points) is massively, massively faster. This allowed me to display large collections within a few seconds after the first sync. One can still fetch the full item data whenever the item is brought up for display, or later on in the background. This could also be bound to the ""aggressive sync"" preference. When you sync full items only on request, the battery life will be much better and the database much smaller.
+"
+ajlyon/zandy,closed,Provide possibility to add a webpage / URL to Zotero from other apps,"[Label(name=""intents"")]","It would be great if Zandy could implement the share intent, so that you could add a webpage to your Zotero library right from within your browser. It would be probably a good idea to automatically tag it, e.g. with ""addedfromzandy"".
+"
+ajlyon/zandy,closed,"After viewing item, collection shows only 10 items","[Label(name=""bug"")]","When I go into a collection with 50+ items, and then view one item, then press ""back"", the list for the collection shows only 10 items.
+"
+ajlyon/zandy,closed,Compatibility with Android 2.1?,[],"I wonder if there are any plans of making Zandy backwards compatible with Android 2.1? I understand it's probably not worth the trouble, considering that 2.1 is on its way out. I just thought it'd be awesome to have Zandy running on my rooted Nook Touch! (It should run, however, on the rooted Nook Color, since the Color runs Android 2.2.)
+"
+ajlyon/zandy,open,"Browse by tag, creator, year-- anything!","[Label(name=""db""), Label(name=""interface"")]","We need to add a way to browse by things other than collections-- this is something very useful that still hasn't made its way into Zotero proper. The way it'd work is a new ListActivity with the browsing facets: ""Tags"", ""Creators"", ""Years"", etc. We'd add another activity like the current CollectionActivity that would show the various tags (for example) and, optionally, the number of tagged items. Choose an item, and you'd be shown an ItemActivity, like the present one, but with support for more diverse cursors.
+
+Requires:
+- Normalization of creators and tags into their respective tables, or else performance will be horrible
+- Two new activities
+- Generalization of ItemActivity to support non-collection cursors
+"
+ajlyon/zandy,closed,user switching,"[Label(name=""api"")]","If someone changes their login credentials, Zandy will just be confused. The data from the previous user will be present, but they're unlikely to be pushed back to the server. This should be worked out when conflict resolution happens.
+"
+ajlyon/zandy,closed,Tag creation,"[Label(name=""bug"")]","Tag editing works, but they can't be created when no tags previously existed
+"
+ajlyon/zandy,closed,Creator dialog issues,"[Label(name=""bug""), Label(name=""interface"")]","The creator dialog doesn't work cleanly and fails to set field mode. This is a real usability issue.
+"
+ajlyon/zandy,closed,Decomposed Unicode characters display incorrectly,"[Label(name=""bug"")]","This is apparently a general problem in Android (http://stackoverflow.com/questions/4761031/android-webview-wont-display-accented-characters-correctly) -- we could intercept all text to be displayed and run it through the Normalizer (http://developer.android.com/reference/java/text/Normalizer.html), but that'd be a bit of a hassle. And we don't want to normalize and send it back to the server normalized, so we can only do it for display.
+"
+ajlyon/zandy,open,Group libraries,"[Label(name=""api"")]",
+ajlyon/zandy,closed,Reduce required API level,[],"The APK currently requires API Level 8 (Android 2.2), but I'm pretty sure there's not much I'm doing that requires that. I know that dialogs can only be passed bundles in API 8+, but that might well be the only thing holding me back. Moving down to 2.1 or even as low as, say, 1.6, would be great and open up the app to even more people out there with older devices.
+
+Anything aiming for 3.x will probably just share basic logic, but be a separate APK, since the user interface and the libraries used to build it will presumably be different for Honeycomb tablets.
+"
+ajlyon/zandy,closed,Settings don't stick,"[Label(name=""bug"")]","It appears that settings aren't sticking, so there's no way to set the api key automatically.
+"
+ajlyon/zandy,closed,Freezes around login,"[Label(name=""bug"")]","Two reports of issues involving the login / OAuth process. Need to double-check the handling of failed OAuth attempts (per report on Twitter), and check for possible issues involving the callback upon successful authentication with Zotero.org.
+"
+ajlyon/zandy,closed,Icon,"[Label(name=""helpwanted""), Label(name=""interface"")]","The current icon was made in about two minutes in Inkscape and really should be replaced.
+"
+ajlyon/zandy,closed,Indicate sync progress,"[Label(name=""api""), Label(name=""interface"")]","It would be good if we had a sync progress indicator somewhere. A more complex indicator might even let us view and modify the API request queue.
+"
+ajlyon/zandy,closed,Switching to Zandy using app switcher breaks back button,"[Label(name=""bug"")]","If a user leaves Zandy using the home button from, say, an item list, then returns using the app switcher (long-click on home button), the back button will exit Zandy and return to the previous application. That's unexpected. We need to somehow maintain the back stack.
+"
+ajlyon/zandy,closed,Syncing everything,"[Label(name=""api"")]","Periodic syncs and refreshes of the local data need to happen. A working minimum would be to provide a sync button that does a request for all new data (after resolving dirtiness issues), but we need something that can be automatic and efficient.
+"
+ajlyon/zandy,closed,Main screen UI,"[Label(name=""interface"")]","Not sure what to even show on the main screen, but we need some branding, an icon, and some starting points. Buttons to start browsing are great, but maybe also sync status, item count, user name...
+"
+ajlyon/zandy,closed,cursor hygiene,"[Label(name=""bug""), Label(name=""db"")]","Restructuring into activities is causing exceptions due to unclosed cursors. They seem harmless, but should probably be fixed.
+"
+ajlyon/zandy,open,Conflict resolution,"[Label(name=""api""), Label(name=""interface"")]",
+ajlyon/zandy,closed,Editing creators,"[Label(name=""interface"")]","Make a new CreatorActivity that looks something like ItemDataActivity. Should be passed an item. Single click should do... what? For consistency, long-click should bring up an edit dialog, letting us set the role, first and last name, and field mode.
+
+We also need itemtype-to-role maps to make this work.
+
+Creator reordering should also be possible, but I don't yet know how we should do it.
+"
+ajlyon/zandy,closed,Item creation and deletion,"[Label(name=""interface"")]","Item creation is vital. We need to make it happen. Like item type editing, this probably means having a copy of the JSON templates available locally. We also need to rework some logic that presupposes that all items have itemKeys at all times-- we need to use dbId more in the local code, so we can work with items before they are saved to the API.
+
+Item creation should be triggered from the menu on the ItemActivity (creating item in the current collection, if collection selected).
+
+[Edited to add deletion.]
+"
+ajlyon/zandy,open,Item type switching,"[Label(name=""interface"")]","Switching item types is hard to do-- we'll need to cache the item type mappings from the server, and use them to create conversion routines from one type to another, with confirmation when we're going to lose fields. This needs to happen ASAP, since we currently change the item type without changing the available fields. Maybe the conversion logic can be adapted from the Zotero client code.
+"
+ajlyon/zandy,closed,Tag editing,"[Label(name=""interface"")]","Tag editing needs to be implemented, probably as a separate TagActivity, which is passed an item to show the tags for. One-click to navigate to a view of tagged items (with confirm dialog); long-click to edit tag. Editor obviously needs autocomplete when that happens. Menu on this activity should include New Tag. Delete button can be put on the tag edit dialog.
+"
+ajlyon/zandy,open,Autocomplete in fields,"[Label(name=""db"")]","The desktop clients offer field autocompletion-- that's something we certainly want to offer at some point. It's pretty important for tags, but actually important in general. Will probably require some restructuring of the way we work with the database.
+"
+ajlyon/zandy,closed,Search,"[Label(name=""api""), Label(name=""db"")]",
+ajlyon/zandy,closed,Open DOIs and URLs from item view,"[Label(name=""intents"")]",
+ajlyon/zandy,closed,Child and standalone notes,"[Label(name=""api""), Label(name=""interface"")]",
+ajlyon/zandy,closed,Loading attachments from API,"[Label(name=""api"")]",
+ajlyon/zandy,closed,Tests,[],"They say Android has a nice test infrastructure. It'd be nice to try it out.
+"
+ajlyon/zandy,closed,Get userID,"[Label(name=""api""), Label(name=""helpwanted"")]","The OAuth implementation I'm using (signpost), doesn't show me the full response to the request that gives us our API key, so I can't get the userID that is sent along with it. That's not good.
+"
+ajlyon/zandy,closed,Expose files and other data to other Android apps,"[Label(name=""intents"")]","No idea how this is done, but the app would optimally allow other apps (like annotation apps) to open the files that the zotero app knows how to find. Unfortunately, the API doesn't yet allow file uploads, so the annotations can't be saved this way (yet).
+
+Edited: Bruce mentioned this on zotero-dev as well; it would be good to provide intents for various levels of data to let other pieces of software build off of us, but I don't know where to even start looking for the intents to send.
+"
+ajlyon/zandy,closed,Transparent switchover between local db and API,"[Label(name=""api""), Label(name=""db"")]","This probably means populating the database in the background, collection-by-collection, or bootstrapped by a real zotero.sqlite (see #1), and augmenting that with API queries for updates (that is, aynch request for updates whenever a user looks at something). Edits can also be made to the local database immediately and queued for commit to the API (asynchronous).
+"
+ajlyon/zandy,closed,"Expose/download attached files, a la Zotpress","[Label(name=""api""), Label(name=""interface"")]",
+ajlyon/zandy,closed,"Allow item adding and editing, writing to API","[Label(name=""api""), Label(name=""interface"")]",
+ajlyon/zandy,closed,"Provide item browsing, by collection","[Label(name=""interface"")]",
+ajlyon/zandy,closed,Work with a real zotero.sqlite,"[Label(name=""db"")]","To the extent that this application is trying to provide database access locally, it'd be great if people could load the zotero.sqlite onto an SD card to give full, local access to the database. This could reduce a lot of network traffic.
+"

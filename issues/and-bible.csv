@@ -1,0 +1,1036 @@
+repository,state,title,label,body
+mjdenham/and-bible,open,Optionally show TTS transport on bible view,"[Label(name=""Difficulty: Easy""), Label(name=""Feature"")]","I'm not sure if this is a good idea, but this was suggested. 
+
+"
+mjdenham/and-bible,open,Bible list view should by default show all installed bibles of all languages,"[Label(name=""Difficulty: Moderate""), Label(name=""Feature""), Label(name=""UX"")]",Preferrably with langugages as subtitles somehow. Need to investigate if there are good ways to implement this.
+mjdenham/and-bible,open,Language list should be seekable,"[Label(name=""Difficulty: Moderate""), Label(name=""Feature""), Label(name=""UX"")]",Language list in Download documents is very long. It would be more convenient if there was some way to enter search search key with text input). Or some other way make it more user friendly.
+mjdenham/and-bible,open,Screenshots for translators (version 2.13),"[Label(name=""Other"")]","This ticket is to help translators get some context when they are translating new strings for And Bible release 2.13.
+
+![screenshot_1543179633](https://user-images.githubusercontent.com/5811789/48984606-3e2c7980-f106-11e8-92b0-dc7ae01258b0.png)
+![screenshot_1543179886](https://user-images.githubusercontent.com/5811789/48984619-89df2300-f106-11e8-8abf-3d5bb0810431.png)
+![screenshot_1543179639](https://user-images.githubusercontent.com/5811789/48984607-3e2c7980-f106-11e8-9289-f6b7428a358b.png)
+![screenshot_1543179644](https://user-images.githubusercontent.com/5811789/48984608-3e2c7980-f106-11e8-8357-6d4ac6614baf.png)
+![screenshot_1543179686](https://user-images.githubusercontent.com/5811789/48984609-3ec51000-f106-11e8-9c17-2261f4de9bae.png)
+![screenshot_1543179724](https://user-images.githubusercontent.com/5811789/48984610-3ec51000-f106-11e8-8c1b-cc566511c08f.png)
+"
+mjdenham/and-bible,open,"Text to speech modes (repeat, passage)","[Label(name=""Difficulty: Moderate""), Label(name=""Feature""), Label(name=""Prio: Normal""), Label(name=""TTS"")]","From user:
+
+> Firstly: To listen to only selected passages (not whole chapters) and
+> Secondly: To listen with any number of repetitions (not repeated just once"
+mjdenham/and-bible,open,Translation comparison issue with YLT,"[Label(name=""Bug"")]","This is not urgent, just notifying about a possible bug. See the bottom of the screenshot. This error seems to happen only with the last verse of a chapter. I uninstalled and reinstalled that version (Young's Literal), but the issue is still there. Even if I click 'compare' while looking at the last verse in YLT, this error happens. Please check.
+
+![screenshot_20181118-141812_2](https://user-images.githubusercontent.com/5811789/48932731-12db3c00-ef06-11e8-9b03-76fd14c5a14e.png)
+"
+mjdenham/and-bible,open,Make margin width adjustable in settings,"[Label(name=""Difficulty: Easy""), Label(name=""Feature""), Label(name=""Prio: Normal"")]","There have been users complaining about wide margin, especially when they use landscape mode.
+I think solution would be to make margin adjustable in settings."
+mjdenham/and-bible,open,Restore backup does not migrate database,"[Label(name=""Affects: Beta""), Label(name=""Bug""), Label(name=""Prio: High"")]","Further the extra column causes errors after restore of previous backups. I get:
+
+```
+android.database.sqlite.SQLiteException: no such column: speak_settings (code 1)
+at android.database.sqlite.SQLiteConnection.nativeExecuteForCursorWindow(Native Method)
+at android.database.sqlite.SQLiteConnection.executeForCursorWindow(SQLiteConnection.java:845)
+at android.database.sqlite.SQLiteSession.executeForCursorWindow(SQLiteSession.java:836)
+at android.database.sqlite.SQLiteQuery.fillWindow(SQLiteQuery.java:62)
+at android.database.sqlite.SQLiteCursor.fillWindow(SQLiteCursor.java:144)
+at android.database.sqlite.SQLiteCursor.getCount(SQLiteCursor.java:133)
+at android.database.AbstractCursor.moveToPosition(AbstractCursor.java:197)
+at android.database.AbstractCursor.moveToFirst(AbstractCursor.java:237)
+at net.bible.service.db.bookmark.BookmarkDBAdapter.getAllBookmarks(BookmarkDBAdapter.java:150)
+at net.bible.android.control.bookmark.BookmarkControl.getBookmarksWithLabel(BookmarkControl.java:305)
+at net.bible.android.view.activity.bookmark.Bookmarks.loadBookmarkList(Bookmarks.java:201)
+```"
+mjdenham/and-bible,open,Synchronize bookmarks and notes to Google Drive,"[Label(name=""Difficulty: Moderate""), Label(name=""Feature""), Label(name=""Prio: High"")]",Or some other convenient synchronization that enables using same bookmarks for multiple devices. 
+mjdenham/and-bible,open,Notify user about document module updates,"[Label(name=""Difficulty: Moderate""), Label(name=""Feature""), Label(name=""Prio: Normal"")]",Should be a feature that is disabled by default (or asked from user initially).
+mjdenham/and-bible,closed,Test Travis with pull requests,[],
+mjdenham/and-bible,closed,Change whitespace indentations to tabs,[],Alternative solution to #150 
+mjdenham/and-bible,closed,Change tabs to whitespaces so that codebase is consistent,[],
+mjdenham/and-bible,closed,Add Travis CI support to the repository,"[Label(name=""Code improvement""), Label(name=""Difficulty: Moderate""), Label(name=""Prio: High"")]",Run unit & integration tests automatically for PRs.
+mjdenham/and-bible,open,Allow backupping / restoring backups to/from Google Drive and other targets (via android system intents),"[Label(name=""Difficulty: Moderate""), Label(name=""Feature""), Label(name=""Prio: Normal"")]",
+mjdenham/and-bible,closed,Show module abbreviation rather than module ID (if available),"[Label(name=""Improvement""), Label(name=""Prio: Normal"")]","Change needed in the following views:
+- Download Documents
+- Documents
+- Toolbar
+- Bookmark widget
+
+Fall back to module id if abbreviation is not available."
+mjdenham/and-bible,closed,Verse selection does not work ,"[Label(name=""Affects: Beta""), Label(name=""Bug""), Label(name=""Prio: High"")]","When using chapter/verse selection from toolbar...
+
+**Actual**: bible view goes to the first verse of the chapter.
+**Expected**: bible view should go to the selected verse.
+
+Similarly, when using search function, it always goes to verse 1.
+
+"
+mjdenham/and-bible,closed,Allow dictionary key matches to be more flexible.,[],"Allow user to enter search terms that don't include leading characters (eg, without ""00"" in Strong's)."
+mjdenham/and-bible,open,Seek other storage devices for books,"[Label(name=""Feature"")]","Currently And-Bible uses
+* Android/data/net.bible.android.activity/
+* jSword
+
+folders on /sdcard. Times are running fast and it's now reasonable to care about other storage devices: not just external MMC but also USB/network/whatnot filesystems.
+
+Also with rising target SDK it's required to *ask* storage permission from user."
+mjdenham/and-bible,closed,Sdk target update to 27,[],"- [x] Upgrade SDK version to 27
+- [x] Screen timeout
+- [x] Request permission to save/restore backup to external storage
+- [x] Check phone state reading permissions (=> no permissions query needed)
+- [x] Check permission to access manual install dir (sdcard/jsword)
+- [x] Investigate how Andbible addons can install modules => It can do it with by requesting WRITE_EXTERNAL_STORAGE permission. 
+- [x] Request permission to access manual instal dir (sdcard/jsword)
+- [x] Notification for document downloading is broken (fixed)
+- [x] Test with different targets in emulator
+- [x] Incoming call handling bugs
+
+## Test results (test made before rebasing changes to development):
+
+### Search index creation and find:
+kitkat 19: OK
+lollipop 21:  OK
+marshmallow 23: **NOK**
+nougat 25: OK
+oreo 26: OK
+P 28: OK
+
+### Download:
+kitkat 19 OK
+lollipop: OK
+MarshMallow OK
+nougat OK
+Oreo OK
+P: OK
+
+### Speak and notification: 
+kitkat OK
+lollipop: OK
+Marshmallow OK
+Nougat OK
+Oreo OK
+P: OK
+
+### Widget:
+Kitkat OK
+Lollipop OK
+Marshmallow OK
+Nougat OK
+Oreo OK
+P: OK
+
+### Stop speaking on phonecall:
+Kitkat OK
+Lollipop OK
+Marshmallow OK
+Nougat OK
+Oreo OK
+P: OK
+
+
+Updated notification:
+![screenshot_1531064037](https://user-images.githubusercontent.com/5811789/42421393-8dc0385c-82dd-11e8-8b7d-1ca82f772a4d.png)
+"
+mjdenham/and-bible,open,Transpose books of the bible grid to read from left to right.,"[Label(name=""Difficulty: Easy""), Label(name=""Feature"")]",I think this would be easier to read. I find it difficult reading from top to bottom.
+mjdenham/and-bible,open,ESV2011 section titles often displayed in wrong locations (offset by one verse),"[Label(name=""Bug""), Label(name=""Prio: High"")]","Sorry if the title isn't quite clear. In AndBible 2.11.1.246, I've downloaded and am viewing the ESV2011 (ESV with Strongs numbers) module, and am finding that non-canonical section titles are often displayed in the wrong places, offset by one verse, if they are not at the beginning of a chapter.
+
+For example, in Matthew 18, ""Who Is the Greatest?"" shows up correctly before verse 1, but ""Temptations to Sin"" is displayed before verse 6 instead of before 7, ""The Parable of the Lost Sheep"" is displayed before verse 9 instead of before verse 10, etc. This issue is reproducible on both my tablet (running Android 6) and my phone (running Android 7).
+
+Notably, I do not see this issue arise with NET or ESV2001. However, if I view the same passage in ESV2011 in Xiphos or BibleTime on my Linux system, the titles are displayed in the expected and correct locations, so I strongly suspect the issue is with AndBible, not with the module itself."
+mjdenham/and-bible,closed,Bible text to speech improvements,[],"### Testers:
+Here is debug apk: https://drive.google.com/open?id=1ZTP-wJulzKLs8F6npXGZ3aIG_n1epdC4 that I try to keep up to date. You need to uninstall official Andbible before installing this.
+
+### Reviewers: 
+This pull request includes everything that is ready to be reviewed/tested (and perhaps merged) so far.
+
+Phase 1 (verse by verse speaking)  
+ - Old method is used for commentaries & genbooks
+ - There are two speak windows: one for bible, one for others. Active window content determines which one is opened. 
+ - Automatically pause/continue when headphone is disconnected/connected
+ - Persist speech state if paused and going away from app
+ - Bible book change message like this: ""Book changed. Exodus chapter 1.""
+ - Optionally synchronize speech with first window
+ - Speak chapter changes like this: ""Genesis Chapter 1."". Book name is spoken in the locale determined by bible translation.
+ - Continue sentences: if verse does not end in period (or !, ?), opt to feed more content to TTS. This is to make sure speech intonation is correct.
+ - Auto bookmark on pause / stop with special speak label. 
+ - Speak speed adjustment
+ - Increase speech rate maximum to 300% (closes #99)
+
+Phase 2 (Add text options to TTS) 
+ - Option to speak titles
+ - Option to use earcons (page flip sound before title etc.) 
+   - Earcon sources:
+     - Page flipping sound: https://www.youtube.com/watch?v=4k8XfsqkU3o
+     - Others: KDE project (as of Ubuntu 16.04 in /usr/share/sound/*))
+ - Option to have small delay between paragraph changes 
+ - Option to replace divine name (LORD) with Yahweh while speaking
+
+Phase 3 (Speak notifications)  
+- Show notification while speaking / paused. Notification shows the latest title and current verse.
+- Take wakelock while speaking to prevent from sleeping
+- Use foreground service to prevent OOM killer from killing speaking process (notification can't be removed while speaking)
+- Support notification channels (Oreo). Notification support down to Android L. 
+
+Phase 4 (Widget) 
+ - Add widget showing playback buttons, current title and bible verse
+
+Phase 5 (Autobookmark) 
+ - Option to save playback settings into bookmark & restore when resuming.
+ - Improve and simplify speak settings layout
+
+Phase 6 (Sleep timer) 
+ - sleep timer option
+ - add and improve tests
+ - more widget types, especially TTS bookmark widget which has shortcut buttons to TTS bookmarks.
+
+Related jsword pull request: https://github.com/crosswire/jsword/pull/110. This pull request contains updated jsword*.jar files (built with jsword-tweaks tools).
+
+### TODO
+ - [ ] Strings (especially bookmark help text) should be spell-checked by native english speaker
+ - [x] When FinSTLK is published to crosswire repository, enable related tests
+
+## Screenshots:
+
+
+### Speak window:
+![screenshot_1535289579](https://user-images.githubusercontent.com/5811789/44628619-f2720480-a94b-11e8-89f1-00ce2aba7029.png)
+![screenshot_1532701524](https://user-images.githubusercontent.com/5811789/43326777-5407771c-91c2-11e8-9925-47955355045b.png)
+![screenshot_1532701560](https://user-images.githubusercontent.com/5811789/43326776-53e7c3ea-91c2-11e8-9873-b9f400e1dfeb.png)
+![screenshot_1532701517](https://user-images.githubusercontent.com/5811789/43326778-54274c4a-91c2-11e8-83d9-cec32b5a91b0.png)
+
+
+### For commentaries and general books:
+![screenshot_1529792419](https://user-images.githubusercontent.com/5811789/41814113-d5911d00-774c-11e8-86fd-a608f6d066b8.png)
+
+### Notification:
+![screenshot_1531379368](https://user-images.githubusercontent.com/5811789/42617841-c6c1bffa-85bb-11e8-9e6b-c7a2df04daa1.png)
+![screenshot_1531379376](https://user-images.githubusercontent.com/5811789/42617842-c6df743c-85bb-11e8-9bba-2ec43083e07c.png)
+
+### Widget:
+![screenshot_1529788704](https://user-images.githubusercontent.com/5811789/41813748-34200ce0-7744-11e8-9c42-6277c0fb0d84.png)
+![screenshot_1530705437](https://user-images.githubusercontent.com/5811789/42275974-abaa4f1a-7f9a-11e8-944e-404dff9afd52.png)
+
+### Speak bookmarks:
+![screenshot_1532419035](https://user-images.githubusercontent.com/5811789/43124746-b80615dc-8f30-11e8-9014-5dc7af3699b1.png)
+![screenshot_1532419094](https://user-images.githubusercontent.com/5811789/43124747-b82b8420-8f30-11e8-893e-2a0ea8fc6481.png)
+"
+mjdenham/and-bible,closed,TTS Improvements phase 3: Speak notification,[],"Third phase of TTS improvements.
+
+Features on top of first #137 and second phase https://github.com/mjdenham/and-bible/pull/138:
+
+- Show notification while speaking / paused. Notification shows the latest title and current verse.
+- Take wakelock while speaking to prevent from sleeping
+- Use foreground service to prevent OOM killer from killing speaking process (notification can't be removed while speaking)
+- Support notification channels (Oreo). Notification support down to Android L. 
+
+To compare incrementally to phase 2, see pull request at my fork https://github.com/tuomas2/and-bible/pull/7
+
+![screenshot_1529468918](https://user-images.githubusercontent.com/5811789/41637260-a15fdb96-745b-11e8-999c-d6506238ca5c.png)
+![screenshot_1529468927](https://user-images.githubusercontent.com/5811789/41637261-a17fef30-745b-11e8-8f9f-7cd68b592c51.png)
+
+"
+mjdenham/and-bible,closed,TTS improvements phase 2:  Add text options to TTS,[],"Second phase of TTS improvements.
+
+Features on top of first phase https://github.com/mjdenham/and-bible/pull/137: 
+ - Option to speak titles
+ - Option to use earcons (page flip sound before title etc.) 
+ - Option to have small delay between paragraph changes 
+ - Option to replace divine name (LORD) with Yahweh while speaking
+
+To compare incrementally to phase 1, see pull request at my fork https://github.com/tuomas2/and-bible/pull/6
+
+Earcon sources:
+ - Page flipping sound: https://www.youtube.com/watch?v=4k8XfsqkU3o
+ - Others: KDE project (as of Ubuntu 16.04 in /usr/share/sound/*))
+
+![screenshot_1529468968](https://user-images.githubusercontent.com/5811789/41637274-ba0ca8ae-745b-11e8-9750-f9beea8b78e2.png)
+"
+mjdenham/and-bible,closed,TTS improvements phase 1: verse by verse speaking & related features,[],"First phase of new verse by verse speaking for bible speaking is now ready for code review and testing.
+
+Features:
+ - Old method is used for commentaries & genbooks
+ - There are two speak windows: one for bible, one for others. Active window content determines which one is opened. 
+ - Automatically pause when headphone is disconnected
+ - Persist speech state if paused and going away from app
+ - Bible book change message like this: ""Book changed. Exodus chapter 1.""
+ - Options:
+   - Synchronize speech with first window
+   - Speak chapter changes like this: ""Genesis Chapter 1."". Book name is spoken in the locale determined by bible translation.
+   - Continue sentences: if verse does not end in period (or !, ?), opt to feed more content to TTS. This is to make sure speech intonation is correct.
+   - Auto bookmark on pause / stop with customizable label. 
+   - Speak speed adjustment
+ - New code written in Kotlin
+ - Unit tests
+
+Other:
+ - increase speech rate maximum to 300% (closes #99)
+
+Related jsword pull request: https://github.com/crosswire/jsword/pull/110. This pull request contains updated jsword*.jar files (built with jsword-tweaks tools).
+
+I have more features in mind and will make separate pull requests later.
+
+![screenshot_20180611-190817](https://user-images.githubusercontent.com/5811789/41243498-f883c2f0-6daa-11e8-8365-86071955bc49.png)"
+mjdenham/and-bible,open,Continous scrolling: chapter missing,"[Label(name=""Bug""), Label(name=""Prio: Low"")]","I can't yet reproduce this, but this happened once to me, using develop at 8a73b9622da1e16a0d24de1fe736fbea7689791f. Got screenshot. I'll post more information when I can figure out how to reproduce.
+
+![screenshot_20180526-134332](https://user-images.githubusercontent.com/5811789/40575307-57ae59e2-60eb-11e8-87c4-7f13b928e7f2.png)
+
+
+"
+mjdenham/and-bible,open,Hide on-screen navigation bar in full-screen mode,"[Label(name=""Difficulty: Easy""), Label(name=""Feature"")]","Martin, it looks like the code change for this would be pretty simple: in the call to setSystemUiVisibility() in setLightsOutMode(), replace SYSTEM_UI_FLAG_LOW_PROFILE with SYSTEM_UI_FLAG_IMMERSIVE in conjunction with SYSTEM_UI_FLAG_FULLSCREEN and SYSTEM_UI_FLAG_HIDE_NAVIGATION, i.e.,
+
+mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+
+The only catch I can see is that this flag was introduced in Android 4.4 API, so if you are holding back and wanting to maintain compatibility with pre-KitKat APIs (which seems a little overly conservative), then you couldn't switch to using immersive mode.
+
+See uservoice: https://andbible.uservoice.com/admin/forums/100177-general/suggestions/31445623-hide-on-screen-navigation-bar-in-full-screen-mode"
+mjdenham/and-bible,open,Intercept Bible URI-s and URL-s,"[Label(name=""Difficulty: Moderate""), Label(name=""Feature"")]","As you (Martin) wrote yourself:
+вт, 2 мая 2017 г. в 2:01, Martin:
+> There are some standard Sword uris. You will find reference to these in UriAnalyzer and use in LinkControl. They are specified in https://www.crosswire.org/wiki/Frontends:URI_Standard
+
+Actual reference is now at: http://wiki.crosswire.org/Frontends:URI_Standard
+
+It's a common practice for Android apps to react on related URIs and URLs. This generally help a lot with integration to other apps and opens a lot of customization opportunities.
+The support code shouldn't be complicated. Please consider adding. Thanks."
+mjdenham/and-bible,open,Bookmarking with continuous scroll reloads the current window,"[Label(name=""Bug""), Label(name=""Prio: Low"")]","Tested with current development (https://github.com/mjdenham/and-bible/commit/37f08ba4006a996536f367c5842466d4f6fce011)
+
+- Scroll down such that two chapters are visible
+- Create bookmark on 1 verse (on either visible chatper)
+
+- Expected: bookmarking is done without current window reloading
+- Actual: current window is reloaded after bookmarking.
+
+I'm not sure if there is something in the implementation that makes this necessary, but if it can be easily avoided then this should be fixed."
+mjdenham/and-bible,closed,Fix window synchronization related problems,[],"There was regression (from 9b40cf362a840193cd302365505f2bad3507ccae) that caused issue fixed by #122 reappear. This fixes that again and tries to make window synchronization code more clear.
+
+- Rename BookmarkChangedEvent to SynchronizeWindowsEvent which can be triggered when window sync is needed.
+
+- Create new request code RESTART_REQUIRED to IntentHelper for settings window changes.
+
+This also takes care of issue mentioned in #130."
+mjdenham/and-bible,closed,Bugfix/app restarts after assigning bookmark label,[],"Bug description:
+- go to settings and change application language to ""English"" (or anything else but not ""Default"").
+- add bookmark
+- click ""Assign labels"" button that appears in the bottom (before it disappears)
+- click OK
+-> Expected: return to main screen without restart
+-> Actual: App restarts unnecessarily.
+
+This PR fixes this issue. This does not seem regression but older issue.
+When debugging this I found also 2 lines of code which did not make any sense (commit 
+c92e18b), but did not cause any issue either. I cleaned it up a little and checked that it did not break."
+mjdenham/and-bible,open,Embolden search term in results,"[Label(name=""Difficulty: Easy""), Label(name=""Feature""), Label(name=""Prio: Normal"")]",It would be useful to have the words you search for show up in bold in each result when you search.
+mjdenham/and-bible,closed,If long-clicking on normal text (not link) do not open context menu open previous link.,[],"Found issue in develop related to the new context menu feature (#114):
+
+1. Long-click link (in a commentary for example). Context menu opens normally. Close menu without clicking any menu entry (by clicking on gray area instead).
+ 2. Long-click on text which doesn't have link.
+-> Expected: text selector should activate and not context menu.
+-> Actual: context menu appears.
+
+This PR fixes the issue, which is caused by context menu info that is not reset properly."
+mjdenham/and-bible,closed,"Switch off current window syncing when opening ""Open link here"" from context menu",[],Per user testing / request in #112 .
+mjdenham/and-bible,closed,Backup: an error has occurred,[],"I am using LineageOS (Android 7.1.2).  When choosing ""Administration > Backup > Backup"" I am immediately greeted with the message ""An error has occurred"".  Is it possible that it is a permissions issue or something of that sort?"
+mjdenham/and-bible,closed,"Revert ""Display date bookmark was added in the bookmark list """,[],Reverts mjdenham/and-bible#118
+mjdenham/and-bible,open,Add button at top of bookmark list to toggle showing current/original translation,[],"
+Add show-translation button at top of bookmark list (icon should probably be changed!). Toggles between showing bookmarks in current translation, or each one in the original translation where it was bookmarked. 
+
+Note that this change also involves a database upgrade (done automatically) as we now also need to save the book used by a bookmark.
+
+This is one of the changes suggested in [bookmark-improvements](https://github.com/mjdenham/and-bible/pull/111) and discussed there to some extend.
+
+Example:
+![image](https://user-images.githubusercontent.com/37398767/38779234-dc7231da-40c5-11e8-9f8f-f5ec1dea73a9.png)
+"
+mjdenham/and-bible,closed,Bugfix: Do not synchronize general books or unsynchronized commentaries,[],"Issue description:
+1)
+- Open two windows, 1 for bible, 1 for general book with a long page.
+- Go to the bottom of the general book page.
+- Resize bible window.
+Actual: Due to refresh, general book page goes to the beginning. 
+Expected: General book page does not change.
+
+2) 
+- Open two windows, 1 for bible, 1 for commentary. 
+- Switch off commentary window synchronization
+- Open a long page in commentary window and go to the bottom of the window
+- Resize bible window.
+Actual: Due to refresh, commentary page goes to the beginning. 
+Expected: Commentary page in this case should not change. 
+
+This PR fixes this issue."
+mjdenham/and-bible,closed,Bugfix/improvement: Force synchronize windows if adding/deleting bookmark,[],"Issue description:
+- open 2 bible windows
+- Create bookmark in first window
+- Actual: bookmark is visible in first window, but not the second
+- Expected: bookmark is visible in both windows.
+
+This PR fixes the issue.
+"
+mjdenham/and-bible,closed,Improve current book/chapter highlight in selection grid,[]," Improve the highlight of the current book or chapter in the book and chapter selection grid by underlining the name/chapter. (Why: It is difficult to see the current item otherwise, and it helps to quickly locate the current book on the grid. If you re-select it you can change the chapter.)
+
+This is one of the changes suggested in [bookmark-improvements](https://github.com/mjdenham/and-bible/pull/111).
+
+Examples below:
+![image](https://user-images.githubusercontent.com/37398767/38778168-6c3d0ca6-40b5-11e8-9b38-947dcf0b4786.png)
+
+and
+
+![image](https://user-images.githubusercontent.com/37398767/38778176-8ee86606-40b5-11e8-9347-a47a8b82a01b.png)
+
+"
+mjdenham/and-bible,open,Allow quick selection of many bookmarks to label or delete.,[],"A long click on a bookmark in the bookmark list will select all bookmarks between the current and previous (long click selected) bookmark.
+
+This is one of the changes suggested in [bookmark-improvements](https://github.com/mjdenham/and-bible/pull/111)."
+mjdenham/and-bible,closed,Allows refreshing of an existing bookmark's date to the current time when reselected.,[],"We do this by showing the Add button also on selected verse even if it was bookmarked already. Adding it again will update the bookmark's date to the current time.
+
+This is one of the changes suggested in [bookmark-improvements](https://github.com/mjdenham/and-bible/pull/111).
+
+Example below. (The star indicates existing bookmark on this verse; the blue highlight indicates the verse was selected again - and the Add button is still shown at the top).
+
+![image](https://user-images.githubusercontent.com/37398767/38778082-68e2c2be-40b3-11e8-9f7f-f052f8f5862b.png)
+"
+mjdenham/and-bible,closed,Display date bookmark was added in the bookmark list ,[],"This suggested change shows the date a bookmark was added in the bookmark list. This is one of the changes suggested in [bookmark-improvements](https://github.com/mjdenham/and-bible/pull/111).
+
+Example: See the date on the right below. (Note that the translation is also shown here - this is not added by this pull, but by another pull request)
+
+![image](https://user-images.githubusercontent.com/37398767/38777902-51127cb8-40b0-11e8-9e09-3a1bb1ab8858.png)
+"
+mjdenham/and-bible,closed,Bugfix / Fix: special dedicated link window forgets bible version if it is closed,[],"## Bug description
+
+- Click link in a commentary (gill for example) which opens bible verse in a special window 
+- Switch bible version in special window to something else
+- Close special window
+- Click link in a commentary which opens special window again. 
+- Expected: bible verse is opened in a bible version that was last used in special window
+- Actual: bible version is opened in a default bible version.
+
+This PR fixes this issue.
+"
+mjdenham/and-bible,closed,Bugfix / Fix bottom gap in the multiwindow mode,[],"Since multiwindow support was introduced, bottom gap length has been incorrect if multiple windows are opened. Gap length (getPaddingAtBottom) was calculated from the height of the active window (which can be small and which is set as global screen height) rather than from actual screen height. This fixes it by considering parent view height (view that contains all bible views / windows) height instead of actual bibleview height.
+
+## Before: could not scroll second window down to the bottom 
+
+![screenshot_1522397871](https://user-images.githubusercontent.com/5811789/38130632-8858f7fc-340c-11e8-90ec-3db3285699dd.png)
+
+## After: scrolling second window is now possible to the bottom
+
+![screenshot_1522397931](https://user-images.githubusercontent.com/5811789/38130658-9c88d5ee-340c-11e8-85db-e5a409d17e2e.png)
+"
+mjdenham/and-bible,closed,Improvement / Add proper title that shows module install progress status to install zip view,[],"Install Zip view has been missing title that explains what's happening right now. If the module is being downloaded from google drive for example, it might leave the user confused if anything at all is happening.
+Now it will explain.
+
+## Before:
+
+![screenshot_1522394141](https://user-images.githubusercontent.com/5811789/38128458-524b88e0-3403-11e8-9caf-74c4a95199f7.png)
+
+## After:
+
+![screenshot_1522393908](https://user-images.githubusercontent.com/5811789/38128326-c933c18a-3402-11e8-8649-1a59c28b622f.png)
+"
+mjdenham/and-bible,closed,Feature / link context menu,[],"Replaces #106. Related issue #30 
+
+When long-clicking links, context menu appears which gives choices to choose where link is desired to be opened (this window, main window, new window or special window).
+
+Checked that tests run all fine.
+
+## Demo screenshot:
+
+![screenshot_1522328985](https://user-images.githubusercontent.com/5811789/38090559-abe8f4c0-336b-11e8-9f1d-ffb1be47528d.png)
+"
+mjdenham/and-bible,closed,Bugfix/reference contents should be displayed,[],"New approach to #28 . Work is based on #110 (i.e. this PR contains changes of #110 too). To see only differences in this PR, see https://github.com/tuomas2/and-bible/pull/1. 
+
+Tested with Gill, which works as earlier. Checked also unit tests + added a new test for this. 
+
+Demo by screenshots:
+
+## Current behavior rewrites reference contents always (bad):
+
+![screenshot_1522247397](https://user-images.githubusercontent.com/5811789/38035839-ee7e84a8-32ad-11e8-90e5-d7f9343fddf5.png)
+
+## New behavior does not....
+
+![screenshot_1523171719](https://user-images.githubusercontent.com/5811789/38464391-d70d2804-3b15-11e8-8ea7-bfc0060ef2b2.png)
+
+## ... unless there are multiple links in the reference (like in Gill)
+
+![screenshot_1522247621](https://user-images.githubusercontent.com/5811789/38035938-2e4f72f4-32ae-11e8-8e23-ca7479aca61b.png)
+
+"
+mjdenham/and-bible,closed,"Feature/Add new split mode preference (vertical, horizontal, automatic) to preferences screen",[],"Currently split mode is determined by if the mobile device is used in portrait or landscape mode.
+Sometimes it is more desirable to manually select desired split mode to be vertical even in portrait mode or horizontal in landscape mode. This pull request implements the new preference which allows user to chooce desired behavior. Default is 'automatic', which corresponds to current behavior.
+
+## Demo screenshots. Split mode set to 'vertical':
+![screenshot_1522235780](https://user-images.githubusercontent.com/5811789/38025921-ce549cf0-3292-11e8-99c4-800a92155663.png)
+
+## New split mode preference:
+![screenshot_1522235794](https://user-images.githubusercontent.com/5811789/38025935-d72a70b6-3292-11e8-86bc-4fcb322bfe90.png)
+
+## Split mode preference selection:
+![screenshot_1522235800](https://user-images.githubusercontent.com/5811789/38025936-d7ac5662-3292-11e8-9f48-ac75ab2f1fee.png)
+"
+mjdenham/and-bible,closed,Bookmark improvements,[],"Hi, I love and-bible! I propose the following changes that will enhance the bookmark side with minimal GUI changes:
+
+1. Display date bookmark added in bookmark list. (Added TwoLine2TitleListItem for this)
+2. Display translation abbreviation in the bookmark list and show the text from that translation. (E.g. KJV and T4T)
+3. Let a long press on bookmark list (after a bookmark was selected) select all bookmarks from previous long press to current long press. Useful to quickly select many bookmark entries for delete or labeling.
+4. Show add bookmark button also if bookmark exist already. If selected the bookmark's date will be updated to the current time.
+
+Note that the above require a change to the bookmark db table. In my tests it upgrades correctly (i.e. if you save bookmarks beforehand and then restore afterwards).
+
+Regards
+Jacques"
+mjdenham/and-bible,closed,Bugfix / Handle references that contain spaces properly. ,[],"Spaces are allowed in general book references.This fix was part of https://github.com/mjdenham/and-bible/pull/28. It still had some issues and broken tests. This PR has fixed the issues and I also added test about the broken feature.
+
+Refactored code a little (getReferenceFromContent method)
+
+"
+mjdenham/and-bible,closed,Improvement / Show full OSIS ID in genbook content list (instead of name),[],"In genbook content list, it is better to show full osis id instead of name, which is only the last part of the osis id. This makes it possible to use content list to get better insight and navigate nested TOC structures."
+mjdenham/and-bible,closed,Bugfix / Fix restoring state for Genbooks,[],Restoring state of genbooks after app restart is broken. This fixes the problem.
+mjdenham/and-bible,closed,Feature / Layout style improvements,[],"1) for tablets, I like to have some left + right margins.
+2) I made a hack which makes it possible to adjust how big gap is between paragraphs. Instead of <br/> we need to write <div class=""breakline""> and adjust css accordingly. It is not possible to adjust <br/> by css."
+mjdenham/and-bible,closed,WIP Make long click reverse option to open in a new window,[],"Advanced user feature:
+
+When clicking links, it is sometimes conventional to reverse option open link in new temporary window.
+
+By long click it is now possible. "
+mjdenham/and-bible,closed,Predownloaded Contents (bible),[],"At startup , the bible lists are downloaded. Is it possible to have 1 Bible predownloaded already when the app is installed?"
+mjdenham/and-bible,closed,Reading plan y1ntpspr.txt: Correction of missing chapters and wrong order of chapters,[],"Patched in reading plan y1ntpspr.txt:
+1. Wrong order between Psalm 12 and 25
+2. Two missing chapters and chapters twice used between Acts 12 and 15
+3. Wrong singular and plural forms (Psalm/Psalms) for Psalms 79-80, 81-83 and 103
+4. Twice used Psalm 108"
+mjdenham/and-bible,open,Can't download or build greek index,"[Label(name=""Bug""), Label(name=""Prio: Normal"")]","Downloading or building an index fails - initial search after download or build gives ""Invalid search query"", and searching again results in an ""upside down android symbol"", and searching again after restarting requires download or build of the index again.
+
+Steps to produce:
+1. Install MorphGNT bible and StrongsRealGreek dictionary.
+2. Navigate to John 1 in MorphGNT with Morphological codes displayed.
+3. Tap 0746 beside the second word (arche).
+4. Tap ""Find all occurrences"" in the ""Real Greek"" window.
+5. You are asked to ""DOWNLOAD"" or ""CREATE"" an index. Do either.
+6. After downloading (or creating) you get a dialog ""Invalid search query""
+7. Click OK
+8. You return to the ""arche"" window for ""Real Greek"".
+9. Click ""Find all occurrences"" again.
+9. You see the ""upside down android"" icon in the upper left of the ""Real Greek"" window.
+10. Exit and restart And-Bible
+11. Repeat steps 2-4 and you'll be asked to ""DOWNLOAD"" or ""CREATE"" again.
+
+By the way, this is the most amazing and wonderful app I've ever used. I tell all my friends. This bug is annoying, but doesn't diminish my thankfulness for your work and this app in the least. THANK YOU!"
+mjdenham/and-bible,closed,Very helpful,[],"I just wanted to say thankyou.  This app has been really helpful, particularly with refugees.  It is a necessity to use multiple languages here.  You've let me put the languages I need side by side, and read them together.  There's no other app on iphone, or android that will do that
+
+(Other apps either only display two languages, or they don't have the languages I need)
+
+https://tse.gratis/"
+mjdenham/and-bible,closed,Cross-references appears without spaces,[],"If I have more than one cross reference it appears without space between all ref. Look the capture between 43 and Luc.
+![screenshot_2017-10-17-15-09-35](https://user-images.githubusercontent.com/19690477/31670114-d1b1eaba-b34e-11e7-97dc-40b4277db325.png)
+"
+mjdenham/and-bible,open,Using AlarmManager.set() to restart the app may be delayed since API 19,"[Label(name=""Code improvement""), Label(name=""Improvement"")]","Hi there,
+
+I found the API AlarmManager.set() is used to schedule a restart the app in one second in [MenuCommandHandler.java](https://github.com/mjdenham/and-bible/blob/5d6b0e3bd4c578ff2cfec9979e7e82deaa401acd/and-bible/app/src/main/java/net/bible/android/view/activity/page/MenuCommandHandler.java#L172).
+FYI, the behaviour of this API has changed since API 19 (KitKat) according to the [API guide](https://developer.android.com/reference/android/app/AlarmManager.html#set(int,%20long,%20android.app.PendingIntent)). After KitKat, the alarm may not be triggered at the exact time but may be delayed by the system.
+
+To guarantee a intended quick restart, I think using [AlarmManager.setExact()](https://developer.android.com/reference/android/app/AlarmManager.html#setExact(int,%20long,%20android.app.PendingIntent)) will be a better choice.
+
+Thx."
+mjdenham/and-bible,closed,"New speech speed control maximum overrules system TTS setting, and maximum speed is too limited",[],"The new speed control only goes to 200%. Prior to update, I was using Speak at a *faster* speed by setting the system TTS (in my case Google or Samsung TTS -- I am using Google's).
+
+Now, with the update to include TTS speed control within andbible, I cannot listen as fast as I would like, b/c the andbible TTS speed setting takes precedence over the system TTS speed.  
+
+It would be better to either (in order of what seems like the most robust/versatile for users):
+
+1. allow the new speed control to go higher (by expanding the range to the same range Google TTS allows),
+2. allow the in-app speed control to be disabled so as to not overrule system TTS speed and to allow user to continue managing TTS speed as before, 
+3. simply remove the newly added option and to allow user to continue managing TTS speed as before."
+mjdenham/and-bible,open,Font size change when multiple windows,"[Label(name=""Feature""), Label(name=""Prio: Low"")]","I'm a user of your great bible app from Germany. I use the split window function and would like to be able to use different font sizes for each window. I noticed when I changed the size, only one window was updated, the other one stayed the same. After closing the app and opening it again, both windows had the same font size. "
+mjdenham/and-bible,open,High contrast indicator for currently selected book in book chooser menu,"[Label(name=""Difficulty: Easy""), Label(name=""Improvement"")]","When a passage is already open and you tap to jump to another book/Ch./verse, the currently selected book / verse is shown in bold. 1 bold, 3 character symbol out of 66 is difficult to find and serves little purpose. I would like to see a more obvious / high contrast button instead. Such as larger text, a differently coloured background button, an underline, or a white border on the edges of the button.  
+
+_Sent from my Motorola XT1039 using [FastHub](https://play.google.com/store/apps/details?id=com.fastaccess.github)_"
+mjdenham/and-bible,closed,ProGuard issue,[],"Would you please look at this?
+https://forum.f-droid.org/t/proguard-issues-in-f-droid/594/4"
+mjdenham/and-bible,closed,Error getting bible text error when using custom module,[],"I'v built a custom module and when loaded into And Bible (2.9.1) from ZIP, it shows the following error:
+`Error getting bible text: Attempt to invoke virtual method 'boolean java.lang.String.equals(java.lang.Object)' on a null object reference.`
+
+# Technical details
+
+On Galaxy S6 Edge with Android 7.
+However the previous device also failed with some similar error ""Error getting bible text"" which was Android 5 device.
+
+Both modules work on Xiphos on Windows and in PocketSword on iOS.
+
+Schema validation:
+```
+xmllint --noout --schema http://www.bibletechnologies.net/osisCore.2.1.1.xsd bihbele9.xml
+bihbele9.xml validates
+```
+
+Text format:
+```
+ModDrv=zText
+CompressType=ZIP
+BlockType=Book
+Encoding=UTF-8
+```
+
+Currently i'm preparing for module publishing and want to be sure it works on Android too.
+
+
+# Could be related issue
+It may be related, but it is possible to bring And Bible to **unusable state**. When I afterwards click on Bookmarks and then back, And Bible immediatelly crashes.
+
+Third thing: I had also a custom module that was working years before but when I try to load it after this first module, And Bible crashes. And I cannot open it anymore if I don't clear app data. It immediately crashes when opened. This may be an separate issue that there is a code path that makes And Bible unusable.
+
+I can send you the module somehow for testing. "
+mjdenham/and-bible,closed,Remove support for Android 2.3 and 3,[],"Very few users of AB are on Android 2.3 or 3.x.  Also Google are removing support for these versions of Android in some of their libraries.  E.g.
+
+Google Support library:
+Note: The minimum SDK version has been increased to 14.
+https://developer.android.com/topic/libraries/support-library/revisions.html"
+mjdenham/and-bible,closed,Error displayed after download sync or auto-sync in Downloads screen,[],"
+This is a commonly reported error with no apparent side affects which I just caught because I could not reproduce it.   However, I have finally reproduced it.  The error is caused by a prior ClosedByInterruptException during FileChannel.transferFrom when moving the downloaded font.properties file.  However it seems unrelated to the font.properties download.  I suspect that when any error occurs fetching a repo's book list Android then attempts to interrupt the thread and the first interruptible command is transferFrom.
+
+I have attempted the simple fix of replacing transferFrom with a simple file copy loop.
+
+Error:
+java.lang.Exception: Jsword Exception
+at net.bible.service.sword.SwordEnvironmentInitialisation$1.showMsg(SwordEnvironmentInitialisation.java:115)
+at net.bible.service.sword.SwordEnvironmentInitialisation$1.reportMessage(SwordEnvironmentInitialisation.java:96)
+at org.crosswire.common.util.Reporter.fireCapture(Reporter.java:176)
+at org.crosswire.common.util.Reporter.informUser(Reporter.java:139)
+at net.bible.service.download.GenericFileDownloader.downloadFile(GenericFileDownloader.java:99)
+at net.bible.service.font.FontControl.checkFontPropertiesFile(FontControl.java:150)
+at net.bible.android.control.download.DownloadControl.getDownloadableDocuments(DownloadControl.java:116)
+at net.bible.android.view.activity.download.Download.getDocumentsFromSource(Download.java:118)
+at net.bible.android.view.activity.base.DocumentSelectionBase$4.doInBackground(DocumentSelectionBase.java:255)
+at net.bible.android.view.activity.base.DocumentSelectionBase$4.doInBackground(DocumentSelectionBase.java:241)
+at android.os.AsyncTask$2.call(AsyncTask.java:292)
+at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:231)
+at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)
+at java.lang.Thread.run(Thread.java:818) "
+mjdenham/and-bible,closed,Font issue with Greek NTs,[],"Hi
+
+I have made a SWORD module from the Greek NT of the Church of Greece, which is similar to the Antoniades, but has accents: www.myriobiblos.gr/bible/nt2/
+
+My module and the code is here: https://github.com/gottesfurcht/myrio
+
+The module has a font issue in and-bible. I doesn't switch to the Greek font which is necessary to render the accents. I have tried various things, like specifying the font etc. but to no avail.
+
+I found that other modules have the same issue, for example the two Greek modules from eBible.org: grcSBL2010eb and grcTischeb
+
+Even though both have the same configuration (font etc.) SBLGNT switches to the right font and Tischendorf does not. MorphGNT is also not switching to the Greek font and the letters with accents are missing.
+
+Any idea what is causing this and how to fix it? Thanks, Ruben"
+mjdenham/and-bible,open,Reload a module after an update,"[Label(name=""Bug""), Label(name=""Prio: Low"")]","It seems Andbible does not reload the module after an upgrade.
+
+Indeed I upgraded the module FreJND from 1.21.1 to 1.22 and returned to reading window, but the display was buggy (see screenshot below, tags mixed with the text). I tried to change bible module and loop to FreJND again, but it didn't work. I needed to restart the application (close in application list, and restart).
+
+![attached screenshot](https://cloud.githubusercontent.com/assets/9322299/26172017/30954fc0-3b47-11e7-89dc-a276e76346ab.png)"
+mjdenham/and-bible,closed,How can i start?,[],"HI @qmx 
+
+i just configure this repository  as instruction , and work well, but how can i configure in different project ,like i want only bible list, and only dictionary in a separate, as per my requirement, 
+
+so how can i start..?
+
+is there any developer  documentation for basic start...?  then please guide me.
+
+Thanks.(_)
+
+"
+mjdenham/and-bible,closed,Non-English searches are failing in release 2.9.0,[],"Proguard is removing the stemmers.
+
+Fix is imminent."
+mjdenham/and-bible,closed,Shortcut to edit bookmark labels,[],"Currently you can only view and edit an existing bookmark's labels by finding the verse in a long list of bookmarks and then long-pressing the bookmark.  However, I think you wanted a way to go directly to the labels page from the chapter, a bit like the way you can delete a bookmark if you highlight a bookmarked verse, I think you also wish to be able to edit the labels for the currently highlighted verse."
+mjdenham/and-bible,closed,niv version,[],The youversion app has the NIV bible how do I get in this
+mjdenham/and-bible,closed,Error when viewing MyNotes: IllegalArgumentException: Comparison method violates its general contract!,[],"Not sure if it is the MYNote creation date or bible order comparator that is in error.
+
+My suspicion is that ConvertibleVerseRange.compareTo compares inconsistently (and generates error) where one of the verses does not exist in the versification of the other verse e.g. if one verse is deuterocanonical and the other verse from the KJV.
+
+One possible solution would be to convert all verses to nrsv before comparison, which contains all books (I think).
+
+For now I have wrapped the sort in a try/catch to prevent And Bible crashing when displaying Notes.
+
+This is the error seen in Play Store logs.
+
+java.lang.RuntimeException: Unable to start activity ComponentInfo{net.bible.android.activity/net.bible.android.view.activity.mynote.MyNotes}: java.lang.IllegalArgumentException: Comparison method violates its general contract!
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2317)
+	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2375)
+	at android.app.ActivityThread.access$900(ActivityThread.java:164)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1268)
+	at android.os.Handler.dispatchMessage(Handler.java:102)
+	at android.os.Looper.loop(Looper.java:157)
+	at android.app.ActivityThread.main(ActivityThread.java:5377)
+	at java.lang.reflect.Method.invokeNative(Native Method)
+	at java.lang.reflect.Method.invoke(Method.java:515)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1265)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1081)
+	at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.IllegalArgumentException: Comparison method violates its general contract!
+	at java.util.TimSort.mergeLo(TimSort.java:743)
+	at java.util.TimSort.mergeAt(TimSort.java:479)
+	at java.util.TimSort.mergeForceCollapse(TimSort.java:422)
+	at java.util.TimSort.sort(TimSort.java:219)
+	at java.util.TimSort.sort(TimSort.java:169)
+	at java.util.Arrays.sort(Arrays.java:2023)
+	at java.util.Collections.sort(Collections.java:1883)
+	at net.bible.android.control.mynote.MyNoteControl.getSortedMyNotes(MyNoteControl.java:303)
+	at net.bible.android.control.mynote.MyNoteControl.getAllMyNotes(MyNoteControl.java:174)
+	at net.bible.android.view.activity.mynote.MyNotes.loadUserNoteList(MyNotes.java:175)
+	at net.bible.android.view.activity.mynote.MyNotes.initialiseView(MyNotes.java:71)
+	at net.bible.android.view.activity.mynote.MyNotes.onCreate(MyNotes.java:58)
+	at android.app.Activity.performCreate(Activity.java:5428)
+	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1105)
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2281)"
+mjdenham/and-bible,closed,Updated hu (Hungarian) translation,[],Commit made via Stringlate
+mjdenham/and-bible,closed,2y reading bug,[],"https://github.com/mjdenham/and-bible/blob/master/ReadingPlanCreator/out/y2ot1ntps2.properties#L179
+
+in y2ot1ntps2.properties line 179 should read 121 and not 21
+178=Ps.119.121-Ps.119.144,Deut.32"
+mjdenham/and-bible,closed,Initial verse positioning has become erratic,[],"I have been receiving an increasing number of reports in recent weeks.  Eventually my phone received a WebView update and exhibited the problem.
+
+For now I have fallen back to an older form of verse positioning used with pre-Kitkat devices which fixed the problem on my Android 5 phone."
+mjdenham/and-bible,closed,Being able to uninstall a Bible,[],"If I do not want a translation anymore and want to replace it by another, the only option is to delete all the data of the app and download again.
+
+Is it possible to add a way to uninstall a version of the Bible ?"
+mjdenham/and-bible,closed,Android N - Select App Language does not work,[],"Android N has changed the way Locales work and prevents the default locale being changed by the app.
+
+Links and possible solutions:
+http://stackoverflow.com/questions/39705739/android-n-change-language-programatically/40849142#40849142
+First attempt; did not work, but maybe it was me.
+
+http://stackoverflow.com/questions/36922040/how-to-change-language-for-a-whole-android-application
+Works ok but not for some strings like chapter strings in Speak dialog  
+
+Current solution:
+https://github.com/gunhansancar/ChangeLanguageExample/blob/master/app/src/main/java/com/gunhansancar/changelanguageexample/helper/LocaleHelper.java
+
+Using above title is not translated so solution here:
+http://stackoverflow.com/questions/22884068/troubles-with-activity-title-language
+
+"
+mjdenham/and-bible,open,"Arabic RTL, headings not properly displayed","[Label(name=""Bug"")]","Dear guys, thanks for fantastic work
+
+In Arabic:  chapter headings are sometimes in the wrong chapter -- so where Galatians chapter 2 has its title at the top;  in Arabic, the same title comes just before the bottom of chapter 1.  This is happens in Galatians chapters 1-5, and in other books.  And only happens when a heading would begin a chapter.  This kind of thing is very common in texts that mix ltr and rtl.  And so is possibly a little related to bug #59???
+
+Also in Arabic:  words are often raised or lowered a little from their baseline.  Sometimes to the extent of overlapping other lines a little.  For instance Galatians 6.8-10.  I don't know why this might happen.  It seems to be more common with the phrase 'Christ Jesus'
+
+The font choice for Arabic though is good and clear to read
+
+Also recently got this error I think when wifi disconnected.  One of the bible texts then disappeared and I restarted the app:  ""Could not get bible text: connection pool closed""
+
+Android version 4.4.2"
+mjdenham/and-bible,closed,permissions question,[],"I'm curious about certain permissions this app requires.
+
+The permissions the app asks for are the following:
+
+1- read phone status and identity
+2- modify or delete the contents of your SD card + read the contents of your SD card
+3- full network access
+4- modify system settings
+
+I understand 2 and 3 are needed to download and manage resources (bibles, commentaries, dictionaries, maps...), but I don't see any need for 1 or 4.
+
+Could you explain why you require that at all?"
+mjdenham/and-bible,closed,ERV last verse often missing,[],"The last verse is missing in many chapters of the ERV when viewed in And Bible e.g. Psalms 2, Psalms 3."
+mjdenham/and-bible,closed,Error on days 264-266 of y1ot1nt1_OTandNT reading plan,[],"The Old Testament selection for days 264 through 266 of the `y1ot1nt1_OTandNT` reading plan is blank.  If I tap the *Passage* button, And Bible crashes.  If I tap the *Speak* button, I get a pop-up message stating that ""An error has occurred"".  Comparing the `y1ot1nt1_OTandNT.properties` file to the other files  in the `and-bible/ReadingPlanCreator/out/` repo directory shows some discrepancies with the way ""Song of Songs"" is encoded:
+
+- y1ot1nt1_OTandNT.properties: ""Sng ""
+- y1ot1nt1_OTthenNT.properties: ""Song of Songs ""
+- y1ot1nt1_chronological.properties: ""Song ""
+- y1ot1nt2_mcheyne.properties: ""Song ""
+- y2ot1ntps2.properties: ""Song.""
+
+I don't have an Android development environment set up so I can build a custom APK, but it looks like And Bible may not be handling the the encoding of Song of Songs properly.
+
+Here is a screen shot showing the blank passage:
+![screenshot_2017-02-18-14-05-47 small](https://cloud.githubusercontent.com/assets/25892903/23113044/16f1e89a-f6ea-11e6-9b68-15eaa9ce2496.png)
+
+After tapping *Speak*:
+![screenshot_2017-02-18-14-06-16 small](https://cloud.githubusercontent.com/assets/25892903/23113043/16f163fc-f6ea-11e6-9d22-3c5453f41748.png)
+
+After taping *Passage*:
+![screenshot_2017-02-18-14-06-21 small](https://cloud.githubusercontent.com/assets/25892903/23113045/16f23462-f6ea-11e6-8771-05d405036ddb.png)
+"
+mjdenham/and-bible,closed,Maps not displayed after initial download - until app restarted,[],
+mjdenham/and-bible,closed,Use Dagger for injection,[],
+mjdenham/and-bible,open,extra text in 2tim4v22 KJV,"[Label(name=""Bug"")]","there is an extra comment text paragraph at the end of 2tim4v22 which should not be in the KJV version (I have seen it in the akjv, but it is not in other sword based KJV bible programs, or in the print version of kjv).the extra text is ""the second letter to timotheus, ordained the first bishop of the church of the ephesians,was written from Rome, when Paul was brought before Nero the second time"". section titles, footnotes and xrefs are turned off."
+mjdenham/and-bible,open,"Increasing size of a window, then closing it breaks AB","[Label(name=""Bug""), Label(name=""Prio: Low"")]","From email (Geza):
+I finally managed to track down the issue (see below). It was simpler than I thought (and not very serious either):
+
+I reported that the main Bible window disappears. It turned out that it happens in a reproducible way when you first open a secondary window (e.g. by tapping a Strong-code), then maximize that by lifting its top to the top of the page, and then close that secondary window. Then no Bible text is visible any more. (Recovering is not very hard either: You need to create a new window, then reduce its size - and the main window appears from under it.)
+
+It is a small bug, nevertheless it would be great if you fix that as well."
+mjdenham/and-bible,open,add changelog to fdroid,"[Label(name=""Investigation""), Label(name=""Prio: High"")]","hi,
+
+please add a link to change log in the fdroid repository so that i can see what has changed before i update.
+
+thanks a lot!
+
+"
+mjdenham/and-bible,open,"Sometimes opening quote ("") is substituted with question mark (?)","[Label(name=""Bug"")]","E.g. see the attached screenshot of the Bulgarian (Veren) translation of Mathew 11:10. On the second line the text is ""писано: **?**Ето..."" but the question mark should be an opening quote mark.
+This is not always the case, sometimes the opening quote is there.
+![screenshot_20170114-080929](https://cloud.githubusercontent.com/assets/7946520/21952947/e5c7588c-da32-11e6-8709-a3a95d80c584.png)
+
+"
+mjdenham/and-bible,closed,Cannot scroll text,[],"Ok, so i haven't been able to get around to this very quickly...
+I'm running a rather ancient version of android (2.3.6), and on every version since 2.5.1 i cannot scroll the text using the touchscreen. All the menus and the top bar work, i can change chapters/books in the Bible, etc, even scroll using phone tilt works if i enable it, i just cannot scroll text using my screen.
+
+If you have any more questions, feel free to ask. I don't know what other info to provide. I have tried every version up to 2.8.1 which i belive is the latest version with the same results.
+
+Thanks!
+
+-Sydney
+"
+mjdenham/and-bible,open,Feature Request: add underline feature,"[Label(name=""Difficulty: Easy""), Label(name=""Feature"")]",It would be nice to be able to underline. It could be connected to My Notes.
+mjdenham/and-bible,closed,Could and-bible be made to run on the Desktop?,[],I think and-bible is really nice and better than existing Desktop Bible Apps. Since it is Java based I guess it would be possible to run it on any Java environment. Do you think that would be something to consider?
+mjdenham/and-bible,open,Intent filter to show bible links in AB,"[Label(name=""Difficulty: Easy""), Label(name=""Feature"")]","Can we have this as an api, i have always needed a bible api and all i could do is to modify this bible adding an intent filter for a bible ref, maybe i will show you a little code."
+mjdenham/and-bible,closed,add change log to fdroid,[],please add a link to a changelogpage to the fdroid repository. thanks
+mjdenham/and-bible,open,Disable autocorrect on search form?,[],"I'm not sure this is much of an issue in English, but in other languages such as Turkish where we have lots of different suffixes we frequently need to add a \* at the end of the word (and also ensure that for lucene the text is in latin charset). Autocorrect really gets in the way of doing this...
+"
+mjdenham/and-bible,open,Export and share Notes and Bookmarks.,[],"It would be nice to be able to export and/or share Notes and lists of bookmarks.
+"
+mjdenham/and-bible,open,add HW keyboard navigation,"[Label(name=""Difficulty: Easy""), Label(name=""Feature"")]","I use app on my notebook (with Remix OS).
+I miss hardware keyboard navigation shortcuts, e.g. next/prev chapter. Could you please add it?
+"
+mjdenham/and-bible,open,fullstop after tetragrammaton on the left,"[Label(name=""Bug"")]","In the bible text ""The Scriptures (ISR)"" (TS1998) the tetragrammaton (יהוה) is rendered in Hebrew, which is read left to right. If the Name יהוה then ends up at the end of a verse, and thus is followed by a fullstop, that fullstop ends up to the left of the Name. This is not the way it is rendered for example in other SWORD apps (i checked Eloquent and MacSword).
+Is this a bug or a feature?
+Version of AndBible: 2.6.0
+Version of TS1998 module: 1.5
+"
+mjdenham/and-bible,closed,Speak not working,[],"Speak is not working, not giving the ear icon. 
+"
+mjdenham/and-bible,closed,The Ear,[],"Hi Martin,
+
+Recently I purchased my wife a replacement Android device and at the same time Olive tree offered me NIV for free, so I put Olive Tree with NIV onto her phone, so she would finally have it there. Very quickly she asked me to put back AndBible, so it will speak again. :-) (The offer wasn't related to the purchase, just coincidental.)
+
+Lately, when I pull out my phone in meetings and church, The ear icon scares me. I'm fat fingered using a small screen, and the ear is right next to the 'next version', and I do like to cycle through the versions... Now I'm always afraid i'm going to initiate a speech. I've been repeatedly checking the volume is zero before I hit the next version (like 3 times during the same sermon.) Is it possible if the volume is zero to grey out the ear? Or possibly have a setting to grey it out?  
+"
+mjdenham/and-bible,closed,Feature Request: Ribbons,[],"Hi
+
+It would be great to have a special type of bookmark that works just like a ribbon in a physical bible.
+This will make moving back and forth between scriptures in church easier. The back button can kind of work but then there is no forward button.
+
+They are special as bookmarks in that they are movable, so it should be easy to move say the red ribbon around, just as in a physical bible.
+
+Tx
+"
+mjdenham/and-bible,open,Allow backup and restore of reading plan progress,"[Label(name=""Feature"")]","When moving to a new phone, I can copy all of the modules from the Android/data folder, and can also restore my notes and bookmarks, but I am not able to restore my reading plan progress. It would be very helpful if the built-in backup option would backup the reading plan progress as well. Thank you
+"
+mjdenham/and-bible,open,add saving/restoring history to/from SharedPreferences,[],"Now during work every history item saves to SharedPreferences.
+At creation of history stack elements reads from SharedPreferences.
+"
+mjdenham/and-bible,closed,verse number in toolbar does not update correctly ,[],"Hi
+
+The verse number is now always stuck on 1 when scrolling. 
+
+Thanks
+"
+mjdenham/and-bible,closed,Add to F-Droid,[],"Deleted spam
+"
+mjdenham/and-bible,closed,Unable to download documents,[],"I can download one bible after it installs, but when I go to the download documents window it tells me an error has occurred.
+"
+mjdenham/and-bible,open,Custom start date for reading plan,"[Label(name=""Difficulty: Easy""), Label(name=""Feature"")]","I accidentally reset the reading plan, and I can go through it pressing done in the menu to the right day, by the dates are still all messed up.  The ability to set a manual start date instead of just January first would be great.
+"
+mjdenham/and-bible,closed,Is it possible to run and-bible on chromebook?,[],"I really love and-bible on my android, somehow on chrome, there hasn't been one google offline bible, really hope if it can run on chrome. Not sure if the run android app on chromebook experiment would work for and-bible though:
+https://support.google.com/chromebook/answer/6088175?hl=en
+
+If this route wouldn't work, is there another way to get a full featured chrome/Bible apps similar to and-bible?
+"
+mjdenham/and-bible,closed,custom readingplan,[],"The instructions for creating a custom readingplan that can be found on
+https://code.google.com/p/and-bible/wiki/ReadingPlan
+didn't work for me.
+
+I modified one of the [example](https://github.com/mjdenham/and-bible/blob/master/AndBible/assets/readingplan/y1ot1nt1_OTandNT.properties) plans and put it in the folder `jsword/readingplan` on my mobile's SD card, but it was not on the list in the app.
+The modifications to the file were a different file name `y1ot1nt1_test.properties` and a change in the first line to `1=Gen.1-Gen.2, Ps.1-Ps.2`.
+
+I'm using Android 5.0.2 on a Motorola Moto E (2nd Gen.).
+"
+mjdenham/and-bible,closed,Unique And-Bible user agent,[],"And-Bible uses HTTP to download zip modules, and the useragent it uses is: ""Apache-HttpClient/UNAVAILABLE (java 1.5)"". Maybe this is default for JSword. It would be nice if And-Bible could stick ""andbible"" or ""and-bible"" somewhere in its user agent headers.
+"
+mjdenham/and-bible,closed,"""Share current verse"" excludes some words from the text",[],"When using ""share current verse,"" all words in the verse text which are linked to a glossary are removed from the shared verse text.
+
+This happens with any text having glossary links to an accompanying glossary, such as the UZVL module in IBT's repository, and most other IBT modules.
+"
+mjdenham/and-bible,closed,Can't install on nook simple touch.,[],"I couldn't find an official apk to download that wasn't in an app store, so I downloaded http://apkpure.com/and-bible/net.bible.android.activity
+
+I tried to install it using ES File Explorer, but I got:
+
+Parse Error
+There is a problem parsing the package.
+[    OK    ]
+"
+mjdenham/and-bible,closed,Multi-window problem when resizing bible windows,[],"Samsung phones and tablets have so called 'multi-window' feature that allows two applications to be run at the same time, side by side. AB seems to support this feature but there is a bug when resizing parallel bible views (AB windows). Resizing (dragging from the divider line) causes first window size to go to zero, when ran in multi-window mode together with another android application.
+"
+mjdenham/and-bible,closed,I edited some strings in the Swedish Translation,[],"There were some annoying errors in the Swedish translation. I fixed the worst ones.
+"
+mjdenham/and-bible,closed,Distribution licence texts for bibles should be presented on About screen,[],"Some bible translations require licence text (DistributionLicence and DistributionNotes) to be accessible by end user. 
+"
+mjdenham/and-bible,closed,InstallZip: make zipfiles with backslash as directory separator work,[],
+mjdenham/and-bible,open,Margin notes in TSK turn into references to Mark,"[Label(name=""Bug"")]","In the Treasury of Scripture Knowledge commentary there are references to marginal notes (appearing as *_marg:_ in other sources). This is interpreted as references to Mark 0, Mark 1, Mark 2, ... Mark 16.
+
+Examples: Proverbs 4:22 and 27:23.
+"
+mjdenham/and-bible,open,Add a way to add custom document repositories,"[Label(name=""Difficulty: Moderate""), Label(name=""Feature""), Label(name=""Prio: Normal"")]","Hello. It should be nice to have the ability to add other repos than the hardcoded ones.
+"
+mjdenham/and-bible,open,"""LORD's"" and ""selah"" is pronounced wrongly by Ivonavoice","[Label(name=""Improvement""), Label(name=""Prio: Low""), Label(name=""TTS"")]","I think this is an easy one to fix but it is trivial and so no important. I really like Ivona Voice - not sure if other Text to Voice systems have the same problem.
+
+""LORD's"". (example Gen 44.8 works fine; Lev 2.3 is bad) This is pronounced ""Lord Ez"". I assume this is because of the change to show the name of the Lord in Small Caps. So the voice software disconnects the letters 'Lord' from the letters apostrophe and 'S'. 
+
+""Selah"". (example: ESV Psalm 3.2) This is pronounced correctly but ironically there is NO pause at all after it. Selah is suppose to mean pause and think about what has been said. However because there is no fullstop after 'selah' in the ESV version on AndBible it merges 'selah' with the first word of the next sentence.
+
+Possible solution: I would think that all that is required is to send the text to a parse function (I suspect that is already happening) that would make some slight adjustments to the text. For example, it would change the unconventional capitalization to normal capitalization. And it would add a full-stop or even better a long pause after 'selah' if it didn't have one.
+
+I have been finding the Speak option in AndBible excellent. Ivona voice is good enough for me to forget that it is a computer speaking. I use the Aussie voice. Highly recommend it.
+"
+mjdenham/and-bible,closed,Can't remove documents,[],"Hello,
+
+I am trying to remove some bible/books etc. But they remain in the list.
+
+I deleted it with the file manager for now, but i guess that should not be needed ;)
+
+Greetz, flexjoly
+"
+mjdenham/and-bible,open,And Bible does not show 'images' category,"[Label(name=""Difficulty: Easy""), Label(name=""Feature"")]","There are commentary modules that are categorized as 'images' in sword repository, for example module called 'bibleartbw' (ftp://ftp.xiphos.org/pub/sword/zip/bibleartbw.zip). This is not listed at all in And Bible, but works fine if I change category to 'commentary' in module config.
+"
+mjdenham/and-bible,open,Genbook improvement: It should be possible to make bookmarks to genbook chapters/sections,"[Label(name=""Difficulty: Hard""), Label(name=""Feature"")]","It should be possible to make bookmarks to genbook chapters/sections if not even paragraphs.
+"
+mjdenham/and-bible,open,Genbook chapter/section selector needs improvement,"[Label(name=""Difficulty: Moderate""), Label(name=""Improvement""), Label(name=""Prio: Normal"")]","If a book has deep and long tree structure, current chapter selector window becomes pretty much unusable as it renders all the entries of a tree structure as a flat list. 
+
+Some tree structured selector should be implemented, or similar ""two/three click"" selector which is used with bibles could be also OK.
+"
+mjdenham/and-bible,closed,Idea: window menu function to change special window type to normal,[],"Now that there is multiple window support and links from a book/commentary are opened in a special window, it would be sometimes nice if user was able to change newly created special window to a normal window, such that links from that would create a new special window again.
+
+This could be implemented as a new ""Change window type to normal"" function in window menu.
+"
+mjdenham/and-bible,closed,"Idea: ""Open link in current window"" from context menu",[],"Now that there is multiple window support and links from a book/commentary are opened in a special window, in some cases it would be nice to have ability to open link in current window also. 
+
+I think this could be implemented best by using context menu (after long press of a link), from which user could choose function ""Open link in current window"".
+"
+mjdenham/and-bible,closed,New feature: Install module from a user-selectable zip file,[],"This PR adds functionality to select from main menu ""Install Documents from a Zip file"". This feature is intended to make it much more convenient for users to install propietary modules that cannot be distributed through public repositories.
+1. User can give a file through ACTION_GET_CONTENT intent. 
+2. Given file is first checked that it contains a configuration file in mods.d and modules directory, and then extracted and registered. 
+3. After install is finished, toast message informs the user of the result.
+"
+mjdenham/and-bible,closed,WIP Show inline reference content always with genbooks and commentaries,[],"Fixes https://github.com/mjdenham/and-bible/issues/25
+
+From what I understood from our discussion https://groups.google.com/d/msg/and-bible/cSZmdzDU1u0/L9lEaHaCnoQJ, current solution to not show reference content was to fix bible crossreferences in certain bible modules. My solution is essentially the same as in Xulsword, i.e. "" But `<reference>` tags which are inline in regular text (such as commentaries) show the reference text as a link.""
+"
+mjdenham/and-bible,closed,Fix image scaling to 100% of screen width,[],"Here is a simple fix for image scaling bug https://github.com/mjdenham/and-bible/issues/24 . Scales image to 100% of the screen width. <del>I did not find any CSS support in AndBible so I added CSS style straight into <img> tag.</del>
+"
+mjdenham/and-bible,open,AndBible ignores DisplayLevel option ,"[Label(name=""Improvement""), Label(name=""Prio: Low"")]","AndBible behaves always like DisplayLevel=1, even tough it is set to something else.
+(tried with genbook module).
+"
+mjdenham/and-bible,closed,Inconsistency in link rendering,[],"Links such as 
+
+```
+<reference osisRef=""Gen.1.1"">see vv. 1-2</reference> 
+```
+
+render to Genesis 1:1 instead of 'see vv. 1-2'. 
+
+If bible work is defined, links display correctly. For example:
+
+```
+<reference osisRef=""ESVS:Gen.1.1"">see vv. 1-2</reference> 
+```
+
+renders as 'see vv. 1-2', which is OK. There should be at least module level/user option to switch link rendering to desired setting.
+"
+mjdenham/and-bible,closed,Images are not scaled correctly,[],"Images will appear in the original size instead of being scaled to the screen width, which would be desired. 
+
+After implementing basic scaling feature, it would be nice if it was also possible to click image to fullscreen where it would be possible to use pin zoom feature.
+"
+mjdenham/and-bible,closed,OSIS Links to general books do not work,[],"I fail to get links within genbook (and from a commentary to genbook) work. Here, for example, in OSIS, my link reads:
+
+```
+<reference osisRef=""ESVN_articles:Book_introductions/Introduction_to_Genesis/Genesis_and_Science"">...</reference>
+```
+
+Otherwise module seems to work fine, and links to bible are OK. Links work fine with Xiphos, but with with BibleDesktop I also had problems, but not the same error message.
+
+Error message from adb logcat:
+
+```
+D/net.bible.service.sword.SwordDocumentFacade(28555): Getting book:ESVN_articles
+E/LinkControl(28555): Error going to link
+E/LinkControl(28555):   at net.bible.android.control.link.LinkControl.showSpecificDocRef(LinkControl.java:111)
+E/LinkControl(28555):   at net.bible.android.control.link.LinkControl.loadApplicationUrl(LinkControl.java:79)
+E/LinkControl(28555):   at net.bible.android.view.activity.page.BibleView$1.shouldOverrideUrlLoading(BibleView.java:95)
+E/LinkControl(28555):   at com.android.webview.chromium.WebViewContentsClientAdapter.shouldOverrideUrlLoading(WebViewContentsClientAdapter.java:299)
+E/LinkControl(28555):   at com.android.org.chromium.android_webview.AwContentsClientBridge.shouldOverrideUrlLoading(AwContentsClientBridge.java:95)
+E/LinkControl(28555):   at com.android.org.chromium.base.SystemMessageHandler.nativeDoRunLoopOnce(Native Method)
+E/LinkControl(28555):   at com.android.org.chromium.base.SystemMessageHandler.handleMessage(SystemMessageHandler.java:24)
+E/LinkControl(28555):   at android.os.Handler.dispatchMessage(Handler.java:102)
+E/LinkControl(28555):   at android.os.Looper.loop(Looper.java:136)
+E/LinkControl(28555):   at android.app.ActivityThread.main(ActivityThread.java:5034)
+E/LinkControl(28555):   at java.lang.reflect.Method.invokeNative(Native Method)
+E/LinkControl(28555):   at java.lang.reflect.Method.invoke(Method.java:515)
+E/LinkControl(28555):   at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:795)
+E/LinkControl(28555):   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:611)
+E/LinkControl(28555):   at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:132)
+E/LinkControl(28555):   at dalvik.system.NativeStart.main(Native Method)
+D/BibleView(28555): onLoadResource:sword://ESVN_articles/Book_introductions/Introduction_to_Genesis/Genesis_and_Science
+E/BibleView(28555): net::ERR_UNKNOWN_URL_SCHEME
+```
+"
+mjdenham/and-bible,closed,Book Chooser - Left to Right,[],"A while back, the book chooser changed from left to right to top to bottom. Could we add a configuration option to set it back to left to right. It takes forever to find the books when they're set top to bottom. Most English readers are used to reading left to right. I don't want to put it back the way it was, I'm sure some people want it top to bottom. But I think it would be nice to have the option to put it back to the way it used to be.
+"
+mjdenham/and-bible,open,Can mmseg4j-all be used from mavenCentral?,"[Label(name=""Code improvement"")]","Could the jar be replaced by one of those?
+
+http://search.maven.org/#artifactdetails|com.chenlb.mmseg4j|mmseg4j-solr|2.2.0|jar
+http://search.maven.org/#artifactdetails|com.chenlb.mmseg4j|mmseg4j-core|1.10.0|jar
+http://search.maven.org/#artifactdetails|com.chenlb.mmseg4j|mmseg4j-analysis|1.9.1|jar
+"
+mjdenham/and-bible,closed,Compilation error,[],"Not relative path
+"
+mjdenham/and-bible,closed,content of several repositories not proposed to download,[],"When using the download dialog, the content of some repos (crosswire beta for example) is not proposed. However if I look into the Android/data/net.bible.android.activity/files directory, I see one subdirectory for each of these repos, containing an archive with the various conf files.
+Is there any setting or text file to tweak in order to have these modules proposed by the installer ? 
+"
+mjdenham/and-bible,closed,use relative paths instead of hardcoded ones,[],
+mjdenham/and-bible,closed,Use of Tags for releases,[],"Greetings,
+
+When I inquired as to why the f-droid repo was behind on And Bible, I was informed that they would update it but that ""it will probably go without updates for another while unless upstream uses tags.""
+
+Adding tags to releases isn't too difficult and if it is an easy way to keep And Bible updated in the f-droid  repos I would be extremely grateful. 
+
+Could you please start tagging the releases?
+
+Thank you!
+PS: I _really_ enjoy using this software. Thanks so much to all the devs!
+"
+mjdenham/and-bible,closed,Fix gradle build,[],"This pull request fixes several problems which make this build fail on android studio.
+
+One of the things I wasn't sure is to what extent are you planning to support the eclipse build.
+"
+mjdenham/and-bible,open,use lucene indices from $SDCARD/jSword folder,"[Label(name=""Feature""), Label(name=""Prio: Low"")]","Currently And-Bible reads books etc. from $SDCARD/jSword but not search indices.
+"
+mjdenham/and-bible,closed,Reading Plan Layout,[],"When the reading plan is viewed with limited vertical space, (in landscape or split screen) the passage buttons cannot be accessed. The lower Done button obscures the other interface items and they are drawn beyond the bottom of the screen.
+I suggest allowing the layout to scroll in such situations.
+"
+mjdenham/and-bible,closed,Bookmarks don't refresh,"[Label(name=""Bug"")]","Hey! First I'd like to say thanks for making this app.
+
+When I am reading a passage and bookmark it, and then I remove the bookmark from the bookmarks view and go back to the passage the star remains there. 
+
+Once I go to another passage and then come back to the first, the star disappears.
+"
+mjdenham/and-bible,closed,Regarding SD card error ,[],"Hi,
+             we have build ed  your and-bible source code in eclipse android adt - while running in AVD  it's asking the SD card we don't have sd card in windows systems how to change the SD card option. we want to change sd card option into our system is it possible ?????
+
+Some code reference ::
+
+  <string name=""no_sdcard_error"">Please insert an SD card and start And Bible again.</string>
+
+Regards,
+Binu  
+"
+mjdenham/and-bible,closed,Fix to keep the screen on,[],"The first commit fixes bug #46 [1].
+
+[1] https://code.google.com/p/and-bible/issues/detail?id=46
+"
+mjdenham/and-bible,closed,New strings to Turkish...,[],
+mjdenham/and-bible,closed,String updates,[],
+mjdenham/and-bible,closed,Updated Turkish strings against new/changed originals.,[],
+mjdenham/and-bible,closed,Turkish translation of new strings from latest release.,[],
+mjdenham/and-bible,closed,Corrections/updates from another translator,[],"Hey Martin -- another guy from here in Turkey pitched in to review our translation and submitted a bunch of fixes. His Turkish is better than mine (or Nick's) and I think they warrant inclusion! I've pulled the patch he sent me into my repo, fixed some of the formatting to match the xml-disaster that your other translator thing generates and am sending them up the wire!
+"
+mjdenham/and-bible,closed,Translated new strings.,[],
+mjdenham/and-bible,closed,Localization updates,[],"Among other updates, fix http://code.google.com/p/and-bible/issues/detail?id=81
+"
+mjdenham/and-bible,closed,A couple minor Turkish fixes include new strings.,[],
+mjdenham/and-bible,closed,Turkish tweaks,[],"Try this on for size. I picked up the missing strings and straightened out a few others. Some of the new ones you had from Mark used different terms than I did had used elsewhere so I went through mine and made them match.
+"
+mjdenham/and-bible,closed,Finished initial Turkish localization of strings.,[],

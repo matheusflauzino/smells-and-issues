@@ -1,0 +1,595 @@
+repository,state,title,label,body
+lexica/lexica,open,Sharing challenge via QR code or NFC,[],"it would be great if a challenge could be shared with (one or more) others.
+
+Both QR code and NFC have the advantage that the players would need to directly interact.
+(Generates extra dynamics that WLAN cannot not give)
+
+Appending QR-codes for a 4x4 and a 6x6 quiz.
+
+Again, thanks for Lexica!
+
+""lexica:ESSNNRVOOREITGAA""
+![4x4](https://user-images.githubusercontent.com/2320349/48660126-e4b8b080-ea5c-11e8-8e57-5f30f1768c1f.png)
+
+""lexica:SHAUNUOJIASHIANAHPHATIOSHAOSOHYEICHE""
+![6x6](https://user-images.githubusercontent.com/2320349/48660127-e4b8b080-ea5c-11e8-9467-7af6f7660c75.png)
+"
+lexica/lexica,open,"Feature request: Sort ""missed words"" by length",[],"Would it be possible to enable sorting by length of word in the ""Missed words"" list?  Thanks!"
+lexica/lexica,closed,Bump for release v0.11.5,[],Hungarian dictionary and new/updated translations.
+lexica/lexica,closed,Hungarian dictionary (with amendments),[],"Includes all of the changes from @urbalazs in #90. In addition, it also adds a letter distribution file, and re-orders the language resources array to ensure it correctly lines up with its sister array."
+lexica/lexica,closed,WIP: Dark theme - Hardcoded values - build success,[],"Just an attempt. Familiarizing with the code base. Currently working
+fine, but the values are hardcoded. Will add an option in preferences
+later."
+lexica/lexica,open,Design draft,"[Label(name=""enhancement""), Label(name=""ui"")]","
+🍉  I made a quick design draft.
+
+I tried to leave most of the logic as it is. There are two simplifications to make it look a bit clearer.
+(no score display for individual words, no space for the word length breakdown so far, both could be added though)
+
+Font: Draft uses [Rubik](https://fonts.google.com/specimen/Rubik) that comes with lovely rounded letters and quite a good language support itself but could be replaced with [Noto](http://www.google.com/get/noto/) for unsupported languages.
+
+There's a light and a dark variant. If you play at night the later one might be easier on the eyes.
+
+![lexica_redesign_draft](https://user-images.githubusercontent.com/1258870/43369029-eff019fe-9366-11e8-9f1d-14ee14081a4f.png)
+
+What do you think? Somebody interested in implementing it?  "
+lexica/lexica,open,Settings change isn't handled properly.,"[Label(name=""bug""), Label(name=""help wanted"")]","Set the board size to 4x4, then start a new game. Go back to the settings, and change the board size to 6x6. Now resume the game. You'll still be playing the 4x4 board, but that's not necessarily a bug. When you finish the game, your high score gets saved to the 6x6 slot (the current setting), even though you just finished a 4x4 game (the previous setting). That's definitely a bug. I'm running version 0.11.4."
+lexica/lexica,open,Add setting to only use words in horizontal/Vertical way,[],I know that reduce the possible words a lot. But that way it's a more easy access to this game. Maybe also for Children.
+lexica/lexica,closed,word input backwards and not showing words ,[],"Hi, I'm quite confused by this game, when I select letters it displays the ones selected below in red, but in reverse order. Doesn't seem to recognise any words. "
+lexica/lexica,open,Feature request: unlimited time,[],The “Time Limit” setting should have an option “Unlimited”.
+lexica/lexica,closed,"Added uniq sort option, removed duplicated words.",[],"Hello @pserwylo 
+
+I added `-u` option to sort command to remove duplicated words from the list. I also run the `sort -u` command on the existing wordlist to reduce its size."
+lexica/lexica,closed,Updated grade to version 4.8.1,[],"Hello @pserwylo 
+
+Grade version is updated to the latest version, because the version 3.3 can not determine the java version. The error message is the following:
+
+FAILURE: Build failed with an exception.
+* What went wrong:
+Could not determine java version from '10.0.1'.
+"
+lexica/lexica,closed,Added Hungarian dictionary.,[],"Hello @pserwylo 
+
+I tried to create the Hungarian dictionary for the game, but I couldn't generate the ""letters_hu.txt"" file, because grade always failed with an exception. Can you help me to generate the missing file for this PR?
+
+I sorted the existing languages to alphabetical order for better reading.
+
+About the wordlist:
+There is a repo with the Hungarian dictionary: https://github.com/laszlonemeth/magyarispell/
+The wordlist was generated from this repo with the following command:
+`git grep -E '^[a-zöüóőúéáűí]{4,9}($|\b)' -- szotar | cut -d ':' -f 2 | grep -Eo '^[a-z]*'  | sort | uniq  > dictionary.hu.txt`
+
+Regards,
+Balázs"
+lexica/lexica,open,Polish (PL),"[Label(name=""dictionaries"")]",i could translate to polish and provide pl dict.
+lexica/lexica,open,Russian dictionary suggestion,[],"Hello.
+I've been testing the dictionary for some time and I'd like to suggest another dictionary, because the current one has some issues that can't be fixed easily.
+http://www.speakrus.ru/dict/zdf-win.zip"
+lexica/lexica,closed,English (UK) dictionary is full of abbreviations,[],"The word counts are somewhat misleading due to the many abbreviations (like FTP and STD). It might be nice to remove these, although only if there isn't a real word with the same letters (CAT)."
+lexica/lexica,closed,faty...,[],"Wohoo it's becoming extra big...  [As shows F-droid](https://f-droid.org/packages/com.serwylo.lexica/) : 
+
+- 0.11.0 on april 24th is only 766K
+- 0.11.1 on april 27th is now 3.1M
+- 0.11.2 on may 5th jumps to 3.3M
+- 0.11.3 on may 16th stays at 3.3M
+- 0.11.4 on may 22nd reachs 4.3M
+
+Why on earth [dicts](https://github.com/lexica/lexica/releases) add so much weight??"
+lexica/lexica,open,Lexica app gets crashed.,[],"### Actual behavior
+I opened the lexica opensource android app. After that I clicked on the New game option. And played a game. After that I saved that game. Then I clicked on the preferences option and then I activated show word length breakdown. After that I clicked on the dictionary option and changed the language. After that I got back to the mainscreen and started a new game and saved it. After that I clicked on preferences option and clicked on the dictionary option and then changed the language. After that went to the homescreen of the app and clicked on restore game option. But suddenly the app crashed. After that whenever I changed the language and clicked on restore game option. App always crashed.
+
+### How to reproduce
+
+* First you need to download the app from fdroid and then install it. After that open the app.
+
+* Click on the new game option and then play a game. After that save it.
+
+* Then click on preferences option. And activate the show word length breakdown option.
+
+* After that click on the dictionary option. And change the language.
+
+* Then get back to the mainscreen of the app. And start a new game and play it. After that save the game.
+
+* Then click on the preferences option. After that click on the dictionary option. And change the language. Then get back to the mainscreen.
+
+* Click on the restore game option. Suddenly the app will crash.
+After that whenever you change the language and click on the restore game option. The app will crash.
+
+https://youtu.be/4NAvpPE_aZ0
+
+* Browser: Lexica
+
+* Version:0.11.4
+
+* Operating system:7.1.2
+
+* Device model: Redmi 4
+"
+lexica/lexica,closed,Bump for release v0.11.4,[],"Added Japanese dictionary (thanks wichmann)
+Russian translation (thanks HenriDellal)"
+lexica/lexica,closed,Add Russian dictionary.,[],"Received a Russian translation this morning, so though I may as well add a Russian dictionary to say thank you.
+
+Word list is from GNU Aspell.
+The letter distribution from the genetic algorithm had the following
+statistics for 1000 generated boards:
+ * Min: 20
+ * Mean: 168
+ * Max: 378
+ * Standard Deviation: 66"
+lexica/lexica,open,Translate app metadata for F-Droid + Google Play,"[Label(name=""enhancement"")]","This is a solved problem, and can be approached in several ways. One nice approach is that used by [Transporter](https://github.com/grote/Transportr/commit/6c57e6e7d0049ba2442526d6bd4a94015b32ba92), where the translations are stored in `strings.xml` under `google_play_short_description` et al. These are then managed via Weblate, and pulled out into their relevant metadata fields when required (e.g. before release).
+
+That script is licensed under GPLv3+ and so is compatible with Lexica."
+lexica/lexica,closed,Add Japanese dictionary,[],Thanks to the work from @wichmann in #36.
+lexica/lexica,closed,Russian translation,[],
+lexica/lexica,closed,Bump for release v0.11.3,[],
+lexica/lexica,closed,Fix letter points for all languages  ,[],"The actual point values are not perfect, but they at least approximate Scrabble scoring. Fixes #76."
+lexica/lexica,closed,In spanish ñ or accented letters Don't work,"[Label(name=""waiting-for-response"")]"," If you make a word with ñ or accented letters it just does not work, accented letters or ñ just do not play. **please fix.**  
+
+Great Game though
+
+"
+lexica/lexica,closed,Crash when using spanish dictionary,[],"App crashes as soon as you click on new game button.
+
+```
+java.lang.ArrayIndexOutOfBoundsException: length=26; index=136
+	at com.serwylo.lexica.game.Game.letterPoints(Game.java:400)
+	at com.serwylo.lexica.view.LexicaView.drawBoard(LexicaView.java:168)
+	at com.serwylo.lexica.view.LexicaView.onDraw(LexicaView.java:376)
+	at android.view.View.draw(View.java:16201)
+	at android.view.View.updateDisplayListIfDirty(View.java:15198)
+	at android.view.View.draw(View.java:15971)
+	at android.view.ViewGroup.drawChild(ViewGroup.java:3610)
+	at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3400)
+	at android.view.View.updateDisplayListIfDirty(View.java:15193)
+	at android.view.View.draw(View.java:15971)
+	at android.view.ViewGroup.drawChild(ViewGroup.java:3610)
+	at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3400)
+	at android.view.View.updateDisplayListIfDirty(View.java:15193)
+	at android.view.View.draw(View.java:15971)
+	at android.view.ViewGroup.drawChild(ViewGroup.java:3610)
+	at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3400)
+	at android.view.View.updateDisplayListIfDirty(View.java:15193)
+	at android.view.View.draw(View.java:15971)
+	at android.view.ViewGroup.drawChild(ViewGroup.java:3610)
+	at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3400)
+	at android.view.View.updateDisplayListIfDirty(View.java:15193)
+	at android.view.View.draw(View.java:15971)
+	at android.view.ViewGroup.drawChild(ViewGroup.java:3610)
+	at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3400)
+	at android.view.View.draw(View.java:16204)
+	at com.android.internal.policy.PhoneWindow$DecorView.draw(PhoneWindow.java:2690)
+	at android.view.View.updateDisplayListIfDirty(View.java:15198)
+	at android.view.ThreadedRenderer.updateViewTreeDisplayList(ThreadedRenderer.java:282)
+	at android.view.ThreadedRenderer.updateRootDisplayList(ThreadedRenderer.java:288)
+	at android.view.ThreadedRenderer.draw(ThreadedRenderer.java:323)
+	at android.view.ViewRootImpl.draw(ViewRootImpl.java:2642)
+	at android.view.ViewRootImpl.performDraw(ViewRootImpl.java:2461)
+	at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:2094)
+	at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1134)
+	at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:6050)
+	at android.view.Choreographer$CallbackRecord.run(Choreographer.java:860)
+	at android.view.Choreographer.doCallbacks(Choreographer.java:672)
+	at android.view.Choreographer.doFrame(Choreographer.java:608)
+	at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:846)
+	at android.os.Handler.handleCallback(Handler.java:742)
+	at android.os.Handler.dispatchMessage(Handler.java:95)
+	at android.os.Looper.loop(Looper.java:154)
+	at android.app.ActivityThread.main(ActivityThread.java:5523)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:739)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:629)
+```
+
+Edit: Lexica 0.11.2 from F-Droid.
+"
+lexica/lexica,closed,How to play?,[],"Hello,
+I'm sorry to write this here, because this is not related to a real issue of the software... but indeed it's an issue I have.
+The point is: how can I select words? All I can do is to swipe through a series of consecutive letters and make that words. But as soon as I lift my finger to move it to a letter that is not ""touching""the previous one, the incomplete word is processed as a try.
+
+Which part am I missing?
+Thank you."
+lexica/lexica,closed,Bump for release 0.11.2,[],
+lexica/lexica,closed,Add Persian dictionary.,[],"Required fixing the trie writer, so that it properly measures the number
+of bytes in a unicode string, rather than the number of characters.
+
+Limitation: This excludes any word with a zero width non-joiner (Unicode
+character 200C). After a discussion with my Iranian friend, he mentioned
+that the simplest solution would be to normalize the dictionary to
+include the words with this character, but to exclude the character
+itself so that it doesn't end up on the board. This will result in some
+words which are broken, but at least they will be able to be shown. In
+the best case, we would also unnormalize the words when showing them at
+the bottom of the screen and the end of the game. However this will
+require a further significant refactoring of the dictionary related code
+which I don't have the appetite for right now."
+lexica/lexica,closed,Re-add the 'Qu' tile. Fixes #70,[],"I did have a little bit of code in the new international dictionaries version which dealt with the special relationship between Q and U in English. However, it wasn't fully implemented. This uses that code to ensure that ""u"" is always shown next to ""q"" in English."
+lexica/lexica,open,Normalize accented latin characters (e.g. e vs é vs ê),"[Label(name=""dictionaries""), Label(name=""suggestion"")]","In #27, @ketsa [mentioned the following about French dictionaries](https://github.com/lexica/lexica/issues/27#issuecomment-385264695):
+
+> For the French, do not use accented letters in the grid and do not consider accented letters to be different from standard ones ( `I` = `Ï` = `Î` or `e` = `é` = `ê` etc.) it makes it impossible, just consider them all to be standard, it would be a much better solution."
+lexica/lexica,closed,Feature request: Qu tile option,[],"It would be really nice to have the option to change the Q tiles to Qu, like in the commercial board game Boggle. This would make it much easier to form words containing a Q in English.
+
+Similarly, there is a house rule used in Speed Scrabble whereby a Q tile can optionally have an implicit U. Thus one can spell ""quit"" either QUIT or QIT. This might overcomplicate things, but it has the advantage of making Q's easier to play without eliminating the few words where Q is not followed by U.
+
+Thanks for the great game!"
+lexica/lexica,open,German dictionary isn't very good.,"[Label(name=""dictionaries""), Label(name=""help wanted"")]","Missing lots of common words: Bier, Blei, Gieb"
+lexica/lexica,closed,LG G6,[],Crashes by pressing new game
+lexica/lexica,closed,Hotfix 0.11.1,[],Fixes #64 
+lexica/lexica,closed,Hotfix 0.11.0,[],Fixes #64 
+lexica/lexica,closed,New logo,[],"Hi, May I contribute for you? by designing a logo"
+lexica/lexica,closed,"Complete crash of the game when clicking ""new game""",[],"When clicking new game, using version 0.11 from F-droid, the game is just completely crashing.
+
+Here's the result of adb `logcat -v threadtime` when it crashes:
+
+```
+04-25 08:42:55.936 23150 23150 D Game    : Language (from preferences): en_US
+04-25 08:42:55.940 23150 23150 W ResourceType: No package identifier when getting value for resource number 0x00000000
+04-25 08:42:55.941 23150 23150 E PlayLexica: top level
+04-25 08:42:55.941 23150 23150 E PlayLexica: android.content.res.Resources$NotFoundException: Resource ID #0x0
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at android.content.res.Resources.getValue(Resources.java:1358)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at android.content.res.Resources.openRawResource(Resources.java:1272)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at android.content.res.Resources.openRawResource(Resources.java:1248)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at com.serwylo.lexica.a.e.a(Unknown Source)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at com.serwylo.lexica.a.e.c(Unknown Source)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at com.serwylo.lexica.a.e.a(Unknown Source)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at com.serwylo.lexica.a.e.<init>(Unknown Source)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at com.serwylo.lexica.PlayLexica.k(Unknown Source)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at com.serwylo.lexica.PlayLexica.onCreate(Unknown Source)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at android.app.Activity.performCreate(Activity.java:6285)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1108)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2417)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2524)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at android.app.ActivityThread.access$900(ActivityThread.java:154)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1391)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at android.os.Looper.loop(Looper.java:234)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at android.app.ActivityThread.main(ActivityThread.java:5526)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at java.lang.reflect.Method.invoke(Native Method)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+04-25 08:42:55.941 23150 23150 E PlayLexica: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+04-25 08:42:55.961 23150 23150 D Game    : Language (from preferences): en_US
+04-25 08:42:55.962 23150 23150 W ResourceType: No package identifier when getting value for resource number 0x00000000
+04-25 08:42:55.962 23150 23150 D AndroidRuntime: Shutting down VM
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: FATAL EXCEPTION: main
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: Process: com.serwylo.lexica, PID: 23150
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: java.lang.RuntimeException: Unable to resume activity {com.serwylo.lexica/com.serwylo.lexica.PlayLexica}: android.content.res.Resources$NotFoundException: Resource ID #0x0
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3160)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3191)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2529)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.app.ActivityThread.access$900(ActivityThread.java:154)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1391)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:234)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:5526)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: Caused by: android.content.res.Resources$NotFoundException: Resource ID #0x0
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.content.res.Resources.getValue(Resources.java:1358)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.content.res.Resources.openRawResource(Resources.java:1272)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.content.res.Resources.openRawResource(Resources.java:1248)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at com.serwylo.lexica.a.e.a(Unknown Source)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at com.serwylo.lexica.a.e.c(Unknown Source)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at com.serwylo.lexica.a.e.a(Unknown Source)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at com.serwylo.lexica.a.e.<init>(Unknown Source)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at com.serwylo.lexica.PlayLexica.k(Unknown Source)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at com.serwylo.lexica.PlayLexica.onResume(Unknown Source)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1259)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.app.Activity.performResume(Activity.java:6361)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3149)
+04-25 08:42:55.962 23150 23150 E AndroidRuntime: 	... 10 more
+```
+
+EDIT: Running on an Android 6.0.1 phone with standard Sony ROM."
+lexica/lexica,closed,Add Persian  for dictionary,"[Label(name=""dictionaries""), Label(name=""enhancement"")]","After speaking with one or two people, it seems that there is no reason this shoudln't work. GNU ASpell contains an `fa` dictionary in debian, and I can successfully use that to generate a word list. However for some reason the tools I created to generate random boards in Latin based languages is not working with this wordlist. I'll have to investigate further to figure out why this is the case."
+lexica/lexica,closed,Bump for release v0.11.0 (international dictionaries!),[],
+lexica/lexica,closed,Pull translation updates from Weblate,[],"Translators:
+
+Allan Nordhøy    Norwegian Bokmål
+Heimen Stoffels  Dutch
+naofum           Japanese"
+lexica/lexica,closed,"More international dictionaries: German, French, Spanish, Italian , Dutch, Catalonian",[],"These are all in beta, because:
+ * I can't verify whether they are any fun to play due to only being able to read and speak English.
+ * The word lists are generated from GNU ASpell. They seem to include abbreviations, and other strange word fragments.
+ * The ""Define"" feature is broken, because it assumes English.
+
+In the near future, I'll add some criteria to the README.md for getting a language out of Beta. This will be something like:
+ * Find a high quality word list
+ * Play test the board with multiple native speakers
+ * Provide an online source for defining words (preferably via DDG)."
+lexica/lexica,closed,International dictionaries! (Currently German and Dutch),[],"Still working on new languages too, but am struggling to produce board generators for other languages. I will create relevant issues in the tracker for each outstanding issue around this."
+lexica/lexica,open,Use 12dicts English dictionaries,"[Label(name=""dictionaries"")]","I'm unsure as to the source of the original English (US + UK) dictionaries from Lexic. For #27, I needed a deterministic way to generate dictionaries from an open source tool, and so used `aspell` to generate word lists. I can't comment on the quality of the languages other than English, however the English languages generated using this are not ideal. They include abbreviations (e.g. ""adv"") which doesn't seem suitable. As such, I haven't used `aspell` to regenerate the English dictionaries, preferring to keep the old versions of unknown origin instead.
+
+The end goal however, should be to use a trusted 3rd party source. In my searching, I came across 12dicts, which includes specific word lists designed for word games (http://wordlist.aspell.net/12dicts-readme/#3of6game). I think this would be a good starting point, and so we should generate a script which downloads the latest version of this and generates the relevant `dictionary*` files for Lexica.
+
+Other languages should also source high quality word lists rather than deferring to `aspell`, but each language should get its own issue in this tracker."
+lexica/lexica,closed,Pull translations (and fix weirdness due to manual translation changes).,[],"Due to my silliness when I manually used sed to update translations, but
+neglected to tell weblate that I had done so, there were some conflicts.
+"
+lexica/lexica,closed,Pull translation updates from Weblate,[],"Translators:
+
+Added translation using Weblate (Arabic) omar anwar aglan
+Added translation using Weblate (Thai) TheTonG
+Allan Nordhøy                                              Norwegian Bokmål
+Hristo Stoyanov                                            Bulgarian
+john paul                                                  French
+riotism                                                    Chinese (Simplified)
+riotism                                                    Chinese (Traditional)
+TheTonG                                                    Thai"
+lexica/lexica,open,FR: Adaptive icon,[],"Api 26 introduced adaptive icons where background and foreground are two different images.
+https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive.html"
+lexica/lexica,closed,Update translations with DDG instead of Google,[],"Pulled translations from Weblate. Then replaced ""Google"" with ""DuckDuckGo"" using `sed`."
+lexica/lexica,open,"US Library in 0.10.0 seems to be missing common words (Greet, Green, etc.)",[],"Hello! I'm a big fan of Lexica, so first off thank you for continuing development and support.
+
+I haven't tested this issue deeply, but I've noticed that as of 0.10.0 Lexica's US-English word database appears to be missing ""greet"", ""greets"", and ""green"". I haven't been able to generate longer words using ""greet"" or ""green"" as a base to test. ""Great"" is accepted. I have replicated this on multiple boards. I have managed to generate boards which include ""greet"" and ""green"" using the UK dictionary and can confirm that they are accepted using that dictionary. I believe that there are more legitimate words missing from the US dictionary that used to be considered correct, but I didn't make note of them at the time as they were more obscure/archaic.
+
+As a slightly-related request, it would be nice to be able to import libraries to use, or at least to enable both British and American spellings simultaneously.
+
+Thanks again for Lexica!"
+lexica/lexica,closed,Switch default search provider to DuckDuckGo,[],Pull request to resolve #50. 
+lexica/lexica,closed,Word length breakdown is inaccurate,[],"When ""word length breakdown"" is turned on, sometimes it will report some words remaining, but those words are not in the ""missed words"" list when the game is ended. The counts don't match up. According to the app info, I'm running version 0.10.0. I couldn't find any version information inside the app.
+
+![screenshot_20171207-221948](https://user-images.githubusercontent.com/1340509/33749756-93be3566-db9d-11e7-83b1-3347ce3174e7.png)
+![screenshot_20171207-222015](https://user-images.githubusercontent.com/1340509/33749762-986b7240-db9d-11e7-9309-3ce3ed82a838.png)
+![screenshot_20171207-222044](https://user-images.githubusercontent.com/1340509/33749765-9ac0f2ea-db9d-11e7-8783-82c425bee555.png)
+![screenshot_20171207-222050](https://user-images.githubusercontent.com/1340509/33749768-9dc67d5c-db9d-11e7-909c-c8798bdf02ec.png)
+"
+lexica/lexica,closed,FR: duckduckgo as definition provider,"[Label(name=""help wanted"")]",Duckduckgo is a search engine that respects your privacy.
+lexica/lexica,closed,Fix word length breakdown counts,[],"The comment ""Every word goes through the filter ..."" was incorrect.
+Every *solution* goes through the filter, so words with multiple
+solutions were being counted too many times."
+lexica/lexica,closed,Bump for release v0.10.0 (with FastLane metadata),[],"Includes metadata to spruce up the F-Droid listing with changelogs, sscreenshots, and a feature graphic."
+lexica/lexica,closed,Creating Initial Strings for Bulgarian Language,[],Hi! I want to translate and help with development. Currently I learn android via Udacity with Google Scholarship and I want to work on Open Source project like this.
+lexica/lexica,closed,Add Six By Six Board,[],
+lexica/lexica,closed,Add support for choosing a definition provider,[],"Okay, so I was wrong - apparently I have a couple more pull requests left in me....
+This one is in support of issue #11."
+lexica/lexica,closed,Don't show points next to already found words,[],Last pull request from me. Just a minor display thing.
+lexica/lexica,closed,Add option to show word counts by length,[],"NOTE: This pull request is dependent on PR42. It should be rebased before merging.
+
+EDIT: rebase complete."
+lexica/lexica,closed,Add high score tracking,[],"* A high score may be saved for each unique combination of dictionary, board size, time limit, and scoring type
+* The current combination's high score displays on the splash screen
+* High scores can be reset in the preferences menu with a prompt
+* Ensure that splash tiles are the same size in portrait and landscape modes
+* Put splash buttons in one row in landscape mode."
+lexica/lexica,open,Consecutive sound effects won't load,"[Label(name=""help wanted"")]",0.906 on Android 5.0. Consecutive effects won't load (e.g. discovering two new words or three fails or repeat words will result in silence) until a new effect is played or the app loses focus.
+lexica/lexica,closed,Add alternative scoring option,[],"* Preference added to choose scoring type
+* Enabling letter points based scoring also enables the display of letter points on the letters in the game and score views
+* Timer/Score view updated to show current score
+* Word list during game updated to show word scores
+* Cleanup of the score and word list drawing code to properly reflect that the y-coordinate provided to drawText is the baseline of the text, not the top."
+lexica/lexica,closed,High score,[],"* A high score may be saved for each unique combination of dictionary,
+  board size, time limit, and scoring type
+* The current combination's high score displays on the splash screen
+* High scores can be reset in the preferences menu"
+lexica/lexica,closed,Alternative scoring,[],"* Preference added to choose scoring type
+* Enabling letter points based scoring also enables the display of
+  letter points on the letters in the game and score views
+* Timer/Score view updated to show current score
+* Word list during game updated to show word scores"
+lexica/lexica,closed,Clean up and/or improve some parts of the display,[],"* Use accurate vertical centering algorithm for letters
+* Consider paddingSize in BoardView to avoid the board getting cut off at the top
+* Swap the timer and word count positions (in preparation for a more detailed scoring)
+* Add score to missed words list
+* Improve display of score in found word list
+* Alphabetize missed word list"
+lexica/lexica,open,Investigate Japanese board,[],"Pretty much exactly the same as #35 (but that is for Chinese). The Japanese UI translation was one of the first to be contributed, so I want to also have a Japanese version of the board, but I don't have enough knowledge of the language to figure out if it is meaningful or how to go about implementing it. "
+lexica/lexica,closed,Investigate Chinese boards,[],"I'm currently in the process of allowing languages other than English to be played. 
+
+I didn't know which languages to implement first, so I looked at the translations which were provided by the community, and decided to reward those translators by implementing a fully translated version of the game. Some of the first community translations were in Chinese, but I'm unsure if it is meaningful to play this game with a Chinese board.
+
+Unfotunately I don't speak any language other than English, and so I'm looking for feedback on if/how this should be approached.
+
+For the other languages (mostly European), I have:
+ * Found a word list (ranging from 100,000-500,000 words from the [GNU `aspell`](http://aspell.net/) program).
+ * Go over every word and every character in every word, to figure out which are legal characters to put on the board.
+ * Calculate how common each character is so when generating a board, the characters are placed randomly, but proportional to how often they occur in the language.
+
+My questions are:
+ * Does it make sense to do this with Chinese text (either simplified or traditional)?
+ * If so, is there an open source/freely licensed word list available? `aspell` doesn't support Chinese.
+
+The reason I fear it may not work is because of the way in which each character in Chinese is almost a word in itself, and so there will not be many opportunities to join several characters together. Any feedback on this proposal would be greatly appreciated."
+lexica/lexica,closed,Reimplements algorithm to calculate letter probabilities.,[],"There is a file called `letters.txt` which looks like so:
+
+```
+Qu 3
+A 73 15 2 1 1
+C 43 6 1
+B 21 2 1 1
+E 100 35 7 1 1
+D 43 6 1 1
+G 35 4 1 1
+F 16 2 1 1
+I 81 22 4 1 1 1
+H 26 2 1
+K 11 1 1 1
+J 3 1
+M 29 4 1 1
+L 53 10 1 1
+O 58 13 2 1
+N 69 16 2 1 1
+P 32 4 1 1
+S 82 23 4 1 1 1
+R 73 14 1 1
+U 36 3 1 1
+T 68 15 2 1
+W 11 1 1
+V 13 1
+Y 18 1
+X 4 1
+Z 5 1 1 1
+```
+
+From the source code, it seems that the second column is the probability of the word being added to the board once, the third column is the relative probability of it being added a second time, etc. So for example `Qu` should only ever appear once, `Y` twice, but `S` can appear 6 times.
+
+I'm not sure of how these probabilities were generated, but we need to be able to calculate these for new alphabets too. As such, Lexica needs an algorithm to calculate these probabilities based on how often they appear in the dictionary for the given language.
+
+There is [some literature](https://web.archive.org/web/20150402073213/blog.useost.com/2012/12/30/valett/) on how to calculate Scrabble scores based on letter distributions. Not sure if that is directly applicable here though, because it seems quite specific to scrabble."
+lexica/lexica,closed,Change Trie data structure from bits to Strings,[],"This is an absolute must for any sort of i18n support (beyond translating the UI widgets). There is a hard assumption that there can only be 26 letters in the alphabet, and an even harder assumption that there will never be more than 64 letters in an alphabet due to the data structures used.
+
+This replaces those with a less efficient, but more i18n-able structure."
+lexica/lexica,closed,Bump for release v0.9.6,[],
+lexica/lexica,closed,Pull translation updates from Weblate,[],"Translators:
+
+Added translation using Weblate (Dutch) by Heimen Stoffels"
+lexica/lexica,open,Feature request: replay same board,"[Label(name=""enhancement""), Label(name=""help wanted"")]","This would be a very basic form of multiplayer in which the same tablet can be passed to another person upon completion to see if they can beat the previous player's score.
+
+This could be implemented either by immediately having a button which says ""replay board"", or by being able to directly enter a seed for the RNG. Although keeping a record of the previous score for the board would be nice, it is not part of this request.
+
+Really hooked on this game (as is my other half, hence the request). Thanks for developing it."
+lexica/lexica,closed,Fix typo in build file comment,[],soltuion → solution
+lexica/lexica,closed,Release v0.9.5,[],"Bump for release v0.9.5
+"
+lexica/lexica,closed,Allow international dictionaries,"[Label(name=""enhancement"")]","As discussed in #2, Lexica needs to be able to support dictionaries beyond just English (US) and English (UK). This will involve at least the following:
+- [x] Test coverage of the dictionary data structures.
+- [ ] More general support for rules such as ""Q"" is always followed by a ""u"" which is currently hard coded.
+-  [ ] Change methods which accept `bool usWord, bool ukWord` to accept a more general abstraction of languages.
+- [ ] Reimplementation of the data structures to allow more than 26 characters.
+
+Reimplementation of the data structures is taking the most time, as it includes:
+-  [x] Use strings instead of bit masks for storing words in the `Trie` data structures
+-  [ ] Correctly read a compressed `Trie` for a given board configuration instead of the entire dictionary.
+-  [ ] Replace all existing bit-shifting code throughout the app to expect strings instead.
+  - [ ] `TransitionMap`
+  - [ ] ""Neighbourhood Mask""
+  - [ ] Solvers
+  - [ ] Probably others too?
+
+This is the number one priority for me at this point. Even though other game modes would be a great addition, I think it is important that people of all sorts of different linguistic backgrounds should be able to play this game.
+"
+lexica/lexica,closed,"Updated ""Get it on..."" logos to new artwork.",[],"Update both the F-Droid and Google Play badges were out of date, this fixes that to use the newly published F-Droid artwork and the more recent Google Play badge. I've also updated https://lexica.github.io/lexica separately to this MR.
+
+Fixes #25.
+"
+lexica/lexica,closed,Use new F-Droid badge,[],"See https://f-droid.org/posts/get-it-on-f-droid-badges/.
+"
+lexica/lexica,open,Randomize letter orientation,[],"Recently attempted to use this as a replacement for a physical game set with a group of friends, and the only issue was that the aligned letters give an advantage to one position at a table. Would it be possible to add an option for randomized orientation?
+"
+lexica/lexica,closed,Enable proguard to reduce apk size,[],"Fixes #21 
+
+I've enabled for debug builds as well as release builds. This is so that during testing of debug builds, it should be easier to notice bugs that would affect release builds. If the extra build time becomes a problem for debug builds, then this can be revisited.
+"
+lexica/lexica,closed,Updated logo to adhere to the material design specs better.,[],"As much as possible adhered to the [Google design specs](https://www.google.com/design/spec/style/icons.html) and I think the result is really quite nice. The old icon I created looked a little amateurish compared to this attempt.
+"
+lexica/lexica,closed,Enable Proguard to reduce .apk size,"[Label(name=""enhancement""), Label(name=""help wanted"")]","As per a comment from the Play store, it does seem a little excessive that the original Lexic was < 300KiB and this is ~1.3MiB. We should enable Proguard and see how small the .apk becomes.
+"
+lexica/lexica,closed,Bump for release v0.9.4,[],"Japanese translations is good enough for me to bump this version number. Also added percentage of score/words to the final screen.
+"
+lexica/lexica,closed,Script for pulling scripts from Weblate,[],"The way Weblate works is to maintain a git repository which has this repository as a remote. Translations in Weblate includes commits on top of master for new translations. This script is adapted almost verbatim from that used by the F-Droid project. I'll create a wiki article explaining how to use the script to pull translations and prepare a MR in the future.
+"
+lexica/lexica,closed,"Add ""Get it on Google Play"" badge after uploading to the Play Store.",[],"Finally added the app to Google Play, may as well link to it in the README.
+"
+lexica/lexica,closed,"Update ""Get it on F-Droid"" button image.",[],"Also fix some references to Lexic while I'm here.
+"
+lexica/lexica,closed,Rename methods/variables in trie code to clarify behaviour.,[],"Less usage of abbreviated terms. Also formatted many of the
+bit shifting operations to add more whitespace.
+"
+lexica/lexica,closed,Tests for Trie building + CI,[],"Add tests for the Trie building logic (in anticipation of refactoring it in the future to support i18n). Also added support for Travis CI in the process.
+"
+lexica/lexica,closed,Add percentage after total score.,[],"Fixes #10.
+"
+lexica/lexica,open,Extra thrill: colorize letters towards the end of the game,"[Label(name=""enhancement""), Label(name=""suggestion"")]","It would be nice, if, a while into the game, the letters would get a slightly different color according to their relative importance (as the first letter of the left over words).
+
+I'd propose an option to colorize the letters when only 1/e = 0.368 of the overall time is left.
+
+Only one fraction to make things still comparable.
+Rationale for that strange number: if 0.5 were chosen (another reasonable choice) then the quest falls into two equal parts and players might start to (relatively calmly) wait for the convenient help in the second phase (no extra thrill). With markedly less then 0.5 you still wait for the second phase but then as you know it's significantly shorter the thrill does not slacken (end sprint). 1/e is the natural choice below 0.5:)
+
+No soft blend-in on purpose (would be distracting because colors instead of letters would get attention and would be display/environment dependent anyway).
+
+Colorizing green would calm things down too much for my taste, red would be nice but pretty aggressive, grey is not overly inspiring:)
+
+It might be tempting to have the fraction as a tunable but please don't offer it like this (fragments users community and moves attention to tuning the game).
+
+Instead address the need with a button like ""add 60s [to countdown]"".  Use 60 s not 1 min to avoid the vagueness of a minute:)
+
+That button adds the extra emotional aspect of wanting to be helped/not wanting help/little cheating/no cheating to the game. Simultaneously it allows the user to have a valve for stress if he/she wishes to.
+
+Sorry for using imperatives like ""use"" or ""address"" - they helped me to lay out the ideas.
+
+Greetings,
+Frieder
+"
+lexica/lexica,closed,Added Weblate translation instructions,[],"Got an account on https://hosted.weblate.org, so want to advertise that this is the preferred way to submit translations.
+"
+lexica/lexica,closed,option to use off-line dictionary (e.g. aard2) to lookup/define words,"[Label(name=""help wanted"")]","- allows usage when data connection is not available (or roaming)
+- does not leak my language skills to Google
+- could allow me (non native English speaker) to select freedict-eng-xyz-0.1.4.slob within aard2 to improve my language skills (clicking one of the ""MISSED WORDS"" would quickly take me there). To be honest: it would be perfect if I could select two languages there...
+
+Don't get me wrong, I already like lexica as it is!)
+"
+lexica/lexica,closed,"show score e.g. ""Total Words 24/126"" also as percentage",[],"Would be nice to see the score as percentage as well (%.1f%%).
+
+I'm really struggling to get more than xy.z% and I'm using the calculator to check if I made it:)
+
+Thanks for lexica!
+"
+lexica/lexica,closed,Bump for release v0.9.3,[],"Release which includes @residuum's German translations.
+"
+lexica/lexica,closed,German translation.,[],
+lexica/lexica,closed,Add Chinese transaltion,[],
+lexica/lexica,closed,Submited Catalan translation,[],"```
+Hi,
+
+I attached Catalan translation of value directori for ""ca"" locale.
+
+Please, add to Lexic, thanks.
+```
+
+Original issue reported on code.google.com by `jmont...@gmail.com` on 16 Dec 2009 at 1:20
+
+Attachments:
+- [value-ca.zip](https://storage.googleapis.com/google-code-attachments/lexic/issue-6/comment-0/value-ca.zip)
+"
+lexica/lexica,closed,Lexic pops back up after exit,[],"```
+What steps will reproduce the problem?
+1. Start Lexic, select play online, choose a board.
+2. At waiting screen, hit back twice to exit.
+
+What is the expected output? What do you see instead?
+Expected: Lexic goes and stays away
+Actual: Game board pops up out of nowhere possibly many minutes later,
+presumably when someone else joins up for online play
+
+
+What version of the product are you using? On what operating system?
+0.8.0 on Android 1.5 (JF 1.51)
+
+
+Please provide any additional information below.
+
+
+```
+
+Original issue reported on code.google.com by `shinydis...@gmail.com` on 16 Jun 2009 at 9:40
+"
+lexica/lexica,closed,Sound Effects,[],"```
+Sound effects would be nice and would enhance usability by providing
+feedback to the user as to whether or not a word is accepted.
+```
+
+Original issue reported on code.google.com by `rev.n...@gmail.com` on 24 Feb 2009 at 7:13
+"
+lexica/lexica,closed,Display board at end of game,[],"```
+Many people have requested that the board be visible at the end of the game
+so that they can see where the missed words were.
+```
+
+Original issue reported on code.google.com by `rev.n...@gmail.com` on 24 Feb 2009 at 7:12
+"
+lexica/lexica,closed,Allow for multiple dictionaries,[],"```
+At this point, the code for creating and using dictionaries is written in
+such a way that only the US and UK dictionaries are easily supported. 
+Rewriting some code to add support for more dictionaries would solve the
+problem.
+```
+
+Original issue reported on code.google.com by `rev.n...@gmail.com` on 24 Feb 2009 at 7:11
+"
+lexica/lexica,open,Keyboard entry of words,[],"```
+Several users have requested for a feature allowing words to be entered via
+the keyboard.
+```
+
+Original issue reported on code.google.com by `rev.n...@gmail.com` on 24 Feb 2009 at 7:08
+"

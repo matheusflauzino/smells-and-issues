@@ -1,0 +1,198 @@
+repository,state,title,label,body
+arnef/bewegungsmelder-android,closed,Use jcenter() instead of mavenCentral(),[],"Hi @arnef,
+
+second try ;-)
+
+To fix the build on fdroid we also need this change. It seems that mavenCentral() doesn't include org.jetbrains.trove4j which is a dependency of gradle:3.0.0.
+
+See https://gitlab.com/fdroid/fdroiddata/merge_requests/2608 for the full log.
+
+Best,
+Philip"
+arnef/bewegungsmelder-android,closed,Fix gradle lint errors,[],
+arnef/bewegungsmelder-android,closed,Use jcenter() instead of mavenCentral(),[],"Hi @arnef,
+
+to fix the build on fdroid we also need this change. It seems that mavenCentral() doesn't include org.jetbrains.trove4j which is a dependency of gradle:3.0.0.
+
+See https://gitlab.com/fdroid/fdroiddata/merge_requests/2608 for the full log.
+
+Best,
+Philip"
+arnef/bewegungsmelder-android,closed,Fix build on fdroid,[],"Hi Arne,
+
+I got a mail that the build is failing on the fdroid build system. It seems that gradle 3.0.0 is not in the mavenCentral() repo but in the google() repo - I added it now.
+
+Here the full mail for reference:
+
+> 
+> 
+> michel@debian:~/git/fdroiddata$ fdroid build -vl de.arnefeil.bewegungsmelder
+> Clonage dans 'build/de.arnefeil.bewegungsmelder'...
+> INFO: Building version 2.0.3 (140632) of de.arnefeil.bewegungsmelder
+> INFO: Getting source for revision 5c1ace248217bb5902509536d8d9b26dbd009295
+> INFO: Creating local.properties file at build/de.arnefeil.bewegungsmelder/local.properties
+> INFO: Cleaned build.gradle of keysigning configs at build/de.arnefeil.bewegungsmelder/build.gradle
+> INFO: Cleaning Gradle project...
+> Starting a Gradle Daemon (subsequent builds will be faster)
+> 
+> FAILURE: Build failed with an exception.
+> 
+> * What went wrong:
+> A problem occurred configuring root project 'de.arnefeil.bewegungsmelder'.
+>> Could not resolve all files for configuration ':classpath'.
+>    > Could not find com.android.tools.build:gradle:3.0.0.
+>      Searched in the following locations:
+>          https://repo1.maven.org/maven2/com/android/tools/build/gradle/3.0.0/gradle-3.0.0.pom
+>          https://repo1.maven.org/maven2/com/android/tools/build/gradle/3.0.0/gradle-3.0.0.jar
+>      Required by:
+>          project :
+> 
+> * Try:
+> Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+> 
+> * Get more help at https://help.gradle.org
+> 
+> BUILD FAILED in 15s
+> ERROR: Could not build app de.arnefeil.bewegungsmelder: Error cleaning de.arnefeil.bewegungsmelder:2.0.3
+> ==== detail begin ====
+> Starting a Gradle Daemon (subsequent builds will be faster)
+> 
+> FAILURE: Build failed with an exception.
+> 
+> * What went wrong:
+> A problem occurred configuring root project 'de.arnefeil.bewegungsmelder'.
+>> Could not resolve all files for configuration ':classpath'.
+>    > Could not find com.android.tools.build:gradle:3.0.0.
+>      Searched in the following locations:
+>          https://repo1.maven.org/maven2/com/android/tools/build/gradle/3.0.0/gradle-3.0.0.pom
+>          https://repo1.maven.org/maven2/com/android/tools/build/gradle/3.0.0/gradle-3.0.0.jar
+>      Required by:
+>          project :
+> 
+> * Try:
+> Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+> 
+> * Get more help at https://help.gradle.org
+> 
+> BUILD FAILED in 15s
+> ==== detail end ====
+> INFO: Finished.
+> INFO: 1 builds failed
+> 
+> I think you need to add the google() repo in https://github.com/arnef/bewegungsmelder-android/blob/master/build.gradle
+> 
+> Could you please tag releases for the bot to automatically update metadata files?
+> 
+
+They also ask you to tag releases so they can automatically build new versions. Would you do that?
+
+Best,
+Philip
+"
+arnef/bewegungsmelder-android,closed,French translation + README.md,[],hello :)
+arnef/bewegungsmelder-android,closed,Crash on start,[],"Hi,
+
+with `'com.android.support:appcompat-v7:25.2.0'` in `build.gradle` Bewegungsmelder crashes on start with:
+
+`java.lang.IllegalStateException: Fragment de.arnefeil.bewegungsmelder.MainActivity.EventsSectionFragment must be a public static class to be  properly recreated from instance state.`
+
+using `'com.android.support:appcompat-v7:23.4.0'` instead fixes the problem - but is probably not the best solution..."
+arnef/bewegungsmelder-android,closed,Restore old tree layout,[],This fixes issue #7.
+arnef/bewegungsmelder-android,closed,Add ability to send events to calendar,[],This is a fist start to fix issue #3. It works well for me but I only tested it on Android 7.1.
+arnef/bewegungsmelder-android,closed,Compilation issues (styles),[],"Building the app breaks for me with:
+
+```
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:21: error: Error retrieving parent for item: No resource found that matches the given name '@style/Theme.AppCompat.Light.DarkActionBar'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:22: error: Error: No resource found that matches the given name: attr 'actionBarItemBackground'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:27: error: Error: No resource found that matches the given name: attr 'actionBarStyle'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:25: error: Error: No resource found that matches the given name: attr 'actionBarTabStyle'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:33: error: Error: No resource found that matches the given name: attr 'actionBarWidgetTheme'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:26: error: Error: No resource found that matches the given name: attr 'actionDropDownStyle'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:28: error: Error: No resource found that matches the given name: attr 'actionModeBackground'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:30: error: Error: No resource found that matches the given name: attr 'actionModeCloseButtonStyle'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:29: error: Error: No resource found that matches the given name: attr 'actionModeSplitBackground'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:24: error: Error: No resource found that matches the given name: attr 'dropDownListViewStyle'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:23: error: Error: No resource found that matches the given name: attr 'popupMenuStyle'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values-v14/styles_myactionbar.xml:22: error: Error retrieving parent for item: No resource found that matches the given name '@style/Theme.AppCompat.Light.DarkActionBar'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:37: error: Error retrieving parent for item: No resource found that matches the given name '@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:38: error: Error: No resource found that matches the given name: attr 'background'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:40: error: Error: No resource found that matches the given name: attr 'backgroundSplit'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:39: error: Error: No resource found that matches the given name: attr 'backgroundStacked'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:41: error: Error: No resource found that matches the given name: attr 'progressBarStyle'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values-v14/styles_myactionbar.xml:38: error: Error retrieving parent for item: No resource found that matches the given name '@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:44: error: Error retrieving parent for item: No resource found that matches the given name '@style/Widget.AppCompat.ActionBar'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:45: error: Error: No resource found that matches the given name: attr 'background'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:46: error: Error: No resource found that matches the given name: attr 'progressBarStyle'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values-v14/styles_myactionbar.xml:45: error: Error retrieving parent for item: No resource found that matches the given name '@style/Widget.AppCompat.ActionBar'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:49: error: Error retrieving parent for item: No resource found that matches the given name '@style/Widget.AppCompat.PopupMenu'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:53: error: Error retrieving parent for item: No resource found that matches the given name '@style/Widget.AppCompat.ListView.DropDown'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:57: error: Error retrieving parent for item: No resource found that matches the given name '@style/Widget.AppCompat.ActionBar.TabView'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:61: error: Error retrieving parent for item: No resource found that matches the given name '@style/Widget.AppCompat.Spinner.DropDown.ActionBar'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:67: error: Error retrieving parent for item: No resource found that matches the given name '@style/Widget.AppCompat.ProgressBar.Horizontal'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:71: error: Error retrieving parent for item: No resource found that matches the given name '@style/Widget.AppCompat.ActionButton.CloseMode'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:76: error: Error retrieving parent for item: No resource found that matches the given name '@style/Theme.AppCompat'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:78: error: Error: No resource found that matches the given name: attr 'dropDownListViewStyle'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values/styles_myactionbar.xml:77: error: Error: No resource found that matches the given name: attr 'popupMenuStyle'.
+     [aapt] 
+     [aapt] /home/krt/src/fdroiddata/build/de.arnefeil.bewegungsmelder/res/values-v14/styles_myactionbar.xml:51: error: Error retrieving parent for item: No resource found that matches the given name '@style/Theme.AppCompat'.
+     [aapt] 
+```
+
+I'd guess the included jar files are not the correctversio. Maybe switch to gradle for dependency management?
+"
+arnef/bewegungsmelder-android,closed,fdroid repository,[],"Hallo Arne,
+
+es wäre total toll, wenn der Bewegungsmelder auch bei https://f-droid.org/ verfügbar wäre. Viele Menschen, die sich für den Bewegungsmelder interessieren möchten den Google Store nicht nutzen.
+
+Hier gibt es eine FAQ, wie du den Bewegungsmelder in fdroid, dem Repository für freie Software einstellen kannst: https://f-droid.org/wiki/page/FAQ_-_App_Developers
+
+Danke dir!
+"
+arnef/bewegungsmelder-android,open,android 5 ui,[],
+arnef/bewegungsmelder-android,open,Regelmäßige Termine,"[Label(name=""enhancement"")]",
+arnef/bewegungsmelder-android,closed,Kalender Export,"[Label(name=""enhancement"")]",
+arnef/bewegungsmelder-android,open,Darstellungsprobleme bei Eintritt,"[Label(name=""bug"")]",
+arnef/bewegungsmelder-android,closed,Bugfix for event links,[],"Hey Arne,
+
+I've always wondered why it is not possible to open band links in your great Bewegungsmelder app. It turned out that the views containing band links don't have a proper [MovementMethod](http://developer.android.com/reference/android/text/method/MovementMethod.html) set.
+
+I've fixed this and refactored the whole EventAdapter to use a [view holder](http://developer.android.com/training/improving-layouts/smooth-scrolling.html).
+"

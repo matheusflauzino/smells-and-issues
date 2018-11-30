@@ -1,0 +1,157 @@
+repository,state,title,label,body
+billthefarmer/tuner,open,ERROR audio recorder not initialised,[],"![image](https://user-images.githubusercontent.com/16192001/47541364-4613b680-d8d9-11e8-953c-a963a1522604.png)
+I get this error when I try to emulate this app on android studio or on my phone directly from android studio "
+billthefarmer/tuner,closed,Updated fr (French) translation,[],Commit made via [Stringlate](https://lonamiwebs.github.io/stringlate/)
+billthefarmer/tuner,open,Add do ré mi scale,[],"Hi,
+
+I usually use the French do ré mi scale instead of the A B C scale. I'd be very happy if there was an option to use that scale.
+
+```
+A -> La
+B -> Si
+C -> Do
+D -> Ré
+E -> Mi
+F -> Fa
+G -> Sol
+```"
+billthefarmer/tuner,closed,reformat code,[],
+billthefarmer/tuner,closed,updated gradles and some code,[],"basically what the title is
+
+- updated buildTools to 28.0.2 and compileSdk to 28
+- compatibility with java 1.8, and changed some corresponding code (anonymous java expressions to lambdas, etc)
+- updated some of your README file to use better things
+- i didnt touch your coding style :)
+
+all this comes to only about a 15KB increase in the release apk build
+
+pretty good if i do say so myself"
+billthefarmer/tuner,open,[idea] show note on staff,[],"I've been thinking that it would be useful to see the note I'm playing with my trumpet on a (transposed) staff, which sounds something not that sci-fi to implement, maybe as part of an existing tuner (like this) or maybe as a separate app, what do you think, too crazy ?
+
+It's that with the trumpet I never know where in the overtone series I am :)"
+billthefarmer/tuner,closed,Add back button to note filter activity,[],"This issue applies to the filter branch: https://github.com/billthefarmer/tuner/tree/filter/
+
+There is a small usability issue where there is no back button in the toolbar when setting the note filters:
+![image](https://user-images.githubusercontent.com/1428594/37084914-685ea9c8-21fc-11e8-8ee1-8a8ac3a8f41e.png)
+
+Issue source: https://accordionists.co.uk/viewtopic.php?f=3&t=5561#p55917"
+billthefarmer/tuner,closed,Add octave 8 to octave filter,[],"This issue applies to the filter branch: https://github.com/billthefarmer/tuner/tree/filter/
+
+I originally only went up to octave 7 based on the range for a piano accordion as per Wikipedia:
+https://en.wikipedia.org/wiki/Piano_accordion
+
+But it turns out that CBA's can actually go up to octave 8: 
+https://en.wikipedia.org/wiki/Chromatic_button_accordion
+
+We will need to add octave 8 to the list of available octaves, unless there is a technical reason for the app not being able to detect frequencies that high.
+
+Issue source: https://accordionists.co.uk/viewtopic.php?f=3&t=5561#p55917"
+billthefarmer/tuner,closed,Fix Brazilian Portuguese translation,[],Fix Brazilian Portuguese translation
+billthefarmer/tuner,closed,Fix Brazilian Portuguese translation,[],Fix Brazilian Portuguese translation
+billthefarmer/tuner,closed,Translation to Brazilian Portuguese,[],
+billthefarmer/tuner,closed,Upgrade from 1.15 to 1.16 fails,[],"Stock Android 6.0 on LG V10, upgrade from 1.15 to 1.16 from F-droid fails with:
+
+Error installing Tuner
+Failed to install due to an unknown error
+
+Tried clearing the app cache and data before repeating the upgrade, same result. I noticed I had to re-add the right to use the microphone manually afterwards (can't recall if it was the same when I installed the app originally, or did it ask for it), but baring that, the 1.15 continues to work properly.
+
+This is probably not a very detailed bug report, if there is more data I can provide in regards to the actual upgrade error, please point me in the right direction..."
+billthefarmer/tuner,closed,Typo,[],"""Licence"" is a French word ;)"
+billthefarmer/tuner,closed,filter input,[],"how can we filter what comes in, so the tuner is more calm and instrument easier to tune, just like i've seen in non—free software?
+i guess this is more of a feature request :)"
+billthefarmer/tuner,closed,Input source issues,[],"I ran into two separate issues when trying the different ""Input sources"" in Settings.
+
+1. On an API 25 device, selecting any of the ""Voice call"" audio sources and returning to the main screen threw an uncaught exception while constructing the [AudioRecord](https://developer.android.com/reference/android/media/AudioRecord.html#AudioRecord(int,%20int,%20int,%20int,%20int)) instance: 
+```
+java.lang.IllegalArgumentException: Invalid audio source.
+	at android.media.AudioRecord.audioParamCheck(AudioRecord.java:680)
+	at android.media.AudioRecord.<init>(AudioRecord.java:358)
+	at android.media.AudioRecord.<init>(AudioRecord.java:278)
+	at org.billthefarmer.tuner.MainActivity$Audio.processAudio(MainActivity.java:752)
+	at org.billthefarmer.tuner.MainActivity$Audio.run(MainActivity.java:687)
+	at java.lang.Thread.run(Thread.java:761)
+```
+This Pull Request wraps the constructor in a try-catch and displays the ""... Maybe the selected input source is not available..."" error dialog that was used in other failure cases.
+
+2. On an API 19 device, selecting any of the ""Voice call"" audio sources and returning to the main screen blocked the `Audio` thread indefinitely on  `audioRecord.read(short[], int, int)` at Line 820. When going back to Settings to change the Input source, the application hangs on a black screen due to the main thread yielding at Line 698 while waiting for the `Audio` thread to exit.
+
+This Pull Request has the main thread stop the `AudioRecord` instance, which unblocks the read call and allows the `Audio` thread to exit cleanly."
+billthefarmer/tuner,closed,Transpose support,[],"As I started using this great app with a Bb trumpet, I was thinking it would be great to have support for transposing the displayed note so it matches the one written on a non-C score. Is that something you'd consider adding ? I might try to implement it myself, if time permits, but could be something simple for someone who knows the codebase "
+billthefarmer/tuner,closed,Request runtime permission to record audio for users on API 23+,[],"Updating the `targetSdkVersion` to a value above 22 enabled [runtime permissions](https://developer.android.com/guide/topics/permissions/requesting.html#perm-groups).
+
+The changes in this Pull Request will prompt users on API 23 and above to allow the Record Audio permission required by this app. Users on API 22 or below maintain the same user experience (must accept permission(s) before installation proceeds).
+
+I tried to keep the formatting style consistent with the rest of the codebase; feel free to reformat to your liking.
+
+_As an alternative to the changes in this Pull Request, changing the `targetSdkVersion` on Line 13 in `AndroidManifest.xml` to 22 or below will revert to the old permission behavior._"
+billthefarmer/tuner,closed,Added Japanese translation,[],Hello!
+billthefarmer/tuner,closed,Update Hungarian translation,[],I forgot to translate help.html into Hungarian last time.
+billthefarmer/tuner,closed,Add Hungarian translation,[],Translated strings.xml and arrays.xml into Hungarian using the English versions.
+billthefarmer/tuner,closed,Added translation into Spanish,[],
+billthefarmer/tuner,closed,Translation to Spanish,[],"Hi, thanks for your work and your posting the code in GPL. I would love to translate the application into Spanish. Do you have an online translation service or do I translate the files and send them to an email?"
+billthefarmer/tuner,closed,Translation ? ,[],"How can I translate your app in french ? 
+Are you agree with that ? 
+"
+billthefarmer/tuner,closed,Tuner don't work ,[],"Hello :-) 
+Thank's for your work !! 
+I can't use Tuner because spectrum work fine, but other diplay don't work !! I don't know why ? 
+I'm on android 4.2 and Tuner 1.10 (installed with f-droid).
+
+Any suggestion ?! 
+"
+billthefarmer/tuner,closed,Is this project still alive?,"[Label(name=""question"")]","Hello,
+
+I would like to work on this project and improve it for personnal use.
+I have already converted the project in Android Studio,n used Fragments, etc, but would like to know if some people are still alive here and interested in PR and improvements.
+
+Thank a lot for any feedback.
+"
+billthefarmer/tuner,closed,What a great tuner!,[],"The tuner is amazing! Could you talk about the algorithms?
+"
+billthefarmer/tuner,closed,crash when enabling audio.lock,"[Label(name=""bug"")]","The application crashes when I click on the cents error:
+
+```
+java.lang.NullPointerException: Attempt to invoke virtual method 'int android.graphics.Bitmap.getHeight()' on a null object reference
+    at org.billthefarmer.tuner.Display.onDraw(Display.java:126)
+    at android.view.View.draw(View.java:15114)
+```
+
+I'm running Tuner 1.0.7 from f-droid (cyanogenmod12/android5.0.2). 
+Let me know if I can help with debugging in any way :)
+"
+billthefarmer/tuner,closed,Reference A,"[Label(name=""enhancement"")]","Thanks for the app Bill, the great highland bagpipe can have a root 'A' note of up to 480Hz these days however, any chance you could change the range to include this? I'd look at a PR, but my Android development isn't so good, but it looks like a simple integers.xml change?
+"
+billthefarmer/tuner,closed,The F-Droid info text should link to a changelog,[],"You don't have a changelog file, and the [releases page](https://github.com/billthefarmer/tuner/releases) does not tell about the contents of the releases, so the link should go directly to the [commit log](https://github.com/billthefarmer/tuner/commits/master).
+"
+billthefarmer/tuner,closed,Crash on startup,"[Label(name=""bug"")]","This crashes on startup for me, with the following:
+
+W/dalvikvm( 5467): threadid=1: thread exiting with uncaught exception (group=0x40a5c1f8)
+E/AndroidRuntime( 5467): FATAL EXCEPTION: main
+E/AndroidRuntime( 5467): android.view.InflateException: Couldn't resolve menu item onClick handler onSettingsClick in class android.view.ContextThemeWrapper
+E/AndroidRuntime( 5467): at android.view.MenuInflater$InflatedOnMenuItemClickListener.<init>(MenuInflater.java:202)
+E/AndroidRuntime( 5467): at android.view.MenuInflater$MenuState.setItem(MenuInflater.java:402)
+E/AndroidRuntime( 5467): at android.view.MenuInflater$MenuState.addItem(MenuInflater.java:436)
+E/AndroidRuntime( 5467): at android.view.MenuInflater.parseMenu(MenuInflater.java:173)
+E/AndroidRuntime( 5467): at android.view.MenuInflater.inflate(MenuInflater.java:95)
+E/AndroidRuntime( 5467): at org.billthefarmer.tuner.MainActivity.onCreateOptionsMenu(MainActivity.java:146)
+E/AndroidRuntime( 5467): at android.app.Activity.onCreatePanelMenu(Activity.java:2444)
+E/AndroidRuntime( 5467): at com.android.internal.policy.impl.PhoneWindow.preparePanel(PhoneWindow.java:388)
+E/AndroidRuntime( 5467): at com.android.internal.policy.impl.PhoneWindow.invalidatePanelMenu(PhoneWindow.java:739)
+E/AndroidRuntime( 5467): at com.android.internal.policy.impl.PhoneWindow$1.run(PhoneWindow.java:2833)
+E/AndroidRuntime( 5467): at android.os.Handler.handleCallback(Handler.java:605)
+E/AndroidRuntime( 5467): at android.os.Handler.dispatchMessage(Handler.java:92)
+E/AndroidRuntime( 5467): at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime( 5467): at android.app.ActivityThread.main(ActivityThread.java:4575)
+E/AndroidRuntime( 5467): at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime( 5467): at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime( 5467): at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:789)
+E/AndroidRuntime( 5467): at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:556)
+E/AndroidRuntime( 5467): at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime( 5467): Caused by: java.lang.NoSuchMethodException: onSettingsClick [interface android.view.MenuItem]
+E/AndroidRuntime( 5467): at java.lang.Class.getConstructorOrMethod(Class.java:460)
+E/AndroidRuntime( 5467): at java.lang.Class.getMethod(Class.java:915)
+E/AndroidRuntime( 5467): at android.view.MenuInflater$InflatedOnMenuItemClickListener.<init>(MenuInflater.java:200)
+E/AndroidRuntime( 5467): ... 18 more
+W/ActivityManager( 2002): Force finishing activity org.billthefarmer.tuner/.MainActivity
+"

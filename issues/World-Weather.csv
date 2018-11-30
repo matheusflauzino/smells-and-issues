@@ -1,0 +1,218 @@
+repository,state,title,label,body
+Kestutis-Z/World-Weather,open,Apparent temperature,[],"It would be interesting if the application could show the apparent temperature (at least optionally). In case the OpenWeatherMap API does not provide this value, it can be calculated with one of the following methods (the information belongs to [this plugin](http://goodies.xfce.org/projects/panel-plugins/xfce4-weather-plugin) for XFCE):
+* [Windchill/Heat index](https://en.wikipedia.org/wiki/Heat_index): Used in North America, wind chill will be reported for low temperatures and heat index for higher ones. At night, heat index will be replaced by the [Summer Simmer Index](http://www.reahvac.com/tools/humidity-formulas/). For wind chill, wind speeds need to be above 3.0 mph (4.828 km/h) and air temperature below 50.0 °F (10.0 °C). For heat index, air temperature needs to be above 80 °F (26.7 °C) - or above 71.6 °F (22 °C) at night - and relative humidity at least 40%. If these conditions are not met, the air temperature will be shown.
+* [Windchill/Humidex](https://en.wikipedia.org/wiki/Humidex): The Canadian counterpart to the US windchill/heat index, with the wind chill being similar to the previous model but with slightly different constraints. Instead of the heat index <i>humidex</i> will be used. For wind chill to become effective, wind speeds need to be above 2.0 km/h (1.24 mph) and air temperature below or equal to 0 °C (32 °F). For humidex, air temperature needs to be at least 20.0 °C (68 °F), with a dewpoint greater than 0 °C (32 °F). If these conditions are not met, the air temperature will be shown.
+* [Steadman](http://journals.ametsoc.org/doi/pdf/10.1175/1520-0434%281998%29013%3C1187%3ATSWCAI%3E2.0.CO%3B2): This is the model used by the Australian Bureau of Meteorology, especially adapted for the climate of this continent. Possibly used in Central Europe and parts of other continents too, but then windchill and similar values had never gained that much popularity there as in the US or Canada, so information about its usage is scarce or uncertain. It depends on air temperature, wind speed and humidity and can be used for lower and higher temperatures alike.
+* Quayle-Steadman: Improvements by Robert G. Quayle and Robert G. Steadman applied in 1998 to earlier experiments/developments by Steadman. This model only depends on wind speed and temperature, not on relative humidity and can be used for both heat and cold stress.
+ 
+Maybe it would be best to have all those methods in the configurations and let the user decide which one to use."
+Kestutis-Z/World-Weather,open,The application crash when the screen is rotated.,[],"I have discovered a rather curious bug that causes the application close while updating the weather information. To replicate this, simply move the device quickly at a 90° angle to make the screen rotate before it finishes loading the data. For what it's worth, this is what logcat shows:
+```
+07-28 01:34:36.284 E/GED     (12279): Failed to get GED Log Buf, err(0)
+07-28 01:34:38.846 E/WindowManager(12279): 
+07-28 01:34:38.846 E/WindowManager(12279): android.view.WindowLeaked: Activity com.haringeymobile.ukweather.MainActivity has leaked window com.android.internal.policy.impl.PhoneWindow$DecorView{288c789c V.E..... R......D 0,0-456,174} that was originally added here
+07-28 01:34:38.846 E/WindowManager(12279): 	at android.view.ViewRootImpl.<init>(ViewRootImpl.java:363)
+07-28 01:34:38.846 E/WindowManager(12279): 	at android.view.WindowManagerGlobal.addView(WindowManagerGlobal.java:271)
+07-28 01:34:38.846 E/WindowManager(12279): 	at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:85)
+07-28 01:34:38.846 E/WindowManager(12279): 	at android.app.Dialog.show(Dialog.java:298)
+07-28 01:34:38.846 E/WindowManager(12279): 	at com.haringeymobile.ukweather.b.a.onPreExecute(AsyncTaskWithProgressBar.java:45)
+07-28 01:34:38.846 E/WindowManager(12279): 	at android.os.AsyncTask.executeOnExecutor(AsyncTask.java:591)
+07-28 01:34:38.846 E/WindowManager(12279): 	at android.os.AsyncTask.execute(AsyncTask.java:539)
+07-28 01:34:38.846 E/WindowManager(12279): 	at com.haringeymobile.ukweather.weather.k.a(WorkerFragmentToRetrieveJsonString.java:109)
+07-28 01:34:38.846 E/WindowManager(12279): 	at com.haringeymobile.ukweather.MainActivity.a(MainActivity.java:385)
+07-28 01:34:38.846 E/WindowManager(12279): 	at com.haringeymobile.ukweather.d.onClick(CityListFragmentWithWeatherButtons.java:65)
+07-28 01:34:38.846 E/WindowManager(12279): 	at android.view.View.performClick(View.java:4789)
+07-28 01:34:38.846 E/WindowManager(12279): 	at android.view.View$PerformClick.run(View.java:19881)
+07-28 01:34:38.846 E/WindowManager(12279): 	at android.os.Handler.handleCallback(Handler.java:739)
+07-28 01:34:38.846 E/WindowManager(12279): 	at android.os.Handler.dispatchMessage(Handler.java:95)
+07-28 01:34:38.846 E/WindowManager(12279): 	at android.os.Looper.loop(Looper.java:135)
+07-28 01:34:38.846 E/WindowManager(12279): 	at android.app.ActivityThread.main(ActivityThread.java:5294)
+07-28 01:34:38.846 E/WindowManager(12279): 	at java.lang.reflect.Method.invoke(Native Method)
+07-28 01:34:38.846 E/WindowManager(12279): 	at java.lang.reflect.Method.invoke(Method.java:372)
+07-28 01:34:38.846 E/WindowManager(12279): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904)
+07-28 01:34:38.846 E/WindowManager(12279): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:699)
+07-28 01:34:39.430 E/AndroidRuntime(12279): FATAL EXCEPTION: main
+07-28 01:34:39.430 E/AndroidRuntime(12279): Process: com.haringeymobile.ukweather, PID: 12279
+07-28 01:34:39.430 E/AndroidRuntime(12279): java.lang.IllegalArgumentException: View=com.android.internal.policy.impl.PhoneWindow$DecorView{288c789c V.E..... R......D 0,0-456,174} not attached to window manager
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at android.view.WindowManagerGlobal.findViewLocked(WindowManagerGlobal.java:396)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at android.view.WindowManagerGlobal.removeView(WindowManagerGlobal.java:322)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at android.view.WindowManagerImpl.removeViewImmediate(WindowManagerImpl.java:116)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at android.app.Dialog.dismissDialog(Dialog.java:341)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at android.app.Dialog.dismiss(Dialog.java:324)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at com.haringeymobile.ukweather.b.a.onPostExecute(AsyncTaskWithProgressBar.java:61)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at com.haringeymobile.ukweather.weather.k$b.a(WorkerFragmentToRetrieveJsonString.java:219)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at com.haringeymobile.ukweather.weather.k$b.onPostExecute(WorkerFragmentToRetrieveJsonString.java:137)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at android.os.AsyncTask.finish(AsyncTask.java:636)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at android.os.AsyncTask.access$500(AsyncTask.java:177)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:653)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at android.os.Handler.dispatchMessage(Handler.java:102)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at android.os.Looper.loop(Looper.java:135)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at android.app.ActivityThread.main(ActivityThread.java:5294)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at java.lang.reflect.Method.invoke(Native Method)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at java.lang.reflect.Method.invoke(Method.java:372)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904)
+07-28 01:34:39.430 E/AndroidRuntime(12279): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:699)
+```"
+Kestutis-Z/World-Weather,closed,Switch OpenWeatherMap API URLs to HTTPS,[],See http://openweathermap.org/news/post/ssl-free-and-startup-accounts
+Kestutis-Z/World-Weather,closed,Kabyle translation,[],"Hi,
+
+I just finished the kab translation. Please if there is more work to do let me now.
+As a remind, Kabyle is a latin-based system, Iso 639-2 code: kab. English Name: Kabyle, native name: Taqbaylit.
+
+For more information, please consider CLDR 32 wich be released soon. The beta version is available.
+We are waiting for our our App on Google Play
+Thanks!"
+Kestutis-Z/World-Weather,closed,Copyright violation,[],"Hi @Kestutis-Z 
+
+I found [this app](https://play.google.com/store/apps/details?id=com.tworams.worldweather) on the Google Play Store. This guy just took your source code, added some ads in it and put it on the Store, without warning this is free software...
+
+As you are the owner of the source code, please feel free to open a request to google [here](https://support.google.com/legal/contact/lr_dmca?product=googleplay) to remove the false app from the Store, if it's your wish ;)
+
+Don't forget to tell Google that:
+
+* The app is licensed under Apache v2 license and this guy is violating it;
+* He is falsely claiming he made the app;
+* Provide a link to this repo and screenshots of your app."
+Kestutis-Z/World-Weather,closed,Settings: Input field for own API key,[],
+Kestutis-Z/World-Weather,closed,German translation,[],"_**At the moment it's still incomplete! I'll try to complete the missing parts in the next few days/weeks.**_
+
+This is a first attempt for a German translation of this app. Excuse my submission as PR, I'm not familiar with Weblate and I don't know if new languages are supported through their webinterface. And last but not least I'm a programmer and not a ""Klicki-Bunti-User""… 🤓
+
+Maybe someone could check if it's integrated the right way into settings. Currently it's untested."
+Kestutis-Z/World-Weather,open,UV index,[],Please add UV index info to the app.
+Kestutis-Z/World-Weather,open,Alerts,[],"Firstly, thanks for your work.
+
+Please, clould you add alerts which notify when it's going to rain or when it will go down the temperature?"
+Kestutis-Z/World-Weather,closed,Submodule links to wrong commit,[],The submodule points to https://github.com/JayH5/drag-sort-listview/tree/73e361d0986054bc196a8e31b0233b2145a410e2 which doesnt exist.
+Kestutis-Z/World-Weather,closed,Correction of the translation into Spanish,[],Predicción a 3 horas
+Kestutis-Z/World-Weather,closed,"Revise writing style: do not say please, avoid exclamation points, etc.",[],"Please read the [Android Writing Sytle](https://material.google.com/style/writing.html) (AWS) and revise your strings. While translating the app, I found several strings that need to be reviewed in light of these best practices.
+
+For instance you use ""please"" in many sentences. AWS advises one to be respectful but also concise. The extra politeness of saying please in every other sentence increases sentence length beyond the necessary.
+
+Another example is the usage of exclamation points in strings such as `The name cannot be empty!` and others. As AWS advises:
+> Avoid exclamation points for anything you wouldn’t actually shout out loud (exclaim)."
+Kestutis-Z/World-Weather,closed,Add preference to change language,[],"Now that World Weather has translations, an in-app preference to change language becomes much useful. Sometimes you want to set an in-app language different from your system-wide language.
+
+There is an example in Boilr on how to construct such preference: [Languager.java](https://github.com/drpout/boilr/blob/master/src/main/java/mobi/boilr/boilr/utils/Languager.java) + [SettingsFragment.java](https://github.com/drpout/boilr/blob/master/src/main/java/mobi/boilr/boilr/views/fragments/SettingsFragment.java)."
+Kestutis-Z/World-Weather,closed,Localization to Russian and Ukrainian,[],"Please, add localization to russian and ukrainian languages. I can help you with it, if you provide me right instructions."
+Kestutis-Z/World-Weather,closed,Cities sorting,[],"Please add ability to sort cities like user want in City Management.
+"
+Kestutis-Z/World-Weather,closed,Crashes for 3-hour weather,[],"Build: 1.1.9 from F-Droid
+
+logcat is attached.
+[ukweather.txt](https://github.com/Kestutis-Z/World-Weather/files/478078/ukweather.txt)
+"
+Kestutis-Z/World-Weather,closed,Translate to Spanish,[],"Hi, congratulations on the app. I would love to contribute by translating the program into Spanish, but can not find the file. You could teach me? use any platform as transifex? Health!
+"
+Kestutis-Z/World-Weather,open,Widget,[],"Hi!
+How about a widget for the current location or a custom city?
+"
+Kestutis-Z/World-Weather,open,Current location,[],"Hi!
+An automatic setting of the current location wouldbe fine. This location should be shown on top of the cities.
+"
+Kestutis-Z/World-Weather,open,Screen colors,[],"Please make the screen text color configurable or allow a high contrast theme (eg white text on dark background).
+"
+Kestutis-Z/World-Weather,closed,Context Error,[],"hello i am beginner sir, i imported the code in android studio but it shows me some errors on this file
+
+C:\Users\Harry\Desktop\WorldWeather\app\src\main\java\com\haringeymobile\ukweather\weather\WeatherInfoFragment.java
+Error:(103, 14) error: method onAttach in class Fragment cannot be applied to given types;
+required: Activity
+found: Context
+reason: actual argument Context cannot be converted to Activity by method invocation conversion
+Error:(101, 5) error: method does not override or implement a method from a supertype
+Error:(110, 71) error: cannot find symbol method getContext()
+C:\Users\Harry\Desktop\WorldWeather\app\src\main\java\com\haringeymobile\ukweather\weather\WeatherThreeHourlyForecastChildListFragment.java
+Error:(63, 14) error: method onAttach in class Fragment cannot be applied to given types;
+required: Activity
+found: Context
+reason: actual argument Context cannot be converted to Activity by method invocation conversion
+Error:(61, 5) error: method does not override or implement a method from a supertype
+Error:(126, 75) error: cannot find symbol method getContext()
+C:\Users\Harry\Desktop\WorldWeather\app\src\main\java\com\haringeymobile\ukweather\weather\WeatherCurrentInfoFragment.java
+Error:(35, 27) error: cannot find symbol method getContext()
+C:\Users\Harry\Desktop\WorldWeather\app\src\main\java\com\haringeymobile\ukweather\weather\WeatherForecastParentFragment.java
+Error:(106, 58) error: cannot find symbol method getContext()
+Note: C:\Users\Harry\Desktop\WorldWeather\app\src\main\java\com\haringeymobile\ukweather\weather\WeatherInformationDisplayer.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: C:\Users\Harry\Desktop\WorldWeather\app\src\main\java\com\haringeymobile\ukweather\settings\CustomListPreference.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Error:Execution failed for task ':app:compileDebugJava'.
+
+> Compilation failed; see the compiler error output for details.
+"
+Kestutis-Z/World-Weather,open,Showing the next sunset / sunrise time and moonset / moonrise time for a location,[],"That would be really great! 
+"
+Kestutis-Z/World-Weather,closed,"Remove redundant text in ""Rain (light rain)""",[],"For easier reading, I suggest to shorten ""Rain (light rain)"" to just ""light rain"", ""Clouds (broken clouds)"" to ""broken clouds"" and so on.
+
+(The saved place also is one step in the direction of #9.)
+"
+Kestutis-Z/World-Weather,closed,Wait for success before discarding weather data,[],"World Weather discards previously obtained weather data before trying the network call (if the reuse period has expired). As a consequence, when working offline, data is discarded and we are unable to check forecasts.
+Instead, World Weather should keep previous weather data and only discard it if the network call is successful. That way it can still show the previous data when offline. This data might be outdated but it's better than no data at all.
+"
+Kestutis-Z/World-Weather,closed,Simplify city searching pop-up,[],"1. No need for `SEARCH!` alongside icon. With the magnifying glass icon the button's function is evident. You can save precious space here.
+2. Replace `Type city name` for something like `City,Country`. Everyone knows they should type in that box. You can deliver more info with the same text length.
+3. `How to search` is too long and redundant. Please take a look at [Android Writing Style](https://www.google.com/design/spec/style/writing.html). I would take out the `How to search` title and replace it all for something simple such as:
+
+> Country is optional. You can the 2-letter country code.
+> Examples: ""London"", ""London,Great Britain"", ""London,GB""
+
+Your app already gives a pop-up warning when you type less than 3 letters. Thus no need to mention that in the instructions.
+
+![add-city](https://cloud.githubusercontent.com/assets/1716156/11313872/62959e60-8fd8-11e5-9949-e42f95054fe0.png)
+"
+Kestutis-Z/World-Weather,closed,Button labels are too small and misaligned on main activity,[],"Buttons for ""current weather"", ""16 day daily"" and ""5 day 3 hour"" need some fixes:
+1. Text labels should use a larger font size. There is enough free space on the buttons to cater for this.
+2.  ""16 day daily"" and ""5 day 3 hour"" buttons are misaligned.
+
+Take a look at the screenshot below:
+
+![small-labels-missaligned](https://cloud.githubusercontent.com/assets/1716156/11313382/67c13128-8fd4-11e5-88d6-51329371fa94.png)
+"
+Kestutis-Z/World-Weather,closed,Add day of the week to 5 and 16 day forecasts,[],"While swiping through 5 and 16 day forecasts one easily looses track of the day of the week. I would fix this by adding it into these places:
+1. Box on the right side of the temperature display. Changing `7 November 2015` to `Sat Nov 7 2015`.
+2. Tab titles in 5 day forecast. Changing `21:00` to `Sat 21:00`.
+2. Tab titles in 16 day forecast. Changing `07/11/2015`to `Sat Nov 7` or `Sat 11/7`.
+"
+Kestutis-Z/World-Weather,closed,Missing weather icons,[],"While looking at the icon list on #3 I noticed the weather icons (clear, rain, etc.) are missing. I've confirmed it in the version I have installed (1.1.3 from F-Droid build).
+
+![missing weather icon](http://s4.postimg.org/eev1q3unx/world_weather_missing_icons.png)
+"
+Kestutis-Z/World-Weather,closed,Use releases for a seamless integration with F-Droid,[],"Until now, new builds have been added manually to F-Droid, as [was done for version 1.1.3](https://gitlab.com/fdroid/fdroiddata/merge_requests/1030).
+
+But F-Droid has a nice feature to automate the entire build process: [Update Check Mode](https://f-droid.org/manual/fdroid.html#Update-Check-Mode). Unfortunately we cannot use `RepoManifest` mode, since in this project all version information is in [app/build.gradle](https://github.com/Kestutis-Z/World-Weather/blob/master/WorldWeather/app/build.gradle) instead of [AndroidManifest.xml](https://github.com/Kestutis-Z/World-Weather/blob/master/WorldWeather/app/src/main/AndroidManifest.xml).
+We must opt for `Tags` mode. To do so we need you to create a new git tag everytime you release a new version. Such is really easy on GitHub: just [create a new release](https://github.com/Kestutis-Z/World-Weather/releases) and name it with the version number, e.g. `1.1.4`. F-Droid will automatically detect it and build the new version: great results for little effort ;).
+
+Can you start doing this from now on?
+
+PS. While creating a new release you might want to add the apk to it. That way users can get your app directly from GitHub.
+
+PPS. I think you should add a download link in [README.md](https://github.com/Kestutis-Z/World-Weather/blob/master/README.md) to [World Weather F-Droid page](https://f-droid.org/repository/browse/?fdfilter=world+weather&fdid=com.haringeymobile.ukweather).
+"
+Kestutis-Z/World-Weather,closed,All GETs failing: appid now mandatory on OpenWeatherMap,[],"Right now all calls made by World Weather fail with the generic error:
+
+> No connection, please try later!
+
+It is due to a change of policy by OpenWeatherMap. All requests now need an `appid`. World Weather puts no `appid` in the HTTP GET, it calls [`http://api.openweathermap.org/data/2.5/weather?id=524901`](http://api.openweathermap.org/data/2.5/weather?id=524901), and thus all requests return with:
+
+> Invalid API key. Please see http://openweathermap.org/faq#error401 for more info.
+
+You should [get an API key (APPID)](http://openweathermap.org/appid) for World Weather and make all calls like this: [`http://api.openweathermap.org/data/2.5/weather?id=524901&appid=bd82977b86bf27fb59a04b61b657fb6f`](http://api.openweathermap.org/data/2.5/weather?id=524901&appid=bd82977b86bf27fb59a04b61b657fb6f).
+"
+Kestutis-Z/World-Weather,closed,Better overview of the current day,[],"It would be very useful to have the 3-hourly forecast not on separate tabs, but on one screen, as e.g. [wetter.com](https://play.google.com/store/apps/details?id=com.wetter.androidclient) does it. See [their screenshot](https://lh3.ggpht.com/jgRSH1xnnwfVYpdhdPmfw1GIPYoH8ZYN3SlK7rmM37UtYkjmqrOTkAY7eUNI43xvlb8=h900).
+"
+Kestutis-Z/World-Weather,closed,"use secure https-connection, instead of http",[],
+Kestutis-Z/World-Weather,closed,Long click and drag to rearrange city order,[],"Would be handy, and many applications work this way,
+
+There is a working example in [Boilr's SwipeAndMoveTouchListener](https://github.com/drpout/boilr/blob/master/src/main/java/mobi/boilr/boilr/listeners/SwipeAndMoveTouchListener.java). The code is GPLv3 licensed which is incompatible with World-Weather's Apache 2.0 license. Though if you would like to use it I can double-license that file, adding Apache 2.0 to it.
+"
+Kestutis-Z/World-Weather,closed,swipe to delete locations,[],
+Kestutis-Z/World-Weather,closed,Support user defined cities,[],"(This is probably planned already.)
+
+On City Management the user should be able to add his own cities. OpenWeatherMap supports some 200,000 cities which are easily searchable: http://bugs.openweathermap.org/projects/api/wiki/Api_2_5_searhing
+"
+Kestutis-Z/World-Weather,closed,Add License information to About,[],"Following #1 you could also add the License Information to the About activity inside the app.
+"
+Kestutis-Z/World-Weather,closed,use more clear icons,[],
+Kestutis-Z/World-Weather,closed,use smaller icons,[],
+Kestutis-Z/World-Weather,closed,Add license information,[],"Could you add license information in the README or even in a separate LICENSE or COPYING file?
+"

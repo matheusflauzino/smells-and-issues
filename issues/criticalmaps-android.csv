@@ -1,0 +1,755 @@
+repository,state,title,label,body
+CriticalMaps/criticalmaps-android,closed,Lib updates and target sdk bump,[],
+CriticalMaps/criticalmaps-android,closed,Sync with master,[],
+CriticalMaps/criticalmaps-android,closed,Lib updates and location logic,[],see commit msgs
+CriticalMaps/criticalmaps-android,closed,Tilecache handling,[],"Adds option to clear cache and change storage location. Will add check if enough space for cache is available in another PR to prevent incurring large amounts of data usage.
+This isn't pretty and could use some cleanup/refactoring, but since I'm quite short on time at the moment, I thought I'd get it out anyway.
+It would be great if someone could review and test.
+![screenshot_1537101529](https://user-images.githubusercontent.com/9266843/45596732-cb45aa80-b9c0-11e8-855e-d785eb85be38.png)
+![screenshot_1537101565](https://user-images.githubusercontent.com/9266843/45596733-ce409b00-b9c0-11e8-9a1f-d647fc2cf45d.png)
+
+"
+CriticalMaps/criticalmaps-android,closed,Sync with master,[],
+CriticalMaps/criticalmaps-android,closed,Hotfix,[],
+CriticalMaps/criticalmaps-android,closed,Sync with master,[],
+CriticalMaps/criticalmaps-android,closed,Fix crash while discovering storage location and workaround service issues in O,[],"Individual paths returned by getExternalFilesDirs() can be null when
+they are unavailable. Handle that case by skipping the location."
+CriticalMaps/criticalmaps-android,closed,Release version 2.4.0,[],
+CriticalMaps/criticalmaps-android,closed,Osmdroid snapshot,[],
+CriticalMaps/criticalmaps-android,closed,Updated de (German) translation,[],
+CriticalMaps/criticalmaps-android,closed,Publish App to F-Droid (Free Open Source App Store),[],"Please **do it**! It's missing and me and all other google free people can't install this (probably) great app!
+
+> https://f-droid.org/
+> 
+> To request a new app be added, submit a “Request For Packaging” on the rfp tracker: https://gitlab.com/fdroid/rfp/issues/new
+
+Meanwhile the app itself (as .apk) could also be released here (github) in the release section! :+1: "
+CriticalMaps/criticalmaps-android,closed,Lib updates cleanup and deprecations,[],"Can someone with an android O device please check the behavior of the notification channel? According to docs IMPORTANCE_DEFAULT should not make a sound, but answer 3 in this SO post claims otherwise and recommends using _LOW:
+https://stackoverflow.com/questions/45919392/disable-sound-from-notificationchannel
+Ideally test it the way it is and with importance set to _DEFAULT."
+CriticalMaps/criticalmaps-android,closed,Save map orientation state,[],:)
+CriticalMaps/criticalmaps-android,closed,Make map rotateable,[],"i got an email with that feature request from a user. i think we should enable that feature.
+please review"
+CriticalMaps/criticalmaps-android,closed,Add runtime permissions,[],"Adds basic infrastructure for requesting permissions and handling state
+and uses it for the existing permissions.
+
+This is definitely not the cleanest solution and I'm not perfectly happy with it, but I think we should get this in to move forward.
+It would be great if you could give this a thorough test. Also suggestions regarding the wording are welcome."
+CriticalMaps/criticalmaps-android,closed,Improve translation handling,"[Label(name=""enhancement"")]","I think we should:
+- Update Readme.md with a link to the transifex project and a short explanation.
+- Think about enabling transifex' auto-update feature for the strings.xml in the develop branch"
+CriticalMaps/criticalmaps-android,closed,Update translations from transifex,[],Also I just updated the source file on transifex with the current english strings.xml. 
+CriticalMaps/criticalmaps-android,open,Logo/icon design proposal for your project,[],"@stephanlindauer, I will like make a contribution to your open source project in the area of graphics. I designed a logo/icon for your application, and I need your thought about it. I believe its more descriptive to your app. This proposed logo has three major graphical component of your app. A chain design, a compass and a locator. Let me know your thought, I can always deliver on your expectation.
+
+![criticalmaps](https://user-images.githubusercontent.com/35470411/39934884-2c8c0c58-553f-11e8-9f12-75dd1065b2d8.jpg)
+
+I hope you'll like it and use it for your application
+
+"
+CriticalMaps/criticalmaps-android,closed,"Lib updates, camera file handling and other changes",[],
+CriticalMaps/criticalmaps-android,closed,"Osmdroid, dagger and camera",[],
+CriticalMaps/criticalmaps-android,closed,Cleanup,[],
+CriticalMaps/criticalmaps-android,closed,OSM map not loaded on start,"[Label(name=""bug"")]","With the recent versions I noticed that the map is not loaded when the app is started, when GPS is switched off.
+
+I only see a blue map with my own position icon, zoom-in or zoom-out: no function.
+
+
+* HUAWEI P8 Lite 2017
+* Android 7.0
+"
+CriticalMaps/criticalmaps-android,closed,Lib update and signing,[],
+CriticalMaps/criticalmaps-android,closed,Supportlib update and lint checks,[],
+CriticalMaps/criticalmaps-android,closed,Migrate to gradle plugin 3.0.0,[],
+CriticalMaps/criticalmaps-android,open,[Suggestion] Add version-flavour-git-hash to apk filename,"[Label(name=""enhancement"")]","In another project I used this commit
+* https://github.com/Wikinaut/RadioDroid/commit/2af8ec74039262f9aa20b37b51dc693949d1b686
+
+to add detailed apk information to the apk filename.
+
+In case that you also like this, I can prepare and send a pr for cmaps. Pls. let me know if you are interested."
+CriticalMaps/criticalmaps-android,closed,State handling cleanup and more,[],
+CriticalMaps/criticalmaps-android,closed,Colors and icons,[],"Besides some cleanup this mainly includes three things:
+a) Launch screen - shows logo while loading without adding any noticeable overhead
+![device-2017-09-30-194039](https://user-images.githubusercontent.com/9266843/31054128-1c657950-a6ac-11e7-99f5-68d88bd4c32f.png)
+
+b) Updated location markers and new accent color - I'm not convinced about the choice of colors here. Maybe @zutrinken can give some input here :)
+![device-2017-10-01-131840](https://user-images.githubusercontent.com/9266843/31054141-63e0f728-a6ac-11e7-9dc0-31bf6eb720d7.png)
+![device-2017-09-30-193753](https://user-images.githubusercontent.com/9266843/31054142-6b256d0c-a6ac-11e7-98d7-27d807a2df2b.png)
+"
+CriticalMaps/criticalmaps-android,open,[WIP] Set name and color for icon feature,[],"**Work in progress**
+
+The plan is:
+- Create a settings activity to set the name and the color for the bike icon.
+- Transmit name and color to server
+- Display other peoples names and colors on the map"
+CriticalMaps/criticalmaps-android,closed,Add more tests and bugfixes,[],
+CriticalMaps/criticalmaps-android,closed,Misc,[],
+CriticalMaps/criticalmaps-android,closed,Sync with master,[],
+CriticalMaps/criticalmaps-android,closed,Release,[],"i'd like to release this after the cm on friday. 
+"
+CriticalMaps/criticalmaps-android,closed,Service fix,[],Fixes two possible crashes connected to relaunching the app after quitting it.
+CriticalMaps/criticalmaps-android,closed,Housekeeping and gps waiting state,[],"1) Some cleanup and lib updates - no major changes here
+
+2) Map
+**Initial Map Location and Searching for Location State:**
+![device-2017-08-15-113734](https://user-images.githubusercontent.com/9266843/29310807-91a403e8-81af-11e7-9aad-1782313b0225.png)
+
+**OnClick Message:**
+![device-2017-08-15-113807](https://user-images.githubusercontent.com/9266843/29310811-9564b1ee-81af-11e7-895f-33bdac15974f.png)
+
+**Animation changes alpha of fab to make it ""pulsate"":**
+![device-2017-08-15-113717](https://user-images.githubusercontent.com/9266843/29310813-97dc1f48-81af-11e7-9efd-defb3f60a209.png)
+"
+CriticalMaps/criticalmaps-android,closed,Hardware state handling and vector drawables,[],"Quite a lot for one PR - sorry...
+
+The state handling in the chat fragment is not the most elegant right now, but works (I hope). The AlertDialogs could be replaced by something prettier and not so intrusive. Also I'm not 100% convinced about the data connection icon. 
+
+Vector graphics should be self explanatory - we can basically use them anywhere but in the notification (due to support lib).
+
+**FAB for centering location:**
+![device-2017-08-12-180702](https://user-images.githubusercontent.com/9266843/29242368-5df3512c-7f8c-11e7-86b8-a7d457e06807.png)
+
+**Internet connection monitoring**
+![device-2017-08-12-180901](https://user-images.githubusercontent.com/9266843/29242370-66769e8a-7f8c-11e7-8480-583274d01769.png)
+![device-2017-08-12-180841](https://user-images.githubusercontent.com/9266843/29242375-7b71e16e-7f8c-11e7-9936-868898c05016.png)
+![device-2017-08-12-180929](https://user-images.githubusercontent.com/9266843/29242446-c9e97e3c-7f8d-11e7-89e9-562ebc604873.png)
+
+**GPS Hardware:**
+![device-2017-08-12-183357](https://user-images.githubusercontent.com/9266843/29242432-83921840-7f8d-11e7-896d-909de82a3c15.png)
+![device-2017-08-12-180619](https://user-images.githubusercontent.com/9266843/29242433-8f33c266-7f8d-11e7-8d02-67484937bfe6.png)
+![device-2017-08-12-183453](https://user-images.githubusercontent.com/9266843/29242434-91f1541e-7f8d-11e7-9abb-31d187aa5c8a.png)
+
+**New twitter button:**
+![device-2017-08-12-180942](https://user-images.githubusercontent.com/9266843/29242455-f27e26e0-7f8d-11e7-80bf-fffb649ee3e6.png)
+
+
+"
+CriticalMaps/criticalmaps-android,closed,State handling and allow orientation change,[],
+CriticalMaps/criticalmaps-android,closed,Sync with master,[],
+CriticalMaps/criticalmaps-android,closed,Use old endpoints again,[],"i want to make this a patch-version, which is why i am pointing this PR straight to master."
+CriticalMaps/criticalmaps-android,closed,Misc,[],
+CriticalMaps/criticalmaps-android,open,"[Feature request] Add new option ""Mass line filter (cluster) function"": display a certain number of close positions as a single continuous line, and calculate and show average velocity","[Label(name=""enhancement"")]","My wish is a ""mass line filter"" function (user option, activated by default), which shows a certain number (programmable, default 16) of **close** (perhaps as user option: programmable minimum distance) positions as a single continuous line with a separate colour instead of showing the distinct positions.
+
+Different clusters in the map can, for the moment use the same colour, later perhaps, different colours.
+Here is a ""nice colours"" random generator: https://randomcolor.llllll.li/ .
+
+One's own position, regardless whether it is part of the ""mass line"" or not, should always be shown as it is now.
+
+An additional velocity filter could be perhaps useful to only cluster positions senders within a certain range of velocities.
+
+[Updated 20170613]
+
+Additional wish from the ADFC:  ""Könnt Ihr aus Tracks **mittlere** **Geschwindigkeiten** auslesen?""
+Would be nice to have a kind of (min. max, average) velocity information derived from all these clustered positions, which form the clustered line.
+"
+CriticalMaps/criticalmaps-android,open,Reduce amount of data transferred,[],"Yesterday I took part in the Fahrradsternfahrt to Berlin. During 4 hours, my phone spent almost 20 MB. I don't have a generous data plan, and this was way beyond my ""daily allowance"".
+
+There seem to be multiple factors contributing to this rather large amount of data:
+ - I could find no way to use offline maps (I'm using them with Locus, and c:geo, thus a newer mapsforge interrface should work)
+- There seems to be no map tile caching
+- The app appears to load map tiles even if it's only running in the background (I don't have proof for that, except that between two consecutive unlocks, more than 5 MB had been spent). Actually, my phone reports twice the amount of data transferred in the background compared to foreground usage (i.e. when I was zooming and panning around for other participants)!
+
+While a typical CM will take place in a well-defined, small area, such a setup like the Sternfahrt would cover long distances and therefore would trigger more map reloads than usual.
+
+Is there an overview what kind of data gets transmitted (sent, and received) in which situations?
+I'd expect my own location to be sent every now and then (10 - 15 seconds?) but other locations, and map tiles, only pulled if there are any participants within my view window, and *none of that* while running in the background.
+
+I'm back to Herve Renault's self-hosted location tracking service for now (which consumes <1/4 kB per my location report).
+
+Wishlist (in decreasing order of importance to me):
+- option to use off-line maps (must-have)
+- no map tile loading in the background at all (important)
+- reduce traffic to a minimum in bg mode (only report own location; perhaps notify of chat? - normal)
+- option to opt out of chat etc.
+
+Thanks!"
+CriticalMaps/criticalmaps-android,closed,New App: where is the web map view ?,[],"When using the new app version 2.3.0, the positions coming from this version are not shown on http://criticalmaps.net/map .
+"
+CriticalMaps/criticalmaps-android,closed,lib updates + minor fixes,[],
+CriticalMaps/criticalmaps-android,closed,Release,[],"it's been a while since there was a release. sorry! :/
+let's get this out and then i'll migrate the backend to aws."
+CriticalMaps/criticalmaps-android,closed,Datenschutz URL outdated / non-existent,[],https://github.com/criticalmaps/criticalmaps-android/blob/905c15516881ee46a550184f52e337c16fa9b43c/app/src/main/java/de/stephanlindauer/criticalmaps/Main.java#L134
+CriticalMaps/criticalmaps-android,closed,Housekeeping,[],"I'm aware we don't use proguard right now, but we probably should at some point"
+CriticalMaps/criticalmaps-android,closed,Simplify last known location handling,[],"see commit messages
+"
+CriticalMaps/criticalmaps-android,closed,Remove old twitter spinner ( obsolete - follow up from #179 ),[],
+CriticalMaps/criticalmaps-android,closed,Minor fixes,[],
+CriticalMaps/criticalmaps-android,closed,Lib update and sync with master,[],
+CriticalMaps/criticalmaps-android,closed,Add transifex config,[],"Add transifex config ( should work - not yet sure about the dash (-) but I cannot check as this has to be done by the project owner.
+@stephanlindauer just get the tx-tool and then try a ""tx pull"" 
+"
+CriticalMaps/criticalmaps-android,closed,translations setup,[],"figure out how we want to handle translations.
+transifex would be one way. android studio the other.
+
+see previous discussion @ https://github.com/criticalmaps/criticalmaps-android/pull/178
+"
+CriticalMaps/criticalmaps-android,closed,Indicate progress on initial tweet-loading,[],
+CriticalMaps/criticalmaps-android,closed,Translations,[],"second commit only adds the strings to simplify updating the translations later
+"
+CriticalMaps/criticalmaps-android,closed,fix appcompat vector drawables,[],"...and fix color of new tweet icon
+"
+CriticalMaps/criticalmaps-android,closed,More HouseKeeping,[],
+CriticalMaps/criticalmaps-android,closed,Housekeeping,[],"Just some minor updates
+@ligi I just stole the first commit from your current PR
+"
+CriticalMaps/criticalmaps-android,closed,WIP: Use vectordrawables,[],"Replacing a lot of png's by VectorDrawables for the following reasons:
+- smaller
+- potentially sharper on some densities
+- ability to change color ( e.g. when using day/night mode from AppCompat )
+"
+CriticalMaps/criticalmaps-android,open,[Suggestion] add a feature to log one's own track,"[Label(name=""enhancement"")]","Write a locale GPX track file.
+"
+CriticalMaps/criticalmaps-android,closed,Update strings.xml,[],"s/dem/den/
+"
+CriticalMaps/criticalmaps-android,closed,Update Gradle wrapper to v.2.11.,[],"... just tool set :wrench: 
+"
+CriticalMaps/criticalmaps-android,closed,Catalan language corrections.,[],
+CriticalMaps/criticalmaps-android,closed,squid:S1118 - Utility classes should not have public constructors,[],"This pull request is focused on resolving occurrences of Sonar rule
+squid:S1118 - Utility classes should not have public constructors.
+You can find more information about the issue here:
+https://dev.eclipse.org/sonar/rules/show/squid:S1118
+Please let me know if you have any questions.
+George Kankava
+"
+CriticalMaps/criticalmaps-android,closed,"Multiple code improvements - squid:S1148, squid:S1066, squid:SwitchLastCaseIsDefaultCheck, squid:S2184",[],"This pull request is focused on resolving occurrences of Sonar rules
+squid:S1148 - Throwable.printStackTrace(...) should not be called.
+squid:S1066 - Collapsible ""if"" statements should be merged. 
+squid:SwitchLastCaseIsDefaultCheck - ""switch"" statements should end with a ""default"" clause.
+squid:S2184 - Math operands should be cast before assignment.
+You can find more information about the issue here:
+https://dev.eclipse.org/sonar/rules/show/squid:S1148
+https://dev.eclipse.org/sonar/rules/show/squid:S1066
+https://dev.eclipse.org/sonar/rules/show/squid:SwitchLastCaseIsDefaultCheck
+https://dev.eclipse.org/sonar/rules/show/squid:S2184
+Please let me know if you have any questions.
+George Kankava
+"
+CriticalMaps/criticalmaps-android,closed,"Multiple code improvements - squid:S1319, squid:S1213, squid:UselessParenthesesCheck",[],"This pull request is focused on resolving occurrences of Sonar rules
+squid:S1319 - Declarations should use Java collection interfaces such as ""List"" rather than specific implementation classes such as ""LinkedList"".
+squid:S1213 - The members of an interface declaration or class should appear in a pre-defined order. 
+squid:UselessParenthesesCheck - Useless parentheses around expressions should be removed to prevent any misunderstanding.
+You can find more information about the issue here:
+https://dev.eclipse.org/sonar/rules/show/squid:S1319
+https://dev.eclipse.org/sonar/rules/show/squid:S1213
+https://dev.eclipse.org/sonar/rules/show/squid:UselessParenthesesCheck
+Please let me know if you have any questions.
+George Kankava
+"
+CriticalMaps/criticalmaps-android,closed,added rodrigo to contributor list,[],
+CriticalMaps/criticalmaps-android,open,deep linking support,"[Label(name=""enhancement"")]","so we can properly link from the website or from the facebook page.
+should either open the app if installed or the play store if it isnt. 
+"
+CriticalMaps/criticalmaps-android,closed,release 2.2.1,[],"just the catalan language support and some minor text changes
+"
+CriticalMaps/criticalmaps-android,closed,update osmdroid (v5.1) and osmbonuspack (v5.7),[],"- update osmdroid and remove slf4j dependency as it's no longer needed
+- update osmbonuspack and fetch it from jitpack instead of keeping a local copy
+- remove fix for marker memory leaks, as it has been merged upstream
+"
+CriticalMaps/criticalmaps-android,closed,update toolbar and notification icons to match material spec,[],"24dp instead of 32dp and updated icons from google:
+
+Toolbar - old vs new
+![toolbar_old_vs_new](https://cloud.githubusercontent.com/assets/9266843/13035226/dc887b06-d34a-11e5-863b-0bf7a985c6e9.png)
+
+Toolbar - hangouts vs new
+![toolbar_hangouts_vs_new](https://cloud.githubusercontent.com/assets/9266843/13035229/eb3d2034-d34a-11e5-9180-9addec76d95e.png)
+
+Notification - old vs new
+![notification_old_vs_new](https://cloud.githubusercontent.com/assets/9266843/13035231/f46b8d12-d34a-11e5-9764-1c5dda35518d.png)
+"
+CriticalMaps/criticalmaps-android,closed,Add Catalan translation and update Spanish.,[],"PR to develop instead of master
+https://github.com/criticalmaps/criticalmaps-android/pull/160
+"
+CriticalMaps/criticalmaps-android,closed,Add Catalan translation and update Spanish.,[],"Get the app ready for Pantumacona :D http://pantumacona.bicicritica.com/ 
+"
+CriticalMaps/criticalmaps-android,closed,Fix typo and capitalization.,[],
+CriticalMaps/criticalmaps-android,closed,Merge in preperation of release 2.2.0,[],
+CriticalMaps/criticalmaps-android,closed,housekeeping: merge master into develop,[],
+CriticalMaps/criticalmaps-android,closed,Update Gradle wrapper to v.2.10.,[],"Now that the [Gradle plugin is updated to v.1.5.0](https://github.com/criticalmaps/criticalmaps-android/commit/37f4fcce21908a5e23ba377ba998a767d17ef9d4) we can also update the wrapper.
+"
+CriticalMaps/criticalmaps-android,closed,Gradle wrapper,[],
+CriticalMaps/criticalmaps-android,closed,fixed image references,[],
+CriticalMaps/criticalmaps-android,closed,update Turkish translation,[],
+CriticalMaps/criticalmaps-android,closed,Add slack notifications to travis configuration,[],"I activated travis CI for slack and added the notification configuration to the travis file. Now we can get notifications in android channel on slack after each build. I already implemented this in the ios project and really liked it!
+"
+CriticalMaps/criticalmaps-android,closed,Deeplink experiment,[],"i want to deeplink from ""app"" tab on http://criticalmaps.net into the app. 
+
+testing this locally always redirected me into the play store which, i assume, was because the apk was not signed with the play store certificate.
+i want to get this code in to see if this finally works when the app is installed not by adb but by the play store. i will remove the Receiver after the next release again as we don't really need it.
+"
+CriticalMaps/criticalmaps-android,closed,ImageUploadHandler: fix progress update,[],"even though this works we should use publishProgress()
+to ensure proper synchronization
+"
+CriticalMaps/criticalmaps-android,closed,Rework chat send button,[],"The automagic hide/fade/layoutchange animation seemed a bit clunky to me. With this change the sendbutton is always visible but greyed out/disabled until text is entered. The state changes are animated similar to hangouts.
+Input is appreciated. :)
+"
+CriticalMaps/criticalmaps-android,closed,Fix npe in locationmanager,[],"Fixes #147
+"
+CriticalMaps/criticalmaps-android,closed,NPE in LocationManager,[],"I had this when looking over https://github.com/criticalmaps/criticalmaps-android/pull/146 - needs further investigation - placing it here to track and not forget
+
+```
+E/AndroidRuntime(15339): java.lang.RuntimeException: Unable to resume activity {de.stephanlindauer.criticalmaps/de.stephanlindauer.criticalmaps.Main}: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.location.LocationManager.isProviderEnabled(java.lang.String)' on a null object reference
+E/AndroidRuntime(15339):    at android.app.ActivityThread.performResumeActivity(ActivityThread.java:4032)
+E/AndroidRuntime(15339):    at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:4063)
+E/AndroidRuntime(15339):    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3259)
+E/AndroidRuntime(15339):    at android.app.ActivityThread.access$1000(ActivityThread.java:197)
+E/AndroidRuntime(15339):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1681)
+E/AndroidRuntime(15339):    at android.os.Handler.dispatchMessage(Handler.java:102)
+E/AndroidRuntime(15339):    at android.os.Looper.loop(Looper.java:145)
+E/AndroidRuntime(15339):    at android.app.ActivityThread.main(ActivityThread.java:6872)
+E/AndroidRuntime(15339):    at java.lang.reflect.Method.invoke(Native Method)
+E/AndroidRuntime(15339):    at java.lang.reflect.Method.invoke(Method.java:372)
+E/AndroidRuntime(15339):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1404)
+E/AndroidRuntime(15339):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1199)
+E/AndroidRuntime(15339): Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.location.LocationManager.isProviderEnabled(java.lang.String)' on a null object reference
+E/AndroidRuntime(15339):    at de.stephanlindauer.criticalmaps.utils.LocationUtils.getBestLastKnownLocation(LocationUtils.java:16)
+E/AndroidRuntime(15339):    at de.stephanlindauer.criticalmaps.managers.LocationUpdateManager.getLastKnownLocation(LocationUpdateManager.java:85)
+E/AndroidRuntime(15339):    at de.stephanlindauer.criticalmaps.fragments.MapFragment.setInitialMapLocation(MapFragment.java:129)
+E/AndroidRuntime(15339):    at de.stephanlindauer.criticalmaps.fragments.MapFragment.onActivityCreated(MapFragment.java:123)
+E/AndroidRuntime(15339):    at android.support.v4.app.Fragment.performActivityCreated(Fragment.java:1970)
+E/AndroidRuntime(15339):    at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1092)
+E/AndroidRuntime(15339):    at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1248)
+E/AndroidRuntime(15339):    at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:738)
+E/AndroidRuntime(15339):    at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1613)
+E/AndroidRuntime(15339):    at android.support.v4.app.FragmentController.execPendingActions(FragmentController.java:330)
+E/AndroidRuntime(15339):    at android.support.v4.app.FragmentActivity.onResume(FragmentActivity.java:441)
+E/AndroidRuntime(15339):    at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1271)
+E/AndroidRuntime(15339):    at android.app.Activity.performResume(Activity.java:6671)
+E/AndroidRuntime(15339):    at android.app.ActivityThread.performResumeActivity(ActivityThread.java:4021)
+E/AndroidRuntime(15339):    ... 11 more
+```
+"
+CriticalMaps/criticalmaps-android,closed,Chat location state handling,[],"As we agreed the overlay is not the most visually appealing way to indicate we're still waiting for a location fix. Let's get rid of it by disabling the EditText and showing a message in the hint text instead. I think the state change should be made more obvious for example by adding an animation, but one step at a time ;)
+"
+CriticalMaps/criticalmaps-android,closed,Start stop location updates in service,[],"see commit message
+renaming to manager is equally generic, but it's clearly not a service
+"
+CriticalMaps/criticalmaps-android,closed,Add floating action button for twitter,[],"resolves #117
+"
+CriticalMaps/criticalmaps-android,closed,Misc changes,[],"sorry for the indescript title - see the commit messages :)
+"
+CriticalMaps/criticalmaps-android,closed,rework image upload + misc,[],
+CriticalMaps/criticalmaps-android,closed,use existing okhttpclient for picasso,[],"... and let Dagger manage the picasso singleton
+"
+CriticalMaps/criticalmaps-android,closed,update okhttp to v2.7.0,[],
+CriticalMaps/criticalmaps-android,closed,added french translation and lena to contributor list,[],
+CriticalMaps/criticalmaps-android,closed,don't show rules panel animation on state restore,[],"suppresses the fade in animation of the image
+"
+CriticalMaps/criticalmaps-android,closed,added salt to uniqueDeviceId,[],"closes #115 
+"
+CriticalMaps/criticalmaps-android,closed,add license info for third party libraries to about,[],"![os_licenses](https://cloud.githubusercontent.com/assets/9266843/11615074/b10b04ec-9c56-11e5-86d4-5c09e3aed905.png)
+"
+CriticalMaps/criticalmaps-android,closed,Add opensource license info to about,[],"![os_licenses](https://cloud.githubusercontent.com/assets/9266843/11615064/70be629e-9c56-11e5-8065-b747a9113c83.png)
+"
+CriticalMaps/criticalmaps-android,closed,Housekeeping,[],
+CriticalMaps/criticalmaps-android,closed,Tag for latest version,[],"I see there is a 2.1.0 version in the PlayStore and I wanted to ask for an appropriate tag for that version, so that it can be published on F-Droid, too.
+Thanks!
+"
+CriticalMaps/criticalmaps-android,closed,Simplify usage of shared preferences.,[],"- Inject shared preferences.
+- Please note that former setting will NOT be restored since
+  preferences keys change in this commit. See SharedPrefKeys.java.
+"
+CriticalMaps/criticalmaps-android,closed,Update Gradle plugin to v.1.5.0.,[],
+CriticalMaps/criticalmaps-android,closed,some ui cleanup,[],
+CriticalMaps/criticalmaps-android,closed,don't send old location fixes to backend,[],"closes #122 
+"
+CriticalMaps/criticalmaps-android,closed,Use dagger 2.0,[],"And move Constants to central place + cleanup
+"
+CriticalMaps/criticalmaps-android,closed,Use Dagger2.0 for DI,[],
+CriticalMaps/criticalmaps-android,closed,Use SP instead of DP for text,[],
+CriticalMaps/criticalmaps-android,closed,Use Gradle 2.8,[],"This can improve speed of builds
+"
+CriticalMaps/criticalmaps-android,closed,Transparent side drawer,[],"continuation of https://github.com/criticalmaps/criticalmaps-android/pull/121
+"
+CriticalMaps/criticalmaps-android,closed,Improve location handling,[],"- also use network provider
+- filter new locations by quality before using them
+- only submit ""precise"" locations to server
+- some cleanup and refactoring
+
+All the parameters used to filter the location and the definition of what we consider precise should be okay for a start. I'd appreciate it if you could take a look and do a quick test yourselves to verify and maybe correct me ;)
+
+replaces #112 to use new target branch
+"
+CriticalMaps/criticalmaps-android,closed,check timestamp of gps before sending outdated location,[],"check if the location fix is older then -let's say- one minute. if it is: dont send it with the push/pull request.
+"
+CriticalMaps/criticalmaps-android,closed,transparent side drawer,[],"i kinda want to get the discussion going on this one. i think it looks nice and it improves usability by not completely covering the currently active fragment. what do you think?
+maybe we can let the side drawer slide in below the action bar so we can still access the camera and settings button and have the hamburger button as another way of closing the side drawer.
+"
+CriticalMaps/criticalmaps-android,closed,Italian translation,[],
+CriticalMaps/criticalmaps-android,open,introduce some kind of easy to read and write id for looking friends up on the map,"[Label(name=""enhancement"")]","maybe even proper names
+"
+CriticalMaps/criticalmaps-android,closed,less blocking prerequisites ,"[Label(name=""enhancement"")]","the current prerequisites basically block you from using the app. in the future we could think about letting them still use the app but show them some kind of notification that stuffs not working 100%.
+"
+CriticalMaps/criticalmaps-android,closed,twitter: floating action button to trigger new tweet intent,"[Label(name=""enhancement"")]",
+CriticalMaps/criticalmaps-android,open,use fused location provider,"[Label(name=""enhancement"")]","if this conflicts with the f-droid policy, we'll have to think of a way to make it work for two falvors.
+"
+CriticalMaps/criticalmaps-android,closed,add salt to deviceid,"[Label(name=""enhancement"")]","salt could be date string. purpose of this change is to make it harder to identify devices when you find out what md5 hash they have created out of their device id.
+"
+CriticalMaps/criticalmaps-android,closed,add third-party licensing notices,"[Label(name=""bug""), Label(name=""question"")]","...to comply with their licenses.
+I already have most of them collected but am unsure where best to add them. Maybe add another header in about and list the names there and expand on click? Or maybe just a link in about and show them in a separate activity?
+"
+CriticalMaps/criticalmaps-android,closed,add osm copyright notice,[],"required to comply with openstreetmaps licensing
+see: http://www.openstreetmap.org/copyright
+
+I tried my best to balance legibility with blending it into the background. Doesn't seem too intrusive to me.
+![device-2015-11-04-204451](https://cloud.githubusercontent.com/assets/9266843/10950524/581a48ac-8338-11e5-8f15-aee1d7d1e297.png)
+"
+CriticalMaps/criticalmaps-android,closed,Improve location handling,[],"- also use network provider
+- filter new locations by quality before using them
+- only submit ""precise"" locations to server
+- some cleanup and refactoring
+
+All the parameters used to filter the location and the definition of what we consider precise should be okay for a start. I'd appreciate it if you could take a look and do a quick test yourselves to verify and maybe correct me ;)
+"
+CriticalMaps/criticalmaps-android,closed,close response body after use,[],"quote from docs: ""To facilitate connection recycling, callers should always close the response body.""
+"
+CriticalMaps/criticalmaps-android,closed,Make server response processing testable and add initial tests,[],
+CriticalMaps/criticalmaps-android,closed,Opening the Drawer closes the Keyboard,[],"closes #107
+"
+CriticalMaps/criticalmaps-android,closed,ListView -> RecyclerView for Chat,[],
+CriticalMaps/criticalmaps-android,closed,Chat - hide keyboard on drawer open,"[Label(name=""enhancement"")]","This ain't pretty
+
+![device-2015-10-24-172519](https://cloud.githubusercontent.com/assets/9266843/10711197/587f81c6-7a74-11e5-8a58-ce087d5adef5.png)
+"
+CriticalMaps/criticalmaps-android,closed,Save fragment states,[],"no chat and twitter for now 
+"
+CriticalMaps/criticalmaps-android,closed,Remove the tweet user-image loading progress-bar after loading,[],"Otherwise the progress-bar still consumes CPU-Cycles and will make problems with espresso-testing
+"
+CriticalMaps/criticalmaps-android,closed,layouts cleanup,[],"tested on API 16 and 22 emulators and on 19 device
+"
+CriticalMaps/criticalmaps-android,open,Bring back a new and improved Sternfahrt feature,"[Label(name=""enhancement"")]","After discussion in #88 and on chat, the feature was removed in #102 .
+Let's not forget to bring it back in time for the next Berlin Sternfahrt ;)
+"
+CriticalMaps/criticalmaps-android,closed,remove sternfahrt feature,[],"As discussed in #88 - I hope I didn't miss anything ;)
+I will open a new issue regarding the rework of this feature after this is merged. I'll reference this commit there so it's easy to restore the code later if needed.
+"
+CriticalMaps/criticalmaps-android,closed,Color cleanup,[],"I think we have some cleanup to do regarding the different colors used in the app, especially when moving to a more material design. So firstly this reduces the number of colors by trying to replace them by a few common ones. Secondly this moves all color definitions to the colors.xml to have them in a common place.
+Obviously this changes the appearance of the app a bit. Something that proved a bit problematic is that our current primary primary dark color is really close to the default Theme.Appcompat window background. Especially I'm not too happy with the background of the chat edittext (even though I think it'll just do for now). Therefore I added it to the colors and style, to prepare a change here.
+So this should be seen as a first step to get things organized and moving to a defined palette of colors that covers all use cases and can be used in all our UI elements. I'll probably open a new issue regarding this.
+
+![chat](https://cloud.githubusercontent.com/assets/9266843/10641382/5525db18-7819-11e5-85a9-92b0ea7469a4.png)
+![twitter](https://cloud.githubusercontent.com/assets/9266843/10641390/5ca15106-7819-11e5-8c82-87506fdcdf29.png)
+![about](https://cloud.githubusercontent.com/assets/9266843/10641405/6609e26c-7819-11e5-860a-4a8fbc091333.png)
+"
+CriticalMaps/criticalmaps-android,closed,Tweet layout,[],"# View hierarchy
+
+I took a look at the view hierarchy of the app. I found the layout for the **tweet layout** too complex. So I refactored this.
+
+@ligi @cbalster @stephanlindauer
+Please run this on your devices (also tablets) to check if tweets still layout fine.
+### View hierarchy before
+
+![hierarchy-view-before](https://cloud.githubusercontent.com/assets/144518/10612468/383e1a6a-7751-11e5-8e3f-102a018f9d8b.png)
+### View hierarchy after
+
+![hierarchy-view-after](https://cloud.githubusercontent.com/assets/144518/10612472/407a9d48-7751-11e5-9e73-9944a16e8656.png)
+# RTL support
+
+I also added the needed attributes to prepare the view for right-to-left mode.
+
+![Preview of the tweet layout in RTL mode](https://cloud.githubusercontent.com/assets/144518/10612480/476290c0-7751-11e5-9f0e-2acccb9e2fc7.png)
+"
+CriticalMaps/criticalmaps-android,closed,Use AlertBuilder in StartCameraHandler to DRY code,[],
+CriticalMaps/criticalmaps-android,closed,remove unused code,[],
+CriticalMaps/criticalmaps-android,closed,Replace tabs by Navigation-Drawer,[],"![device-2015-10-16-212026](https://cloud.githubusercontent.com/assets/111600/10551951/9b3d508a-7450-11e5-8d0e-78bbfad6a18b.png)
+- Brings back the logo thanks to @cbalster for the gfx support
+- more screen-real-estate in the map-view
+- prepares usage of load-toast ( would otherwise clash with tabs )
+- nicer ui and less code ( +146 −170 )
+"
+CriticalMaps/criticalmaps-android,closed,fix NPE on twitter fragment,[],"when we navigate away from the twitter fragment while
+an asynctask is still running it will triger an update to
+views which have already been destroyed and thus
+causes a NPE.
+check if the fragment is added before trying to update it
+
+fixes #92 
+"
+CriticalMaps/criticalmaps-android,closed,Chat fragment with FAB and textinputlayout,[],"this also introduces the character counting: https://www.google.com/design/spec/components/text-fields.html#text-fields-full-width-text-field
+"
+CriticalMaps/criticalmaps-android,closed,Styles and themes,[],"Most of this is preparation for further materialization - more to come....
+This also changes the colors a bit, I tried to compromise between what we have and the material guidelines here. Screenshot of what it looks like on API 22:
+![device-2015-10-16-141211](https://cloud.githubusercontent.com/assets/9266843/10541319/4aa1ee78-7410-11e5-862f-e805b631263c.png)
+"
+CriticalMaps/criticalmaps-android,open,visualize last update on mapmarkers,"[Label(name=""enhancement"")]","hi i received the following email (sorry its in german):
+
+```
+Eine Visualisierung, wie alt die Positionsdaten sind, wäre ganz gut. 
+Zum Beispiel könnten die Positionen ihre Farbe wechseln, je älter die Daten sind. 
+Nicht sekündlich, aber alle 5-10 Sekunden etwas dunkler. 
+Zum Beispiel wie beim Lightningmaps.org.
+
+Viele Grüße
+Tilo 
+```
+
+i think that if we implement something like that, we should make the difference in color very subtle in order to not confuse people. also it might be tricky to communicate to the user what those different colors actually mean.
+what's your opinion on this?
+"
+CriticalMaps/criticalmaps-android,closed,NPE FC in TwitterFragment,"[Label(name=""bug"")]","```
+E/AndroidRuntime(27284): Process: de.stephanlindauer.criticalmaps, PID: 27284
+E/AndroidRuntime(27284): java.lang.NullPointerException: Attempt to invoke virtual method 'void android.support.v4.widget.SwipeRefreshLayout.setRefreshing(boolean)' on a null object reference
+E/AndroidRuntime(27284):    at de.stephanlindauer.criticalmaps.fragments.TwitterFragment.displayNewData(TwitterFragment.java:91)
+E/AndroidRuntime(27284):    at de.stephanlindauer.criticalmaps.handler.TwitterGetHandler.onPostExecute(TwitterGetHandler.java:53)
+E/AndroidRuntime(27284):    at de.stephanlindauer.criticalmaps.handler.TwitterGetHandler.onPostExecute(TwitterGetHandler.java:16)
+E/AndroidRuntime(27284):    at android.os.AsyncTask.finish(AsyncTask.java:636)
+E/AndroidRuntime(27284):    at android.os.AsyncTask.access$500(AsyncTask.java:177)
+E/AndroidRuntime(27284):    at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:653)
+E/AndroidRuntime(27284):    at android.os.Handler.dispatchMessage(Handler.java:102)
+E/AndroidRuntime(27284):    at android.os.Looper.loop(Looper.java:145)
+E/AndroidRuntime(27284):    at android.app.ActivityThread.main(ActivityThread.java:6872)
+E/AndroidRuntime(27284):    at java.lang.reflect.Method.invoke(Native Method)
+E/AndroidRuntime(27284):    at java.lang.reflect.Method.invoke(Method.java:372)
+E/AndroidRuntime(27284):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1404)
+E/AndroidRuntime(27284):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1199)
+```
+"
+CriticalMaps/criticalmaps-android,open,Map cm auto-follow,"[Label(name=""enhancement"")]","As A User I would like an option to see the cm all the time centered on the map without having to zoom and pan 
+
+When the user has not interacted with the phone for a while 
+And in the setting the user activated this feature
+Then the bounds of the cm are calculated 
+And the map is set to these bounds with some padding
+"
+CriticalMaps/criticalmaps-android,open,The chat and twitter should be more accessible,"[Label(name=""enhancement"")]","As A user I would like to see chat-messages and tweets while viewing the map on a phone mounted to my bike when they arrive
+
+When a new chat message arrives 
+A Snackbar pops up and displays the message
+
+When you click on this message
+Then you get to the chat part of the app
+
+When a new tweet arrives 
+A Snackbar pops up and displays the tweet
+
+When you click on this tweet
+Then you get to the twitter part of the app
+"
+CriticalMaps/criticalmaps-android,open,UX Maximize screen real-estate,"[Label(name=""enhancement"")]","As I user I would like to see the as much map as possible when the phone is mounted to bike while cm.
+
+When the phone detects that there was no user input for a while 
+Then the  Actionbar should disappear
+
+When the phone detects that there is userinput
+And the Actionbar is invisible
+Then the Actionbar should appear
+"
+CriticalMaps/criticalmaps-android,closed,Should we temporarily remove the Sternfahrt feature?,"[Label(name=""question"")]","While we probably all agree this is a feature that should be included, right now it has some problems:
+- long initial dynamic generation
+- impact on performance
+- only relevant to berlin
+
+In a short discussion with @ligi we agreed, that we all should probably put some thought in redesigning the feature (different cities, only specific routes, ...). I proposed temporarily removing the feature until this is sorted out, but ligi correctly pointed out that this might confuse users.
+So, any thoughts about that?
+"
+CriticalMaps/criticalmaps-android,closed,Replace commit with apply,[],"So it is done in the background and we get rid of one more warning
+"
+CriticalMaps/criticalmaps-android,closed,spin off sternfahrt route generation to another thread,[],"otherwise UI thread will get blocked
+"
+CriticalMaps/criticalmaps-android,closed,Use badges for FDroid and Play,[],
+CriticalMaps/criticalmaps-android,closed,Singletons,[],"singletons will be singletons + misc cleanup
+
+oh and I accidentaly pushed another commit that should have been on another branch, but it's good to go
+"
+CriticalMaps/criticalmaps-android,closed,take screenshots during the next cm in berlin,[],"...to showcase the app in the repo and to have new screenshots for the play store
+"
+CriticalMaps/criticalmaps-android,closed,minor improvements on readme,[],
+CriticalMaps/criticalmaps-android,closed,Get BuildInfo from BuildConfig,[],
+CriticalMaps/criticalmaps-android,closed,Directly return last location,[],
+CriticalMaps/criticalmaps-android,closed,Replace RandomStringGenerator with  UUID.randomUUID(),[],
+CriticalMaps/criticalmaps-android,closed,Remove unused class,[],
+CriticalMaps/criticalmaps-android,closed,DRY LocationUtils,[],
+CriticalMaps/criticalmaps-android,closed,Add test for SHA1 calculation,[],
+CriticalMaps/criticalmaps-android,closed,mapfragment cleanup,[],
+CriticalMaps/criticalmaps-android,closed,add captures to gitignore,[],"No, I don't want to commit my heapdumps.
+"
+CriticalMaps/criticalmaps-android,closed,Care for warnings and cleanup,[],
+CriticalMaps/criticalmaps-android,closed,Add ScreenShot from media repo,[],"Based on @johnjohndoe 's PR with screenshot from media repo 
+"
+CriticalMaps/criticalmaps-android,closed,Remove unused class.,[],"- Added in commit 7c3a2cba6f9ddbd5cb76f94f7c809bd1be8b8707.
+- Removal authorized here:
+  https://github.com/criticalmaps/criticalmaps-android/commit/7c3a2cba6f9ddbd5cb76f94f7c809bd1be8b8707#commitcomment-13722232
+"
+CriticalMaps/criticalmaps-android,closed,Add LICENSE ( Apache 2 ) closes #69,[],
+CriticalMaps/criticalmaps-android,closed,Add license file to repository,[],"According to F-Droid the app is licensed under Apache 2.0. But I couldn't find this information anywhere in the repository.
+"
+CriticalMaps/criticalmaps-android,closed,Mapfragment cleanup,[],"First step in cleaning up the mapview and gps handling.
+I will probably push some more commits tonight in a separate pull request.
+"
+CriticalMaps/criticalmaps-android,closed,rules fragment,[],"first one should be straightforward.
+reagrding the second one: To me it feels ""wrong"" not to be able to close the panels again - especially since the button still animates.
+"
+CriticalMaps/criticalmaps-android,closed,Translate new strings to Spanish,[],
+CriticalMaps/criticalmaps-android,closed,Use constant for encoding definition.,[],
+CriticalMaps/criticalmaps-android,closed,Remove container that is not needed and animate layout changes,[],
+CriticalMaps/criticalmaps-android,closed,Fix text color in rules image source,[],"currently the text around the link is white on white
+
+btw. we should probably think about making the color definitions more general and not view specific to avoid redundandcy.
+"
+CriticalMaps/criticalmaps-android,closed,Simplify usage of shared preferences.,[],"- Please note that former setting will NOT be restored since preferences keys
+  are changed in this commit. See SharedPrefKeys.java.
+"
+CriticalMaps/criticalmaps-android,closed,Make hardcoded strings resources and update turkish and spanish xmls,[],"Sorry for the last commit, was to lazy to rebase it in :dancers: 
+After a merge it would be great if @canerbasaran and @rodrigoaguilera could update the corresponding translations.
+"
+CriticalMaps/criticalmaps-android,closed,Use support-v7 AlertDialog,[],"+some removing of unused imports / indentation
+"
+CriticalMaps/criticalmaps-android,closed,Dry alertdialog builder,[],
+CriticalMaps/criticalmaps-android,closed,Reduce boilerplate,[],
+CriticalMaps/criticalmaps-android,closed,Optimize map overlays refresh,"[Label(name=""enhancement"")]","I see two problems here:
+First of all osmdroids overlay list is backed by a CopyOnWriteArraylist which creates a new copy on every mutation. Secondly we are currently allocating new Objects for the markers on each refresh which is less then optimal (which is kinda my fault due to 9bfca7171d043e3da99f8e0d1016c012dd9ce34f  ;) ).
+I would suggest keeping a local copy of the overlays as a normal Arraylist in MapFragment. Then we could update the existing ones and add and remove as needed on each refresh in that local list. When done we can just .clear() and .addAll() the osmdroid one. This would reduce the mutative operations to two in all cases.
+Thoughts?
+"
+CriticalMaps/criticalmaps-android,closed,Add application screenshot.,[],"I like to have a visual idea of an application/project when I study its description. I consider it as helpful when at least a screenshot of the application is shown.
+"
+CriticalMaps/criticalmaps-android,closed,Convert line endings from CRLF to LF.,[],"- Please check your Git config to avoid committing CRLF to repositories.
+"
+CriticalMaps/criticalmaps-android,closed,Fix link for Travis CI build status image.,[],
+CriticalMaps/criticalmaps-android,closed,Return correct content type,"[Label(name=""bug"")]","The JSON response from the **API** does **not** return the correct content type:
+
+```
+$ curl -s -D - http://api.criticalmaps.net/twitter/get.php
+
+HTTP/1.1 200 OK
+Date: Sun, 04 Oct 2015 22:27:23 GMT
+Server: Apache
+X-Powered-By: PHP/5.4.44
+Transfer-Encoding: chunked
+Content-Type: text/html
+```
+
+It should be `Content-Type: application/json;charset=utf-8` instead.
+"
+CriticalMaps/criticalmaps-android,closed,Optimizations,[],
+CriticalMaps/criticalmaps-android,closed,Remove the Splash-Screen,[],"Was thinking to add it to the Remove-Clutter PR - but isolating it as it is a functional change here.
+Splash-Screens are one UX anti-pattern - especially when there is no loading done in this case - the user is just blocked for 1s+ without any reason
+"
+CriticalMaps/criticalmaps-android,closed,remove clutter,[],
+CriticalMaps/criticalmaps-android,closed,Add Spanish translation,[],
+CriticalMaps/criticalmaps-android,closed,Add sdkmanager,[],"My previous PR failed to build on travis as SDK 23 was not there - sdkmanager plugin to the rescue ;-)
+"
+CriticalMaps/criticalmaps-android,closed,Migrate to okhttp,[],"OKHttp is a good replacement do handle the deprecations that come with SDK23 - also shortens the code here - could even have some other benefits - from the website: 
+
+```
+HTTP is the way modern applications network. It’s how we exchange data & media. Doing HTTP efficiently makes your stuff load faster and saves bandwidth.
+
+OkHttp is an HTTP client that’s efficient by default:
+
+HTTP/2 and SPDY support allows all requests to the same host to share a socket.
+Connection pooling reduces request latency (if SPDY isn’t available).
+Transparent GZIP shrinks download sizes.
+Response caching avoids the network completely for repeat requests.
+OkHttp perseveres when the network is troublesome: it will silently recover from common connection problems. If your service has multiple IP addresses OkHttp will attempt alternate addresses if the first connect fails. This is necessary for IPv4+IPv6 and for services hosted in redundant data centers. OkHttp initiates new connections with modern TLS features (SNI, ALPN), and falls back to TLS 1.0 if the handshake fails.
+```
+"
+CriticalMaps/criticalmaps-android,closed,Handle deprecations and slight ui update,[],"This mainly handles deprecated code (minor changes), but also switches to AppCompatActivity with a TabLayout. This adds a hint of material design of the app and could be the base for further ""materialization"". Any thoughts and opinions?
+![screenshot_2015-10-01-20-37-57](https://cloud.githubusercontent.com/assets/9266843/10230692/e906b032-687e-11e5-891e-f41bf3acb70a.png)
+![screenshot_2015-10-01-20-37-41](https://cloud.githubusercontent.com/assets/9266843/10230710/f4599c7e-687e-11e5-9a6e-45e5372adabe.png)
+"
+CriticalMaps/criticalmaps-android,closed,fix crash on ICS,[],"AsyncTasks must be started from the UI thread and as of JELLYBEAN this is automatically taken care of.
+Since we're running it from a TimerTask - which is a separate thread - we have to take care of this ourselves
+for devices running ICS and lower.
+fixes #42
+"
+CriticalMaps/criticalmaps-android,closed,Update project setup,[],
+CriticalMaps/criticalmaps-android,closed,Use android logging in PullServerHandler,[],"should fix #42
+"
+CriticalMaps/criticalmaps-android,closed,java.lang.ExceptionInInitializerError,[],"![image](https://cloud.githubusercontent.com/assets/1323145/10117212/25d12418-644f-11e5-9c56-bcc3bab2d7c2.png)
+"
+CriticalMaps/criticalmaps-android,closed,Fix memory leak due to osmbonuspack bug,[],"The Marker class holds a static reference to a DefaultInfoWindow instance
+which in turn holds a reference to the MapView. Thus it leaks the entire
+view hierarchy when the fragment is detached.
+Work around this by sub classing marker and implementing Overlay's
+onDetach() method to null out the static references there.
+Also move common initialization code to the subclass.
+"
+CriticalMaps/criticalmaps-android,closed,fix memory leak,[],"missed that in the previous commit
+"
+CriticalMaps/criticalmaps-android,closed,define a secret token to make it slighty harder to use the api,"[Label(name=""enhancement"")]","set auth header. 
+on the server: refuse write, allow read for backwards compatibility.
+set a dummy token in the public repo and hand out the dev token to all contributors.
+"
+CriticalMaps/criticalmaps-android,closed,Make foreground service,[],
+CriticalMaps/criticalmaps-android,closed,misc optimizations,[],
+CriticalMaps/criticalmaps-android,closed,Fix memory leaks,[],"Let's not keep references to an activity in objects that can outlive the activity itself.
+"
+CriticalMaps/criticalmaps-android,closed,'waiting for gps'-overlay doesn't disappear from chat fragement even when location is received,"[Label(name=""bug"")]",
+CriticalMaps/criticalmaps-android,closed,Refactor superfragment,[],
+CriticalMaps/criticalmaps-android,closed,"Use ellipses character, fix minor typos.",[],
+CriticalMaps/criticalmaps-android,closed,misc fixes/improvements,[],
+CriticalMaps/criticalmaps-android,closed,Cleanup layout files,[],"I introduced [design time layout attributes](http://tools.android.com/tips/layout-designtime-attributes) in a few places to make it easier to understand the layouts.
+"
+CriticalMaps/criticalmaps-android,closed,Fix typo and code cleanup,[],
+CriticalMaps/criticalmaps-android,closed,Only exclude specific lint rule,[],
+CriticalMaps/criticalmaps-android,closed,Show Main Activity when locked.,[],"There is no sensitive data in there ( all public anyway ) - so we can add this to prevent the need for unlocking the phone
+"
+CriticalMaps/criticalmaps-android,closed,various lifecycle related stuff ,[],"Hey,
+I know this is your WIP/dirty branch. But as you're releasing from it I I thought I'd still submit. If this is more confusing than helping, let me know ;)
+"
+CriticalMaps/criticalmaps-android,closed,Allow running Gradle wrapper from shell.,[],
+CriticalMaps/criticalmaps-android,closed,Pull support-v4 from local support repository,[],"If you have the SDK installed, you should have a local maven repository serving this file instead of including it as binary jar file. E.g. `compile ""com.android.support:support-v4:23.0.0""` in your dependencies in app/build.gradle should work fine.
+"
+CriticalMaps/criticalmaps-android,closed,improve softkeyboard handling,[],"When the softkeyboard has been opened at least once in the chat fragment,
+it needs to be hidden on fragment change since the chat fragment is still
+in a ""visible"" state and the EditText keeps focus. As of now this is done
+by hiding the keyboard whenever a new tab is selected. Unfortunately this
+doesn't handle the case when the Activity is resumed via notification
+since the EditText still gets the focus and therefore the keyboard is
+opened again.
+This patch works around this by making the parent Layout focusable and
+removing focus from the EditText when leaving the chat fragment. Also only
+do this when we're leaving the chat fragment.
+"
+CriticalMaps/criticalmaps-android,closed,Changes translated,[],
+CriticalMaps/criticalmaps-android,closed,turkish translation,[],"hi @canerbasaran ,
+can you have another look into the turkish strings file?
+a few things have changed and it would be nice to have them in the next release.
+tesekkurler abi ;)
+"
+CriticalMaps/criticalmaps-android,closed,remember/recall last position on exit/startup,[],"if i leave the map/app, the map always pans back to berlin. The last position should be restored.
+"
+CriticalMaps/criticalmaps-android,closed,Add Turkish translation,[],
+CriticalMaps/criticalmaps-android,closed,Encrypt the communication with HTTPS,"[Label(name=""enhancement"")]","Unfortunately the communication between the app and criticalmaps.net is unencrypted. A corresponding information made it to the [app description on F-Droid](https://f-droid.org/repository/browse/?fdid=de.stephanlindauer.criticalmaps).
+As locations and (anonymous) messages are quite sensitive data it would be preferable to use encrypted HTTPS-connections.
+"
+CriticalMaps/criticalmaps-android,closed,Provide a topsykretts.php example file for the server,[],
+CriticalMaps/criticalmaps-android,closed,Multilingual,[],"I was wondering if the app can be translated so the rules of the critical mass display in the language of your phone.
+"
+CriticalMaps/criticalmaps-android,closed,How to CM at the first start of the app,[],"A friend installed the app and was a little bit confused. It would be a good idea show at the first start of the app a how to CM. 
+"
+CriticalMaps/criticalmaps-android,closed,make location exchange a background service,"[Label(name=""enhancement"")]","http://developer.android.com/training/run-background-service/create-service.html
+"
+CriticalMaps/criticalmaps-android,closed,sternfahrt coords,"[Label(name=""enhancement"")]",
+CriticalMaps/criticalmaps-android,closed,twitter integration,"[Label(name=""enhancement"")]",
+CriticalMaps/criticalmaps-android,open,make chat coordinate based,"[Label(name=""enhancement"")]",
+CriticalMaps/criticalmaps-android,closed,display status of gps signal,"[Label(name=""enhancement"")]",
+CriticalMaps/criticalmaps-android,closed,fix unsorted tweets,[],"regarding #8
+"
+CriticalMaps/criticalmaps-android,closed,tweets not sorted,[],
+CriticalMaps/criticalmaps-android,closed,"ImageCache extractions, formatting etc",[],
+CriticalMaps/criticalmaps-android,closed,onConfigurationChanged throws OutOfMemoryException,[],"memory leak, map bitmap needs be recycled i think
+"
+CriticalMaps/criticalmaps-android,closed,tweets for #4,[],"tweets for #4
+"
+CriticalMaps/criticalmaps-android,closed,readonly twitter stream,[],"# CMBerlin
+
+https://twitter.com/search?q=%23CMBerlin
+"
+CriticalMaps/criticalmaps-android,closed,Looper.prepare() Exception,"[Label(name=""bug"")]","stuff runs outside of main looper and causes some devices to crash. cant reproduce.
+
+java.lang.ExceptionInInitializerError
+at de.stephanlindauer.criticalmass.helper.b.a(Unknown Source)
+at de.stephanlindauer.criticalmass.helper.d.run(Unknown Source)
+at java.util.Timer$TimerImpl.run(Timer.java:284)
+Caused by: java.lang.RuntimeException: Can't create handler inside thread that has not called Looper.prepare()
+at android.os.Handler.<init>(Handler.java:121)
+at android.os.AsyncTask$InternalHandler.<init>(AsyncTask.java:607)
+at android.os.AsyncTask$InternalHandler.<init>(AsyncTask.java:607)
+at android.os.AsyncTask.<clinit>(AsyncTask.java:190)
+... 3 more
+"
+CriticalMaps/criticalmaps-android,closed,Tracking Checkbox,"[Label(name=""bug"")]","Die Tracking Checkbox im Menü ist immer aktiviert nach jedem Wechsel eines Tabs auch wenn man das Tracking vorher deaktiviert hat.
+"
+CriticalMaps/criticalmaps-android,closed,Hinweis auf Tracking,"[Label(name=""enhancement"")]","Moin!
+
+Schönes Projekt. Ich finde es bedenklich, dass die App quasi immer im Hintergrund trackt ohne den benutzer wirklich drauf hinzuweisen. Da fänd ich einen permanenten Hinweis innerhalb der App schon ganz gut, solange das Tracking aktiviert ist. Die Trackt ja auch im Hintergrund, da sollte es dann auch einen Hinweis als Notification geben.
+"

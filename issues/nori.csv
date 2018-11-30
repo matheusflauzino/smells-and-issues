@@ -1,0 +1,884 @@
+repository,state,title,label,body
+tjg1/nori,open,Slideshow,[],"I don't know if this is the right place to ask for this but I think it'll be very cool if we were able to slideshow through a search, I'm asking for this because I've seen it in other apps like ""anime box"" which I happened not to like at all except for this feature, as I'm really enjoying your app I wanted to try asking for this.
+Thanks for the awesome app and a good morning, afternoon or night also regards :)"
+tjg1/nori,open,Coverage and Hydrus,[],"List of *booru that Nori should cover https://github.com/CuddleBear92/Hydrus-Presets-and-Scripts  
+Also Nori could use future Hydrus-API to allow self-hosted *boorus to exist  
+(The API is currently in the drafting process, needs people to propose features)"
+tjg1/nori,open,F-Droid is still stuck at version tag 2017.06.1,[],Somehow nobody and nothing over at F-Droid has yet compiled the new update.
+tjg1/nori,open,"Grabs scaled-down (sample-sized) images even though ""Conserve Bandwidth"" is disabled",[],"I use Danbooru and I'm not using any other booru, so I can't say whether it's a localised problem or not for sure.
+But chances are it only happens with Danbooru - it broke recently, didn't it? "
+tjg1/nori,open,Trying to view images on Danbooru  not working,[],"It spits out this
+
+""Unable to resolve host ""danbooru.donmai.ushttps"": no address associated with hostname""
+
+In settings, I set the name of the service to 'danbooru' and the URL to 'https://danbooru.donmai.us', and with no Username or Password/APIkey."
+tjg1/nori,open,Updated fr (French) translation,[],
+tjg1/nori,open,"Add support for Gelbooru ""notes""",[],"Notes on Gelbooru are often a fairly key part of viewing an image, as they're most often used to display translations. If you need an example of what supporting them might look like on a mobile client, animeboxes has this implemented.
+
+The problem, though, is that there's no API endpoint exposed for retreiving the notes of an image, at least as far as I can tell. They're loaded into the page on the backend before it's retrieved by the browser, in a `section` tag with the id `notes`.
+
+I'm honestly not sure how animeboxes does it unless they just parse the HTML for loading an image in general, but they're able to tell whether a post has notes or not before giving you the option to load them. This is possible with the API in some earlier versions of gelbooru it seems like with the `has_notes` field, but I'm not seeing it when I'm querying the current API"
+tjg1/nori,open,Thumbnail downloads,[],Adding the feature of holding down and multi-selecting thumbnails to download in original resolution.
+tjg1/nori,open,Inform users why no results are displaying.,[],"Tried your app by first going to settings and messing with the filters. Searched but seemingly nothing happened. Changed filter settings and results came.
+How does users know if it actually performed the query or not?"
+tjg1/nori,open,Meta tags such as sorting raise exception.,[],"Observed on booru-like services.
+
+Adding ""order:score"" to a query yelds a java exception "
+tjg1/nori,open,Add an option to load videos even on metered connection,[],"I can't load videos without connecting to Wi-Fi.
+However I don't use Wi-Fi since it's slower in my area and my LTE is free.
+
+# How to reproduce
+
+- Disable Wi-Fi and enable mobile data
+- Click on a video thumbnail (I used Gelbooru)
+
+# Suggestions
+
+- Add an option in the settings to load videos even on metered connections"
+tjg1/nori,open,Created fr (French) translation,[],Partial translation 40% left. Commit made via Stringlate.
+tjg1/nori,open,Can you add an option to change the default download location ?,[],"Can you please add an option to change the default download location ?
+
+Thanks."
+tjg1/nori,open,Houzz Support,[],Is it possible to add https://www.houzz.com/ as a source?
+tjg1/nori,closed,Partial fix for the TransactionTooLargeException issue,"[Label(name=""1.severity: crash""), Label(name=""3 - Review""), Label(name=""6.topic: Parcelables""), Label(name=""6.topic: Search""), Label(name=""9.needs: port to master"")]","This patch implements a fix for the android.os.TransactionTooLargeException crash that has been plaguing the current release.
+
+Instead of saving the entire huge `SearchResult` object to SearchResultGridFragment's instance state bundle, it stores just enough information to fetch the same* SearchResult from the network or (hopefully) ion's disk cache.
+
+* The SearchResult could have changed on the remote server as more Images got uploaded to the service in the meantime.
+
+Could be backported to current release."
+tjg1/nori,closed,strings.xml translation in italian,"[Label(name=""1 - Ready""), Label(name=""6.topic: Translation""), Label(name=""9.needs: clean-up"")]","Hello, i'm not familiar with GitHub and i just don't want to mess things up, i've translated the strings in italian (i'm native) and tried to follow the instruction in ""Call for Translators"" page, i've made a copy of the xml file if it is needed i can send it via email to the lead developer. Greetings."
+tjg1/nori,open,Proxy support and settings,"[Label(name=""0.kind: enhancement""), Label(name=""6.topic: Networking"")]",Possibly separate for different domains 
+tjg1/nori,open,Lychee ,"[Label(name=""0.kind: enhancement""), Label(name=""6.topic: API Support"")]",Does Nori support the [Lychee](https://github.com/electerious/Lychee) photo-management-system?
+tjg1/nori,closed,android.os.TransactionTooLargeException when restoring saved instance state,"[Label(name=""0.kind: bug""), Label(name=""1.severity: crash""), Label(name=""6.topic: Data Classes""), Label(name=""6.topic: Norilib (Nori)""), Label(name=""6.topic: Parcelables"")]","Nori crashes on restoring the saved instance state when the saved `SearchResult` object is too large. This is essentially the same issue that occurred in the past when passing large `SearchResult`s via `Intents`. See: https://github.com/tjg1/nori/issues/31
+
+The real underlying issue is that keeping such large objects in memory at all times is bad practice. Whenever Nori tries to restore them from an instance `Bundle` or pass them as a `Parcelable` via an Intent/Broadcast to another part of the app, another copy of the huge object has to be re-created from scratch. (The reason it doesn't simply create a reference to the existing object is that it's getting serialised and deserialised along the way).
+
+There are three approaches to fixing this issue.
+
+1. The quick and easy way: Simply limit the number of `Image` objects that get serialised to a single result page, the same way I fixed the `Intent` issue. This is a dirty hack that would probably also break infinite scrolling.
+2. The time-consuming, hard way: Store the retrieved `SearchResult`s on disk and pass a file handle between Activities and saved instance Bundles. This would most likely use an ephemeral SQLite database (either on disk or a shared in-memory one) that would be erased each time Nori is opened ""from scratch"". Would require re-working large parts of the app.
+3. The middle-of-the-road way: Leave the `SearchResult` implementation largely as it is (see below), but instead of saving them to `Bundle`s or passing them between Activities, re-download them from the server as needed. With caching this could be just as efficient as the second solution.
+
+I also think that the current approach of extending existing `SearchResult`s with more `Image`s during infinite scrolling is not ideal and we should break them up into a set of smaller `SearchResult` objects (for each page offset) instead. This would allow us to easily recycle old (scrolled off the screen) `SearchResult` objects when memory gets low. 
+
+## Crash log ##
+
+```
+Package: io.github.tjg1.nori
+Version: 10
+Flavor: fdroid
+Android: 7.1.1
+Manufacturer: Wileyfox
+Model: Wileyfox Swift
+Date: 2017-03-29T10:49:59+0000
+
+java.lang.RuntimeException: android.os.TransactionTooLargeException: data parcel size 622212 bytes
+	at android.app.ActivityThread$StopInfo.run(ActivityThread.java:3781)
+	at android.os.Handler.handleCallback(Handler.java:751)
+	at android.os.Handler.dispatchMessage(Handler.java:95)
+	at android.os.Looper.loop(Looper.java:154)
+	at android.app.ActivityThread.main(ActivityThread.java:6126)
+	at java.lang.reflect.Method.invoke(Method.java)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:886)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:776)
+Caused by: android.os.TransactionTooLargeException: data parcel size 622212 bytes
+	at android.os.BinderProxy.transactNative(BinderProxy.java)
+	at android.os.BinderProxy.transact(BinderProxy.java:615)
+	at android.app.ActivityManagerProxy.activityStopped(ActivityManagerProxy.java:3636)
+	at android.app.ActivityThread$StopInfo.run(ActivityThread.java:3773)
+	... 7 more
+android.os.TransactionTooLargeException: data parcel size 622212 bytes
+	at android.os.BinderProxy.transactNative(BinderProxy.java)
+	at android.os.BinderProxy.transact(BinderProxy.java:615)
+	at android.app.ActivityManagerProxy.activityStopped(ActivityManagerProxy.java:3636)
+	at android.app.ActivityThread$StopInfo.run(ActivityThread.java:3773)
+	at android.os.Handler.handleCallback(Handler.java:751)
+	at android.os.Handler.dispatchMessage(Handler.java:95)
+	at android.os.Looper.loop(Looper.java:154)
+	at android.app.ActivityThread.main(ActivityThread.java:6126)
+	at java.lang.reflect.Method.invoke(Method.java)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:886)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:776)
+
+REPORT_ID: 5deaac97-0e64-4073-99f4-c5419461585d
+APP_VERSION_CODE: 10
+APP_VERSION_NAME: 2017.04
+PACKAGE_NAME: io.github.tjg1.nori
+PHONE_MODEL: Wileyfox Swift
+ANDROID_VERSION: 7.1.1
+BUILD: {""BOARD"":""MSM8916"",""BOOTLOADER"":""crackling-13-ge86e772"",""BRAND"":""Wileyfox"",""CPU_ABI"":""arm64-v8a"",""CPU_ABI2"":"""",""DEVICE"":""crackling"",""DISPLAY"":""Swift-userdebug 7.1.1 NOF27B 8083050d68"",""FINGERPRINT"":""Wileyfox\/Swift\/crackling:7.1.1\/NOF27B\/8083050d68:userdebug\/release-keys"",""HARDWARE"":""qcom"",""HOST"":""phenom.zifnab.net"",""ID"":""NOF27B"",""IS_DEBUGGABLE"":true,""IS_EMULATOR"":false,""MANUFACTURER"":""Wileyfox"",""MODEL"":""Wileyfox Swift"",""PERMISSIONS_REVIEW_REQUIRED"":false,""PRODUCT"":""Swift"",""RADIO"":""unknown"",""SERIAL"":""8266c285"",""SUPPORTED_32_BIT_ABIS"":[""armeabi-v7a"",""armeabi""],""SUPPORTED_64_BIT_ABIS"":[""arm64-v8a""],""SUPPORTED_ABIS"":[""arm64-v8a"",""armeabi-v7a"",""armeabi""],""TAGS"":""release-keys"",""TIME"":1490657970000,""TYPE"":""userdebug"",""UNKNOWN"":""unknown"",""USER"":""jenkins"",""VERSION"":{""ACTIVE_CODENAMES"":[],""BASE_OS"":"""",""CODENAME"":""REL"",""INCREMENTAL"":""8083050d68"",""PREVIEW_SDK_INT"":0,""RELEASE"":""7.1.1"",""RESOURCES_SDK_INT"":25,""SDK"":""25"",""SDK_INT"":25,""SECURITY_PATCH"":""2017-03-05""}}
+BRAND: Wileyfox
+PRODUCT: Swift
+TOTAL_MEM_SIZE: 12952186880
+AVAILABLE_MEM_SIZE: 7106998272
+BUILD_CONFIG: {}
+CUSTOM_DATA: {}
+INITIAL_CONFIGURATION: {""compatScreenHeightDp"":517,""compatScreenWidthDp"":320,""compatSmallestScreenWidthDp"":320,""densityDpi"":256,""fontScale"":1,""hardKeyboardHidden"":""HARDKEYBOARDHIDDEN_YES"",""keyboard"":""KEYBOARD_NOKEYS"",""keyboardHidden"":""KEYBOARDHIDDEN_NO"",""locale"":""en_GB"",""mcc"":234,""mnc"":10,""navigation"":""NAVIGATION_NONAV"",""navigationHidden"":""NAVIGATIONHIDDEN_YES"",""orientation"":""ORIENTATION_PORTRAIT"",""screenHeightDp"":728,""screenLayout"":""SCREENLAYOUT_SIZE_NORMAL+SCREENLAYOUT_LONG_YES+SCREENLAYOUT_LAYOUTDIR_LTR+SCREENLAYOUT_ROUND_NO"",""screenWidthDp"":450,""seq"":9,""smallestScreenWidthDp"":450,""touchscreen"":""TOUCHSCREEN_FINGER"",""uiMode"":""UI_MODE_TYPE_NORMAL+UI_MODE_NIGHT_NO"",""userSetLocale"":false}
+CRASH_CONFIGURATION: {""compatScreenHeightDp"":517,""compatScreenWidthDp"":320,""compatSmallestScreenWidthDp"":320,""densityDpi"":256,""fontScale"":1,""hardKeyboardHidden"":""HARDKEYBOARDHIDDEN_YES"",""keyboard"":""KEYBOARD_NOKEYS"",""keyboardHidden"":""KEYBOARDHIDDEN_NO"",""locale"":""en_GB"",""mcc"":234,""mnc"":10,""navigation"":""NAVIGATION_NONAV"",""navigationHidden"":""NAVIGATIONHIDDEN_YES"",""orientation"":""ORIENTATION_PORTRAIT"",""screenHeightDp"":728,""screenLayout"":""SCREENLAYOUT_SIZE_NORMAL+SCREENLAYOUT_LONG_YES+SCREENLAYOUT_LAYOUTDIR_LTR+SCREENLAYOUT_ROUND_NO"",""screenWidthDp"":450,""seq"":9,""smallestScreenWidthDp"":450,""touchscreen"":""TOUCHSCREEN_FINGER"",""uiMode"":""UI_MODE_TYPE_NORMAL+UI_MODE_NIGHT_NO"",""userSetLocale"":false}
+DISPLAY: {""0"":{""currentSizeRange"":{""smallest"":[720,682],""largest"":[1203,1165]},""flags"":""FLAG_SUPPORTS_PROTECTED_BUFFERS+FLAG_SECURE"",""metrics"":{""density"":1.600000023841858,""densityDpi"":256,""scaledDensity"":""x1.6"",""widthPixels"":720,""heightPixels"":1203,""xdpi"":294.9670104980469,""ydpi"":295.56298828125},""realMetrics"":{""density"":1.600000023841858,""densityDpi"":256,""scaledDensity"":""x1.6"",""widthPixels"":720,""heightPixels"":1280,""xdpi"":294.9670104980469,""ydpi"":295.56298828125},""name"":""Built-in Screen"",""realSize"":[720,1280],""rectSize"":[0,0,720,1203],""size"":[720,1203],""rotation"":""ROTATION_0"",""isValid"":true,""orientation"":0,""refreshRate"":60,""height"":1203,""width"":720,""pixelFormat"":1}}
+USER_COMMENT: 
+USER_APP_START_DATE: 2017-03-29T10:58:44.079+01:00
+USER_CRASH_DATE: 2017-03-29T11:17:12.862+01:00
+IS_SILENT: false
+INSTALLATION_ID: 0cf73e35-a43a-4b6a-a89b-ae2396bf6960
+USER_EMAIL: 
+DEVICE_FEATURES: {""android.hardware.sensor.proximity"":true,""android.hardware.sensor.accelerometer"":true,""android.hardware.faketouch"":true,""org.cyanogenmod.appsuggest"":true,""android.hardware.usb.accessory"":true,""android.hardware.telephony.cdma"":true,""android.software.backup"":true,""android.hardware.touchscreen"":true,""android.hardware.touchscreen.multitouch"":true,""android.software.print"":true,""org.cyanogenmod.partner"":true,""org.cyanogenmod.telephony"":true,""android.software.voice_recognizers"":true,""android.hardware.sensor.gyroscope"":true,""android.hardware.audio.low_latency"":true,""android.hardware.bluetooth"":true,""android.hardware.camera.autofocus"":true,""com.google.android.feature.GOOGLE_BUILD"":true,""android.hardware.telephony.gsm"":true,""android.software.sip.voip"":true,""org.cyanogenmod.profiles"":true,""com.cyanogenmod.android"":true,""android.hardware.audio.output"":true,""android.hardware.camera.flash"":true,""android.hardware.camera.front"":true,""android.hardware.screen.portrait"":true,""org.cyanogenmod.audio"":true,""org.cyanogenmod.theme"":true,""android.software.home_screen"":true,""android.hardware.microphone"":true,""org.cyanogenmod.statusbar"":true,""com.google.android.feature.PIXEL_EXPERIENCE"":true,""android.hardware.bluetooth_le"":true,""android.hardware.sensor.compass"":true,""android.hardware.touchscreen.multitouch.jazzhand"":true,""android.software.app_widgets"":true,""android.software.input_methods"":true,""android.hardware.sensor.light"":true,""android.software.device_admin"":true,""android.hardware.camera"":true,""org.cyanogenmod.hardware"":true,""android.hardware.screen.landscape"":true,""org.cyanogenmod.weather"":true,""org.cyanogenmod.performance"":true,""android.software.managed_users"":true,""android.software.webview"":true,""org.cyanogenmod.livedisplay"":true,""android.hardware.camera.any"":true,""android.software.connectionservice"":true,""android.hardware.touchscreen.multitouch.distinct"":true,""android.hardware.location.network"":true,""android.software.sip"":true,""android.hardware.wifi.direct"":true,""android.software.live_wallpaper"":true,""com.google.android.feature.GOOGLE_EXPERIENCE"":true,""com.google.android.feature.EXCHANGE_6_2"":true,""org.cyanogenmod.theme.v1"":true,""org.cyanogenmod.livelockscreen"":true,""android.hardware.location.gps"":true,""android.software.midi"":true,""android.hardware.wifi"":true,""android.hardware.location"":true,""android.hardware.telephony"":true,""glEsVersion"":""3.0""}
+ENVIRONMENT: {""getDataDirectory"":""\/data"",""getDataMiscDirectory"":""\/data\/misc"",""getDataPreloadsAppsDirectory"":""\/data\/preloads\/apps"",""getDataPreloadsDemoDirectory"":""\/data\/preloads\/demo"",""getDataPreloadsDirectory"":""\/data\/preloads"",""getDataPreloadsMediaDirectory"":""\/data\/preloads\/media"",""getDataSystemCeDirectory"":""\/data\/system_ce"",""getDataSystemDeDirectory"":""\/data\/system_de"",""getDataSystemDirectory"":""\/data\/system"",""getDownloadCacheDirectory"":""\/cache"",""getExpandDirectory"":""\/mnt\/expand"",""getExternalStorageDirectory"":""\/storage\/emulated\/0"",""getExternalStorageState"":""mounted"",""getLegacyExternalStorageDirectory"":""\/sdcard"",""getLegacyExternalStorageObbDirectory"":""\/sdcard\/Android\/obb"",""getOdmDirectory"":""\/odm"",""getOemDirectory"":""\/oem"",""getRootDirectory"":""\/system"",""getStorageDirectory"":""\/storage"",""getVendorDirectory"":""\/vendor"",""isExternalStorageEmulated"":true,""isExternalStorageRemovable"":true}
+MEDIA_CODEC_LIST: {""0"":{""name"":""OMX.google.mp3.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/mpeg"":{}}},""1"":{""name"":""OMX.google.amrnb.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/3gpp"":{}}},""2"":{""name"":""OMX.google.amrwb.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/amr-wb"":{}}},""3"":{""name"":""OMX.google.aac.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/mp4a-latm"":{""profileLevels"":[""AACObjectLC"",""AACObjectHE"",""AACObjectHE_PS"",""AACObjectLD"",""AACObjectELD""]}}},""4"":{""name"":""OMX.google.g711.alaw.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/g711-alaw"":{}}},""5"":{""name"":""OMX.google.g711.mlaw.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/g711-mlaw"":{}}},""6"":{""name"":""OMX.google.vorbis.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/vorbis"":{}}},""7"":{""name"":""OMX.google.opus.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/opus"":{}}},""8"":{""name"":""OMX.google.raw.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/raw"":{}}},""9"":{""name"":""OMX.google.aac.encoder"",""isEncoder"":true,""supportedTypes"":{""audio\/mp4a-latm"":{""profileLevels"":[""AACObjectLC"",""AACObjectHE"",""AACObjectHE_PS"",""AACObjectLD"",""AACObjectELD""]}}},""10"":{""name"":""OMX.google.amrnb.encoder"",""isEncoder"":true,""supportedTypes"":{""audio\/3gpp"":{}}},""11"":{""name"":""OMX.google.amrwb.encoder"",""isEncoder"":true,""supportedTypes"":{""audio\/amr-wb"":{}}},""12"":{""name"":""OMX.google.flac.encoder"",""isEncoder"":true,""supportedTypes"":{""audio\/flac"":{}}},""13"":{""name"":""OMX.google.gsm.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/gsm"":{}}},""14"":{""name"":""OMX.qcom.video.encoder.avc"",""isEncoder"":true,""supportedTypes"":{""video\/avc"":{""colorFormats"":[null,""COLOR_FormatSurface"",""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420SemiPlanar""],""profileLevels"":[""1AVCProfileBaseline-AVCLevel4"",""2AVCProfileMain-AVCLevel4"",""8AVCProfileHigh-AVCLevel4"",""2130706433null-AVCLevel4""]}}},""15"":{""name"":""OMX.qcom.video.encoder.mpeg4"",""isEncoder"":true,""supportedTypes"":{""video\/mp4v-es"":{""colorFormats"":[null,""COLOR_FormatSurface"",""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420SemiPlanar""],""profileLevels"":[""MPEG4ProfileSimple-MPEG4Level5"",""MPEG4ProfileAdvancedSimple-MPEG4Level5""]}}},""16"":{""name"":""OMX.qcom.video.encoder.h263"",""isEncoder"":true,""supportedTypes"":{""video\/3gpp"":{""colorFormats"":[null,""COLOR_FormatSurface"",""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420SemiPlanar""],""profileLevels"":[""H263ProfileBaseline-H263Level70""]}}},""17"":{""name"":""OMX.qcom.video.encoder.vp8"",""isEncoder"":true,""supportedTypes"":{""video\/x-vnd.on2.vp8"":{""colorFormats"":[null,""COLOR_FormatSurface"",""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420SemiPlanar""],""profileLevels"":[47]}}},""18"":{""name"":""OMX.qcom.video.decoder.avc"",""isEncoder"":false,""supportedTypes"":{""video\/avc"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",null,""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatYUV420Planar"",null],""profileLevels"":[""1AVCProfileBaseline-AVCLevel4"",""2AVCProfileMain-AVCLevel4"",""8AVCProfileHigh-AVCLevel4""]}}},""19"":{""name"":""OMX.qcom.video.decoder.avc.secure"",""isEncoder"":false,""supportedTypes"":{""video\/avc"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",null,""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatYUV420Planar"",null],""profileLevels"":[""1AVCProfileBaseline-AVCLevel4"",""2AVCProfileMain-AVCLevel4"",""8AVCProfileHigh-AVCLevel4""]}}},""20"":{""name"":""OMX.qcom.video.decoder.mpeg2"",""isEncoder"":false,""supportedTypes"":{""video\/mpeg2"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",null,""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatYUV420Planar"",null],""profileLevels"":[48]}}},""21"":{""name"":""OMX.qcom.video.decoder.mpeg2.secure"",""isEncoder"":false,""supportedTypes"":{""video\/mpeg2"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",null,""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatYUV420Planar"",null],""profileLevels"":[48]}}},""22"":{""name"":""OMX.qcom.video.decoder.mpeg4"",""isEncoder"":false,""supportedTypes"":{""video\/mp4v-es"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",null,""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatYUV420Planar"",null],""profileLevels"":[""MPEG4ProfileSimple-MPEG4Level5"",""MPEG4ProfileAdvancedSimple-MPEG4Level5""]}}},""23"":{""name"":""OMX.qcom.video.decoder.h263"",""isEncoder"":false,""supportedTypes"":{""video\/3gpp"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",null,""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatYUV420Planar"",null],""profileLevels"":[""H263ProfileBaseline-H263Level70""]}}},""24"":{""name"":""OMX.qcom.video.decoder.vc1"",""isEncoder"":false,""supportedTypes"":{""video\/x-ms-wmv"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",null,""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatYUV420Planar"",null]}}},""25"":{""name"":""OMX.qcom.video.decoder.divx"",""isEncoder"":false,""supportedTypes"":{""video\/divx"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",null,""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatYUV420Planar"",null]}}},""26"":{""name"":""OMX.qcom.video.decoder.divx311"",""isEncoder"":false,""supportedTypes"":{""video\/divx311"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",null,""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatYUV420Planar"",null]}}},""27"":{""name"":""OMX.qcom.video.decoder.divx4"",""isEncoder"":false,""supportedTypes"":{""video\/divx4"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",null,""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatYUV420Planar"",null]}}},""28"":{""name"":""OMX.qcom.video.decoder.vp8"",""isEncoder"":false,""supportedTypes"":{""video\/x-vnd.on2.vp8"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",null,""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatYUV420Planar"",null]}}},""29"":{""name"":""OMX.qcom.video.decoder.hevcswvdec"",""isEncoder"":false,""supportedTypes"":{""video\/hevc"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",null,""COLOR_FormatYUV420Planar""],""profileLevels"":[302]}}},""30"":{""name"":""OMX.google.mpeg4.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/mp4v-es"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""],""profileLevels"":[""MPEG4ProfileSimple-MPEG4Level0"",""MPEG4ProfileSimple-MPEG4Level0b"",""MPEG4ProfileSimple-MPEG4Level1"",""MPEG4ProfileSimple-MPEG4Level2"",""MPEG4ProfileSimple-MPEG4Level3""]}}},""31"":{""name"":""OMX.google.h263.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/3gpp"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""],""profileLevels"":[""H263ProfileBaseline-H263Level10"",""H263ProfileBaseline-H263Level20"",""H263ProfileBaseline-H263Level30"",""H263ProfileBaseline-H263Level45"",""H263ProfileISWV2-H263Level10"",""H263ProfileISWV2-H263Level20"",""H263ProfileISWV2-H263Level30"",""H263ProfileISWV2-H263Level45""]}}},""32"":{""name"":""OMX.google.h264.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/avc"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""],""profileLevels"":[""1AVCProfileBaseline-AVCLevel1"",""1AVCProfileBaseline-AVCLevel1b"",""1AVCProfileBaseline-AVCLevel11"",""1AVCProfileBaseline-AVCLevel12"",""1AVCProfileBaseline-AVCLevel13"",""1AVCProfileBaseline-AVCLevel2"",""1AVCProfileBaseline-AVCLevel21"",""1AVCProfileBaseline-AVCLevel22"",""1AVCProfileBaseline-AVCLevel3"",""1AVCProfileBaseline-AVCLevel31"",""1AVCProfileBaseline-AVCLevel32"",""1AVCProfileBaseline-AVCLevel4"",""1AVCProfileBaseline-AVCLevel41"",""1AVCProfileBaseline-AVCLevel42"",""1AVCProfileBaseline-AVCLevel5"",""1AVCProfileBaseline-AVCLevel51"",""1AVCProfileBaseline-AVCLevel52"",""2AVCProfileMain-AVCLevel1"",""2AVCProfileMain-AVCLevel1b"",""2AVCProfileMain-AVCLevel11"",""2AVCProfileMain-AVCLevel12"",""2AVCProfileMain-AVCLevel13"",""2AVCProfileMain-AVCLevel2"",""2AVCProfileMain-AVCLevel21"",""2AVCProfileMain-AVCLevel22"",""2AVCProfileMain-AVCLevel3"",""2AVCProfileMain-AVCLevel31"",""2AVCProfileMain-AVCLevel32"",""2AVCProfileMain-AVCLevel4"",""2AVCProfileMain-AVCLevel41"",""2AVCProfileMain-AVCLevel42"",""2AVCProfileMain-AVCLevel5"",""2AVCProfileMain-AVCLevel51""]}}},""33"":{""name"":""OMX.google.hevc.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/hevc"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""],""profileLevels"":[47]}}},""34"":{""name"":""OMX.google.vp8.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/x-vnd.on2.vp8"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""]}}},""35"":{""name"":""OMX.google.vp9.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/x-vnd.on2.vp9"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""],""profileLevels"":[302]}}},""36"":{""name"":""OMX.google.h263.encoder"",""isEncoder"":true,""supportedTypes"":{""video\/3gpp"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar"",""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatSurface""],""profileLevels"":[""H263ProfileBaseline-H263Level45""]}}},""37"":{""name"":""OMX.google.h264.encoder"",""isEncoder"":true,""supportedTypes"":{""video\/avc"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar"",""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatSurface""],""profileLevels"":[""1AVCProfileBaseline-AVCLevel1"",""1AVCProfileBaseline-AVCLevel1b"",""1AVCProfileBaseline-AVCLevel11"",""1AVCProfileBaseline-AVCLevel12"",""1AVCProfileBaseline-AVCLevel13"",""1AVCProfileBaseline-AVCLevel2"",""1AVCProfileBaseline-AVCLevel21"",""1AVCProfileBaseline-AVCLevel22"",""1AVCProfileBaseline-AVCLevel3"",""1AVCProfileBaseline-AVCLevel31"",""1AVCProfileBaseline-AVCLevel32"",""1AVCProfileBaseline-AVCLevel4"",""1AVCProfileBaseline-AVCLevel41"",""2AVCProfileMain-AVCLevel1"",""2AVCProfileMain-AVCLevel1b"",""2AVCProfileMain-AVCLevel11"",""2AVCProfileMain-AVCLevel12"",""2AVCProfileMain-AVCLevel13"",""2AVCProfileMain-AVCLevel2"",""2AVCProfileMain-AVCLevel21"",""2AVCProfileMain-AVCLevel22"",""2AVCProfileMain-AVCLevel3"",""2AVCProfileMain-AVCLevel31"",""2AVCProfileMain-AVCLevel32"",""2AVCProfileMain-AVCLevel4"",""2AVCProfileMain-AVCLevel41""]}}},""38"":{""name"":""OMX.google.mpeg4.encoder"",""isEncoder"":true,""supportedTypes"":{""video\/mp4v-es"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar"",""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatSurface""],""profileLevels"":[""MPEG4ProfileCore-MPEG4Level2""]}}},""39"":{""name"":""OMX.google.vp8.encoder"",""isEncoder"":true,""supportedTypes"":{""video\/x-vnd.on2.vp8"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar"",""COLOR_FormatYUV420SemiPlanar"",""COLOR_FormatSurface""],""profileLevels"":[47]}}},""40"":{""name"":""OMX.ffmpeg.aac.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/mp4a-latm"":{}}},""41"":{""name"":""OMX.ffmpeg.alac.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/alac"":{}}},""42"":{""name"":""OMX.ffmpeg.ape.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/x-ape"":{}}},""43"":{""name"":""OMX.ffmpeg.atrial.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/ffmpeg"":{}}},""44"":{""name"":""OMX.ffmpeg.dts.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/dts"":{}}},""45"":{""name"":""OMX.ffmpeg.flac.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/flac"":{}}},""46"":{""name"":""OMX.ffmpeg.mp2.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/mpeg-L2"":{}}},""47"":{""name"":""OMX.ffmpeg.ra.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/vnd.rn-realaudio"":{}}},""48"":{""name"":""OMX.ffmpeg.wma.decoder"",""isEncoder"":false,""supportedTypes"":{""audio\/x-ms-wma"":{}}},""49"":{""name"":""OMX.ffmpeg.divx.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/divx"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""]}}},""50"":{""name"":""OMX.ffmpeg.flv1.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/x-flv"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""]}}},""51"":{""name"":""OMX.ffmpeg.mpeg2.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/mpeg2"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""]}}},""52"":{""name"":""OMX.ffmpeg.mpeg4.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/mp4v-es"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""],""profileLevels"":[""MPEG4ProfileSimple-MPEG4Level5"",""MPEG4ProfileAdvancedSimple-MPEG4Level5""]}}},""53"":{""name"":""OMX.ffmpeg.rv.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/vnd.rn-realvideo"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""]}}},""54"":{""name"":""OMX.ffmpeg.vc1.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/vc1"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""]}}},""55"":{""name"":""OMX.ffmpeg.vtrial.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/ffmpeg"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""]}}},""56"":{""name"":""OMX.ffmpeg.wmv.decoder"",""isEncoder"":false,""supportedTypes"":{""video\/x-ms-wmv"":{""colorFormats"":[""COLOR_FormatYUV420Flexible"",""COLOR_FormatYUV420Planar""]}}}}
+THREAD_DETAILS: {""id"":1,""name"":""main"",""priority"":5,""groupName"":""main""}
+```"
+tjg1/nori,closed,Release Nori 2017.04/Norilib 3.2.0 (feature freeze),"[Label(name=""1 - Ready""), Label(name=""4.semver: minor""), Label(name=""8.has: dependency (new)""), Label(name=""8.has: dependency (update)"")]","Release freeze of the 2017.04 version of Nori and 3.2.0 version of Norilib.
+
+### Changelog ###
+
+```
+particularCircumstances (1):
+    - Fix parsing relative URLs for boards hosted outside root path
+
+tjg1 (5):
+    - Replace Norilib submodule with Git subtree
+    - Travis CI integration
+    - Increase Gradle's heap size to speed up build times
+    - Downgrade ion to fix TLS issues on older versions of Android
+    - Implement ACRA crash reporting
+
+Lonami (1):
+    - Handle more ""relative url"" cases on normalizeUrl()
+
+Poussinou (1):
+    - Add download image buttons to README.md
+```"
+tjg1/nori,closed,Send ACRA crash report data to HockeyApp,[],"Replaces the use of email for ACRA crash reports with [HockeyApp](https://hockeyapp.net).
+
+Uses an open source implementation of an ACRA HockeyApp report sender that I wrote myself based on [this gist](https://gist.github.com/antoche/5123357), so should be 👌 for F-Droid.
+
+I can grant other people access to the Nori HockeyApp account, if they wish to be able to view submitted crash reports. 
+
+HockeyApp seems to support ProGuard mapping.txt files, so that shouldn't be an issue (Although I don't know how that will work with F-Droid builds? Guess we'll find out - an obfuscated stacktrace is still better than nothing)"
+tjg1/nori,closed,Integrate the ACRA crash reporting library,"[Label(name=""0.kind: enhancement""), Label(name=""1 - Ready""), Label(name=""6.topic: Developer Experience""), Label(name=""8.has: dependency (new)"")]","Integrates [ACRA](https://github.com/ACRA/acra) to submit crash reports from end-users.
+
+When a crash occurs, a dialog is shown giving the user a choice whether they want to submit a crash report.
+
+![screenshot_2017-03-26_14-17-52](https://cloud.githubusercontent.com/assets/1909894/24331780/13769a1c-1233-11e7-91cd-0d88f409a371.png)
+
+Currently the reports are sent via email (using the system Email app), until I deploy a dedicated backend, such as [acralyzer](https://github.com/ACRA/acralyzer).
+
+Fixes #98"
+tjg1/nori,closed,Fix TLS issues on pre-Lollipop devices,"[Label(name=""0.kind: bug""), Label(name=""1 - Ready""), Label(name=""1.severity: blocker""), Label(name=""4.semver: minor""), Label(name=""6.topic: Norilib (Nori)""), Label(name=""6.topic: Service Support""), Label(name=""7.service: Danbooru""), Label(name=""7.service: Danbooru Legacy""), Label(name=""7.service: Shimmie""), Label(name=""8.has: dependency (update)"")]","Fixes broken TLS support on pre-Lollipop SDK versions by temporarily downgrading ion to 2.1.7.
+
+See this issue report for more details on the ion bug: https://github.com/koush/AndroidAsync/issues/512
+
+Fixes #103 "
+tjg1/nori,closed,Broken TLS support on SDK Version 16,"[Label(name=""0.kind: bug""), Label(name=""3.skill: good-first-bug""), Label(name=""6.topic: Android SDK""), Label(name=""6.topic: Unit Testing""), Label(name=""7.service: Danbooru"")]","Tests are failing on older versions of Android, due to outdated TLS support.
+
+If this only affects unit tests, we could switch to using http for affected test cases.
+
+## Travis Log
+
+```
+Starting 79 tests on test(AVD) - 4.1.2
+
+io.github.tjg1.library.norilib.test.DanbooruLegacyTest > testSearchAsync[test(AVD) - 4.1.2] FAILED 
+
+	java.io.IOException: com.koushikdutta.async.AsyncSSLException: Peer not trusted by any of the system trust managers.
+
+	at io.github.tjg1.library.norilib.clients.DanbooruLegacy$1.onCompleted(DanbooruLegacy.java:184)
+
+io.github.tjg1.library.norilib.test.DanbooruLegacyTest > testSearchUsingTags[test(AVD) - 4.1.2] FAILED 
+
+	java.io.IOException: java.util.concurrent.ExecutionException: com.koushikdutta.async.AsyncSSLException: Peer not trusted by any of the system trust managers.
+
+	at io.github.tjg1.library.norilib.clients.DanbooruLegacy.search(DanbooruLegacy.java:166)
+
+io.github.tjg1.library.norilib.test.DanbooruLegacyTest > testSearchUsingTagsAndOffset[test(AVD) - 4.1.2] FAILED 
+
+	java.io.IOException: java.util.concurrent.ExecutionException: com.koushikdutta.async.AsyncSSLException: Peer not trusted by any of the system trust managers.
+
+	at io.github.tjg1.library.norilib.clients.DanbooruLegacy.search(DanbooruLegacy.java:166)
+
+io.github.tjg1.library.norilib.test.DanbooruTests > testSearchAsync[test(AVD) - 4.1.2] FAILED 
+
+	java.io.IOException: com.koushikdutta.async.AsyncSSLException: Peer not trusted by any of the system trust managers.
+
+	at io.github.tjg1.library.norilib.clients.Danbooru$1.onCompleted(Danbooru.java:184)
+
+io.github.tjg1.library.norilib.test.DanbooruTests > testSearchUsingTags[test(AVD) - 4.1.2] FAILED 
+
+	java.io.IOException: java.util.concurrent.ExecutionException: com.koushikdutta.async.AsyncSSLException: Peer not trusted by any of the system trust managers.
+
+	at io.github.tjg1.library.norilib.clients.Danbooru.search(Danbooru.java:164)
+
+io.github.tjg1.library.norilib.test.DanbooruTests > testSearchUsingTagsAndOffset[test(AVD) - 4.1.2] FAILED 
+
+	java.io.IOException: java.util.concurrent.ExecutionException: com.koushikdutta.async.AsyncSSLException: Peer not trusted by any of the system trust managers.
+
+	at io.github.tjg1.library.norilib.clients.Danbooru.search(Danbooru.java:164)
+
+io.github.tjg1.library.norilib.test.ServiceTypeDetectionServiceTest > testDanbooruDetection[test(AVD) - 4.1.2] FAILED 
+
+	java.lang.AssertionError: expecting actual not to be null
+
+	at io.github.tjg1.library.norilib.test.ServiceTypeDetectionServiceTest.testDanbooruDetection(ServiceTypeDetectionServiceTest.java:42)
+
+io.github.tjg1.library.norilib.test.ServiceTypeDetectionServiceTest > testDanbooruLegacyDetection[test(AVD) - 4.1.2] FAILED 
+
+	java.lang.AssertionError: expecting actual not to be null
+
+	at io.github.tjg1.library.norilib.test.ServiceTypeDetectionServiceTest.testDanbooruLegacyDetection(ServiceTypeDetectionServiceTest.java:51)
+
+io.github.tjg1.library.norilib.test.ServiceTypeDetectionServiceTest > testShimmieDetection[test(AVD) - 4.1.2] FAILED 
+
+	java.lang.AssertionError: expecting actual not to be null
+
+	at io.github.tjg1.library.norilib.test.ServiceTypeDetectionServiceTest.testShimmieDetection(ServiceTypeDetectionServiceTest.java:69)
+
+:norilib:connectedDebugAndroidTest FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+
+Execution failed for task ':norilib:connectedDebugAndroidTest'.
+
+> There were failing tests. See the report at: file:///home/travis/build/tjg1/nori/norilib/build/reports/androidTests/connected/index.html
+
+* Try:
+
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 1 mins 53.44 secs
+
+The command ""./gradlew :norilib:connectedAndroidTest"" exited with 1.
+```"
+tjg1/nori,closed,Enable Travis CI Integration,"[Label(name=""0.kind: enhancement""), Label(name=""1 - Ready""), Label(name=""6.topic: Developer Experience""), Label(name=""6.topic: Unit Testing"")]",Enables continuous integration builds for Nori and Norilib.
+tjg1/nori,closed,Broken for certain sites,"[Label(name=""7.service: Danbooru Legacy""), Label(name=""7.service: Gelbooru""), Label(name=""9.needs: reporter feedback"")]",
+tjg1/nori,open,Add an option to always show the download button in ImageViewerActivity,"[Label(name=""0.kind: enhancement""), Label(name=""6.topic: Image Viewer / Pager""), Label(name=""6.topic: Settings""), Label(name=""6.topic: User Experience""), Label(name=""6.topic: User Interface"")]","Suggested in a Google Play review :
+
+> Please add an option to replace share button with download button
+
+This can be implemented by programmatically changing the `app:showAsAction` value on the Download menu item from `ifRoom` to `always`. The opposite could be done for the share action provider, if screen space is an issue.
+
+Relevant file: https://github.com/tjg1/nori/blob/develop/app/src/main/res/menu/image.xml"
+tjg1/nori,closed,Fix parsing relative URLs for boards hosted outside root path,"[Label(name=""0.kind: bug""), Label(name=""3 - Review""), Label(name=""7.service: Danbooru Legacy""), Label(name=""7.service: Shimmie""), Label(name=""8.has: clean-up"")]","Patch submitted by @particularCircumstances.
+
+> The shimmie demo page at http://shimmie.shishnet.org/v2/ is broken. The base url is saved as ""http://shimmie.shishnet.org/v2/"", the api answers like that ""/v2/link/to/image.jpg"" resulting in the full path: ""http://shimmie.shishnet.org/v2//v2/link/to/image.jpg"". The right result would be ""http://shimmie.shishnet.org/v2/link/to/image.jpg"".
+> 
+> ""java.net.URL"" seems to be quite good at merging all kinds of urls. Fixing this as well.
+
+Fixes #94 and #86."
+tjg1/nori,closed,Integrate the ACRA crash reporting library,"[Label(name=""0.kind: enhancement""), Label(name=""3.skill: good-first-bug""), Label(name=""6.topic: Dependencies""), Label(name=""6.topic: Developer Experience""), Label(name=""6.topic: F-Droid""), Label(name=""9.needs: dependency (new)"")]","> [ACRA](https://github.com/ACRA/acra) is a library enabling Android Application to automatically post their crash reports to a report server. It is targeted to android applications developers to help them get data from their applications when they crash or behave erroneously.
+
+ACRA is a free and open source crash reporting library for Android, allowed under F-Droid's free software inclusion policy. Adding it would allow us to gather crash reports from devices using the `fdroid` build of Nori, without relying on Google Play Services or a proprietary library such as Crashlytics.
+
+To respect our users' privacy, we need to make sure that the user can choose whether they want to submit the bug report or not. Not doing so would cause it to get marked as an ""anti-feature"" by the F-Droid maintainers.
+
+#### Action Plan
+
+- [ ] Add a new dependency to Nori's Gradle build file
+- [ ] Create an Application class and attach ACRA's exception hook
+- [ ] Configure crash report user prompt (important)
+- [ ] Set up crash report backend (may need to self-host)
+- [ ] Ensure compatibility with ProGuard/Jack builds
+
+#### Useful Links 
+- https://github.com/ACRA/acra
+- https://github.com/ACRA/acra/wiki/BasicSetup
+- https://github.com/ACRA/acra/wiki/AdvancedUsage
+- https://github.com/ACRA/acralyzer
+- https://github.com/ACRA/acra/wiki/ProGuard
+- https://stackoverflow.com/questions/7476574/android-how-to-verify-successful-installation-of-acra-crash-logging"
+tjg1/nori,open,Publish Norilib to bintray,"[Label(name=""0.kind: enhancement""), Label(name=""3.skill: good-first-bug""), Label(name=""6.topic: Developer Experience""), Label(name=""6.topic: Norilib (Nori)"")]",Publish norilib to the Bintray JCentral repository.
+tjg1/nori,open,Add support for e-shuushuu.net,"[Label(name=""0.kind: enhancement""), Label(name=""6.topic: Norilib (Nori)""), Label(name=""6.topic: Service Support"")]","Add support for the e-shuushuu image gallery.
+
+I can't find official API documentation, but they have an [official Android app](https://play.google.com/store/apps/details?id=com.eshuushuu), so it should be straightforward to add support to Norilib"
+tjg1/nori,open, Rewriting Norilib to support more API types,"[Label(name=""2.status: work-in-progress""), Label(name=""6.topic: Code Quality""), Label(name=""6.topic: Norilib (Nori)""), Label(name=""6.topic: Service Feature Integration""), Label(name=""6.topic: Service Support""), Label(name=""9.needs: community feedback"")]","I have written a [blog post](https://tjg1.github.io/post/future-of-nori-and-norilib) about my decision to expand the scope of the Nori project to support image hosting APIs other than ""tag-based image archives"", aka ""boorus"".
+
+Since the current version of Norilib was built for APIs based on the Danbooru concept, the current abstractions it uses for things like service settings, image metadata and search results are not well-suited for other API types. As such, I have decided to rewrite Norilib from scratch to be able to provide first-class support for _any_ image hosting API type.
+
+When working on Norilib, I tried to use as few parts of the Android SDK as possible. I wanted for it to be possible (at least in theory) to remove Android specific bits, like `implements Parcelable` and the service detection service to use Norilib as part of a regular Java project. Since switching from okhttp to the ion HTTP library, this is no longer the case. The new codebase will be designed for use in Android applications from the ground up.
+## Project scope
+- Use the latest Java 7/8 language features, but maintain compatibility with legacy Android SDK versions down to JELLYBEAN.
+- Use koush's ion HTTP library to provide an asynchronous API based on Promises and Futures
+- Use the Android Support Library annotations to define the nullability of method parameters and return values
+- Provide support for API methods other than Search. Uploading, voting, editing metadata, favouriting, comments etc.
+- Provide a way to define a list of capabilities for each API type: supported API methods, defining custom sorting options, defining custom filtering options, defining custom metadata fields and authentication
+- Better support for pagination and extending/filtering SearchResults
+- Generic Image/SearchResult objects that can include custom metadata
+- Image objects providing a method to load them into an ImageView
+- Improve the eficiency of serializing objects and use a third-party library to remove boilerplate code for Parcelables
+- SearchResults implement the Java List interface
+- Support for autocompletion of search queries
+- Allow API clients to register with the API endpoint detection service and the ""Add Service"" dialog at runtime
+- Publish JavaDoc documentation and include Norilib on MavenCentral/jCenter, so that other developers can easily include it in their apps
+- Handle OAuth/OpenID/custom authentication flows using WebViews
+- **POSSIBLY**: Provide support for external plugins, so that other apps can extend Norilib with additional API Types. For example: An Instagram app may allow you to see images from your timeline in Nori. This could be done by creating an ""API Client"" that uses Intents and BroadcastReceivers to communicate with other apps."
+tjg1/nori,closed,Appending image link to base url broken for boards hosted not on the root of an url,"[Label(name=""0.kind: bug""), Label(name=""1 - Ready""), Label(name=""4.semver: minor""), Label(name=""6.topic: Norilib (Nori)""), Label(name=""7.service: Danbooru Legacy""), Label(name=""7.service: Shimmie"")]","Originally posted here: https://github.com/tjg1/norilib/issues/18
+
+The shimmie demo page at http://shimmie.shishnet.org/v2/ is broken. The base url is saved as ""http://shimmie.shishnet.org/v2/"", the api answers like that ""/v2/link/to/image.jpg"" resulting in the full path: ""http://shimmie.shishnet.org/v2//v2/link/to/image.jpg"". The right result would be ""http://shimmie.shishnet.org/v2/link/to/image.jpg"".
+
+""java.net.URL"" seems to be quite good at merging all kinds of urls. Fixing [this](https://github.com/tjg1/nori/issues/86) as well.
+Proposed patch: [rel_urls_patch.txt](https://github.com/tjg1/norilib/files/752652/rel_urls_patch.txt)"
+tjg1/nori,closed,Migrate the Norilib submodule into a subtree,[],"### No more `git clone --recursive`! 🎉 
+
+This branch migrates the Norilib repository from being a submodule into a subtree that's part of the main Nori repository. The reasons for this change are explained [here](https://github.com/tjg1/nori/issues/92) and [here](https://andrey.nering.com.br/2016/git-submodules-vs-subtrees/#git-submodules-gotchas).
+
+The history has been preserved, so technically the old Norilib repository no longer serves any purpose for us, but git-subtree allows us to keep it updated with each release. (So that other people can use Norilib in their own apps)
+
+Once this pull request gets merged, I will disable the issue tracker and migrate existing issues from the Norilib repository into this one."
+tjg1/nori,open,Development Update: Project Governance Changes,"[Label(name=""0.kind: question""), Label(name=""2.status: work-in-progress""), Label(name=""6.topic: Developer Experience""), Label(name=""9.needs: community feedback"")]","I'm considering a number of changes to this repository to streamline the development of the Nori and Norilib projects. I want to make it easier for developers and users to get their voices heard and get involved in the project. 
+
+We're still looking for more people to join the project as official contributors, and while some people have expressed interest, nothing has come of it yet.
+
+Development Discord Server
+--------------------------
+
+We have moved away from using IRC and created an [official development Discord server](https://discord.gg/3DTNcHu). This should make it easier for people and join and talk to us, as Discord provides an excellent web-based client. 
+
+There is no longer a need to explain IRC to people.
+
+Merging Nori and Norilib Repositories
+-------------------------------------
+
+Using separate repositories for Nori and Norilib via submodules has been problematic. Not only does it complicate the development process, it's been confusing to users and contributors - i.e. Norilib issues get reported in the Nori repository. There was also [that time](https://github.com/tjg1/nori/issues/64) when I broke the build for over a month by forgetting to push the latest Norilib tree. 😿 
+
+I'm considering either switching from using Git submodules to [Git subtrees](https://blogs.atlassian.com/2013/05/alternatives-to-git-submodule-git-subtree/), or merging the Nori and Norilib repositories together. Norilib will still remain a decoupled module usable by apps other than Nori.
+
+Development Schedule
+--------------------
+
+One thing that I have always struggled with is deciding what changes should amount to a new version release of Nori. Should every release include some sort of big change? Should I simply release a new version each time a feature is merged? What about testing?
+
+A good way to solve this would be to have a fixed release schedule, either bi-monthly or quarterly. Each release cycle would have a testing, documentation and stabilization branch-freeze period (with beta and release candidate builds in-between) before being shipped. Any critical bug fixes would be backported to the current stable release.
+
+To implement this, I propose a new Git branching scheme for Nori and Norilib: 
+
+- Day-to-day development will take place on a new `develop` branch, with the `master` branch containing the latest ""production-ready"" stable release. 
+- During the last weeks of the release cycle, the `develop` branch will enter a ""Feature Complete"" state and accept only bug fixes and documentation changes that will go into the beta/RC releases. 
+- Once the testing is completed, the `develop` branch gets merged into `master` to produce the next stable release. 
+- In cases when an important fix needs to be backported to stable, the work will be done on a new `bugfix` branch created from the current `master` branch.
+
+The versioning scheme for Nori will change to be based on the date of the latest major release, i.e. `2017.04` for April 2017, with a patch number appended for bugfix releases, i.e. `2017.04.1`. Norilib will retain its current [semver](http://semver.org/)-based versioning scheme to signify breaking API changes.
+
+Dealing with User Feedback
+--------------------------
+
+Nori does not have an established procedure for dealing with user feedback and reviews. In addition to [Play Store reviews](https://play.google.com/store/apps/details?id=io.github.tjg1.nori), I receive emails almost on a weekly basis with feature requests and bug reports.
+
+In the future, all emails and user reviews containing feature requests or bug reports will be posted by me as issues on GitHub, so that they can be properly reviewed and dealt with.
+
+Users will be encouraged to join the discussion on GitHub to provide their feedback on how the issue should be fixed. 
+
+Continuous Integration
+----------------------
+
+Nori lacks a continuous integration process, so things like a certain API type breaking can go unnoticed for months. We need to be able to schedule builds for automated testing of API types and generate build artefacts for every pull request, so that we can test them easily.
+
+I'm going to experiment with getting [Travis-CI](https://travis-ci.org/) working again and if that doesn't work, I will most likely deploy our own [Jenkins](https://jenkins.io/)/[Hydra](https://nixos.org/hydra/)/[GitLab-CI](https://about.gitlab.com/gitlab-ci/) instance.
+
+Promoting Nori
+--------------
+
+Nori currently has a little over 300 downloads on [Google Play](https://play.google.com/store/apps/details?id=io.github.tjg1.nori). I realise that due to the feature disparity (and it only being about 6 months since the Google Play release), most of our install come from either [GitHub](https://github.com/tjg1/nori/releases) or [F-Droid](https://f-droid.org/repository/browse/?fdid=io.github.tjg1.nori). Since F-Droid does not provide or allow any sort of tracking functionality, I have no idea what the total numbers are.
+
+Developing Nori has always been a primarily educational experience for me - I'm not in it for the donation money (of which I've made £25 so far, which I'm thankful for) or making Nori the most popular app on the Play Store. Nevertheless, it would be nice to get Nori into the hands of more users. With more users comes more feedback and more potential developers to contribute changes on GitHub.
+
+To that end, I'd like to develop an official website for the Nori project. A simple static page that will probably be a part of my [personal GitHub Pages site](https://tjg1.github.io). A few screenshots, a description of what Nori is and does should be sufficient - as long as it can be found on Google.
+
+The [README.md](https://github.com/tjg1/nori/blob/34a093b09640b4a2dd3673b8a2aa3bb1ef1a2e63/README.md) file could also use some love, with a screenshot (maybe even a GIF?) and a more detailed description of the project.
+
+Looking at the traffic data for this GitHub page shows a number of forum/Reddit threads about Nori scattered around the Internet. I should do a better job of monitoring these threads and getting involved in the discussion by answering questions they have about the project.
+
+Norilib2
+--------
+
+A few months ago, I've laid down [plans](https://github.com/tjg1/norilib/issues/15) for a replacement of the current version of Norilib that would be designed to better support image hosting APIs that don't necessarily qualify as ""tag-based image galleries."" (Flickr, Imgur and Reddit)
+
+I've done some basic planning for this project, but the actual work hasn't started yet. With the new development schedule and the repositories being merged, I hope that I will be able to dedicate more time to Norilib2.
+
+Other Changes
+-------------
+
+I have some other minor changes planned for Nori in the near feature, i.e. switching to the [Jack](https://source.android.com/source/jack.html) compiler toolchain, creating an issue report template and writing project contribution guidelines (including a code of conduct).
+
+\- tjg1"
+tjg1/nori,open,"Search is very slow, especially for tags that are rarely used","[Label(name=""0.kind: enhancement""), Label(name=""6.topic: Norilib (Nori)""), Label(name=""6.topic: Performance"")]","What I believe this does is loop through ALL submissions and check what tags they have, instead of the site's own search function which is much faster."
+tjg1/nori,closed,See,[],
+tjg1/nori,closed,Add beautiful buttons to get the app ;),[],
+tjg1/nori,open,"Shimmie based boards always? return status code 200, breaking api detection","[Label(name=""0.kind: bug""), Label(name=""3 - Review""), Label(name=""6.topic: Norilib (Nori)""), Label(name=""9.needs: tests"")]","Shimmie based boards like paheal return a status code 200 even if the api end point doesn't exist. That breaks the api detection for shimmie boards (the danbooru api is selected instead).
+I propose a patch that checks the content-type during api detection as well.
+[Shimmie_detect_patch.txt](https://github.com/tjg1/nori/files/751789/Shimmie_detect_patch.txt)"
+tjg1/nori,closed,Fix Konachan support,[],Fixes Konachan support with the protocol-relative URL fix to Norilib.
+tjg1/nori,closed,Can't work for konachan,"[Label(name=""4 - Done"")]",Can't display image
+tjg1/nori,open,Saved searches/favourite tags,"[Label(name=""0.kind: enhancement""), Label(name=""6.topic: Search""), Label(name=""6.topic: User Experience"")]","Add a feature that would allow users to save their favourite search queries and tag combinations on given services. This was requested by a user via email:
+
+`Hello, I'm Marco and I really love the Nori app. I'm really grateful for it because I use it everyday and I believe that a small feature would be perfect. I'm talking about a small popup/windows/whatever (quickly accessible from the main page) that lets you save your favourite tags, tags combinations and users and that lets you browse open that search instantly. 
+Thank you. 
+`"
+tjg1/nori,closed,Public list of services,[],"I am curious what services other people have plugged in. 
+
+Why does nori come with only one shipped ?"
+tjg1/nori,open,"[enhancement, feature] Add an option to jump to a given page","[Label(name=""0.kind: enhancement""), Label(name=""6.topic: Search""), Label(name=""6.topic: User Experience"")]","Hello! An addition I'd love to see is some way to ""jump"" to a page specified by the user, i.e. when viewing large image boards, the user might want to return to a big page number to continue where they left it before."
+tjg1/nori,closed,Added Spanish translation,[],
+tjg1/nori,open,Find a collaborator to help me work on Nori/Norilib,"[Label(name=""0.kind: question""), Label(name=""9.needs: community feedback"")]","I've been the project leader and main developer of Nori for the last 3+ years. The project had its setbacks, with a long pause in active development caused by personal issues and Nori being taken off the Play Store. To make sure that the project keeps moving forward, I'm looking for a collaborator to help me work on Nori, who would have full access to this repository. This doesn't mean that I'm going to step away from the project - I'm looking for someone who can dedicate their time to help me make Nori the best open-source image hosting client for Android.
+##### Requirements
+- Experience in developing and publishing high-quality Android applications. (it's okay, if you're still learning - working on Nori/Norilib is a great to teach yourself the fundamentals of the Android platform).
+- Experience leading or contributing to other open-source projects with a strong commitment to FOSS ideals.
+- A friendly attitude and patience while reviewing code from other contributors and responding to issues from end-users.
+- A number of high-quality contributions (pull requests) to either Nori or Norilib.
+- Presence in the #nori development IRC channel.
+- Not afraid of a challenge, motivated to learn new skills to help move the project forward, be able to work as part of a team.
+- Has shown the expected level of maturity to be given full commit rights.
+"
+tjg1/nori,open,TextView for No Result,"[Label(name=""0.kind: enhancement""), Label(name=""6.topic: User Experience"")]","I think it would be nice if the search result grid view could be swapped or a textview fragment layer could be drawn over it when the search query returns no result.
+
+It could be shown as `No results to show!` or `The Query didn't return any results` vertically and horizontally centered right where the `searchResultGridFragment` if placed.
+
+Given that we have some filters applied to the results, it could be useful.
+`The Query didn't return any results for your search settings.`
+"
+tjg1/nori,closed,Flickr as default service,[],"Is there any guide how to obtain api url for other things.
+Also if safebooru aint default please update descriptions as f-droid version is missing it (booru)
+"
+tjg1/nori,open,Pull-to-Refresh Gesture,"[Label(name=""0.kind: enhancement""), Label(name=""6.topic: Search""), Label(name=""6.topic: User Experience"")]","I received an email from a user asking for this feature to be implemented. 
+
+A Pull-to-Refresh gesture in SearchActivity (actually SearchResultGridFragment) that fetches new images from the server. 
+
+The infinite scrolling code can be used as an example of how to implement this.  Instead of fetching images for the next page and appending it to the existing SearchResult, fetch a new SearchResult for page 0 and set it as the new SearchResult in the GridView adapter. The previous SearchResult (including any results not on page 0) should be discarded. 
+
+May need to add an option in Norilib to disable caching. 
+"
+tjg1/nori,closed,Add ProgressBar to RemoteImageFragment,[],"Adds a progress bar to RemoteImageFragment that shows the current progress of the ion HTTP request fetching the image into the ImageView.
+
+Closes #67
+"
+tjg1/nori,closed,Show image loading errors in ImageViewerActivity,[],"Display text to the user when an image fails to load in `ImageViewerActivity`.
+
+This can be done by overlaying a TextView over the ImageView in `fragment_remote_image.xml`.
+"
+tjg1/nori,closed,Don't animate offscreen GIF images,[],"Right now, Nori will animate GIF images in ImageViewerActivity even when they're not visible on the screen. To save resources, it should only start the animation once the Image is scrolled into view (is the active ImageFragment).
+"
+tjg1/nori,open,Use Java 8 and the Jack compiler to build Nori,"[Label(name=""0.kind: enhancement""), Label(name=""6.topic: Android SDK""), Label(name=""6.topic: Developer Experience""), Label(name=""6.topic: Gradle"")]","Switch from Java 7 to Java 8 and the new Jack android compiler made by Google.
+
+It will let Nori take advantage of [new Java 8 features](https://developer.android.com/guide/platform/j8-jack.html#supported-features), such as lambda methods.
+
+Jack provides code obfuscation compatible with ProGuard configuration files.
+"
+tjg1/nori,closed,Refactor: reorder methods and define custom folding regions,[],"Refactor each class by grouping instance members and methods, and adding [custom code folding regions](https://blog.jetbrains.com/idea/2012/03/custom-code-folding-regions-in-intellij-idea-111/), based on the following categories:
+- Static members (variables)
+- Instance members (variables)
+- Activity lifecycle methods
+- Methods overriden from a class
+- Overriden interface methods
+- Instance methods
+- Inner classes and interfaces
+
+This should be done in both Nori and Norilib.
+"
+tjg1/nori,open,ImageViewerActivity image loading priority,"[Label(name=""0.kind: enhancement""), Label(name=""6.topic: Networking""), Label(name=""6.topic: User Experience"")]","ImageViewerActivity currently uses a `FragmentStatePagerAdapter` to provide flip-paging of images.
+
+The problem with using `FragmentStatePagerAdapter` is that up to 3 images (the active image, and one on each side) all get fetched at the same time. This causes a noticeable delay to the load time of the active Image being viewed by the user. It also causes unnecessary load on the image hosting server.
+
+The way to solve this would be to set a high priority for the HTTP request fetching the active image (not sure if ion supports this). Alternatively, we could wait until the active image is loaded, until we start pre-fetching other images. On mobile connections, it would be a good idea to disable pre-fetching altogether. The existing `NetworkUtils#isConnectionFast()` helper method can be used to do this. Maybe make this a setting, to give the user control over this behaviour?
+"
+tjg1/nori,closed,Infinite dialog loop when video files can't be loaded,[],"There is an issue with Nori getting stuck in an infinite loop of creating new error dialogs, when a video files can't be loaded in `VideoPlayerFragment`. This is eventually causes it to run out of memory and crash.
+
+Most likely caused by the `setOnCompletionListener` method trying to loop the video without checking if it was properly loaded.
+"
+tjg1/nori,open,DonationActivity crash,"[Label(name=""0.kind: bug""), Label(name=""1.severity: crash""), Label(name=""6.topic: Donations""), Label(name=""9.needs: reporter feedback"")]","This happened to me while I was out in town on a weak 3G signal.
+
+I can't reproduce this at home on a stable connection, but the Activity crashed while attempting to fetch the list of available Google Play in-app purchase SKUs.
+"
+tjg1/nori,open,Show search query in SearchActivity Toolbar,"[Label(name=""0.kind: enhancement""), Label(name=""6.topic: User Interface"")]","Currently, Nori does not show the current search query in SearchActivity. I've tried implementing this in the past, but I was limited by using the built-in list navigation mode in `ActionBar` for the service selection dropdown.
+
+That API was deprecated in Android Marshmallow, as `ActionBars` were replaced with a more flexible `Toolbar/AppBar` API. Nori now uses a simple `Spinner` to display the service selection dropdown.
+
+There are two ways that this could be implemented:
+- Hide the service dropdown on small screen devices behind a menu action item (the same way the `SearchView` works right now) and show the search query as the `Activity` title.
+- Show the search query as the active item of the service selection `Spinner`, while overriding `getDropdownView` in `ServiceDropdownAdapter` to still show the proper service name when the dropdown is expanded.
+
+Myozka tried implenting this using a `TextView` added to the `Toolbar` layout besides the service dropdown. This was fine, but made the Toolbar look too cluttered on small screen devices (phones).
+"
+tjg1/nori,closed,Image scaling quality,[],"Since switching the multi-touch ImageView library from ImageViewZoom to PhotoView, there have been issues with some images looking jagged after they've been **scaled down** on devices with a low screen resolution.
+
+The scaling algorithm used by PhotoView or ion's ""DeepZoom"" seems not to be suitable for line art or drawings.
+### To investigate
+- [x] Does disabling ""DeepZoom"" fix this issue?
+- [x] Can we pass the ImageView dimensions to ion to get better scaling results?
+"
+tjg1/nori,closed,Image loading progress bar,[],"Currently, Nori only shows progress bars for API requests during search and infinite scrolling. It would be nice to include similar progress bar for loading images - this is supported by Ion (the HTTP client library).
+
+The best way to go about it would be to add a progress bar inside a `<FrameLayout>` to the `RemoteImageFragment` layout file. Or pass the image loading progress to ImageViewerActivity.
+"
+tjg1/nori,closed,GIF images not loading,[],"In the current build, there is an issue with some GIF images not displaying properly.
+
+Since 3.0.0, Nori no longer uses WebViews to display GIFs, instead using ImageViews with the GIF support provided by ion (HTTP client library).
+"
+tjg1/nori,closed,Activity refactor,[],"Closes #48 
+"
+tjg1/nori,closed,Submodule initialization problems after a fresh repo cloning,[],"I would like to warn I found some problems after cloning your repo. I couldn't initialize the git submodules used by the project. I suggest a review and cleaning of the repo's submodule configurations.
+
+**Submodule norilib**
+The submodule is pointing to a invalid commit. Maybe the submodule repo code was changed and the last submodule reference update in the main repo was not commited/pushed?
+
+```
+$ git submodule init
+Submodule 'norilib' (https://github.com/tjg1/norilib.git) registered for path 'norilib'
+
+$ git submodule update
+Cloning into 'norilib'...
+remote: Counting objects: 1452, done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 1452 (delta 0), reused 0 (delta 0), pack-reused 1440
+Receiving objects: 100% (1452/1452), 447.19 KiB | 370.00 KiB/s, done.
+Resolving deltas: 100% (479/479), done.
+Checking connectivity... done.
+fatal: reference is not a tree: 99d0688301e1593d9e255f6b27065167444b7cb0
+Unable to checkout '99d0688301e1593d9e255f6b27065167444b7cb0' in submodule path 'norilib'
+```
+
+**Submodule SearchViewAllowEmpty**
+Though it is listed in the .gitmodules file, It does not exist anymore in your repo list, nor it is configured in the project's settings.gradle .
+
+```
+$ git submodule init SearchViewAllowEmpty
+error: pathspec 'SearchViewAllowEmpty' did not match any file(s) known to git.
+```
+"
+tjg1/nori,closed,Show search query in actionbar,[],"Hello,
+i - The app was not showing the search query anywhere.
+Showing it together with the results have its benefits. One example is when there is a typo. The users can't know if there is no result for the query or they made a mistake.
+![device-2016-08-21-020019](https://cloud.githubusercontent.com/assets/3288194/17838227/dd4ca8a2-6795-11e6-9917-23964a7abba7.png)
+![device-2016-08-21-020112](https://cloud.githubusercontent.com/assets/3288194/17838228/dd4e7164-6795-11e6-9527-acc9ea3fde12.png)
+![device-2016-08-21-020239](https://cloud.githubusercontent.com/assets/3288194/17838229/dd50bf00-6795-11e6-911b-86fec67389f0.png)
+
+ii - mergeStringArray function updated to remove unnecessary if statement.
+
+iii - norilib link in the module files changed to the latest commit in norilib repo because, currently, the cloning fails.
+
+![err](https://cloud.githubusercontent.com/assets/3288194/17838224/cc450c2a-6795-11e6-98b2-16325360988e.png)
+"
+tjg1/nori,closed,Design update,[],"This pull requests is a redesign of Nori, introducing some aspects of Material Design. 
+
+Code was also reformatted in preparation for the 3.0.0 release.
+
+Fixes #30 
+"
+tjg1/nori,closed,WebM support,[],"This pull requests adds WebM and MP4 support via VideoView on devices that support WebM playback.
+
+To test, search for webm videos on an API that supports it.
+
+Closes #32 
+"
+tjg1/nori,closed,Default to conserve bandwidth = on,[],"Fetch ""sample"" images by default. 
+
+The reasoning is that the samples are already high-resolution, and are only generated for images with a resolution higher than the average computer screen. People with high DPI devices can still disable the ""Conserve Bandwidth"" setting. The other reason is that APIs like yande.re don't allow viewing high resolution images (see #57).
+"
+tjg1/nori,closed,Replace okhttp/picasso with ion,[],"Replace the current http/image loading with [ion](https://github.com/koush/ion).
+
+The main advantage is that we can use a single dependency for both HTTP requests and image loading. 
+
+It also provides GIF support and [multi-touch image scaling](https://www.youtube.com/watch?v=yIMltNEAKZY) via [PhotoView](https://github.com/chrisbanes/PhotoView), so Nori will no longer use WebViews for GIFs (improving performance tremendously) and ImageViewZoom for image scaling.
+"
+tjg1/nori,closed,Add Flickr support,[],"Add Flickr support to use as the default API in the Google Play version.
+"
+tjg1/nori,closed,FIx yande.re support,[],"At the moment we can connect to the API, but viewing high resolution images crashes Nori.
+"
+tjg1/nori,open,Adreno 306 GPU Driver Crash in ImageViewerActivity,"[Label(name=""0.kind: bug""), Label(name=""1.severity: crash"")]","This is a weird edge case that I have no idea how to fix or how to debug.
+### Steps to reproduce
+1. Open Nori. Search for something in SearchActivity. A tag like ""highres"" might make it easier to reproduce this.
+2. Scroll very quickly to the bottom of the GridView. Note which image is the last one on the current page before the infinite scrolling fetch completes.
+3. Click on that image to open it in ImageViewerActivity.
+4. IMMEDIATELY keep trying to scroll to the next image in the ViewPager.
+5. If your device is affected, the screen will freeze and after a few seconds (once the GPU resets) ImageViewerActivity will crash with an ANR dialog.
+6. If you can't reproduce it first time, keep trying (press the back button and restart from step 3). Reproducibility may vary with network latency (how fast the images load).
+### LogCat output
+
+```
+08-10 23:51:30.716 28628-29088/io.github.tjg1.nori W/Adreno-GSL: <gsl_ldd_control:475>: ioctl fd 31 code 0x400c0907 (IOCTL_KGSL_DEVICE_WAITTIMESTAMP_CTXTID) failed: errno 35 Resource deadlock would occur
+08-10 23:51:30.716 28628-29088/io.github.tjg1.nori W/Adreno-GSL: <log_gpu_snapshot:384>: panel.gpuSnapshotPath is not set.not generating user snapshot
+08-10 23:51:30.716 28628-29088/io.github.tjg1.nori W/Adreno-EGLSUB: <updater_thread:428>: waitFunc failed
+08-10 23:51:30.744 28628-28628/io.github.tjg1.nori V/ImageViewTouchBase: min: 1.0, max: 1.0, result: 0.0
+08-10 23:51:31.720 28628-28644/io.github.tjg1.nori W/Adreno-GSL: <gsl_ldd_control:475>: ioctl fd 31 code 0xc038093d (IOCTL_KGSL_SUBMIT_COMMANDS) failed: errno 35 Resource deadlock would occur
+08-10 23:51:31.720 28628-28644/io.github.tjg1.nori W/Adreno-GSL: <log_gpu_snapshot:384>: panel.gpuSnapshotPath is not set.not generating user snapshot
+08-10 23:51:31.721 28628-28644/io.github.tjg1.nori W/Adreno-GSL: <gsl_ldd_control:475>: ioctl fd 31 code 0xc038093d (IOCTL_KGSL_SUBMIT_COMMANDS) failed: errno 35 Resource deadlock would occur
+08-10 23:51:31.721 28628-28644/io.github.tjg1.nori W/Adreno-GSL: <log_gpu_snapshot:384>: panel.gpuSnapshotPath is not set.not generating user snapshot
+08-10 23:51:31.725 28628-28644/io.github.tjg1.nori W/Adreno-GSL: <gsl_ldd_control:475>: ioctl fd 31 code 0xc038093d (IOCTL_KGSL_SUBMIT_COMMANDS) failed: errno 35 Resource deadlock would occur
+08-10 23:51:31.725 28628-28644/io.github.tjg1.nori W/Adreno-GSL: <log_gpu_snapshot:384>: panel.gpuSnapshotPath is not set.not generating user snapshot
+08-10 23:51:31.725 28628-28644/io.github.tjg1.nori W/Adreno-EGL: <qeglDrvAPI_eglSwapBuffers:3796>: EGL_CONTEXT_LOST
+08-10 23:51:31.725 28628-28644/io.github.tjg1.nori A/OpenGLRenderer: Encountered EGL error 12302 EGL_CONTEXT_LOST during rendering
+08-10 23:51:31.725 28628-28644/io.github.tjg1.nori A/libc: Fatal signal 6 (SIGABRT), code -6 in tid 28644 (RenderThread)
+```
+### Things to confirm
+
+What devices does it occur on? Does it only happen with PicassoImageFragments? (**no**)
+### Working theory
+
+None. Thought that loading images (using picasso) into ImageViewZoom during the ViewPager transition causes this, but that's not the case (tried commenting image loading code). It's EXTREMELY hard to debug, because the app keeps running in the background. It's only the Android rendering thread that freezes.
+### How to fix it
+
+There are some (extremely hacky) ways I can think of that _might_ fix this.
+"
+tjg1/nori,closed,E926 API Support,[],"#53 E926 is the SFW version of E621. They use the same API. The API detection seems to only check the URL. I tried the https://e926.net URL, with no luck. Other than adding this as a supported URL, could the API detection try all versions of the APIs for any unknown URL?
+"
+tjg1/nori,closed,Update Danbooru to use https,[],"This will force Danbooru to use https
+#51
+"
+tjg1/nori,closed,Add E621 support,[],"[Reference](https://github.com/tjg1/norilib/pull/10)
+"
+tjg1/nori,closed,Danbooru Account Login,[],"After entering my account info while setting up Danbooru, I am unable to search for more than two tags. The two tag search limit applies to anon and free accounts only. I have a Platinum account which allows six tags.
+
+I haven't tried to log in with an account with any other site. Danbooru is the only site I have an account for.
+"
+tjg1/nori,closed,Danbooru Account Secure Login,[],"The account login text boxes disappear when trying to use https://danbooru.donmai.us.
+The login boxes are available for http://danbooru.donmai.us.
+
+I'm not sure if this applies to all sites when trying to use HTTPS.
+
+Very insecure, as the username and API token are sent in clear text.
+"
+tjg1/nori,closed,Polish translation,[],"Adds a Polish translation for Nori.
+
+![Screenshot](https://my.mixtape.moe/stvwzu.png)
+"
+tjg1/nori,closed,Added Japanese translation,[],
+tjg1/nori,closed,Activity refactor,[],"The code of some Activities is getting really messy and it would be nice to split out some subclasses (especially adapters) into their own files. 
+"
+tjg1/nori,closed,Donation Activity + Periodical Donation Dialog,[],"Includes a new Activity with donation options and a periodical dialog asking for donations every 3 months (I hope that's not too bad). Donation methods are configured in the build.gradle file, so different methods for different build flavors (fdroid vs googleplay) can easily be provided in the future.
+
+![Donation Acitivity Screenshot](https://my.mixtape.moe/bwoxtv.png)
+"
+tjg1/nori,closed,Keyboard navigation,[],"Add Keyboard navigation (AD and arrow keys) to ImageViewerActivity
+"
+tjg1/nori,closed,Generate assets for the new launcher icon,[],"Closes #41
+"
+tjg1/nori,closed,Don't pass entire SearchResults to ImageViewerActivity,[],"This is to prevent TransactionTooLargeExceptions or running out of memory when scrolling too far down the GridView in SearchActivity.
+
+Fixes #31
+"
+tjg1/nori,closed,Launch ServiceSettingsActivity if no services are set,[],"The Play Store version of the app will not come with any services pre-configured, so adding a new Service will be the first thing that they user will have to do in order to use the app.
+- [ ] Remove Safebooru from default service list (playstore branch only)
+- [ ] Launch ServiceSettingsActivity if no services were added by the user
+- [ ] Create a web catalogue of SFW sites that Nori can be used with
+- [ ] Add a link to that catalogue to ServiceSettingsActivity
+"
+tjg1/nori,closed,Add an option to add a new service to the service dropdown in SearchActivity,[],"Now that SearchActivity is using a simple Spinner for selecting services (instead of ActionBar navigation), it should be easier to include a link to ServiceSettingsActivity.
+
+In the Play Store version of the app, the user should be redirected to ServiceSettingsActivity at first launch, since it will not come with any services pre-configured.
+"
+tjg1/nori,closed,Generate PNG assets for the new launcher icon,[],"An SVG for the new launcher icon was committed in 7ca8ea999e285c4d5896031209657c800d9f58a6. 
+
+Consider only including one PNG icon for xxxhdpi and letting the OS do the scaling.
+"
+tjg1/nori,closed,nori logo added,[],"a simple logo addition
+"
+tjg1/nori,closed,Add contributing.json (GitMagic),[],"Thanks for trying out [GitMagic](https://gitmagic.io/).
+
+Use this pull request to discuss and define what contribution guidelines you want to enforce in this repository. [Here's a list](https://gitmagic.io/rules) of all available rules.
+
+If you're happy with the set of rules as it is, you can go ahead and merge it.
+
+If there is any rule that you are missing, or if you have any questions, send us an email at hello@gitmagic.io, we're happy to help.
+
+Good luck! :bowtie:
+#### How to test this PR
+
+It is not possible to test this pull request without merging it. Once merged, you can verify that your rules are being enforced by either opening a new pull request or creating an issue.
+<sub>
+This pull request was made by [GitMagic](https://gitmagic.io/) – Magically enforcing your contribution guidelines.
+</sub>
+"
+tjg1/nori,closed,Adjust PicassoImageFragment default scale for high-dpi devices,[],"Low resolution images look too small on xxxhdpi devices. Make sure to check for screen density and not screen resolution to avoid scaling artifacts on tablets.
+"
+tjg1/nori,closed,Create a new Task for each search when starting a new SearchActivity,[],"Pass the `FLAG_ACTIVITY_NEW_TASK` each time SearchActivity is started with a new Search.
+
+This will allow the OS to better manage killing background Activities when running low on memory and make sure that the right Activity state is restored after the app was left open in the background.
+
+For more information: https://developer.android.com/guide/components/tasks-and-back-stack.html (Warning: if you're not familiar with Android Activity lifecycle, this might make your head explode.)
+- [ ] Pass the flag when starting SearchActivity from itself.
+- [ ] Pass the flag when starting SearchActivity from ImageViewerActivity
+- [ ] Make sure there is only one ImageViewerActivity per Task.
+"
+tjg1/nori,closed,Android 6.0 permissions,[],"Ask for storage permissions before downloading images.
+"
+tjg1/nori,closed,Add donation links/dialog,[],"Add links to the Patreon campaign in SettingsActivity and a periodical dialog that asks the user to make a donation to support the project. The Play Store version can also ask the user to make a donation using in-app payments. The open-source (F-Droid) version can't use a binary blob SDK to do this.
+- [x] Activity with a link to the Patreon campaign.
+- [x] Periodical Dialog.
+- [x] In-app payments or PayPal SDK in the Play Store version of the app.
+"
+tjg1/nori,closed,Accept empty queries in SearchActivity,[],"Fixes #25 
+"
+tjg1/nori,closed,Replace ActionBars with Toolbars,[],"Fixes #26 
+"
+tjg1/nori,closed,Add WebM/MP4 Support,[],"Add support for playing WebM support. This can be done by extending the ImageFragment class like for GIFs.
+"
+tjg1/nori,closed,Don't pass entire SearchResult when opening ImageViewerActivity,[],"If you scroll far enough down and select an image, Nori will crash while trying to pass on the SearchResult to ImageViewerActivity running out of available memory.
+
+The best way to fix this would be to implement some sort of ""recycling algorithm"" for infinite scrolling, so that images further up get removed from the SearchResult as you keep scroll down. This could require implementing infinite scrolling for scrolling up, for cases when user scrolls far enough down to activate recycling and wants to return to an image further up.
+
+The amount of images that gets passed on to ImageViewerActivity could also be limited (and the same recycling algorithm implemented for infinite swiping).
+"
+tjg1/nori,closed,Use Material Design,[],"Switch from using the old Holo appcompat theme to Material Design
+- [ ] Collapsible ActionBars
+- [ ] Fix settings ListView padding
+- [ ] MaterialSettings
+- [x] New Icon
+- [ ] Let user choose ImageViewerActivity background colour/theme
+- [ ] Make sure the ImageViewerActivity background is actually black (as in #000000) on OLED screens
+- [ ] Add an option to add a new service to the service dropdown in SearchActivity
+- [ ] Download progress bar for API requests and image downloads
+"
+tjg1/nori,closed,Update dependencies,[],"Use the latest versions of dependencies, for both Nori and Norilib
+- Nori
+  - [x] appcompat-v7
+  - [x] appcompat-v4
+  - [ ] okhttp
+  - [ ] okhttp-urlconnection
+  - [ ] picasso
+  - [ ] fest-assert-core
+- Norlib
+  - [ ] okhttp
+  - [ ] commons-collections4
+  - [ ] fest-assert-core
+"
+tjg1/nori,closed,Crash when restoring state of suspended activities,[],"Steps to reproduce: Reopen Nori after it's been suspended by the OS and the Activity state has to be restored at launch.
+### logcat
+
+```
+07-24 00:16:56.185 32461 32461 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.cuddlesoft.nori/com.cuddlesoft.nori.ImageViewerActivity}: android.util.AndroidRunti
+meException: Window feature must be requested before adding content
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2450)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2510)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.app.ActivityThread.-wrap11(ActivityThread.java)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1363)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.os.Handler.dispatchMessage(Handler.java:102)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.os.Looper.loop(Looper.java:148)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.app.ActivityThread.main(ActivityThread.java:5461)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at java.lang.reflect.Method.invoke(Native Method)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime: Caused by: android.util.AndroidRuntimeException: Window feature must be requested before adding content
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.support.v7.app.AppCompatDelegateImplV7.throwFeatureRequestIfSubDecorInstalled(AppCompatDelegateImplV7.java:1711)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.support.v7.app.AppCompatDelegateImplV7.requestWindowFeature(AppCompatDelegateImplV7.java:585)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.support.v7.app.AppCompatActivity.supportRequestWindowFeature(AppCompatActivity.java:227)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at com.cuddlesoft.nori.ImageViewerActivity.onCreate(ImageViewerActivity.java:99)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.app.Activity.performCreate(Activity.java:6251)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1108)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2403)
+07-24 00:16:56.185 32461 32461 E AndroidRuntime:        ... 9 more
+```
+"
+tjg1/nori,closed,Android 6.0 Permissions,[],"In order to get a fully functional build with SDK-24 (Marshmallow), the new permission model has to be used for the following features:
+- [ ] Storage read/write permission when downloading images in ImageViewerActivity
+"
+tjg1/nori,closed,Replace ActionBars with Toolbars,[],"ActionBar related code has been deprecated as of API 21 and replaced with [Toolbars](https://developer.android.com/reference/android/support/v7/widget/Toolbar.html).
+"
+tjg1/nori,closed,Make SearchView in SearchActivity accept empty queries,[],"The current solution based on using a modified appcompat-v7 is too complicated and there are simpler ways of doing this.
+"
+tjg1/nori,closed,Fix ImageViewerActivity horizontal scrolling,[],"This is currently VERY buggy.
+
+The are some solutions on SO involving [ImageViewZoom](https://github.com/sephiroth74/ImageViewZoom), instead of TouchImageView, which nori currently uses.
+
+Whatever solution is used, it needs to be compatible with Picasso, the library used to load images from the network.
+
+Example of apps that do this well: Twitter, Fenix. 
+
+I would love to find an open source app, which has a good implementation of this.
+"
+tjg1/nori,closed,Get nori back on the Play Store,[],"Nori has been removed from the Google Play Store due to a violation of their nudity and sexual content policy. I was able to submit an appeal, but it was refused with no explanation. I find this unfair, since even though Nori can be used to access image galleries containing sexually explicit content, it is not the app's intended purpose. Since I don't have any control over which APIs users choose to access, it's like banning a web browser for being able to access porn. 
+
+Nori comes with only one API server pre-configured - [Safebooru](http://safebooru.org), which is a safe-for-work anime art gallery. A SFW search filter is also enabled by default for all API servers, including ones added by the user (but can be manually disabled).
+
+There are some mentions of NSFW websites like [Danbooru](https://github.com/r888888888/danbooru) and [Gelbooru](https://github.com/zixaphir/gelbooru-fork) (links are to their GitHub repositories and SFW) in the [code](https://github.com/tjg1/norilib/tree/master/src/main/java/com/cuddlesoft/norilib/clients), since their software is the one that most other sites and APIs are based on. There are [strings](https://github.com/tjg1/nori/blob/master/app/src/main/res/values/strings.xml) such as `""Mild nudity and sexually-suggestive content""` that relate to the SFW search result filter. My belief is that Google uses an automated process to scan APKs for strings that relate to sexually explicit content. In order to make Nori available on the Play Store, I'd have to remove all mentions of NSFW content and sites like Danbooru from the Play Store build.
+
+In the latest version, there is auto-complete to help users enter API settings for the most popular sites, including some NSFW ones. An example of how this works is that when you're adding a site named ""Safebooru"", Nori fills in the rest of the API settings for you. This will probably have to be removed as well. 
+
+Let me make it absolutely clear that I have no intention of preventing users from accessing whatever sites they want using Nori. It's possible that I will have to force the SFW search result filter in the Google Play version of the app. There will always be an unrestricted APK available from GitHub and I'll also consider putting Nori on an alternative app store, such as [F-Droid](https://f-droid.org/).
+
+**PERSONAL NOTE**: The removal from the Play Store demotivated me from working on Nori and I've been struggling with depression and severe anxiety. This meant that that the project hasn't been maintained during the last 24 months and the last release was 2.0.0-RC2. My mental health is improving and I'm ready to get back to working on my open source projects. If you would like to talk or help me work on/translate Nori, you can find me on Freenode as `tjg1`. Maybe we could even start an IRC channel for Nori.
+"
+tjg1/nori,closed,Yandere images,[],"Nori doesn't displaying yande.re images. With preview all ok but full image don't appearing. I was thinking problem coming from API, but urls fetching correctly.
+"
+tjg1/nori,closed,Make master the main development branch again,[],"I think we're finally at a point where the develop branch (2.x) is more stable than the old (1.x) master branch.
+"
+tjg1/nori,closed,Merge API settings branch into develop,[],
+tjg1/nori,closed,Race condition and NPE in SearchActivity,[],"```
+    java.lang.NullPointerException
+            at com.cuddlesoft.nori.SearchActivity.onSearchAPIChanged(SearchActivity.java:165)
+            at com.cuddlesoft.nori.SearchActivity$ServiceDropdownAdapter.onNavigationItemSelected(SearchActivity.java:451)
+            at android.support.v7.app.ActionBarImplICS$OnNavigationListenerWrapper.onNavigationItemSelected(ActionBarImplICS.java:428)
+            at com.android.internal.widget.ActionBarView$1.onItemSelected(ActionBarView.java:145)
+            at android.widget.AdapterView.fireOnSelected(AdapterView.java:893)
+            at android.widget.AdapterView.access$200(AdapterView.java:48)
+            at android.widget.AdapterView$SelectionNotifier.run(AdapterView.java:861)
+            at android.os.Handler.handleCallback(Handler.java:733)
+            at android.os.Handler.dispatchMessage(Handler.java:95)
+            at android.os.Looper.loop(Looper.java:136)
+            at android.app.ActivityThread.main(ActivityThread.java:5139)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:515)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:796)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:612)
+            at dalvik.system.NativeStart.main(Native Method)
+```
+"
+tjg1/nori,closed,Colorcode tags in image viewer's tag list dialog,[],"Tags should be color coded depending on their type (copyright/artist/character/general)
+"
+tjg1/nori,closed,repository for nori2,[],"as nori2 is a complete rewrite of nori, wouldn't it make more sense to create a new repository instead of reusing the old one since the old one is basically a different project.
+"
+tjg1/nori,closed,Change minSdkVersion to 14,[],"Remove ActionBarSherlock and most support library stuff
+"
+tjg1/nori,closed,Integrate Google Analytics,[],
+tjg1/nori,closed,Investigate crash reports,[],"Some users are reporting that the app crashes after a few minutes of use. No stack traces or crash reports were submitted so far. To investigate, run [`monkey`](http://developer.android.com/tools/help/monkey.html) on `ImageViewerActivity` and look for possible memory issues.
+"
+tjg1/nori,closed,Add settings for thumbnail size/scaling,[],"Allow user to change thumbnail size/cropping type.
+"
+tjg1/nori,open,Set up continuous integration,"[Label(name=""6.topic: Developer Experience""), Label(name=""6.topic: Unit Testing"")]","Either travis-ci or jenkins
+"
+tjg1/nori,open,Write Robotium tests,"[Label(name=""0.kind: enhancement""), Label(name=""6.topic: Unit Testing"")]",
+tjg1/nori,closed,Switch to Gradle build system,[],"Switch to the new Gradle based Android build system.
+"
+tjg1/nori,closed,GIF support,[],"Show animated images inside of WebViews
+"
+tjg1/nori,closed,*.booru.org API support,[],
+tjg1/nori,closed,Add tag list in ImageViewer,[],"Fixes #2 
+"
+tjg1/nori,closed,Remove unused comment API stubs and refactor DanbooruLegacy into an abstract class,[],"Remove unused comment method stubs and create separate classes for Shimmie2 and Gelbooru APIs extending DanbooruLegacy
+"
+tjg1/nori,closed,Implement v2 moebooru json api,[],"Moebooru (https://github.com/moebooru/moebooru) which konachan and yande.re uses has a undocumented v2 json api.
+
+It is used in ""post/browse"" if you play around in it while watching web inspector you can see how the api is used. It is also much faster then the xml version which we plan on deprecating in the near future(tm)
+
+(also thanks for open sourcing the app, I am thinking of posting about it on yande.re)
+"
+tjg1/nori,closed,java.lang.OutOfMemoryError in ImageViewerActivity,[],"Device: Nexus 7 Wi-Fi (grouper)
+Android Version: 4.2.2 (CM 10.1)
+Retraced stack trace: 
+
+```
+java.lang.OutOfMemoryError
+at java.io.ByteArrayOutputStream.toByteArray(ByteArrayOutputStream.java:122)
+at com.android.volley.toolbox.BasicNetwork.performRequest(Unknown Source)
+                                           logSlowRequests
+                                           attemptRetryOnException
+                                           addCacheHeaders
+                                           entityToBytes
+                                           convertHeaders
+at com.android.volley.toolbox.BasicNetwork.performRequest(Unknown Source)
+                                           logSlowRequests
+                                           attemptRetryOnException
+                                           addCacheHeaders
+                                           entityToBytes
+                                           convertHeaders
+at com.android.volley.NetworkDispatcher.run(Unknown Source)
+```
+"
+tjg1/nori,closed,Implement search suggestions based on user's search history,[],"Suggest tags in SearchActivity's search view that the user has already searched for in the past. 
+The search history database could come pre-populated with [Danbooru's top ~100 tags](http://danbooru.donmai.us/tags?utf8=%E2%9C%93&search%5Bname_matches%5D=&search%5Bcategory%5D=&search%5Bsort%5D=count&search%5Bhide_empty%5D=yes&commit=Search).
+The user should have options to disable this feature and clear their search history.
+"
+tjg1/nori,closed,Tag viewer/browser,[],"Implement a Fragment that can be used both in SearchActivity and ImageViewerActivity to display image tags. Tags should be properly colour coded based on their type (artist/copyright/general/character/etc). Use the colour scheme Danbooru uses as a reference.
+"
+tjg1/nori,closed,Allow empty search queries in SearchActivity,[],

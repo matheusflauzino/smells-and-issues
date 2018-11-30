@@ -1,0 +1,92 @@
+repository,state,title,label,body
+onyxbits/listmyaps,open,Add Google Play & F-Droid Badges,[],
+onyxbits/listmyaps,open,Add a HTML Table template,[],"First of all, thank you for this **great** application, it really works like a charm!
+#### Synopsis
+
+The aim of this pull request is to add another default template, which would show up under the other default templates in the Template Editor and behave accordingly. 
+
+This new template would be a HTML template in table format and it would include almost every custom variable available. I really don't know if this works as it should, but this is what I've done:
+#### Workflow
+1. Modify the HTML source code of a full web page (such as [this one](https://raw.githubusercontent.com/auberginehill/list-my-apps-template-table/master/all_in_one.html), for example) to suit one's taste (here the ASCII art was dropped, the footer was cropped and the header Google Store was changed to Google Play).
+2. Add \n to the beginning of all lines using for example LibreOffice.
+3. Header
+   1. Escape the Header with XML-rules ([XML Escape](http://www.freeformatter.com/xml-escape.html)).
+   2. Escape the Header with Java rules ([Java/.Net String Escape](http://www.freeformatter.com/java-dotnet-escape.html) - I guess there are too many newlines and carriage returns after this step, so onto the Steps 3 and 4...).
+   3. Find the string: \r\n\\n and replace it with: \n
+   4. Make sure the string ends with only a single instance of \n  
+4. Footer
+   1. Escape the Footer with XML-rules ([XML Escape](http://www.freeformatter.com/xml-escape.html)).
+   2. Escape the Footer with Java rules ([Java/.Net String Escape](http://www.freeformatter.com/java-dotnet-escape.html) - I guess there are too many newlines and carriage returns after this step, so onto the Steps 3 and 4...).
+   3. Find the string: \r\n\\n and replace it with: \n  
+   4. Make sure the string doesn't end with either \n or \r 
+5. Escape Body with custom Java rules.
+   1. [Java/.Net String Escape](http://www.freeformatter.com/java-dotnet-escape.html) (Again, I guess there are too many newlines and carriage returns after this step, so onto the Steps 2 and 3...)
+   2. Find the string: \r\n\\n and replace it with: \n
+   3. Make sure the string ends with only a single instance of \n
+   4. Find: < and replace it with: \u003c
+   5. Find: > and replace it with: \u003e
+6. Insert Header, Body and Footer -sections to \res\values\strings.xml (by adding new &lt;item&gt;&lt;/item&gt; -elements under ""stdheaders"", ""stdformats"" and ""stdfooters"") and give the template a name under ""stdformattitles"".
+#### Other List My Apps custom templates, which can be manually added to the List My Apps' Template Editor (or used for forking...)
+- [List My Apps Template - Table](https://github.com/auberginehill/list-my-apps-template-table)
+- [List My Apps Template - List](https://github.com/auberginehill/list-my-apps-template-list)
+- [List My Apps Template - Pro](https://github.com/auberginehill/list-my-apps-template-pro)
+- [List My Apps Template - Data](https://github.com/auberginehill/list-my-apps-template-data)
+- [List My Apps Template - XML plain](https://github.com/auberginehill/list-my-apps-template-xml-plain)
+- [List My Apps Template - XML style](https://github.com/auberginehill/list-my-apps-template-xml-style)
+- [List My Apps Template - JSON](https://github.com/auberginehill/list-my-apps-template-json)
+#### ToDo
+- I guess also the German localization (\res\values-de\strings.xml) and Italian localization (\res\values-it\strings.xml) should be altered similarly for full deployment.
+#### Notes
+- To make the added strings more legible, the strings could be first unescaped using Java rules (for example [Java/.Net String Escape](http://www.freeformatter.com/java-dotnet-escape.html)) and then unescaped using XML-rules (for example [XML Escape](http://www.freeformatter.com/xml-escape.html)).
+- The deleted &lt;item&gt;&lt;/item&gt; line under ""stdfooters"" was the sixth item, whereas under the other headers concerning default templates there were  originally just five instances of item.
+#### Questions
+- In the header and footer sections (""stdheaders"" and ""stdfooters"") of \res\values\strings.xml, is there a difference between
+    &amp;lt; and \u003c                   or between
+    &amp;gt; and \u003e                   ?
+  
+  If one could use either &amp;lt; or \u003c to escape < (and either &amp;gt; or \u003e to escape >) under ""stdheaders"" and ""stdfooters"" that would streamline the process of adding new templates a bit. 
+"
+onyxbits/listmyaps,open,add simple way of directly installing apps in list,[],"an install button saves one click on install, which is important when you want to reinstall 50 apps on your new phone... Closes: #6
+"
+onyxbits/listmyaps,open,market + html template,[],"It would be nice to have a mix between the Market URL and HTML templates: it could be used to easily publish a list of clickable links to apps that we want to install.
+
+The HTML list links to f-droid directly, which is clunky because it requires an extra click to install. The Market URL list is not clickable...
+
+I made such a list by hand here after modifying the output of Market URL:
+
+http://paste.anarc.at/apps.html
+"
+onyxbits/listmyaps,closed,Localized in Italian language,[],
+onyxbits/listmyaps,closed,Misc. UI Improvements,[],"I feel that the UI, while good overall, could use a little neatening up and perhaps some polish.
+- Could the ""Copy/Share as"" selection be moved to when the user needs it? E.g. have it appear at the top of the selection dialog? The idea here is to de-clutter the main screen. (Maybe this option would also better suit a settings menu but research may have to be done on how often users actually change this option.)
+- ""Always link to Google Play"" seems that it would be better suited to a settings menu. Again, this would help de-clutter the main screen.
+- The bottom of the apps list doesn't align with the bottom of the screen and breaks the overall feel of the ListView.
+- Find a more appropriate icon for the ""Browse"" Action Bar item. The two arrows would currently seem to signify ""upload and download"", which to an extent is accurate, but gives the user fairly mixed messages. Are you browsing, are you uploading/downloading or are you submitting data?
+- Reduce Action Bar items to showing icons only, adhering to the ""long-press hint"" pattern just in case the user isn't sure about what each item does. This would require finding a more appropriate ""Browse"" icon, as mentioned above.
+- Template editing is pretty cumbersome. Who likes typing $, { or } on a phone keyboard? Maybe add some buttons to the editor for common actions, e.g. ""Insert app title"", ""Insert comment"", etc. Perhaps even utilise a dropdown menu?
+- Add a ""preview"" button to the template editor so that users can see a demonstration of what their template will look like. Perhaps with sample data randomly selected from the user's installed apps?
+- Remove redundant ""You can have as many as you like"" text from the template editor. Users will not assume that there are any limits to the number of templates.
+- The ""No apps tagged!"" text may be better suited to a toast notification?
+
+I'd be interested to hear responses to any of the points above. I'm fully prepared to submit code for some/all of these points but I'd like to hear some feedback first and discuss how to progress.
+
+Regards,
+- Michael.
+"
+onyxbits/listmyaps,closed,How to help with French translation ?,[],"Last thread for today :)
+I'd like to help translating into french, but have no idea which file or source I should edit to give you the correct words, please could you advise ?
+Thanks again.
+"
+onyxbits/listmyaps,closed,"Add a ""Save as"" option to just register the file on the smartphone",[],"Hello,
+When I began to use ""List My Apps"", I was surprised not to find how save the txt (or html if it is available in the future) directly on my smartphone (by opening the file explorer) because it was the first option I searched.
+Then I saw the ""Share"" which opened a menu with a long list of applications (and some of them like APG, AnyMemo, Aard... not dedicated to file sharing), finally I tried with Dropbox and it worked very fine. The File Explorer was not on this list.
+But I would like to also have an option to save the file on the phone (on intern memory or SD Card) and be able to copy it after when connecting the device on USB to my computer, or just open it on a text editor / browser on the smartphone.
+Do you think it would be possible ?
+Thanks !
+"
+onyxbits/listmyaps,closed,Create full html page like txt but with working links.,[],"Can the program be made to product a full ""myapps.html"" webpage which can be viewed locally or shared?  Currently it just provided me some garbled links...and the text mode while detailed doesn't provide links to google play etc.  
+
+You perhaps could also consider checking the google play links for a bad return code and removing the one's that are not valid when it's turned on for all apps.
+
+Thanks for your app.  I find it very useful to pass info along to other of apps I recommend.
+"

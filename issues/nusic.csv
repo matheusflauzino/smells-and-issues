@@ -1,0 +1,344 @@
+repository,state,title,label,body
+schnatterer/nusic,open,Update to API 26,[],"[Required to release updates to google play after november 1, 2018](https://android-developers.googleblog.com/2017/12/improving-app-security-and-performance.html)
+
+
+See [Migration Guide](https://developer.android.com/distribute/best-practices/develop/target-sdk#prenougat).
+
+This [branch](https://github.com/schnatterer/nusic/tree/feature/api_27) already showed it won't be easy to upgrade to API 27, but maybe 26 is less of a fuss."
+schnatterer/nusic,closed,Does not found music on the device android 6.0.1,[],
+schnatterer/nusic,open,"After pressing make hidden albums reappear, all notifications in settings disappear",[],"Actual Behavior
+After pressing make hidden albums reappear, all notifications in settings disappear.
+
+How To Reproduce
+* Open the app
+* Go to settings
+* Pressing **make hidden albums reappear. then all notifications in the settings will disappear
+* App: Nusic version 3.3.0
+* Operating system: Oppo a57 android version 6.0.1
+
+Recording Of The Bug
+https://youtu.be/EFzJkV1VPYM
+
+Logcat
+`2018-06-01 00:53:49,844 [main] INFO  ROOT - No threshold filter in appender ""file"" configured. Creating new one
+2018-06-01 00:53:49,863 [main] INFO  ROOT - Setting appender ""file"" level to DEBUG. root.getLevel(): TRACE
+2018-06-01 00:53:49,863 [main] INFO  ROOT - Setting appender ""logcat"" level to DEBUG. root.getLevel(): TRACE
+2018-06-01 00:53:49,867 [main] DEBUG i.s.n.a.a.AbstractApplication - handleAppVersion(): currentVersionCode=21; lastVersionCode=21
+2018-06-01 00:53:49,964 [main] DEBUG i.s.n.a.activities.MainActivity - Requesting read external storage permission
+2018-06-01 00:53:50,240 [main] DEBUG i.s.n.a.activities.MainActivity - Read external storage permission granted
+2018-06-01 00:53:50,243 [main] DEBUG i.s.n.a.LoadNewRelasesServiceBinding - Service not bound. Binding
+2018-06-01 00:53:50,255 [main] DEBUG i.s.n.a.activities.MainActivity - Explicit refresh triggered. Service was  not running before
+2018-06-01 00:53:50,315 [main] DEBUG i.s.n.android.service.WakefulService - Lock acquired
+2018-06-01 00:53:50,315 [main] DEBUG i.s.n.android.service.WakefulService - Calling service method
+2018-06-01 00:53:50,316 [main] DEBUG i.s.n.a.s.LoadNewReleasesService - Flags = 0; startId = 1. Intent = Intent { cmp=info.schnatterer.nusic/.android.service.LoadNewReleasesService }
+2018-06-01 00:53:50,317 [main] DEBUG i.s.n.android.service.WakefulService - Lock released
+2018-06-01 00:53:50,318 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnection - Service connected.
+2018-06-01 00:53:50,319 [main] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread not working yet, starting.
+2018-06-01 00:53:50,340 [Thread-20816] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread starting work
+2018-06-01 00:53:50,342 [Thread-20816] DEBUG i.s.n.a.s.LoadNewReleasesService - Service: Explicit stop self
+2018-06-01 00:53:50,347 [main] DEBUG i.s.n.a.s.LoadNewReleasesService - Nusic service: onDestroy()
+2018-06-01 00:54:02,395 [main] DEBUG i.s.n.a.LoadNewRelasesServiceBinding - Unbinding service
+2018-06-01 00:55:03,154 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device offline
+2018-06-01 00:55:03,527 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 00:55:32,297 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 00:55:32,368 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 00:56:12,774 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device offline
+2018-06-01 00:56:13,297 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 00:56:13,969 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 00:56:14,036 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 00:56:25,083 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device offline
+2018-06-01 00:56:25,610 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 00:56:26,080 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 00:56:26,234 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 00:57:17,538 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device offline
+2018-06-01 00:57:18,858 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 00:59:32,958 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 00:59:33,082 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 01:00:08,403 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device offline
+2018-06-01 01:00:08,811 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 01:00:09,391 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 01:00:09,444 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 01:00:39,539 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device offline
+2018-06-01 01:00:39,986 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 01:00:40,667 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 01:00:40,864 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnectivityReceiver - Connectivity receiver: Device online
+2018-06-01 01:06:28,032 [main] WARN  i.s.n.a.LoadNewRelasesServiceBinding - Service unexpectedly not bound, assuming it's not running
+2018-06-01 01:06:42,285 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:08:02,157 [main] WARN  i.s.n.a.LoadNewRelasesServiceBinding - Service unexpectedly not bound, assuming it's not running
+2018-06-01 01:08:11,191 [main] WARN  i.s.n.a.LoadNewRelasesServiceBinding - Service unexpectedly not bound, assuming it's not running
+2018-06-01 01:08:21,297 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:08:21,312 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:11:23,075 [main] WARN  i.s.n.a.LoadNewRelasesServiceBinding - Service unexpectedly not bound, assuming it's not running
+2018-06-01 01:11:34,457 [main] WARN  i.s.n.a.LoadNewRelasesServiceBinding - Service unexpectedly not bound, assuming it's not running
+2018-06-01 01:11:41,041 [main] WARN  i.s.n.a.LoadNewRelasesServiceBinding - Service unexpectedly not bound, assuming it's not running
+2018-06-01 01:11:55,641 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:11:55,644 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:11:55,653 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:11:55,663 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:11:55,672 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:12:10,791 [main] WARN  i.s.n.a.LoadNewRelasesServiceBinding - Service unexpectedly not bound, assuming it's not running
+2018-06-01 01:13:29,424 [main] WARN  i.s.n.a.LoadNewRelasesServiceBinding - Service unexpectedly not bound, assuming it's not running
+2018-06-01 01:13:31,274 [main] DEBUG i.s.n.a.LoadNewRelasesServiceBinding - Service not bound. Binding
+2018-06-01 01:13:31,304 [main] DEBUG i.s.n.a.activities.MainActivity - Explicit refresh triggered. Service was  not running before
+2018-06-01 01:13:31,330 [main] DEBUG i.s.n.android.service.WakefulService - Lock acquired
+2018-06-01 01:13:31,331 [main] DEBUG i.s.n.android.service.WakefulService - Calling service method
+2018-06-01 01:13:31,332 [main] DEBUG i.s.n.a.s.LoadNewReleasesService - Flags = 0; startId = 1. Intent = Intent { cmp=info.schnatterer.nusic/.android.service.LoadNewReleasesService }
+2018-06-01 01:13:31,334 [main] DEBUG i.s.n.android.service.WakefulService - Lock released
+2018-06-01 01:13:31,345 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnection - Service connected.
+2018-06-01 01:13:31,346 [main] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread not working yet, starting.
+2018-06-01 01:13:31,348 [Thread-20823] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread starting work
+2018-06-01 01:13:31,352 [Thread-20823] DEBUG i.s.n.a.s.LoadNewReleasesService - Checking if read external storage permission is set
+2018-06-01 01:13:31,360 [Thread-20823] DEBUG i.s.n.a.s.LoadNewReleasesService - External storage permission = true
+2018-06-01 01:13:31,364 [Thread-20823] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread: Calling refreshReleases()
+2018-06-01 01:13:31,483 [Thread-20823] DEBUG org.a.g.a.a - Hitting url: https://musicbrainz.org/ws/2/release/?query=type%3Aalbum+AND+date%3A%5B2018-03-01+TO+%3F%5D+AND+artist%3A%22%3Cunknown%3E%22&limit=100&offset=0
+2018-06-01 01:13:33,088 [Thread-20823] WARN  org.a.h.b.a - Unrecognised Alias attribute: sort-name
+2018-06-01 01:13:33,090 [Thread-20823] WARN  org.a.h.b.a - Unrecognised Alias attribute: type
+2018-06-01 01:13:33,094 [Thread-20823] WARN  org.a.h.b.a - Unrecognised Release Group element: primary-type
+2018-06-01 01:13:33,095 [Thread-20823] WARN  org.a.h.b.a - Unrecognised Release element: release-event-list
+2018-06-01 01:13:33,103 [Thread-20823] WARN  org.a.h.b.a - Unrecognised Release Group element: primary-type
+2018-06-01 01:13:33,105 [Thread-20823] WARN  org.a.h.b.a - Unrecognised Release element: release-event-list
+2018-06-01 01:13:33,107 [Thread-20823] WARN  org.a.h.b.a - Unrecognised Alias attribute: sort-name
+2018-06-01 01:13:33,108 [Thread-20823] WARN  org.a.h.b.a - Unrecognised Alias attribute: type
+2018-06-01 01:13:33,109 [Thread-20823] WARN  org.a.h.b.a - Unrecognised Release Group element: primary-type
+2018-06-01 01:13:33,111 [Thread-20823] WARN  org.a.h.b.a - Unrecognised Release element: release-event-list
+2018-06-01 01:13:33,118 [Thread-20823] DEBUG org.a.g.a.a - Hitting url: https://musicbrainz.org/ws/2/release/?query=type%3Aalbum+AND+date%3A%5B2018-03-01+TO+%3F%5D+AND+artist%3A%22Virzha%22&limit=100&offset=0
+2018-06-01 01:13:33,740 [Thread-20823] DEBUG i.s.n.a.LoadNewRelasesServiceBinding - Service: Notifying activity if result changed. ResultChanged=true. Activity=info.schnatterer.nusic.android.activities.MainActivity@3b5ba78
+2018-06-01 01:13:33,808 [Thread-20823] DEBUG i.s.n.a.s.LoadNewReleasesService - Scheduled task to run again every 1 days, starting at Sat Jun 02 01:13:33 GMT+07:00 2018
+2018-06-01 01:13:33,811 [Thread-20823] DEBUG i.s.n.a.s.LoadNewReleasesService - Service: Explicit stop self
+2018-06-01 01:13:33,814 [main] DEBUG i.s.n.a.s.LoadNewReleasesService - Nusic service: onDestroy()
+2018-06-01 01:13:36,741 [main] DEBUG i.s.n.a.LoadNewRelasesServiceBinding - Service already bound. Calling refreshReleases()
+2018-06-01 01:13:36,742 [main] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread not working yet, starting.
+2018-06-01 01:13:36,744 [main] DEBUG i.s.n.a.activities.MainActivity - Explicit refresh triggered. Service was  not running before
+2018-06-01 01:13:36,746 [Thread-20825] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread starting work
+2018-06-01 01:13:36,749 [Thread-20825] DEBUG i.s.n.a.s.LoadNewReleasesService - Checking if read external storage permission is set
+2018-06-01 01:13:36,750 [Thread-20825] DEBUG i.s.n.a.s.LoadNewReleasesService - External storage permission = true
+2018-06-01 01:13:36,751 [Thread-20825] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread: Calling refreshReleases()
+2018-06-01 01:13:36,794 [Thread-20825] DEBUG org.a.g.a.a - Hitting url: https://musicbrainz.org/ws/2/release/?query=type%3Aalbum+AND+date%3A%5B2018-03-01+TO+%3F%5D+AND+artist%3A%22%3Cunknown%3E%22&limit=100&offset=0
+2018-06-01 01:13:37,430 [Thread-20825] WARN  org.a.h.b.a - Unrecognised Alias attribute: sort-name
+2018-06-01 01:13:37,432 [Thread-20825] WARN  org.a.h.b.a - Unrecognised Alias attribute: type
+2018-06-01 01:13:37,434 [Thread-20825] WARN  org.a.h.b.a - Unrecognised Release Group element: primary-type
+2018-06-01 01:13:37,436 [Thread-20825] WARN  org.a.h.b.a - Unrecognised Release element: release-event-list
+2018-06-01 01:13:37,439 [Thread-20825] WARN  org.a.h.b.a - Unrecognised Release Group element: primary-type
+2018-06-01 01:13:37,441 [Thread-20825] WARN  org.a.h.b.a - Unrecognised Release element: release-event-list
+2018-06-01 01:13:37,445 [Thread-20825] WARN  org.a.h.b.a - Unrecognised Alias attribute: sort-name
+2018-06-01 01:13:37,447 [Thread-20825] WARN  org.a.h.b.a - Unrecognised Alias attribute: type
+2018-06-01 01:13:37,449 [Thread-20825] WARN  org.a.h.b.a - Unrecognised Release Group element: primary-type
+2018-06-01 01:13:37,451 [Thread-20825] WARN  org.a.h.b.a - Unrecognised Release element: release-event-list
+2018-06-01 01:13:37,457 [Thread-20825] DEBUG org.a.g.a.a - Hitting url: https://musicbrainz.org/ws/2/release/?query=type%3Aalbum+AND+date%3A%5B2018-03-01+TO+%3F%5D+AND+artist%3A%22Virzha%22&limit=100&offset=0
+2018-06-01 01:13:38,094 [Thread-20825] DEBUG i.s.n.a.LoadNewRelasesServiceBinding - Service: Notifying activity if result changed. ResultChanged=true. Activity=info.schnatterer.nusic.android.activities.MainActivity@3b5ba78
+2018-06-01 01:13:38,152 [Thread-20825] DEBUG i.s.n.a.s.LoadNewReleasesService - Scheduled task to run again every 1 days, starting at Sat Jun 02 01:13:38 GMT+07:00 2018
+2018-06-01 01:13:38,155 [Thread-20825] DEBUG i.s.n.a.s.LoadNewReleasesService - Service: Explicit stop self
+2018-06-01 01:13:40,429 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:13:40,894 [main] DEBUG i.s.n.a.LoadNewRelasesServiceBinding - Unbinding service
+2018-06-01 01:13:55,375 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:15:03,907 [main] DEBUG i.s.n.a.LoadNewRelasesServiceBinding - Service not bound. Binding
+2018-06-01 01:15:03,916 [main] DEBUG i.s.n.a.activities.MainActivity - Explicit refresh triggered. Service was  not running before
+2018-06-01 01:15:03,928 [main] DEBUG i.s.n.android.service.WakefulService - Lock acquired
+2018-06-01 01:15:03,930 [main] DEBUG i.s.n.android.service.WakefulService - Calling service method
+2018-06-01 01:15:03,931 [main] DEBUG i.s.n.a.s.LoadNewReleasesService - Flags = 0; startId = 1. Intent = Intent { cmp=info.schnatterer.nusic/.android.service.LoadNewReleasesService }
+2018-06-01 01:15:03,933 [main] DEBUG i.s.n.android.service.WakefulService - Lock released
+2018-06-01 01:15:03,938 [main] DEBUG i.s.n.a.s.LoadNewReleasesServiceConnection - Service connected.
+2018-06-01 01:15:03,939 [main] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread not working yet, starting.
+2018-06-01 01:15:03,989 [Thread-20826] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread starting work
+2018-06-01 01:15:03,993 [Thread-20826] DEBUG i.s.n.a.s.LoadNewReleasesService - Checking if read external storage permission is set
+2018-06-01 01:15:03,995 [Thread-20826] DEBUG i.s.n.a.s.LoadNewReleasesService - External storage permission = true
+2018-06-01 01:15:03,996 [Thread-20826] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread: Calling refreshReleases()
+2018-06-01 01:15:04,022 [Thread-20826] DEBUG org.a.g.a.a - Hitting url: https://musicbrainz.org/ws/2/release/?query=type%3Aalbum+AND+date%3A%5B2018-03-01+TO+%3F%5D+AND+artist%3A%22%3Cunknown%3E%22&limit=100&offset=0
+2018-06-01 01:15:04,619 [Thread-20826] WARN  org.a.h.b.a - Unrecognised Alias attribute: sort-name
+2018-06-01 01:15:04,621 [Thread-20826] WARN  org.a.h.b.a - Unrecognised Alias attribute: type
+2018-06-01 01:15:04,624 [Thread-20826] WARN  org.a.h.b.a - Unrecognised Release Group element: primary-type
+2018-06-01 01:15:04,626 [Thread-20826] WARN  org.a.h.b.a - Unrecognised Release element: release-event-list
+2018-06-01 01:15:04,628 [Thread-20826] WARN  org.a.h.b.a - Unrecognised Release Group element: primary-type
+2018-06-01 01:15:04,631 [Thread-20826] WARN  org.a.h.b.a - Unrecognised Release element: release-event-list
+2018-06-01 01:15:04,634 [Thread-20826] WARN  org.a.h.b.a - Unrecognised Alias attribute: sort-name
+2018-06-01 01:15:04,636 [Thread-20826] WARN  org.a.h.b.a - Unrecognised Alias attribute: type
+2018-06-01 01:15:04,638 [Thread-20826] WARN  org.a.h.b.a - Unrecognised Release Group element: primary-type
+2018-06-01 01:15:04,640 [Thread-20826] WARN  org.a.h.b.a - Unrecognised Release element: release-event-list
+2018-06-01 01:15:04,934 [Thread-20826] DEBUG org.a.g.a.a - Hitting url: https://musicbrainz.org/ws/2/release/?query=type%3Aalbum+AND+date%3A%5B2018-03-01+TO+%3F%5D+AND+artist%3A%22Virzha%22&limit=100&offset=0
+2018-06-01 01:15:05,587 [Thread-20826] DEBUG i.s.n.a.LoadNewRelasesServiceBinding - Service: Notifying activity if result changed. ResultChanged=true. Activity=info.schnatterer.nusic.android.activities.MainActivity@3b5ba78
+2018-06-01 01:15:05,645 [Thread-20826] DEBUG i.s.n.a.s.LoadNewReleasesService - Scheduled task to run again every 1 days, starting at Sat Jun 02 01:15:05 GMT+07:00 2018
+2018-06-01 01:15:05,648 [Thread-20826] DEBUG i.s.n.a.s.LoadNewReleasesService - Service: Explicit stop self
+2018-06-01 01:15:05,650 [main] DEBUG i.s.n.a.s.LoadNewReleasesService - Nusic service: onDestroy()
+2018-06-01 01:15:06,691 [main] DEBUG i.s.n.a.LoadNewRelasesServiceBinding - Service already bound. Calling refreshReleases()
+2018-06-01 01:15:06,691 [main] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread not working yet, starting.
+2018-06-01 01:15:06,711 [main] DEBUG i.s.n.a.activities.MainActivity - Explicit refresh triggered. Service was  not running before
+2018-06-01 01:15:06,712 [Thread-20827] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread starting work
+2018-06-01 01:15:06,716 [Thread-20827] DEBUG i.s.n.a.s.LoadNewReleasesService - Checking if read external storage permission is set
+2018-06-01 01:15:06,718 [Thread-20827] DEBUG i.s.n.a.s.LoadNewReleasesService - External storage permission = true
+2018-06-01 01:15:06,718 [Thread-20827] DEBUG i.s.n.a.s.LoadNewReleasesService - Service thread: Calling refreshReleases()
+2018-06-01 01:15:06,742 [Thread-20827] DEBUG org.a.g.a.a - Hitting url: https://musicbrainz.org/ws/2/release/?query=type%3Aalbum+AND+date%3A%5B2018-03-01+TO+%3F%5D+AND+artist%3A%22%3Cunknown%3E%22&limit=100&offset=0
+2018-06-01 01:15:07,406 [Thread-20827] WARN  org.a.h.b.a - Unrecognised Alias attribute: sort-name
+2018-06-01 01:15:07,408 [Thread-20827] WARN  org.a.h.b.a - Unrecognised Alias attribute: type
+2018-06-01 01:15:07,410 [Thread-20827] WARN  org.a.h.b.a - Unrecognised Release Group element: primary-type
+2018-06-01 01:15:07,412 [Thread-20827] WARN  org.a.h.b.a - Unrecognised Release element: release-event-list
+2018-06-01 01:15:07,415 [Thread-20827] WARN  org.a.h.b.a - Unrecognised Release Group element: primary-type
+2018-06-01 01:15:07,417 [Thread-20827] WARN  org.a.h.b.a - Unrecognised Release element: release-event-list
+2018-06-01 01:15:07,420 [Thread-20827] WARN  org.a.h.b.a - Unrecognised Alias attribute: sort-name
+2018-06-01 01:15:07,422 [Thread-20827] WARN  org.a.h.b.a - Unrecognised Alias attribute: type
+2018-06-01 01:15:07,424 [Thread-20827] WARN  org.a.h.b.a - Unrecognised Release Group element: primary-type
+2018-06-01 01:15:07,426 [Thread-20827] WARN  org.a.h.b.a - Unrecognised Release element: release-event-list
+2018-06-01 01:15:07,432 [Thread-20827] DEBUG org.a.g.a.a - Hitting url: https://musicbrainz.org/ws/2/release/?query=type%3Aalbum+AND+date%3A%5B2018-03-01+TO+%3F%5D+AND+artist%3A%22Virzha%22&limit=100&offset=0
+2018-06-01 01:15:08,064 [Thread-20827] DEBUG i.s.n.a.LoadNewRelasesServiceBinding - Service: Notifying activity if result changed. ResultChanged=true. Activity=info.schnatterer.nusic.android.activities.MainActivity@3b5ba78
+2018-06-01 01:15:08,115 [Thread-20827] DEBUG i.s.n.a.s.LoadNewReleasesService - Scheduled task to run again every 1 days, starting at Sat Jun 02 01:15:08 GMT+07:00 2018
+2018-06-01 01:15:08,118 [Thread-20827] DEBUG i.s.n.a.s.LoadNewReleasesService - Service: Explicit stop self
+2018-06-01 01:15:10,526 [main] DEBUG i.s.n.a.LoadNewRelasesServiceBinding - Unbinding service
+2018-06-01 01:15:19,178 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:15:19,185 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:15:33,674 [main] WARN  i.s.n.a.LoadNewRelasesServiceBinding - Service unexpectedly not bound, assuming it's not running
+2018-06-01 01:15:37,058 [main] WARN  i.s.n.a.LoadNewRelasesServiceBinding - Service unexpectedly not bound, assuming it's not running
+2018-06-01 01:15:39,974 [main] WARN  i.s.n.a.LoadNewRelasesServiceBinding - Service unexpectedly not bound, assuming it's not running
+2018-06-01 01:15:43,490 [main] WARN  i.s.n.a.LoadNewRelasesServiceBinding - Service unexpectedly not bound, assuming it's not running
+2018-06-01 01:15:53,129 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:15:53,137 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:15:53,144 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:15:53,152 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database
+2018-06-01 01:18:51,373 [FinalizerDaemon] DEBUG i.s.nusic.data.NusicDatabaseSqlite - Closing database`"
+schnatterer/nusic,closed,Icon and Featured Graphic,[],All file here are included. Thank You
+schnatterer/nusic,closed,Logo/Icon Proposal,[],"Hi good day! Im Jibbie Eguna, a graphics designer, I would like to ask for your permission to propose a new designs of logo in your application/project. I would like to help projects in open-source .I would just like to propose new designs. Hoping for your positive response Thank You!"
+schnatterer/nusic,closed,"The application suddenly stopped when I clicked the ""Email"" feature in the ""About nusic"" menu section in the application settings",[],"
+# Expected behavior
+I have successfully installed this app and run it on my android device. And I want to send an Email or contact the developer via Email, using the ""Email"" feature provided by the developer in the ""About nusic"" menu item in the application settings.
+
+# Actual behavior
+The application suddenly stops when I click the ""Email"" feature in the ""About nusic"" menu section of the app settings. And give me instructions to restart the app, after I do it, I try to access the ""Email"" feature again, then the app suddenly stops. And give me the instructions to get out of the app. The problem persists, although I have tried to do it repeatedly. I also uninstalled the app, then reinstalled it. But unfortunately the same problem still occurs.
+
+# How to reproduce
+* Install the latest version of ""nusic"" app, then open and run the app.
+* Next you have to go into the application settings, then select and open the ""About nusic"" menu, then click the ""Email"" feature, then you will find the problem as I have explained.
+
+
+* Browser: Samsung Galaxy S6 edge 
+* Operating system: Nougat 7.0
+* App version: 3.2.0
+
+# Recording Of The Bug
+https://youtu.be/EZdey25YEoA
+
+# Logcat
+
+<code> --------- beginning of crash
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: FATAL EXCEPTION: main
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: Process: info.schnatterer.nusic, PID: 22929
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: android.content.ActivityNotFoundException: Unable to find explicit activity class {info.schnatterer.nusic/info.schnatterer.nusic.android.activities.NusicWebView}; have you declared this activity in your AndroidManifest.xml?
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:1820)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.app.Instrumentation.execStartActivity(Instrumentation.java:1531)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.app.Activity.startActivityForResult(Activity.java:4399)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.app.Activity.startActivityForResult(Activity.java:4358)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.app.Activity.startActivity(Activity.java:4682)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.app.Activity.startActivity(Activity.java:4650)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.preference.Preference.performClick(Preference.java:1201)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.preference.PreferenceScreen.onItemClick(PreferenceScreen.java:289)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.widget.AdapterView.performItemClick(AdapterView.java:339)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.widget.AbsListView.performItemClick(AbsListView.java:1705)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.widget.AbsListView$PerformClick.run(AbsListView.java:4171)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.widget.AbsListView$13.run(AbsListView.java:6735)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.os.Handler.handleCallback(Handler.java:751)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:95)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:154)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:6682)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1520)
+05-11 21:25:12.675 22929 22929 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1410)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: FATAL EXCEPTION: main
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: Process: info.schnatterer.nusic, PID: 23132
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: android.content.ActivityNotFoundException: Unable to find explicit activity class {info.schnatterer.nusic/info.schnatterer.nusic.android.activities.NusicWebView}; have you declared this activity in your AndroidManifest.xml?
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:1820)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.app.Instrumentation.execStartActivity(Instrumentation.java:1531)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.app.Activity.startActivityForResult(Activity.java:4399)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.app.Activity.startActivityForResult(Activity.java:4358)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.app.Activity.startActivity(Activity.java:4682)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.app.Activity.startActivity(Activity.java:4650)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.preference.Preference.performClick(Preference.java:1201)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.preference.PreferenceScreen.onItemClick(PreferenceScreen.java:289)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.widget.AdapterView.performItemClick(AdapterView.java:339)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.widget.AbsListView.performItemClick(AbsListView.java:1705)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.widget.AbsListView$PerformClick.run(AbsListView.java:4171)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.widget.AbsListView$13.run(AbsListView.java:6735)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.os.Handler.handleCallback(Handler.java:751)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:95)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:154)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:6682)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1520)
+05-11 21:25:24.789 23132 23132 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1410) </code>"
+schnatterer/nusic,closed,Fix a some links in README,[],
+schnatterer/nusic,closed,Feature/travis,[],
+schnatterer/nusic,open,Delete Releases that are no longer present on MusicBrainz,[],"For example [this](http://musicbrainz.org/release-group/5701f087-0df3-4cb0-874f-0532d47c834f) was a release group relating to Radiohead - OKNOTOK White Cassette. Now it's 404.
+
+This is unexpected for user, so when syncing remove release groups that are no longer returned from MusicBrainz."
+schnatterer/nusic,closed,"""No peer certificate"" error",[],"nusic worked fine for me for a long time but for several weeks I receive the following error:
+```
+2017-03-29 05:52:02,247 [Thread-15422] ERROR org.a.g.a.a - Fatal transport error: No peer certificate
+2017-03-29 05:52:02,250 [Thread-15422] WARN i.s.n.c.impl.SyncReleasesServiceImpl - Error querying releases for artist AC/DC from the internet. No connection to the internet?
+org.a.g.f: No peer certificate
+at org.a.g.a.a.a(HttpClientWebServiceWs2.java:322) ~[na:0.0]
+at org.a.g.a.a.a(HttpClientWebServiceWs2.java:185) ~[na:0.0]
+at org.a.g.b.a(DefaultWebServiceWs2.java:207) ~[na:0.0]
+at org.a.e.a.a(QueryWs2.java:75) ~[na:0.0]
+at org.a.e.a.b.a(SearchWs2.java:70) ~[na:0.0]
+at org.a.e.a.a.i(ReleaseSearchWs2.java:74) ~[na:0.0]
+at org.a.e.a.a.h(ReleaseSearchWs2.java:64) ~[na:0.0]
+at org.a.e.a.a.c(ReleaseSearchWs2.java:44) ~[na:0.0]
+at org.a.e.a.a.b(ReleaseSearchWs2.java:38) ~[na:0.0]
+at org.a.a.b.i(Release.java:79) ~[na:0.0]
+at info.schnatterer.nusic.core.impl.RemoteMusicDatabaseServiceMusicBrainz.findReleases(RemoteMusicDatabaseServiceMusicBrainz.java:152) ~[na:0.0]
+at info.schnatterer.nusic.core.impl.SyncReleasesServiceImpl.processArtist(SyncReleasesServiceImpl.java:135) ~[na:0.0]
+at info.schnatterer.nusic.core.impl.SyncReleasesServiceImpl.refreshReleases(SyncReleasesServiceImpl.java:104) ~[na:0.0]
+at info.schnatterer.nusic.core.impl.SyncReleasesServiceImpl.syncReleases(SyncReleasesServiceImpl.java:77) ~[na:0.0]
+at info.schnatterer.nusic.android.service.LoadNewReleasesService$WorkerThread.run(LoadNewReleasesService.java:214) ~[na:0.0]
+at java.lang.Thread.run(Thread.java:841) ~[na:0.0]
+Caused by: javax.net.ssl.SSLPeerUnverifiedException: No peer certificate
+at com.android.org.conscrypt.SSLSessionImpl.getPeerCertificates(SSLSessionImpl.java:146) ~[na:0.0]
+at org.apache.http.conn.ssl.AbstractVerifier.verify(AbstractVerifier.java:93) ~[na:0.0]
+at org.apache.http.conn.ssl.SSLSocketFactory.createSocket(SSLSocketFactory.java:388) ~[na:0.0]
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:165) ~[na:0.0]
+at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:164) ~[na:0.0]
+at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:119) ~[na:0.0]
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:360) ~[na:0.0]
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:555) ~[na:0.0]
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:487) ~[na:0.0]
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:465) ~[na:0.0]
+at org.a.g.a.a.a(HttpClientWebServiceWs2.java:256) ~[na:0.0]
+... 15 common frames omitted
+
+```
+
+Any idea what might be the cause of this issue? I am using version 3.2.0 on an Android 4.4.4 device."
+schnatterer/nusic,closed,updated japanese,[],Hi!
+schnatterer/nusic,open,Scribble ,[],"I think it's clear that this app has high potential, but is extremely limited because it only looks to music files stored on one's phone. I hope somebody adds a feature to sync with last.fm or Spotify. Actually, look at the scribble feature in the app BandsInTown. One can sync to any of a number of music services. As it stands, this app is useless for myself and simply makes me wish there was a functional app to notify me if new releases."
+schnatterer/nusic,closed,Share option,[],"Request from a review on play store
+"
+schnatterer/nusic,closed,Updated Japanese translation,[],"Hello schnatterer,
+Updated translation.
+Cheers!
+"
+schnatterer/nusic,closed,Add a list of contributors,"[Label(name=""enhancement"")]",
+schnatterer/nusic,closed,Get listed on MetaBrainz/supporters,[],"Hello :) At @MetaBrainz we like to (try and) keep up with who's using our data. It would be great if you'd register your project at https://metabrainz.org/ so we can list you at https://metabrainz.org/supporters - AFAICT, the project is open source and not generating a profit, so the non-profit tier should fit perfectly.
+
+I'd also like to extend an invitation for you to join us in #metabrainz and #musicbrainz on Freenode IRC, and to contact us anytime either on IRC or on [our forums](https://community.metabrainz.org/) if you have any questions or comments.
+"
+schnatterer/nusic,open,Ignore releases by special purpose artists,[],"Musicbrainz uses a number of [special purpose artists](https://musicbrainz.org/doc/Style/Unknown_and_untitled/Special_purpose_artist), the most common one being [Various Artists](https://musicbrainz.org/artist/89ad4ac3-39f7-470e-963a-56509c546377).
+
+If a user has a single release tagged to, say ""Various Artists"", nusic will display hundreds of mostly unrelated new releases.
+I know it's possible to ignore all releases by that artist but it could be quite confusing for new users.
+
+Lastly, thanks for using MB data in such a great way and publishing your app on F-Droid! :smiley: 
+"
+schnatterer/nusic,closed,Added Japanese translation,"[Label(name=""enhancement"")]",
+schnatterer/nusic,open,Manually add an artist,[],"Not sure if it's a feature request or I missed something :)
+
+If I understand correctly, the app is scanning the phone music to «find» the artists I want to follow. But I don't have any music on my phone.
+I would like to add manually the artists I want to track
+
+Damien
+"
+schnatterer/nusic,open,Sync with public musicbrainz collections,[],"Musicbrainz supports creating a ""collection"" of artists so the list of artists.
+This would allow the list of artist to be stored in a common list in musicbrainz.
+See https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2
+"
+schnatterer/nusic,closed,UserAgent string improvements,[],"Hello! Lead dev of musicbrainz here. Always glad to see more people using our data :)
+
+Looking at the code, specifically Nusic/src/org/musicbrainz/webservice/DefaultWebServiceWs2.java line 46, it appears the useragent nusic uses doesn't identify nusic itself, only MusicBrainz-Java -- might classify more as an issue with that library, but nevertheless should probably be changed. Other libraries, e.g. https://github.com/alastair/python-musicbrainzngs, tend to use a structure like `""$app_name/$app_version $library_name/$library_version ( $app_author_contact_or_url )""` -- where the library obviously provides the library name and version, and asks the app for its name, version, and contact info.
+
+See also https://musicbrainz.org/doc/XML_Web_Service/Rate_Limiting#How_can_I_be_a_good_citizen_and_be_smart_about_using_the_Web_Service.3F
+"

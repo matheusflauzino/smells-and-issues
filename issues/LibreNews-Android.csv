@@ -1,0 +1,216 @@
+repository,state,title,label,body
+milesmcc/LibreNews-Android,closed,Google Play Store,[],"The Google Play Store link seems to be broken. Is that normal, has the app been taken down from the Play Store? "
+milesmcc/LibreNews-Android,open,App crashes when we try to change the refresh rate time,[],"
+#### Expected behavior
+We should be able to change the refresh rate time at will
+
+#### Actual behavior
+After setting the refresh rate time when we exit the app and come to the home screen of phone and if we try to set the refresh rate time again app crashes and we are not able to set that again. 
+
+#### How to reproduce
+- launch the app
+
+- Click on the refresh rate option. 
+
+- set any time, say for example 12hours.
+
+- Now exit the app 
+
+- now come back to the same option and try to change the time you have set
+
+The app crashes and you won't be able to change it again. 
+
+* Browser: librenews latest version 1.4
+* Operating system: Android 6.0 Redmi 4
+
+#### Recording Of The Bug
+https://youtu.be/fCsKnALTACQ
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@saahir/app-crashes-when-we-try-to-change-the-refresh-rate-time"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+milesmcc/LibreNews-Android,open,Bug found on Libre news,[],"
+#### Expected behavior
+While changing the server and then pressing on the refresh button the app should refresh the news flashes as expected. Or should work normally as it does on the given server. 
+
+#### Actual behavior
+While I changed the server to get different news flashes and then pressed the refresh button, the app crashed again and again. 
+
+#### How to reproduce
+Open the app. 
+Click on the server option. 
+Change the server. 
+Now press the refresh button. 
+The app crashes. 
+
+* Browser: Libre News
+* Operating system: Android Nought(7)
+Moto g5 plus 
+#### Recording Of The Bug
+https://youtu.be/9Lf84UArX8Q
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@syedubair/bug-found-on-libre-news"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+milesmcc/LibreNews-Android,open,Adding more sources,[],Would it be possible to add more sources. The BBC's alerts are great but I think they are pretty UK and USA focussed.
+milesmcc/LibreNews-Android,open,Should notifications appear?,[],"I had the app for months installed and it did nothing. 
+Didn't see any news and reinstalls didn't change"
+milesmcc/LibreNews-Android,open,Custom server notifications not working,[],"If a server has a channel that *isn't* Breaking News or Announcements, the app doesn't push them, nor display them when selecting Channels."
+milesmcc/LibreNews-Android,open,java.lang.NullPointerException: Attempt to invoke virtual method 'android.content.Context android.view.View.getContext()' on a null object reference,[],"Founded on Android Studio Emulator and can be reproduced on Nexus 5 (6.0.1)
+
+Steps:
+
+1. Install v1.4 from FDroid
+2. Launch app.
+3. Enable `Automatically refresh`
+4. Click `INFO`
+5. Click `GO TO LIBRENEWS`
+6. Click BACK button
+7. Disable `Automatically refresh`
+
+```
+// CRASH: app.librenews.io.librenews (pid 3284) (elapsed nanos: 702931492114)
+// Short Msg: java.lang.NullPointerException
+// Long Msg: java.lang.NullPointerException: Attempt to invoke virtual method 'android.content.Context android.view.View.getContext()' on a null object reference
+// Build Label: Android/sdk_google_phone_x86/generic_x86:6.0/MASTER/4088240:userdebug/test-keys
+// Build Changelist: 4088240
+// Build Time: 1497047463000
+// java.lang.NullPointerException: Attempt to invoke virtual method 'android.content.Context android.view.View.getContext()' on a null object reference
+// 	at app.librenews.io.librenews.views.SettingsActivityFragment.onSharedPreferenceChanged(SettingsActivityFragment.java:26)
+// 	at android.app.SharedPreferencesImpl$EditorImpl.notifyListeners(SharedPreferencesImpl.java:479)
+// 	at android.app.SharedPreferencesImpl$EditorImpl.apply(SharedPreferencesImpl.java:387)
+// 	at android.preference.Preference.tryCommit(Preference.java:1415)
+// 	at android.preference.Preference.persistBoolean(Preference.java:1681)
+// 	at android.preference.TwoStatePreference.setChecked(TwoStatePreference.java:81)
+// 	at android.preference.TwoStatePreference.onClick(TwoStatePreference.java:66)
+// 	at android.preference.Preference.performClick(Preference.java:994)
+// 	at android.preference.PreferenceScreen.onItemClick(PreferenceScreen.java:214)
+// 	at android.widget.AdapterView.performItemClick(AdapterView.java:310)
+// 	at android.widget.AbsListView.performItemClick(AbsListView.java:1145)
+// 	at android.widget.AbsListView$PerformClick.run(AbsListView.java:3042)
+// 	at android.widget.AbsListView$3.run(AbsListView.java:3879)
+// 	at android.os.Handler.handleCallback(Handler.java:739)
+// 	at android.os.Handler.dispatchMessage(Handler.java:95)
+// 	at android.os.Looper.loop(Looper.java:148)
+// 	at android.app.ActivityThread.main(ActivityThread.java:5417)
+// 	at java.lang.reflect.Method.invoke(Native Method)
+// 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+// 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+// 
+```"
+milesmcc/LibreNews-Android,open,java.lang.ArrayIndexOutOfBoundsException,[],"Reproduced in Android Studio Emulator and Android Nexus 5 Phone (6.0.1)
+
+Steps:
+
+1. Install v1.4 from FDroid.
+2. Launch app.
+3. Disable `automatically refresh`
+4. Change server address to an invalid one, e.g., `xxyyzz`.
+5. Click `refresh`.
+
+Solution:
+At FlashManager.java#L184, `min` may be 0 and the array may be empty.
+Hence, we need to handle this case explicitly.
+
+[FlashManager.java#L184](https://github.com/milesmcc/LibreNews-Android/blob/974b9592fa6c4ef591f5efccc4e85468c3650684/LibreNews-App/src/main/java/app/librenews/io/librenews/controllers/FlashManager.java#L184)
+
+-------------------------------
+Stack traces
+```
+11-01 14:56:58.359 12058 12058 I System.out: LibreNews Debug: Unable to load flashes from storage: No flash storage file exists or is empty.
+11-01 14:56:58.360 12058 12058 W System.err: java.io.FileNotFoundException: No flash storage file exists or is empty.
+11-01 14:56:58.360 12058 12058 W System.err:    at app.librenews.io.librenews.controllers.FlashManager.loadFlashesFromStorage(FlashManager.java:140)
+11-01 14:56:58.360 12058 12058 W System.err:    at app.librenews.io.librenews.controllers.FlashManager.getLatestPushedFlashes(FlashManager.java:191)
+11-01 14:56:58.360 12058 12058 W System.err:    at app.librenews.io.librenews.controllers.FlashManager.refresh(FlashManager.java:251)
+11-01 14:56:58.360 12058 12058 W System.err:    at app.librenews.io.librenews.views.MainFlashActivity$1.onClick(MainFlashActivity.java:67)
+11-01 14:56:58.360 12058 12058 W System.err:    at android.view.View.performClick(View.java:5204)
+11-01 14:56:58.360 12058 12058 W System.err:    at android.view.View$PerformClick.run(View.java:21153)
+11-01 14:56:58.360 12058 12058 W System.err:    at android.os.Handler.handleCallback(Handler.java:739)
+11-01 14:56:58.360 12058 12058 W System.err:    at android.os.Handler.dispatchMessage(Handler.java:95)
+11-01 14:56:58.360 12058 12058 W System.err:    at android.os.Looper.loop(Looper.java:148)
+11-01 14:56:58.360 12058 12058 W System.err:    at android.app.ActivityThread.main(ActivityThread.java:5417)
+11-01 14:56:58.360 12058 12058 W System.err:    at java.lang.reflect.Method.invoke(Native Method)
+11-01 14:56:58.360 12058 12058 W System.err:    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+11-01 14:56:58.360 12058 12058 W System.err:    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+```
+
+```
+// CRASH: app.librenews.io.librenews (pid 3182) (elapsed nanos: 493838390542)
+// Short Msg: java.lang.ArrayIndexOutOfBoundsException
+// Long Msg: java.lang.ArrayIndexOutOfBoundsException: length=0; index=0
+// Build Label: Android/sdk_google_phone_x86/generic_x86:6.0/MASTER/4088240:userdebug/test-keys
+// Build Changelist: 4088240
+// Build Time: 1497047463000
+// java.lang.ArrayIndexOutOfBoundsException: length=0; index=0
+// 	at app.librenews.io.librenews.controllers.FlashManager.convertFlashesToOutputString(FlashManager.java:184)
+// 	at app.librenews.io.librenews.controllers.FlashManager.writeFlashesToStorage(FlashManager.java:152)
+// 	at app.librenews.io.librenews.controllers.FlashManager.clearPushedFlashes(FlashManager.java:200)
+// 	at app.librenews.io.librenews.controllers.FlashManager.refresh(FlashManager.java:256)
+// 	at app.librenews.io.librenews.views.MainFlashActivity$1.onClick(MainFlashActivity.java:67)
+// 	at android.view.View.performClick(View.java:5198)
+// 	at android.view.View$PerformClick.run(View.java:21147)
+// 	at android.os.Handler.handleCallback(Handler.java:739)
+// 	at android.os.Handler.dispatchMessage(Handler.java:95)
+// 	at android.os.Looper.loop(Looper.java:148)
+// 	at android.app.ActivityThread.main(ActivityThread.java:5417)
+// 	at java.lang.reflect.Method.invoke(Native Method)
+// 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+// 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+// 
+```"
+milesmcc/LibreNews-Android,open,An issue with indent,[],"![screenshot_20171027-182159](https://user-images.githubusercontent.com/16866642/32114723-77511be2-bb44-11e7-9b58-1c6b1dd98434.png)
+Some things are hard to read"
+milesmcc/LibreNews-Android,closed,Fixing one small spelling mistake,[],
+milesmcc/LibreNews-Android,open,Setting notification sound to None doesn't work,[],"It still uses a noise which I don't recognise (not my default notification either).
+
+This is version 1.4 on Android 7.1.
+
+Thanks for this app in an important area!"
+milesmcc/LibreNews-Android,open,Remove and ignore ds_store,[],"Hey,
+I have seen that there are some .DS_Store files in this repo. You might want to remove them and add it to .gitignore"
+milesmcc/LibreNews-Android,closed,Fix android 8,[],
+milesmcc/LibreNews-Android,open,URL whitelisting,[],"The client should have a URL whitelist in case the server gets hacked and starts sending out malicious URLs to users. I think the usability impact would be minimal if the server sends out a request if a new news site gets added which the user has to accept (e.g. ""Do you want to receive breaking news from guardian.com? Yes/No"" and then add guardian.com to the whitelist).
+
+(I could definitely help with the server side implementation, not good at Android development though which would contain most of the work.)"
+milesmcc/LibreNews-Android,closed,Wi-Fi and sync,[],"Wi-Fi as per https://en.wikipedia.org/wiki/Wi-Fi
+
+""Sync"" partly solves the space issue with the string overlapping ""INFO""
+another fix would be to shorten to min/sec/h. etc"
+milesmcc/LibreNews-Android,closed,Notifications not working on Android 8.0 (Oreo),[],"This *includes* debug notifications, which are also not fired."
+milesmcc/LibreNews-Android,closed,App Icon notification reappearing,[],"I received the notification with the app icon feedback link several times within a few minutes. 
+(My app icon is fine)
+
+Even after clicking on it, it still keeps reappearing after a few minutes (only 1 notification at a time)
+Using https://librenews.io/api"
+milesmcc/LibreNews-Android,closed,Notification text is hard-coded to black,[],The notification text from this app seems to force black rather than using the system default color. My notification background is dark and as a result I cannot read the notifications I receive.
+milesmcc/LibreNews-Android,open,tor proxy support?,[],"What about adding an option to proxy the app thru orbot, if available?"
+milesmcc/LibreNews-Android,open,Unable to load flashes from storage,[],"hello I have a Samsung Galaxy A3 2016 with android Nougat 7.0 .
+After activating the debug option, I got these notifications :
+Performing asynchronous flash retieval... 
+Flash found 22
+Retrieving flash from https://librenews.io/api?latest=-1
+unable to load flashes from storage :/data/user/0/app.librenews.io.librenews/files/flashes.json (no such file or directory) "
+milesmcc/LibreNews-Android,closed,Create CODE_OF_CONDUCT.md,[],
+milesmcc/LibreNews-Android,open,unable to load flashes from storage: unparsable date,[],"With debug mode enabled, I'm getting messages with the text in the title.
+
+An example of an apparently unparsable date is
+
+```
+Wed Aug 02 16:52:07 CEST 2017
+```
+
+The message also notes ""at offset 20"", so maybe it's related to the CEST?"
+milesmcc/LibreNews-Android,closed,Disable announcements by default?,[],Mostly LibreNews presents itself as a breaking news notification service. But for that the default settings with announcements on are IMO a little bit spammy.
+milesmcc/LibreNews-Android,closed,add german translation,[],"Three notes:
+Make the url non translatable?
+Do I have to translate {rate}?
+You use ""refresh rate"" and ""sync disabled"". Isn't both a sync, so shouldn't be only one term used?"
+milesmcc/LibreNews-Android,open,FR: add a dark theme,"[Label(name=""enhancement""), Label(name=""help wanted"")]","Maybe a dark theme is not really necessary, because the app itself just for setting, but it would be a nice feature"
+milesmcc/LibreNews-Android,closed,Add legal attribution,[],See https://play.google.com/intl/en_us/badges/
+milesmcc/LibreNews-Android,closed,Add about page,[],In the apps main menu there is zero information about librenews
+milesmcc/LibreNews-Android,closed,French translation + README.md,[],"Here is a small PR that adds the French translation
+
+This also improve the README.md
+
+You can notify me in the future if there are any new keys to translate ;)
+
+Thanks for this app"
+milesmcc/LibreNews-Android,closed,japanese translation,[],Hello!

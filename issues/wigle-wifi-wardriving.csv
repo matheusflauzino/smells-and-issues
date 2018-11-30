@@ -1,0 +1,1107 @@
+repository,state,title,label,body
+wiglenet/wigle-wifi-wardriving,open,FIX - Mcx db fixes,"[Label(name=""bug""), Label(name=""please review"")]",follow on to BT fixes to handle the cell lookup issues on certain phone models.
+wiglenet/wigle-wifi-wardriving,open,FIX - Bt fixes,"[Label(name=""bug""), Label(name=""please review"")]","all kinds of bug reports about bluetooth. there's probably more to do, but these are batched up from travel, not good practice."
+wiglenet/wigle-wifi-wardriving,open,Notification hard to read (white text on grey background),[],"Hello,
+![grafik](https://user-images.githubusercontent.com/1591573/47962402-9b0fa500-e01c-11e8-838e-2a02c38e6a3f.png)
+this is how the notification from release 2.38 looks on a Android 8  Huawei P10.
+(below is another app, to show the difference)
+
+Its nearly not possible to read the PAUSE and UPLOAD buttons, as they are white text on grey background"
+wiglenet/wigle-wifi-wardriving,closed,Update german translation with minor fixes,[],"Hello,
+with the latest update (bluetooth logging) some small translation errors where introduced.
+I´m a native german speaker and this changes make more sense to read than the previous ones. 
+
+greetings from Austria,
+Stephan"
+wiglenet/wigle-wifi-wardriving,closed,add null checks in ErrorReport and BT Receiver,[],NPEvil
+wiglenet/wigle-wifi-wardriving,closed,FIX - fixing filename issue,"[Label(name=""bug""), Label(name=""please review"")]", confused parameters for upload name/filename
+wiglenet/wigle-wifi-wardriving,closed,ENH - adding docs to WiFi receiver in prep for refactor,[],
+wiglenet/wigle-wifi-wardriving,closed,FIX - dups,"[Label(name=""bug""), Label(name=""please review"")]",Fixing duplicate BT entries in listview (report from forums)
+wiglenet/wigle-wifi-wardriving,closed,"ENH - visual feedback from forums: cell to top, formatting to match BT/WiFi","[Label(name=""enhancement""), Label(name=""please review"")]","Using cell color from list view.
+Using font size from other top-level elements
+Tried to remove ""towers"" for feedback in languages where that's evident."
+wiglenet/wigle-wifi-wardriving,closed,fix some stacks seen in the wild,[],
+wiglenet/wigle-wifi-wardriving,closed,ENH - okhttp upload,"[Label(name=""enhancement""), Label(name=""please review"")]",
+wiglenet/wigle-wifi-wardriving,open,[Feature Request] Allow Wigle to have Android Auto functionality.,[],"Would be cool to have wigle as an android auto compatible app and be able to have the car's display show you a ""Network list type page."
+wiglenet/wigle-wifi-wardriving,closed,ENH - one way of doing this. I don't know if this is perfectly safe yet,"[Label(name=""do not merge""), Label(name=""enhancement""), Label(name=""please review"")]","flowing ""batch"" vs. ""single net"" down into the network add/update. This should be safer, but may not be enough without synchronizing access to the ListView Adapter."
+wiglenet/wigle-wifi-wardriving,closed,FIX - addressing issue from uhtu re spurious dialogs.,"[Label(name=""bug""), Label(name=""please review"")]",the display of these dialogs should be contingent upon whether or not we mean to use BT at all.
+wiglenet/wigle-wifi-wardriving,closed,FIX - stop trying to batch NetworkListView updates,"[Label(name=""bug""), Label(name=""please review"")]","this makes the UI update/interaction a little wonky because of the high update frequency, but it should be safe.
+Addressing 3.24 Beta errors in play console."
+wiglenet/wigle-wifi-wardriving,closed,FIX - could it be this simple?,"[Label(name=""bug""), Label(name=""please review"")]","long-running issue with crashes.
+#243 in tracker"
+wiglenet/wigle-wifi-wardriving,closed,ENH - what if we conditionally attach if the stack's too big to fit in the intent?,"[Label(name=""enhancement""), Label(name=""please review"")]","I'm not sure a 1MB+ stackfile is gonna contain a ton more signal vs. shortening, but here's how we could get it."
+wiglenet/wigle-wifi-wardriving,closed,FIX - a different approach for fallback,"[Label(name=""bug""), Label(name=""please review"")]","since the DB errors are limited to 4.4.x samsung devices.
+
+"
+wiglenet/wigle-wifi-wardriving,closed,FIX - one way to mitigate DB unreliability.,"[Label(name=""bug""), Label(name=""please review"")]","don't want new cell info to reduce reliability. this isn't elegant, but it's unclear what else we can do."
+wiglenet/wigle-wifi-wardriving,closed,FIX - quickfix for older android releases and cell names,"[Label(name=""bug""), Label(name=""please review"")]",per user bug report on pre-lollipop devices; WITHOUT ROWID not valid before SQLite 3.8.2
+wiglenet/wigle-wifi-wardriving,closed,ENH - refactors and cleanups,"[Label(name=""enhancement""), Label(name=""please review"")]",here are a bunch of cleanups and refactors to set the stage for break…ing cell scanning out of the wifireceiver
+wiglenet/wigle-wifi-wardriving,closed,FIX - a first cut at handling MNCs safely. refactoring to start the DRYing.,"[Label(name=""bug""), Label(name=""please review"")]","there was probably a smaller changeset to do this, but a LOT of this had been bothering me."
+wiglenet/wigle-wifi-wardriving,closed,FIX - fixing bugs specific to oreo and pie,"[Label(name=""bug""), Label(name=""please review"")]","notification controls stopped working
+pie mcc/mnc channels are now fraught with peril"
+wiglenet/wigle-wifi-wardriving,closed,FIX - Dialog combination for activation of WiFi/BT on startup,"[Label(name=""bug""), Label(name=""please review"")]","per suggestion from @bobzilladev 
+also sneaks in some error handling based on errors in play console."
+wiglenet/wigle-wifi-wardriving,closed,FIX - fixing some bugs seen in upload cutover to use WCDMA/LTE,"[Label(name=""bug""), Label(name=""please review"")]","fixing some of the following cases:
+
+LTE - 00_65535_-1
+""WIFI"" - 268435455268435455_65535_268435455
+""WIFI"" - 00_0_0
+""WIFI"" - 00_65535_-1
+""WIFI"" - <XXXXX>_1200_-1
+""WIFI"" -  <XXXXX>_131_-1
+""WIFI"" -  <XXXXX>_59_-1
+""WIFI"" - 00_65535_-1
+""WIFI"" -  <XXXXX>_87_-1
+
+really underscores need for DRY here."
+wiglenet/wigle-wifi-wardriving,closed,ENH - adding icons to detail view where applicable.,"[Label(name=""enhancement""), Label(name=""please review"")]",per @bobzilladev's suggestion
+wiglenet/wigle-wifi-wardriving,closed,FIX - Filter bug,"[Label(name=""bug""), Label(name=""please review"")]",per @bobzilladev 's bug report. matching braces is hard.
+wiglenet/wigle-wifi-wardriving,closed,ENH - reducing list display contention on BT/BLE network updates,"[Label(name=""enhancement""), Label(name=""please review"")]","Cleaning up over-aggressive list redraws/sorts. Maybe a little slow, but distinctly better for interaction."
+wiglenet/wigle-wifi-wardriving,closed,ENH - trying to pull this out of the wifi path,"[Label(name=""enhancement""), Label(name=""please review"")]",
+wiglenet/wigle-wifi-wardriving,closed,set scan to 30sec for broken android pie,[],
+wiglenet/wigle-wifi-wardriving,closed,ENH - here's a way to update BT type and device type selectively. straw-ishman,"[Label(name=""enhancement""), Label(name=""please review"")]",
+wiglenet/wigle-wifi-wardriving,closed,FIX - final language fix-ups,[],translation placeholders. so many non-matching entries in these files.
+wiglenet/wigle-wifi-wardriving,open,Android P Wifi scan throttled,[],"Under Android P wifi scans are throttled by the system according to the follow rules
+- Each foreground app is restricted to 4 scans every 2 minutes.
+- All background apps combined are restricted to one scan every 30 minutes.""
+
+https://issuetracker.google.com/issues/79906367
+EDIT: Google closed the issue on the preview tracker and this one is more important to star now.
+https://issuetracker.google.com/issues/112688545
+
+The new rules seem to be a killer for any Wardriving app
+
+The logcat output of Wigle on a Pixel running the Pie release looks like this, with a lot of the scan attempts failing:
+
+```
+08-07 09:25:11.069 13388-13388/? I/wigle: main] create wifi timer
+    main] start first wifi scan
+08-07 09:25:11.069 914-3872/? I/WifiService: startScan uid=10165
+08-07 09:25:11.070 13388-13388/? I/wigle: main] startup finished. wifi scanOK: false
+    main] register BroadcastReceiver
+08-07 09:25:14.675 13388-13388/? I/wigle: main] setStatusUI
+    main] setupLocation
+    main] list handleScanChange: isScanning now: true
+    main] LIST: start.
+08-07 09:25:14.708 914-6268/? I/WifiService: startScan uid=10165
+08-07 09:25:16.792 13388-13388/? I/wigle: main] create wifi timer
+    main] start first wifi scan
+08-07 09:25:16.792 914-3872/? I/WifiService: startScan uid=10165
+08-07 09:25:16.793 13388-13388/? I/wigle: main] startup finished. wifi scanOK: true
+    main] register BroadcastReceiver
+08-07 09:25:16.797 13388-13388/? I/wigle: main] main internalHandleScanChange: isScanning now: true
+08-07 09:25:16.833 13388-13388/? I/wigle: main] setNetCountUI
+    main] setStatusUI
+    main] setupLocation
+    main] list handleScanChange: isScanning now: true
+    main] LIST: start.
+08-07 09:25:19.406 13388-13388/? I/wigle: main] Location provider change, scheduling scan
+08-07 09:25:21.100 914-3596/? D/WificondControl: Scan result ready event
+08-07 09:25:21.110 914-1446/? D/WificondScannerImpl: Filtering out 2 scan results.
+08-07 09:25:22.914 914-10562/? I/WifiService: startScan uid=10165
+08-07 09:25:27.240 914-2284/? D/WificondControl: Scan result ready event
+08-07 09:25:27.249 914-1446/? D/WificondScannerImpl: Filtering out 3 scan results.
+08-07 09:25:28.919 914-2284/? I/WifiService: startScan uid=10165
+08-07 09:25:33.253 914-10562/? D/WificondControl: Scan result ready event
+08-07 09:25:33.289 914-1446/? D/WificondScannerImpl: Filtering out 2 scan results.
+08-07 09:25:34.928 914-6268/? I/WifiService: startScan uid=10165
+08-07 09:25:39.273 914-10562/? D/WificondControl: Scan result ready event
+08-07 09:25:39.282 914-1446/? D/WificondScannerImpl: Filtering out 4 scan results.
+08-07 09:25:40.935 914-5483/? I/WifiService: startScan uid=10165
+08-07 09:25:40.938 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:25:40.941 914-5483/? E/WifiService: Failed to start scan
+08-07 09:25:43.944 914-10562/? I/WifiService: startScan uid=10165
+08-07 09:25:43.946 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:25:43.948 914-10562/? E/WifiService: Failed to start scan
+08-07 09:25:46.952 914-3596/? I/WifiService: startScan uid=10165
+08-07 09:25:46.954 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:25:46.961 914-3596/? E/WifiService: Failed to start scan
+08-07 09:25:49.965 914-3872/? I/WifiService: startScan uid=10165
+08-07 09:25:49.967 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:25:49.971 914-3872/? E/WifiService: Failed to start scan
+08-07 09:25:52.973 914-5483/? I/WifiService: startScan uid=10165
+08-07 09:25:53.031 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:25:53.038 914-5483/? E/WifiService: Failed to start scan
+08-07 09:25:56.040 914-6268/? I/WifiService: startScan uid=10165
+08-07 09:25:56.148 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:25:56.156 914-6268/? E/WifiService: Failed to start scan
+08-07 09:25:56.585 2188-2913/? I/Places: Converted 14 out of 14 WiFi scans
+08-07 09:25:56.604 2188-13012/? I/PlaceInferenceEngine: No beacon scan available - ignoring candidates.
+08-07 09:25:59.160 914-6268/? I/WifiService: startScan uid=10165
+08-07 09:25:59.253 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:25:59.255 914-6268/? E/WifiService: Failed to start scan
+08-07 09:26:02.257 914-5483/? I/WifiService: startScan uid=10165
+08-07 09:26:02.360 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:02.375 914-5483/? E/WifiService: Failed to start scan
+08-07 09:26:05.379 914-6268/? I/WifiService: startScan uid=10165
+08-07 09:26:05.464 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:05.468 914-6268/? E/WifiService: Failed to start scan
+08-07 09:26:08.471 914-5483/? I/WifiService: startScan uid=10165
+08-07 09:26:08.569 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:08.579 914-5483/? E/WifiService: Failed to start scan
+08-07 09:26:11.583 914-3596/? I/WifiService: startScan uid=10165
+08-07 09:26:11.669 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:11.671 914-3596/? E/WifiService: Failed to start scan
+08-07 09:26:14.683 914-10562/? I/WifiService: startScan uid=10165
+08-07 09:26:14.759 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:14.762 914-10562/? E/WifiService: Failed to start scan
+08-07 09:26:17.764 914-6268/? I/WifiService: startScan uid=10165
+08-07 09:26:17.864 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:17.866 914-6268/? E/WifiService: Failed to start scan
+08-07 09:26:20.870 914-5483/? I/WifiService: startScan uid=10165
+08-07 09:26:20.882 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:20.885 914-5483/? E/WifiService: Failed to start scan
+08-07 09:26:23.889 914-3596/? I/WifiService: startScan uid=10165
+08-07 09:26:23.906 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:23.910 914-3596/? E/WifiService: Failed to start scan
+08-07 09:26:24.634 914-3596/? D/WificondControl: Scan result ready event
+08-07 09:26:24.653 914-1446/? D/WificondScannerImpl: Filtering out 2 scan results.
+08-07 09:26:26.926 914-3596/? I/WifiService: startScan uid=10165
+08-07 09:26:27.012 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:27.022 914-3596/? E/WifiService: Failed to start scan
+08-07 09:26:27.503 2188-2913/? I/Places: Converted 14 out of 14 WiFi scans
+08-07 09:26:27.548 2188-13505/? I/PlaceInferenceEngine: No beacon scan available - ignoring candidates.
+08-07 09:26:30.026 914-3596/? I/WifiService: startScan uid=10165
+08-07 09:26:30.119 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:30.122 914-3596/? E/WifiService: Failed to start scan
+08-07 09:26:33.125 914-3596/? I/WifiService: startScan uid=10165
+08-07 09:26:33.139 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:33.142 914-3596/? E/WifiService: Failed to start scan
+08-07 09:26:36.146 914-3872/? I/WifiService: startScan uid=10165
+08-07 09:26:36.249 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:36.251 914-3872/? E/WifiService: Failed to start scan
+08-07 09:26:39.255 914-3596/? I/WifiService: startScan uid=10165
+08-07 09:26:39.356 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:39.367 914-3596/? E/WifiService: Failed to start scan
+08-07 09:26:42.372 914-5483/? I/WifiService: startScan uid=10165
+08-07 09:26:42.467 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:42.470 914-5483/? E/WifiService: Failed to start scan
+08-07 09:26:45.477 914-10562/? I/WifiService: startScan uid=10165
+08-07 09:26:45.555 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:45.556 914-10562/? E/WifiService: Failed to start scan
+08-07 09:26:48.559 914-10562/? I/WifiService: startScan uid=10165
+08-07 09:26:48.660 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:48.670 914-10562/? E/WifiService: Failed to start scan
+08-07 09:26:51.674 914-6268/? I/WifiService: startScan uid=10165
+08-07 09:26:51.684 914-1445/? I/WifiScanRequestProxy: Scan request from net.wigle.wigleandroid throttled
+08-07 09:26:51.688 914-6268/? E/WifiService: Failed to start scan
+
+...
+
+```"
+wiglenet/wigle-wifi-wardriving,closed,FIX - more language updates,[],it's like shoveling water.
+wiglenet/wigle-wifi-wardriving,closed,FIX - Language fixes,[],
+wiglenet/wigle-wifi-wardriving,closed,ENH - BLE devicetype,"[Label(name=""enhancement""), Label(name=""please review"")]",follow on PR to #247  to max/match data from BT/BLE scans. 
+wiglenet/wigle-wifi-wardriving,closed,FIX - since we get weird problems with the byte buffer from the AD record.,"[Label(name=""bug""), Label(name=""please review"")]",from bobzilla's error report.
+wiglenet/wigle-wifi-wardriving,closed,FIX - fixing wifi counter number,"[Label(name=""bug""), Label(name=""please review"")]",new wifi
+wiglenet/wigle-wifi-wardriving,closed,FIX - fixing location race condition for bt scans.,"[Label(name=""bug""), Label(name=""please review"")]","Doing some cleanup based on previous comments
+Fixing a location race condition
+"
+wiglenet/wigle-wifi-wardriving,open,Please make user data collaboration possible,[],"I have been using this for a while, uploaded a lot of data. I want to be able to see what my fellow users have uploaded as well. Can you please make this a feature or if not, can any other users point me to an app that allows collaboration? I don't collect this data just for one organization to hoard it, I collect it for it to be used by all, but lately this is feeling like a 1 way relationship."
+wiglenet/wigle-wifi-wardriving,open,Hang on interaction with map,[],"sometimes when zooming in/out, the map hangs on Essential PH-1. Unable to get crash data to date."
+wiglenet/wigle-wifi-wardriving,closed,ENH- Brootoof v0,"[Label(name=""do not merge""), Label(name=""enhancement""), Label(name=""please review"")]","There a lot here, and a lot left to be done before this is production ready, but I'd like to get an initial review. General notes:
+1. bluetooth (standard) scanning is keyed off of WifiReceiver's scan, but checks to make sure the previous discovery period has ended before starting a new one. In practice on an MotoZ Play, this means ~ every 20s.
+2. bluetooth LE does a discovery cycle off of the same clock, but batches returns rather than receiving individual callbacks on each network.
+3. there's currently an english text dictionary to double check reported device classes against, but there's a sizable icon library for known types present at several resolutions to help with i18n (intention is that the words can go away once we're satisfied.) no icon shown for Misc and Uncategorized BT nets.
+4. We're overriding the frequency field *even more* than with cells - since the networkClass is an int, we're shoving it in there. This is probably a hack we shouldn't be doing."
+wiglenet/wigle-wifi-wardriving,open,Split OUI table by length?,[],"Currently, [network.getOUI](https://github.com/wiglenet/wigle-wifi-wardriving/blob/master/wiglewifiwardriving/src/main/java/net/wigle/wigleandroid/model/Network.java#L246) performs three lookup passes over the entire OUI table (worst case, especially if missing) to retrieve a manufacturer.
+
+Would it make more sense to split the table by lengths into three tables? Then, only the 9 character length table would be checked for the 9 character substring, and the 7 for the 7, and the 6 for the 6. It could be further optimized by only checking the 9 character length table if the first six characters matched the magic number; that could also indicate a missing value if the latter three of nine characters didn't match (magic match but value not in table)."
+wiglenet/wigle-wifi-wardriving,closed,ENH - showing latest points to 512 obs limit on net detail,"[Label(name=""enhancement""), Label(name=""please review"")]",or is it a fix. showing most recent observations. Addresses final element in #229
+wiglenet/wigle-wifi-wardriving,closed,FIX - fixing signal strength filter for MAX_VALUE,"[Label(name=""bug""), Label(name=""please review"")]",new cell logging allowed Integer.MAX_VALUE into signal strengths.
+wiglenet/wigle-wifi-wardriving,open,Non stationary access points. Riding on the train. ,[],Where i live most trains and many busses offer free wifi. I scan the countryside when i go for a ride. Problem is: where do the trains access point get localized? 
+wiglenet/wigle-wifi-wardriving,closed,remove obsolete TTS_library_stub.jar,[],
+wiglenet/wigle-wifi-wardriving,closed,ENH - Cell enhancements,"[Label(name=""enhancement""), Label(name=""please review"")]","first pass as DB-based version of this instead of in-memory map.
+This begs a few interesting questions:
+1. is *FCN the right substitute for channel, or would on-client translation to band be more useful?
+2. will the server side need to be updated to respect network type + band/*FCN?
+3. how should we trigger upgrades of the database on device when the MCC/MNC db updates remotely?
+4. What improvements to client-side display should we make?
+5. Should we version CSV format for this?
+"
+wiglenet/wigle-wifi-wardriving,closed,Merge and de-conflict master into foss-master,[],
+wiglenet/wigle-wifi-wardriving,closed,incorporate wireshark_manuf into oui,[],
+wiglenet/wigle-wifi-wardriving,closed,Latest version not available at F-Droid,[],"Looking at the F-Droid repo, I cannot see the last version reported here from `releases/` (i.e. v2.29). Checking with the maintainers, it seems the F-Droid specific branch (`foss-master`) has not been updated.
+
+Any idea what could be done here? First glance says either updating that branch, or telling F-Droid they can pick it from master (which would mean master complies to the F-Droid policy).
+
+Could you please let me know how to proceed with this? Thanks in advance!"
+wiglenet/wigle-wifi-wardriving,closed,update oui.properties,[],
+wiglenet/wigle-wifi-wardriving,closed,remove call to startForegroundService and stupid race condition,[],"Avoid the terrible race condition android built into Context.startForegroundService entirely.
+https://issuetracker.google.com/issues/76112072
+
+Should kill the remote service exceptions."
+wiglenet/wigle-wifi-wardriving,closed,ENH - A first version of enhanced cell scanning.,"[Label(name=""enhancement""), Label(name=""please review"")]","This is for discussion, not direct incorporation - this is a really significant rewrite, and requires a great deal of testing and review.
+
+Falls back on old behavior for SDK 14-16 as well as CDMA Phones.
+Uses getAllCellInfo on GSM phones SDK 17 and up, maps carrier names from a new hash.
+Can detect multiple cells, but currently discards the majority of information from the getAllCells call since it's largely garbage data."
+wiglenet/wigle-wifi-wardriving,closed,Improve Cell Data Logging,[],"Re-evaluate cell data availability and detail available in new Android API releases, improve data logging in client and submitted to server. SignalCheckPro looks like an example of really great insight into cell net info and quality - let's see how much more we can capture/annotate with local data"
+wiglenet/wigle-wifi-wardriving,closed,ENH - first cut at rewiring notification controls and exposing scan/pause to external access,"[Label(name=""enhancement""), Label(name=""please review"")]","removing old shareIntent, replacing it with a new listener using broadcast intents. Has the side-effect of letting external apps (tasker, etc) send intents on things like ""I'm home now, don't scan here""."
+wiglenet/wigle-wifi-wardriving,open,"Exclude ""Scanning turned off"" time from Run duration",[],"
+I think the Run duration amount would be better implemented as only incrementing when Scanning is turned on. Benefits from this:
+
+* If you scan on the way to work, turn off scanning while at work, then resume scanning after work, it wouldn't look like the device was scanning on its own.
+* Additional indication that scanning is turned off.
+* Easier to roughly calculate average of how often you're seeing APs.
+
+Perhaps a preference toggle between Run duration and Scan duration?"
+wiglenet/wigle-wifi-wardriving,open,Killed background service with re-run foreground doesn't update properly,[],"If WiGLE WiFi (hereafter ""WW"") is run with scanning on then other apps are opened, the WW service might be terminated due to out-of-memory conditions. It might or might not be removed from the notification area. A telltale indication is that WW's activity takes a few hundred milliseconds for the text to show up instead of nearly instantly.
+
+After termination, the foreground activity doesn't recover gracefully:
+
+* The hamburger menu no longer permits activity changes (e.g. can't change from Network List to Dashboard or vice versa; whatever was active last in foreground is what you're stuck with). Thankfully, the Exit item still functions and is adequate to exit the app (stopping the service) and the app can be run properly again.
+* Most of the time, the upper area in Network List doesn't respond to changes (e.g. counts stay at zero or otherwise don't increase, Lat stays ""(Waiting for GPS sync...)"" and Lon and Speed blank even after ""Now have location from gps"" toast/audio).
+
+This has been an issue for many months, still occurs on 2.29 even after force-close fix. Moto G (2013; 1 GB RAM) on stock KitKat 4.4.4 with some Xposed modules. Sorry I haven't reported it earlier."
+wiglenet/wigle-wifi-wardriving,closed,handle when user force kills app,[],"Turns out to be more complicated, need to invoke finish on main to get the whole thing to shut down properly. Doing in the service which gets a callback onTaskRemoved when this specific action happens, since doing in onDestroy breaks new app install restart."
+wiglenet/wigle-wifi-wardriving,closed,FIX - weird NPE from android console in 2.28.,"[Label(name=""bug""), Label(name=""please review"")]","console doesn't group these, but we've seen several."
+wiglenet/wigle-wifi-wardriving,closed,FIX - Notification now deseapear when swipe-killing the application,[],"Before this commit, when you swipe out the application from the list, the notification of the service saying how many Wifi network was staying. Now, it disappear, as the service is stopped.
+"
+wiglenet/wigle-wifi-wardriving,closed,FIX - Fix start_at_boot String,[],
+wiglenet/wigle-wifi-wardriving,closed,feat: Possibility to start Wigle when the phone boot,[],"Hey!
+
+I've realized this little functionality.
+If you think it would be better to do it another way, please, tell me. And if you think it wold be better if it starts in the background and you know how to do it, please tell me.
+"
+wiglenet/wigle-wifi-wardriving,closed,default to showing map tiles. fix restart.,[],
+wiglenet/wigle-wifi-wardriving,closed,switch to finishSoon to try and defeat RemoteServiceException,[],"Was able to dupe when starting and low-battery path is engaged. This takes care of that path, and changes all cases of MainActivity to finish after a callback, since it's not enough to just call Service.startForeground you actually have to allow time/execution for the notification to be displayed.
+
+Also clean up some MENU_EXIT's that aren't used anymore because they are fragments, and call the notification code in more places in the service just in case that is also a path of RemoteServiceException possibilities.
+
+Android bug: https://issuetracker.google.com/issues/76112072"
+wiglenet/wigle-wifi-wardriving,closed,updated french translation,[],"Correction of the french translation and added translated string for untranslated ones.
+
+ps: You can ask me whenever you want if you are searching for a french translation."
+wiglenet/wigle-wifi-wardriving,closed,"FIX - shouldn't be necessary, but...","[Label(name=""bug""), Label(name=""please review"")]",
+wiglenet/wigle-wifi-wardriving,closed,bump play services and sdk versions,[],
+wiglenet/wigle-wifi-wardriving,closed,FIX - a trio of stability hacks based on play console logs,"[Label(name=""bug""), Label(name=""please review"")]",None of these should be possible - may all be device/version issues.
+wiglenet/wigle-wifi-wardriving,closed,ENH - simplified Chinese translation from Geekeyes,"[Label(name=""enhancement""), Label(name=""please review""), Label(name=""question"")]","- incorporating translation file from Geekeyes w/ attribution per request
+- branching language descriptions
+- loading three optional Chinese variants into settings menu.
+
+Q: unclear whether we can delete `values-zh/strings.xml` now that these are present; does all auto-detection default correctly in all cases? 
+
+THANKS TO GEEKEYES FOR THE TRANSLATION!"
+wiglenet/wigle-wifi-wardriving,closed,update versions for studio 3.1,[],
+wiglenet/wigle-wifi-wardriving,closed,FIX - memoizing timestamp after suggestion from @goldfndr,"[Label(name=""please review"")]",
+wiglenet/wigle-wifi-wardriving,closed,ENH - adding a run clock to the dash.,"[Label(name=""enhancement""), Label(name=""please review"")]",this is a feature i've always wanted. open to criticism/reasons not to include.
+wiglenet/wigle-wifi-wardriving,closed,FIX two more languages.,"[Label(name=""bug""), Label(name=""please review"")]","more google translation; not great, but something to serve as a placeholder."
+wiglenet/wigle-wifi-wardriving,closed,FIX - adding missing fields to arabic and chinese language files,"[Label(name=""bug""), Label(name=""please review"")]",elements missing from some language files we're asking for help with!
+wiglenet/wigle-wifi-wardriving,closed,ENH - application icon updates based on new ess vee gees,"[Label(name=""enhancement""), Label(name=""please review"")]","so, we created a big vector pile to replace the old screenshot from the never-released 3d client that has served as the icon for all these year. these should render up more cleanly, and be a little more stylish. Also introducing the new XXXhdpi - finally vin diesel can use the app."
+wiglenet/wigle-wifi-wardriving,closed,ENH - adding a view button,"[Label(name=""enhancement""), Label(name=""please review"")]","... because the uploads page wasn't crowded enough
+Requires google earth or other KML-viewer (although I can't find a way to detect whether something that can handle KML is present)
+"
+wiglenet/wigle-wifi-wardriving,closed,FIX - fixing some nullchecks and null objects from bug reports in the play console,"[Label(name=""bug""), Label(name=""please review"")]",addressing a spike in stability problems
+wiglenet/wigle-wifi-wardriving,closed,ENH- Chinese variants,"[Label(name=""enhancement""), Label(name=""please review"")]","this splits language files for traditional vs. simplified Chinese variants, although we need help translating!"
+wiglenet/wigle-wifi-wardriving,closed,ENH - settable GPS timeouts per #152,"[Label(name=""enhancement""), Label(name=""please review"")]",quick and dirty prefs-based timeout setting.
+wiglenet/wigle-wifi-wardriving,closed,[FIX] - fixing lineage crypto credentials wonkiness in maps.,"[Label(name=""bug""), Label(name=""please review"")]",just handling the fall-through cleanly when we can't access creds.
+wiglenet/wigle-wifi-wardriving,closed,ENH - using a webview to integrate registration into app,"[Label(name=""enhancement""), Label(name=""please review"")]",first cut at a tighter registration into app - relies on javascript asserted into page and user-agent header.
+wiglenet/wigle-wifi-wardriving,closed,"split zh l10n into zh-TW & zh-CN, and probably zh-HK",[],"Chinese/Mandarin are written in two different scripts in Taiwan (as `Hant`) and China (as `Hans`). The difference is large enough for most applications to divide the language into two categories. Some applications add a separate category for Hong Kong (also `Hant`), which has a lexicon quite different from that found in Taiwan."
+wiglenet/wigle-wifi-wardriving,closed,simplify service notification setup. create one even if shutting down,[],our minimum sdk level means we don't have to jump through reflection hoops to set up the notification anymore.
+wiglenet/wigle-wifi-wardriving,closed,ENH - maybe a working background upload intent.,"[Label(name=""enhancement""), Label(name=""please review"")]"," need to test interactions with enter/exit app, make sure we haven't introduced conflicts in state/uploader."
+wiglenet/wigle-wifi-wardriving,closed,FIX - bug report on scanning change,"[Label(name=""bug""), Label(name=""please review"")]","from user bug:
+
+> When using the indicator/button to turn scanning on and off, the title changes to ""Scan Off"" and ""Scan On"". Using the menu doesn't do that. Also, the text indication is backwards. I've attached a couple of screenshots to demonstrate.
+"
+wiglenet/wigle-wifi-wardriving,closed,ENH - KML export functionality,"[Label(name=""enhancement""), Label(name=""please review"")]","-Allows download of previous uploads as KML, and sharing (from uploads fragment)
+-Clean-up of caching and storage access, fixing recent-android permission issues
+
+THIS CHANGE DESERVES EXTENSIVE TESTING"
+wiglenet/wigle-wifi-wardriving,open,"""Cancel"" Buttons can't actually interrupt HttpUrlConnection",[],"Once a request has gone to the network library, it is exceedingly difficult to interrupt. We should either replace this library with one that can be correctly interrupted, or dim/disable any cancel buttons during this state."
+wiglenet/wigle-wifi-wardriving,closed,ENH - simplify map control / auto-follow,"[Label(name=""enhancement""), Label(name=""please review"")]","update map lock-on status when users move the map or tap the ""my location"" button. lots of experimentation to find a minimal solution, but turned out to be really simple."
+wiglenet/wigle-wifi-wardriving,closed,FIX - Unsupported digest,[],
+wiglenet/wigle-wifi-wardriving,closed,updated German translation,[],updated once again :)
+wiglenet/wigle-wifi-wardriving,closed,FIX - why not just prefer AES?,[],I'm confused about how this worked at all.
+wiglenet/wigle-wifi-wardriving,closed,fix npe with no view in setstatusui,[],
+wiglenet/wigle-wifi-wardriving,closed,SYNC - Foss 2.25,[],
+wiglenet/wigle-wifi-wardriving,closed,ENH - Scanning indicator button,"[Label(name=""enhancement""), Label(name=""please review"")]","same diff as previous PR; hopefully more readable (rebase wasn't picked up)
+
+Very open to critique about the new dialog newInstance method added to MainActivity; feels like we're grafting a new yak onto that shaved spot on our yak."
+wiglenet/wigle-wifi-wardriving,closed,ENH - getting at least this translation into form with the full list.,"[Label(name=""enhancement""), Label(name=""please review"")]",Adding the missing entries (in the matching spots) to the french translation file. first of many of these.
+wiglenet/wigle-wifi-wardriving,closed,FIX - DESTROY ALL REMAINING TOAST,"[Label(name=""bug""), Label(name=""please review"")]","because android 7.1 just will not stop failing with BadTokenExceptions in odd places.
+New strings entries are because of 1. new toast dialogs requiring titles 2. the fact that the odd camera lib-but-no-supported-cam error had not been i18n'd!"
+wiglenet/wigle-wifi-wardriving,closed,ENH- making the scanning status indicator into a button.,"[Label(name=""enhancement""), Label(name=""please review"")]",from user requests
+wiglenet/wigle-wifi-wardriving,closed,FIX - bug report from user about interruption,"[Label(name=""bug""), Label(name=""please review"")]","There may still be some cases where a transfer has completed, but tear down gets called anyway."
+wiglenet/wigle-wifi-wardriving,closed,FIX - alternate fix for error messages on upload,[],doesn't get much simpler than this.
+wiglenet/wigle-wifi-wardriving,closed,FIX - avoiding problems with manually def'd strings.,"[Label(name=""bug""), Label(name=""please review"")]",building out a safe index for the connection error problem
+wiglenet/wigle-wifi-wardriving,closed,FIX - Miscategorized errors,"[Label(name=""bug""), Label(name=""please review"")]","Struggling to find the source of the problems people are seeing with transient login failure. In this instance we were incorrectly describing connection problems as login problems, which this PR fixes."
+wiglenet/wigle-wifi-wardriving,closed,ENH - Network error handling; remove complex error messages for common errors.,"[Label(name=""enhancement""), Label(name=""please review"")]","basically stop writing error reports for common networking issues, give people simpler/less alarming error messages. Hopefully cut down on non-actionable error reports."
+wiglenet/wigle-wifi-wardriving,closed,ENH - Clear db button,"[Label(name=""enhancement""), Label(name=""please review"")]","per user requests, allow clearing of database"
+wiglenet/wigle-wifi-wardriving,closed,"FIX - toast replacement, suppress in Android 7.1","[Label(name=""bug""), Label(name=""please review"")]","FOR DISCUSSION: heavy-handed, but without a way to reproduce the 7.1 BadTokenExceptions simply, this may be a way..."
+wiglenet/wigle-wifi-wardriving,closed,FIX - updating file access to supported mode in >= Marshmallow ,"[Label(name=""bug""), Label(name=""please review"")]","MODE_WORLD_READABLE is depr. in M, fails in N."
+wiglenet/wigle-wifi-wardriving,closed,FIX - Scanning indicator fix,"[Label(name=""bug""), Label(name=""please review"")]",thanks to user report!
+wiglenet/wigle-wifi-wardriving,closed,FIX - don't offer button with weird/corrupt bssids,"[Label(name=""bug""), Label(name=""please review"")]","careless, but I hadn't imagined bssids being < 7 characters."
+wiglenet/wigle-wifi-wardriving,closed,FIX - share activity sometimes gets null intents,"[Label(name=""bug""), Label(name=""please review"")]","courtesy of crashlytics.
+
+could also simply finish with a nullcheck right after intent is assigned, but slight dup."
+wiglenet/wigle-wifi-wardriving,closed,FIX - an odd error with the new TerminationRecvr,"[Label(name=""bug""), Label(name=""please review"")]",
+wiglenet/wigle-wifi-wardriving,closed,"FIX - not elegant, but apparently this is just a thing that happens",[],see ALIBI comment for StackOverflow discussion
+wiglenet/wigle-wifi-wardriving,closed,ENH - first pass at on-detail hide/block of network (filter addition),"[Label(name=""enhancement""), Label(name=""please review"")]","allows users to exclude nets from list or logging via the network detail screen.
+includes some visual tightening to fit controls and improve readability"
+wiglenet/wigle-wifi-wardriving,closed,"ENH - guess this fixes our issue, albeit awkwardly","[Label(name=""enhancement""), Label(name=""please review"")]","textCapCharacters and textVisiblePassword aren't compatible in real handset testing. By relaxing the requirement for upper-case input and forcing uppercase on insertion, we make user interaction easy (presenting both letters and numbers in OSK), but also make sure presentation and collision detection is consistent."
+wiglenet/wigle-wifi-wardriving,closed,fix: french description,[],"French is my mother tongue, so I remade this bad description."
+wiglenet/wigle-wifi-wardriving,closed,FIX - wrapping the obvious makeText / dead context with isFinishing() tests,"[Label(name=""bug""), Label(name=""please review"")]","Note: there are still toast pop-ups in static contexts, and in:
+
+- BackgroundGuiHandlers
+- MappingFragment
+- DataFragment
+- ActivateActivity
+
+but these are unlikely to overlap on app-exit"
+wiglenet/wigle-wifi-wardriving,closed,ENH - first version of filtering.,"[Label(name=""enhancement""), Label(name=""please review"")]","So much left to do, but this change is getting hefty."
+wiglenet/wigle-wifi-wardriving,closed,feat: exit button as different color,[],
+wiglenet/wigle-wifi-wardriving,closed,"update to compat 26.0.1, goog-play 11.0.4",[],"Minimum sdk now has to be 14. And had to rename the extended activity.
+https://stackoverflow.com/questions/29877692/why-was-actionbaractivity-deprecated"
+wiglenet/wigle-wifi-wardriving,closed,fix npe ActivateActivity.java L69,[],
+wiglenet/wigle-wifi-wardriving,closed,ENH - Tile zoom,"[Label(name=""enhancement""), Label(name=""please review"")]",tiles now go ALL THE WAY.
+wiglenet/wigle-wifi-wardriving,closed,"Help, I'm atempting to test my danish tralation, but i get errors.",[],"https://i.gyazo.com/8158bf79a20358589ed8f0911351a0c7.png
+
+I have no experience in programming. :("
+wiglenet/wigle-wifi-wardriving,closed,Updated danish language,[],"*Translated untranslated lines.
+*Updated bad danish gramman
+*Added *.db to gitignore cause windows put *.db files everywere."
+wiglenet/wigle-wifi-wardriving,closed,FIX - label no longer accurately reflected activity,"[Label(name=""bug""), Label(name=""please review"")]",
+wiglenet/wigle-wifi-wardriving,closed,ENH - organizing the settings screen into sections,"[Label(name=""enhancement""), Label(name=""please review"")]","breaking settings up into four sections to help people parse the giant list
+<img width=""355"" alt=""screen shot 2017-08-10 at 3 20 20 pm"" src=""https://user-images.githubusercontent.com/880022/29194693-b5f7a12e-7ddf-11e7-853e-2829607b7782.png"">
+<img width=""351"" alt=""screen shot 2017-08-10 at 3 20 37 pm"" src=""https://user-images.githubusercontent.com/880022/29194695-b8618c0e-7ddf-11e7-8788-582264aada69.png"">
+"
+wiglenet/wigle-wifi-wardriving,closed,ENH - map filter and tiles as an activity from Map Fragment,"[Label(name=""enhancement""), Label(name=""please review"")]","first cut at changing map settings to own dialog, combining with maptile settings.
+
+template for clarifying main settings mage, modularizing settings that appear in more than one place."
+wiglenet/wigle-wifi-wardriving,closed,FIX - creating a gingerbread-friendly Legacy observation import.,"[Label(name=""bug""), Label(name=""please review"")]","inefficient, but will work for small sets - returns big JSON string, then parses it all in memory (like the bad old days).
+This could should be removed as soon as we drop Gingerbread support."
+wiglenet/wigle-wifi-wardriving,closed,migrate to aes in keystore,[],"Handling https://github.com/wiglenet/wigle-wifi-wardriving/issues/155 as well as lineage issue, hopefully."
+wiglenet/wigle-wifi-wardriving,closed,ENH - filter list dialog -> activity,[],mostly plumbing to fit the filter screen on all devices (preparation to grow the set of list filters per feature req). Does not address trouble with map filter dialog in some languages.
+wiglenet/wigle-wifi-wardriving,closed,Login on Android O (8.0.0) Dev Preview 4 fails,[],"When logging into wigle app on Android O (8.0.0, build OPP4.170623.014), login fails with bad password.  Password works fine on web page on same phone.  Login session was working prior to Android O upgrade, and continued o work after.  After Deauthing the account in the app, and attempting to login again, login fails.
+
+![unknown](https://user-images.githubusercontent.com/30663365/28882842-0fc6b240-7772-11e7-970a-51f6a9c6aadb.png)
+"
+wiglenet/wigle-wifi-wardriving,closed,ENH - allowing a broadcast signal-based app termination,"[Label(name=""enhancement""), Label(name=""please review"")]","from https://wigle.net/phpbb/viewtopic.php?f=3&p=9317#p9317
+
+also removes some old intent handling code in MainActivity
+tested using Tasker and adb."
+wiglenet/wigle-wifi-wardriving,closed,FIX - lineageOS token lockout,"[Label(name=""bug"")]","this may not be the best solution, but if we can't access the token, I suppose we should clear it?"
+wiglenet/wigle-wifi-wardriving,closed,GPSListener.java make GPS_TIMEOUT and NET_LOC_TIMEOUT editable in settings menu,[],"Hi,
+it happens to me that I have no GPS in a bus or in the train in the area of bridges very often. I would like to set the timeout independently (in the settings menu). Can you please make the GPS_TIMEOUT and also NET_LOC_TIMEOUT editable in the settings menu? A field for a custom number would be very nice. Thanks in advance and greetings from Berlin."
+wiglenet/wigle-wifi-wardriving,closed,ENH - new download handling for observation importer.,"[Label(name=""enhancement""), Label(name=""please review"")]","streaming JSON, some cleanups with auth. need to make sure that these are all kosher."
+wiglenet/wigle-wifi-wardriving,closed,ENH - placeholders for language pack additions of new upload states,"[Label(name=""enhancement"")]",just placeholders.
+wiglenet/wigle-wifi-wardriving,closed,"FIX - just trap this error, since restoring map state isn't really that big a deal","[Label(name=""bug"")]","Common bug report on android versions 4.0 -> 7.0, unable to repro in debugging.
+Some notes online indicate that this happens with specific GMS versions, is not fault of use.
+
+Since this shouldn't crash the app, we're trapping and logging, although we'll continue to look for more info"
+wiglenet/wigle-wifi-wardriving,closed,FIX - some native implementations barf on Matcher.reset(charseq).,"[Label(name=""bug"")]","one of our most common bugs (between map and list filter regexes) - IllegalArgumentException: utext_close failed: U_ILLEGAL_ARGUMENT_ERROR on  net.wigle.wigleandroid.FilterMatcher.isOk(FilterMatcher.java:46)
+
+**Observed on:**
+- LGE w3c (LGL34C) rel. 4.4
+- Lenovo  A3300-H (LenovoA3300-H) rel 4.4.2
+- Samsung j7ltespr (SM-J700P) rel 6.0.1 
+
+not bubbling this issue to top since filtering is real-time with WiFiReceiver.onReceive (not just on new MapRender() )"
+wiglenet/wigle-wifi-wardriving,closed,ENH - Ui tweaks,"[Label(name=""enhancement"")]","tidying toast dlg. background
+giving the inline progress bar a title bar
+padding adjustments for inline cancellation button
+fixing the number of fractional digits on the lat/lon display to 8, to make UI more consistent"
+wiglenet/wigle-wifi-wardriving,closed,I don't know if wigle want to do,[],"The reason I arrived to wigle is interest for national-network-wifi that are developing in old the world (es. Vodafone Wifi). 
+Some operators are opening a wifi network on all their router with the same SSID and sell sims that allow access. 
+So, like for mobile, it would be interesting to have distinct coverage maps for performance.
+With my experience I saw that it would suffice a simple test on/off on internet connection, because wifi has priority over the 4G and so in some cases (many cases) this wifi completely disconnects devices.
+What do you think about insert an optional test and bd of them?"
+wiglenet/wigle-wifi-wardriving,closed,ENH - Scan during upload,[],"'cause really we don't need this.
+also: small layout fix."
+wiglenet/wigle-wifi-wardriving,closed,ENH- Toast replacement for success modal,"[Label(name=""enhancement"")]","In the service of getting to automatic background uploads
+Incidental improvement to animated scanning indicator and final removal of FileUploaderTask in favor of ObservationUploader"
+wiglenet/wigle-wifi-wardriving,closed,ENH - Small cleanup and status,[],small fixes.
+wiglenet/wigle-wifi-wardriving,closed,ENH- Scanning indicator and hi-res tower images,"[Label(name=""enhancement"")]","updating iconography, adding an animated scanning indicator/not scanning X"
+wiglenet/wigle-wifi-wardriving,closed,ENH - adding a cancel button for inline progress,"[Label(name=""enhancement"")]","adding a simple cxl button in the inline progress dialog. still results in exception dialogs on cancel (may be delayed in some cases). will need visual refinement, testing"
+wiglenet/wigle-wifi-wardriving,closed,bump versions to highest that still supports api 9 (2.3),[],
+wiglenet/wigle-wifi-wardriving,closed,ENH - adding a preference to prevent continually reconfirming user,"[Label(name=""enhancement"")]","on upload, once you've agreed to use the current user (and you aren't anonymous), we stop hassling you each time. If you deauthorize or change credentials, the dialog appears once more.
+
+next step in background uploading project."
+wiglenet/wigle-wifi-wardriving,closed,ENH - Inline progress,"[Label(name=""bug""), Label(name=""enhancement"")]","This got way, way too big.
+- adds hdpi and xxhdpi encryption icon support
+- changes myobserved download processing to jackson from obj json (memory footprint fix)
+- converts progress dialogs (depr. in android O) to inline progress at bottom of screen
+- retrofits UI to prevent more than one large UL/DL at once
+- partial updates to language packs"
+wiglenet/wigle-wifi-wardriving,closed,FIX- handling two bug reports from email,"[Label(name=""bug""), Label(name=""please review"")]",there are probably a lot more exceptions possible in the uploader case. :/
+wiglenet/wigle-wifi-wardriving,closed,FIX - minor build break in translation pack,"[Label(name=""bug"")]",
+wiglenet/wigle-wifi-wardriving,closed,Update strings.xml,[],About issue #133 stat. Low peiority.
+wiglenet/wigle-wifi-wardriving,closed,ENH- Networks discovered tiles,"[Label(name=""enhancement"")]","Allows overlay of network tiles (sans labels) in the following mode:
+  none/all for all users
+  onlymine/notmine for authenticated users
+Adaptive resolution based on HD/non-HD screens
+Dynamic retr/authentication for tiles vs. server endpoint.
+"
+wiglenet/wigle-wifi-wardriving,closed,Stat,[],"I don't understand for a good translation.
+I seems to me: (A or B)
+> A. I didn't translate well
+> B. ""37.045 ___"" must be write in global stat page
+
+![screenshot_2017-05-12-15-06-08](https://cloud.githubusercontent.com/assets/24221053/25999517/b9554b56-3725-11e7-8ce1-9fa0cbcb96df.png)
+"
+wiglenet/wigle-wifi-wardriving,open,Development for WiGLE always on.,[],"Wigle consumes a lot of battery, so I must use it intentionally in detection campaigns.
+I'd prefer app turns on byself when you need it.
+If I said so, it is impossible; but if I say I want app turns in stand by byself when it doesn't need to work, you can do it.
+
+When does it not need to work?
+
+>App can be know byself:
+When I'm stationary or still I move very slowly (modify on setting)
+When I'm connected to a wifi (to make the sophistication I can put it first, but it should not serve, to realize that I'm hooked to already done)
+At certain hours (night, office, ......)
+
+>App need I set:
+In some areas (identifiable as towers-area, but perhaps also with 1° GPS).
+
+We accept other ideas.
+
+Annex screenshhot of warning by Android that invites users don't use WiGLE (It send a notification that open this page)
+![screenshot_2017-05-09-00-52-36](https://cloud.githubusercontent.com/assets/24221053/25828911/5435a95c-3453-11e7-89c7-cf68f038dad4.png)
+"
+wiglenet/wigle-wifi-wardriving,closed,Sorting,[],"""OK"" doesn't work. I must go out and return.
+
+![screenshot_2017-05-05-10-51-38](https://cloud.githubusercontent.com/assets/24221053/25739171/13f289c0-3181-11e7-9748-3e0862d95951.png)
+"
+wiglenet/wigle-wifi-wardriving,open,Location,[],"Whit bottom setting, commands 182 183 don't work.
+182 <string name=""menu_turn_off_lockon"">Non seguire la posizione corrente</string>
+183 <string name=""menu_turn_on_lockon"">Segui la posizione corrente</string>
+
+![screenshot_2017-05-05-09-44-46](https://cloud.githubusercontent.com/assets/24221053/25737402/ed04be04-3177-11e7-8638-db12e2d6f213.png)
+"
+wiglenet/wigle-wifi-wardriving,closed,Centering Map,[],"My blue-point is not centered, but it is a lot on the right and less up.
+If I zoom it go auto of windows.
+With a default zoom I don't notice.
+It is as I have two blue points (one visible, one not) and maps centered ever that it is wrong.
+Sometime it change the two points (visibile became invisible and invisible visible). 
+It always center on the wrong (visible or invisible it is)."
+wiglenet/wigle-wifi-wardriving,closed,On Hamburgher menu filter doesn't work well in Italian version,[],"**It doesn't work or it is not clear.**
+1. Filter ON must be up. It seems to me it doesn't include SSID.
+2. Open - Wep -Wpa - Towers are ""OR""; but SSID in ""AND"".
+3. If I'm looking for a SSID, it's not enough to write it in the field, but I have to do double-click on Filter ON to get it.
+4. App shows me little cluster (eg 3 wifi) with one wifi symbol.
+5. If I search ""Telecom-4"" it shows ""Telecom-*"".
+6. In my mind it is clearer if you don't repeat ""show"" every time.
+
+I'd like this function working on Global WiGLE (not only my, because it seems to me I cannot view some important wifi). And I need to know where It is important I do wardriving.
+
+I named SPAM WiFi WiFi without pwd and without www. Perhaps you call it ""commercial"".
+
+![filters](https://cloud.githubusercontent.com/assets/24221053/25701259/e91b4d64-30cb-11e7-9588-5551ba375f98.png)
+
+
+
+
+"
+wiglenet/wigle-wifi-wardriving,closed,some grammar fixes for German language package,[],few things were left ;)
+wiglenet/wigle-wifi-wardriving,closed,Add 24 lines and translate,[],"Hi Bob. Sorry for last achanges today 4, but ""it will view""=""mostra"" and ""it is viewing""=""mostra"", so I changed ""Mostra"" because in the app it is not always clear is it is ""as is"" or ""to be"".
+In filter it is clear because you use box.
+It is low priority."
+wiglenet/wigle-wifi-wardriving,closed,Update strings.xml,[],
+wiglenet/wigle-wifi-wardriving,closed,FIX - Hide register link,[],"performing activation unsets ""be anonymous"" (and thereby removes the activate link) bug report from Raffaele."
+wiglenet/wigle-wifi-wardriving,closed,Italian translation,[],"Ok?
+""Mappa"" seems www.wigle.net. Cannot I view general map from app?
+I must continue ...."
+wiglenet/wigle-wifi-wardriving,closed,Unable to upload captured data,[],"Hi,
+
+since last update on play store there is no upload to wigle.net possible anymore.
+Everytime I hit the upload button, the error appears that the file to upload is empty.
+
+Is the captured data lost?"
+wiglenet/wigle-wifi-wardriving,closed,Some fixes on German language package,[],I added new language variables and changed old ones (fixed grammar issues and shortened some texts which were too long for a good-looking display).
+wiglenet/wigle-wifi-wardriving,closed,FIX - blanket exception handling around JSON elements,"[Label(name=""bug"")]","It's not the right way to handle this, but a production app shouldn't error out because of a sitedown/etc, and we are getting weird error reports.
+
+also, sorry about the build script updates in here, if those are too big a deal, i'll recut."
+wiglenet/wigle-wifi-wardriving,closed,"FIX - from email, Nexus 6P / 7.1.1 device","[Label(name=""bug"")]",Compiler warnings about missing permissions checks + NPE catch (since that's coming from inside google's code.
+wiglenet/wigle-wifi-wardriving,closed,FIX - dealing with issue from email bug report,"[Label(name=""bug""), Label(name=""please review"")]",
+wiglenet/wigle-wifi-wardriving,closed,RC - updated changelog for release candidate,[],
+wiglenet/wigle-wifi-wardriving,closed,FIX - uncaught in test build,"[Label(name=""bug""), Label(name=""please review"")]",sloppy mistake
+wiglenet/wigle-wifi-wardriving,closed,ENH- don't let the OS optimize battery usage,"[Label(name=""enhancement""), Label(name=""question"")]","Believe the frequent ""wifi resets"" and scan lag in android Marshmallow and higher are a symptom of battery optimization - will be testing extensively before merging this fix.
+
+There's some inconclusive documentation that suggests that requesting and using this permission can result in app suspension from the Play Store."
+wiglenet/wigle-wifi-wardriving,closed,FIX - clearing if we can't set,"[Label(name=""bug""), Label(name=""please review"")]",saving us from getting into an inconsistent state at the expense of user experience - we'll nuke the token and force re-authentication
+wiglenet/wigle-wifi-wardriving,closed,FIX - marshmallow + toast + permissions dialog = fail,"[Label(name=""bug""), Label(name=""please review"")]","seeing complaints from users in appstore re: 2.16 lockout due to ""overlay detection"" during initial permissions requests."
+wiglenet/wigle-wifi-wardriving,closed,FIX - fix for location on map,"[Label(name=""bug""), Label(name=""please review"")]",invert perms check so we can get position when allowed ;)
+wiglenet/wigle-wifi-wardriving,closed,FIX - #82 and numerous other error reports.,"[Label(name=""bug""), Label(name=""please review"")]",https://github.com/wiglenet/wigle-wifi-wardriving/issues/82
+wiglenet/wigle-wifi-wardriving,closed,FIX - I'd misunderstood marshmallow+ camera permission,"[Label(name=""bug""), Label(name=""please review"")]",
+wiglenet/wigle-wifi-wardriving,closed,ENH - build updates,"[Label(name=""please review"")]",fixup gradle/iml files
+wiglenet/wigle-wifi-wardriving,closed,FIX - Clear login on anonymous,"[Label(name=""enhancement""), Label(name=""please review"")]",
+wiglenet/wigle-wifi-wardriving,closed,ENH- row alignment cleanup,"[Label(name=""enhancement""), Label(name=""please review"")]",tidying row alignment
+wiglenet/wigle-wifi-wardriving,closed,BUG - Fixes and cleanup,[],"the combination of the last two PRs results in some odd behavior for anonymous uploads. these edits will provide beAnonymous after auth the ability to temporarily anonymize uploads without deauthorizing. This may or may not be a direction we want to go. (the alternative is to clear creds upon setting anonymous, removing all access to profile / stats data, and prevent reversion to authenticated uploads without creds-re-entry, reconfirmation)"
+wiglenet/wigle-wifi-wardriving,closed,ENH - allow auth right on the settings page.,"[Label(name=""enhancement""), Label(name=""please review"")]","Allows explicit ""auth"" call from settings page after user password entry.
+removing stored password on successful auth.
+"
+wiglenet/wigle-wifi-wardriving,closed,ENH - a little bit of stats-layout cleanup,[],"trying to make layout more compact - fit on standard screens in vertical layout mode.
+![Galaxy Nexus in Emulator](https://wigle.net/~arkasha/www_stats_layout_fix.png)"
+wiglenet/wigle-wifi-wardriving,closed,ENH - styling upload button to match site color,[],avoided square corners so it's not TOO Nat-Geo.
+wiglenet/wigle-wifi-wardriving,closed,ENH - Encrypted token storage,"[Label(name=""enhancement""), Label(name=""please review"")]",First cut at improving token storage using the android keystore system where supported
+wiglenet/wigle-wifi-wardriving,closed,MODE_WORLD_READABLE no longer supported,[],"On Android API 25 I get the message as shown below when trying to upload.
+Looks like [runtime permissions](https://developer.android.com/training/permissions/requesting.html) could be added.
+
+![screenshot_20170222-160239](https://cloud.githubusercontent.com/assets/576719/23220200/12a4661a-f919-11e6-9bb5-ce1c76e90ec2.png)
+"
+wiglenet/wigle-wifi-wardriving,closed,idea on better updating location of ssid,[],"When some one goes past a area and they get the first (ssid/mac address) and it puts it in the database but when they go to another street and they find that same ssid but it is stronger signal at the new location it will update the location and also update how strong the signal on the database automatically. That will help pinpoint where that ssid is located at. 
+
+Also a feature on a radar style of map using the best location with the strongest signal going from the database of all of the driving around the area."
+wiglenet/wigle-wifi-wardriving,closed,ENH - Adds Option to Require GPS Accuracy to Record Data,[],"This adds an option to the ""Settings"" screen to limit the collection of data points gathered with inaccurate GPS readings.
+
+The Options
+High (4m accuracy or Lower)
+Medium (10m accuracy or Lower)
+Low (20m accuracy or Lower)
+Off (All data will be collected) - Default
+
+This is done to both improve quality of data, and reduce export/upload filesize/bandwidth."
+wiglenet/wigle-wifi-wardriving,closed,ENH - Allow update based on network strength,[],"This change allows the database to be updated based on signal strength as a primary condition, as opposed to a secondary condition to lat/lon changes.
+
+This will cause more updates to occur, but the resulting data will be far more accurate.
+"
+wiglenet/wigle-wifi-wardriving,closed,ENH - preventing accidental taps from cancelling uploads/downloads,[],sometimes a boolean really is just a boolean.
+wiglenet/wigle-wifi-wardriving,closed,ENH- i18n template values and user-comprehensible strings for upload status,[],Making the uploads screen display something people can read for status instead of single-letter codes.
+wiglenet/wigle-wifi-wardriving,closed,ENH - refactoring network core,[],Refactoring to remove dups and move common network static methods to ApiRequest core (out of upload)
+wiglenet/wigle-wifi-wardriving,closed,FIX - removing redundant logging,[],these were bugging me.
+wiglenet/wigle-wifi-wardriving,closed,ENH - build script updates,[],Here are some things my dev environment keeps re-including whenever i revert and start developing. they seem innocuous. feel free to reject.
+wiglenet/wigle-wifi-wardriving,closed,ENH - upload using the new API,[],"in order to switch over to QR-based activation, we need everything to use the same API pathway. This is a ""light-weight"" cutover to the v2 API for uploads without undertaking a deeper rewrite to limit scope and complexity of the change. It's clear that we'll need to further refactor AbstractApiRequest children to bring the observation upload/download functionality into line with the ApiDownload functionality, and DRY everything up. This still requires further edge-case testing, and review. Steps to be taken after this change (not included in this PR):
+- move static methods out of HttpFileUploader (and either into their own utility class or into AbstractApiRequest)
+- Eliminate vestigial HttpFileUploader and FileUploaderTask"
+wiglenet/wigle-wifi-wardriving,closed,Fixes #78,"[Label(name=""bug""), Label(name=""please review"")]","wonky BBcode rewriter, using from-html conversion.
+fixes linebreak translation (and other inconsistent entities) per https://github.com/wiglenet/wigle-wifi-wardriving/issues/78"
+wiglenet/wigle-wifi-wardriving,closed,ENH - cutting over the API-based observation retrieval,"[Label(name=""enhancement""), Label(name=""please review"")]",surprisingly complex. some efforts made to bring together ApiDownloader and ObservationImporter (former HttpDownloader) - however some differences still outstanding
+wiglenet/wigle-wifi-wardriving,closed,ENH - A first cut at camera-based client activation using a logged-in qr on WiGLE site,[],question: is there a way to make this work (but exclude the activation link) if the play APIs aren't available on build/device?
+wiglenet/wigle-wifi-wardriving,closed,Mute Audio,[],"I have been searching in the source code for the default of ""Mute Audio"" as the app play audio and tts by default. Could someone point me where is set by default to turn it off in a built which does not set audio and speech to be turned on by default?"
+wiglenet/wigle-wifi-wardriving,closed,ENH - color and layout tweaks,"[Label(name=""enhancement""), Label(name=""please review"")]","Making the stats and upload views match site color schemes, tweaking layout."
+wiglenet/wigle-wifi-wardriving,closed,BUG - reset tokens on credentials change,"[Label(name=""bug""), Label(name=""please review"")]","re-authenticate if a user changes username or password.
+this is accomplished by clearing cached auth user/token and clearing cached files"
+wiglenet/wigle-wifi-wardriving,closed,wigle,[],
+wiglenet/wigle-wifi-wardriving,closed,FEA - cutting news over to new API,"[Label(name=""enhancement"")]","Required organizing GET/POST method partition, since all previous requests were performed with POST. Note that this required significant partitioning of connection configuration in HttpFileUploader as well as flowing method throughout the system.
+
+Please review, include critical feedback. Notably, I believe that HttpFileUploader/HttpDownloader were somewhat mis-named even before this PR."
+wiglenet/wigle-wifi-wardriving,closed,Bad location data in location and network probably due to losing GPS,[],"I have a couple of issues with Wigle on a LG Nexus 4 phone (stock android 5.1.1). I'm not sure if it's device specific or a general issue. 
+
+First and a minor one is that sometimes the ""location"" table contains wrong location data, eg:
+
+```
+sqlite> select _id,level,lat,lon,altitude,accuracy,time from location order by lat desc limit 100;
+_id         level       lat         lon         altitude    accuracy        time      
+----------  ----------  ----------  ----------  ----------  --------------  ----------
+748         -87         Inf         -Inf        0.0         566.0791015625  0         
+749         -91         Inf         -Inf        0.0         566.0791015625  0     
+750         -86         Inf         -Inf        0.0         566.0791015625  0         
+751         -90         Inf         -Inf        0.0         566.0791015625  0         
+752         -91         Inf         -Inf        0.0         566.0791015625  0         
+4252        -66         Inf         -Inf        0.0         0.924082756042  0         
+...
+```
+""Inf"" and ""-Inf"" are not valid WGS84 coordinates, also time=0 even if it's a valid number isn't OK/real. 
+This issue is probably caused by saving data before obtaining a GPS fix or after losing it (not sure). 
+
+There are also lines with valid coordinates (although i think the location is wrong - see below) and time=0.
+
+```
+_id         level       lat          lon               altitude    accuracy          time      
+----------  ----------  -----------  ----------------  ----------  ----------------  ----------
+12103       -85         46.06612801  14.5284741499999  0.0         9.52606964111328  0         
+12104       -90         46.06603457  14.52453655       0.0         9.52606964111328  0         
+```
+
+
+This causes issues when trying to draw all the points on a map, but can be avoided by filtering out the invalid location when exporting data from sqlite. 
+
+The bigger issue for me is the ""network"" table, where last- and best- locations are stored. 
+
+I have visualised a part of best-location data (one line in 'network' table is one dot drawn with ""bestlon"", ""bestlat"" coordinates - http://i.imgur.com/DF3hHTc.png ). I have actually walked/scanned the bottom part, but the slightly right leaning horizontal ""line of dots"" is due to losing GPS/location errors described above. I never actually walked there. 
+
+I have picked a known network/AP (larger, red dot, marked 'BSSID'), and visualised the data from 'location' table (each dot is a line from location table drawn at lat/lon coordinates; my selected AP is marked with larger red dots and 'BSSID - image: http://i.imgur.com/MtlGiGZ.png ). The actual location of the access point is in the bottom part of the image (close to where three more sighthings are drawn (larger red dots). The approximate distance between the three dots in the bottom part of the image, and the upper dot is ~1km.  Data: 
+
+```
+sqlite> select _id,level,lat,lon,altitude,accuracy,time from location where bssid=""<BSSID>"";
+_id         level       lat          lon          altitude          accuracy    time         
+----------  ----------  -----------  -----------  ----------------  ----------  -------------
+24201       -81         46.04416077  14.48949131  348.299987792969  10.0        1482300334000
+26714       -60         46.05357032  14.49049531  0.0               60.9652557  0            
+26884       -69         46.0441834   14.48921632  337.899993896484  10.0        1482346381000
+100093      -80         46.04402456  14.48904799  343.0             4.0         1483432558000
+
+```
+
+Three sightings have correct coordinates and valid GPS data (including time), but one, probably without a GPS fix (time = 0, and a wrong location - upper dot in the image) is also used for 'bestlat'/'bestlon' in 'network' table, since the signal level was the highest there. 
+
+There are also lines in 'network' table where bestlat/bestlon or lastlat/lastlon are +/-Inf:
+
+```
+sqlite> select lasttime,lastlat,lastlon,bestlat,bestlat from network order by lastlat limit 5;
+lasttime    lastlat     lastlon     bestlat     bestlat   
+----------  ----------  ----------  ----------  ----------
+0           -Inf        -Inf        -Inf        -Inf      
+0           -Inf        -Inf        -Inf        -Inf      
+0           -Inf        -Inf        -Inf        -Inf      
+0           -Inf        -Inf        46.4612570  46.4612570
+0           -Inf        Inf         46.0650862  46.0650862
+```
+
+```
+sqlite> select lasttime,lastlat,lastlon,bestlat,bestlat from network order by bestlat limit 5;
+lasttime    lastlat     lastlon     bestlat     bestlat   
+----------  ----------  ----------  ----------  ----------
+0           -Inf        -Inf        -Inf        -Inf      
+0           -Inf        -Inf        -Inf        -Inf      
+0           -Inf        -Inf        -Inf        -Inf      
+1483223038  46.4615528  13.9437285  -Inf        -Inf      
+1483112210  46.0550346  14.5191821  -Inf        -Inf      
+```
+
+
+So, sometimes, (eg.) when I walk into a building, and lose the GPS fix, it makes the location drift in a random direction and then store the invalid location to the database. Sometimes it even stores +/-Inf. If the access points signal is stronger there (and it often is inside buildings), the invalid location is also used for ""bestlat"" and ""bestlon"" fields.  I can also fix this in postprocessing (eg. foreach bssid in 'network' table, select all the sightings from the 'location' table, and pick the highest signal one with valid time and coordinates).
+
+I was wondering if I was the only one with this issues (some weird hw/sw combination), or has anyone else noticed similar errors in data (location points going in random directions, and/or appearing in locations never visited, or +/-Inf coordinates in the 'network' table). Maybe wigle shouldn't store location (to any table), if any of the location data is invalid (eg. +/Inf in coordinates, time==0). I can fix my data when processing, but this issue probably also affects kml export, etc. for other people."
+wiglenet/wigle-wifi-wardriving,open,Stopping tts can take very long,[],It have tts setup to only say the ssids. But when there are many of them it takes a while to say them all. When I use the ... Menu to silence the app it wants to finish saying all ssids it hasn't told me about yet. When I exit the app it stops immediately but in my case I would have to first silence it then exit then restart the app.
+wiglenet/wigle-wifi-wardriving,closed,Second line of text on network list and uploads is black on N Developer Preview 5,[],"![screenshot_20160813-135519](https://cloud.githubusercontent.com/assets/1594352/17645133/1013c836-6162-11e6-9495-39f294011dc8.png)
+![screenshot_20160813-135508](https://cloud.githubusercontent.com/assets/1594352/17645135/17a31836-6162-11e6-9b1a-f731b1d63157.png)
+
+This text is supposed to be the same light gray color seen throughout the app. I think this is a new Support Library bug on N as I have seen a similar problem with other apps.
+
+This is on a Nexus 6 running build NPD90G.
+"
+wiglenet/wigle-wifi-wardriving,closed,"updated German translation, added new variables",[],"Yet another translation update
+"
+wiglenet/wigle-wifi-wardriving,closed,HTML and linebreak translation in news view doesn't work.,[],"In news view, HTML and linebreaks (\n) aren't translated so these codes are shown as plain text.
+
+![pic1](http://fs5.directupload.net/images/160802/92msl8zx.png)
+![pic1](http://fs5.directupload.net/images/160802/xsbdwnea.png)
+"
+wiglenet/wigle-wifi-wardriving,open,Feature request: Incentivise pioneer exploration of virgin areas,[],"In order for wigle.net to reach highest map quality and aim for complete coverage, 
+I suggest complementing the usual bulk trawling downtown and idle coasting on highways with:
+### Incentivise exploration of unvisited cold pockets near users common area or position.
+- Suggesting or some how calling attention to virgin areas and or seldom visited squares.
+- Meter and reward pioneering by acknowledge, like every wifi has first discovered by,  now each square(km/mile?) has a pioneer. 
+- Meter and reward moderate turfing. Users can take pride in keeping some area up to date. Now each square(km/mile? smaller blocks in crowded areas?) has a last visited by user. But scores are only given for refreshing stale connection. (maybe even negative incentive for over refreshing(excluded home and work without breaking anonymity)).
+- Reminder when pioneered and last visitor turf gone cold 
+- Reminder when passing nearby virgin land.
+- Milestone recognition, Badges for special deeds like going the extra mile
+- Connecting local top users in stats without breaking anonymity?
+
+May be to much but. 
+- User progress, development and projected future expectation. 
+- Reminder when user activity has dropped below projected expectation, 
+
+Caveats are:
+- How do we avoid luring people into restricted/unsafe areas where they get into trouble.
+- How do we keep wifi primary and the flag planting and pissing on corners as periferial
+"
+wiglenet/wigle-wifi-wardriving,closed,Update strings.xml,[],"Major French update. Enjoy !
+"
+wiglenet/wigle-wifi-wardriving,closed,Feature request: Show queue,[],"It would be nice to add the number currently queued files to the statistics page.
+Furthermore it would be nice to see the current place in the queue for (all) own file(s) uploaded and not finished.
+
+Thanks!
+"
+wiglenet/wigle-wifi-wardriving,closed,added some missing German language variables,[],
+wiglenet/wigle-wifi-wardriving,closed,Updated German description translation,[],"Updated the translation of the description file.
+
+Seems like this was previously translated automatically. Horrible grammar. :smiley: 
+Hope that this is better now.
+"
+wiglenet/wigle-wifi-wardriving,closed,some fixes for German language variables,[],"I just fixed some translations.
+"
+wiglenet/wigle-wifi-wardriving,closed,improve translation Japanese description,[],"fix Japanese translation
+"
+wiglenet/wigle-wifi-wardriving,closed,Italian translation,[],"Hello.
+
+After working at the Italian translation (revised and completed) I tried to send it to the email WiGLE-admin[at]WiGLE.net - as indicated on the site - a month ago.
+
+I fear it is not arrived... I try to attach it here: [strings.zip](https://github.com/wiglenet/wigle-wifi-wardriving/files/333014/strings.zip)
+
+I hope it is useful.
+Thanks for your work
+"
+wiglenet/wigle-wifi-wardriving,closed,Replace slf4j-android-1.5.8.jar with  1.7.19 from central/jcenter,[],"Instead of including the jar file, using `compile ""org.slf4j:slf4j-android:1.7.19""` in build.gradle should pull it from jcenter.
+"
+wiglenet/wigle-wifi-wardriving,closed,Feature request: pause/start button on dashboard view,[],"There should be a big ""pause/start"" button on the dashboard view, so you can easily pause data collection when driving.
+"
+wiglenet/wigle-wifi-wardriving,closed,Fixed norwegian translations,[],
+wiglenet/wigle-wifi-wardriving,closed,Update stings.xml for german language,[],"corrected some strange translations.
+"
+wiglenet/wigle-wifi-wardriving,closed,Unable to upload to wigle since Let's encrypt is used,[],"I have an old phone (Android 2.2) which I occasionally use to capture and upload location data (I'm current #708 - user ""cdman"").
+
+Unfortunately my phone does not have the Lets encrypt root certificate and as such it can't upload to wigle.net (it gives an SSL error). Perhaps we could add the the root certificate as a ""custom certificate"" as described here: http://nelenkov.blogspot.ro/2011/12/using-custom-certificate-trust-store-on.html (the section starting with ""creating a custom TrustManager that delegates certificate checks to the system default one and uses the local trust store if verification fails. Here's how this looks like"" seems to be the relevant one).
+"
+wiglenet/wigle-wifi-wardriving,closed,Consistently use “WiFi”,[],"Change instances of “Wifi” to “”WiFi”. Makes the app consistent
+with the Android system and with itself.
+
+Change hyphens to en-dashes in titles.
+"
+wiglenet/wigle-wifi-wardriving,closed,Speech configuration screen is missing global off option,[],"I know you can achieve this by setting “Time between audio speech” to Off, but it really isn’t obvious and it was more natural to look for this option in the “Speech configuration screen”.
+"
+wiglenet/wigle-wifi-wardriving,closed,Brazilian Portuguese description,[],
+wiglenet/wigle-wifi-wardriving,closed,Offline maps,[],"Since mobile data is at a premium, can the app be adjusted to accept locally stored maps in .osm format? Direct export from Openstreetmap.
+"
+wiglenet/wigle-wifi-wardriving,closed,Proprietary dependencies,[],"https://f-droid.org/forums/topic/wigle-outdated/
+
+Can this dependency be dropped; alternately can a version without it be made available? I'd really prefer to keep using the app and I assume that the thousands of others who get it through F-Droid agree.
+"
+wiglenet/wigle-wifi-wardriving,closed,Background service not working without MainActivity,[],"If the service is started directly or if the process is killed/crashed and the service is automatically restarting the service is continiously waiting for GPS-Fix Sync (as of notification).
+
+```
+12-10 11:45:07.633 I/Timeline( 2368): Timeline: Activity_launch_request id:net.wigle.wigleandroid time:32306152
+12-10 11:45:07.633 I/ActivityManager(  591): START u0 {act=android.intent.action.MAIN flg=0x30a00004 cmp=net.wigle.wigleandroid/.MainActivity} from pid 2368
+12-10 11:45:07.853 I/wigle   ( 3261): main] MAIN onCreate. state:  null
+12-10 11:45:07.853 I/wigle   ( 3261): main] current lang: de new lang: 
+12-10 11:45:07.923 I/wigle   ( 3261): main] current lang: de new lang: 
+12-10 11:45:07.943 I/wigle   ( 3261): main] MAIN: creating new state
+12-10 11:45:07.943 I/wigle   ( 3261): main] id: '471a496a1c27b26b' inEmulator: false product: jgedlteue
+12-10 11:45:07.943 I/wigle   ( 3261): main] android release: '4.4.4
+12-10 11:45:07.943 I/wigle   ( 3261): main] setupService
+12-10 11:45:07.943 I/wigle   ( 3261): main] service started ok: ComponentInfo{net.wigle.wigleandroid/net.wigle.wigleandroid.WigleService}
+12-10 11:45:07.943 I/wigle   ( 3261): main] service bound: true
+12-10 11:45:07.943 I/wigle   ( 3261): main] setupDatabase
+12-10 11:45:07.943 I/wigle   ( 3261): dbworker-Thread-2345] starting db thread
+12-10 11:45:07.943 I/wigle   ( 3261): main] setupBattery
+12-10 11:45:07.943 I/wigle   ( 3261): dbworker-Thread-2345] setting db thread priority (-20 highest, 19 lowest) to: 10
+12-10 11:45:07.943 I/wigle   ( 3261): dbworker-Thread-2345] re-opening db in checkDB
+12-10 11:45:07.943 I/wigle   ( 3261): main] setupSound
+12-10 11:45:07.953 I/wigle   ( 3261): dbworker-Thread-2345] exists: true dir: true read: true write: true path: /storage/emulated/0
+12-10 11:45:07.953 I/wigle   ( 3261): dbworker-Thread-2345] opening: /storage/emulated/0/wiglewifi/wiglewifi.sqlite
+12-10 11:45:07.953 D/ExtendedUtils(  224): printFileName fd(27) -> /data/app/net.wigle.wigleandroid-1.apk
+12-10 11:45:07.963 I/wigle   ( 3261): dbworker-Thread-2345] database version: 2
+12-10 11:45:07.973 D/ExtendedUtils(  224): printFileName fd(31) -> /data/app/net.wigle.wigleandroid-1.apk
+12-10 11:45:07.983 I/wigle   ( 3261): dbworker-Thread-2345] loc count: 54125 in: 2ms
+12-10 11:45:08.003 I/wigle   ( 3261): main] setupWifi
+12-10 11:45:08.003 I/wigle   ( 3261): main] new wifiReceiver
+12-10 11:45:08.003 I/wigle   ( 3261): main] create wifi timer
+12-10 11:45:08.003 I/wigle   ( 3261): main] start first wifi scan
+12-10 11:45:08.003 I/wigle   ( 3261): main] startup finished. wifi scanOK: true
+12-10 11:45:08.003 I/wigle   ( 3261): main] register BroadcastReceiver
+12-10 11:45:08.003 I/wigle   ( 3261): main] lock wifi radio on
+12-10 11:45:08.003 I/wigle   ( 3261): main] setupLocation
+12-10 11:45:08.003 I/wigle   ( 3261): main] handleScanChange: isScanning now: true
+12-10 11:45:08.014 I/wigle   ( 3261): main] available provider: passive updateIntervalMillis: 1000
+12-10 11:45:08.014 I/wigle   ( 3261): main] available provider: gps updateIntervalMillis: 1000
+12-10 11:45:08.014 I/wigle   ( 3261): main] using provider: gps
+12-10 11:45:08.014 I/wigle   ( 3261): main] available provider: network updateIntervalMillis: 1000
+12-10 11:45:08.014 I/wigle   ( 3261): main] setup tabs
+12-10 11:45:08.014 I/wigle   ( 3261): main] Creating ListFragment
+12-10 11:45:08.014 I/wigle   ( 3261): main] Creating MappingFragment
+12-10 11:45:08.014 I/wigle   ( 3261): main] Creating DashboardFragment
+12-10 11:45:08.014 I/wigle   ( 3261): main] Creating DataFragment
+12-10 11:45:08.014 I/wigle   ( 3261): main] Creating UserStatsFragment
+12-10 11:45:08.014 I/wigle   ( 3261): main] Creating SiteStatsFragment
+12-10 11:45:08.014 I/wigle   ( 3261): main] Creating SettingsFragment
+12-10 11:45:08.014 I/wigle   ( 3261): main] onCreate setup complete
+12-10 11:45:08.014 I/wigle   ( 3261): main] MAIN: start.
+12-10 11:45:08.034 I/wigle   ( 3261): main] setupUploadButton
+12-10 11:45:08.034 I/wigle   ( 3261): main] setupList
+12-10 11:45:08.054 I/wigle   ( 3261): main] setNetCountUI
+12-10 11:45:08.054 I/wigle   ( 3261): main] setStatusUI
+12-10 11:45:08.054 I/wigle   ( 3261): main] setupLocation
+12-10 11:45:08.054 I/wigle   ( 3261): main] handleScanChange: isScanning now: true
+12-10 11:45:08.054 I/wigle   ( 3261): main] LIST: start.
+12-10 11:45:08.054 I/wigle   ( 3261): main] MAIN: resume.
+12-10 11:45:08.054 I/wigle   ( 3261): main] GooglePlayServicesAvailable: 9
+12-10 11:45:08.054 E/wigle   ( 3261): main] service not available! 9
+12-10 11:45:08.084 I/wigle   ( 3261): main] MAIN: post resume.
+12-10 11:45:08.084 I/wigle   ( 3261): main] LIST: resumed.
+12-10 11:45:08.114 I/wigle   ( 3261): main] service: onCreate
+12-10 11:45:08.114 I/wigle   ( 3261): main] service: onStartCommand
+12-10 11:45:08.114 I/wigle   ( 3261): main] service: handleCommand: intent: Intent { cmp=net.wigle.wigleandroid/.WigleService }
+12-10 11:45:08.114 I/wigle   ( 3261): main] service: onbind. intent: Intent { cmp=net.wigle.wigleandroid/.WigleService }
+12-10 11:45:08.124 I/wigle   ( 3261): main] setting phone inactive. state: 0
+12-10 11:45:08.234 I/wigle   ( 3261): main] MAIN: onCreateOptionsMenu.
+12-10 11:45:08.244 I/wigle   ( 3261): main] invoke: onInit
+12-10 11:45:08.244 I/wigle   ( 3261): main] locale: deu_DEU doLanguage: true lang: deu
+12-10 11:45:08.354 I/ActivityManager(  591): Displayed net.wigle.wigleandroid/.MainActivity: +507ms
+12-10 11:45:08.624 I/Timeline(  591): Timeline: Activity_windows_visible id: ActivityRecord{427abd30 u0 net.wigle.wigleandroid/.MainActivity t42} time:32307140
+12-10 11:45:11.497 I/wigle   ( 3261): main] setting location updates to: 1000
+12-10 11:45:11.497 I/wigle   ( 3261): main] available provider: passive updateIntervalMillis: 1000
+12-10 11:45:11.497 I/wigle   ( 3261): main] available provider: gps updateIntervalMillis: 1000
+12-10 11:45:11.497 I/wigle   ( 3261): main] using provider: gps
+12-10 11:45:11.497 I/wigle   ( 3261): main] available provider: network updateIntervalMillis: 1000
+12-10 11:45:11.497 I/wigle   ( 3261): main] no location for a while, setting location update period: 1000
+12-10 11:45:11.507 I/wigle   ( 3261): main] available provider: passive updateIntervalMillis: 1000
+12-10 11:45:11.507 I/wigle   ( 3261): main] available provider: gps updateIntervalMillis: 1000
+12-10 11:45:11.507 I/wigle   ( 3261): main] using provider: gps
+12-10 11:45:11.507 I/wigle   ( 3261): main] available provider: network updateIntervalMillis: 1000
+12-10 11:45:12.958 I/Killing Package( 3183): net.wigle.wigleandroid
+12-10 11:45:13.048 W/InputDispatcher(  591): channel '427a6898 net.wigle.wigleandroid/net.wigle.wigleandroid.MainActivity (server)' ~ Consumer closed input channel or an error occurred.  events=0x9
+12-10 11:45:13.048 E/InputDispatcher(  591): channel '427a6898 net.wigle.wigleandroid/net.wigle.wigleandroid.MainActivity (server)' ~ Channel is unrecoverably broken and will be disposed!
+12-10 11:45:13.048 I/ActivityManager(  591): Process net.wigle.wigleandroid (pid 3261) has died.
+12-10 11:45:13.048 W/ActivityManager(  591): Scheduling restart of crashed service net.wigle.wigleandroid/.WigleService in 1000ms
+12-10 11:45:13.048 W/ActivityManager(  591): Force removing ActivityRecord{427abd30 u0 net.wigle.wigleandroid/.MainActivity t42}: app died, no saved state
+12-10 11:45:13.058 W/InputDispatcher(  591): Attempted to unregister already unregistered input channel '427a6898 net.wigle.wigleandroid/net.wigle.wigleandroid.MainActivity (server)'
+12-10 11:45:13.058 I/WindowState(  591): WIN DEATH: Window{427a6898 u0 net.wigle.wigleandroid/net.wigle.wigleandroid.MainActivity}
+12-10 11:45:14.089 I/ActivityManager(  591): Start proc net.wigle.wigleandroid for service net.wigle.wigleandroid/.WigleService: pid=5706 uid=10403 gids={50403, 3003, 1028, 1015, 1023}
+12-10 11:45:14.170 D/ActivityThread( 5706): handleBindApplication:net.wigle.wigleandroid
+12-10 11:45:14.190 I/dalvikvm( 5706): Could not find method net.wigle.wigleandroid.MainActivity.checkSelfPermission, referenced from method net.wigle.wigleandroid.MainActivity.addPermission
+12-10 11:45:14.190 W/dalvikvm( 5706): VFY: unable to resolve virtual method 23155: Lnet/wigle/wigleandroid/MainActivity;.checkSelfPermission (Ljava/lang/String;)I
+12-10 11:45:14.200 I/dalvikvm( 5706): Could not find method net.wigle.wigleandroid.MainActivity.checkSelfPermission, referenced from method net.wigle.wigleandroid.MainActivity.setupExternalStorage
+12-10 11:45:14.200 W/dalvikvm( 5706): VFY: unable to resolve virtual method 23155: Lnet/wigle/wigleandroid/MainActivity;.checkSelfPermission (Ljava/lang/String;)I
+12-10 11:45:14.200 I/dalvikvm( 5706): Could not find method net.wigle.wigleandroid.MainActivity.requestPermissions, referenced from method net.wigle.wigleandroid.MainActivity.setupLocationPermissions
+12-10 11:45:14.200 W/dalvikvm( 5706): VFY: unable to resolve virtual method 23220: Lnet/wigle/wigleandroid/MainActivity;.requestPermissions ([Ljava/lang/String;I)V
+12-10 11:45:14.220 I/wigle   ( 5706): main] service: onCreate
+12-10 11:45:14.220 I/wigle   ( 5706): main] Heap: maxMemory: 201326592 cacheSize: 1024
+12-10 11:45:14.240 I/wigle   ( 5706): main] service: onStartCommand
+12-10 11:45:14.240 I/wigle   ( 5706): main] service: handleCommand: intent: null
+```
+
+It seems to be caused by some Methods, that can not be resolved, as they are Methods of the MainActivity:
+net.wigle.wigleandroid.MainActivity.checkSelfPermission
+net.wigle.wigleandroid.MainActivity.requestPermissions
+
+A service should be able to work standalone, as on crash of the app only the service is restarted.
+"
+wiglenet/wigle-wifi-wardriving,closed,Filter for own mobile hotspot,[],"Hi!
+
+Mobile personal hotspots aren't really helpful for building a geolocation-map as they move with the user. 
+So it would be really nice if one could filter out his/her own ones to make the map more accurate and keep the ""data pollution"" down.
+Or are there algorithms serverside to detect this?
+"
+wiglenet/wigle-wifi-wardriving,closed,offline maps support,[],"Hi, its pain in ass to download map tiles. Its drain my data. Fup 200Mb here.
+Should ve posible add support for mapsforge? 
+Im using map tiles in other apps. For geocaching, Locus etc. One file and if you want, render rules for customizing.
+"
+wiglenet/wigle-wifi-wardriving,closed,Osm tiles,[],"When osm tiles checked, i still getting google. Even if i restart app. Title od map panel is still named as openstreetmap / checked or unchecked
+"
+wiglenet/wigle-wifi-wardriving,closed,Update strings.xml,[],"Updated french translations
+"
+wiglenet/wigle-wifi-wardriving,closed,Update ru-strings.xml,[],"Spell-check and retranslate.
+"
+wiglenet/wigle-wifi-wardriving,closed,Wrong position of WiFi networks,[],"Network position is often very wrong.
+What about a function to only use a good GPS signal?
+I was on Tenerife and not anywhere in the desert.
+Example: https://www.dropbox.com/s/s4x54wtr61wdd6y/Screenshot_2015-08-06-12-45-05.png?dl=0
+"
+wiglenet/wigle-wifi-wardriving,closed,Updated German translation,[],"-clustering off/on
+"
+wiglenet/wigle-wifi-wardriving,closed,Fixed and added new portuguese strings.,[],
+wiglenet/wigle-wifi-wardriving,closed,Latest strings translated into Spanish,[],
+wiglenet/wigle-wifi-wardriving,closed,NullPointerException when opening the option menu via hardware button,[],"Every time I try to open the option menu via hardware button, the app crashes. 
+This device only, since current version (11/2014); others work fine. 
+-hdmn
+
+```
+WigleWifi error log - Feb 14, 2015 1:19:07 AM
+versionName: 2.6
+baseError: NullPointerException: null
+
+packageName: net.wigle.wigleandroid
+MODEL: LG-P710
+RELEASE: 4.1.2
+BOARD: 7x27
+BRAND: lge
+DEVICE: vee7e
+DISPLAY: JZO54K
+FINGERPRINT: lge/vee7e_open_eu/vee7e:4.1.2/JZO54K/P71010j-EUR-XX.1393575359:user/release-keys
+HOST: android-5pm-server-03
+ID: JZO54K
+PRODUCT: vee7e_open_eu
+TAGS: release-keys
+TIME: 1393575556000
+TYPE: user
+USER: rakwon.wi
+Thread: Thread[main,5,main] throwable: java.lang.NullPointerException
+
+java.lang.NullPointerException
+at com.android.internal.policy.impl.PhoneWindow.onKeyUpPanel(PhoneWindow.java:1004)
+at com.android.internal.policy.impl.PhoneWindow.onKeyUp(PhoneWindow.java:1712)
+at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchKeyEvent(PhoneWindow.java:2125)
+at android.view.ViewRootImpl.deliverKeyEventPostIme(ViewRootImpl.java:3611)
+at android.view.ViewRootImpl.handleImeFinishedEvent(ViewRootImpl.java:3581)
+at android.view.ViewRootImpl$ViewRootHandler.handleMessage(ViewRootImpl.java:2831)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:4929)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:798)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:565)
+at dalvik.system.NativeStart.main(Native Method)
+```
+"
+wiglenet/wigle-wifi-wardriving,closed,remove repeated strings,[],"Removed a couple of repeated strings that were causing warnings.
+"
+wiglenet/wigle-wifi-wardriving,closed,fixed some german translations,[],
+wiglenet/wigle-wifi-wardriving,closed,feature request: SSID filter ; delete DB ;  show version,[],"These may exist but i cannot locate them:
+
+feature request 1)
+In the past i used an option that would filter out a specific SSID as to not save/upload it.  I would like to have this ability again.  I would also like to filter more than one SSID.
+
+feature request 2)
+please add a delete database button.
+
+feature request 3)
+please display version number somewhere.
+"
+wiglenet/wigle-wifi-wardriving,closed,speech config issue,[],"speech reports `no GPS fix` even though I've turned off that speech option.  (i turned off all speech items)
+"
+wiglenet/wigle-wifi-wardriving,closed,netxml to KML conversion,[],"Hey guys,
+I'm trying to build an application that automatically converts the netxml files that Kismet generates into KML files to be loaded into Google Maps/Earth. I have tried about 5 or 6 perl and python programs and my only concern is that I don't like the marker images for any of them. The only rendering I really like is the one that the app generates after you export the DB as a KML file. How do you guys do that conversion? And lately, you have been able to group the networks into clusters? How can I port this to my laptop?
+"
+wiglenet/wigle-wifi-wardriving,closed,Update strings.xml,[],"Added more translated lines, still needs a little work to complete.
+"
+wiglenet/wigle-wifi-wardriving,closed,Update strings.xml,[],
+wiglenet/wigle-wifi-wardriving,closed,Language files update,[],"Added Hungarian description file, added Frisian (Frysk) language and made some small improvements. :smiley:
+"
+wiglenet/wigle-wifi-wardriving,closed,Client does not store most accurate data,[],"When starting WiGLE Wifi and a GPS position is available, it immediately starts scanning.
+However, when later (maybe a few seconds) the same APs a found but with a more precise GPS position, I noticed that this new scan is ignored. 
+
+I would expect my local DB to be updated whenever I find an existing AP with a less accurate position (or a weaker signal). This would be especially helpful when ""war-walking"".
+"
+wiglenet/wigle-wifi-wardriving,closed,translation fixes,[],"fixed some spelling and grammar issues in German translations
+"
+wiglenet/wigle-wifi-wardriving,closed,Entries with bssid of 00:00:00:00:00:00,[],"Occassionally, I will get a SSID found with sometimes different SSIDs but with the bssid of 00:00:00:00:00:00. This will stay in the currently found SSIDs even after the AP is no longer near. If I open the AP to show the known locations of the AP, it looks like a track of where I've been (since it records the AP of being at every location I've been at). If you would like, I can provide multiple screen shots of this for you. 
+"
+wiglenet/wigle-wifi-wardriving,closed,Program not going to background after system upgrade to 4.2.2,[],"This is on a Galaxy 3.
+
+Before the update, I could push the ""back"" button and have the program go to the background.  Now it doesn't, the ""LIST"" tab of the main program screen stays open.
+"
+wiglenet/wigle-wifi-wardriving,closed,Adding more translated Turkish lines to file,[],"Still have some work to do.
+"
+wiglenet/wigle-wifi-wardriving,closed,Added new language: Hungarian,[],"Hope I did it well.
+"
+wiglenet/wigle-wifi-wardriving,closed,Update strings.xml,[],
+wiglenet/wigle-wifi-wardriving,closed,Update strings.xml,[],"Changing some french translation
+"
+wiglenet/wigle-wifi-wardriving,closed,fix empty string test.,[],"actually check for the empty string.
+"
+wiglenet/wigle-wifi-wardriving,closed,findbugs fixes,[],"rollup of some findbugs3.0 hits
+"
+wiglenet/wigle-wifi-wardriving,closed,Does this app use a web service?,[],"Hello world!
+
+I'm not an Android developer, so I can't understand the code or at least the program structure.
+
+Reading the website I see the ways to get hotspots are:
+https://wigle.net/gps/gps/main/query/
+or https://wigle.net/gps/gps/Map/onlinemap2/
+And it seems there is a PHP-JSON bridge:
+https://wigle.net/phpbb/viewtopic.php?f=1&t=2055
+but that last solution requires you have your own server, which is not a good idea.
+
+Is there any way to access wiglenet database using common web services? Something like REST or SOAP? I could use https://wigle.net/gps/gps/main/query/ and process the HTML (scraping) but that's not too much elegant.
+
+Can anyone tell how this app gets all the data from wigle? Or at least tell me the files in JAVA I should read. I would like to know more about it but it's difficult to me reading an Android app code.
+
+Thanks a lot for your time, I appreciate it.
+"
+wiglenet/wigle-wifi-wardriving,closed,Updated language files!,[],
+wiglenet/wigle-wifi-wardriving,closed,Bogus rounding in Dashboard view,[],"While watching the dashboard display, I'll often see instances of rounding for the distance measurements, even though the actual precision (at least two significant figures) is better than the display suggests. It's like the opposite of [False precision](http://en.wikipedia.org/wiki/False_precision).
+
+For example, I'll see ""4.58 miles"" change to ""4.6 miles"" instead of ""4.60 miles"", or ""5.99 miles"" change to ""6 miles"" instead of ""6.00 miles"". The word ""miles"" moves back and forth instead of staying still -- it's slightly distracting in two rows of text.
+
+Hunch: around https://github.com/wiglenet/wigle-wifi-wardriving/blob/master/src/net/wigle/wigleandroid/DashboardActivity.java#L43 insert `.setMinimumFractionDigits( 2 )` (in addition to `.setMaximumFractionDigits( 2 )`).
+"
+wiglenet/wigle-wifi-wardriving,closed,updated NL description from Robin van der Vliet,[],
+wiglenet/wigle-wifi-wardriving,closed,"Dutch translation update. Thanks, Robin van der Vliet!",[],"any errors here are my own transcription
+"
+wiglenet/wigle-wifi-wardriving,closed,quit living in the past,[],
+wiglenet/wigle-wifi-wardriving,closed,"add optional wigle OSM tile source, on by default",[],"choice of evils
+"
+wiglenet/wigle-wifi-wardriving,closed,Update strings.xml,[],"Copyfail which caused pop-up with 'CSV file' in it while making a KML backup of the DB. No big issue, but cleaner in a newer version.
+"
+wiglenet/wigle-wifi-wardriving,closed,language fixes,[],"some caps, some errors, some phrases....
+"
+wiglenet/wigle-wifi-wardriving,closed,Added Turkish Translation,[],
+wiglenet/wigle-wifi-wardriving,closed,"Unable to access ""menu""",[],"I have a Nexus7 and updated ""WlGLE"" to version 1.56 on Google Play.
+and, ""menu"" software button at the right side of bottom has gone, I cannot enter settings, even exit application.
+
+I know that Android2.x phones have hardware buttons home, menu, back, but Android 3.x or 4.x are not necessarily have hardware buttons.
+This may make some of Android 3 or 4 may be unable to reach ""menu"", I think.
+
+Thank you.
+
+![wigle_button](https://f.cloud.github.com/assets/666730/1011700/f3bda372-0b61-11e3-82c2-417ac16bfab5.png)
+"
+wiglenet/wigle-wifi-wardriving,closed,"IllegalStateException
+at CharsetEncoder.flush when uploading data",[],"Each time I try to upload data, when exporting to .csv that will be uploaded, I get error message about this exception. Possibly my database contains some data (in ssid name maybe) that fails to encode properly in .csv.
+
+WigleWifi error log - 16/07/2013 01:43
+versionName: 1.55
+baseError: IllegalStateException: null
+
+detail: Has data connection: true
+packageName: net.wigle.wigleandroid
+MODEL: Galaxy Nexus
+RELEASE: 4.2.2
+BOARD: tuna
+BRAND: google
+DEVICE: maguro
+DISPLAY: JDQ39
+FINGERPRINT: google/yakju/maguro:4.2.2/JDQ39/573038:user/release-keys
+HOST: vpba1.mtv.corp.google.com
+ID: JDQ39
+PRODUCT: yakju
+TAGS: release-keys
+TIME: 1360362364000
+TYPE: user
+USER: android-build
+Thread: Thread[HttpUL-Thread-12359,5,main] throwable: java.lang.IllegalStateException
+
+java.lang.IllegalStateException
+    at java.nio.charset.CharsetEncoder.flush(CharsetEncoder.java:524)
+    at net.wigle.wigleandroid.background.FileUploaderTask.writeFileWithCursor(FileUploaderTask.java:489)
+    at net.wigle.wigleandroid.background.FileUploaderTask.writeFile(FileUploaderTask.java:353)
+    at net.wigle.wigleandroid.background.FileUploaderTask.doUpload(FileUploaderTask.java:160)
+    at net.wigle.wigleandroid.background.FileUploaderTask.doRun(FileUploaderTask.java:109)
+    at net.wigle.wigleandroid.background.FileUploaderTask.subRun(FileUploaderTask.java:87)
+    at net.wigle.wigleandroid.background.AbstractBackgroundTask.run(AbstractBackgroundTask.java:65)
+"
+wiglenet/wigle-wifi-wardriving,closed,GooglePlay's description of Japanese translation ,[],"I propose a plan of Google Play's Japanese description.
+
+https://gist.github.com/tinbotu/6102353
+
+I dont think it's a good idea to translate Application's Title, as ""WiGLE WiFi Wardriving"" is nice.
+"
+wiglenet/wigle-wifi-wardriving,closed,Fix some more Japanese translation,[],"Fix some more translation.
+Fix broken other language label.
+"
+wiglenet/wigle-wifi-wardriving,closed,french translation update per f4ahw@hotmail.fr,[],
+wiglenet/wigle-wifi-wardriving,closed,Fixed some German translations,[],"Some texts got slightly longer, I hope it doesn't break any UI elements. If so, let me know and I'll try to abbreviate a bit.
+"
+wiglenet/wigle-wifi-wardriving,closed,Fixed some German translations,[],"Just fixed some wrong wording and grammar in the German translation.
+"
+wiglenet/wigle-wifi-wardriving,closed,Fix Japanese translation,[],"Update Japanese message catalogue
+"
+wiglenet/wigle-wifi-wardriving,closed,Update existing networks,[],"O noticed something on wigle android client.
+
+I observe a network. It's open and on channel 1. Wigle saves it on database.
+
+The network changes SSID, changes to channel 9 and its WPA2 protected now, but wigle never updates it.
+On my database, it will always be open and on channel 1 (with the old name).
+
+Is it possible to update existing networks?
+"
+wiglenet/wigle-wifi-wardriving,open,Import from wigle.net to import all stats,[],"Today, the import observed only imports the BSSID.
+
+It would be logical to import all data to the database (SSID, WEP, lat, long, channel, etc).
+Since I can see it on wigle site via the query funcion
+http://wigle.net/gps/gps/main/query/
+
+Someone could do a script to import ""Only Networks I Was the First to Discover"" into the sqllite file.
+Of couse, this takes a lot of work and CPU stress.
+"
+wiglenet/wigle-wifi-wardriving,open,Store distance stats in /mnt/sdcard/wiglewifi,[],"When I rooted my phone and installed Wigle Wifi again on a clean system, I noticed that distance stats are gone. I think it is a good idea to move them to the memory card.
+"
+wiglenet/wigle-wifi-wardriving,closed,Update Dutch translations,[],
+wiglenet/wigle-wifi-wardriving,closed,App uses deprecated APIs,[],"WiGLE Wifi Wardriving is using deprecated API's, thus not allowing to set Android 4+ as target. This means you can't implement the Holo interface.
+"
+wiglenet/wigle-wifi-wardriving,closed,Password not in plain text,[],"Please don't leave the option to see the password in plain text. This is very unsafe.
+"
+wiglenet/wigle-wifi-wardriving,open,Ask me do I want to turn WiFi off before you do it.,[],"1. I turn Wigle on and go somewhere.
+2. I arrive at somewhere and quit Wigle and turn off WLAN.
+3. I I start Wigle and return home.
+4. I upload information to Wigle.net and quit it.
+5. Wigle turns off WiFi without asking me and I must enable it by hand.
+"
+wiglenet/wigle-wifi-wardriving,closed,Seems to log and send WiFi networks with hidden SSIDs which the phone knows.,[],"If phone has information of networks which have hidden SSID, this application seems to save them in database and later send them to WiGLE.
+
+I think that this is an issue, because [WiGLE FAQ](https://wigle.net/gps/gps/main/faq/) says
+
+> If your network is in WiGLE and you don't like it, we'll take it out immediately, but you should look into making your network harder to detect AND more secure; remember that you're the one bombarding passers-by with your signal. 
+
+and I think that ""<em>bombarding passers-by with your signal</em>"" means SSID broadcasting (if it doesn't, please correct me).
+"
+wiglenet/wigle-wifi-wardriving,closed,Added Speech Fix internationalization ,[],"Also corrected some strings and typos
+"
+wiglenet/wigle-wifi-wardriving,closed,speech fix,[],"no ""restarting wifi"" speech when speech is disabled
+"
+wiglenet/wigle-wifi-wardriving,closed,Update res/values-pt-rBR/strings.xml,[],"New string added.
+Corrected typos and changes text to better fit the GUI;
+"

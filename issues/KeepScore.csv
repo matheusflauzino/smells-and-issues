@@ -1,0 +1,406 @@
+repository,state,title,label,body
+nolanlawson/KeepScore,open,Crashing in Android 9 (Pie),[],"Updated to Android 9 (Pie) today. When I ran KeepScore for the first time Android warned that it's built for an older version and may not work in 9. Started a new 8 player game and KeepScore kept crashing on round 5. Rebooted phone, still got crashes."
+nolanlawson/KeepScore,open,Bottom row buttons missing,[],"When adding more than 2 players into a game, the 4 buttons below each player dissapear. 
+I have a couple of devices with high resolution capability and the issue is the same on all devices.  (They all have 16/9 aspect ratio) I have found that this is no issue on devices with 16/10 aspect ratio and even low resolution works fine. 
+On a rooted low resolution device I was able to change the AR and ""fool"" keep score to work the way I wanted. Of course the screen is not looking very good , and is all blurry.
+Would be great if some competent person could fix this ""bug""! Unfortunatley I dont have the required skill.  "
+nolanlawson/KeepScore,open,Spanish translation,[],"This is my contribution to improve the app. It is the spanish translation. It is my first time using Git, so I hope that everything is ok!
+"
+nolanlawson/KeepScore,open,Two strange/buggy behaviours in long press popup entering negative values,[],"First: great app, love it
+My environment: sony z1 compact (1280x720), android 5.1.1
+I'm a programmer myself and if I had the time I would try to support this project. But in this case I'm only a User giving feedback.
+(Perhaps it would be better to handle the following as two seperate issues.)
+
+1) Popup buttons disappear when textfield gets negative.
+
+When the popup shows I can see a textfield with a ""0"" in it and the configured buttons. When I press a button with a negative value the textfield shows the value, but all four buttons disappear. That happens always in that moment when the value in the textfield gets negative (e.g. press +5 once and 6 times -1). The space to the right of the textfield blanks out.
+
+2) Android number keyboard does not show the value of the popup textfield.
+
+When the popup shows the textfield shows a selected ""0"". When I click on the textfield the android number keyboard shows up fullscreen (no calculator: just buttons for digits, period, comma, minus (probably for unary reasons), space (I don't know what's that for), backspace, ""GO"" and its own textfield). It shows the ""0"", not selected and with the cursor on the left or right side depending on the touchclick I made on the popup textfield.
+When I press ""-"" while the cursor is on the right side the ""-"" is not shown! But ""internal"" it is there because when I press OK a popuperror says ""invalid calculator entry"" and if I use the back button the ""0-"" is shown in the textfield of the popup (and the buttons disappeared (see 1). And if I press backspace the internal ""-"" is deleted with nothing happening in the keyboard textfield, the second backspace deletes the ""0"".
+The Problem seems to be that the android number keyboard does not show every input. Probably if it thinks that this character does not lead to a valid number. But ""0-"" would be a valid term if another digit followed: ""0-2"". And this works: starting with ""0"" and cursor to the right keyboard, pressing ""-2"" shows ""02"" in the keyboard (wrong) and when I press OK the app counts ""-2"" (correct ""0-2""). So the number keyboard accepts and shows only valid numbers but still sends the ignored characters to the popup textfield and by pressing OK the app evaluates the textfield as a term.
+I tested some more values. They all lead to that conclusion.
+
+I hope you can verify that behaviour in other environments since that wouldn't mean that the sony z1c users are alone with this problem.
+"
+nolanlawson/KeepScore,open,Support for fractional points?,[],"I wanted to add buttons for +0.5 and -0.5 points, but the app seems to support integers only.
+"
+nolanlawson/KeepScore,open,No way to input 0 score for a round.,[],"If you don't input a change of score for a player in a round, instead of skipping that round they just end up a round behind from now on. In other words, the round breakdown is always the same as the player breakdown.
+"
+nolanlawson/KeepScore,open,Type points ,[],"Great app, but it would be great, if it is possible to type new points, and then click add. For games like canasta is it really stupid to klick on +10 and so on, because you will get points over 1000.
+"
+nolanlawson/KeepScore,open,add russian translate,[],"add russian translate
+"
+nolanlawson/KeepScore,open,missing features,[],"Hi,
+
+great app for scoring - I need two features:
+1. round-based scoring with negativ score-calculation:
+   we are playing cards with 4 players and 32 games
+   each game has 1 to 3 winners and the others are the loosers
+   the scores of the winner are negativ divided / multiplied to the loosers, eg:
+2. one winner 6 points => 3 loosers with -2 points
+3. three winner 3 points => 1 looser with -9 points
+4. two winners 4 points => two loosers with -4 points
+   so it would be easy to
+5. select winner(s) and entering the score => calculate the other results
+6. marker(s) for the players
+   each player has to play one ""solo-game"" withing the 32 games;
+   so we need a merkes, which player has already played his ""special"" game
+   (e.g. reversing the players name or something like that)
+"
+nolanlawson/KeepScore,open,Constructing a development environment.,[],"(Back from vacation, renewing my attempt to become a contributor)
+
+To recap:  I can now build the original maven project and deploy it directly to my android device.  I'd like to upgrade this to a modern IDE where I can deploy and debug on a simulator from my windows desktop.  I'm trying to construct an eclipse based project.  And I'm down to two tantalizing errors.
+
+Description Resource    Path    Location    Type
+dependency=[com.actionbarsherlock:actionbarsherlock:apklib:4.2.0:compile] not found in workspace    pom.xml /keepscore  line 1  me.gladwell.eclipse.m2e.android.markers.dependency.apklib
+
+error: Error retrieving parent for item: No resource found that matches the given name 'Widget.Sherlock.Light.ActionBar.TabText'.   styles.xml  /keepscore/res/values   line 16 Android AAPT Problem
+
+---
+
+Or as an alternative, tell me what  development environment I should use
+"
+nolanlawson/KeepScore,open,Configuring eclipse,[],"I'm trying to configure KeepScore to build using eclipse, with maven plugin, and the
+external actionbarsherlock project.  I'm not quite there; the build step go generate com.nolanlawson.keepscore.R isn't working.
+
+If one of you contributors could spare time for a short consultation, I'm sure I can get
+in business.  I'm very familiar with Java and Eclipse, but not with the android tools.
+"
+nolanlawson/KeepScore,open,Fix failed typecast,[],"Pull Request for Issue https://github.com/nolanlawson/KeepScore/issues/85
+
+For the love of all that is good, test this first! I cannot, and thus I am just running with what the javadocs + error has told me.
+
+If it fails, try casting to (SpannableString) instead
+"
+nolanlawson/KeepScore,open,Crash on too many rounds,[],"I still get a crash when I have enough rounds such that the numbers would drop off the bottom of the list (probably require scrolling).
+
+I have reported the error, it gives a ClassCastException in widget.AutofitTextView.onMeasure;
+
+It states that SpannableString cannot be cast to SpannedString.
+
+My guess is this occurs on line 65:
+
+ForegroundColorSpan[] foregroundColorSpans = ((SpannedString) getText()).getSpans(startOfLastLine + 1, cutoffIndex, ForegroundColorSpan.class);
+
+as this is the only place a cast of this type occurs.
+
+This could be fixed by instead casting to the interface (Spanned). This interface is also the interface for SpannedString anyway, so it should make no difference if this is NOT the problem. This is, however, the preferred way of dealing with casting variables in Java. Whenever possible, one should cast to the interface rather than the implementation (unless you need it). This is why you regularly see things like the following:
+
+List myList = new ArrayList();
+
+rather than
+
+ArrayList myList = new ArrayList();
+
+The Android Javadocs also state that getText() can be cast to either Spannable or Editiable (not SpannedString) depending on how it was set.
+
+---
+
+All in all, even if this isn't a bug I believe it should be changed. Though I do believe it is the bug I am experiencing.
+"
+nolanlawson/KeepScore,open,"Put invocation to ""findGameById"" into AsyncTask in GameActivity.java?",[],"Dear Developers of KeepScore,
+
+I'm a Ph.D. student and I'm doing research on improving performance 
+for Android apps.
+
+I find that in KeepScore, there is a method
+""GameDBHelper.findGameById"" which accesses database. In most cases,
+you put the invocation of this method into AsyncTask to improve responsiveness.
+(For example, in ""findGameFromGameSummary"", ""exportToSpreadsheet"",
+""saveBackup"" methods of ""MainActivity"" class).
+
+But in GameActivity class, ""onCreate"" method invokes ""createGame"" at
+line 124, which also eventually invokes ""GameDBHelper.findGameById"" at line
+473. I'm whondering why don't also put this invocation of ""findGameById"" 
+into background thread? Is there any specific reason that prevent you 
+to use AsyncTask here?
+
+Thanks,
+Yu
+"
+nolanlawson/KeepScore,open,Keyboard partially hidden on Nexus 5 with Android 4.4.4,[],"Never seen this before. Cyanogenmod btw.
+
+![keepscore](https://cloud.githubusercontent.com/assets/283842/4606462/65f52f50-521f-11e4-9dc6-cdcec3e1f305.png)
+"
+nolanlawson/KeepScore,open,Keepscore app bug report,[],"Love the app, I have found one bug though. 
+
+When you press and hold a score button to put in a custom score, typing in a number to add to the score ends up adding twice that number to the score instead of the number you wanted. 
+
+This is on an android phone with the version of the app available in Google play on 10/12/2014
+"
+nolanlawson/KeepScore,closed,Needs ability to edit player names in-game,[],"Seriously, it does
+"
+nolanlawson/KeepScore,open,More than 30 players,[],"Needs more than 30
+"
+nolanlawson/KeepScore,closed,Timestamp format,[],"Hi !
+How can i convert the <historyTimestamp> into seconds ?
+(what is the format of the Timestamp ?)
+
+thanks :P
+"
+nolanlawson/KeepScore,open,Dark theme should make it dark everywhere,[],
+nolanlawson/KeepScore,open,"Idea: integrate with contacts, show profile picture","[Label(name=""feature"")]","Profile pictures would be awesome!
+"
+nolanlawson/KeepScore,closed,Delta calc: Only hide the +/- buttons when typing an equation,[],"This addresses a comment left in a [review](https://play.google.com/store/apps/details?id=com.nolanlawson.keepscore&reviewId=Z3A6QU9xcFRPSGRGb05FVXI3SHlMYlJQVVhReEJhTXlSRzl0SUZEUEtjS0YxeTljT1JnWE0zckdKVDlUdEs2T1NFWVBfaktpcXVfblUwRUZjMlFLMEV2dGc&hl=en).
+
+>  The ""pop-up buttons"" shouldn't disappear after you press one. You should be able to keep hitting them until you get the value you want. It's a pain only getting to hit them once each time.
+
+With this change, the increment buttons are now only hidden after the user types one of `+-*/` into the text box.
+"
+nolanlawson/KeepScore,closed,User data is lost on KitKat,"[Label(name=""bug"")]","Apparently Google silently [disabled reading/writing to the SD card in Android 4.4](http://www.gottabemobile.com/2014/02/22/samsung-galaxy-s4-note-3-android-4-4-problem-hits-micro-sd-card/).  So now the entire backup/restore feature is broken and I need to fix it.  Thanks, Google!
+"
+nolanlawson/KeepScore,closed,Add calculator functionality to delta popup text field,[],"When you open the delta popup (long-press on <kbd>+</kbd>/<kbd>-</kbd>), on larger devices like the Nexus 7, the keyboard shows a set of calculator-like buttons:
+
+![screenshot_2014-02-20-01-12-02](https://f.cloud.github.com/assets/354349/2215623/1e3e1842-99f7-11e3-8f7a-d0cfd028d9a2.png)
+
+This PR puts those buttons to work and allows you to do some basic math inside the dialog.  For example, you can type `37+3+75+3*2-21` into the edit field, and when you press <kbd>=</kbd> (or tap the dialog's OK button), the field is automatically updated with the answer &ndash; in this example, 100.
+
+This is especially useful in games where you must add up an arbitrary number of points that range from 1 to 100 to reach the player's score for the round.
+
+The entered expression is evaluated with [exp4j](http://www.objecthunter.net/exp4j/), and things like order of operations and parentheses are properly respected.
+
+I've also made two other tweaks:
+- When you start typing in the input field, the other buttons are hidden and the input field is resized to fill available width.  This makes it easier to see longer expressions.
+- I've wired up the soft keyboard's return button to accept the dialog &ndash; I find it's quicker and easier to hit that button than the OK button of the dialog for some reason.
+"
+nolanlawson/KeepScore,open,"App continues to ""stop"" after going thru entering names.",[],"I have a Samsung Galaxy III and when I first acquired the app it worked fine.  Then it started the ""stop"" msg ...unfortunately Keep Score has stopped.  I would reboot phone and that solved problem, now I can reboot AND I have reinstalled...now won't get off message.
+I really like the app. I will not post this on Google Play as I like to work with people before I condemn.
+Thank you for any help.
+"
+nolanlawson/KeepScore,closed,description-he.txt,[],
+nolanlawson/KeepScore,closed,version_and_credits.htm,[],
+nolanlawson/KeepScore,closed,dimensions.xml,[],
+nolanlawson/KeepScore,closed,strings.xml,[],
+nolanlawson/KeepScore,closed,Update strings.xml,[],"missing translations added
+"
+nolanlawson/KeepScore,closed,Italian translation updated,[],"I've updated the Italian translation to make ver. 1.3.0 completely transalted.
+I've just let unchanged ""Portrait"" ""Landscape"" and ""Timeline"" because they are more often used in their English version also in Italy.
+"
+nolanlawson/KeepScore,closed,Show onscreen buttons on 7-inch tablets,[],"Right now the onscreen buttons are only available for up to 2 players, or up to 8 players if you have a 10-inch tablet.  7-inch tablets have the real estate, so they should get the love, too.
+"
+nolanlawson/KeepScore,closed,"""Load saved settings"" items are unclickable","[Label(name=""bug"")]","I'm not sure when this little doozy slipped in, but apparently you can't even click the saved settings (in Settings -> Load backup).  Gotta fix that one.
+"
+nolanlawson/KeepScore,closed,Broken on Nook Simple Touch,"[Label(name=""bug"")]","From a Google Play comment:
+
+<blockquote>
+Hell! It stopped working on Nook! At all! This moved from TOTALLY COOL to nothing. Come on, what is the purpose of keeping score on a non e-ink device? It drains battery life as a bit**, to keep the screen lit all the time. This on e-ink is total awesomeness. But it stopped working on Nook simple touch with latest update! I just fire it up, bang! closed. Please fix! 
+</blockquote>
+
+
+By an amazing coincidence, I'm actually one of the 7-odd people who own a rooted Nook Simple Touch. I didn't notice any issues with it recently, but I'll take a look.
+"
+nolanlawson/KeepScore,closed,Add game timer,"[Label(name=""duplicate"")]","The score keeping function ought to be combined with a ""player time"" function.
+
+Player times would be editable.  You also need a ""elapsed"", 
+""no one"" and ""everyone"" option so it would be possible to keep track 
+of the whole game and assign blame (oops, I mean time used) appropriately.
+"
+nolanlawson/KeepScore,open,faster/better addition,"[Label(name=""feature"")]","Instead of the long click on + and -, I suggest you should be able
+to click on the current score, which would pop up a custom numeric
+keypad which would have exits marked ""+"" and ""-"" (as well as ""no change"")
+Maybe also a harder to hit button for ""set score to""
+"
+nolanlawson/KeepScore,closed,Real-time history graph,"[Label(name=""feature"")]","It's been pointed out to me frequently that the history graph is only useful for round-based games.  It would be nice if scores were logged with timestamps, so that a realtime graph could be shown by default instead.
+
+Obviously this would not work for older, saved games.  But it would be a neat feature!
+"
+nolanlawson/KeepScore,closed,"Delta badge occasionally appears blank, with no text","[Label(name=""bug"")]","Steps to reproduce:
+
+Press the plus button, making the badge show ""1"".
+Wait 10 seconds for the fade out animation to start.
+Press the plus button again.
+
+**Expected result**: Badge shows 1, history column has not been modified yet, 10-second countdown goes back to 0.
+
+**Actual result**: an empty badge (with no number) is shown for 10 seconds.
+"
+nolanlawson/KeepScore,open,"Game is occasionally replaced with a duplicate, empty game","[Label(name=""bug"")]","I'm not sure exactly how to reproduce this issue.
+
+Occasionally, when I wake the phone up from sleep mode, the game I'm playing has been replaced with an empty clone (same players, all scores at 0), as if I had pressed the ""rematch"" button.  Both games are saved, and if I go back to the home screen, I can resume the previous game.
+
+However, this is a pretty bad bug from the user's point of view, because your first reaction is, ""My game got deleted!""  In fact, I think this is where the occasional ""KeepScore deleted my game"" comments come from.
+"
+nolanlawson/KeepScore,closed,Back button should lead to home screen when game already started,"[Label(name=""bug"")]","Create a new game.  Add some points, then wait 30 seconds.  Press the back button.
+
+**Expected result**: I'm back at the main screen.
+
+**Actual result**: I'm back at the ""enter player names screen.""
+
+I thought I fixed this bug before, but my implementation was incomplete.
+"
+nolanlawson/KeepScore,closed,"When hitting the ""back"" button, go back to the main screen",[],"Steps to reproduce:
+1. Start a new game, fill in the forms, tally some points for the game.
+2. Hit the back button.
+
+Expected: I'm back at the main screen
+
+Actual: I'm at the ""enter player names screen,"" which is confusing.
+
+I only want to go back to the main screen if I haven't actually modified anything, i.e. I'm still mentally in the ""new game wizard"" mode.
+"
+nolanlawson/KeepScore,open,Add support to use pictures as thumbnails for player names.,"[Label(name=""feature"")]","I'm sure something in the Contacts API could be used to support this feature.
+"
+nolanlawson/KeepScore,closed,Feature request,[],"Hi, could you please implement the following simple feature, I would be very grateful if you would.
+
+Could you allow an option in the settings for only 1 player to score in each round.  For example, in a game like boules or bocce, only 1 player can score in a round, and a player may win several rounds (frames) consecutively, with the other player of course scoring 0.  The reason I'm asking for this feature, is that the history would reflect the flow of these games with it.
+
+Thank you.
+"
+nolanlawson/KeepScore,closed,translated the 3 new strings to german,[],
+nolanlawson/KeepScore,closed,Edited german translation,[],"Added untranslated files and strings.
+Fixed some confusing translations.
+"
+nolanlawson/KeepScore,closed,Player sorting options,[]," Ability to automatically resort players by score or even by turn, with high/next player at upper left corner, would be very helpful in some games.
+"
+nolanlawson/KeepScore,open,History column not wide enough for >3 digits,"[Label(name=""bug"")]","The score history column isn't wide enough for 4 digits. It will display the first 3 digits and the +/- sign on one line and the fourth digit on a second line.  Even better if it could auto-adjust its size to prevent wasting space.
+"
+nolanlawson/KeepScore,closed,Italian translations added,[],"new file:   KeepScore/res/raw-it/third_party_credits.htm
+    new file:   KeepScore/res/raw-it/translations.htm
+    new file:   KeepScore/res/raw-it/version_and_credits.htm
+    new file:   KeepScore/res/values-it/dimensions.xml
+    new file:   KeepScore/res/values-it/strings.xml
+    new file:   KeepScoreDonate/res/values-it/strings.xml
+    new file:   documentation/description-it.txt
+    new file:   documentation/donate_version/description-it.txt
+    new file:   documentation/updates-it.txt
+"
+nolanlawson/KeepScore,open,Add an option to dim the screen to avoid killing the battery,"[Label(name=""dubious""), Label(name=""feature"")]","Currently KeepScore can destroy a phone's battery, because having the screen on eats a ton of power.  During a two-hour game of Rummy, the battery on my Galaxy Nexus running Android 4.2 dropped almost 20%.
+
+Turning the screen off entirely is not an option, because we don't want to make users unlock their lockscreen over and over again.  (Especially because your friends probably don't know your password.)  But dimming the screen after a certain timeout might offer some battery savings.
+"
+nolanlawson/KeepScore,closed,Add automatic backup to Dropbox,[],"The XML file should be automatically backed up, if Dropbox is installed and this setting is used.
+"
+nolanlawson/KeepScore,closed,Text cut off with 3 digits and 2-4 players on Sony Xperia Miro,[],"I think it's a screen-size problem; the app works well with my friend's smartphone (sony xperia arc s). I have a sony xperia miro. If I play with 7 or 8 players, then it works because the numers are smaller on my display.
+"
+nolanlawson/KeepScore,closed,Support multiple orientations,"[Label(name=""feature"")]","Current behavior: upon entering the score screen, the app forces the device to landscape mode.
+
+Proposed behavior: do not change the screen orientation at all. Instead, just follow whatever orientation the device has (portrait or landscape). This means that, for some devices, a single-column layout might be better.
+"
+nolanlawson/KeepScore,closed,Show popup buttons if user touches the score,[],"Current behavior: popup buttons (-1, +1, +5, +10) show up if the user long-touches the -/+ buttons.
+
+Proposed behavior: also show those popup buttons if the user touches the score itself.
+"
+nolanlawson/KeepScore,open,"""Declare a winner"" option","[Label(name=""dubious""), Label(name=""feature"")]","Should pop up a screen saying, ""Highest score wins/lowest score wins"" (could create multiple winners), manually select winner(s), and optionally name games.  This gives people a way to keep track of who won what games.
+
+In the Load Game screen, the name of the game would precede the list of players, and the winner would come first (bolded).
+"
+nolanlawson/KeepScore,open,Add game round number to corner of each player,[],"Add game round number to a corner of each player. This would allow one to see at a glance any player in which a score entry was missed. Currently it is easy to miss entering a zero value for a player when playing a game in which a score must be entered for each round for each player.
+"
+nolanlawson/KeepScore,closed,Allow non-zero value for on-screen buttons,[],"Modify on-screen score buttons to allow zero value. This would speed the entry of zero values for games requiring a score entry (including zero) for each round. Currently one has to click and hold the score history column, then select ""Add zero"". If one is not careful, the ""Delete Last Score"" may be pressed by mistake.
+
+Example: I would like to set the on-screen buttons to ""0"", ""5"", ""10"", ""20"" for use with the card game ""Five Crowns"" but currently buttons must be a ""non-zero"" value. Otherwise, this is the best score-keeping app around. Great for visually impaired too!
+"
+nolanlawson/KeepScore,closed,"Consider an ""export to spreadsheet"" feature",[],"It would be cool to export all your games into a CSV file so you can check it out in Excel or Google Docs.  Games on the Y axis, players on the X axis, etc.
+"
+nolanlawson/KeepScore,open,More fine-grained options for editing history,[],"From a user:
+
+The second thing is perhaps a place to manually place a new score in after you've gone a couple of rounds...like, if I realized I need to edit a score from round 2, but we are already on round 4, I can't easily go back and change that with the current app
+"
+nolanlawson/KeepScore,closed,The text size doesn't shrink so numbers over 10000 get cut off,[],
+nolanlawson/KeepScore,open,Improvment: Add a timer option,[],"Could you please add a timer option in the app ? For limiting the time take by each player ?
+"
+nolanlawson/KeepScore,closed,Historical score chart bug,[],"Sometimes historical score chart lines for some players show breaks. 
+"
+nolanlawson/KeepScore,open,Idea: shareable settings templates,"[Label(name=""dubious""), Label(name=""feature"")]","For certain games, it would be cool to have a saved set of templates with values that work well for that game.  For instance, for Magic the Gathering, you could have two life counters and two poison counters.  Or for cribbage, you could have four players and certain score increments.
+
+These could be shared across devices, people could create their own and share them with each other, etc.
+"
+nolanlawson/KeepScore,closed,Add progress bar when done editing players,[],"It's not cool when the interface just freezes for a second before saving the game with the edited players.
+"
+nolanlawson/KeepScore,closed,Can't go past three digits on Samsung Galaxy Mini,[],"Need to test extra-small screen sizes to see what's wrong.
+"
+nolanlawson/KeepScore,closed,"""Modify Players"" screen drag-and-drop shows duplicate list items",[],"While dragging a list item, it will appear duplicated as you move it around the list.  Probably just a simple UI fix.
+"
+nolanlawson/KeepScore,closed,Add a line graph to the history section that shows how player scores have changed over time,[],"That would be sweeeeet!
+"
+nolanlawson/KeepScore,open,round based mode,[],"a round based mode would be useful for games like scrabble, where you have up to four players, could still make good use of the many-button-interface, and players only score in sequence.
+
+round based mode could look similar to two-player mode, with one of the players replaced with a list of players in sequence with their score, an indication of whose turn it is, and a button for ""next player"". explicitly selecting a player should also be possible, optionally moving the ""current turn"" indicator.
+
+in round based mode, there should not be a timeout for committing a change to history; instead, history should be written whenever the player is changed.
+"
+nolanlawson/KeepScore,closed,Improve German translation,[],"Some of the terms are poorly translated.
+"
+nolanlawson/KeepScore,closed,Customize the + and - buttons,"[Label(name=""improvement"")]","Hi, and thanks again for the great app!
+
+I have a feature request:
+It would be great to add the ability to customize the value of the + and- buttons (to the left and right of the current scores in the attached screenshot.)
+
+The game we play counts by 5.
+
+Thanks again,
+
+Pete
+"
+nolanlawson/KeepScore,closed,"""About"" screen has messed-up characters on some devices",[],"Need to fix the UTF-8 content type.
+"
+nolanlawson/KeepScore,closed,Add backup/restore feature for saved games,[],"It would be nice if games could be saved to an xml file on the sdcard and then reloaded later.
+"
+nolanlawson/KeepScore,closed,History column not wide enough for 3 digits,[],"The score history column doesn't seem to be wide enough for 3 digits. It will display the first 2 digits one one line and the third digit on a second line.
+"
+nolanlawson/KeepScore,closed,"When clicking on ""0"" edit text, entire text should be highlighted",[],"This way, you don't have to press backspace in order to delete the 0 before entering a new value.
+"
+nolanlawson/KeepScore,closed,french translation ,[],"Just a 'true' french translation (fr:fr)
+"
+nolanlawson/KeepScore,closed,Saved games should be easier to find,[],"I can't tell you how many emails I've gotten from people who don't seem to understand the simple fact that KeepScore saves all your games and you can access them at any time from the ""Load Games"" menu.
+
+Answer: it's not the users who are stupid; it's KeepScore.  Saved games shouldn't be hidden behind the ""Load Game"" button - they should just pop up on the main screen.
+
+For instance, for new users the screen could just be the gigantic icon with a big button saying ""New Game.""  Once a single game is saved, though, the screen has a smaller icon with the list of saved games below it, and a ""New Game"" button at the top.  Or something like that.
+"
+nolanlawson/KeepScore,closed,Add support for up to 12 players,"[Label(name=""feature"")]","They can fit if the layout is flipped to portrait view.
+"
+nolanlawson/KeepScore,closed,"Consider ""Undo"" button",[],"A global ""Undo"" button might be nice.  It's conceptually simpler than the whole ""long-press on the history, and then undo the last score.""
+"
+nolanlawson/KeepScore,open,Autosuggest player names even when no text is entered,[],"Currently autosuggestions only pop up when at least one character is entered.  I'd really like to see constant autosuggestions - it would make it easier to start up new games, when you always play with the same players.
+"
+nolanlawson/KeepScore,closed,Allow players to be manually moved around and reordered.,[],"The user should be able to drag and drop players wherever they want.
+"
+nolanlawson/KeepScore,closed,Show round totals and player score averages,[],"Some users have asked for this.  Round totals are apparently necessary for certain games, and then there's also another user who requested: 
+
+One feature that it could benefit from would be the ability to show the average score for specific or all players.
+"
+nolanlawson/KeepScore,closed,Fix rendering problem on MDPI devices,[],"For some reason, on my HTC Magic running Eclair, the buttons and lines don't stretch properly.  This is a change introduced with the ViewStubs post-v1.1.  Need to investigate.
+"
+nolanlawson/KeepScore,closed,Optimize main game layout XML,[],"The games take a long time to load, and it's because the XML layouts are very inefficient.  This needs an overhaul, preferably with liberal use of the <merge/>, <include/>, and <ViewStub/> tabs, as described here: 
+
+http://android-developers.blogspot.com/2009/03/android-layout-tricks-3-optimize-with.html
+"
+nolanlawson/KeepScore,closed,Consider allowing for color-coding of player names,[],"Could be useful for Catan, Carcassonne, etc.
+"
+nolanlawson/KeepScore,closed,Allow for shuffling player order,[],
+nolanlawson/KeepScore,closed,Allow for deleting multiple games simultaneously,[],"Either have a ""delete all"" menu button or allow the user to ""select all"" and then delete.
+"
+nolanlawson/KeepScore,closed,Saved games should be categorized by date,[],"There should be categories with titles like ""Today,"" ""Yesterday,"" ""Last Week,"" etc.  Also, the dates displayed should be friendlier, cf. Google Docs.
+"
+nolanlawson/KeepScore,closed,Copied game should be immediately saved.,[],
+nolanlawson/KeepScore,closed,Allow for copying game,[],"The ""Reset"" dialog is confusing.  It should be replaced with Reset/Copy buttons.
+"
+nolanlawson/KeepScore,closed,De-uglify the main game screen,[],"It's got a face only a mother could love.
+"
+nolanlawson/KeepScore,closed,Periodically save game,[],"Users are reporting that their scores are being erased.  My guess is that this is due to certain Android builds killing the AsyncTask that is launched from the onPause() or onDestroy() method.
+
+The only solution I can think of is to have a background AsyncTask to periodically save the game.
+"
+nolanlawson/KeepScore,closed,Player Name Autocompletion,[],"Store player names that have been entered and use them for auto completion. Found it to be fairly handy feature, perhaps others might find it useful as well. Great app by the way!
+"
+nolanlawson/KeepScore,closed,Manage increment buttons separately,[],"Users seem to be confused by the options to manage the increment buttons, and the fact that the buttons in the popup are managed in the same way as the buttons in the 2-player layout.  They should be managed separately.
+
+As one user said:
+
+""Hi, just trying your app and found that button settings are not working 100%. Please see the attached screen shots. Otherwise it looks good, but how about an undo? Maybe it is there already ...""
+"
+nolanlawson/KeepScore,closed,Optimize button layouts for tablets,[],"Currently, the increment buttons only show up in 2-player mode, but they could fit in 4 or maybe 6-player mode on tablets.  As one user suggested:
+
+""Also, is there a way to add an option to have the four buttons you can select the value of get copied onto the main screen, rather than +/- the two biggest numbers?""
+"
+nolanlawson/KeepScore,closed,"""+"" button too close to physical phone buttons",[],"The physical buttons on a phone are usually at the bottom.  In KeepScore, the ""+"" button for a player on the right side of the screen is too close to these physical buttons.  The score history should be moved to the right to give a nice buffer of space.
+"
+nolanlawson/KeepScore,closed,Add popup buttons in 2-player view,[],"There is a lot of wasted space in the 2-player view.  The increment buttons from the popup window (-1, 1, 5, 10) could easily fit in there.
+"
+nolanlawson/KeepScore,closed,Add optional dark color scheme,[],"Suggested by Jordi.  The black-on-white color scheme drains the battery more heavily than white-on-black would.  It would be nice to have something in the Settings to allow the user to change this.
+"
+nolanlawson/KeepScore,closed,Support up to 8 players,[],"Allow 2-8 players rather than 2-6.  Suggested by Mike from the Android Market.
+"

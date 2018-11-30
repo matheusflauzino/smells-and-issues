@@ -1,0 +1,420 @@
+repository,state,title,label,body
+notriddle/budget-envelopes,closed,Added Dutch translation,[],:)
+notriddle/budget-envelopes,open,"java.lang.NumberFormatException: Invalid long: ""56667503683360224884""",[],"No check of `parseLong` when the input represents a very large value.
+```
+// java.lang.NumberFormatException: Invalid long: ""56667503683360224884""
+//  at java.lang.Long.invalidLong(Long.java:124)
+//  at java.lang.Long.parse(Long.java:366)
+//  at java.lang.Long.parseLong(Long.java:353)
+//  at java.lang.Long.parseLong(Long.java:321)
+//  at com.notriddle.budget.EditMoney.getCents(EditMoney.java:51)
+//  at com.notriddle.budget.TransferFragment.isOk(TransferFragment.java:86)
+//  at com.notriddle.budget.OkFragment.refreshOkButton(OkFragment.java:123)
+//  at com.notriddle.budget.TransferFragment.afterTextChanged(TransferFragment.java:99)
+//  at android.widget.TextView.sendAfterTextChanged(TextView.java:8004)
+//  at android.widget.TextView$ChangeWatcher.afterTextChanged(TextView.java:10165)
+//  at android.text.SpannableStringBuilder.sendAfterTextChanged(SpannableStringBuilder.java:1043)
+//  at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:560)
+//  at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:492)
+//  at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:491)
+//  at android.text.method.NumberKeyListener.onKeyDown(NumberKeyListener.java:121)
+//  at android.widget.TextView.doKeyDown(TextView.java:6095)
+//  at android.widget.TextView.onKeyDown(TextView.java:5908)
+//  at android.view.KeyEvent.dispatch(KeyEvent.java:2640)
+//  at android.view.View.dispatchKeyEvent(View.java:9240)
+//  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:1640)
+//  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:1640)
+//  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:1640)
+//  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:1640)
+//  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:1640)
+//  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:1640)
+//  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:1640)
+//  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:1640)
+//  at com.android.internal.policy.PhoneWindow$DecorView.superDispatchKeyEvent(PhoneWindow.java:2395)
+//  at com.android.internal.policy.PhoneWindow.superDispatchKeyEvent(PhoneWindow.java:1727)
+//  at android.app.Dialog.dispatchKeyEvent(Dialog.java:753)
+//  at com.android.internal.policy.PhoneWindow$DecorView.dispatchKeyEvent(PhoneWindow.java:2310)
+//  at android.view.ViewRootImpl$ViewPostImeInputStage.processKeyEvent(ViewRootImpl.java:4127)
+//  at android.view.ViewRootImpl$ViewPostImeInputStage.onProcess(ViewRootImpl.java:4089)
+//  at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3642)
+//  at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3695)
+//  at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3661)
+//  at android.view.ViewRootImpl$AsyncInputStage.forward(ViewRootImpl.java:3787)
+//  at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3669)
+//  at android.view.ViewRootImpl$AsyncInputStage.apply(ViewRootImpl.java:3844)
+//  at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3642)
+//  at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3695)
+//  at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3661)
+//  at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3669)
+//  at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3642)
+//  at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3695)
+//  at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3661)
+//  at android.view.ViewRootImpl$AsyncInputStage.forward(ViewRootImpl.java:3820)
+//  at android.view.ViewRootImpl$ImeInputStage.onFinishedInputEvent(ViewRootImpl.java:3981)
+//  at android.view.inputmethod.InputMethodManager$PendingEvent.run(InputMethodManager.java:2253)
+//  at android.view.inputmethod.InputMethodManager.invokeFinishedInputEventCallback(InputMethodManager.java:1874)
+//  at android.view.inputmethod.InputMethodManager.finishedInputEvent(InputMethodManager.java:1865)
+//  at android.view.inputmethod.InputMethodManager$ImeInputEventSender.onInputEventFinished(InputMethodManager.java:2230)
+//  at android.view.InputEventSender.dispatchInputEventFinished(InputEventSender.java:141)
+//  at android.os.MessageQueue.nativePollOnce(Native Method)
+//  at android.os.MessageQueue.next(MessageQueue.java:323)
+//  at android.os.Looper.loop(Looper.java:135)
+//  at android.app.ActivityThread.main(ActivityThread.java:5417)
+//  at java.lang.reflect.Method.invoke(Native Method)
+//  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+//  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+```"
+notriddle/budget-envelopes,open,java.lang.RuntimeException: Invalid envelope ID,[],"App crashes when rotating your phone.
+To reproduce, you can follow instructions (CLICK@193) at <https://ape-report.github.io/report/report-com.notriddle.budget/com.notriddle.budget-195/>.
+```
+// java.lang.RuntimeException: Invalid envelope ID: 2
+//  at com.notriddle.budget.EnvelopeDetailsFragment.loadEnvelopeData(EnvelopeDetailsFragment.java:262)
+//  at com.notriddle.budget.EnvelopeDetailsFragment.onLoadFinished(EnvelopeDetailsFragment.java:54)
+//  at android.app.LoaderManagerImpl$LoaderInfo.callOnLoadFinished(LoaderManager.java:483)
+//  at android.app.LoaderManagerImpl$LoaderInfo.onLoadComplete(LoaderManager.java:451)
+//  at android.content.Loader.deliverResult(Loader.java:144)
+//  at android.content.AsyncTaskLoader.dispatchOnLoadComplete(AsyncTaskLoader.java:265)
+//  at android.content.AsyncTaskLoader$LoadTask.onPostExecute(AsyncTaskLoader.java:92)
+//  at android.os.AsyncTask.finish(AsyncTask.java:651)
+//  at android.os.AsyncTask.-wrap1(AsyncTask.java)
+//  at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:668)
+//  at android.os.Handler.dispatchMessage(Handler.java:102)
+//  at android.os.Looper.loop(Looper.java:148)
+//  at android.app.ActivityThread.main(ActivityThread.java:5417)
+//  at java.lang.reflect.Method.invoke(Native Method)
+//  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+//  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+```"
+notriddle/budget-envelopes,open,Memory Leak,[],"After a double rotation of the EnvelopesActivity there is in heap memory 1 instance more of:
+
+class com.notriddle.budget.EnvelopesFragment @ 0x12c10000
+class com.notriddle.budget.EnvelopesActivity @ 0x12c9f800
+
+It should not be like this because the rotations return to the same GUI state and the memory should stay in the same state as well. It could be a symptom of a bad management of the onCreate-onDestroy lifecycle. 
+
+I have encountered this problem on an Android emulator running 7.1.1 os version. 
+
+
+
+
+"
+notriddle/budget-envelopes,open,Add notes to envelopes,[],So I can see what part of the budget I put on short term savings.
+notriddle/budget-envelopes,open,Accept button doesn't work for incoming revenue,[],"LG Leon, Android 5.0.1.
+Budget Envelopes 4.4
+
+I touch up arrow, I can change name and value of the revenue, but Accept button is always in gray. I can't touch it.
+
+I know las issue was a year ago and maybe this app is not being developed anymore, but I like to report bugs... :)"
+notriddle/budget-envelopes,open,This project is still alive?!,[],"Hi all,
+
+I've started using this app, but I think that miss some useful features.
+I'm a developer and I can help this project, obviously if anyone is interested ;)
+
+Cheers
+Michele
+"
+notriddle/budget-envelopes,open,backing out too quickly crashes,[],
+notriddle/budget-envelopes,closed,German translation added.,[],
+notriddle/budget-envelopes,open,export to xml,[],"Because of changes to db, importing exports from old versions will quickly become hard to maintain.
+Using xml may help with this as any unrecognised tags can simply be ignored.
+Something like the `simple-framework` would do the trick.
+
+Also, adding write to external storage permissions would be helpful allowing uses to potentially sync their data.
+"
+notriddle/budget-envelopes,closed,bugfix,[],"Switching from portrait to landscape in Spend fragment with 'delayed' checked and then hitting back on the action bar causes the app to crash.
+"
+notriddle/budget-envelopes,closed,Some bugfixes.,[],"Fix repeating spend future transactions appear immediately
+Fix spinner keep status when switching layout/activity.
+Fix layout getting screwed up in portrait mode when 'Delayed' is checked.
+"
+notriddle/budget-envelopes,closed,Add repeating spend functionality,[],"The behaviour is that repeating spends are added and marked as repeating in the log.
+Each time the log is played, any repeating transactions are repeated accordingly and added to the log (as normal transactions) leaving the last such transaction as a repeating transaction. This last transaction is always a delayed transaction which means that the projected envelope value will include one future payment of each recurring transaction.
+By deleting the future transaction, the repeating transaction is deleted as only the future transaction is marked as repeating in the db.
+
+NOTE: There is a known bug that the playlog function is only called on creating of activity, so for the next projected spend of a recurring payment to appear, the activity needs to be restarted.
+"
+notriddle/budget-envelopes,open,not atomic,[],"I transferred $39 from A to B, and then realized that this was the wrong amount and went into envelope A to edit the transferred amount to $34. After doing this envelope B still showed $39 (balance before transfer was $0), and when I looked inside it still showed an ""earn"" of $39.
+"
+notriddle/budget-envelopes,closed,data loss after OS reinstall,[],"Great app, many thanks for it.
+
+I've reinstalled my OS (cyanogenmod) and the app (via f-droid), keeping my home dir / sdcard intact, but all the data is gone.
+
+Where does it actually keep the data?
+
+Thanks
+"
+notriddle/budget-envelopes,open,Widget: it does not refresh data.,[],"The widget does not refresh the envelopes data until I restart my application launcher.
+"
+notriddle/budget-envelopes,open,Syncing for multiple devices/web?,[],"Just stumbled across this app on F-Droid.  It looks really great.  I was thinking about trying to build something like this, but probably not as good, considering my zero experience with Android dev.  One thing I was curious about, is there any provision for syncing?
+
+For instance, my wife and I work off the same budget and the same checking accounts.  Is there anything in the app that would allow for our two phones to share budget info?  If not, how is the budget data stored?  Maybe I could try my hand building such a feature?
+
+My background is web development, so my immediate thought is to build a web app (when all you have is a hammer, everything looks like nail, I guess), and have the mobile devices sync with the web app.  Then you have the extra feature of being able to manage youor checkbook data via the web or your phone.  That part is just thinking out loud though.
+"
+notriddle/budget-envelopes,open,Suggestion list automatically opens on delayed screen,[],"Steps to reproduce:
+1) Start typing the name of a repeated expense (one that's in the history)
+2) Choose one from the dropdown list
+3) Click the delayed option
+
+Now the ""cursor"" moves back to the ""name"" field, and the auto suggestion list gets opened again. Now I can't see the date because there's the dropdown covers my whole screen. If I accidentally touch one of the list items, I just lost what I entered in step 1.
+
+Small bug that I run into every so often.
+
+As always, thanks again for awesome software.
+"
+notriddle/budget-envelopes,open,Show amount in auto suggest list,[],"I only track expenses when I break a note. So almost all expenses are in denominations of €5. I have lots of ""lunch"" in my history. Trouble is, no way to see how much each transaction was when it comes up in the auto suggestion. It'd be great to have the amount in brackets after the name.
+
+My workaround is to start naming expenses with the price included, so ""lunch"" became ""lunch 5"" and ""lunch 10"" for the varying amounts.
+"
+notriddle/budget-envelopes,closed,About # 26,[],"Sorry. Posted in error.
+"
+notriddle/budget-envelopes,closed,Additional Suggestions Not Already Documented Here,[],"This is the second time I tried to post this note.  It misnumbered my suggestions and it won't allow me to edit to correct those numbers!  They should be numbered 1-4 in the order they appear.
+
+---
+
+I noticed that the following suggestions are not already listed here, but since I discussed most of these with you long ago, I'll put them in now, simply to document them.
+1.  The name of your app is ""Budget with Envelopes"", but the ""envelopes"" within your app are actually called ""virtual accounts"".  In keeping with the app name and to keep it simple for future ""Budget with Envelopes"" users, I suggest that you seriously consider changing the terminology within the app from ""Virtual accounts"" to ""Envelopes"".  Please bare with me on this terminology from now on in this message since this distinction will make it much easier to describe the following suggestions.)
+2.  If you choose ""Show real accounts"" from the main menu and you have more than one account set up, the various envelopes will be divided up into accounts headed with the yellow labeled account name.  Using this selection is absolutely necessary for those users who have multiple accounts because some envelopes in different accounts may have the same name.  Either way, without the headers in yellow, it would be very easy to mix up which envelope belongs to which account.
+
+Those with only one account could use either the ""Show virtual accounts"" selection or ""Show real accounts"" selection from the main menu equally well, but even so, the ""Show real accounts"" selection also shows the user's account name.  So the one account user doesn't really need the ""Show virtual accounts"" selection either.
+
+Due to this, I suggest taking the ""Show virtual accounts"" selection out of the main menu and renaming the ""Show real accounts"" selection to something like ""Show accounts and envelopes"".
+1.  When a user attempts to do a deposit or withdrawal from the ""Show real accounts"" selection of the main menu, or uses the ""Transfer"" selection of the main menu, the drop down list of envelopes those functions offer do not have a yellow header showing which envelopes belong to which account.
+
+So again, it is too easy for one who has multiple accounts to mix up which envelope belongs to which account.  I suggest adding the yellow headers to those drop down lists, as well.  Those yellow headers would not be selectable, but they would make Budget with Envelopes much easier to use for those who have multiple accounts.
+
+Since my other suggestion to add the available amounts to each envelope in those drop down lists is already listed as a suggestion, I won't repeat it.
+1.  I have one ""heads up"" to note about Android 4.4.   Apps running in Android 4.4 with the Permission name ""Write_To_SdCard"" (not sure of correct name right now) can now write only to a specific directory on the sd card.  Due to this, Android 4.4 could have easily broken Budget with Envelopes's back up and restore feature.  
+
+Also, some users have phones with an external sd card, as well.  (Such as the Samsung Galaxy S3) 
+Android 4.4 has the same limitation on that external SD card, as well.  Budget with Envelopes should be able to read and write to a user's external sd card, too... if it can't now. 
+
+It seems that the directory that an app is limited to writing to is named after the app developer and the app itself.  For example, the specific path to the only directory on my external sd card where DOSBox Turbo is now able to write to is /storage/extSdCard/Android/Data/com.fishstix.dosbox/dosbox/
+
+I had to manually add this particular path to my external sd card and transfer all of the DOSBox Turbo app's data files to that path before the app could again access and write to those data files again.
+
+By implementing these minor changes to ""Budget with Envelopes"", your app will be greatly simplified in both operation and understandability for those with only one account and also for those with multiple accounts.  :-)
+
+Just think about it.  ""Budget with Envelopes"" stands apart from all other stand alone Envelope Budget apps on Google Play due to its built in Task List that will automatically include a reminder for the user to move actual funds from one real account to another if (s)he moves funds virtually from one real account to another within the app. That feature is what really sets ""Budget with Envelopes"" apart from all of the other ""stand alone"" Envelope Budget apps in Google Play, for those with multiple accounts.  Budget with Envelopes is the only app that actually gets it right for those with multiple accounts and still keeps it incredibly simple for anyone to use!
+
+Budget with Envelopes' ability to back up it's data to an sd card is an incredible feature, as well!
+
+Well done on an excellent app!
+
+Please don't hesitate to let me know if I can help to further clarify any points. :-)
+
+Sincerely,
+
+John Vander Stel
+"
+notriddle/budget-envelopes,closed,Label Virtual Acct Envelopes with the Real Acct Name,[],"Sorry.  Posted in  error.
+"
+notriddle/budget-envelopes,closed,Envelope can be deleted accidentally,[],"On v4.0 from F-Droid:
+
+It's way too easy to delete an envelope (slide or hold). The undo-button is nice, but does not save you from deleting another envelope right after that.
+It would be better, to either have a confirmation-dialog or to have a another activity to add and delete (and maybe even sort) envelopes.
+"
+notriddle/budget-envelopes,open,Re:  Finally figured out what exactly is happening when funding envelopes with a smaller salary,[],"I did the first of month distro again today and noticed this time that when I put the amount of the salary in, I haven't been filling out the distro amounts for the envelopes at all.  If you click ""OK"" without filling in the envelope amounts Budget with Envelopes will try to do the distro automatically.... probably based upon history!
+
+As it turns out, it's actually an undocumented feature.
+
+Since the distro programming is actually already in there, I suggest allowing the user to choose which envelope will be the sweep envelope (where the difference between what the salary is and what is needed is sent), whether it's positive (as in extra funds) or negative (as in short of funds).
+
+That will then offer users with multiple incomes the features they need.
+
+Let me know if you have any questions. Now I understand why my earlier reports were hard to understand.  It's an undocumented feature that I discovered!  In this way, you can make that undocumented feature predictable and very useful.
+
+Cheers!  And Happy New Year!
+"
+notriddle/budget-envelopes,closed,Create values-fr/strings.xml,[],"French translation
+"
+notriddle/budget-envelopes,closed,Allow scheduled dates in the past,"[Label(name=""enhancement"")]","First off, great app. Love the simplicity, fantastic.
+
+One feature that would be awesome, would be to schedule expenses in the past. I regularly forget stuff, and go to add it to the history, but have to leave it set as today because I can't see any way to backdate transactions.
+
+It'd also be cool to change the date on existing transactions, but that's less important for me personally, just enabling historical dates with the ""schedule"" checkbox would be great.
+"
+notriddle/budget-envelopes,open,Finally figured out what exactly is happening when funding envelopes with a smaller salary,"[Label(name=""bug"")]","I've reported this problem before, but wasn't able to figure out the exact behavior of Budget With Envelopes.
+
+When funding my envelopes with a smaller salary than the total of my envelopes' required funding, Budget With Envelopes shorts the funding of some envelopes, but until now, I as not able to predict which ones would be shorted.
+
+Today I funded my envelopes again, and after experiencing this problem for the third time, I figured out that Budget With Envelopes under-funds the first envelopes in the alphabetized list that require any funding.
+
+Simplified Details:
+
+My first 4 envelopes in Budget With Envelopes are:
+
+""BugCard"" with a monthly funding requirement of $0
+""CarR"" with a monthly funding requirement of $7.00
+""Dental"" with a monthly funding requirement of $6.50
+""DogLic"" with a monthly funding requirement of  $1.00.
+
+My full monthly envelope funding requirement for my entire budget in Budget With Envelopes is $724, but I again entered $710 as my salary, due to my one odd quarterly income.
+
+My ""BugCard"" envelope (since it has no monthly funding requirement) was correctly funded with $0.
+
+My ""CarR"" envelope was funded with $0 instead of it's $7 requirement.
+
+My ""Dental"" envelope was funded with $0.50 instead of it's $6.50 requirement.
+
+My DogLic"" envelope was funded with $0 instead of it's $1 requirement.
+
+All other envelopes were funded correctly.
+
+Notice that the total reduced funding was indeed $14, and that it was spread over the first envelopes (alphabetically) that required any monthly funding.
+
+Again, why I face this problem each month:  
+
+My budget envelopes are always underfunded by $14 each month from my monthly salary because I have one odd income of $42 that comes in quarterly, so that amount is stored in a holding envelope each quarter so it can cover the $14 monthly funding shortage through the rest of the quarter.
+
+Since the fully funded difference is currently being spread over a number of envelopes in an undesirable manner, I suggest that Budget With Envelopes allow the user to specify a ""sweep"" envelope.  The fully funded difference could then be predictably swept into that ""sweep"" envelope (whether the difference is positive or negative) so all regular envelopes will still be fully funded in a predictable and logical manner.
+
+If you have any further questions about this, please don't hesitate to let me know.  I hope that the problem can now be fixed sometime soon since the problem is now well defined, well documented, and should be able to be reliably duplicated.
+
+Sincerely,
+
+John  Vander Stel
+Grand Rapids, MIchigan
+"
+notriddle/budget-envelopes,closed,A way to list all transactions?,"[Label(name=""enhancement"")]","I suggest offering a way to show all transactions, no matter what envelope it was taken from or added to.
+
+To show transactions associated with a particular envelope, one just taps that particular envelope.  
+
+Since there isn't a heading for the account, I suggest just allowing the user to tap the envelope's total on top to show a full listing of all transactions.  This listing could be used by the user to help in reconciling a checking account.
+
+John Vander Stel
+Grand Rapids, Michigan
+"
+notriddle/budget-envelopes,closed,Handling the deprecation of setBackgroundDrawable in EnvelopesAdapter,[],"> > private void fillCardContents(Context cntx, CardContents contents, Cursor csr) {
+> > ...
+> > contents.name.setBackgroundDrawable(getColorStateDrawable(color)); deprected
+> > }
+"
+notriddle/budget-envelopes,closed,Handling the deprecation of setBackgroundDrawable in EnvelopesAdapter,[],"> > private void fillCardContents(Context cntx, CardContents contents, Cursor csr) {
+> > ...
+> > contents.name.setBackgroundDrawable(getColorStateDrawable(color));
+> > }
+"
+notriddle/budget-envelopes,closed,Change Date to Calendar object because this class' deprecated computational functionality is now provided by Calendar,[],
+notriddle/budget-envelopes,closed,"Warning Date.getYear(), Date.getMonth(), Date.getDay() has been deprecated",[],"EnvelopesActivity.java 
+
+> > public void onResume(){}
+> > it's used a strange way to get the current time in milliseconds.
+"
+notriddle/budget-envelopes,closed,Handling the deprecation of setBackgroundDrawable in SimpleEnvelopesAdapter,[],"> > change.setBackgroundDrawable(EnvelopesAdapter.getColorStateDrawable(color));
+"
+notriddle/budget-envelopes,closed,Handling the deprecation of setBackgroundDrawable in SimpleEnvelopesAdapter,[],"> > change.setBackgroundDrawable(EnvelopesAdapter.getColorStateDrawable(color));
+
+setBackgroundDrawable() has been deprecated in API level 16: JELLY_BEAN.
+
+setBackground() is called when the device sdk version is JELLY_BEAN or higher, and setBackgroundDrawable() is called when the device sdk version is less than JELLY_BEAN.
+"
+notriddle/budget-envelopes,closed,Ru translation,[],"Add Russian translation
+"
+notriddle/budget-envelopes,open,Another First of Month Distribution Issue (fully documented this time),"[Label(name=""bug"")]","My last report didn't offer exact info since I didn't document everything, as I did it, because I didn't know a problem was going to happen.
+
+This time I documented exactly what happened so you might be able to figure out what went wrong in what lines of the code, and why.
+
+First of all, I will list my wife's envelopes, with their amounts, in the order Budget with Envelopes has them.  In actuality, Budget with Envelopes didn't retain the particular order I entered them in. (This makes it difficult to follow the logic.)  I entered the amount of $710 as the monthly salary:
+
+Envelope  Monthly budget amount  balance before salary input  amt after salary input  
+
+---
+
+BugCard    0                                    0                                        0
+CarR         7.00                                28                                      28
+Dental       6.50                                20.01                                  20.51
+Dog Lic      1                                    11                                       11
+FoTvNet    87.55                                0                                        87.55
+GasElec    90                                    0                                         90
+Groc         75                                     0                                         75
+Hair           11                                    11                                        11
+Jane           0                                      0                                         0
+Mast           0                                      0                                         0
+Misc           0                                      0                                         0
+Rent          445.95                                0                                       445.95
+S-SSI         0                                      28                                        28
+Save           0                                       0                                         0
+
+Total         724                                    98.01                                 797.01
+
+---
+
+This is my wife's budget.  She has 2 incomes.  One that comes in monthly of $710 and one that comes in quarterly of $42.  The S-SSI envelope stands for the second income.  I put the full $42 in that envelope each time it comes in and then divy out $14 each month out of it to make up for the first salary's shortage of $14 per month.
+
+I entered the $710 salary first.  This is what happened.  I had to then do a series of envelope to envelope transfers to fix it it all before divying out the $14 from the S-SSI envelope.
+
+As you can see, many envelopes were not filled with the right amount and some were not filled at all.  If one inputs a salary that is less than their total monthly budget, how does Budget with Envelopes decide which envelopes to fill, which ones to fill with less than their proper monthly allotment, and which ones to not fill, at all?
+
+The way that it is acting now, the results are far from accurate and completely unreliable. 
+
+John Vander Stel
+Grand Rapids, Michigan
+"
+notriddle/budget-envelopes,open,Widget doesn't refresh,"[Label(name=""bug"")]","Think I found a bug with the widget in v3.2 on Android 4.3. It doesn't appear to refresh the values on the widget unless I restart my phone or remove and readd the widget. I'll let you know if I have any insights into what's causing it to happen.
+"
+notriddle/budget-envelopes,open,Allocation on the first of the month,"[Label(name=""bug"")]","Hi,
+
+One of my incomes comes in quarterly on a different day each quarter, so I set up my monthly budget in ""Budget with Envelopes"" with that income as one of my  monthly incomes at 1/3 of the quarterly income.
+
+When I entered my incomes on the first of October, It was without that monthly amount of that quarterly income, of course, so it was less than my monthly budget total.
+
+Budget with Envelopes automatically allocated my inputted income and shorted 2 different envelopes (they seemed to be arbitrarily selected) for the monthly amount of the missing quarterly income, but said nothing about the problem it encountered in distributing the income.  That makes Budget with Envelopes rather hard to work with for me.
+
+I suggest that ""Budget with Envelopes"" allow the user to specify one envelope that the difference amount would be added to, or automatically add that positive or negative amount to the first envelope in the envelope list.  (In my case, the difference was a total of just -14 dollars."")  This behavior was completely unexpected.  My first envelope is always ""Misc"" and the envelope budget program that I wrote automatically assigns ""Misc"" as the first envelope in the list where it automatically adds that difference amount.
+
+You see, every quarter I personally put my quarterly income deposit into a specific envelope, where it is stored.  14 dollars (1/3 of that quarterly income) is transferred from that envelope to my ""Misc"" envelope on the first of each month to zero out that $14 difference.
+
+Budget with Envelopes currently lists it's envelopes in alphabetical order, so I could not have my first envelope listed as ""Misc"".  For your information, my first 4 envelopes in ""Budget with Envelopes"", in alphabetical order, are ""BugCard"" with a monthly budget amount of zero, ""CarR"" with a monthly budget amount of $7, ""Dental"" with a monthly budget amount of $6.50 and ""Dog Lic"" with a monthly budget amount of $1.  ""Budget with Envelopes"" added -13 dollars of the -14 dollar difference to the ""Dental"" envelope and the remaining -1 dollar to the ""Dog Lic"" envelope.  How it selected those particular 2 envelopes to add the difference to and those 2 specific amounts, I don't know.
+
+I could adapt to Budget with Envelopes's way of doing it if I could understand the logic that ""Budget with Envelopes"" is currently programmed with to select the envelope(s) to send the difference to, and the specific amounts it will use.
+
+Your thoughts on this would be greatly appreciated.  I related above how I solved that particular problem in my own envelope budgeting program back in 1981.
+
+Cheers,
+
+John Vander Stel
+Grand Rapids, Michigan
+"
+notriddle/budget-envelopes,open,Attention:  Envelope drop down pick lists,"[Label(name=""enhancement"")]","Hi Michael,
+
+You asked me to put my suggestion somewhere in here so it isn't forgotten.  I hope this is a good place for it.
+
+When the user chooses to transfer an amount from one envelope to another, the drop down pick lists show only the envelope names.  At this point in  time, the user must determine how much out of the available total in the ""from"" envelope must be transferred and which envelope most deserves those funds.  To do that without working completely in the dark, the user must have access to each envelope's available funds.
+
+Thus, each envelope's available funds should also be included in those drop down pick lists.
+
+Keep up the good work, Michael. :-)
+
+John Vander Stel
+Grand Rapids, Michigan
+"
+notriddle/budget-envelopes,open,Graphs: Export,"[Label(name=""enhancement"")]","It would be nice, if I could export Graphs in png and svg-format
+"
+notriddle/budget-envelopes,open,Graph: Spent/Earned money/month,"[Label(name=""enhancement"")]","I would like to have a Graph, which shows me, how much money I spent and earned money in a month
+"
+notriddle/budget-envelopes,open,Pie-Chart for the envelopes,"[Label(name=""enhancement"")]","How much money have I spent for a special envelope in proportion to others?
+
+Make Pie-chart from data:
+Envelope 1: 30%
+Envelope 2: 40%
+Envelope 3: 10%
+Envelope 4: 20%
+"
+notriddle/budget-envelopes,open,Statistic: Spent money/month,"[Label(name=""enhancement"")]","I would like to have the possibility to see how much money I spent every month for a envelope. 
+- Total spent money/month
+- For every envelope
+  Both: average values and values for a month
+"
+notriddle/budget-envelopes,closed,Missing envelopes,"[Label(name=""bug"")]","I've hit a bug in v1.7 on Android 4.3 where an envelope will disappear from the home screen after adding a transaction and returning to the home screen. The missing envelope does not appear in the export file, so it looks like it's really gone. I haven't been able to artificially reproduce it, but I'll try to catch more information if it happens again.
+"
+notriddle/budget-envelopes,closed,Lock the app with a PIN,[],"I wanted to lock the app with a PIN. So i've implemented this functionality. If you want, you can merge it into your repo.
+"
+notriddle/budget-envelopes,closed,Password Security,"[Label(name=""enhancement"")]","I actually thought of one other handy thing. Having a password protect viewing/editing the envelopes.
+
+Thoughts?
+"
+notriddle/budget-envelopes,open,Repeat Transactions,"[Label(name=""enhancement"")]","This actually has almost everything I want. Now, the only thing I'm hoping for is automatic repeat transactions. For instance, part of my income is fixed and is deposited on the fourth day of each month. To be able to specify that value to automatically add itself would be fantastic.
+
+Would you be interested in adding this functionality?
+"

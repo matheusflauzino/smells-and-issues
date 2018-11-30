@@ -1,0 +1,117 @@
+repository,state,title,label,body
+LittleFox94/PGPAuth,open,Minor grammar issue in the about section.,[],"Name: PGPAuth - from F-Droid.
+Version: 1.7.1
+
+In the about section of the app where:
+""...request to *an* defined..."", ""an"" is used instead of ""a"". In writing ""an"" is used before a vowel sound. Vowels: A, I, O, U. 
+
+The fix:
+Replace the ""an"" with ""a"". 
+
+Please correct me if I am wrong. Thanks in advance.
+
+KHZ
+
+Resource/s:
+Cambridge dictionary
+https://dictionary.cambridge.org/grammar/british-grammar/determiners/a-an-and-the
+
+"
+LittleFox94/PGPAuth,open,Empty POST ,[],"With latest OpenKeychain from F-Droid (Version 5.0.2) PHPAuth sends an empty POST Request:
+
+`.POST /pgpauth_cgi HTTP/1.1
+Content-Length: 5
+Content-Type: application/x-www-form-urlencoded
+Host: 192.168.25.177
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/UNAVAILABLE (java 1.4)
+
+data=`
+
+This leads to a ""Ok"" Toast, but does not do anything on server side."
+LittleFox94/PGPAuth,open,Remember openkeychain key,[],"Initial Work for #19 
+
+What do you think @LittleFox94 ?"
+LittleFox94/PGPAuth,closed,Enable use of Editorconfig,[],This PR adds Support Editorconfig from http://editorconfig.org a cross editor code formatting spec.
+LittleFox94/PGPAuth,closed,Fix build with recent android studio,[],This allows building with recent Android Studio versions again.
+LittleFox94/PGPAuth,open,F-Droid release untranslated,"[Label(name=""help wanted"")]",I noticed the F-Droid version of PGPAuth App is missing translation.
+LittleFox94/PGPAuth,open,German Translation swapped,[],"In the german translation the Button Labels for Lock and Unlock are swapped.
+
+Already updated by me in Transiflex."
+LittleFox94/PGPAuth,open,OpenKeychain key selection,[],"Since the new API version, key selection has to be done for every signing operation.
+
+Look into the OpenKeychain API if there is any way to use a configured key and make a configuration setting for it on the server entry, so the key selection is a one-time-per-server operation."
+LittleFox94/PGPAuth,closed,Incompatible with OpenKeychain 4.4,"[Label(name=""bug"")]","OpenKeychain raised minimal API version to 7 in commit 85ee12d143c5622981f8879e31b4052b3bf8023a.
+
+PGPAuth doesn't work anymore since then."
+LittleFox94/PGPAuth,closed,More-flexible Server serialization,"[Label(name=""enhancement"")]","Server-serialization should be more flexible. The current format works, but isn't good extendable.
+
+Maybe json oder xml?
+"
+LittleFox94/PGPAuth,closed,Crash on OpenKeychain-Error,"[Label(name=""bug"")]","When OpenKeychain returns an error, PGPAuth crashes.
+There should be a nice message telling what happened. Maybe a Bluescreen?^^
+"
+LittleFox94/PGPAuth,open,Location-based notifications,"[Label(name=""enhancement"")]","Give the user an option to get a notification for a server when the device is at a defined location (i.e. the door controlled by the server).
+
+Would need a background-service which has to be enabled by the user (full opt-in).
+"
+LittleFox94/PGPAuth,closed,Simple configuration with URI scheme,"[Label(name=""enhancement"")]","Add support for a custom URI scheme to allow simpler configuration of the app.
+Implementing configuration-sharing would then also be possible.
+"
+LittleFox94/PGPAuth,closed,Wear Support,"[Label(name=""enhancement"")]","It would be really nice to be able to open Doors/switch things with your watch. 
+The android wear API should be able to talk to your cellphone to do so. (and not have to store the private keys itself) 
+"
+LittleFox94/PGPAuth,closed,Windows LineEncoding added in Message after sign,"[Label(name=""invalid"")]","My signatures are always denied as invalid.
+
+When generating some signed data it seems PGPauth adds a \r right after the timestamp.
+
+tcpdump:
+
+.POST /pgpauth_cgi HTTP/1.1
+Content-Length: 618
+Content-Type: application/x-www-form-urlencoded
+Host: alarmpi
+User-Agent: Apache-HttpClient/UNAVAILABLE (java 1.4)
+Connection: Keep-Alive
+
+data=-----BEGIN+PGP+SIGNED+MESSAGE-----%0AHash%3A+RIPEMD160%0A%0Aclose%3A1413582501%0D%0A-----BEGIN+PGP+SIGNATURE-----%0AVersion%3A+APG+v1.1.1%0A%0AiQEVAwUBVEGOpdjN6kJFdfdHAQPXfgf%2FQJtWfiAJ%2B9gaJMUjHUiMEvb%2BPzIjuG6%2F%0Amm2XfuolVg8viX4%2FXuVQUzpB%2FQV6wR1Yxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx%0Av9Hxis%2B542BNjvpNyBNAyuzjwfx%2BGUH4f5bMtRjMAzzOTUCY3ObQJ067klPbg%2FEP%0A%2BSmT2p%2FZhY1rfrfk0SKaeBpRmTZaBImE7EUrC0DxpvTqdyJTqLQ975iVO9IvxkVO%0Ay3gtiw%2FRD6ui6KfeFbiBeMqMeJpx40ON0f0679mEyrt%2Byx2tfjaBY6w8QdyZRmDQ%0Aj3IK3vC2cmL8uY%2FXwN7Qp%2F90wITMuAoMCGKqwt9DK687Yg1bsAxssg%3D%3D%0A%3D5SZz%0A-----END+PGP+SIGNATURE-----%0A
+
+That way all requests are invalid although I can verify them without any problems if I copy   them into a textfile, remove the additional line and use gpg veirfy.
+"
+LittleFox94/PGPAuth,closed,OpenKeychain Integration Broken,"[Label(name=""invalid"")]","Created a new key with OpenKeychain.
+
+Now everytime I try to use PGPAuth I get:
+
+org.sufficientlysecure.keychain.provider.ProviderHelper$NotFoundException
+
+Already tried deleting App Data Cache: no effect :( 
+"
+LittleFox94/PGPAuth,closed,Homepage and Play-Store buttons,"[Label(name=""bug"")]","These buttons link to RC-Control and not PGPAuth... Copy&Paste-fail ...
+
+Also the Store-link should also work with f-droid.
+"
+LittleFox94/PGPAuth,closed,Crash if no server URL has been specified,"[Label(name=""bug"")]","When no server URL has been set, the app crashes with ""Caused by: java.lang.IllegalStateException: Target host must not be null, or set in parameters. scheme=null, host=null, path=""
+
+Maybe instead of crashing a AlertDialog would be nice.
+"
+LittleFox94/PGPAuth,closed,Remove Pseudo-URL,"[Label(name=""bug"")]","Remove the pseudo-URL from the settings since it confused some people.
+"
+LittleFox94/PGPAuth,open,Challenge ,"[Label(name=""enhancement"")]","Add a challenge-exchange algorithm based on Diffie-Hellman algorithm.
+Will be the successor to the current timestamp-based system.
+
+The challenge can't be set by the server alone to prevent malicious servers using the PGPAuth app to sign arbitrary messages.
+"
+LittleFox94/PGPAuth,closed,Crash when selecting Key and no Key selected,"[Label(name=""bug"")]",
+LittleFox94/PGPAuth,closed,Provide web-service for translating,"[Label(name=""enhancement"")]","Providing a web-service for translating the app by non-coders will maybe make it available in other languages faster.
+Generic coding for all android apps should be possible.
+"
+LittleFox94/PGPAuth,closed,Support configuration of multiple servers,"[Label(name=""enhancement"")]","Configure multiple servers and have all actions available in the app without reconfiguring.
+"
+LittleFox94/PGPAuth,open,Actions defined by server,"[Label(name=""enhancement"")]","Let the server define actions which will be available as buttons in the app.
+
+Milestone v2.0 as this will probally break compatibility.
+"
+LittleFox94/PGPAuth,closed,Support OpenPGP Keychain as PGP-provider,"[Label(name=""enhancement"")]","APG is no longer under development, OpenPGP Keychain is the successor.
+"
+LittleFox94/PGPAuth,closed,POST parameters not added to request,"[Label(name=""bug"")]","See title, 'nuf said ...
+"

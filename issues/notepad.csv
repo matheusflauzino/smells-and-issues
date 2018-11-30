@@ -1,0 +1,413 @@
+repository,state,title,label,body
+openintents/notepad,open,Need to update content://URI for compatibility with google,[]," currently only reads content:// URI generated within their app, not from other apps. 
+
+Play Store will require this starting November 2018."
+openintents/notepad,open,Oi notepad crashes when I click open from sd card,[],"
+#### Expected behavior
+I expected that when I click open from sd card I will be able to access my sd card for notes available on it
+
+#### Actual behavior
+When I click open from sd card the app crashes.
+
+#### How to reproduce
+- launch the app
+- access options menu by click the 3 dots at the top right corner of the app
+- click open from sd card and the app crashes
+<hr>
+
+* Device: Infinix Note 4
+* Operating system: Android 7.0 Nougat
+* Software Version: 1.5.4
+
+#### Recording Of The Bug
+https://youtu.be/B69Pu220p0w
+
+Please mute the audio
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@kodeblacc/oi-notepad-crashes-when-i-click-open-from-sd-card"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+openintents/notepad,closed,Version 1.5.4 Android 7.0 File Date not updated on Save,[],"File date-time remains the same after editing and saving which prevents synchronisation (using MyPhoneExplorer). I don't know when this stopped working but it used to be ok, however as most edits are done on the PC side it's only just come to light."
+openintents/notepad,open,version 1.5.4 Android 7.0,[],'Save As' crashes every time before any new filename prompt comes up. Feedback sent from phone.
+openintents/notepad,open,Removed X items notification - bad location,[],"I would like to suggest moving the notification bar/pop up when you remove items from the list be moved.  Where it is now, at the bottom of the screen, makes it so you cannot immediately start adding another item to the list. you have to wait until the notification disappears before you can select the input field to add another item.  It's very annoying. I'd be happy if it was at the top, or didn't show up at all. 
+
+Thanks"
+openintents/notepad,closed,Mass save-to-disk,[],"How may one mass save files to disk, for, say, migrating between phones when one has a lot of files in OI Notepad? Or are there any files in the filesystem one can copy? (I was unable to find any on an unrooted Android v7 phone). I'm using v1.5.4 from F-Droid.
+
+PS - Please consider setting up a chat room for easier communication - preferably XMPP or IRC..."
+openintents/notepad,open,Sending notes via Android Beam doesn't work,[],"If the app is open on the receiving side, the incoming message doesn't have any effect.
+
+If the the app is not open on the receiving side, the OS shows a message: ""New tag collected"" with the note contents in it. But that is not very useful, as it can't be imported into the notes app.
+
+This issue is described here: http://stackoverflow.com/questions/30849901/when-app-receives-nfc-data-it-opens-new-tag-collected
+
+Note that I see the same behaviour for the shopping list app, but issues have been disabled for that project. Hence, reporting here. "
+openintents/notepad,open,API Compatibility Issues,[],"Dear developers,
+
+We have recently developed a state-of-the-art static analysis tool for uncovering API compatibility issues in Android apps. Applying this tool to open source apps on F-droid, we have exposed a few instances of compatibility issues and submitting them to development teams for a fix. 
+
+For your app, we have found that this project has accessed the following APIs which are available only on an API level higher than the declared minSdkVersion and which are accessed without proper protection. In other words, if those APIs get called at runtime, it will trigger a NoSuchMethodError and thus result in a crash of the running application.
+
+<android.app.AlertDialog: void setButton(int,java.lang.CharSequence,android.content.DialogInterface.OnClickListener)>:[3,25]
+<android.content.Context: android.content.pm.ApplicationInfo getApplicationInfo()>:[4,25]
+<android.app.Activity: android.app.ActionBar getActionBar()>:[11,25]
+<android.app.ActionBar: void setDisplayHomeAsUpEnabled(boolean)>:[11,25]
+<android.view.MenuItem: void setShowAsAction(int)>:[11,25]
+<android.app.ActionBar: void setHomeButtonEnabled(boolean)>:[14,25]
+
+Note that, because of the nature of the static analysis, we cannot confirm whether the flagged APIs would actually be called at runtime (e.g., unreachable code). However, we still believe that those APIs, which may cause compatibility issues, should not be accessed or at least be accessed with proper protections. 
+
+In addition to the aforementioned APIs (i.e., backward-compatibility), which could cause app crashes if accessed, we have also identified that this project has also accessed some APIs that have been removed from the latest public SDK, making the app possibly suffer from forward-compatibility issues.
+
+NONE
+
+We would be very much appreciated if you can acknowledge to us that those reported APIs are indeed problematic for the project’s long-term stability. please let us know if you need any more information relating to this issue report.
+"
+openintents/notepad,open,Update WrapActionBar.java,[],"Suppress compilation errors given by Android studio due to several invocations of Android APIs that are not yet existing in API level 9 (the minimum supported SDK version). For example, getActionBar(), setShowAsAction(), setDisplayHomeAsUpEnabled() are only interested in API Level 11, setHomeButtonEnabled() is introduced in API level 14."
+openintents/notepad,open,"Automatic URL, phone number, etc; automatically opens the link when attempting to open soft keyboard",[],"If you type a phone number, URL, address, in the only line of a notepad file, leave the window, and open the note again, they automatically convert to link format.  Clicking anywhere in attempt to open a soft keyboard or typing return after any of those links opens the link.  This makes it impossible to edit a note with a link as the only text on the only line without a physical keyboard.
+"
+openintents/notepad,open,Crash when requesting encryption (3),[],"Well, actually not a crash, but a toast saying ""Encryption failed."" and the following in the log. Happens for new notes as well as old ones. I can encrypt a not by closing OiSafe, starting OiNotepad, create a new note and request encryption. It then open OiSafe, I log in and the note is created. I can't update that exact note anymore. Well, can't update any, actually. So create seems to still work, but an update doesn't. Sometime takes me back to OiSafe, sometimes to the notelist. Always with the toast.
+I'm on Android 6.0.1 (CM13)
+
+08-05 18:04:28.185   536  4037 I ActivityManager: START u0 {act=android.intent.action.EDIT dat=content://org.openintents.notepad/notes/254 cmp=org.openintents.notepad/.NoteEditor} from uid 10179 on display 0
+08-05 18:04:28.283   536   774 I ActivityManager: START u0 {act=org.openintents.action.DECRYPT cmp=org.openintents.safe/.IntentHandler (has extras)} from uid 10179 on display 0
+08-05 18:04:28.342 12470 12470 D IntentHandler: onCreate(null)
+08-05 18:04:28.347 12470 12470 D IntentHandler: onResume()
+08-05 18:04:28.347 12470 12470 D IntentHandler: isLocal=false, action=org.openintents.action.DECRYPT
+08-05 18:04:28.347 12470 12470 D IntentHandler: starting actiondispatch
+08-05 18:04:28.347 12470 12470 D IntentHandler: actionDispatch()
+08-05 18:04:28.357 12470 12470 D IntentHandler: onPause()
+08-05 18:04:28.469   155  1437 E BufferQueueProducer: [org.openintents.notepad/org.openintents.notepad.NoteEditor] allocateBuffers: slot 2 without buffer is not FREE
+08-05 18:04:28.661 20049 20066 D OpenGLRenderer: endAllStagingAnimators on 0x9fb21c00 (ListView) with handle 0xa072b770
+08-05 18:04:29.562  1073  1073 I LatinIME: Starting input. Cursor position = 4,4
+08-05 18:04:30.262   175   527 E NetlinkEvent: NetlinkEvent::FindParam(): Parameter 'TIME_NS' not found
+08-05 18:04:30.262   175   527 E NetlinkEvent: NetlinkEvent::FindParam(): Parameter 'UID' not found
+08-05 18:04:31.723   536  3138 I ActivityManager: START u0 {flg=0x4000000 cmp=org.openintents.notepad/.noteslist.NotesList} from uid 10179 on display 0
+08-05 18:04:31.883   536  1523 I ActivityManager: START u0 {cmp=org.openintents.notepad/.crypto.EncryptActivity (has extras)} from uid 10179 on display 0
+08-05 18:04:31.887   536  1523 W ActivityManager: startActivity called from finishing ActivityRecord{c25199c u0 org.openintents.notepad/.NoteEditor t3616 f}; forcing Intent.FLAG_ACTIVITY_NEW_TASK for: Intent { cmp=org.openintents.notepad/.crypto.EncryptActivity (has extras) }
+08-05 18:04:31.959  1073  1073 I LatinIME: Starting input. Cursor position = 10,10
+08-05 18:04:32.000   536  1425 I ActivityManager: START u0 {act=org.openintents.action.ENCRYPT flg=0x10000000 cmp=org.openintents.safe/.IntentHandler (has extras)} from uid 10179 on display 0
+08-05 18:04:32.001   536  1425 W ActivityManager: Activity is launching as a new task, so cancelling activity result.
+08-05 18:04:32.002   536   706 E TI OMAP PowerHAL: Error writing to /sys/devices/system/cpu/cpufreq/interactive/boostpulse: Invalid argument
+08-05 18:04:32.033 20049 20049 E EncryptActivity: failed to invoke encrypt
+08-05 18:04:32.064 12470 12470 D IntentHandler: onCreate(null)
+08-05 18:04:32.070 12470 12470 D IntentHandler: onResume()
+08-05 18:04:32.070 12470 12470 D IntentHandler: isLocal=false, action=org.openintents.action.ENCRYPT
+08-05 18:04:32.070 12470 12470 D IntentHandler: starting actiondispatch
+08-05 18:04:32.070 12470 12470 D IntentHandler: actionDispatch()
+08-05 18:04:32.072 12470 12470 D IntentHandler: encryptIntent()
+08-05 18:04:32.072 12470 12470 D IntentHandler: in=[testnote
+08-05 18:04:32.072 12470 12470 D IntentHandler: 
+08-05 18:04:32.072 12470 12470 D IntentHandler: , testnote, null]
+08-05 18:04:32.080 12470 12470 D IntentHandler: out=[long_binary_string_here_edited_out, same_here_different_one, null]
+08-05 18:04:32.258 12470 12470 D IntentHandler: onPause()
+08-05 18:04:32.542   536   536 W art     : Long monitor contention event with owner method=void com.android.server.am.ActivityManagerService.activityPaused(android.os.IBinder) from ActivityManagerService.java:6777 waiters=0 for 278ms
+08-05 18:04:32.549   536   733 W art     : Long monitor contention event with owner method=void com.android.server.am.ActivityManagerService.activityPaused(android.os.IBinder) from ActivityManagerService.java:6777 waiters=1 for 285ms
+08-05 18:04:32.595 20049 20049 I ToolbarWidgetWrapper: Progress display unsupported
+08-05 18:04:32.595 20049 20049 I ToolbarWidgetWrapper: Progress display unsupported
+08-05 18:04:32.674 20049 20049 E PhoneWindow: Horizontal progress bar not located in current window decor
+08-05 18:04:32.674 20049 20049 E PhoneWindow: Circular progress bar not located in current window decor
+08-05 18:04:32.674 20049 20049 E PhoneWindow: Horizontal progress bar not located in current window decor
+08-05 18:04:32.674 20049 20049 E PhoneWindow: Circular progress bar not located in current window decor
+08-05 18:04:32.692 20049 20049 E PhoneWindow: Horizontal progress bar not located in current window decor
+08-05 18:04:32.692 20049 20049 E PhoneWindow: Circular progress bar not located in current window decor
+08-05 18:04:32.795   536  1559 I ActivityManager: START u0 {act=org.openintents.action.DECRYPT cmp=org.openintents.safe/.IntentHandler (has extras)} from uid 10179 on display 0
+08-05 18:04:32.819 20049 20049 W ContentResolver: Failed to get type for: content://org.openintents.notepad/notes/-9223372036854775808 (Unknown URI content://org.openintents.notepad/notes/-9223372036854775808)
+08-05 18:04:32.820 20049 20049 W ContentResolver: Failed to get type for: content://org.openintents.notepad/notes/-9223372036854775808 (Unknown URI content://org.openintents.notepad/notes/-9223372036854775808)
+08-05 18:04:32.892 20049 20049 E PhoneWindow: Horizontal progress bar not located in current window decor
+08-05 18:04:32.892 20049 20049 E PhoneWindow: Circular progress bar not located in current window decor
+08-05 18:04:32.914 12470 12470 D IntentHandler: onCreate(null)
+08-05 18:04:32.928 12470 12470 D IntentHandler: onResume()
+08-05 18:04:32.928 12470 12470 D IntentHandler: isLocal=false, action=org.openintents.action.DECRYPT
+08-05 18:04:32.928 12470 12470 D IntentHandler: starting actiondispatch
+08-05 18:04:32.929 12470 12470 D IntentHandler: actionDispatch()
+08-05 18:04:32.953 12470 12470 D IntentHandler: onPause()
+08-05 18:04:32.987   536  1093 I ActivityManager: START u0 {act=org.openintents.action.DECRYPT cmp=org.openintents.safe/.IntentHandler (has extras)} from uid 10179 on display 0
+08-05 18:04:33.002 20049 20049 E PhoneWindow: Horizontal progress bar not located in current window decor
+08-05 18:04:33.002 20049 20049 E PhoneWindow: Circular progress bar not located in current window decor
+08-05 18:04:33.018 20049 20049 E PhoneWindow: Horizontal progress bar not located in current window decor
+08-05 18:04:33.018 20049 20049 E PhoneWindow: Circular progress bar not located in current window decor
+08-05 18:04:33.025   536  1425 W InputMethodManagerService: Window already focused, ignoring focus gain of: com.android.internal.view.IInputMethodClient$Stub$Proxy@2df7119 attribute=null, token = android.os.BinderProxy@39d41ad
+08-05 18:04:33.040 12470 12470 D IntentHandler: onCreate(null)
+08-05 18:04:33.044 12470 12470 D IntentHandler: onResume()
+08-05 18:04:33.044 12470 12470 D IntentHandler: isLocal=false, action=org.openintents.action.DECRYPT
+08-05 18:04:33.044 12470 12470 D IntentHandler: starting actiondispatch
+08-05 18:04:33.044 12470 12470 D IntentHandler: actionDispatch()
+08-05 18:04:33.145 12470 12470 D IntentHandler: onPause()
+08-05 18:04:33.185 20049 20049 E PhoneWindow: Horizontal progress bar not located in current window decor
+08-05 18:04:33.185 20049 20049 E PhoneWindow: Circular progress bar not located in current window decor
+08-05 18:04:33.226 20049 20049 E PhoneWindow: Horizontal progress bar not located in current window decor
+08-05 18:04:33.226 20049 20049 E PhoneWindow: Circular progress bar not located in current window decor
+"
+openintents/notepad,closed,General code quality fix-2,[],"This pull request is focused on resolving occurrences of Sonar rule 
+squid:S1125 - Literal boolean values should not be used in condition expressions.
+squid:S1488 - Local Variables should not be declared and then immediately returned or thrown. 
+You can find more information about the issue here: 
+https://dev.eclipse.org/sonar/rules/show/squid:S1125
+https://dev.eclipse.org/sonar/rules/show/squid:S1488
+
+Please let me know if you have any questions.
+
+Faisal Hameed
+"
+openintents/notepad,closed,General code quality fix-1,[],"This pull request is focused on resolving occurrences of Sonar rule 
+squid:S1066 - Collapsible ""if"" statements should be merged.
+squid:S2131- Primitives should not be boxed just for ""String"" conversion.
+You can find more information about the issue here: 
+https://dev.eclipse.org/sonar/rules/show/squid:S1066
+https://dev.eclipse.org/sonar/rules/show/squid:S2131
+
+Please let me know if you have any questions.
+
+Faisal Hameed
+"
+openintents/notepad,closed,"Code quality fix - ""public static"" fields should be constant",[],"This pull request is focused on resolving occurrences of Sonar rule 
+squid:S1444 - ""public static"" fields should be constant
+You can find more information about the issue here: 
+https://dev.eclipse.org/sonar/rules/show/squid:S1444
+
+Please let me know if you have any questions.
+
+Faisal Hameed
+"
+openintents/notepad,closed,"Code quality fix - Synchronized classes Vector, Hashtable, Stack and StringBuffer should not be used.",[],"This pull request is focused on resolving occurrences of Sonar rule 
+squid:S1149 - Synchronized classes Vector, Hashtable, Stack and StringBuffer should not be used.
+You can find more information about the issue here: 
+https://dev.eclipse.org/sonar/rules/show/squid:S1149
+
+Please let me know if you have any questions.
+
+Faisal Hameed
+"
+openintents/notepad,closed,Code quality fix - Dead stores should be removed.,[],"This pull request is focused on resolving occurrences of Sonar rule 
+squid:S1854 - Dead stores should be removed. 
+You can find more information about the issue here: 
+https://dev.eclipse.org/sonar/rules/show/squid:S1854
+
+Please let me know if you have any questions.
+
+Faisal Hameed
+"
+openintents/notepad,closed,Code quality fix - Class variable fields should not have public accessibility.,[],"This pull request is focused on resolving occurrences of Sonar rule 
+squid:ClassVariableVisibilityCheck - Class variable fields should not have public accessibility.
+You can find more information about the issue here: 
+https://dev.eclipse.org/sonar/rules/show/squid:ClassVariableVisibilityCheck
+
+Please let me know if you have any questions.
+
+Faisal Hameed
+"
+openintents/notepad,closed,Code quality fix - Constant names should comply with a naming convention.,[],"This pull request is focused on resolving occurrences of Sonar rule 
+squid:S00115 - Constant names should comply with a naming convention. 
+You can find more information about the issue here: 
+https://dev.eclipse.org/sonar/rules/show/squid:S00115
+
+Please let me know if you have any questions.
+
+Faisal Hameed
+"
+openintents/notepad,closed,"Code quality fix - Mutable fields should not be ""public static"".",[],"This pull request is focused on resolving occurrences of Sonar rule 
+squid:S2386 - Mutable fields should not be ""public static"". 
+You can find more information about the issue here: 
+https://dev.eclipse.org/sonar/rules/show/squid:S2386
+
+Please let me know if you have any questions.
+
+Faisal Hameed
+"
+openintents/notepad,closed,Code quality fix - Utility classes should not have public constructors.,[],"This pull request is focused on resolving occurrences of Sonar rule 
+squid:S1118 - Utility classes should not have public constructors.
+You can find more information about the issue here: 
+https://dev.eclipse.org/sonar/rules/show/squid:S1118
+
+Please let me know if you have any questions.
+
+Faisal Hameed
+"
+openintents/notepad,open,(Regularly) Update F-droid to latest version,[],"The latest has been v1.3 for years!
+"
+openintents/notepad,open,Crash when requesting encryption (2),[],"From Google Play reports:
+
+```
+java.lang.RuntimeException: Unable to start activity ComponentInfo{org.openintents.notepad/org.openintents.notepad.crypto.EncryptActivity}: java.lang.SecurityException: Permission Denial: starting Intent { act=org.openintents.action.ENCRYPT cmp=org.openintents.safe/.IntentHandler (has extras) } from ProcessRecord{2db7241a 11108:org.openintents.notepad/u0a175} (pid=11108, uid=10175) requires org.openintents.safe.ACCESS_INTENTS
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2378)
+    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2440)
+    at android.app.ActivityThread.access$800(ActivityThread.java:162)
+    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1349)
+    at android.os.Handler.dispatchMessage(Handler.java:102)
+    at android.os.Looper.loop(Looper.java:135)
+    at android.app.ActivityThread.main(ActivityThread.java:5430)
+    at java.lang.reflect.Method.invoke(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:372)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:913)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:706)
+Caused by: java.lang.SecurityException: Permission Denial: starting Intent { act=org.openintents.action.ENCRYPT cmp=org.openintents.safe/.IntentHandler (has extras) } from ProcessRecord{2db7241a 11108:org.openintents.notepad/u0a175} (pid=11108, uid=10175) requires org.openintents.safe.ACCESS_INTENTS
+    at android.os.Parcel.readException(Parcel.java:1546)
+    at android.os.Parcel.readException(Parcel.java:1499)
+    at android.app.ActivityManagerProxy.startActivity(ActivityManagerNative.java:2492)
+    at android.app.Instrumentation.execStartActivity(Instrumentation.java:1496)
+    at android.app.Activity.startActivityForResult(Activity.java:3852)
+    at android.app.Activity.startActivityForResult(Activity.java:3813)
+    at org.openintents.notepad.crypto.EncryptActivity.onCreate(EncryptActivity.java:131)
+    at android.app.Activity.performCreate(Activity.java:6097)
+    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1106)
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2331)
+    ... 10 more
+```
+"
+openintents/notepad,closed,Fix/Permission check,[],"This PR adds a check for the safe permission.
+"
+openintents/notepad,open,Crash when launching notepad after 1.5.2 upgrade,[],"Cyanogen 12.1 based ROM on LG G2
+OI Safe version 1.4.2
+
+```
+E/AndroidRuntime(14536): java.lang.SecurityException: Permission Denial: starting Intent { act=org.openintents.action.DECRYPT cmp=org.openintents.safe/.IntentHandler (has extras) } from ProcessRecord{d1fba18 14536:org.openintents.notepad/u0a162} (pid=14536, uid=10162) requires org.openintents.safe.ACCESS_INTENTS
+
+E/AndroidRuntime(14536):    at android.os.Parcel.readException(Parcel.java:1546)
+
+E/AndroidRuntime(14536):    at android.os.Parcel.readException(Parcel.java:1499)
+
+E/AndroidRuntime(14536):    at android.app.ActivityManagerProxy.startActivity(ActivityManagerNative.java:2449)
+
+E/AndroidRuntime(14536):    at android.app.Instrumentation.execStartActivity(Instrumentation.java:1496)
+
+E/AndroidRuntime(14536):    at android.app.Activity.startActivityForResult(Activity.java:3745)
+
+E/AndroidRuntime(14536):    at android.app.Activity.startActivityForResult(Activity.java:3706)
+
+E/AndroidRuntime(14536):    at org.openintents.notepad.noteslist.NotesList.decryptTitle(NotesList.java:915)
+
+E/AndroidRuntime(14536):    at org.openintents.notepad.noteslist.NotesList$3.run(NotesList.java:896)
+
+E/AndroidRuntime(14536):    at android.os.Handler.handleCallback(Handler.java:739)
+
+E/AndroidRuntime(14536):    at android.os.Handler.dispatchMessage(Handler.java:95)
+
+E/AndroidRuntime(14536):    at android.os.Looper.loop(Looper.java:135)
+
+E/AndroidRuntime(14536):    at android.app.ActivityThread.main(ActivityThread.java:5289)
+
+E/AndroidRuntime(14536):    at java.lang.reflect.Method.invoke(Native Method)
+
+E/AndroidRuntime(14536):    at java.lang.reflect.Method.invoke(Method.java:372)
+
+E/AndroidRuntime(14536):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904)
+
+E/AndroidRuntime(14536):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:699)
+
+W/ActivityManager(  766):   Force finishing activity 1 org.openintents.notepad/.noteslist.NotesList
+```
+"
+openintents/notepad,closed,Onecloud,[],
+openintents/notepad,closed,Crash opening note from OI Shopping List,[],"Probably due to building latest shoppinglist using a newer version of the SDK.
+
+E/AndroidRuntime(31951): java.lang.RuntimeException: Unable to start activity ComponentInfo{org.openintents.notepad/org.openintents.notepad.NoteEditor}: java.lang.SecurityException: Permission Denial: opening provider org.openintents.shopping.provider.ShoppingProvider from ProcessRecord{242a335f 31951:org.openintents.notepad/u0a130} (pid=31951, uid=10130) requires org.openintents.shopping.READ_PERMISSION or org.openintents.shopping.WRITE_PERMISSION
+E/AndroidRuntime(31951):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2314)
+E/AndroidRuntime(31951):    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2386)
+E/AndroidRuntime(31951):    at android.app.ActivityThread.access$800(ActivityThread.java:148)
+E/AndroidRuntime(31951):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1292)
+E/AndroidRuntime(31951):    at android.os.Handler.dispatchMessage(Handler.java:102)
+E/AndroidRuntime(31951):    at android.os.Looper.loop(Looper.java:135)
+E/AndroidRuntime(31951):    at android.app.ActivityThread.main(ActivityThread.java:5310)
+E/AndroidRuntime(31951):    at java.lang.reflect.Method.invoke(Native Method)
+E/AndroidRuntime(31951):    at java.lang.reflect.Method.invoke(Method.java:372)
+E/AndroidRuntime(31951):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:901)
+E/AndroidRuntime(31951):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:696)
+E/AndroidRuntime(31951): Caused by: java.lang.SecurityException: Permission Denial: opening provider org.openintents.shopping.provider.ShoppingProvider from ProcessRecord{242a335f 31951:org.openintents.notepad/u0a130} (pid=31951, uid=10130) requires org.openintents.shopping.READ_PERMISSION or org.openintents.shopping.WRITE_PERMISSION
+E/AndroidRuntime(31951):    at android.os.Parcel.readException(Parcel.java:1540)
+E/AndroidRuntime(31951):    at android.os.Parcel.readException(Parcel.java:1493)
+E/AndroidRuntime(31951):    at android.app.ActivityManagerProxy.getContentProvider(ActivityManagerNative.java:3305)
+E/AndroidRuntime(31951):    at android.app.ActivityThread.acquireProvider(ActivityThread.java:4674)
+E/AndroidRuntime(31951):    at android.app.ContextImpl$ApplicationContentResolver.acquireUnstableProvider(ContextImpl.java:2573)
+E/AndroidRuntime(31951):    at android.content.ContentResolver.acquireUnstableProvider(ContentResolver.java:1440)
+E/AndroidRuntime(31951):    at android.content.ContentResolver.query(ContentResolver.java:462)
+E/AndroidRuntime(31951):    at android.content.ContentResolver.query(ContentResolver.java:422)
+E/AndroidRuntime(31951):    at android.app.Activity.managedQuery(Activity.java:1993)
+E/AndroidRuntime(31951):    at org.openintents.notepad.NoteEditor.onCreate(NoteEditor.java:595)
+E/AndroidRuntime(31951):    at android.app.Activity.performCreate(Activity.java:5953)
+E/AndroidRuntime(31951):    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1128)
+E/AndroidRuntime(31951):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2267)
+E/AndroidRuntime(31951):    ... 10 more
+"
+openintents/notepad,closed,Added search feature to notes editor; interworks with global search,[],"I added a feature that allows to search text within a note. Previously, the search function would only show which notes contain a certain text, but not where exactly within a note the search term was found. The new version allows to jump from one occurrence in the text to the next. I found this essential because I have notes that are hundreds of lines long, and searching ""by eye"" was extremely cumbersome.
+"
+openintents/notepad,closed,"Store tag filter persistently when App is stopped, e.g. with force stop ...",[],"Fixed a problem in OI Notepad that would cause the currently selected tag filter to get lost when the app was force-closed or the user pressed the back button on the device. The selected tag filter was also lost when the user exited from editing a note by pressing the ""Edit note"" button at the top left of the edit note activity. As a result, OI Notepad did always switch back to the ""All notes"" view. For me this was very annoying because I mostly work in one category of notes and don't want to see others most of the time.
+
+This problem occurred in OI Notepad 1.3 and 1.4.0.7.
+
+The fix stores the active tag filter persistently to survive even when the app is stopped or the device is powered off.
+
+I tried to limit the changes to a minimum. The merge should be straight forward.
+"
+openintents/notepad,closed,Added the Widget for OI Notepad,[],"Sticky Notes  + Stack of Notes widgets added in the OI Notepad and also the superfluous code is removed as suggested in the previous Pull Requests. This code has all those changes with clean commit history and cleaned code.  
+"
+openintents/notepad,closed,Few additions for OI-Support extension,[],
+openintents/notepad,closed,Theme Dialog fix,[],"<h3>Note</h3>
+
+
+Fix for the <b>'list Item' selected option inconsistency</b> in the <i>Theme Dialog,</i> accessible from the options menu of the <i>NoteEditor Activity.</i>
+
+<p><br/>Detailed Explanation in the Open Intents Group</p>
+"
+openintents/notepad,closed,Added the Widget for OI Notepad,[],"Added widget and modified the code as per requirement
+"
+openintents/notepad,open,Some pastel love,[],"Hi,
+
+this branch does two things:
+
+*\* First (commits a3a3787, e038c3f, cleaned up in 6b3b5d5,  03a54b6 ) **
+
+Adds color settings to all notes and styles the ActionBar. It includes look&feel, some code & pngs from MIUI notes, which is also Apache licened:
+
+https://github.com/ebraminio/miuinotes
+
+Side Effects: Introduces new DB format (color column).
+
+*\* Second (a047838) *\* 
+
+Wraps the note_editor.xml into a scrollview, which vastly improves scrolling in larger notes.
+
+*\* Rest **
+
+Cleans up broken indenting (courtesy eclipse) and adapts some settings for my froyo device.
+
+Tested: 4.2.2 (JB) and 2.3.? (FR)
+
+TODO:
+
+It ignores the shipped theming system, which I dont care that much ;)
+Mention the miui graphics in the EULA
+Maybe set the theming only in Code if SDK > 12 (14?)
+
+Comments?
+
+![Screen Shot 2013-02-21 at 8 22 34 PM](https://f.cloud.github.com/assets/3662452/192619/84c63ad6-7f68-11e2-8c0b-28994d567629.png)
+"
+openintents/notepad,open,Crash when requesting encryption,[],"Steps to reproduce on Nexus 7 with 1.4.0.7:
+1. create a new note
+2. select menu
+3. choose ""encrypt""
+4. a dialog pops up, asking for oi safe
+5. rotate the screen
+
+It seems like that when the screen is rotated, the presence of OI Safe is not checked before running it.
+
+The report says that: Unable to instantiate activity null: java.lang.NullPointerException
+
+Stack trace:
+W/System.err( 2194): java.lang.NullPointerException
+W/System.err( 2194):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1974)
+W/System.err( 2194):    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2084)
+W/System.err( 2194):    at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3512)
+W/System.err( 2194):    at android.app.ActivityThread.access$700(ActivityThread.java:130)
+W/System.err( 2194):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1201)
+W/System.err( 2194):    at android.os.Handler.dispatchMessage(Handler.java:99)
+W/System.err( 2194):    at android.os.Looper.loop(Looper.java:137)
+W/System.err( 2194):    at android.app.ActivityThread.main(ActivityThread.java:4745)
+W/System.err( 2194):    at java.lang.reflect.Method.invokeNative(Native Method)
+W/System.err( 2194):    at java.lang.reflect.Method.invoke(Method.java:511)
+W/System.err( 2194):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786)
+W/System.err( 2194):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+W/System.err( 2194):    at dalvik.system.NativeStart.main(Native Method)
+"
+openintents/notepad,closed,Widget added for OI Notepad,[],
+openintents/notepad,closed,Added the Widget for OI Notepad ,[],"The sticky note feature is added for the notepad app and it can be directly edited by just one click.
+"

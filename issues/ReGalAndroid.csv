@@ -1,0 +1,189 @@
+repository,state,title,label,body
+anthonydahanne/ReGalAndroid,open,add getTagsFromAlbum ,[],"I would like to add getTagsFromAlbum to the code taking the sample of getPicturesFromAlbum.
+Can anyone help me with that?
+Thanks in advance,  Mario"
+anthonydahanne/ReGalAndroid,open,Up-to-date version on F-Droid?,[],"Hi,
+
+I just realized there's been some major activity on this app, but F-Droid still has 1.2.0. Would it be possible to make latest updates available on that channel?
+
+Thanks"
+anthonydahanne/ReGalAndroid,open,ReGalAndroid chooses wrong certificate,[],"Hi,
+
+I have just downloaded ReGalDroid 1.2.0 from the Play Store today.
+
+When I want to setup my gallery I get the following error:
+A problem occured while connecting.
+Details:
+fr.mael.jiwigo.transverse.exception.JiwigoException:
+javax.net.ssl.SSLException:
+hostname in certificate didn't match:
+<media.kosebamse.com> != <www.cloud.kosebamse.com> or <www.cloud.kosebamse.com> or <cloud.kosebamse.com>
+
+Gallery is Piwigo 2.8.2, the Webserver Apache 2.4.7. media.kosebamse.com and cloud.kosebamse.com are virtual hosts. The cloud domain got an certificate from GlobalSign and the gallery uses an certificate from LetsEncrypt. All HTTP traffic will be redirected to HTTPS.
+
+Could you please fix the issue and make ReGalAndroid choose the correct certificate?
+
+Thank you in advance.
+
+Cheers
+Mirco
+"
+anthonydahanne/ReGalAndroid,closed,Quiniou pr,[],"This PR replaces : #12 
+I've excluded a few commits with the TreeMap that were not useful.
+I've also made sure to keep backward compatibility with old devices running API level 11.
+I've now excluded from git the .iml files that keep changing and just add noise to the project.
+And.. big thank you to all contributors : @quiniouben @MASHtm Wolfgang Breyha
+Keep the PRs coming !
+I'll try to release soon !
+"
+anthonydahanne/ReGalAndroid,closed,Remove iml files upgrade tools,[],
+anthonydahanne/ReGalAndroid,open,Piwigo : Thumbnails not displayed +  Display album thumbnails + Use resized pictures,[],"3 commits to improve stability and features on PIwigo galleries:
+
+1 - Thumbnails were not displayed in ReGalAndroid with Piwigo > 2.4.
+The thumbnail path is now in a new Xml node called ""derivatives"" with all the different images sizes.
+This commit gets the url for the size called ""thumb"" if the previous method returned no url.
+
+2 - Display album thumbnails for Piwigo galleries
+
+3 - Use resized pictures to prevent out of memory + bandwidth issues
+"
+anthonydahanne/ReGalAndroid,closed,Fix build,[],
+anthonydahanne/ReGalAndroid,closed,MASHtm work + video mimeType for upload,[],"I took MASHtm work first and added video mimeType for Upload intent.
+Don't know how pull request is, but you can only take the video mimeType alone
+"
+anthonydahanne/ReGalAndroid,open,wrong image order with G2,[],"I'm using regalandroid 1.2.0 installed from fdroid with my G2 gallery an Galaxy A3 2016 with android 5.1.1.
+
+The order of the albums is as within the webinterface, but the images are mangled. Not randomized, but not in the same order the gallery returns them. I looked into the server answer with ngrep and the images are sorted correctly there.
+"
+anthonydahanne/ReGalAndroid,closed,Application crashing when sending picture on Piwigo gallery,[],"I use RegalAndroid on my Nexus 5 google phone, with Android 6.0.1, to send pictures to a Piwigo gallery version 2.8.1.
+Sometimes things go fine but picture title is not transmitted, very often the ReGalAndroid app crashes.
+Don't hesitate to contact me for any further logs or infos.
+"
+anthonydahanne/ReGalAndroid,open,Missing menu on Samsung Galaxy S7 et al,[],"The Samsung Galaxy S7, among many other, lack a virtual context menu button. This phone only have the ""Back"" and ""App switch"" buttons. 
+
+On older phones you could hold the ""App switch"" button to bring up the ""menu"":
+http://www.phonearena.com/news/How-to-call-the-hidden-context-menu-button-on-the-Galaxy-S5_id55124 
+This doesn't work on the S7:
+http://forums.androidcentral.com/samsung-galaxy-note-5/587616-miss-menu-button.html#post4715333
+I guess that this explains some of the issue people have reported, e.g. not being able to configure the gallery details. Holding the ""back"" button will eventually bring up the gallery configuration.
+
+The application need to provide an accessible menu for these phones.
+"
+anthonydahanne/ReGalAndroid,open,Thumbnails not loading,[],"On which type of gallery your problem occurred ? (G2, G3, Piwigo ?)
+Piwigo
+
+What version of regalandroid are you using? On what Android versions?
+1.2.0, 2.3
+
+Can you provide your gallery url so that a developer can reproduce the
+issue ? do we need to login ? in which album the problem occurred ?
+demo site at piwigo.wildcroft.co.za you will need login details
+
+What steps will reproduce the problem?
+1. Open up app
+2. Setup details for gallery url, user, pass
+3. Open any gallery (2 images in one and 8 in the other - both fail to load thumbnails
+
+What is the expected output? What do you see instead?
+I expect to see thumbnails appear under pictures
+I get android icon and loading appear
+"
+anthonydahanne/ReGalAndroid,open,Support for SNI (Server Name Indication) in SSL connections,[],"It would be nice if one could use ReGalAndroid on servers with different SSL certificates for virtual hosts.
+
+Currently one gets a certificate verification error when connecting to such a host.
+
+See
+https://en.wikipedia.org/wiki/Server_Name_Indication
+https://developer.android.com/training/articles/security-ssl.html
+http://blog.dev001.net/post/67082904181/android-using-sni-and-tlsv1-2-with-apache-httpclient
+"
+anthonydahanne/ReGalAndroid,closed,Fixed unstable test (issue with different behaviour depending on JDK and...,[],"... OS version).
+- reorganised imports
+- added sorting (list of albums) before asserting
+- reordered the asserts
+
+see https://github.com/anthonydahanne/ReGalAndroid/issues/5
+"
+anthonydahanne/ReGalAndroid,closed,Test failure depending on Java version and/or system,[],"Depending on the OS and the JDK used the following test fails:
+
+```
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running net.dahanne.gallery.g2.java.client.business.G2ClientTest
+SLF4J: Failed to load class ""org.slf4j.impl.StaticLoggerBinder"".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Tests run: 12, Failures: 1, Errors: 0, Skipped: 1, Time elapsed: 12.108 sec <<< FAILURE!
+organizeAlbumsHierarchy(net.dahanne.gallery.g2.java.client.business.G2ClientTest)  Time elapsed: 0.005 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: expected:<20> but was:<4>
+    at junit.framework.Assert.fail(Assert.java:50)
+    at junit.framework.Assert.failNotEquals(Assert.java:287)
+    at junit.framework.Assert.assertEquals(Assert.java:67)
+    at junit.framework.Assert.assertEquals(Assert.java:199)
+    at junit.framework.Assert.assertEquals(Assert.java:205)
+    at net.dahanne.gallery.g2.java.client.business.G2ClientTest.organizeAlbumsHierarchy(G2ClientTest.java:295)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:483)
+    at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+    at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+    at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+    at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+    at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+    at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+    at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+    at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+    at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+    at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+    at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+    at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+    at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+    at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+    at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+    at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+    at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:483)
+    at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+    at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+    at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+    at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+    at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+
+Running net.dahanne.gallery.g2.java.client.utils.G2ConvertUtilsTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
+
+Results :
+
+Failed tests:   organizeAlbumsHierarchy(net.dahanne.gallery.g2.java.client.business.G2ClientTest): expected:<20> but was:<4>
+
+Tests run: 15, Failures: 1, Errors: 0, Skipped: 1
+```
+
+We could reproduce that this test works fine with some JDK/OS combinations and fails with others. It seems like differences in handling the sort order of ArrayList causes this problem. To stabilise this test I'll create a patch (for the test, not for the production code) which I'll commit (to my fork with an additional pull request) later today or tomorrow.
+"
+anthonydahanne/ReGalAndroid,closed,implement a simple slideshow including a setting for the slideshow interval,[],"Hi,
+some guys at Hackergarten Basel also missed the slideshow feature, so we implemented one last night.
+Please have a look at our changes, we would be really happy so see the slideshow in the app.
+
+Greetings from Hackergarten :)
+@McPringle @agebert and @madmas 
+"
+anthonydahanne/ReGalAndroid,closed,Can't see pictures deeper than first level album,[],"I only I having this? 
+When I press ""Gallerie betreten !"" (or ""Enter Gallery!""?) I see my top level folders. Two of them have pictures inside and I can see them. 
+The third has many more folders. Inside those folders it tells me, there wer no pictures. Of course, when I log in vie Web-Interface I can see all the pictures that are there.
+
+I will provide access to my server if needed.
+"
+anthonydahanne/ReGalAndroid,closed,Edited regalandroid/res/values/strings.xml via GitHub,[],
+anthonydahanne/ReGalAndroid,closed,Hi Anthony,[],"Recently i had downloaded Regalandroid and just wanted to help, here is my spanish translation.
+If you find any error, please send me an email to mrnmart@gmail.com and i will fix it.
+
+Thank you 
+
+Best regards
+"

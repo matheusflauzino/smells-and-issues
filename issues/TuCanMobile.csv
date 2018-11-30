@@ -1,0 +1,250 @@
+repository,state,title,label,body
+Tyde/TuCanMobile,open,Notenanzeige bei mehreren Studiengängen,[],"Ist man in mehreren Studiengängen eingeschrieben, so wird in TUCaN in der Notenübersicht ein DropDown-Menü sichtbar, welches erlaubt, den Studiengang auszuwählen, um die entsprechenden Noten zu betrachten.
+Dies ist leider in der App derzeit nicht möglich, hier wird nur der erste Studiengang ausgewählt und man kann nicht zwischen den Studiengängen wählen.
+"
+Tyde/TuCanMobile,closed,Sich überschneidende Veranstaltungen werden nicht angezeigt,[],"Hallo
+
+Mir ist dieses Semester aufgefallen dass bei Veranstaltungen die sich Zeitlich überschneiden immer nur eine Veranstaltung im Wiget und in der  Stundeplan Ansicht angezeigt werden. Im App Menü werde alle korrekt angezeigt.
+Würde mich freuen wenn das behoben wird.
+
+Grüße
+Meneken17
+TUCaN Mobile 0.4.4 auf Nexus5
+"
+Tyde/TuCanMobile,open,F-Droid auf die aktuellste version bringen,[],"Das Buildscript hier:
+https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.dalthed.tucan.txt
+muss angepasst werden.
+
+Aktuelle Nutzer von F-Droid können sich sonst nicht anmelden. Siehe #72 
+"
+Tyde/TuCanMobile,closed,"""Login Fehlerhaft"" bei Angabe korrekter Login-Daten","[Label(name=""bug"")]","Einloggen ist nicht möglich, da die App die Login-Daten nicht akzeptiert.
+TuCanMobile 0.4.2 unter Android 4.4.4 sowie 4.2.
+"
+Tyde/TuCanMobile,closed,English compatibility by Pradeep,[],
+Tyde/TuCanMobile,closed,Updated some project Gradle and SDK versions,[],"- added sourceCompatibility and targetCompatibility to 1.7 Java
+- updated Gradle to 2.6
+- updated Gradle build plugin version to 1.3.0
+- updated SDK compile version to 23 and Support v4 library to 23.0.1 version
+- renamed ""Connection"" package to ""connection""
+"
+Tyde/TuCanMobile,open,Materialien zu einzelnen Terminen anzeigen,[],"Manche Veranstaltungen haben einzelne Materialien für einzelne Termine. Diese werden dann in der Terminliste über einen Link verfügbar gemacht. Diese sollten erkannt werden
+![image](https://cloud.githubusercontent.com/assets/1103207/5740270/1366c140-9c02-11e4-9916-e1d45df0d13e.png)
+"
+Tyde/TuCanMobile,open,Anzeigen des Prüfungsdurchschnittes und der Notenverteilung,"[Label(name=""basic feature""), Label(name=""new feature"")]","Die Notendurchschnitte und die Verteilung von Prüfungen ist interessant anzusehen. Deswegen wäre es sinnvoll, das auszulesen und anzuzeigen.
+"
+Tyde/TuCanMobile,closed,RuntimeException bei SimpleSecureBrowser,"[Label(name=""bug""), Label(name=""priority-high"")]","```
+Can't create handler inside thread that has not called Looper.prepare() at        com.dalthed.tucan.Connection.SimpleSecureBrowser.doInBackground(SimpleSecureBrowser.java:94) 
+```
+
+tritt auf, weil bei fehlender Internetverbindung versucht wird, ein Toast zu zeigen. SimpleSecureBrowser scheint wohl nicht den Context richtig zu haben. Das sollte durch einen Handler erledigt werden, welcher in der Activity ausgeführt wird.
+
+http://dttyde.de:5984/acralyzer/_design/acralyzer/index.html#/reports-browser/tucan/bug/1ba2835495867bba8969289ff2b74709
+"
+Tyde/TuCanMobile,open,Feature: sliding navigation menu,"[Label(name=""new feature"")]","Wie wäre es mit einem Navigations Menü das man durch sliden an der linken Seite ins Bild bringen kann (wie im play store). Dann kann man leichter zwischen verschiedenen unterkategorien wechseln. 
+
+Könnte ich schreiben falls Interesse besteht. 
+"
+Tyde/TuCanMobile,closed,fixed AuthenticatioManager for Api level 7,[],"""Kleiner"" Bug in meinem Pull.
+Da api level 7 keinen Base64Encoder hat funktioniert die Verschlüsselung nur ab api 8. Der Code geht aber davon aus das auch bei api7 verschlüsselt wird, setzt somit die crypted flag in der LOGIN.xml und das entschlüsseln funktoniert somit nicht mehr.
+
+Behoben indem unter api 8 nicht keine flag mehr gesetzt wird.
+"
+Tyde/TuCanMobile,closed,Widget: Fix für Überlappung von Zeit & Raum,[],"Ein kleiner request: Behebt nur bei zu langen Raumnamen die Überlappung mit der Uhrzeit im Widget.
+"
+Tyde/TuCanMobile,closed,Passwort und Id werden in Klartext gespeichert,[],"In der aktuellen Version werden Passwort und TUID als Klartext gespeichert (/data/data/packagename/shard_prefs/LOGIN.xml). Diese Datei kann bei gerooteten Smartphones oder mittels Privelege Escalation ausgelesen werden.
+
+Der Pull enthält eine Manager Klasse für den Benutzer Account. Account Daten werden verschlüsselt gespeichert und können mit den Methoden updateAccount(), deleteAccount() und getAccount() genutzt werden. Abwärtskompatibilität ist gegeben, sodass alte Versionen nach einem Update noch funktionieren.
+"
+Tyde/TuCanMobile,closed,Diverse Verbessungen am Widget -> Version 0.3.7?,[],"Es gab nochmal einige Verbesserungen am Widget. Unter Anderem wird nun, wenn noch keine Einträge für das Stundenplanwidget vorhanden sind, die App beim Klicken geöffnet. Außerdem hat das Widget nun in der Auswahl ein ""Vorschaubild""
+
+=> Wäre es möglich, wegen des Fixes aus commit 642ce59416, nach dem Mergen ein <b>Release 0.3.7 zu taggen</b>, damit eine neue Version in F-Droid landet?
+
+Danke :)
+"
+Tyde/TuCanMobile,closed,Fix: App crashes if widget has <10 entries,[],"Hatte leider im alten Code einen dummen Fehler drin, der nun behoben sein sollte. Dabei ist die App abgestürzt, wenn das Widget weniger als 10 Stundenplaneinträge hatte (Min vs Max... -Fehler).
+
+Ansonsten code ein bisschen aufgeräumt...
+"
+Tyde/TuCanMobile,closed,Fixes Für Widget,[],"2 kleine Commits:
+1.) Widgets lassen sich nun auch auf Lockscreen ablegen (ab Android 4.2)
+2.) Eventuell Fix für die automatische Aktualisierung des Widgets -> Wird sich die nächsten Tage noch besser zeigen, aber so kannst Du es auch ausprobieren :)
+
+Was noch fehlt ist das direkte Übernehmen der Transparenzeinstellung von den Einstellungen zum Widget
+"
+Tyde/TuCanMobile,closed,Changelog hinzugefügt,[],"Falls dieses Feature gewünscht:
+Nach jedem Update der App sollte nun einmalig ein Popup erscheinen, das die Neuerungen dieser Version anzeigt. Könnte eventuell auch genutzt werden um Werbung für TUCaN Mobile zu machen, um ein paar Leute zu rekrutieren :)
+
+Vor jedem Release bitte in /res/raw/changelog.txt die Neuerungen hinzufügen, am besten schon während der Entwicklung.
+
+Beispiel-Schreenshot: [Klick mich!](http://www.abload.de/img/tucanmobile_changelog5ju4n.png)
+"
+Tyde/TuCanMobile,closed,Fix: Widget shows wrong data,[],
+Tyde/TuCanMobile,closed,Korrekturen am Widget,[],"-set widget update interval to 45min instead of 24h
+-remove appointment from widget after it ends, not when it has started
+-refactoring
+"
+Tyde/TuCanMobile,closed,Vorbereitungen für F-Droid & andere Änderungen,[],"Änderungen um TuCanMobile F-Droid kompatibel zu machen:
+- proprietäre Libs bugsense & google analytics entfernt
+- Apache Commons Lang in Readme ergänzt
+- Lizenzheader zu allen Dateien hinzugefügt
+
+Bitte nochmal Umlaute prüfen, da diese bei mir nicht funktioniert haben. Wenn alles funktioniert, bitte demnächst ein neues Release-Taggen, damit diese tolle App in den F-Doid ""App Store"" ( https://f-droid.org/contribute/ ) aufgenommen werden kann :)
+"
+Tyde/TuCanMobile,closed,Cannot resolve import com.dalthed.tucan.R;,[],"Beim Compilieren des Projekts in Eclipse erhalte ich die Meldung, dass ""import com.dalthed.tucan.R;"" nicht aufgelöst werden kann.
+Die Klasse scheint zu fehlen :(
+"
+Tyde/TuCanMobile,closed,Add licenses of used libraries,[],"Es ist zwar schön, dass TuCanMobile als Open Source beworben wird, aber unter welcher Lizenz? 
+Bitte Lizenz festlegen und in den Source-Files hinzufügen, damit dies eindeutig ist.
+Als ersten Schritt habe ich die Lizenzen für die verwendeten Libs rausgesucht und in der Readme ergänzt - ist bugsense wirklich Proprietär? 
+"
+Tyde/TuCanMobile,open,Fehler bei Prüfungen,[],"http://dttyde.de:5984/acralyzer/_design/acralyzer/index.html#/reports-browser/tucan/bug/509cd561c97c14588818d546b48384f6
+"
+Tyde/TuCanMobile,open,Bewerbungsmodus erkennen und handlen,"[Label(name=""bug"")]","siehe hier: http://dttyde.de:5984/acralyzer/_design/acralyzer/index.html#/report-details/tucan/db69c112-90a8-41ea-b316-a147d40ba33d
+"
+Tyde/TuCanMobile,closed,Bei screen rotation in login activity crash,"[Label(name=""bug""), Label(name=""priority-high"")]",
+Tyde/TuCanMobile,closed,Nach Logout kann wieder per Back button auf Das Hauptmenu zugegriffen werden,"[Label(name=""bug""), Label(name=""priority-medium"")]",
+Tyde/TuCanMobile,open,Neue Ansicht für Stundenplan,"[Label(name=""new feature""), Label(name=""priority-medium"")]",
+Tyde/TuCanMobile,closed,NullPointer bei RegisterExams.java:98,"[Label(name=""bug""), Label(name=""priority-medium"")]","java.lang.NullPointerException
+at com.dalthed.tucan.ui.RegisterExams.onPostExecute(RegisterExams.java:98)
+at com.dalthed.tucan.Connection.SimpleSecureBrowser.onPostExecute(SimpleSecureBrowser.java:84)
+"
+Tyde/TuCanMobile,closed,NullPointer bei RegisterExams.java:170,"[Label(name=""bug""), Label(name=""priority-medium"")]","java.lang.NullPointerException
+at com.dalthed.tucan.ui.RegisterExams.onPostExecute(RegisterExams.java:170)
+
+http://daniel-thiem.de/ACRA/singlecrash.php?id=889
+"
+Tyde/TuCanMobile,closed,Error at casting linkedlist to jsoup.node,"[Label(name=""bug""), Label(name=""priority-low"")]","http://daniel-thiem.de/ACRA/singlecrash.php?id=893
+"
+Tyde/TuCanMobile,closed,NullPointer bei Messages:113,"[Label(name=""bug""), Label(name=""priority-medium"")]","ACRA: ## 15,16,61,63,86,88
+
+java.lang.NullPointerException
+at com.dalthed.tucan.ui.Messages.onPostExecute(Messages.java:113)
+at com.dalthed.tucan.Connection.SimpleSecureBrowser.onPostExecute(SimpleSecureBrowser.java:96)
+at com.dalthed.tucan.Connection.SimpleSecureBrowser.onPostExecute(SimpleSecureBrowser.java:1)
+"
+Tyde/TuCanMobile,closed,Vorlesungsverzeichnis Baum implementieren ,"[Label(name=""new feature""), Label(name=""priority-medium"")]","Ein Baum, welcher die vorherigen Seiten speichert und somit den zurück button wiederbelebt.. 
+"
+Tyde/TuCanMobile,closed,VV:120 Bug bei Leerer liste,"[Label(name=""bug""), Label(name=""priority-high"")]","in Version 0.1.4
+"
+Tyde/TuCanMobile,closed,Crash bei anderer Materialanordnung,"[Label(name=""bug""), Label(name=""priority-high"")]",
+Tyde/TuCanMobile,closed,MainMenu:249 ArrayIndexOutOfBoundsException,"[Label(name=""bug""), Label(name=""priority-high"")]","0   java.lang.ArrayIndexOutOfBoundsException
+1   at com.dalthed.tucan.ui.MainMenu.onPostExecute(MainMenu.java:246)
+2   at com.dalthed.tucan.Connection.SimpleSecureBrowser.onPostExecute(SimpleSecureBrowser.java:74)
+3   at com.dalthed.tucan.Connection.SimpleSecureBrowser.onPostExecute(SimpleSecureBrowser.java:1)
+4   at android.os.AsyncTask.finish(AsyncTask.java:417)
+5   at android.os.AsyncTask.access$300(AsyncTask.java:127)
+
+code of 0.1.4
+"
+Tyde/TuCanMobile,open,Orte bei MainMenu anzeigen ,"[Label(name=""new feature""), Label(name=""priority-medium"")]","Oft gewünschtes feature.. 
+"
+Tyde/TuCanMobile,closed,"MainMenu lädt Startseite erneut, obwohl sie schon von TucanMobileActivity aufgerufen wurde. ",[],"Sollte per intent übergeben werden. 
+"
+Tyde/TuCanMobile,closed,TucanMobileActivity versucht schnell-login Methode bei abgelaufener session ,"[Label(name=""bug""), Label(name=""priority-low"")]","Und zwar nachdem sie von einer anderen activity aufgerufen wurde, da die session weg ist. 
+"
+Tyde/TuCanMobile,closed,Spinner verliert beim drehen die values. ,"[Label(name=""bug""), Label(name=""priority-medium"")]",
+Tyde/TuCanMobile,closed,Unbekannter OutofBounds SingleEvent:139,[],"java.lang.IndexOutOfBoundsException: Invalid index 9, size is 9
+at java.util.ArrayList.throwIndexOutOfBoundsException(ArrayList.java:257)
+at java.util.ArrayList.get(ArrayList.java:311)
+at com.dalthed.tucan.ui.SingleEvent$AppointmentAdapter.getView(SingleEvent.java:139)
+at android.widget.AbsListView.obtainView(AbsListView.java:1556)
+at android.widget.ListView.makeAndAddView(ListView.java:1776)
+at android.widget.ListView.fillDown(ListView.java:701)
+at android.widget.ListView.fillGap(ListView.java:672)
+at 
+
+in 0.1.4
+"
+Tyde/TuCanMobile,closed,Unbekannter OutofBounds Exams:264,[],"0   java.lang.IndexOutOfBoundsException: Invalid index 1, size is 1
+1   at java.util.ArrayList.throwIndexOutOfBoundsException(ArrayList.java:257)
+2   at java.util.ArrayList.get(ArrayList.java:311)
+3   at org.jsoup.select.Elements.get(Elements.java:501)
+4   at com.dalthed.tucan.ui.Exams.onPostExecute(Exams.java:264)
+
+Commit von 0.1.3!!!
+"
+Tyde/TuCanMobile,closed,Unbekannter OutofBounds SingleEvent:132,[],"java.lang.IndexOutOfBoundsException: Invalid index 9, size is 9
+at java.util.ArrayList.throwIndexOutOfBoundsException(ArrayList.java:257)
+at com.dalthed.tucan.ui.SingleEvent$AppointmentAdapter.getView(SingleEvent.java:132)
+
+(ACHTUNG ZEILE IST BEZOGEN AUF VERSION 0.1.3 COMMIT)
+"
+Tyde/TuCanMobile,closed,Crash bei MainMenu bei keiner Veranstaltung und <1 Messages,"[Label(name=""bug""), Label(name=""priority-high"")]",
+Tyde/TuCanMobile,closed,Support für englische Seite (Bsp. MainMenu crash),[],"Error #7370560
+http://www.bugsense.com/dashboard/project/ed5c1682/error/7370560
+"
+Tyde/TuCanMobile,closed,crash bei orientaion wechsel während des Ladevorgangs,"[Label(name=""bug""), Label(name=""priority-high"")]","Bugsense Error #7331400
+
+http://stackoverflow.com/questions/1111980/how-to-handle-screen-orientation-change-when-progress-dialog-and-background-thre
+"
+Tyde/TuCanMobile,closed,login fehlerhaft bei android 2.1,"[Label(name=""bug""), Label(name=""priority-critical"")]",
+Tyde/TuCanMobile,closed,crash bei onresume bei session timeout bei einigen activities ,"[Label(name=""bug""), Label(name=""priority-high"")]",
+Tyde/TuCanMobile,closed,java.lang.ArrayIndexOutOfBoundsException in Schedule,"[Label(name=""bug""), Label(name=""priority-medium"")]","java.lang.ArrayIndexOutOfBoundsException
+at com.dalthed.tucan.ui.Schedule.onPostExecute(Schedule.java:123)
+at com.dalthed.tucan.Connection.SimpleSecureBrowser.onPostExecute(SimpleSecureBrowser.java:67)
+at com.dalthed.tucan.Connection.SimpleSecureBrowser.onPostExecute(SimpleSecureBrowser.java:1)
+"
+Tyde/TuCanMobile,closed,"Illegal ArgumentException at ""beim aufrufen des stundenplans...""","[Label(name=""bug""), Label(name=""priority-medium"")]","java.lang.IllegalArgumentException: View not attached to window manager
+at android.view.WindowManagerImpl.findViewLocked(WindowManagerImpl.java:355)
+at android.view.WindowManagerImpl.removeView(WindowManagerImpl.java:200)
+at android.view.Window$LocalWindowManager.removeView(Window.java:473)
+at android.app.Dialog.dismissDialog(Dialog.java:278)
+at android.app.Dialog.access$000(Dialog.java:71)
+at android.app.Dialog$1.run(Dialog.java:111)
+at android.app.Dialog.dismiss(Dialog.java:268)
+at com.dalthed.tucan.Connection.SimpleSecureBrowser.onPostExecute(SimpleSecureBrowser.java:69)
+at com.dalthed.tucan.Connection.SimpleSecureBrowser.onPostExecute(SimpleSecureBrowser.java:1)
+"
+Tyde/TuCanMobile,closed,Auffrischung von Leistungsspiegel,"[Label(name=""basic feature""), Label(name=""priority-medium"")]","Sieht sehr hässlich aus
+"
+Tyde/TuCanMobile,closed,"Crash bei klick auf ""Keine Heutigen Veranstaltungen"" in MainMenu","[Label(name=""bug""), Label(name=""priority-medium"")]","java.lang.NullPointerException
+at com.dalthed.tucan.ui.MainMenu$2.onItemClick(MainMenu.java:252)
+at android.widget.AdapterView.performItemClick(AdapterView.java:284)
+...
+"
+Tyde/TuCanMobile,closed,Übersicht für einzelne Veranstaltungen,"[Label(name=""basic feature""), Label(name=""priority-medium"")]",
+Tyde/TuCanMobile,open,Anmeldung/Anmeldestatus in Veranstaltungen,"[Label(name=""basic feature""), Label(name=""priority-high"")]",
+Tyde/TuCanMobile,closed,Meine Veranstaltungen in Veranstaltungen,"[Label(name=""basic feature"")]",
+Tyde/TuCanMobile,closed,Meine Module in Veranstaltungen,"[Label(name=""basic feature"")]",
+Tyde/TuCanMobile,open,Stundenplan automatisch in Google Kalender API implementieren,"[Label(name=""new feature"")]",
+Tyde/TuCanMobile,closed,Leistungsspiegel Implementieren,"[Label(name=""basic feature""), Label(name=""priority-low"")]","Muss noch Festgestellt werden, wie es aussehen wird.
+"
+Tyde/TuCanMobile,closed,NullPointerException bei Timeout der Session oder IP Wechsel ,"[Label(name=""priority-high"")]","Generell bei ungültigkeit der Session
+"
+Tyde/TuCanMobile,closed,Nachrichten Implementieren,"[Label(name=""basic feature"")]",
+Tyde/TuCanMobile,closed,Prüfungen Implementieren,"[Label(name=""basic feature"")]",
+Tyde/TuCanMobile,closed,Veranstaltungen implementieren,"[Label(name=""basic feature"")]",
+Tyde/TuCanMobile,closed,Umlaute werden falsch angezeigt,[],
+Tyde/TuCanMobile,closed,"crash im MainMenu, wenn ungelesene Nachrichten da sind","[Label(name=""bug""), Label(name=""priority-critical"")]","Zum Anzeigen von den Nachrichten wird auch die ""table.nb"" genommen, welche als Kriterium für heutige Veranstaltungen gilt. Somit denkt TuCanMobile, dass heute Veranstaltungen sind, welche nicht sind -> NullPointerError..
+"
+Tyde/TuCanMobile,closed,Veranstaltungen implementieren,"[Label(name=""basic feature""), Label(name=""priority-high"")]",
+Tyde/TuCanMobile,closed,Stundenplan anzeigen,"[Label(name=""basic feature""), Label(name=""priority-medium"")]","View erstellen
+View/Activity implementieren
+Server auslesen (AsyncTask/ BrowseMethods.java)
+Daten in View anzeigen
+"
+Tyde/TuCanMobile,closed,Passwort speichern,"[Label(name=""basic feature""), Label(name=""priority-medium"")]","TODO: Database errichten und dort speichern
+"
+Tyde/TuCanMobile,closed,VorlesungsVerzeichnis implementieren,"[Label(name=""basic feature""), Label(name=""priority-medium"")]","Auslesen des VV und einfügen in die App
+"
+Tyde/TuCanMobile,closed,Startseite Auslesen,"[Label(name=""basic feature""), Label(name=""priority-low"")]","Termine unten anzeigen
+"
+Tyde/TuCanMobile,closed,Working Login,[],"get Login to Tucan Working
+"
+Tyde/TuCanMobile,closed,HTML Parser,[],"Working HTML Parser to archive Basic View Functions
+"
+Tyde/TuCanMobile,closed,HTTP POST Working with Cookies,[],"The POST Request has to Work with Cookies
+"
+Tyde/TuCanMobile,closed,Server Implementation,"[Label(name=""basic feature""), Label(name=""priority-high"")]","Implement the Server into the Login Screen
+"
+Tyde/TuCanMobile,closed,HTML Parser,"[Label(name=""basic feature""), Label(name=""priority-high"")]","Parse TuCan HTML to get necessary information
+"
+Tyde/TuCanMobile,closed,HTTPS Connection,"[Label(name=""basic feature""), Label(name=""priority-high"")]","Start Connection to https tucan server
+"
+Tyde/TuCanMobile,closed,Service does not bind,"[Label(name=""bug""), Label(name=""priority-critical"")]","What steps will reproduce the problem?
+1. Redo the Service Implementation
+
+What is the expected output? What do you see instead?
+Service should be started and Callback changes Text
+Instead: NullPointerError
+"

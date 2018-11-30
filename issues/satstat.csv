@@ -1,0 +1,1027 @@
+repository,state,title,label,body
+mvglasow/satstat,closed,Fix issue computing DMS Seconds value.,[],"The abs call on minutes causes the subtractions for second to move further from 0, not closer.
+
+    dec = -122.084
+    deg = -122
+
+## current
+
+    tmp = 60.0 * (dec - deg);
+
+tmp = -5.04
+
+    min = (int) Math.abs(tmp);
+
+min = 5
+
+    sec = Math.abs(60.0 * (tmp - min));
+
+sec = abs(60 * (-5.04 - 5)) = abs(60*-10.04) = -602.4
+
+-----
+
+## pr
+
+    tmp = Math.abs(60.0 * (dec - deg));
+
+tmp = 5.04
+
+    min = (int) tmp;
+
+min = 5
+
+    sec = 60.0 * (tmp - min);
+
+sec = 60 * (5.04 - 5) = 60 * 0.04 = 2.4
+
+------
+
+This appears to work and fix the issue. Tested in in Android Studio.
+
+
+![screenshot_1542955416](https://user-images.githubusercontent.com/40850/48930902-6b3c1a80-eec1-11e8-93c1-4f09a6a51bfb.png)
+![screenshot_1542955323](https://user-images.githubusercontent.com/40850/48930903-6b3c1a80-eec1-11e8-897a-63f85a72a583.png)
+![screenshot_1542955310](https://user-images.githubusercontent.com/40850/48930904-6b3c1a80-eec1-11e8-843b-3139b1898d85.png)
+"
+mvglasow/satstat,closed,DMS computation incorrect,[],"![screenshot_20181123-004231](https://user-images.githubusercontent.com/40850/48929860-6031bc00-eeba-11e8-9d95-a7fb35cf9de9.png)
+![screenshot_20181123-004855](https://user-images.githubusercontent.com/40850/48929861-6031bc00-eeba-11e8-96de-487c6bcabb15.png)
+
+The seconds in the longitude is wrong because the longitude is negative.
+
+PR coming. "
+mvglasow/satstat,closed,Copycat on Google Play,[],"@mvglasow 
+Just in case you are not aware someone published your app on Google Play:
+[Location, Sensor & Radio Network Status](https://play.google.com/store/apps/details?id=com.drunkdeveloper.location.sensor.radio.network.wifi.status)"
+mvglasow/satstat,closed,Why the `PasvLocListenerService` service is always running ?,"[Label(name=""question"")]","I have activated the options to be notified when another app is using the GPS.
+
+On my phone the `PasvLocListenerService` service is always running after SatStat is launched and never stopped.
+
+If I kill the app (so the service is not running), when another app is using the GPS, the notification icon is well displayed, I think thanks to this :
+
+```
+<receiver android:name=""GpsEventReceiver"" >
+	<intent-filter>
+		<action android:name=""android.location.GPS_ENABLED_CHANGE"" />
+		<action android:name=""android.location.GPS_FIX_CHANGE"" />
+		<action android:name=""android.net.conn.CONNECTIVITY_CHANGE"" />
+		<action android:name=""android.net.wifi.STATE_CHANGE"" />
+		<action android:name=""com.vonglasow.michael.satstat.AGPS_DATA_EXPIRED"" />
+	</intent-filter>
+</receiver>
+```
+
+So I wonder why there is a service kept running.
+
+Is it normal ?
+
+Thanks for this very useful app ! :)"
+mvglasow/satstat,open,"Show ""ephemeris"" for each satellite",[],"This may require the Android 7+ GNSS API, but I think that's ok.
+
+Satstat shows a blue or red bar depending on whether the particular satellite is used in the solution.   Another important thing is whether the ephemeris is current.   I suggest showing a hollow bar to show no ephemeris.  Really, I suggest hollow to show not used, solid for used, and red for no ephemeris, blue for ephemeris, but that's a bigger change.  The point is to match what Garmin units do, but there I think tracking and ephemeris leads to use.
+
+A curiousity is that gpstest shows that GLONASS satellites are sometimes/often used with almanac but without ephemeris.  This seems odd, as I would expect the position computed from almanac to be so high uncertainty as not to be useful."
+mvglasow/satstat,open,Show what's what in the map view,[],"In the map view you have these different markers and circles showing the position and accuracy of the different global navigation satellite systems, but it doesn't explain what the red circle is or what the gray marker is. Maybe a tool-tip or something clickable could be added"
+mvglasow/satstat,open,graph 📈 for sensor data [Enhancement],[],It could be really good to have a way to graph data from sensors.
+mvglasow/satstat,open,Galileo satellites,[],Can you make to show the Galileo sats too? Or is it planned for the future?
+mvglasow/satstat,open,Play store upload,[],Hey. I like your app but I can't install anything outside of play store. I'll gladly pay for developer account for you and a small extra personally for you. Just contact me by direct message with your preferred payment method
+mvglasow/satstat,open,Feature request: GPS logging,[],Is there any possibility a button can be added to the GPS screen to start/stop recording all the GPS info to a CSV file? Something I can easily import into QGIS whereas most apps are designed for a specific use case.
+mvglasow/satstat,closed,Main (satellite) screen stops working,[],"My location can be determined in the map screen, but the main (satellite) screen is only able to show the number of satellites (0/n).
+
+It worked the first time I used the app, but for some reason it has stopped working. I've tried force stopping, clearing app data and revoking and re-allowing location access. But the problem is still not fixed. How do I provide useful information for debugging?"
+mvglasow/satstat,closed,No Glonass-detection and no AGPS-data update on one device but on another identical one,[],"I'm absolutely not convinced if I'm reporting a bug but at least I want to mention this weird situation.
+
+Running Satstat v3.3 on two identical devices (details below), and while the two devices are ""sitting"" side by side one of the devices doesn't detect Glonass and doesn't update the AGPS-data due to an ostensibly not available network (but the network is definitely available and used by other applications) while the second device recognises Glonass and performs the AGPS-data update.
+
+Screenshots from both devices are attached, also a Logcat from the device with the issue. For privacy reasons, some parts of the screenshots are pixeled out, some private data in the Logcat are ""X""-ed out.
+Hopefully, someone can assist in troubleshooting.
+
+Devices: Samsung GT-i9305
+Configuration (identical for both devices):
+Satstat v3.3
+OS Ressurection Remix-Nougat v5.8.5-final, Magisk v16.0, Boeffla-Kernel, XPosed, XPrivacyLua, AFWall+
+All permissions grated to Satstat. ROM- and kernel settings absolutely the same. Same settings in XPrivacyLua and AFWall+.
+[Device1_Matlog_2018-06-10-13-26-40.txt](https://github.com/mvglasow/satstat/files/2090196/Device1_Matlog_2018-06-10-13-26-40.txt)
+![device1_screenshot_20180610-133429](https://user-images.githubusercontent.com/21972717/41235471-65bb1936-6d7e-11e8-9ae1-255be9688bc9.png)
+![device1_screenshot_20180610-133450](https://user-images.githubusercontent.com/21972717/41235473-68915bc0-6d7e-11e8-9128-579f32a5e879.png)
+![device1_screenshot_20180610-133509](https://user-images.githubusercontent.com/21972717/41235485-6f2263d0-6d7e-11e8-96c1-a0643d887575.png)
+![device1_screenshot_20180610-133529](https://user-images.githubusercontent.com/21972717/41235497-7323f66a-6d7e-11e8-88e4-149a90770f4d.png)
+![device1_screenshot_20180610-133545](https://user-images.githubusercontent.com/21972717/41235503-76b5cb78-6d7e-11e8-857c-d12b533e5514.png)
+![device2_screenshot_20180610-133438](https://user-images.githubusercontent.com/21972717/41235510-7c8d0aac-6d7e-11e8-8ff0-7123accd4907.png)
+![device2_screenshot_20180610-133502](https://user-images.githubusercontent.com/21972717/41235514-7f6627ea-6d7e-11e8-9793-40f177cc61ff.png)
+![device2_screenshot_20180610-133520](https://user-images.githubusercontent.com/21972717/41235521-83cd8bd4-6d7e-11e8-9590-9bee8a107461.png)
+![device2_screenshot_20180610-133539](https://user-images.githubusercontent.com/21972717/41235530-87940e82-6d7e-11e8-91ce-2c611c8950b1.png)
+![device2_screenshot_20180610-133555](https://user-images.githubusercontent.com/21972717/41235542-8a868778-6d7e-11e8-9c13-11daf3c4f9a9.png)
+
+
+
+
+
+
+
+
+
+
+"
+mvglasow/satstat,open,crash on opening downloadpath,[],"Hi. when I try to set the downloadfolder Satstat always crashes.
+The browser app complains about a null pointer exception
+
+here's the debug
+
+java.lang.RuntimeException: Unable to start activity ComponentInfo{com.mixplorer/com.mixplorer.activities.BrowseActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'int com.mixplorer.e.ae$a.ordinal()' on a null object reference
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2684)
+	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2751)
+	at android.app.ActivityThread.-wrap12(ActivityThread.java)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1496)
+	at android.os.Handler.dispatchMessage(Handler.java:102)
+	at android.os.Looper.loop(Looper.java:154)
+	at android.app.ActivityThread.main(ActivityThread.java:6186)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:889)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:779)
+	at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:107)
+Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'int com.mixplorer.e.ae$a.ordinal()' on a null object reference
+	at com.mixplorer.e.ae.a(Unknown Source)
+	at com.mixplorer.e.ae.b(Unknown Source)
+	at com.mixplorer.e.ae.a(Unknown Source)
+	at com.mixplorer.e.ae.b(Unknown Source)
+	at com.mixplorer.e.g.h(Unknown Source)
+	at com.mixplorer.activities.BrowseActivity.a(Unknown Source)
+	at com.mixplorer.activities.BrowseActivity.onCreate(Unknown Source)
+	at android.app.Activity.performCreate(Activity.java:6684)
+	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1119)
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2637)
+	... 10 more
+- "
+mvglasow/satstat,open,Donations,[],Thank you for satstat. Please add your bitcoin address to your f-droid page and github.
+mvglasow/satstat,closed,Upgrade Gradle to 3.1.2,[],
+mvglasow/satstat,open,Oreo adaptive icon shape,[],"Please add support for icon shape
+https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive.html
+https://material.io/guidelines/style/icons.html"
+mvglasow/satstat,open,Continue searching for satellites when screen is off or app is in background,"[Label(name=""enhancement"")]","I would like to request the ability to enable the app to keep searching/fixing while in the background.
+
+This app is one of the best ways to debug problems with other apps that use GPS, and to ""pre-search"" for satellites for other apps that are going to need them.
+
+My UI idea for this…
+
+* Put a button with an ""hourglass"" or ""lock"" icon on the main satellite screen
+* Tapping it will lead to a popup window with time options (e.g. 1,5,10 minutes, Until Manually Disabled).
+* Once activated, SatStat would continue searching for satellites even in the background, for the specified period of time.
+
+The reason I suggest this UI is to avoid inadvertently draining the battery by keeping GPS on. (Probably the reason SatStat stops searching when in the background in its current behavior!)
+
+Thank you for this fantastic app."
+mvglasow/satstat,open,"Offline Maps - eg. World map, special maps, regional maps",[],"It would be nice to be able to download offline maps directly into the maps path specified. I would like to use this because:
+1.) I would like to see a (rough) world map (which is unfortunately not available in the map downloads catalogue but directly at http://download.mapsforge.org/maps/
+2.) I would like to use a smaller regional or special map that -I download manually to the maps folder
+
+Unfortunately SatStat seems not to recognize maps that are manually downloaded in that folder. Perhaps it's just an issue to register those maps?
+It should be then also told in the settings which osm-map-version is needed. By comparing one dowloaded map with the maps available from mapsforge I believe it's /v4."
+mvglasow/satstat,open,Logo design for satstat,[],"Hi, do you want a logo and icons for this app? I will give free to you"
+mvglasow/satstat,closed,Update README.md,[],"Hi,
+
+This small and useless PR adds a button to get your app on F-Droid. You can later add a button for Google Play the same way :
+`<a href="""" target=""_blank""> <img src=""https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"" alt=""Get it on Google Play"" height=""80""/></a>`"
+mvglasow/satstat,closed,update hungarian translation,[],
+mvglasow/satstat,closed,Completed French translation,[],"Hi, 
+
+I've just completed the French translation for satstat. 
+
+Thanks in advance :) "
+mvglasow/satstat,open,"""Elevation"" is unclear (ellipsoidal height vs orthometric height)",[],"SatStat shows ""Elevation"".   From reading the code, it's clear that it uses  Android's Location.getAltitude(), which is defined to be ellipsoidal height.   From experimenting, that seems true for the internal GPS receiver, but someone on the OsmAnd list reports that an external bluetooth GPSr --  hooked up somehow -- results in SatStat showing a value that seems more likely to be orthometric height.
+
+Unfortunately the Android API is misnamed; altitude almost never means ellipsoidal height.  It's hard to think of a better word that won't mislead or confuse.  My two suggestions are ""Ellips. Hght""  (Or ""Ell. H"" if that is what fits) and ""HAE"".
+"
+mvglasow/satstat,open,Add mmHg (Torr) for pressure sensor,"[Label(name=""enhancement"")]",Please add mmHg unit for pressure sensor. It is common unit of atmospheric pressure in some countries.
+mvglasow/satstat,open,zoom setting does not recover from zooming out,[],"In the map tab, the view is widened to fit a low-accuracy location report, as is typical with cell-based location.  That's arguably very sensible.   However, the map does not return to the user-commanded zoom when the low-accuracy report is replaced by one that is more accurate.  (I realize this will get trickier if and when more providers are shown.)
+
+Please comment with either ENOPATCH or ""not a bug and I wouldn't merge such a change""..."
+mvglasow/satstat,closed,Set sensor update interval to 100 ms,[],"This is chosen to allow the human to read the numbers and validate
+that updates are happening.
+
+This would resolve #140."
+mvglasow/satstat,closed,sensor update rate is too high,[],"I just updated to today's git master.  In the sensors view, the acceleration, rotation and magnetic field numbers are changing so fast that 1) I worry about battery drain (without a good basis) and more importantly 2) I can't really read the numbers.    Before, I don't really remember the update rate, but it seemed ok.   So I wonder if it should be limited to 10 Hz, or 5 Hz, or something like that, instead of what seems (without having read the code) like ""as fast as possible""."
+mvglasow/satstat,closed,crashes with openbmap location provider with nearly-1GB us.sqlite,"[Label(name=""awaiting feedback"")]","This is a fuzzy report, but I am curious if someone else is seeing this.
+
+I'm running satstat from 2017-06-19 on a relatively modern no-gapps ROM.   I have unifiednlp and several providers.  Until recently, satstat had behaved very well.
+Just now I added DejaVu, and have been watching the map view with satstat.  All has seemed sensible.  I updated the mapsforge file from June of 2016 to recent today, and drove for about 45 minutes with that new file and DejaVu with no issues.  Then, I updated the radiocells/openbmap database to the currently-available us.sqlite, which is nearly 1 GB, compared to under 200 MB from before (yes, somethhng seems amiss)., and disabled DejaVu and enabled the openbmap backend.   I was seeing mostly-reasonable data, but found that satstat would crash every few minutes.
+
+So I wonder if something is going wrong with such a huge database, and if the location backend or satstat is running out of memory, or something else.  No logs at the moment, but I can try to get one.
+
+(I've also inquired about the unexpected size of the radiocells db file.)"
+mvglasow/satstat,open,(Embarrassed cough) - Play Store for African users?,[],"I'm working in Africa with the Humanitarian OpenStreetMap Team doing, well, humanitarian mapping. My team is working on almost 100% free software: GNU/Linux on the PCs, OpenDataKit for data collection, QGIS for analysis and presentation, etc.
+
+SatStat is absolutely brilliant, and I'm migrating my team off of the proprietary sensor data apps (GPS Essentials, GPS Status & Toolbox).
+
+I've shared the SatStat via f-droid for my core team, and that's fine, but it would be a lot easier for us to spread the word and get our academic and NGO partners on this if it were in the Play Store. 
+
+I'd rather promote f-droid, of course, and am doing so with my core team, but having SatStat on Google Play would help more people in Africa get more access to good quality free software like this.
+
+I'll understand if you don't want to do it. Just asking!"
+mvglasow/satstat,closed,3 image links in readme on the homepage of this project are dead ,[],"f.e. https://raw.github.com/wiki/mvglasow/satstat/satstat-gps.png
+404: Not Found"
+mvglasow/satstat,open,"WLANs are not displayed when WLAN is on, but GPS is off","[Label(name=""awaiting feedback"")]","I noticed that the WLAN tab remains empty when GPS is not enabled (but WLAN is). I see no functional dependency.
+So why is that so?"
+mvglasow/satstat,open,"Add offline map source info below ""Download offline map""","[Label(name=""enhancement""), Label(name=""resolved"")]","It would be good to have some info below ""Download offline map"" about offline map provider (just a short description like for other options). 
+
+I assume that it is mapsforge. If it is, maybe SatStat could be added to this list:
+* https://github.com/mapsforge/mapsforge/blob/master/docs/Mapsforge-Applications.md
+
+Reason - having this info easily accessible would make it easier to reuse these maps between different apps.
+"
+mvglasow/satstat,open,Improve UX when pinning wifis in list,"[Label(name=""enhancement"")]","Improve UX for pinning wifis to the top of the list by:
+
+* Highlighting the pinned WiFi
+* Unpinning the wifi when it is tapped again"
+mvglasow/satstat,closed,update hungarian translation,[],
+mvglasow/satstat,open,Links in Info screen are not clickable,"[Label(name=""bug""), Label(name=""resolved"")]",I cannot click the links in the Info screen of the app (Menu > Info). This makes it harder to reach this GH repository.
+mvglasow/satstat,closed,Wrong height,[],"Hi,
+at the moment i am on the seychelles at mahe in the ""bord mer hotel"". I am a view meters from the beach but satstat shows the height -44 meters.
+I think it's wrong.
+Maybe you can check and fix it.
+Kind regards
+Peter"
+mvglasow/satstat,closed,"Bump build tools, remove exact Java dependency",[],"* This updates `build.gradle` to run from a fresh clone using Android Studio 2.3.3
+* The `compileOptions` Java versions prevent the project from building on a machine that has only Java 8 installed.  By removing the explicit version of Java it should build on any machine (with a compatible Java version for Android Studio or Gradle."
+mvglasow/satstat,closed,Remove extra 0 from sensor refresh rate,[],"When running an on LG G5 w/ Android 7.0 (stock), the sensor refresh rate seems very low (see https://github.com/mvglasow/satstat/issues/122#issuecomment-331667328).
+
+Here's the current master branch at https://github.com/mvglasow/satstat/commit/5f10dd41f5543ecb826cc54e697cbc0d83588216, which is around 3fps:
+https://www.dropbox.com/s/cvn6gxoxlwgu0qc/satstat-LG-G5-TYPE_ORIENTATION.mp4?dl=0
+
+Looking at the comments, it appears there is an extra 0 in the refresh rate.  This patch removes the extra 0.
+
+Here's this patch on same device, running at ~26fps:
+https://www.dropbox.com/s/vobdf7o7mr8yof9/satstat-LG-G5-TYPE_ORIENTATION-20000.mp4?dl=0"
+mvglasow/satstat,open,Map downloader shows size of large files as -1,"[Label(name=""bug""), Label(name=""resolved"")]","The offline map downloader shows -1 for the size of some map files. This has been observed for the map of France, which is 2.2G in size (as of 2017-08-18, which is the most recent version).
+
+Deeper analysis of the code shows that `HttpDownloader.getFileInfo()` uses `java.net.URLConnection.getContentLength()` to get the file size. According to its javadoc, this method returns -1 if content length is not supplied or cannot be represented as a 32-bit integer (i.e. anything over 2 GiB)."
+mvglasow/satstat,open,Add support for coordinates in Maidenhead Locator System,"[Label(name=""enhancement"")]","It would be great to have support for one more coordinates system - Maidenhead Locator System (QTH Locator):
+* https://en.wikipedia.org/wiki/Maidenhead_Locator_System
+
+It is used by amateur radio operators to exchange information about location."
+mvglasow/satstat,open,Problem with reporting LTE stations,"[Label(name=""bug"")]","When I open hidden options by dialling \*#\*#4636#\*#\* I see the following LTE base stations:
+
+![screenshot_20170829-234346a](https://user-images.githubusercontent.com/5788375/29846537-9befa7e4-8d17-11e7-9924-d77ad3e2540d.png)
+
+On the other hand, SatStat reports:
+
+![screenshot_20170829-234452a](https://user-images.githubusercontent.com/5788375/29846547-a2385cea-8d17-11e7-8eab-d7a1dab4c93c.png)
+
+But when I rotate screen, missing info is visible for a moment:
+
+![screenshot_20170829-234523a](https://user-images.githubusercontent.com/5788375/29846787-a95d46ce-8d18-11e7-9090-1561b2fbf752.png)
+
+My phone: HTC One (m7)
+System: LineageOS 14.1 (Android 7.1.2) - my own build
+
+
+
+
+
+
+
+"
+mvglasow/satstat,open,Compass Challenges w/ Google Pixel,"[Label(name=""awaiting feedback"")]","I had the compass working fine on my Google Pixel XL, but after doing a hard reset on the phone I can't get the satellites to display anymore. I'd like to get that back.
+
+So far I've tried:
+- GPS tracking is obviously already turned on
+- 'GPS only' did not help
+- 'Data Usage' -> ""Data Saver"" is off
+- There is no 'Settings' -> 'Data usage' -> ""Google Services"" on a Pixel
+- Settings > Location > Three dots in top right corner > Scanning > Enable ""Wi-Fi Scanning"" is on
+
+Also, the app :
+- says how many satellites it finds (eg. 0/12, or 0/19) and this changes over time being in the same spot
+- the SatStat 'map' feature finds my location
+
+Any thoughts on why is used to work and now it doesn't? What am I missing?
+"
+mvglasow/satstat,open,"Show some info when location mode is set to ""Battery saving""","[Label(name=""enhancement"")]","It would be good to have some information when location mode is set to ""Battery saving"" (i.e. GPS is disabled).
+
+Right now it shows no satellites which may be confusing if you are not aware of this setting.
+"
+mvglasow/satstat,open,Added ability to menu to copy current location to the clipboard.,[],"In reference to issue #95 I have added the ability to copy the current location to your clipboard, which can be pasted into any other application.
+
+A few notes:
+I used the text views to pull the data for the clipboard because if you do not have a position, then you will get - - instead of an error or nothing. And it will copy the location in the method specified in settings menu. If you choose MGRS, Decimal, Dec min, DDMMSS, it still copies as you set in your settings preferences.
+
+I have tested this on a Samsung Galaxy S4, Android 7.1.2, using MGRS, Decimal, Decimal Minutes, and Decimal Minutes Seconds. All copied without error. I also tested if you have no location, still copies to clipboard without error, just as "" - - ""."
+mvglasow/satstat,closed,Compass not working on Galaxy S3/LineageOS 14.1,"[Label(name=""resolved"")]","Hi,
+
+I recently refurbished a Samsung Galaxy S III (GT-I9300) with LineageOS 14.1 (previous ROM was stock) before giving it to a friend.
+
+However, SatStat (F-Droid v3.2 2017-06-23) doesn't show any compass orientation : the north arrow stays frozen to the 12 o'clock position.
+
+I first thought that the GT-I9300 had no magnetic compass (odd, but why not ?), but other apps such as GPS Status & Toolbox report magnetic orientation just fine, so I believe it's a SatStat issue.
+
+Please note that not having my hands on the device anymore, I'll need a bit more time to have my friend test and report back. :-)
+
+I'll have him check the sensors page (cf https://github.com/mvglasow/satstat/issues/37), and have a look at the logcat too."
+mvglasow/satstat,closed,Fixes nautic display of coordinates,[],... in the notifications section
+mvglasow/satstat,open,Wrong position in notification ,"[Label(name=""bug""), Label(name=""resolved"")]","When using the nautic display of the coordinates (Degree + Minutes) both latitude and longitude shows the same minutes value. Inside the app the right coordinates are displayed. (German language is used for Android)
+
+example: 50° 12,345' N 10° 12,345' O
+expected: 50° 12,345' N 10° 45,678' O
+
+"
+mvglasow/satstat,open,Show the DOP values (GPS accuracy/precision),"[Label(name=""enhancement"")]","I would be nice to see the [dilution of precision](https://en.wikipedia.org/wiki/Dilution_of_precision_(navigation)) (DOP) values. This would give better insight into the time, vertical, horizontal and overall precision of the measurements compared to the standard horizontal error displayed. Looks like it would be a fun little math project."
+mvglasow/satstat,open,Excessive - signals in south and/or west coordinates,"[Label(name=""bug""), Label(name=""resolved"")]","Good morning.
+I live in the south and west part of our planet. When using SatStat´s show of GPS data in degree/minute/second format in my tiny smartphone, the seconds of degree of latitude simply don´t appear.
+I see something like:
+Latitude:   Longitude:
+-22°-53'   -50°-25'-33,6""
+While seeing -22º53'35,0"" and -50º25'33,6"" would be better.
+In a larger smpartphone all the excessive minus signals appeared, but I had the seconds of degree because the font size used allowed all data have space in the screen.
+Can you remove excessive minus signals please?
+"
+mvglasow/satstat,open,Inefficient API is used in SatStat,"[Label(name=""awaiting feedback"")]","Dear developers,
+
+I found an inefficient API, setImageResource(), is widely used in SatStat.
+
+For setImageResource(), Google says this:
+https://developer.android.com/reference/android/widget/ImageView.html#setImageResource(int)
+"" This does Bitmap reading and decoding on the UI thread, which can cause a latency hiccup. If that's a concern, consider using setImageDrawable(android.graphics.drawable.Drawable) or setImageBitmap(android.graphics.Bitmap) and BitmapFactory instead. ""
+
+I noticed that in the following code, setImageResource() is used:
+com.vonglasow.michael.satstat.ui.RadioSectionFragment.java   (line number: 213, 215, 217, 219, 221, 223)
+https://github.com/mvglasow/satstat/blob/master/src/com/vonglasow/michael/satstat/ui/RadioSectionFragment.java 
+
+Do you think the use of setImageResource() will affect SatStat's performance? If so, maybe we should move Bitmap reading and decoding to a background thread.
+
+Thanks.
+"
+mvglasow/satstat,closed,Closes on change from sat display to others,"[Label(name=""awaiting feedback"")]",On Nexus 6 with Android 7.1.1 build N6F26Q.
+mvglasow/satstat,open,App crashes trying to download maps when there is no internet connection,"[Label(name=""bug""), Label(name=""resolved"")]","Hey Michael,
+
+I really like SatStats map download dialog, so I've included it in the Radiobeacon alpha release.
+Thanks for sharing!
+
+@ReyhanJB recently reported an issue, where app crashes, when trying to download map while phone is in flight mode. SatStat (latest F-Droid release) also seems to be affected.
+
+Nevertheless for RadioBeacon this is fixed by a simple null check, which might also be necessary for SatStat to fix the issue, see https://github.com/openbmap/radiocells-scanner-android/commit/47d2c706b62fcaadb22cb09420af63abdbc53f90
+
+Cheers
+Toby"
+mvglasow/satstat,closed,Fix broken image links,[],
+mvglasow/satstat,open,Status of non-GPS sats shown incorrectly since Android 7,"[Label(name=""awaiting feedback"")]","The SNR view at the bottom of the main screen shows all non-GPS satellites (GLONASS,...) in red, ""not used in fix"". Are they really not used by the device? I think they are and just the status is shown incorrectly. As far as I can tell this started when I upgraded to Android 7.
+
+This article (unfortunately in German) seems to describe the issue:
+http://www.android-hilfe.de/thema/glonass-gps-probleme.795008/
+
+If I understand right, the GPS API of older Android versions did not officially return a ""used in fix"" info. Since Android 7 this is officially supported, but a new API has to be used for this, probably android.location.GnssStatus .
+
+![satstat_glonass_status_wrong](https://cloud.githubusercontent.com/assets/11777822/21661628/040993cc-d2cd-11e6-9e56-a8c64c479cbf.png)
+"
+mvglasow/satstat,closed,Offline Map of Germany incomplete,[],"The offline map of Germany is totally incomplete at the moment. There are absolutely no roads, buildings, etc included. It just shows the coastline and a few names, nothing else. The download is surprisingly small with just 20MB. It used to work and the download used to be much larger (>500MB as far as I remember).
+
+Could you replace the download file with a working version again?
+
+Thanks."
+mvglasow/satstat,open,No margin on left or right,[],The contents of the main views has no margin and touches the edges of the screen. An 8 or 16 dp margin would fix this.
+mvglasow/satstat,open,Galileo ID range,"[Label(name=""enhancement""), Label(name=""resolved"")]","I've confirmed Galileo ID range on at least one Android M or older device to be 301-330 (BQ Aquaris X5+, with Qualcomm chipset).
+
+See http://gis.stackexchange.com/a/211229/12198.
+
+I've added it to my app here, as well as Android N explicit support for Galileo and other GNSS:
+https://play.google.com/store/apps/details?id=com.android.gpstest"
+mvglasow/satstat,closed,How about Galileo,"[Label(name=""question"")]","Hi,  
+I wanted to know how (potential) Galileo Satellites are displayed.  
+Thanks"
+mvglasow/satstat,open,"Suggestion: show satellite count in the ""searching for location"" notification message","[Label(name=""enhancement"")]","When waiting for a location fix, I often find myself opening SatStat's ""Searching for location"" notification message and tapping my way to its main view, just so I can watch the acquired satellite count progress. I'm effectively using this count like a progress bar, because it's less frustrating than staring at the app that needs the fix with no indication at all of whether I'll be waiting for seconds or minutes. Unfortunately, I currently have to leave the app to do this.
+
+It would be handy if SatStat's ""Searching"" notification message was continually updated with the satellite count, so I could watch the progress toward a fix without leaving the app I'm working with.
+"
+mvglasow/satstat,closed,Null pointer error when going to maps,"[Label(name=""duplicate"")]","When I try to go to a tab other than the main tab, the version 3.1 F-Droid binary of SatStat crashes (""Unfortunately, SatStat has stopped.""), leaving the following log:
+
+```
+SatStat build: git-e7a0b8e
+
+
+java.lang.NullPointerException
+	at com.vonglasow.michael.satstat.ui.RadioSectionFragment.showCellCdma(RadioSectionFragment.java:555)
+	at com.vonglasow.michael.satstat.ui.RadioSectionFragment.showCells(RadioSectionFragment.java:520)
+	at com.vonglasow.michael.satstat.ui.RadioSectionFragment.updateCellData(RadioSectionFragment.java:764)
+	at com.vonglasow.michael.satstat.ui.RadioSectionFragment.onCreateView(RadioSectionFragment.java:395)
+	at android.support.v4.app.Fragment.performCreateView(Fragment.java:1974)
+	at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1067)
+	at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1252)
+	at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:738)
+	at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1617)
+	at android.support.v4.app.FragmentManagerImpl.executePendingTransactions(FragmentManager.java:570)
+	at android.support.v4.app.FragmentPagerAdapter.finishUpdate(FragmentPagerAdapter.java:141)
+	at android.support.v4.view.ViewPager.populate(ViewPager.java:1177)
+	at android.support.v4.view.ViewPager.setCurrentItemInternal(ViewPager.java:608)
+	at android.support.v4.view.ViewPager.setCurrentItemInternal(ViewPager.java:570)
+	at android.support.v4.view.ViewPager.setCurrentItem(ViewPager.java:551)
+	at android.support.design.widget.TabLayout$ViewPagerOnTabSelectedListener.onTabSelected(TabLayout.java:2008)
+	at android.support.design.widget.TabLayout.selectTab(TabLayout.java:1025)
+	at android.support.design.widget.TabLayout.selectTab(TabLayout.java:995)
+	at android.support.design.widget.TabLayout$Tab.select(TabLayout.java:1272)
+	at android.support.design.widget.TabLayout$TabView.performClick(TabLayout.java:1377)
+	at android.view.View$PerformClick.run(View.java:18465)
+	at android.os.Handler.handleCallback(Handler.java:733)
+	at android.os.Handler.dispatchMessage(Handler.java:95)
+	at android.os.Looper.loop(Looper.java:136)
+	at android.app.ActivityThread.main(ActivityThread.java:5086)
+	at java.lang.reflect.Method.invokeNative(Native Method)
+	at java.lang.reflect.Method.invoke(Method.java:515)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:785)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:601)
+	at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:132)
+	at dalvik.system.NativeStart.main(Native Method)
+```
+
+My phone is a Motorola Moto G, KitKat 4.4.4, XT1028 (Verizon CDMA), admittedly with Xposed installed. Version 2,2 did not crash."
+mvglasow/satstat,closed,GSM vs LTE,"[Label(name=""invalid"")]","With today's git master, Nexus 5, CM 13, I get
+
+11-10 10:18:03.896 19659-19659/com.vonglasow.michael.satstat W/MainActivity: Got SignalStrength for PHONE_TYPE_GSM but serving cell is not GSM
+
+when on LTE.  This feels like a bug, but I'm not sure."
+mvglasow/satstat,closed,"Support UTM, notification on lockscreen",[],"- Added support for UTM coordinates
+- Made notifications (interesting stuff like current coordinates, useful for lookup on paper map) visible when screen is locked
+"
+mvglasow/satstat,closed,3.0 and 3.1 crash when switching tags ,"[Label(name=""bug""), Label(name=""resolved"")]","I'm still running 2.2 on my 5.1 LGG4 because both the newer versions crash when I change away from the main tab. 
+"
+mvglasow/satstat,closed,3.0 and 3.1 crash when switching tags ,"[Label(name=""duplicate"")]","I'm still running 2.2 on my 5.1 LGG4 because both the newer versions crash when I change from the 
+"
+mvglasow/satstat,open,Granularity of A-GPS syncing frequency ,"[Label(name=""awaiting feedback"")]","You’re right, there are many apps that do this."
+mvglasow/satstat,closed,Added UTM ,[],"I was wondering why you did not implement UTM as coordinate format, actually with the MGRS code, almost everything needed for it seems to be there. Anyway, I needed UTM for use with my hiking and biking maps, so I added support for it in satstat.
+
+It could definitely be done more elegantly I admit. Am neither an Android nor a GIT expert, but as far as I can see, it works.
+"
+mvglasow/satstat,closed,Offline work,[],"Add an ability to work completely offline after the download of the AGPS informations and maps.. like a navigator
+"
+mvglasow/satstat,closed,Interest point,[],"Add points of interest in the map and add the opportunity to see them in a list
+"
+mvglasow/satstat,closed,Black theme AMOLED,[],"Add black theme ""AMOLED"" for save the battery
+"
+mvglasow/satstat,open,Proxy support,"[Label(name=""enhancement"")]","Add a full integration with Orbot/I2P services for protect the privacy
+"
+mvglasow/satstat,closed,Fictitious positions,[],"add the ability to manually entering coordinates (fictitious positions) and see our location on the map as there really were in.. like maps or navigator. 
+"
+mvglasow/satstat,open,Share positions,"[Label(name=""enhancement"")]","Add the ability to save and share (after encryption with AES) GPS coordinates and other informations (in particular, with Chatsecure)
+"
+mvglasow/satstat,closed,Update portuguese translation,[],"Added new strings to existing portuguese translation.
+"
+mvglasow/satstat,closed,"App crashes, when clicking on settings menu","[Label(name=""duplicate"")]","Problem can be reproduced on:
+- Sony Xperia M4 (Android 5.0)
+- Asus MeMO Pad HD 7 ME173x (Android 4.2.2)
+"
+mvglasow/satstat,closed,Speed in notification bar is printed in knots by default,"[Label(name=""bug""), Label(name=""resolved"")]","In the notification bar, the speed is printed in knots by default.
+To use km/h, you have to check AND THEN uncheck the checkbox for knots in the settings menu.
+"
+mvglasow/satstat,closed,Translations for new strings,[],
+mvglasow/satstat,closed,Fix a crash when clicking on 'Settings' (workaround for issue #89),[],"Workaround for the crash I mentioned here https://github.com/mvglasow/satstat/issues/89.
+"
+mvglasow/satstat,closed,"Application crashes when clicking on ""Settings""","[Label(name=""bug""), Label(name=""resolved"")]","Today I decided to upgrade from 2.2 to 3.0 and I wanted to see what's new. I clicked on ""Settings"" and the application crashed, then I decided to check where the bug is and fix it. The exception was the following:
+
+> 07-19 19:45:06.229 1868-1868/com.vonglasow.michael.satstat E/AndroidRuntime: FATAL EXCEPTION: main
+>                                                                              java.lang.RuntimeException: Unable to start activity ComponentInfo{com.vonglasow.michael.satstat/com.vonglasow.michael.satstat.SettingsActivity}: android.view.InflateException: Binary XML file line #11: Error inflating class java.lang.reflect.Constructor
+>                                                                                  at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2180)
+>                                                                                  at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2230)
+>                                                                                  at android.app.ActivityThread.access$600(ActivityThread.java:141)
+>                                                                                  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1234)
+>                                                                                  at android.os.Handler.dispatchMessage(Handler.java:99)
+>                                                                                  at android.os.Looper.loop(Looper.java:137)
+>                                                                                  at android.app.ActivityThread.main(ActivityThread.java:5041)
+>                                                                                  at java.lang.reflect.Method.invokeNative(Native Method)
+>                                                                                  at java.lang.reflect.Method.invoke(Method.java:511)
+>                                                                                  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)
+>                                                                                  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)
+>                                                                                  at dalvik.system.NativeStart.main(Native Method)
+>                                                                               Caused by: android.view.InflateException: Binary XML file line #11: Error inflating class java.lang.reflect.Constructor
+>                                                                                  at android.preference.GenericInflater.createItem(GenericInflater.java:397)
+>                                                                                  at android.preference.GenericInflater.createItemFromTag(GenericInflater.java:430)
+>                                                                                  at android.preference.GenericInflater.rInflate(GenericInflater.java:481)
+>                                                                                  at android.preference.GenericInflater.rInflate(GenericInflater.java:493)
+>                                                                                  at android.preference.GenericInflater.inflate(GenericInflater.java:326)
+>                                                                                  at android.preference.GenericInflater.inflate(GenericInflater.java:263)
+>                                                                                  at android.preference.PreferenceManager.inflateFromResource(PreferenceManager.java:269)
+>                                                                                  at android.preference.PreferenceFragment.addPreferencesFromResource(PreferenceFragment.java:285)
+>                                                                                  at com.vonglasow.michael.satstat.SettingsActivity$SettingsFragment.onCreate(SettingsActivity.java:163)
+>                                                                                  at android.app.Fragment.performCreate(Fragment.java:1677)
+>                                                                                  at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:854)
+>                                                                                  at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:1057)
+>                                                                                  at android.app.BackStackRecord.run(BackStackRecord.java:682)
+>                                                                                  at android.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1435)
+>                                                                                  at android.app.Activity.performStart(Activity.java:5113)
+>                                                                                  at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2153)
+>                                                                                  at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2230) 
+>                                                                                  at android.app.ActivityThread.access$600(ActivityThread.java:141) 
+>                                                                                  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1234) 
+>                                                                                  at android.os.Handler.dispatchMessage(Handler.java:99) 
+>                                                                                  at android.os.Looper.loop(Looper.java:137) 
+>                                                                                  at android.app.ActivityThread.main(ActivityThread.java:5041) 
+>                                                                                  at java.lang.reflect.Method.invokeNative(Native Method) 
+>                                                                                  at java.lang.reflect.Method.invoke(Method.java:511) 
+>                                                                                  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793) 
+>                                                                                  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560) 
+>                                                                                  at dalvik.system.NativeStart.main(Native Method) 
+>                                                                               Caused by: java.lang.reflect.InvocationTargetException
+>                                                                                  at java.lang.reflect.Constructor.constructNative(Native Method)
+>                                                                                  at java.lang.reflect.Constructor.newInstance(Constructor.java:417)
+>                                                                                  at android.preference.GenericInflater.createItem(GenericInflater.java:383)
+>                                                                                  at android.preference.GenericInflater.createItemFromTag(GenericInflater.java:430) 
+>                                                                                  at android.preference.GenericInflater.rInflate(GenericInflater.java:481) 
+>                                                                                  at android.preference.GenericInflater.rInflate(GenericInflater.java:493) 
+>                                                                                  at android.preference.GenericInflater.inflate(GenericInflater.java:326) 
+>                                                                                  at android.preference.GenericInflater.inflate(GenericInflater.java:263) 
+>                                                                                  at android.preference.PreferenceManager.inflateFromResource(PreferenceManager.java:269) 
+>                                                                                  at android.preference.PreferenceFragment.addPreferencesFromResource(PreferenceFragment.java:285) 
+>                                                                                  at com.vonglasow.michael.satstat.SettingsActivity$SettingsFragment.onCreate(SettingsActivity.java:163) 
+>                                                                                  at android.app.Fragment.performCreate(Fragment.java:1677) 
+>                                                                                  at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:854) 
+>                                                                                  at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:1057) 
+>                                                                                  at android.app.BackStackRecord.run(BackStackRecord.java:682) 
+>                                                                                  at android.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1435) 
+>                                                                                  at android.app.Activity.performStart(Activity.java:5113) 
+>                                                                                  at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2153) 
+>                                                                                  at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2230) 
+>                                                                                  at android.app.ActivityThread.access$600(ActivityThread.java:141) 
+>                                                                                  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1234) 
+>                                                                                  at android.os.Handler.dispatchMessage(Handler.java:99) 
+>                                                                                  at android.os.Looper.loop(Looper.java:137) 
+>                                                                                  at android.app.ActivityThread.main(ActivityThread.java:5041) 
+>                                                                                  at java.lang.reflect.Method.invokeNative(Native Method) 
+>                                                                                  at java.lang.reflect.Method.invoke(Method.java:511) 
+>                                                                                  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793) 
+>                                                                                  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560) 
+>                                                                                  at dalvik.system.NativeStart.main(Native Method) 
+>                                                                               Caused by: java.lang.NullPointerException
+>                                                                                  at android.preference.MultiSelectListPreference.onGetDefaultValue(MultiSelectListPreference.java:212)
+>                                                                                  at android.preference.Preference.<init>(Preference.java:267)
+>                                                                                  at android.preference.DialogPreference.<init>(DialogPreference.java:69)
+>                                                                                  at android.preference.DialogPreference.<init>(DialogPreference.java:90)
+>                                                                                  at android.preference.MultiSelectListPreference.<init>(MultiSelectListPreference.java:49)
+>                                                                                  at com.vonglasow.michael.satstat.widgets.LocProviderPreference.<init>(LocProviderPreference.java:22)
+>                                                                                  at java.lang.reflect.Constructor.constructNative(Native Method) 
+>                                                                                  at java.lang.reflect.Constructor.newInstance(Constructor.java:417) 
+>                                                                                  at android.preference.GenericInflater.createItem(GenericInflater.java:383) 
+>                                                                                  at android.preference.GenericInflater.createItemFromTag(GenericInflater.java:430) 
+>                                                                                  at android.preference.GenericInflater.rInflate(GenericInflater.java:481) 
+>                                                                                  at android.preference.GenericInflater.rInflate(GenericInflater.java:493) 
+>                                                                                  at android.preference.GenericInflater.inflate(GenericInflater.java:326) 
+>                                                                                  at android.preference.GenericInflater.inflate(GenericInflater.java:263) 
+>                                                                                  at android.preference.PreferenceManager.inflateFromResource(PreferenceManager.java:269) 
+>                                                                                  at android.preference.PreferenceFragment.addPreferencesFromResource(PreferenceFragment.java:285) 
+>                                                                                  at com.vonglasow.michael.satstat.SettingsActivity$SettingsFragment.onCreate(SettingsActivity.java:163) 
+>                                                                                  at android.app.Fragment.performCreate(Fragment.java:1677) 
+>                                                                                  at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:854) 
+>                                                                                  at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:1057) 
+>                                                                                  at android.app.BackStackRecord.run(BackStackRecord.java:682) 
+>                                                                                  at android.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1435) 
+>                                                                                  at android.app.Activity.performStart(Activity.java:5113) 
+>                                                                                  at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2153) 
+>                                                                                  at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2230) 
+>                                                                                  at android.app.ActivityThread.access$600(ActivityThread.java:141) 
+>                                                                                  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1234) 
+>                                                                                  at android.os.Handler.dispatchMessage(Handler.java:99) 
+>                                                                                  at android.os.Looper.loop(Looper.java:137) 
+>                                                                                  at android.app.ActivityThread.main(ActivityThread.java:5041) 
+>                                                                                  at java.lang.reflect.Method.invokeNative(Native Method) 
+>                                                                                  at java.lang.reflect.Method.invoke(Method.java:511) 
+>                                                                                  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793) 
+>                                                                                  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560) 
+>                                                                                  at dalvik.system.NativeStart.main(Native Method)
+
+I used git-bisect to find which commit introduced the bug and I found out it was this one https://github.com/mvglasow/satstat/commit/0cddd4a9a0b318f702d5f4dededf9f0c022a6740. Then I played with the code and I found which line caused the crash and it was this one https://github.com/mvglasow/satstat/blob/0cddd4a9a0b318f702d5f4dededf9f0c022a6740/res/xml/preferences.xml#L8. When I swap lines 7 and 8 the application no longer crashes and it can be used as a workaround. ""ListPreference"" can't be the last item in a ""PreferenceCategory"" for some unknown reason.
+Tested with SDK versions 14, 17 and 23. The application doesn't crash when using version 23.
+"
+mvglasow/satstat,open,Allow using of OsmAnd offline maps,"[Label(name=""want patch"")]","The maps are in obf format, like: `Bosnia-herzegovina_europe.obf`. By default, maps are stored in osmand folder.
+"
+mvglasow/satstat,closed,Master,[],"update hungarian translation
+"
+mvglasow/satstat,closed,Map view not functional any longer,"[Label(name=""bug""), Label(name=""resolved"")]","Instead of the map there comes a message from MapQuest, that the direct tile access has been discontinued since July 11, 2016.
+See http://devblog.mapquest.com/2016/06/15/modernization-of-mapquest-results-in-changes-to-open-tile-access/
+"
+mvglasow/satstat,closed,update hungarian translation (#77),[],
+mvglasow/satstat,closed,update hungarian translation,[],"new strings from #74
+"
+mvglasow/satstat,closed,Only sensors tab is working on Android 6,[],"Got a Sony D5803 with Android 6.0.1. Installed SatStat 2.2 from F-Droid.
+
+When I start the app, I can see compass moving, but no satellites appear. GPS icon doesn't appear in the drawer either.
+
+Sensors tab (acceleration, gravity etc.) functions as expected. WiFi BSSIDs are not displayed even though WiFi is enabled.
+
+I'm pretty sure it's not the issue with the phone as Osmand is functioning just fine.
+"
+mvglasow/satstat,closed,update hungarian translation,[],
+mvglasow/satstat,closed,Updated Portuguese translation.,[],"Hello,
+
+My name is André Machado and I am a fellowship of Universidade Federal do Rio Grande do Sul, at Brazil. We have a project to translate free educational apps to Brazilian Portuguese. I am sending SatStat translation as part to this project.
+"
+mvglasow/satstat,closed,UTM coordinates,"[Label(name=""invalid"")]","Is it possible to display coordinates in UTM format?
+"
+mvglasow/satstat,closed,update hungarian translation,[],
+mvglasow/satstat,closed,update hungarian translation,[],
+mvglasow/satstat,closed,"add way to see both unsplit cellid and RNCID/CID, or quick mechanism to change","[Label(name=""enhancement""), Label(name=""resolved"")]","I like being able to split, but it seems the world is such that both representations are and wlll be in use.    So I'd like to be able to absorb both easily.
+
+Ideas:
+- On phones there isn't enough room, so if all cells reported have the same mcc/mnc, put mcc/mnc after the ""GSM"" and omit those columns.  Then add both representations.
+- Add a line with the other form for the current cell (only).
+- have a short tap on the cell table (or in that CID column) change the preference.
+
+Probably the third approach is easiest and is probably enough to solve the problem with minimal display impact to others.
+"
+mvglasow/satstat,open,Device orientation vs. compass issues,"[Label(name=""awaiting feedback"")]","During testing of #75 I found out that the orientation provided by Android is not too good - particularly, it the documentation says it should only be used when roll is small.
+
+Once you rotate the device upside-down, the north heading is inverted on the compass (in a bad way). Also near the maximum roll, it behaves weirdly.
+
+On the other hand, this seems to be common ""behavior"" among many apps, so perhaps this issue can be marked as won't-fix. I will probably later fix the leveller tool to use accelerometer, rather than the orientation data.
+"
+mvglasow/satstat,open,Levelling tool v2.,[],"Improved size, color and positioning of the levelling circle.
+"
+mvglasow/satstat,closed,Support to show speed in knots,"[Label(name=""enhancement""), Label(name=""resolved"")]","For nautical/sailing function, it will be very useful the option to get the current speed in knots like in GPS Status app. The rule is simple: 1 m/s means 1.94384 knots.
+"
+mvglasow/satstat,closed,Satstat crash in map,[],"Android 6.0.1, 2.2 from F-Droid
+
+Worked fine otherwise (#67 granted), crashed in the mapview IIRC: https://gist.github.com/licaon-kter/168c97b3a2aae488984f35acd25f94e8
+"
+mvglasow/satstat,closed,title_sensors_orAziText is missing,"[Label(name=""invalid"")]","![satstat_missing_string](https://cloud.githubusercontent.com/assets/18245793/15337927/160b9080-1c7e-11e6-85ae-3b437fda3e4f.png)
+"
+mvglasow/satstat,closed,update hungarian translation,[],
+mvglasow/satstat,closed,Levelling circle + sat info during initial search,[],"...just two non-invasive commits that I thought will be useful.
+"
+mvglasow/satstat,open,"Showing almanac, ephemeris and other sat data – please discuss","[Label(name=""awaiting feedback""), Label(name=""enhancement"")]","This ticket came out of merge request #48, which already got some input.
+
+Currently, the sky plot and SNR graph use two different colors to show whether or not a satellite is used in the current fix; signal-to-noise ratio (SNR) is represented by dot diameter/bar length. The SNR chart additionally shows which GNSS each satellite belongs to (GPS, GLONASS, Galileo, others) – though this is going to be improved, see #64.
+
+The merge request proposes to also implement visualization of almanac and ephemeris availability. In total, each satellite has five ""dimensions"" which could be of interest:
+- whether the satellite is used in the current fix (currently represented by color)
+- Signal-to-noise ratio (currently represented by size)
+- GNSS system (currently represented by position in SNR chart, possibly by shape in sky plot)
+- almanac availability
+- ephemeris availability
+
+Availability of augmentation systems (SBAS) has also been suggested, but I'd have to look into how this is implemented: is that a per-satellite flag, a per-GNSS flag or a global one? These systems present themselves as additional satellites (see https://github.com/mvglasow/satstat/wiki/NMEA-IDs#sbas), which should already be visible.
+
+I'm looking for ideas how to best represent all of these. Some devices report bogus data (e.g. a satellite is used in the fix despite having no almanac or ephemeris), which also need to be visualized. Therefore, we really have to treat these five dimensions independently.
+
+We may need to limit ourselves to showing certain dimensions only in one of the two graphs.
+
+As for visual dimensions, apart from size, color and position, we could also consider shape (circle, square, triangle...), luminance and saturation, as well as border color, or maybe hollow vs. filled dots.
+
+We'd have to watch out for ""interference"" between dimensions: fill/border distinctions as well as different shapes get hard to distinguish at small sizes (weak signal or lots of sats in the SNR chart); using luminance and saturation together might result in very similar colors.
+
+Suggestions are welcome!
+"
+mvglasow/satstat,closed,Show satellite country,"[Label(name=""duplicate"")]","It would be nice if there would be the possibility to see the country of the satellite. Maybe by form or color. Then you can see if the device can detect only the US satellites or/and also the Russian, Chinese...
+"
+mvglasow/satstat,closed,No location permission => app exception,"[Label(name=""bug""), Label(name=""resolved"")]","After installing the app, it may not have the location permissions enabled (in my case, Android 6.0.1 + ADB). Then the following happens:
+
+`java.lang.RuntimeException: Unable to resume activity {com.vonglasow.michael.satstat/com.vonglasow.michael.satstat.MainActivity}: java.lang.SecurityException: ""network"" location provider requires ACCESS_COARSE_LOCATION or ACCESS_FINE_LOCATION permission.`
+
+Correct behavior would be to not show location - but the app should not terminate with exception... E.g. GPSTest works this way.
+"
+mvglasow/satstat,closed,update hungarian translation (fixes #60),[],
+mvglasow/satstat,closed,support for offline maps,"[Label(name=""enhancement""), Label(name=""resolved"")]","It would be really nice to have support for offline maps so that 1) the privacy leak would be avoided, 2) data usage would be reduced and 3) they'd work offline and work faster.
+
+It would be further nice if by default at least RadioBeacon and SatStat shared a maps folder, but really it would be nice if all mapsforge-enabled apps looked in some common directory.
+"
+mvglasow/satstat,closed,Label GNSS systems in SNR graph,"[Label(name=""enhancement""), Label(name=""resolved"")]","Label satellite ranges in the SNR graph with the corresponding GNSS system
+"
+mvglasow/satstat,closed,update hungarian translation,[],
+mvglasow/satstat,closed,Shows all connections as GSM,"[Label(name=""bug""), Label(name=""resolved"")]","Hi,
+
+I'm wondering if this is an issue with my phone or what the cause is.  In other screenshot I see can show things like ""LTE"", ""CDMA"".  For me it's only showing ""GSM"".  My current connection is using LTE, and the Cell ID is also > 65536, so it can't be GSM.
+
+When I change my settings to only use ""GSM only"", it will actually show a different LAC and CellID, and even show multiple values.  They all have a grey rectangle in the front, and I wonder if that's normal.  I've seen screenshot with other colors.
+
+If I change to ""WCDMA only"", it still shows me GSM, with different LAC/Cell ID.
+
+So I wonder why I'm getting that, and if this is somehow related to my phone (Samsung Galaxy S4)
+"
+mvglasow/satstat,closed,add hungarian translation,[],
+mvglasow/satstat,closed,Improve AGPS message,"[Label(name=""enhancement"")]","When ""_Reload AGPS data_"" is selected ""_AGPS data reload requested_"" message appears. Some users (like me for example) may assume that it succeeded (because there is no error). 
+
+After some reading I realized that there is no way to determine the status of this operation. This is not obvious so I would make it explicit and change the message e.g. to:  
+
+> AGPS data reload requested.
+> Please keep in mind that Android API doesn't provide information if this operation succeeded.
+"
+mvglasow/satstat,closed,Sensor accuracy doesn't display correctly on CM13,[],"After migrating from CM12 to CM13 (Lollipop to Marshmallow), all of the colored squares indicating sensor accuracy display in orange. This is possibly due to a bug in the platform.
+"
+mvglasow/satstat,closed,Crashes under AlienDalvik with µg UnifiedNlp - zoomLevel,[],"[Third screen](https://github.com/microg/android_packages_apps_UnifiedNlp/issues/74#issuecomment-196517023) died with
+
+```
+E/AndroidRuntime(14308): java.lang.IllegalArgumentException: zoomLevel must not be negative: -1
+E/AndroidRuntime(14308):    at org.mapsforge.map.model.MapViewPosition.setZoomLevel(MapViewPosition.java:394)
+E/AndroidRuntime(14308):    at com.vonglasow.michael.satstat.MainActivity.updateMap(MainActivity.java:1999)
+E/AndroidRuntime(14308):    at com.vonglasow.michael.satstat.MainActivity.onLocationChanged(MainActivity.java:1217)
+E/AndroidRuntime(14308):    at android.location.LocationManager$ListenerTransport._handleMessage(LocationManager.java:263)
+E/AndroidRuntime(14308):    at android.location.LocationManager$ListenerTransport.access$000(LocationManager.java:196)
+E/AndroidRuntime(14308):    at android.location.LocationManager$ListenerTransport$1.handleMessage(LocationManager.java:212)
+E/AndroidRuntime(14308):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime(14308):    at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime(14308):    at android.app.ActivityThread.main(ActivityThread.java:4781)
+E/AndroidRuntime(14308):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(14308):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime(14308):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:805)
+E/AndroidRuntime(14308):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:568)
+E/AndroidRuntime(14308):    at dalvik.system.NativeStart.main(Native Method)
+W/ActivityManager( 5917):   Force finishing activity com.vonglasow.michael.satstat/.MainActivity
+W/ActivityManager( 5917): Activity pause timeout for ActivityRecord{41d8d058 surfaceId:14 com.vonglasow.michael.satstat/.MainActivity}
+I/ActivityManager( 5917): ACTIVITY DESTROYING: r = ActivityRecord{41d8d058 surfaceId:14 com.vonglasow.michael.satstat/.MainActivity}, index = 3
+D/ActivityManager( 5917): notifySurfaceDiedIfNeeded( 3) : ActivityRecord{41d8d058 surfaceId:14 com.vonglasow.michael.satstat/.MainActivity}
+```
+"
+mvglasow/satstat,closed,Add English Unit Preference,[],"Added English Unit preference. This allows the display of English and
+Metric Units based on the preference.
+
+This is mostly for those of us who can't do Metric, because USA schools
+don't think it is important...
+"
+mvglasow/satstat,open,µg UnifiedNlp,"[Label(name=""awaiting feedback""), Label(name=""enhancement"")]","Hello there. I try to get away from Google service and wish to use the ""µg UnifiedNlp"" apps with the possible local Providers you could link.
+
+Could this app mayby get information about the Working of these apps?
+e.g. [LocalWifiNlpBackend](https://f-droid.org/repository/browse/?fdfilter=Unified&fdid=org.fitchfamily.android.wifi_backend) or [MozillaNlpBackend](https://f-droid.org/repository/browse/?fdfilter=Unified&fdid=org.microg.nlp.backend.ichnaea)
+"
+mvglasow/satstat,open,[feature request] Use GPS to set system time,"[Label(name=""enhancement"")]","User is without Internet access for extended periods of time and cannot access an NTP server to set correct time. Certain apps require an accurate clock. Some code could probably be reused from [NTPSync](https://github.com/Free-Software-for-Android/NTPSync).
+"
+mvglasow/satstat,closed,Maintenance status,[],"Hi Michael,
+
+are still maintaining this project? I find it a pitty that such (almost-)feature-complete GPS tool is not too popular. Have you considered putting it to Store (for free, obviously)? I'd say it could gain many users eventually... And of course it can=should stay on F-Droid too.
+
+I have done a few improvements in my fork, but seeing you don't process the pull requests, I'm considering I could ""publish"" it (perhaps with some more 'catchy name' :) ). But it's your baby, and I don't really want to start fork war..
+
+Greetings,
+
+Andrej
+"
+mvglasow/satstat,closed,Meaning of colors in map view,"[Label(name=""enhancement"")]","Hi,
+It would be useful to have a legend of the different colors of dots/circles in map view.
+
+I have guessed that red means satellite (= GPS + GLONASS ?) location, while blue means cell towers and/or (?) wifi location, but it took me a bit of playing around the app.
+
+What's more, there are sometimes grey dot/circle, and I have no idea what they mean.
+
+Maybe show those colors in the ""location sources"" settings menu ?
+"
+mvglasow/satstat,open,GPS location search notification keeps reappearing. ,"[Label(name=""awaiting feedback"")]","'Searching for location'  notification appears despite the option being unchecked. 
+
+Android 4.4.4, Cyanogenmod 11/hammerhead 
+"
+mvglasow/satstat,closed,Hang with black screen when in Airplane Mode,"[Label(name=""awaiting feedback"")]","When in Airplane Mode, after starting SatStat it hangs with a black screen.  There's no way out except to kill the application.  When I disable Airplane Mode (and SatStat is not running), the application seems to work fine.  I can get a logcat if you'd like.
+"
+mvglasow/satstat,closed,"Disable/grey out ""Reload AGPS data"" for incompatible devices",[],"Hi,
+
+It took me a lot of time to understand (after playing with both SatStat and GPS Status & Toolbox) why reloading AGPS data did not properly work with my Samsung Galaxy Nexus (maguro) :
+1- Reload AGPS data query is a fire-and-forget action with no control/status update
+2- The Galaxy Nexus features a SiRFstar IV GPS chip which (according to this : http://pocketnow.com/hardware-1/sirfstar-iv-to-compete-with-agps-for-fast-acquisition-times) does not use AGPS
+
+My question is twofold :
+- can anyone confirm the AGPS incompatibility of the Galaxy Nexus ?
+- if so, is there any way to disable/grey out the ""Reload AGPS data"" for incompatible devices ? It would save a lot of time to people unaware of this fact (like I was) who tried to improve their GPS but could not understand why…
+"
+mvglasow/satstat,closed,How to Install on Samsung Note 3,[],"How to Install on Samsung Note 3.
+is there an .apk available or some way to install repository zip download on phone?
+
+thanks for awesome work
+"
+mvglasow/satstat,open,Add visual info for ephemeris and almanac for each satelite,[],"It would be great to have also visual information if ephemeris and/or almanac are known for each satellite. This info is available in the API and can be easily added.
+
+Using my modification I found that my three Android devices behave totally different and feedback from API is sometimes strange and sometimes obviously wrong (e.g. I have a fix, but the API says that there is no ephemeris and almanac available).
+
+With visual info it is much easier to report a bug.
+
+Here there is an example how this feature looks like (white=has ephemeris, green=has almanac):
+
+![ea](https://cloud.githubusercontent.com/assets/5788375/7821470/23320878-03ef-11e5-8368-943d7ddb3542.png)
+"
+mvglasow/satstat,open,Bluetooth GPS support [Feature request],"[Label(name=""enhancement"")]","It would be very useful to be able to connect a Bluetooth GPS/Glonass device. Perhaps you could implement this project.
+
+https://github.com/miurahr/bluegnss4osm
+
+Then again, it may be beyond the scope of what you want to include in your application. Thanks for your work on satstat, I use it often!
+"
+mvglasow/satstat,closed,GSM information moved to the right,"[Label(name=""resolved"")]","Sometimes GSM information is moved to the right (see screenshot).
+![phone-screenshot-2015-05-16-15-52-16](https://cloud.githubusercontent.com/assets/5788375/7666456/644b6e28-fbe6-11e4-9365-a1696c215f27.png)
+
+I use version 2.0 from F-Droid.
+"
+mvglasow/satstat,closed,"Sateliteview: wrong timezone in ""last fix"" (german ""letzte positionsbestimmung"")","[Label(name=""awaiting feedback"")]","This morning SatStat v2.0 (from f-droid) showed ""letzte positionsbestimmung  5:39"" (Last satelite fix)
+
+My local time was 6:39 cest (central european summertime = utc + 2)
+
+This is uk-local-summertime (utc+1) but neither utc (which has no summer timer) nor local time.
+
+Is this a summertime issue?
+"
+mvglasow/satstat,closed,Sorted WiFis,"[Label(name=""enhancement""), Label(name=""resolved"")]","It would be nice to have WiFis sorted by name / MAC / dBm or to even have the possibility to select what they are sorted by.
+Right now its a quite cumbersome task to keep track of multiple WiFis using SatStat.
+"
+mvglasow/satstat,closed,Update German strings.xml,[],
+mvglasow/satstat,closed,dBm value of neighboring 3G cells incorrect,"[Label(name=""resolved"")]","Hello,
+
+Thanks for the app, it's quite useful.
+
+I noticed that the dBm values of neighboring cells in 3G must be incorrect. 
+
+In the screenshot it shows -208 and -204dBm which equals to less than 10 yoktowatts (<10*10^-24W), so much less than the thermal noise.
+
+screenshot: http://s7.postimg.org/mg0u0zwm3/satstat_db.png
+
+I'm using a Fairphone FP1 with MediaTek 6589M chipset.
+
+Is this a bug in the app or in the chipset?
+Thanks!
+"
+mvglasow/satstat,closed,Support MGRS/UTMREF,[],"I'd really love being able to get my location also in http://en.m.wikipedia.org/wiki/Military_grid_reference_system.
+"
+mvglasow/satstat,closed,Question about satstat useage,[],"First of all, satstat is great.  The no BS, no bloat approach is what makes it thus.
+
+I have a question though.  On the main screen, inside the compass the relative positions of satellites are represented by blue dots.  I have noticed on my device that sometimes some of these dots are red, as are their signal bars.
+
+What is the difference between red/blue satellites?
+"
+mvglasow/satstat,closed,gradle references wrong mapforge version,[],"The gradle file references 0.4.0, which is nor in maven central. 0.4.1 -- 0.4.3 are available
+"
+mvglasow/satstat,closed,Reload AGPS data command does nothing,[],"A network trace (taken on the WiFi router to which the phone is conected) shows that when the user selects “Reload AGPS data” from the menu, the phone makes an outside HTTP request (for captive portal detection) but no further traffic is detected, despite SatStat showing a toast saying that a data reload was requested.
+
+However, when starting SatStat (and location updates are being requested from GPS), the SUPL requests are clearly visible in the trace.
+
+Apparently the GPS driver stack ignores the extra location provider command.
+
+Tested on a Nexus S running Cyanogenmod 11. YMMV on other devices.
+
+There is no easy way to fix on-demand AGPS download (this would require forcing all apps that are currently registered with GPS to unregister and re-register, which is not possible). However, the command can only be invoked from the main SatStat activity, and bringing it up will request location updates and thus trigger an AGPS update, so it is less of an issue here.
+
+It is an issue for scheduled AGPS updates (e.g. when a data connection becomes available). Here it can be mitigated by registering for GPS location updates and immediately unregistering again. This will trigger an AGPS update if the GPS is not in use at that time.
+"
+mvglasow/satstat,closed,Compass doesn't work,[],"Thanks for this app!
+
+S4 mini with CM11 M9 (4.4.4):
+I hope I didn't do something wrong. But for me the compass doesn't work and stays fix all the time even if there are magnetic field data which change when rotating the phone. 
+I don't have this problem with another app..
+
+Any idea?
+"
+mvglasow/satstat,open,Version 1.8 - should have the ability to turn off requests to Google servers,"[Label(name=""enhancement"")]","While checking WiFi points for captive portals, SatStat pings Google's servers. To preserve privacy, am option to turn this off would be nice.
+"
+mvglasow/satstat,closed,onLocationChange() throws exception if lat/lon is NaN,"[Label(name=""bug"")]","`onLocationChange()` will throw an `InvalidAgrumentException` if `Location.getLatitude()` or `Location.getLongitude()` returns `NaN`. Such cases need to be handled.
+
+Observed in satstat-location branch, unclear if master is affected.
+"
+mvglasow/satstat,closed,Request: show which app is using GPS in the notification,"[Label(name=""wontfix"")]","Right now we only can know that something is accessing GPS. Would be good to know which app is doing that.
+"
+mvglasow/satstat,closed,F-Droid description should link release notes,"[Label(name=""enhancement"")]","The F-Droid description should contain a link to https://github.com/mvglasow/satstat/releases, s.t. one can look up what's new before updating.
+"
+mvglasow/satstat,closed,Screen orientation locking code incorrectly assume natural orientation to be portrait,"[Label(name=""bug"")]","I happened to own a 10-inch tablet and its natural orientation is landscape. According to commit 9f70b409ee356fe784ee7ce9f672906e17123695, it is assuming that 0-degree rotation means portrait which is an incorrect assumption on this device. Also according to the [Android reference](http://developer.android.com/reference/android/view/Display.html#getRotation%28%29) a 0-degree rotation does not assume portrait orientation. This issue is causing the screen to rotate too frequently and lock up the device, requiring a hard reboot to quit the app.
+
+The device is a Samsung GALAXY Tab 2 10.1 running CyanogenMod 10.1.3.
+"
+mvglasow/satstat,closed,Infinite AGPS update loop,[],"Under certain conditions, SatStat may go into an infinite loop in which it will attempt to reload AGPS data permanently, ignoring any limits set in the user preferences.
+The issue appears to be sporadic.
+This was experienced with an unstable build from the satstat-location branch.
+"
+mvglasow/satstat,closed,Mobile network type does not update,"[Label(name=""bug"")]","Steps to reproduce:
+- Go to radio network view
+- Make sure you are connected to a 3G network (blue square)
+- Switch to 2G network (e.g. via Quick Settings, making sure the activity stays alive)
+- Return to radio network view and watch the display.
+
+The cell ID will change and the Android status bar will indicate a 2G network, but the color of the square next to the cell will not update – it will still display a 3G network despite the cell being 2G.
+"
+mvglasow/satstat,closed,French translation typo,[],"""Otention du dernier Fix""
+
+Should be:
+Obtention du dernier Fix
+"
+mvglasow/satstat,closed,TTFF for GPS search notification,"[Label(name=""enhancement"")]","I'd love to see the TTFF (Time To First Fix) in the ""GPS search notification"".
+Thank you very much for this great app!
+"
+mvglasow/satstat,closed,Crash on starting other activity from Lock screen when SatStat was last active,"[Label(name=""bug"")]","Steps to reproduce:
+- Start SatStat
+- Press Power to turn screen off
+- Press Power again to get lock screen
+- From lock screen, start another activity (in this case, start tracking with Radiobeacon)
+
+Logcat excerpt:
+
+```
+03-27 12:18:41.332 E/AndroidRuntime(10632): FATAL EXCEPTION: main
+03-27 12:18:41.332 E/AndroidRuntime(10632): java.lang.RuntimeException: Unable to stop activity {com.vonglasow.michael.satstat/com.vonglasow.michael.satstat.MainActivity}: java.lang.IllegalArgumentException: Receiver not registered: com.vonglasow.michael.satstat.MainActivity$3@419f11d8
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.app.ActivityThread.performStopActivityInner(ActivityThread.java:3318)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.app.ActivityThread.handleWindowVisibility(ActivityThread.java:3404)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.app.ActivityThread.access$1000(ActivityThread.java:153)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1306)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.os.Handler.dispatchMessage(Handler.java:99)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.os.Looper.loop(Looper.java:137)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.app.ActivityThread.main(ActivityThread.java:5289)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at java.lang.reflect.Method.invokeNative(Native Method)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at java.lang.reflect.Method.invoke(Method.java:525)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:739)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:555)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at dalvik.system.NativeStart.main(Native Method)
+03-27 12:18:41.332 E/AndroidRuntime(10632): Caused by: java.lang.IllegalArgumentException: Receiver not registered: com.vonglasow.michael.satstat.MainActivity$3@419f11d8
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.app.LoadedApk.forgetReceiverDispatcher(LoadedApk.java:662)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.app.ContextImpl.unregisterReceiver(ContextImpl.java:1443)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.content.ContextWrapper.unregisterReceiver(ContextWrapper.java:468)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at com.vonglasow.michael.satstat.MainActivity.onStop(MainActivity.java:881)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.app.Instrumentation.callActivityOnStop(Instrumentation.java:1212)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.app.Activity.performStop(Activity.java:5275)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     at android.app.ActivityThread.performStopActivityInner(ActivityThread.java:3315)
+03-27 12:18:41.332 E/AndroidRuntime(10632):     ... 11 more
+```
+
+Notifications and AGPS update on WiFi connect enabled, Cyanogenmod 10.2.1-crespo.
+
+Apparently SatStat tries to stop a service that isn't running.
+"
+mvglasow/satstat,closed,Improve wifi network list,[],"Two patches that make it easier to test the connectivity of one particular network.
+The scan method gets triggered every second, but the actual refresh rate is, at least on my phone, about 6 seconds.
+"
+mvglasow/satstat,closed,Most values on second page don't update,"[Label(name=""awaiting feedback"")]","When I first used it after the installation the second page worked quite well. Now most of the values don't update. Sometimes (like now) none. Also besides each entry is a orange box. Originally they were in different colors.
+
+![screenshot_2014-03-06-15-46-03](https://f.cloud.github.com/assets/417478/2349740/552631de-a567-11e3-8440-f1ea7c7d3066.png)
+"
+mvglasow/satstat,open,calibration of a magnetic compass,"[Label(name=""enhancement""), Label(name=""want patch"")]","It would be nice to see in satstat the the possibility to calibrate a magnetic compass.
+satstat reads out the magnetic field so maybe it's possible to add compass calibration.
+In former android versions was this possibility, but it's gone (since 4.0 I believe).
+If one use magnetic compass, one have to calibrate from time to time (because sometimes they are going mad). This would be an additional nice enhancement of satstat.
+"
+mvglasow/satstat,closed,latest version of satstat missing word (german),[],"In the lastest version (1.6) of satstat (german version) the word altitude (german: Höhe) is missing, only shows an e. (seems the rest of word was accindentally deleted).
+In English it shows latitude,longitude and elevation. In German it shows Breite, Länge and e (instead of Höhe). In the former version wasn't this error.
+
+tested on sony xperia active and motorola razr i both with jb4.1
+"
+mvglasow/satstat,closed,Crash status readout,[],"java.lang.String cannot be cast to java.lang.Long
+http://pastebin.com/rLeG1APE
+"
+mvglasow/satstat,closed,Mobile network type,"[Label(name=""enhancement"")]","Please display if it is 2G (GSM) / 3G (WCDMA) / 4G (LTE).
+"
+mvglasow/satstat,closed,Type of WiFi encryption,"[Label(name=""enhancement"")]","Please add the type of WiFi encryption.
+"
+mvglasow/satstat,closed,satstat closes on Galaxy S4 mini with cyanogenmod 10.2,"[Label(name=""bug"")]","Hi, 
+
+first thanks for satstat and your work. I use it on an Nexus 7 2012 with cyanogenmod 10.1 and 10.2 since a while. Now I installed it on my Galaxy S4 mini.
+
+After starting it, it displays very briefly the compas page, then a message appears ""Unfortunately, SatStat has stopped."" and I'm back at the launcher.
+
+I have a logcat, but seem not able to attach it here.
+"
+mvglasow/satstat,closed,Automatically reload AGPS data over WiFi,"[Label(name=""enhancement"")]","When cellphone has no GSM data plan and uses only WiFi, the AGPS data are usualy out of date when GPS is needed. It would be nice if satstat could reload AGPS data automatically when WiFi goes online or every few hours. There is no need to wakeup the phone, the update should be triggered when user wakes up the phone, for example to check the time just before leaving home.
+
+The satstat should have all required features, only an automatic trigger and checkbox to enable the feature need to be added.
+"
+mvglasow/satstat,closed,Screen Brightness problem,"[Label(name=""awaiting feedback"")]","When exiting the app my screen goes to high brightness. I'm using a custom ROM so it could be that, but no other apps cause this.
+"
+mvglasow/satstat,closed,Base the number of decimal digits on actual sensor resolution.,[],"Use Sensor.getResolution() to calculate the number of decimal digits to be displayed.
+
+Prevents showing meaningless digits and hiding information.
+"
+mvglasow/satstat,closed,west-east-south-marks,[],"It would be nice, when the has west(W)-east(E)-south(S)-marks and not only the arrow heading north. Is this possible ?
+Thank you. I like your app very much.
+"
+mvglasow/satstat,closed,Status readout,"[Label(name=""enhancement"")]","Please consider adding a status readout (with TTFF, etc.) like ""GPS Status & Toolbox"" App:
+https://lh5.ggpht.com/jMuDQ1fn9rkBV7Aao6UJG6vlI6fJy0Bb4tS1i5DLUax44m9zEgUbmdCWTx71xCwnEVg
+"
+mvglasow/satstat,open,decibel/sound meter,"[Label(name=""want patch"")]","It would be nice to have a sensor readout for sound level added to Satstat. It is a very nice app, but the sensor readouts seem incomplete without sound level.
+Thanks!
+"
+mvglasow/satstat,closed,Autorotate,"[Label(name=""enhancement""), Label(name=""resolved"")]","An android application can disable autorotate when active.
+You should implement this inside satstat because autorotate is annoying when using a compass.
+"
+mvglasow/satstat,closed,add french translation,[],
+mvglasow/satstat,closed,Sky plot disappears in landscape view when fix is obtained,"[Label(name=""bug""), Label(name=""resolved"")]","In landscape view, the sky plot displays correctly as long as the GPS does not have a fix. When a fix is obtained, the sky plot disappears and the remaining views fill up the entire width of the screen.
+
+This is probably related to the LayoutWeight and width of the views. Possible culprit is the third level of LinearLayout (line 15-20 in res/layout-land/fragment_main_gps.xml), check its layout-width and measureWithLargestChild parameters.
+"
+mvglasow/satstat,closed,Display correct channel for 5 GHz WiFis,"[Label(name=""bug""), Label(name=""resolved"")]","Reported by maugsburger:
+It shows channel -1 for 5GHz WLANs on my Nexus 4. 
+"
+mvglasow/satstat,closed,Hide satellites with invalid azimuth/elevation,"[Label(name=""bug"")]","Under certain circumstances satellites appear at the tip of the compass arrow in the sky plot, i.e. azimuth and elevation of 0°. These are most likely satellites for which ephemeris is not available, so check for hasEphemeris() and  display only satellites for which true is returned.
+"
+mvglasow/satstat,closed,GPS: Per-satelite signal strength,"[Label(name=""enhancement"")]","Hello,
+could you please add view, where signal of each satelite displayed in simple bar gpraph? It is very useful to determine, whether there is any chance on getting fix. And also it looks cool :)
+
+Thank you :)
+
+![screenshot_2013-09-15-22-02-34](https://f.cloud.github.com/assets/16572/1146058/0a2807ea-1e42-11e3-89cf-ce2f2de65307.png)
+
+This is screenshot from GPS Test.
+"
+mvglasow/satstat,closed,GPS screen too high,"[Label(name=""bug""), Label(name=""resolved"")]","Hello,
+on SE Xperia mini pro (mango) the GPS view is too large to fit the screen. Please make minimum size of the compas smaller, so it can scale down and let the text fit.
+
+![screenshot_2013-09-15-21-49-57](https://f.cloud.github.com/assets/16572/1146040/ebc2e032-1e40-11e3-8232-905c1d9c8505.png)
+"
+mvglasow/satstat,closed,F-Droid build not a valid apk,"[Label(name=""bug"")]","4.1.2 Verizon build #9.8.1Q-79 does not recognize the apk that F-Droid generates from this source as a valid apk.  Unknown icon, and ""There was a problem parsing the package.""
+"
+mvglasow/satstat,closed,adjust compass information to screen orientation,"[Label(name=""bug""), Label(name=""resolved"")]","when rotating the device to landscape mode and thus changing the screen orientation, the directions the compass shows are wrong by 90°.
+"
+mvglasow/satstat,closed,GLONASS support,"[Label(name=""enhancement""), Label(name=""invalid"")]","Hello,
+some devices (such as the Nexus 4 according to its wikipedia article) support GLONASS. Could you please include those sensor data?
+
+Kind regards
+"
+mvglasow/satstat,closed,Wifi Channels,"[Label(name=""enhancement""), Label(name=""resolved"")]","Hi,
+
+Since wifi polution is getting bigger and bigger, and I already have had several wifi's on wrong channels, because there were already other wifis. Is it possible that you show the channel in your wifi section and maybe even channels ""seen in the last 1 minute"" so if you walk through your apartment from room to room you could figure out which frequencies are heavily in use?
+
+Kind regards and keep the excellent work coming!
+
+Regards,
+Wompy
+"
+mvglasow/satstat,closed,Consider supporting older Android versions,"[Label(name=""enhancement""), Label(name=""resolved"")]","Huge subset of app functionality does not require API level 17.
+"

@@ -1,0 +1,80 @@
+repository,state,title,label,body
+butzist/ActivityLauncher,open,"updated gradles, xml, and code",[],"- java 1.8 compatibility
+- fixed some english
+- gradle 4.4 to 4.10.2
+- etc
+
+(forgot to delete // [here](https://github.com/butzist/ActivityLauncher/commit/f7e8048967f445929a82dfcd25f2279733690490#diff-f7fc168c92bcfc9496b24e794ed90a43R19), just change it back afterwards)"
+butzist/ActivityLauncher,open,Improve F-Droid listing,[],"I've seen this app on F-Droid, but it lacks screenshots, changelog and a translatable description there. It's pretty easy for you to add these information. Please have a look at [this example](https://github.com/Freeyourgadget/Gadgetbridge/tree/master/fastlane/metadata/android) or at the [F-Droid docs](https://f-droid.org/en/docs/All_About_Descriptions_Graphics_and_Screenshots/#in-the-apps-source-repository) or [fastlane docs](https://github.com/fastlane/fastlane/blob/2.28.7/supply/README.md#images-and-screenshots).
+After you have commited these files to your repo and tagged a new version, you need to remove the `Description` and `Summary` from the metadata file in the [F-Droid Data repo](https://gitlab.com/fdroid/fdroiddata)."
+butzist/ActivityLauncher,open,FAQ creation ,[],"If I may, would love to add a FAQ document for this project.
+If you agree it needs one, I would go ahead. 
+If you disagree, it's all fine. "
+butzist/ActivityLauncher,open,Search activities,[],"Is there an option to search for specific activities without having to manually scroll through the list looking? If not, can I request it as an enhancement / feature request please."
+butzist/ActivityLauncher,closed,Tagging releases,[],"If you release a new version, please create Git tags.
+Please also tag older versions.
+This all will help i.e. F-Droid to detect new releases and simplify looking at the code of any specific older version."
+butzist/ActivityLauncher,closed,Crashes on Android P,[],
+butzist/ActivityLauncher,closed,Create README.md,[],"Hi,
+
+This small and useless PR adds two buttons to get your app on F-Droid and Google Play in a new README 👍 "
+butzist/ActivityLauncher,closed,Crashes with Android 8.0,[],"OnePlus3, stock OxygenOS v5.0.0 (Android 8.0)
+Activity Launcher v1.6.1 (from F-Droid)
+
+Logcat:
+`11-28 22:33:38.851 D/SystemServicesProxy(2198): getRecentTasks: de.szalkowski.activitylauncher, -1, false, 0
+11-28 22:33:39.023 D/SystemServicesProxy(2198): getRecentTasks: de.szalkowski.activitylauncher, -1, false, 0
+11-28 22:33:40.054 D/TaskView(2198): onClick to 1483, ComponentInfo{de.szalkowski.activitylauncher/de.szalkowski.activitylauncher.MainActivity}
+11-28 22:33:40.057 D/SystemServicesProxy(2198): start 1483, ComponentInfo{de.szalkowski.activitylauncher/de.szalkowski.activitylauncher.MainActivity}
+11-28 22:33:40.067 I/ActivityManager(1397): checkParallelAppControl, from:net.oneplus.launcher, to:de.szalkowski.activitylauncher, with act:android.intent.action.MAIN, callingUserId:0, toUserId:0
+11-28 22:33:40.067 I/ActivityManager(1397): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10300000 cmp=de.szalkowski.activitylauncher/.MainActivity (has extras)} from uid 10171 pid -1
+11-28 22:33:40.081 D/ActivityTrigger(1397): activityStartTrigger: Activity is Triggerred in full screen ApplicationInfo{4544593 de.szalkowski.activitylauncher}
+11-28 22:33:40.081 E/ActivityTrigger(1397): activityStartTrigger: not whiteListedde.szalkowski.activitylauncher/de.szalkowski.activitylauncher.MainActivity/10
+11-28 22:33:40.082 D/ActivityTrigger(1397): activityResumeTrigger: The activity in ApplicationInfo{4544593 de.szalkowski.activitylauncher} is now in focus and seems to be in full-screen mode
+11-28 22:33:40.082 E/ActivityTrigger(1397): activityResumeTrigger: not whiteListedde.szalkowski.activitylauncher/de.szalkowski.activitylauncher.MainActivity/10
+11-28 22:33:40.093 D/ActivityTrigger(1397): activityResumeTrigger: The activity in ApplicationInfo{4544593 de.szalkowski.activitylauncher} is now in focus and seems to be in full-screen mode
+11-28 22:33:40.093 E/ActivityTrigger(1397): activityResumeTrigger: not whiteListedde.szalkowski.activitylauncher/de.szalkowski.activitylauncher.MainActivity/10
+11-28 22:33:40.094 D/EmbryoManager(1397): Embryo claimed. de.szalkowski.activitylauncher, pid=23168
+11-28 22:33:40.206 D/SystemServicesProxy(2198): getRecentTasks: de.szalkowski.activitylauncher, 1483, false, 0
+11-28 22:33:40.239 I/ActivityManager(1397): Displayed de.szalkowski.activitylauncher/.MainActivity: +142ms
+11-28 22:33:40.293 D/SurfaceFlinger(595): duplicate layer name: changing de.szalkowski.activitylauncher/de.szalkowski.activitylauncher.MainActivity to de.szalkowski.activitylauncher/de.szalkowski.activitylauncher.MainActivity#1
+11-28 22:33:42.887 D/SurfaceFlinger(595): duplicate layer name: changing de.szalkowski.activitylauncher/de.szalkowski.activitylauncher.MainActivity to de.szalkowski.activitylauncher/de.szalkowski.activitylauncher.MainActivity#1
+11-28 22:33:42.924 E/AndroidRuntime(23168): Process: de.szalkowski.activitylauncher, PID: 23168
+11-28 22:33:42.924 E/AndroidRuntime(23168): 	at de.szalkowski.activitylauncher.MyPackageInfo.<init>(MyPackageInfo.java:23)
+11-28 22:33:42.924 E/AndroidRuntime(23168): 	at de.szalkowski.activitylauncher.PackageManagerCache.getPackageInfo(PackageManagerCache.java:45)
+11-28 22:33:42.924 E/AndroidRuntime(23168): 	at de.szalkowski.activitylauncher.AllTasksListAdapter.<init>(AllTasksListAdapter.java:36)
+11-28 22:33:42.924 E/AndroidRuntime(23168): 	at de.szalkowski.activitylauncher.AllTasksListAsyncProvider.run(AllTasksListAsyncProvider.java:14)
+11-28 22:33:42.924 E/AndroidRuntime(23168): 	at de.szalkowski.activitylauncher.AllTasksListAsyncProvider.run(AllTasksListAsyncProvider.java:5)
+11-28 22:33:42.924 E/AndroidRuntime(23168): 	at de.szalkowski.activitylauncher.AsyncProvider.doInBackground(AsyncProvider.java:87)
+11-28 22:33:42.924 E/AndroidRuntime(23168): 	at de.szalkowski.activitylauncher.AsyncProvider.doInBackground(AsyncProvider.java:7)
+11-28 22:33:42.928 W/ActivityManager(1397):   Force finishing activity de.szalkowski.activitylauncher/.MainActivity
+11-28 22:33:42.976 I/ActivityManager(1397): Showing crash dialog for package de.szalkowski.activitylauncher u0
+11-28 22:33:43.119 D/SystemServicesProxy(2198): getRecentTasks: de.szalkowski.activitylauncher, -1, false, 0
+11-28 22:33:43.575 E/WindowManager(23168): android.view.WindowLeaked: Activity de.szalkowski.activitylauncher.MainActivity has leaked window DecorView@df37f84[] that was originally added here
+11-28 22:33:43.575 E/WindowManager(23168): 	at de.szalkowski.activitylauncher.AsyncProvider.onPreExecute(AsyncProvider.java:67)
+11-28 22:33:43.575 E/WindowManager(23168): 	at de.szalkowski.activitylauncher.AllTasksListFragment.onCreateView(AllTasksListFragment.java:44)
+11-28 22:33:44.194 I/ActivityManager(1397): Killing 23168:de.szalkowski.activitylauncher/u0a234 (adj 902): crash
+11-28 22:33:44.197 D/ActivityManager(1397): Process de.szalkowski.activitylauncher has 0 services
+11-28 22:33:44.224 D/EmbryoManager(1397): prepare de.szalkowski.activitylauncher user 0
+11-28 22:33:45.003 D/SystemServicesProxy(2198): getRecentTasks: de.szalkowski.activitylauncher, -1, false, 0
+`"
+butzist/ActivityLauncher,closed,Crash creating a shortcut,[],"Creating a shortcut to org.cyanogenmod.cmparts.profiles.ProfilesSettings instantly crashes the app.
+LineageOS 14.1"
+butzist/ActivityLauncher,closed,allow app to use material design on supported devices,[],
+butzist/ActivityLauncher,open,Add Theme Pack Support,[],"Would you be able to switch out the drawable chooser to select an installed icon pack and than choose a desired  icon instead. 
+"
+butzist/ActivityLauncher,closed,add license title,[],"It's not strictly required, but it's useful metadata, and part of the recommended license template text (see http://choosealicense.com/licenses/isc/ and https://opensource.org/licenses/isc-license)
+"
+butzist/ActivityLauncher,open,Launch private activities,[],"Hello, it would be useful if the application. could use SU to launch private activities
+"
+butzist/ActivityLauncher,closed,Add copyright notice and license,[],"Hi,
+
+According to F-Droid wiki, “the build for this version was manually disabled. Reason: license missing”.
+
+Please indicate an open-source license in a way which is acceptable for F-Droid to pick up. (Possibly add a COPYING or LICENSE file at the root of the source code repository, spelling out the license in its contents.)
+
+In this PR, I chose the ISC license for you, but consider browsing for yourself at http://choosealicense.com/licenses/isc/.
+
+Thanks,
+Amir
+"

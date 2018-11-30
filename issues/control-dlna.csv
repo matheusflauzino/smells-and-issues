@@ -1,0 +1,26 @@
+repository,state,title,label,body
+Nutomic/control-dlna,open,Allow appending to play list,[],"I realise that you now consider your version unmaintained and I still don't have time to maintain my fork properly but I might as well at least make the tweaks I've added available to anyone who can be bothered to search for the code.
+
+I might yet add the ability to delete from the playlist and display some indication when changing volume but I've no idea when.
+"
+Nutomic/control-dlna,closed,use Gradle Wrapper for build,[],"This can only be built with gradle 1.10. Having (current) gradle 2.1 leads to this:
+
+```
+$ gradle
+FAILURE: Build failed with an exception.
+* Where:
+Build file '/home/jonnyjd/git/_android/controldlna/build.gradle' line: 12
+* What went wrong:
+A problem occurred evaluating root project 'controldlna'.
+> Failed to apply plugin [id 'android']
+   > Gradle version 1.10 is required. Current version is 2.1. If using the gradle wrapper, try editing the distributionUrl in /home/jonnyjd/git/_android/controldlna/gradle/wrapper/gradle-wrapper.properties to gradle-1.10-all.zip
+```
+
+There is a solution to this, coming from gradle, the [Gradle Wrapper](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html). It is suggested to add a `graddlew` script to the repository that gets and uses the appropriate gradle version.
+
+This is what I did.
+The only change by me is in build.gradle, the rest was done by running `gradle wrapper`.
+I did have to install gradle 1.10 for that step, but I don't need to switch back and forth again. (in fact no gradle installation is necessary anymore)
+
+This works on *NIX and Windows.
+"

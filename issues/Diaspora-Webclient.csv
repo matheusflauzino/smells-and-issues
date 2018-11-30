@@ -1,0 +1,394 @@
+repository,state,title,label,body
+voidcode/Diaspora-Webclient,open,Pool bug ?,[],"Hi,
+
+Perhaps a bug with pools.
+
+When I read this post through web browser on computer https://framasphere.org/posts/2554366 I can submit a pool (radio buttons).
+When I read this post through android client, I get directly pool results (bar graph instead radio button). (I didn't submit pool with the computer..)
+Of course I log in both with same username... 
+
+Regards,"
+voidcode/Diaspora-Webclient,open,Spins indefinitely wen network connection to podupti.me rejected,[],"Reproduce steps:
+Install noroot app firewall.
+Install diaspora (tried both native web client 1.8.3 and web client 1.6.3)
+Activate the firewall VPN.
+Run diaspora client.
+Notice the firewall intercepts the connection attempt, reject it
+Diaspora client stays trying load the list of pods. 
+It never quits nor gives up. No way to cancel.
+
+Desired: 
+A) The client allows canceling the download of pod list and enter a pod manually.
+B) The client times out after a while (30s) and allows entering pod manually.
+C) Ideally, both A and B.
+
+Background:
+In a privacy sensitive environment, one should be able to avoid leaking the usage of diaspora. More curiously, diaspora should not depend this firmly on a central single point of failure. It's understood, that one may simply navigate to desired pod in browser, but that renders the whole app pointless. Support for proxy (tor) would also make much sense, but perhaps in another issue.
+
+Thanks and much love for the work
+"
+voidcode/Diaspora-Webclient,open,"there is no display of ""ignore"" neither in profile nor post.",[],"I follow some tags, but there is some post that I can not ""ignore"", neither can I ignore the profile If I go to the profile.
+but if I go to my stream with regular browser, I can click on ""ignore"" icon or ignore the profile.
+"
+voidcode/Diaspora-Webclient,open,Slow scrolling,[],"Feed for joindiaspora.com pod is so slow, not use able.
+"
+voidcode/Diaspora-Webclient,closed,corrected typo.,[],"added missing ""l"" in ""will"".
+"
+voidcode/Diaspora-Webclient,open,File selector broken ,[],"The camera icon just highlights 
+HTC one max
+Everything else works great 
+Thank you 
+"
+voidcode/Diaspora-Webclient,open,Not quitting at initial screen,[],"Pressing back at first activity (choosing pod) results in the activity restarting and the keyboard reappearing, instead of quitting the app. 
+Android 4.4.2, stock
+Nexus 7 flo
+"
+voidcode/Diaspora-Webclient,closed,WebView ~,[],"Why make an app that is only a webview app - Anyone can do this -
+
+App needs to be fully Native app without WebView -
+"
+voidcode/Diaspora-Webclient,closed,Fix for issue 10,[],
+voidcode/Diaspora-Webclient,open,joindiaspora.com failes,[],"not possible to use for joindiaspora.com
+"
+voidcode/Diaspora-Webclient,closed,using malformed url,[],"Hi,
+I just tried to use this app with my test pod, so I entered its URL and clicked ""Use this pod"".
+The pods URL is ""http://pod.0815team.de"", so I entered this in the EditText.
+But to access the stream it tries to use the URL https://http//pod.0815team.de/stream, which obviously doesn'twork.
+
+It'd be nice if you could try to fix this so I can check out this interesting app...
+
+Yours, Max
+"
+voidcode/Diaspora-Webclient,open,Users can´t logon with some Samsung device...,[],"Users can´t logon with some Samsung device like Samsung Galaxy i5510 with android 2.2 or Samsung Galaxy 10.1 tablet
+"
+voidcode/Diaspora-Webclient,closed,HP Touchpad CM9 - Null pointer when testing connectivity.,[],"The client is stopped as soon as it is started. This is because the mobileInfo is null. Here is the fix for it
+
+diff --git a/src/com/voidcode/diasporawebclient/PodSettingsActivity.java b/src/com/voidcode/diasporawebclient/PodSettingsActivity.java
+index 804dd46..9ba06c7 100644
+--- a/src/com/voidcode/diasporawebclient/PodSettingsActivity.java
++++ b/src/com/voidcode/diasporawebclient/PodSettingsActivity.java
+@@ -77,7 +77,7 @@ public class PodSettingsActivity extends Activity {
+                                //fill listview with pods form http://podupti.me
+                                fillListview(this.lvPods_arr);
+
+```
+                           //podsearch, A fast find search on editTextCurrentpod, So user don't have to scholl the podlist to finde a pod 
+                            editTextCurrentpod.addTextChangedListener(new TextWatcher() 
+                            { 
+                                    List<String> filter_podurl_list = null;
+```
+
+@@ -175,11 +175,12 @@ public class PodSettingsActivity extends Activity {
+                NetworkInfo mobileInfo = connec.getNetworkInfo(0);
+                NetworkInfo wifiInfo = connec.getNetworkInfo(1);
+                NetworkInfo wimaxInfo = connec.getNetworkInfo(6);
+-               if (wimaxInfo!=null) {
+-                       return mobileInfo.isConnected() || wifiInfo.isConnected()|| wimaxInfo.isConnected();
+-               }
+-               else {
+-                       return mobileInfo.isConnected() || wifiInfo.isConnected();
+-               }
+-               boolean bm = false;
+-               boolean bw = false;
+-               boolean bx = false;
+-               if (mobileInfo != null) bm = mobileInfo.isConnected();
+-               if (wimaxInfo != null) bx = wimaxInfo.isConnected();
+-               if (wifiInfo != null) bw = wifiInfo.isConnected();
+-               return (bm || bw || bx);
+      }
+"
+voidcode/Diaspora-Webclient,closed,App does not seem to fetch updates from stream,[],"Since the last update of the diaspora-webclient application the stream refreshes anymore. It displays entries from weeks ago while the web stream shows up already a lot of news. Cleaning the cache have not helped at all. Bug affects several users eg. https://pod.geraspora.de/posts/439184. 
+"
+voidcode/Diaspora-Webclient,closed,F-Droid FOSS repository needs update to 1.6 version w/URL fix,[],"Android market version has been updated but the one in the F-Droid FOSS repository is still v1.5 with the broken URL. Please update when possible.
+"
+voidcode/Diaspora-Webclient,open,Won't start on Motorola xoom,[],"Repport 4 times(ones by email).
+
+Crash: Exception class java.lang.NullPointerException
+Source method: MainActivity.isNetworkAvailable()
+User message: won't start on Motorola xoom
+
+---
+
+java.lang.RuntimeException: Unable to start activity ComponentInfo{com.voidcode.diasporawebclient/com.voidcode.diasporawebclient.MainActivity}: java.lang.NullPointerException
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1815)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:1831)
+at android.app.ActivityThread.access$500(ActivityThread.java:122)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1024)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:132)
+at android.app.ActivityThread.main(ActivityThread.java:4123)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:491)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:841)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:599)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.NullPointerException
+at com.voidcode.diasporawebclient.MainActivity.isNetworkAvailable(MainActivity.java:283)
+at com.voidcode.diasporawebclient.MainActivity.onCreate(MainActivity.java:43)
+at android.app.Activity.performCreate(Activity.java:4397)
+at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1048)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1779)
+
+---
+
+This bug is a new bug v1.5
+It seems error came after I added 4G support. 
+"
+voidcode/Diaspora-Webclient,closed,java.lang.NullPointerException,[],"Bug repport over 13 times,
+4 times per week out of 1300 users, 
+Via android develper webinterface.
+
+Only one user comment on this bug:
+shut down.
+
+---
+
+Exception class java.lang.NullPointerException
+Source method MainActivity.onKeyDown()
+
+java.lang.NullPointerException
+at com.voidcode.diasporawebclient.MainActivity.onKeyDown(MainActivity.java:229)
+at android.view.KeyEvent.dispatch(KeyEvent.java:1257)
+at android.app.Activity.dispatchKeyEvent(Activity.java:2075)
+at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchKeyEvent(PhoneWindow.java:1673)
+at android.view.ViewRoot.deliverKeyEventToViewHierarchy(ViewRoot.java:2493)
+at android.view.ViewRoot.handleFinishedEvent(ViewRoot.java:2463)
+at android.view.ViewRoot.handleMessage(ViewRoot.java:1752)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:144)
+at android.app.ActivityThread.main(ActivityThread.java:4937)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:521)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:868)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:626)
+at dalvik.system.NativeStart.main(Native Method)
+"
+voidcode/Diaspora-Webclient,open,Hangs when trying to change the settings with a black screen.,[],"A user reports this...
+hangs when trying to change the settings with a black screen.
+
+Freeze
+Activity com.voidcode.diasporawebclient/.SettingsActivity
+Cause ANR keyDispatchingTimedOut
+
+v1.4
+Dec 23, 2011 8:39:26 PM
+OTHER
+DALVIK THREADS:
+""main"" prio=5 tid=1 NATIVE
+  | group=""main"" sCount=1 dsCount=0 s=N obj=0x40020cf8 self=0xcd58
+  | sysTid=23845 nice=0 sched=0/0 cgrp=default handle=-1345017776
+  at java.net.InetAddress.getaddrinfo(Native Method)
+  at java.net.InetAddress.lookupHostByName(InetAddress.java:508)
+  at java.net.InetAddress.getAllByNameImpl(InetAddress.java:278)
+  at java.net.InetAddress.getAllByName(InetAddress.java:242)
+  at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:136)
+  at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:164)
+  at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:119)
+  at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:348)
+  at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:555)
+  at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:487)
+  at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:465)
+  at com.voidcode.diasporawebclient.SettingsActivity.getPods(SettingsActivity.java:141)
+  at com.voidcode.diasporawebclient.SettingsActivity.<init>(SettingsActivity.java:38)
+  at java.lang.Class.newInstanceImpl(Native Method)
+  at java.lang.Class.newInstance(Class.java:1429)
+  at android.app.Instrumentation.newActivity(Instrumentation.java:1021)
+  at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2577)
+  at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2679)
+  at android.app.ActivityThread.access$2300(ActivityThread.java:125)
+  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2033)
+  at android.os.Handler.dispatchMessage(Handler.java:99)
+  at android.os.Looper.loop(Looper.java:123)
+  at android.app.ActivityThread.main(ActivityThread.java:4627)
+  at java.lang.reflect.Method.invokeNative(Native Method)
+  at java.lang.reflect.Method.invoke(Method.java:521)
+  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:876)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:634)
+  at dalvik.system.NativeStart.main(Native Method)
+
+""WebViewWorkerThread"" prio=5 tid=15 WAIT
+  | group=""main"" sCount=1 dsCount=0 s=N obj=0x4673a040 self=0x261d08
+  | sysTid=23860 nice=1 sched=0/0 cgrp=default handle=2504896
+  at java.lang.Object.wait(Native Method)
+- waiting on <0x4673a838> (a android.os.MessageQueue)
+  at java.lang.Object.wait(Object.java:288)
+  at android.os.MessageQueue.next(MessageQueue.java:146)
+  at android.os.Looper.loop(Looper.java:110)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+""http5"" prio=5 tid=14 WAIT
+  | group=""main"" sCount=1 dsCount=0 s=N obj=0x46738040 self=0x2635e0
+  | sysTid=23859 nice=1 sched=0/0 cgrp=default handle=2464800
+  at java.lang.Object.wait(Native Method)
+- waiting on <0x467370e0> (a android.net.http.RequestQueue)
+  at java.lang.Object.wait(Object.java:288)
+  at android.net.http.ConnectionThread.run(ConnectionThread.java:98)
+
+""http4"" prio=5 tid=13 WAIT
+  | group=""main"" sCount=1 dsCount=0 s=N obj=0x46737e00 self=0x25ffd0
+  | sysTid=23858 nice=1 sched=0/0 cgrp=default handle=2490640
+  at java.lang.Object.wait(Native Method)
+- waiting on <0x467370e0> (a android.net.http.RequestQueue)
+  at java.lang.Object.wait(Object.java:288)
+  at android.net.http.ConnectionThread.run(ConnectionThread.java:98)
+
+""http3"" prio=5 tid=12 WAIT
+  | group=""main"" sCount=1 dsCount=0 s=N obj=0x46737c28 self=0xcdfa8
+  | sysTid=23857 nice=1 sched=0/0 cgrp=default handle=2464952
+  at java.lang.Object.wait(Native Method)
+- waiting on <0x467370e0> (a android.net.http.RequestQueue)
+  at java.lang.Object.wait(Object.java:288)
+  at android.net.http.ConnectionThread.run(ConnectionThread.java:98)
+
+""http2"" prio=5 tid=11 WAIT
+  | group=""main"" sCount=1 dsCount=0 s=N obj=0x46737a50 self=0x28eda0
+  | sysTid=23856 nice=1 sched=0/0 cgrp=default handle=2682592
+  at java.lang.Object.wait(Native Method)
+- waiting on <0x467370e0> (a android.net.http.RequestQueue)
+  at java.lang.Object.wait(Object.java:288)
+  at android.net.http.ConnectionThread.run(ConnectionThread.java:98)
+
+""http1"" prio=5 tid=10 WAIT
+  | group=""main"" sCount=1 dsCount=0 s=N obj=0x46737878 self=0x28de98
+  | sysTid=23855 nice=1 sched=0/0 cgrp=default handle=2674208
+  at java.lang.Object.wait(Native Method)
+- waiting on <0x467370e0> (a android.net.http.RequestQueue)
+  at java.lang.Object.wait(Object.java:288)
+  at android.net.http.ConnectionThread.run(ConnectionThread.java:98)
+
+""http0"" prio=5 tid=9 WAIT
+  | group=""main"" sCount=1 dsCount=0 s=N obj=0x467376a0 self=0x28d4c8
+  | sysTid=23854 nice=1 sched=0/0 cgrp=default handle=2674144
+  at java.lang.Object.wait(Native Method)
+- waiting on <0x467370e0> (a android.net.http.RequestQueue)
+  at java.lang.Object.wait(Object.java:288)
+  at android.net.http.ConnectionThread.run(ConnectionThread.java:98)
+
+""CookieSyncManager"" prio=5 tid=8 TIMED_WAIT
+  | group=""main"" sCount=1 dsCount=0 s=N obj=0x46723230 self=0x241780
+  | sysTid=23853 nice=10 sched=0/0 cgrp=bg_non_interactive handle=2365632
+  at java.lang.Object.wait(Native Method)
+- waiting on <0x46723670> (a android.os.MessageQueue)
+  at java.lang.Object.wait(Object.java:326)
+  at android.os.MessageQueue.next(MessageQueue.java:142)
+  at android.os.Looper.loop(Looper.java:110)
+  at android.webkit.WebSyncManager.run(WebSyncManager.java:90)
+  at java.lang.Thread.run(Thread.java:1096)
+
+""WebViewCoreThread"" prio=5 tid=7 WAIT
+  | group=""main"" sCount=1 dsCount=0 s=N obj=0x46713690 self=0xce370
+  | sysTid=23851 nice=0 sched=0/0 cgrp=default handle=846288
+  at java.lang.Object.wait(Native Method)
+- waiting on <0x46713978> (a android.os.MessageQueue)
+  at java.lang.Object.wait(Object.java:288)
+  at android.os.MessageQueue.next(MessageQueue.java:146)
+  at android.os.Looper.loop(Looper.java:110)
+  at android.webkit.WebViewCore$WebCoreThread.run(WebViewCore.java:621)
+  at java.lang.Thread.run(Thread.java:1096)
+
+""Binder Thread #2"" prio=5 tid=6 NATIVE
+  | group=""main"" sCount=1 dsCount=0 s=N obj=0x467013c0 self=0x12ce28
+  | sysTid=23850 nice=0 sched=0/0 cgrp=default handle=1231736
+  at dalvik.system.NativeStart.run(Native Method)
+
+""Binder Thread #1"" prio=5 tid=5 NATIVE
+  | group=""main"" sCount=1 dsCount=0 s=N obj=0x467007b0 self=0x12ddb0
+  | sysTid=23849 nice=0 sched=0/0 cgrp=default handle=1271224
+  at dalvik.system.NativeStart.run(Native Method)
+
+""Compiler"" daemon prio=5 tid=4 VMWAIT
+  | group=""system"" sCount=1 dsCount=0 s=N obj=0x466fa2a0 self=0x132ac0
+  | sysTid=23848 nice=0 sched=0/0 cgrp=default handle=1211048
+  at dalvik.system.NativeStart.run(Native Method)
+
+""Signal Catcher"" daemon prio=5 tid=3 RUNNABLE
+  | group=""system"" sCount=0 dsCount=0 s=N obj=0x466fa1e8 self=0x1278b8
+  | sysTid=23847 nice=0 sched=0/0 cgrp=default handle=1230552
+  at dalvik.system.NativeStart.run(Native Method)
+
+""HeapWorker"" daemon prio=5 tid=2 VMWAIT
+  | group=""system"" sCount=1 dsCount=0 s=N obj=0x4499d750 self=0x136418
+  | sysTid=23846 nice=0 sched=0/0 cgrp=default handle=1230280
+  at dalvik.system.NativeStart.run(Native Method)
+
+Try look at: http://stackoverflow.com/questions/5513457/anr-keydispatchingtimedout-error
+"
+voidcode/Diaspora-Webclient,closed,Will not recognize 4G connection,[],"It connects properly with WiFi & 3G but will not recognize 4G connection.
+"
+voidcode/Diaspora-Webclient,open,App crashes on t-mobile g2 when I open the keyboard and screen changes to landscape mode.,[],"A user report this.
+
+Stack traces
+v1.2
+Dec 6, 2011 5:03:26 PM
+1 reports/week
+1 reports
+
+---
+
+java.lang.IllegalArgumentException in com.voidcode.diasporawebclient
+Crash
+Exception class java.lang.IllegalArgumentException
+## Source method WindowManagerImpl.findViewLocked()
+
+java.lang.IllegalArgumentException: View not attached to window manager
+at android.view.WindowManagerImpl.findViewLocked(WindowManagerImpl.java:355)
+at android.view.WindowManagerImpl.removeView(WindowManagerImpl.java:200)
+at android.view.Window$LocalWindowManager.removeView(Window.java:473)
+at android.app.Dialog.dismissDialog(Dialog.java:278)
+at android.app.Dialog.access$000(Dialog.java:71)
+at android.app.Dialog$1.run(Dialog.java:111)
+at android.app.Dialog.dismiss(Dialog.java:268)
+at com.voidcode.diasporawebclient.MainActivity$3.onPageFinished(MainActivity.java:154)
+at android.webkit.CallbackProxy.handleMessage(CallbackProxy.java:274)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:123)
+at android.app.ActivityThread.main(ActivityThread.java:3835)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:507)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:841)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:599)
+at dalvik.system.NativeStart.main(Native Method)
+"
+voidcode/Diaspora-Webclient,closed,Diaspora-Webclient on Android 2.3.7 have not widget,[],"A user have reported that on Android 2.3.7 the Diaspora-Webclient have no widget.
+"
+voidcode/Diaspora-Webclient,closed,"On No wifi or 3G, close button end in error",[],"Error on line 16 see: https://github.com/voidcode/Diaspora-Webclient/blob/master/src/com/voidcode/diasporawebclient/SetupInternetActivity.java 
+
+A user reported this:
+
+java.lang.IllegalStateException: Could not find a method onclick_button_close(View) in the activity class com.voidcode.diasporawebclient.MainActivity for onClick handler on view class android.widget.Button with id 'settings_button_close'
+at android.view.View$1.onClick(View.java:2147)
+at android.view.View.performClick(View.java:2501)
+at android.view.View$PerformClick.run(View.java:9107)
+at android.os.Handler.handleCallback(Handler.java:587)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+at android.os.Looper.loop(Looper.java:130)
+at android.app.ActivityThread.main(ActivityThread.java:3835)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:507)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:847)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:605)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.NoSuchMethodException: onclick_button_close
+at java.lang.ClassCache.findMethodByName(ClassCache.java:247)
+at java.lang.Class.getMethod(Class.java:962)
+at android.view.View$1.onClick(View.java:2140)
+... 11 more
+"
+voidcode/Diaspora-Webclient,closed,JSON Parsing,[],"The current way makes the loading of data lengthy, adding caching in preferences would help
+But was unsure as to when the URL's should be updated after some timeout, to retrieve fresh data.
+"
+voidcode/Diaspora-Webclient,closed,Screen Rotation,[],"Webapp doesn't support landscape view. This is on an ASUS tablet running Android 3.2. 
+"
+voidcode/Diaspora-Webclient,closed,Cannot reshare,[],"The reshare icon does nothing when pressed.
+"
+voidcode/Diaspora-Webclient,closed,"The podupti.me json feed is buggy, so no realtime podlist in app!",[],"The http://podupti.me json feed is buggy!
+
+{""podcount"": 72""pods"": [{""url"":""mispora.net"",""email"":""private"",""whois"":""Country: Japan Region: - City: - 
+See the hold json here: http://podupti.me/api.php?key=4r45tg&format=json
+
+I think the fault lies in ""podcount"":72""pods"" maby make it like this ""podcount"":""72""  
+
+This means that we can´t make a jsonpaser, 
+so no realtime list of diaspora networks pods in the diaspora webclient for now.
+See SettingsActiviy.java TODO:  https://github.com/voidcode/Diaspora-Webclient/blob/master/src/com/voidcode/diasporawebclient/SettingsActivity.java
+"

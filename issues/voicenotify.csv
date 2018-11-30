@@ -1,0 +1,348 @@
+repository,state,title,label,body
+pilot51/voicenotify,open,Tasker enable/disable method,[],"I am attempting to use tasker so that voice notify only reads notifications when the phone is connected to power (such as in the car or docked at home) and not when I'm out and about in public.   I have attempted to use the plugin secure settings which has an option to enable/disable ""notification listeners"".  Voice Notify DOES appear in that list however disabling it doesn't seem to do anything possibly because the actual reading is being done by the service running in the background and it does NOT appear in the list?
+
+A friend has that method working on android nougat however I am on oreo 8.1 so not sure if that is the issue.   Is there a recommended method to do this? Should I be calling an intent instead?"
+pilot51/voicenotify,open,Add option to ignore groups or not,[],"While I appreciate ignoring group messages by default, some apps (specifically Signal) do all their text notifications as group notifications, which means they simply don't get read. For people who use Signal as their default SMS client, this ignoring needs to be toggled."
+pilot51/voicenotify,open,applist,[],how to add icon application?
+pilot51/voicenotify,closed,Update README.md,[],"Hi,
+
+This small and useless PR adds a button to get your app on F-Droid"
+pilot51/voicenotify,open,tts text replacement,"[Label(name=""question"")]","i want to ask, how to build tts text replacement? and are you use a database for the text replacement?"
+pilot51/voicenotify,open,Support Wear 2.0,"[Label(name=""looking for contributor"")]","I received an email requesting support for Wear 2.0, specifically TicWatch E SmartWatch.
+
+I like the idea, though as I don't have a Wear device and much of what I do with VN is for personal benefit, this is unlikely to reach the top of my to-do list any time soon.
+
+If any other developers are more interested, this would be a great issue to pick up."
+pilot51/voicenotify,closed,Create README.md,[],"Added list of features, logotype, and link to Google Play."
+pilot51/voicenotify,closed,Readme ,[],Why haven't you added readme file to the project?
+pilot51/voicenotify,closed,Upload New Icon Vectors,[],I uploaded the vectors and some exports for the new icon and logo. Feel free to delete the unnecessary exports. I also noticed there's no README file yet so I created one. 
+pilot51/voicenotify,closed,...,"[Label(name=""enhancement"")]",...
+pilot51/voicenotify,open,[Suggestion] New App Icon ,"[Label(name=""enhancement"")]","Hi! I find this app really useful so I decided to contribute. As you may have noticed, simple and minimalist icons are trending right now. Thus, here are my suggestions for the  app icon in order to give it a modern look and a brand identity. These icons combine symbol for ""notification"" (bell) and "" human e-voice"" which well-represent what this app is capable of.  What do you think? I'll be happy to make adjustments. 
+
+![request_2](https://user-images.githubusercontent.com/38007519/39370380-efd4484c-4a68-11e8-9c20-ed54f0cea665.png)
+
+![request_3](https://user-images.githubusercontent.com/38007519/39396836-edc02384-4b1f-11e8-9ced-b116e2dbb4a1.png)
+
+![design_attempts](https://user-images.githubusercontent.com/38007519/39806458-3402b2d0-53a4-11e8-9e2d-eefe98441a95.png)
+"
+pilot51/voicenotify,open,Plugins,"[Label(name=""enhancement"")]","An email requesting a feature outside the intended scope of Voice Notify gave me the idea for plugins.
+
+Basically, as I think of it now, it takes scripts that can be edited directly in the app or placed in a plugins folder.
+
+Those scripts can use basic functions such as system clock or timers to speak dynamic strings.
+For example, announcing when the clock hits the next hour or, as the email suggested, announcing every 5 minutes that passes.
+Please comment if you have any other ideas for plugins that you would like to see possible.
+
+Plugins would likely be affected by VN's settings the same way notifications are affected."
+pilot51/voicenotify,open,"Empty messages spoken as ""dot dot""","[Label(name=""bug""), Label(name=""can't reproduce"")]","Reported via email:
+> Hello and thank you for making a great app. Since u recently updated, blank messages in the log are continuing to announced as, ""dot dot"" on note 4. I have to ignore the entire app when ever any one app sends a blank notification. Thank u
+
+My response:
+> I have not been able to reproduce. I suspect it may be caused by the periods in the TTS Message option and Samsung's TTS engine not keeping isolated periods silent the same way Google or Pico TTS does. Assuming that's the cause, I should have it fixed in the next update.
+> 
+> Two workarounds to try:
+> 1. Remove the periods in the Text-To-Speech > TTS Message setting.
+> 2. Switch to another TTS engine such as Google TTS.
+> 
+> Please report back whether either of those work so I know if my assumption is correct. Unfortunately, Samsung TTS isn't available for any of my devices to test."
+pilot51/voicenotify,open,Read toasts again,"[Label(name=""enhancement""), Label(name=""regression"")]","Since the release of v1.1.0, a number of users have expressed a strong desire for the Speak Toasts option to be restored, which had to be removed due to Google's policy change/threat regarding Accessibility services. Toast messages were passed through Accessibility and not Notification Listener or any other public API that I could find.
+
+As a result of the policy fiasco and considering that toasts weren't intended core functionality (only included in the first place because Accessibility mixed them in with status bar notifications), I am not planning to use Accessibility again. Instead, I am [looking for workarounds](https://stackoverflow.com/questions/47764974/receive-toast-messages-without-accessibility), which may involve hacks like reflection.
+
+If I am unable to find a workaround, I may just create a separate branch which only restores the toast option and accessibility service, with builds released only on GitHub."
+pilot51/voicenotify,closed,Rereading entire updated notifications,"[Label(name=""bug"")]","v1.1.2 is rereading the whole notification when that notification is updated.
+I've only noticed this with telegram but that is the only app that gets stacked up like that for me.
+Let me know if there is anything I can do to help.
+
+# Expected
+1. Existing notification `hello, world`
+2. Reads: ""hello, world""
+
+3. Notification is updated to append ""how are you"".
+  Displays:
+  ```
+  hello, world
+  how are you
+  ```
+4. Reads: ""how are you""
+
+# Observed
+4. Reads ""hello, world how are you"""
+pilot51/voicenotify,closed,Service activation/deactivation with Tasker/Locale/Llama via intent,"[Label(name=""enhancement"")]","package : com.pilot51.voicenotify
+class :   com.pilot51.voicenotify.WidgetProvider
+action :  voicenotify.widget.ON and voicenotify.widget.OFF"
+pilot51/voicenotify,closed,Development setup instructions,"[Label(name=""question"")]","I'd like to work on some improvements, but I'm having trouble getting this into Android Studio without mangling it. Any pointers on doing that or on replicating your dev environment? I'll do some documentation as my first pull request ;)"
+pilot51/voicenotify,open,Notification flags,"[Label(name=""enhancement"")]","Add log details and option to ignore notifications based on `Notification.flags`.
+
+Each flag setting should be 3-way (ignore with flag, ignore without flag, or unset).
+
+This will help with controlling the types of notifications that are spoken, such as ongoing notifications that keep updating and can be more annoying than helpful when spoken.
+
+Until this feature is implemented, the likely best workaround for such notifications is to use either App List or Ignore Text to prevent the problem notifications from being spoken."
+pilot51/voicenotify,closed,Feature Request: translation dictionary,"[Label(name=""duplicate""), Label(name=""enhancement"")]","it would be great to have a way to provide translations for words that tts pronounces incorrectly.
+example:
+GroupMe (chat app) is pronounced groopmah
+the translation would be: group me "
+pilot51/voicenotify,closed,Doesn't announce caller ID on MIUI 8,"[Label(name=""duplicate""), Label(name=""enhancement"")]","I want to hear caller's name during incoming call rings while I'm in headphones without taking my phone from pocket, but it doesn't work.
+
+Caller's name and phone appears in notification shade, VoiceNotify has access to ""Accessibility"" option, other notifications works perfectly. I also tried different TTS Audio Streams while call with no success. And there is no call event in VN Notification Log.
+
+I tried free app ""Shouter"" [https://play.google.com/store/apps/details?id=com.bhkapps.shouter](url), it works and announce callers name. It requires not ""accessibility"" access, but by asking permissions to ""phone"", ""contacts"", ""get device id"" and other permissions.
+
+But I want to use your app, it completely satisfies me, and I like open source software )
+What can I try to get voice announce of caller ID?
+
+Phone: Xiaomi Redmi 4
+Android: 6.0.1
+MIUI 8 latest 7.1.20
+VoiceNotify: 1.0.12"
+pilot51/voicenotify,closed,Doesn't work on Marshmallow and up,"[Label(name=""bug"")]","The app needs to request notification access on Marshmallow and up but since it doesn't request it, it simply doesn't work
+"
+pilot51/voicenotify,closed,Dialog Disappears on Device Rotation,"[Label(name=""bug"")]","When I perform these sequences of events, the dialog on screen disappears:
+
+Sequence 1:
+1. Click on Support Voice Notify
+2. Click on Donate
+3. Click on Google Wallet
+4. Orientation Change
+"
+pilot51/voicenotify,closed,"Brining up to date, fixing repeated text, and setting a truncation length",[],"First, I have built this on RocketRider's patch, he did the majority of the work.
+I believe this resolves:
+  https://github.com/pilot51/voicenotify/issues/51
+
+I then added a fix for issue
+https://github.com/pilot51/voicenotify/issues/52
+
+Finally, I added an extra config param to allow you to set a maximum message length...
+
+For me it's working and stable...
+"
+pilot51/voicenotify,closed,repeated messages,"[Label(name=""enhancement"")]","I get a lot of repeated messages where the app generating the message sends an empty message, and then a (repeated) message. In other words, it 'fools' voice notify. This seems quite common across a lot of apps, I dont know why!
+
+Voice Notify already helps, but the 'repeated message' mechanism looks at messages coming in, not messages that have been 'voiced', so this sort of 'empty message' behaviour fools Voice notify....
+
+Voice Notify could deal with this very easily, if voice notify isn't going to 'say' the message (it's repeated, or its empty), then dont record it as the 'lastMsg' - so that Voice Notify really doesn't repeat itself :-)
+
+Looks like a very simple fix around like 229 of Service.java ? Only record the lastMsg if the message hasn't been ignored?
+"
+pilot51/voicenotify,closed,Compile with latest SDK,"[Label(name=""enhancement"")]","The app is amazing, but looks very old, please compile it with latest SDK to look cool
+"
+pilot51/voicenotify,closed,Cannot read content from Fibaro HC app,"[Label(name=""duplicate""), Label(name=""enhancement"")]","Hi,
+
+The app works great, but the push messages which I receive from Fibaro HomeCenter app... it says the app name but not the content of t.
+
+Is this a big or maybe an enhancement?
+
+thanks
+"
+pilot51/voicenotify,closed,Doesn't work after Lollipop upgrade,"[Label(name=""bug"")]","It worked fine in my Moto G 2013  until I upgraded to Lollipop. Test notifications are showed but not spoken. I've checked accesibility settings and tested voice synthesis in Android settings, but couldn't fix it.
+Could it be an incompatibility with Lollipop or is just me?
+"
+pilot51/voicenotify,closed,Enable fast scroll in application list,"[Label(name=""enhancement"")]","Enable fast scroll in application list :)
+"
+pilot51/voicenotify,open,Choose different TTS engine,"[Label(name=""enhancement"")]","Please add an option for specify a different TTS engine to use other than the default one. It can be useful when the system UI is set to one language and notifications (like messages) are often in another language. In this case, say the notification in another language (by another engine) can make the voice more reasonable.
+"
+pilot51/voicenotify,open,VN causes audio issue with Life Reminders app,"[Label(name=""bug"")]","Reported by BobMac via email:
+""Before I installed your app, I was able to hear notifications from a very important app: Life Reminders. But now I can only get those reminders through the speaker when the BT headset is turned OFF.""
+"
+pilot51/voicenotify,open,Bluetooth detection behaviour,"[Label(name=""enhancement"")]","Hi, I installed Voice Notify in my Xperia Z1 (Android 4.4.4) and it seems to be very close to what I'm looking for, the only problem I noticed is related to the headset setting. 
+
+I would like to use voice notification when I'm driving so I enable VN to work when screen is off and on and when headset is on (when the phone is connected to my car radio using bluetooth), but I noticed however that the voice notifications were blocked and in VN logs show that the headset was off. I didn't undestand that and made some tests with a BT headphone. I don't know if this behaviour is known but VN only reads a notification if the BT device is connected as media audio at the BT device properties. If I enable only phone audio VN thinks there is no headset, and unfortunately my car stereo only works as a phone audio BT device.
+
+Is there a way to detect these devices as being a headset on?
+
+Thanks.
+"
+pilot51/voicenotify,open,BT State support,"[Label(name=""enhancement"")]","Messages/Mail/WhatsApp/whathever app should read app name and the whole text while device is connected to my BT car stereo ONLY (and not with my BT earphones, in example) and it should say app name only while this condition is false.
+"
+pilot51/voicenotify,closed,Keep Screen Off when VN read notifications,"[Label(name=""bug""), Label(name=""can't reproduce""), Label(name=""need info"")]","When VN receives a notification and start reading it, my screen turns ON. Is there any way I can disable such behavior? I do not want the screen to turn ON when VN reading the notifications.
+Please advise me.
+
+Android : 4.2.2
+"
+pilot51/voicenotify,open,[feature request] BroadcastReceiver to toggle VN externally,"[Label(name=""enhancement"")]","It would be great to be able to send an [Intent](http://developer.android.com/guide/components/intents-filters.html) via NFCReTag/Tasker/similar apps to switch voicenotify on and off automatically (com.pilot51.voicenotify.on/off).
+[BroadcastReceiver](http://developer.android.com/reference/android/content/BroadcastReceiver.html)
+"
+pilot51/voicenotify,closed,example of TTS message?,"[Label(name=""question"")]","Hi,
+Could somebody give me an example of what to put in the ""TTS Message"" dialogue?
+For example if I want custom notifications for SMS and gmail?
+
+Thanks.
+"
+pilot51/voicenotify,closed,problem with whatsapp,"[Label(name=""duplicate""), Label(name=""enhancement"")]","hi! my name in Daniele and I am writing from Italy. 
+I don't know is this is the page correct for say me problem, but I hope yes.
+ I have a samsung galaxy s4 and I have downloaded this applicatio voice notify.
+ This application work well with almost all application, except with whatsapp. Indeed when this application has to read a notify by whatsapp, it say only the name the application and who sand the message but not the content of the message. I don't know because! I saw that with the ather applications (for example facebook), it work well. Can you help me? 
+Thank you very much to everyone oin advance!
+"
+pilot51/voicenotify,closed,problem with whatsapp,[],"hi! my name in Daniele and I am writing from Italy. 
+I don't know is this is the page correct for say me problem, but I hope yes.
+I have a samsung galaxy s4 and I have downloaded this applicatio voice notify.
+This application work well with almost all application, except with whatsapp. Indeed when this application has to read a notify by whatsapp, it say only the name the application and who sand the message but not the content of the message. I don't know because! I saw that with the ather applications (for example facebook), it work well. Can you help me? 
+Thank you very much to everyone oin advance!
+"
+pilot51/voicenotify,closed,notify while ringing call,"[Label(name=""enhancement"")]","I suggest (option) to enable notification while call is ringing to hear caller name (who is ringing). I see in log Telephone notification is blocked while ""active or ringing call"".
+"
+pilot51/voicenotify,open,Read emails,"[Label(name=""enhancement"")]","Add support for reading new emails directly, bypassing notifications. This includes sender name, title, and message body.
+This is a very common suggestion.
+"
+pilot51/voicenotify,open,Lock screen widget,"[Label(name=""enhancement"")]","Suggested from email: Add lock screen support for the widget.
+"
+pilot51/voicenotify,closed,force mounting ext3 as ext2 (disable journaling),"[Label(name=""invalid"")]","when partitioning i forgot that ext3 uses journaling which is bad for SD cards.
+Now can i force mounting sd-ext as ext2 by changing the Driver setting without repartitioning?
+
+EDIT: i've noticed there is also a ""Journal"" option in the settings but it is grayed out, what does it mean?
+"
+pilot51/voicenotify,closed,low volume of voice,"[Label(name=""invalid""), Label(name=""wontfix"")]","I have the volume at full. In the listen to an example, the voice is loud, but when voicenotify announces, the voice is very low. 
+"
+pilot51/voicenotify,closed,Word replacement,"[Label(name=""enhancement"")]","Replace words in a notification with another word. They should be saved to a list. Useful for censoring, correcting pronunciation, etc.
+"
+pilot51/voicenotify,open,Flexible logic for Device States,"[Label(name=""enhancement"")]","Provide an option for changing the logical operation used for Device States. An advanced mode allowing any combination (like a user created conditional) would be great.
+
+There have been a few requests for the ability to silence VN when the device is in silent/vibrate, but not if a headset is connected.
+"
+pilot51/voicenotify,closed,Not working on some KitKat devices,"[Label(name=""bug"")]","Some users have reported that VN doesn't work on their 4.4.2 device. Even though the accessibility service is enabled, VN never receives notification data. I have not been able to reproduce the issue in a 4.4.2 emulator.
+
+If you are experiencing this issue, please comment with your device model, Android version, Android build number, and any other details you think may help narrow it down.
+"
+pilot51/voicenotify,closed,Heavy Sensor Usage,"[Label(name=""bug"")]","52m and 42s of sensor usage. What sensor is being used and why?
+"
+pilot51/voicenotify,open,Heavy Battery Usage on Audio Stream Media,"[Label(name=""bug"")]","I have noticed heavy usage of the media stream when set to Audio Stream Media. I have changed to Notifications Stream. If there is an optimal stream setting it would be nice to have it indicated in the options menu.
+"
+pilot51/voicenotify,closed,Set Amount of Characters for Notification Text,"[Label(name=""enhancement"")]","It would be nice to be able to set the amount of characters the notification will read. For example this could be used to read the first 10 characters of the message which is usually the sender on most messaging apps.
+"
+pilot51/voicenotify,open,Per App Permissions,"[Label(name=""enhancement"")]","It would be nice to have three notification choices per app. The first being both App title and notification text. The second being only title and the last being text only.
+"
+pilot51/voicenotify,closed,"Allow the user to choose to pause, dim, or neither, on speaking","[Label(name=""enhancement"")]","So, spotify recently decided to actually respond to dim requests, however, it does so in a pretty terrible manner, making both the music and the notification too quiet to hear.  This option to choose pause vs dim allows you to put it back the way it was.
+"
+pilot51/voicenotify,closed,Shake-to-silence silences VoiceNotify until service restart,"[Label(name=""duplicate"")]","I believe there is an issue with the Shake-to-silence feature. When the device is shaken with Shake-to-silence turned on, Voice Notify immediately stops announcing the current notification, but also stops reading any further notifications after that, until one manually restarts the service (or the device). I don't know if this is the intended behavior, but I'd think that it should affect only the notification being read when the device is shaken. Tested on Samsung Galaxy S4 (Android ver. 4.2.2 and 4.4.2).
+
+Thanks!
+"
+pilot51/voicenotify,closed,Shake-to-silence silences VoiceNotify until service restart,"[Label(name=""bug"")]","I believe there is an issue with the Shake-to-silence feature. When the device is shaken with Shake-to-silence turned on, Voice Notify immediately stops announcing the current notification, but also stops reading any further notifications after that, until one manually restarts the service (or the device). I don't know if this is the intended behavior, but I'd think that it should affect only the notification being read when the device is shaken. Tested on Samsung Galaxy S4 (Android ver. 4.2.2 and 4.4.2).
+
+Thanks!
+"
+pilot51/voicenotify,closed,"the current desktop/apps page is reported, although it shouldn't","[Label(name=""bug""), Label(name=""invalid"")]","I unticked the following apps:
+
+Active applications
+Android System
+com.samsung.InputEventApp
+System UI
+SystemInfo
+SASlideShow
+Samsung Apps
+
+And only ticked the device states:
+
+Screen Off
+Headset On
+
+The app reports the current desktop/apps page ""Page X of Y"" even though the screen is on and the headset is off.
+
+Model number: GT-I9100
+Android version: 4.1.2
+Baseband version: I9100XXLS8
+Kernel version: 3.0.31-899555 dpi@DELL228 #3 SMP PREEMPT Thu Jan 31 14:48:54 KST 2013
+Build number: JZO54K.I9100XWLSD
+"
+pilot51/voicenotify,closed,VN service disables 'Ok Google' hotword detection,"[Label(name=""bug"")]","When the VN service is enabled on my Nexus 5, Google search 'Ok Google' hotword detection no longer works. 'Hotword detection' is still enabled in the settings, but the search bar mic turns hollow and detection no longer works. Disabling the VN service fixes the issue.
+"
+pilot51/voicenotify,closed,Adopting alternate headset detection method if available,"[Label(name=""enhancement"")]","Now using AudioManager's methods to detect presence of headset if API
+level sufficient - isBluetoothA2dpOn() and isWiredHeadsetOn(). These are marked as
+deprecated in the Android API documents, but is suggested for use by
+Google's own docs (http://developer.android.com/training/managing-audio/audio-output.html).
+
+Manifest modified to add the permission MODIFY_AUDIO_SETTINGS which is
+required for isWiredHeadsetOn() to work properly.
+"
+pilot51/voicenotify,closed,Changing headset detection method,"[Label(name=""change""), Label(name=""enhancement"")]","Now using AudioManager's methods to detect presence of headset -
+isBluetoothA2dpOn() and isWiredHeadsetOn(). These are marked as
+deprecated in the Android API documents, but is suggested for use by
+Google's own docs
+(http://developer.android.com/training/managing-audio/audio-output.html).
+
+Manifest modified to increase the Android version required from 4 to 5,
+and add the permission MODIFY_AUDIO_SETTINGS which is apparently
+required for isWiredHeadsetOn() to work.
+
+I also added a .gitignore for Android.
+"
+pilot51/voicenotify,closed,WeChat - Message contents won't be read,"[Label(name=""enhancement"")]","When receiving a new message in wechat, voicenotify only speaks ""Wechat sent you a message"" without reading the content of the message. However, in the notification arear one can see wechat did display the message content. With more and more people start to use Wechat, I think there are many users like me hope to see this can be fixed in the next version. Thank you all the developers!
+"
+pilot51/voicenotify,closed,Many fixes!,[],"Fix the null pointer exception where mTts is null
+Fix the threading so that speak() is always called in a thread
+Update the deprecated onUtteranceCompletedListener to an UtteranceProgressListener
+Add onCreate method to save the compute time of recreating the mTts object on every batch of messages
+Add a thread-safe queue to properly ensure shake/audio focus handling with multiple asynchronous calls to speak()
+"
+pilot51/voicenotify,open,Hangouts - read only sender's name,"[Label(name=""enhancement"")]","Is it possible to set VN to read only sender's name (without full message body) when receiving SMS through Hangouts or messaging application? If not, please add this enhancement.
+"
+pilot51/voicenotify,closed,fixes Bug with filtered List,[],"there was a bug causes to select the wrong item in the list if the list was filtered. 
+"
+pilot51/voicenotify,closed,Enable Voice Notify to request audio focus when speaking,[],"Hi, I'm a huge fan of Voice Notify, it's one of the main reasons I switched from iOS to Android.  However, a lot of the music I listen to is very loud, so it overpowers the spoken notifications.  Because of this, I added an ability to Voice Notify to allow it to request Audio Focus from the OS.  This means the OS will automatically pause/dim currently playing media while Voice Notify is speaking, and automatically resume playing when it's done.  I've made this behavior an option in the preferences pane, and tested it on my own phone, it works just fine.
+
+Thanks,
+-Scott-
+"
+pilot51/voicenotify,closed,Added support for widget with S4,[],
+pilot51/voicenotify,closed,Widget not available,"[Label(name=""enhancement"")]","vn: 1.0.10.1
+android: 4.2.2
+device: samsung GT-I9295 (S4 Active)
+
+I can't add the widget to the homescreen. Cause the widget is not in the list. Is there another way to add it?
+"
+pilot51/voicenotify,closed,voice over music,"[Label(name=""enhancement"")]","I typically use your software (thanks!)  while walking/biking/in the bus with my headphones. The point is the notifications are not always audible when music is playing.
+I would like the music volume to lower during notifications the same way GPS navigators do.
+Other option: pausing the music, it may be easier to implement.
+"
+pilot51/voicenotify,open,White list,"[Label(name=""enhancement"")]","Opposite of an Ignore filter. If you only want certain messages to be read out loud and not the rest. 
+"
+pilot51/voicenotify,open,Add several rules set,"[Label(name=""enhancement"")]","For when you want it to act differently for different apps/filters.
+(Say you only want to it read certain mails in the middle of the night, but any during the day, or filter certain words for a specific app but not others)
+"
+pilot51/voicenotify,closed,Add Alarm TTS Audio Stream,"[Label(name=""enhancement"")]","Related to issue #3 this might be useful for those of us who want to set it up with a specific app to make a sound regardless if it's in silence mode.
+"
+pilot51/voicenotify,closed,Behaviour of VN on Screen-off state,"[Label(name=""change"")]","I'm experiencing a problem with the screen-off state in Voice Notify settings. I would like to have my notifications read aloud only when my phone's screen is off (or in lock screen). But if I enable only ""screen off"" and not ""screen on"" state, then when say I receive a text message, VN starts reading it, but stops as soon as the screen turns on! So for example, if it was supposed to read out ""Go SMS Pro: New text message received"", it would only read ""Go SM"", simply because the screen turns on right after that.
+
+Is this a problem of my device (Samsung Galaxy S4), or am I not using that particular feature correctly?
+
+If this is the intended behavior on the other hand, would it be possible to add another state for reading notifications only when the screen is off or in lock screen?
+"
+pilot51/voicenotify,closed,NP Service Shown Disable but Still Running ,"[Label(name=""bug""), Label(name=""invalid"")]","Running on 4.0.4.
+
+And when I restart my phone, NP Service can't work.
+Why? 
+"
+pilot51/voicenotify,closed,Some applications speak links etc.,"[Label(name=""bug""), Label(name=""invalid"")]","Some apps for (example ""ZDF Mediathek"") start to behave like Talkback would be activatet (announcing links by voice etc.) Some other apps show notification that are not announced by voicenotify. (for example ""SBB Mobile"")
+Tested on an xperia Z.
+I've only activated VoiceNotify in the accesibility settings,NOT TalkBack.
+"
+pilot51/voicenotify,closed,Fully read Jellybean extended notifications,"[Label(name=""enhancement"")]","Jellybean support long notifications text, it will be great if Voice Notify could read the extended text of this notifications.
+"
+pilot51/voicenotify,closed,notify log empty always.,"[Label(name=""bug"")]","Xperia U stock firware (rooted) v6.1.1.B.1.10.
+
+Problem started after downgrade/upgrade. How to clear all settings or/and how to switch on the voice notifier application log?
+
+Thank you
+
+---
+
+happening:
+
+If off/on voicenotify on accesibility menü: no effect, notification log not received events.
+if off/on enhanced caller id: voice notify working.
+not sure if this is causing. I think.
+"
+pilot51/voicenotify,open,"Add a ""Audio Stream"" to include BT Mono","[Label(name=""enhancement"")]","As an example, look at the playstore app BTMono.  This app is able to take all audio and ship it to BT Mono for playback on mono bluetooth headsets (often found in cars, (like mine)).
+The problem with running BTMono is that its very simple, on all the time, or off.  If in a car it  interfers with regular audio since the car things its always in a phone call.  But if VoiceNotifier turn on BTmono functionality, only on a speech notification, and then turned it off, it would be the ideal situation.
+"
+pilot51/voicenotify,open,Feature? Automatic language detection.,"[Label(name=""enhancement"")]","Please.
+My device an Hungarian T-mobile ST-25i. Some event only Hungarian, some English.
+Like: eCID
+
+Thank you
+"
+pilot51/voicenotify,open,Svox Voice font not started automaticly after reboot,"[Label(name=""bug"")]","Hi.
+After device reboot, not hearing the events. After tapping the voice font application (Svox Victoria), working good.
+"

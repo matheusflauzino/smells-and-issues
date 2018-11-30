@@ -1,0 +1,459 @@
+repository,state,title,label,body
+openintents/shoppinglist,open,Adb backup not working on Oreo,[],"Hi,
+
+Adb backup is not working on Oreo. The created backup file does not contain useful data and is 47 bytes in size. As a quick workaround, I removed the line
+   android:backupAgent=""ShoppingBackupAgent""
+from AndroidManifest.xml.
+This seems to fix the issue: I successfully created a backup and restored it; seems to contain all necessary data. Not sure if anything relevant got left behind in ShoppingBackupAgent.java.
+"
+openintents/shoppinglist,closed,Fix: radio button in left drawer not updating (#49),[],Refresh UI so that radio button is actually toggled when changing shopping mode in left drawer. (Bug visible on Nougat and Oreo)
+openintents/shoppinglist,open,Show item name in delete confirmation dialog,[],"Sorry need to re-open this because the underlying branch was deleted.
+Original text:
+I always found it risky to delete items because the confirmation dialog would not show me which item I was about to delete. This patch makes the item name show in the confirmation dialog box.
+
+"
+openintents/shoppinglist,open,Fix: ensure previous mMode is stored when app is stopped in search mode (#59),[],Fix for issue (#59). See comments in the code. What do you think?
+openintents/shoppinglist,open,Shopping state not preserved when app is stopped during search,[],"How to reproduce: make sure you are using layout ""search bar at top"". Make sure you are in mode ""Shopping"". Now click the (+) Search symbol in top bar. Type something. Now rotate the device. Result: you have exited search, but are now in ""Pick items"" mode. Expected: should return to mode before search, which was ""shopping"".
+
+This occurred to me several times when opening large apps and Android reclaimed memory. After restarting OI Shopping, I then had to switch mode back manually, which is a bit annoying.
+
+Working on a fix.
+
+ "
+openintents/shoppinglist,open,When editing an item name copy and paste only works for the first item,[],"If you go into an item long press the text and copy and then go into a different item and long press the text you don't get the copy and paste menu.
+
+The slightly annoying work-around is to press back to exit - upon restarting copy works again.
+
+I frequently use this to put headers in the notes for the items they relate to, so you don't have to back out again to see what you are editing.
+
+Cheers
+
+Jonny"
+openintents/shoppinglist,open,Sending a list doesn't include the note.,[],"Hi,
+
+I really love the app, I mostly use it to organise a load of todo lists in a sortof kanban style way.
+
+The integration with the notepad is really useful and I've used it heavily in a list I use to keep track of what I've been planting on my allotment (the item names are bed names + what is currently planted and the notes contain the history + observations). 
+
+I've got a lot of really useful information in there that I'd like to at least back up and at some point in the future probably use for my own project to help link it together - so I need to be able to export it.  
+
+Previously I was using the tags to store the information (which do get exported) but that became cumbersome - the editing was fiddly when there was a lot of text and the notepad is much better suited to it.
+
+I'd be happy to have a go at implementing myself if you want to point me in the right direction.
+
+Cheers
+
+Jonny"
+openintents/shoppinglist,closed,Show item name in delete confirmation dialog,[],"I always found it risky to delete items because the confirmation dialog would not show me which item I was about to delete. This patch makes the item name show in the confirmation dialog box.
+
+Update: got some hard to reproduce NullPointer Exceptions on my real device; therefore adding as many checks as possible."
+openintents/shoppinglist,closed,Show item name in delete confirmation dialog 2nd,[],"@friedger: This is probably what you were after.
+
+I always found it risky to delete items because the confirmation dialog would not show me which item I was about to delete. This patch makes the item name show in the confirmation dialog box."
+openintents/shoppinglist,closed,Show item name in delete confirmation dialog 2nd,[],"@friedger: This is probably what you were after.
+
+I always found it risky to delete items because the confirmation dialog would not show me which item I was about to delete. This patch makes the item name show in the confirmation dialog box.
+"
+openintents/shoppinglist,closed,Show item name in delete confirmation dialog,[],I always found it risky to delete items because the confirmation dialog would not show me *which* item I was about to delete. This patch makes the item name show in the confirmation dialog box.
+openintents/shoppinglist,open,Fix issue #50: update title/subtitle when search is dismissed,[],"Fix for issue #50, second attempt"
+openintents/shoppinglist,closed,Fix issue #50: update title/subtitle when search is dismissed,[],Fix for issue #50 
+openintents/shoppinglist,open,Search in action bar leads to inconsistent view mode,[],"Using OI shopping 2.1.3 (commit 9b420290daafacb64b8aba5d3b163d23db7a369f) Search in action bar leads to inconsistent view mode  (shopping vs pick items).
+
+How to reproduce:
+1. Create a shopping list as below:
+![pic 1](https://user-images.githubusercontent.com/9285448/34033794-0c859424-e17c-11e7-87d1-cbf47df238d4.png)
+
+**2. Switch to Shopping mode (important!)**
+3. Tap the (+) in the action bar and type ""A"" into search field
+4. Tap on Aaa
+![pic 2](https://user-images.githubusercontent.com/9285448/34033830-36154406-e17c-11e7-9292-a4aea2bf3e35.png)
+5. In ""Edit item"", tap on Note
+6. Tap Back, tap OK
+7. Tap the (x) next to the search field in action bar twice
+
+Result: list view now shows ""Pick items"" at the top, although it is in Shopping mode. (REMOVED_FROM_LIST items are not shown). See below.
+![pic 4](https://user-images.githubusercontent.com/9285448/34033921-9d6f67e4-e17c-11e7-81d9-5ace51285000.png)
+Also tap the bars menu top left: it shows shopping mode as well, whereas the action bar shows  ""Pick items"" mode.
+
+
+"
+openintents/shoppinglist,open,Radio button does not reflect shopping mode,[],"Using OI shopping 2.1.3 (commit 9b420290daafacb64b8aba5d3b163d23db7a369f) the radio button shown in attached image often does not reflect the mode correctly (shopping vs pick items).
+
+How to reproduce: create a shopping list, click the bars menu top left, click shopping, click pick items, switch between both a couple of times. The list view transitions to selected mode but the radio button does not follow, i.e. stays on the wrong selection, not the one tapped.
+
+This is on Android 7.0 API 24 in emulator. Maybe it is the emulator. I don't have a real device with Android 7.0 to try.
+
+![pic 5](https://user-images.githubusercontent.com/9285448/34033577-1296da2c-e17b-11e7-8de5-baf9642631f6.png)"
+openintents/shoppinglist,open,"CRITICAL: ""Delete List"" deletes the wrong list",[],"""Delete List"" should ALWAYS delete the current list. Instead (if there are items in the list.... maybe this is it, or maybe it's just random), it deleted (in my case) the bottom list. Lost a lot! Then, it did it again, and I lost even more :(
+
+If it can't figure out the current list (due to a bug, etc), it should just report an error rather than deleting anything. I'd rather have it not let me delete a list than to lose stuff.
+
+Also: can anyone help me recover my data, or is it gone forever?"
+openintents/shoppinglist,open,Store pictures together with shopping items,"[Label(name=""enhancement"")]","As suggested by Milan.
+Maybe integrate AR based on that in the future..."
+openintents/shoppinglist,open,Total not updated ,"[Label(name=""bounty"")]",Total is not updated 
+openintents/shoppinglist,open,Remove store does not work ,[],"When I try to remove a store from the set of stores associated with an item, it still appears when that store is selected, even though that store is no longer ticked. 
+
+Also some times no stores are shown ticked for that item. 
+
+This problem has existed for years and is still there with a new phone and later Android and newly downloaded app. It does not seem to matter whether or not I put a price in."
+openintents/shoppinglist,open,Past item list clean up,[],"not sure what you call this list, but the already used items, when they come up, is there a way to multi select and delete so that we can clean up that list of unwanted items, verses having to go one by one, long press, and click remove perm?
+
+and if not... could there be a way to do this?  like maybe an edit previous items list.. or whatever you want to call it. "
+openintents/shoppinglist,open,Locale aware sorting,[],"The alphabetical sorting of the shopping list should be locale aware.
+
+At the moment the app seems to sort the list according to the letter's codepoint or raw byte-value. As a result the German umlauts and ß are sorted after the z. When sorting words in German the letters ä, ö, ü and ß are sorted as if they where a, o, u and ss accordingly. Foreign latin letters with accents etc. are sorted as if they have no accents.
+This makes finding existing entries in the list surprisingly hard, especially if the words begin with an umlaut.
+
+As these rules are specific to the German language and other languages will sort these letters at other positions (Swedish, Finnish) I'll suggest to use some existing locale aware functions to implement this."
+openintents/shoppinglist,closed,"see #41, add layoutchoice dialog",[],"![screenshot_20170503-234303](https://cloud.githubusercontent.com/assets/1449049/25682943/5a568bdc-305a-11e7-90d5-9f3c93452f48.png)
+"
+openintents/shoppinglist,open,Add prominent link to help on UI changes,[],A first time screen with a link to the OI shopping help page.
+openintents/shoppinglist,closed,Broom icon not working ,[],Some users report that they can't use the broom anymore. 
+openintents/shoppinglist,open,List content not fully shown,[],"Items with quantity and price are not fully shown.
+
+Seems like wrap content is not working.
+
+See https://plus.google.com/114518142425505141415/posts/Kp2W2sMNLeD"
+openintents/shoppinglist,closed,Improve UX for Holo Search,[],"This PR 
+- revert holo search default
+- add bold italic style if search matches
+- replace search action with undetermined action
+- minor code improvements
+
+![screenshot_1493235355](https://cloud.githubusercontent.com/assets/1449049/25453191/61d50c9a-2ac8-11e7-892f-0750304faf2d.png)
+"
+openintents/shoppinglist,closed,Not possible to remove tag filter on empty list,[],If all items with a certain tag have been removed then it is not possible to get back to the unfiltered view
+openintents/shoppinglist,closed,Broom icon not visible,[],"On some devices with white action bar theme, the clean/broom icon is not visible"
+openintents/shoppinglist,open,Sync/transfer list to another device with OI shopping list,"[Label(name=""enhancement"")]","I would love there to be a way to transfer a created list to another phone that also has IO shopping list installed on it. 
+
+unless there is a way to do this already?  I know there doesn't seem to be an option in the send list  options. "
+openintents/shoppinglist,closed,squid:S2039 - Member variable visibility should be specified,[],"This pull request is focused on resolving occurrences of Sonar rule squid:S2039 - Member variable visibility should be specified
+
+You can find more information about the issue here: https://dev.eclipse.org/sonar/coding_rules#q=squid:S2039
+
+Please let me know if you have any questions.
+
+M-Ezzat
+"
+openintents/shoppinglist,closed,"squid:S1197 - Array designators should be on the type, not the variable",[],"This pull request is focused on resolving occurrences of Sonar rule squid:S1197 - Array designators ""[]"" should be on the type, not the variable
+
+You can find more information about the issue here: https://dev.eclipse.org/sonar/coding_rules#q=squid:SwitchLastCaseIsDefaultCheck
+
+Please let me know if you have any questions.
+
+M-Ezzat
+"
+openintents/shoppinglist,closed,squid:SwitchLastCaseIsDefaultCheck - switch statements should end wit…,[],"This pull request is focused on resolving occurrences of Sonar rule squid:SwitchLastCaseIsDefaultCheck - ""switch"" statements should end with a ""default"" clause
+
+You can find more information about the issue here: https://dev.eclipse.org/sonar/coding_rules#q=squid:SwitchLastCaseIsDefaultCheck
+
+Please let me know if you have any questions.
+
+M-Ezzat
+"
+openintents/shoppinglist,closed,squid:S3052 - Fields should not be initialized to default values,[],"This pull request is focused on resolving occurrences of Sonar rule squid:S3052 - Fields should not be initialized to default values
+
+You can find more information about the issue here: https://dev.eclipse.org/sonar/coding_rules#q=squid:S3052
+
+Please let me know if you have any questions.
+
+M-Ezzat
+"
+openintents/shoppinglist,closed,squid:S1488 - Local Variables should not be declared and then immedia…,[],"This pull request is focused on resolving occurrences of Sonar rule squid:S1488 - Local Variables should not be declared and then immediately returned or thrown
+
+You can find more information about the issue here: https://dev.eclipse.org/sonar/coding_rules#q=squid:S1488
+
+Please let me know if you have any questions.
+
+M-Ezzat
+"
+openintents/shoppinglist,closed,squid:S2131 - Primitives should not be boxed just for String conversion,[],"This pull request is focused on resolving occurrences of Sonar rule squid:S2131 - Primitives should not be boxed just for ""String"" conversion
+
+You can find more information about the issue here: https://dev.eclipse.org/sonar/coding_rules#q=squid:S2131
+
+Please let me know if you have any questions.
+
+M-Ezzat
+"
+openintents/shoppinglist,open,"Add quality check tools pmd, checkstyle and sonar",[],
+openintents/shoppinglist,open,Maximize screen size while shopping,[],"Add ""full screen"" mode while shopping
+"
+openintents/shoppinglist,open,Selecting theme menu crashes the app,"[Label(name=""bug"")]","When selecting the theme menu the app crashes on devices with many apps installs (TransactionTooLargeException)
+
+```
+  Caused by: android.os.TransactionTooLargeException
+    at android.os.BinderProxy.transactNative(Native Method)
+    at android.os.BinderProxy.transact(Binder.java:496)
+    at android.content.pm.IPackageManager$Stub$Proxy.getInstalledApplications(IPackageManager.java:2814)
+    at android.app.ApplicationPackageManager.getInstalledApplications(ApplicationPackageManager.java:530)
+    at org.openintents.shopping.theme.ThemeUtils.getThemePackages(ThemeUtils.java:66) 
+    at org.openintents.shopping.theme.ThemeUtils.getThemeInfos(ThemeUtils.java:157) 
+    at org.openintents.shopping.ui.dialog.ThemeDialog.fillThemes(ThemeDialog.java:132) 
+```
+"
+openintents/shoppinglist,closed,OI Shopping List/Convert CSV for Windows Phone development,[],"I have been using an Android 2.2 phone for a while.  But more recently, I have been using a Windows 8.1 phone.
+
+The app I most use is the Android based OI Shopping List.  After a lot of searching around for alternative shopping list apps for the Windows phone, it transpired that the most appropriate shopping list app for my Windows phone was OI Shopping List: https://www.microsoft.com/en-gb/store/apps/oi-shopping-list/9nblggh0jq9z
+
+However, there is one bit of ""functionality"" that allowed me to integrate data to OI Shopping List on my Android to my desktop PC: OI Convert CSV.  Its HandyShopper format is particularly 'data rich', which allows data such as shops and shop prices to be imported.  In contrast, the Windows phone version only imports/exports just a bare check list of items either to the One/SkyDrive or via e-mail.
+
+I've been trying to find the repository that is most appropriate for the Windows Phone version of OI Shopping List.  However, I can't find it.  In particular, I can't find a repository for what could be the Windows Phone version of OI Convert CSV.  Does a repository exist for this even?
+
+So if somebody could point me in the right direction for this, it would be appreciated.  Also, pointers to information on how to develop the Windows Phone version of OI Shopping List would be appreciated, especially using a Linux PC!
+
+(Apologies if this is an inappropriate place to put this message.  If I have submitted this request for information in the wrong place, please show me where I should be posting such a query.)
+"
+openintents/shoppinglist,closed,Sorting list by a certain tag only causes app to crash permanently,[],"Hi, I have 2 lists in OI Shopping List app.  The Grocery one has Tags set up for stores.  If I select to display a filtered list by a specific tag (like Costco, or Trader Joe's), it crashes the app.  Permanently.  I can't get it to come back up (""Unfortunately OI Shopping List has stopped""), even if I restart the phone, clear the cache, etc.  My only way back is to uninstall the app, restart the phone, reinstall the app, and import the backup of my lists.  This problem happened several times on my Motorola Droid Razr Maxx HD, and now it is also doing it on my Samsung Galaxy Note 4.  I would go to another app, but this one (when it works) is practically perfect.  I have it working again, and thought maybe if I add Stores under the Stores button instead of under Tags, I could sort it that way.  But I can't find a way to enter a store.  If I click on Stores, it says ""There are no stores set for this list"".  But no method to add stores for a list is provided.  Even when you add or edit a list item, there is no field to add a Store list (which is why I tag the stores instead).  At least I can sort the entire list by Tags, then alphabetical, so it groups them, more or less.  I sure wish someone would come up with a fix for this!  Suggestions?
+"
+openintents/shoppinglist,closed,"Fixed filtering by ', %, _",[],"Fixes #18.
+"
+openintents/shoppinglist,open,Feature Request: Automatically set starting number as quantity,"[Label(name=""enhancement"")]","If I type ""4 tissues,"" it would be nice if the app could understand that I wanted ""tissues"" 4 times, not ""4 tissues"" onces.  Of course there could be instances where someone would not want to set a quantity by doing this, so it should probably be a setting.
+"
+openintents/shoppinglist,closed,Hard to read Add button  in default theme,[],"Hi,
+Just upgraded my phone to Samsung S5 and found that the button at the bottom right corner of the screen has a background color that is too close in contrast to the text on the button. I saw white on white, yellow on pale grey and yellow on white.  Very difficult to read it.  Could someone have a look and tell me where to fix it?  I tried to find the style sheet for it but couldn't even find the app folder on this new phone.  
+
+All of the themes fail in the same manner except for the classic theme.   
+"
+openintents/shoppinglist,open,Long-press shows edit item dialog on top of context menu,[],"After the user long-presses a shopping list item, we show the context menu... but then the edit item dialog appears above it. To get to the menu item the user wanted, first s/he has to dismiss the edit item dialog. 
+"
+openintents/shoppinglist,closed,Delete,[],"Delete
+"
+openintents/shoppinglist,closed,Persistent crash due to unescaped tag filter,[],"In 1.8 (10045), if you create an item with a single quote in the tags, for example ""John's Room"", it will appear in the filter-by-tag menu, but when you try and filter by that tag name it crashes, and then crashes on start up from then on making it impossible to get back into the app. I haven't yet figured out where the default tag filter is stored to work around it in order to get back into the app.
+
+In 1.8, no attempt appeared to be made to escape the tag name, resulting in a query like this:
+
+``` sql
+... AND item_tags like '%John's room%' ...
+```
+
+and the error ""android.database.sqlite.SQLiteException: near ""s"": syntax error (code 1)""
+
+The problem appears to now be in ShoppingList/src/main/java/org/openintents/shopping/provider/ShoppingProvider.java in ShoppingProvider.query():
+
+``` java
+                String tagFilter = getListTagsFilter(selectionArgs[0]);
+                if (!inSearchMode && !TextUtils.isEmpty(tagFilter)) {
+                    qb.appendWhere("" AND items.tags like '%"" + tagFilter + ""%'"");
+                }
+```
+
+As far as I can tell it still makes no attempt to escape it, nor or in getListTagsFilter().
+"
+openintents/shoppinglist,closed,Dependencies,[],"This introduces optional dependencies for different build types, there is now one for Google Play with internet permission and one without.
+
+It also contains some simplifications for the mega class ShoppingActivity
+"
+openintents/shoppinglist,closed,Invisible text in autocomplete list,[],"1. I had `Milk` in previous buys.
+2. I type `Mi` 
+
+Expected: Popup is shown with available items and I can read text of popup.
+
+Actual: Popup is shown with available items, but text color is same of background, so I cannot read text and choose right item.
+
+Value: 
+There are many items which start same typing but continue different. E.g. food starting on `M` and `Milk` and `Milk for baby`. Having autocomplete is useful.
+
+Notes: I tried all themes from settings, issue in all of them.
+
+Device:
+
+Issue on Android 5.0 Samsung Galaxy S5.  Seems 4.4 version  worked fine on this device.
+
+APK installed is latest from Google Play.
+"
+openintents/shoppinglist,closed,Add donate button,[],"I searched Donate button on site OI sites. Not found any. I like this app. What to like with some tip.
+"
+openintents/shoppinglist,closed,Add OI shopping list into f-droid,[],"Also, I'd like you app to be on f-droid https://f-droid.org/forums/topic/oi-shopping-list/#post-14208 . Wanted to suggest to put it here. 
+I do not know why other people like f-droid, but I do most search of apps on f-droid before doing any search on Google Play. 
+"
+openintents/shoppinglist,closed,Wear,[],
+openintents/shoppinglist,closed,"Doesn't run on Froyo -- fix, or change minSdkVersion",[],"In ActionableToastBar.java, which I borrowed from KitKat email app source IIRC, I added the following to temporarily bypass a lint error:
+
+```
+@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH) /* TODO */
+```
+
+It fixes the build time error but doesn't help at runtime, obviously. We should either code around the missing APIs, or change minSdkVersion to ICS.
+
+06-16 09:12:55.645      324-324/org.openintents.shopping E/AndroidRuntime﹕ FATAL EXCEPTION: main
+    java.lang.RuntimeException: Unable to start activity ComponentInfo{org.openintents.shopping/org.openintents.shopping.ShoppingActivity}: android.view.InflateException: Binary XML file line #141: Error inflating class org.openintents.shopping.ui.widget.ActionableToastBar
+            at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2663)
+            at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2679)
+            at android.app.ActivityThread.access$2300(ActivityThread.java:125)
+            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2033)
+            at android.os.Handler.dispatchMessage(Handler.java:99)
+            at android.os.Looper.loop(Looper.java:123)
+            at android.app.ActivityThread.main(ActivityThread.java:4627)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:521)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:868)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:626)
+            at dalvik.system.NativeStart.main(Native Method)
+     Caused by: android.view.InflateException: Binary XML file line #141: Error inflating class org.openintents.shopping.ui.widget.ActionableToastBar
+            at android.view.LayoutInflater.createView(LayoutInflater.java:513)
+            at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:565)
+            at android.view.LayoutInflater.rInflate(LayoutInflater.java:618)
+            at android.view.LayoutInflater.rInflate(LayoutInflater.java:621)
+            at android.view.LayoutInflater.inflate(LayoutInflater.java:407)
+            at android.view.LayoutInflater.inflate(LayoutInflater.java:320)
+            at android.view.LayoutInflater.inflate(LayoutInflater.java:276)
+            at android.support.v7.app.ActionBarActivityDelegateBase.setContentView(ActionBarActivityDelegateBase.java:128)
+            at android.support.v7.app.ActionBarActivity.setContentView(ActionBarActivity.java:76)
+            at org.openintents.shopping.ui.ShoppingActivity.onCreate(ShoppingActivity.java:491)
+            at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1047)
+            at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2627)
+            at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2679)
+            at android.app.ActivityThread.access$2300(ActivityThread.java:125)
+            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2033)
+            at android.os.Handler.dispatchMessage(Handler.java:99)
+            at android.os.Looper.loop(Looper.java:123)
+            at android.app.ActivityThread.main(ActivityThread.java:4627)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:521)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:868)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:626)
+            at dalvik.system.NativeStart.main(Native Method)
+     Caused by: java.lang.reflect.InvocationTargetException
+            at org.openintents.shopping.ui.widget.ActionableToastBar.<init>(ActionableToastBar.java:80)
+            at java.lang.reflect.Constructor.constructNative(Native Method)
+            at java.lang.reflect.Constructor.newInstance(Constructor.java:446)
+            at android.view.LayoutInflater.createView(LayoutInflater.java:500)
+            at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:565)
+            at android.view.LayoutInflater.rInflate(LayoutInflater.java:618)
+            at android.view.LayoutInflater.rInflate(LayoutInflater.java:621)
+            at android.view.LayoutInflater.inflate(LayoutInflater.java:407)
+            at android.view.LayoutInflater.inflate(LayoutInflater.java:320)
+            at android.view.LayoutInflater.inflate(LayoutInflater.java:276)
+            at android.support.v7.app.ActionBarActivityDelegateBase.setContentView(ActionBarActivityDelegateBase.java:128)
+            at android.support.v7.app.ActionBarActivity.setContentView(ActionBarActivity.java:76)
+            at org.openintents.shopping.ui.ShoppingActivity.onCreate(ShoppingActivity.java:491)
+            at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1047)
+            at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2627)
+            at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2679)
+            at android.app.ActivityThread.access$2300(ActivityThread.java:125)
+            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2033)
+            at android.os.Handler.dispatchMessage(Handler.java:99)
+            at android.os.Looper.loop(Looper.java:123)
+            at android.app.ActivityThread.main(ActivityThread.java:4627)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:521)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:868)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:626)
+            at dalvik.system.NativeStart.main(Native Method)
+     Caused by: java.lang.NoSuchMethodError: android.widget.LinearLayout.<init>
+            at org.openintents.shopping.ui.widget.ActionableToastBar.<init>(ActionableToastBar.java:84)
+            at org.openintents.shopping.ui.widget.ActionableToastBar.<init>(ActionableToastBar.java:80)
+            at java.lang.reflect.Constructor.constructNative(Native Method)
+            at java.lang.reflect.Constructor.newInstance(Constructor.java:446)
+            at android.view.LayoutInflater.createView(LayoutInflater.java:500)
+            at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:565)
+            at android.view.LayoutInflater.rInflate(LayoutInflater.java:618)
+            at android.view.LayoutInflater.rInflate(LayoutInflater.java:621)
+            at android.view.LayoutInflater.inflate(LayoutInflater.java:407)
+            at android.view.LayoutInflater.inflate(LayoutInflater.java:320)
+            at android.view.LayoutInflater.inflate(LayoutInflater.java:276)
+            at android.support.v7.app.ActionBarActivityDelegateBase.setContentView(ActionBarActivityDelegateBase.java:128)
+            at android.support.v7.app.ActionBarActivity.setContentView(ActionBarActivity.java:76)
+            at org.openintents.shopping.ui.ShoppingActivity.onCreate(ShoppingActivity.java:491)
+            at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1047)
+            at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2627)
+            at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2679)
+            at android.app.ActivityThread.access$2300(ActivityThread.java:125)
+            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2033)
+            at android.os.Handler.dispatchMessage(Handler.java:99)
+            at android.os.Looper.loop(Looper.java:123)
+            at android.app.ActivityThread.main(ActivityThread.java:4627)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:521)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:868)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:626)
+            at dalvik.system.NativeStart.main(Native Method)
+"
+openintents/shoppinglist,closed,List in widget,[],"This comes in place of my previous pull request (https://github.com/openintents/shoppinglist/pull/9), which can be closed (sorry, I couldn't figure out how to do that).
+
+Compared to the previous pull request I removed the 'clean list' button from the widget, and also refactored it, so that I now use Build.VERSION instead of the bools.xml.  I wrote in that previous pull-request that the android 2 version seemed broken (the next/prev buttons didn't work), but I think that problem was actually caused by something I did, for in this version they do work.
+
+What is changed in this branch is:
+- Check an item in the widget doesn't make it disappear immediately, but grays it out (this gives better feedback as to what happenend, and gives the possibility of an undo)
+- For android honeycomb or higher, the widget now uses a ListView.  This looks better (in my opinion), especially if multi-line items are used, and makes the next/prev buttons unnecessary.
+- Some small changes to the layout of the widget: the buttons are aligned to the top now, the default size is smaller, so that it can also be displayed on (very) small phones.
+"
+openintents/shoppinglist,closed,Always add received text as 'new' items,[],"Text that is received from another app will now always be added
+as new 'want_to_buy' items in the shoppinglist.  That seems to me
+to be the most logical expectation from sharing text with a shopping list
+app.
+
+This fixes the following problem:
+If I mark some of the items but not others, and then ""clean list"",
+and then share the same note again, the items seem to come back as
+checked instead of unchecked. That seems like it would be a problem
+for workflows involving a cookbook app.
+"
+openintents/shoppinglist,closed,Use ListView in widget (only enabled for android honeycomb or higher),[],"I thought it would be nice to have a listview in the widget.  It saves space (the buttons are not necessary anymore) and also multi-line items are displayed better.
+Unfortunately it is only supported for android honeycomb or higher, so I kept the old widget for older versions.
+
+The first commit in this pull request also adds some other functionality in the widget, see git-comments there
+"
+openintents/shoppinglist,closed,Support receiving shared plain text,[],"This will parse the shared text, and add an item for each line
+in that text.
+
+This works very well with (for example) the shopping-list feature
+of the MyCookbook app.
+I think this also fixes the feature request found here:
+http://openintents.uservoice.com/forums/86421-general/suggestions/1294309-oi-shopping-list-sms-email-copypaste-import-expor
+"
+openintents/shoppinglist,closed,Always call fillItems,[],"The fillItems has as side-effect that mListId is set in the 
+ShoppingItemsViewer.
+This field must be set to the correct list, otherwise the database
+record of 'contains' will not get the correct list-id field.
+
+The test TestShoppingActivity#testIntentAddItemsFromArrayList 
+failed before this commit, and now passes.
+"
+openintents/shoppinglist,closed,G+ integration breaks toggle items,[],"06-15 11:09:52.271: E/AndroidRuntime(29870): java.lang.IllegalStateException: Must either enable sockets OR specify a message listener
+06-15 11:09:52.271: E/AndroidRuntime(29870):    at org.openintents.shopping.ui.widget.ShoppingItemsView.toggleItemBought(ShoppingItemsView.java:1181)
+"
+openintents/shoppinglist,closed,Option for confirm sweep prompt when you hit the button,[],
+openintents/shoppinglist,closed,prevents empty string to be added as a list or list item,[],"The changes in ShoppingActivity. java can be seen clearly, and a .trim() has been added at different variables.
+
+In EditItmeDialog.java I have only made one change, added a condition 
+if(!text.equalsIgnoreCase(""""))
+befor line no. 384 in the old file. What this does is that if a user while editting an item edits fields but makes the item name an empty string( which should not be possible), all changes are made but the itme name reamins as it was earlier.
+"
+openintents/shoppinglist,open,Default settings for new items,"[Label(name=""enhancement"")]","A user wrote to support@openintents.org:
+
+> I'd like to have default settings for new items.  For every item I add I have to do the following afterward (1) long-press on the item, (2) select Stores..., (3) check an item and (4) press OK, then (5) select the item, (6) select the Quantity field, (7) enter #, (8) select Tags, (9) enter text, (10) press OK.  I would love it if I could choose a default store, quantity and tag for all new items.  Over 99% of all new items I add will be Store=Grocery and Quantity=1.  About half of those will be Tag=Grocery.  I can change the Tag if it's not Grocery.
+"
+openintents/shoppinglist,closed,Crash creating a new list,[],"Reproducible for the user who provided this logcat, but so far not for me. User says it matters what the list name is... he used ""Ikea"" in this case.
+
+```E/AndroidRuntime(16690): FATAL EXCEPTION: main
+E/AndroidRuntime(16690): android.database.CursorIndexOutOfBoundsException: Index 4 requested, with a size of 4
+E/AndroidRuntime(16690):    at android.database.AbstractCursor.checkPosition(AbstractCursor.java:400)
+E/AndroidRuntime(16690):    at android.database.AbstractWindowedCursor.checkPosition(AbstractWindowedCursor.java:136)
+E/AndroidRuntime(16690):    at android.database.AbstractWindowedCursor.getString(AbstractWindowedCursor.java:50)
+E/AndroidRuntime(16690):    at android.database.CursorWrapper.getString(CursorWrapper.java:114)
+E/AndroidRuntime(16690):    at org.openintents.shopping.ui.ShoppingActivity.loadListTheme(ShoppingActivity.java:2445)
+E/AndroidRuntime(16690):    at org.openintents.shopping.ui.ShoppingActivity.createNewList(ShoppingActivity.java:2002)
+E/AndroidRuntime(16690):    at org.openintents.shopping.ui.ShoppingActivity.access$1500(ShoppingActivity.java:130)
+E/AndroidRuntime(16690):    at org.openintents.shopping.ui.ShoppingActivity$21.onAction(ShoppingActivity.java:2489)
+E/AndroidRuntime(16690):    at org.openintents.shopping.ui.dialog.RenameListDialog.pressOk(RenameListDialog.java:77)
+E/AndroidRuntime(16690):    at org.openintents.shopping.ui.dialog.RenameListDialog.onClick(RenameListDialog.java:70)
+E/AndroidRuntime(16690):    at com.android.internal.app.AlertController$ButtonHandler.handleMessage(AlertController.java:168)
+E/AndroidRuntime(16690):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime(16690):    at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime(16690):    at android.app.ActivityThread.main(ActivityThread.java:4517)
+E/AndroidRuntime(16690):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(16690):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime(16690):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:993)
+E/AndroidRuntime(16690):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:760)
+E/AndroidRuntime(16690):    at dalvik.system.NativeStart.main(Native Method)
+W/ActivityManager( 2112):   Force finishing activity org.openintents.shopping/.ShoppingActivity
+
+```
+```
+"
+openintents/shoppinglist,closed,Wrong create command for items table,[],"There is an error in the SQL command to create the items table:
+
+After ""note VARCHAR"" there is a comma missing, this line should be ""note VARCHAR,""
+"

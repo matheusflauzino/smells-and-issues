@@ -1,0 +1,2625 @@
+repository,state,title,label,body
+AnimaSA/Atarashii,closed,Updated Russian translation,[],
+AnimaSA/Atarashii,open,More search filtering,"[Label(name=""Feature Request""), Label(name=""enhancement"")]","Can you add filters to the Browse page to search by contributor, and by type?
+
+Contributor: I'd like to be able to search for anime by publisher/studio (ghilbi, NHK, etc) and for mangas by a certain author. Ideally this information should also be displayed in the main page of the detail view as well (#494).
+
+Type: It should be possible to further narrow down searches beyond manga/anime to OVA/TV/Movie/etc fir anime and Manga/Manwha/Novel/etc for print.
+
+Also, the publishing status should either have a n/a entry (search regardless of publication status) or the ability to select more than one option from it. I keep going through search results lately, and not finding anything because the publication status is set incorrectly."
+AnimaSA/Atarashii,open,More metadata on mangas,[],"Can you add the list of contributors, publications, and publication dates to the manga listing? The Background section doesn't usually have much important information in it, but it might be nice to see that as well.
+
+Also, it would be nice if the genre and other information were links, like they are on the website. (related to #495)"
+AnimaSA/Atarashii,open,Automatic profile update instead of timer?,[],"Would it be possible to automatically check and see if an update is needed by checking the content for `My Profile` > `History` on load and comparing the most recent update to the last sync time? I'm curious also as to whether or not this could be used to reduce sync time.
+
+Also, there's a typo in the [privacy policy](http://www.atarashiiapp.com/privacy-policy), *The API endpoint from which __your__ are calling*."
+AnimaSA/Atarashii,closed,Tags not supported,"[Label(name=""bug"")]","Tags appear in interface but aren't supported.
+How to reproduce:
+Select anime with tags, go to personal, tags is empty.
+or
+Select anime, go to personal, add tags, return, reselect same anime, tags is empty.
+"
+AnimaSA/Atarashii,closed,Open links in app ,[],"So let's say you click on a manga or anime suggestion on a reddit app, instead of it opening in the browser, is it possible to have all http://myanimelist.net/* links open in the app?
+
+If one makes it their default, of course. 
+
+(By the way, thanks so much for providing a Floss flavor!)
+"
+AnimaSA/Atarashii,closed,Opening and ending songs,"[Label(name=""Feature Request"")]","It would be nice to add this in the app.
+Once you press on it you will go to google or YouTube where you can listen it :)
+"
+AnimaSA/Atarashii,closed,YouTube & external links support,"[Label(name=""Feature Request"")]","We should add support for external links and for YouTube previews in the detail page.
+"
+AnimaSA/Atarashii,closed,[MAL] Display Anime/Manga tabs only if user has both lists.,"[Label(name=""enhancement"")]","BRIEF:
+I guess there are people who track only one type of content(for example, I do not use mangalist on MAL at all). Now on the main page I always see tabs for switching between anime and manga lists. As far as I do not have manga list, these tabs are useless and the only thing they do is consume space.
+
+STEPS_TO_REPRODUCE:
+1. Open app.
+2. Login using MAL account which has only one list.
+
+ACTUAL_RESULT:
+There is a useless switcher between two lists.
+
+EXPECTED_RESULT:
+Screen space is not used for displaying stuff which is definitely useless.
+
+![screenshot_2016-08-21-00-22-46_net somethingdreadful mal](https://cloud.githubusercontent.com/assets/15061472/17834269/ecae0d22-6740-11e6-8afe-85cb1e009a56.jpg)
+"
+AnimaSA/Atarashii,closed,Settings: Auto-synchronisation misunderstanding,[],"BRIEF:
+There are two ""Auto-synchronisation"" options in Settings. The difference between them is unclear(I guess the second option means something like ""Sync before backup"", but I'm not sure).
+
+STEPS_TO_REPRODUCE:
+1. Open app.
+2. Login (MAL).
+3. Open settings.
+4. Look at ""Sync"" and ""Backup"" sections.
+![screenshot_2016-08-18-18-24-28_net somethingdreadful mal](https://cloud.githubusercontent.com/assets/15061472/17781402/dc4a256c-6577-11e6-898b-ed0dabdbe523.jpg)
+"
+AnimaSA/Atarashii,closed,Cover image don't load when large version isn't available,[],"[GenericRecord.java](https://github.com/AnimeNeko/Atarashii/blob/05aa063a36259df4d2622e7c3f6c1377069fe60f/Atarashii/src/net/somethingdreadful/MAL/api/MALModels/AnimeManga/GenericRecord.java#L193) always rewrites cover image URL to user large versions. Sometimes (≈ 2% of my list) a large version isn't available, like with [Azumanga Daioh](http://myanimelist.net/anime/66/Azumanga_Daioh/pics), [Bokurano](http://myanimelist.net/anime/1690/Bokurano/pics), [Hidamari Sketch](http://myanimelist.net/anime/1852/Hidamari_Sketch/pics) and [Sailor Moon](http://myanimelist.net/anime/530/Bishoujo_Senshi_Sailor_Moon/pics). When it happens cover_error.png is shown, instead of fallbacking to the normal, non-large, version.
+"
+AnimaSA/Atarashii,closed,Removed records are saved in the DB,"[Label(name=""bug"")]","Some removed records are still in the DB because we only make the remove record to the API
+"
+AnimaSA/Atarashii,closed,"Crash on Settings Scroll when language is ""Portuguese Portugal""","[Label(name=""bug"")]","Hi!
+
+I've found that the app crashes while scrolling in the settings app after the Auto Sync option (Auto Sincronização, in portuguese).
+
+It happens both in the Beta and regular android app.
+
+I'm using Android 5.0.2 / MIUI 7.
+
+Here's the error report:
+
+> java.lang.ArrayIndexOutOfBoundsException: length=7; index=11
+> at android.preference.ListPreference.getEntry(ListPreference.java:219)
+> at android.preference.ListPreference.getSummary(ListPreference.java:164)
+> at android.preference.Preference.onBindView(Preference.java:565)
+> at android.preference.Preference.getView(Preference.java:504)
+> at android.preference.PreferenceGroupAdapter.getView(PreferenceGroupAdapter.java:256)
+> at android.widget.AbsListView.obtainView(AbsListView.java:2464)
+> at android.widget.ListView.makeAndAddView(ListView.java:1894)
+> at android.widget.ListView.fillDown(ListView.java:710)
+> at android.widget.ListView.fillGap(ListView.java:674)
+> at android.widget.AbsListView.trackMotionScroll(AbsListView.java:5509)
+> at android.widget.AbsListView$FlingRunnable.run(AbsListView.java:5004)
+> at android.view.Choreographer$CallbackRecord.run(Choreographer.java:800)
+> at android.view.Choreographer.doCallbacks(Choreographer.java:603)
+> at android.view.Choreographer.doFrame(Choreographer.java:571)
+> at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:786)
+> at android.os.Handler.handleCallback(Handler.java:815)
+> at android.os.Handler.dispatchMessage(Handler.java:104)
+> at android.os.Looper.loop(Looper.java:194)
+> at android.app.ActivityThread.main(ActivityThread.java:5549)
+> at java.lang.reflect.Method.invoke(Native Method)
+> at java.lang.reflect.Method.invoke(Method.java:372)
+> at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:964)
+> at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:759)
+"
+AnimaSA/Atarashii,closed,Minor problem with weird build numbers,"[Label(name=""Won't Fix""), Label(name=""invalid"")]","I have a custom rom in my phone and atarashii doesn't like my build version ""◄║JellySNAP ROM|Ξ|JSRAK47|Ξ|v7.0║►"". I could change my build name for the time being but it could be good if you filter some of the characters out that cause problems like this character ◄. Here's the line that was causing problems from MALApi.java.
+`private static final String USER_AGENT = ""Atarashii! (Linux; Android "" + Build.VERSION.RELEASE + ""; "" + Build.MODEL + "" Build/"" + Build.DISPLAY + "") "" + okUa;`
+"
+AnimaSA/Atarashii,closed,Update version for 2.2.3,[],"Update version for 2.2.3
+"
+AnimaSA/Atarashii,closed,Fixes for 2.2.3,[],"Fix language crash on startup
+Fix anilist details overwrite
+Fix anilist offline mode crash
+Fix offline records not updating
+Fix records (offline) not writing to database
+Fix crash when the app started fast
+Remove transparant drawable which made the grid slower
+"
+AnimaSA/Atarashii,closed,Update Forum for AL support,[],"Update Forum for AL support
+"
+AnimaSA/Atarashii,closed,Update Forums & support navigationdrawer,[],"Update Forums & support navigationdrawer
+"
+AnimaSA/Atarashii,closed,Side menu lag and performance issues,"[Label(name=""enhancement"")]","- Replace navigationdrawer with the support library
+- Run overdraw and fix issues
+  souces: http://developer.android.com/tools/performance/index.html
+
+Freshdesk issue [24](https://atarashii.freshdesk.com/helpdesk/tickets/24)
+"
+AnimaSA/Atarashii,closed,Display broadcast on in anime detailview,"[Label(name=""Feature Request""), Label(name=""enhancement"")]","- Display broadcast information in the detailview
+  **\- Add schedue in Atarashii**
+
+Freshdesk issue [26](https://atarashii.freshdesk.com/helpdesk/tickets/26)
+"
+AnimaSA/Atarashii,closed,"Revert ""Change helper intit in Theme to check each time the context""",[],"This reverts commit 70f26c3ac0af3080fb2d63d358962541453ebfdf.
+
+There were many issues after orientation and backgound loading
+"
+AnimaSA/Atarashii,closed,manga list not sorting,[],"the mangalist is not sorting in the databasemanager
+"
+AnimaSA/Atarashii,closed,Fix race condition crash on profiles & minor fixes,[],"Fix race condition crash on profiles & minor fixes
+"
+AnimaSA/Atarashii,closed,Fix wrong friendlist & add support android 2.0,[],"Fix wrong friendlist & add support android 2.0
+"
+AnimaSA/Atarashii,closed,Force one instance just like in the past to fix the DB locked issue,[],"Force one instance just like in the past to fix the DB locked issue
+"
+AnimaSA/Atarashii,closed,Fix database problems,[],"Fix database problems
+"
+AnimaSA/Atarashii,closed,Add alternative title support for AL & MAL,[],"Add alternative title support for AL & MAL
+"
+AnimaSA/Atarashii,closed,Add other title support again,"[Label(name=""enhancement"")]","Due the DB changes I apparently forgot to add the DB support for it...
+"
+AnimaSA/Atarashii,closed,Fix database not updating records (AniList),[],"Fix database not updating records (AniList)
+"
+AnimaSA/Atarashii,closed,Fix AniList profile crashes,[],"Fix AniList profile crashes
+Fixes #466
+"
+AnimaSA/Atarashii,closed,AniList profile crash,"[Label(name=""AniList""), Label(name=""bug"")]","The aniList profile keeps crashing due the followers.
+                switch (post.getActivityType()) {
+in line 199 in HTMLutil is emtpy
+"
+AnimaSA/Atarashii,closed,Fix upgrade from old versions & wrong username in history,[],"Fix upgrade from old versions & wrong username in history
+"
+AnimaSA/Atarashii,closed,"Fix widget sql, backup restore sync & snackbar nullpointer exception",[],"Fix widget sql, backup restore sync & snackbar nullpointer exception
+"
+AnimaSA/Atarashii,closed,Fix tabs acting small on big devices,[],"Fix tabs acting small on big devices
+"
+AnimaSA/Atarashii,closed,Force older version for support design due some weird tab behaviour,[],"Force older version for support design due some weird tab behaviour
+"
+AnimaSA/Atarashii,closed,Update Libraries (sdk 23),[],"Update Libraries
+"
+AnimaSA/Atarashii,closed,Set version name as header text in the about screen,[],"Set version name as header text in the about screen
+"
+AnimaSA/Atarashii,closed,Fix indents & close database more often,[],"Fix indents & close database more often
+"
+AnimaSA/Atarashii,closed,Change personal details by default to update faster,[],"Change personal details by default to update faster
+"
+AnimaSA/Atarashii,closed,Add MobiHelp support,[],"Add MobiHelp support
+"
+AnimaSA/Atarashii,closed,"Retrofit, apache & support library",[],"The support design library has been updated. The current library is using a new rev number which means that the compile sdk version also needs to be updated.
+
+if the compile version gets an update the old apache library won't be able to get compiled anymore. Retrofit was using it for making requests.if we update retrofit we must use another library which supports this. 
+
+when we upgrade to the newest version I do not how to get the response codes.
+
+I am taking about retrofit 2
+"
+AnimaSA/Atarashii,closed,Update Libraries,[],"Update Libraries
+"
+AnimaSA/Atarashii,closed,Fix random serializable crash (AL),[],"Fix random serializable crash
+"
+AnimaSA/Atarashii,closed,Fix AniList bugs and crashes,[],"Fix AniList bugs and crashes
+"
+AnimaSA/Atarashii,closed,Fix storage value bug which didn't let the users display info,[],"Fix storage value bug which didn't let the users display info
+"
+AnimaSA/Atarashii,closed,Fix history crash caused by missing values,[],"Fix history crash caused by missing values
+"
+AnimaSA/Atarashii,closed,Fix reviews caused by incompatible field names,[],"Fix reviews caused by incompatible field names
+"
+AnimaSA/Atarashii,closed,Fix Log & update design library,[],"Fix Log & update design library
+"
+AnimaSA/Atarashii,closed,Rewrite Database & support base models (2.2),[],"Rewrite Database & support base models.
+See the commits for more info
+"
+AnimaSA/Atarashii,closed,Advance search,"[Label(name=""enhancement"")]","I thought it could really help to find new things if I could you it.
+Added a print screen of MAL:
+![MAL Advance Search Window](https://cloud.githubusercontent.com/assets/8795860/10559336/395bab4e-74f7-11e5-98d8-6fc0c073f5db.png)
+
+I thing it required to pass arguments to the search url so we need to understands the parameters.
+"
+AnimaSA/Atarashii,open,Larger Cache for Images,"[Label(name=""enhancement"")]","See about configuring Picasso to use a larger disk cache, and possibly prioritize storing the list images in cache above other items.
+"
+AnimaSA/Atarashii,closed,Overlap of Title and Close link in Forum Comment Dialog,"[Label(name=""bug"")]","The ""Add Comment"" title on the overlay dialog for adding a comment on a forum topic is overlapping the ""X"" to close the overlay, making it impossible to tap. See screenshots.
+
+Perhaps we should use native Cancel/OK controls for this rather than a custom item in the dialog?
+
+![screenshot_2015-09-28-15-33-12](https://cloud.githubusercontent.com/assets/1612403/10184514/2cc6160c-66f2-11e5-9331-75d6b604f911.png)
+
+![screenshot_2015-09-28-15-32-56](https://cloud.githubusercontent.com/assets/1612403/10184513/2cc51acc-66f2-11e5-9f78-f666554265cd.png)
+"
+AnimaSA/Atarashii,closed,Crash in Airing Title Detail,"[Label(name=""AniList""), Label(name=""invalid"")]","Using AniList as provider, you can get the application to crash by going to the ""Airing"" section, then tapping on a title. Crash log follows:
+
+```
+E/AndroidRuntime(15701): FATAL EXCEPTION: main
+E/AndroidRuntime(15701): Process: net.somethingdreadful.MAL, PID: 15701
+E/AndroidRuntime(15701): java.lang.RuntimeException: Parcelable encountered IOException writing serializable object (name = net.somethingdreadful.MAL.api.response.Anime)
+E/AndroidRuntime(15701):    at android.os.Parcel.writeSerializable(Parcel.java:1394)
+E/AndroidRuntime(15701):    at android.os.Parcel.writeValue(Parcel.java:1341)
+E/AndroidRuntime(15701):    at android.os.Parcel.writeList(Parcel.java:717)
+E/AndroidRuntime(15701):    at android.os.Parcel.writeValue(Parcel.java:1290)
+E/AndroidRuntime(15701):    at android.os.Parcel.writeArrayMapInternal(Parcel.java:644)
+E/AndroidRuntime(15701):    at android.os.BaseBundle.writeToParcelInner(BaseBundle.java:1313)
+E/AndroidRuntime(15701):    at android.os.Bundle.writeToParcel(Bundle.java:1034)
+E/AndroidRuntime(15701):    at android.os.Parcel.writeBundle(Parcel.java:669)
+E/AndroidRuntime(15701):    at android.app.FragmentState.writeToParcel(Fragment.java:139)
+E/AndroidRuntime(15701):    at android.os.Parcel.writeTypedArray(Parcel.java:1197)
+E/AndroidRuntime(15701):    at android.app.FragmentManagerState.writeToParcel(FragmentManager.java:376)
+E/AndroidRuntime(15701):    at android.os.Parcel.writeParcelable(Parcel.java:1363)
+E/AndroidRuntime(15701):    at android.os.Parcel.writeValue(Parcel.java:1268)
+E/AndroidRuntime(15701):    at android.os.Parcel.writeArrayMapInternal(Parcel.java:644)
+E/AndroidRuntime(15701):    at android.os.BaseBundle.writeToParcelInner(BaseBundle.java:1313)
+E/AndroidRuntime(15701):    at android.os.Bundle.writeToParcel(Bundle.java:1034)
+E/AndroidRuntime(15701):    at android.os.Parcel.writeBundle(Parcel.java:669)
+E/AndroidRuntime(15701):    at android.app.ActivityManagerProxy.activityStopped(ActivityManagerNative.java:2925)
+E/AndroidRuntime(15701):    at android.app.ActivityThread$StopInfo.run(ActivityThread.java:3299)
+E/AndroidRuntime(15701):    at android.os.Handler.handleCallback(Handler.java:739)
+E/AndroidRuntime(15701):    at android.os.Handler.dispatchMessage(Handler.java:95)
+E/AndroidRuntime(15701):    at android.os.Looper.loop(Looper.java:135)
+E/AndroidRuntime(15701):    at android.app.ActivityThread.main(ActivityThread.java:5257)
+E/AndroidRuntime(15701):    at java.lang.reflect.Method.invoke(Native Method)
+E/AndroidRuntime(15701):    at java.lang.reflect.Method.invoke(Method.java:372)
+E/AndroidRuntime(15701):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903)
+E/AndroidRuntime(15701):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698)
+E/AndroidRuntime(15701): Caused by: java.io.NotSerializableException: net.somethingdreadful.MAL.api.response.Anime$Airing
+E/AndroidRuntime(15701):    at java.io.ObjectOutputStream.writeNewObject(ObjectOutputStream.java:1344)
+E/AndroidRuntime(15701):    at java.io.ObjectOutputStream.writeObjectInternal(ObjectOutputStream.java:1651)
+E/AndroidRuntime(15701):    at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:1497)
+E/AndroidRuntime(15701):    at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:1461)
+E/AndroidRuntime(15701):    at java.io.ObjectOutputStream.writeFieldValues(ObjectOutputStream.java:959)
+E/AndroidRuntime(15701):    at java.io.ObjectOutputStream.defaultWriteObject(ObjectOutputStream.java:360)
+E/AndroidRuntime(15701):    at java.io.ObjectOutputStream.writeHierarchy(ObjectOutputStream.java:1054)
+E/AndroidRuntime(15701):    at java.io.ObjectOutputStream.writeNewObject(ObjectOutputStream.java:1384)
+E/AndroidRuntime(15701):    at java.io.ObjectOutputStream.writeObjectInternal(ObjectOutputStream.java:1651)
+E/AndroidRuntime(15701):    at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:1497)
+E/AndroidRuntime(15701):    at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:1461)
+E/AndroidRuntime(15701):    at android.os.Parcel.writeSerializable(Parcel.java:1389)
+E/AndroidRuntime(15701):    ... 26 more
+```
+"
+AnimaSA/Atarashii,closed,Info pages for some MAL entries (consistently) fail to load,"[Label(name=""bug"")]","I'm using the `2.1.1` release available here from GitHub, on a CM 12.1 (nightly) device without GApps.
+
+I am experiencing a problem, by which the Info/Description pages for some anime/manga in MAL fail to load, with the following error message on the bottom of the screen:
+`
+Atarashii can't load the details
+`
+
+This seems to be deterministic - if I clear the App's cache and Local Data, reboot the device, and try again - the same entries fail to load. Also reproducible across a few different WiFi networks I have access to, and the Mobile Internet.
+
+When I have a bit more time, I'll try to compile a short list of some entries which always do load, and respectively some which always don't. But otherwise, I'm not sure what other information I should provide - nonetheless I'm keen to if someone lets me know what I should share/do. :smile:
+"
+AnimaSA/Atarashii,closed,Filter 18+,"[Label(name=""enhancement"")]","When searching for a manga / anime, sometimes a lot of hentai it poping.
+How about to have a flag that will filter them out in search?
+"
+AnimaSA/Atarashii,closed,More data in lists,"[Label(name=""invalid"")]","When watching a list, i would be happy if i could see my score in ""completed"", ""in progress"" and ""on hold"" lists but in ""planned"" to see the general score.
+"
+AnimaSA/Atarashii,open,Add friends,"[Label(name=""Feature Request"")]","I need that after a long time.
+It would help, not very effective in general use.
+"
+AnimaSA/Atarashii,closed,Friends list,"[Label(name=""Feature Request"")]","A friend complained that he can't see his friends' lists.
+
+I think this is a really good feature, so I ask for him.
+"
+AnimaSA/Atarashii,closed,Can't logging when user signed up with facebook,"[Label(name=""Feature Request""), Label(name=""Won't Fix"")]","My friend succeed to connect only after he enter a password by the ""lost password"".
+
+I think the connection work with a cookie from facebook and doesn't use a password.
+Can we fixed the the logging will handle facebook and so?
+
+I believe the same problem exists with twitter and google+ connections too.
+"
+AnimaSA/Atarashii,closed,Provide a pure-floss build flavor,"[Label(name=""Feature Request"")]","Crashlytics is a non-free buildtime dependency, could you add a gradle build flavor that works around it? Maybe you might want to have a look at acra.ch as a free alternative.
+
+Also: Are the jar files still used?
+"
+AnimaSA/Atarashii,closed,Crash fix random sync & offline support records & snackbar mantaince,[],"Crash fix random sync & offline support records & snackbar mantaince
+"
+AnimaSA/Atarashii,closed,Enchance backup system,[],"Fixes #393 
+"
+AnimaSA/Atarashii,closed,Cleanup & fix autosync crash & update list crash,[],"Cleanup & fix autosync crash & update list crash
+"
+AnimaSA/Atarashii,closed,Improve Anime & Manga request crashes,[],"Improve Anime & Manga request crashes
+Fixes #431
+"
+AnimaSA/Atarashii,closed,Fix history for friends,"[Label(name=""bug"")]","Fix history for friends. When opening friends of friends the history does not load properly on MAL
+"
+AnimaSA/Atarashii,closed,Improve support on network error,"[Label(name=""enhancement"")]","Improve support on network error
+"
+AnimaSA/Atarashii,closed,Use support design navigation drawer,"[Label(name=""enhancement"")]","In the google support design lib is a navigation drawer included : http://developer.android.com/reference/android/support/design/widget/NavigationView.html?utm_campaign=io15&utm_source=dac&utm_medium=blog
+"
+AnimaSA/Atarashii,closed,Fix crash on some devices due hacky viewpager method,[],"Fix crash on some devices due hacky viewpager method
+"
+AnimaSA/Atarashii,closed,Rewrite AutoSync,[],"Rewrite AutoSync
+"
+AnimaSA/Atarashii,closed,Update dates automatic when starting/ending an anime or a manga,[],"Fixes #405 
+"
+AnimaSA/Atarashii,closed,Add view discussions in the menu (DetailView),[],"Fixes #371
+"
+AnimaSA/Atarashii,closed,Changing from planned to watching update progress to 1,[],"Fixes #408
+"
+AnimaSA/Atarashii,closed,Add setting to change the list after adding an anime/ a manga,[],"fixes #409
+"
+AnimaSA/Atarashii,closed,Add reset preference button & support landschape column (Settings),[],"Add reset preference button & support landschape column (Settings)
+"
+AnimaSA/Atarashii,closed,Fix AniList decimal scores which would change to 0 or crash,[],"Fix AniList decimal scores which would change to 0 or crash
+"
+AnimaSA/Atarashii,closed,Fix AniList decimal scores which would change to 0 or crash,[],"Fix AL score
+"
+AnimaSA/Atarashii,closed,Add column number changer to the settings (IGF),[],"Fixes #418 Add column number changer to the settings on request of a playstore review.
+"
+AnimaSA/Atarashii,closed,Replace Snackbar & materialtabstrip with the support design library,[],"Replace Snackbar & materialtabstrip with the support design library
+"
+AnimaSA/Atarashii,closed,Change amount of colums IGF,"[Label(name=""enhancement"")]","Add a setting to change the amount of columns
+"
+AnimaSA/Atarashii,closed,Update page adapter & actionbar,[],"We replaced the actionbar with a toolbar which displays more material & an mayor improvement of the viewPager together with new tabs.
+"
+AnimaSA/Atarashii,closed,Add widget support,[],"Add widget support
+"
+AnimaSA/Atarashii,closed,Fix butterknife crash & account type check,[],"Butterknife was crashing due a call which was not set.
+The backup had no account type check which caused crashes
+"
+AnimaSA/Atarashii,closed,Add history/activity (profile) support,[],"Add history items to the profile
+"
+AnimaSA/Atarashii,closed,Add review support,[],"Add review support.
+"
+AnimaSA/Atarashii,closed,Rewrite Date formatter,[],"The old date formatter was outdated and there were many translation crashes.
+"
+AnimaSA/Atarashii,closed,Backup system,[],"Create the basic backup system.
+"
+AnimaSA/Atarashii,closed,Cleanup for Atarashii 2.2,[],"This will cleanup the codes for Atarashii 2.2
+"
+AnimaSA/Atarashii,closed,Choose which list an anime/manga will placed after adding,"[Label(name=""Feature Request"")]","A setting that would enable the user to chose on which list the anime goes after its added. For now, it goes to the ""watching"" list, but i would prefer for it to go to the ""plan to watch"". That would be great.
+"
+AnimaSA/Atarashii,closed,Changing from planned to watching change progress to 1,"[Label(name=""enhancement"")]","We should change the progress to 1 if we are updating the status from planned to watching.
+"
+AnimaSA/Atarashii,closed,Upgrade version to 2.1 RC 3 & fix rating AL,[],"Upgrade version to 2.1 RC 3 & fix rating AL
+"
+AnimaSA/Atarashii,closed,Rc 2 updates,[],"Rc 2 updates
+"
+AnimaSA/Atarashii,closed,Automatically filling in the start and end dates.,"[Label(name=""Feature Request"")]","Feature request for Automatically filling in the start and end dates.
+"
+AnimaSA/Atarashii,closed,Number pickers text color,"[Label(name=""bug"")]","The numberpicker text colors are white while the dialog is also white.
+Android 5.x
+"
+AnimaSA/Atarashii,closed,Viewpager update,"[Label(name=""AniList""), Label(name=""enhancement"")]","I found a new cool library which we should try out!
+https://android-arsenal.com/details/1/1731
+
+It would've be great for AniList
+"
+AnimaSA/Atarashii,closed,Update for RC 1 version 2.1,[],"Update for RC 1 version 2.1
+"
+AnimaSA/Atarashii,closed,Add Turkish in the translations,[],"Add Turkish in the translations
+"
+AnimaSA/Atarashii,closed,Fix white border & tags and comments overflow & nullpointer crash type,[],"Fix white border & tags and comments overflow & nullpointer crash type
+"
+AnimaSA/Atarashii,closed,Long Tag Lists Overflow,"[Label(name=""bug"")]","On phone devices, titles with large numbers of tags will overlap the ""My Tags"" label.
+"
+AnimaSA/Atarashii,closed,Language Selection,"[Label(name=""Feature Request"")]","It would be nice to offer users a way to override the system language and pick one of the other languages we have translated.
+"
+AnimaSA/Atarashii,closed,White Border on Cover using Dark Theme,"[Label(name=""bug"")]","When using the dark theme, there is a white border on the bottom and right of the card containing the title and cover image in the detail view.
+"
+AnimaSA/Atarashii,closed,Fix forums,[],"Fix spoilers & support youtube BBCode
+"
+AnimaSA/Atarashii,closed,Fix Manga View Sometimes Shows Anime.,[],"Fix Manga View Sometimes Shows Anime.
+"
+AnimaSA/Atarashii,open,Move Overflow on Cover Away from Edge,"[Label(name=""bug"")]","The overflow menu for each cover item is very close to the corner currently. This makes it a bit difficult to target easily on the right edge. In some cases, it can overlap the scrollbar area, causing unintended scrolling.
+
+I recommend we move the menu in a bit to reduce chances of overlapping.
+
+This issue was original reported by a Play Store reviewer with a Galaxy S5.
+"
+AnimaSA/Atarashii,closed,Extend Backup abilities,"[Label(name=""enhancement"")]","- Automatically backup every day or week
+- Max length of backup
+- Max storage space
+"
+AnimaSA/Atarashii,closed,Fix AniList keeps logged in after a log out,[],"Fix AniList keeps logged in after a log out
+"
+AnimaSA/Atarashii,closed,Update Snackbar & Fix menu bug & create Account versions,[],"Update Snackbar & Fix menu bug & create Account versions
+"
+AnimaSA/Atarashii,closed,Menu sometimes not working,[],"The menu picker in Home is sometimes not working. It is probably because IGF is sometimes null which the menu than ignores.
+"
+AnimaSA/Atarashii,closed,Fix title card which was hovering on the stats (MAL & DetailView),[],"The titles cards was hovering on the details card.
+"
+AnimaSA/Atarashii,closed,Fix MAL score always showing question mark (DetailView),[],"Fix MAL score always showing question mark because it was divided by 10.
+"
+AnimaSA/Atarashii,closed,Fix crash if score is an empty string (DetailView),[],"Fix crash if score is an empty string (DetailView)
+"
+AnimaSA/Atarashii,closed,Fix score number input (DetailView),[],"Fix score number input (DetailView)
+"
+AnimaSA/Atarashii,closed,Code cleanup,"[Label(name=""enhancement"")]","- Add a response checker
+- Add backup mechanism
+- Rewrite password change service
+- Optimize AL & MAL methods
+- Cleanup
+  - DatabaseManager
+  - Status receivers
+  - IGF
+  - Home
+  - FirstTimeInit
+  - Dialogs
+"
+AnimaSA/Atarashii,closed,Fixes Ratingpicker & AL scores,[],"We are now supporting all rating systems of AL Fixes #383
+I removed the old stars in the general tab and replaced this Fixes #372
+"
+AnimaSA/Atarashii,closed,AniList Ratings,"[Label(name=""AniList""), Label(name=""enhancement"")]","Reminder to use the raw score value (modified to fit the display preferences of the user) for AniList once the API is modified.
+
+Keep in mind that the Smile and 5 point scales are not evenly calculable. Use the breakpoints mentioned in Josh-Star/AniList-API-Docs#30 for those scales.
+"
+AnimaSA/Atarashii,closed,Manga View Sometimes Shows Anime,"[Label(name=""bug"")]","Occasionally when opening the application, it will open on the manga list, but show anime titles. Sliding back to anime and then to manga will not fix it. The only solution is to use the system back button to exit the application and then re-enter it.
+
+I cannot currently find a reliable way to reproduce the behavior, but have experienced it multiple times.
+"
+AnimaSA/Atarashii,closed,Cleanup MALManager,[],"Just a cleanup of codes
+"
+AnimaSA/Atarashii,closed,Fix fast back crashes & cleanup DatabaseManager,[],"Fix fast back crashes & cleanup DatabaseManager
+"
+AnimaSA/Atarashii,closed,"Fix numberpicker, score, manga corruption",[],"Fix numberpicker, score, manga corruption.
+"
+AnimaSA/Atarashii,closed,Fix Date Picker Not Reflecting Existing Date,[],"Fixes #377
+"
+AnimaSA/Atarashii,closed,Date Picker Not Reflecting Existing Date,"[Label(name=""bug"")]","When tapping on an existing date entry to edit it, the date picker always selects the current date. It does not load with the existing date selected. The desired behavior is to load with current date selected if there is no existing date, or with the entry's existing date if it is defined.
+"
+AnimaSA/Atarashii,closed,Fix all AniList bugs,[],"Fixes #369
+"
+AnimaSA/Atarashii,closed,Fixes account crash & decimal scores,[],"We do support now 10.0 10 5 100 scores for AniList
+Fix crash caused by the accountService
+"
+AnimaSA/Atarashii,closed,"""Prequel"" is missing","[Label(name=""bug"")]","Example from [High School DxD Born](http://myanimelist.net/anime/24703/High_School_DxD_BorN). Its prequel is [High School DxD New: Oppai, Tsutsumimasu!](http://myanimelist.net/anime/30300/High_School_DxD_New:_Oppai_Tsutsumimasu!)
+
+![screenshot_2015-04-07-19-42-48](https://cloud.githubusercontent.com/assets/3000936/7029538/a44d3c96-dd5e-11e4-92a9-8003f0bbe298.png)
+
+This error may occur on a few animes.  At present,  I've only seen this on DxD Born. 
+"
+AnimaSA/Atarashii,closed,Site determination not working rarely,"[Label(name=""AniList""), Label(name=""bug"")]","The site determination apparently doesn't works rarely on some devices. As far I noticed it is not Android version related.
+
+This was reported by ""Mimi"" on AniList. She was using a Galaxy Tab Pro (4.4.2).
+"
+AnimaSA/Atarashii,closed,Rating Display Issues,"[Label(name=""bug"")]","From a store review, it seems that some ratings are displaying incorrectly. For example, a personal rating will be set at 7 (3.5 stars) but will display at 8 (4 stars).
+
+I have not tried to reproduce the issue yet.
+"
+AnimaSA/Atarashii,closed,Title Forum Link on MAL,"[Label(name=""Feature Request"")]","When displaying the details for a title on the application using MAL, would it be possible to add a link to the forum for that title? It seems they use the same forum logic as the main series, using the format:
+
+hxxp://myanimelist.net/forum/?animeid=[id]
+
+Not sure, but this may also require some changes in the API to handle.
+"
+AnimaSA/Atarashii,closed,Fixes for AniList,[],"- Fixes the wrong error message when a record coulnd't be found.
+- Fixes the expiretime when something went wrong after a sync.
+"
+AnimaSA/Atarashii,closed,Rating on AniList,"[Label(name=""AniList""), Label(name=""bug"")]","Right now, it seems global ratings on AniList are set to 10 for all titles. Probably a glitch in the handling.
+"
+AnimaSA/Atarashii,closed,Fix nullpointer crash in the profile & show a proper no activity message...,[],"Fix nullpointer crash in the profile & show a proper no activity message (AniList)
+"
+AnimaSA/Atarashii,closed,Fix bugs,[],"- reset prefs after logging out
+- Fix nullpointer exceptions due no activity (AniList)
+"
+AnimaSA/Atarashii,closed,Fix Snackbar message was not shown after a comment update,[],"Fix Snackbar message was not shown after a comment update
+"
+AnimaSA/Atarashii,closed,Show Snackbar send message also when the comment has been send (Forum),[],"Show Snackbar send message also when the comment has been created or updated (Forum)
+"
+AnimaSA/Atarashii,closed,Remove Turkish from the new translations,[],"Remove Turkish from the new translations
+"
+AnimaSA/Atarashii,closed,Language updates,[],"- Apply the new translations
+- add russian & spanish
+- remove turkish from the new updates
+"
+AnimaSA/Atarashii,closed,Fix crashlytics bug & update libraries/languages,[],"- Fix the crashlytics crash
+- Update Languages
+- Add russian & spanish back
+- Update libraries
+"
+AnimaSA/Atarashii,closed,Update all libraries,[],"- This PR will update all libraries except Crashlytics
+"
+AnimaSA/Atarashii,closed,Minor beta updates,[],"- Fix all indents
+- add back button to init
+- Fix spacing & indents
+"
+AnimaSA/Atarashii,closed,Db fix,[],"This PR will fix some db upgrade issues.
+"
+AnimaSA/Atarashii,closed,Hide personal card if the details aren't loaded.,[],"This PR will hide personal card if the details aren't loaded.
+"
+AnimaSA/Atarashii,closed,Snackbar (Material),[],"This PR will replace toast with Snackbar. This is written in the official material documentation: http://www.google.com/design/spec/components/snackbars-toasts.html
+"
+AnimaSA/Atarashii,closed,Fix rewatching,[],"The rewatching values weren't working automatically when an user completed the anime/manga for the second time.
+"
+AnimaSA/Atarashii,closed,AniList profile,[],"This PR will enable users to see user profiles with AniList
+"
+AnimaSA/Atarashii,closed,Crashlytics reports fixes,[],"This PR will fix some famous crashlytics problems.
+"
+AnimaSA/Atarashii,closed,Few fixes,[],"- The IGF was crashing because it was using null values in the switch sometimes
+- The rewatching & personal comments were not working for AL because they weren't supported by the ALAPI
+- The synopsis text was sometimes too short causing the textview to wrap and show a white part on the left when the theme was set to dark
+- The navigationdrawer was using a white selection color on white text...
+"
+AnimaSA/Atarashii,closed,Enchance IGF peformance by loading faster,[],"- By moving the function to the getView method in the adapter the response time will be shorter thus faster.
+"
+AnimaSA/Atarashii,closed,Fix all the extended details,[],"Due the new dirty flag system many personal details were broken and not working.
+This PR will fix all of them.
+"
+AnimaSA/Atarashii,closed,Dirty flag rewrite,[],"This PR is a rewrite of the whole dirty flag stuff. Now it is possible to check which properties are changed.
+To do this I have reintroduced some of the setter functions that were removed with the implementation of lombok. These setters now add the property name to dirty, which is a ArrayList now. There is also a second implementation of this setters which accept a second boolean argument which allows to define if the property should be marked as dirty (this is used when the record is loaded from the database by `fromCursor()`).
+
+Because of the new setter functions which mark the properties as dirty themselves we don't need to call `setDirty()` anymore after updating a value, which is a nice side effect.
+
+The `addOrUpdateAnime()`/`addOrUpdateManga()` functions in `MALApi` read the changed properties by iterating through the dirty-ArrayList and getting the values by reflection (which makes it quite easy to get them) and pass them as FieldMap to the retrofit interface functions. This way the app always sends only changed properties to the API, not everything as until now (this only affects MAL currently, there should be no difference for AniList).
+"
+AnimaSA/Atarashii,closed,Forum improvements,[],"This will improve the forums!
+Quotes are working better now.
+"
+AnimaSA/Atarashii,closed,AniList fixes,[],"This PR will fix several bugs related to AniList.
+"
+AnimaSA/Atarashii,closed,Theme changer,[],"Add Theme changer to make atarashii dark.
+"
+AnimaSA/Atarashii,closed,Forum fixes,[],"Another PR for forum fixes.
+Note: Youtube comments can't be updated!
+"
+AnimaSA/Atarashii,closed,Support new personal details for MAL,[],"This Pr will bring new personal details like rewatching value and comments.
+"
+AnimaSA/Atarashii,closed,Fix forum bugs,[],"This PR will fix 2 forum bugs, see the commit messages for info.
+"
+AnimaSA/Atarashii,closed,Move the friendlist to the profile activity,[],"This PR will move the friendlist to the profile activity for future AL support.
+"
+AnimaSA/Atarashii,closed,Support AniList,[],"This PR will add support for AniList!
+"
+AnimaSA/Atarashii,closed,Add lombok project to reduce the amount of codes,[],"This PR will merge lombok into atarashii which will take over the get & set methods.
+"
+AnimaSA/Atarashii,closed,Add Forums support for MAL,[],"This PR will add forum support to Atarashii
+"
+AnimaSA/Atarashii,closed,Log Anime & Manga id before peforming actions (NetworkTask),[],"Log Anime & Manga id before peforming actions (NetworkTask)
+"
+AnimaSA/Atarashii,closed,Fixes beta 2.0,[],"- fix database upgrade crash 6 -> 9
+- fix IGF nullpointerexception crash
+"
+AnimaSA/Atarashii,closed,Fix Last online time which was saved wrong in the DB (DatabaseManager),[],"Fix Last online time which was saved wrong in the DB (DatabaseManager)
+"
+AnimaSA/Atarashii,closed,Change crashlytics custom ID keys into Logs to make it simple (NetworkTask),[],"Change crashlytics custom ID keys into Logs to make it simple (NetworkTask)
+"
+AnimaSA/Atarashii,closed,Fix bugs that were present in the RC,[],"- Picasso crash when the application couldn't find the profile anywhere
+  - numberpicker dialog crash. on some android version it pas null instead 0.
+"
+AnimaSA/Atarashii,closed,"Remove russian, spanish & turkish translations due inactivity (res)",[],"Remove russian, spanish & turkish translations due inactivity.
+These languages weren't updated even after sending private messages.
+"
+AnimaSA/Atarashii,closed,Fix Android 4.1.2 bug causing padding problems (Card),[],"There was a major bug in Android 4.1.2 that was conflicting our own methods in the custom view.
+"
+AnimaSA/Atarashii,closed,Update translations for the RC,[],"Update translations for the next RC 1
+"
+AnimaSA/Atarashii,closed,"Change ""none"" to ""Unknown"" (DetailView)",[],"This will change the ""none"" string into ""unknown"".
+The none string was used for the start/stop dates.
+"
+AnimaSA/Atarashii,closed,Add start/end watching/reading,[],"This PR will add the start and end read/watching for the manga/anime records ^^
+"
+AnimaSA/Atarashii,closed,Update background image to fit the application colors (res),[],"Update background image to fit the application colors (res)
+"
+AnimaSA/Atarashii,closed,Cleanup,[],"Just another cleanup.
+
+It was a pain to assign getRecord on each IGF. So I wrote a method to change them in one line.
+"
+AnimaSA/Atarashii,closed,Cleanup Save anime to anime relation method,[],"The method was kinda long so I improved it. We will use now 2 methods which will reduce the amount of codes.
+"
+AnimaSA/Atarashii,closed,Make PrefManager static to avoid to create multipe new ones (PrefManager),[],"It was a pain to create in each activity and fragment a new PrefManager.
+
+So I made all methods static and let the Theme create it once. We can just use now PrefManager.get... and DONE.
+"
+AnimaSA/Atarashii,closed,Code cleanup,[],"This PR will cleanup the codes and res.
+"
+AnimaSA/Atarashii,closed,Remove copy function in the popup (IGF),[],"I noticed that not many users were using this so this will be removed.
+https://plus.google.com/104507099988539338550/posts/fveWtyDFdUx
+"
+AnimaSA/Atarashii,closed,Make overflow button touch area bigger (Home),[],"The overflow button was kinda small for some users so this will make the area bigger (not the image it self).
+"
+AnimaSA/Atarashii,closed,It looks like your API is broken,"[Label(name=""invalid"")]","Hi.Recently your API started to behave strange.
+http://www.youtube.com/watch?v=RamfcJAIKho (latest stable Atarashii from google play, Android 5.0.2 stock)
+"
+AnimaSA/Atarashii,closed,Fix overflow image bug on Android 4.0 & 4.1 (IGF),[],"I forgot to add ""android:layout_alignParentRight=""true"""" for compatibility with android versions below L.
+That caused the overflow image to align left instead right.
+"
+AnimaSA/Atarashii,closed,Minor fixes,[],"Some little issues were causing unnecessarily problems and crashlytics spam.
+"
+AnimaSA/Atarashii,closed,Fix picasso dialog crash,[]," When an user tries to update the image with an empty url in the Dialog Picasso was crashing with the app.
+"
+AnimaSA/Atarashii,closed,Fix manifest indents,[],"In one sentence: The manifest indents were totally inconsistent.
+"
+AnimaSA/Atarashii,closed,Display the rating,"[Label(name=""enhancement"")]","The new star system for the 2.0 beta 2 doesn't show the rating label (masterpiece - 10 ;
+Awesome …)
+
+Can you show it somewhere to see easily with rating I write? (And too when I want to change, I don't know if 4 stars = 8 or 7, etc)
+"
+AnimaSA/Atarashii,closed,Fix belowof method which cut off the layout (Cards),[],"Fix belowof method which cut off the layout in the score card.
+"
+AnimaSA/Atarashii,closed,Enable customized nav drawer background,[],"This PR will enable the user to update the navigation drawer image with his own image of choice.
+"
+AnimaSA/Atarashii,closed,Start profile after an user clicked on his image (Home),[],"If an user clicked on his profile image the profile activity will start.
+"
+AnimaSA/Atarashii,closed,Notification icon,[],"According to http://developer.android.com/design/style/iconography.html#notification we shouldn't use the colored icon for notifications.
+
+In this PR the natification icon is changed
+"
+AnimaSA/Atarashii,closed,Fix personal card,[],"On android 4.2.2 there was a problem with negative padding which caused the card to hide.
+This PR will fix this behavior.
+"
+AnimaSA/Atarashii,closed,Add button not working,"[Label(name=""bug"")]","Apparently the add button with the application is not working.
+It won't sync the change to MAL and doesn't update it in the app so I assume that it is probably at the app side.
+"
+AnimaSA/Atarashii,closed,Atarashii in Material design,[],"This PR will bring material design to Atarashii!
+"
+AnimaSA/Atarashii,closed,Update translations (Beta 2),[],"Many translations have been changed.
+"
+AnimaSA/Atarashii,closed,"""Personnal"" Section do nothing","[Label(name=""bug"")]","According to @ratan12, the personnal section should help you to update the anime status and the anime episode (and manga too, of course).
+
+On my phone, this section isn't available : I only see it but I can do nothing.
+
+I don't know if it's a particular problem for me.
+
+My Android is a Android 4.2.2 Jelly Bean, kernel 3.4.5. It's a stock ROM (original Android based from the vendor)
+
+If you want more informations, don't hesitate.
+"
+AnimaSA/Atarashii,closed,Fix for setDirty(true) being always called in DetailViewGeneral,[],"Because fromUser was not checked in the onRatingChanged()-callback the code was always executed, not only if the rating was changed by the user. This means the record was always flagged as dirty (which caused unneccessary API requests), because this callback is also called if the value is changed programmatically.
+"
+AnimaSA/Atarashii,closed,Fix numberpickers don't lose focus after a manually input (src),[],"The numberpickers weren't updating the manually input because it was still focused.
+
+Fixes #305 
+"
+AnimaSA/Atarashii,closed,Can't manually enter number of episodes watched,"[Label(name=""bug"")]","On the anime page, when we want to change the number of episodes watched we should scroll to the number we want. I would like to be able to manually enter the number with the virtual numeric keyboard.
+
+It's actually possible but for an unknown reason when we proceed this way, the number of episodes watched is not save.
+
+The screenshot is showing what I mean by manually enter the number of episodes.
+![screenshot_2014-12-11-17-24-01](https://cloud.githubusercontent.com/assets/5839114/5397427/b5b68fb0-815a-11e4-8da6-5079b9d640ff.png)
+"
+AnimaSA/Atarashii,closed,Airing dates and producers are missing,"[Label(name=""enhancement"")]","On the details page of anime, airing dates and producers informations are missing.
+"
+AnimaSA/Atarashii,closed,Database bugs,[],"Available in atarashi 2.0 beta 1
+
+What it does : When we see a planned anime description, the anime will change into the status ""watching""
+What it must do : nothing
+Way to test this bug : 1. Open the detail of a planned anime (and wait the loading)
+2. Sync from atarashii
+3. See your anime list on MAL ; your anime you have seen is now on watching
+
+This bug always occur when I do that.
+"
+AnimaSA/Atarashii,closed,Simplify onStatusDialogDismissed,[],"This was way to complicated. Many useless if's.
+"
+AnimaSA/Atarashii,closed,Fix for MALDateTools,[],"Some formats returned by the API could not be parsed, this PR updates MALDateTools to support them:
+- added support for formats to formatDateString():
+  - yyyy-MM-dd
+  - yyyy-MM-dd'T'HH:mmZ
+  - yyyy-MM-dd'T'HHZ
+- removed crashlytics logging from formatDateString() as it is not useful
+  there
+"
+AnimaSA/Atarashii,closed,Small gradle update,[],"- use recommended build tools and gradle version
+- update wrapper task (missed this on #286)
+- remove unused maven repositories
+"
+AnimaSA/Atarashii,closed,Fix the card header that wasn't width enough (Cards),[],"We were not using an accurate method + I used minus 1 instead of 2.
+The corner radius is 2.
+
+also math round will use the closest int.
+"
+AnimaSA/Atarashii,closed,Fix the search button that wasn't working (Home),[],"The search button wasn't working because we were using getComponentName() that would get the Home component name instead the searchActivity.
+
+Why it was working on the alpha builds will remain a mystery XD
+
+Fixes #296
+"
+AnimaSA/Atarashii,closed,Fix bugs in the beta app,[],"This PR will fix a few crashed in the 2.0 beta 1 application.
+"
+AnimaSA/Atarashii,closed,Search Not Executed,"[Label(name=""bug"")]","For 2.0 beta 1, search doesn't seem to work. Putting terms in the dialog and pressing the search button on the keyboard does not cause any visible reaction.
+
+I haven't tried grabbing a log of the process yet.
+"
+AnimaSA/Atarashii,closed,Fix possible text overlapping in MAL info card,[],"This replaces the old RelativeLayout by a TableLayout to prevent text overlapping. It's now wrapped if it is to long for the line.
+"
+AnimaSA/Atarashii,closed,Fix messed up episode/volume counter when preceding text is wrapped,[],"This fixes the displaying of the episode/volume counter on some DPI/resolution configurations where the preceding text is wrapped.
+"
+AnimaSA/Atarashii,closed,Some layout fixes,[],"I've fixed some smaller layout issues:
+- the navigation drawer item layout (record_home_navigation.xml) was way to complicated: I removed some useless layout-tags
+- impoved IGF-Griditem layout: optimized the structure and moved the ""bar"" (the dark stripe with the title and all) to an extra layout file for reusability as this is used in list mode and grid mode
+- fixed the gridview selector, this was gone with the switch to AppCompat, now there is a selector again, for Android 5+ there is a nice ripple effect
+"
+AnimaSA/Atarashii,closed,Update translations (Strings),[],"Update all translations before the next beta release.
+"
+AnimaSA/Atarashii,closed,Show load indicator even if we pass the user record (Profile),[],"In the past we were showing the loading indicator with the network card which is kinda ugly XD
+"
+AnimaSA/Atarashii,closed,Fix listview,[],"There were 2 bugs in the listview.
+- The hacky method wasn't working anymore due appCompat
+- The listview was re sized due the grid height layout method
+"
+AnimaSA/Atarashii,closed,Fix autosync crash caused by ghost string (SyncAdapter),[],"The syncAdapter was using an old string that was renamed a few weeks ago.
+"
+AnimaSA/Atarashii,closed,Don't capitalize the user status string,[],"This can be grammatically wrong (e. g. in german).
+"
+AnimaSA/Atarashii,closed,Add statusbar color for Android 5 and simplify statusbar coloring,[],"This adds a darker version of the Actionbar color for the statusbar on Android 5 and also simplifies setting the actionbar color.
+"
+AnimaSA/Atarashii,closed,Gradle update for Android Studio 1.0,[],"This updates the gradle configuration to support AS 1.0. It also removes the proguard config as runProguard is not longer available (is now ""minifyEnabled"") and it was disabled anyway.
+"
+AnimaSA/Atarashii,closed,Fix set text (DetailView),[],"- Fix network card hides after setText
+- Only call setText if the records are not empty.
+"
+AnimaSA/Atarashii,closed,Fix imageview bugs (Profile & detailview),[],"- Fix loading & error images in the DetailView
+- Show the profile only after the image got loaded or failed
+"
+AnimaSA/Atarashii,closed,Show No network card if there isn't any offline details (DetailView),[],"Show the No network card if there isn't any offline details in the database which caused empty cards in the  DetailView.
+
+Note: the scrollview will bug if we use a viewflipper.
+"
+AnimaSA/Atarashii,closed,Add home button in the actionbar (Settings),[],"This PR will add the home button in the settings activity.
+"
+AnimaSA/Atarashii,closed,Fix indents (res & src),[],"Fix almost all the indents & reorder some methods.
+"
+AnimaSA/Atarashii,closed,Update settings to use PreferenceFragment,[],"... and also make the settings layout more compliant to the [design guide](http://developer.android.com/design/patterns/settings.html), which in our case means: no sub screens, only categories. I think this looks quite good this way. It also brings back the Actionbar in the settings activity :)
+"
+AnimaSA/Atarashii,closed,Fix Image ratio,[],"This PR will fix the image ratio that was broken because of the card height.
+
+@motokochan I recommend to test this change on a device with a small screen to be 100% sure.
+"
+AnimaSA/Atarashii,closed,Remove unused fonts & drawable,[],"Remove unused fonts & drawable.
+"
+AnimaSA/Atarashii,closed,Remove Crouton,[],"This PR will remove crouton and replace the important messages which Toast.
+"
+AnimaSA/Atarashii,closed,Fix scrollview when scrolling up (Profile),[],"Fix scrollview when scrolling up, the SRV was getting triggered.
+"
+AnimaSA/Atarashii,closed,Fix Friendlist,[],"- Fix bug that caused to show the network card while there are offline items
+- Fix gridview couldn't scroll up because is was triggering the SRV
+- Fix gigantic loading indicator
+
+Broken: Crouton message (Couton will be dropped soon so don't bother)
+"
+AnimaSA/Atarashii,closed,Change actionbar color,[],"On @motokochan request I changed the actionbar color with the Atarashii icon color.
+![udtwpts](https://cloud.githubusercontent.com/assets/5322473/5235356/b1aa4b1c-77fc-11e4-8c7c-1b9f82599b09.jpg)
+"
+AnimaSA/Atarashii,closed,Add SwipeRefreshView (Profile),[],"This PR will add a nice SwipeRefreshView to the profile.
+"
+AnimaSA/Atarashii,closed,Remove not working text resize method (Profile),[],"This method was not working... lets make the font consistent.
+"
+AnimaSA/Atarashii,closed,Add copy title action,[],"- remove copy action on long press (IGF)
+- add copy action in the popup (IGF)
+- add copy action in the DetailView
+"
+AnimaSA/Atarashii,closed,Use mixed case in the card titles for consistency (strings),[],"Change from capital characters to mixed case for consistency and on @motokochan request.
+"
+AnimaSA/Atarashii,closed,Fix images,[],"This PR will fix the image ratio on some devices + We will use a consistent layout.
+"
+AnimaSA/Atarashii,closed,Remove automatic hide setting (Profile),[],"In the past there was a setting that would automattically hide an statics card if it only had 0 as values.
+This PR will remove this setting and enable it always.
+
+Whats the point of an card with statics which are only 0?
+"
+AnimaSA/Atarashii,closed,Add loading indicator & network card (Friends & Profile),[],"This PR will add a loading indicator to the activity when the activity is loading the record for the first time.
+If there is no network connection available we will show a nice card :)
+"
+AnimaSA/Atarashii,closed,Add privacy policy (About),[],"This PR will add a privacy policy in the About activity.
+The policy will be in the information card at the bottom.
+"
+AnimaSA/Atarashii,closed,Add alternative titles,[],"- Cleanup of the relations method
+- Added alternative titles
+"
+AnimaSA/Atarashii,closed,Remove HEW subproject files (HEW),[],"The HEW submodule was not removed from the module file.
+"
+AnimaSA/Atarashii,closed,Move relation list & simplify the refresh method (Cards & Adapters & DetailView),[],"Move the relation list to the adapter & simplify the refresh method (Cards & Adapters & DetailView)
+"
+AnimaSA/Atarashii,closed,Remove the capital R which caused spacing problems (Strings),[],"I don't know why but the new theme was adding an space before my name which made the design inconsistent. I replaced it with 'r' which is the real first character of my MAL account.
+"
+AnimaSA/Atarashii,closed,Add viewholder to the navigationdrawer (Adapter),[],"This PR will add a viewholder to the navigationdrawer.
+"
+AnimaSA/Atarashii,closed,Fix the header margin after removing HEW (Cards),[],"There was a padding problem after dropping HEW. 
+
+Apparently HEW wasn't supporting the corner overlay system which caused to disable it. So as soon we removed HEW the corner overlay system began to work...
+"
+AnimaSA/Atarashii,closed,Move Adapters to separate files,[],"This PR will move all the adapters in seperated files located at src\net\somethingdreadful\MAL\adapters.
+"
+AnimaSA/Atarashii,closed,Fix relations group header padding,[],"... because the text overlapped the open/close toggle graphic. Also
+removed the indicator ImageView as it's not used (I noticed that there where 2 indicators so I removed the additional added one in #257).
+"
+AnimaSA/Atarashii,closed,Remove HEW,[],"This PR removes HEW (as the maven repo is not longer available) and drops support for < Android 4.0 (API level 14). Also nearly every library is updated and many deprecated things are removed or updated.
+"
+AnimaSA/Atarashii,closed,Follow up for #250,[],"Here are the things that were missing in #250.
+"
+AnimaSA/Atarashii,closed,Replace Listview with Expandable listview (Detailview),[],"This PR will replace the Listview with an Expandable listview.
+"
+AnimaSA/Atarashii,closed,Cleanup IGF,[],"- Make methods simple
+- Fix indents
+- Add JavaDOCs
+"
+AnimaSA/Atarashii,closed,Crashlytics policy document,[],"In PR #252 we will send some user information to Crashlytics like usernames. We should create a policy document because of that and link it from inside the application about page once it's ready.
+"
+AnimaSA/Atarashii,closed,Crashlytics extending,[],"- Replace android logs with the Crashlytics one (it will be still shown in the log window).
+- Send more details after a crash like username,ID page numbers and languages
+- Moves the init to the application subclass
+"
+AnimaSA/Atarashii,closed,Remove old account in prefrences,[],"Fixes #242 by removing the old account details in the preferences.
+"
+AnimaSA/Atarashii,closed,Minor DetailView changes,[],"This PR has some minor improvements for DetailView (and a little cleanup):
+- DetailView now shows a loading animation (like IGF) when the record is loaded (not when updating, only if isEmpty() returns true)
+- fix for an NPE: if Add to list was pressed before the record was loaded the app crashed
+- fix for manga ratings not saved
+- fix Android Beam (NFC)
+- little cleanup: 
+  - search_item.xml: deleted because it's not used
+  - card_detailview_synopsis.xml: the RelativeLayout around the TextView is not needed, so remove it
+"
+AnimaSA/Atarashii,closed,Account manager (Cleanup & bugfix),[],"- Fix freeze bug in settings when you pressed on add account and chose Atarashii.
+- Rename methods for consistency
+- Cleanup
+- Added JavaDOC
+"
+AnimaSA/Atarashii,closed,"About (Update opensource info, add Ratan12 & add translations card)",[],"- Add translations card
+- Add myself to the mayor contributors (after one year XD)
+- Update opensource info
+"
+AnimaSA/Atarashii,closed,"Cards (cleanup, CardView & JavaDOC)",[],"- Cleanup the Cards.java file 
+- Add JavaDOCs to it.
+- Use new CardView support library v7
+
+Note: This PR will use the new CardView in the support library
+"
+AnimaSA/Atarashii,closed,Tablet UI support,[],"This PR will add a new layout folder which will be used if a device got 720dp in width.
+It will enable dual cards beside each other.
+
+Note: I will add other titles in an upcoming PR
+"
+AnimaSA/Atarashii,closed,Pref manager cleanup,[],"- Use JavaDoc
+- Remove unused methods
+- Make name consistent
+"
+AnimaSA/Atarashii,closed,Detailview update,[],"This PR will update the DetailView to view more details.
+- Add tabs
+- Display more info
+- Add the new strings into strings.xml
+- Removed old landscape layout to fix crashes (this will be added later in the tablet PR)
+"
+AnimaSA/Atarashii,closed,Add different icon sizes for better quality (res),[],"This PR will add new icon sizes for better quality on different devices. This includes the beta icons.
+
+New icons:
+- mdpi
+- hdpi
+- xhdpi
+- xxhdpi
+- xxxhdpi
+
+Fixes #206
+"
+AnimaSA/Atarashii,closed,Remove credentials in prefManager before 1.5 Beta,[],"In the current code we are using account manager which is fine. 
+
+The only thing that we should do in my opinion is removing the credentials in perfManager. I don't like the feeling that my password is floating in the preference manager for no reason.
+
+The best solution would be getting the password and username and create an account in the account manager, after this we should remove it from the preference manager.
+"
+AnimaSA/Atarashii,closed,Database upgrade,[],"With this PR we can save all details for records that are available through the API in the database, including relations between records. An other big change is the way the anime-/mangalist is saved: this is now done by relation tables too, meaning that we can now save lists of other users (e.g. friends).
+
+**Notice:** this PR only contains the backend-stuff for this, there are no visible changes, I left that part for @ratan12 ;)
+"
+AnimaSA/Atarashii,closed,Remove syncDialog & automatically turn sync on in the settings (Account),[],"@motokochan requested me to fix this before a release. So this is it.
+
+This PR will automatically turn the sync in the settings on..so no dialog anymore!
+"
+AnimaSA/Atarashii,closed,Inverse feature for My list,[],"Some users requested an inverse option so this is it :)
+it will invert the list which you are watching
+Ref #188
+"
+AnimaSA/Atarashii,closed,Fix language bugs (orientation and restart),[],"If the device has been rotated the default language would return. This PR fixes the issue.
+if the device was restarted the new language wasn't applied on some devices.
+"
+AnimaSA/Atarashii,closed,Id search,[],"For lazy people like me when I am searching for an one piece movie I added the functionality to search with an ID.
+
+How does it work?
+1. press on the search icon and enter the ID
+2. press ready/done on your keyboard
+3. a dialog will be shown and choose your type (anime/manga)
+4. the detailview will open directly and you can view the details.
+
+This is probably 30% faster?
+Any will make only once a request instead of 2.
+"
+AnimaSA/Atarashii,closed,Fix text outside the card shadow (Card),[],"If the text doesn't fit in the screen the card will automatically show a scrollbar for scrolling. 
+
+The shadow is within the cardview so it has a limit just like the scrollview. Both of them were using the same limit causing the text appearing above the shadow.
+
+I added a scrollview limit by using a padding of 1dp which won't be above the shadow.
+"
+AnimaSA/Atarashii,closed,Fix show dialog when pressing next to Textview (Card),[],"When you press next to the status textview (in the card) the dialog won't show up. This PR will fix it.
+
+I simply changed wrap content into fill to fill the textview.
+"
+AnimaSA/Atarashii,closed,Translations update for 1.4 (Language),[],"This commit will update the following languages: Spanish, Portuguese ( and Brazil), Polish, French, Dutch & Russian.
+
+The dutch share text bug (""$username;"" instead of ""$username,"") will also be fixed.
+"
+AnimaSA/Atarashii,closed,DetailView cleanup,[],"Removing old methods and replacing methods with a better solution.
+"
+AnimaSA/Atarashii,closed,Fix crash on pressing back after DV is done with loading (DetailView),[],"The Detailview was crashing when I pressed back while the app was loading the additional details.
+Apparently is was because the activity was destroyed while setupbeam was called.
+
+I just added a try block to catch the Exception that caused the crash.
+"
+AnimaSA/Atarashii,closed,Show loading indicator while downloading additional data (DetailView),[],"This PR will enable the loading indicator when Atarashii is downloading additional data like the synopsis.
+"
+AnimaSA/Atarashii,closed,Fix landscape crash caused by swipe to refresh (DetailView),[],"This PR will fix the null pointer Exception crash.
+It seems like after separating my previous PR this part wasn't added in the new PR.
+
+I added the swipe to refresh xml stuff in it so it is working properly now.
+"
+AnimaSA/Atarashii,closed,Add language changer in the settings,[],"This PR will enable users to change their language into another supported one.
+It can be changed in Settings -> Change language settings
+
+Note: applies on reboot
+"
+AnimaSA/Atarashii,closed,Fix isAdded() method on refresh by requesting more details (DetailView),[],"When refreshing the DetailView the isAdded method doesn't work because we aren't receiving the necessary details from the API to determine if we added the anime in out list.
+
+We could get the records again from the database but it would be better if we just request more details because of the extended features which we will introduce soon.
+"
+AnimaSA/Atarashii,closed,Add passing between friendlist and profile,[],"Enable passing between the frienlist and profile to skip database loading.
+This will boost up the speed.
+"
+AnimaSA/Atarashii,closed,Merge Friend table into Profile table,[],"This PR will merge the friendlist in the profile in order to update the last online list and boost the performance in an other PR that I will push later.
+"
+AnimaSA/Atarashii,closed,Fix aspect ratio problem of the cover (Detailview),[],"This PR fixes the aspect ratio problem on resize in the detailview.
+
+After:
+![2014-09-01](https://cloud.githubusercontent.com/assets/5322473/4109186/fea62686-31e1-11e4-9fab-7782c119506a.png)
+
+Before:
+![2014-08-29](https://cloud.githubusercontent.com/assets/5322473/4109188/010dccc6-31e2-11e4-9876-45f1df5ac1ad.png)
+"
+AnimaSA/Atarashii,closed,Pass IGF records to the DetailView,[],"This PR will only work AFTER #222 IS MERGED, merging without that PR can cause some problems for offline support and make requests each time a DetailView is created.
+
+This pull request will basically pass the IGF data to the DetailView so that it does not have to get the record from the database on each DetailView.
+"
+AnimaSA/Atarashii,closed,Add Swipetorefresh to the DetailView,[],"This pr will add the SwipeRefreshLayout to the DetailView.
+In some cases the MAL member rating or some other details changes over time.
+
+This will enable users to do it.
+"
+AnimaSA/Atarashii,closed,Fix anime & manga overwriting in database,[],"Fixes the forcesync causing to overwrite the data in the detailview and removes the unnecessary collumns that was in sdko's gist.
+"
+AnimaSA/Atarashii,closed,Add roboto fonts to fix the actionbar item bug,[],"Fixes an application crash because if you press on a action bar icon and hold it.
+The crash occurred because roboto was not in the raw folder in our project.
+"
+AnimaSA/Atarashii,closed,Alternative fix for #215,[],"This fixes #215 without processing NFC-intents twice (currently they're processed in `onCreate()` and `onResume`, see [Activity lifecycle](http://developer.android.com/training/basics/activity-lifecycle/starting.html#lifecycle-states)), just by checking if `type` and `animeRecord` or `mangaRecord` is set.
+"
+AnimaSA/Atarashii,closed,Ratings Conversion Inaccurate,"[Label(name=""bug"")]","There was a report in a play store review that sometimes the displayed stars are inaccurate with ratings. For example, there might be a 9.5 rating but it's displayed as 4 full stars instead of 4.5 stars. This seems to be specifically with assigning a rating to a title, but logic for both global and personal should probably be reviewed.
+"
+AnimaSA/Atarashii,closed,Friendlist UI,[],"Fixes and updates:
+- add viewholder
+- add highlight color
+- add SwipeRefreshLayout with spam protection (disable the multiple sync requests at once)
+
+Dropped:
+- friend since support
+- online indicator that was broken in all the translations except the default one
+
+Design based on android L Listview keylines.
+Note: the images aren't round!
+Note 2: the this design is based on a listview but is applied on a gridview.
+http://material-design.storage.googleapis.com/images/components-keylinesinlists-3_large_mdpi.png
+
+![screenshot_2014-08-24-16-47-36](https://cloud.githubusercontent.com/assets/5322473/4023647/38d012bc-2b9e-11e4-9589-9180ba7bbe0a.png)
+"
+AnimaSA/Atarashii,closed,Change HEW maven URL to the new maven URL,[],"HEW changed the maven URL
+"
+AnimaSA/Atarashii,closed,Fix typos on the spanish localization,[],
+AnimaSA/Atarashii,closed,Beam Receipt NPE,"[Label(name=""bug"")]","With all the changes, the beam support is now broken on receipt. Trying to launch the application on receipt of the beam causes an NPE.
+
+```
+FATAL EXCEPTION: main
+Process: net.somethingdreadful.MAL, PID: 21481
+java.lang.RuntimeException: Unable to start activity ComponentInfo{net.somethingdreadful.MAL/net.somethingdreadful.MAL.DetailView}: java.lang.NullPointerException
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2184)
+    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2233)
+    at android.app.ActivityThread.access$800(ActivityThread.java:135)
+    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1196)
+    at android.os.Handler.dispatchMessage(Handler.java:102)
+    at android.os.Looper.loop(Looper.java:136)
+    at android.app.ActivityThread.main(ActivityThread.java:5001)
+    at java.lang.reflect.Method.invokeNative(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:515)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:785)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:601)
+    at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:132)
+    at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.NullPointerException
+    at net.somethingdreadful.MAL.DetailView.setCard(DetailView.java:170)
+    at net.somethingdreadful.MAL.DetailView.onCreate(DetailView.java:87)
+    at android.app.Activity.performCreate(Activity.java:5231)
+    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2148)
+    ... 12 more
+```
+"
+AnimaSA/Atarashii,closed,DatabaseManager cleanup,[],"Just a cleanup.
+"
+AnimaSA/Atarashii,closed,Database fixes and a little cleanup,[],"After deleting the database (on logout), no new one was created because the MALSqlHelper was not recreated for two reasons:
+- the MALSqlHelper is designed as singleton (object is retrieved by calling `getHelper()`), but `instance` was not unset after deleting the database
+- `malSqlHelper` was defined as static in DatabaseManager, so even fixing the first point would not fix the bug, because all instances of DatabaseManager share the same `malSqlHelper` which is not recreated if set once.
+
+Now MALSqlHelper has the new function `deleteDatabase()` that deletes the database and sets `instance` to null so the next call to `getHelper()` will recreate the database. Also `malSqlHelper` is not defined as static in DatabaseManager.
+I'm a little confused actually, because this should have never worked before... but it has somehow.
+
+Also noticed a possible access violation while testing: running NetworkTasks while deleting the database can cause access violations, so cancel running NetworkTasks on logout to make sure that the tasks are not accessing the database when it is deleted.
+
+I've also found some unused MALManager variables and removed them.
+"
+AnimaSA/Atarashii,closed,Fix first sync after login,[],"The first forced sync was never started. The cause was that autosync() was not working because af and mf are null in onCreate(). Now this is done in onIGFReady().
+"
+AnimaSA/Atarashii,closed,Fix Grid Too Short on specific devices,[],"Fix Grid Too Short on specific devices (IGF) #210
+"
+AnimaSA/Atarashii,closed,Grid Too Short,"[Label(name=""bug"")]","Since all the major changes to the UI, the grid covers are now too short on many devices. The display aspect ratio should be 0.7, but often the cells are too short. It looks like the code dealing with setting the proper height was removed, but an equivalent was not provided. As such, it's using the fallback height defined in the layout file.
+
+Correct behavior should be to get the width of the cell and then determine height by dividing that width by 0.7. As some of the methods aren't present in API 8, I believe the old behavior got the screen width in dp, calculated how many columns would fit, then determined the correct height to assign to the cell.
+
+I'll poke around when I get time, but if anyone can get a proper solution in place before then, please do so.
+"
+AnimaSA/Atarashii,closed,Horizontalscrollview on layouts?,[],"I am kinda thinking why we actually use horizontalscrollviews in landshape.
+It isn't android behavior, I actually never saw an app using this way of displaying info in landscape.
+
+Why don't we use a gridview like the Google + app?
+That would've make a bit more sense.
+"
+AnimaSA/Atarashii,closed,Fix Unknown Item Totals shows 0 on Detailview (fixes #207),[],"Fix Unknown Item Totals shows 0 on Detailview (fixes #207)
+"
+AnimaSA/Atarashii,closed,Unknown Item Totals Lead to 0,"[Label(name=""bug"")]","Since all the rework, now if a title doesn't have a listed total of volumes/chapters or episodes, the application displays 0. This is a problem if you don't have an existing count on your list as the number pickers won't let you set the right total.
+
+Correct behavior was previous where the details display indicated an unknown total (the ?) and the number picker allowed a range of values.
+"
+AnimaSA/Atarashii,closed,Add different icon sizes,[],"Now we have a nice new icon but it does not look good on all screen sizes because it might get scaled up or down.
+We should have the icon available in different sizes as recommended by the [Android design guideline](http://developer.android.com/design/style/iconography.html). According to this guideline this would be:
+- 48x48px (MDPI)
+- 72x72px (HDPI)
+- 96x96px (XHDPI) < we have this one
+- 144x144px (XXHDPI)
+- 192x192px (XXXHDPI)
+"
+AnimaSA/Atarashii,closed,Handle password changes,[],"This adds handling of password changes. Now if the user changed his password and does something within the app that requires authentication a dialog is shown asking for the new password. The authentication check is done by a new ASyncTask which also replaces the Thread in FirstTimeInit.
+"
+AnimaSA/Atarashii,closed,Center textview & fix orientation (FirstRunActivity),[],"The textview wasn't centered in the FirstRunActivity & the FirstRunActivity res-layout was wrong named.
+"
+AnimaSA/Atarashii,closed,Fix #202,[],"Just don't reload records if connection is lost, there is no reason to do this.
+"
+AnimaSA/Atarashii,closed,Crash on startup (no network connection),[],"The app is crashing when you open it without network connection.
+It is caused by ""list"" that still null is.
+
+```
+07-31 00:48:27.215 E/AndroidRuntime(10502): FATAL EXCEPTION: main
+07-31 00:48:27.215 E/AndroidRuntime(10502): Process: net.somethingdreadful.MAL, PID: 10502
+07-31 00:48:27.215 E/AndroidRuntime(10502): java.lang.RuntimeException: Unable to resume activity {net.somethingdreadful.MAL/net.somethingdreadful.MAL.Home}: java.lang.NullPointerException: Attempt to read from field 'int net.somethingdreadful.MAL.IGF.list' on a null object reference
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2777)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:2806)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2241)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at android.app.ActivityThread.access$800(ActivityThread.java:138)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1199)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at android.os.Handler.dispatchMessage(Handler.java:102)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at android.os.Looper.loop(Looper.java:136)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at android.app.ActivityThread.main(ActivityThread.java:5034)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at java.lang.reflect.Method.invoke(Native Method)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:795)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:611)
+07-31 00:48:27.215 E/AndroidRuntime(10502): Caused by: java.lang.NullPointerException: Attempt to read from field 'int net.somethingdreadful.MAL.IGF.list' on a null object reference
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at net.somethingdreadful.MAL.Home.checkNetworkAndDisplayCrouton(Home.java:384)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at net.somethingdreadful.MAL.Home.onResume(Home.java:256)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1192)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at android.app.Activity.performResume(Activity.java:5320)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2767)
+07-31 00:48:27.215 E/AndroidRuntime(10502):     ... 10 more
+07-31 00:48:28.696 I/Process (10502): Sending signal. PID: 10502 SIG: 9
+```
+"
+AnimaSA/Atarashii,closed,Change Atarashii icon (& Beta icon).,[],"This commit will change the Atarashii icon (ref #179).
+
+![naamloos](https://cloud.githubusercontent.com/assets/5322473/3737263/4f9b6c6c-1735-11e4-952d-c9b98b320032.png)
+![naamloos2](https://cloud.githubusercontent.com/assets/5322473/3737339/13dacf0a-1736-11e4-94a5-6292f884d7d0.png)
+"
+AnimaSA/Atarashii,closed,Add new cards for UI improvement & #26,[],"Alright just as the name says New cards.
+This will support our next enchantment.
+
+How do I receive a card view?
+
+```
+Card view = ((Card) findViewById(R.id.name_card));
+```
+
+The cards do have different methods:
+
+setContent(int resource)
+This adds the content in the card.
+
+```
+((Card) findViewById(R.id.details_card)).setContent(R.layout.card_profile_details);
+```
+
+setCardColor(int color)
+This will change the card color
+Note: use the colors in the colors.xml file
+
+```
+((Card) findViewById(R.id.details_card)).setCardColor(R.color.white)
+```
+
+setHeaderColor(int color)
+The same usages as the ""setCardColor"" method
+
+wrapWidth(Boolean header)
+Wraps the card in width
+Note: the boolean is used for the header
+If it is set on true the card will check also the width of the header.
+Note 2: Use only if the card has been fully loaded
+
+```
+((Card) findViewById(R.id.details_card)).wrapWidth(false)
+```
+
+wrapHeight()
+Wraps the card in height
+Note: it is recommended to use the xml attribute.
+
+```
+((Card) findViewById(R.id.details_card)).wrapHeight()
+```
+
+Attributes:
+- header_Title
+  This will set the Header title (String)
+- header_Title_Color
+  This will set the Header text color (Recource)
+- header_Title_center
+  This will center the text if true (boolean)
+- header_Color
+  This will set the Header color (Recource)
+- card_Color
+  This will set the Card color (Recource)
+- card_ColorPressed
+  This will set the Card color when pressed (Recource)
+  if not defined it will use the default one.
+- card_TouchFeedback
+  This will enable the ""card_ColorPressed"" attribute  (Boolean)
+- card_WrapHeight
+  This will wraps the height of a card automatically when the content is loaded.
+"
+AnimaSA/Atarashii,closed,Fix some missing translations in DetailView,[],"These are gone missing in the in the last rewrite:
+- media status
+- media type
+- user status for manga
+
+Now they're back :)
+"
+AnimaSA/Atarashii,closed,Changed Username or Password Causes Errors,"[Label(name=""bug"")]","If a user changes their username or password for some reason, the application has issues where it cannot sync and will sometimes crash due to the errors now sent back from the API with a (now) invalid login.
+
+There should be a better way to handle an account error so we don't have crashes and similar when the details change out from under us.
+"
+AnimaSA/Atarashii,closed,IGF fixes and improvements,[],"I've improved the IGF and some related things and fixed some bugs I found:
+### improvements
+- remove static variables in IGF and SearchActivity
+- replaced static onError-callback in SearchActivity by callback interface
+  - also improved crouton displaying: never display 2 croutions if anime and manga loading failed, but one with a adapted message
+- improved search intent handling
+- onNetworkTaskError-callback for NetworkTask
+  - now onNetworkTaskFinished() does not get called if there was an error, these can be handled in onNetworkTaskError()
+- renamed HomeSectionsPagerAdapter to SectionsPagerAdapter, it's now used for Home and SearchActivity
+- do list updates based on a broadcast
+  - now lists are only reloaded if something changed, not always after returning from DetailView
+### bug fixes
+- fixed infinte calling of getRecords() when there are no more pages on paged lists (like upcoming)
+- fixed loading more pages on every device rotation on paged lists
+- fixed list filter is not remembered if switching from own list to paged list, scroll down till next page is loaded and switch back to own list again
+- fixed search result always reloaded from API after rotation
+"
+AnimaSA/Atarashii,closed,Don't return null for list tasks with empty results in NetworkTask,[],"Fixes #195
+
+Restores the behavior of the *NetworkTasks before the unification: don't return null if there was no error but an empty result. With exception for GET and GETDETAILS, they always have to return something, anything else is an error.
+"
+AnimaSA/Atarashii,closed,Bug error messages,[],"I am quite annoyed by the error messages I get.
+
+http://api.atarashiiapp.com/1/mangalist/ratan12
+I don't read manga so my list is always empty, due the recent changes I get every time ""error could not download Mangalist"" when I start the app or when I sync.
+"
+AnimaSA/Atarashii,closed,Fix indents & organize imports (res & src),[],"Fix indents & organize imports (res & src)
+"
+AnimaSA/Atarashii,closed,Removal seperated arraylists & adapters (IGF),[],"Removal seperated arraylists & adapters in the IGF.
+"
+AnimaSA/Atarashii,closed,Networktask improvements,[],"I've done some more NetworkTask improvements:
+### unification
+
+AnimeNetworkTask and MangaNetworkTask are replaced by NetworkTask, they where both doing the same except for the result. So this removes some duplicated code and also makes the handling easier as there is no ListType-check needed when creating a new Task (the ListType gets simply passed to the constructor).
+### more flexible usage
+
+As of #176 the result type of the NetworkTask is Object instead of ArrayList, this allows different results for different jobs. So GET and GETDETAIL now directly return an Anime or Manga object instead of ArrayLists with only one item.
+Also additional data (like the page number for the paged lists or a anime/manga record for GETDETAILS) is now passed with a Bundle object to the NetworkTask constructor. This makes it more flexible for different taks and future additions and prevents multiple constructors.
+### task cancellation
+
+The current task is now cancelled if the user selects an other list. This avoids unnecessary computation of unneeded data and as side effect it fixes #190.
+FORCESYNC-tasks are a exception for this: they keep running even if canceled and can complete the sync. Their results are just not shown if they are cancelled, but the sync gets done.
+"
+AnimaSA/Atarashii,closed,Disable swipe refresh for SearchActivity,[],"Swipe refresh is not needed on SearchActivity and currently causes a crash (I missed this one in #180), so disable it.
+"
+AnimaSA/Atarashii,closed,Bug: changing list while current list is still loading results in list with entries from both selections,"[Label(name=""bug"")]","If you select a list (or do force sync) and select an other list before the list is loaded, you will get a list that contains entries from both selections.
+
+Steps to reproduce:
+- open App
+- do force sync
+- change to e. g. most popular before force sync is done
+  - > you'll get a list with the entries from your own list (whatever filter was selected, e. g. watching) and the most popular list
+
+I'm currently working on further NetworkTask improvements which will also fix this issue.
+"
+AnimaSA/Atarashii,closed,Widgets,"[Label(name=""Feature Request"")]","It is not very important, but I think it would be good to add Widgets(with anime/manga stats and history, if it is possible with your current api).
+"
+AnimaSA/Atarashii,closed,More sorting options!,"[Label(name=""Feature Request"")]","Would it be possible to add more sorting options such as: Sort by last updated/watched and the inverse & Sort by title and the inverse?
+
+In some lists, such as the 'Completed' list and the 'In Progress' list, it's time consuming to scroll down to the bottom if it's very long. Including more sorting options would be very helpful in this type of scenario.
+"
+AnimaSA/Atarashii,closed,Fix results from previous search are shown (Search),[],"Fix results from previous search are shown.
+Fixes #186
+
+Update: Rebased
+"
+AnimaSA/Atarashii,closed,Search bug,[],"I noticed a search bug with the latest working:
+- search for something
+  - search results are shown
+- go back to home
+- search for something different
+  - expected result: search results are shown
+  - current result:  **results from previous search are shown**, the new search text is in the search field, you have to press go on the keyboard to start the new search
+"
+AnimaSA/Atarashii,closed,Fix Horizontal lines in (EPDF -> Detailview),[],"Fix Horizontal lines in (EpisodePickerDialogFragment -> Detailview)
+
+Fixes #183
+"
+AnimaSA/Atarashii,closed,Fix actionbar title android 2.2 & 2.3 (Detailview),[],"Fix actionbar title on android 2.2 & 2.3 devices (Detailview)
+Fixes #182
+"
+AnimaSA/Atarashii,closed,Number Picker Horizontal Rules,"[Label(name=""bug"")]","The new number picker for anime episodes has horizontal rules that extend all the way to the edge of the dialog instead of being the width of the numbers. This is present on all Android versions.
+"
+AnimaSA/Atarashii,closed,Action Bar Title on Android 2,"[Label(name=""bug"")]","With the move to the Support library, the UI got an overhaul on how it's styled.
+
+On Android 2.2 and 2.3, the anime/manga detail view doesn't change the title of the action bar. This works properly on Android 4.
+"
+AnimaSA/Atarashii,closed,"Account manager, syncadapter & contentprovider.","[Label(name=""enhancement"")]","Changes in short:
+- Cleanup unused imports
+- Rewritten auto-sync (Works now on the background)
+- Prefs user/password has been moved to the safe account manager
+- Updated androidmanifest for the required permissions
+- Added/Removed strings
+- Removed old settings
+- Updated login screen (use accountmanager)
+"
+AnimaSA/Atarashii,closed,Implement SwipeRefreshLayout,"[Label(name=""enhancement"")]","I've implemented the [SwipeRefreshLayout](https://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html) for forced sync. Now syncing is possible like in Googles apps (e. g. GMail, Google+) by swiping down in the anime/mangalist.
+"
+AnimaSA/Atarashii,closed,Icon redesign,[],"Since we will do many UI changes the next version I thought: why not redesign the app icon.
+I know someone who would love to do this.
+
+What do you guys think?
+"
+AnimaSA/Atarashii,open,App indexing,"[Label(name=""Feature Request"")]","Not really an issue, but more of a feature request. Is it at all possible and/or feasible for the inclusion of the new [App Indexing API](https://developers.google.com/app-indexing/webmasters/appindexingapi) that was added with [Google Play Services 5.0](http://android-developers.blogspot.com/2014/07/google-play-services-5.html)? It allows deep linking and searching directly from Google Search.
+"
+AnimaSA/Atarashii,closed,Fix up the Polish translation,[],"The style is still all over the place. Somebody needs to learn proper capitalization rules and many other things.  Actually the English interface could use some precision but that will be another pull request if I ever get to it.
+"
+AnimaSA/Atarashii,closed,Unify Anime/MangaNetworkTask callback interface,[],"While working on something different I noticed that the callback functions for AnimeNetworkTask and MangaNetworkTask always contain the same logic except for the result type (Anime/Manga). This means there is many duplicated code. I unified the callback to simplify this.
+Now classes (ItemGridFragment and SearchActivity) have to implement only one interface with one callback function instead of two. Separation between Anime and Manga is possible by using the callback's _ListType_ parameter _type_.
+
+I've tested this compared to 1.4 RC2 and noticed no differences, everything just works like before.
+"
+AnimaSA/Atarashii,closed,Gradle configuration update for Android Studio >= 0.6,[],"This makes the gradle configuration compatible to Android Studio 0.6.
+Also every dependency is loaded from maven repos now, SherlockNavDrawer was the last one that was not fetched from maven but I noticed that the author has a repo for this so I updated the configuration.
+This was necessary because the gradle config in the SherlockNavDrawer submodule was not compatible to Android Studio >= 0.6.
+"
+AnimaSA/Atarashii,closed,Rewrite & Remove (Atarashii 1.5),[],"Rewritten:
+- IGF
+- Detailview
+- SearchActivity
+
+Bug Fixes:
+- Image stretch on landscape mode
+- Navigation drawer Kitkat issue (changed the color)
+
+New Features:
+- Google voice search
+- Record number (Top / Most popular)
+- MAL Rating available if the anime is not in your list
+- copy cover title to clipboard on long press (+swipe if you don't want to open the detailview)
+
+Deletions:
+- ActionBarSherlock
+- SherlockNavDrawer
+- android-numberpicker
+- TextViewLightFont 
+  (I liked it but HE doesn't support it.)
+- Ratingpickerdialog (You can now just swipe it in the card)
+
+Additions:
+- HoloEverywhere (Mixed Holo for android < 4.0)
+  (This library supports different themes #128)
+
+Notice: 
+- Import the library & the preference addon.
+- Add the reference (HoloEverywhere) to Crouton.
+- Do not add the support library on the projects (you can remove it at the /lib folder)
+
+![screenshot_2014-06-13-20-30-34 1](https://cloud.githubusercontent.com/assets/5322473/3273860/5d49fa5c-f329-11e3-845a-156cc6d1252a.png)
+
+![screenshot_2014-06-13-20-30-44 1](https://cloud.githubusercontent.com/assets/5322473/3273864/76fb5342-f329-11e3-8b7b-690d64b714d4.png)
+
+![screenshot_2014-06-13-20-32-45 1](https://cloud.githubusercontent.com/assets/5322473/3273883/a58eb26c-f329-11e3-9b37-2bcc039178a9.png)
+"
+AnimaSA/Atarashii,closed,Rewrite Detail view (Atarashii 1.5),[],"As some know I was working on the removal of the actionbarsherlock and navigationdrawersherlock & the number picker.
+I rewrote some parts like the searchactivity & itemgridfragment.
+
+Currently everything is done except one thing, the rating picker.
+The problem is that I don't like the way we are handling the details.
+
+```
+if (newChapterValue == mangaRecord.getProgress(false)) {
+
+}
+ else {
+               ...
+
+
+}
+```
+
+I mean, look at that, wouldn't it better to use :
+
+```
+if (newChapterValue != mangaRecord.getProgress(false)) {
+               ...
+}
+```
+
+And in addition of that, look at the fragments.
+Why are we using fragments for each card?
+The interface doesn't contain any special dynamic things...
+
+Currently we are not even using the fragments for a valid reason.
+It would be cleaner to remove the different fragments and combine it into one layout.
+
+If we planned to support tablet UI we could use the normal android way: 
+http://developer.android.com/guide/practices/screens_support.html#DeclaringTabletLayouts
+
+If everyone agrees I will rewrite the detail view & make some text font changes for consistency.
+"
+AnimaSA/Atarashii,closed,Ellipsize website url if it is too long,[],"This will cut the url and add ""..."" if it is too long (fix for #171).
+"
+AnimaSA/Atarashii,closed,Overflow when the website is too long (Profile),[],"In some cases when the website url is too long the url will be written over the website text.
+(messing up the UI.)
+
+I tried to fix (by using a scrolling method but It didn't worked great) but it was a dirty fix that worked only one some devices.
+"
+AnimaSA/Atarashii,closed,Fix nav drawer item highlight being wrong after returning from an activity,[],"When selecting an item that leads to an activity (Profile, Friends), that item was being highlighted. However, once returned from the activity the item would still be selected even though wrong. This commit solves the issue by not highlighting items that lead to activities at all.
+"
+AnimaSA/Atarashii,closed,Fix the List type when returning from the profile or friendlist.,[],"When you return from the profile/listview the list type dropdown was not available.
+
+This fixes that problem.
+"
+AnimaSA/Atarashii,closed,Going Back From Activity Doesn't Set Menu,"[Label(name=""bug"")]","When going back from friends or profile, the previous drawer entry isn't set correctly. This is a problem as it messes up the action bar and in some cases makes it impossible to do an action until you explicitly select the section in the drawer.
+"
+AnimaSA/Atarashii,closed,Fix website overflow in some cases (Profile),[],"Fix problem when the URL is too long for the profile.
+This commit will add a automatically scrolling method so that the design won't be messed up.
+"
+AnimaSA/Atarashii,closed,Friendlist fixes,[],"I've fixed two bugs in the friendlist:
+- #160
+- the profile image could be displayed stretched (if the profile image is not quadratic)
+"
+AnimaSA/Atarashii,closed,Gradle update and optimisation (also fixes Android Studio building),[],"I updated Gradle to 1.12 and the Android gradle plugin to 0.10. Now Atarashii can be built again without troubles with the latest Android Studio 0.5.8 (as I mentioned in #99 Android Studio 0.5 introduced some gradle changes which caused some incompatibilities).
+I've also done some optimisations to the gradle config:
+- defined things required for all modules in the root build.gradle
+- kept the wrapper tasks in the build.gradle files for easier update
+  in the future
+"
+AnimaSA/Atarashii,closed,Bugfix: prevent entries without status in anime/manga list,[],"This should fix #161. Entries were saved to the database even if they have no watch/read status. That caused them to show up in the users anime/manga list if the filter was set to show all.
+
+Maybe related fix: Also removed an useless setCreateFlag() as it does not make sense to set the create flag to an entry without read/watch status (the create flag is used to determine if a create request must be sent to the API, which is useless without read/watch status).
+"
+AnimaSA/Atarashii,closed,Remove some hardcoded strings in DetailView,[],"This removes some hardcoded strings displayed while data loading (in synopsis and status card).
+"
+AnimaSA/Atarashii,closed,Fix time display format,[],"Single digit minutes were displayed without leading zero (e. g. 6:09 was displayed as 6:9).
+"
+AnimaSA/Atarashii,closed,Unknown anime added in all lists,[],"I don't really know how it appends, but I just see an anime, and it adds it on my list as nothing.
+
+Here a screenshot : https://i.imgur.com/e7eS67n.jpg, the anime Saint Seya is in my list, but has no status, and I don't add it.
+
+It seems that @ratan12 has the same bug.
+
+A log out/log in correct it.
+"
+AnimaSA/Atarashii,closed,Friendlist username overlaps time when the textsize is on extra large.,[],"The username in the friendlist overlaps the other details when the text size is set on extra large.
+This is probably because the textviews are based on the parent and not the other textviews.
+
+Note: bug only applies on the friendlist.
+"
+AnimaSA/Atarashii,closed,Unable to Login,"[Label(name=""invalid"")]","I have an MAL account (aphirst), and I know my password. However, if I put in my credentials, I get the ""Whoops"" message, implying I mis-typed them. I'm 100% sure that I am not making a typographical error, as the problem persists even if I change my MAL password to something else.
+
+I'm running a build of CM 10.2 on my Samsung i917 Captivate Glide, and I get this behaviour with Atarashii! v 1.3.2 and 1.3.1, both installed from F-Droid.
+"
+AnimaSA/Atarashii,closed,Link customShareText with the String.xml file for the translations.,[],"The translations (string.xml) wasn't linked with the prefmanager.
+In this commit I removed the hardcoded string and linked it with the strings.xml file.
+"
+AnimaSA/Atarashii,closed,Data storage location,[],"The application data files are incorrectly stored in /data/ rather than in /Android/data/ on Internal storage. ![screenshot_2014-04-17-22-58-21](https://cloud.githubusercontent.com/assets/5846561/2739227/b8a845d0-c6a5-11e3-8738-dfd5027318e4.png)
+"
+AnimaSA/Atarashii,closed,Remove unused imports and fix online indicator (friends).,[],"The friendlist indicator is not working when a friend is online.
+After a MAL update it didn't returned ""now"" instead of ""x seconds ago"" & ""x minutes ago"".
+"
+AnimaSA/Atarashii,closed,Switch List Menu Item Appears on Orientation Change,"[Label(name=""bug"")]","When changing the orientation of the device, the ""Switch List"" Menu/Actionbar item appears for lists that aren't personal ones (top, just added, popular).
+
+There was a fix in 47c2d66, but it caused crashes with Android 2. We need to figure out a compatible way to fix the issue.
+"
+AnimaSA/Atarashii,closed,Fix android 2.2 crash on home screen.,[],"This issue was caused by an ItemGridFragment that hasn't been finished loading.
+
+I moved it to Oncreate.
+Fixes #152 
+"
+AnimaSA/Atarashii,closed,Orientation change issues,[],"Orientation change resets scroll while browsing animelist and breaks top/popular/upcoming/just added lists. It happens on stable and beta versions from google play.
+
+Video: http://www.youtube.com/watch?v=LCPtDS3Qjkk
+Device: Nexus 7(2012). Selected runtime is Dalvik.
+![screenshot_2014-04-15-14-56-57](https://cloud.githubusercontent.com/assets/7301288/2706381/cfe71a04-c48f-11e3-9e90-c54ca1ed6d82.png)
+
+btw, I didn't notice any problems with orientation change in ""My Profile"" and ""My Friends"" functions.(beta from google play)
+"
+AnimaSA/Atarashii,closed,Crash on Android 2 - Options Menu / Side Panel,"[Label(name=""bug"")]","While testing for a beta release of 1.4, I ran across a crash bug with Android 2.2 and 2.3 devices. I'm not too worried about 2.2 devices because of the low usage, but 2.3 still has a reasonable percentage of users.
+
+The crash happens when trying to show the home activity, either after the sign-in action for new installs or on launch with existing credentials. Confirmed with Android 2.3 on the HTC Glacier, Android 2.3.7 on the B&N NookColor, and Android 2.2.1 (CM 6.1) on the HTC Dream.
+
+Following is the backtrace.
+
+```
+FATAL EXCEPTION: main
+java.lang.RuntimeException: Unable to resume activity {net.somethingdreadful.MAL.beta/net.somethingdreadful.MAL.Home}: java.lang.NullPointerException
+    at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2578)
+    at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:2599)
+    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:1965)
+    at android.app.ActivityThread.access$1500(ActivityThread.java:145)
+    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1045)
+    at android.os.Handler.dispatchMessage(Handler.java:99)
+    at android.os.Looper.loop(Looper.java:150)
+    at android.app.ActivityThread.main(ActivityThread.java:4369)
+    at java.lang.reflect.Method.invokeNative(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:507)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:846)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:604)
+    at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.NullPointerException
+    at net.somethingdreadful.MAL.Home.onPrepareOptionsMenu(Home.java:374)
+    at android.support.v4.app.Watson.onPreparePanel(Watson.java:89)
+    at com.actionbarsherlock.ActionBarSherlock.callbackPrepareOptionsMenu(ActionBarSherlock.java:581)
+    at com.actionbarsherlock.internal.ActionBarSherlockCompat.preparePanel(ActionBarSherlockCompat.java:494)
+    at com.actionbarsherlock.internal.ActionBarSherlockCompat.dispatchInvalidateOptionsMenu(ActionBarSherlockCompat.java:265)
+    at com.actionbarsherlock.app.SherlockFragmentActivity.invalidateOptionsMenu(SherlockFragmentActivity.java:149)
+    at com.actionbarsherlock.app.SherlockFragmentActivity.supportInvalidateOptionsMenu(SherlockFragmentActivity.java:155)
+    at net.somethingdreadful.MAL.Home.checkNetworkAndDisplayCrouton(Home.java:489)
+    at net.somethingdreadful.MAL.Home.onResume(Home.java:285)
+    at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1266)
+    at android.app.Activity.performResume(Activity.java:3968)
+    at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2568)
+    ... 12 more
+```
+"
+AnimaSA/Atarashii,closed,Friendlist indicator not working.,[],"The friendlist indicator is not working when a friend is online.
+I can't fix this because the new features I made for 1.5 :/
+(Made some changes to the manifest for the new feature, it won't me let it debug an older version unless I remove some parts.)
+
+Could anyone take care of this?
+MAL returns ""x seconds ago"" & ""x minutes ago"" instead of ""now"".
+The minutes should be max 15.
+
+Current situation.
+
+```
+if (last_online.equals(""Now"")){
+    Status.setBackgroundColor(Color.parseColor(""#0D8500""));
+}else{
+    Status.setBackgroundColor(Color.parseColor(""#D10000""));
+}
+```
+"
+AnimaSA/Atarashii,closed,Create RELEASE_NOTES.md,[],"Hi,
+
+I just want to have a release note to see what's new/what's will be new/what's is planned for the next version… So I create a Release Note (like the « what's new » for Mozilla Firefox project).  
+For the next time you push to Play Store, please indicate too the Atarashii Github Repo (https://github.com/AnimaSA/Atarashii)  
+And too, if you push an apk on github, you create a download/ section (See https://github.com/blog/665-apk-downloads-for-android-projects for more informations). It can be good for those who don't have the Play Store…
+
+Thanks :-)
+"
+AnimaSA/Atarashii,closed,Add an option to set a start and finish date,"[Label(name=""Feature Request""), Label(name=""enhancement"")]","I read this improvement on Play store :
+- adding an option to set a start and finish date for an anime
+
+Thanks
+"
+AnimaSA/Atarashii,open,Sync improvement,"[Label(name=""enhancement"")]","## The problem
+- Imagine that you update your\* anime list episode from Atarashii from 60 to 65, but you don't have connexion
+- But you forget to sync your app, see and update your anime list episode from MAL from 60 to 70 (because you doesn't sync Atarashii, it's 60)
+- To finish you synch Atarashii
+## The result
+
+Your anime list episode is … 65, not 70 (because you sync the 65 the last)
+## What you can do
+- Compare the number of episode seen : if Atarashii episode is >> from MAL episode seen = update MAL episode seen with the data of Atarashii, else update Atarashii episode seen from MAL episode seen
+- We can also to check the status (if is completed in MAL but watching in Atarashii) etc…
+
+Thanks !
+"
+AnimaSA/Atarashii,closed,Notification on sync?,[],"Is there a reason why we are using a crouton message and the notification message?
+I don't see a point in it...
+
+If the sync starts/completed we are showing the users a crouton message.
+So what's the point of using the notification in the statusbar?
+"
+AnimaSA/Atarashii,closed,List enhancements and cleanup,[],"I've done some enhancements and cleanup to the whole list loading in the Home-Activity and everything related (which I wanted to do since the API rewrite^^):
+- to simplify the code all list loading is now done by ItemGridFragment, basically it was implemented twice as some lists were loaded by Home and some by ItemGridFragment
+- moved the loading indicator from activity_home.xml to fragment_animelist.xml as now the indicator can be displayed independent for anime- and mangalist (they can have different loading times depending how many items are on them)
+- keep selected list after rotation
+- **IMHO most important improvement:** don't reload list after rotation: anime- and mangalist are now serializable so they can be passed to the Bundle in onSaveInstanceState and reloaded in onCreateView (this also keeps the scrolling position), this prevents unnecessary redownloading of lists (most popular, upcoming etc.) and makes the UI smoother
+- some general cleanups and optimisations
+"
+AnimaSA/Atarashii,closed,Remove condition that caused hidden users & multiple names (Friendlist),[],"Remove the condition that caused hidden users inside the friendlist. (related to #144)
+"
+AnimaSA/Atarashii,closed,Fix friendlist bug (showing twice an user & hiding an user).,[],"Because we didn't added a method that removed the old friend records it was being overwritten.
+This was the cause of an user that has been shown twice or hidden users.
+
+This fix clears the table when we fletched the details & we're about to save it into the database.
+"
+AnimaSA/Atarashii,closed,Parse dates from MAL,[],"MAL uses some different date formats and as the API is scraping the HTML from MAL, Atarashii has to deal with it :-).
+So I created a class which can parse all those date formats and creates Date-Objects of them, which can be used to get the dates formatted in a unique way and to translate them.
+The dateformats I noticed on MAL (in data relevant to Atarashii) are:
+
+**fixed dates**:
+- yyyy-MM-dd, h:m a
+- MM-dd-yy, h:m a
+- MMMM dd, yyyy
+
+**relative dates:**
+- EEEE, h:m a
+- Yesterday, h:m a
+- x hours/minutes ago
+
+(see [time pattern syntax](http://developer.android.com/reference/java/text/SimpleDateFormat.html) for explanation of those variables)
+
+The class _MALDateTools_ can convert all these date formats and can return them as
+- Date-Object
+- ISO 8601 date strings (yyyy-MM-dd'T'HH:mm:ssZ)
+- formatted date strings (with format definitions from string resources)
+
+Database: all dates which are stored in the database are now stored as ISO 8601 strings. For last online this fixes one issue: currently if the last online date is ""4 minutes ago"" this string will be saved in the database and it will be also 4 minutes ago if I look at the friendlist or profile tomorrow without resync. By storing a complete date this can be calculated correctly.
+
+The returned date strings are also converted to the time zone of the device. Formatted date strings are also relative if they are not too far in the past:
+- for dates which are less than a hour ago: _""x minutes ago""_
+- for dates which are less than a day ago: _""x hours ago""_
+- for dates which are less than two days ago: _""Yesterday, Time""_
+- for dates which are less than five days ago: _""Dayname, Time""_
+- everything else will be formatted as _""Date, Time""_
+
+All these formats are defined as resources to make them translatable.
+
+If date parsing fails (that happend never in my tests) everything acts as before: dates are stored and displayed as they are returned by the API.
+
+**Downside:** there is one downside: the date format ""x hours ago"" can't be parsed exactly, because eg. ""5 hours ago"" can be 300 to 359 minutes ago. As far as I can tell this format is only used for the last online date so it might be not a big problem.
+"
+AnimaSA/Atarashii,closed,Change API URL to use https,[],"@motokochan enabled SSL for the new API with a valid certificate (thanks! :+1: ), so we should use it (fixes #137). I tested with Android 4.4.2 and Android 2.2 and both accepted the certificate and everything is working.
+"
+AnimaSA/Atarashii,closed,Fix NFC in beta,[],"NFC is not working in the beta because of the different package name: the NFC-record is for the package _net.somethingdreadful.MAL_, but the beta is _net.somethingdreadful.MAL.**beta**_ so the play store opens on the target device.
+I changed setupBeam() to use the real package name instead of a hardcoded one.
+"
+AnimaSA/Atarashii,closed,Update strings.xml,[],"Correct an english sentence
+"
+AnimaSA/Atarashii,closed,Don't sort database query results case sensitive,[],"This fixes the issue that some Anime were put on the end of the list because their title starts with an lower case character (examples: ""ef: A Tale of Memories"", ""xxxHolic"").
+"
+AnimaSA/Atarashii,closed,Replace friendlist developer color with a darker one.,[],"The developers color in the friendlist was too light.
+I replaced it with a darker one.
+
+the function isDeveloper will be used by a new function for 1.5
+"
+AnimaSA/Atarashii,closed,Use SSL for API communication,[],"It would be better to use SSL secured API communication. I know that MAL does not support SSL, but we could at least secure the communication with the API to prevent credential spying between the app and the API (which could happen for example in public WIFI nets). This should be a simple thing in the app, but would require SSL (with valid certificate) on the API side.
+"
+AnimaSA/Atarashii,closed,Don't display old search results,[],"When searching for something which can't be found after a previous search which returned something, the old search results are still shown (after the crouton message that says nothing could be found). This changes this behaviour to clear the result list if nothing is found.
+"
+AnimaSA/Atarashii,closed,Fix profile image in portrait mode,[],"I noticed that the profile image looked different in portrait mode than in landscape mode. This adds the same padding and layout gravity to profile image in portrait mode as in landscape mode. Previously the profile image was not centered, the name had no padding left and right and the bottom padding was different to landscape mode. Now both look similar.
+"
+AnimaSA/Atarashii,closed,No Up button in settings,[],"The second level settings screens don't have an Up button in the Action Bar. Compare the images:
+![screenshot_2014-03-11-21-00-39](https://f.cloud.github.com/assets/1756811/2390353/7402068c-a959-11e3-8f20-8301998fc50d.png)
+![screenshot_2014-03-11-21-00-44](https://f.cloud.github.com/assets/1756811/2390352/73fccd84-a959-11e3-91d8-252538989151.png)
+"
+AnimaSA/Atarashii,closed,Show loading indicator while downloading lists,[],"Showing top rated, most popular, just added or upcoming lists can take some seconds because they are downloaded every time. This adds a progress spinner that is displayed while loading to show the user that the app is doing something.
+"
+AnimaSA/Atarashii,closed,Fix crouton spam if an anime/manga does not exist.,[],"This commit will fix the crouton spam.
+It happens when an anime/manga does not exist.
+"
+AnimaSA/Atarashii,closed,Generate status RadioButtons in status selection dialog from string-array,[],"This changes StatusPickerDialogFragment to generate the RadioButtons for status selection from the string-array mediaStatus_User. This makes it show the correct status strings: ""watching"" and ""plan to watch"" for anime and ""reading"" and ""plan to read"" for manga instead of just ""in progress"" and ""planned"".
+
+![status_dialog](https://f.cloud.github.com/assets/5774313/2368083/cf875b4e-a795-11e3-900a-e17fcc2125b2.png)
+"
+AnimaSA/Atarashii,closed,Add missing status translations in DetailView,[],"There were some more places where the status was set directly from hardcoded strings that I missed in #126.
+"
+AnimaSA/Atarashii,closed,Implement app theme options,[],"Default is normal Atarashii theme (Light with dark action bar). We have the <a href=""https://github.com/AnimaSA/Atarashii/pull/127"">blue theme</a> as alternative...
+"
+AnimaSA/Atarashii,closed,App theming,[],"I'm working on letting users select the app theme. I've got the idea shaped up in my head but it looks like I'll have some questions and things to talk out. 
+
+First off, would it be planned to have more than just two themes? (dark and light)
+"
+AnimaSA/Atarashii,closed,Change overall design,[],"I made some changes here and there which I think make the app look more beautiful. I don't know if it was ok for me to alter the app this much but I thought I'd make it and present it rather than first asking for permission. If you don't like it you can always just close the pull request anyway.
+
+Preview:
+![preview](https://f.cloud.github.com/assets/2550945/2365820/efd7e3a6-a6e0-11e3-9a50-b89201060289.gif)
+
+---
+
+(Assuming this gets merged)
+Since the action bar is blue the app icon doesn't look all that good there. So I thought, maybe, we could do something like this :D
+
+![idea_ic_icon](https://f.cloud.github.com/assets/2550945/2365939/e0286862-a6e6-11e3-8a15-d9dce7bd7fb3.png)
+"
+AnimaSA/Atarashii,closed,Remove hardcoded strings from DetailView and ProfileActivity,[],"There were some strings in DetailView which were hardcoded or displayed directly from the data returned by the API and therefore could not be translated:
+- dialog buttons (status, progress, rating)
+- status text
+- media type
+- media status
+
+I added functions to get the media type, media status and user status as integers to Anime/Manga class and added string-arrays to strings.xml. The integers returned by these functions are the array indices of the string-arrays so they can be used directly for string mapping (see `getStringFromResourceArray()` and following functions in DetailView).
+
+Also replaced hardcoded strings in the dialogs by resource strings.
+"
+AnimaSA/Atarashii,closed,Use card background in details cover image,[],"![device-2014-03-07-170341_cropped](https://f.cloud.github.com/assets/2550945/2358974/572b3f32-a612-11e3-890d-1561e1e7bc1f.png)
+"
+AnimaSA/Atarashii,closed,Landscape profile layout,[],"![device-2014-03-07-164352](https://f.cloud.github.com/assets/2550945/2358696/85eec224-a60f-11e3-9e93-1a918a3d8f76.png)
+
+---
+
+![device-2014-03-07-164409](https://f.cloud.github.com/assets/2550945/2358694/81e85c1c-a60f-11e3-9c70-cdf37a02a683.png)
+"
+AnimaSA/Atarashii,closed,Fix orientation crash on (ART). (does not effect davik),[],"The scrollview id's were causing confrontations & inflatedId was the main cause.
+
+The previous fix fixed it for the davik devices.
+This commit will fix it for ART devices (Fixes #115).
+
+Edit: seems like it isn't an ART bug.
+
+```
+Caution: Your activity will be destroyed and recreated each time the user rotates the screen. When the screen changes orientation, the system destroys and recreates the foreground activity because the screen configuration has changed and your activity might need to load alternative resources (such as the layout).
+
+If the activity is destroyed and the same instance must be recreated, the system passes the state data defined at (1) to both the onCreate() method (2) and the onRestoreInstanceState() method (3).
+```
+"
+AnimaSA/Atarashii,closed,Set MovementMethod to LinkMovementMethod on synopsis,[],"...for rare cases when there are links in synopsis. Fairy Tail (2014) for instance...
+"
+AnimaSA/Atarashii,closed,Improve friendlist,[],"Just remembered about spacing options of gridview... Anyways, these are the changes:
+1) Use horizontal and vertical spacing in grid view (Items should be all good on tablets now)
+2) Show touch feedback only on the cards and not the background
+"
+AnimaSA/Atarashii,closed,fix friendlist order on refresh,[],"Final fix for #116
+"
+AnimaSA/Atarashii,closed,Scale down friend cards,[],
+AnimaSA/Atarashii,closed,Redesign friendlist,[],"![device-2014-03-06-181156](https://f.cloud.github.com/assets/2550945/2347951/71aaf50c-a552-11e3-9c23-269fa8468c80.png)
+"
+AnimaSA/Atarashii,closed,Fix crash on orientation change in activities with landscape layout,[],"Well, fixes the issue so why not?
+"
+AnimaSA/Atarashii,closed,Fix friendlist order on refresh.,[],"The friendlist order got disturbed on every sync.
+I modified the code so it will now download and store it into the database and then receive it from the database.
+"
+AnimaSA/Atarashii,closed,Crash on orientation (DetailView & About),[],"I don't know what caused the DetailView/About to crash.
+
+Exception type: ClassCastException
+
+Unaffected:
+- Profile (Doesn't use layout-land)
+- Friendlist (Doesn't use layout-land)
+
+This issue is most likely caused by one of the new changes.
+Only activities with cards & layouts that are located at layout-land have this issue
+"
+AnimaSA/Atarashii,closed,Auto-Format code,[],
+AnimaSA/Atarashii,closed,Auto-Format code,[],
+AnimaSA/Atarashii,closed,Use Light font on API 16+,[],"Use light font at some places in the app. Just a proposal...
+
+![preview](https://f.cloud.github.com/assets/2550945/2336065/ba0f694a-a48a-11e3-8aa7-91a736a33d60.gif)
+"
+AnimaSA/Atarashii,closed,Remove duplicate string,[],"crouton_info_SyncMessage was defined twice
+"
+AnimaSA/Atarashii,closed,Fix aapt crash due removed string.,[],"Fix aapt crash due removed string.
+"
+AnimaSA/Atarashii,closed,String cleanup for the translation.,[],"I did a massive cleanup.
+- moved hardcoded strings to the strings.xml
+- removed unused strings
+- renamed strings for better overview
+
+with addition of that I replaced the Toast with crouton on the firsttimeinit & removed the ""account ok"" string.
+(If an user logged in successfully it will take us to the home.java so that notification was not so usefull)
+Related to #104
+"
+AnimaSA/Atarashii,closed,Fix old card drawable name,[],"Fix old drawable name that came up after merging ratan's pull request about friend list redesign...
+"
+AnimaSA/Atarashii,closed,Change card style and add touch feedback,[],"Modified cards in order to make them look closer to the ones Google uses and added touch feedback.
+
+Preview:
+![preview](https://f.cloud.github.com/assets/2550945/2304542/c71b2b22-a225-11e3-8a64-abb8dfdf13e4.gif)
+"
+AnimaSA/Atarashii,closed,Removal BaseItemGrindFragement & support multiple pages(search).,[],"I found out that the IGT & BIGT were basically the same.
+There was only a slight difference: the activity context.
+
+So I made a static boolean that will indicate which activity you are using.
+Removed the docrouton method and the booleans on SearchActivity & the unnecessarily BIGT.
+The BaseActionBar is now using a static string for the query (this will reduce a lot methodes).
+"
+AnimaSA/Atarashii,closed,Update action bar title depending on nav drawer selected item,[],"Set action bar title to selected drawer item title. If the selected item was an item that started an activity, update the action bar title with the one selected before the drawer was opened...
+"
+AnimaSA/Atarashii,closed,App Translation,[],"Thought it could be cool to have the app translated into different languages. I know this isn't that necessary but still we could maybe keep this going on in the back even if slowly.
+
+I can translate the existing strings into Turkish myself. Rest of the team can translate to their native languages. And about the remaining languages, we could post the app in this xda thread http://forum.xda-developers.com/showthread.php?t=2069390 and have a crowdin page ?
+"
+AnimaSA/Atarashii,closed,Replace maketext methode & replace conditions drawer/onitemclick(Home),[],"- I removed the crouton maketext methode (NOT THE Crouton.makeText).
+  I forgot to remove that when I pushed the profile feature.
+- Cleaned up the conditions (drawer/onitemclick). It should not check the network status while we have a listener for it so I removed ""MALApi.isNetworkAvailable(context)"".
+"
+AnimaSA/Atarashii,closed,Icons in the navigation drawer and some small changes,[],"Changes made:
+- Icons for items in the navigation drawer. (All icons except the ones for Most Popular and My List are from Action Bar Icon Pack. The other 2 icons were made by me.)
+- Increase font size of navigation drawer item titles.
+- Decrease navigation drawer width to 240dp from 300dp.
+- Add 5dp bottom padding to user name in profile activity.
+- Added Thumbs.db to gitignore file.
+
+Screenshot:
+![device-2014-02-24-171527](https://f.cloud.github.com/assets/2550945/2247443/e2ad2194-9d6e-11e3-8ef5-ac62d509300c.png)
+"
+AnimaSA/Atarashii,closed,Add icons to nav drawer items and improve their title text,[],"I've added icons to items in the navigation drawer and made the titles a little bit larger. Other than that, I added 5dp of padding to name field in profile layout. However, it looks like I unconsciously pressed Ctrl + Shift + F so the diff looks like a huge mess. The change was an addition of a single line though...
+
+Here is a screenshot of how it looks
+![screenshot_2014-02-23-22-08-02](https://f.cloud.github.com/assets/2550945/2241413/1afda5ea-9cd0-11e3-92ed-c01a1f8078b3.png)
+"
+AnimaSA/Atarashii,closed,Fix share(profile) using int(id) instead string.,[],"The anime/manga-list share function (profile) broke unexpected.
+
+what I mean with broke...?
+R.string.share_mangalist was not returning the string but his id 2131427387.
+
+The same problem was with the animelist share option.
+"
+AnimaSA/Atarashii,closed,Building with Android Studio,[],"I've added a gradle configuration to the project. This allows importing it to [Android Studio](http://developer.android.com/sdk/installing/studio.html). Gradle will automatically fetch all dependencies, there are no further steps needed, just import and start coding :-)
+- all required libraries (except for SherlockNavigationDrawer and android-numberpicker) are fetched from the [maven central repository](http://search.maven.org/) 
+- SherlockNavigationDrawer is built from third-party as this is not available as maven dependency
+- android-numberpicker is fetched from the [toxbee maven repo](https://github.com/toxbee/mvn-repo/tree/master) because the version found in the maven central repository is not compatible to Android Studio and the library can't be compiled from third-party with gradle without changes to it (which is not a good idea since it is a git submodule)
+
+Tested with Android Studio 0.4.6 on Windows 7 and Ubuntu 13.10
+"
+AnimaSA/Atarashii,closed,Friendlist redesign (using cards).,[],"This design doesn't contain a line & has separate cards.
+It will be more understandable (it clearly gives you which info is from which user) for the users and is using the same color scheme like the profile details.
+
+Here is a censored preview:
+![listupdate](https://f.cloud.github.com/assets/5322473/2219050/7854a02e-9a3a-11e3-93e4-bd4c3ef5318b.png)
+"
+AnimaSA/Atarashii,closed,Database version downgrade from 7 to Version 6.,[],"This commit will downgrade the database version from 7 to 6.
+The newest app on the playstore is using version 5.
+
+Note: I removed the Profile/friend table upgrade because this hasn't been pushed to the devices of our users.
+So we only need to create the table.
+
+Related to: #88
+"
+AnimaSA/Atarashii,closed,Add missing letter to description in AboutActivity,[],"In app_description was a ""u"" missing in ""beautifully"".
+"
+AnimaSA/Atarashii,closed,Fix wrong error crouton on friendlist,[],"If the friendlist is empty and no network connection available, there is an wrong error crouton message displayed (empty friendlist is not an error). This PR changes the FriendNetworkTask to behave like Anime/MangaNetworkTask: it is now only returning null if there was an error, which makes error handling in the callback function easier.
+"
+AnimaSA/Atarashii,closed,cleanup isNetworkAvailable(),[],"Currently there are 7 implementations of isNetworkAvailable(). This PR adds isNetworkAvailable() as static function to MALApi (I think it is the right place as this class is the main networking class) and removes all other implementations.
+
+Tested on Galaxy Nexus, no difference to previous behaviour.
+"
+AnimaSA/Atarashii,closed,Beam Support Breaks Non-NFC Devices,"[Label(name=""bug"")]","For devices running an Android version that supports NFC, but don't actually have NFC capability, the application crashes:
+
+```
+E/AndroidRuntime( 4750): java.lang.RuntimeException: Unable to start activity ComponentInfo{net.somethingdreadful.MAL/net.somethingdreadful.MAL.FirstTimeInit}: java.lang.NullPointerException
+E/AndroidRuntime( 4750):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2215)
+E/AndroidRuntime( 4750):    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2265)
+E/AndroidRuntime( 4750):    at android.app.ActivityThread.access$800(ActivityThread.java:145)
+E/AndroidRuntime( 4750):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1206)
+E/AndroidRuntime( 4750):    at android.os.Handler.dispatchMessage(Handler.java:102)
+E/AndroidRuntime( 4750):    at android.os.Looper.loop(Looper.java:136)
+E/AndroidRuntime( 4750):    at android.app.ActivityThread.main(ActivityThread.java:5081)
+E/AndroidRuntime( 4750):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime( 4750):    at java.lang.reflect.Method.invoke(Method.java:515)
+E/AndroidRuntime( 4750):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:781)
+E/AndroidRuntime( 4750):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:597)
+E/AndroidRuntime( 4750):    at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime( 4750): Caused by: java.lang.NullPointerException
+E/AndroidRuntime( 4750):    at net.somethingdreadful.MAL.NfcHelper.disableBeam(NfcHelper.java:15)
+E/AndroidRuntime( 4750):    at net.somethingdreadful.MAL.FirstTimeInit.onCreate(FirstTimeInit.java:83)
+E/AndroidRuntime( 4750):    at android.app.Activity.performCreate(Activity.java:5231)
+E/AndroidRuntime( 4750):    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)
+E/AndroidRuntime( 4750):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2169)
+E/AndroidRuntime( 4750):    ... 11 more
+```
+"
+AnimaSA/Atarashii,closed,Fix picasso offline crash & Traditional list stretch issue.,[],"My previous pull request (#84) was made on the working branch.
+This time I moved it to a new branch.
+
+The .fit() function caused some problems when atarashii was offline.
+We could replace this with a try block but the Traditional list stretch issue wouldn't be fixed.
+
+So I just removed the .fit(), the image still fit's perfect so this function was unnecessary for atarashii.
+"
+AnimaSA/Atarashii,closed,Border for cards,[],"I added a border and a slight drop shadow to the cards in anime/manga details, profile and about screen to make it fit better to the usual card design as in googles and other apps.
+I think it looks better this way, what do you think?
+
+![card_01](https://f.cloud.github.com/assets/5774313/2163271/eb7e86f4-94dc-11e3-821c-443649503f52.png)
+"
+AnimaSA/Atarashii,closed,Android Beam Support,[],"Here is a clean branch for PR #89, apparently Github does not allow to change the branch of a PR.
+Sorry for the troubles.
+"
+AnimaSA/Atarashii,closed,Android Beam Support,[],"I've implemented Android Beam support (NFC) for sharing anime/manga between two devices.
+Basically this just sends a simple string containing recordType and recordID to the other device, which then loads the data (just calls getDetails() after setting recordType/-ID), see setupBeam() and processIntent() in DetailsView.
+Second part is the NfcHelper class which contains the static function disableBeam(), which is used to prevent displaying ""touch to beam"" for all other activities, as they don't have any data to share.
+
+If the app is not installed on the target device then the play store is opened, presenting Atarashii for installation.
+
+Edit: Don't know why the merge commit is there, branch should start after this commit -.-
+"
+AnimaSA/Atarashii,closed,Database cleanup,[],"- I removed the upgrade version 5 because it is the same as upgrade 6. This will reduce some unnecessary upgrades.
+- Downgrade version 7 to 6 (last released version in the store is 5)
+
+TESTED: AVD  Android:2.2 Running 1.3.1
+Result: Upgrade went well.
+"
+AnimaSA/Atarashii,closed,Change Hex into HVS.,[],"If we change the hex colors to the HVS color method we could easily reduce the code with 57 lines.
+"
+AnimaSA/Atarashii,closed,API rewrite to use retrofit + some changes to all related code,[],"First: sorry for this massive changeset, but as the API is a central part of the App there were quite many changes necessary.
+
+I was working on issue #55 to use retrofit for API communication and I think it is now ready to show you.
+While I rewrote the API stuff I had to touch a major part of the code and noticed some things that could be optimized together with the API changes. Here is an overview about my changes as this pull request is quite big:
+- **API:** 
+  - rewritten to use the retrofit library (http://square.github.io/retrofit/) which makes API handling much easier as it does all the deserialization (see MalApi.java and MalInterface.java in the api package)
+  - added the response package which contains all the classes for deserialization
+- **database:**
+  - new class DatabaseManager which handles the database access stuff, this is mostly for better readability as MALManager is a little simpler now
+  - removed anime_time_days_d and manga_time_days_d and changed type of anime_time_days and manga_time_days to double: saving the same value in different columns is bad behaviour, better convert them if needed
+  - defined UNIQUE columns in every table (recordID in anime/manga, username inf friend/profile), this allows using the replace()-function so there is no need to care about if data needs to be inserted or updated (thats why itemExists() is gone)
+- **general code changes:**
+  - needed to change nearly every thing that touches data, but tried to change as little as possible
+  - removed AsyncTasks for fetching anime/mangalists because they where implemented multiple times, so I rewrote them to provide a callback function and put them in the tasks-package
+  - simplified some things
+  - little cleanups (like unused imports)
+- **misc:**
+  - updated readme and acknowledgements in about to credit Square Inc. for retrofit and Google Inc. for Gson (which is used by retrofit)
+
+Everything should be working like before as far as I noticed, but with easier API handling.
+"
+AnimaSA/Atarashii,closed,Fix link not opening browser (about),[],"The 'Join our Community!' wasn't opening the browser because we forgot to add a few codes.
+This fix will add those codes.
+"
+AnimaSA/Atarashii,closed,Traditional list stretch bugfix,[],"The .fit() function caused some problems when atarashii was offline.
+We could replace this with a try block but the Traditional list stretch issue wouldn't be fixed.
+
+So I just removed the .fit(), the image still fit's perfect so this function was unnecessary for atarashii.
+
+Screenshot of the Traditional list stretch issue (this will also be fixed with fix).
+![screenshot_2014-01-28-15-34-48](https://f.cloud.github.com/assets/5322473/2019864/61f7be3c-882a-11e3-95b0-ff2ae9b763d8.png)
+"
+AnimaSA/Atarashii,closed,Fix database upgrade crash (Fiends & profile) Fixes #82.,[],"This fix will fix the database upgrade crash.
+"
+AnimaSA/Atarashii,closed,Friends database table doesn't exist.,"[Label(name=""bug"")]","Probably just an issue when jumping around in development versions, but we need to make sure that this isn't an issue for a release:
+
+The table ""friends"" isn't created if the user already has an older version.
+
+We need to make sure the DB version is checked and code is run to create the table on upgrade. The
+
+```
+E/AndroidRuntime( 1764): FATAL EXCEPTION: AsyncTask #1
+E/AndroidRuntime( 1764): java.lang.RuntimeException: An error occured while executing doInBackground()
+E/AndroidRuntime( 1764):    at android.os.AsyncTask$3.done(AsyncTask.java:299)
+E/AndroidRuntime( 1764):    at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:352)
+E/AndroidRuntime( 1764):    at java.util.concurrent.FutureTask.setException(FutureTask.java:219)
+E/AndroidRuntime( 1764):    at java.util.concurrent.FutureTask.run(FutureTask.java:239)
+E/AndroidRuntime( 1764):    at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:230)
+E/AndroidRuntime( 1764):    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1080)
+E/AndroidRuntime( 1764):    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:573)
+E/AndroidRuntime( 1764):    at java.lang.Thread.run(Thread.java:841)
+E/AndroidRuntime( 1764): Caused by: android.database.sqlite.SQLiteException: no such table: friends (code 1): , while compiling: create table temp_table as select * from friends
+```
+"
+AnimaSA/Atarashii,closed,Fix search results was not using the right url.,[],"The search method was requesting an invalid url.
+This was the cause of not returning the right anime/manga details.
+
+It was only searching for the first word.
+
+Example of the url atarashii requested: http://api.atarashiiapp.com/anime/search?q=mirai nikki
+The way it should be requested: http://api.atarashiiapp.com/anime/search?q=mirai%20nikki
+"
+AnimaSA/Atarashii,closed,"""Rewatching"" items not handled properly","[Label(name=""enhancement"")]","MAL is silly about how it handles ""rewatching"" a series—it took me way longer than it should have to discover that a series only has that checkbox if it's marked ""Completed"" and not ""Currently Watching""—but it's probably worth supporting them properly. I'm going through a few old series with friends, and I marked them as ""Rewatching"". It's all well and good if I'm marking stuff on my computer, but from my phone/tablet I can't update progress through these shows.
+
+Best case would be to support them identically to the MAL site: Show ""Rewatching"" items under the ""Watching"" category, and allow incrementing the episode progress just like a ""standard"" in-progress show.
+
+And of course, if I'm doing something wrong, and these are staring me right in the face, that's entirely possible. Feel free to tell me I'm a バカ. ;-)
+"
+AnimaSA/Atarashii,closed,Added atarashii community (google+) to about.,[],"Added atarashii community (google+) to about.
+
+![screenshot_2013-12-23-20-19-55](https://f.cloud.github.com/assets/5322473/1802703/27e1a49e-6c08-11e3-90cb-35b98d25c759.png)
+"
+AnimaSA/Atarashii,closed,Update manga just/upcoming/most/top (enable),[],"Due the lack of our previous api the manga section wasn't bug free like the anime section.
+
+With bug free I mean that the manga section (top/upcoming/most/top) didn't worked.
+Only the anime section will work without this update.
+
+In short: I made some changes to make it work.
+"
+AnimaSA/Atarashii,closed,Update Userprofile & friendlist,[],"- Moved hardcoded strings to strings.xml
+- Recoded Friendlist & Userprofile (Are using the database now)
+- Update database version to 6
+- Performance has improved
+- Fixed wrong icon in the menubar.
+- Updated layout friendlist
+- Replaced Listview with gridview (friendlist)
+- Using malapi instead my own method
+
+![screenshot_2013-12-23-18-57-41](https://f.cloud.github.com/assets/5322473/1802281/5152c42c-6bfc-11e3-9df2-320cb8280853.png)
+
+![screenshot_2013-12-23-18-58-02](https://f.cloud.github.com/assets/5322473/1802282/5152f870-6bfc-11e3-9792-12ba3ffef603.png)
+"
+AnimaSA/Atarashii,closed,Update Auto-sync,[],"- Performance update.
+- Advanced settings to reduce bandwidth.
+- Fix black preferencescreen bug (android 2.2).
+
+![screenshot_2013-12-23-18-58-24](https://f.cloud.github.com/assets/5322473/1802291/92d99132-6bfc-11e3-8dbd-b38290f41a87.png)
+
+![screenshot_2013-12-23-18-58-28](https://f.cloud.github.com/assets/5322473/1802292/92d9c8be-6bfc-11e3-8de8-270d575483b0.png)
+"
+AnimaSA/Atarashii,closed,Crash in search on 500 Error,"[Label(name=""bug"")]","If the API returns a 500 error on a search operation, an error occurs when trying to parse the non-existent response. We should detect HTTP errors on this operation and cancel it.
+"
+AnimaSA/Atarashii,closed,Bugfix: fullsync shows success notification even if the sync failed,[],"Doing a fullsync shows always a success notification, even if it actually failed (can be tested currently as the API seems to be offline again -.-).
+This fix makes downloadAndStoreList() return true if downloading was successful (jArray is null if not) and evaluate this return value before showing the notification in getMangaRecordsTask.onPostExecute().
+"
+AnimaSA/Atarashii,closed,Atarashii's own Mal Api,"[Label(name=""invalid"")]","Maybe it is time to create a own api for atarashii,
+The unofficial api is almost every 2 weeks offline for 3 days.
+For some users is this really a minus point.
+
+I have found already a interesting host (No bandwidth control).
+We can make use of a java web application.
+
+It will take a lot of time but i think if it is once ready and up it will benefit us.
+Atarashii doesn't have to modified because we can just use the same json structure.
+We can implement more stuff from mal.
+
+What do you guys think?
+"
+AnimaSA/Atarashii,closed,FriendList update & bugs fixes & New api (supported).,[],"Many changes...
+- New Api supported
+- Added Fake website filter
+- Added Atarashii community to about
+- Updated Manga support (Top/Popular/Most/Just)
+- Updated Friendlist (database, gridview)
+- Updated Profile (database)
+- Updated Auto-sync
+- Updated Strings
+- Fixed Bugs
+- Removed Unused codes
+
+(TESTED: GT-I9100 Android: 4.3.1).
+"
+AnimaSA/Atarashii,closed,Added profile,[],"- Added profile.
+- Added preferences.
+- Added developers recognition (4 in total).
+- Done cleanup at preferences & strings
+- Added friend list
+- Added viewlist (at profile for manga & anime)
+- Added share anime list (at profile)
+- Added support picasso
+
+(Tested: AVD nexus one android: 2.2 &  AVD nexus android: 4.3 & Samsung galaxy s2 android: 4.2.2)
+
+When will you release the beta ?
+Version 1,4 will contain big changes if this continues.
+This is already the first app with profile and friend list support at Google play.
+
+![screenshot_2013-09-10-17-28-00](https://f.cloud.github.com/assets/5322473/1115679/60879e6a-1a2e-11e3-8c83-f2841fdcabeb.png)
+
+![screenshot_2013-09-10-17-28-14](https://f.cloud.github.com/assets/5322473/1115682/66043650-1a2e-11e3-988c-4081ed1af34f.png)
+
+![screenshot_2013-09-10-17-30-16](https://f.cloud.github.com/assets/5322473/1115686/6cd2adf4-1a2e-11e3-87f0-a4f00deb7477.png)
+
+![screenshot_2013-09-10-17-30-26](https://f.cloud.github.com/assets/5322473/1115687/6f953430-1a2e-11e3-83f3-241e5b924f24.png)
+
+![screenshot_2013-09-10-17-28-26](https://f.cloud.github.com/assets/5322473/1115688/73f1804c-1a2e-11e3-8552-d778d050efcf.png)
+
+![screenshot_2013-09-10-17-29-20](https://f.cloud.github.com/assets/5322473/1115689/76f481fe-1a2e-11e3-98b0-35a7d4ab655a.png)
+
+![screenshot_2013-09-10-17-29-27](https://f.cloud.github.com/assets/5322473/1115690/79a36168-1a2e-11e3-8fb4-c25156f4b9ac.png)
+"
+AnimaSA/Atarashii,closed,Auto-sync & bug fix,[],"Chis already knows but still,
+
+I did some cleanups and added a new feature Auto-sync.
+Removed force sync from the popular/top list, fixed also a few bug ;)
+Added me as author, i don't want to publish my last name (chris knows it)
+
+EDITH 1:
+I accidentally used fragmentReady(); instead of autosynctask(); this is updated at (2311af9).
+
+EDITH 2:
+Fixed a bug: if you go to top rated,scroll down, press a anime which is not in your list, return to my list and press on a anime(4bac937).
+
+EDITH 3:
+Cleanup (API was called 2x which was causing a force crash) (a3a39d8).
+No autosync bug left :D
+
+EDITH 4:
+Added option for auto-sync: start auto-sync ONLY when you are using WiFi (against wasting data).
+(c62d59f, bedf95b, ce04071 and acd77c6)
+
+EDITH 5:
+After you saw the top/popular list and return to mylist.
+it goes then to your last visited list type (578bb40).
+
+EDITH 6:
+cleanup & fix Exception (ef50393, 0aac5b2 and 300f5d4).
+
+EDITH 7:
+Added Upcoming & Just added to the drawer(Thanks Eric Yu). (62cabcf, 6f50811, f91ee76 and 2a31a42)
+Added view on my anime list (not listed). (9507ed2)
+
+EDITH 8:
+Fixed no records issue, on resume, nav.drawer network problem (d6d0aa1)
+Added getMode(9f57ea0)
+
+EDITH 9:
+Fixed API crash is you have no internet connection. (744bcac, f610437 and 2550f6d)
+
+BETA CAN BE RELEASED AFTER ADDING SUPPORT FOR ORIENTATION. 
+"
+AnimaSA/Atarashii,closed,NavDrawer + Most Popular and Top Rated Anime lists,[],"Implemented a nav drawer, with options 'mylist', 'most popular', and 'top rated'. 'Most Popular' and 'top rated' fetch info from MAL, and you can scroll indefinitely down these two lists.
+"
+AnimaSA/Atarashii,closed,Need a way to open the item page on MAL from DetailView,[],"The DetailView is woefully sparse in 1.3 (and has been since versions immemorial). It's probably a long shot to include more info like reviews, rating stats, OP/ED lists and such in the app (but great if that's possible via API). But it would be very welcome if the action bar gained a button to open the MAL page using the browser.
+"
+AnimaSA/Atarashii,closed,changed singleInstance to singleTask,[],
+AnimaSA/Atarashii,closed,Merge commits to working,[],
+AnimaSA/Atarashii,closed,Fixed Bug causing 2 searchActivities to launch,[],
+AnimaSA/Atarashii,closed,Upload Project to Google Code,[],"I found this project kind of accidentally while looking for something anime/android related, but it would be a lot easier for people to know about this project and join it if we put it up on Google Code/other open source hosting pages. What do you guys think?
+"
+AnimaSA/Atarashii,closed,Extended Characters Crash Search,"[Label(name=""bug"")]","Doing a search for a title that contains non-ASCII characters, such as ""MÄR"", causes a crash. I am currently unsure if this is an issue with the API, or the application. Backtrace follows:
+
+```
+org.json.JSONException: Value {""details"":""Exception message: invalid byte sequence in UTF-8"",""error"":""unknown-error""} of type org.json.JSONObject cannot be converted to JSONArray
+     at org.json.JSON.typeMismatch(JSON.java:111)
+     at org.json.JSONArray.<init>(JSONArray.java:91)
+     at org.json.JSONArray.<init>(JSONArray.java:103)
+     at net.somethingdreadful.MAL.api.MALApi.responseToJSONArray(MALApi.java:35)
+     at net.somethingdreadful.MAL.api.MALApi.search(MALApi.java:90)
+     at net.somethingdreadful.MAL.SearchActivity$networkThread.doInBackground(SearchActivity.java:200)
+     at net.somethingdreadful.MAL.SearchActivity$networkThread.doInBackground(SearchActivity.java:1)
+     at android.os.AsyncTask$2.call(AsyncTask.java:287)
+     at java.util.concurrent.FutureTask.run(FutureTask.java:234)
+     at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:230)
+     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1080)
+     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:573)
+     at java.lang.Thread.run(Thread.java:856)
+```
+"
+AnimaSA/Atarashii,closed,Possible Resource Missing,"[Label(name=""bug"")]","From an application crash report:
+
+Caused by: android.content.res.Resources$NotFoundException: File res/drawable-xhdpi/transpanel.png from drawable resource ID #0x7f020089
+
+Looks like we're missing a resource for certain screen densities.
+
+Full trace below:
+
+```
+android.view.InflateException: Binary XML file line #6: Error inflating class <unknown>
+  at android.view.LayoutInflater.createView(LayoutInflater.java:518)
+  at com.android.internal.policy.impl.PhoneLayoutInflater.onCreateView(PhoneLayoutInflater.java:56)
+  at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:568)
+  at android.view.LayoutInflater.rInflate(LayoutInflater.java:623)
+  at android.view.LayoutInflater.inflate(LayoutInflater.java:408)
+  at android.view.LayoutInflater.inflate(LayoutInflater.java:320)
+  at net.somethingdreadful.MAL.CoverAdapter.getView(CoverAdapter.java:65)
+  at android.widget.AbsListView.obtainView(AbsListView.java:1593)
+  at android.widget.GridView.onMeasure(GridView.java:955)
+  at android.view.View.measure(View.java:8313)
+  at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:3138)
+  at android.widget.FrameLayout.onMeasure(FrameLayout.java:250)
+  at android.view.View.measure(View.java:8313)
+  at android.support.v4.view.ViewPager.onMeasure(ViewPager.java:1451)
+  at android.view.View.measure(View.java:8313)
+  at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:3138)
+  at android.widget.FrameLayout.onMeasure(FrameLayout.java:250)
+  at android.view.View.measure(View.java:8313)
+  at android.widget.LinearLayout.measureVertical(LinearLayout.java:531)
+  at android.widget.LinearLayout.onMeasure(LinearLayout.java:309)
+  at android.view.View.measure(View.java:8313)
+  at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:3138)
+  at android.widget.FrameLayout.onMeasure(FrameLayout.java:250)
+  at android.view.View.measure(View.java:8313)
+  at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:3138)
+  at android.widget.FrameLayout.onMeasure(FrameLayout.java:250)
+  at android.view.View.measure(View.java:8313)
+  at android.view.ViewRoot.performTraversals(ViewRoot.java:845)
+  at android.view.ViewRoot.handleMessage(ViewRoot.java:1865)
+  at android.os.Handler.dispatchMessage(Handler.java:99)
+  at android.os.Looper.loop(Looper.java:130)
+  at android.app.ActivityThread.main(ActivityThread.java:3687)
+  at java.lang.reflect.Method.invokeNative(Native Method)
+  at java.lang.reflect.Method.invoke(Method.java:507)
+  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:867)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:625)
+  at dalvik.system.NativeStart.main(Native Method)
+  Caused by: java.lang.reflect.InvocationTargetException
+  at java.lang.reflect.Constructor.constructNative(Native Method)
+  at java.lang.reflect.Constructor.newInstance(Constructor.java:415)
+  at android.view.LayoutInflater.createView(LayoutInflater.java:505)
+  ... 36 more
+  Caused by: android.content.res.Resources$NotFoundException: File res/drawable-xhdpi/transpanel.png from drawable resource ID #0x7f020089
+  at android.content.res.Resources.loadDrawable(Resources.java:1714)
+  at android.content.res.TypedArray.getDrawable(TypedArray.java:601)
+  at android.widget.ImageView.<init>(ImageView.java:118)
+  at android.widget.ImageView.<init>(ImageView.java:108)
+  ... 39 more
+  Caused by: java.lang.IllegalArgumentException: width and height must be > 0
+  at android.graphics.Bitmap.nativeCreate(Native Method)
+  at android.graphics.Bitmap.createBitmap(Bitmap.java:477)
+  at android.graphics.Bitmap.createBitmap(Bitmap.java:444)
+  at android.graphics.Bitmap.createScaledBitmap(Bitmap.java:349)
+  at android.graphics.BitmapFactory.finishDecode(BitmapFactory.java:601)
+  at android.graphics.BitmapFactory.decodeStream(BitmapFactory.java:576)
+  at android.graphics.BitmapFactory.decodeResourceStream(BitmapFactory.java:439)
+  at android.graphics.drawable.Drawable.createFromResourceStream(Drawable.java:697)
+  at android.content.res.Resources.loadDrawable(Resources.java:1709)
+  ... 42 more
+```
+"
+AnimaSA/Atarashii,closed,Fatal Exception with Resources,"[Label(name=""bug"")]","This was introduced by 151cd5ecbce3081146e6f950017ad1cefd3dfb0f
+
+It appears resources are missing. This causes an application crash when a phone is turned sideways to horizontal or when the menu is called in vertical mode.
+
+Confirmed on HTC Dream on Android 2.2 and HTC Glacier on Android 2.3.
+
+```
+FATAL EXCEPTION: main
+android.content.res.Resources$NotFoundException: Resource ID #0x7f020073
+       at android.content.res.Resources.getValue(Resources.java:911)
+       at android.content.res.Resources.getDrawable(Resources.java:599)
+       at com.actionbarsherlock.internal.view.menu.MenuItemImpl.getIcon(MenuItemImpl.java:384)
+       at com.actionbarsherlock.internal.view.menu.MenuBuilder.bindNativeOverflow(MenuBuilder.java:1323)
+       at com.actionbarsherlock.internal.ActionBarSherlockCompat.dispatchPrepareOptionsMenu(ActionBarSherlockCompat.java:343)
+       at com.actionbarsherlock.app.SherlockFragmentActivity.onPreparePanel(SherlockFragmentActivity.java:185)
+       at com.android.internal.policy.impl.PhoneWindow.preparePanel(PhoneWindow.java:341)
+       at com.android.internal.policy.impl.PhoneWindow.onKeyDownPanel(PhoneWindow.java:577)
+       at com.android.internal.policy.impl.PhoneWindow.onKeyDown(PhoneWindow.java:1233)
+       at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchKeyEvent(PhoneWindow.java:1712)
+       at android.view.ViewRoot.deliverKeyEventToViewHierarchy(ViewRoot.java:2702)
+       at android.view.ViewRoot.handleFinishedEvent(ViewRoot.java:2677)
+       at android.view.ViewRoot.handleMessage(ViewRoot.java:1965)
+       at android.os.Handler.dispatchMessage(Handler.java:99)
+       at android.os.Looper.loop(Looper.java:150)
+       at android.app.ActivityThread.main(ActivityThread.java:4369)
+       at java.lang.reflect.Method.invokeNative(Native Method)
+       at java.lang.reflect.Method.invoke(Method.java:507)
+       at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:846)
+       at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:604)
+       at dalvik.system.NativeStart.main(Native Method)
+```
+"
+AnimaSA/Atarashii,closed,Switch to ActionBarCompat,"[Label(name=""enhancement"")]","Starting an issue to prompt discussion on moving from ActionBarSherlock to the new ActionBarCompat which is part of the updated compatibility library.
+
+The major benefit is that we don't need to track ABS anymore and we can remove at least one sub-module.
+
+There are some downsides, though. It's new, so it hasn't been as heavily tested. There are likely bugs waiting to be found with it. Also, it's effort on our side to switch, but I don't see a huge benefit from the change aside from what was listed above.
+
+Also, it might be worth looking at the user distribution of the application via the store. If there aren't a lot of pre-4.0 users, it might be even better to lock 1.3 as the last ""compatible"" version and make 1.4+ work on Android 4.0+ (minSdkVersion=14) only.
+
+Thoughts?
+"
+AnimaSA/Atarashii,closed,Fixed typos in the About screen.,[],
+AnimaSA/Atarashii,closed,Cleanup Acknowledgements Text,"[Label(name=""enhancement"")]","Due to multiple reformatting passes of the strings file, the spacing is broken in the Acknowledgements section of the About screen. This should be fixed.
+
+Optionally, it might be worthwhile to adjust how this is displayed so that this issue is less likely to occur in the future.
+"
+AnimaSA/Atarashii,closed,Make Icons Consistent,"[Label(name=""enhancement"")]","Currently on older versions of Android, some of the icons in the action bar are using the old 2.3 icon style while some of the icons in the menu are using the flat Holo style. The former situation looks bad but the later causes the icons to blend into the menu background.
+
+The icons should be fixed so that the correct style is used in the correct place on all supported versions of Android.
+"
+AnimaSA/Atarashii,closed,Use Picasso for Cover Image Handling,"[Label(name=""enhancement"")]","Another cool library from Square, [Picasso](http://square.github.io/picasso/). It handles image downloading and a ton of other stuff like recycling of the adapter, placeholder and error images, image manipulation, and memory and disk caching of images.
+
+This might be a very good solution for the cover art downloading in our application.
+"
+AnimaSA/Atarashii,closed,Use Retrofit for API Communication,"[Label(name=""enhancement"")]","Browsing around, I found a few Android applications using a library called [Retrofit](http://square.github.io/retrofit/). It looks pretty neat and handles a lot of the parsing for us. This library might be worth using for the benefit it brings in cleaner code.
+"
+AnimaSA/Atarashii,closed,NPE in Login under Android < 4,"[Label(name=""bug"")]","A NPE occurs on first login under Android versions below 4.0. Following is a logcat of the issue, including output from Atarashii!. Log was taken on an HTC Glacier on Android 2.3.4.
+
+Re-launching the application and running a sync will make the application work.
+
+```
+V/MALX    ( 2714): Grid Cell Size for anime: 160x228
+V/MALX    ( 2714): getAnimeRecordsFromDB() has been invoked for list watching
+W/MALX    ( 2714): mManager is null. Attempting to re-create the object.
+V/MALX    ( 2714): Successfully re-created mManager
+V/MALX    ( 2714): Grid Cell Size for manga: 160x228
+V/MALX    ( 2714): getMangaRecordsFromDB() has been invoked for list reading
+E/AndroidRuntime( 2714): FATAL EXCEPTION: AsyncTask #3
+E/AndroidRuntime( 2714): java.lang.RuntimeException: An error occured while executing doInBackground()
+E/AndroidRuntime( 2714):        at android.os.AsyncTask$3.done(AsyncTask.java:200)
+E/AndroidRuntime( 2714):        at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:274)
+E/AndroidRuntime( 2714):        at java.util.concurrent.FutureTask.setException(FutureTask.java:125)
+E/AndroidRuntime( 2714):        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:308)
+E/AndroidRuntime( 2714):        at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+E/AndroidRuntime( 2714):        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1088)
+E/AndroidRuntime( 2714):        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:581)
+E/AndroidRuntime( 2714):        at java.lang.Thread.run(Thread.java:1027)
+E/AndroidRuntime( 2714): Caused by: java.lang.NullPointerException
+E/AndroidRuntime( 2714):        at net.somethingdreadful.MAL.PrefManager.<init>(PrefManager.java:17)
+E/AndroidRuntime( 2714):        at net.somethingdreadful.MAL.api.MALApi.<init>(MALApi.java:27)
+E/AndroidRuntime( 2714):        at net.somethingdreadful.MAL.MALManager.<init>(MALManager.java:45)
+E/AndroidRuntime( 2714):        at net.somethingdreadful.MAL.ItemGridFragment$getMangaRecordsTask.doInBackground(ItemGridFragment.java:255)
+E/AndroidRuntime( 2714):        at net.somethingdreadful.MAL.ItemGridFragment$getMangaRecordsTask.doInBackground(ItemGridFragment.java:1)
+E/AndroidRuntime( 2714):        at android.os.AsyncTask$2.call(AsyncTask.java:185)
+E/AndroidRuntime( 2714):        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:306)
+E/AndroidRuntime( 2714):        ... 4 more
+```
+"
+AnimaSA/Atarashii,closed,Logout Error - No Such Method getDatabaseName,"[Label(name=""bug"")]","During some earlier work, getDatabaseName() was removed from from MALSqlHelper. This causes a crash on logout, as the logout process uses this method to get the name of the database.
+"
+AnimaSA/Atarashii,closed,Update ActionBarSherlock and android-numberpicker,[],"There have been several updates to our third-party libraries since they were added into the project. Our software should be updated to use the newer versions and the submodules will need to be updated to import the newer code for the build.
+"
+AnimaSA/Atarashii,closed,NPE on tile display for Android 3 and below (was: NPE in Login under Android 2.x),"[Label(name=""bug"")]","NOTE: As of about the fifth comment below, this bug became more focused on a secondary issue, not the primary reported here. The secondary issue was that certain record items were returning null values, causing crashes in Android 3 and below.
+
+The original issue as documented below is now being tracked on issue #54.
+
+---
+
+Using the latest code in the repository for 1.3b1, there is a NPE when doing an initial login on Android 2.2:
+
+```
+E/AndroidRuntime(  742): FATAL EXCEPTION: AsyncTask #3
+E/AndroidRuntime(  742): java.lang.RuntimeException: An error occured while executing doInBackground()
+E/AndroidRuntime(  742):        at android.os.AsyncTask$3.done(AsyncTask.java:200)
+E/AndroidRuntime(  742):        at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:273)
+E/AndroidRuntime(  742):        at java.util.concurrent.FutureTask.setException(FutureTask.java:124)
+E/AndroidRuntime(  742):        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:307)
+E/AndroidRuntime(  742):        at java.util.concurrent.FutureTask.run(FutureTask.java:137)
+E/AndroidRuntime(  742):        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1068)
+E/AndroidRuntime(  742):        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:561)
+E/AndroidRuntime(  742):        at java.lang.Thread.run(Thread.java:1096)
+E/AndroidRuntime(  742): Caused by: java.lang.NullPointerException
+E/AndroidRuntime(  742):        at net.somethingdreadful.MAL.PrefManager.<init>(PrefManager.java:17)
+E/AndroidRuntime(  742):        at net.somethingdreadful.MAL.api.MALApi.<init>(MALApi.java:44)
+E/AndroidRuntime(  742):        at net.somethingdreadful.MAL.MALManager.<init>(MALManager.java:45)
+E/AndroidRuntime(  742):        at net.somethingdreadful.MAL.ItemGridFragment$getMangaRecordsTask.doInBackground(ItemGridFragment.java:255)
+E/AndroidRuntime(  742):        at net.somethingdreadful.MAL.ItemGridFragment$getMangaRecordsTask.doInBackground(ItemGridFragment.java:1)
+E/AndroidRuntime(  742):        at android.os.AsyncTask$2.call(AsyncTask.java:185)
+E/AndroidRuntime(  742):        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305)
+E/AndroidRuntime(  742):        ... 4 more
+```
+
+This will need to be investigated further.
+
+Edit: Confirmed this also affects Android 2.3.
+"
+AnimaSA/Atarashii,closed,converting over to HttpURLConnection,[],"I've put together a solution to [Issue 32](https://github.com/AnimaSA/DreadfulMALX/issues/32), namely switching from Apache HTTP Client to  HttpURLConnection.
+I'd like to hear your thoughts and I'm more them happy to discuss revisions to this pull request. 
+"
+AnimaSA/Atarashii,closed,Being an app for 4.0+ drop usage of ActionBarSherlock,[],"[Jake Wharton](https://groups.google.com/forum/#!msg/actionbarsherlock/2EW-9VGYwKw/lm00oxnB77wJ) him self said that the Library is only for supporting older devices as this app outside of it's target zone anyway why keep it?
+"
+AnimaSA/Atarashii,closed,Better handling of adding and marking series as completed,"[Label(name=""invalid"")]","I am rather tempted to say that when user adds an anime to his list using Atarashii the Start Date field in MAL should be automagically set to today. Same would apply for people marking series as Completed, the End Date should be also set to today by default. Any thoughts on viablity of this change?
+"
+AnimaSA/Atarashii,closed,Wrong list names,[],"In the app there are different names for the same list. These lists are affected:
+- Watching (sometimes called In Progress)
+- Plan To Watch (mostly called Planned)
+- On Hold (sometimes called On-Hold)
+
+I suggest you use the same names as on MyAnimelist (the ones I mentioned first), but do what you want :D At least use the same name everywhere.
+![Screenshot_2013-04-05-13-35-50](https://f.cloud.github.com/assets/1756811/343732/5fa0949c-9de8-11e2-9b68-44144e2dcabf.png)
+![Screenshot_2013-04-05-13-36-24](https://f.cloud.github.com/assets/1756811/343733/5fb74cf0-9de8-11e2-8b24-c7039b44e577.png)
+![Screenshot_2013-04-05-13-36-34](https://f.cloud.github.com/assets/1756811/343734/5fcb6500-9de8-11e2-8105-af900d71d24d.png)
+![Screenshot_2013-04-05-13-36-41](https://f.cloud.github.com/assets/1756811/343735/5fc84d70-9de8-11e2-80ce-bb84fd313dba.png)
+"
+AnimaSA/Atarashii,closed,Too much stuff in the action bar,"[Label(name=""enhancement"")]","I think that there is a little too much stuff in the action bar on a Nexus 7. Isn't there a way to make the tabs appear under the action bar (like in the screenshots in the Play Store)?
+
+Attached is a screenshot so you can see what I mean.
+
+![Screenshot_2013-04-05-13-35-25](https://f.cloud.github.com/assets/1756811/343692/f998fab4-9de6-11e2-8c34-a7e808c39182.png)
+"
+AnimaSA/Atarashii,closed,Completed fix issue #44; repair tests for JDK==1.6,[],"Also, in project have a tests.
+![2013-03-21-121955_1680x1050_scrot](https://f.cloud.github.com/assets/16043/284813/67cf620e-9200-11e2-941d-3dfd6528836c.png)
+"
+AnimaSA/Atarashii,closed,Restore compatibility with Android < 3.0,[],"Mentioned this issue in the bottom of c99d6ce5f158b9d9d298d753e59626a971fb1923, opening as issue in the issue tracker to remember.
+
+Basically, we need a suitable workaround as Cursor.getType(index) doesn't exist prior to Honeycomb. I briefly looked into it, and getting around it doesn't seem like a simple fix.
+"
+AnimaSA/Atarashii,closed,Implemented a feature search and adding anime or manga. Refactored code. Writed tests.,[],"Realised
+1) Search activity and adding 
+2) Move HTTP code to api.MALApi
+3) Move _Record code to record/_Record
+4) Write api and robotium tests
+
+TODO:
+Finalize search activity (spinner load and more)
+Implements work without network or disable work with mobile network
+Write more tests
+![device-2013-03-17-204532](https://f.cloud.github.com/assets/16043/268323/38be0ca8-8f22-11e2-98d9-eb682e787b2b.png)
+![device-2013-03-17-204552](https://f.cloud.github.com/assets/16043/268324/38c295e8-8f22-11e2-98b1-d2c00d467712.png)
+![device-2013-03-17-204500](https://f.cloud.github.com/assets/16043/268325/38e03a12-8f22-11e2-9bf8-6604f26ede80.png)
+"
+AnimaSA/Atarashii,closed,Activities Not Setting as Root,[],"Some activities, when called, such as the ""first time init"" are not being set as the root activity, even when called with flags that should allow this. Because of this situation, you can use the back action to return to the calling activity, which creates a NPE.
+
+This needs to be investigated, as there are some NPEs being reported that seem to be from users doing this exact thing. With the new logout feature, this could get to be more of an issue.
+"
+AnimaSA/Atarashii,closed,Merge 1.2 Into Master,[],"This pull request is merging the Atarashii! code at the 1.2 release into the master branch.
+"
+AnimaSA/Atarashii,closed,Crash on First Launch,"[Label(name=""bug"")]","On first launch of application on Google TV (Logitech Revue in this case), the application crashes after login with an NPE. The application can be re-launched and a sync done to get the application running. This currently isn't a huge priority as GoogleTV isn't a major consumer of the application, plus the error can be worked around.
+
+I'll look into this as I get time.
+
+Relevant log:
+
+```
+FATAL EXCEPTION: AsyncTask #3
+java.lang.RuntimeException: An error occured while executing doInBackground()
+       at android.os.AsyncTask$3.done(AsyncTask.java:266)
+       at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:273)
+       at java.util.concurrent.FutureTask.setException(FutureTask.java:124)
+       at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:307)
+       at java.util.concurrent.FutureTask.run(FutureTask.java:137)
+       at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1081)
+       at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:574)
+       at java.lang.Thread.run(Thread.java:1020)
+Caused by: java.lang.NullPointerException
+       at net.somethingdreadful.MAL.ItemGridFragment$getMangaRecordsTask.doInBackground(ItemGridFragment.java:285)
+       at net.somethingdreadful.MAL.ItemGridFragment$getMangaRecordsTask.doInBackground(ItemGridFragment.java:1)
+       at android.os.AsyncTask$2.call(AsyncTask.java:252)
+       at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305)
+       ... 4 more
+```
+"
+AnimaSA/Atarashii,closed,Crash in getDetailsTask.onPostExecute,"[Label(name=""bug"")]","When running the application, if you go into the details page for an item which does not have a stored synopsis, the application will attempt to download the synopsis details.
+
+If you back out of the details view before the synopsis is loaded into the card, the application will crash. This can be reproduced consistently.
+
+The easiest solution might be to check if the card still exists, and only attempt a display update if it does.
+
+Relevant trace:
+
+```
+E/AndroidRuntime(  320): FATAL EXCEPTION: main
+E/AndroidRuntime(  320): java.lang.NullPointerException
+E/AndroidRuntime(  320):        at net.somethingdreadful.MAL.DetailView$getDetailsTask.onPostExecute(DetailView.java:519)
+E/AndroidRuntime(  320):        at net.somethingdreadful.MAL.DetailView$getDetailsTask.onPostExecute(DetailView.java:1)
+E/AndroidRuntime(  320):        at android.os.AsyncTask.finish(AsyncTask.java:417)
+E/AndroidRuntime(  320):        at android.os.AsyncTask.access$300(AsyncTask.java:127)
+E/AndroidRuntime(  320):        at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:429)
+E/AndroidRuntime(  320):        at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime(  320):        at android.os.Looper.loop(Looper.java:123)
+E/AndroidRuntime(  320):        at android.app.ActivityThread.main(ActivityThread.java:4627)
+E/AndroidRuntime(  320):        at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(  320):        at java.lang.reflect.Method.invoke(Method.java:521)
+E/AndroidRuntime(  320):        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:868)
+E/AndroidRuntime(  320):        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:626)
+E/AndroidRuntime(  320):        at dalvik.system.NativeStart.main(Native Method)
+W/ActivityManager(   59):   Force finishing activity net.somethingdreadful.MAL/.Home
+```
+"
+AnimaSA/Atarashii,closed,Crash in AsyncTask Database,"[Label(name=""bug"")]","This error occurs occasionally on launching the application on Android 2.x. I'm currently not sure of the cause.
+
+```
+E/AndroidRuntime(  365): FATAL EXCEPTION: AsyncTask #2
+E/AndroidRuntime(  365): java.lang.RuntimeException: An error occured while executing doInBackground()
+E/AndroidRuntime(  365):        at android.os.AsyncTask$3.done(AsyncTask.java:200)
+E/AndroidRuntime(  365):        at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:273)
+E/AndroidRuntime(  365):        at java.util.concurrent.FutureTask.setException(FutureTask.java:124)
+E/AndroidRuntime(  365):        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:307)
+E/AndroidRuntime(  365):        at java.util.concurrent.FutureTask.run(FutureTask.java:137)
+E/AndroidRuntime(  365):        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1068)
+E/AndroidRuntime(  365):        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:561)
+E/AndroidRuntime(  365):        at java.lang.Thread.run(Thread.java:1096)
+E/AndroidRuntime(  365): Caused by: java.lang.IllegalStateException: get field slot from row 0 col -1 failed
+E/AndroidRuntime(  365):        at android.database.CursorWindow.getLong_native(Native Method)
+E/AndroidRuntime(  365):        at android.database.CursorWindow.getInt(CursorWindow.java:434)
+E/AndroidRuntime(  365):        at android.database.AbstractWindowedCursor.getInt(AbstractWindowedCursor.java:93)
+E/AndroidRuntime(  365):        at net.somethingdreadful.MAL.MALManager.getAnimeRecordsFromDB(MALManager.java:450)
+E/AndroidRuntime(  365):        at net.somethingdreadful.MAL.ItemGridFragment$getAnimeRecordsTask.doInBackground(ItemGridFragment.java:210)
+E/AndroidRuntime(  365):        at net.somethingdreadful.MAL.ItemGridFragment$getAnimeRecordsTask.doInBackground(ItemGridFragment.java:1)
+E/AndroidRuntime(  365):        at android.os.AsyncTask$2.call(AsyncTask.java:185)
+E/AndroidRuntime(  365):        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305)
+E/AndroidRuntime(  365):        ... 4 more
+```
+"
+AnimaSA/Atarashii,closed,android.graphics.Bitmap.getByteCount in API < 12,"[Label(name=""invalid"")]","The image downloader has a bug in API versions less than 12. It uses getByteCount, which didn't appear until recently. This can cause crashes and weird behavior, especially on first login. This should be fixed by a conditional that can do an equivalent process.
+
+Logcat Output:
+
+```
+I/dalvikvm(  656): Could not find method android.graphics.Bitmap.getByteCount, referenced from method net.somethingdreadful.MAL.ImageDownloader$1.sizeOf
+W/dalvikvm(  656): VFY: unable to resolve virtual method 412: Landroid/graphics/Bitmap;.getByteCount ()I
+D/dalvikvm(  656): VFY: replacing opcode 0x6e at 0x000e
+D/dalvikvm(  656): VFY: dead code 0x0011-0011 in Lnet/somethingdreadful/MAL/ImageDownloader$1;.sizeOf (Ljava/lang/String;Landroid/graphics/Bitmap;)I
+W/dalvikvm(  656): threadid=12: thread exiting with uncaught exception (group=0x400207e8)
+I/Process (  656): Sending signal. PID: 656 SIG: 9
+I/ActivityManager(  144): Process net.somethingdreadful.MAL (pid 656) has died.
+I/WindowManager(  144): WIN DEATH: Window{43ea4d00 net.somethingdreadful.MAL/net.somethingdreadful.MAL.Home paused=false}
+I/WindowManager(  144): WIN DEATH: Window{43f8e990 net.somethingdreadful.MAL/net.somethingdreadful.MAL.Home paused=false}
+I/WindowManager(  144): WIN DEATH: Window{43f127c0 Toast paused=false}
+I/WindowManager(  144): WIN DEATH: Window{43f0a478 net.somethingdreadful.MAL/net.somethingdreadful.MAL.FirstTimeInit paused=false}
+I/WindowManager(  144): WIN DEATH: Window{43eccb30 Toast paused=false}
+I/ActivityManager(  144): Start proc net.somethingdreadful.MAL for activity net.somethingdreadful.MAL/.FirstTimeInit: pid=688 uid=10053 gids={3003, 1015}
+I/UsageStats(  144): Unexpected resume of net.somethingdreadful.MAL while already resumed in net.somethingdreadful.MAL
+```
+"
+AnimaSA/Atarashii,closed,"AccountManager, SyncAdapter and ContentProvider","[Label(name=""enhancement"")]","For release 1.3, I think it would be an excellent addition to add the ability to have the app perform scheduled syncs. We could implement that ourselves, but Android already has an excellent framework for this exact purpose.
+
+It'll probably require quite a bit of retooling, as the SyncAdapter relies on the ContentProvider and can't exist without using the AccountManager. Quite a bit of work to get it going, but I think the end results would be worth it. As a bonus, Atarashii! would show up under Accounts & Sync in the settings, which is neat.
+"
+AnimaSA/Atarashii,closed,Logout Feature,"[Label(name=""enhancement"")]","The application should allow you to ""log out"", clearing the database and going back to the login screen. Potentially, this could be placed in the settings area, not the menu. If it will be in the menu, it should have a confirmation dialog to prevent accidental use.
+"
+AnimaSA/Atarashii,closed,Add Delete Item Feature,"[Label(name=""enhancement"")]","In the details page, we should add the ability to delete an item from the MAL list. Ideally, it would be an item on the action bar.
+
+Also, it should have a confirmation dialog to confirm as it's a destructive operation.
+"
+AnimaSA/Atarashii,closed,Save Item Rating,[],"Adjusting the rating for the anime/manga item should trigger a save action.
+
+Consider making the rating adjustment a dialog, as it's way too easy to inadvertently change the rating when scrolling the details. (Implement as radio buttons or dropdown with descriptive text?)
+"
+AnimaSA/Atarashii,closed,Migrate to HttpURLConnection,"[Label(name=""enhancement"")]","According to Google, newer clients should be using HttpURLConnection instead of the older Apache HTTP Client, as the latter is not being actively developed.
+
+Ref: http://android-developers.blogspot.com/2011/09/androids-http-clients.html
+"
+AnimaSA/Atarashii,closed,Text Color in Alert Dialogs on Older Android Devices,"[Label(name=""bug"")]","On older Android devices, the text on alert dialogs is the same or similar color as the background color of the dialog, making it impossible to read. See the attached image for an example. This was taken from the emulator running 2.3.
+
+This should be checked on devices that skin Android with lighter colors, such as HTC Sense to see if it has similar issues.
+
+![device-2013-01-03-211859](https://f.cloud.github.com/assets/1612403/42562/055b7df0-5633-11e2-8108-046a48f78852.png)
+"
+AnimaSA/Atarashii,closed,"Migrate to ""Queue"" Style Update System","[Label(name=""enhancement"")]","To better handle being offline, either that being not connected or the API having issues, the application should move to a ""queue"" style system where changes can be stored and then run through once connectivity is restored.
+"
+AnimaSA/Atarashii,open,Intent Based Updates (+3rd party hooks),"[Label(name=""enhancement"")]","At some unspecified time in the future, I'd like for Atarashii! to move to intent based updates. What that means is that we only need our AsyncTasks in one place, thus cleaner code, and that third party apps that request the permissions can leverage Atarashii! as an easy way to work with MAL.
+
+What this entails, as far as I know is:
+      -BroadcastReceiver to receive and hand off intents to a..
+      -Service that will process the request specified by the intent
+      -And some sort of communications back to the app that fired the intent, possibly a broadcast message for the app to receive
+
+So with this, third party apps, for example a manga reader, would be able to fire an intent saying ""I've read a chapter"", and have Atarashii! handle it, updating both itself and MAL. Also our internal code will be cleaner and more abstracted, which is always good.
+"
+AnimaSA/Atarashii,closed,Show Volumes Read on Manga List,"[Label(name=""enhancement"")]","Currently, the application only shows chapters in the overview for manga. It should also show the volume progress if the title has more than one volume. 
+"
+AnimaSA/Atarashii,closed,Gracefully Handle Connectivity Issues,"[Label(name=""enhancement"")]","As a future enhancement, we should look into better handling of connectivity issues. Namely, what do we do when there is an issue with getting a connection and what do we do when the unofficial API is having issues/returning bad data?
+
+My thought is to make all changes go into a ""queue"" before running the action against the API. This will allow us to break the network connection handling into its own area where we can do things like not updating if there is no data connection, or retaining changes until we get a good response back from the API.
+
+As a bonus, handling changes in this way would allow a better ""offline mode"" for the application. Of course, cover art wouldn't be downloaded in an offline mode, but it is what it is and we can always offer a selection in settings/preferences to force-download all missing cover art at once.
+"
+AnimaSA/Atarashii,closed,Get/Display more Info,"[Label(name=""enhancement"")]","We should get and display more info from the API, such as alternative names, etc.
+
+Basically:
+     -Upgrade the database to take more information
+     -Store and display more information as new cards
+"
+AnimaSA/Atarashii,closed,Details Card Layout,[],"Though it's nearly done, dropping it here as a reminder to myself.
+
+Left to do as of opening:
+      -Better layout for ""Progress""
+      -Rating bar for score, possibly as part of ""MAL Stats""
+      -Stylize the dialogs to look like the cards
+"
+AnimaSA/Atarashii,closed,Progress Dialog Buttons,"[Label(name=""enhancement"")]","Instead of relying on a ""back"" operation to close the progress dialog and set to the value in the picker, it should have a proper set of Cancel/Set buttons. The default action on backing out of the dialog should be to ignore any change by the user.
+"
+AnimaSA/Atarashii,closed,Cover size broken on 2.3,"[Label(name=""bug"")]","The new cover height calculation code introduced in 9dfeabe7d92caec05aeff2fae368486356f7c068 appears to be broken on Android 2.3. My best guess is a miscalculation between dp and px units.
+"
+AnimaSA/Atarashii,closed,Navigation Drawer Support,"[Label(name=""enhancement"")]","Atarashii! should sport the navigation drawer as a means of navigating around the app to new sections.
+
+For example, the current section of the app would be ""My List"". We can then add sections such as ""Next Season"", ""Popular"", and so on.
+
+But this issue is for adding the navigation drawer itself and related framework we might need.
+"
+AnimaSA/Atarashii,closed,Support Android 2.x devices,"[Label(name=""enhancement"")]","Just something that's been on the back of my mind, but with the ActionBarSherlock extension to the support library, supporting older devices might actually be doable.
+
+I think the only feature that wouldn't carry over would be cover actions, due to Popup Menu not being introduced to the api until 3.x. A simple SDK version check at runtime though and we could just gracefully disable it if it isn't available.
+
+So yeah, I'll probably get around to doing this eventually, not setting a milestone yet.
+"
+AnimaSA/Atarashii,closed,"Set ""Completed"" date when completing an item","[Label(name=""invalid"")]","Maybe I missed this, but it looks like the app doesn't set the ""completed"" date when completing a series, although it does set the status correctly.
+
+When marking the item as completed in the application by using the various progress update dialogs (+1 quick popup, edit progress dialog, mark completed), the application should also mark the item as completed on the current date.
+"
+AnimaSA/Atarashii,closed,Deleting entry on MAL does not reflect within the app,[],"According to a review that was left, deleting an entry on the MAL site will not reflect within the app, even after a sync.
+
+This behaviour does in fact make sense, as we don't currently check against the database to see if anything is missing, only if the entries don't exist or have been updated.
+
+Going to fix this for 1.2. Maybe I'll even push a hotfix for 1.1 with this fix.
+"
+AnimaSA/Atarashii,closed,Crash on startup,"[Label(name=""bug"")]","Log:
+
+java.lang.RuntimeException: Unable to start activity ComponentInfo{net.somethingdreadful.MAL.beta/net.somethingdreadful.MAL.Home}: java.lang.NullPointerException
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2182)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2207)
+at android.app.ActivityThread.access$600(ActivityThread.java:139)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1205)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:4899)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:791)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:558)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.NullPointerException
+at net.somethingdreadful.MAL.Home.onCreate(Home.java:73)
+at android.app.Activity.performCreate(Activity.java:5008)
+at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1079)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2136)
+... 11 more
+
+Last I checked, it's pointing to something that shouldn't be able to throw an NPE, but I probably just missed something in my not so awake state last night.
+"
+AnimaSA/Atarashii,closed,Write a summary for yourself,[],"As of  2089e258d7996a774c0d489880a2c434f51f372d there is now a more detailed contributor screen. Sure it's a stopgap for now, but we can reuse the summary blurb in a less temporary screen later. So: I tentatively filled in the contributor_name_Motokochan and contributor_summary_Motokochan strings for you, but feel free to change them to whatever you'd like, as I would like you to be credited in the app as you would like to be.
+
+Also the new setup of name/summary for each contributor means if more people contribute in the future (like the person that is working on search) it's easy to just add a new credit for them.
+"
+AnimaSA/Atarashii,closed,Software License,[],"With more people wanting to contribute, it is important to pick a license for the software.
+
+I'm fine with nearly anything, the key is how much control is desired over the code. The field is wide open from the ""must keep the source open"" of the GPL to the much more loose BSD and Apache licenses.
+
+Keep in mind that choosing a license also affects what third-party components can be used within the source as some licenses can conflict. I don't expect a lot of problems, but it is something to consider.
+
+Also keep in mind that without copyright assignment, changing the license to the software gets more difficult as the number of contributors climb as every contributor must agree to the change or you'll need to strip out their contributions to make the change.
+
+This issue is to discuss licensing and hopefully reach a conclusion on the best license for the project to use.
+"
+AnimaSA/Atarashii,closed,Crash on Initial Sync,"[Label(name=""bug"")]","When doing an initial load of the application with the new Manga support, the application crashes:
+
+```
+E/AndroidRuntime( 2122): FATAL EXCEPTION: AsyncTask #1
+E/AndroidRuntime( 2122): java.lang.RuntimeException: An error occured while executing doInBackground()
+E/AndroidRuntime( 2122):        at android.os.AsyncTask$3.done(AsyncTask.java:278)
+E/AndroidRuntime( 2122):        at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:273)
+E/AndroidRuntime( 2122):        at java.util.concurrent.FutureTask.setException(FutureTask.java:124)
+E/AndroidRuntime( 2122):        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:307)
+E/AndroidRuntime( 2122):        at java.util.concurrent.FutureTask.run(FutureTask.java:137)
+E/AndroidRuntime( 2122):        at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:208)
+E/AndroidRuntime( 2122):        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1076)
+E/AndroidRuntime( 2122):        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:569)
+E/AndroidRuntime( 2122):        at java.lang.Thread.run(Thread.java:856)
+E/AndroidRuntime( 2122): Caused by: android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.
+E/AndroidRuntime( 2122):        at android.view.ViewRootImpl.checkThread(ViewRootImpl.java:4039)
+E/AndroidRuntime( 2122):        at android.view.ViewRootImpl.invalidateChild(ViewRootImpl.java:722)
+E/AndroidRuntime( 2122):        at android.view.ViewRootImpl.invalidateChildInParent(ViewRootImpl.java:771)
+E/AndroidRuntime( 2122):        at android.view.ViewGroup.invalidateChild(ViewGroup.java:4005)
+E/AndroidRuntime( 2122):        at android.view.View.invalidate(View.java:8576)
+E/AndroidRuntime( 2122):        at android.view.View.invalidate(View.java:8527)
+E/AndroidRuntime( 2122):        at android.widget.ImageView.setImageDrawable(ImageView.java:364)
+E/AndroidRuntime( 2122):        at net.somethingdreadful.MAL.ImageDownloader$DecodeFileTask.doInBackground(ImageDownloader.java:297)
+E/AndroidRuntime( 2122):        at net.somethingdreadful.MAL.ImageDownloader$DecodeFileTask.doInBackground(ImageDownloader.java:1)
+E/AndroidRuntime( 2122):        at android.os.AsyncTask$2.call(AsyncTask.java:264)
+E/AndroidRuntime( 2122):        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305)
+E/AndroidRuntime( 2122):        ... 5 more
+```
+
+Confirmed on both the mangasupport and working branch since the first merge.
+"
+AnimaSA/Atarashii,closed,List Style Setting,"[Label(name=""enhancement"")]","Someone requested somewhere (I think it was in a direct email to me) that we add back the traditional list rather than the beautiful grid of covers that we have (why?). Honestly, I can see this being pretty easy. If the option for this is enabled, we can just set the columns of grid view to 1 (effectively list view), and load an alternate layout, which I think would just be kind of the bottom part of the covers, and use a kind of zoom crop fill on the image to fill the horizontal space behind the panel.
+
+Effectively the traditional list view, but retain our modern styling. May or may not have this ready for 1.1, so not assigning the milestone.
+"
+AnimaSA/Atarashii,closed,"Proper ""About"" View","[Label(name=""enhancement"")]","Instead of squishing credits and about into into the settings area, there should be a nice ""About"" view.
+"
+AnimaSA/Atarashii,closed,Quick-Action popup for cover grid,"[Label(name=""enhancement"")]","There should be a popup menu on the cover grid that allows quick actions to be done without going into the detail view.
+"
+AnimaSA/Atarashii,closed,Make List Selection Items use Radio Buttons instead of Checkboxes,[],"As mentioned at [this comment](https://play.google.com/store/apps/details?id=net.somethingdreadful.MAL&reviewId=07175518557070469388), the list switch options should probably be radio buttons rather than checkboxes. Radio buttons clearly indicate a single selection possibility while checkboxes are common for multiple selections.
+
+Personally, I think this might be a good use for scrollable tabs as described [here](https://developer.android.com/design/patterns/actionbar.html).
+"
+AnimaSA/Atarashii,closed,Search/Add Support,"[Label(name=""enhancement"")]","I'm really bad at writing summaries, so I'll keep it short. The gist of this would be:
+
+```
+ -Possibly a search action view thing in the ActionBar, the expandable one
+ -New search results
+ -New menu xml with basically just a ""Add to List"" button to be used in the DetailView if the record isn't on a list
+ -And of course, the backing code to make this work.
+```
+
+Hopefully some of the existing net code in place can be reused to leverage MAL's search api.
+"
+AnimaSA/Atarashii,closed,Manga Support,"[Label(name=""enhancement"")]","Atarashii needs to build out manga support so as to become a good daily-driver application for updates at least.
+
+This issue comprises several tasks:
+- Building out a MangaRecord class
+- Making the display grid generic
+- Making the detail view generic
+- If impossible to make things full generic, look to use inheritance so as to share as much code as possible between the items
+"
+AnimaSA/Atarashii,closed,Allow Episode Display to Handle More Than Two Digits,"[Label(name=""bug"")]","As noted by [this comment](https://play.google.com/store/apps/details?id=net.somethingdreadful.MAL&reviewId=04230128318862925853) and [this other comment](https://play.google.com/store/apps/details?id=net.somethingdreadful.MAL&reviewId=05760653475141387455), the application is only displaying the first two digits of three digit episode counts. This should be adjusted to handle really epic long series in some manner.
+
+It might be worth reducing the size of the count on the tiles. The focus should be on the title of the series anyway, and using smaller text would allow for very large numbers if needed.
+"
+AnimaSA/Atarashii,closed,Detail View Work,[],"This is a rough start on a new detail view. It will likely need to be worked to handle narrow screens such as phones and needs some work on the information presentation to make it cleaner and more appealing. However, it's functional and clean. It also eliminates the kludge of having to wait to properly position the synopsis around the action bar as the presentation is changed to something that doesn't have that issue.
+
+Also done are some changes to the synopsis text display. Now, the raw HTML is retained and used to format the display on the detail page. This has the benefit of keeping the original styling while also avoiding having to parse out tags and entities such as &mdash;. Instead, they are properly retained and displayed.
+
+**Before you merge this in**, I highly suggest merging current working back to master (as it was released as a 1.0) and tagging the 1.0 release code. This will also allow fixing issue #6 and any other major issues on a maintenance branch so a bugfix release can be made without pulling in these changes until they are ready for release.
+"
+AnimaSA/Atarashii,closed,Out of Memory on really long lists,"[Label(name=""bug"")]","I just had a report of the app crashing due to being out of memory. I have a pretty good idea how to fix this though. (reuse bitmaps instead of creating new ones)
+
+On another note, I never thought I'd actually have to use these issue report things. They're handy.
+"
+AnimaSA/Atarashii,closed,Cover Panel counter wonked on Xoom/Tablets,"[Label(name=""bug"")]","What the title says. I pulled out my Xoom to see the grid scaling, which works great btw, and it looks like the number in the cover panels is not where it should be, and only shows max one digit instead of two. Not sure if this affects other tablets or if it's isolated to my Xoom. The Xoom is running 4.0.4 for reference. Will investigate.
+"
+AnimaSA/Atarashii,closed,Rename Application,[],"I highly suggest renaming the application, at least externally. ""Dreadful"" isn't exactly a positive word in English, and ""DreadfulMAL"" seems, to me at least, to sound more like a really bad application for MAL than something that's actually pretty awesome. Maybe it could be shortened to ""DMAL.""
+"
+AnimaSA/Atarashii,closed,Scale the tile list,[],"These commits work toward a properly scaled list instead of the hard-coded columns from before. This is especially needed for tablets where you will have very wide screens and don't want huge tiles.
+"
+AnimaSA/Atarashii,closed,Clean up project and ignore binaries,[],"Use the recommended gitignore values for Android projects and
+remove previously tracked files that shouldn't be tracked as they
+are generated or binary files.
+"
+AnimaSA/Atarashii,closed,Empty list crash+data reload,"[Label(name=""bug"")]","what the title says, happened to me with my empty ""on hold"" list fix it fix it fix it
+
+basically just leaving myself a note so I don't forget
+"

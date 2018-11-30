@@ -1,0 +1,104 @@
+repository,state,title,label,body
+cmykola/Lexin,open,Performance enhancement,[],"  We are working on a project called PersisDroid (http://www.cudroid.com/PersisDroid/) for detecting potential performance issues. Our tool could find performance degradation caused by improper usage of asynchronous executions.
+  We find that in some cases your app may suffer a long processing delay.
+
+  Case 1:
+  **Related source code** class: com.mykola.lexinproject.data.DictionaryDatabase function: requestGet and class: com.mykola.lexinproject.providers.LexinTranslator function: loadUrl
+  **Circumstance** A query request follows by another query would take longer than normal. 
+  **Problem** I found in the source that you performed a db query in the _doInBackground_ function of an AsyncTask in _requestGet_, while you did a network query in the _onPostExecute_ function of that AsyncTask. The network query is actually executed in another AsyncTask in the _loadUrl_ function. Both AsyncTasks are invoked via _execute_ function. In Android version larger than 3.0, the AsyncTasks invoked by _execute_ function are executed sequentially. Query button is available for the 2nd word while the query result of the 1st word is not displayed. But the actual processing of the 2nd word query would be blocked until the 1st query finished. This makes the 2nd query longer than normal.
+  **Suggested modification** Design a cancellation mechanism for outdated request. Cancel the processing of previous query when a new query comes. Use _executeOnExecutor_ to run AsyncTasks in a larger thread pool is one choice. 
+
+  Case 2 (minor):
+  **Related source code** class: com.mykola.lexinproject.data.DictionaryDatabase function: requestGet 
+  **Circumstance** Sometimes query a word takes long.
+  **Problem** The _updateTextServicesLocaleAsync()_ function of TextView utilizes AsyncTask.execute() internally. Since the execution of AsyncTask are sequential with _execute_ function, the AsyncTask of query may wait for sometime.
+  **Suggested modification** Consider using _executeOnExecutor_ to run query tasks in another thread pool instead of the default one.
+"
+cmykola/Lexin,closed,Crash at Language:51,[],"Crash at Language:51
+list.toArray(new String[list.size()]);
+"
+cmykola/Lexin,closed,Crash,[],"09-27 07:55:02.221  3177  3177 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.example.lexinproject/com.example.lexinproject.ui.LexinActivity}: java.lang.NullPointerException
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1967)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:1992)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.app.ActivityThread.access$600(ActivityThread.java:127)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1158)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.os.Handler.dispatchMessage(Handler.java:99)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.os.Looper.loop(Looper.java:137)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.app.ActivityThread.main(ActivityThread.java:4441)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at java.lang.reflect.Method.invokeNative(Native Method)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at java.lang.reflect.Method.invoke(Method.java:511)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:823)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:590)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at dalvik.system.NativeStart.main(Native Method)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime: Caused by: java.lang.NullPointerException
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.os.Parcel.readStringList(Parcel.java:1718)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at com.example.lexinproject.data.Translation.<init>(Translation.java:93)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at com.example.lexinproject.data.Translation$1.createFromParcel(Translation.java:120)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at com.example.lexinproject.data.Translation$1.createFromParcel(Translation.java:1)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.os.Parcel.readParcelable(Parcel.java:1992)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.os.Parcel.readValue(Parcel.java:1854)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.os.Parcel.readMapInternal(Parcel.java:2094)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.os.Bundle.unparcel(Bundle.java:223)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.os.Bundle.getParcelable(Bundle.java:1158)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.app.Activity.onCreate(Activity.java:860)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.support.v4.app.FragmentActivity.onCreate(FragmentActivity.java:191)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at com.example.lexinproject.ui.LexinActivity.onCreate(LexinActivity.java:67)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.app.Activity.performCreate(Activity.java:4465)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1049)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1931)
+09-27 07:55:02.221  3177  3177 E AndroidRuntime:    ... 11 more
+09-27 07:55:02.231   349 14772 W ActivityManager:   Force finishing activity com.example.lexinproject/.ui.LexinActivity
+09-27 07:55:02.762   349   385 W ActivityManager: Activity pause timeout for ActivityRecord{41c12820 com.example.lexinproject/.ui.LexinActivity}
+09-27 07:55:06.966   349  2647 I ActivityManager: Process com.example.lexinproject (pid 3177) has died.
+09-27 07:55:06.966   349  2647 W ActivityManager: Force removing ActivityRecord{41bc7370 com.example.lexinproject/.ui.LexinActivity}: app died, no saved state
+09-27 07:55:07.026   349  2647 I ActivityManager: Start proc com.example.lexinproject for activity com.example.lexinproject/.ui.LexinActivity: pid=3195 uid=10173 gids={1015, 3003}
+09-27 07:55:07.116  3195  3195 E AndroidRuntime: FATAL EXCEPTION: main
+09-27 07:55:07.116  3195  3195 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.example.lexinproject/com.example.lexinproject.ui.LexinActivity}: java.lang.NullPointerException
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1967)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:1992)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.app.ActivityThread.access$600(ActivityThread.java:127)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1158)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.os.Handler.dispatchMessage(Handler.java:99)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.os.Looper.loop(Looper.java:137)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.app.ActivityThread.main(ActivityThread.java:4441)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at java.lang.reflect.Method.invokeNative(Native Method)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at java.lang.reflect.Method.invoke(Method.java:511)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:823)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:590)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at dalvik.system.NativeStart.main(Native Method)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime: Caused by: java.lang.NullPointerException
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.os.Parcel.readStringList(Parcel.java:1718)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at com.example.lexinproject.data.Translation.<init>(Translation.java:93)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at com.example.lexinproject.data.Translation$1.createFromParcel(Translation.java:120)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at com.example.lexinproject.data.Translation$1.createFromParcel(Translation.java:1)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.os.Parcel.readParcelable(Parcel.java:1992)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.os.Parcel.readValue(Parcel.java:1854)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.os.Parcel.readMapInternal(Parcel.java:2094)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.os.Bundle.unparcel(Bundle.java:223)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.os.Bundle.getParcelable(Bundle.java:1158)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.app.Activity.onCreate(Activity.java:860)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.support.v4.app.FragmentActivity.onCreate(FragmentActivity.java:191)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at com.example.lexinproject.ui.LexinActivity.onCreate(LexinActivity.java:67)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.app.Activity.performCreate(Activity.java:4465)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1049)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1931)
+09-27 07:55:07.116  3195  3195 E AndroidRuntime:    ... 11 more
+09-27 07:55:07.116   349 29076 W ActivityManager:   Force finishing activity com.example.lexinproject/.ui.LexinActivity
+09-27 07:55:07.647   349   385 W ActivityManager: Activity pause timeout for ActivityRecord{41ef2208 com.example.lexinproject/.ui.LexinActivity}
+"
+cmykola/Lexin,open,ET session,[],
+cmykola/Lexin,closed,Remove debug messages,[],
+cmykola/Lexin,open,Tests,[],
+cmykola/Lexin,closed,Icons,[],
+cmykola/Lexin,closed,Min SDK,[],
+cmykola/Lexin,closed, Cleanup HTML output,[],"- Replace webview by EditText;
+"
+cmykola/Lexin,closed, Cleanup HTML output,[],
+cmykola/Lexin,closed,"Cache [favorites, history, local cache]",[],
+cmykola/Lexin,closed,CSS,[],
+cmykola/Lexin,closed,Copyrights,[],
+cmykola/Lexin,open,English [expanded tree],[],
+cmykola/Lexin,open,Redesign,"[Label(name=""enhancement"")]",
+cmykola/Lexin,closed,Attachments,"[Label(name=""enhancement"")]",
+cmykola/Lexin,closed,English,"[Label(name=""enhancement"")]",
+cmykola/Lexin,closed,Rotation,"[Label(name=""bug"")]",

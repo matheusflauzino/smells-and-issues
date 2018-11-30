@@ -1,0 +1,204 @@
+repository,state,title,label,body
+MiCode/FileExplorer,open,Another potential issue for integer overflow,[],"Hi,
+
+Our tool found the following suspicious code in:
+`src/org/swiftp/CmdNLST.java`
+
+In Line 35:
+`public final static long MS_IN_SIX_MONTHS = 6 * 30 * 24 * 60 * 60 * 1000;` 
+
+Could this be as follow to avoid integer overflow?:
+
+`public final static long MS_IN_SIX_MONTHS = 6 * 30 * 24 * 60 * 60 * 1000L;` 
+
+This might be a trivial thing but I wanted to report just in case.
+
+Thanks!"
+MiCode/FileExplorer,open,Potential issue for an integer overflow,[],"Hi,
+
+Our tool found the following suspicious code in:
+`src/org/swiftp/CmdLIST.java`
+
+In Line 38:
+`public final static long MS_IN_SIX_MONTHS = 6 * 30 * 24 * 60 * 60 * 1000;`
+
+Could this be as follow to avoid integer overflow?:
+
+`public final static long MS_IN_SIX_MONTHS = 6 * 30 * 24 * 60 * 60 * 1000L;`
+
+This might be a trivial thing but I wanted to report just in case.
+
+Thanks!"
+MiCode/FileExplorer,open,文件管理器无法对外置的SD卡进行操作,[],当我插上U盘后，在U盘中无法进行删除，新建文件夹，重命名等一系列操作，只等进行读操作，有没有大神指导一下该怎么修改啊
+MiCode/FileExplorer,open,适配跟UI 都很差 感觉跟小米的文件管理器差距很大,[],
+MiCode/FileExplorer,open,Added Dutch translation folder and files. 100% DONE,[],"Not sure if I need to change or add code to make it actually in the app but the translat
+ion is there ;)
+"
+MiCode/FileExplorer,open,文件删除异常(File delete error),[],"```
+10-12 10:53:26.501  11263-21748/net.micode.fileexplorer E/AndroidRuntime﹕ FATAL EXCEPTION: AsyncTask #1
+    Process: net.micode.fileexplorer, PID: 11263
+    java.lang.RuntimeException: An error occured while executing doInBackground()
+            at android.os.AsyncTask$3.done(AsyncTask.java:300)
+            at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:355)
+            at java.util.concurrent.FutureTask.setException(FutureTask.java:222)
+            at java.util.concurrent.FutureTask.run(FutureTask.java:242)
+            at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:231)
+            at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)
+            at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)
+            at java.lang.Thread.run(Thread.java:841)
+     Caused by: java.lang.SecurityException: Permission Denial: not allowed to send broadcast android.intent.action.MEDIA_MOUNTED from pid=11263, uid=10739
+            at android.os.Parcel.readException(Parcel.java:1472)
+            at android.os.Parcel.readException(Parcel.java:1426)
+            at android.app.ActivityManagerProxy.broadcastIntent(ActivityManagerNative.java:2383)
+            at android.app.ContextImpl.sendBroadcast(ContextImpl.java:1159)
+            at android.content.ContextWrapper.sendBroadcast(ContextWrapper.java:365)
+            at net.micode.fileexplorer.FileViewInteractionHub.notifyFileSystemChanged(FileViewInteractionHub.java:591)
+            at net.micode.fileexplorer.FileViewInteractionHub.onFileChanged(FileViewInteractionHub.java:1090)
+            at net.micode.fileexplorer.FileOperationHelper$4.run(FileOperationHelper.java:218)
+            at net.micode.fileexplorer.FileOperationHelper$3.doInBackground(FileOperationHelper.java:164)
+            at android.os.AsyncTask$2.call(AsyncTask.java:288)
+            at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+            at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:231)
+            at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)
+            at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)
+            at java.lang.Thread.run(Thread.java:841)
+10-12 10:53:27.111  11263-11263/net.micode.fileexplorer E/WindowManager﹕ android.view.WindowLeaked: Activity net.micode.fileexplorer.FileExplorerTabActivity has leaked window com.android.internal.policy.impl.PhoneWindow$DecorView{43eeb120 V.E..... R......D 0,0-1026,288} that was originally added here
+            at android.view.ViewRootImpl.<init>(ViewRootImpl.java:368)
+            at android.view.WindowManagerGlobal.addView(WindowManagerGlobal.java:249)
+            at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:69)
+            at android.app.Dialog.show(Dialog.java:286)
+            at net.micode.fileexplorer.FileViewInteractionHub.showProgress(FileViewInteractionHub.java:109)
+            at net.micode.fileexplorer.FileViewInteractionHub.access$900(FileViewInteractionHub.java:65)
+            at net.micode.fileexplorer.FileViewInteractionHub$7.onClick(FileViewInteractionHub.java:615)
+            at com.android.internal.app.AlertController$ButtonHandler.handleMessage(AlertController.java:166)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:136)
+            at android.app.ActivityThread.main(ActivityThread.java:5047)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:515)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:609)
+            at dalvik.system.NativeStart.main(Native Method)
+```
+"
+MiCode/FileExplorer,open,android studio,[],"浩南，个人建议后期的版本可以迁移到android studio 上去，现在谷歌官方都已经舍弃eclipse开发了，只是个人想法，具体还看你们怎么做了？
+"
+MiCode/FileExplorer,open,The functions of delete and cut has error.删除，粘贴 等功能报错，大家存不存在这个问题？,[],"E/AndroidRuntime(2925): java.lang.RuntimeException: An error occured while executing doInBackground()
+"
+MiCode/FileExplorer,open,Search Bar,[],"I wanna add on this APP the SearchBar , i think it's will be a good idea , and it's verry essential .
+so i need your confirmation to begin . 
+"
+MiCode/FileExplorer,open,Add traditional Chinese translation,[],
+MiCode/FileExplorer,open,小米开源项目FileExplorer 疑似缺胳膊少腿，是否真的开源？,[],"下载了FileExplorer 源码到本地调试后， 发现源码竟然不包含 项目引导文件， 因为本人使用的interlij  IDEA 14 ， 软件仅支持  *.pom.xml ,  *.project ,   *.classpath ,  *.gladle , \* .fxp , *.fxpl   后缀项目的加载，因为目前仅使用过 interlij  IDEA 作为开发工具， 其他工具尚未使用。 因为无法将整个项目装载进来，在没有办法调试的情况无法确定该开源项目是否可用。　
+各位大神是如何加载这个　只有一个　　.gitignore文件  和 AndroidManifest.xml文件的 项目呢？ （感觉好低级的问题， 但是却又觉得很合理）
+在这里想请教小米开源社区的大神们， 是我遗漏了什么了吗？  
+还是 该开源项目仅仅部分开源？带开源之名，行闭源之实。 求辟谣指教
+"
+MiCode/FileExplorer,open,ftp 文件上传，中文文件名乱码,[],
+MiCode/FileExplorer,closed,ftp 文件上传，中文文件名乱码,[],
+MiCode/FileExplorer,open,"Spanish, Internal Memory File Acces And More Options.",[],"Hi..
+-I want to Help to traslate this app ti Spanish...
+¿How i can do that? ¿You have transifex?
+
+-The app only manage the SD content, i want accesos yo the internal memory..
+
+-And more Settings..
+
+Bestia Regards..
+"
+MiCode/FileExplorer,open,Fix NPE from daily use,[],"Fix NPE from daily use, it couldn't reproduce 100%.
+"
+MiCode/FileExplorer,open,2.2 的版本好像不能使用,[],"2.2 的版本好像不能使用
+"
+MiCode/FileExplorer,open,crazyevent,[],"//Util.java
+// 璁＄畻 SDCard 鍓╀綑澶у皬MB
+// info.free = nAvailaBlock \* nBlocSize;
+// modify by dada
+info.free = nFreeBlock \* nBlocSize;
+"
+MiCode/FileExplorer,open,Add root directory for ftp server. Fix some bugs on huawei p6.,[],"1、增加了ftp server功能对root目录支持，这样用户可以方便地通过ftp访问外置sd卡上的内容。
+2、修改了在huawei P6上运行时的部分bug，在华为P6, Util.getSdDirectory() 返回 ""/storage/emulated/0"", 而primary folder 是 ""/mnt/sdcard"", 但他们是同一个目录，造成原代码中判断错误。
+"
+MiCode/FileExplorer,closed,无法导入Eclipse怎么解决？,[],"导入到最后显示 No projects found
+
+由于没有project.properties吧
+@lamb @Noisyfox  请问你们是怎么将这个项目导入到Eclipse的
+
+非常感谢！
+"
+MiCode/FileExplorer,closed,German translation,[],"Added German translation.
+"
+MiCode/FileExplorer,closed,Russian trabslate,[],"Added russian translate
+"
+MiCode/FileExplorer,open,s,[],
+MiCode/FileExplorer,closed,"Add support for WebM videos, add Spanish translation",[],"Hi,
+
+A very small change to add the mime type entry for WebM video, which is well-supported on Android devices.
+
+An independent change to add translation of strings.xml into Spanish.
+
+I hope that these two changes should be trivially acceptable.
+
+Thanks,
+Andrew McMillan.
+"
+MiCode/FileExplorer,open,这个不是最新的啊，和我小米手机上面的界面有差距哇,[],"麻烦提交一下最新的呗。
+"
+MiCode/FileExplorer,closed,Add support for landscape orientation,[],"Hi,
+
+I use FileExplorer on several tablets and it works well, but found it frustrating that it only worked in portrait mode, especially on my Asus Transformer when I had the keyboard connected...
+
+This patch enables landscape (sensor) orientation, adjusting the CategoryBar to operate vertically in this case.
+
+Thanks for your hard work :-)
+
+Regards,
+Andrew McMillan.
+"
+MiCode/FileExplorer,open,旋屏后tabs消失,[],"在竖屏状态选择文件出现黄色动作栏后切换到横屏再取消选择后三个tab消失。
+"
+MiCode/FileExplorer,closed,文件管理器的图标异常,[],"测试环境： MIUI4-6.1+ MI One Plus, 具体的看截图，相信清楚出现了什么。
+我也尝试过修改 icon 图片（拿到原版的文件管理器的覆盖），不过好像没有效果，请帮忙解决。
+
+![图标异常](http://usc.googlecode.com/files/icon-error.png)
+"
+MiCode/FileExplorer,closed,从远程管理页面切换出来会有卡顿,[],"rt，不知道是哪里的代码，做了什么事情也不知道（貌似是刷新分类？），相关的代码不是很明白，求指点
+"
+MiCode/FileExplorer,closed,个人建议既然开源要有诚意,[],"为什么要基于4.0的SDK呢，我觉得完全可以用肯定版本的，这样有利于开发者二次开发，我的邮箱ni@172.com可以发邮件与我联系，也希望浩南哥能给我发一份2.2+的FileExplorer
+"
+MiCode/FileExplorer,open,优化的后退动作，取代原来按返回键后的向上动作,[],"个人比较喜欢这种模式，但是估计有人还是喜欢原来的，打算再做个选项
+"
+MiCode/FileExplorer,closed,Quickly turn on or off wifi.,[],
+MiCode/FileExplorer,closed,不能复制文件夹？,[],"话说我试了2.3的miui文件管理器，一样不能复制文件夹，这是故意的还是bug？
+"
+MiCode/FileExplorer,closed,对文件操作菜单的一些小改进,[],"当手动取消文件选择时自动退出actionmode，全选和取消按钮更加人性化
+"
+MiCode/FileExplorer,closed,修正apk图标读取问题,[],"貌似用pm.getApplicationIcon没办法得到正确的apk图标，所以就换了种方法，现在能正确获得图标了，但是貌似滚动的时候略卡。难道读cache也会卡么?
+"
+MiCode/FileExplorer,closed,修正apk图标读取问题,[],"不知道是不是在原版MIUI上也有这个问题，反正在我的机器上面显示不了APK图标，超不爽。。。
+现在能显示了，只是在快速滚动的时候略卡，不知道是不是因为载入drawable的原因，因为apk图标只载入了一次，之后都是在读缓存啊？
+"
+MiCode/FileExplorer,closed,Resolve ant compile errors,[],"Unicode mark (BOM) is added in these files, some editors
+(eg: editplus) try to be smart to add them. but it causes sun's
+jvm ""illegal character \65279"" compile errors, it is a wonder
+that it will be ok to compile with eclipse.
+
+Signed-off-by: John Hsing tsyj2007@gmail.com
+"
+MiCode/FileExplorer,closed,缺少ViewPager类，eclipse下无法编译通过,[],
+MiCode/FileExplorer,closed,Enhancements,[],"Some enhancements: 
+1. add two menu, one is Preferences, you can setting your home folder and is read root in here, other one is Exit. 
+2. something display tuning, like SD Card to File for 2nd tab name.
+some demo like as
+![Screenshots_1](http://lishunli.googlecode.com/files/FileExplorer_Screenshots_1.png)
+![Screenshots_2](http://lishunli.googlecode.com/files/FileExplorer_Screenshots_2_2.png)
+![Screenshots_3](http://lishunli.googlecode.com/files/FileExplorer_Screenshots_3.png)
+![Screenshots_4](http://lishunli.googlecode.com/files/FileExplorer_Screenshots_4.png)
+"
+MiCode/FileExplorer,closed,minor bug with env,[],"首先很感谢miui开源一些源码给我们，但是就拿这个来说，至少发现了几个问题，
+1. 并不是 Eclipse project（可能考虑大家使用的IDE不同，这个可以忽略）。
+2. 代码不能编译，缺少 R.java ，最重要而且最不可能落下的文件，竟然缺少了，难道是我的问题，不知还有这种写法，不需要这个文件也可以开发Android？
+请开源的时候，保证代码能够编译和部署，好吗？ 最基本的编程常识，难道MiCode 想借此提高我们的动手能力。
+"
+MiCode/FileExplorer,closed,更快速的改变WiFi连接状态,[],"在没有打开WiFi情况下想要通过手机变成FTP服务器共享文件不是那么方便，做了点改变，点击WiFi状态图标就能切换到WiFi设置界面，
+"

@@ -1,0 +1,659 @@
+repository,state,title,label,body
+cernekee/ics-openconnect,open,How to configure a domain name for a split tunnel?,[],"In split tunnel model, I can set a route like 192.168.1.0/24, but wen I use domain name like \*.google.com/\*, it show me that skipping invalid route, why? Dose my route rule was wrong or OpenConnect can not support domain name list?"
+cernekee/ics-openconnect,open,option to specify proxy,[],"Hello, could you please add an option to specify proxy URL and auth parameters?
+
+The LibOpenConnect class provides setProxyAuth and setHTTPProxy methods, but UI is not provided by the application."
+cernekee/ics-openconnect,open,external: Use the ANDROID_NDK env variable as a default NDK path,[],"If defined, use the ANDROID_NDK defined in the system environment, this
+has been the standard env for the ndk path now. If undefined, define it
+to the previous value."
+cernekee/ics-openconnect,open, does not work with my build,[],"I have an open connect server that work perfectly fine when i use the App downloaded from google play. and the Log is OK.
+
+but wen I build the App get connect to the server but the Log is like this:
+after establishing DTLS connection 
+initiating IPv4 MTU detection (min=717, max=1434)
+time out while waiting for DPD response; trying 1076
+//couple more time out error and then 
+Too long time in MTU detect loop
+//then the Log goes crazy and show infinite of this error:
+Unknown DTLS packet type ... , len ...
+
+and cant use nothing except google and telegram.
+I use windows so I have to use the 
+./misc/download-artifacts.sh
+I think maybe artifact causing the problem.
+
+please help me 
+should I use linux?  do you think that solve the problem?   "
+cernekee/ics-openconnect,open,"dlopen failed: cannot locate symbol ""in6addr_any"" referenced by ""******/lib/arm64/libopenconnect"".so",[],"the problem crash by LeMobile phone.
+when System.loadLibrary(""openconnect"")
+
+
+logcat:
+java.lang.UnsatisfiedLinkError: dlopen failed: cannot locate symbol ""in6addr_any"" referenced by ""/data/app/com.example.test-1/lib/arm64/libopenconnect.so""...
+at java.lang.Runtime.loadLibrary(Runtime.java:372)
+at java.lang.System.loadLibrary(System.java:1076)
+atcom.example.test.application.MeApplication.onCreate(MeApplication.kt:58)
+at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1018)
+at android.app.ActivityThread.handleBindApplication(ActivityThread.java:5207)
+at android.app.ActivityThread.-wrap3(ActivityThread.java)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1659)
+at android.os.Handler.dispatchMessage(Handler.java:111)
+at android.os.Looper.loop(Looper.java:207)
+at android.app.ActivityThread.main(ActivityThread.java:5981)
+at java.lang.reflect.Method.invoke(Native Method)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:888)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:749)"
+cernekee/ics-openconnect,open,Add New Connection button disappeared on Android TV,[],"Device name: Xiaomi TV 4C ( https://www.mi.com/mitv4c/55/ )
+
+Installed APK via USB Flash drive, and APK file downloaded from https://apkpure.com/openconnect/app.openconnect .
+
+First time launch can't find the ""+"" button. just like this:
+
+![](http://ww1.sinaimg.cn/large/4b91f9d5gy1furi213e0rj219c0u0hbz.jpg)
+
+When using the remote control I can only switch among the 3 top tabs. I tried using a bluetooth mouse to navigate the UI but still not work.
+
+On my phone, it supposed to be at the top-right edge of interface.
+
+![](http://ww1.sinaimg.cn/large/4b91f9d5gy1furi2h6rwhj21o00u0tbi.jpg)
+
+So how can I add an new connection if ""+"" button is unavailable? 😂"
+cernekee/ics-openconnect,closed,libopenconnect.so has text relocations,[],"There is a closed issue related to this error:
+https://github.com/cernekee/ics-openconnect/issues/7
+But it was closed without any actually good solution. Lowering the target SDK version doesn't seem to be a good approach.
+
+To clarify: it still fails with a latest code version, despite there is a commit:
+https://github.com/cernekee/openconnect/commit/b31ca89f298644c271e49addeea6bbedc34b079c
+that seems to be related, and potentially should fix the issue (however, it seems like it didn't)
+
+Going to try to use latest versions of gmp and gnutls libs, but maybe somebody has a solution already?"
+cernekee/ics-openconnect,open,Multi-protocol support,[],"Very preliminary take on #28… but it's already working for me with both GlobalProtect and Juniper :grinning:
+
+TODO:
+* Populate the `vpn_protocol` preference list dynamically using `mOC.getSupportedProtocols()`
+* Enable/disable other preferences based on `VPNProto.flags`
+* **(done)** ~~Update docs to reflect multi-protocol support.~~
+* **(done)** ~~The `X-CSTP-Idle-Timeout` field should be replaced with a protocol-agnostic field (which doesn't yet exist in the openconnect base)~~
+* **(done)** ~~Juniper servers will throw extra authentication applets/trojans at you if `Java` appears in your `User-Agent` string :man_facepalming: … it'd be good to be able to set the `User-Agent` string.~~
+
+BUGS:
+* [This weird bug with the Juniper realm/authgroup selection](http://lists.infradead.org/pipermail/openconnect-devel/2017-November/004558.html) also affects the Android GUI… :frowning_face: 
+* **(done)** ~~Connecting to a GlobalProtect _portal_ (rather than _gateway_) crashes due to some problem with the XML config writeback~~"
+cernekee/ics-openconnect,open,The connection gets aborted,[],"I can perfectly connect to server via my Linux client. However, the android client gets disconnect a lot with the following log:
+22:29:19 LIB: Send BYE packet: Aborted by caller
+Any idea to help diagnose and fix it?"
+cernekee/ics-openconnect,open,feature request: allow clipboard copy of complete log rather than just a single line,[],Currently ([v1.11](https://github.com/cernekee/ics-openconnect/tree/v1.11)) there is an option to copy a single line of the logs. It would be nice to be able to copy the entire log for submission to bugs here or to local/service provider admin.
+cernekee/ics-openconnect,open,feature request: Quick Settings Tiles for faster toggling vpn,[],"Hi 
+Thanks for such a good project
+please add custom quick settings tile for toggling vpn on or off, It is very useful feature that the other vpn clients have.
+an example is [here](https://medium.com/google-developers/quick-settings-tiles-e3c22daf93a8)."
+cernekee/ics-openconnect,open,error install-sh: no input file specified,[],"make[2]: Entering directory `/home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/build-stoken'
+make[3]: Entering directory `/home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/build-stoken'
+ /usr/bin/mkdir -p '/home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/out//lib'
+ /bin/bash ./libtool   --mode=install /usr/bin/install -c -s  libstoken.la '/home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/out//lib'
+libtool: install: /usr/bin/install -c .libs/libstoken.so /home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/out//lib/libstoken.so
+libtool: install: i686-linux-android-strip --strip-unneeded /home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/out//lib/libstoken.so
+libtool: install: /usr/bin/install -c .libs/libstoken.lai /home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/out//lib/libstoken.la
+libtool: warning: remember to run 'libtool --finish //lib'
+ /usr/bin/mkdir -p '/home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/out//bin'
+ STRIPPROG='i686-linux-android-strip' /bin/bash ./libtool   --mode=install /bin/bash /home/aliakbar/Desktop/cernekee/ics-openconnect/external/stoken/build-aux/install-sh -c -s stoken '/home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/out//bin'
+libtool: install: /bin/bash /home/aliakbar/Desktop/cernekee/ics-openconnect/external/stoken/build-aux/install-sh /home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/out//bin/install-sh
+/home/aliakbar/Desktop/cernekee/ics-openconnect/external/stoken/build-aux/install-sh: no input file specified.
+make[3]: *** [install-binPROGRAMS] Error 1
+make[3]: Leaving directory `/home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/build-stoken'
+make[2]: *** [install-am] Error 2
+make[2]: Leaving directory `/home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/build-stoken'
+make[1]: *** [install-strip] Error 2
+make[1]: Leaving directory `/home/aliakbar/Desktop/cernekee/ics-openconnect/external/x86/build-stoken'
+make: *** [Makefile:99: x86/libstoken.so] Error 2
+make: Leaving directory '/home/aliakbar/Desktop/cernekee/ics-openconnect/external'
+"
+cernekee/ics-openconnect,closed,"dlopen failed: cannot locate symbol ""fmemopen"" referenced by ""/data/app/app.openconnect-1/lib/arm64/libopenconnect.so""",[],"after this error i try to compile external directory using `make -C external` but i got error and config.log is here:
+`This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+It was created by GNU MP configure 6.1.2, which was
+generated by GNU Autoconf 2.69.  Invocation command line was
+
+  $ ../../sources/gmp-6.1.2/configure --host=arm-linux-androideabi --prefix=/home/aliakbar/tmp/ics-openconnect/external/arm/openconnect/android/arm-linux-androideabi/toolchain/sysroot/usr --disable-shared --enable-static --with-pic CC=arm-linux-androideabi-clang CFLAGS=-march=armv7-a -mthumb -D__ANDROID_API__=14 -O2
+
+## --------- ##
+## Platform. ##
+## --------- ##
+
+hostname = archdesk1
+uname -m = x86_64
+uname -r = 4.15.14-1-ARCH
+uname -s = Linux
+uname -v = #1 SMP PREEMPT Wed Mar 28 17:34:29 UTC 2018
+
+/usr/bin/uname -p = unknown
+/bin/uname -X     = unknown
+
+/bin/arch              = unknown
+/usr/bin/arch -k       = unknown
+/usr/convex/getsysinfo = unknown
+/usr/bin/hostinfo      = unknown
+/bin/machine           = unknown
+/usr/bin/oslevel       = unknown
+/bin/universe          = unknown
+
+PATH: /home/aliakbar/tmp/ics-openconnect/external/arm/openconnect/android/arm-linux-androideabi/toolchain/bin
+PATH: /usr/local/bin
+PATH: /usr/bin
+PATH: /bin
+PATH: /usr/local/sbin
+PATH: /usr/lib/jvm/default/bin
+PATH: /usr/bin/site_perl
+PATH: /usr/bin/vendor_perl
+PATH: /usr/bin/core_perl
+PATH: /usr/bin/go
+PATH: /home/aliakbar/android-sdk/platform-tools
+PATH: /home/aliakbar/android-sdk/tools
+PATH: /home/aliakbar/android-sdk/ndk-bundle
+
+
+## ----------- ##
+## Core tests. ##
+## ----------- ##
+
+configure:3055: checking build system type
+configure:3069: result: x86_64-pc-linux-gnu
+configure:3089: checking host system type
+configure:3102: result: arm-unknown-linux-androideabi
+configure:3139: checking for a BSD-compatible install
+configure:3207: result: /usr/bin/install -c
+configure:3218: checking whether build environment is sane
+configure:3273: result: yes
+configure:3332: checking for arm-linux-androideabi-strip
+configure:3348: found /home/aliakbar/tmp/ics-openconnect/external/arm/openconnect/android/arm-linux-androideabi/toolchain/bin/arm-linux-androideabi-strip
+configure:3359: result: arm-linux-androideabi-strip
+configure:3424: checking for a thread-safe mkdir -p
+configure:3463: result: /usr/bin/mkdir -p
+configure:3470: checking for gawk
+configure:3486: found /usr/bin/gawk
+configure:3497: result: gawk
+configure:3508: checking whether make sets $(MAKE)
+configure:3530: result: yes
+configure:3559: checking whether make supports nested variables
+configure:3576: result: yes
+configure:3705: checking whether to enable maintainer-specific portions of Makefiles
+configure:3714: result: no
+User:
+ABI=
+CC=arm-linux-androideabi-clang
+CFLAGS=-march=armv7-a -mthumb -D__ANDROID_API__=14 -O2
+CPPFLAGS=(unset)
+MPN_PATH=
+GMP:
+abilist=32
+cclist=gcc cc
+configure:5779: arm-linux-androideabi-clang -c conftest.c >&5
+/home/aliakbar/tmp/ics-openconnect/external/arm/openconnect/android/arm-linux-androideabi/toolchain/bin/clang50: error while loading shared libraries: libncurses.so.5: cannot open shared object file: No such file or directory
+configure:5782: $? = 127
+configure:5801: arm-linux-androideabi-clang 2>&1 | grep xlc >/dev/null
+configure:5804: $? = 1
+configure:5858: checking compiler arm-linux-androideabi-clang -march=armv7-a -mthumb -D__ANDROID_API__=14 -O2 
+Test compile: 
+configure:5872: arm-linux-androideabi-clang -march=armv7-a -mthumb -D__ANDROID_API__=14 -O2  conftest.c >&5
+/home/aliakbar/tmp/ics-openconnect/external/arm/openconnect/android/arm-linux-androideabi/toolchain/bin/clang50: error while loading shared libraries: libncurses.so.5: cannot open shared object file: No such file or directory
+configure:5875: $? = 127
+failed program was:
+
+int main () { return 0; }
+configure:6962: result: no
+configure:7200: error: could not find a working compiler, see config.log for details
+
+## ---------------- ##
+## Cache variables. ##
+## ---------------- ##
+
+ac_cv_build=x86_64-pc-linux-gnu
+ac_cv_env_ABI_set=
+ac_cv_env_ABI_value=
+ac_cv_env_CCC_set=
+ac_cv_env_CCC_value=
+ac_cv_env_CC_FOR_BUILD_set=
+ac_cv_env_CC_FOR_BUILD_value=
+ac_cv_env_CC_set=set
+ac_cv_env_CC_value=arm-linux-androideabi-clang
+ac_cv_env_CFLAGS_set=set
+ac_cv_env_CFLAGS_value='-march=armv7-a -mthumb -D__ANDROID_API__=14 -O2'
+ac_cv_env_CPPFLAGS_set=
+ac_cv_env_CPPFLAGS_value=
+ac_cv_env_CPP_FOR_BUILD_set=
+ac_cv_env_CPP_FOR_BUILD_value=
+ac_cv_env_CPP_set=
+ac_cv_env_CPP_value=
+ac_cv_env_CXXCPP_set=
+ac_cv_env_CXXCPP_value=
+ac_cv_env_CXXFLAGS_set=
+ac_cv_env_CXXFLAGS_value=
+ac_cv_env_CXX_set=
+ac_cv_env_CXX_value=
+ac_cv_env_LDFLAGS_set=
+ac_cv_env_LDFLAGS_value=
+ac_cv_env_LIBS_set=
+ac_cv_env_LIBS_value=
+ac_cv_env_LT_SYS_LIBRARY_PATH_set=
+ac_cv_env_LT_SYS_LIBRARY_PATH_value=
+ac_cv_env_M4_set=
+ac_cv_env_M4_value=
+ac_cv_env_YACC_set=
+ac_cv_env_YACC_value=
+ac_cv_env_YFLAGS_set=
+ac_cv_env_YFLAGS_value=
+ac_cv_env_build_alias_set=
+ac_cv_env_build_alias_value=
+ac_cv_env_host_alias_set=set
+ac_cv_env_host_alias_value=arm-linux-androideabi
+ac_cv_env_target_alias_set=
+ac_cv_env_target_alias_value=
+ac_cv_host=arm-unknown-linux-androideabi
+ac_cv_path_install='/usr/bin/install -c'
+ac_cv_path_mkdir=/usr/bin/mkdir
+ac_cv_prog_AWK=gawk
+ac_cv_prog_STRIP=arm-linux-androideabi-strip
+ac_cv_prog_make_make_set=yes
+am_cv_make_support_nested_variables=yes
+
+## ----------------- ##
+## Output variables. ##
+## ----------------- ##
+
+ABI=''
+ACLOCAL='${SHELL} /home/aliakbar/tmp/ics-openconnect/external/arm/openconnect/android/sources/gmp-6.1.2/missing aclocal-1.15'
+AMTAR='$${TAR-tar}'
+AM_BACKSLASH='\'
+AM_DEFAULT_V='$(AM_DEFAULT_VERBOSITY)'
+AM_DEFAULT_VERBOSITY='1'
+AM_V='$(V)'
+AR=''
+AS=''
+ASMFLAGS=''
+AUTOCONF='${SHELL} /home/aliakbar/tmp/ics-openconnect/external/arm/openconnect/android/sources/gmp-6.1.2/missing autoconf'
+AUTOHEADER='${SHELL} /home/aliakbar/tmp/ics-openconnect/external/arm/openconnect/android/sources/gmp-6.1.2/missing autoheader'
+AUTOMAKE='${SHELL} /home/aliakbar/tmp/ics-openconnect/external/arm/openconnect/android/sources/gmp-6.1.2/missing automake-1.15'
+AWK='gawk'
+CALLING_CONVENTIONS_OBJS='arm32call.lo arm32check.lo'
+CC='arm-linux-androideabi-clang'
+CCAS=''
+CC_FOR_BUILD=''
+CFLAGS='-march=armv7-a -mthumb -D__ANDROID_API__=14 -O2'
+CPP=''
+CPPFLAGS=''
+CPP_FOR_BUILD=''
+CXX=''
+CXXCPP=''
+CXXFLAGS=''
+CYGPATH_W='echo'
+DEFN_LONG_LONG_LIMB=''
+DEFS=''
+DLLTOOL=''
+DSYMUTIL=''
+DUMPBIN=''
+ECHO_C=''
+ECHO_N='-n'
+ECHO_T=''
+EGREP=''
+ENABLE_STATIC_FALSE=''
+ENABLE_STATIC_TRUE=''
+EXEEXT=''
+EXEEXT_FOR_BUILD=''
+FGREP=''
+GMP_LDFLAGS=''
+GMP_LIMB_BITS=''
+GMP_NAIL_BITS='0'
+GREP=''
+HAVE_CLOCK_01=''
+HAVE_CPUTIME_01=''
+HAVE_GETRUSAGE_01=''
+HAVE_GETTIMEOFDAY_01=''
+HAVE_HOST_CPU_FAMILY_power='0'
+HAVE_HOST_CPU_FAMILY_powerpc='0'
+HAVE_SIGACTION_01=''
+HAVE_SIGALTSTACK_01=''
+HAVE_SIGSTACK_01=''
+HAVE_STACK_T_01=''
+HAVE_SYS_RESOURCE_H_01=''
+INSTALL_DATA='${INSTALL} -m 644'
+INSTALL_PROGRAM='${INSTALL}'
+INSTALL_SCRIPT='${INSTALL}'
+INSTALL_STRIP_PROGRAM='$(install_sh) -c -s'
+LD=''
+LDFLAGS=''
+LEX=''
+LEXLIB=''
+LEX_OUTPUT_ROOT=''
+LIBCURSES=''
+LIBGMPXX_LDFLAGS=''
+LIBGMP_DLL=''
+LIBGMP_LDFLAGS=''
+LIBM=''
+LIBM_FOR_BUILD=''
+LIBOBJS=''
+LIBREADLINE=''
+LIBS=''
+LIBTOOL=''
+LIPO=''
+LN_S=''
+LTLIBOBJS=''
+LT_SYS_LIBRARY_PATH=''
+M4=''
+MAINT='#'
+MAINTAINER_MODE_FALSE=''
+MAINTAINER_MODE_TRUE='#'
+MAKEINFO='${SHELL} /home/aliakbar/tmp/ics-openconnect/external/arm/openconnect/android/sources/gmp-6.1.2/missing makeinfo'
+MANIFEST_TOOL=''
+MKDIR_P='/usr/bin/mkdir -p'
+NM=''
+NMEDIT=''
+OBJDUMP=''
+OBJEXT=''
+OTOOL64=''
+OTOOL=''
+PACKAGE='gmp'
+PACKAGE_BUGREPORT='gmp-bugs@gmplib.org, see https://gmplib.org/manual/Reporting-Bugs.html'
+PACKAGE_NAME='GNU MP'
+PACKAGE_STRING='GNU MP 6.1.2'
+PACKAGE_TARNAME='gmp'
+PACKAGE_URL='http://www.gnu.org/software/gmp/'
+PACKAGE_VERSION='6.1.2'
+PATH_SEPARATOR=':'
+RANLIB=''
+SED=''
+SET_MAKE=''
+SHELL='/bin/sh'
+SPEED_CYCLECOUNTER_OBJ=''
+STRIP='arm-linux-androideabi-strip'
+TAL_OBJECT=''
+TUNE_LIBS=''
+TUNE_SQR_OBJ=''
+U_FOR_BUILD=''
+VERSION='6.1.2'
+WANT_CXX_FALSE=''
+WANT_CXX_TRUE=''
+WITH_READLINE_01=''
+YACC=''
+YFLAGS=''
+ac_ct_AR=''
+ac_ct_CC=''
+ac_ct_CXX=''
+ac_ct_DUMPBIN=''
+am__EXEEXT_FALSE=''
+am__EXEEXT_TRUE=''
+am__isrc=' -I$(srcdir)'
+am__leading_dot='.'
+am__tar='$${TAR-tar} chof - ""$$tardir""'
+am__untar='$${TAR-tar} xf -'
+bindir='${exec_prefix}/bin'
+build='x86_64-pc-linux-gnu'
+build_alias=''
+build_cpu='x86_64'
+build_os='linux-gnu'
+build_vendor='pc'
+datadir='${datarootdir}'
+datarootdir='${prefix}/share'
+docdir='${datarootdir}/doc/${PACKAGE_TARNAME}'
+dvidir='${docdir}'
+exec_prefix='NONE'
+gmp_srclinks=''
+host='arm-unknown-linux-androideabi'
+host_alias='arm-linux-androideabi'
+host_cpu='arm'
+host_os='linux-androideabi'
+host_vendor='unknown'
+htmldir='${docdir}'
+includedir='${prefix}/include'
+infodir='${datarootdir}/info'
+install_sh='${SHELL} /home/aliakbar/tmp/ics-openconnect/external/arm/openconnect/android/sources/gmp-6.1.2/install-sh'
+libdir='${exec_prefix}/lib'
+libexecdir='${exec_prefix}/libexec'
+localedir='${datarootdir}/locale'
+localstatedir='${prefix}/var'
+mandir='${datarootdir}/man'
+mkdir_p='$(MKDIR_P)'
+mpn_objects=''
+mpn_objs_in_libgmp=''
+oldincludedir='/usr/include'
+pdfdir='${docdir}'
+prefix='/home/aliakbar/tmp/ics-openconnect/external/arm/openconnect/android/arm-linux-androideabi/toolchain/sysroot/usr'
+program_transform_name='s,x,x,'
+psdir='${docdir}'
+sbindir='${exec_prefix}/sbin'
+sharedstatedir='${prefix}/com'
+sysconfdir='${prefix}/etc'
+target_alias=''
+
+## ----------- ##
+## confdefs.h. ##
+## ----------- ##
+
+/* confdefs.h */
+#define PACKAGE_NAME ""GNU MP""
+#define PACKAGE_TARNAME ""gmp""
+#define PACKAGE_VERSION ""6.1.2""
+#define PACKAGE_STRING ""GNU MP 6.1.2""
+#define PACKAGE_BUGREPORT ""gmp-bugs@gmplib.org, see https://gmplib.org/manual/Reporting-Bugs.html""
+#define PACKAGE_URL ""http://www.gnu.org/software/gmp/""
+#define PACKAGE ""gmp""
+#define VERSION ""6.1.2""
+#define WANT_FFT 1
+#define HAVE_HOST_CPU_arm 1
+
+configure: exit 1`"
+cernekee/ics-openconnect,open,Support non-AnyConnect protocols via libopenconnect API,[],"As of dlenski/openconnect@40802e459873e55eefbe64f05b9475821f761b8e (not yet in an official openconnect release) there is a new API to get the list of supported protocols, along with their descriptions and supporting features.
+
+```c
+int openconnect_get_supported_protocols(struct oc_vpn_proto **protos);
+void openconnect_free_supported_protocols(struct oc_vpn_proto *protos);
+int openconnect_set_protocol(struct openconnect_info *vpninfo, const char *protocol);
+```
+
+The next OpenConnect release should include this API along with (optimistically :grinning:) support for GlobalProtect VPNs (`gp`) in addition to AnyConnect and Juniper (`nc`).
+
+In the NetworkManagerOpenconnect frontend, it was quite straightforward (https://git.gnome.org/browse/network-manager-openconnect/commit/?id=1ed6de801a398887277fbb9c35d9f5f5d6c4d5c3) to add multiprotocol support using this API, and it's underway on the Windows openconnect-gui as well (openconnect/openconnect-gui#158).
+
+Are you interested in adding multiprotocol support the Android front-end as well?
+
+From my perusal of your code, it appears that it's clean and only interfaces with `libopenconnect` using the public API :+1: :+1:. One minor exception that I see is that [you use the AnyConnect-specific `X-CSTP-Idle-Timeout` option](https://github.com/cernekee/ics-openconnect/blob/master/app/src/main/java/app/openconnect/core/OpenVpnService.java#L198) as a hint for how often the keepalive function should run."
+cernekee/ics-openconnect,open,Per-app VPN support,[],"Hello,
+
+Does your code/library support per-app VPN? Would it be technically possible to merge this code with my own student project to try to establish a per-app VPN connection, ideally upon starting of an app (e.g. in onCreate), while leaving the other app's communication on the phone intact?
+
+Thanks in advance.
+
+Niki"
+cernekee/ics-openconnect,open,Marked as vulnerable in F-Droid,[],"I just updated F-Droid to version 1.0 and it altered me that a number of my installed packages, including OpenConnect, were vulnerable.
+
+More precisely, it has the KnownVul and DisabledAlgorithm tags, both described [here](https://f-droid.org/wiki/page/AntiFeature:KnownVuln). From what I understand, it is mostly a matter or re-packaging rather than re-coding anything..."
+cernekee/ics-openconnect,open,VPN disconnects during backup.,[],"I was connected to a VPN, then ran `adb backup -f /dev/null -apk -obb -all`, which ended the connection. The app did not (successfully) reconnect after the backup finished. I didn't see anything in `adb logcat | grep OpenConnect`, and the in-app log appears to have lost everything from the past ~week."
+cernekee/ics-openconnect,open,"When reconnecting on a network change, support re-authenticating.",[],"I have ""Reconnect on network change"" checked in the settings, and it works fine for short network changes. However, if I lose network for hours, the reconnect fails when I get network access again.  Last time I looked at the logs, it looked like it was trying to reconnect with the old TLS session instead of reauthenticating in a new TLS session. I just disconnected from all networks, and I'll try to post logs later when I reconnect to the network after the TLS session expires."
+cernekee/ics-openconnect,open,Cannot connect to non-standard HTTPS port,[],"My Cisco ASA is configured to terminate SSL VPN connection on port 4443. Android OpenConnect (latest version from the Google Play store) is not able to connect. The full OpenConnect log is in the screenshot mentioned below but the ASA is apparently returning the message ""Invalid host entry. Please re-enter"".
+
+OpenConnect 7.08 running on Linux is able to connect with no issues.
+
+On the ASA side, with lots of debugs enabled, I see this for a bad connection:
+
+fw# sh debug
+debug http  enabled at level 255 
+debug webvpn  enabled at level 255 
+debug webvpn html enabled at level 255 
+debug webvpn request enabled at level 255 
+debug webvpn response enabled at level 255 
+debug webvpn url enabled at level 255 
+debug webvpn xml enabled at level 255 
+debug webvpn anyconnect enabled at level 255 
+debug webvpn cstp-auth enabled at level 255 
+debug webvpn session enabled at level 255 
+debug webvpn task enabled at level 255 
+
+fw# 
+fw# 
+fw# #0x00002aaac47281f0 (POST). Request line:/GROUPNAME
+#0x00002aaac47281f0 (Response) Start
+#0x00002aaac47281f0 File to execute: /+CSCOU+/anyconnect_wrong_url.html
+#0x00002aaac47281f0 (Response) Open handler file [/+CSCOU+/anyconnect_wrong_url.html]
+#0x00002aaac47281f0 (Response) Processing LUA page.
+#0x00002aaac47281f0 (Response) Finish, connection keep-alive.
+
+(And that's it; I only have the OpenConnect log on the phone as additional information.)
+
+A good connection from Linux running OpenConnect 7.08 shows this:
+
+fw# #0x00002aaac4728970 (POST). Request line:/GROUPNAME
+#0x00002aaac4728970 (Response) Start
+#0x00002aaac4728970 File to execute: /CSCOSSLC/config-auth
+#0x00002aaac4728970 (Response) Open handler file [/CSCOSSLC/config-auth]
+#0x00002aaac4728970 (Response) Processing LUA page.
+Certificate mapping found for webvpn group GROUPNAME
+#0x00002aaac4728970 (Response) Finish, connection keep-alive.
+#0x00002aaac4728970 (POST). Request line:/GROUPNAME
+#0x00002aaac4728970 (Response) Start
+#0x00002aaac4728970 File to execute: /CSCOSSLC/config-auth
+#0x00002aaac4728970 (Response) Open handler file [/CSCOSSLC/config-auth]
+#0x00002aaac4728970 (Response) Processing LUA page.
+Certificate mapping found for webvpn group GROUPNAME
+Public archive directives retrieved from cache for index 2.
+#0x00002aaac4728970 (Response) Finish, connection keep-alive.
+#0x00002aaac4728970 (POST). Request line:/
+#0x00002aaac4728970 (Response) Start
+#0x00002aaac4728970 File to execute: /CSCOSSLC/config-auth
+#0x00002aaac4728970 (Response) Open handler file [/CSCOSSLC/config-auth]
+#0x00002aaac4728970 (Response) Processing LUA page.
+[Rest of successful connection log removed.]
+
+
+![screenshot_20170907-115124](https://user-images.githubusercontent.com/3397667/30173114-ac7dd9d8-93c4-11e7-81f2-c446b643c8d7.png)
+
+Any idea about what could be wrong? Perhaps the wrong Host: header is being passed? It should be ""Host: vpn.xxxxx.com:4443"", right?
+
+Thanks in advance for any insight.
+"
+cernekee/ics-openconnect,open,Support Android 7.0's new Always on VPN feature.,[],"It would be nice if I could set OpenConnect to be always on. From reading https://developer.android.com/about/versions/nougat/android-7.0.html#android_for_work and glancing at the code, I think bumping the `targetSdkVersion` would be enough to enable the feature."
+cernekee/ics-openconnect,closed,hello word,[],
+cernekee/ics-openconnect,open,android_csd.sh doesn't find curl on Android 7.0 Nougat,[],"I and my colleagues couldn't get OpenConnect to establish the VPN connection unless we changed ""curl"" to `/system/bin/curl` in [android_csd.sh](https://github.com/cernekee/ics-openconnect/blob/master/assets/raw/noarch/android_csd.sh). Maybe instead of hardcoding that path as we did, that script could add `/system/bin` to the search path, to keep compatibility with devices that might store ""curl"" elsewhere."
+cernekee/ics-openconnect,closed,Extra whitespace on IP parameters causes crash,[],"The crash happen just when setup the connection and authentication pass, this client crashed immediately. It's an issue existing for more than 2 years, the server side is ocserv with latest version. In fact, the Cisco Anyconnect works perfect for the same VPN server.  Could somebody take a serious look? I knew most people use the anyconnect, but I don't want to use it for its poor user friendness."
+cernekee/ics-openconnect,open,bug of RTL locale,[],"hi 
+becuse of this bug for android 4.*
+https://issuetracker.google.com/issues/36972718
+you should set Locale English programmatically for devices 4.* and have RTL‌ language ."
+cernekee/ics-openconnect,open,Method to auto-connect,[],"It would be useful if this app could have shortcuts, Tasker bindings, or any other reasonable method to automatically/directly start connections without needing to manually click through opening the app > selecting connection. This assumes that the connection already saves login credentials and can otherwise be started just by clicking it within the app."
+cernekee/ics-openconnect,closed,"Cannot Resolve Symbol ""LibOpenConnect"" And Infradead",[],"Code is not Working, Cannot Resolve Symbol ""LibOpenConnect"" And ""Infradead""
+Please Any Solution. to this...
+![capture](https://cloud.githubusercontent.com/assets/12396371/25042762/e5eaa72c-2133-11e7-937c-1d4e5b6be1bc.PNG)
+"
+cernekee/ics-openconnect,open,[FR] Manual setting of MTU,[],"I have MTU set to 1406 for my corporate VPN, but that appears to be incorrect. If I set MTU to a lower size, everything works.
+Could you please add either:
+
+1. manual MTU size or
+2. a custom script execution after connection established."
+cernekee/ics-openconnect,closed,how to build android native,[],"./misc/build-native.sh 
+
+i get 
+Android NDK: Your APP_BUILD_SCRIPT points to an unknown file: ./jni/Android.mk 
+
+?"
+cernekee/ics-openconnect,closed,can't build on osx,[],"hi, 
+i get 
+
+readlink: illegal option -- f
+
+while running make
+
+
+"
+cernekee/ics-openconnect,open,Travis,[],Fixes travis and adds a badge
+cernekee/ics-openconnect,open,Profile import,[],"It must be helpful for users to quickly import a profile file via url, including servers' list, just like AnyConnect's way. Since its a really boring to input manually many servers' information for users, when VPN providers offer tens of servers over the world. Could you just consider my suggestion?
+"
+cernekee/ics-openconnect,open,no-route is not work,[],"I pull route table from server, there is only no-route entry (no route setting).
+iOS anyconnect works well, but anyconnect on android or isc-openconnect fail to add exclude rules.
+
+Tested on Android 6.0.1, isc-openvpn can successfully handle exclude route rules.
+"
+cernekee/ics-openconnect,closed,embedded Credentials,[],"hi , 
+is there anyway to embedded Username/Password without asking user ?
+i don't understand the `AuthFormHandler` class .
+thanks
+"
+cernekee/ics-openconnect,closed,git submodules should always use https:// connections,[],"Since git does not always verify the commits it downloads, submodules should always use HTTPS in order to improve the security of the build process.
+
+``` diff
+diff --git a/.gitmodules b/.gitmodules
+index ed5e55d..045eccf 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -1,6 +1,6 @@
+ [submodule ""external/openconnect""]
+        path = external/openconnect
+-       url = git://github.com/cernekee/openconnect
++       url = https://github.com/cernekee/openconnect
+ [submodule ""external/stoken""]
+        path = external/stoken
+-       url = git://github.com/cernekee/stoken
++       url = https://github.com/cernekee/stoken
+```
+"
+cernekee/ics-openconnect,closed,crash on Android M,[],"application throws an error on Android M
+java.lang.UnsatisfiedLinkError: libopenconnect.so has text relocations
+even compiling with NDK10e could not resolve the issue
+"
+cernekee/ics-openconnect,closed,build error ,[],"Hello there
+I use NDK10e
+I encounter this error
+make -C android/ NDK=/root/android-ndk-r10e/
+
+/root/openconnect-6.00/android/sources/nettle-2.7/nettle-types.h:29:27: fatal error: nettle-stdint.h: No such file or directory
+ #include ""nettle-stdint.h""
+"
+cernekee/ics-openconnect,open,Incorrect MTU,[],"I have a server running ocserv 0.10.8. Under ubuntu 15.04, using openconnect as client, I got an mtu of 1361 at both ends for the tun devices. On my android phone (kitkat 4.4.2), if I use cisco anyconnect, I got an mtu of 1241 at both ends. With openconnect on the phone, I got 1269 at server side, but 1280 at client side. 
+I'm not sure if this is normal, but with openconnect, I can't connect to google play, always timeout. With anyconnect, I can. With both of those two clients, I can't visit some sites which I can under ubuntu, but got google play connected surely is the first priority here.
+
+Thanks.
+"
+cernekee/ics-openconnect,closed,Problem make -C external NDK=/cygdrive/C/android-ndk-r10d,[],"$ make -C external NDK=/cygdrive/C/android-ndk-r10d
+make: Entering directory '/home/Mahan/ics-openconnect/external'
+rm -rf arm/openconnect
+mkdir -p arm/openconnect
+cp -a openconnect arm/
+make -C arm/openconnect/android ARCH=arm NDK=/cygdrive/C/android-ndk-r10d
+make[1]: Entering directory '/home/Mahan/ics-openconnect/external/arm/openconnect/android'
+mkdir -p /home/Mahan/ics-openconnect/external/arm/openconnect/android/arm-linux-androideabi/toolchain
+/cygdrive/C/android-ndk-r10d/build/tools/make-standalone-toolchain.sh --platform=android-14 --arch=arm --install-dir=/home/Mahan/ics-openconnect/external/arm/openconnect/android/arm-linux-androideabi/toolchain || \
+        /cygdrive/C/android-ndk-r10d/build/tools/make-standalone-toolchain.sh \
+                --platform=android-14 --arch=arm --install-dir=/home/Mahan/ics-openconnect/external/arm/openconnect/android/arm-linux-androideabi/toolchain --system=linux-x86_64
+Auto-config: --toolchain=arm-linux-androideabi-4.8
+Host system 'cygwin-x86' is not supported by the source NDK!
+Try --system=<name> with one of:  windows-x86_64
+Auto-config: --toolchain=arm-linux-androideabi-4.8
+Host system 'linux-x86_64' is not supported by the source NDK!
+Try --system=<name> with one of:  windows-x86_64
+Makefile:75: recipe for target '/home/Mahan/ics-openconnect/external/arm/openconnect/android/arm-linux-androideabi/toolchain/.built' failed
+make[1]: **\* [/home/Mahan/ics-openconnect/external/arm/openconnect/android/arm-linux-androideabi/toolchain/.built] Error 1
+make[1]: Leaving directory '/home/Mahan/ics-openconnect/external/arm/openconnect/android'
+Makefile:103: recipe for target 'arm/libopenconnect.so' failed
+make: **\* [arm/libopenconnect.so] Error 2
+make: Leaving directory '/home/Mahan/ics-openconnect/external'
+"
+cernekee/ics-openconnect,closed,missing required library,[],"hi,
+after i import ics-openconnect to eclipse i got some error about ""missing required library"".
+<code>
+Project 'OpenConnect' is missing required library: 'libs/openconnect-wrapper.jar'   OpenConnect     Build path  Build Path Problem
+</code>
+<code>
+Project 'OpenConnect' is missing required library: 'libs/stoken-wrapper.jar'    OpenConnect     Build path  Build Path Problem
+</code>
+<code>
+The project cannot be built until build path errors are resolved    OpenConnect     Unknown Java Problem
+</code>
+
+where can i download these libraries?
+Did I do something wrong? or how can i import it to eclipse or android-studio ?
+"
+cernekee/ics-openconnect,closed,IPv6 not working,[],"I have an ocserv instance with route=default and ipv6-network/prefix correctly set. Connecting from Linux gives the right IP address and route, which I can route all IPv6 traffic through tunnel.
+
+However when connecting from this app, I got the right address (by examining log and status window), but the address is not assigned to interface and route is not configured, too.
+"
+cernekee/ics-openconnect,closed,custom csd_wrapper not working on 5.0 lollipop,[],"I see it generated tmp file for the script in the app's cache dir, but it's not executed.
+It was working perfectly in previous android versions (including L Preview)
+"

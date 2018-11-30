@@ -1,0 +1,146 @@
+repository,state,title,label,body
+chibibi/simpleDeadlines,open,IllegalStateException: Fragment not attached to Activity,[],"//package name: com.casimirlab.simpleDeadlines
+//version: 3.2.1
+ java.lang.RuntimeException: Unable to start activity ComponentInfo{com.casimirlab.simpleDeadlines/com.casimirlab.simpleDeadlines.ui.MainActivity}: java.lang.IllegalStateException: Fragment DeadlineListFragment{ad2ef970} not attached to Activity
+ 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2211)
+ 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2261)
+ 	at android.app.ActivityThread.access$600(ActivityThread.java:141)
+ 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1256)
+ 	at android.os.Handler.dispatchMessage(Handler.java:99)
+ 	at android.os.Looper.loop(Looper.java:137)
+ 	at android.app.ActivityThread.main(ActivityThread.java:5103)
+ 	at java.lang.reflect.Method.invokeNative(Native Method)
+ 	at java.lang.reflect.Method.invoke(Method.java:525)
+ 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+ 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+ 	at dalvik.system.NativeStart.main(Native Method)
+ Caused by: java.lang.IllegalStateException: Fragment DeadlineListFragment{ad2ef970} not attached to Activity
+ 	at android.support.v4.app.Fragment.getLoaderManager(Fragment.java:881)
+ 	at com.casimirlab.simpleDeadlines.ui.DeadlineListFragment.setGroupFilter(DeadlineListFragment.java:178)
+ 	at com.casimirlab.simpleDeadlines.ui.MainActivity$2.onPageSelected(MainActivity.java:85)
+ 	at android.support.v4.view.ViewPager.setCurrentItemInternal(ViewPager.java:548)
+ 	at android.support.v4.view.ViewPager.setCurrentItemInternal(ViewPager.java:514)
+ 	at android.support.v4.view.ViewPager.onRestoreInstanceState(ViewPager.java:1287)
+ 	at android.view.View.dispatchRestoreInstanceState(View.java:12284)
+ 	at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:2620)
+ 	at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:2626)
+ 	at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:2626)
+ 	at android.view.View.restoreHierarchyState(View.java:12262)
+ 	at com.android.internal.policy.impl.PhoneWindow.restoreHierarchyState(PhoneWindow.java:1647)
+ 	at android.app.Activity.onRestoreInstanceState(Activity.java:938)
+ 	at android.app.Activity.performRestoreInstanceState(Activity.java:910)
+ 	at android.app.Instrumentation.callActivityOnRestoreInstanceState(Instrumentation.java:1138)
+ 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2189)"
+chibibi/simpleDeadlines,open,Simple Deadlines don't start when reboot the phone,[],"I'm using Android Lollipop 5.1 and Simple Deadlines don't start whit the system when you reboot. How can I do for fix this problem? 
+"
+chibibi/simpleDeadlines,open,Notification with zero deadline open,[],"Hello, I think there's a little bug.
+There's no active deadline in the application, but every days I see an empty notification !! Boring ! 
+Do you think that's a feature or a bug ? 
+Thank's :-) 
+"
+chibibi/simpleDeadlines,open,Specific time for deadlines,[],"The ability to set a specific time during the day for each individual deadline would be pretty useful, instead of having the app countdown to midnight of the set day(which is what I assume it does), a countdown to the set time could be used. Further down the line, this could be expanded by having a detailed view which shows an active countdown in HH:MM:SS for the truly neurotic among us.
+"
+chibibi/simpleDeadlines,closed,Update Serbian Playstore description,[],
+chibibi/simpleDeadlines,open,Option to make notification persistent when there are urgent tasks,[],"Enable by default?
+Could be extended to a contextual persistence.
+"
+chibibi/simpleDeadlines,closed,waffle.io Badge,[],"Merge this to receive a badge indicating the number of issues in the ready column on your waffle.io board at https://waffle.io/casimir/simpledeadlines
+
+This was requested by a real person (user casimir) on waffle.io, we're not trying to spam you.
+"
+chibibi/simpleDeadlines,open,Add a description for deadlines,"[Label(name=""Feature""), Label(name=""Improvement""), Label(name=""UI""), Label(name=""ready"")]","Deadline would have a long description (let's say < 256 characters). That implies changes in serialization and UI.
+"
+chibibi/simpleDeadlines,open,Installed size,"[Label(name=""Improvement""), Label(name=""in progress"")]","Compiled apk is at 1 MB while installed size is almost 2,5 MB. Since some of us have low end phones with limited disk space, this size for a simple\* app like this is questionable. I suppose the external libraries are the cause of the size increase, am I right? Is there a way to reduce the size?
+- Disclaimer: My intention is not to disregard or to slur, I think this is app is very useful. I only try to start a discussion which could help improve the app.
+"
+chibibi/simpleDeadlines,closed,Add Serbian translation,[],"Please allow localization of `app_name`, for Serbian at least.
+"
+chibibi/simpleDeadlines,closed,Import deadlines needed if export implemented,"[Label(name=""Improvement"")]","Desinstalled app after exporting deadlines.
+Reinstalled app version 3.2.1: no possibility to import deadlines, only export...
+A nice file is there with all the data but it's not usable!
+"
+chibibi/simpleDeadlines,open,make fontsize customizeable,[],"The size tasks are giant (on the nexus 5).
+"
+chibibi/simpleDeadlines,closed,Russian translation are added,"[Label(name=""Improvement"")]","http://www.getlocalization.com/simpleDeadlines/editor/21941/
+"
+chibibi/simpleDeadlines,open,Fast show top five(or less/more) deadline days tasks,[],"something like bar which include buttons with last(f.e. 5) days-deadlines to display tasks on this days instead of all(sorry if i lost that functionally if it able :cry: )!
+"
+chibibi/simpleDeadlines,closed,"Add a group ""All"" and mix deadlines from all groups",[],"Can't go back when entered a group :(
+I'm using your app everyday!
+"
+chibibi/simpleDeadlines,closed,Fix group reset when updating. Fixes #35,[],"Prevent writing of whitespace string to Group name.
+Preserve old group when `null` is passed.
+Fixes #35 
+"
+chibibi/simpleDeadlines,closed,[Bug] Group is overwritten when Deadline is checked,"[Label(name=""Bug"")]","Whenever one checks a given deadline, the 'Group' of the checked deadline is reset to the default group, or as set in the preferences.
+
+The problem seems to be in the condition [here](https://github.com/casimir/simpleDeadlines/blob/devel/src/main/java/com/casimirlab/simpleDeadlines/provider/DeadlineProvider.java#L247) in the `#update()` method.
+
+Ideally one would want the default group set only when the user tries to explicitly update the group field to a whitespace or empty String(`""""`). Right now, if the group is not passed(`null`) to the `DeadlineProvider#update()`, it is simply overwritten instead of preserving the original value.
+"
+chibibi/simpleDeadlines,closed,Drawer doesn't toggle with actionbar icon,"[Label(name=""Bug"")]",
+chibibi/simpleDeadlines,open,Add an option to archive checked deadlines > 0 days,"[Label(name=""Feature"")]",
+chibibi/simpleDeadlines,closed,Configurable default group's name,"[Label(name=""Improvement"")]",
+chibibi/simpleDeadlines,closed,Add link to getlocalization.com in README,[],
+chibibi/simpleDeadlines,closed,show finished deadlines ,[],"If you accidently finish a deadline it's gone forever. That's not perfect.
+"
+chibibi/simpleDeadlines,closed,bug app closes with on error message on group list view,"[Label(name=""Bug"")]","App stalls and closes with error message, frequently happens, always when list of groups visible. either when deselecting group or selecting group, with group selected before or not...
+not seen any way to make it certain, but happens from often to sometimes...
+
+on smasung GT-s7652
+android 4.0.4
+"
+chibibi/simpleDeadlines,open,improvement: display group name,"[Label(name=""Improvement""), Label(name=""UI"")]","instead of "" in progress"" on to, display selected group name.
+"
+chibibi/simpleDeadlines,closed,ungrouped task view,"[Label(name=""Improvement"")]","create a group to display view tasks belonging to no group only
+"
+chibibi/simpleDeadlines,open,"improvement only, auto-fill of selected group","[Label(name=""Improvement"")]","When creating a task, auto-fill in field ""group "" with name of currently selected group, if not showing default list
+"
+chibibi/simpleDeadlines,open,"Show day label (mon, tue, ...)","[Label(name=""Improvement""), Label(name=""UI"")]",
+chibibi/simpleDeadlines,open,Easy day count selection,"[Label(name=""Improvement"")]","Propose alternate solutions to select a number of days (e.g.: buttons for day, week, month).
+"
+chibibi/simpleDeadlines,closed,DashClock integration,"[Label(name=""Feature"")]","Display urgent deadlines.
+Change license to GPLv3 to comply with APL2.
+"
+chibibi/simpleDeadlines,closed,DrawerLayout icon (ActionBar) isn't animated,"[Label(name=""UI"")]",
+chibibi/simpleDeadlines,closed,Change color for archived deadline,"[Label(name=""UI"")]","Sexy gray?
+"
+chibibi/simpleDeadlines,closed,Reverse archived deadlines order,"[Label(name=""UI"")]","Deadlines are displayed from older to newer. For archived ones it's more logical to reverse the display.
+"
+chibibi/simpleDeadlines,closed,Add day count and label in the editor,"[Label(name=""Feature""), Label(name=""UI"")]","Above the calendar view / spinners.
+"
+chibibi/simpleDeadlines,closed,Change default locale to EN,[],"Default locale is FR.
+"
+chibibi/simpleDeadlines,closed,Bulk group edit,"[Label(name=""Feature"")]","Change the group for multiple deadlines. Selection goes the same way as selection for deletion.
+"
+chibibi/simpleDeadlines,open,[Featur request] Repeating events,"[Label(name=""Feature"")]","I thought that maybe it can be useful to implement a system for repeating events, perhaps marking the days of the week, or how many days ....
+"
+chibibi/simpleDeadlines,closed,Calendar view doesn't use system's locale,"[Label(name=""Bug"")]","The US locale is used always used.
+"
+chibibi/simpleDeadlines,closed,Option for,[],"It would be possible to introduce an option in settings that allows switching between Monday and Sunday as the first day of the week in the calendar view?
+
+It would also be wonderful to have some kind of synchronization with GNU/Linux  PCs, but I imagine it will be much more complicated
+
+Thanks a lot.
+"
+chibibi/simpleDeadlines,closed,Update actions.xml,[],
+chibibi/simpleDeadlines,closed,Update preferences.xml,[],
+chibibi/simpleDeadlines,closed,Update strings.xml,[],
+chibibi/simpleDeadlines,closed,Notification with 0 deadline,"[Label(name=""Bug"")]","When there's **only archived** deadlines the notification is shown but shouldn't.
+"
+chibibi/simpleDeadlines,closed,German Language,[],"I've added German language files.
+"
+chibibi/simpleDeadlines,open,Automatic test dataset generation,[],
+chibibi/simpleDeadlines,closed,Cleanup general design,"[Label(name=""UI"")]",
+chibibi/simpleDeadlines,closed,Import/Export,"[Label(name=""Feature"")]","- Import from file
+- Export to file
+- Create from uri
+- Share as uri
+"
+chibibi/simpleDeadlines,open,Widget,"[Label(name=""Feature"")]",
+chibibi/simpleDeadlines,closed,Dialog-like editor,"[Label(name=""UI"")]","Change the editor activity to a modal dialog style.
+"
+chibibi/simpleDeadlines,open,Custom amount of day for urgency,"[Label(name=""Feature"")]",
+chibibi/simpleDeadlines,open,Custom colors for urgency,"[Label(name=""Feature"")]",
+chibibi/simpleDeadlines,closed,Group completion doesn't work,"[Label(name=""Bug"")]","In the editor screen, group names should be autocompleted but i doesn't seem to work.
+"

@@ -1,0 +1,171 @@
+repository,state,title,label,body
+MarcDufresne/BetterWeather,open,Expired API key,[],"Hi Marc
+
+Your extension shows an error saying that the API key is wrong or the service is unavailable, on both Yahoo and OpenWeatherMap.
+
+I would make a PR but I can see you have hidden the BuildConfig.java (which make sense :) )
+
+Hope you find time to look at it :)"
+MarcDufresne/BetterWeather,open,api,[],"Hi
+Api issues again."
+MarcDufresne/BetterWeather,closed,Fix weird behaviour not letting change the location setting,[],"Wouldn't let me change the location if autodetection disabled
+"
+MarcDufresne/BetterWeather,open,Find a location not working,[],"I had not changed the manual location setting and it worked fine for a long time.
+However, after I changed the location setting to ""Automatic"", ""Find a location"" not work anymore.
+It doesn't show drop down location suggestions while I am input characters.
+"
+MarcDufresne/BetterWeather,closed,fixed tomorrow conditions display,[],
+MarcDufresne/BetterWeather,closed,Make API key user-writeable,[],"I know this is a rather strange request, but would it be possible to allow the user to provide a new api key (not view the old one)? API keys are essentially a a threat to free software, because you cannot run/build without it, thus are required to enter a legal contract which in most cases prohibits the publication of API keys. From my perspective API keys shouldn't be part of the app, but should be user-entered.. well..like personal accounts without personal information.
+"
+MarcDufresne/BetterWeather,closed,API Error,[],"There often appears an api error message. Sometimes it goes away on refreshing but sometimes it won't disappear...
+"
+MarcDufresne/BetterWeather,closed,Not updating,[],"Since a few days back this doesn't update anymore. And since removing it and adding it back, it does not show up. Saw that someone reported the same issue in the play store. Nexus 4, stock lollipop, Nova launcher. 
+"
+MarcDufresne/BetterWeather,closed,Updated polish translation,[],"To version 3.0.4
+"
+MarcDufresne/BetterWeather,closed,Update Translation of zh_CN. (Version 3.0.4b),[],
+MarcDufresne/BetterWeather,closed,Danish translation,[],"Adding a danish translation for BetterWeather. It's not 100% complete (as there was a few words I couldn't translate) but it's very close.
+"
+MarcDufresne/BetterWeather,closed,Create weather_conditions.xml,[],"translations for Traditional Chinese (zh-TW)
+"
+MarcDufresne/BetterWeather,closed,Create strings.xml,[],"translations for Traditional Chinese (zh-TW)
+"
+MarcDufresne/BetterWeather,closed,Create pref_strings.xml,[],"translations for Traditional Chinese (zh-TW)
+"
+MarcDufresne/BetterWeather,closed,Create errors.xml,[],"Translations for Traditional Chinese (zh-TW)
+"
+MarcDufresne/BetterWeather,closed,Create errors.xml,[],"This is the translation for Traditional Chinese (zh-TW)
+"
+MarcDufresne/BetterWeather,closed,Italian translation updates,[],
+MarcDufresne/BetterWeather,closed,Italian translation updates,[],
+MarcDufresne/BetterWeather,closed,alogblog's mod mainly for asian users,[],"I updated it again.
+
+For normal(western+asian) users, only one new feature was added. Showing wind speed label like ""Wind: SW 1 mph (Light breeze)"".
+
+My main purpose of this mod is for asian users.
+1. Can search their city with their own language characters.
+2. Can display location name in widget more naturally, ie. not ""Seoul, Korea"", but ""한국(Korea) 서울(Seoul)""
+3. Can display wind speed in widget more naturally, ie not ""SW 1 km/h"" but ""남서풍(SW) 시속(Hourly)1킬로(kilometer)"" in their own languge.
+
+For above purpose, I couldnt help but modifying some of your routine, in addition to adding some.
+
+You may feel bad about some, but please understand my mods. I tried to modify routines as small as possible.
+
+PS.
+I didnt change below lines, but after commiting and diffing, I found those.
+I guess these modifications are automatically made by Android Studio program.
+
+publishUpdate(new BetterWeatherData(BetterWeatherData.ErrorCodes.LOCATION));
+-->
+publishUpdate(new BetterWeatherData(ErrorCodes.LOCATION));
+
+Thanks.
+"
+MarcDufresne/BetterWeather,closed,Small fixes,[],
+MarcDufresne/BetterWeather,closed,Updated Slovak translation,[],
+MarcDufresne/BetterWeather,closed,version 3.0.1 translations of zh,[],
+MarcDufresne/BetterWeather,closed,Korean translation & east asian address form adaptations,[],"Hello Marc Dufresne!
+
+First of all I'd like to thank you for your sharing good app.
+
+I added Korean translation and some modification to your wonderful app. Please consider my request.
+From now, I will explain my mods.
+
+-1. Addition of wind speed label feature.
+
+Just a small accessary. If user select ""Show wind label"" option in preference, BetterWeather shows wind speed information as label ( http://www.windfinder.com/wind/windspeed.htm ).
+
+-2. Can search location with non-English characters.
+
+In current app, we(non-Engish user) cannot search our city by entering our own language, can do it only with English. For example, if we type ""서울""(in Korean, it is ""Seoul""), this app doesnt list results.
+As a result, even localized(values-zh/it/fr...) app displays weather info. as its own characters except city name.
+This problem fixed.
+
+-3. From here, all mods are for east asaian(Korean, Chinese, Japanese, or any other countries)
+
+-3.1 Wind speed display.
+
+For CJK users (or any other asian), the representations like 10 km/h or 10 m/s are also valid, but not natural.
+For example, we Korean read ""10 m/s"" as ""초속(second speed) 10 미터(meter)"".
+Japanese do it as ""秒速10メートル"", Chinese ""每秒10米"". Its MORE natural.
+So I added 4th option like ""Wind: %1$s %4$s%2$s%3$s"".
+Western users will have empty string in %4$s, so all current values-\* translations have no efftects.
+
+-3.2 Location display
+
+Current BetterWeaterh fixes location format as ""small location, large location"". For example, ""New York, USA"". Yes, it is the address form of western users.
+
+At least CJK(or other asian or some western(IDK)) write address like ""large location --to--> small location"". For example, ""Korea, Seoul, a borough, a city, a town, my home"". I know CJ also do.
+So I added [string name=""location_template""]%1$s, %2$s[/string] option.
+%1$s is for small location, %2$s is for large location.
+Of course normal western have ""%1$s, %2$s"" form(default), CJK users do ""%2$s %1$s"" form.
+
+-3.3 Method getting small/large location name from Yahoo XML.
+
+Current BetterWeather get location name from two source, one is WHERE Yahoo XML, the other is WEATHER Yahoo XML.
+
+But WEATHER XML gives us only ENGLISH represented location name(always ""Seoul"", not ""서울"") which you use in displaying widget.
+Localized location names are only from WHERE XML with option like lang=ko-KR option.
+So I used it in getting location names. (This means some modification to your original source was necessary)
+
+And you used ""locality_"" element in WHERE XML for getting location. But I tried some Korea/Japan/USA locations and looked through those XML. I found ""locality"" elements dont alway exists, but ""admin_"" elments do.
+
+So I used name <= admin3 <= admin2 <= admin1 <= country steps.
+For example, ""newyork""(search keyword) has
+name = ""New York""
+country = ""USA""
+admin1 = ""New Yokr""
+admin2 = admin3 = """" elements. Then final widget has ""New York, USA""
+
+""trenton"" has
+name = ""Trenton""
+country = ""USA""
+admin1 = ""New Jersey""
+admin2 = ""Mercer""
+admin3 = """" elements. Then it has ""Trenton, Mercer"" in final widget.
+
+In conclusion, my steps can catch all cases without failure, although some keywords to small town has  one-step larger location name, not big location name.
+With this method, I could avoid some case like ""Seoul, Seoul"" (same location twice problem for big location)
+And this method is only available on display location in widget, not in preference(always has smallLocation, largeLocation form).
+
+Phew~ small mods, but superfluous long posts :(
+
+Anyway, please watch my mods and apply these as possible as you can.
+Of cource my programming is not good, necessatrily it has inefficient mods because I dint fully understand your source. So please re-mods mine for efficient one.
+
+Thanks.
+"
+MarcDufresne/BetterWeather,closed,Some phrases are too large to be in a single line,"[Label(name=""enhancement"")]","Some phrases (as I highlighted in the images) are too large to be in a single line. There's nothing you can do to fix this? It's not very important, but it would be nice if you fix it :)
+
+Thanks
+
+<b\><i\>Portrait mode<i\><b>
+![ss01](https://f.cloud.github.com/assets/6436270/2181552/8b8e0a72-9756-11e3-9198-7a662ecf763e.png)
+
+<b\><i\>Landscape mode<i><b>
+![ss02](https://f.cloud.github.com/assets/6436270/2181553/8d5db9c4-9756-11e3-9a99-8718d6ac4e80.png)
+"
+MarcDufresne/BetterWeather,closed,Updated Portuguese translation,[],"- New translation for errors.xml;
+- Some grammatical errors have been corrected;
+- General improvement of the translation;
+- Changed symbols of the cardinal points (""NO"" and ""O"" to ""NW"" and ""W"",
+  respectively).
+
+<i\>You can ignore commits 297220f 3a58927 e6d7e98 if you want to. I couldn't delete those commits   :P<i>
+"
+MarcDufresne/BetterWeather,closed,Translation to Portuguese (Portugal),[],"It's done
+"
+MarcDufresne/BetterWeather,closed,Update Chinese translation. (Version 2.3),[],"update Chinese trans on v2.3
+"
+MarcDufresne/BetterWeather,closed,Updated Slovak translation,[],
+MarcDufresne/BetterWeather,closed,italian translation update,[],
+MarcDufresne/BetterWeather,closed,Updated Slovak translation,[],"Pebble strings
+"
+MarcDufresne/BetterWeather,closed,High Battery Drain with no GPS lock,"[Label(name=""bug"")]","When BetterWeather is set to get location using the GPS it seems to cause high battery drain if a device is unable to get a GPS lock.  I have network location disabled on my device and was inside a building and noticed that my BetterWeather had generated significant battery drain through GPS usage when the phone was otherwise idle.  Is there a more gentle way to back off on attempting to get a GPS lock when it fails?  Perhaps set a reasonable timeout value and then try again at the next refresh interval?  I was inside the building for roughly two hours and saw BetterWeather's GPS usage for almost 1.5 hours when I exited the building.
+"
+MarcDufresne/BetterWeather,closed,Catalan translation for BetterWeather,[],
+MarcDufresne/BetterWeather,closed,Added Pebble integration to application,[],
+MarcDufresne/BetterWeather,closed,Not working with source build at 1a951,"[Label(name=""bug"")]","I installed this on a stock nexus 7 2012 with dashclock 1.5 and no weather is showing up, whether automatic or manual location. 
+"
+MarcDufresne/BetterWeather,closed,Updated SK - part 2,[],
+MarcDufresne/BetterWeather,closed,Updated SK,[],

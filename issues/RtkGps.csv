@@ -1,0 +1,73 @@
+repository,state,title,label,body
+illarionov/RtkGps,closed,1.0 alpha 26,[],
+illarionov/RtkGps,open,NoSuchMethodError,[],"//package name: ru0xdc.rtkgps
+//version: 1.0
+ java.lang.NoSuchMethodError: no static method with name='getPathInStorageDirectory' signature='(Ljava/lang/String;)Ljava/lang/String;' in class Lru0xdc/rtklib/RtkServer;
+ 	at ru0xdc.rtklib.RtkServer._rtksvrstart(Native Method)
+ 	at ru0xdc.rtklib.RtkServer.start(RtkServer.java:43)
+ 	at ru0xdc.rtkgps.RtkNaviService.processStart(RtkNaviService.java:130)
+ 	at ru0xdc.rtkgps.RtkNaviService.onStartCommand(RtkNaviService.java:64)
+ 	at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:2704)
+ 	at android.app.ActivityThread.access$1900(ActivityThread.java:141)
+ 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1353)
+ 	at android.os.Handler.dispatchMessage(Handler.java:99)
+ 	at android.os.Looper.loop(Looper.java:137)
+ 	at android.app.ActivityThread.main(ActivityThread.java:5103)
+ 	at java.lang.reflect.Method.invokeNative(Native Method)
+ 	at java.lang.reflect.Method.invoke(Method.java:525)
+ 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+ 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+ 	at dalvik.system.NativeStart.main(Native Method)"
+illarionov/RtkGps,open,code miss,[],"your code are missing google-play-services_lib 
+"
+illarionov/RtkGps,open,New feature now possible,[],"If you are interested in adding new features to RtkGps, it may now be possible to use poor quality smartphone antennas for CDGNSS and RTK.
+
+GPS World article gives a good summary.
+http://radionavlab.ae.utexas.edu/images/stories/files/papers/accuracy-in-the-palm-of-your-hand.pdf
+Associated University of Texas research dept. page
+http://radionavlab.ae.utexas.edu/research/381-precise-mass-market-mobility
+Published paper
+http://radionavlab.ae.utexas.edu/images/stories/files/papers/ion2014Pesyna.pdf
+"
+illarionov/RtkGps,closed,Gradle 0.12,[],"fix for gradle 0.12
+"
+illarionov/RtkGps,open,library missing,[],"when I try to develop this app, I found an error
+this is the piece of logcat
+
+java.lang.UnsatisfiedLinkError: Couldn't load rtkgps from loader dalvik.system.PathClassLoader[DexPathList[[zip file ""/data/app/ru0xdc.rtkgps-2.apk""],nativeLibraryDirectories=[/data/app-lib/ru0xdc.rtkgps-2, /system/lib]]]: findLibrary returned null
+
+at ru0xdc.rtkgps.RtkGps.onCreate(RtkGps.java:25)
+"
+illarionov/RtkGps,open,base statiion Position for RTK ; No minus sign for lat lon,[],"Hi,
+when i try to put the lat/lon of the base station in base entry >base position , I can't find a solution to enter a minus sign to say for instance that the station is west of greenwich; No way for me to give a Lon = -002.0000 for instance.
+I can't then use correctly the Static algorythm.
+Thanks for this nice program
+"
+illarionov/RtkGps,closed,Совместное продолжение разработки,[],"@illarionov Привет! Понравился твой прототип. Я разработал вот это приложение https://play.google.com/store/apps/details?id=aero.geosystems.rv.demo для управления GNSS-приемником. Давай подумаем как нам можно посотрудничать.
+"
+illarionov/RtkGps,open,No NVS output,[],"Hi. I am trying to connect a NVS evaluation kit to RtkGps using a Motorola Moto G. The USB device is detected and I get green icons for the input stream, but then I see no SNR, no sky plot, anything. Many thanks - Ricardo.
+"
+illarionov/RtkGps,open,Link to Google play,[],"The link to google play is broken. 
+The project is already active? 
+"
+illarionov/RtkGps,open,Output,[],"Hi, you can upgrade and include serial port or virtual serial port in output?. If I use rtkgps as rover, how link positioning program with rtkgps if run in the same machine?
+
+Thanks
+"
+illarionov/RtkGps,open,Serial parity configuration,[],"The NVS NV08C-CSM receivers requires odd parity - 8O1. In the Input Streams - Stream settings... box, can there be an option to set parity please?
+"
+illarionov/RtkGps,open,"OBS data output option implemented as a ntrip client, should be a ntrip server. ",[],"The idea is to use RtkGps as a base station and send the obs to a ntrip caster. 
+
+Ntrip caster is running on a Linux machine with the standard version of BKG caster. 
+
+The ""ntrip server"" authenticates with only a password to the ntrip caster and sends observation data. 
+
+On the other end, ""ntrip clients"" authenticate with username and password and receive the data from the ""ntrip caster"".
+
+Here on RtkGps, the implementation of the client is correct (on the input side) and connects correctly to a caster for receiving data. But the output side also authenticates as a client instead of authenticating as a server in order to receive data from the caster. 
+Unless I am missing something... I've tried only entering a password and no username in case it would do the trick but the caster ignores the request. 
+
+I hope you can solve this issue.
+
+This port of rtklib for Android is absolutely brilliant. Congratulations. 
+"

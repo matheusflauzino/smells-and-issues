@@ -1,0 +1,52 @@
+repository,state,title,label,body
+yankovskiy/SilentNight,open,SilentNight has been moved to F-Droid archive,[],SilentNight has been moved to F-Droid archive. It should be enough to introduce a small (minor) change and create a tag to move it back to the main repository.
+yankovskiy/SilentNight,open,Does not activate until the screen is unlocked by the user,[],"SilentNight v.0.3 as found in F-Droid does not activate the Airplane mode on/off until I unlock the screen manually. As soon as I unlock it, I can see the message about the permissions granted to SilentNight and the Airplane mode state is changed according to the settings.
+I am not sure, but maybe, SilentNight cannot wake the phone by itself, and therefore it just waits until the user wakes it?
+My system is CyanogenMod 11 (Android 4.4.4)
+"
+yankovskiy/SilentNight,open,"Start time, End time settings not aligned with the rest of the options on tablet",[],"Start time, End time settings not aligned with the rest of the options on tablet.
+- Problem occurs on GT-P5100 tablet with CyanogenMod 11 (last available nightly)
+- It works correctly on phone XT894 with CyanogenMod 12.1 (nightly)
+"
+yankovskiy/SilentNight,open,App stops when screen is rotated,[],"App stops when a screen is rotated. Tested on 
+- Tablet GT-P5100 with CyanogenMod 11 (last available nightly)
+- Phone XT894 with CyanogenMod 12.1 (nightly)
+"
+yankovskiy/SilentNight,closed,timezone does not auto change,"[Label(name=""bug"")]","In traveling timezone does not auto change
+"
+yankovskiy/SilentNight,open,Split timers for airplan and mute sound,"[Label(name=""enhancement"")]","Need implement feature: differents timer for airplan mode and mute sound
+"
+yankovskiy/SilentNight,closed,Add French translation,[],
+yankovskiy/SilentNight,closed,Kit kat,[],"This is SilentNight updated to works with Android KitKat (4.4) in superuser mode. There is also a little UI change to separate sound off and airplane mode.
+"
+yankovskiy/SilentNight,closed,"Приложение падает при активации режима в ""самолете""","[Label(name=""bug"")]","Устройство: Nexus 4 (mako)
+
+Стек:
+java.lang.RuntimeException: Unable to create service ru.neverdark.silentnight.DisableSoundService: java.lang.SecurityException: Permission denial: writing to secure settings requires android.permission.WRITE_SECURE_SETTINGS
+at android.app.ActivityThread.handleCreateService(ActivityThread.java:2582)
+at android.app.ActivityThread.access$1800(ActivityThread.java:135)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1278)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:136)
+at android.app.ActivityThread.main(ActivityThread.java:5017)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:515)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:779)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:595)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.SecurityException: Permission denial: writing to secure settings requires android.permission.WRITE_SECURE_SETTINGS
+at android.os.Parcel.readException(Parcel.java:1465)
+at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:185)
+at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:137)
+at android.content.ContentProviderProxy.call(ContentProviderNative.java:636)
+at android.provider.Settings$NameValueCache.putStringForUser(Settings.java:901)
+at android.provider.Settings$Global.putStringForUser(Settings.java:6008)
+at android.provider.Settings$Global.putString(Settings.java:5998)
+at android.provider.Settings$Global.putInt(Settings.java:6086)
+at ru.neverdark.silentnight.AirplaneMode.setSettings(AirplaneMode.java:92)
+at ru.neverdark.silentnight.AirplaneMode.updateSystemSettings(AirplaneMode.java:59)
+at ru.neverdark.silentnight.AirplaneMode.enable(AirplaneMode.java:41)
+at ru.neverdark.silentnight.DisableSoundService.enableAirplaneMode(DisableSoundService.java:67)
+at ru.neverdark.silentnight.DisableSoundService.onCreate(DisableSoundService.java:44)
+at android.app.ActivityThread.handleCreateService(ActivityThread.java:2572)
+"

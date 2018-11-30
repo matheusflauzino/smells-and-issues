@@ -1,0 +1,119 @@
+repository,state,title,label,body
+tom-and-jerry/eyeCam,open,"""Unfortunately eyeCam has stopped.""",[],"Sadly nowhere to submit debugging Info but I'm especially surprised as this is the Google nexus 5 flagship phone with the latest stock rom, unrooted.
+"
+tom-and-jerry/eyeCam,open,It lies,[],"I think you should detect countours and average colors inside each contour.
+"
+tom-and-jerry/eyeCam,closed,License?,[],"The original javascript is CCBY according to headers on the Java files, but that don't mean this repo is the same. 
+"
+tom-and-jerry/eyeCam,open,ColorBubblePopups should allways be on screen,"[Label(name=""bug"")]","when clicking close to a side or top of screen, popup will be clipped and is only partially or not at all readable.
+"
+tom-and-jerry/eyeCam,open,intro activity cannot be left with back button,"[Label(name=""bug"")]",
+tom-and-jerry/eyeCam,closed,Flashlight support not working correctly,[],"- start app, switch on flash, exit app (home button, not back), open app again -> menu indicates flash is on which it isnt (probably also shouldnt but menu should also indicate of)
+- start app, pause preview, switch on flash -> doesnt work (although the flash goes on when preview is started again)
+
+phone: nexus s
+"
+tom-and-jerry/eyeCam,open,Menu sometimes does not work,"[Label(name=""bug"")]","- Cannot switch off menu (with menu button) only with clicking outside of menu dialog
+- Cannot switch menu of (need to restart app so it works again)
+- Switching orientation when menu on shows menu in strange position
+
+phone: Samsung Galaxy Note (hardware menu button)
+"
+tom-and-jerry/eyeCam,open,Take light conditions and saturation into account for color recognition,[],"Problem of perception:
+Colours from lights are different from reflected colours i.e. red lights look more orange, red ink looks more brown.
+
+Saturation:
+whiteboard and pens (black, red & green). brand new pens (i.e. lots of ink) look black. Half way through their life, they look like their colours – red is red, green is green. As they run out of ink, black is hard to see while red and green disappear
+"
+tom-and-jerry/eyeCam,closed,[FEATURE] redesign user interface,[],"In order to facilitate the user interface, the menu button will be removed and the filter selection will be a two filter switch.
+
+To still be able to modify the setting conveniently the menu will be accessed through long clicks on the elements you want to edit. Since this is not too obvious a introduction will need to be shown on the first start.
+"
+tom-and-jerry/eyeCam,closed,[ISSUE] scale Camera preview to fill the whole screen,[],"On the HTC EVO 3D the app seems to work other then the camera ""feed"" does not fill the whole screen. 
+
+use Canvas.scale() in order to make the Bitmap fill the whole screen when the chosen preview size does not fit the screen.
+"
+tom-and-jerry/eyeCam,closed,[ISSUE] slow performance on high resolution screens,[],"Especially the Galaxy Nexus does not perform well due to chosen resolution of 1196x720.
+
+There should be an upper bound to the maximal resolution.
+"
+tom-and-jerry/eyeCam,closed,[BUG] preview size of camera sometimes is too small,"[Label(name=""bug"")]","This is because we test for the optimal screen size using the aspect ratio of the screen. If the camera does not support the exact screen size as a preview size this approach might fail (e.g. Samsung Galaxy nexus where the optimal screen size gets chosen as 128x96).
+
+A better approach would be to choose the preview size as the smallest size spanning the whole screen.
+"
+tom-and-jerry/eyeCam,closed,[BUG] light button not showing correct state,"[Label(name=""bug"")]","when having light on, stoping preview through color recognition, the light button shows LED being active when its not.
+
+The Activity (acting as the model) should update the StateImageButton (acting as the view) according to the action supplied by the StateImageButton (acting as the controller) in order to prevent such inconsistencies.
+"
+tom-and-jerry/eyeCam,closed,[BUG] strange behavior on LG Optimus 2X cyanogen mod 7.1,"[Label(name=""bug"")]","Sometimes the stopPreview of the internal Camera seems to fail and hence the application sort of crashes.
+
+This needs to be fixed since the LG Optimus 2X with cyanogen mod 7.1 is my personal dev device.
+"
+tom-and-jerry/eyeCam,open,[FEATURE] ability to use front camera,"[Label(name=""feature"")]","Implement a button in order to switch to front facing camera.
+"
+tom-and-jerry/eyeCam,open,[BUG] IlligalArgumentException on ColorView.onTouch(),"[Label(name=""bug"")]","On certain circumstance touch seems to be out of bitmap area, probably a rounding error:
+
+java.lang.IllegalArgumentException: x must be < bitmap.width()
+at android.graphics.Bitmap.checkPixelAccess(Bitmap.java:1305)
+at android.graphics.Bitmap.getPixel(Bitmap.java:1260)
+at ch.hsr.eyecam.view.ColorView$1.onTouch(ColorView.java:50)
+at android.view.View.dispatchTouchEvent(View.java:5574)
+at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:1965)
+at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1692)
+at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:1965)
+at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1692)
+at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:1965)
+at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1692)
+at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchTouchEvent(PhoneWindow.java:1997)
+at com.android.internal.policy.impl.PhoneWindow.superDispatchTouchEvent(PhoneWindow.java:1456)
+at android.app.Activity.dispatchTouchEvent(Activity.java:2414)
+at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchTouchEvent(PhoneWindow.java:1945)
+at android.view.View.dispatchPointerEvent(View.java:5759)
+at android.view.ViewRootImpl.deliverPointerEvent(ViewRootImpl.java:2963)
+at android.view.ViewRootImpl.handleMessage(ViewRootImpl.java:2522)
+at android.view.ViewRootImpl.processInputEvents(ViewRootImpl.java:862)
+at android.view.ViewRootImpl.handleMessage(ViewRootImpl.java:2531)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:154)
+at android.app.ActivityThread.main(ActivityThread.java:4894)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)
+at dalvik.system.NativeStart.main(Native Method)
+"
+tom-and-jerry/eyeCam,open,[BUG] NullPointerException in FloatingBubble.showStringResAt(),"[Label(name=""bug"")]","As reported in the Android market:
+
+java.lang.NullPointerException
+at ch.hsr.eyecam.widget.FloatingBubble.showStringResAt(FloatingBubble.java:67)
+at ch.hsr.eyecam.view.ColorView.showColorAt(ColorView.java:89)
+at ch.hsr.eyecam.view.ColorView.access$300(ColorView.java:30)
+at ch.hsr.eyecam.view.ColorView$1.onTouch(ColorView.java:55)
+at android.view.View.dispatchTouchEvent(View.java:3934)
+at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:869)
+at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:869)
+at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchTouchEvent(PhoneWindow.java:1746)
+at com.android.internal.policy.impl.PhoneWindow.superDispatchTouchEvent(PhoneWindow.java:1152)
+at android.app.Activity.dispatchTouchEvent(Activity.java:2102)
+at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchTouchEvent(PhoneWindow.java:1730)
+at android.view.ViewRoot.deliverPointerEvent(ViewRoot.java:2218)
+at android.view.ViewRoot.handleMessage(ViewRoot.java:1889)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:130)
+at android.app.ActivityThread.main(ActivityThread.java:3691)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:507)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:907)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:665)
+at dalvik.system.NativeStart.main(Native Method)
+"
+tom-and-jerry/eyeCam,closed,[FEATURE] show RGB values in color recognition,"[Label(name=""feature"")]","Showing RGB values as part of the color recognition
+"
+tom-and-jerry/eyeCam,closed,[BUG] light does not work on Samsung devices,"[Label(name=""bug"")]","The LED light does not work on Samsung devices although it gets reported as present (light switch present)
+"
+tom-and-jerry/eyeCam,open,[FEATURE] Add tablet (Android 3.0) support,"[Label(name=""bug""), Label(name=""feature"")]","On Android 3.0 it shows all text formatted for portrait mode while the tablet is in landscape mode and in 180° rotated landscape mode while the tablet is in portrait mode.
+"
+tom-and-jerry/eyeCam,closed,[BUG] Motorola devices not supported,"[Label(name=""bug"")]","The app does not seem to run on any motorola devices (blank screen)
+"
+tom-and-jerry/eyeCam,closed,[FEATURE] Add ICS support,"[Label(name=""bug""), Label(name=""feature"")]","On ICS camera seems not to be detected.
+"

@@ -1,0 +1,73 @@
+repository,state,title,label,body
+guardianproject/cacert,closed,add updated debian cacert keystore files,[],
+guardianproject/cacert,closed,update to support Android 15+ and bks-v1 certs and latest keytool,[],
+guardianproject/cacert,open,"FileNotFound results in endless ""Working..."" on opening screen on Android 4.0 and newer",[],"My preliminary testing shows this app suffers from changes in Android
+
+reference: https://github.com/moxie0/AndroidPinning/issues/1
+"
+guardianproject/cacert,open,"Consider publishing, or unpublishing, BKS store for use",[],"The project `README` indicates that the expected usage is to build your own BKS store. As I just pointed out in issue #9, the instructions may be missing a step for doing that.
+
+However, I note that you have committed the output (`stores/debiancacerts.bks`) to the repo.
+
+Is this a BKS file that we are supposed to use? If yes, what is the keystore password? Your sample code shows `changeit`, which seems suspiciously like a placeholder... :-)
+
+If it is not something that we are supposed to use, you might consider removing it from the repo. That being said, I would encourage you to consider publishing a generated BKS file with a known password, perhaps in the Releases area. While being able to reproduce your work is great, at the end of the day, developers need the BKS store, more than they need the ability to generate the BKS store.
+
+Thanks!
+"
+guardianproject/cacert,open,Make failure,[],"I cloned the repo, ran `git submodule update --init --recursive`, then tried to run `make`. That gave me:
+
+```
+cd ca-certificates && git verify-tag `git describe --abbrev=0 --tags`
+gpg: Signature made Sun 20 Jan 2013 07:47:44 PM EST using RSA key ID FE4B2BDA
+gpg: Can't check signature: public key not found
+make: *** [debian-verify] Error 1
+```
+
+Is there some other preparation step needed to build the BKS store via `make`?
+
+Thanks!
+"
+guardianproject/cacert,open,import cert feature,[],"Use case: For self-signed certs of personal websites.
+"
+guardianproject/cacert,closed,Pin directly to debian/mozilla key store,[],"Turns out we don't really have the resources or power to fully curate
+our own CA store. So I removed the wording that implied we did, and while I was at it gave the README a spruce up.
+
+Also, instead of relying on /etc/ssl/certs, we now pull the ca bundle directly from the debian source tree.
+
+We do this by fetching the git source of ca-certificates as a submodule, verifying the
+latest git tag, then building the trusted PEM list from Mozilla's store.
+
+I also updated to BouncyCastle 147 to correspond with changes to NetCipher that I'll be pushing.
+"
+guardianproject/cacert,open,Android 2.1,[],"Is it possible to make CaCertMan working for Android 2.1 and earlier versions?
+"
+guardianproject/cacert,closed,Slight README Typo,[],"You have:
+
+> our own CACert keystore for us on Android devices
+
+I am guessing that ""us"" is supposed to be ""use"", as that would make more sense given the overall context.
+
+BTW, thanks for making this available, and the other work the Guardian Project does. I can't find a donation link on the main site -- is there one that I'm missing?
+"
+guardianproject/cacert,closed,Backup issue,[],"I'm getting this error on trying to backup the CA certs:
+
+Error: The keystore was not saved./data/data/[something-guardianproject-something](Is a directory)
+(It's annoying to write the full path from memory, and I guess you already know which one it is already anyway.)
+
+Samsung Galaxy S, stock 2.2, rooted, Busybox (version number is something ending in 18). What could the problem be?
+
+(A bit OT, but I'm not seeing DigiNotar, but I assume the app shows the complete list and that just means I never had that CA cert on the phone, right?)
+"
+guardianproject/cacert,closed,Not listed in app launcher,[],"ADW Launcher, stock Android 2.2 on SGS. As the title says, the app is not listed in the app launcher. But it DID launch from the post-install screen that let you run the app you've just installed. You should add a launcher icon ASAP!
+"
+guardianproject/cacert,closed,Failure to save:Cannot write to: /system/etc/security/cacerts.bks,[],"Using the alpha release of the app, I get the toast error notification `Failure to save:Cannot write to: /system/etc/security/cacerts.bks` when I try to save, and it's allowed (and remembered) in Superuser.
+
+This is on a rooted Nexus One running CyanogenMod-7.0.3-N1. Following is a segment of a logcat, please let me know if you need the whole thing.
+
+https://gist.github.com/0843f7c2766448ef10be
+"
+guardianproject/cacert,open,download/install curated cacerts from github,[],"evanskaufman Evan Kaufman 
+@ 
+@guardianproject Shouldn't the app have a way to install your ""curated"" cacerts.bks file, perhaps directly from @github? 
+"

@@ -1,0 +1,978 @@
+repository,state,title,label,body
+meefik/busybox,open,Feature Request: A/B device support,"[Label(name=""enhancement"")]","Hi there,
+
+busybox install fails on my device, since it has no /system partition. For me it must remont /.
+
+> zangyapro:/ # mount
+> /dev/root on / type ext4 (ro,seclabel,relatime,data=ordered)
+/system are only a directory on /.
+
+Please add the right mount option. Maybe a zip file is here the better option, because the binaries should be copied to both / partitions. addon.V2 will be the right way I think."
+meefik/busybox,open,hwclock -w produces ioctl error,"[Label(name=""bug"")]","First of all thanks for this busybox!
+
+I'm on lineage os 15.1 on a Xiaomi Mi Mix 2 device. I would like to set the hardware clock using the hwclock command. However, issuing hwclock -w as root produces this error:
+
+chiron:/ $ su
+chiron:/ # hwclock -w
+hwclock: ioctl 4024700a: Invalid argument
+
+Same for hwclock --systohc
+
+busybox version:1.29.2
+
+"
+meefik/busybox,open,xargs falsely exits 0 on errors in 1.28.4 (worked correctly in 1.27.2),"[Label(name=""bug"")]","Upgrading busybox from 1.27.2 -> 1.28.4 completely broke how xargs handles error codes.
+
+Before:
+
+- loop through script executions via piped input
+- on script failure, `exit 255`
+- xargs stops execution, returns error code to shell
+
+After:
+
+- loop through script executions via piped input
+- on script failure, `exit 255`
+- xargs stops execution and **returns 0**
+  - our builds that rely on xargs to iterate over automated test suites are now ""passing"" and deploying broken code"
+meefik/busybox,open,[Feature Request] Add support to uninstall BusyBox via flash,"[Label(name=""enhancement"")]","You have the ""Zip archive"" option to be able to install BusyBox via recovery, as well as the two ""Install"" and ""Remove"" buttons for installation and removal using the app interface. What about a ""Remove BusyBox"" .zip archive for flashing?
+
+In simpler terms: the app supports two ways of installation (UI & recovery), but only one way of removal (UI). My request is support for removal via recovery.
+
+Hopefully that made sense lol"
+meefik/busybox,open,[Feature request] Automatic updates,"[Label(name=""enhancement"")]","I'm lazy and don't want to have to manually click ""install"" to update the Busybox binaries when the app has been updated. How about implementing some sort of check that upgrades the binaries in /system automatically when the app has been upgraded and an older version of the binaries is installed?
+
+Thanks for your great app by the way. The addon.d support is good for people like me who use LineageOS and don't like to have to manually click ""install"" all the time."
+meefik/busybox,open,ssl_helper not found in F-Droid build,"[Label(name=""bug"")]","F-Droid build not included ssl_helper binary. Here is the log file with Debug and Trace enabled: https://pastebin.com/89BWMHGn
+
+FIX: You can install apk from this repo: https://github.com/meefik/busybox/releases/tag/1.28.4"
+meefik/busybox,closed,Fail install ssl_helper + problem oandbackup,[],"Hi,
+
+I just installed your busybox version to use oandbackup.
+When i make the install, an error occured when copying ssl_helper.
+
+Does this can make busybox not running well for oandbackup ?
+Because i have bad attachment errors in oandbackup and they said it seems to be a busubox problem. What do you think ?
+
+Phone : honor 9
+Os : 8.1 aosp
+App version : last one on fdroid
+
+![](https://i.imgur.com/nmyeMnf.png)![](https://i.imgur.com/n6yeQyy.png)     "
+meefik/busybox,closed,Update BusyBox to 1.28.4 ,[],"BusyBox 1.28.4 is released in 22 May, it has fixes for nsenter option parsing and dpkg symlink extraction. "
+meefik/busybox,open,Can't update to 1.28.3,[],"Device is stock Lollipop 5.1.1, rooted.
+
+I successfully installed Busybox v. 1-27-2 via APK file. For some reason, trying to update to v. 1.23.3-36 fails with an ""App not installed"" message. Any ideas?
+
+BTW, thank you for making your Busybox open-source; I will be sure to donate."
+meefik/busybox,closed,Question : Differences between your busybox and stericson.busybox ?,[],"Hi,
+
+[f-droid.org](https://f-droid.org/packages/ru.meefik.busybox/) says that your application : 
+
+> Install a recent and un-crippled version of BusyBox.
+
+What do you (or f-droid) mean by ""un-crippled version"", can you please be more precise ?"
+meefik/busybox,closed,Update BusyBox to 1.28.1,[],"BusyBox 1.28.1 including following changes after 1.27.2:
+
+>15 February 2018 -- BusyBox 1.28.1 (stable)
+>
+>Bug fix release. 1.28.1 has fixes for cp (fix option handling in non-longopt config, implement -T), ip (crash in ""ip neigh show""), tls (fix hash calculations if client cert is requested), tar (accomodate non-terminated tar.chksum fields as seen from github.com), udhcpc6 (fix ipv6prefix[_lease] environment value in script invocation).
+>2 January 2018 -- BusyBox 1.28.0 (unstable)
+>
+>Sizes of busybox-1.27.0 and busybox-1.28.0 (with equivalent config, static uclibc build):
+```
+   text	   data	    bss	    dec	    hex	filename
+ 959831	    491	   7536	 967858	  ec4b2	busybox-1.27.0
+ 961456	    487	   7512	 969455	  ecaef	busybox-1.28.0
+```
+>Changes since previous release:
+```
+Avi Fishman:
+      i2cset: fix 'i' & 's' modes (3 extra bytes were sent)
+
+Avi Halachmi:
+      lineedit: improve multiline PS1 - redraw using last PS1 line. Closes 10381
+
+Bartosz Golaszewski:
+      i2c-tools: remove unneeded include
+      i2c-tools: don't include linux/i2c-dev.h
+
+Denys Vlasenko:
+      stop using atexit in non-debug build: saves ~260 bytes in bss with musl
+      use %m printf specifier where appropriate
+      standalone shell / prefer_applets: fix ""exe"" in comm fields
+      change BB_EXTRA_VERSION: now it needs to contain any spaces/parenthesis
+      regularize format of source file headers, no code changes
+      move get_unaligned_le32() macros to platform.h
+      sparc: needs -fPIC
+      config: deindent all help texts
+      config: FEDORA_COMPAT option (so far only tweaks uname)
+      config: merge ""Busybox Settings"" and ""Busybox Library Tuning"" into one menu
+      config: more tweaking of help texts
+      config: reorder items in ""Busybox Settings"", improve help
+      config: trim/improve item names and help texts
+      build system: FEATURE_LIBBUSYBOX_STATIC - try to pull libc/libm into libbusybox
+      build system: fix ""allnoconfig"" to clear all options. Closes 10296
+      build system: remove unused CONFIG_FEATURE_HAVE_RPC
+      libarchive: do not extract unsafe symlinks unless $EXTRACT_UNSAFE_SYMLINKS=1
+      libarchive: FEATURE_LZMA_FAST should be visible if FEATURE_SEAMLESS_LZMA
+      libbb: avoid malloc/free in bb_unsetenv()
+      libbb: do not die if setgid/setuid(real_id) on startup fails
+      libbb/dump: allow skipping over stdin too
+      libbb/dump: fix a few broken commits and shrink code
+      libbb: hide getnetbyaddr() inside ""#if ENABLE_FEATURE_ETC_NETWORKS"" block
+      libbb: make trim() return pointer to terminating NUL
+      libbb: move capability names code to libbb
+      libbb: new function bb_getgroups() - allocating wrapper around getgroups()
+      libbb: safe_write should not return EINTR
+      libbb: use _exit, not exit, in bb_daemonize_or_rexec()
+      libbb: rearrange NOFORK/NOEXEC code, logic is not changed
+      libbb: simplify NOFORK/NOEXEC defines, move set_task_comm to libbb
+      lineedit: do not tab-complete any strings which have control characters
+      lineedit: get terminal width before printing prompt
+      lineedit: make read_line_input() not take timeout param
+      main: fix the case where user has ""halt"" as login shell. Closes 9986
+      networking/interface.c: remove superfluous ""& 0377""
+      noexec: consolidate code
+      noexec: do GETOPT_RESET() before entering APPLET_main()
+      noexec: set comm field for noexecs
+      nofork: fix a bug uncovered by hush testsuite (forgotten fflush)
+      adjtimex,blkdiscard,free: make it NOFORK
+      clear,nproc,tty,uname,arch,unlink,which: make them NOFORK
+      pwdx,pivot_root,kill[all5],ttysize,realpath,readlink: make them NOFORK
+      add/remove-shell,add/deluser,add/delgroup: make them NOEXEC
+      make 17 state-changing execing applets (ex: ""nice PROG ARGS"") NOEXEC
+      blkid: make it NOEXEC, make FEATURE_BLKID_TYPE=y default
+      blockdev,fsfreeze,fstrim,mountpoint: make them NOEXEC
+      brctl,chattr,lsattr,tune2fs: make them NOEXEC
+      chvt,deallocvt,dumpkmap,fgconsole,loadkmap: make them NOEXEC
+      cryptpw,mkpasswd: make them NOEXEC
+      df,dnsdomainname,hostname,dumpleases,expr,fatattr: make them NOEXEC
+      freeramdisk,free,stat,getopt,ifenslave,ipcalc,rdev,ipcrm,ipcs: make them NOEXEC
+      ip,ip*: make them NOEXEC
+      kbd_more: make it NOEXEC, remove redundant opt clearing
+      loadfont,setfont,losetup,lspci,lsscsi,lsusb: make them NOEXEC
+      makedevs,mesg,mktemp,nameif: make ithem NOEXEC
+      modutils: make them NOEXEC except depmod
+      nbd-client: make it NOEXEC, stop using argc
+      date,resize,partprobe,ps,pstree,raidautorun,runlevel,setconsole: make them NOEXEC
+      setkeycodes: make it NOEXEC, better --help text
+      setlogcons: make it NOEXEC, better --help text
+      setserial,stty,sv,svc,sysctl,tunctl,umount: make them NOEXEC
+      users,w,who,uptime,renice,vconfig: make them NOEXEC
+      adjtimex: zero-fill whole structure, to be on the safe side
+      arch: new applet (same as uname -m). ~30 bytes
+      ash: align --login code with dash
+      ash: alloc slightly smaller buffer in cvtnum(); faster unsetvar()
+      ash: allow ""trap NUM [SIG]..."" syntax
+      ash: implement BASH_XTRACEFD bashism
+      ash: do not set a signal to SIG_DFL if it already is
+      ash: fix display of "">&-"" redirect in job strings
+      ash: fix matching of unicode greek letter rho (cf 81) and similar cases
+      ash: note which versions of glibc exhibit ""rho bug""
+      ash: fix nofork bug where environment is not properly passed to a command
+      ash: fix redir_leak.tests if STANDALONE=y
+      ash: fix ""unset OPTIND"" throwing an error message
+      ash: force inlining of a trivial function
+      ash: if !ENABLE_ASH_EXPAND_PRMT, disable PSSYNTAX code
+      ash: improve set -x to quote strings as necessary
+      ash: INT_OFF/INT_ON around run_nofork_applet()
+      ash: less hackish implementation of evaltreenr()
+      ash: make tryexec(cmd) parameter const char
+      ash: more general format ${var:EXPR:EXPR}
+      ash: more s/error/perror/ for better error reporting
+      ash: one ""current line = 1"" might be missing, fix that
+      ash: [PARSER] Add FAKEEOFMARK for expandstr
+      ash: [PARSER] Catch variable length expansions on non-existant specials
+      ash: [PARSER] Removed noexpand/length check on eofmark
+      ash: [REDIR] Fix popredir on abnormal exit from built-in
+      ash: [REDIR] Replace GPL noclobberopen code with the FreeBSD version
+      ash: remove REDIR_SAVEFD2
+      ash: retain envvars with bad names in initial environment. Closes 10231
+      ash: revert previous implementation of ""A=1 A=2 B=$A cmd"" code
+      ash: [SHELL] Optimize dash -c ""command"" to avoid a fork
+      ash: significant overhaul of redirect saving logic
+      ash: stage backported LINENO support as a separate patch
+      ash: survive failures in $PS1 expansion. Closes 10371
+      ash: sync up with dash with respect to redirection escaping
+      ash: unset OPTARG if getopts exits 1, support OPTERR=0 behavior
+      ash: use mempcpy() where appropriate
+      ash: [VAR] Add localvars nesting
+      ash: [VAR] Do not poplocalvars prematurely on regular utilities
+      ash: [VAR] Fix loss of variables when hash collides
+      ash: [VAR] Fix poplocalvar leak
+      ash: [VAR] Fix poplocalvar on abnormal exit from function
+      ash: [VAR] Move unsetvar functionality into setvareq
+      ash: [VAR] Replace cmdenviron with localvars
+      ash,hush: "">&10"" redirects to script/tty fds should not work
+      hush: add a test which fails due to uclibc bug in getopt()
+      hush: add support for ""set -e""
+      hush: add TODO for ""set -e""
+      hush: convert exp/ro/local parameters to bitfields in one flag param
+      hush: correctly handle quoting in ""case"" even if !BASH_PATTERN_SUBST
+      hush: do not accept ""if() { echo; }"" function def
+      hush: do not assign to readonly VAR in ""VAR=VAL CMD"" syntax too
+      hush: explain why wait5.tests is failing
+      hush: fix a case when redirect to a closed fd #1 is not restoring (closing) it
+      hush: fix and_or_and_backgrounding.tests failure
+      hush: fix ""cmd1 && cmd2 &"" handling on NOMMU
+      hush: fix comment parsing in `cmd`, closes 10421
+      hush: fix ${##}, ${#?}, ${#!} handling
+      hush: fix handling of empty heredoc EOF marker
+      hush: fix quoted_punct.tests failure
+      hush: fix readonly2.tests failure
+      hush: fix redirect code (was using uninitialized variables)
+      hush: fix ""(sleep 1; exit 3) & sleep 2; echo $?; wait $!; echo $?""
+      hush: fix ""true | func_with_return"" not allowing return
+      hush: fix two redirection testcase failures
+      hush: forgot to emit error on (failing) second ""readonly VAR=VAL""
+      hush: functions have priority over builtins (!)
+      hush: implement ""getopts"" builtin
+      hush: implement ""readonly"" builtin
+      hush: implement ""times"" builtin
+      hush: implement -d DELIM option for ""read""
+      hush: make SIGINT handling visually less confusing
+      hush: make ""wait %1"" work even if the job is dead
+      hush: massage redirect code to be slightly more like ash
+      hush: print error messages on ""shift -1""
+      hush: remove redundant ""G_flag_return_in_progress = -1""
+      hush: remove superfluous comparison
+      hush: rename a few functions
+      hush: simplify insert_job_into_table() a bit
+      hush: support ${VAR:N:-M}
+      hush: treat ${#?} as ""length of $?""
+      hush: use mempcpy where useful
+      hush: if STANDALONE, close interactive fd for NOEXECed children
+      msh: delete this applet
+      shell: improve comments on signal handling
+      shell: add OPTARG poisoning to getopt_optarg.tests
+      shell: and_or_and_backgrounding.tests is no longer ""UNFIXED BUG""
+      shell: make standalone shell tab-complete ""busybox""
+      shell: more efficient check for EOL in read
+      shell: optional support for read -t N.NNN, closes 10101
+      awk: stop on first non-option, closes 9861
+      basename: do not use argc
+      beep: disallow FEATURE_BEEP_FREQ = 0 in configuration
+      blkdiscard: provide our own BLK[SEC]DISCARD if necessary
+      bunzip2: fix runCnt overflow from bug 10431
+      bzcat: compile bunzip2_main() if BZCAT
+      bzcat,zcat: simplify code if gunzip/bunzip2 is not selected
+      cat: fix ""cat -An"" ignoring -n; make numbering go througn all files
+      chat: do not die when HANGUP param is missing. Closes 10016
+      chattr: fix option parsing to accept more cryptic option combos
+      chown: fix a mistake in opt_complementary change
+      crond: allow $SHELL and starting user's shell override DEFAULT_SHELL. Closes 6458
+      crond: do not assume setenv() does not leak
+      crond: support @daily etc
+      date: maybe_set_utc only once
+      dd: fix status=none. Closes 10066
+      ed: fix --help and reorder functions, no code changes
+      ed: fix ""\n"" removal in command line; make ""w"" set ""dirty = 0""
+      free: no longer include common_bufsiz.h
+      getopt32: factor out code to treat all args as options
+      getopt32: move support for ""always treat first arg as option"" to users (tar/ar)
+      getopt32: remove applet_long_options
+      getopt32: remove opt_complementary
+      hexedit: new applet
+      httpd: fix handling of range requests
+      httpd: skip ""Status: "" from CGI, including space. Closes 10291
+      inetd: fix for running by non-root
+      inetd,mount: do not die if uclibc without RPC is detected
+      init: reduce the window when init can lose reboot/poweroff signals
+      ipcalc: trim help text
+      ipcs: tweak output orer to match util-linux 2.28
+      kbd_mode: show ""off"" mode too
+      kbd_mode: try harder to find console device if -C TTY is not given
+      klibc-utils: add ipconfig.c work-in-progress
+      klibc-utils: new applets: resume, nuke, minips
+      less,microcom,lineedit: use common routine to set raw termios
+      makedevs: allow much longer filenames
+      microcom: require exactly one non-option
+      netcat: net applet (alias to nc)
+      ntpd: do run the script at least once in 11 minutes
+      ntpd: improve treatment of DNS resolution failures
+      ntpd: mention in help text that -d can be repeated
+      ntpd: perform DNS resolution out of send/receive loop. Closes 10466
+      ntpd: skip over setting next DNS resolution attempt if it is not needed
+      pgrep: fix ""pgrep -v -P1""; also allow matching of comm. Closes 10086
+      ping: better config help text for FEATURE_FANCY_PING
+      ping: fix help text to show what parameter -p takes
+      pmap: tweak help text, show usage if no params are given
+      ps: implement -o sid
+      ps: improve TIME column for large times: showing ""14453:50"" is not good
+      ps: stop using AT_CLKTCK, there are more standard ways
+      readprofile: do not close/free just before exiting
+      rpm2cpio: handle LZMA compressed rpms. closes 10166
+      rpm2cpio: use rpm_gettags
+      rpm: prepare rpm_gettags for reuse in rpm2cpio
+      rpm,rpm2cpio: do not compile not-configured parts of rpm.c
+      rpm,rpm2cpio: INIT_G() was missing (it is a nop here so far)
+      rpm,rpm2cpio: put both sources into one file, no code changes
+      run-init: new applet
+      script: -f means ""flush"", not ""fsync""
+      script: make -t[FILE] compatible with util-linux
+      script: make -t independent of scriptreplay
+      sed: in '/regexp/cmd1;//cmd2', cmd2 should use the same regexp as cmd1
+      sendmail allow ""="" symbol in recipient, closes 10241
+      sendmail: fix segfault if ""To: email1,email2"" is used
+      setconsole: much better help text
+      setconsole: since SUSE version has no -r, nuke our --reset longopt
+      setfattr: new applet
+      setpriv: accept any case in capability names
+      setpriv: code shrink, and grouping capability code together
+      setpriv: dump user and group info
+      setpriv: factor out capability name printing
+      setpriv: placate ""declaration of 'index' shadows a global declaration"" warning
+      setpriv: remove dependency on libcap headers
+      shuf: fix random line selection. Closes 9971
+      stty: add cmspar, flusho, extproc attributes
+      stty: fix bb_common_bufsiz1 use in NOEXEC
+      svc: fix a case where with more than one option, getopt() state is not reset
+      svc: remove superfluout INIT_G()
+      swapon: do not use FEATURE_MOUNT_LABEL, have your own FEATURE_SWAPONOFF_LABEL
+      sysctl: fix file parsing, do not require -w for VAR=VAL
+      sysctl: recognize "";comment"" and ""<whitespace>#comment"" lines
+      syslogd,logger: code shrink for musl
+      tar: postpone creation of symlinks with ""suspicious"" targets. Closes 8411
+      telnet: ""-a"" + ""-l USER"" should respect USER
+      test: fix 4-argument case
+      time: fix build for toolchains without O_CLOEXEC
+      tls: fix build problem on non-static i386
+      tls: fix pstm asm constraint problem
+      tls: remove last int16 local variables in pstm code
+      tls: use capped SNI len everywhere
+      top: switch to malloced ""globals""
+      ttysize: if stdin is not tty, try stdout, then stderr
+      ubi_tools: a bit smaller applet resolution code
+      ubi_tools: ubiupdatevol supports ""-"" input and actually respects -s SIZE
+      ubiupdatevol: fix bug with -sSIZE: was ignoring IMAGE_FILE
+      udhcpc[6]: downgrade ""adapter index N"" messages to log2 level
+      udhcpc[6]: fix messages referring to select() while we use poll()
+      udhcpc[6]: initialize entire sockaddr_ll
+      udhcpc[6]: make log2 messages for chaddr field indented like the rest
+      udhcpc[6]: on log level 1, three messages about raw socket is overkill
+      udhcpc: downgrade ""MAC X:X:X:X:X:X"" message to log2 level
+      udhcpc: paranoia when using kernel UDP mode for sending renew: server ID may be bogus
+      unlzma: fix SEGV, closes 10436
+      unshare: -r implies -U, not -u
+      unshare: -r should map root to user, not the other way around
+      unxz: get_le32 macro is obviously wrong
+      unzip: implement -j, closes 9126
+      unzip: robustify overwrite checks
+      unzip: sanitize filename length: malloc(1234mb) is not funny
+      unzip: support symlinks. Closes 10031
+      uuencode: allow space instead of ""`"" as padding char. Closes 10046
+      volume_id: enable minix detection
+      watchdog: do not use argc, other cleanups
+      xargs: optional support for -P NUM. Closes 9511
+      xxd: allow ""-"" as file name meaning stdin
+      zcip: fix slow environment leak
+
+Eugene Rudoy (3):
+      iproute/iprule: support toolchains without RTA_TABLE routing attribute
+      unzip: fix content listing and filtering when -j is used
+      unzip: add missing -j to trivial usage
+
+James Clarke (6):
+      networking: Fall back on IPPROTO_RAW when SOL_RAW is not defined
+      blkdiscard: Only build on Linux
+      xfuncs: Handle missing non-POSIX termios constants
+      df: Use statvfs instead of non-standard statfs
+      udp_io, traceroute: Standardise IPv6 PKTINFO handling to be portable
+      grep: skip grepping symlinks to directories
+
+Johannes Schindelin (7):
+      ash: protect WIFSTOPPED use with #if JOBS
+      copyfd: guard use of munmap() with #if (windows builds need this)
+      ash: remove no-longer-used variable
+      ash: implement -d DELIM option for read
+      ash: report reason when a script file could not be opened
+      ash: when cd fails, say why
+      xargs: support -a FILE
+
+Kang-Che Sung (3):
+      cat: allow compiling out -n and -b
+      make_single_applets: fix "": $((fail++))"" expansion error
+      ps: allow ps config options if minips is enabled
+
+Markus Gothe:
+      lsscsi: fix xchdir("".."") from symlink in /sys/bus/scsi/devices
+
+Matt Spinler:
+      watchdog: stop watchdog first on startup
+
+Natanael Copa:
+      unzip: fix regression on big-endian machines
+
+Patrick Steinhardt (8):
+      setpriv: do not process remaining args
+      setpriv: prepare option parsing logic for additional opts
+      setpriv: dump no-new-privs info
+      setpriv: dump inheritable capability set
+      setpriv: dump capability bounding set
+      setpriv: dump ambient capabilities
+      setpriv: allow modifying inheritable caps
+      setpriv: allow modifying ambient capabilities
+
+Peter Korsgaard:
+      dpkg: fix CONFIG_FEATURE_CLEAN_UP handling
+
+Ron Yorston (9):
+      printf: fix format string sanity check
+      od_bloaty: fix floating point output
+      ash: support platforms that don't have '%m' printf specifier
+      libbb: remove vdprintf
+      ps: fix build failure if FEATURE_PS_TIME is disabled
+      libarchive: fix build failure on NOMMU systems
+      tar: fix handling of first argument without '-'
+      kill: add '--' option to separate options from arguments
+      env: -u option fails due to typo
+
+Thomas Petazzoni:
+      Makefile: include per-arch Makefile before Makefile.flags
+
+Timo Teräs:
+      add-remove-shell: fix crash when shell is already added
+
+Uwe Geuder:
+      bootchartd: prevent premature stop by device mapper
+
+Xabier Oneca:
+      chcon: show '--reference' in help text only if LONG_OPTS=y
+```"
+meefik/busybox,open,Add an option to hide desktop icon like linuxdeploy,[],"There is little operations for busybox through GUI. 
+It looks like clean when an option to **hide desktop icon** is available! "
+meefik/busybox,closed,Update README.md,[],"Hi,
+
+This small and useless PR adds a button to get your app on F-Droid and the Play Store :+1: "
+meefik/busybox,open,Allow 'touch' command to manage full precision timestamps,[],"Hello @meefik 
+(Sorry if this should have been sent to the original BusyBox author, I just don't know how to contact him...)
+
+The 'touch' command in BusyBox seems not able to handle full precision timestamps (with micro/nano seconds). For example, `touch -d ""2015-01-01 01:01:01.123456789"" File` currently returns ""touch: invalid date '...'"". Also, the `-r` parameter does copy timestamps up to seconds precision (`2015-01-01 01:01:01.000000000`).
+
+If anything can be done, many thanks."
+meefik/busybox,open,Issues With Mounted USB drive,[],"#I did not seem to have trouble with this until I started using this Busybox. Since there is a mount command also in the Android toolbox, I cannot be sure the issue isn't there. But it seemed to start when using your version. The mounted USB drive seems to be seen as a read only file system when this was not previously the case.
+
+Thanks for any help.
+
+Edit - after removing and re-installing Stericson the problem persists. So maybe not busybox at all."
+meefik/busybox,open,Is Tar Ignoring -X and --exclude?,[],I am running your busybox due to the use of LinuxDeploy. Before that I was using Stericson's. I have a nightly backup of the internal SD card on my device and I use both -X and --exclude to avoid issues of trying to tar files that are in use or otherwise not wanted in the backup. I log the output for the tar command to a file and I see files that should be excluded in the output. On other devices using Stericson's I do not see this. Is there something wrong that I am doing? Or do these options simply not work even though they are showing if I simply execute tar? Thanks!
+meefik/busybox,open,VersionCode updated (34->35) without increasing versionName 1.27.2,[],"I looks that new version has been released without increasing versionName. Also tag is missing.
+* https://github.com/meefik/busybox/commit/162f7bcfe8c09d7621301847219bb1d5f069bb4d
+
+It is confusing and probably causes issues with F-Droid version auto-detection:
+* https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/ru.meefik.busybox.txt
+"
+meefik/busybox,open,mkdosfs or mkfs.vfat cannot format partition larger than 2GB,[],"When trying to format a partition larger than 2GB I get an error
+""mkdosfs: lseek: Value too large for defined data type""
+
+With other  busybox binaries it works fine. I presume that this is relevant:
+http://blog.scottt.tw/2009/07/mkdosfs-on-larger-then-2gb-filesystems.html
+
+Arch: ARMv7 
+Tested: Both release and trunk binaries."
+meefik/busybox,open,busybox-1.27.2-34 is NOT 64-bit safe (possible security issue),[],"Overflows are in general very, very bad.
+
+Installed in /system/xbin/
+
+Classic overflow at 2^32 bytes. Android system handles the file. Toolbox handles the file. Busybox does not.
+
+```
+/storage/emulated/0/ # /system/bin/ls -al
+-rw-rw---- root sdcard_rw 7041943789 2018-01-01 11:43 file
+
+/storage/emulated/0/ # /system/xbin/ls -al 
+total 6876968
+drwxrwx--x 2 root sdcard_r 4096 Jan 1 08:13 .
+drwxrwx--x 24 root sdcard_r 4096 Jan 1 08:13 ..
+-rw-rw---- 1 root sdcard_r 2746976493 Jan 1 11:43 file
+
+/storage/emulated/0/ # dd bs=1048576 if=file of=/dev/null
+6715+1 records in
+6715+1 records out
+7041943789 bytes transferred in 159.510 secs (44147349 bytes/sec)
+
+/storage/emulated/0/ # which ls
+/system/bin/ls
+
+/storage/emulated/0/ # alias | grep ls
+la='/system/xbin/ls -al'
+ll='/system/xbin/ls -l'
+ls=/system/xbin/ls
+```"
+meefik/busybox,closed,Add Polish translation,[],New language: Polish
+meefik/busybox,open,"Possible bug: Applets complain about ""__bionic_open_tzdata_"", can't reproduce with Busysbox-Stericson",[],"Hi
+Since I started to use this Busybox-meefik, I always get this message (see screenshots) when executing some commands, this can be a deal breaking when executing scripts, since they expect a certain output.
+
+I've installed Busybox-Stericson and there's no complaints or errors.
+Maybe something is wrong or missing?
+
+Take a look at the screenshots:
+I used full path on purpose, just to make clear BusyBox shell was being used.
+
+**Busybox-Meefik**
+![1](https://user-images.githubusercontent.com/15948151/32896976-5596bee2-cadc-11e7-9dca-e21f9566f6ea.jpg)
+
+**Busybox-Stericson**
+![2](https://user-images.githubusercontent.com/15948151/32897017-68abcfae-cadc-11e7-985d-280937884086.jpg)
+
+
+As you see no complaints or errors with Busybox Stericson version.
+"
+meefik/busybox,closed,Support more basic options for all applets for usability,[],"Hi
+When trying to run a very simple script in my Android device, having this BusyBox version installed, I've noticed that many commands simply ignore or don't support basic options. I'm used to BusyBox in embedded environments like LEDE/OpenWRT, yet, I never had this problem.
+
+Just to give you an example: 'dd' completely ignores suffixes (for sizes: K, M, MB, ..), 'ls' option '-A' or -h' doesn't work and so on. 
+"
+meefik/busybox,open,Smart installation,[],"Currently you can either play safe and not to replace applets or replace all the applets. I guess it is possible to do smarter: call the commands with --help and determine their cli switches, then replace the applets with busybox ones if a busybox one has all the switches supported by the corresponding tool/toybox one"
+meefik/busybox,closed,UTF-8 support,[],Please build busybox with UTF-8 support
+meefik/busybox,closed,Add addon.d support,[],This makes busybox persist on OTA updates if the ROM supports it.
+meefik/busybox,open,No Network,[],"Hi,I installed Busybox in Xbin Worked Like Charm But Some Old Apps Require It in bin So When I Installed It In Bin it Had a Very Strange Behaviour.I Can't Connect To Internet Via Wifi Or Cellular.Any Help?"
+meefik/busybox,closed,Illegal instruction?,[],"oldish device armv6-compatible rev 5 (v61) (swp half thumb fastmulti vfp edsp java) running linux kernel 2.6.32.61 06 (armv61)
+
+trying to install the meefik busybox gives a wall of ""illegal instruction"" is this device just too old? any suggestions? log included. worth mention the stericson busybox installs and runs fine but will not work with linuxdeploy (since the ar is missing that some distributions ubuntu/debian? need to install) 
+
+edit:installed older 1.24.2 to get around issues"
+meefik/busybox,closed,Update BusyBox to 1.27.1,[],"BusyBox 1.27.1 is released in July 18, would you like to update?"
+meefik/busybox,open,command request [parted],[],"Is there any way to add this command/utility in busybox?
+"
+meefik/busybox,open,addition of more utils,[],"is there a procedure to add new basic command line utils. ( I want to get ""dir"" and ""nano"""
+meefik/busybox,closed,F-Droid version,[],Hi! The F-Droid version is stop to 1.25.1 (from 04/11/2016); is possible update it??
+meefik/busybox,open,Autoconfigure DPKG,[],"Hi! Would it be possible to make dpkg be configured automatically when installing busybox? As of now, it is difficult to actually use to install packages, as none of dpkg's required directories are present. For example, dpkg seems to require having /var/lib/dpkg with bunches of files inside, but those do not seem to be present."
+meefik/busybox,closed,"oops, wrong place, sorry",[],"edit:
+
+this is an issue of linux deploy, not busybox, sorry opened the issue at wrong place"
+meefik/busybox,open,improve du command of the box,[],"hi there, 
+
+my phone is full, on my yehej i have ncdu to find out what takes up the most ""disk"" usage (du).
+
+could you improve the du command/applet of the busy box to :
+
+
+- show files orderer by size
+- limit the depth of how files are showen (not scanned)
+and
+- cut long filenames to dont wrapp inappropriated
+
+
+???
+
+thanks a lot"
+meefik/busybox,open,API Compatibility Issues,[],"Dear developers,
+
+We have recently developed a state-of-the-art static analysis tool for uncovering API compatibility issues in Android apps. Applying this tool to open source apps on F-droid, we have exposed a few instances of compatibility issues and submitting them to development teams for a fix. 
+
+For your app, we have found that this project has accessed the following APIs which are available only on an API level higher than the declared minSdkVersion and which are accessed without proper protection. In other words, if those APIs get called at runtime, it will trigger a NoSuchMethodError and thus result in a crash of the running application.
+
+<android.app.Activity: void onRequestPermissionsResult(int,java.lang.String[],int[])>:[23,25]
+
+Note that, because of the nature of the static analysis, we cannot confirm whether the flagged APIs would actually be called at runtime (e.g., unreachable code). However, we still believe that those APIs, which may cause compatibility issues, should not be accessed or at least be accessed with proper protections. 
+
+In addition to the aforementioned APIs (i.e., backward-compatibility), which could cause app crashes if accessed, we have also identified that this project has also accessed some APIs that have been removed from the latest public SDK, making the app possibly suffer from forward-compatibility issues.
+
+NONE
+
+We would be very much appreciated if you can acknowledge to us that those reported APIs are indeed problematic for the project’s long-term stability. please let us know if you need any more information relating to this issue report.
+"
+meefik/busybox,closed,Create flashable zip please,[],"So we just install it via twrp, no need to install apk"
+meefik/busybox,closed,ls -l shows incorrect size,[],"In v1.26.2 ls -l shows incorrect size of files, although ls -lh is correct.
+1.26.2-Stericson works well.
+Attached is a zip with some example outputs, I didn't know how to post them.
+
+[ls_logs.zip](https://github.com/meefik/busybox/files/755271/ls_logs.zip)
+
+"
+meefik/busybox,closed,lsblk command not found,[],"![img_20170203_121254](https://cloud.githubusercontent.com/assets/16373480/22581435/26cc2100-ea0a-11e6-8472-8c0ba3286a1d.JPG)
+ ``` lsblk ```  command was not found.
+## Please add this feature in future update :)"
+meefik/busybox,open,losetup -f returns incorrect loop device path,[],"When losetup -f is run, this returns loop path as /dev/loopX but all my loop fds are located in /dev/block/loopX
+
+I am using latest version of busybox 1.26.2"
+meefik/busybox,closed,Make Replace applets by default,[],"Seen from their release history, so many bug fixes and improves have been made for applets. The Install applets option have already enabled by default, but Replace applets doesn’t, that may could cause unexpected results after new version of BusyBox binaries installed. So Replace applets option should be enabled by default."
+meefik/busybox,open,Systemless install support,[],"Starting with Android M, many root-dependant application insert their files into filesystem by loading them from image, which is picked up by patched boot. This way, it's both easier to wipe root in case it's not needed, and allows for OTA updates, which now check if /system has been remounted even once, and just dump the whole system image instead of per-file upgrade. This means that if one is to tamper with /system, he had to reflash the whole ROM to enable the OTA again. This can be avoided by baking the whole BusyBox and symlinks inside image, and deploying it via Magisk, for example. For reference, both SuperSU (Android 6+, custom systemless scenario) and Xposed (Magisk version) use this, and that's not counting things like SafetyNet bypass, ad blocker, VIPER4Android, and whatever new fad people come up with. So supporting this would be nice."
+meefik/busybox,closed,Update BusyBox to 1.26.1,[],"This version has lots of improvements after 1.25.1.
+
+1.26.1:
+> Bug fix release. 1.26.1 has fixes for single-applet builds (all applets are verified to successfully build when individually selected), a few tweaks to defconfig were made.
+>
+> Static binaries are available for downloads, with each individual applet enabled separately, as well as the binary with almost all applets selected, and helper binaries (ssl_helper for HTTPS wget support, index.cgi, post_upload.cgi and httpd_ssi for HTTP server). 
+
+1.26.0:
+
+> Sizes of busybox-1.25.0 and busybox-1.26.0 (with equivalent config, static uclibc build):
+```
+   text	   data	    bss	    dec	    hex	filename
+ 942170	    491	   7496	 950157	  e7f8d	busybox-1.25.0
+ 944982	    491	   7504	 952977	  e8a91	busybox-1.26.0
+```
+> Changes since previous release:
+```
+Aaro Koskinen (3):
+      cpio: add ownership (-R) test cases
+      patch: fix debug log failure
+      patch: fix matching failure
+
+Bartosz Golaszewski (1):
+      i2cdump: don't use common_bufsiz1
+
+Brian Foley (2):
+      awk: fix segfault on for loop syntax error
+      udhcpc: check read of option length byte to be within packet
+
+Denys Vlasenko:
+      build system: fix a few warnings for allnoconfig build
+      build system: fix include/NUM_APPLETS.h generation
+      build system: make CONFIG_FEATURE_USE_BSS_TAIL less funky
+      examples/var_service/fw: optionally flush all netdevs; optionally prefer one 0/0 routing
+      examples/var_service/fw do not ruin $if[], use different name
+      examples/var_service/supplicant_if: new service example
+      examples: add a useful ""see abridged log"" script for ntpd service example
+      examples: add example of a DHCP server
+      examples: update var_service/README
+      config: disentangle PREFER_APPLETS from SH_STANDALONE and SH_NOFORK
+      trylink: use ""mktemp tmp.XXXXXXXXXX"" to placate OS X
+      getopt32: add new syntax of 'o:+' and 'o:*' for -o NUM and -o LIST
+      libbb/speed_table.c: survive B115200 and B230400 not fitting into 16 bits
+      libbb/xwrite: print errno on ""short write"" errors
+      libbb: do not use fflush_unlocked, musl does not like fflush_unlocked(NULL)
+      libbb: handle \S in /etc/issue
+      libbb: make xmalloc_sockaddr2dotted use NI_NUMERICSCOPE
+      libbb: send_to_from: do not require that ""to"" should have the same AF. Closes 9146
+      lineedit: fix completion with applet names. Closes 9361
+      lineedit: fix two bugs in SIGWINCH signal handling
+      libiproute: eliminate some redundant zero stores
+      ash: [EXPAND] Do not split quoted VSLENGTH and VSTRIM
+      ash: [EXPAND] Fix ifsfirst/ifslastp leak
+      ash: [EXPAND] Optimise nulonly away and just use quoted as before
+      ash: [EXPAND] Removed herefd hack
+      ash: [EXPAND] Split unquoted $@/$* correctly when IFS is set but empty
+      ash: [JOBS] Fix dowait signal race
+      ash: [MEMALLOC] Add pushstackmark
+      ash: [MEMALLOC] Made grabstackblock an inline wrapper for stalloc
+      ash: [PARSER] Add nlprompt/nlnoprompt helpers
+      ash: [PARSER] Do not show prompts in expandstr
+      ash: [PARSER] Fix parsing of ${##1}
+      ash: [PARSER] Handle backslash newlines properly after dollar sign
+      ash: [PARSER] Recognise here-doc delimiters terminated by EOF
+      ash: [PARSER] Report substition errors at expansion time
+      ash: [PARSER] Size optimisations in parameter expansion parser
+      ash: [REDIR] Move null redirect checks into caller
+      ash: [REDIR] Remove EMFILE special case
+      ash: [REDIR] Remove redundant CLOEXEC calls
+      ash: [REDIR] Replace copyfd by savefd and use dup2 elsewhere
+      ash: [SHELL] Expand ENV before using it
+      ash: [SHELL] Move flushall to the point just before _exit
+      ash: [SIGNAL] Remove EXSIG
+      ash: [VAR] Initialise OPTIND after importing environment
+      ash: [VAR] Remove setvarsafe
+      ash: [VAR] Sanitise environment variable names on entry
+      ash: add a FIXME for bug 9246
+      ash: add comment explaining ""set -e; $(cmd)"" discrepancy
+      ash: all blocks in function node copying must be SHELL_ALIGNed
+      ash: comment out free(p) just before _exit, tweak some outdated comments
+      ash: delete leftovers from ""simplify EOF/newline handling in list parser"" commit
+      ash: do not leave SIGQUIT ignored on ""exec CMD""
+      ash: eval: Return status in eval functions
+      ash: expand: Fixed ""$@"" expansion when EXP_FULL is false
+      ash: explain EXP_REDIR and why we (dont) glob redir filenames
+      ash: fix ""duplicate local"" code (forgot to re-enable interrupts)
+      ash: fix ""return N"" not setting $? in loop conditionals
+      ash: fix arithmetic closing )) split by backslash-newline
+      ash: fix globbing bugs when using glibc glob()
+      ash: fix handling of ${VAR: -2}
+      ash: fix handling of NULs in $'abc\000def\x00asd'. Closes 9286
+      ash: fix handling of bashism $'xxx' with high-bit chars. Closes 9236
+      ash: fix interactive ""command eval STRING"" exiting on errors
+      ash: fix return_in_trap1.tests failure
+      ash: get rid of two global data variables
+      ash: if using libc glob(), skip it if no metachars are in word
+      ash: in heredoc code, fix access past the end of allocated memory. Closes 9276
+      ash: input: Allow two consecutive calls to pungetc
+      ash: jobs: Don't attempt to access job table for job %0
+      ash: make internal globbing code selectable from config
+      ash: make popfile() anfter popallfiles() safe
+      ash: move ifsbreakup() and ifsfree() up
+      ash: open-code blocking_dowait_with_raise_on_sig()
+      ash: optimize tryexec(): avoid one allocation
+      ash: partially sync with dash on ""fork if traps are set"" logic
+      ash: placate gcc: ""warning: ! is only applied to the left hand side of ==""
+      ash: reduce code differences from upstream
+      ash: remove dead stores and unused variables
+      ash: remove unused EXSHELLPROC
+      ash: return to DOWAIT_* constants similar to dash, no logic changes
+      ash: support ""--"" in ""source"" builtin
+      ash: undo ""tokname hack""
+      ash: use glob() from libc
+      ash: use pause(), not sigsuspend(), in wait builtin
+      ash: use shellparam.optind/optoff in getopts() directly, not through pointers
+      ash: while (!got_sig) pause() is not reliable, use sigsuspend()
+      hush: ""wait $!; echo $?"" should return 127 if $! already exited
+      hush: 'return' should have effect earlier
+      hush: G.user_input_buf[] is needed only if line editing is enabled
+      hush: `cmd` and arithmetic also need the fix for FILE rewind
+      hush: add commented-out debug printouts in ""memleak"" built-in
+      hush: add func6.tests
+      hush: add var4.tests, var5.tests
+      hush: allow { cmd } to not be terminated by semicolon in some cases
+      hush: do not allow sh -c '{ echo boo }'
+      hush: do not leak script fds into NOEXEC children
+      hush: document better where bad redirect syntax is detected
+      hush: enable ""msh is deprecated"" message in msh stub
+      hush: factor out %jobspec parsing
+      hush: fix ""(sleep 1; exit 3) & sleep 2; echo $?; wait $!; echo $?""
+      hush: fix "". EMPTY_LINE"" not setting $? to 0
+      hush: fix ""redirects can close script fd"" bug
+      hush: fix ""wait PID""
+      hush: fix 'eval """"' handling
+      hush: fix a bug in FEATURE_SH_STANDALONE=y config. Closes 9186
+      hush: fix a memory corruption when exported variable is modified
+      hush: fix exitcode on exec failure with EACCES - should be 126
+      hush: fix handling of by backslash-newline in $((arith)) and $(cmd)
+      hush: fix interactive input handling of backslash+newline
+      hush: fix var3.tests
+      hush: implement ""wait %jobspec""
+      hush: make ""wait %1"" less likely to play with signal mask
+      hush: make getch/peek functions directly called
+      hush: non-matching ""case"" statement sets $? to 0
+      hush: rework ""wait %jobspec"" to work in non-interactive shells too
+      hush: rework input char buffering to allow more than one-deep peek
+      hush: simplify insert_bg_jobs
+      cp: fix -i for POSIX mode. Closes 9106
+      cp: make verbose cp show symlink copies too
+      cpio: fix restoration of file ownership, closes 9306
+      df: implement -B n<suff> and -B <suff> formats of -B option
+      dhcp: merge files.c into dhcpd.c
+      dhcp: merge leases.c and static_leases.c into dhcpd.c
+      dhcp: merge most of static_leases.c into dhcpd.c
+      dnsdomainname: split it from ""hostname"", make it independently selectable
+      dpkg-deb: remove unused FEATURE_DPKG_DEB_EXTRACT_ONLY config option
+      fdisk: fix CONFIG_FEATURE_SUN_LABEL=y build
+      fdisk: print much less cryptic partition table
+      fdisk: sanitize partition name printing; drop ""Code"" column; get rid of one static var
+      fdisk_gpt: simplify GPT partition name printing
+      find: fix handling of trailing slashes in -name PATTERN comparisons
+      hexdump: fix numerous bugs in handling of backslashes
+      httpd: explain why we use sprintf and why it should be fine
+      ifplugd: if SIOCSIFFLAGS fails with ENODEV, don't die
+      ifupdown: rewrite state file atomically
+      ifupdown: when flushing addresses with ""ip"", add label %label%
+      init: fix for FreeBSD console opening. Closes 9031
+      install: fix musl problem with dirname
+      ip: fix an improper optimization: req.r.rtm_scope may be nonzero here
+      ipneigh: add this shortcur similar to other ""ip <CMD>"" shortcuts
+      less: fall back to using fd #1 for keyboard reading. Closes 9231
+      less: fix SEGV
+      less: fix bracket search to match behavior of less 481
+      less: switch off nonblock on kbd_fd before exit
+      loadfont: 32k size limit is not enough
+      makedevs: make special node creation idempotent
+      man: allow nroff and tbl commands be overridden; unmangle writing to files
+      man: fix parsing of ""DEFINE pager xyz"". Closes 8976
+      man: make width selection more thorough; explain how to override it
+      man: remove -Tascii from nroff invocation
+      mdev: create devices from /sys/dev
+      more: accept and ignore a bunch of options
+      mount: for cifs, dont insert ""ip=ADDR"" option if user gave it explicitly
+      mount: tweak ""IPv6 scoped addr"" commit
+      ntpd: daemonize before DNS resolution
+      sed: fix ""sed n (flushes pattern space, terminates early)"" testcase failure
+      sendmail: make it possible to pause after connection helper is started
+      sha3: fix to conform to final SHA3 padding standard, add -a BITS option
+      su: expand help; simplify passing of -c CMD to run_shell()
+      svc: new applet (daemontools-compatible version of ""sv"")
+      tar: handle pax-encoded utf8 filenames and link names. Closes 9406
+      tc: consolidate its disabled bits
+      tcpsvd: don't keep shared fd open if fd limit is reached. Closes 9331
+      telnetd: fix a corner case where CRLF->CR translation can misbehave
+      telnetd: fix corner case of input processing of 0xff bytes
+      telnetd: fix handling of short writes to pty
+      telnetd: ifdef out a buggy error handling code path
+      telnetd: treat all 2-byte IACs in 240..249 range as NOPs
+      test: make [ and [[ forms individually selectable
+      test: memory leak: free group id list
+      top: move free(prev_hist) out of signal path
+      traceroute: cleanup and fixes for packet size calculations
+      udhcpc: check read of overload option data byte to be within packet
+      udhcpc: run ""deconfig"" script in manual renew state too. Closes 9061
+      unshare: --network should be --net. Closes 9116
+      vi: fix '' command (goto to prev context)
+      vi: make ""g<key>"" error message less likely to show garbage
+      wget/ssl_helper: update to wolfssl-3.9.8
+      wget/ssl_helper: strip was invoked incorrectly
+      wget: run s_client helper with -servername HOST
+      wget: there is no -s option in GNU Wget 1.18, we should be compatible
+      wget: treat 201,202,203 as success codes too. Closes 9211
+      whois: implement -i
+      whois: make it actually work
+      {md5,shaN}sum: make -c EMPTY fail
+
+Francis Rounds (1):
+      svlogd: strip leading '!' from processor lines
+
+Hauke Mehrtens (1):
+      libnetlink: fix alignment of netlink messages
+
+Jonas Danielsson (1):
+      ping: populate icmp_id field for ""simple"" ping too
+
+Kang-Che Sung (1):
+      docs: Update filenames in keep_data_small.txt
+
+Linus Walleij (1):
+      AUTHORS: Add myself to AUTHORS
+
+Lukasz Nowak (1):
+      libiproute: handle table ids larger than 255
+
+Mike Frysinger (4):
+      modutils: support finit_module syscall
+      mdev.conf: rename hw_random to hwrng
+      setfiles: fix build failure after common_bufsiz change
+      selinux: drop deprecated headers
+
+Miroslav Lichvar (1):
+      ntpd: respond only to client and symmetric active packets
+
+Natanael Copa (4):
+      df: use f_frsize instead of f_bsize for correct sizes
+      lineedit: trivial codeshrink for vi-mode
+      gzip: fix compression level bug. Closes 9131
+      gzip: add test that checks that -9 compresses better than -1
+
+Peter Korsgaard (1):
+      udhcpc: Unconditionally call deconfig script, not only if lease is active
+
+Ron Yorston (2):
+      libbb: suppress warning about run_applet_and_exit
+      ash: return exit status of nofork applets
+
+Rostislav Skudnov (2):
+      ash: exit after subshell error when errexit option is set
+      lineedit: fix handling of repeating Alt-b, Alt-f, Alt-d, Alt-Backspace
+
+Serj Kalichev (1):
+      volume_id: Add support for UBIFS
+
+Tito Ragusa (1):
+      strings: implement -t radix
+```"
+meefik/busybox,closed,about ln command in busybox ,[],"please any one help me in fixing this error while I was playing with my terminal I tried to create hard link using ln command it is saying function not implemented 
+please help me in fixing this issue 
+thanksssss"
+meefik/busybox,closed,about ln command in busybox ,[],"please any one help me in fixing this error while I was playing with my terminal I tried to create hard link using ln command it is saying function not implemented 
+please help me in fixing this issue 
+thanksssss"
+meefik/busybox,open,Download Source,[],What is the url that this app gets the busybox download from?
+meefik/busybox,open,More install path option,[],"Hi! Please add, In the settings > install path, this option for semplify the work/decision for the no-expert users:
+
+Install on /system/xbin
+Install on /system/bin
+Install on /su/xbin
+Install on /su/bin
+Install on Custom Path
+
+P.S: sorry for my bad english, I use Google Translate."
+meefik/busybox,open,Shellshock vulnerability ,[],"The app Shellshock Vulnerability Scan says that Busybox 1.25.1 (downloaded from F-Droid) is vulnerable to Shellshock.
+
+Bash Version? GNU bash, version 4.3.42(1)-release (arm-android-eabi)
+
+Screenshot: [https://s21.postimg.org/m0cfqkh9j/Screenshot_20161124_101433.png](url)
+
+More info about the vulnerability: http://blog.indiandragon.in/2014/10/shellshock-vulnerability-in-android.html
+
+Shellshock Vulnerability Scan can be found here:
+https://f-droid.org/repository/browse/?fdid=in.indiandragon.shellshock.shellshockvulnerabilityscan&fdpage=52
+
+The code of the app can be found here:https://github.com/indiandragon/Shellshock-Vulnerability-Scan"
+meefik/busybox,open,Feature: Check for root on startup/information,[],"I think it would be a good feature to check for root when the app initially starts up or when the information but is tapped. Maybe a line under the System section that says something like `* root: yes/no`.  Currently, the only way to check if you have root is to either install or remove busybox. "
+meefik/busybox,closed,Added german translation,[],
+meefik/busybox,closed,"Hang on ""Loading...""",[],"Device: nexus6 (shamu)
+OS: Resurrection Remix (CM based)/MultiROM AND SlimROM/MultiROM
+Root: Yes/SuperSU
+Downloaded from: F-Droid
+Version: 1.25.1
+
+When I run busybox 1.25.1, the terminal is stuck ""Loading..."" The menu button works, but the ""Information"" button does not. Logs are not saved (no /storage/emulated/0/busybox.log file exists) even if logging option is turned on. The issue is not present with 1.24.2 or 1.24.1 (the entire application works as expected). The problem can be reproduced in SlimROM and Resurrection Remix. "
+meefik/busybox,closed,Traditional Chinese translation does not work,[],"Steps:
+1. Download & install [BusyBox 1.25.1](https://github.com/meefik/busybox/releases/tag/1.25.1)
+2. Settings > Language > 中国传统
+3. Go back
+4. Traditional Chinese translation is not display, instead is Simplified Chinese.
+
+To fix it, the values-zh path should rename as values-zh-rCN and merge #19."
+meefik/busybox,closed,Fix Chinese translation,[],"Traditional Chinese translation does not work, this should fix that. See: [Kernel Adiutor](https://github.com/Grarak/KernelAdiutor/tree/master/app/src/main/res)
+Note traditional Chinese should be 正體中文, that is what many other apps does anyway."
+meefik/busybox,closed,Fix zh-CN locale,[],"Minor fix for zh-CN locale
+"
+meefik/busybox,closed,Create zh-TW locale,[],"This is Traditional Chinese translation of this app, you can get this translation for many users who written Chinese in [orthordox characters](https://en.wikipedia.org/wiki/Traditional_Chinese_characters) (正體中文). Note after you merged this PR you should rename `values-zh` folder as `values-zh-CN`.
+"
+meefik/busybox,closed,Update BusyBox to 1.25.1,[],"As BusyBox website, this version has largely bugfixes and improves then 1.24.2 and the size is lighter.
+"
+meefik/busybox,open,wget + SSL/https not working,[],"Am I right that busybox wget should support SSL at least to some degree?
+Why is it that https-URLs still fail in various ways?
+
+``` bash
+$ wget https://www.example.com -O- | wc
+Connecting to www.example.com (93.184.216.34:443)
+wget: error getting response: Connection reset by peer
+        0         0         0
+$ wget https://www.google.com -O- | wc
+Connecting to www.google.com (173.194.76.105:443)
+wget: error getting response
+        0         0         0
+$ wget http://www.google.com -O- | wc
+Connecting to www.google.com (66.102.1.106:80)
+Connecting to www.google.at (173.194.76.94:80)
+
+-                    100% |*******************************| 10916   0:00:00 ETA
+        5       277     10916
+```
+
+System is CyanogenMod 11, Android 4.4.4
+`BusyBox v1.24.2-meefik (2016-08-08 15:47:45 MSK) multi-call binary.`
+"
+meefik/busybox,open,not big but important,[],"by default if you don't pay attention busybox install under xbin folder on my rom, and we got allready busybox under bin folder, it is under sdk, then it is interessting to make ""alert"" about it. Because like me i lost many hour to make linux(meefik) system work, all time call to busybox under bin folder, older... Thanks
+"
+meefik/busybox,closed,Korean Translate,[],"First commit.
+"
+meefik/busybox,closed,trim on f2fs,[],"su
+root@Z00A:/ # fstrim -v /data
+fstrim: FITRIM: Not a typewriter
+root@Z00A:/ #
+"
+meefik/busybox,open,"Copying error ""No space left on device""",[],"When trying to install BusyBox on my Motorola Xoom Wingray, I get the error:
+
+cp: write error: No space left on device
+
+It also fails to install new applets, error ""segmentation fault""
+
+How do I fix this?
+"
+meefik/busybox,open,UX: Make settings easier to access,[],"Something as important as the installation settings shouldn't be behind a menu overflow, among unimportant settings, when there's so much unused space. I recommend moving the BusyBox section of the settings screen to the main screen, or at least putting a settings button on the action bar.
+
+This proposal may seem petty, but I'm proposing this because I found it confusing how linuxdeploy didn't work despite installing the meefik BusyBox. Since the main screen was so minimalistic, with only the buttons of Install and Remove, I thought there's nothing else to customize about the installation. I think making the settings easier to access would make things more intuitive.
+
+Also, the button leading to the installation settings was easy to find in linuxdeploy, in plain sight on the main screen, so I expected them to be just as easy to find in this app as well.
+"
+meefik/busybox,closed,Add arm64 build,[],"Tested and working on my Galaxy S6.
+
+The app would need updating to handle this.
+"
+meefik/busybox,closed,Support building with NDK 11 and API 21,[],"NDK 11 removes some deprecated functions and API 21 removes MTD support, but API 21 is required for ARM64 builds. Builds with API 9 aren't broken.
+"
+meefik/busybox,closed,translated to spanish language,[],
+meefik/busybox,closed,32bit build script looks at the wrong path,[],"Building on 32bit doesnt work for me. It tries to find gcc in `linux-i686` but it's actually `linux-x86`:
+
+```
+/home/vagrant/android-ndk/r10e/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-i686/bin/arm-linux-androideabi-gcc: not found
+```
+"
+meefik/busybox,closed,chinese translation & back button not update locale issue,[],
+meefik/busybox,closed,Updated language setting,[],
+meefik/busybox,closed,Update BusyBox to v1.24.1,"[Label(name=""enhancement"")]","Have you planned to update BusyBox to version 1.24.1 ([see busybox.net](https://busybox.net/))?
+"
+meefik/busybox,closed,Added french translation,[],
+meefik/busybox,closed,Zip saving issue,[],"No matter what path I choose the app is unable to save the archive. App has root permissions, and I've tried setting selinux to permissive also. 
+
+System is android 6.0
+"

@@ -1,0 +1,36 @@
+repository,state,title,label,body
+felixb/websms,closed,Minor: Fix typos,[],"Fixed few typos in the `README.md` file.
+
+Reference: http://dictionary.cambridge.org/grammar/british-grammar/verb-patterns/verb-patterns-verb-infinitive-or-verb-ing"
+felixb/websms,closed,Support for connector selection rules,[],"You can now define rules to automatically select different connectors for different destinations.
+Help pages included.
+Also minor fixes - see commits.
+Requires WebSMS API 1.1 (public ConnectorSpec.setPackage)
+"
+felixb/websms,closed,[+] WebSMS is now broadcasting the successfull send command,[],
+felixb/websms,closed,fix italian strings.xml,[],"the commit 933ebc8504dd154f2b973060033b6fd36dae4bb8 removed the
+""twitter_hint"" everywhere, but in values-it/strings.xml this string was
+multiline, so that the xml is invalid now which prevents the build
+"
+felixb/websms,closed,Fixed message resend if the app is closed (autoexit mode),[],"Ok, the message resend is fixed now - works even if the app is closed.
+"
+felixb/websms,closed,connector switch as action,[],"c34dd802ca  show connector switch on action bar if multiple connectors
+
+Imho, if a user has several connectors then he most likely means to use them and (until we have connector selection rules) needs to switch between them often. (I do anyway.) So it would be useful to have the switch option on the action bar (if there are multiple connectors).
+"
+felixb/websms,closed,Fixes/improvements to WebSMS/API,[],"I've made a few fixes/improvements to WebSMS/API and I'd appreciate if you could merge them in.
+I've sent you an email with details.
+"
+felixb/websms,closed,Added translation to czech,[],"I have finished tranlastion WebSMS to Czech language.
+"
+felixb/websms,closed,Perform random ad unit id choice every time displayAds is called.,[],"Performing a random choice on ad unit id every time displayAds is called, not just the first time.
+"
+felixb/websms,closed,Adding configurable sms length calculations,[],"Added DefaultSMSLengthCalculator to delegate to TelephonyWrapper. Using connector-specified SMSLengthCalculator with fallback to the default.
+
+(As discussed in http://code.google.com/p/websmsdroid/issues/detail?id=574 )
+"
+felixb/websms,closed,Simple implementation of message length limit as specified by connectors.,[],"I created an initial implementation to deal with issue 239:
+http://code.google.com/p/websmsdroid/issues/detail?id=239
+
+I amended the TextWatcher twCount to check the message length (including sig) against the max length specified by the current connector (if any). If we are over that limit, then we truncate to the maximum length (minus sig length). The second and third commits add a toast message that is triggered when we do the truncation to inform the user why they can't add more text.
+"

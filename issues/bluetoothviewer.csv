@@ -1,0 +1,185 @@
+repository,state,title,label,body
+janosgyerik/bluetoothviewer,closed,Add xhdpi resources,[],I resize images and add xhdpi resources
+janosgyerik/bluetoothviewer,open,unable to connected in paired device,[],"I got following error while connect in the paired devices
+
+
+02-28 17:32:16.628 21223-21620/net.bluetoothviewer E/BluetoothDeviceConnector: read failed, socket might closed or timeout, read ret: -1
+                                                                               java.io.IOException: read failed, socket might closed or timeout, read ret: -1
+                                                                                   at android.bluetooth.BluetoothSocket.readAll(BluetoothSocket.java:567)
+                                                                                   at android.bluetooth.BluetoothSocket.waitSocketSignal(BluetoothSocket.java:544)
+                                                                                   at android.bluetooth.BluetoothSocket.connect(BluetoothSocket.java:319)
+                                                                                   at net.bluetoothviewer.BluetoothDeviceConnector$ConnectThread.run(BluetoothDeviceConnector.java:258)"
+janosgyerik/bluetoothviewer,open,Runtime Error when Debugging,[],"When attempting to debug (both the Lite and Full configurations) the following error occurs:
+
+`java.lang.RuntimeException: Unable to start activity ComponentInfo{net.bluetoothviewer/net.bluetoothviewer.BluetoothViewer}: android.view.InflateException: Binary XML file line #78: Error inflating class android.widget.ImageButton`
+"
+janosgyerik/bluetoothviewer,open,Make it possible to specify the UUID in the UI,"[Label(name=""enhancement"")]",
+janosgyerik/bluetoothviewer,open,Make it possible to specify the RFCOMM channel in the UI,"[Label(name=""enhancement"")]",
+janosgyerik/bluetoothviewer,open,The lint results should be addressed,"[Label(name=""enhancement"")]","`./gradlew build` produces an HTML lint report, with several issues. These should be addressed, or else when justified, documented in the README.
+"
+janosgyerik/bluetoothviewer,open,The README should explain how to build the project,"[Label(name=""easy""), Label(name=""enhancement"")]",
+janosgyerik/bluetoothviewer,closed,Sending data as attachment doesn't work with Gmail,"[Label(name=""bug"")]","The problem and a possible solution is well-explained in this Stack Overflow post:
+
+http://stackoverflow.com/questions/26883259/gmail-5-0-app-fails-with-permission-denied-for-the-attachment-when-it-receives
+"
+janosgyerik/bluetoothviewer,open,Should handle connection errors more gracefully,"[Label(name=""bug""), Label(name=""easy"")]","When connecting to an invalid channel, the app crashes. This is because the connection fails in the constructor of `ConnectThread`, but the caller doesn't check that, and hits an NPE when trying to use the socket. 
+1. It would be better to avoid work (= initialize socket) in the constructor of `ConnectThread`, which is a bad practice
+2. The caller should handle problems like this gracefully
+"
+janosgyerik/bluetoothviewer,open,Scan for devices infinite loop when Bluetooth is not enabled,"[Label(name=""bug""), Label(name=""easy"")]","When Bluetooth is not enabled on the device, and you click **Scan for devices** button, the scanning never ends. This can be confusing to users.
+"
+janosgyerik/bluetoothviewer,closed,Connect automatically to device ,[],"Hi!
+I saw in your code you can detect when lost connection do device. 
+But what if I want to connect automatically to one of my paired devices when its bluetooth turned on again for example?
+I mean is there any way to monitor reachability of one of my paired devices?
+Any help will be appreciated!
+Regards
+"
+janosgyerik/bluetoothviewer,open,bridge to ssh,[],"maybe in addition to capture to physical sdhc card the capture and probing could be remote [Lan wifi] playing nicely with ConnectBot 
+
+https://github.com/connectbot/connectbot 
+
+if that is already possible per se I would hope an SSH guru would point me in a useful-, specific direction [not merely to an interweb search provider]
+"
+janosgyerik/bluetoothviewer,closed,"please add changelog to f-droid, thanks",[],"No further text
+"
+janosgyerik/bluetoothviewer,closed,"Some Java source files say GPL license, some say Apache 2.0 license - can we make it all Apache 2.0?",[],"Apache 2.0 is what is most compatible with AOSP... Thank you.
+"
+janosgyerik/bluetoothviewer,closed,Added theme selection and animations for the main arrayadapter,[],"Added ""Toggle Theme"" to main menu which toggles theme stored in Utils class and restarts the activity to apply the theme. Themes currently only toggle around the two themes specified in styles.xml but the code can easily be expanded for more than two themes.
+
+Added an animated arrayadapter class and replaced the old arrayadapter class for its place. Animations are specified in /res/anim directory for each animation and the default is currently set to pushing in from the right. Note: Speed, distance, etc can be modified.
+
+Modified device name to show up in actionbar instead of custom layout following KitKat Holo guidelines.
+"
+janosgyerik/bluetoothviewer,open,Add save to SD/Internal Storage functionality,[],
+janosgyerik/bluetoothviewer,open,Improve support for Bluetooth devices that send data in binary format,"[Label(name=""enhancement""), Label(name=""hard"")]","The current app reads from the connected device line by line.
+(See `BluetoothDeviceConnector` class.)
+This is not well-suited for devices that send data in binary format.
+If newline characters don't appear in the data,
+the class might never send a message to the viewer.
+
+Hint: start by implementing a mock device (similar to `MockLineByLineConnector`),
+that reads binary data buffer by buffer, and ideally toggles-hexadecimal view automatically.
+(Hexadecimal view is tracked by #5, unfortunately not implemented yet.)
+"
+janosgyerik/bluetoothviewer,open,Add some sort of file manager for recorded files,"[Label(name=""enhancement""), Label(name=""hard"")]","At the moment you can switch recording on and off, and it all goes into the same file.
+If you connect to another device, it begins a new recording, and it discards any previous recording.
+
+It would be great if you could keep multiple recordings and choose which one(s) to send by email.
+Desirable features:
+- A screen to see all recorded files
+- Option to view a file
+- Option to email a file
+- Option to delete a file
+- Option to view / email / delete many / all
+- Option to delete older files than the one selected
+- Option to keep N most recent files
+- Unit tested
+
+No need to do all, I'm just brainstorming. Feel free to suggest ideas.
+"
+janosgyerik/bluetoothviewer,closed,Rework the way the MAC address is derived from the selected device,"[Label(name=""easy""), Label(name=""enhancement"")]","In `DeviceListActivity`, we get the MAC address of the selected device like this:
+
+```
+        // Get the device MAC address, which is the last 17 chars in the View
+        CharSequence info = ((TextView) v).getText();
+        if (info != null) {
+            // TODO this is not so cool...
+            CharSequence address = info.toString().substring(info.length() - 17);
+```
+
+This is a very poor solution. Refactor it somehow without magic number 17, and without a `.substring` call.
+"
+janosgyerik/bluetoothviewer,open,Add a filter bar,"[Label(name=""enhancement""), Label(name=""hard"")]","This is a typical input data from one of my bluetooth sensors:
+
+```
+#210914:210452:668$GPRMC,194125.918,V,4851.5581,N,00220.2004,E,0.00,0.00,210914,,,N*74
+#210914:210453:661$GPRMC,194126.918,V,4851.5581,N,00220.2004,E,0.00,0.00,210914,,,N*77
+#210914:210453:763$PSEN,CO2,ppm, 0915
+#210914:210454:661$GPRMC,194127.918,V,4851.5581,N,00220.2004,E,0.00,0.00,210914,,,N*76
+#200914:160256:674$GPRMC,143935.410,V,4851.5581,N,00220.2004,E,0.00,0.00,200914,,,N*73
+#200914:160257:651$PSEN,CO2,ppm, 1357
+#200914:160257:674$GPRMC,143936.410,V,4851.5581,N,00220.2004,E,0.00,0.00,200914,,,N*70
+#200914:160258:673$GPRMC,143937.410,V,4851.5581,N,00220.2004,E,0.00,0.00,200914,,,N*71
+#200914:160259:604$PSEN,CO2,ppm, 1311
+#200914:160259:676$GPRMC,143938.410,V,4851.5581,N,00220.2004,E,0.00,0.00,200914,,,N*7E
+```
+
+In this sample, the most interesting lines are the ones with `$PSEN`, the `$GPRMC` are garbage for my intents and purposes. It will be great to have some kind of filter bar:
+- If I enter the text `PSEN`, dynamically as I type, it should apply to the view as a filter and hide all other lines
+- It would be great to have the inverse option too: if I enter `GPRMC`, hide all `GPRMC` lines
+- The view filtering should affect the data recording: all data should still be recorded
+- To keep the user interface simple, it _might_ be nice to hide the filter toolbar by default, and let users toggle it in settings (or some other way)
+"
+janosgyerik/bluetoothviewer,open,Replace the old-fashioned action bar and menu with modern interface,"[Label(name=""easy""), Label(name=""enhancement"")]","The current app was originally written for API version 7, and the user interface elements are obsolete.
+- The action bar with the connect / disconnect buttons uses custom design, which looked good at the time, but now outdated. It would be good to replace that
+- The menu is old. It should be replaced with the modern action bar
+- The app should use fragments
+"
+janosgyerik/bluetoothviewer,open,Add a button to toggle between plain output and hexadecimal view,"[Label(name=""enhancement""), Label(name=""hard"")]","At the moment the app display the raw data as it comes from the device. This is fine for devices that emit ASCII data line by line, but won't be very useful with devices that emit in a binary format.
+
+It will be nice to have a button to toggle between plain output and hexadecimal format, something like the `hexdump` command does in Linux. Here's an example of the output of `ls / | hexdump -C` on my PC:
+
+```
+00000000  62 69 6e 0a 62 6f 6f 74  0a 64 61 74 61 0a 64 65  |bin.boot.data.de|
+00000010  76 0a 65 74 63 0a 68 6f  6d 65 0a 6c 69 62 0a 6c  |v.etc.home.lib.l|
+00000020  69 62 36 34 0a 6d 65 64  69 61 0a 6d 6e 74 0a 6f  |ib64.media.mnt.o|
+00000030  70 74 0a 70 72 6f 63 0a  72 6f 6f 74 0a 73 62 69  |pt.proc.root.sbi|
+00000040  6e 0a 73 65 6c 69 6e 75  78 0a 73 72 76 0a 73 79  |n.selinux.srv.sy|
+00000050  73 0a 74 6d 70 0a 75 73  72 0a 76 61 72 0a        |s.tmp.usr.var.|
+0000005e
+```
+
+Here's another variation, without the `-C` flag:
+
+```
+0000000 6962 0a6e 6f62 746f 640a 7461 0a61 6564
+0000010 0a76 7465 0a63 6f68 656d 6c0a 6269 6c0a
+0000020 6269 3436 6d0a 6465 6169 6d0a 746e 6f0a
+0000030 7470 700a 6f72 0a63 6f72 746f 730a 6962
+0000040 0a6e 6573 696c 756e 0a78 7273 0a76 7973
+0000050 0a73 6d74 0a70 7375 0a72 6176 0a72
+000005e
+```
+- The first column indicating the position from the start can be omitted. It would be great to make it an option
+- The last column with plain text-ish version can be omitted. It would be great to make it an option
+- The format should be adjusted to the width and orientation of the device: it should have 8 columns on tablets when horizontal, and perhaps only 4 columns on phones when vertical. Something like that.
+- Should the toggle rewrite the lines that were already displayed, or should it apply to new lines only?
+  - It would be great to rewrite lines already displayed too
+  - It's ok if it doesn't rewrite and just apply to new input
+"
+janosgyerik/bluetoothviewer,closed,Create a dummy device to make development easier,"[Label(name=""enhancement""), Label(name=""hard"")]","At the moment, testing the app is not possible without connecting to a real bluetooth device that broadcasts ascii data when connected. Even when you have such a device at hand, testing is not very convenient: you have to switch on the bluetooth device, and you probably have to recharge its battery too from time to time.
+
+It would be great to have a fake / dummy / virtual device for testing the app:
+- it should show up in the device list like any regular bluetooth device
+- it should emit some preset data and emits some preset data. See a sample at the bottom. After the end of the sample is reached, the dummy device should automatically restart from the beginning, repeat forever as long as ""connected""
+- probably a new level of abstraction will be needed in the implementation to represent the concept of a device, that may be a real bluetooth device, or it may be a dummy. In other words, the code that manages bluetooth connections specifically should not have knowledge of a dummy device, for good separation of responsibilities
+- the dummy device should behave just like a regular bluetooth device: the code that connects to bluetooth devices and reads data from them should not have to be aware that it's not a real device
+- the dummy device should not appear in the list by default. There should be an option in the settings screen to control whether the device is there or not. Developers can switch it on and keep it on for themselves
+- include the possiblity of adding different types of dummy devices in the future. At the minimum, another dummy device sending binary data instead of ASCII will be extremely useful
+
+Example data set to use by the dummy device:
+
+```
+#210914:210452:668$GPRMC,194125.918,V,4851.5581,N,00220.2004,E,0.00,0.00,210914,,,N*74
+#210914:210453:661$GPRMC,194126.918,V,4851.5581,N,00220.2004,E,0.00,0.00,210914,,,N*77
+#210914:210453:763$PSEN,CO2,ppm, 0915
+#210914:210454:661$GPRMC,194127.918,V,4851.5581,N,00220.2004,E,0.00,0.00,210914,,,N*76
+#200914:160256:674$GPRMC,143935.410,V,4851.5581,N,00220.2004,E,0.00,0.00,200914,,,N*73
+#200914:160257:651$PSEN,CO2,ppm, 1357
+#200914:160257:674$GPRMC,143936.410,V,4851.5581,N,00220.2004,E,0.00,0.00,200914,,,N*70
+#200914:160258:673$GPRMC,143937.410,V,4851.5581,N,00220.2004,E,0.00,0.00,200914,,,N*71
+#200914:160259:604$PSEN,CO2,ppm, 1311
+#200914:160259:676$GPRMC,143938.410,V,4851.5581,N,00220.2004,E,0.00,0.00,200914,,,N*7E
+```
+"
+janosgyerik/bluetoothviewer,open,UUID problem,[],"Hi! i was trying to make a BT connection with an specific device (it's some kind of a pressure checker or something like that, just a black box that sends a stream of bytes by bluetooth) and it wasn't connecting to the app. The error was that InputStream.read() was returning -1. 
+The cause of this is the UUID: I got the UUID of the device ( device.getUuids()[0].getUuid() ) and changed the creation of the socket on the method ""connect()"" and passed that UUID as a parameter. After that, it works.
+Thanks fot the app!
+"
+janosgyerik/bluetoothviewer,closed,enable bluetooth dialog and screen rotation,[],"If I start application with disabled bluetooth, it shows dialog to enable one. Next, if I rotate device, new dialog instance will be created, and shows above last one
+"
+janosgyerik/bluetoothviewer,open,Doesn't connect to my phone,[],"Says it is trying to connect for a long time. Then stops and says it failed. Phone is Galaxy Nexus, running 4.3.
+
+I'm pretty sure this is a bug with android. 
+"

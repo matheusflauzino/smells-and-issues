@@ -1,0 +1,685 @@
+repository,state,title,label,body
+ojacquemart/vlilleChecker,closed,Hi guys,[],Hi goyss
+ojacquemart/vlilleChecker,open,Implement sorting on StarsListFragment,[],"## Sortable Star List
+
+### Overiew of Changes
+---
+1. Added arrow Vector Assets that will be the sorting indicators.
+2. Added a TextView above the Star ListView that is clickable and controls the sort direction.
+3. Added sorting logic to sort the list of stations by name.
+
+## Notes
+
+Addresses issue https://github.com/ojacquemart/vlilleChecker/issues/1 
+** I know the UI might change, but I feel this is a good starting point! **"
+ojacquemart/vlilleChecker,closed,Feature/analytics,[],"## Vlille Checker Anaytics
+
+### Overview of Changes
+
+1. Integrated `Google Analytics v4` as a dependency, and configured the build to include our ID.
+2. Created a new manager class, `Analytics Manager` that handles all calls to Google Analytics.
+3. Added calls to send Analytics calls to AnalyticsManager from every visible Fragment and Activity.
+
+### Strategy
+
+I tried to design this in a way that was intutive and was easy for you to make additions to. Ideally, you can just add more methods for different analytics you wish to capture (i.e. something besides an event or screen view)
+
+### Exampes of Analytic Calls
+
+| Metric      | Example                                                                      |
+|-------------|------------------------------------------------------------------------------|
+| Screen View | ```AnalyticsManager.trackScreenView(""About Screen"");```                      |
+| Click Event | ```AnalyticsManager.trackEvent(""Home Screen"", ""Settings Tab Clicked"", ""Click"");``` |"
+ojacquemart/vlilleChecker,closed,style: update image assets,[],Closes #118
+ojacquemart/vlilleChecker,closed,chore: remove gradle warnings,[],Closes #127
+ojacquemart/vlilleChecker,closed,feat: add github in the about page,[],Closes #114
+ojacquemart/vlilleChecker,closed,feat: improve permissions,[],Closes #123
+ojacquemart/vlilleChecker,closed,Track app usage,"[Label(name=""enhancement""), Label(name=""hacktoberfest"")]",Have some statistics about the app usages.
+ojacquemart/vlilleChecker,closed,Remove gradle build warnings,"[Label(name=""enhancement""), Label(name=""hacktoberfest"")]","Example:
+
+`Configuration 'compile' is obsolete and has been replaced with 'implementation' and 'api'.
+It will be removed at the end of 2018. For more information see: http://d.android.com/r/tools/update-dependency-configurations.html`
+"
+ojacquemart/vlilleChecker,closed,feat: migrate to android 28,[],Closes #120
+ojacquemart/vlilleChecker,closed,fix(settings): fix potential NPE when stations init has failed,[],Relative to #121
+ojacquemart/vlilleChecker,closed,style: fix crash message typo,[],Relative to #122
+ojacquemart/vlilleChecker,closed,Improve permissions management,"[Label(name=""enhancement""), Label(name=""hacktoberfest"")]","It should be good to chain the request for permissions.
+
+See https://github.com/googlesamples/easypermissions"
+ojacquemart/vlilleChecker,closed,Fix toast crash message,"[Label(name=""bug""), Label(name=""hacktoberfest"")]",
+ojacquemart/vlilleChecker,closed,Settings screen crash when app is not initiliazed,"[Label(name=""bug""), Label(name=""hacktoberfest"")]",
+ojacquemart/vlilleChecker,closed,Upgrade to android 28,"[Label(name=""enhancement""), Label(name=""hacktoberfest"")]",
+ojacquemart/vlilleChecker,open,Swith actions bar from top to bottom,"[Label(name=""enhancement"")]","Recently, more and more apps seem to adopt a bottom nav bar.
+
+Maybe, it could be cool to let the user choose the nav direction as a preference (bottom or top)"
+ojacquemart/vlilleChecker,closed,Update website,"[Label(name=""enhancement""), Label(name=""hacktoberfest"")]","See http://ojacquemart.github.io/vlilleChecker/
+
+"
+ojacquemart/vlilleChecker,closed,Message when the update of a station is older than one minute,"[Label(name=""enhancement"")]","At the moment, open data does not update the stations info anymore:
+
+https://opendata.lillemetropole.fr/explore/dataset/vlille-realtime/api/?dataChart=eyJxdWVyaWVzIjpbeyJjaGFydHMiOlt7InR5cGUiOiJjb2x1bW4iLCJmdW5jIjoiTUFYIiwieUF4aXMiOiJuYlBsYWNlc0Rpc3BvIiwic2NpZW50aWZpY0Rpc3BsYXkiOnRydWUsImNvbG9yIjoiIzY2YzJhNSJ9LHsidHlwZSI6ImNvbHVtbiIsImZ1bmMiOiJNQVgiLCJ5QXhpcyI6Im5iVmVsb3NEaXNwbyIsInNjaWVudGlmaWNEaXNwbGF5Ijp0cnVlLCJjb2xvciI6IiNmYzhkNjIifV0sInhBeGlzIjoibm9tIiwibWF4cG9pbnRzIjo1MCwic29ydCI6InNlcmllMS0xIiwiY29uZmlnIjp7ImRhdGFzZXQiOiJ2bGlsbGUtcmVhbHRpbWUiLCJvcHRpb25zIjp7fX19XSwidGltZXNjYWxlIjoiIiwic2luZ2xlQXhpcyI6dHJ1ZX0%3D&location=16,50.65439,3.08974&basemap=jawg.streets"
+ojacquemart/vlilleChecker,open,App not up to date on fdroid,"[Label(name=""enhancement""), Label(name=""hacktoberfest""), Label(name=""help wanted"")]","Check https://f-droid.org/wiki/page/com.vlille.checker
+
+> This app has the KnownVuln Antifeature.
+This app has the DisabledAlgorithm Antifeature.
+
+- https://f-droid.org/wiki/page/AntiFeature:DisabledAlgorithm
+"
+ojacquemart/vlilleChecker,closed,"""passive"" location provider requires ACCESS_FINE_LOCATION permission.","[Label(name=""bug"")]","A bug still present in the latest android versions (7 - 8):
+
+```
+java.lang.SecurityException: ""passive"" location provider requires ACCESS_FINE_LOCATION permission.
+	at android.os.Parcel.readException(Parcel.java:1665)
+	at android.os.Parcel.readException(Parcel.java:1618)
+	at android.location.ILocationManager$Stub$Proxy.getLastLocation(ILocationManager.java:725)
+	at android.location.LocationManager.getLastKnownLocation(LocationManager.java:1225)
+	at com.vlille.checker.ui.osm.location.LocationManagerWrapper.getCurrentLocation(LocationManagerWrapper.java:1064)
+	at com.vlille.checker.ui.osm.MapView.drawLocationCircle(MapView.java:3037)
+	at com.vlille.checker.ui.osm.MapView.updateLocationCircle(MapView.java:144)
+	at com.vlille.checker.ui.fragment.MapFragment$1.onClick(MapFragment.java:163)
+	at android.view.View.performClick(View.java:5646)
+	at android.view.View$PerformClick.run(View.java:22459)
+	at android.os.Handler.handleCallback(Handler.java:761)
+	at android.os.Handler.dispatchMessage(Handler.java:98)
+	at android.os.Looper.loop(Looper.java:156)
+	at android.app.ActivityThread.main(ActivityThread.java:6523)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:942)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:832)
+```"
+ojacquemart/vlilleChecker,closed,Add link to the github repo,"[Label(name=""enhancement""), Label(name=""good first issue""), Label(name=""hacktoberfest"")]",Add a link to this repository in the about page
+ojacquemart/vlilleChecker,closed,Various issues from tracepot,"[Label(name=""bug"")]","Here are the most frequent issues reported by tracepot.
+
+From high to low priority:
+
+```
+java.lang.RuntimeException: Can't create handler inside thread that has not called Looper.prepare()
+	at android.os.Handler.<init>(Handler.java:200)
+	at android.os.Handler.<init>(Handler.java:114)
+	at android.widget.Toast$TN$2.<init>(Toast.java:336)
+	at android.widget.Toast$TN.<init>(Toast.java:336)
+	at android.widget.Toast.<init>(Toast.java:103)
+	at android.widget.Toast.makeText(Toast.java:256)
+	at com.vlille.checker.utils.ToastUtils$1.run(ToastUtils.java:34)
+	at java.lang.Thread.run(Thread.java:761)
+```
+
+```
+android.content.res.Resources$NotFoundException: Resource ID #0xffffffff
+	at android.content.res.Resources.getValue(Resources.java:1384)
+	at android.content.res.HwResources.getColor(HwResources.java:825)
+	at com.vlille.checker.ui.osm.overlay.window.BubbleInfoWindow.updateTextView(BubbleInfoWindow.java:104)
+	at com.vlille.checker.ui.osm.overlay.window.BubbleInfoWindow.bindStation(BubbleInfoWindow.java:98)
+	at com.vlille.checker.ui.osm.overlay.window.BubbleInfoWindow.onOpen(BubbleInfoWindow.java:90)
+	at com.vlille.checker.ui.osm.overlay.window.InfoWindow.open(InfoWindow.java:71)
+	at com.vlille.checker.ui.osm.overlay.window.BubbleInfoWindow.open(BubbleInfoWindow.java:66)
+	at com.vlille.checker.ui.osm.overlay.ItemizedOverlayWithFocus.onSingleTapUpHelper(ItemizedOverlayWithFocus.java:4141)
+	at org.osmdroid.views.overlay.ItemizedIconOverlay$1.run(ItemizedIconOverlay.java:130)
+	at org.osmdroid.views.overlay.ItemizedIconOverlay.activateSelectedItems(ItemizedIconOverlay.java:184)
+	at org.osmdroid.views.overlay.ItemizedIconOverlay.onSingleTapConfirmed(ItemizedIconOverlay.java:123)
+	at org.osmdroid.views.overlay.DefaultOverlayManager.onSingleTapConfirmed(DefaultOverlayManager.java:230)
+	at org.osmdroid.views.MapView$MapViewDoubleClickListener.onSingleTapConfirmed(MapView.java:1381)
+	at android.view.GestureDetector$GestureHandler.handleMessage(GestureDetector.java:303)
+	at android.os.Handler.dispatchMessage(Handler.java:102)
+	at android.os.Looper.loop(Looper.java:150)
+	at android.app.ActivityThread.main(ActivityThread.java:5621)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:794)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:684)
+```
+
+```
+java.lang.NullPointerException: Attempt to invoke interface method 'java.util.Iterator java.util.List.iterator()' on a null object reference
+	at com.vlille.checker.ui.osm.MapView.updateStations(MapView.java:302)
+	at com.vlille.checker.ui.osm.MapView.drawLocationCircle(MapView.java:184)
+	at com.vlille.checker.ui.osm.MapView.onLocationChanged(MapView.java:199)
+	at android.location.LocationManager$ListenerTransport._handleMessage(LocationManager.java:300)
+	at android.location.LocationManager$ListenerTransport.-wrap0(LocationManager.java)
+	at android.location.LocationManager$ListenerTransport$1.handleMessage(LocationManager.java:245)
+	at android.os.Handler.dispatchMessage(Handler.java:102)
+	at android.os.Looper.loop(Looper.java:154)
+	at android.app.ActivityThread.main(ActivityThread.java:6321)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:886)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:776)
+```
+
+```
+java.lang.SecurityException: ""passive"" location provider requires ACCESS_FINE_LOCATION permission.
+	at android.os.Parcel.readException(Parcel.java:1599)
+	at android.os.Parcel.readException(Parcel.java:1552)
+	at android.location.ILocationManager$Stub$Proxy.getLastLocation(ILocationManager.java:717)
+	at android.location.LocationManager.getLastKnownLocation(LocationManager.java:1205)
+	at com.vlille.checker.ui.osm.location.LocationManagerWrapper.getCurrentLocation(LocationManagerWrapper.java:1064)
+	at com.vlille.checker.ui.osm.MapView.drawLocationCircle(MapView.java:3037)
+	at com.vlille.checker.ui.osm.MapView.updateLocationCircle(MapView.java:144)
+	at com.vlille.checker.ui.fragment.MapFragment$1.onClick(MapFragment.java:163)
+	at android.view.View.performClick(View.java:5340)
+	at android.view.View$PerformClick.run(View.java:21610)
+	at android.os.Handler.handleCallback(Handler.java:815)
+	at android.os.Handler.dispatchMessage(Handler.java:104)
+	at android.os.Looper.loop(Looper.java:207)
+	at android.app.ActivityThread.main(ActivityThread.java:5763)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:789)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:679)
+```
+
+```
+java.lang.RuntimeException: Unable to start activity ComponentInfo{com.vlille.checker/com.vlille.checker.ui.StationInfoActivity}: java.lang.NullPointerException
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2211)
+	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2261)
+	at android.app.ActivityThread.access$600(ActivityThread.java:141)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1256)
+	at android.os.Handler.dispatchMessage(Handler.java:99)
+	at android.os.Looper.loop(Looper.java:137)
+	at android.app.ActivityThread.main(ActivityThread.java:5103)
+	at java.lang.reflect.Method.invokeNative(Native Method)
+	at java.lang.reflect.Method.invoke(Method.java:525)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+	at com.android.internal.os.ZygoteInit.main(Native Method)
+	at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.NullPointerException
+	at com.vlille.checker.ui.StationInfoActivity.onCreate(StationInfoActivity.java:1041)
+	at android.app.Activity.performCreate(Activity.java:5133)
+	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2175)
+	... 12 more
+java.lang.NullPointerException
+	at com.vlille.checker.ui.StationInfoActivity.onCreate(StationInfoActivity.java:1041)
+	at android.app.Activity.performCreate(Activity.java:5133)
+	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2175)
+	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2261)
+	at android.app.ActivityThread.access$600(ActivityThread.java:141)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1256)
+	at android.os.Handler.dispatchMessage(Handler.java:99)
+	at android.os.Looper.loop(Looper.java:137)
+	at android.app.ActivityThread.main(ActivityThread.java:5103)
+	at java.lang.reflect.Method.invokeNative(Native Method)
+	at java.lang.reflect.Method.invoke(Method.java:525)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+	at com.android.internal.os.ZygoteInit.main(Native Method)
+	at dalvik.system.NativeStart.main(Native Method)
+```"
+ojacquemart/vlilleChecker,open,Rename a station,"[Label(name=""enhancement""), Label(name=""hacktoberfest"")]","It's an user's request: https://play.google.com/apps/publish/?account=9028326648516746972#ReviewDetailsPlace:p=com.vlille.checker&reviewid=gp:AOqpTOHcG9tdbD5R5wP981uiMLwp_GO6bp-QIXDsPYITMSqsq5vzmEXpWMGMhu3F5Dtqsiyrmsxz0_RITXX28A
+
+It could be useful to rename a station.
+"
+ojacquemart/vlilleChecker,open,Reboot the app with kotlin,"[Label(name=""enhancement""), Label(name=""hacktoberfest"")]",It could be good to restart the app from scratch & replace the old java code by a fresh new kotlin.
+ojacquemart/vlilleChecker,closed,Transpole api is down,"[Label(name=""bug"")]","It seems that transpole does not expose its old api anyomore
+
+It's time to migrate to opendata lille metropole
+
+* Stations list: https://opendata.lillemetropole.fr/api/records/1.0/search?dataset=vlille-realtime&rows=300
+* Station details: https://opendata.lillemetropole.fr/api/records/1.0/search?dataset=vlille-realtime&q=libelle:10 (rihour)"
+ojacquemart/vlilleChecker,closed,Widget with white text,"[Label(name=""bug"")]","Report from an user.
+The text color is white instead of black
+
+![image](https://user-images.githubusercontent.com/1189345/27244613-9cbf2e66-52e7-11e7-95a8-9ca3af64e583.png)
+"
+ojacquemart/vlilleChecker,closed,Release 4.2.2,[],"- [x] Review witch [https://www.codacy.com/app/o-jacquemart/vlilleChecker/dashboard](codacy)
+- [x] Bump version to 722/4.2.2"
+ojacquemart/vlilleChecker,closed,Upgrade target build,"[Label(name=""enhancement"")]",Upgrade target build to nougat version (android 7.0)
+ojacquemart/vlilleChecker,closed,Update app on f-droid,"[Label(name=""bug"")]","The app on f-droid is version 3.1.1, could you update it ? "
+ojacquemart/vlilleChecker,closed,Upgrade to osmdroid 5.6.4,"[Label(name=""enhancement"")]","See https://github.com/osmdroid/osmdroid/wiki/Upgrade-Guide
+"
+ojacquemart/vlilleChecker,closed,Api key required on the map,"[Label(name=""bug"")]","![screenshot_20170401-141435](https://cloud.githubusercontent.com/assets/1189345/24578754/5afe8d3c-16e7-11e7-9ee2-d1dedbb7f7e6.png)
+
+Feedback from an user. 
+
+There is a message ""api key required"" on the map. 
+Should check the open street map api. "
+ojacquemart/vlilleChecker,closed,Check ACCESS_FINE_LOCATION permission,"[Label(name=""enhancement"")]","From a google email: ""Action required: If your app requires GPS hardware to operate properly, you will need to explicitly add the ""android.hardware.location.gps"" uses-feature to your manifest.""
+
+See: https://developer.android.com/guide/topics/location/strategies.html#Permission
+"
+ojacquemart/vlilleChecker,closed,Check stations available though the widgets,"[Label(name=""bug""), Label(name=""question"")]","An user's feedback says that not all the stations are available in the widgets list selection.
+"
+ojacquemart/vlilleChecker,closed,Favorite persistence,"[Label(name=""bug"")]","Favorite presentation is broken with the workflow:
+- go to a station details
+- star or unstar
+- click to ""locate""
+- star icon is desync
+"
+ojacquemart/vlilleChecker,closed,Improve geo location,"[Label(name=""enhancement"")]","From an user:
+
+""Géo-localisation lente. Une fois centré sur la position, le cercle d'incertitude précédent ne disparait pas (image grisée). En déplaçant le curseur (vers la destination p.e.) les bornes n'apparaissent pas. Seules celles précédemment affichées sont sur la carte. Bon courage. LG G4 sous Android 6.""
+"
+ojacquemart/vlilleChecker,closed,Improve transpole failover,"[Label(name=""enhancement"")]","Sometimes, it seems like transpole is down.
+It could be useful to display a message to notify that the issue comes from transpole and not the app.
+"
+ojacquemart/vlilleChecker,closed,Add marker for express stations,"[Label(name=""enhancement"")]","There are now ""express"" stations like at the Lille flandres stations.
+It could be useful to have a marker like for the stations which allow credit card.
+This is a suggestion from an user.
+
+An express station has a card scanner at each terminal.
+"
+ojacquemart/vlilleChecker,closed,Dialog Disappears on Device Rotation,"[Label(name=""wontfix"")]","When I perform these sequences of events, the dialog on screen disappears:
+
+Sequence 1: 
+1. Click on More...
+2. Click on Settings
+3. Click on Stations Around Me
+4. Orientation Change
+"
+ojacquemart/vlilleChecker,closed,Map is not visible on android 6,"[Label(name=""bug"")]","User remark from the store (Lg g4 on android 6.0).
+Markers are only visible.
+
+See https://github.com/osmdroid/osmdroid/issues/178
+"
+ojacquemart/vlilleChecker,open,Auto refresh widgets when visible,"[Label(name=""enhancement""), Label(name=""hacktoberfest"")]","At the moment, widgets can only be refresh by using a tap.
+
+The idea is to automate the refresh action when the widgets got the focus.
+"
+ojacquemart/vlilleChecker,closed,Increase map max zoom level,"[Label(name=""enhancement"")]","User request.
+"
+ojacquemart/vlilleChecker,closed,Use material float action button in the maps tab,"[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Update acra,"[Label(name=""enhancement"")]","See https://github.com/ACRA/acra
+
+Crash reports are not send anymore
+"
+ojacquemart/vlilleChecker,closed,Logs error during stations update,"[Label(name=""bug"")]","Insert fails with existing station id:
+
+```
+3641-3659/com.vlille.checker I/DBUpdater﹕ New stations 7
+3641-3659/com.vlille.checker E/SQLiteLog﹕ (1555) abort at 31 in [INSERT INTO station(adress,latitudeE6,longitude,outOfService,ordinal,attachs,cbPaiement,suggest_text_1,bikes,latitude,starred,_id,longitudeE6,lastUpdate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)]:
+3641-3659/com.vlille.checker D/StationEntityManager﹕ Error during insert
+    android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: station._id (code 1555)
+            at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)
+            at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:782)
+            at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:788)
+            at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:86)
+            at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1471)
+            at android.database.sqlite.SQLiteDatabase.insertOrThrow(SQLiteDatabase.java:1367)
+            at com.vlille.checker.db.StationEntityManager.create(StationEntityManager.java:42)
+            at com.vlille.checker.db.StationEntityManager.create(StationEntityManager.java:15)
+            at org.droidparts.persist.sql.AbstractEntityManager$1.call(AbstractEntityManager.java:111)
+            at org.droidparts.persist.sql.AbstractEntityManager$1.call(AbstractEntityManager.java:102)
+            at org.droidparts.inner.PersistUtils.executeInTransaction(PersistUtils.java:155)
+            at org.droidparts.persist.sql.AbstractEntityManager.executeInTransaction(AbstractEntityManager.java:148)
+            at org.droidparts.persist.sql.AbstractEntityManager.cud(AbstractEntityManager.java:127)
+            at org.droidparts.persist.sql.AbstractEntityManager.create(AbstractEntityManager.java:90)
+            at com.vlille.checker.db.DBUpdater.update(DBUpdater.java:33)
+            at com.vlille.checker.ui.async.DBUpdaterAsyncTask.doInBackground(DBUpdaterAsyncTask.java:32)
+            at com.vlille.checker.ui.async.DBUpdaterAsyncTask.doInBackground(DBUpdaterAsyncTask.java:12)
+            at android.os.AsyncTask$2.call(AsyncTask.java:288)
+            at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+            at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:231)
+            at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)
+            at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)
+            at java.lang.Thread.run(Thread.java:818)
+```
+"
+ojacquemart/vlilleChecker,closed,Station id should not be visible by default,"[Label(name=""bug"")]",
+ojacquemart/vlilleChecker,closed,Add widgets support,"[Label(name=""enhancement"")]","User request
+"
+ojacquemart/vlilleChecker,closed,Last update time is always updated,"[Label(name=""bug"")]","When updating the stations list, the last update time in the settings is always changed. It should display the time when new stations were inserted.
+"
+ojacquemart/vlilleChecker,closed,Update process log android.database.sqlite.SQLiteConstraintException,"[Label(name=""bug"")]","Update process is buggy. The process gets remote vlille stations. To extract new stations, the List#removeAll method is called in order to keep only the new remote stations comparing with the local list stored into sqlite.
+
+Since  the Station#equals implementation uses `name.equals(other.getName)` and getName concats `id` and `name`, the method is buggy. It was done this way in order to reduce changes when adding the feature to display the station id into the list view.
+
+Finally, the process is trying to persist the list with elements that should already exist
+"
+ojacquemart/vlilleChecker,closed,Station info when clicking on a station from the lists,"[Label(name=""enhancement"")]","A click on a station should display the station information in a new activity
+"
+ojacquemart/vlilleChecker,closed,Increase map view max zoom level,"[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Replace toast by snackbar,"[Label(name=""enhancement"")]","http://www.google.com/design/spec/components/snackbars-toasts.html#
+
+Linked to #81 
+"
+ojacquemart/vlilleChecker,closed,Action bar is not visible in the preference view,"[Label(name=""bug"")]","Could be the occasion the remove the deprecated code
+"
+ojacquemart/vlilleChecker,closed,Action bar is not visible in the about view,"[Label(name=""bug"")]",
+ojacquemart/vlilleChecker,closed,Upgrade to lollipop,"[Label(name=""enhancement"")]","Google introduces materiel design to the new lollipop version: http://www.google.com/design/spec/material-design/introduction.html
+"
+ojacquemart/vlilleChecker,closed,Investigate jsoup,"[Label(name=""enhancement"")]","[Jsoup](http://jsoup.org/) could be a better way to parse the xml feeds
+
+Example:
+
+``` java
+Document stations = Jsoup.connect(""http://www.vlille.fr/stations/xml-stations.aspx"").parser(Parser.xmlParser()).get();
+Elements markers = stations.select(""marker"");
+Element firstMarker = markers.get(0);
+System.out.println(firstMarker.attr(""id""));
+System.out.println(firstMarker.attr(""lat""));
+System.out.println(firstMarker.attr(""lng""));
+System.out.println(firstMarker.attr(""name""));
+
+Document born = Jsoup.connect(""http://www.vlille.fr/stations/xml-station.aspx?borne=1"").parser(Parser.xmlParser()).get();
+System.out.println(born.select(""adress"").text());
+System.out.println(born.select(""status"").text());
+System.out.println(born.select(""bikes"").text());
+System.out.println(born.select(""attachs"").text());
+System.out.println(born.select(""paiement"").text());
+System.out.println(born.select(""lastupd"").text());
+```
+
+It will remove a lot of ugly code using SaxParser.
+"
+ojacquemart/vlilleChecker,closed,Investigate groovy,[],
+ojacquemart/vlilleChecker,closed,Add preference to hide station id,[],"Since 3.1.0, station id is always
+Add a preference to hide the station id as address or last update moment
+"
+ojacquemart/vlilleChecker,closed,Update fdroid,[],"see #63 to update description
+"
+ojacquemart/vlilleChecker,closed,Update default stations assets,"[Label(name=""enhancement"")]","view-source:http://www.vlille.fr/stations/xml-stations.aspx
+"
+ojacquemart/vlilleChecker,closed,Add preference to hide last update moment,"[Label(name=""enhancement"")]","Hide the label (%MOMENT% ago)... 
+"
+ojacquemart/vlilleChecker,closed,Update README,[],
+ojacquemart/vlilleChecker,closed,Update screenshots,[],"Since the station number is now displayed, need to update screenshots
+Relative to #72 
+"
+ojacquemart/vlilleChecker,closed,Display the station number,"[Label(name=""enhancement"")]","Display the station number:
+- in list (1 - Lille Metropole)
+- in map (top of the overlay)
+
+Request by a user.
+"
+ojacquemart/vlilleChecker,closed,Fix NPE in ContextHelper,"[Label(name=""bug"")]","java.lang.NullPointerException
+    at com.vlille.checker.utils.ContextHelper.isNetworkAvailable(ContextHelper.java:21)
+    at com.vlille.checker.ui.fragment.StationsListFragment.updateVisibleItems(StationsListFragment.java:202)
+    at com.vlille.checker.ui.fragment.AllStationsFragment.updateVisibleItems(AllStationsFragment.java:27)
+    at com.vlille.checker.ui.fragment.StationsListFragment.onScrollStateChanged(StationsListFragment.java:173)
+    at com.vlille.checker.ui.fragment.AllStationsFragment.onScrollStateChanged(AllStationsFragment.java:27)
+    at android.widget.AbsListView.reportScrollStateChange(AbsListView.java:3391)
+    at android.widget.AbsListView$FlingRunnable.endFling(AbsListView.java:3452)
+    at android.widget.AbsListView$FlingRunnable.run(AbsListView.java:3521)
+    at android.os.Handler.handleCallback(Handler.java:587)
+    at android.os.Handler.dispatchMessage(Handler.java:92)
+    at android.os.Looper.loop(Looper.java:123)
+    at android.app.ActivityThread.main(ActivityThread.java:4627)
+    at java.lang.reflect.Method.invokeNative(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:521)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:860)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:618)
+    at dalvik.system.NativeStart.main(Native Method)
+"
+ojacquemart/vlilleChecker,open,Features : Group favorites,"[Label(name=""enhancement"")]","I think it usefull to have  ability to group the favorite stations
+"
+ojacquemart/vlilleChecker,closed,Site template,"[Label(name=""enhancement"")]","Could be a great landing page: http://bootstraptaste.com/theme/siimple/
+
+Current url: http://ojacquemart.github.io/vlilleChecker/
+"
+ojacquemart/vlilleChecker,closed,Fix ACRA: java.lang.RuntimeException: Unable to start activity ComponentInfo,"[Label(name=""bug"")]","java.lang.RuntimeException: Unable to start activity ComponentInfo{com.vlille.checker/org.acra.CrashReportDialog}: android.content.res.Resources$NotFoundException: String resource ID #0x0
+        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2068)
+        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2093)
+        at android.app.ActivityThread.access$600(ActivityThread.java:139)
+        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1204)
+        at android.os.Handler.dispatchMessage(Handler.java:103)
+        at android.os.Looper.loop(Looper.java:137)
+        at android.app.ActivityThread.main(ActivityThread.java:4801)
+        at java.lang.reflect.Method.invokeNative(Native Method)
+        at java.lang.reflect.Method.invoke(Method.java:528)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+        at dalvik.system.NativeStart.main(Native Method)
+Caused by: android.content.res.Resources$NotFoundException: String resource ID #0x0
+        at android.content.res.Resources.getText(Resources.java:229)
+        at android.content.Context.getText(Context.java:282)
+        at org.acra.CrashReportDialog.onCreate(CrashReportDialog.java:85)
+        at android.app.Activity.performCreate(Activity.java:5198)
+        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1082)
+        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2032)
+        ... 11 more
+android.content.res.Resources$NotFoundException: String resource ID #0x0
+        at android.content.res.Resources.getText(Resources.java:229)
+        at android.content.Context.getText(Context.java:282)
+        at org.acra.CrashReportDialog.onCreate(CrashReportDialog.java:85)
+        at android.app.Activity.performCreate(Activity.java:5198)
+        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1082)
+        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2032)
+        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2093)
+        at android.app.ActivityThread.access$600(ActivityThread.java:139)
+        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1204)
+        at android.os.Handler.dispatchMessage(Handler.java:103)
+        at android.os.Looper.loop(Looper.java:137)
+        at android.app.ActivityThread.main(ActivityThread.java:4801)
+        at java.lang.reflect.Method.invokeNative(Native Method)
+        at java.lang.reflect.Method.invoke(Method.java:528)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+        at dalvik.system.NativeStart.main(Native Method)
+"
+ojacquemart/vlilleChecker,closed,Update osmdroid version,[],"4.0 is out: https://code.google.com/p/osmdroid/wiki/Changelog
+"
+ojacquemart/vlilleChecker,closed,Version in About view,"[Label(name=""enhancement"")]","Can you add the version in about view?
+"
+ojacquemart/vlilleChecker,closed,Credit card label displayed below the scroll bar,"[Label(name=""bug"")]","Here is a screenshot showing the weird behaviour (scroll bar is near ""Louise de Bettigies"" station):
+
+![vlille_checker](https://f.cloud.github.com/assets/50518/1709821/20cd54b6-6125-11e3-9d0f-33ceaf59a5cb.png)
+
+Version: 3.0.0
+Android: KitKat 4.4
+Phone: Nexus 4
+"
+ojacquemart/vlilleChecker,closed,java.lang.IllegalStateException: Content view not yet created,"[Label(name=""bug""), Label(name=""wontfix"")]","On android 2.3.6
+
+java.lang.IllegalStateException: Content view not yet created
+        at android.support.v4.app.ListFragment.ensureList(ListFragment.java:328)
+        at android.support.v4.app.ListFragment.getListView(ListFragment.java:222)
+        at com.vlille.checker.ui.StationsListFragment.updateVisibleItems(StationsListFragment.java:195)
+        at com.vlille.checker.ui.AllStationsFragment.updateVisibleItems(AllStationsFragment.java:28)
+        at com.vlille.checker.ui.StationsListFragment.onScrollStateChanged(StationsListFragment.java:163)
+        at com.vlille.checker.ui.AllStationsFragment.onScrollStateChanged(AllStationsFragment.java:28)
+        at android.widget.AbsListView.reportScrollStateChange(AbsListView.java:2773)
+        at android.widget.AbsListView$FlingRunnable.endFling(AbsListView.java:2864)
+        at android.widget.AbsListView$FlingRunnable.run(AbsListView.java:2940)
+        at android.os.Handler.handleCallback(Handler.java:603)
+        at android.os.Handler.dispatchMessage(Handler.java:92)
+        at android.os.Looper.loop(Looper.java:130)
+        at android.app.ActivityThread.main(ActivityThread.java:3701)
+        at java.lang.reflect.Method.invokeNative(Native Method)
+        at java.lang.reflect.Method.invoke(Method.java:507)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:875)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:633)
+        at dalvik.system.NativeStart.main(Native Method)
+"
+ojacquemart/vlilleChecker,closed,F-Droid update,[],"Hi,
+
+I use your app since OpenBike retired few months ago.
+I installed it via F-Droid but it wasn't updated since a while.
+
+Could you please provide the new version on F-Droid too?
+
+Anyway, thanks for your work, you're saving time of some VLille users.
+"
+ojacquemart/vlilleChecker,closed,Fix java.lang.IllegalStateException: Content view not yet created,"[Label(name=""bug"")]","""java.lang.IllegalStateException: Content view not yet created
+    at android.support.v4.app.ListFragment.ensureList(ListFragment.java:328)
+    at android.support.v4.app.ListFragment.getListView(ListFragment.java:222)
+    at com.vlille.checker.ui.StationsListFragment.updateVisibleItems(StationsListFragment.java:195)
+    at com.vlille.checker.ui.AllStationsFragment.updateVisibleItems(AllStationsFragment.java:28)
+    at com.vlille.checker.ui.StationsListFragment.onScrollStateChanged(StationsListFragment.java:163)
+    at com.vlille.checker.ui.AllStationsFragment.onScrollStateChanged(AllStationsFragment.java:28)
+    at android.widget.AbsListView.reportScrollStateChange(AbsListView.java:3247)
+    at android.widget.AbsListView$TwFlingRunnable.endFling(AbsListView.java:3317)
+    at android.widget.AbsListView$TwFlingRunnable.run(AbsListView.java:3412)
+    at android.os.Handler.handleCallback(Handler.java:587)
+    at android.os.Handler.dispatchMessage(Handler.java:92)
+    at android.os.Looper.loop(Looper.java:130)
+    at android.app.ActivityThread.main(ActivityThread.java:3687)
+    at java.lang.reflect.Method.invokeNative(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:507)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:867)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:625)
+    at dalvik.system.NativeStart.main(Native Method)
+""
+"
+ojacquemart/vlilleChecker,closed,Add notification when new stations are available,"[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Fix java.util.ConcurrentModificationException,"[Label(name=""bug"")]","java.lang.RuntimeException: An error occured while executing doInBackground()
+        at android.os.AsyncTask$3.done(AsyncTask.java:299)
+        at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:273)
+        at java.util.concurrent.FutureTask.setException(FutureTask.java:124)
+        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:307)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:137)
+        at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:230)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1076)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:569)
+        at java.lang.Thread.run(Thread.java:856)
+Caused by: java.util.ConcurrentModificationException
+        at java.util.AbstractList$SubAbstractList.size(AbstractList.java:360)
+        at java.util.AbstractCollection.toArray(AbstractCollection.java:339)
+        at java.util.ArrayList.<init>(ArrayList.java:93)
+        at com.vlille.checker.ui.async.AbstractStationsAsyncTask.doInBackground(AbstractStationsAsyncTask.java:17)
+        at android.os.AsyncTask$2.call(AsyncTask.java:287)
+        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305)
+        ... 5 more
+java.util.ConcurrentModificationException
+        at java.util.AbstractList$SubAbstractList.size(AbstractList.java:360)
+        at java.util.AbstractCollection.toArray(AbstractCollection.java:339)
+        at java.util.ArrayList.<init>(ArrayList.java:93)
+        at com.vlille.checker.ui.async.AbstractStationsAsyncTask.doInBackground(AbstractStationsAsyncTask.java:17)
+        at android.os.AsyncTask$2.call(AsyncTask.java:287)
+        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:137)
+        at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:230)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1076)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:569)
+        at java.lang.Thread.run(Thread.java:856)
+"
+ojacquemart/vlilleChecker,closed,Remove maven support,"[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Update actionbar-pulltorefresh,"[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Prepare the app to use others bikes provider,"[Label(name=""enhancement""), Label(name=""wontfix"")]",
+ojacquemart/vlilleChecker,closed,Use standard gradle directories,"[Label(name=""enhancement""), Label(name=""wontfix"")]","src/main
+- assets
+- java
+- res
+
+src/instrumentTest
+- java
+"
+ojacquemart/vlilleChecker,closed,Fix android 7 design,"[Label(name=""bug"")]","- setSupportProgressBarIndeterminateVisibility not working from fragments
+- Settings activity, check textViews and attribute textColor
+"
+ojacquemart/vlilleChecker,closed,Remove commons-lang3 dependency,"[Label(name=""enhancement"")]","Few classes use it.
+"
+ojacquemart/vlilleChecker,closed,Migrate from actionbarsherlock to actionbarcompat,"[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,A station search can be made in whatever fragment,"[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Wrong coordinates passed to make an itinerary,"[Label(name=""bug"")]","Replace the ',' by '.'
+"
+ojacquemart/vlilleChecker,closed,"Map view, use smaller icons","[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Change the map tiles source,"[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Check network availabilty when update stations,"[Label(name=""bug"")]",
+ojacquemart/vlilleChecker,closed,"Add 7"" and 10"" screenshots","[Label(name=""enhancement""), Label(name=""wontfix"")]",
+ojacquemart/vlilleChecker,closed,Generate feature graphic and promo graphic for the google play store.,"[Label(name=""enhancement"")]","http://developer.android.com/distribute/promote/device-art.html
+"
+ojacquemart/vlilleChecker,closed,Update local assets vlille stations.,"[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,"Map view, progress bar indeterminate not visible on android 2.1","[Label(name=""bug"")]",
+ojacquemart/vlilleChecker,closed,"List view, the buttons bar of the last item is not always visible","[Label(name=""bug"")]",
+ojacquemart/vlilleChecker,closed,"Map view, wrong error message when zoom level <= 15 and location is enabled","[Label(name=""bug"")]",
+ojacquemart/vlilleChecker,closed,"Map view, the location circle overlay is no longer visible","[Label(name=""bug"")]",
+ojacquemart/vlilleChecker,closed,"Map view, change the location circle color","[Label(name=""bug"")]","Green to grey.
+"
+ojacquemart/vlilleChecker,closed,"Settings, change the color of the text for the location distance","[Label(name=""bug"")]","Change white in black.
+"
+ojacquemart/vlilleChecker,closed,Map view seems slow on old devices,"[Label(name=""enhancement""), Label(name=""wontfix"")]",
+ojacquemart/vlilleChecker,closed,"When no network, in the map view tab, overlays disappear","[Label(name=""bug"")]",
+ojacquemart/vlilleChecker,closed,"Map view, update the station details when zoom level <= 15 in the bubble window.","[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Update ActionBar-PullToRefresh aar,[],"From https://github.com/chrisbanes/ActionBar-PullToRefresh/tree/development
+"
+ojacquemart/vlilleChecker,closed,New ACRA report,[],"New report for v3.0
+"
+ojacquemart/vlilleChecker,closed,DAO cleanup,"[Label(name=""enhancement"")]","Use droidparts: https://github.com/yanchenko/droidparts
+"
+ojacquemart/vlilleChecker,closed,Use ListView#setEmptyView instead of hackish setVisibility,[],
+ojacquemart/vlilleChecker,closed,Caused by: java.util.ConcurrentModificationException when deleting stations during a refresh,[],
+ojacquemart/vlilleChecker,closed,Refresh design,"[Label(name=""enhancement"")]","Change theme:
+http://jgilfelt.github.io/android-actionbarstylegenerator/#name=Vlille%20Checker&compat=sherlock&theme=light_dark&actionbarstyle=solid&texture=0&hairline=0&backColor=690%2C100&secondaryColor=555%2C100&tabColor=690%2C100&tertiaryColor=3F3F3F%2C100&accentColor=33B5E5%2C100&cabBackColor=002E3E%2C100&cabHighlightColor=33B5E5%2C100
+
+Refresh icons.
+"
+ojacquemart/vlilleChecker,closed,Proguard integration,[],"http://developer.android.com/tools/help/proguard.html
+"
+ojacquemart/vlilleChecker,closed,Check unused resources,"[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Unstar a station is not visible in the MapView,[],"When unstar a station in the first tab, it's not directly visible in the MapView.
+"
+ojacquemart/vlilleChecker,closed,Take a look at androidannotations,"[Label(name=""enhancement"")]","https://github.com/excilys/androidannotations
+"
+ojacquemart/vlilleChecker,closed,"MapView, the click on the elements are not correctly handled in detailled mode","[Label(name=""bug"")]","When zoom > 15, items are not clickable in the upper side.
+"
+ojacquemart/vlilleChecker,closed,Add a buttons bar on a station clicked in the listview,"[Label(name=""enhancement"")]","Buttons bar with:
+- map focus on the station clicked
+- make a route to the station  
+"
+ojacquemart/vlilleChecker,closed,Change the center position on the map,"[Label(name=""enhancement"")]","Center on the default coordinates.
+"
+ojacquemart/vlilleChecker,closed,Migrate to Google Maps V2,"[Label(name=""wontfix"")]","http://developer.android.com/google/play-services/maps.html
+"
+ojacquemart/vlilleChecker,closed,Add stations number in the data status,[],"Replace Stations list by %d stations. 
+"
+ojacquemart/vlilleChecker,closed,Display the stations details in the list tab.,"[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Replace Android-PullToRefresh,[],"Use https://github.com/chrisbanes/ActionBar-PullToRefresh
+"
+ojacquemart/vlilleChecker,closed,Migrate to android studio,"[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Remove use of StringUtils.stripAccents.,[],"java.lang.UnsupportedOperationException: The stripAccents(CharSequence) method requires at least Java6, but got: java.lang.ClassNotFoundException: java.text.Normalizer$Form in loader dalvik.system.PathClassLoader@400264d8; or a Sun JVM: java.lang.ClassNotFoundException: sun.text.Normalizer in loader dalvik.system.PathClassLoader@400264d8
+        at org.apache.commons.lang3.StringUtils.stripAccents(StringUtils.java:639)
+        at com.vlille.checker.utils.StationUtils.filter(StationUtils.java:37)
+        at com.vlille.checker.ui.AllStationsFragment.filterStationsByKeyword(AllStationsFragment.java:137)
+        at com.vlille.checker.ui.AllStationsFragment.access$2(AllStationsFragment.java:135)
+        at com.vlille.checker.ui.AllStationsFragment$1.onKey(AllStationsFragment.java:94)
+        at android.view.View.dispatchKeyEvent(View.java:3732)
+        at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:832)
+        at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:832)
+        at android.widget.ListView.dispatchKeyEvent(ListView.java:1948)
+        at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:832)
+        at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:832)
+        at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:832)
+        at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:832)
+        at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:832)
+        at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:832)
+        at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:832)
+        at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchKeyEvent(PhoneWindow.java:1655)
+        at com.android.internal.policy.impl.PhoneWindow.superDispatchKeyEvent(PhoneWindow.java:1102)
+        at android.app.Activity.dispatchKeyEvent(Activity.java:2041)
+        at com.actionbarsherlock.app.SherlockFragmentActivity.dispatchKeyEvent(SherlockFragmentActivity.java:122)
+        at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchKeyEvent(PhoneWindow.java:1631)
+        at android.view.ViewRoot.deliverKeyEventToViewHierarchy(ViewRoot.java:2368)
+        at android.view.ViewRoot.handleMessage(ViewRoot.java:1859)
+        at android.os.Handler.dispatchMessage(Handler.java:99)
+        at android.os.Looper.loop(Looper.java:123)
+        at android.app.ActivityThread.main(ActivityThread.java:4370)
+        at java.lang.reflect.Method.invokeNative(Native Method)
+        at java.lang.reflect.Method.invoke(Method.java:521)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:868)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:626)
+        at dalvik.system.NativeStart.main(Native Method)
+"
+ojacquemart/vlilleChecker,closed,Unstar station from home doesn't refresh the station list,"[Label(name=""bug"")]","Problem when refocus the 2ND tab.
+"
+ojacquemart/vlilleChecker,closed,Change way to initiliaze stations,"[Label(name=""bug"")]","Instead of retrieving the stations from vlille.fr, use a stations_list.xml stored in local in a xml directory.
+"
+ojacquemart/vlilleChecker,closed,Add english translate,"[Label(name=""enhancement"")]","Translate the strings.xml.
+"
+ojacquemart/vlilleChecker,closed,Maven project,[],
+ojacquemart/vlilleChecker,closed,Remove unused ressources,[],
+ojacquemart/vlilleChecker,closed,pullToRefresh,"[Label(name=""enhancement"")]","Add pullToRefresh support.
+"
+ojacquemart/vlilleChecker,closed,Replace gmaps by osm,"[Label(name=""enhancement"")]","osmdroid is already in the project. Remains the implementaiton of overlays...
+"
+ojacquemart/vlilleChecker,closed,"On stations update, show some progress bar","[Label(name=""enhancement"")]",
+ojacquemart/vlilleChecker,closed,Problem with refresh button,[],"Issue with the refresh button, to resume the current focused framgent.
+"
+ojacquemart/vlilleChecker,closed,TextView to search stations in AllStationsFragment,[],"Add some textview, maybe with suggestions to search stations from the complete stations list.
+"
+ojacquemart/vlilleChecker,closed,Add stations list last update,[],"Add the information about the last time the user updated the stations list.
+"
+ojacquemart/vlilleChecker,closed,Error screen,"[Label(name=""enhancement"")]","Add some icon in order to make the error screen sexier.
+"
+ojacquemart/vlilleChecker,closed,Maps stars,"[Label(name=""bug"")]","On maps, when multiple stations are starred, only one is really starred.
+"
+ojacquemart/vlilleChecker,closed,Migrate actionbar to actionbarsherlock,"[Label(name=""enhancement"")]","https://github.com/JakeWharton/ActionBarSherlock
+"
+ojacquemart/vlilleChecker,closed,Fork NewQuickAction3D,"[Label(name=""wontfix"")]","Fork the NewQuickAction3D project to change easily colors of following elements:
+- array_down.png
+- array_up.png
+- popup9.png
+"
+ojacquemart/vlilleChecker,open,Make list sortable,"[Label(name=""enhancement""), Label(name=""hacktoberfest"")]","Add the ability to sort the list of the favorite stations.
+By default sort by ascending.
+
+It could be done with a drag & drop list.
+"

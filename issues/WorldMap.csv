@@ -1,0 +1,81 @@
+repository,state,title,label,body
+johnnylambada/WorldMap,open,crash,[],"log:
+java.lang.IllegalArgumentException: rectangle is outside the image
+                                                                       at android.graphics.BitmapRegionDecoder.decodeRegion(BitmapRegionDecoder.java:187)
+                                                                       at com.test.emptydemo.lib2.InputStreamScene.fillCache(InputStreamScene.java:63)
+                                                                       at com.test.emptydemo.lib2.Scene$CacheThread.run(Scene.java:526)"
+johnnylambada/WorldMap,open,Point,[],"When we have a zoom !=1 or !=0 how can i obtain the real coordinates of one point i need to draw in drawComplete ? For example if a need to draw a circle like : 
+ `canvas.drawCircle(point.x, point.y, 30, mNodeColorRadius);`
+with point.x and point.y the real coordinates ?
+"
+johnnylambada/WorldMap,closed,Paint screen black before refresh.,[],"This eliminates some artifacts caused by drawing on top of the previous image.  
+The sampler drawer can have this line as well.
+"
+johnnylambada/WorldMap,closed,Fix Corner zoom Bug when starting from Intent.,[],"I start the app with:
+
+Intent intent = new Intent(this, ImageViewerActivity.class);
+            intent.setAction(android.content.Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.fromFile(new File(info.getLocation())), ""image/png"");
+            startActivity(intent);  
+
+However, there is a corner zoom bug which goes away after the user pans or zooms for the first time.  To fix this.  The suggested code fixes the problem.
+"
+johnnylambada/WorldMap,open,Saving zoom state,[],"This is a very fantastic library.
+I have only a problem: I use 2.0.2 version and it is very simple to save the InstanceState of the viewport. I'm unable to save the zoom state, there is a way to save the zoom level of the last viewport? or it is possible to always start from the minimum zoom to display the entire image?
+Any suggestion?
+Thanks 
+"
+johnnylambada/WorldMap,open,2.0.2 issues,[],"Having some problems with 2.0.2 
+
+I can load a resource via setinputstream. e.g. - mWorldView.setInputStream(getResources().openRawResource(R.drawable.centerlogo));
+
+When I call setinputstream again to change the image, it crashes. The inputstream I am feeding it is from the sd card
+
+e.g. - is = (InputStream) new RandomAccessFileInputStream(file);
+mWorldView.setInputStream(is);
+
+04-04 23:20:02.820: E/AndroidRuntime(4492): FATAL EXCEPTION: drawThread
+04-04 23:20:02.820: E/AndroidRuntime(4492): java.lang.NullPointerException
+04-04 23:20:02.820: E/AndroidRuntime(4492):     at com.sigseg.android.view.Scene$Cache.update(Scene.java:387)
+04-04 23:20:02.820: E/AndroidRuntime(4492):     at com.sigseg.android.view.Scene$Viewport.draw(Scene.java:309)
+04-04 23:20:02.820: E/AndroidRuntime(4492):     at com.sigseg.android.view.Scene.draw(Scene.java:118)
+04-04 23:20:02.820: E/AndroidRuntime(4492):     at com.sigseg.android.map.ImageSurfaceView$DrawThread.run(ImageSurfaceView.java:213)
+"
+johnnylambada/WorldMap,open,Why are you forced to have an inputstream set?,[],"What if I don't have an image to render right away? Currently, it crashes if you do not suppl an input stream
+"
+johnnylambada/WorldMap,open,Pixelated image and crash on some devices,[],"Hi,
+I tested worldmap and am using it in a project to display a big picture.
+
+When I test your latest code on a Galaxy S3, I can reproduce an bug:
+- un-zoom quickly to the minium zoom level with a pinch gesture
+- zoom quickly on a country of the map.
+- you will see that the country is pixelated and is never filled with the high resolution data. And you will experience an app crash some seconds after.
+  (try this manipulation a few times if no problem detected)
+
+It's like the cache is not re-computed.
+
+I can reproduce this bug on Galaxy S3, GalaxyS2 and Galaxy Ace.
+
+I will investigate the issue but if you have any idea it would be very welcomed.
+
+I notice that I've got these errors in the logcat:
+E/dalvikvm-heap(19564): Out of memory on a 38047104-byte allocation.
+E/InputStreamScene(19564): caught oom -- cache now at 0 percent.
+
+I also notice these errors: 
+SKIA FimgApiStretch:stretch failed
+But by [browsing online](http://stackoverflow.com/questions/12068110/whats-the-reason-of-fimgapistretchstretch-failed-in-android), I can read that is only due to the Samsung phone.
+"
+johnnylambada/WorldMap,open,zooming in the right side.,[],"When ever the image is zoomed with the scaleFactor > 1f, parts of the right side begins to get cut off because the right side bound being reached.
+
+if (x + w > size.x)
+x = size.x - w;
+if (y + h > size.y)
+y = size.y - h; 
+
+if the scalefactor < 1f in the above code, the bounds are being cut off way too early because w is greater than w/scalefactor
+
+however if we change the piece of code to include the scalefactors the viewport becomes unstable
+
+Is there a way to fix the size of the viewport so that when the viewport gets smaller and smaller we are still able to show the right side?
+"

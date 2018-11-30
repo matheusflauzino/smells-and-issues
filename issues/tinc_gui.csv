@@ -1,0 +1,652 @@
+repository,state,title,label,body
+Vilbrekin/tinc_gui,open,Android tinc wrong host-up,[],"```cmd
+#!/system/bin/sh 
+echo $REMOTEADDRESS
+echo $INTERFACE 
+VPN_GATEWAY=10.0.0.254
+# Fetch the first default gateway from the current routing tables
+ORIGINAL_GATEWAY=$(for a in $(ip rule show | grep lookup | sed -r 's/.* lookup ([^ ]+).*/\1/'); do ip route show table $a | grep ^default | cut -d ' ' -f 2-5; done | head -1)
+echo $ORIGINAL_GATEWAY
+
+# Use new routing table 100, to have higher priority than lollipop's ones
+ip rule add prio 100 from all lookup 100
+ip route add table 100 $REMOTEADDRESS $ORIGINAL_GATEWAY 
+ip route add table 100 $VPN_GATEWAY dev $INTERFACE 
+ip route add table 100 0.0.0.0/1 via $VPN_GATEWAY dev $INTERFACE 
+ip route add table 100 128.0.0.0/1 via $VPN_GATEWAY dev $INTERFACE
+```
+cmd not complete ,should be replaced with
+
+```cmd
+#!/system/bin/sh 
+echo $REMOTEADDRESS
+echo $INTERFACE 
+VPN_GATEWAY=10.0.0.254
+# Fetch the first default gateway from the current routing tables
+ORIGINAL_GATEWAY=$(for TABLE in $(ip rule show | grep lookup | sed -r 's/.* lookup ([^ ]+).*/\1/') ; do ip route show table $TABLE | grep ^default | cut -d ' ' -f 2-5 ; done | grep -v dummy | head -1)
+echo $ORIGINAL_GATEWAY
+
+# Use new routing table 100, to have higher priority than lollipop's ones
+ip rule add prio 100 from all lookup 100
+ip route add table 100 $REMOTEADDRESS $ORIGINAL_GATEWAY 
+ip route add table 100 $VPN_GATEWAY dev $INTERFACE 
+ip route add table 100 0.0.0.0/1 via $VPN_GATEWAY dev $INTERFACE 
+ip route add table 100 128.0.0.0/1 via $VPN_GATEWAY dev $INTERFACE
+```"
+Vilbrekin/tinc_gui,open,Can not import configuration file and folder on Android 8.0,[],"On Android 8, It can not import configuration. 
+Storage permission enabled.
+Thanks for your wonderfull work!"
+Vilbrekin/tinc_gui,open,Android 7 ,[],"Configuration path do not work 
+"
+Vilbrekin/tinc_gui,closed,Client on Andorid 6.x  is unable to reach other peers but can reach gw.,[],"Ok this is bugging me because for the life of me I cannot see what it going wrong.
+
+Following [This](http://tinc_gui.poirsouille.org/) guide I set up the routes as they are on my laptop.
+
+> ip route show
+> 
+> default via 192.168.0.101 dev wlan0  metric 314 
+> 10.4.0.0/24 dev tun0  proto kernel  scope link  src 10.4.0.99 
+> 192.168.0.0/24 dev wlan0  proto kernel  scope link  src 192.168.0.150  metric 314 
+
+and
+
+> route -n
+> 
+> Kernel IP routing table
+> Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+> 0.0.0.0         192.168.0.101   0.0.0.0         UG    314    0        0 wlan0
+> 10.4.0.0        0.0.0.0         255.255.255.0   U     0      0        0 tun0
+> 192.168.0.0     0.0.0.0         255.255.255.0   U     314    0        0 wlan0
+
+This matches my laptops routing table 
+
+> ip route show
+> 
+> default via 192.168.0.100 dev wlan0  proto static  metric 600 
+> 10.4.0.0/24 dev tun4  proto kernel  scope link  src 10.4.0.2 
+> 192.168.0.0/24 dev wlan0  proto kernel  scope link  src 192.168.0.129  metric 600 `
+> 
+> route -n
+> 
+> Kernel IP routing table
+> Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+> 0.0.0.0         192.168.0.100   0.0.0.0         UG    600    0        0 wlan0
+> 10.4.0.0        0.0.0.0         255.255.255.0   U     0      0        0 tun4
+> 192.168.0.0     0.0.0.0         255.255.255.0   U     600    0        0 wlan0
+
+I am able to ping the VPN gw at 10.4.0.1 but unable to ping any other peers on the vpn. Is there something else on Android 6.x I need to be aware of to be able to ping peers? 
+
+Any help is appreciated. I know Tinc worked fine on Android 4.3 so I suspect there is something different about 6.x 
+
+Thanks. 
+"
+Vilbrekin/tinc_gui,open,DNS and default gateway,[],"I use CM-13.0 and Tinc_gui 0.9.14.
+
+Then I connect through LTE to peer which I want use as a default gateway, DNS stopped to work.
+Seems like problem in providers DNS, which stands not in my LAN. Because if I connect through Wi-Fi with DNS in my phone network, all works fine.
+
+For example, through LTE my phone IP can be like 10.99.143.25/30, 10.112.2.159/26 and so on. And DNS is 10.220.4.9, 10.221.4.9. So to ask DNS about name resolution, phone should hops several routers.
+
+I tried 
+
+```
+setprop net.dns1 8.8.8.8
+setprop net.dns2 8.8.4.4
+```
+
+in `default-gateway-up`, but without success. As a workaround, I set routes to providers DNS through `ORIGINAL_GATEWAY`, but I don't like this idea.
+
+My tinc.conf:
+
+```
+Name = phone
+ConnectTo = default-gateway
+ConnectTo = another-host
+Device = /dev/tun
+DeviceType = tap
+ScriptsInterpreter = /system/bin/sh
+```
+
+tinc-up:
+
+```
+#!/system/bin/sh
+ifconfig $INTERFACE 192.168.247.28 netmask 255.255.255.255
+#echo 1 > /proc/sys/net/ipv4/conf/$INTERFACE/rp_filter
+
+# Use new routing table 100, to have higher priority than android's ones
+ip rule add prio 100 from all lookup 100
+ip route add table 100 192.168.247.0/24 dev $INTERFACE
+```
+
+tinc-down:
+
+```
+#!/system/bin/sh -x
+ip rule del from all lookup 100
+ip route del table 100 192.168.247.0/24 dev $INTERFACE
+```
+
+another-host-up:
+
+```
+#!/system/bin/sh -x
+VPN_GATEWAY=192.168.247.25
+
+# Use new routing table 100, to have higher priority than android's ones
+ip route add table 100 172.16.0.0/12 via $VPN_GATEWAY dev $INTERFACE
+```
+
+another-host-down:
+
+```
+#!/system/bin/sh -x
+VPN_GATEWAY=192.168.247.25
+
+ip route del table 100 172.16.0.0/12 via $VPN_GATEWAY dev $INTERFACE
+```
+
+default-gateway-up:
+
+```
+#!/system/bin/sh -x
+VPN_GATEWAY=192.168.247.21
+ORIGINAL_GATEWAY=$(for TABLE in $(ip rule show | grep lookup | sed -r 's/.* lookup ([^ ]+).*/\1/') ; do ip route show table $TABLE | grep ^default | cut -d ' ' -f 2-5 ; done | grep -v dummy | head -1)
+ORIGINAL_DNS1=$(getprop net.dns1)
+ORIGINAL_DNS2=$(getprop net.dns2)
+
+# Use new routing table 100, to have higher priority than android's ones
+ip route add table 100 $REMOTEADDRESS $ORIGINAL_GATEWAY
+ip route add table 100 $ORIGINAL_DNS1 $ORIGINAL_GATEWAY
+ip route add table 100 $ORIGINAL_DNS2 $ORIGINAL_GATEWAY
+ip route add table 100 $VPN_GATEWAY dev $INTERFACE
+ip route add table 100 0.0.0.0/1 via $VPN_GATEWAY dev $INTERFACE
+ip route add table 100 128.0.0.0/1 via $VPN_GATEWAY dev $INTERFACE
+```
+
+default-gateway-down:
+
+```
+#!/system/bin/sh -x
+VPN_GATEWAY=192.168.247.21
+ORIGINAL_DNS1=$(getprop net.dns1)
+ORIGINAL_DNS2=$(getprop net.dns2)
+
+ip route del table 100 $REMOTEADDRESS
+ip route del table 100 $ORIGINAL_DNS1
+ip route del table 100 $ORIGINAL_DNS2
+ip route del table 100 $VPN_GATEWAY dev $INTERFACE
+ip route del table 100 0.0.0.0/1 via $VPN_GATEWAY dev $INTERFACE
+ip route del table 100 128.0.0.0/1 via $VPN_GATEWAY dev $INTERFACE
+```
+
+I can't understand, is problem in tinc_gui or in my phone.
+Can you help to determinate the root of issue or suggest another workaround?
+"
+Vilbrekin/tinc_gui,closed,Travis,[],
+Vilbrekin/tinc_gui,closed,tinc 1.0.25 doesn't stop on  Android 6.0.1,[],"Tinc 1.0.25 doesn't stop on  Android 6.0.1 (Nexus 5, build MMB29Q). Log writes tincd terminated, but tinc continues, STOP button doesn't change, DEBUG button seems not working.
+Tinc GUI can be forced to stop, but tincd is still running. 
+Tinc config is identical with previous Lollipop. 
+Let me know if any additional info needed
+"
+Vilbrekin/tinc_gui,open,Support for MIUI Security,[],"Then I'm trying to Start service with ""Execute as Super User"" set, it says ""Your terminal is not rooted properly. Please correct this or try disabling su usage from preferences."". But this check in [checkRoot()](https://github.com/Vilbrekin/tinc_gui/blob/RELEASE_0.9.13/app/src/main/java/org/poirsouille/tinc_gui/TincActivity.java#L191-L200) is just check. Is it possible to look if application is running under MIUI and if it is then replace this simple check by syscall which asking root access wrapping it in try/catch block. I've never developed for Android or Java, I'm PHP developer, but maybe this can accomplish task:
+
+```
+String version = System.getProperty(""os.version"");
+if (version.contains(""MIUI""))
+{
+    try
+    {
+         Process root = Runtime.getRuntime().exec(""su"");
+         return true;
+    }
+    catch(Exception e)
+    {
+         return false;
+    }
+}
+else
+{
+    if (_service != null && _service._useSU)
+    {
+        // Ensure su is working correctly, as some implementations do simply nothing, without error...
+        String aOut = Tools.ToString(Tools.Run(""su"", ""id""));
+        return (aOut.length() >= 5 && aOut.substring(0, 5).equals(""uid=0""));
+    }
+    return true;
+}
+```
+
+This is required for MIUI su application called ""Security"". This application detects such calls and later allows a user to give such applications root rights. Tinc GUI doesn't appearing there.
+"
+Vilbrekin/tinc_gui,open,resolving hostnames to IP addresses,[],"When using an IP address ""#.#.#.#"" it connects fine
+When using a ""some.ddns.net"" address gives a
+Error looking up ""some.ddns.net"" no address associated with hostname.
+any ideas as to why
+Force to write IP address each time host changes (dynamic)
+From Xperia E2105 rooted (kingroot) stock rom
+"
+Vilbrekin/tinc_gui,closed,gateway script,[],"I use your Script on my Samsung galaxy S2 with CM5.
+
+> ORIGINAL_GATEWAY=$(for a in $(ip rule show | grep lookup | sed -r 's/.\* lookup ([^ ]+).*/\1/'); do ip route show table $a | grep ^default | cut -d ' ' -f 2-5; done | head -1)
+
+I got some Errors
+
+(for a in $(ip rule show | grep lookup | sed -r 's/.\* lookup ([^ ]+).*/\1/'); do ip route show table $a | grep ^default | cut -d ' ' -f 2-5; done | head -1)
+
+> cut: standard output: Broken pipe
+> cut: standard output: Broken pipe
+> cut: standard output: Broken pipe
+
+so I split the commands and got these.
+(ip rule show | grep lookup | sed -r s/.\* lookup [^ ]+.*/1/)
+
+> _
+
+(ip route show table $a | grep ^default | cut -d   -f 2-5)
+
+> Command line is not complete. Try option ""help""
+
+(ip route show | grep ^default | cut -d   -f 2-5)
+
+> _
+
+Have you an Idea what i could do to get Tinc run?
+"
+Vilbrekin/tinc_gui,closed,tinc submodule uses wrong commit,[],"The submodule for tinc itself uses commit b44ecdb, which I cannot seem to find in upstream.
+"
+Vilbrekin/tinc_gui,closed,Tinc terminate after only one try to connect,[],"I Upgraded my Samsung Galaxy S2 to Cyanogenmod 12. I copied the tinc directory and tried to start Tinc. It only test a connection once and Terminate. 
+
+Tinc has SuperUser right (SuperSU) and the Option ""Execute as Super User"" is selected.
+
+![tinc](https://cloud.githubusercontent.com/assets/7795891/9196690/1c938cdc-402e-11e5-9d5c-0dee0edf4830.png)
+
+CatLog```
+08-11 13:52:34.324 D/tinc_gui( 6716): Refreshing preferences for key 
+08-11 13:52:34.360 D/tinc_gui( 6716): Service connected
+08-11 13:52:34.750 I/Timeline( 2256): Timeline: Activity_windows_visible id: ActivityRecord{820257c u0 org.poirsouille.tinc_gui/.TincActivity t473} time:328238
+08-11 13:52:35.912 I/tinc_gui( 6716): Shell: su; command: id
+08-11 13:52:36.368 I/tinc_gui( 6716): Received START intent for tincd service
+08-11 13:52:36.369 D/tinc_gui( 6716): Service started
+08-11 13:52:36.469 D/tinc_gui( 6716): Returning PID 19254
+08-11 13:52:36.492 I/tinc_gui( 6716): Shell: su; command: kill 19254 || rm /data/data/org.poirsouille.tinc_gui/files/tinc.pid
+08-11 13:52:37.282 D/tinc_gui( 6716): Network state changed - network available? true
+08-11 13:52:37.282 I/tinc_gui( 6716): Network state changed - forcing reconnection
+08-11 13:52:37.295 D/tinc_gui( 6716): Returning PID 0
+08-11 13:52:37.306 I/tinc_gui( 6716): Shell: su; command: umask 022; exec /data/data/org.poirsouille.tinc_gui/files/tincd -D -d5 -c /storage/sdcard1/tinc --pidfile=/data/data/org.poirsouille.tinc_gui/files/tinc.pid
+08-11 13:52:37.573 W/tincd   ( 6966): type=1400 audit(0.0:582): avc: denied { create } for scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=tcp_socket
+08-11 13:52:37.573 W/tincd   ( 6966): type=1400 audit(0.0:583): avc: denied { setopt } for scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=tcp_socket
+08-11 13:52:37.573 W/tincd   ( 6966): type=1400 audit(0.0:584): avc: denied { bind } for scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=tcp_socket
+08-11 13:52:37.573 W/tincd   ( 6966): type=1400 audit(0.0:585): avc: denied { listen } for lport=80 scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=tcp_socket
+08-11 13:52:37.573 W/tincd   ( 6966): type=1400 audit(0.0:586): avc: denied { setopt } for scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=udp_socket
+08-11 13:52:37.573 W/tincd   ( 6966): type=1400 audit(0.0:587): avc: denied { bind } for scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=udp_socket
+08-11 13:52:37.578 W/tincd   ( 6966): type=1400 audit(0.0:588): avc: denied { connect } for scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=tcp_socket
+08-11 13:52:37.578 W/tincd   ( 6966): type=1400 audit(0.0:589): avc: denied { getopt } for laddr=10.156.250.100 lport=51976 faddr=92.104.100.65 fport=12978 scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=tcp_socket
+08-11 13:52:39.123 D/tinc_gui( 6716): End of tincd thread
+
+```
+What have I to do to get it work?
+```
+"
+Vilbrekin/tinc_gui,closed,Routing on Android 5.x,[],"I set up tinc and got a connection.
+I set tinc in debug (5) session and see packets comming to my tinc interface on nexus 4 and leaving but remote host does not get any packets back.
+@Vilbrekin: you wrote a some rules on your site for routeing _all_ traffic to remote host. I want only to route the dedicated subnet to remote host. Do you have any hints?
+
+``````
+root@mako:/storage/emulated/legacy/tinc # ip route show
+172.16.250.0/24 dev mako  proto kernel  scope link  src 172.16.200.2 
+192.168.200.0/24 dev wlan0  proto kernel  scope link  src 192.168.200.190 
+
+root@mako:/storage/emulated/legacy/tinc # ip rule show
+0:      from all lookup local 
+10000:  from all fwmark 0xc0000/0xd0000 lookup legacy_system 
+13000:  from all fwmark 0x10063/0x1ffff lookup local_network 
+13000:  from all fwmark 0x10064/0x1ffff lookup wlan0 
+14000:  from all oif wlan0 lookup wlan0 
+15000:  from all fwmark 0x0/0x10000 lookup legacy_system 
+16000:  from all fwmark 0x0/0x10000 lookup legacy_network 
+17000:  from all fwmark 0x0/0x10000 lookup local_network 
+19000:  from all fwmark 0x64/0x1ffff lookup wlan0 
+22000:  from all fwmark 0x0/0xffff lookup wlan0 
+23000:  from all fwmark 0x0/0xffff uidrange 0-0 lookup main 
+32000:  from all unreachable```
+``````
+"
+Vilbrekin/tinc_gui,closed,How to handle different Android versions,"[Label(name=""enhancement"")]","Due to last issues we have to decide how we handle multiple binaries of tincd.
+
+There are some possibilities.
+- Pack all binaries (4.1 < and > 5.x | L versions | beta version) in main package and load the appropriate one
+- Install basic feature and let user download separate tincd binaries from HTTP
+- Install basic feature and let user download separate tincd binaries from google play store
+
+A modul loader will handle the correct binary and install it to the correct location (see issue #https://github.com/Vilbrekin/tinc_gui/issues/28)
+
+Other option is to deploy 3 +x versions in google play store (PIE / non-PIE / beta / ...) but this will not be user friendly.
+"
+Vilbrekin/tinc_gui,closed,not working with samsing devices running  SELINUX set to enforcing,"[Label(name=""enhancement"")]","My device is rooted and knox is disabled but its a stock rom running SELINUX in enforcing mode (Samsung Galaxy S5). The issue is that the post up scripts do not get run. They fail with an error 127 regardless of what is in them.  This is selinux preventing it.  I tried with and without your variable for command interpretor.  Didn't make a difference.  I can get tinc working by running those scripts after the fact so I know everything is set up properly.
+"
+Vilbrekin/tinc_gui,closed,"Stopping and starting the vpn does not execute ""another_peer-up/down"" scripts","[Label(name=""question"")]","Android 4.4.4:
+Upon first boot the system works great, wheter on wifi or 3g the routing table is altered according to my ""main_server-up"" script.
+
+But when I switch to wifi (or to 3g when I'm already on wifi) I lose the routing setup and my traffic no longer goes through the tinc vpn.
+
+as far as I can see from the debugging, manually stopping and starting the service simply does not execute the -down and -up scripts.
+"
+Vilbrekin/tinc_gui,closed,Error on Android L,"[Label(name=""enhancement"")]","I was playing around with the latest developer preview of Android L and noticed that Tinc is broken. When I start the service I see the following error:
+
+error: only position independent executables (PIE) are supported
+tincd terminated
+"
+Vilbrekin/tinc_gui,open,Tinc1.1 Binaries,"[Label(name=""enhancement"")]","Would be cool to have the option to pick either tinc1.0 or tinc1.1 prerelease X.
+
+tinc1.1 for purposes of this project would only need the 'tincd' binary. The 'tinc' binary would be unnecessary.
+You wouldn't need the additional library dependencies ncurses and readline either, just the same as tinc 1.0; openssl, zlib, lzo.
+
+I realize tinc1.1preX and tinc1.0 should play nice together. tinc1.1pre10 release seems to have had a lot of issues though and won't play nice with tinc_gui tinc1.0 version ( at least for me ).
+
+Pretty minimal I think on gui changes, and then just have to pre-compile another binary to package. 
+If your not to keen on doing it yourself, I'd be willing to give it a try if such a pull request would be favorably looked upon. (I'd like to think I could figure it out anyway).
+"
+Vilbrekin/tinc_gui,closed,Null Pointer Exception,"[Label(name=""bug"")]","Reported by user:
+
+I'm getting a null pointer error, see screenshot.
+It happens when I'm trying to point tinc to config path in /etc/tinc, I think it can't read it. 
+
+![image](https://cloud.githubusercontent.com/assets/281450/4223084/c72d9480-3918-11e4-965e-222a35d2e3a1.png)
+"
+Vilbrekin/tinc_gui,closed,New preferences setting for font size of log window,[],"User can choose the font size
+Value is clamped to 8 - 100
+fixes issue #15
+"
+Vilbrekin/tinc_gui,closed,Question: could not ping other site,"[Label(name=""invalid"")]","I was testing around over 3G. (My data quota is not fully used so I tried to stream some Music over DLNA)
+ I detected that even Tinc was able to connect i'm not able to pin an IP
+Android: 10.168.10.11
+Desktop: 10.168.10.12
+
+Ping on the device itself 10.168.10.11 works but ping on 10.168.10.12 get 100% package loss
+
+I only have Problems with my Android. Other PC can connect to Desktop.
+
+If someone has an Idea how to repair, thanks
+
+tinc.conf
+
+``` ini
+AddressFamily=ipv4
+Name=Android
+ConnectTo=Desktop
+Device=/dev/tun
+Interface=tun0
+Mode=switch
+ScriptsInterpreter = /system/bin/sh
+KeyExpire = 3600
+```
+
+tinc-up
+
+``` bash
+#!/bin/sh
+ifconfig $INTERFACE 10.168.10.11 netmask 255.255.255.0
+echo 1 > /proc/sys/net/ipv4/conf/$INTERFACE/rp_filter
+```
+
+hosts/Android
+
+``` ini
+Subnet=10.168.10.0/24
+```
+
+hosts/Desktop
+
+``` ini
+Address={IP}
+Port=12978
+Subnet=10.168.10.0/24
+LocalDiscovery=yes
+```
+"
+Vilbrekin/tinc_gui,closed,Working with AFWall+,"[Label(name=""enhancement"")]","At moment I testing to use AFWall+ with Tinc.
+That works if you use the setting ""0: (root) - Applications running as root""
+I would ask to get Tinc listed in this tool so I do not have to set up Internet for all root Programs.
+"
+Vilbrekin/tinc_gui,closed,Multiarch support in tinc gui and build system,"[Label(name=""enhancement"")]","additionale fixed a bug in log text size
+"
+Vilbrekin/tinc_gui,closed,add support for multiple architecture of android plattform,"[Label(name=""enhancement"")]","currently supports x86 / ARM / MIPS
+tincd binaray is named ""tincd.ARCH""
+
+fixes https://github.com/Vilbrekin/tinc_gui/issues/13
+
+!!! Binaries for MIPS and x86 have to be compiled !!!
+"
+Vilbrekin/tinc_gui,closed,Mobile works but not over WLAN,"[Label(name=""question"")]","I set up tinc for Android. 
+My Phone is a Samsung Galaxy S2 with Cyanogenmod. AFWall+ is inactive.
+I am able to connect other Tinc nodes over Mobil Internet but not over over W-Lan.
+
+> Connection refused
+
+Is there something I can do?
+"
+Vilbrekin/tinc_gui,closed,Allow start/stop tinc by external intent,"[Label(name=""enhancement"")]","I want to automate the tinc behavior, so tinc is only started when 3G or untrusted wifi hotspot is used. As there are already 3rd party apps like tasker/llama are quite powerful at monitoring these events, it can easily be done if tinc_gui allow the service to be started/stopped by external intents.
+"
+Vilbrekin/tinc_gui,closed,updated to openssl 1.0.1g due to lack of heartbleed bug,[],"openssl status
+    OpenSSL 1.0.1 through 1.0.1f (inclusive) are vulnerable
+    OpenSSL 1.0.1g is NOT vulnerable
+    OpenSSL 1.0.0 branch is NOT vulnerable
+    OpenSSL 0.9.8 branch is NOT vulnerable
+
+see http://heartbleed.com/
+"
+Vilbrekin/tinc_gui,closed,Log Text size super tiny,"[Label(name=""enhancement"")]","The tinc log text is super tiny on my 10"" tablet. (screen shot attached) Would you allow this text size to be adjusted?
+Maybe this pinch to zoom code would work:
+http://stackoverflow.com/questions/16314789/pinch-zooming-on-textview-android
+
+![2014-04-03 09 07 54](https://cloud.githubusercontent.com/assets/1621917/2603631/576fc9ca-bb31-11e3-8996-d7529bd0481a.png)
+"
+Vilbrekin/tinc_gui,closed,Specify that the shell to be used on src_tinc is bash,[],"This fixes building src_tinc on make 3.81-3.82. This GNU Make issue describes the problem:
+
+http://savannah.gnu.org/bugs/?30614
+
+The lines like the following were failing because of make defaulting to /bin/sh:
+
+```
+    @cd tinc && autoreconf -fsi &>> $(LOG_FILE) && \
+```
+"
+Vilbrekin/tinc_gui,closed,Use native-code property in the resulting APK,"[Label(name=""enhancement"")]","The way you package tincd is fine I suppose, but the issue is that the resulting apk does not have a 'native-code' property that tells Android whether it is compatible with its architecture or not. The easy way to support it would be to have the tincd binary under libs/armeabi/tincd (or libs/armeabi-v7a/tincd if you want to support v7a only).
+
+I think the way that res/raw/ and libs/arch/ work is different, I don't know if the latter would work for you. But the problem here is that if I package this for F-Droid, users with e.g. x86 or MIPS will install the app thinking it will work and it magically won't :)
+"
+Vilbrekin/tinc_gui,closed,Better building of tinc from source,[],"Changes:
+- Use openssl and tinc as git submodules (safer, easier, stays between builds and checkouts)
+- Don't just ""git clone"" tinc, which meant using master
+- Don't include res/raw/tinc in the repo
+- Clean up the Makefile of other unnecessary stuff like the downloading of the NDK
+
+That last bit is secondary, but I still think that having it clutters the Makefile.
+
+Removing the tinc binary from the repo might be a step backwards for out-of-the-box building for newbies, but if you include instructions explaining to do a ""make -C src_tinc/ all install"", it should still be easy enough without having to depend on prebuilts. 
+
+From now on, if you want to update the version of tinc or openssl that you are using, it's as easy as updating the submodules to a newer git tag. You don't have to worry about package urls nor hash sums.
+"
+Vilbrekin/tinc_gui,closed,bilding tinc from source,[],"makefile for building tincd binary out of sources:
+- If ANDROID_NDK is given or set with a correct path or environement var is given then the installed NDK will be used and not downloaded.
+- cleaning all created dirs
+- ""install"" rule to copy tincd binary to the correct directory of tinc_gui
+- output of tincd version 
+- basic logging
+- check for needed programs
+"
+Vilbrekin/tinc_gui,closed,Add an option to auto restart when connection status toggles,"[Label(name=""enhancement"")]","having the daemon always running in the background means that you're relying on tinc's ping detection to see if the host is reachable, but the test uses ever-increasing time delay between one test and other, so if the daemon is running for long time while connection is unavailable it may take many minutes to detect that the connection is online, forcing one to reload it manually, an option to auto restart the daemon when the connection goes up would be nice
+"
+Vilbrekin/tinc_gui,closed,tincd crashing on ZTE Blade,"[Label(name=""duplicate"")]","Thanks to Laurens for the bug report.
+Latest version of tincd shipped with Tin GUI 0.9.5 is crashing badly on ZTE Blade:
+
+`
+03-11 15:49:50.650 I/tinc_gui(25938): Shell: su; command: umask 022; exec /data/data/org.poirsouille.tinc_gui/files/tincd -D -d5 -c /sdcard/tinc/testnet --pidfile=/data/data/org.poirsouille.tinc_gui/files/tinc.pid
+03-11 15:49:50.690 E/su      (25959): sudb - Opening database
+03-11 15:49:50.690 E/su      (25959): sudb - Database opened
+03-11 15:49:50.690 E/su      (25959): sudb - Database closed
+03-11 15:49:50.720 D/su      (25959): 10095 org.poirsouille.tinc_gui executing 0 /system/bin/sh using shell /system/bin/sh : sh
+03-11 15:49:50.850 I/DEBUG   (133): *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+03-11 15:49:50.850 I/DEBUG   (133): Build fingerprint: 'google/passion/passion:2.3.4/GRJ22/121341:user/release-keys'
+03-11 15:49:50.860 I/DEBUG   (133): pid: 25959, tid: 25959  >>> /data/data/org.poirsouille.tinc_gui/files/tincd <<<
+03-11 15:49:50.860 I/DEBUG   (133): signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0012571c
+03-11 15:49:50.860 I/DEBUG   (133):  r0 b00094c4  r1 2a000154  r2 b0006db8  r3 0012571c
+03-11 15:49:50.860 I/DEBUG   (133):  r4 b00099d0  r5 70000001  r6 0012571c  r7 b0009acc
+03-11 15:49:50.860 I/DEBUG   (133):  r8 00000000  r9 00000000  10 00000000  fp 00000000
+03-11 15:49:50.860 I/DEBUG   (133):  ip b0009ac8  sp be976b28  lr b000557d  pc b000503a  cpsr 00000030
+03-11 15:49:50.860 I/DEBUG   (133):  d0  0000000000000000  d1  0000000000000000
+03-11 15:49:50.860 I/DEBUG   (133):  d2  0000000000000000  d3  0000000000000000
+03-11 15:49:50.860 I/DEBUG   (133):  d4  0000000000000000  d5  0000000000000000
+03-11 15:49:50.860 I/DEBUG   (133):  d6  0000000000000000  d7  0000000000000000
+03-11 15:49:50.860 I/DEBUG   (133):  d8  0000000000000000  d9  0000000000000000
+03-11 15:49:50.860 I/DEBUG   (133):  d10 0000000000000000  d11 0000000000000000
+03-11 15:49:50.860 I/DEBUG   (133):  d12 0000000000000000  d13 0000000000000000
+03-11 15:49:50.860 I/DEBUG   (133):  d14 0000000000000000  d15 0000000000000000
+03-11 15:49:50.860 I/DEBUG   (133):  scr 00000000
+03-11 15:49:50.860 I/DEBUG   (133):
+03-11 15:49:50.890 I/DEBUG   (133):          #00  pc b000503a  /system/bin/linker
+03-11 15:49:50.890 I/DEBUG   (133):          #01  lr b000557d  /system/bin/linker
+03-11 15:49:50.890 I/DEBUG   (133):
+03-11 15:49:50.890 I/DEBUG   (133): code around pc:
+03-11 15:49:50.890 I/DEBUG   (133): b0005018 378c1c27 683d685e e0031975 31dc1c21
+03-11 15:49:50.890 I/DEBUG   (133): b0005028 08ad685d 3308600d 4a62e003 447a4862
+03-11 15:49:50.890 I/DEBUG   (133): b0005038 68194478 d0002900 1c20e777 680330ac
+03-11 15:49:50.890 I/DEBUG   (133): b0005048 d0042b00 31b01c21 2a00680a 4b5bd10b
+03-11 15:49:50.890 I/DEBUG   (133): b0005058 4a5c485b 495d4e5c 4478447b 3368447a
+03-11 15:49:50.890 I/DEBUG   (133):
+03-11 15:49:50.890 I/DEBUG   (133): code around lr:
+03-11 15:49:50.890 I/DEBUG   (133): b000555c d1094287 ed66f7fb f7fb1c05 4285ed84
+03-11 15:49:50.890 I/DEBUG   (133): b000556c 9803d102 f938f7ff 21001c20 fc62f7ff
+03-11 15:49:50.890 I/DEBUG   (133): b000557c d0192800 4c244923 4479ae07 447c2218
+03-11 15:49:50.890 I/DEBUG   (133): b000558c f7fb1c30 1c20ee50 ed24f000 1c021c21
+03-11 15:49:50.890 I/DEBUG   (133): b000559c f7fb2002 2002ed98 22181c31 ed92f7fb
+03-11 15:49:50.890 I/DEBUG   (133):
+03-11 15:49:50.890 I/DEBUG   (133): stack:
+03-11 15:49:50.890 I/DEBUG   (133):     be976ae8  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976aec  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976af0  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976af4  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976af8  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976afc  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b00  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b04  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b08  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b0c  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b10  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b14  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b18  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b1c  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b20  df002777 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b24  e3a070ad 
+03-11 15:49:50.890 I/DEBUG   (133): #00 be976b28  b000780e  /system/bin/linker
+03-11 15:49:50.890 I/DEBUG   (133):     be976b2c  b0012600 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b30  be976b44 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b34  b0005347  /system/bin/linker
+03-11 15:49:50.890 I/DEBUG   (133):     be976b38  b0007817  /system/bin/linker
+03-11 15:49:50.890 I/DEBUG   (133):     be976b3c  00000017 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b40  b0005dd1  /system/bin/linker
+03-11 15:49:50.890 I/DEBUG   (133):     be976b44  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b48  be976c98 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b4c  b00099d0 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b50  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b54  00000000 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b58  00000001 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b5c  b000557d  /system/bin/linker
+03-11 15:49:50.890 I/DEBUG   (133):     be976b60  b0009468 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b64  be976c0c 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b68  b00094c4 
+03-11 15:49:50.890 I/DEBUG   (133):     be976b6c  00000000 
+03-11 15:49:50.910 D/tinc_gui(25938): End of tincd thread
+`
+
+`
+build.board: blade
+build.bootloader: unknown
+build.brand: zte
+build.cpu_abi: armeabi-v6l
+build.cpu_abi2: armeabi
+build.device: blade
+build.display: GWK74
+build.fingerprint: google/passion/passion:2.3.4/GRJ22/121341:user/release-keys
+build.hardware: blade
+build.host: kangtastic
+build.id: GRJ22
+build.manufacturer: ZTE
+build.model: Blade
+build.product: blade
+build.radio: unknown
+build.serial: unknown
+build.tags: test-keys
+build.time: 0
+build.type: user
+build.user: rmcc
+version.codename: REL
+version.incremental: eng.rmcc.20111010.013651
+version.release: 2.3.7
+version.sdk_int: 10
+`
+"
+Vilbrekin/tinc_gui,closed,tincd failing on Atrix 4G,"[Label(name=""bug"")]","Thanks to Andreas for repoting this issue:
+
+For the last two days i tried to get tinc running on my Motorola Atrix
+4G. It is rooted and runs Android Gingerbread (2.3.4). Unfortunately,
+every time I tried to start tinc using your tinc GUI, it immediately
+reported 'tincd terminated'.
+I did some digging and found out that the tincd binary is compiled as
+ELF shared object[1]. And somehow my phone is not able to execute such
+binaries.
+As a result, I compiled my own version of the tincd binary - using the
+provided cross compile instructions[2] - removed the '-pie' argument
+from the last gcc call, and created an ELF executable[1]. And voila:
+tincd is executed and works great on my phone :)
+
+Actually, I am no expert in compiling native code for Android and I am
+also not sure what exactly is the difference between a ELF shared object
+and an ELF executable. And I absolutely haven't got a clue, why my phone
+does not execute shared objects. But maybe this is of interests for you.
+Just wanted to give some feedback for phones running older versions of
+android.
+
+Regards,
+Andreas
+
+[1] https://gist.github.com/anvo/ad45e8eb3adfbcf4e428
+[2] https://github.com/Vilbrekin/tinc/blob/android/README.android
+"
+Vilbrekin/tinc_gui,closed,Build tincd from source,"[Label(name=""enhancement"")]","Hello Vilbrekin,
+
+Thanks for this awesome app! I'd like to include it in F-Droid. We currently can't have it since it is not built entirely from source. Could you please make it possible to build res/raw/tincd from source?
+
+Thank you very much!
+"
+Vilbrekin/tinc_gui,closed,VPN permissions (to access /dev/net/tun without Superuser),"[Label(name=""duplicate""), Label(name=""enhancement"")]","Hi.
+I just noticed that tinc-gui doesn't notice in Manifest that it needs vpn privileges, so then it can't access tun interface, because at least on my device it is:
+shell@android:/etc/tinc/mva # ls /dev/tun -l
+crw-rw---- system   vpn       10, 200 1970-08-14 18:08 tun
+
+(so, tinc app should have vpn group pemissions to have access).
+
+P.S. Also, I think, it'd be nice to have some minimalistic internal text editor (it'll allow to keep tinc config directory and files inaccessible by other apps)
+"
+Vilbrekin/tinc_gui,open,Could you add support for VPN service for android?,"[Label(name=""enhancement""), Label(name=""wontfix"")]","People ported openvpn to android as ics-openvpn.
+Perhaps, tinc could be ported to android with support for VPN service, too.
+
+With built-in VPN service, I wouldn't have to root my device.
+"
+Vilbrekin/tinc_gui,closed,tinc doesn't have access to /dev/tun without root permission.,"[Label(name=""duplicate""), Label(name=""enhancement"")]","OS : android 4.4.2
+Device : Nexus 7 (2013)
+
+Do I have to root the device to use tinc-gui?
+"
+Vilbrekin/tinc_gui,closed,"On android 4.4, it doesn't ask neccesary permissions.","[Label(name=""bug"")]","Since it doesn't ask any special permissions, it can't access my external storage devices.
+
+It might have to ask additional permissions for accessing /dev/tun.
+
+Can you make it ask permissions for external storage and /dev/tun?
+"
+Vilbrekin/tinc_gui,closed,Add auto-start on boot feature,"[Label(name=""enhancement"")]","Some users would like daemon auto-start on boot feature.
+"
+Vilbrekin/tinc_gui,closed,Improve rooted devices detection,"[Label(name=""enhancement"")]","Currently, when root SU activated on non-rooted devices (which have a su binary doing nothing), no error nor log is displayed at all.
+Need to show an error message instead.
+"

@@ -1,0 +1,177 @@
+repository,state,title,label,body
+felixb/smsdroid,closed,add notification channels for android 8+,"[Label(name=""bug"")]",current implementation will not show any notification on android 8+
+felixb/smsdroid,open,Feature request: Strip Unicode,[],"Nice, plain and simple app, looking a bit dated but gets the job done, but I have a pet peeve.
+
+In my language (Czech), lots of words use diacritics (letters ě, š, č, á, í etc.). Because the text is completely legible even if you use the non-augmented version of the letters in your message, and because the diacritics detracts from the number of characters you can send in one SMS, it's desirable to always write without diacritics. However, the majority of soft keyboards automatically ""fix"" your diacritics-less words. This is desirable in most cases, but not when writing texts, and it's annoying to keep fixing them back.
+
+Most SMS apps have an option to strip Unicode characters before sending (some even do it smartly and only do it if it has an effect, i.e. if the message is longer than 70 characters) and leave only the GSM alphabet, but not SMSdroid, which is the only thing keeping me from using it full-time.
+
+Thank you for considering this feature."
+felixb/smsdroid,closed,"""Mark button"" or ""select button"" not working well",[],"
+#### Expected behavior
+
+""Mark all"" or ""select"" messages button on SMSdroid app is expected to be used to mark messages for either marking them as read or unread or probably to select messages to delete from the SMS folder
+
+#### Actual behavior
+The ""Mark button"" or ""select button"" found on SMSdroid app doesn't mark messages, rather the response it will give is ""mark all as read"" and there's nothing been marked 
+
+#### How to reproduce
+Download SMSdroid App from Google play store on your android device, the mark or select button is found at the right top corner of the app, short press or long press the button to use the function, the response is not different from what is said above and no action is taken
+
+* Browser: SmsDroid App
+* Operating system: Android 7.0 nougat
+* Phone: Camon CX air
+
+#### Recording Of The Bug
+
+https://youtu.be/qz4fn14dkSQ
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@timmyeu/mark-button-or-select-button-not-working-well"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+felixb/smsdroid,closed,fix database cursor leak in Message.java class ,[],"Fix to issue #31 
+
+I added code to close the database cursor in fetchMmsParts() and put the code in a finally block to make sure it always gets executed.
+
+@felixb let me know if there are any problems. Thank you :)
+"
+felixb/smsdroid,closed,resource leak: database cursor not closed,[],"Dear developers,
+
+The database cursor used in the fetchMmsParts() method of Message class is not closed.
+
+https://github.com/felixb/smsdroid/blob/master/SMSdroid/src/main/java/de/ub0r/android/smsdroid/Message.java
+
+```
+Cursor cursor = cr.query(URI_PARTS, null, PROJECTION_PARTS[INDEX_MID] + "" = ?"",
+                new String[]{String.valueOf(id)}, null);
+        if (cursor == null || !cursor.moveToFirst()) {
+            return;
+        }
+```
+
+If the cursor is empty but not null (moveToFirst() returns false), the method will return early and the cursor will be left open. Is it a bug? Thanks.
+"
+felixb/smsdroid,closed,Any chance on having a recent version pushed to F-Droid?,[],"I'd love to start using this app, and an app store/repo would be the most convenient way for me to get it. Unfortunately, it looks like the latest version on F-Droid is two and a half years old. Can a more recent version, 1.6.9 for example, be sent to the F-Droid repository?
+"
+felixb/smsdroid,closed,"fix double notification for incoming sms on kitkat, refs #21",[],"Please review and verify this fix.
+
+http://ub0r.de/files/074a554ef5ee4487615234795a13393e284cce83-SMSdroid-release.apk
+"
+felixb/smsdroid,closed,Fix for double notification sound in Android >= KitKat,[],"Fix for double notification sound in Android >= KitKat
+"
+felixb/smsdroid,closed,SMS from twilio,[],"@felixb I'm creating an app to receive and send SMS via twilio (https://www.twilio.com/sms). When I receive the message in my app, Is there an intent I can publish so that the message is received by SMS droid?
+"
+felixb/smsdroid,closed,Can't receive new SMS,[],"Dear Developer,
+I installed a cooked rom on my Asus TF300TG (http://forum.xda-developers.com/showthread.php?t=2425390).
+Unfortunately, the dev of the ROM missed to add an app for sending and receiving SMS.
+
+With SMSDroid I can read the SMSs, but don't receive  at all new SMSs.
+
+App as ZERO Comunicazione (https://play.google.com/store/apps/details?id=com.jb.zerosms&hl=it) works very well, but I prefer open-source apps like yours.
+
+Let me know if you need some other info.
+
+Thank you very much in advance,
+Domenico
+"
+felixb/smsdroid,closed,Additional Information in SMSdroid (suggestion),[],"Hey,
+it would be great if one could see how much characters are left (or already in use) during writing a message E. g.:
+for one SMS: 105/160
+for more: 167/320
+
+Additional (but I know, that could be more complicated) it would be great to see how much free sms (see the info ""Guthaben: 3/10"" for GMX connector) are left.
+
+Hopefully some good ideas. But its not a showstopper at all.
+
+greetz!
+Stefan
+"
+felixb/smsdroid,closed,Option to chose weather to send via WebSMS or natively ,[],"Hi Felix, 
+
+Another thing I'd like to ask is if it possible to choose weather SMSdroid will send message or it will be sent via WebSMS. 
+
+I like using WebSMS as a relay only when I'm roaming, but in other cases is prefer that SMSdroid sends them the regular way. 
+
+Thanks. 
+"
+felixb/smsdroid,closed,Notifications always active,[],"Hi Felix, 
+
+I've noticed that the notifications are always active, even when SMSdroid is not the default SMS app. Could this be tweaked somehow? 
+
+I've tried to disable them as I occasionally switch to the built in SMS app (because of the dual SIM phone), but then of course I forget to switch notifications back on again, which creates additional problems.
+
+Other messaging apps do not notify me unless they are the default ones for SMS. 
+"
+felixb/smsdroid,closed,Message text box size doesn't change,[],"The sms message box doesn't change its size during text input. If there are more than two lines, I cannot see the last line if text. 
+Nexus 5, Android 6.0
+"
+felixb/smsdroid,closed,Double notification sound on SMS arrival..,[],"Hi, 
+on Lollipop whenever a message arrives the notification is done twice-is SMSDroid perhaps listening to SMS_DELIVERED AND SMS_RECEIVED broadcasts?
+Best, 
+Cactus World
+"
+felixb/smsdroid,closed,empty threads on android 5.x,[],"the app is showing empty threads with text ""<MMS body>"" for any kind of contact.
+"
+felixb/smsdroid,closed,made some of the menu options and layout elements configurable,[],
+felixb/smsdroid,closed,Add option to handle text as short message in compose boxes.,[],"When composing a new message the EditText had TYPE_TEXT_VARIATION_SHORT_MESSAGE
+unset while it was set when replying to an existing message. The flag usually
+results in the keyboard replacing Enter with a Smiley button.
+
+Since some people obviously like having Enter when composing SMS add an option
+to change the state of TYPE_TEXT_VARIATION_SHORT_MESSAGE for those EditText
+elements.
+
+Addresses issue #646.
+"
+felixb/smsdroid,closed,Fix issue #644: Convert NCR / emoticons on message view update.,[],"The issue was caused by the NCR conversion done after emoticons had been converted. During that the already converted emoticon graphics got lost.
+"
+felixb/smsdroid,closed,Kitkat: concatenate body of SMS if intent contains more than one.,[],"This change (hopefully) fixes issue #830, at least it makes things work as expected for me.
+"
+felixb/smsdroid,closed,mergable commit for notifications,[],"Sorry that formatting in WebSMSBroadcastReceiver.java got reformatted. I accidentally pressed ""Format whole file"".
+
+Feel free to complain ;-)
+"
+felixb/smsdroid,closed,Big notification,[],"Hey I wanted to have support for extended notifications with some quick buttons (mark as read, reply). 
+I tested this on my phone (Kit Kat) on works fine.
+In the hurry I forgot to add i18n for the reply and read button.
+"
+felixb/smsdroid,closed,Working filter with preference.,[],"Hey I am forwarding my SMS from another SIM and added a feature, so that those forwared sms are recognized as if they were from this original sender.
+"
+felixb/smsdroid,closed,Double notify,[],"only plays notification sound  + vibration once on ACTION_SMS_NEW
+"
+felixb/smsdroid,closed,Hotfix for known receivers,[],"Tested with KitKat and works ;-)
+"
+felixb/smsdroid,closed,[+] Added support for Android 4.4,[],"I just added initial support for Android 4.4.
+"
+felixb/smsdroid,closed,Allow work mobile phone numbers when filtering on mobile numbers.,[],"Filtering on mobile numbers only allowed mobile numbers but not numbers of
+""work mobile phone"" type. Include those as well.
+"
+felixb/smsdroid,closed,Spelling fix (too -> to),[],
+felixb/smsdroid,closed,Edit box / mobile number display adjustments,[],"- Tried to address Issue 732.
+- Added option to only show mobile numbers.
+"
+felixb/smsdroid,closed,fix italian strings.xml,[],"the commit 4dd5a248b154a9aa661c69e17fa3446482991b31 removed the
+""twitter_hint"" everywhere, but in values-it/strings.xml this string was
+multiline, so that the xml is invalid now which prevents the build
+"
+felixb/smsdroid,closed,Tiled layout,[],"Hi there,
+I created a new tiled layout for the conversation view, which is similar to the ICS starred contacts layout.
+However I had some problems compiling the project with the newest ActionBarSherlock lib, which is why I messed a bit with imports and similar, you may want to double check them.
+The new layout is disabled by default, users can enable it under the appearance settings.
+I also improved the scrolling performance in the list which was a bit slow (especially with the new layout) using the view holder pattern. Feel free to discuss.
+
+Cheers
+"
+felixb/smsdroid,closed,Decode Decimal NCR encoded chars,[],"Hi Felix. Kannst du es dir mal anschauen?
+"
+felixb/smsdroid,closed,SMSDroid,[],"Can the SMSDroid be as a composer and not only as a reader?
+"
+felixb/smsdroid,closed,ur0lib,[],"Hi,
+
+I am trying to build to smsdroid in eclipse. After including the ur0lib as a project in the build path all the missing refernces a re resolved but only the generated class R is not resolved, i.e. the key ""ic_contact_picture"" can not be resolved in smsdroid,
+
+do you have an idea what am I doing wrong?
+
+Tx,
+Igal
+"
+felixb/smsdroid,closed,fixed a small typo,[],"just a typo-fix
+"

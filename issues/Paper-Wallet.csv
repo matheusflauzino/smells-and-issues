@@ -1,0 +1,162 @@
+repository,state,title,label,body
+ValleZ/Paper-Wallet,open,TransactionTooLargeException,"[Label(name=""bug"")]",
+ValleZ/Paper-Wallet,open,QRCode crash,"[Label(name=""bug"")]","Caused by: java.lang.IllegalArgumentException: 
+  at com.d_project.qrcode.QRCode.make (QRCode.java:2313)
+  at com.d_project.qrcode.QRCode.make (QRCode.java:1097)
+  at com.d_project.qrcode.QRCode.getMinimumQRCode (QRCode.java:428)
+  at ru.valle.btc.MainActivity$12.doInBackground (MainActivity.java:2862)"
+ValleZ/Paper-Wallet,open,ArrayIndexOutOfBoundsException at  (Address.java:68),"[Label(name=""bug"")]","java.lang.ArrayIndexOutOfBoundsException: 
+  at java.lang.System.arraycopy (Native Method)
+  at ru.valle.btc.Address.<init> (Address.java:68)
+  at ru.valle.btc.Address.decode (Address.java:93)
+  at ru.valle.btc.Address.verify (Address.java:106)
+  at ru.valle.btc.MainActivity$2.onTextChanged (MainActivity.java:295)"
+ValleZ/Paper-Wallet,open,Translation in pt-br,[],Created structure in strings.xml.
+ValleZ/Paper-Wallet,closed,Passwords should be invisible to the accessibility services,[],"Due to recent attacks, malicious apps that are using the accessibility service can capture all user inputs. In this case, the passwords should be ignored for the accessibility service, so such attacks cannot happen. This is done by our research project in CISPA, Saarland University, Germany."
+ValleZ/Paper-Wallet,open,Add denomination option,[],
+ValleZ/Paper-Wallet,closed,Better fee calculation and entry,[],
+ValleZ/Paper-Wallet,closed,SegWit support,[],
+ValleZ/Paper-Wallet,closed,ActivityNotFoundException,[],"//package name: ru.valle.btc
+//version: 2.3.0
+ android.content.ActivityNotFoundException: No Activity found to handle Intent { act=android.intent.action.VIEW dat=bitcoin:1KhK86tERtGR7i38hrRGJ4Bi8N3UHuPq23 }
+ 	at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:1632)
+ 	at android.app.Instrumentation.execStartActivity(Instrumentation.java:1424)
+ 	at android.app.Activity.startActivityForResult(Activity.java:3390)
+ 	at android.app.Activity.startActivityForResult(Activity.java:3351)
+ 	at android.app.Activity.startActivity(Activity.java:3587)
+ 	at android.app.Activity.startActivity(Activity.java:3555)
+ 	at ru.valle.btc.MainActivity$19$1.onClick(MainActivity.java:718)
+ 	at android.text.method.LinkMovementMethod.onTouchEvent(LinkMovementMethod.java:212)
+ 	at android.widget.TextView.onTouchEvent(TextView.java:7623)
+ 	at android.view.View.dispatchTouchEvent(View.java:7384)
+ 	at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2211)
+ 	at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1954)
+ 	at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2211)
+ 	at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1954)
+ 	at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2211)
+ 	at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1954)
+ 	at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2211)
+ 	at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1954)
+ 	at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2211)
+ 	at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1954)
+ 	at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2211)
+ 	at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1954)
+ 	at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2211)
+ 	at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1954)
+ 	at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2211)
+ 	at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1954)
+ 	at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchTouchEvent(PhoneWindow.java:1966)
+ 	at com.android.internal.policy.impl.PhoneWindow.superDispatchTouchEvent(PhoneWindow.java:1418)
+ 	at android.app.Dialog.dispatchTouchEvent(Dialog.java:740)
+ 	at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchTouchEvent(PhoneWindow.java:1914)
+ 	at android.view.View.dispatchPointerEvent(View.java:7564)
+ 	at android.view.ViewRootImpl$ViewPostImeInputStage.processPointerEvent(ViewRootImpl.java:3883)
+ 	at android.view.ViewRootImpl$ViewPostImeInputStage.onProcess(ViewRootImpl.java:3778)
+ 	at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3379)
+ 	at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3429)
+ 	at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3398)
+ 	at android.view.ViewRootImpl$AsyncInputStage.forward(ViewRootImpl.java:3483)
+ 	at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3406)
+ 	at android.view.ViewRootImpl$AsyncInputStage.apply(ViewRootImpl.java:3540)
+ 	at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3379)
+ 	at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3429)
+ 	at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3398)
+ 	at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3406)
+ 	at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3379)
+ 	at android.view.ViewRootImpl.deliverInputEvent(ViewRootImpl.java:5419)
+ 	at android.view.ViewRootImpl.doProcessInputEvents(ViewRootImpl.java:5399)
+ 	at android.view.ViewRootImpl.enqueueInputEvent(ViewRootImpl.java:5370)
+ 	at android.view.ViewRootImpl$WindowInputEventReceiver.onInputEvent(ViewRootImpl.java:5493)
+ 	at android.view.InputEventReceiver.dispatchInputEvent(InputEventReceiver.java:182)
+ 	at android.os.MessageQueue.nativePollOnce(Native Method)
+ 	at android.os.MessageQueue.next(MessageQueue.java:132)
+ 	at android.os.Looper.loop(Looper.java:124)"
+ValleZ/Paper-Wallet,closed,Need Bitcon cash support,[],"Vale, Any idea to support for bit coin cash
+
+Tons of thanks if you are updating for bit coin cash as well."
+ValleZ/Paper-Wallet,closed,Missing button to sign/send/view spend transaction?,[],"There is a spend section at the bottom of the app, but all I see is Paste..., Scan... buttons with their fields. There doesn't seem to be any way to transmit the transaction. I see code for sending it with a browser, but the button to do that seems to be missing.
+
+Also, I'd like to use this on a completely offline phone, can you add a way to view a signed transaction as a qr-code? Maybe using the URL you'd normally open in the browser?"
+ValleZ/Paper-Wallet,closed,Bit Coins Transaction error,[],"64: non-mandatory-script-verify-flag (Non-canonical signature: S value is unnecessarily high). Code:-26
+
+Pls help"
+ValleZ/Paper-Wallet,closed,How to create testnet account,[],"Hi Vallez,
+
+Anyone can help me please how I can create testnet account with paper wallet source code."
+ValleZ/Paper-Wallet,closed,Added Japanese translation,[],
+ValleZ/Paper-Wallet,closed,Idea: add diceware password generator for BIP38 encryption,[],"Idea: add diceware password generator for BIP38 encryption
+"
+ValleZ/Paper-Wallet,closed,Include more languages,[],"should include translations into French, German and Spanish instructions in English are a bit confusing.
+"
+ValleZ/Paper-Wallet,closed,Compatibility Update for Android Studio 1.1.0,[],"This Pullrequest makes the Project to work with the Android Studio 1.1.0
+"
+ValleZ/Paper-Wallet,closed,blockchain.info http -> https,[],"""Blockchain.info is dropping support for all http:// requests on December 14th. Please make sure all API requests use https://""
+"
+ValleZ/Paper-Wallet,closed,Req: add option to store BIP38 keys for easy retrieval and use.,[],"F.ex. in some sort of drop down list.
+"
+ValleZ/Paper-Wallet,open,Request: add option to sign message,[],"Like this: http://brainwallet.org/#sign
+"
+ValleZ/Paper-Wallet,closed,QR codes unreadable on Nexus One,[],"I realize this is an OLD device (2.3.6) but this seems to be an ideal use for an old Android phone.
+
+The screen that displays the QR code appears to have inverted colors making the QR code unreadable.
+"
+ValleZ/Paper-Wallet,closed,add payment amount,[],"In address QR popup, add option to enter payment amount and show in QR code according to bitcoin URI specs.
+"
+ValleZ/Paper-Wallet,closed,force close,"[Label(name=""bug"")]","First link in address QR popup (bitcoin:*) causes force close when clicked.
+"
+ValleZ/Paper-Wallet,closed,Set PREF_FEE_DEFAULT to 0.0001 in FeePreference.java,[],"https://en.bitcoin.it/wiki/Transaction_fees
+
+""[...] Note that a typical transaction is 500 bytes, so the typical transaction fee for low-priority transactions is 0.1 mBTC (0.0001 BTC), regardless of the number of bitcoins sent.""
+"
+ValleZ/Paper-Wallet,open,Make printed wallets look better,"[Label(name=""enhancement"")]",
+ValleZ/Paper-Wallet,closed,Link public key in 'Now you can spend some coins from xxx.' to blockchain.info address.,"[Label(name=""enhancement"")]","Link public key in 'Now you can spend some coins from xxx.' to blockchain.info address. Use case: quickly check address balance.
+"
+ValleZ/Paper-Wallet,closed,Continuous field validation makes it hard to correctly enter Bitcoin amount.,"[Label(name=""bug""), Label(name=""enhancement"")]","Continuous field validation makes it hard to correctly enter Bitcoin amount.
+"
+ValleZ/Paper-Wallet,closed,"When scanning receiving address, also process payment amount according to BIP 0021 URI scheme.","[Label(name=""bug"")]","When scanning receiving address, also process payment amount according to BIP 0021 URI scheme (f.ex: bitcoin:1Johan1CWrWVnEQDRFUp5kQrgJgz545Cup?amount=0.1). Use case: scan QR code from blockchain.info request payment.
+"
+ValleZ/Paper-Wallet,closed,Add QR-code button next to public key address.,"[Label(name=""enhancement"")]","Add QR-code button next to public key address. Use case: scan QR code from other device to send funds.
+"
+ValleZ/Paper-Wallet,closed,Automatic fee calculation,"[Label(name=""enhancement"")]","There should be automatic fee calculation with an easy way to adjust in in-place
+"
+ValleZ/Paper-Wallet,closed,Show more meaningful error when tx input is same as tx output,"[Label(name=""enhancement"")]",
+ValleZ/Paper-Wallet,closed,KitKat crashes in settings,"[Label(name=""bug"")]","Caused by: java.lang.NumberFormatException: Invalid double: ""0,0002""
+at java.lang.StringToReal.invalidReal(StringToReal.java:63)
+at java.lang.StringToReal.parseDouble(StringToReal.java:269)
+at java.lang.Double.parseDouble(Double.java:295)
+at ru.valle.btc.BTCUtils.parseValue(BTCUtils.java:114)
+at ru.valle.btc.FeePreference.persistString(FeePreference.java:68)
+at android.preference.EditTextPreference.setText(EditTextPreference.java:88)
+at android.preference.EditTextPreference.onSetInitialValue(EditTextPreference.java:154)
+at android.preference.Preference.dispatchSetInitialValue(Preference.java:1345)
+at android.preference.Preference.onAttachedToHierarchy(Preference.java:1140)
+at android.preference.PreferenceGroup.addPreference(PreferenceGroup.java:163)
+at android.preference.PreferenceGroup.addItemFromInflater(PreferenceGroup.java:104)
+at android.preference.PreferenceGroup.addItemFromInflater(PreferenceGroup.java:45)
+at android.preference.GenericInflater.rInflate(GenericInflater.java:488)
+at android.preference.GenericInflater.inflate(GenericInflater.java:326)
+at android.preference.GenericInflater.inflate(GenericInflater.java:263)
+at android.preference.PreferenceManager.inflateFromResource(PreferenceManager.java:272)
+at android.preference.PreferenceFragment.addPreferencesFromResource(PreferenceFragment.java:285)
+at ru.valle.btc.PreferencesActivity$SettingsFragment.onCreate(PreferencesActivity.java:55)
+"
+ValleZ/Paper-Wallet,closed,Crash by clicking on options,"[Label(name=""bug"")]","With the last version (downloaded few seconds ago), if I click on the upper right icon (options) it crashes.
+
+N4 -  Android v4.4.2 - Rooted - Original kernel
+
+I've sent 2 reports.
+"
+ValleZ/Paper-Wallet,closed,Restrict screenshots for main and scanner activities,"[Label(name=""enhancement"")]",
+ValleZ/Paper-Wallet,closed,"Soft keyboard actions ""Encrypt"" and ""Decrypt"" doesn't work","[Label(name=""bug"")]","The buttons on keyboard doesn't work.
+"
+ValleZ/Paper-Wallet,closed,Print paper wallet on Android KitKat,"[Label(name=""enhancement"")]","KitKat have API to print paper wallets directly from phone, it's very useful.
+"
+ValleZ/Paper-Wallet,closed,Show Private Key and QR-Code for Brainwallet,[],"Can you also show the private key (HEX/WIF) and respective QR-Code as this other app does?
+https://play.google.com/store/apps/details?id=com.CIMS.BitcoinAddress
+
+After this your app will be the perfect and more complete alternative :)
+"
+ValleZ/Paper-Wallet,closed,BIP0038 support,[],"It would be great to have possibility to encrypt private key with scrypt algorithm (BIP0038).
+"
+ValleZ/Paper-Wallet,closed,Please add source code for zbar,[],"The native parts can be fetched via a script if necessary in tha manner of https://bitbucket.org/trikita/obsqr/src
+"

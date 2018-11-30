@@ -1,0 +1,71 @@
+repository,state,title,label,body
+tejado/Authorizer,open,Yubikey Neo support,[],"I'd really like to see 2FA for logging into the password database, like their is on the normal passwdsafe application. If this was implemented idk if I'd ever use another password manager again. I'd use the normal passwdsafe app, but the USB otg function is something I absolutely love. Also is their any way to donate to this project if so please let me know."
+tejado/Authorizer,open,NFC support,[],"I've been working on a similar project that uses NFC and would like to share what I have found, so that we can work together on a solution. My main areas are embedded and hardware, rather than Android.
+
+NFC uses APDU to exchange data, which requires the Android device to emulate a basic smart card. APDU can transfer arbitrary data, and allows an application to be selected by the reader. More info here:
+
+https://developer.android.com/guide/topics/connectivity/nfc/hce
+
+My intention is to build a very small USB keyboard emulator with NFC that can read passwords from an Android phone and type them on the host. It's a shame no off-the-shelf hardware can do this.
+
+There are two options for the reader, an RC522 or a PN532 chip. I'm evaluating both. To control them my plan is to use a XMEGA microcontroller, since I have a fully open source USB stack for it, which includes HID and DFU for bootloading. Also all the development tools are free (GCC) and well supported.
+
+Other options include an ARM CPU. The advantages are that they are physically smaller and slightly cheaper, but the down side is that development support is worse. Actually one other big advantage is that they often come with a USB bootloader factory installed, where as with XMEGA you need a programmer (and probably a programming header).
+
+It would be great to get some feedback on these ideas and also ensure that the hardware can be used with Authorizer."
+tejado/Authorizer,open,"Added ""Send OTP over USB"" button and related UX adjustments",[],"it does not look better than before... But at least usable for me, wonder if others like it as well."
+tejado/Authorizer,open,Merge commits from upstream to Authorizer.,"[Label(name=""Hacktoberfest""), Label(name=""help wanted"")]","Authorizer is based on PasswdSafe (https://sourceforge.net/projects/passwdsafe/). 
+As PasswdSafe is in active development, a lot of commits from it are not yet integrated into Authorizer.
+
+So it would be good if someone could merge commits from PasswdSafe back to Authorizer. The source of PasswdSafe can be found here: https://sourceforge.net/p/passwdsafe/code/ci/default/tree/"
+tejado/Authorizer,closed,Documentation. ,[],"Hi, I would like to add a FAQ document to the project. To help users of the application. 
+I await your response. Thank you "
+tejado/Authorizer,open,Support for additional keyboard layouts,"[Label(name=""Hacktoberfest""), Label(name=""enhancement""), Label(name=""help wanted"")]","Would be great if someone creates additional keyboard layouts for Authorizer.
+
+More information are available in PR https://github.com/tejado/Authorizer/pull/3"
+tejado/Authorizer,open,Creating a new demo video of Authorizer app,"[Label(name=""Hacktoberfest""), Label(name=""enhancement""), Label(name=""help wanted"")]","The current video linked in the README.md shows a really old version of Authorizer. It would be great if someone creates a new one. The video should show two devices and the Authorizer version 0.3.0 similar the current one. 
+Bonus: OTP & usb backup demo
+"
+tejado/Authorizer,closed,Where is an OTP Button in keyboard?,"[Label(name=""enhancement"")]","Since new update that I got from F-Droid is have support to add OTP in password database, but unfortunately, I cannot find the button to insert/autotype OTP in the app keyboard yet."
+tejado/Authorizer,open,Doesn't tell if user doesn't have root access  ,"[Label(name=""Hacktoberfest""), Label(name=""bug""), Label(name=""help wanted"")]","When using the app I noticed it didn't work, even on multiple devices, with different cables and everything, untill I used saw the changelog where it's the only place it says that the app uses root permissions in order to work.
+
+Can you make it so that if root isn't granted, to tell the user? It would help many new users who think the app is broken or something.  "
+tejado/Authorizer,closed,add alternate soft keyboard to input password on the smartphone,[],"When trying to copy the password in the clipboard a warning popup suggests to use the Passwd alternate keyboard, instead of unsecure copy/paste.
+
+Is it possible to implement this feature in Authorizer, too?"
+tejado/Authorizer,closed,Support for PasswdSafe Sync,[],"I'm editing HID patch for my device right now and to that day I was using [PasswdSafe by Jeff Harris](https://play.google.com/store/apps/details?id=com.jefftharris.passwdsafe).
+Since your project is based on the same sources, can you maybe make it compatible with great addon, for version I metioned earlier, called [PasswdSafe Sync (albo by the same person)](https://play.google.com/store/apps/details?id=com.jefftharris.passwdsafe.sync)?
+For now, when you open Authorizer you will got security errors when have this apk addon installed immediately after openning your app. It is [open-sourced](https://sourceforge.net/p/passwdsafe/code/ci/default/tree/sync/) too but if you can't make it compatible (by compiling it probably for your fork) then just please remove part of code that is calling it when starting Authorizer because it is impossible to use in my case. If it is only matter of few simple tweaks then I will try to build it myself.
+[Screenshot of error](https://i.imgur.com/dZOmFSu.png)"
+tejado/Authorizer,closed,Passwords should be invisible to the accessibility services,[],"Due to recent attacks, malicious apps that are using the accessibility service can capture all user inputs. In this case, the passwords should be ignored for the accessibility service, so such attacks cannot happen. This is done by our research project in CISPA, Saarland University, Germany."
+tejado/Authorizer,open,Implement bluetooth keyboard functionality similar to USB keyboard,"[Label(name=""enhancement"")]","Hey there,
+I don't know whether this is even possible at all nor securely, this would definitely require some investigation, however, if this is doable without security concerns this could be a great feature.
+
+It would need android to be able to behave as a bt keyboard and it would have to be looked at possible security issues like traffic sniffing (reading keys or at least being able to replay them)."
+tejado/Authorizer,open,Sending via USB not working,"[Label(name=""bug"")]","On my nexus 5, I installed the linked kernel, rooted via SuperSU, I can't send text via USB.
+
+It has been downgraded to 5.0 from 6.0, USB Keyboard app is installed, and when I use Authorizer as keyboard for USB Keyboard, I can enter the logins and passwords."
+tejado/Authorizer,closed,App FC when accessing  saved file,"[Label(name=""bug"")]","This happens when opening previously created file rw or ro. It also FC when using the widget linked to file. If you need a logcat, I can provide. 
+
+Android 7.1 Samsung Galaxy J5"
+tejado/Authorizer,open,feature request: pass integration,"[Label(name=""enhancement"")]","Hi, finally authorizer is on f droid :) 
+
+It would be nice to have pass integration since this is a ""standart"" format for password storing (with gpg encryptation) and that works with git 
+
+Here is pass website for reference : https://www.passwordstore.org/
+
+Also there is a project here on github that already integrates this format which i dont remeber the name"
+tejado/Authorizer,closed,Add compatibility with keepass ?,[],"It is possible to add compatibility to open the files keepass?
+"
+tejado/Authorizer,closed,Update README.md,[],This small and useless PR adds the button to get the app on F-Droid
+tejado/Authorizer,closed,Added some layouts,[],"Hi,
+I added following keyboard layouts:
+
+- swiss german de_CH
+- french german fr_CH
+- neo 2.0 (only layer 1 to 3)
+
+regards
+absturztaube"
+tejado/Authorizer,closed,Add to f-droid,[],"Hi, any ideas into adding this project to f-droid?"
+tejado/Authorizer,closed,Modify for wearable,[],"Would it be possible to port something like this to a wearable device?The aim would be to have something that is as small as possible that uses your USB feature. I've trawled through the code, but I'm far too inexperienced to know the limits of wearables (it seems very limited to me)."

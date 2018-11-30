@@ -1,0 +1,1057 @@
+repository,state,title,label,body
+rtyley/agit,open,cuck,[],cuck
+rtyley/agit,open,Wiki Page ConnectBot Source link broken,[],"On the Wiki Page, the ""source"" link for ConnectBot (ssh-agent) is now broken, it still points to a Google Code repository and Google Code has been shut down for quite a while now."
+rtyley/agit,closed,Use SSH agent option not saved since last update,[],"Since last update I cannot use ssh agent any more from the application
+
+The option ""Use SSH authentication agent"" was reset on all my servers and when I try to enable it and save it, this option was also reset. Therefore I cannot use SSH authentication agent on my hosts."
+rtyley/agit,closed,Proxy support,[],"Hi! Please, add an ability to work with Orbot/I2P services!"
+rtyley/agit,open,Scrollable Views change position on Device Rotation,[],"When I perform these sequences of events, the scrollable webview on screen goes back to the top:
+
+Sequence 1:
+1. Click on ""..."" opening overflow menu
+2. Click on About
+3. Scroll Down
+4. Orientation Change
+
+Sequence 2:
+1. Click on Repo item in list
+2. Click on Branches
+3. Scroll Down
+4. Orientation Change"
+rtyley/agit,closed,Compile ability,[],"Add the ability to compile the app locally, directly with the downloaded source code
+"
+rtyley/agit,closed,F-Droid integration,[],"Add an ability to ""read"" the apps installed from 
+F-Droid, and add the ability to download automatically source code of this apps
+"
+rtyley/agit,closed,Black theme AMOLED,[],"Add black theme ""AMOLED"" for save the battery
+"
+rtyley/agit,open,Add support for yubikey neo as ssh identity provider,[],"The yubikey neo can be used for storing ssh identities (among the gpg credentials). It would be cool if one could use these identities with agit.
+"
+rtyley/agit,open,Screen rotation,[],"When rotating the phone while viewing a file in horizontal mode it says that it crashed. Then it restarts when you click ok and you have to open the file again to view it in panorama mode. Vice versa the same issue. I have a Oneplus one Android 5.0.2 with cm12.0
+"
+rtyley/agit,open,always open not working when agit involved,[],"I've installed agit on my device, as i like the idea to be able to peruse a repo or two in a convenient way while on the go.
+
+Thing is, having agit installed makes my system ask me, every time I browse a github url (and many others I suppose) in chrome, whether I want to open it in agit or chrome. Clicking chrome and Always does not persist, and soon I get that question again. Generally, answering Always on my system does work, just not for this. Even Always with agit fails to work, but that's not what I want.
+
+I'd be happy to participate in solving this. I have 1.39 from fdroid. CM11M11 on nxs5. Soon be forced to uninstall agit :/
+"
+rtyley/agit,open,request: 'refresh' ~= 'git checkout && git pull',[],"In non-bare repos if I delete a file there is no way to recover it except to delete and redownload the entire git repo. I can still access them through agit's history mechanism, so they are still on the device, but they do not show up in the folder.
+
+I was hoping to use agit as a more reliable better (checksums! file conflicts!) and open source Dropbox, but this blocks me from doing that.
+
+If agit first did a checkout it would recover from any mutilations I've done to the files. Since it's currently a read-only client, mutilations should not be expected to survive.
+"
+rtyley/agit,open,"""pull failed: checkout conflict""",[],"I have Agit 1.38 from F-Droid installed. I have repos pulled over ssh. If I make changes and then repull sometimes it works, but with some repos it gives me this error:
+""Pull failed""
+""Checkout conflict with files: $FILENAME""
+
+Sometimes a repo can repull fine and then stop repulling. I haven't yet worked out what's the difference is.
+
+I am emailing you my `adb bugreport`.
+"
+rtyley/agit,open,git resuming,[],"There is no resuming if internet connection fail or simple change WiFi network while download from git repository. Its need to download all data again instead of resuming download.
+"
+rtyley/agit,open,Clone to SD card on android 4.4,[],"Android 4.4 has restricted write access to SD cards only to the app that created the folder. Therefore agit needs create the folders when cloning. See more:
+http://support.solidexplorer.pl/responses/kit-kat-442-issue
+"
+rtyley/agit,open,add support for orgmode in languages,[],"Hi
+
+great little app, just discoverd it.
+
+i know this is a far fetched request but any chance at all to support orgmode syntax (similar to how markdown is supported):
+http://orgmode.org/ (part of Emacs)
+
+thx alot!
+
+Z
+"
+rtyley/agit,open,Make class/method abstract,[],"instead create a method that throw exception ""You must override newView()!""
+"
+rtyley/agit,open,agit only stores host keys while session is active,[],"The following code, at the beginning of `CuriousHostKeyRepository`, initializes the `knownKeys` hashmap for the application:
+
+```
+    Map<String, byte[]> knownKeys = newHashMap();
+```
+
+Unfortunately, as soon as the application closes, this `knownKeys` hashmap is removed. This forces the user to accept a prompt for a host key that is deemed ""curious"" the next time the app is run. This degrades sync on these repos, because it requires the user to accept the host key if agit wasn't previously running (thus it can't happen in the background).
+
+My suggestion would be (as a naive implementation) to store accepted host keys in the preference store. The down side to this, though, is that when a repository is removed, the associated keys should also be removed from the preference store for the host on which the repo was located (unless there exists another repo with the same host).
+"
+rtyley/agit,closed,Crash @ com.android.internal.view.menu when refreshing a repository,[],"Steps to reproduce:
+1. Clone a personal repository (for me, this meant a repository on a private server that has a self-signed SSL certficate... I'm not sure if this actually has anything to do with the crash). The initial clone worked fine.
+2. Click the refresh button at the top of the nav bar.
+
+Expected Results:
+In this case, I'd expect nothing to happen, because the repository was just cloned, and no pushes have been made to it since the clone.
+
+Actual Result:
+Agit crashes due to a NullPointerException.
+
+Stack trace (not that useful):
+
+```
+03-13 19:24:56.772    5145-5145/com.madgag.agit E/AndroidRuntime﹕ FATAL EXCEPTION: main
+    Process: com.madgag.agit, PID: 5145
+    java.lang.NullPointerException
+            at com.android.internal.view.menu.MenuItemImpl.toString(MenuItemImpl.java:499)
+            at java.lang.StringBuilder.append(StringBuilder.java:202)
+            at com.actionbarsherlock.app.SherlockFragmentActivity.onMenuItemSelected(SherlockFragmentActivity.java:201)
+            at com.android.internal.policy.impl.PhoneWindow.onMenuItemSelected(PhoneWindow.java:1012)
+            at com.android.internal.view.menu.MenuBuilder.dispatchMenuItemSelected(MenuBuilder.java:735)
+            at com.android.internal.view.menu.MenuItemImpl.invoke(MenuItemImpl.java:152)
+            at com.android.internal.view.menu.MenuBuilder.performItemAction(MenuBuilder.java:874)
+            at com.android.internal.view.menu.ActionMenuView.invokeItem(ActionMenuView.java:546)
+            at com.android.internal.view.menu.ActionMenuItemView.onClick(ActionMenuItemView.java:115)
+            at android.view.View.performClick(View.java:4438)
+            at android.view.View$PerformClick.run(View.java:18422)
+            at android.os.Handler.handleCallback(Handler.java:733)
+            at android.os.Handler.dispatchMessage(Handler.java:95)
+            at android.os.Looper.loop(Looper.java:136)
+            at android.app.ActivityThread.main(ActivityThread.java:5017)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:515)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:779)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:595)
+            at dalvik.system.NativeStart.main(Native Method)
+```
+"
+rtyley/agit,open,Add ConnectBot as a library to agit,[],"In the wiki, it mentions that ConnectBot can be used to store keys for git over SSH. Unfortunately, this requires that ConnectBot be installed prior to agit. I suspect there is rationale for not including an implementation of ConnectBot with agit, but it would be nice if a bare bones implementation were included so users can skip this step.
+
+~~Alternatively, if agit didn't detect a usable SSH client on first run, it would be nice if it remembered this and researched for it on subsequent runs. Or, even pointed to the Google play page for ConnectBot. This would save users from having to the uninstall agit-install ConnectBot-reinstall agit dance.~~
+"
+rtyley/agit,open,Add ability to control sync on a per-repository basis,[],"Right now, the ability to sync (and my implementation of sync frequency) is on a whole agit-instance basis. This means that you can turn sync on or off for agit, but you can't turn it on or off for individual repositories. It would be nice to have more fine-grained control over these settings.
+"
+rtyley/agit,open,Issue 100: Add a settings menu with a single preference for controlling sync frequency.,[],"I added a new 'Settings' menu to the Dashboard Activity which contains a single preference: the frequency, in minutes, of how often to synchronize repositories.
+
+This works, but it's sort of a first pass at fixing this problem. Ideally, I think it would be nice to be able to sync with different options (e.g. every X minutes/hours, once per week, once a day, X day of the month, etc..). This is possible right now, but it requires that the user calculate the sync frequency to minutes, which is rather tedious for longer-term syncs.
+"
+rtyley/agit,closed,Issue #101: Fix LogFragment so it doesn't incorrectly import resources from handmark.pulltorefresh library.,[],"This fixes issue # 101.
+"
+rtyley/agit,open,LogFragment.java incorrectly pulls resources from pulltorefresh library,[],"LogFragment.java has an import of resources at the top of its file:
+
+<code>
+import com.handmark.pulltorefresh.library.R;
+</code>
+
+Unfortunately, this isn't the correct R.java file. It should be using the agit resources, otherwise when imported into Android Studio, it complains that R.layout.rev_commit_list_item cannot be found.
+"
+rtyley/agit,open,No method of specifying update frequency,[],"According to the documentation, agit updates known repositories quarter-hourly. It would be nice, to save bandwidth, if this frequency could be specified somehow. At the very least, it should be able to be disabled.
+"
+rtyley/agit,closed,experiment with android:largeHeap=true in manifest,[],"According to http://developer.android.com/guide/topics/manifest/application-element.html this _may_ help with memory pressure:
+
+android:largeHeap
+Whether your application's processes should be created with a large Dalvik heap. This applies to all processes created for the application. It only applies to the first application loaded into a process; if you're using a shared user ID to allow multiple applications to use a process, they all must use this option consistently or they will have unpredictable results.
+Most apps should not need this and should instead focus on reducing their overall memory usage for improved performance. Enabling this also does not guarantee a fixed increase in available memory, because some devices are constrained by their total available memory.
+
+To query the available memory size at runtime, use the methods getMemoryClass() or getLargeMemoryClass().
+
+I have a repository I consistently fail to clone on most of my devices (only works on the N4). I know I shouldn't have large files in it, but it's just very convenient ;-) Would be awesome if you could give largeHeap a try to see if it improves things.
+
+thank you,
+ patrick
+"
+rtyley/agit,open,Won't start on Android KitKat using ART runtime,[],"Agit works just fine in KitKat on Nexus 4 using the default Dalvik runtime, but not when switching to ART. I don't know if this is to be classified as a bug or not, since ART is still experimental.
+"
+rtyley/agit,closed,Aperiodic merge of the current google-code-prettify? Yes? ,[],"The lexer [script](https://github.com/rtyley/agit/tree/master/agit/assets/syntax-highlighting/google-code-prettify) lags a bit from [Mike Samuel's](https://google-code-prettify.googlecode.com/svn/trunk/README.html) original. 
+E.g: 
+- The [Clojure](https://github.com/clojure/clojure/blob/master/src/clj/clojure/parallel.clj) form quote is not handled properly. 
+- 11 less languages, etc.
+
+Simple copy, attribute and paste right?
+"
+rtyley/agit,open,Only one authentication agent is tried,[],"It would be nice if you could have multiple authentication agents installed at the same time and make agit try keys from all or let the user choose which one to use in a setting or at runtime.
+
+I am developing an authentication agent with a PC/SC backend, and had to uninstall ConnectBot (ssh-agent) to be able to use it.
+"
+rtyley/agit,open,repo view is not updated with the new commit after fetch,[],"I'm using aGit 1.38 from f-droid.
+
+I've fetched updates to a repo (by pressing the circular update sign wheb viewinv a repo), but the repo view still shows the old last commit.
+
+Fresh commits, however, have been fetched, they can be seen wheb going inside, view files etc. But theupper-level repi screen is misleading: it look so as if there were no fresh commits in the local repo.
+
+After going one level up (with Back) to the main screen of aGit, and entering the repo once again, the fresh commit shows up on that screen.
+
+It is misleading that after an update, the screen doesn't update.
+"
+rtyley/agit,open,[RFE] Register a generic clone repository url scheme with Android on install,[],"I'm adding git client menus to the next release of Gitblit for apps like SourceTree, Tower, etc.  The links in these menus are things like sourcetree://cloneRepo/$repoUrl.  It would be quick and easy for me to add an AGit menu definition and android platform filter, if AGit had an Android registered url for cloning.  (i.e. agit://cloneRepo/https://demo-gitblit.rhcloud.com/git/gitblit.git).
+"
+rtyley/agit,open,Non bare repos fail to update and browse any branch except master,[],"When cloning non-bare repositories, all other branches than master are not shown as existing in the repository.
+
+The quick workaround was to copy by hand all files from .git/refs/remotes/origin into .git/refs/heads and take care to update them manually after later updates.
+
+I know merge support is difficult, but at least fast forward merges should be easier to implement and allow some reviews to be done on the device.
+"
+rtyley/agit,closed,"Agit fetch apparently completes, but new commits are not displayed",[],"Since a few weeks, I am completely unable to use Agit. It clones public repositories properly the first time, but it never sees new commits. When I force it to fetch with the spin arrows at the right of the top red bar, it notifies me about fetch, then say fetch is complete, but the last commit is always the one the was created at clone time. New commits never appear.
+
+I have tried on several git repositories with several protocols. An example using git protocol is git://git.apache.org/commons-math.git, and an example with http protocol is http://www.orekit.org/git/orekit.
+
+I looked at the  /sdcard/git-repos/the-repo-name.git/FETCH_HEAD, and the sha1 seemed correct and seemed to point to the latest commit, as if it was correctly retrieved from the remote server. However, looking into the objects directory, I found only an empty info and a pack directory with a few pack file, but all of them were older than the more recent commit. I did not find the bunch of classical directories 00, 01 ... ff that hold objects as in my desktop computer (I use a Debian Linux computer).
+"
+rtyley/agit,open,Agit crashes on rotation in File viewer,[],"NullPointer on webview - need to get Fragment/Loader lifecycle right.
+"
+rtyley/agit,closed,Fix build because of translation.  Update year for copyright.,[],"Fix quotes within German translation.  XML requires escaping single quotes.  Update copyright statement to 2013.
+
+I disclaim copyright on these changes and thus put it in the public domain.
+"
+rtyley/agit,closed,[BUGFIX]: re-translation into german,[],"re-translation into german for the current version. old was very incomplete.
+"
+rtyley/agit,closed,Integration test failed on Android GalaxyNexus/4.2.1 ,[],"This is not caused by agit.
+It seem robotium 3.2.1 which used by agit-integration-tests can't run on recent versions of Android.
+
+All tests are passed after I upgrade robotium to 3.6.
+
+I don't send pull requests since the place to fix is obvious.
+"
+rtyley/agit,closed,Japanese translation.,[],"Hello, here is a patch for Japanese messages.
+"
+rtyley/agit,open,Crashes on Nexus 7,[],"Crashes on Nexus 7 ever time it detects a change on the repository
+"
+rtyley/agit,open,Tests out of the main module,[],"Is there any reason why tests are in the main maven module? AFAIK, for android projects, there  should be a separate project for tests. http://developer.android.com/tools/testing/testing_android.html#Instrumentation
+"
+rtyley/agit,open,Integration tests: choose device to run on,[],"Steps to reproduce:
+- connect device with debugging off
+- start emulator (with debugging on)
+- run `mvn3 integration-test`
+
+Expected behavior:
+- build system  allow me to choose which device to use
+
+Actual behavior:
+- scala script (get-local-ip) fails with `insufficient permissions for device`
+"
+rtyley/agit,closed,Gerrit server is required for tests,[],"As far as I understood, the server is required for tests.
+Is it really needed?
+Can't local server be used?
+"
+rtyley/agit,open,Intergration tests: Proguard finds duplicate zip entries,[],"There's something wrong with Agit integration tests.
+They fail on proguard step:
+https://travis-ci.org/Vanuan/agit/builds/3564805
+"
+rtyley/agit,open,Target API level,[],"What API level agit is intended for?
+Some dependencies require android-14, while others android-16.
+"
+rtyley/agit,open,Enable Travis CI,[],"If you haven't already heard about travis, read about it. It's awesome.
+
+All you have to do after you merge this is to login to https://travis-ci.org with your github account, go to profile page https://travis-ci.org/profile and enable travis against this repo. After that each commit will be verified in the Travis CI and will be available on this page: https://travis-ci.org/rtyley/agit
+"
+rtyley/agit,closed,Specify a version for maven-resources-plugin,[],"Version should be fixed as far as agit can't be build
+with recent versions of this plugin.
+
+Fixes #78
+"
+rtyley/agit,open,String types not allowed: at 'versionCode'  '${maven.build.timestamp}',[],"I have this error when building Agit with mvn3 clean install:
+
+```
+agit/agit/target/filtered-manifest/AndroidManifest.xml:2: error: Error: String types not allowed (at 'versionCode' with value '${maven.build.timestamp}')
+```
+
+I think it's related to that pom.xml doesn't contain version for maven-resources-plugin.
+"
+rtyley/agit,open,Project for Eclipse IDE.,[],"Hello.
+
+I'm using eclipse and I'd like to make Agit more feature rich.
+
+[Wiki page](https://github.com/rtyley/agit/wiki/Building-Agit) says I can setup eclipse to build agit. But  I've faced a problem trying to do that. I have android, m2e and m2e android connector installed. After importing Agit as maven project, I end up with multiple errors that appear to be related to m2e android not fully supporting apklib dependencies. Here's a [link](https://github.com/rgladwell/m2e-android/issues/127#issuecomment-10799386).
+
+Have anybody tried to setup eclipse project for Agit?
+"
+rtyley/agit,open,Submodule support,[],"JGit has gained submodules support:
+
+https://bugs.eclipse.org/bugs/show_bug.cgi?id=314853
+
+I think there's no obstacles to implementing clone/pull with submodules.
+"
+rtyley/agit,closed,Support multiple file explorer ,[],"It would be pretty nice if alternative file managers, beside oi file manager, could be used. E.g. File expert would be nice :-) 
+"
+rtyley/agit,closed,app not available in your country,[],"unable to install from gplay
+wtf
+"
+rtyley/agit,open,Only master branch is visible in Agit UI for non-bare repos,[],"Reported by Aaron
+
+```
+...can see only the master branch of non-bare repos (in branches view)? Whenever I want both to see the history of all branches and browse through HEAD, I have to checkout twice: a bare and a non-bare repository.
+```
+
+...sounds like maybe we're only fetching the remote head for the checked-out branch?
+"
+rtyley/agit,open,Make default location user-configurable in a persistent way,[],"Currently the user can change the path that a repo is cloned to but can't change the value that is used for the default location.  Thus if the desired default location is consistently different to the one set, the path needs to be changed every time a repo is cloned and the ""use default location"" option becomes pointless.
+"
+rtyley/agit,closed,Cannot clone repos using non-standard ssh port,[],"agit does not like the `ssh://user@host:port/repository` URL format, and conectbot does appear to have any support for something like .ssh/config
+
+Git repos served over ssh on a nonstandard port cannot be cloned.
+"
+rtyley/agit,open,Cloning of a repository can hang indefinitely while resolving deltas,[],"Hi!
+I am cloning a repository, about 450MB in size and after having received all data (this takes on the order of hours as the uplink isn't great) Agit seems to hang indefinitely while resolving deltas. I started the clone about 25 hours ago and Agit has been resolving deltas for at least 15 hours.
+
+Is there any way that I could debug this problem?  
+"
+rtyley/agit,closed,Add web launch support for bitbucket.org,[],"This patch is to support bitbucket.org.
+This has a minor issue in case the repository was set as Mercurial.
+Strictly this issue should be fixed. But almost all cases, this patch will works well.
+(and I'll fix it within few months.)
+"
+rtyley/agit,open,Add ability to increase text size in the commit details tab,[],"Nikolay asked for the ability to increase text size in the commit details tab - pinch-zoom would probably be the nicest way to do this. For a WebView that would probably implemented by default, but not so with a TextView - probably need to use `android.view.ScaleGestureDetector`:
+
+http://android-er.blogspot.co.uk/2011/11/detect-pinch-zoom-using.html
+"
+rtyley/agit,closed,Agit can no longer use in-url credentials,[],"Cloning a private repo over HTTPS, providing the credentials in the url like this, _used_ to work:
+
+https://rtyley:mypassword@github.com/rtyley/enigma.git
+
+Unfortunately it now fails, and I think it's due to changes in the JGit libraries - looks like some kind of default credentials provider is being supplied so that the URI username & password are being ignored:
+
+https://github.com/eclipse/jgit/blob/master/org.eclipse.jgit/src/org/eclipse/jgit/transport/HttpAuthMethod.java#L110
+"
+rtyley/agit,closed,Diff Slider bugfix,[],"Hi,
+Built and tested successfully.
+
+I'm sending you this commit for pull instead of the latest one since as you'll see, my latest commit for some reason shows me as having changed everything (possibly something to do with my IntelliJ adventure). 
+As I only updated my comment, that's a little excessive!
+
+Once it's merged I'll delete this branch. Also, I cede copyright to you (it'd be a bit ridiculous open sourcing two characters and a comment! :P)
+"
+rtyley/agit,closed,Diff bar display error,[],"When opening up a file in diff view, the diff slider appears at 100% (only show the current state) but the file is displayed as if it were at 50% (you see both old and new code). 
+
+I think this is because of line 65 in _agit/src/main/java/com/madgag/agit/diff/DiffSliderView.java_ where you have:
+
+``` java
+seekBar.setProgress(seekBar.getMax());
+```
+
+Unless I'm mistaken (and I may be), it should read:
+
+``` java
+seekBar.setProgress(seekBar.getMax()/2);
+```
+
+so that the seekbar is at 50% when it's initialized to correctly reflect what's visible in the preview.
+
+If you're very busy I'll try it out myself and submit a pull request once it's squashed, just thought to put the issue here just in case.
+"
+rtyley/agit,closed,About my issue,[],"thank you sir for addressing my issue. But i have already solved the problem. I am working on your project . I want to provide basic git functionality on android device. I have integrated git status, add, commit with your application. Currently i am working on git push. Sir , if you have any suggestion i am very lucky to listen you. Very Very Thanks........................ again.
+"
+rtyley/agit,closed,Please help! Clone test on android,[],"I created test android app.  In app i call clone operation used jgit and i get error : 
+Caused by: org.eclipse.jgit.errors.MissingObjectException: Missing unknown e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+org.eclipse.jgit.storage.file.WindowCursor.open(WindowCursor.java:125)
+org.eclipse.jgit.lib.ObjectReader.open(ObjectReader.java:228)
+org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:926)
+org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:444)
+org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:378)
+org.eclipse.jgit.api.CloneCommand.checkout(CloneCommand.java:224)
+org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:121)
+But in agit, this operation is executed without error. I studied your code, but did not understand why this is happening.
+Tell me, what i doing wrong?
+My code:
+public void clone(File dir, String uri){
+                        Git.cloneRepository()
+            .setBare(false)
+            .setDirectory(dir)
+            .setCloneAllBranches(false)
+            .setRemote(""origin"")
+            .setURI(uri)
+            .call();
+}
+"
+rtyley/agit,open,Invalid repository when hosting on public Dropbox share,[],"I have a repository just for my private purposes on a Dropbox share. When I try to clone it with Agit it fails. The when trying to execute a fetch opereation I get
+V/COM.MADGAG.AGIT/ContextScope.java:112( 1283): 22:37:09.125 main Contexts in the main scope map after inserting com.madgag.agit.RepositoryViewerActivity@409977c0: com.madgag.agit.RepositoryViewerActivity@409977c0, com.madgag.agit.RepositoryViewerActivity@409bf5f0, com.madgag.agit.DashboardActivity@407b7a90, com.madgag.agit.AgitApplication@407b5d70, com.madgag.agit.GitOperationsService@4095a448
+V/COM.MADGAG.AGIT/ContextScope.java:112( 1283): 22:37:09.128 main Contexts in the main scope map after inserting com.madgag.agit.RepositoryViewerActivity@409977c0: com.madgag.agit.RepositoryViewerActivity@409977c0, com.madgag.agit.RepositoryViewerActivity@409bf5f0, com.madgag.agit.DashboardActivity@407b7a90, com.madgag.agit.AgitApplication@407b5d70, com.madgag.agit.GitOperationsService@4095a448
+V/COM.MADGAG.AGIT/ContextScope.java:112( 1283): 22:37:09.134 main Contexts in the main scope map after inserting com.madgag.agit.RepositoryViewerActivity@409977c0: com.madgag.agit.RepositoryViewerActivity@409977c0, com.madgag.agit.RepositoryViewerActivity@409bf5f0, com.madgag.agit.DashboardActivity@407b7a90, com.madgag.agit.AgitApplication@407b5d70, com.madgag.agit.GitOperationsService@4095a448
+D/DPM     ( 1283): Registering as prompt UI provider with com.madgag.android.blockingprompt.PromptUIRegistry@40991cd0
+D/GAT     ( 1283): Starting onPreExecute com.madgag.agit.operations.Fetch@40915838 handler=Handler{40862548}
+I/LRSL    ( 1283): Starting Notification(contentView=com.madgag.agit/0x7f030016 vibrate=null,sound=null,defaults=0x0,flags=0x2) in the foreground...
+V/COM.MADGAG.AGIT/ContextScope.java:112( 1283): 22:37:11.491 pool-1-thread-3 Contexts in the pool-1-thread-3 scope map after inserting com.madgag.agit.RepositoryViewerActivity@409977c0: com.madgag.agit.RepositoryViewerActivity@409977c0, com.madgag.agit.RepositoryViewerActivity@409bf5f0, com.madgag.agit.DashboardActivity@407b7a90, com.madgag.agit.AgitApplication@407b5d70, com.madgag.agit.GitOperationsService@4095a448
+D/ROR     ( 1283): Prior op for  /mnt/sdcard/git-repos/rNcXs3W1.git : com.madgag.agit.operations.Fetch@409eb008 - new op=com.madgag.agit.operations.Fetch@40915838
+E/GAT     ( 1283): Examining exception java.lang.RuntimeException: org.eclipse.jgit.api.errors.InvalidRemoteException: Invalid remote: origin op com.madgag.agit.operations.Fetch@40915838 cancelled=false
+E/GAT     ( 1283):  at com.madgag.agit.GitFetchService.fetch(GitFetchService.java:62)
+E/GAT     ( 1283):  at com.madgag.agit.operations.Fetch.execute(Fetch.java:53)
+E/GAT     ( 1283):  at com.madgag.agit.operations.GitOperation.executeAndRecordThread(GitOperation.java:36)
+E/GAT     ( 1283):  at com.madgag.agit.operations.GitOperationExecutor.call(GitOperationExecutor.java:36)
+E/GAT     ( 1283):  at com.madgag.agit.operations.GitAsyncTask.call(GitAsyncTask.java:73)
+E/GAT     ( 1283):  at com.madgag.agit.operations.GitAsyncTask.call(GitAsyncTask.java:37)
+E/GAT     ( 1283):  at com.madgag.agit.GitOperationsService.handleMethod(GitOperationsService.java:118)
+E/GAT     ( 1283):  at com.madgag.agit.GitOperationsService.onStartCommand(GitOperationsService.java:82)
+E/GAT     ( 1283):  at com.madgag.agit.GitFetchService.fetch(GitFetchService.java:54)
+E/GAT     ( 1283):  at com.madgag.agit.operations.Fetch.execute(Fetch.java:53)
+E/GAT     ( 1283):  at com.madgag.agit.operations.GitOperation.executeAndRecordThread(GitOperation.java:36)
+E/GAT     ( 1283):  at com.madgag.agit.operations.GitOperationExecutor.call(GitOperationExecutor.java:36)
+E/GAT     ( 1283):  at com.madgag.agit.operations.GitAsyncTask.call(GitAsyncTask.java:73)
+E/GAT     ( 1283):  at com.madgag.agit.operations.GitAsyncTask.call(GitAsyncTask.java:37)
+I/RN      ( 1283): notifyCompletion() com.madgag.agit.operation.lifecycle.RepoNotifications@40816f18 : com.madgag.agit.operations.OpNotification@409721c8
+V/COM.MADGAG.AGIT/ContextScope.java:112( 1283): 22:37:16.209 main Contexts in the main scope map after inserting com.madgag.agit
+"
+rtyley/agit,closed,HTTP authentication: in-url credentials are ignored,[],"Agit currently doesn't handle http connections requiring authentication - even if the credentials are entered into the clone url, ie:
+
+```
+https://rtyley:mypassword@github.com/rtyley/enigma.git
+```
+
+The clone will fail, not prompt for credentials, and wont use the credentials stored in the url - that last bit of behaviour might be a regression associated with updates from the JGit library, because I'm fairly sure that used to work...
+
+Issue initially reported by Young Park (using git over http on webfaction.com)
+"
+rtyley/agit,closed,about building agit in intellij idea,[],"hello sir,
+My self vikas sable. I want to build agit . I have tried it on eclipse but i get lots of problems so i switched to intellij idea. Here also
+i am getting  lots of problem . Please i request you to send the procedure of building agit in intellij idea.
+                                                                                                                                                                                   with regards.
+                                                                                                                                                                            vilkas sable
+"
+rtyley/agit,open,Add ability to reveiw code,[],"I'm using github.com to review code.
+Could you also please add ability to comment pull requests as it done at github.com?
+
+Thank you.
+"
+rtyley/agit,closed,Building fails:Failed to execute goal com.pyx4me:proguard-maven-plugin:2.0.4:proguard,[],"```
+[INFO] proguard jar: /root/.m2/repository/net/sf/proguard/proguard/4.4/proguard-4.4.jar
+ [proguard] ProGuard, version 4.4
+ [proguard] Reading input...
+ [proguard] java.io.IOException: The input doesn't contain any classes. Did you specify the proper '-injars' options?
+ [proguard]     at proguard.InputReader.execute(InputReader.java:91)
+ [proguard]     at proguard.ProGuard.readInput(ProGuard.java:195)
+ [proguard]     at proguard.ProGuard.execute(ProGuard.java:78)
+ [proguard]     at proguard.ProGuard.main(ProGuard.java:499)
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Skipping Agit parent POM project
+[INFO] This project has been banned from the build due to previous failures.
+[INFO] ------------------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Agit parent POM project ........................... SUCCESS [0.001s]
+[INFO] agit test utils ................................... SUCCESS [1.481s]
+[INFO] Agit - git client for Android ..................... FAILURE [3.131s]
+[INFO] Agit integration tests ............................ SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 12.982s
+[INFO] Finished at: Fri Nov 25 00:52:02 CET 2011
+[INFO] Final Memory: 13M/23M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.pyx4me:proguard-maven-plugin:2.0.4:proguard (default) on project agit: Obfuscation failed (result=1) -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <goals> -rf :agit
+```
+
+Maven Version 3.0.3
+Fresh install on Debian 6 (thus I'm root, on a vm)
+"
+rtyley/agit,open,Add commit and push,[],"I realize this is probably already the number one feature request, but I didn't see it in the issue tracker :)
+"
+rtyley/agit,closed,Update imports that were referencing non-local R strings.,[],"These were causing error markers in Eclipse as they seemed to reference
+an R file in one of your other Android libraries (pinnedheader).
+"
+rtyley/agit,open,HTTP redirects are ignored during git-fetch over HTTP,[],"Arnt Gulbrandsen reports that Agit fails to follow HTTP redirect codes when cloning - ie when a repo has moved. Points noted:
+-   doesn't clone or pull from the new location.
+-   doesn't ask whether the location might be wrong, or suggest pulling from the 301-specified location instead
+-   doesn't allow manually specifying a new pull location
+
+Arnt supplied a sample repo which redirects: http://git.aox.org/aox.git → https://github.com/aox/aox.git
+
+A quick test with CGit shows that it succeeds in cloning the example from the original git.aox.org source url - so it's probably hitting paths on the old url space and getting redirected for every hit that forms part of the 'fetch' operation. The git config file still shows a fetch url of http://git.aox.org/aox.git after the clone is complete.
+
+Patching JGIt to get it's http client to follow redirects like CGit is an option... we should obviously allow the user to edit the urls for the remotes as well.
+"
+rtyley/agit,open,Agit crashes when sdcard unavailable (e.g. mounted as storage),[],"Reported by estliberitas on the Android Market:
+
+> I recently installed yr app, and it crashes each time I try to start it. :) Update: it crashes when device is connected to PC as SD card.
+
+This is because Agit [expects](https://github.com/rtyley/agit/wiki/Finding-Your-Files) to find all repos at [sdcard]/git-repos -  if the sdcard isn't available, we should show the user a friendly warning instead of crashing,
+"
+rtyley/agit,closed,Launch Clone activity from 'git://' protocol,[],"Not sure who ever links directly to 'git://' urls, but if anyone ever did, it'd be nice to support it.
+
+git://github.com/rtyley/agit.git
+
+Even getting a clickable link to appear on Android is difficult...
+"
+rtyley/agit,open,"Add ""depth"" option to cloning",[],"For example I want to read some code. The project is rather big and has a long history but I'm interested only in current version and nothing else. It would be nice if I could get a non-bare shallow copy of a repo.
+"
+rtyley/agit,closed,RFE: Allow Diff Slider to hold at midway point,[],"Requested by Alex Austin:
+
+> the diff viewer adjuster bar always snaps to the right or left and won't stay at a midway point if I let go of it.
+"
+rtyley/agit,closed,Agit build fails on ProGuard step under Mac OS X,[],"Vitamen had problems building Agit - I've been able to reproduce the issue using a borrowed mac:
+
+ [proguard] Reading library jar [/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/rt.jar]
+ [proguard] java.io.IOException: Can't read [proguard.ClassPathEntry@f06fc94](No such file or directory)
+ [proguard]     at proguard.InputReader.readInput(InputReader.java:230)
+ [proguard]     at proguard.InputReader.readInput(InputReader.java:200)
+ [proguard]     at proguard.InputReader.readInput(InputReader.java:178)
+ [proguard]     at proguard.InputReader.execute(InputReader.java:100)
+ [proguard]     at proguard.ProGuard.readInput(ProGuard.java:195)
+ [proguard]     at proguard.ProGuard.execute(ProGuard.java:78)
+ [proguard]     at proguard.ProGuard.main(ProGuard.java:499)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 9.946s
+[INFO] Finished at: Sat Sep 17 22:18:45 BST 2011
+[INFO] Final Memory: 13M/81M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.pyx4me:proguard-maven-plugin:2.0.4:proguard (default) on project agit: Obfuscation failed (result=1) -> [Help 1]
+
+Looks like ProGuard is looking for love in all the wrong places: the file /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/rt.jar  doesn't exist (although the enclosing folder does).
+"
+rtyley/agit,open,Support Git Notes on Commits,[],"Potentially really cool feature, so long as someone can explain to me how notes get merged and shared...
+
+http://progit.org/2010/08/25/notes.html
+
+Suggested by Hugh Messenger:
+
+https://plus.google.com/114419664855330371780/posts/didAeBAoeXr
+"
+rtyley/agit,closed,"Build fails with ""Unable to find the mojo 'generate-sources'""",[],"Fresh clone at commit 261b1a6b3321529797cd356abd31d40f3a78ea7c with a fresh install of Maven, following the instructions at https://github.com/rtyley/agit/wiki/Building-Agit
+
+~/git/agit/agit$ mvn compile
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Agit - git client for Android
+[INFO]    task-segment: [compile]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource to assets/
+[INFO] Copying 1 resource to /home/aaron/git/agit/agit/target/filtered-manifest
+[INFO] ------------------------------------------------------------------------
+[ERROR] BUILD ERROR
+[INFO] ------------------------------------------------------------------------
+[INFO] Internal error in the plugin manager executing goal 'com.jayway.maven.plugins.android.generation2:maven-android-plugin:3.0.0-alpha-6:generate-sources': Unable to find the mojo 'generate-sources' (or one of its required components) in the plugin 'com.jayway.maven.plugins.android.generation2:maven-android-plugin'
+Component descriptor cannot be found in the component repository: org.sonatype.aether.RepositorySystem.
+[INFO] ------------------------------------------------------------------------
+[INFO] For more information, run Maven with the -e switch
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2 seconds
+[INFO] Finished at: Wed Sep 14 10:57:24 PDT 2011
+[INFO] Final Memory: 23M/238M
+[INFO] ------------------------------------------------------------------------
+"
+rtyley/agit,closed,NPE on checkout of non-bare Clone for some repos,[],"Doesn't affect all repos, thankfully... but doing a non-bare clone on this (very simple) repo dies:
+
+https://github.com/rtyley/five-mb-file-test-repo
+
+-non-bare clone does work for some repos, so why does it fail for this?
+
+The NPE in Inflater.java:295 is apparently caused by 'streamHandle' equaling -1...
+
+```
+public synchronized void reset() {
+    if (streamHandle == -1) {
+        throw new NullPointerException();
+    }
+    finished = false;
+    needsDictionary = false;
+    inLength = inRead = 0;
+    resetImpl(streamHandle);
+}
+```
+
+On a regular computer, this works:
+
+java -cp ~/development/jgit/org.eclipse.jgit.pgm/target/jgit-cli.jar  org.eclipse.jgit.pgm.Main clone https://github.com/rtyley/five-mb-file-test-repo.git
+Initialized empty Git repository in /home/roberto/development/agit-debugging/five-mb-file-test-repo/.git
+remote: Counting objects: 3
+remote: Compressing objects: 100% (2/2)
+Receiving objects:      100% (3/3)
+Updating references:    100% (1/1)
+remote: Total 3 (delta 0), reused 3 (delta 0)
+From https://github.com/rtyley/five-mb-file-test-repo.git
+- [new branch]      master     -> origin/master
+
+E/GAT     (  811): Examining exception java.lang.NullPointerException op Clone[https://github.com/rtyley/five-mb-file-test-repo.git] cancelled=false
+E/GAT     (  811): java.lang.NullPointerException
+E/GAT     (  811):  at java.util.zip.Inflater.reset(Inflater.java:295)
+E/GAT     (  811):  at org.eclipse.jgit.lib.HarmonyFixInflater.reset(HarmonyFixInflater.java:88)
+E/GAT     (  811):  at org.eclipse.jgit.lib.InflaterCache.release(InflaterCache.java:92)
+E/GAT     (  811):  at org.eclipse.jgit.storage.file.WindowCursor.release(WindowCursor.java:347)
+E/GAT     (  811):  at org.eclipse.jgit.storage.file.PackInputStream.close(PackInputStream.java:83)
+E/GAT     (  811):  at java.io.FilterInputStream.close(FilterInputStream.java:65)
+E/GAT     (  811):  at java.util.zip.InflaterInputStream.close(InflaterInputStream.java:280)
+E/GAT     (  811):  at java.io.BufferedInputStream.close(BufferedInputStream.java:132)
+E/GAT     (  811):  at org.eclipse.jgit.lib.ObjectStream$Filter.close(ObjectStream.java:229)
+E/GAT     (  811):  at org.eclipse.jgit.lib.ObjectLoader.copyTo(ObjectLoader.java:263)
+E/GAT     (  811):  at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:915)
+E/GAT     (  811):  at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:441)
+E/GAT     (  811):  at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:380)
+E/GAT     (  811):  at org.eclipse.jgit.api.CloneCommand.checkout(CloneCommand.java:227)
+E/GAT     (  811):  at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:121)
+E/GAT     (  811):  at com.madgag.agit.operations.Clone.execute(Clone.java:57)
+"
+rtyley/agit,closed,Italian translation + 2 small Javadoc fixes,[],"Should apply cleanly to master
+"
+rtyley/agit,open,Convert bare repo to non-bare (and back again?),[],"Shouldn't be too hard, but should consider whether to rename the repo folder or not (ie 'example.git' becomes 'example')
+
+http://stackoverflow.com/questions/2199897/git-convert-normal-to-bare-repository
+http://stackoverflow.com/questions/1784506/when-creating-a-git-repository-that-will-be-on-the-server-can-i-convert-it-to-a
+https://git.wiki.kernel.org/index.php/GitFaq#How_do_I_make_existing_non-bare_repository_bare.3F
+"
+rtyley/agit,open,Pretty commit-graphs,[],"A-la qgit4... this would be really fun to work on, I just need the time !
+"
+rtyley/agit,closed,Reading the code,[],"Do you have any links on resources to read before being able to comprehend you code?
+Specifically, all the @Inject stuff is completely throwing me off
+"
+rtyley/agit,open,"Previous / next commit buttons on the ""diff"" tab",[],"On the 'Commit' tab we can jump to previous / next commits - I would see this functionality also on the ""diff"" tab - would be easier to check the changes in the files.
+"
+rtyley/agit,closed,Illegible user info window,[],"I tapped on the author and got this screen: http://screencast.com/t/JG3R5Vi9. Unfortunately you cannot read there anything :) At least on Samsung Galaxy S2 where I tested. 
+
+PS. How to update the gravatar of the user? 
+"
+rtyley/agit,closed,Confirmation window for deleting the repo,[],"Probably deleting repo is not what we want to do by accident so I'd suggest displaying an extra confirmation window ""Are you sure to delete the ... repo?"" after user chooses ""Delete repo""
+"
+rtyley/agit,open,Hint for the password field,[],"I don't have yet SSH keys configured and I enter the password in the field. 
+
+I'd suggest giving the field a hint (I mean greyed out text, like for e.g. clone_directory_hint)
+
+And second - the password should not be visible in the field! Or there could be a checkbox ""show password"" and when the user enables the option, the password shows up, otherwise it is not visible (ony the letter we currently enter)
+"
+rtyley/agit,open,Added Polish translation,[],"Hi!
+
+As a big fan of Git I found your app for Android and gave it a try :)
+
+I also prepared the basic translations to Polish in `strings.xml`. Though I couldn't find lots of phrases there, like:
+_protocol:
+fetch complete
+fetch failed
+fetching
+fetched
+clone cancelled
+clone completed
+password required 
+please enter your password
+deleting repo 
+branches
+tags_
+
+If you could make them ""translatable"" I would further expand `strings.xml` file.
+
+On the other hand I'm not sure where these keys appear in the app?
+_suggest_repos_button
+checkout_commit_menu_option
+pull_to_refresh_pull_label
+tag_message_label
+tag_message_label
+suggest_repos_button_
+
+I think that `CREDITS.markdown` and `Using-SSH.markdown` also deserve translation. But am not sure how to name them (maybe `CREDITS.pl.markdown`) or alternatively where to put them?
+
+The translation was not yet tested on the device - as I don't know how to compile the source... If you could send me a compiled .apk file based on this branch? And please don't merge it yet as probably there would be some fine-tuning needed.
+"
+rtyley/agit,closed,Updating doesn't update working copy,[],"I created a non-bare repository (for which I has to untick the 'bare' flag; why would I want a bare repository at all?). Then remote was updated and I tried to update my local repository. While I can see logs and later commits, the code in local repo is still old.
+"
+rtyley/agit,closed,Checkout repository to non default location,[],"When you checkout a repository to a non default location, the repository is not shown in the overview of available repositories in agit.
+"
+rtyley/agit,closed,German translation for agit,[],"Hello rtyley,
+
+I took the liberty of translating your strings.xml to German (added new folder with translation). Currently I have no possibility to test the packet. I will do that next week.
+
+Kind regards
+Bernd
+"
+rtyley/agit,open,Notification on commit being merged,[],"The motivation here is that I want to see when this commit gets merged into the 'master' branch:
+
+https://github.com/git/git/commit/7f684a2aff636f44a5063c05cf84c0db0460ae1a
+
+Approach: Create a special 'notification' tag on interesting commits (e.g. '_monitor-xxx'), then check every FetchResult to see if any tags with that prefix have been added to branches...?
+"
+rtyley/agit,open,Make capabilities of Agit (ie SSH) clearer to new users,[],"When a user opens the app for the first time, need to make the capabilities of Agit (specifically SSH) clearer.
+
+The dashboard and big Clone button is great, but users are _still_ getting confused and incorrectly assessing that Agit does not support SSH. A subtle 'SSH' in the middle of the big blank area would probably go a long way to helping clear this up, linking to the SSH install guide.
+
+As well as that, a nice suggestion to hit the big Clone button and clone a repo would probably be a good idea.
+"
+rtyley/agit,open,Eclipse Build,[],"Several changes are required in order to build within Eclipse, I'd suggest the first two should be fixed in the repository.
+
+parent-agit pom:
+Some maven dependencies/goals (default-jar) are better handled within Eclipse using version 3.0.0 of the maven-android-plugin, I used version 3.0.0-SNAPSHOT.
+
+The m2e-android connector also requires this (this should also be installed in Eclipse, via the connector selection dialog invoked from the pom page or via the catalog button in the preferences dialog)
+http://rgladwell.github.com/m2e-android
+
+agit pom:
+in the agit pom - the relative directory path below causes an NPE in eclipse-m2e, possibly this could be resolved by specifying the path in a different manner or moving the involved files.
+
+```
+<!--  this causes a NPE in eclipse-m2e, it doesn't like ${basedir}/.. - in particular the '..' 
+            <resource>
+                <directory>${basedir}/..</directory>
+                <targetPath>assets/</targetPath>
+                <includes><include>CREDITS.*</include></includes>
+            </resource>
+-->
+```
+
+Proguard seems to get run regardless of the profile in-use - I haven't really understood this problem yet, possibly it's something to do with building the a module individually, or possibly something to do with using Eclipse.  Will update with further comment when I understand what's going on.
+
+Any other lifecycle-mapping errors can be resolved through the GUI - either installing missing m2e-connectors or ignoring (initially).  The GUI provides quick-fixes for resolving / ignoring / executing unhandled plugins - e.g. Proguard.  These have to be considered on a case by case basis.  I disabled Proguard from the AGit pom error (where it manifests) but set it disabled in the parent pom - it can probably be safely enabled (which needs to be explicitly through the newly created lifecycle mapping by manually changing the ignore tag).
+
+The default ignore entry looks like this currently (it's version dependent):
+
+```
+<plugin>
+  <groupId>org.eclipse.m2e</groupId>
+  <artifactId>lifecycle-mapping</artifactId>
+  <version>1.0.0</version>
+  <configuration>
+    <lifecycleMappingMetadata>
+      <pluginExecutions>
+        <pluginExecution>
+          <pluginExecutionFilter>
+            <groupId>com.pyx4me</groupId>
+            <artifactId>
+              proguard-maven-plugin
+            </artifactId>
+            <versionRange>
+              [2.0.4,)
+            </versionRange>
+            <goals>
+              <goal>proguard</goal>
+            </goals>
+          </pluginExecutionFilter>
+          <action>
+            <ignore></ignore>
+          </action>
+        </pluginExecution>
+      </pluginExecutions>
+    </lifecycleMappingMetadata>
+  </configuration>
+</plugin>
+```
+"
+rtyley/agit,open,Clone fails for Postgresql,[],"For
+git://git.postgresql.org/git/postgresql.git
+
+When performing a Clone in AGit either from the Device (HTC Desire) or in the Emulator it fails.
+
+Two different errors are reported (but possibly the same cause) - the device raises an IOException in jgit (I don't have a stack trace for this - determined by inspection):
+
+org.eclipse.jgit.transport.PacketLineIn.java
+readLength() throws this exception:
+
+<pre><code>throw new IOException(MessageFormat.format(JGitText.get().invalidPacketLineHeader,
+                    """" + (char) lineBuffer[0] + (char) lineBuffer[1]
+                    + (char) lineBuffer[2] + (char) lineBuffer[3]));
+</code></pre>
+
+
+And
+In the Emulator I get a OutOfMemoryError Exception.
+
+<pre><code>Out of memory on a 2323-byte allocation.
+ ""pool-1-thread-1"" prio=5 tid=9 RUNNABLE
+   | group=""main"" sCount=0 dsCount=0 obj=0x405f4ad8 self=0x21d7b0
+   | sysTid=986 nice=0 sched=0/0 cgrp=default handle=1998960
+   | schedstat=( 7895720724522 2112247922849 217808 )
+   at org.eclipse.jgit.transport.PackParser.inflateAndReturn(PackParser.java:~1436)
+   at org.eclipse.jgit.transport.PackParser.whole(PackParser.java:945)
+   at org.eclipse.jgit.transport.PackParser.indexOneObject(PackParser.java:866)
+   at org.eclipse.jgit.transport.PackParser.parse(PackParser.java:469)
+   at org.eclipse.jgit.storage.file.ObjectDirectoryPackParser.parse(ObjectDirectoryPackParser.java:178)
+   at org.eclipse.jgit.transport.PackParser.parse(PackParser.java:431)
+   at org.eclipse.jgit.transport.BasePackFetchConnection.receivePack(BasePackFetchConnection.java:672)
+   at org.eclipse.jgit.transport.BasePackFetchConnection.doFetch(BasePackFetchConnection.java:284)
+   at org.eclipse.jgit.transport.BasePackFetchConnection.fetch(BasePackFetchConnection.java:229)
+   at org.eclipse.jgit.transport.FetchProcess.fetchObjects(FetchProcess.java:225)
+   at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:151)
+   at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:113)
+   at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1062)
+   at com.madgag.agit.GitFetchService.fetch(GitFetchService.java:57)
+   at com.madgag.agit.operations.Clone.execute(Clone.java:75)
+   at com.madgag.agit.operations.GitOperation.executeAndRecordThread(GitOperation.java:38)
+   at com.madgag.agit.operations.GitOperationExecutor.call(GitOperationExecutor.java:28)
+   at com.madgag.agit.operations.GitAsyncTask.call(GitAsyncTask.java:74)
+   at com.madgag.agit.operations.GitAsyncTask.call(GitAsyncTask.java:38)
+   at roboguice.util.SafeAsyncTask$Task.doCall(SafeAsyncTask.java:191)
+   at roboguice.util.RoboAsyncTask$RoboTask.doCall(RoboAsyncTask.java:54)
+   at roboguice.util.SafeAsyncTask$Task.call(SafeAsyncTask.java:165)
+   at roboguice.util.SafeAsyncTask$Task.call(SafeAsyncTask.java:153)
+   at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:306)
+   at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+   at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1088)
+   at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:581)
+   at java.lang.Thread.run(Thread.java:1019)
+</code></pre>
+
+
+Given the size of Postgresql - maybe it's all related to this?
+https://bugs.eclipse.org/bugs/show_bug.cgi?id=312868
+
+I'm yet to run this code on the device, but I expect I'd get similar results.
+Also - Please note, I used your GitHub JGit branch 'unofficial-roberto-release' in the emulator
+"
+rtyley/agit,closed,NPE at LastCommitView:39 (onItemClick),[],"i clone a repository and it fails or if it takes a longer time due to size etc. 
+
+when i click on ""Latest Commit"" before the repository is fully initialized, it throws a NullpointerException.
+
+Package Version 1.22 (110800811)
+"
+rtyley/agit,closed,Make sure only the repository owner and name are taken from the GitHub path,[],"I noticed that Agit will accept URLs such as https://github.com/eddieringle/hubroid/issues/66 and attempt to turn it into a Git URL. I haven't actually tried fetching from one of these URLs yet, but it doesn't look pretty. This patch should only use the first two segments from the path to form the Git URL.
+
+I wasn't able to build or test, but things should be in order.
+"
+rtyley/agit,closed,Beginning of a French translation,[],"Here is the beginning of a French translation.
+
+More efforts will be needed to localize the com.magdag.agit.util.Time class, as you will have to do pattern substitutions (""%d days ago"" -> ""il y a %d jours"") which have to be done with a Context around.
+"
+rtyley/agit,closed,Tree github urls ,[],"https://github.com/eclipse/egit-github/tree/master/org.eclipse.egit.github.core
+
+Resolves bad
+"
+rtyley/agit,open,Eclipse Project,[],"Hi,
+
+please provide a list of the needed additional source code for compiling AGIT in eclipse. I want to add some smaller features but I'm too lazy searching all that stuff.
+
+Thanks
+Markus
+"
+rtyley/agit,closed,Agit PeriodSync fails to install,"[Label(name=""Just Plain Embarrassing"")]","On phones which support the periodic sync configuration method (Android 2.2 and higher):
+
+http://developer.android.com/reference/android/content/ContentResolver.html#addPeriodicSync(android.accounts.Account, java.lang.String, android.os.Bundle, long)
+
+-Agit is supposed to setup a 15-minute fetch-refresh sync, but in fact it fails to do so...
+"
+rtyley/agit,open,Should be able to cancel big downloads,[],"ie the notification icon should show a cross to cancel the download...
+
+Savvas also pointed out that that deleting a repo should also cancel all associated download operations.
+"
+rtyley/agit,closed,Match both https and http for gitorious and github.,[],"I noticed that my link to http://github.com/.../... didn't match, seemingly because Agit is looking for https. Looks like it would have the opposite problem for gitorious? I haven't tested this change at all. :-) Other than that, nice app, thanks.
+"
+rtyley/agit,closed,'About' Markdown crashes on pre-Gingerbread devices,"[Label(name=""Just Plain Embarrassing"")]","Reported against Agit v1.8 - the About activity crashed:
+
+java.lang.NoClassDefFoundError: java.util.ArrayDeque
+at org.tautua.markdownpapers.util.DequeStack.<init>(DequeStack.java:29)
+at org.tautua.markdownpapers.parser.Parser.<init>(Parser.java:13)
+at org.tautua.markdownpapers.Markdown.transform(Markdown.java:31)
+at com.madgag.agit.AboutActivity.onCreate(AboutActivity.java:55)
+at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1047)
+
+ArrayDeque was added to Android with Gingerbread, ie API Level 9:
+
+http://developer.android.com/reference/java/util/ArrayDeque.html
+"
+rtyley/agit,closed,Changing orientation kills Agit when SSH prompt visible,[],"Reported in the wild on the dev console: Agit v1.7 on Jun 14, 2011 6:00:52 PM
+
+Caused by: java.lang.NullPointerException
+at com.madgag.agit.DialogPromptMonkey.onPrepareDialog(DialogPromptMonkey.java:74)
+at com.madgag.agit.RepositoryViewerActivity.onPrepareDialog(RepositoryViewerActivity.java:155)
+at android.app.Activity.onPrepareDialog(Activity.java:2515)
+at android.app.Activity.restoreManagedDialogs(Activity.java:874)
+at android.app.Activity.performRestoreInstanceState(Activity.java:817)
+at android.app.Instrumentation.callActivityOnRestoreInstanceState(Instrumentation.java:1096)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1625)
+
+Reproducible: seems to be because the `responseInterface` or `OpPrompt` is null after activity restore:
+
+https://github.com/rtyley/agit/blob/agit-parent-1.7/agit/src/main/java/com/madgag/agit/DialogPromptMonkey.java#L74
+"
+rtyley/agit,closed,MissingObjectException can kill dashboard,[],"/AndroidRuntime( 8942): FATAL EXCEPTION: main
+E/AndroidRuntime( 8942): java.lang.RuntimeException: Unable to start activity ComponentInfo{com.madgag.agit/com.madgag.agit.DashboardActivity}: java.lang.RuntimeException: org.eclipse.jgit.errors.MissingObjectException: Missing unknown a745ac8c038bf06089473869e40c0e10b5101b7b
+E/AndroidRuntime( 8942):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1768)
+E/AndroidRuntime( 8942):    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:1784)
+E/AndroidRuntime( 8942):    at android.app.ActivityThread.access$1500(ActivityThread.java:123)
+E/AndroidRuntime( 8942):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:939)
+E/AndroidRuntime( 8942):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime( 8942):    at android.os.Looper.loop(Looper.java:123)
+E/AndroidRuntime( 8942):    at android.app.ActivityThread.main(ActivityThread.java:3835)
+E/AndroidRuntime( 8942):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime( 8942):    at java.lang.reflect.Method.invoke(Method.java:507)
+E/AndroidRuntime( 8942):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:841)
+E/AndroidRuntime( 8942):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:599)
+E/AndroidRuntime( 8942):    at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime( 8942): Caused by: java.lang.RuntimeException: org.eclipse.jgit.errors.MissingObjectException: Missing unknown a745ac8c038bf06089473869e40c0e10b5101b7b
+E/AndroidRuntime( 8942):    at com.madgag.agit.RDTBranch$1.apply(RDTBranch.java:63)
+E/AndroidRuntime( 8942):    at com.madgag.agit.RDTBranch$1.apply(RDTBranch.java:57)
+E/AndroidRuntime( 8942):    at com.google.common.collect.Iterators$8.next(Iterators.java:765)
+E/AndroidRuntime( 8942):    at com.google.common.collect.Lists.newArrayList(Lists.java:139)
+E/AndroidRuntime( 8942):    at com.google.common.collect.Lists.newArrayList(Lists.java:119)
+E/AndroidRuntime( 8942):    at com.google.common.collect.Ordering.sortedCopy(Ordering.java:511)
+E/AndroidRuntime( 8942):    at com.madgag.agit.RDTBranch.getAll(RDTBranch.java:69)
+E/AndroidRuntime( 8942):    at com.madgag.agit.RepoSummary.<init>(RepoSummary.java:53)
+E/AndroidRuntime( 8942):    at com.madgag.agit.RepoSummary$1.apply(RepoSummary.java:24)
+E/AndroidRuntime( 8942):    at com.madgag.agit.RepoSummary$1.apply(RepoSummary.java:19)
+E/AndroidRuntime( 8942):    at com.google.common.collect.Lists$TransformingRandomAccessList.get(Lists.java:448)
+E/AndroidRuntime( 8942):    at java.util.AbstractList$SimpleListIterator.next(AbstractList.java:57)
+E/AndroidRuntime( 8942):    at java.util.AbstractCollection.toArray(AbstractCollection.java:344)
+E/AndroidRuntime( 8942):    at java.util.ArrayList.<init>(ArrayList.java:102)
+E/AndroidRuntime( 8942):    at com.google.common.collect.Lists.newArrayList(Lists.java:119)
+E/AndroidRuntime( 8942):    at com.google.common.collect.Ordering.sortedCopy(Ordering.java:511)
+E/AndroidRuntime( 8942):    at com.madgag.agit.RepoSummary.getAllReposOrderChronologically(RepoSummary.java:43)
+E/AndroidRuntime( 8942):    at com.madgag.agit.DashboardActivity.setupRepoList(DashboardActivity.java:68)
+E/AndroidRuntime( 8942):    at com.madgag.agit.DashboardActivity.onCreate(DashboardActivity.java:44)
+E/AndroidRuntime( 8942):    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1047)
+E/AndroidRuntime( 8942):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1722)
+E/AndroidRuntime( 8942):    ... 11 more
+E/AndroidRuntime( 8942): Caused by: org.eclipse.jgit.errors.MissingObjectException: Missing unknown a745ac8c038bf06089473869e40c0e10b5101b7b
+E/AndroidRuntime( 8942):    at org.eclipse.jgit.storage.file.WindowCursor.open(WindowCursor.java:125)
+E/AndroidRuntime( 8942):    at org.eclipse.jgit.lib.ObjectReader.open(ObjectReader.java:228)
+E/AndroidRuntime( 8942):    at org.eclipse.jgit.revwalk.RevWalk.parseAny(RevWalk.java:811)
+E/AndroidRuntime( 8942):    at org.eclipse.jgit.revwalk.RevWalk.parseCommit(RevWalk.java:724)
+E/AndroidRuntime( 8942):    at com.madgag.agit.RDTBranch$1.apply(RDTBranch.java:60)
+E/AndroidRuntime( 8942):    ... 31 more
+W/ActivityManager(  254):   Force finishing activity com.madgag.agit/.DashboardActivity
+W/ActivityManager(  254): Activity pause timeout for HistoryRecord{40a05d98 com.madgag.agit/.DashboardActivity}
+^C
+"
+rtyley/agit,open,"SSH: Handle SecurityException ""Not allowed to bind to service Intent"" better",[],"This can happen when a user installs Agit first, then their SSH provider (e.g. ConnectBot) later...
+
+E/GOE     ( 5169): 1 error
+E/GOE     ( 5169):  at com.madgag.agit.operations.Clone.execute(Clone.java:87)
+E/GOE     ( 5169):  at com.madgag.agit.operations.GitOperationExecutor.call(GitOperationExecutor.java:25)
+E/GOE     ( 5169):  at com.madgag.agit.operations.GitAsyncTask.call(GitAsyncTask.java:56)
+E/GOE     ( 5169):  at com.madgag.agit.operations.GitAsyncTask.call(GitAsyncTask.java:21)
+E/GOE     ( 5169):  at roboguice.util.SafeAsyncTask$Task.doCall(SafeAsyncTask.java:191)
+E/GOE     ( 5169):  at roboguice.util.RoboAsyncTask$RoboTask.doCall(RoboAsyncTask.java:54)
+E/GOE     ( 5169):  at roboguice.util.SafeAsyncTask$Task.call(SafeAsyncTask.java:165)
+E/GOE     ( 5169):  at roboguice.util.SafeAsyncTask$Task.call(SafeAsyncTask.java:153)
+E/GOE     ( 5169):  at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:306)
+E/GOE     ( 5169):  at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+E/GOE     ( 5169):  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1088)
+E/GOE     ( 5169):  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:581)
+E/GOE     ( 5169):  at java.lang.Thread.run(Thread.java:1019)
+E/GOE     ( 5169): Caused by: com.google.inject.ProvisionException: Guice provision errors:
+E/GOE     ( 5169): 
+E/GOE     ( 5169): 1) Error injecting constructor, java.lang.SecurityException: Not allowed to bind to service Intent { act=org.openintents.ssh.BIND_SSH_AGENT_SERVICE }
+E/GOE     ( 5169):   at com.madgag.agit.ssh.AndroidAuthAgentProvider.<init>(Unknown Source)
+E/GOE     ( 5169):   while locating com.madgag.agit.ssh.AndroidAuthAgentProvider
+E/GOE     ( 5169):   while locating com.madgag.ssh.android.authagent.AndroidAuthAgent
+E/GOE     ( 5169): 
+E/GOE     ( 5169): 1 error
+E/GOE     ( 5169):  at com.google.inject.InjectorImpl$4.get(InjectorImpl.java:767)
+E/GOE     ( 5169):  at com.madgag.agit.ssh.AndroidSshSessionFactory.addSshAgentTo(AndroidSshSessionFactory.java:49)
+E/GOE     ( 5169):  at com.madgag.agit.ssh.AndroidSshSessionFactory.createDefaultJSch(AndroidSshSessionFactory.java:44)
+E/GOE     ( 5169):  at org.eclipse.jgit.transport.JschConfigSessionFactory.getJSch(JschConfigSessionFactory.java:192)
+E/GOE     ( 5169):  at org.eclipse.jgit.transport.JschConfigSessionFactory.createSession(JschConfigSessionFactory.java:164)
+E/GOE     ( 5169):  at org.eclipse.jgit.transport.JschConfigSessionFactory.getSession(JschConfigSessionFactory.java:109)
+E/GOE     ( 5169):  at org.eclipse.jgit.transport.SshTransport.getSession(SshTransport.java:121)
+E/GOE     ( 5169):  at org.eclipse.jgit.transport.TransportGitSsh$SshFetchConnection.<init>(TransportGitSsh.java:248)
+E/GOE     ( 5169):  at org.eclipse.jgit.transport.TransportGitSsh.openFetch(TransportGitSsh.java:147)
+E/GOE     ( 5169):  at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:125)
+E/GOE     ( 5169):  at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:111)
+E/GOE     ( 5169):  at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1062)
+E/GOE     ( 5169):  at com.madgag.agit.GitFetchService.fetch(GitFetchService.java:51)
+E/GOE     ( 5169):  at com.madgag.agit.operations.Clone.execute(Clone.java:77)
+E/GOE     ( 5169):  ... 12 more
+E/GOE     ( 5169): Caused by: java.lang.SecurityException: Not allowed to bind to service Intent { act=org.openintents.ssh.BIND_SSH_AGENT_SERVICE }
+E/GOE     ( 5169):  at android.app.ContextImpl.bindService(ContextImpl.java:901)
+E/GOE     ( 5169):  at android.content.ContextWrapper.bindService(ContextWrapper.java:347)
+E/GOE     ( 5169):  at com.madgag.agit.ssh.AndroidAuthAgentProvider.bindSshAgentTo(AndroidAuthAgentProvider.java:49)
+E/GOE     ( 5169):  at com.madgag.agit.ssh.AndroidAuthAgentProvider.<init>(AndroidAuthAgentProvider.java:38)
+E/GOE     ( 5169):  at java.lang.reflect.Constructor.constructNative(Native Method)
+E/GOE     ( 5169):  at java.lang.reflect.Constructor.newInstance(Constructor.java:415)
+E/GOE     ( 5169):  at com.google.inject.DefaultConstructionProxyFactory$1.newInstance(DefaultConstructionProxyFactory.java:81)
+E/GOE     ( 5169):  at com.google.inject.ConstructorInjector.construct(ConstructorInjector.java:85)
+E/GOE     ( 5169):  at com.google.inject.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:111)
+E/GOE     ( 5169):  at com.google.inject.BoundProviderFactory.get(BoundProviderFactory.java:56)
+E/GOE     ( 5169):  at com.google.inject.InjectorImpl$4$1.call(InjectorImpl.java:758)
+E/GOE     ( 5169):  at c
+D/GOE     ( 5169): Exiting call()
+"
+rtyley/agit,open,Viewing the log for a branch is slow if it has many commits,[],"Slowness is /probably/ due to parsing so many commits.
+
+Solution may be to create a variant of ViewHoldingListAdapter that allows itself to be backed by an Iterable - when getItem(int index) is called on it, it should ensure that it has read at least index*1.1 items in total from the Iterable (to allow users to continue scrolling downwards)
+"
+rtyley/agit,closed,Dateless annotated tags crash the Repo Viewer activity,[],"Looks like annotated tags used to be dateless...
+
+Annotated tag 'v0.99' (d6602ec5194c87b0fc87103ca4d67251c76f233a) in Git's own repository git://git.kernel.org/pub/scm/git/git.git has a name but no tagger or date stamp. Crashes the Repo Viewer activity when it starts trying to sort the tags chronologically...
+"
+rtyley/agit,open,MissingObjectException kills Repository viewer activity,[],"E/AndroidRuntime( 1129): FATAL EXCEPTION: main
+E/AndroidRuntime( 1129): java.lang.RuntimeException: org.eclipse.jgit.errors.MissingObjectException: Missing unknown d65b27810bb8052fb8db705dcd88769a64512ab1
+E/AndroidRuntime( 1129):    at com.madgag.agit.RDTBranch$1.apply(RDTBranch.java:69)
+E/AndroidRuntime( 1129):    at com.madgag.agit.RDTBranch$1.apply(RDTBranch.java:63)
+E/AndroidRuntime( 1129):    at com.google.common.collect.Iterators$8.next(Iterators.java:765)
+E/AndroidRuntime( 1129):    at com.google.common.collect.Lists.newArrayList(Lists.java:139)
+E/AndroidRuntime( 1129):    at com.google.common.collect.Lists.newArrayList(Lists.java:119)
+E/AndroidRuntime( 1129):    at com.madgag.agit.RDTBranch.getAll(RDTBranch.java:63)
+E/AndroidRuntime( 1129):    at com.madgag.agit.RepoDomainType.summariseAll(RepoDomainType.java:67)
+E/AndroidRuntime( 1129):    at com.madgag.agit.RDTypeViewHolder.updateViewFor(RDTypeViewHolder.java:17)
+E/AndroidRuntime( 1129):    at com.madgag.agit.RDTypeViewHolder.updateViewFor(RDTypeViewHolder.java:7)
+E/AndroidRuntime( 1129):    at com.madgag.android.listviews.ViewHoldingListAdapter.getView(ViewHoldingListAdapter.java:70)
+E/AndroidRuntime( 1129):    at android.widget.AbsListView.obtainView(AbsListView.java:1446)
+E/AndroidRuntime( 1129):    at android.widget.ListView.measureHeightOfChildren(ListView.java:1216)
+E/AndroidRuntime( 1129):    at android.widget.ListView.onMeasure(ListView.java:1127)
+E/AndroidRuntime( 1129):    at android.view.View.measure(View.java:8330)
+E/AndroidRuntime( 1129):    at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:3138)
+E/AndroidRuntime( 1129):    at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1017)
+E/AndroidRuntime( 1129):    at android.widget.LinearLayout.measureVertical(LinearLayout.java:386)
+E/AndroidRuntime( 1129):    at android.widget.LinearLayout.onMeasure(LinearLayout.java:309)
+E/AndroidRuntime( 1129):    at android.view.View.measure(View.java:8330)
+E/AndroidRuntime( 1129):    at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:3138)
+E/AndroidRuntime( 1129):    at android.widget.FrameLayout.onMeasure(FrameLayout.java:250)
+E/AndroidRuntime( 1129):    at android.view.View.measure(View.java:8330)
+E/AndroidRuntime( 1129):    at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:3138)
+E/AndroidRuntime( 1129):    at android.widget.FrameLayout.onMeasure(FrameLayout.java:250)
+E/AndroidRuntime( 1129):    at android.view.View.measure(View.java:8330)
+E/AndroidRuntime( 1129):    at android.view.ViewRoot.performTraversals(ViewRoot.java:839)
+E/AndroidRuntime( 1129):    at android.view.ViewRoot.handleMessage(ViewRoot.java:1860)
+E/AndroidRuntime( 1129):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime( 1129):    at android.os.Looper.loop(Looper.java:123)
+E/AndroidRuntime( 1129):    at android.app.ActivityThread.main(ActivityThread.java:3835)
+E/AndroidRuntime( 1129):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime( 1129):    at java.lang.reflect.Method.invoke(Method.java:507)
+E/AndroidRuntime( 1129):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:841)
+E/AndroidRuntime( 1129):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:599)
+E/AndroidRuntime( 1129):    at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime( 1129): Caused by: org.eclipse.jgit.errors.MissingObjectException: Missing unknown d65b27810bb8052fb8db705dcd88769a64512ab1
+E/AndroidRuntime( 1129):    at org.eclipse.jgit.storage.file.WindowCursor.open(WindowCursor.java:125)
+E/AndroidRuntime( 1129):    at org.eclipse.jgit.lib.ObjectReader.open(ObjectReader.java:228)
+E/AndroidRuntime( 1129):    at org.eclipse.jgit.revwalk.RevWalk.parseAny(RevWalk.java:811)
+E/AndroidRuntime( 1129):    at org.eclipse.jgit.revwalk.RevWalk.parseCommit(RevWalk.java:724)
+E/AndroidRuntime( 1129):    at com.madgag.agit.RDTBranch$1.apply(RDTBranch.java:66)
+E/AndroidRuntime( 1129):    ... 34 more
+W/ActivityManager(  233):   Force finishing activity com.madgag.agit/.RepositoryManagementActivity
+"
+rtyley/agit,open,Support GPG signing & verification for committed messages,[],
+rtyley/agit,closed,Add sync provider to do periodic fetches,[],"This seems to be the best write-up for sync providers:
+
+http://www.c99.org/2010/01/23/writing-an-android-sync-provider-part-2/
+"
+rtyley/agit,open,Add full-file code browser - ie commit-tree viewer,[],"Agit currently gives commit-diffs as the only way to view file contents. A commit-tree viewer than lets you see all files in their state at that precise commit, view each file - and filter easily by name - would be great.
+
+from Joel:
+
+```
+What I am missing is a real code browser. You can only take a look to the part
+of files which got changed in a selected commit, but sometimes, when I'm in a
+train for example, I'd really like to browse ALL the files from the repo in their
+current state completley.
+```
+
+A workaround for the time being is to do a non-bare checkout and view the checked out files using a file-browser app- see
+
+https://github.com/rtyley/agit/wiki/Bare-Repos
+https://github.com/rtyley/agit/wiki/Finding-Your-Files
+"
+rtyley/agit,open,Add 'checkout' menu option to commit view ,[],
+rtyley/agit,open,"Commit view should display, link to, tags",[],
+rtyley/agit,open,ActionBar should show Agit logo everywhere to take user home,[],
+rtyley/agit,open,Fast scroll doesn't scroll commit list when used immediately ,[],"If you use the scrolling tab immediately upon starting the activity, it does not scroll the contents. 
+"
+rtyley/agit,closed,Viewing a git remote crashes,[],
+rtyley/agit,closed,Tapping on a PersonIdent should open a detailed view ,[],"Detail should show exact time, large avatar, etc
+"
+rtyley/agit,open,Meaningful error reporting on Git Operation failure,"[Label(name=""Blocker"")]","Meaningful errors should appear in status bar notifications, pull-to-refresh notifications, everywhere!
+"
+rtyley/agit,closed,Clone Op should refresh dashboard when gitdir created,[],
+rtyley/agit,open,Allow web-surfer to send Repo to their device by simply clicking it on github.com etc (C2DM),[],"Use Android Push (C2DM), Google App Engine and a Chrome Extension to allow people surfing gitxxx.com to click on a repo and have it downloaded to their phone.
+
+http://code.google.com/android/c2dm/
+"
+rtyley/agit,closed,The expandable list view of the diffs for a commit should support floating header...,[],"...like in the gmail android app update:
+
+http://googlemobile.blogspot.com/2010/09/updated-gmail-app-in-android-market.html
+
+Or, indeed, like in the android phone Contacts app:
+
+http://mobile.twitter.com/koush/status/22747863914127360
+"
+rtyley/agit,open,Commit List ('Log') view doesn't seem to update with latest commits,[],"Although new deltas appear to be getting fetched, the Log does not update to show the latest commits.
+
+If the clone fails, the list stays empty even after an apparently successful fetch
+"
+rtyley/agit,open,Authorised hosts for SSH are not remembered,[],"Every time you do a Clone, or even a fetch from a host you've already fetched from, you're asked to approved the SSH key fingerprint.
+"

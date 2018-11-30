@@ -1,0 +1,706 @@
+repository,state,title,label,body
+reloZid/android-anuto,open,Add a new colour theme,[],
+reloZid/android-anuto,open,Game crash after remove from recent apps,[],"The game FC's after removing it's ""window"" from recent apps menu. Here is the log as reported by my system (xiaomi redmi note 4, Miui 9.6.3.0 global)
+
+```
+java.lang.RuntimeException: Error in game loop!
+	at ch.logixisland.anuto.engine.logic.loop.GameLoop.run(GameLoop.java:121)
+	at java.lang.Thread.run(Thread.java:760)
+Caused by: java.lang.ClassCastException: ch.logixisland.anuto.entity.shot.Mine cannot be cast to ch.logixisland.anuto.entity.plateau.Plateau
+	at ch.logixisland.anuto.entity.tower.TowerPersister.readEntityData(TowerPersister.java:49)
+	at ch.logixisland.anuto.entity.tower.TowerPersister.readEntityData(TowerPersister.java:10)
+	at ch.logixisland.anuto.engine.logic.entity.EntityPersister.readState(EntityPersister.java:44)
+	at ch.logixisland.anuto.engine.logic.persistence.GamePersister.readState(GamePersister.java:24)
+	at ch.logixisland.anuto.business.game.GameLoader.initializeGame(GameLoader.java:191)
+	at ch.logixisland.anuto.business.game.GameLoader.loadGame(GameLoader.java:148)
+	at ch.logixisland.anuto.business.game.GameLoader$3.execute(GameLoader.java:119)
+	at ch.logixisland.anuto.engine.logic.loop.MessageQueue.processMessages(MessageQueue.java:55)
+	at ch.logixisland.anuto.engine.logic.loop.GameLoop.executeCycle(GameLoop.java:129)
+	at ch.logixisland.anuto.engine.logic.loop.GameLoop.run(GameLoop.java:94)
+	... 1 more
+```"
+reloZid/android-anuto,open,Sometime the nextwave button is to long inactive,"[Label(name=""balancing"")]","I do not know how the next-wave button work, but sometimes I'm blocked from using it even I wish to. 
+Last time how ever, I had to wait until only around 10 enemies where active until i was able to get the next wave. And this was in a phase where I wished to have an average around 100 +- 20 enemies.
+
+Please change the delay to around 5s (real time). And if possible, please show in a little notification how many Enemies came next time I hit the button."
+reloZid/android-anuto,open,google does evil,[],"Is there a non-[google way](https://play.google.com/apps/testing/ch.logixisland.anuto) to signup for beta test?  I have removed all the google evil doing apps/services from my root'd phone.
+
+Privacy is a Human Right.  Google is a Humans Rights violator on an epic scale."
+reloZid/android-anuto,open,revert ended game ,"[Label(name=""enhancement"")]","Have you died?  then continue playing the next level only to have annihilated every wave?  But oh noes you're dead?
+
+retore game, earn back lives, or play with undead powers like necromancy
+
+"
+reloZid/android-anuto,open,data uri to import other maps,"[Label(name=""enhancement"")]","map geometry, and enemy flows.
+
+Share maps via email, jabber texting, or free hosted wiki.  No filesystem interface required
+
+another app to make levels or webtool"
+reloZid/android-anuto,open,Strategy / balancing discussions,"[Label(name=""balancing""), Label(name=""help wanted"")]",Main issue for balancing optimizations.
+reloZid/android-anuto,open,Ideas for battery life / performance improvements,"[Label(name=""enhancement"")]",Main issue for ideas to optimize the game performance.
+reloZid/android-anuto,open,Awesome game! Come here to congratulate the authors,[],This game is really *really* great. Thank you everyone who participated in his creation and maintenance. Please keep going!
+reloZid/android-anuto,closed,level 71 consistantly overpowered,"[Label(name=""balancing"")]","Maybe i'm just a bad designer, but it seems that every course i've made is defeated on level 71. 
+
+On this level, the only thing that spawns are the Star healers, and no matter the DPS of my system, there is nowhere near enough dps on any track length to defend against all those healers at once. I basically plan my entire game around it at this point, and still end up losing. 
+
+It's unfortunate because i want to get into more end-game stuff. 
+
+I'd be happy to help out with some contributions, but i'd need some help knowing where to look in the code. I'm not a skilled programmer, but I do know enough that i might be able to take a look at adding some code. Is there something that decides what kind of enemies are spawned at each level, or is it maybe a list somewhere that picks types. "
+reloZid/android-anuto,open,Add a save/load mechanism,"[Label(name=""enhancement"")]",Sometimes after playing this for hours it can get annoying having to restart the game just by small mistakes. a undo/retry or save/resume feature would be nice
+reloZid/android-anuto,open,"Add ""Continue"" button to game menu","[Label(name=""enhancement"")]","I have restarted multiple games where I was at or above level 60, simply because I paused the game by opening the menu and tapped on the first option out of muscle memory, since that is almost always the ""continue"" button. My brain just doesn't think to tap that tiny menu button again when there are big buttons in the center of my screen.
+
+Please add a continue button above the restart button to help people like me with too much muscle memory."
+reloZid/android-anuto,closed,Battery drain,"[Label(name=""enhancement"")]","This Game use really, really much enery.
+Please check if you could  do  something about it."
+reloZid/android-anuto,closed,Permanently show Update and Upgrade status,"[Label(name=""enhancement"")]",Maybe the number colors could represent the upgradestatus and the value like at moment the update status.
+reloZid/android-anuto,closed,Add Back button,"[Label(name=""enhancement"")]","Sometimes I click on a wrong Buton. So a little Back Option would be good.
+It may could scroll som seconds into past or simply remove the last tick. It should affect all buttons except the gameplay speed."
+reloZid/android-anuto,closed,Feature request: show total sell value of all towers.,"[Label(name=""enhancement"")]","Somewhere (maybe when tapping credit counter) there should be visible tower statistics, e.g. cumulative credit amout if one sells all towers (or all tier 1 towers), cumulative DPS of all towers and other ""strategic"" reports."
+reloZid/android-anuto,closed,Normalize resource allocation and requirement ,[],"About after Wave 40 (most definitely Wave 60), my Nexus 5X struggles to render the game properly at 4x speed, and interestingly 1x speed is smoother, and as a result, *faster* than 4x speed at that point. I assume that although the visuals are faster at 1x there, the game logic still happens faster. 
+
+For the game to be functional, it should also be playable late in game. There needs to be quite some optimizations (batch rendering, batch game logic updating comes to mind) should help reduce this resource requirements with huge and fast mobs with tons of bullets everywhere. "
+reloZid/android-anuto,closed,Set up automated build and test environment,[],"Just tried to `gradle build` the master 11dc354, latest tag v0.4-1 0d3b220 and a release merge 9fb05af, but all of them failed due to a lint error. I assume that is some syntax error. 
+
+```
+* What went wrong:
+Execution failed for task ':app:lint'.
+> Lint found errors in the project; aborting build.
+
+  Fix the issues identified by lint, or add the following to your build script to proceed with errors:
+  ...
+  android {
+      lintOptions {
+          abortOnError false
+      }
+  }
+  ...
+
+  Errors found:
+
+  /Users/hyiltiz/src/android-anuto/app/src/main/res/values-ca/strings.xml:24: Error: Apostrophe not preceded by \ [StringEscaping]
+      <string name=""game_over"">S'ha acabat!</string>
+                                ^
+  /Users/hyiltiz/src/android-anuto/app/src/main/res/values-ca/strings.xml:61: Error: Apostrophe not preceded by \ [StringEscaping]
+      <string name=""map_original_name"">L'original</string>
+```
+
+While it may well be an environmental issue, the project could still benefit from a automated build and test environment (e.g. Travis CI). BTW, simply removing `values-ca` folder passed the build."
+reloZid/android-anuto,closed,Updated fr (French) translation,[],Commit made via [Stringlate](https://lonamiwebs.github.io/stringlate/)
+reloZid/android-anuto,open,Show more useful information,"[Label(name=""enhancement"")]","I want the game show another useful informations:
+* Damage per second of a tower = (projectile power) / (fire rate) = DMS
+* Applied(?) damage per second in the range = DMS * 2*pi * range**2
+* Effective damage per second in the range = ADPS * cover_percentual
+
+They are useful for measure the effectiveness of a tower"
+reloZid/android-anuto,closed,Feature/tower concept,[],Basic tower placement and aiming 
+reloZid/android-anuto,closed,Feature/express,[],
+reloZid/android-anuto,closed,What are the significance of the yellow circles?,"[Label(name=""help wanted"")]","What are the significance of the yellow circles? I don't notice them at lower levels.
+
+![image](https://user-images.githubusercontent.com/5821688/42415696-81d85a46-8289-11e8-82dc-d266174420ec.png)
+"
+reloZid/android-anuto,closed,Corrected two little typos in German strings.xml,[],
+reloZid/android-anuto,closed,catalan translation,[],catalan translation
+reloZid/android-anuto,closed,How to defeat fliers in wave 68 and up?,"[Label(name=""balancing""), Label(name=""help wanted"")]","What's the best strategy against fliers in waves above 68? I never managed to get beyond 72, although trying different strategies. Bullet hoses and rockets do only little damage and the fliers are too fast to get them."
+reloZid/android-anuto,closed,Slovak translation,[],"Hello
+
+Translation files:
+https://gist.github.com/dpsfotocestou/a431ccb221259762a98f987a9bd57e8c
+
+Thank you, game is very good  :)"
+reloZid/android-anuto,closed,save and restore playing field,[],"Would be really grate if you wouldnt loose all yor progress on reboot, androids oom that is doing things before oo (nearly akways) or accidentally swipe away the app in the overview of opened apps (asvi just did to get to the browser still opened with a little less scrolling... 😡😠😕😒)...
+
+Could sure be done very simple by deserialise the playing field every time the activiti respawns from local file and build a thread that serialises the game field every 42 secounds and when the activity is closed or becames inactive. Just search the web for java object serialisation...
+
+Thanks a lot in advance"
+reloZid/android-anuto,closed,strategy development,"[Label(name=""help wanted"")]","Hi,
+
+We know that this isnt an classic issue, but i couldn't find an open discussion board about this project...
+After looking to that board and found out how far others came and how only far we came (0nly 205.787 points in the original level and the highest 334.892 in the level with the 5 lines for example on this device) we planed to build up a better strategy based of some statistics. First of all we have to gather all data of the different towers like this:
+
+![screenshot_2018-03-01-02-46-52-034](https://user-images.githubusercontent.com/7935237/36823287-b2c220c6-1cfc-11e8-95e0-3c05d04fb4af.jpeg)
+
+After that we have to build some statistics based abstract from that data and build some new advanced strategy based on that. But before putting any more effort in this we would like to ask if others have done already things in this direction and are willing to share them. Thanks a lot in advance."
+reloZid/android-anuto,closed,Teleport Indicator doesn't disappear,"[Label(name=""bug"")]","Under some circumstances, the violet bubble which indicates that a unit already has been teleported, doesn't disappear if the owning unit dies."
+reloZid/android-anuto,closed,Hiding tower options under Build button,[],Am I alone in finding the relatively recent consoliation of the tower options under a Build button extremely awkward ?  Can they be put back the way they were or can their consoliation be made a setting option ?
+reloZid/android-anuto,closed,can Snot Rocket slow the flier?,[],
+reloZid/android-anuto,open,Improve strategy selection for towers,"[Label(name=""enhancement"")]","I think the most interesting part of the game is, and should  be the strategy part. so please add:
+1st, can target the type of enemy. simultaneously with the enemy attributes sush as the closed and the lock.
+2ed, can target the enemy had been teleported once.
+3rd,  need more convenient and faster  strategy change operation. all option should be iconify and full displayed .  can change options of all or the towers of  the selected area,  include just one.
+
+last,  love your game very much,  by the way  do not add  colors. ;)"
+reloZid/android-anuto,closed,Update strings.xml (pl),[],
+reloZid/android-anuto,closed,Update Spanish translation,[],
+reloZid/android-anuto,closed,The new dropdown-menu...,"[Label(name=""enhancement"")]","...isnt helpful at all. It covers the game area and you cant get quickly, how much points you still can spend.
+Thx for your great, inspiring, creative work! "
+reloZid/android-anuto,closed,Updated es (Spanish) translation,[],Commit made via Stringlate
+reloZid/android-anuto,closed,Update strings.xml (pl),[],
+reloZid/android-anuto,closed,What am I supposed to do?,"[Label(name=""help wanted"")]","I download the game, opened it, and my only option is to press next wave.  Next wave of what?  What's happening?  I press next wave, a bunch of boxes March through the maze.  I cant interact with the boxes or the map in any way.  I press next wave again.  Same thing.  I press it again and this tine there's a another wave of... blobs, I don't know, that follow the third wave if boxes.  Then I get a game over screen and a score.  What the hell is the score for?  Then I come here and people are talking about various elements of the game and I have zero idea how this is even a game.  "
+reloZid/android-anuto,closed,l10n: add belarusian lang,[],
+reloZid/android-anuto,closed,I'm too good at this game,[],http://imgur.com/a/m0qNo
+reloZid/android-anuto,closed,"map ""Waiting line"" wrong starting point","[Label(name=""bug"")]","Look at the screenshot
+
+![screenshot_20170731-215107](https://user-images.githubusercontent.com/663900/28795635-e39d9f54-763a-11e7-833a-e9570dd97067.png)"
+reloZid/android-anuto,closed,[feature request] saving the game,[],"It would be good to have a save function to continue a game after open it again. It seems to work now if you use the back key to close, but only if you don't restart the device."
+reloZid/android-anuto,closed,Fix transparent in-game window,"[Label(name=""bug"")]","I've just realized that enabling the option for transparent tower info windows doesn't work anymore, the tower info background is always opaque. I'm studying it now."
+reloZid/android-anuto,closed,Update README.md,[],"This small and useless PR changes the links to download the app into buttons
+
+Thanks for this game :)"
+reloZid/android-anuto,closed,Updated ro (Romanian) translation,[],
+reloZid/android-anuto,closed,Updated fr (French) translation,[],Commit made via Stringlate
+reloZid/android-anuto,closed,Fix overlapping top textviews,"[Label(name=""bug"")]","Recent merges (speed up & enemy counter) have added text to top bar. The views now overlap, sometimes. It may depend on language settings and screen size.
+Here is a shot from a 5.2'' screen:
+
+[![Screenshot_2017-07-10-18-47-42.png](https://s3.postimg.org/sbh604pbn/Screenshot_2017-07-10-18-47-42.png)](https://postimg.org/image/c0h23tctr/)"
+reloZid/android-anuto,closed,Please update the f-droid version,[],"Can the f-droid version be updated to a new one? I receive lots of changes ans would like to use them :).
+Thanks!"
+reloZid/android-anuto,closed,Enemies counting,[],"Add enemies counter and show it in wave information string. ""Wave 8 (34)"", for example.
+- It is a sum of all active wave enemies.
+- Yes, undelivered enemies also count."
+reloZid/android-anuto,closed,Speed up button,[],Adding two buttons to increase/decrease game speed
+reloZid/android-anuto,closed,Brazilian portuguese translation,[],Brazilian-portuguese localization
+reloZid/android-anuto,closed,Little fixes,[],"After the ThemeListener was refactored, a bug made the app crash due to a null getView().
+Also, zero padding in tower info fragment needed to be set in code, not only in xml. Link explaining that is in its commit message."
+reloZid/android-anuto,closed,Use normal activity for settings,[],"This PR finishes my set of modifications to layout. For more ideas or bugs found, feel free to contact me or just open a new ISSUE. I'm still trying to get a full view of the game engine :)"
+reloZid/android-anuto,closed,Fix bugs & improve last big merge,[],"#### Bugs solved:
++ Game restart after entering settings
++ Spacing at the border of transparent tower info
+#### Usability:
++ Confirmation dialog to change theme when game has started
+#### Visual:
++ Use full activity for selecting map (settings still to do)
++ Use the same spacing at the border as between items in the select level grid
+#### Technical:
++ A separate SettingsManager. It now holds back button settings, only
+
+### To check:
+If a tower info fragment is open when user changes its transparency, it now updates instantly. To do that, ThemeManager calls TowerInfoFragment directly. It may not be the cleanest approach so check [commit eabf34621d45f5bbf54085cf8a3fb461d1c85c5f](https://github.com/civyshk/android-anuto/commit/eabf34621d45f5bbf54085cf8a3fb461d1c85c5f) to look and suggest improvements."
+reloZid/android-anuto,closed,Help file,[],"[HowToPlay.txt](https://github.com/reloZid/android-anuto/files/1083332/HowToPlay.txt)
+
+There have been several feature requests for a help menu, and several feature requests for better balancing in the higher levels. In addition to explain game play, this help file also attempts to explain why the imbalance exists in the higher levels.
+
+If possible, I would suggest separate pages for each section of the help file making it more like an in-game manual."
+reloZid/android-anuto,closed,adding indonesian translation,[],Thanks a lot!
+reloZid/android-anuto,closed,Adding Indonesian Translation,[],"I have create indonesian translation for this app.
+
+[https://github.com/azzamsa/android-anuto/blob/master/app/src/main/res/values-id/strings.xml](url)
+
+
+`<resources>
+    <string name=""app_name"">Anuto TD</string>
+
+    <string name=""menu"">Setelan</string>
+    <string name=""next_wave"">Gelombang Lain</string>
+    
+    <string name=""restart"">Mulai ulang</string>
+    <string name=""change_map"">Ubah peta</string>
+    <string name=""theme"">Tema</string>
+    <string name=""sound"">Suara</string>
+
+    <string name=""game_over"">Permainan telah berakhir!</string>
+    <string name=""score"">Skor</string>
+
+    <string name=""credits"">Uang</string>
+    <string name=""lives"">Nyawa</string>
+    <string name=""wave"">Gelombang</string>
+    <string name=""bonus"">Bonus</string>
+
+    <string name=""level"">Level</string>
+    <string name=""damage"">Kerusakan</string>
+    <string name=""reload"">Isi Ulang</string>
+    <string name=""range"">RuangLingkup</string>
+    <string name=""splash"">JarakLedakan</string>
+    <string name=""distance"">Jarak</string>
+    <string name=""intensity"">Intensitas/string>
+    <string name=""duration"">Durasi</string>
+    <string name=""inflicted"">Akibat</string>
+
+    <string name=""lock_target"">Kunci target</string>
+    <string name=""strategy"">strategi</string>
+    <string name=""enhance"">Tambahkan</string>
+    <string name=""upgrade"">Tingkatkan</string>
+    <string name=""sell"">Jual</string>
+
+    <string name=""on"">aktif</string>
+    <string name=""off"">mati</string>
+
+    <string name=""strategy_closest"">Terdekat</string>
+    <string name=""strategy_weakest"">Terlemah</string>
+    <string name=""strategy_strongest"">Terkuat</string>
+    <string name=""strategy_first"">Pertama</string>
+    <string name=""strategy_last"">Terakhir</string>
+
+    <string name=""theme_original"">Orisinal</string>
+    <string name=""theme_dark"">Gelap</string>
+</resources> `
+
+glad to contribute to this app.
+thanks for making this great app as Free Software.
+
+Greeting from Indonesia,
+azzamsa"
+reloZid/android-anuto,closed,added another level,[],I added a fith level.
+reloZid/android-anuto,closed,Changes to menu and options,[],"This Pull Request combines previous ones plus more changes:
+
+- Enable/disable back button, [closed PR](https://github.com/reloZid/android-anuto/pull/86). Also an option to press back twice
+- Select levels in a grid instead of a horizontal scroller, [closed PR](https://github.com/reloZid/android-anuto/pull/87). Pictures in that link are obsolete, this grid has a shadowed background too
+- Add four new levels
+- Enable/disable transparent background for tower info window, idea taken from [rejected PR](https://github.com/reloZid/android-anuto/pull/60)
+- Move most options into their own Settings Activity
+- Some spanish translations. [This PR](https://github.com/reloZid/android-anuto/pull/85) could be merged first"
+reloZid/android-anuto,closed,Select level with a grid,[],"HorizontalScrollView works nice to select a level among a few, but a GridView can be more handy when there are a lot of levels.
+
+Example:
+[![selectlevelgrid.jpg](https://s24.postimg.org/58auy03k5/selectlevelgrid.jpg)](https://postimg.org/image/zczbjd8n5/)"
+reloZid/android-anuto,closed,Add menu option to enable/disable back button,[],"May I suggest a menu option to enable/disable back button? I already implemented it.
+
+Related issue: [[Feature request] Back button should not exit game. #30](https://github.com/reloZid/android-anuto/issues/30)"
+reloZid/android-anuto,closed,"Update Spanish translation, fixing some accents (tildes)",[],
+reloZid/android-anuto,closed,[Feature request] Enemy counter,"[Label(name=""enhancement"")]","As an improvement it would be nice to have a counter of the attacker units on the screen. In the higher levels when the attackers are stacked one on the other it's very difficult to have an idea of how many of them are still left.
+
+It could be put on the right of the lives counter on the top."
+reloZid/android-anuto,closed,stars too powerful beyond wave 70,"[Label(name=""balancing"")]","There are several ""wave unbeatable"" and ""game too hard"" issues, lots of replies and tips in them but in the end none of these issues directly address the actual problem - stars are just too powerful in higher levels.
+
+A few suggestions on stars balancing have been posted and I'd like to sum them here.
+My suggestions would be (in order of my personal preference):
+
+- a turret that reduces or disables star's healing power temporarily - maybe third upgrade to slow turret?
+- do not stack heal effect
+- stars can't heal other stars (except self)
+- reduce stacking effect for each additional healer in the area
+- one heal should heal a fixed number of HP and distribute it among all units in the effect's area (maybe combined with reduced stacking)
+ 
+Other suggestions (in no particular order):
+
+- stars can heal other units but cannot self-heal
+- very reduced maximum life
+- stars can heal other stars but with less effectiveness
+- stars only heal themselves "
+reloZid/android-anuto,open,[Feature Request] Add language settings,"[Label(name=""enhancement"")]","Would be cool if it would be possible to switch between languages. :)
+@reloZid "
+reloZid/android-anuto,closed,+ RU translation,[],
+reloZid/android-anuto,closed,Russian and Ukrainian translations,[],"Hi! I'd like to translate game texts to Russian and Ukrainian language. May I send you PR or such changes is not essential?
+"
+reloZid/android-anuto,closed,some stars heal faster than others,"[Label(name=""bug"")]","At wave 71 I was so far able to kill two stars in what seems to be an ""endless"" configuration. By closely watching stars (and hoping they finally die) I noticed that some stars heal faster than other. i.e. some stars are able to restore full health while under constant beating while others lose their health eventually. These are always instances of lone stars at the same choke point receiving full beating possible."
+reloZid/android-anuto,closed,Updated Hungarian translation,[],
+reloZid/android-anuto,closed,Game frozen at level 27,"[Label(name=""bug"")]","When I play the game and reach level 27 the game just stop working without any problem message, even from android OS, just frozen screen"
+reloZid/android-anuto,closed,Added swiss-german strings.xml,[],Added swiss-german strings.xml
+reloZid/android-anuto,open,Easy/normal/hard difficulty levels?,"[Label(name=""enhancement"")]","Hello,
+
+sometimes I like a challenge, and sometimes I like to relax and twiddle my thumbs. Currently Anuto is more on the challenge side of things, and I'd sometimes like to be able to set difficulty to be easier to play around and experiment more freely.
+
+To avoid unbalancing the carefully balanced weapons/hitpoint progression, I think it would be enough if an easier game mode would just give more credits per kill."
+reloZid/android-anuto,closed,Add uk strings.xml,[],
+reloZid/android-anuto,closed,Spanish Translation,[],:) 
+reloZid/android-anuto,closed,Esperanto and Polish translations,[],I hope that some day it will be possible to select language in game...
+reloZid/android-anuto,closed,Crash after returning from paused state.,"[Label(name=""bug"")]","This is on Version 0.2-1 from F-Droid.
+
+To reproduce:
+ * Start a new game.
+ * Lock your phone (causing anuto to pause).
+ * Unlock and open the app again.
+
+Bug:
+ * The four buttons to add a new tower at the top of the screen are blank.
+ * Touching these blank areas where the buttons _should_ be causes a NPE
+
+```
+                         E  java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String ch.logixisland.anuto.entity.tower.Tower.getName()' on a null object reference
+                         E      at ch.logixisland.anuto.view.game.TowerView.onTouch(TowerView.java:125)
+                         E      at android.view.View.dispatchTouchEvent(View.java:8474)
+                         E      at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2406)
+                         E      at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2050)
+                         E      at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2406)
+                         E      at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2050)
+                         E      at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2406)
+                         E      at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2050)
+                         E      at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2406)
+                         E      at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2050)
+                         E      at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2406)
+                         E      at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2050)
+                         E      at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2406)
+                         E      at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2050)
+                         E      at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:2406)
+                         E      at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:2050)
+                         E      at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchTouchEvent(PhoneWindow.java:2625)
+                         E      at com.android.internal.policy.impl.PhoneWindow.superDispatchTouchEvent(PhoneWindow.java:1770)
+                         E      at android.app.Activity.dispatchTouchEvent(Activity.java:2742)
+                         E      at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchTouchEvent(PhoneWindow.java:2586)
+                         E      at android.view.View.dispatchPointerEvent(View.java:8675)
+                         E      at android.view.ViewRootImpl$ViewPostImeInputStage.processPointerEvent(ViewRootImpl.java:4129)
+                         E      at android.view.ViewRootImpl$ViewPostImeInputStage.onProcess(ViewRootImpl.java:3995)
+                         E      at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3550)
+                         E      at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3603)
+                         E      at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3569)
+                         E      at android.view.ViewRootImpl$AsyncInputStage.forward(ViewRootImpl.java:3686)
+                         E      at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3577)
+                         E      at android.view.ViewRootImpl$AsyncInputStage.apply(ViewRootImpl.java:3743)
+                         E      at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3550)
+                         E      at android.view.ViewRootImpl$InputStage.onDeliverToNext(ViewRootImpl.java:3603)
+                         E      at android.view.ViewRootImpl$InputStage.forward(ViewRootImpl.java:3569)
+                         E      at android.view.ViewRootImpl$InputStage.apply(ViewRootImpl.java:3577)
+                         E      at android.view.ViewRootImpl$InputStage.deliver(ViewRootImpl.java:3550)
+                         E      at android.view.ViewRootImpl.deliverInputEvent(ViewRootImpl.java:5813)
+                         E      at android.view.ViewRootImpl.doProcessInputEvents(ViewRootImpl.java:5787)
+                         E      at android.view.ViewRootImpl.enqueueInputEvent(ViewRootImpl.java:5758)
+                         E      at android.view.ViewRootImpl$WindowInputEventReceiver.onInputEvent(ViewRootImpl.java:5903)
+                         E      at android.view.InputEventReceiver.dispatchInputEvent(InputEventReceiver.java:185)
+                         E      at android.os.MessageQueue.nativePollOnce(Native Method)
+                         E      at android.os.MessageQueue.next(MessageQueue.java:143)
+                         E      at android.os.Looper.loop(Looper.java:122)
+                         E      at android.app.ActivityThread.main(ActivityThread.java:5294)
+                         E      at java.lang.reflect.Method.invoke(Native Method)
+                         E      at java.lang.reflect.Method.invoke(Method.java:372)
+                         E      at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904)
+                         E      at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:699)
+        ActivityManager  W    Force finishing activity 1 ch.logixisland.anuto/.view.game.GameActivity
+```"
+reloZid/android-anuto,open,Dual Player,"[Label(name=""enhancement"")]",Could you please add a dual player mode? I'd like it to be through Wi-Fi.
+reloZid/android-anuto,closed,Added Dutch translation,[],
+reloZid/android-anuto,closed,Negative Credits,"[Label(name=""bug"")]","Steps to reproduce
+- start any game
+- drag+drop any defence towers you like, credits < 0 are possible
+
+Yay my most successful round ever! But takes the fun away :(
+Not sure whether it actually goes down to -∞ or has some negative limit
+
+Version 0.2-1 (F-Droid)
+Android 6.0.1
+
+Example:
+![tmp_14897-screenshot_20170210-233748-315063243](https://cloud.githubusercontent.com/assets/16524907/22848136/15ba176a-efea-11e6-8623-c5199fb9a512.png)
+"
+reloZid/android-anuto,closed,Added missing French translations,[],"I rebuild the French value file from the orginal one to add missing translations and make the files similar.
+
+There one missing value on ""splash"", I don't know where and when it's used, so I couldn't translate it (and I'm not sure about what the word ""splash"" means in English)."
+reloZid/android-anuto,open,Extra lifes,"[Label(name=""balancing"")]","Wouldn't it be a nice feature to recieve an extra life every so often? I was thinking i.e. after reaching a certain level or even using a great sum of credit to obtain an extra life.
+Thanx for this very coool game!!"
+reloZid/android-anuto,closed,Added ro (Romanian) translation,"[Label(name=""enhancement"")]","I have translated your application into `ro` (*Romanian*). Here is the xml:
+```
+<?xml version=""1.0"" encoding=""UTF-8""?>
+<resources>
+    <string name=""app_name"">Anuto TD</string>
+
+    <string name=""menu"">Meniu</string>
+    <string name=""restart"">Restart</string>
+    <string name=""change_level"">Alege nivelul</string>
+    <string name=""dark_theme"">Temă întunecată</string>
+    <string name=""normal_theme"">Temă obișnuită</string>
+    <string name=""next_wave"">Următorul val</string>
+
+    <string name=""game_over"">Sfârșit!</string>
+    <string name=""score"">Scor</string>
+
+    <string name=""status_credits"">Credits</string>
+    <string name=""status_live"">Viață</string>
+    <string name=""status_lives"">Vieți</string>
+    <string name=""status_wave"">Val</string>
+    <string name=""status_bonus"">Bonus</string>
+
+    <string name=""level"">Nivel</string>
+    <string name=""damage"">Daună</string>
+    <string name=""reload"">Reîncarcă</string>
+    <string name=""range"">Rază</string>
+    <string name=""splash"">Splash</string>
+    <string name=""distance"">Distanță</string>
+    <string name=""intensity"">Intensitate</string>
+    <string name=""duration"">Durată</string>
+    <string name=""inflicted"">Daune aduse</string>
+
+    <string name=""lock_target"">Urmărește ținta</string>
+    <string name=""strategy"">Strategie</string>
+    <string name=""enhance"">Îmbunătățește</string>
+    <string name=""upgrade"">Upgrade</string>
+    <string name=""sell"">Vinde</string>
+
+    <string-array name=""strategies"">
+        <item>Cel mai apropiat</item>
+        <item>Cel mai slab</item>
+        <item>Cel mai puternic</item>
+        <item>Primul</item>
+        <item>Ultimul</item>
+    </string-array>
+
+</resources>
+```
+
+---
+
+*Translation made with [Stringlate](https://github.com/LonamiWebs/Stringlate).*"
+reloZid/android-anuto,closed,Added it (Italian) translation,[],Fixes #63
+reloZid/android-anuto,closed,Added it (italiano) translation,"[Label(name=""enhancement"")]","I have translated your application into `it` (*italiano*). Here is the xml:
+```xml
+<?xml version=""1.0"" encoding=""UTF-8""?>
+<resources>
+    <string name=""app_name"">Anuto TD</string>
+
+    <string name=""restart"">Ricomincia</string>
+    <string name=""next_wave"">Prossima ondata</string>
+
+    <string name=""game_over_lost"">Partita finita!</string>
+    <string name=""game_over_won"">Hai vinto!</string>
+    <string name=""score"">Punteggio</string>
+
+    <string name=""status_credits"">Riconoscimenti</string>
+    <string name=""status_live"">Vita</string>
+    <string name=""status_lives"">Vite</string>
+    <string name=""status_wave"">Ondata</string>
+    <string name=""status_bonus"">Bonus</string>
+
+    <string name=""level"">Livello</string>
+    <string name=""damage"">Danno</string>
+    <string name=""reload"">Ricarica</string>
+    <string name=""range"">Distanza</string>
+    <string name=""inflicted"">Inflitto</string>
+
+    <string name=""lock_target"">Fermo sull'obiettivo</string>
+    <string name=""strategy"">Strategia</string>
+    <string name=""enhance"">Migliora</string>
+    <string name=""upgrade"">Aggiorna</string>
+    <string name=""sell"">Vendi</string>
+
+    <string name=""msg_are_you_sure"">Sei sicuro?</string>
+
+    <string name=""select_a_level"">Seleziona livello</string>
+    
+    <string-array name=""strategies""></string-array>
+
+</resources>
+
+```
+
+---
+
+*Translation made with [Stringlate](https://github.com/LonamiWebs/Stringlate).*"
+reloZid/android-anuto,closed,PR for #61 - fix bug: ensure TowerInfoFragment is added to Activity on refresh(),[],"See issue #61.
+
+"
+reloZid/android-anuto,closed,[Bug] App crashes after selecting level for the second time,"[Label(name=""bug"")]","Steps to reproduce: start app, select level, place tower, open tower info, close tower info, start next round, press back, after **select level** app crashes.
+
+This bug was introduced with #50. The app crashes with the following exception:
+
+> FATAL EXCEPTION: main
+>                   Process: ch.logixisland.anuto, PID: 10769
+>                   java.lang.IllegalStateException: Fragment TowerInfoFragment{eb96976} not attached to Activity
+>                       at android.app.Fragment.getResources(Fragment.java:805)
+>                       at ch.logixisland.anuto.view.game.TowerInfoFragment.refresh(TowerInfoFragment.java:145)"
+reloZid/android-anuto,closed,PR for #59 - use semi-transparent background in fragment_tower_info and add CHANGES.txt,[],"See issue #59 
+
+"
+reloZid/android-anuto,closed,[Usability] Tower info popup with transparent background,"[Label(name=""enhancement"")]","While you are working on towers (strategy, enhancing, upgrading, etc.) you cannot watch the field below the tower info popup.
+
+The tower info popup should have a transparent background."
+reloZid/android-anuto,closed,Hungarian translation,"[Label(name=""enhancement"")]","I translated the game to Hungarian. Here it is:
+https://gist.github.com/bd18e85bc79bb443fa0232643fa7e886"
+reloZid/android-anuto,closed,[Feature request] Show tower stats after game-over,[],"Once the game over text appears, it's no longer possible to open the TowerInfoFragment and see how much help each tower gave.  For considering how my strategy worked, it would be nice to still be able to see the tower levels and inflicted damage."
+reloZid/android-anuto,closed,Create strings-de.xml,[],German translation of strings.xml
+reloZid/android-anuto,closed,[Feature request] quasi-mode for weapon level indication,"[Label(name=""enhancement"")]","After getting as far as level 25, I can say that I dearly missed some sort of a signifier that would tell me which weapons I forgot to enhance. It is easy to lose track when there is so much action going on all over the battle-field.
+
+Color-codes or overlay icons will add clutter and make the screen unreadable, therefore I suggest the use of a so-called *quasi-mode*, as defined by Jef Raskin in the book ""The humane interface"".
+
+Unlike a classical mode (e.g. pressing `caps lock`), a quasi-mode is only active for as long as an action is being performed (e.g. holding `shift`).
+
+In the case of this excellent game, there is no more room for buttons and every cell is valuable. There is one exception - the trench itself. That space is technically unused (and that's a lot of real estate). I suggest a `tap and hold` gesture anywhere on the trench to display an overlay above each unit, which will visualize its level.
+
+As soon as the finger is raised, the overlay disappears and the game is rendered as usual. This is a non-invasive approach that doesn't clutter the screen and is very easy to invoke, and most importantly - very easy to dismiss."
+reloZid/android-anuto,closed,Help in the game itself,"[Label(name=""enhancement"")]","I think that at the very first start the game should display a bullet-point list of rules (just like here, in the repository's readme).
+
+I played it for a while and I was VERY frustrated at level 11 so I came here to open a bug report and say that there is **no way** that level is beatable. Before doing that, I started reading other issues and learned about teleports, level 56, upgrades... Obviously I was missing something (-:
+
+Because there are no hints or instructions in the game itself, the discoverability of important features is minimal. I installed it directly from F-Droid, so I had no exposure to any documentation at all. I am surprised I got as far as level 11 just by placing ordinary equipment (-:"
+reloZid/android-anuto,closed,Updated Gradle Android plugin and Gradle dist,[],According to AndroidStudio 2.2 recommendation
+reloZid/android-anuto,closed,"Keeps the device awake, without using expensive WakeLock, fixes #26",[],
+reloZid/android-anuto,closed,"Removed IntelliJ IDEA files from repository, added appropriate gitignore",[],
+reloZid/android-anuto,closed,Darktheme,[],
+reloZid/android-anuto,closed,[Feature Request] Darker theme,[],"I love this game. I've noticed that the battery drain is very high, I think part of it is the bright background. It's also hard on my eyes to play it in the dark.
+
+My original thought was to color invert all the pngs (either the files themselves or in memory after loading), but I whipped up a quick test by merely color-inverting plateau1.png and it looks good enough to me.
+
+![screen capture](https://cloud.githubusercontent.com/assets/20132877/19484223/83aa5c36-951c-11e6-9b20-474534640922.png)
+
+In BasicPlateau.java I changed:
+s.sprite = Sprite.fromResources(R.drawable.plateau1, 4);
+to
+s.sprite = Sprite.fromResources(R.drawable.plateau2, 4);
+
+Obviously it'd need a setting switch somewhere, or a toggle maybe?
+
+Thanks!
+
+![plateau2](https://cloud.githubusercontent.com/assets/20132877/19483919/728932e8-951b-11e6-90f3-47c60c6961fb.png)
+"
+reloZid/android-anuto,closed,Add to F-Droid,[],"It would be handy to have this app distributed through F-Droid. Do you think that would be feasible?
+"
+reloZid/android-anuto,closed,"""Strongest"" strategy button covers Inflicted text","[Label(name=""bug"")]","On my Galaxy Tab Pro 8.4"", in the tower info menu, when the strategy displays as ""Strongest"" the button is two lines tall and it's text covers the ""Inflicted"" line text.     v0.1-5
+"
+reloZid/android-anuto,closed,No enemies appearing bug,"[Label(name=""bug"")]","Not sure how I made this happen. Restarted the game, accidently double tapped the 250 tower. Tower was purchased but not placed anywhere. Seemed to block enemies from appearing. I was able to press the next wave button to collect the bonus, but that was it. 
+
+Haven't been able to replicate the issue since. 
+
+Using the f-droid.org version. 
+![screenshot_20161002-084000](https://cloud.githubusercontent.com/assets/837136/19019327/2d2dd510-887c-11e6-9dd8-dcc8e40c2351.png)
+"
+reloZid/android-anuto,closed,Teleport turrets stop working after a while,"[Label(name=""balancing"")]","At level 56 , which I was unable to beat so far using many different strategies, I finally found one that seems to be feasible: I create an infinite loop using a battery of teleport turrets at the end of the level. While eventually being able to snipe one star once in a while, the teleporters at the end just stop working after a few minutes, letting star enemies pass freely and lose me the game.
+
+Quite frustrating :)
+"
+reloZid/android-anuto,closed,Update F-Droid app,"[Label(name=""wontfix"")]","In F-Droid (how I found this amazing game) The version is 0.1-5, and does not include the 2 new maps or the title menu. Can it up updated?
+"
+reloZid/android-anuto,closed,Removed sound files that were shortcuts,[],"Added proper sound files
+"
+reloZid/android-anuto,closed,Added sound files,[],"Added sound files for turrets
+"
+reloZid/android-anuto,closed,Pause button,"[Label(name=""enhancement"")]","A pause button would be really appreciated as it would give the user time to build, enhance, upgrade, change strategy, ... during (!) a wave. Particularly with the longer waves it would help :)
+"
+reloZid/android-anuto,closed,Added High Scores,[],"Also added a new level
+Added elevation for newer devices (API21+)
+
+Should have split the different features out into separate commits. Sorry. Still new to this.
+"
+reloZid/android-anuto,closed,"The next wave timeout is based on realtime, rather than in-game time","[Label(name=""bug"")]","This applies to Version 0.1-5 - Added to f-droid on 2016-07-06. I checked the issues and commits and didn't see anything address this, so hopefully this is new information.
+
+Basically, I can start a game, immediately hit the home button to minimize the game, wait ten seconds or so, then maximize the game again and immediately start the next wave without the enemies having moved down the pathway.
+"
+reloZid/android-anuto,closed,Improving README,[],
+reloZid/android-anuto,closed,French translation,[],
+reloZid/android-anuto,closed,Improving .gitignore,[],
+reloZid/android-anuto,closed,Adding an EditorConfig,[],
+reloZid/android-anuto,closed,"Added 3 new levels, and a menu to access them",[],"Hi there,
+I created some new levels, and added a menu to access them. Thanks for considering my additions. This is my first pull request on github, so if I am doing something wrong, please just let me know :)
+
+Not sure if I am meant to discuss implementation details here, but a quick rundown of what I changed:
+Added a new MenuActivity
+- App now opens to this and allows the user to select a level.
+- When a level is chosen, MainActivity is started with an intent extra that specifies which level to load
+- added some misc graphics and thumbnails for this activity
+
+Added new levels
+- added into res/raw - the levels are clones of the original level except for the platform placement, and path taken by the enemies.
+
+Thanks!
+"
+reloZid/android-anuto,closed,Not enough fire power to pass wave 56,"[Label(name=""balancing"")]","Cannons are practically ineffective. Creeps simply stay alive and walk no matter what turrets are around. Even if there are ""eaters"" at the end to send them back to start, they don't die...
+"
+reloZid/android-anuto,closed,Bug: game exists when back button pressed,[],"I believe it is very annoying. Sometimes I press the back button by mistake and I loose the whole game!
+"
+reloZid/android-anuto,closed,Dark theme,[],"I love the game but I think a dark theme (just inverted) would make it better for night time play.
+"
+reloZid/android-anuto,closed,[Feature Request] Dynamic and more complex weapons,"[Label(name=""enhancement"")]","enhance, upgrade and ""make it dynamic""!
+Moving the weapons needs strategy and makes variety.
+The lasers could upgrade to a new level that works together! It may makes zig-zag shapes or other synergy...
+"
+reloZid/android-anuto,closed,"Laser turret is too underpowered, also crashes at upgrade 3","[Label(name=""balancing"")]","It's fire rate is too slow, if I start off with a laser turret I will have monsters slipping by. It's second upgrade isn't very powerful either. The game locked up at upgrade 3.
+
+This is a good game though, keep up the good work!
+"
+reloZid/android-anuto,closed,Screen goes dark after screen timeout,"[Label(name=""bug"")]","What happens is that the screen times out during the game, when it should actually stay active.
+
+I'm on a Fairphone FP1 / MT6589 chipset running KitKat 4.4.4.
+
+Workaround is to set the screen time out higher.
+"
+reloZid/android-anuto,open,Colored theme,"[Label(name=""enhancement"")]","At the moment, only a few things are colored (laser, explosion, lifebars, range and not enough money to buy tower). I feel after a short time that the game becomes dull because of missing colors. I would like to have the option to have colored towers, missiles, enemies, walls and paths.
+"
+reloZid/android-anuto,closed,Fast Forward,"[Label(name=""enhancement"")]","I would like to have a fast forward button in this game. It would be useful to speed up the game especially for the rounds at the beginning when you have not many towers.
+"
+reloZid/android-anuto,closed,Run optipng -o7,[],
+reloZid/android-anuto,closed,Level 10 is unbeatable,"[Label(name=""balancing""), Label(name=""help wanted"")]","I've consistently annihilated everything, but the stars, on level 10 with an effective three zone strategy. The stars roll through like an armored convoy.
+"
+reloZid/android-anuto,closed,Incentive to advance waves doesn't scale fast enough,"[Label(name=""balancing"")]","At level 49, I make almost 0.5k per dead enemy. The bonus for advancing the wave is around `480 (+800)`. I would never advance a wave then, as the extra money I would win is ridiculous - less than two enemies. In earlier levels, it's a much higher relative value.
+"
+reloZid/android-anuto,closed,Teleporter sell value higher as its cost,[],"You can buy and upgrade the 4th cannon for 3k and then sell it for ~4k.
+
+This provides unlimites money.
+"
+reloZid/android-anuto,closed,Cheaper to sell and start again than to upgrade,"[Label(name=""balancing"")]","If you enhance a turret, its upgrade price remains the same. This means that if you want to upgrade a tower later, enhancing it now is as good as throwing away the credits. I assume this is intended.
+
+This sort of makes sense, and makes the player think twice before spending money for the short term. Then again, I think the upgrade price should go down even if a little bit when enhancing. Since enhancing increases the sell price, sometimes it gets to a point where it's cheaper to sell a very enhanced turret and start from scratch with a number of upgrades instead of upgrading it directly.
+
+What about reducing the upgrade cost at the same rate that the sell cost is increased? That would nullify this effect.
+"
+reloZid/android-anuto,closed,New strategies: how close they are to the end,"[Label(name=""invalid"")]","This is similar to First/Last. Those keep track of the first/last in the order in which they were spawned. I would find First/Last in the order in which they are getting to the end more useful.
+
+For example, if I have a sniper turret to catch those that run past my other turrets, I want the First as in the one that's closest to the end. But it will probably not be the first to spawn, as a faster enemy could be the first in progress but not the first to have spawned.
+
+Don't know if these strategies should be added in parallel (with new names) or if they should replace the existing. I don't think I'd ever find the current ones useful.
+"
+reloZid/android-anuto,closed,Cannon shoots from its last position,"[Label(name=""bug"")]","If the cannon (third turret at second level) aims at a different angle when shooting, the projectile animation starts from its old position instead of the new one. Easily spotted if the cannon was shooting downward and suddenly shoots upward - the projectile appears to shoot from its back.
+
+Same might happen with other turrets, haven't been able to tell very well.
+"
+reloZid/android-anuto,open,Descriptions for towers/enemies,"[Label(name=""enhancement"")]","Not only range and damage, but also few words could be added about each unit. At least to the web site.
+"
+reloZid/android-anuto,closed,No damage from 500-point turret,"[Label(name=""invalid"")]","The 500-point turret does no damage to the enemies. 
+"
+reloZid/android-anuto,closed,"lagging when the screen is full of ""monsters"" ","[Label(name=""enhancement"")]","http://hpics.li/ad4eff6
+
+As you can see on the picture the screen is full of ""monsters"". But on the screenshot you cannot see that at this point the game is lagging a lot !! 
+"
+reloZid/android-anuto,closed,Stars emerge endlessly,"[Label(name=""invalid"")]","Sometimes, on Wave 41, the stars emerge endlessly in middle of the track.
+They never stop (and think that they are stronger)
+v0.1-4
+"
+reloZid/android-anuto,closed,Main Menu,"[Label(name=""enhancement"")]","In order to provide new features (such as game settings, highscores, new maps) a main menu screen is needed.
+"
+reloZid/android-anuto,closed,Free unlimited credit bug,[],"Lower selling price of the **all** upgraded items.
+
+Example: 
+If I put the last gun and upgrade it: 
+500 + 800 = 1300
+then I can sell it at 1750 !!
+
+Free unlimited credit !!
+"
+reloZid/android-anuto,closed,Traps stop working,"[Label(name=""bug"")]","My strategy for level 41 with a lot of self healing star enemies is to set up an array of pulling traps. After some time they seem not to entrap new enemies within range. Is that so and if it is, is it on purpose?
+"
+reloZid/android-anuto,closed,Crash on too many turrets,"[Label(name=""bug"")]","While testing #7, I found that the game slowed down when a significant number (around the top third to half of the screen) of turrets were placed. The game will crash before you are able to fill the screen with turrets. Tested on Moto G 2015.
+"
+reloZid/android-anuto,closed,Dark/Inverted mode needed,"[Label(name=""enhancement"")]","After playing the game for 10~15 mins, I got it burned into my LCD screen. I have an LG G4, it is a known problem. I assume that a dark mode would avoid such problem.
+
+Overall great game,
+Cheers
+"
+reloZid/android-anuto,closed,Easy to cheat the game,"[Label(name=""bug"")]","1. buy that slowdown turret for 500 credits
+2. upgrade it (once or twice)
+3. sell it
+
+The amount you get back is larger than the amount you invested. This can be used to cheat as much credits as you want.
+"
+reloZid/android-anuto,closed,Save Game State,"[Label(name=""enhancement"")]",
+reloZid/android-anuto,closed,Highscore List,"[Label(name=""enhancement"")]",
+reloZid/android-anuto,open,Achievements / persistent upgrades,"[Label(name=""enhancement"")]",
+reloZid/android-anuto,open,Title Music,"[Label(name=""enhancement"")]",
+reloZid/android-anuto,closed,Sound Effects,"[Label(name=""enhancement"")]",
+reloZid/android-anuto,closed,Crash when re-opening app,"[Label(name=""bug"")]","**Stack Trace**
+
+```
+java.lang.RuntimeException: Unable to start activity ComponentInfo{ch.logixisland.anuto/ch.logixisland.anuto.MainActivity}: java.lang.RuntimeException: Could not load level!
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2416)
+    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2476)
+    at android.app.ActivityThread.-wrap11(ActivityThread.java)
+    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1344)
+    at android.os.Handler.dispatchMessage(Handler.java:102)
+    at android.os.Looper.loop(Looper.java:148)
+    at android.app.ActivityThread.main(ActivityThread.java:5417)
+    at java.lang.reflect.Method.invoke(Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+Caused by: java.lang.RuntimeException: Could not load level!
+    at ch.logixisland.anuto.MainActivity.onCreate(MainActivity.java:35)
+    at android.app.Activity.performCreate(Activity.java:6237)
+    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1107)
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2369)
+    ... 9 more
+Caused by: java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState
+    at android.app.FragmentManagerImpl.checkStateLoss(FragmentManager.java:1411)
+    at android.app.FragmentManagerImpl.enqueueAction(FragmentManager.java:1429)
+    at android.app.BackStackRecord.commitInternal(BackStackRecord.java:687)
+    at android.app.BackStackRecord.commit(BackStackRecord.java:663)
+    at ch.logixisland.anuto.GameOverFragment.onGameStarted(GameOverFragment.java:59)
+    at ch.logixisland.anuto.game.GameManager.onGameStarted(GameManager.java:522)
+    at ch.logixisland.anuto.game.GameManager.restart(GameManager.java:233)
+    at ch.logixisland.anuto.game.GameManager.setLevel(GameManager.java:252)
+    at ch.logixisland.anuto.MainActivity.onCreate(MainActivity.java:30)
+    ... 12 more
+```
+"

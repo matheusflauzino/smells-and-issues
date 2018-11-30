@@ -1,0 +1,347 @@
+repository,state,title,label,body
+fixme-lausanne/MyHackerspace,open,Publish new App version to f-droid and Playstore,[],"Cool people committed cool patches and those should go live :)
+The last published version is 1,5 years old.
+(if help is needed, get in touch with me)"
+fixme-lausanne/MyHackerspace,open,bump sdk compile version,[],See #65 
+fixme-lausanne/MyHackerspace,open,New domain: spaceapi.io,[],
+fixme-lausanne/MyHackerspace,closed,Orientation change when loading leads to NPE,"[Label(name=""bug"")]",It's all in the title
+fixme-lausanne/MyHackerspace,open,Anoying Toast due to temporarily unavailible Spaceapi,[],"My Hackerspace (Entropia) is currently moving, due to the the Spaceapi is currently not  availible.
+This causes the widget to create Toasts with ""No Route to host"" when I'm in the middle of doing other things, and it was not easy to even find out which app is responsible for that.
+
+This is propably an edge case, but nevertheless very annoying to my.
+
+I don't think it's a good idea to use toasts for errors from a widget, especially if there is no context for the message. A Toast with just ""No route to Host"" when I'm on my homescreen does not give me any Information I would need to anything about the cause (and it gets really annoying after a few times).
+
+I'm not sure what the best way to fix this is. Maybe creating a Notification, to at least give context for the Message and maybe more information and time.
+But it might get just as anoying in a case like mine to get Notifications every few minutes, but at least the can disable notifications on a per app basis in current Android versions.
+
+Any suggestions?"
+fixme-lausanne/MyHackerspace,closed,SpaceDirectory,[],Migrate to SpaceDirectory and preparations for the next release.
+fixme-lausanne/MyHackerspace,closed,Fix minor typos.,[],
+fixme-lausanne/MyHackerspace,open,Refresh data after SpaceApi URL change,[],"When directly editing SpaceAPI URL in the ""Current hackerspace API"" setting (after commit 39cd9b1450edacd259dc970d7f3365cc560811f7 it is called ""Edit SpaceAPI URL"") data from the new SpaceAPI isn't reloaded as would be expected when returning to the main page.
+
+First when manually pushing the reload button data is reloaded or an error is thrown.
+
+Tested on latest release 1.8.2 from F-Droid but I see no later commits which seem to address this."
+fixme-lausanne/MyHackerspace,open,"The Activity ""ch.fixme.status.Main"" may leak",[],"We develop a tool which drives app via UiAutomator, and finally dump the apps heap, which is further analyzed for possible leaked Activity or Fragment. 
+
+We apply the tool to this app, and found that the Activity ""ch.fixme.status.Main"" may leak. We could detect 2 instances of the Activity, one of which is actually destroyed but remain in heap.
+
+![image](https://cloud.githubusercontent.com/assets/13826031/20669045/df0ca588-b5ac-11e6-8cc4-8f8f26482c42.png)
+
+![image](https://cloud.githubusercontent.com/assets/13826031/20669085/24d65c08-b5ad-11e6-8771-d8e599b369f5.png)
+
+P.S. the paths to GC root were compressed/folded here.
+Luckly, this leak is not serious, as it did not retain too much memory.
+"
+fixme-lausanne/MyHackerspace,closed,Improved German translations,[],
+fixme-lausanne/MyHackerspace,closed,Use more natural translation,[],"Regards
+"
+fixme-lausanne/MyHackerspace,closed,Update Danish translation and use formal terms in English.,[],"Danish:
+Add missing translation of SpaceAPI URL edit feature.
+Fix other minor issues.
+
+Danish & English:
+Consistently use the terms OpenSpaceDirectory and SpaceAPI.
+
+Fixes #54 and partly #48.
+"
+fixme-lausanne/MyHackerspace,closed,Fix webcams,[],"This fixes the deserialisation of the webcams.
+
+Regards from [Coredump](https://coredump.ch)
+"
+fixme-lausanne/MyHackerspace,closed,Fix Danish translation,"[Label(name=""bug"")]","Some missing fields to translate:
+
+```
+    <string name=""prefs_api_url_title"">Current hackerspace API</string>
+    <string name=""prefs_api_url_summary"">Override current hackerspace URL (will be lost when choosing an other hackerspace in the list)</string>
+```
+"
+fixme-lausanne/MyHackerspace,open,Fix Dutch translation,"[Label(name=""bug"")]","Missing fields to translate:
+
+```
+    <string name=""prefs_api_title"">SpaceAPI Endpoint</string>
+    <string name=""prefs_api_summary"">URL to the global SpaceAPI directory (directory.json file)\nExamples:\nhttps://spaceapi.fixme.ch/directory.json\nhttp://spaceapi.net/directory.json</string>
+    <string name=""prefs_api_url_title"">Current hackerspace API</string>
+    <string name=""prefs_api_url_summary"">Override current hackerspace URL (will be lost when choosing an other hackerspace in the list)</string>
+```
+"
+fixme-lausanne/MyHackerspace,closed,Fix German translation,"[Label(name=""bug"")]","Missing strings to be translated:
+
+```
+    <string name=""ui_image_status"">Status image of the hackerspace</string>
+    <string name=""prefs_api_title"">SpaceAPI Endpoint</string>
+    <string name=""prefs_api_summary"">URL to the global SpaceAPI directory (directory.json file)\nExamples:\nhttps://spaceapi.fixme.ch/directory.json\nhttp://spaceapi.net/directory.json
+    <string name=""prefs_api_url_title"">Current hackerspace API</string>
+    <string name=""prefs_api_url_summary"">Override current hackerspace URL (will be lost when choosing an other hackerspace in the list)</string>
+```
+"
+fixme-lausanne/MyHackerspace,closed,Refactorings,[],"Some low-hanging fruit found with static analysis. Let me know if you don't agree with some of them.
+
+I intentionally didn't handle any deprecation warnings.
+"
+fixme-lausanne/MyHackerspace,closed,Read version code from BuildConfig,[],"This file is automatically created by the Gradle Android plugin and contains the current version number. This makes sure that there isn't an accidental mismatch between the app version and the version in the user agent.
+"
+fixme-lausanne/MyHackerspace,closed,Get into the directory,[],"Hey together,
+
+how to get space into your directory? Is this a mirror of spaceapi.net? The spaceapi.net directory is down.
+
+Regards,
+Max
+"
+fixme-lausanne/MyHackerspace,open,Missing translations,"[Label(name=""enhancement"")]","We need to update the translation with the latest fields.
+
+```
+Error: ""ui_image_status"" is not translated in ""de"" (German), ""fr"" (French) [MissingTranslation]
+    <string name=""ui_image_status"">Status image of the hackerspace</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/home/travis/build/fixme-lausanne/MyHackerspace/myHackerspace/src/main/res/values/strings.xml:32: Error: ""prefs_api_title"" is not translated in ""de"" (German), ""fr"" (French), ""nl"" (Dutch) [MissingTranslation]
+    <string name=""prefs_api_title"">SpaceAPI Endpoint</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/home/travis/build/fixme-lausanne/MyHackerspace/myHackerspace/src/main/res/values/strings.xml:33: Error: ""prefs_api_summary"" is not translated in ""de"" (German), ""fr"" (French), ""nl"" (Dutch) [MissingTranslation]
+    <string name=""prefs_api_summary"">URL to the global SpaceAPI directory (directory.json file)\nExamples:\nhttps://spaceapi.fixme.ch/directory.json\nhttp://spaceapi.net/directory.json</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/home/travis/build/fixme-lausanne/MyHackerspace/myHackerspace/src/main/res/values/strings.xml:34: Error: ""prefs_api_url_title"" is not translated in ""da"" (Danish), ""de"" (German), ""fr"" (French), ""nl"" (Dutch) [MissingTranslation]
+    <string name=""prefs_api_url_title"">Current hackerspace API</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/travis/build/fixme-lausanne/MyHackerspace/myHackerspace/src/main/res/values/strings.xml:35: Error: ""prefs_api_url_summary"" is not translated in ""da"" (Danish), ""de"" (German), ""fr"" (French), ""nl"" (Dutch) [MissingTranslation]
+    <string name=""prefs_api_url_summary"">Override current hackerspace URL (will be lost when choosing an other hackerspace in the list)</string>
+```
+"
+fixme-lausanne/MyHackerspace,closed,Convert Ant project to Gradle,[],"Fixes #46.
+
+This was done using the Android Studio importer and some manual fixing.
+
+The project can now be opened directly with Android Studio, without the need to import anything. It should make contributions easier.
+
+Important notes:
+- The MemorizingTrustManager is now loaded as an external Gradle dependency through Jitpack (https://jitpack.io/). The submodule has been removed.
+- Because the MemorizingTrustManager declares a minSdkVersion of 7, the minSdkVersion of this app has also been changed from 3 to 7.
+"
+fixme-lausanne/MyHackerspace,closed,Build system,[],"Would you consider merging a pull request if I'd convert the project to use Gradle? The nice side effect of that would be simple dependency management and direct importing into Android Studio.
+"
+fixme-lausanne/MyHackerspace,closed,Show webcam,[],"Some spaces provide webcam images: http://status.crdmp.ch/
+
+Would be nice if these could be shown. Maybe not automatically, to save bandwidth, but by pressing a button or something like that.
+"
+fixme-lausanne/MyHackerspace,closed,Update to the latest twitter api,[],"The latest way for links is: `https://twitter.com/${user_name_without_at}`
+
+Regards
+"
+fixme-lausanne/MyHackerspace,open,"Widget icon doesn't always refresh when ""logo"" image changes",[],"I migrated the server that serves GeekLabs's spaceapi at (spaceapi.geeklabs.dk/?format=json) this sunday and in that process made some changes that caused the ""logo"" url to serve a different image for some hours.
+
+I noticed today that the widget on my phone was still displaying the wrong logo regardless of the time passed and how many times I refreshed the feed from the app's main window. First when the spaces'  ""state"" was changed the image was updated. Strangely enough this ought also to happened monday evening when the labs was open.
+
+I just did some quick experiments that showed that when fiddling around with the widgets they do update, at least when the image url changes from invalid->valid (I just renamed the file on the server to test). However, it doesn't seem to handle the situation where just the image data fetched from the url changes.
+"
+fixme-lausanne/MyHackerspace,closed,Add Danish language and minor English corrections,[],"My intention was to separate into two PRs but that seems not possible after having done the commits. Hope it is acceptable anyway.
+"
+fixme-lausanne/MyHackerspace,closed,crashes when network changes,[],"Hi,
+
+Often when my smartphone changes networks (wifi -> mobile, wifi -> wifi, between different mobile base stations, etc...) the widget crashes with an notification. This is not a new behaviour, until now I just ignored the problem, but it should be fixable ;-)
+
+Smartphone is a Samsung S5 with Android 5.0 (multiple builds)
+"
+fixme-lausanne/MyHackerspace,closed,"Added Travis based CI test, closes #39",[],"- Added testing of this app using travis (and Android SDK version 22)
+- Added badge to readme (for your master branch! So it's grey until you merge.)
+
+(Please consider merging PR https://github.com/fixme-lausanne/MyHackerspace/pull/38 first, since this branch is based on it, sorry ...)
+"
+fixme-lausanne/MyHackerspace,closed,Use CI to test every commit & pull request,[],"For example:
+- https://travis-ci.org/
+"
+fixme-lausanne/MyHackerspace,closed,"Implemented protocol-switch-aware redirect in Net, should fix #31",[],"**Problem:**
+- HttpsURLConnection does not support redirects with protocol switch [See here why](http://bugs.java.com/bugdatabase/view_bug.do?bug_id=4620571)
+- Everyone uses protocol switching to HTTPS redirects thanks to [Let's Encrypt](https://letsencrypt.org/)
+- [`Net.getString()`](https://github.com/fixme-lausanne/MyHackerspace/blob/master/src/ch/fixme/status/Net.java#L63) throws a exception all the way up. :(
+- For details see [Issue 31](https://github.com/fixme-lausanne/MyHackerspace/issues/31)
+
+**Fix:**
+- Implemented redirect which does not care about protocol switching.
+"
+fixme-lausanne/MyHackerspace,closed,Just a bit Makeup,[],
+fixme-lausanne/MyHackerspace,closed,Adding dutch language,[],
+fixme-lausanne/MyHackerspace,closed,Adding dutch language,[],
+fixme-lausanne/MyHackerspace,closed,Much traffic,"[Label(name=""enhancement"")]","The app needs about 5MB/week. I don't know, if you can fix this or if this is because of the space api design. (Maybe a setting for refresh duration would be nice)
+"
+fixme-lausanne/MyHackerspace,closed,Quite high battery usage,[],"On my nexus 5 it needs 24% (android  battery statistic)
+"
+fixme-lausanne/MyHackerspace,closed,crashes with https://freieslabor.org/api/info,"[Label(name=""bug"")]","Space status is shown within the application, but adding a widget for Freies Labor leads to a crash of  MyHackerspace. Widgets for other Hackerspaces are OK.
+![myhackerspace_crash](https://cloud.githubusercontent.com/assets/7190467/6473125/819590a4-c1f7-11e4-9387-c03585c37a9d.png)
+"
+fixme-lausanne/MyHackerspace,closed,Follow 302/301 redirects,"[Label(name=""bug"")]","Hi, 
+# The problem
+
+in Net.java's toString() method there's the following check:
+
+```
+            if (mUrlConnection.getResponseCode() == HttpURLConnection.HTTP_OK){
+```
+
+That leads to issues if a the response is a 301/302 redirect to a `status.json` file. 
+
+For example:
+
+```
+> curl -L -I http://www.c-base.org/status.json
+HTTP/1.1 302 Found
+Cache-Control: no-cache
+Content-length: 0
+Location: https://www.c-base.org/status.json
+Connection: close
+
+HTTP/1.1 200 OK
+Date: Sat, 17 Jan 2015 21:46:03 GMT
+Server: Apache/2.2.16 (Debian)
+Last-Modified: Fri, 02 May 2014 01:48:51 GMT
+ETag: ""1860012-316-4f860fbbf26c0""
+Accept-Ranges: bytes
+Content-Length: 790
+Content-Type: text/plain; charset=UTF-8
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+```
+
+The error message is something like: `Error: java.lang.Throwable - Found http://www.c-base.org/status.json`
+# Fix
+
+Check if the response code is 301/302 (redirect) and then follow the new url. Taking care of protocol switches (e.g. http -> https / https -> http) would be necessary. 
+
+Kind regards,
+gehaxelt
+"
+fixme-lausanne/MyHackerspace,closed,crashes with a Null Pointer de-reference on the london hackspace spaceapi,"[Label(name=""bug"")]","Works fine with no widget, but if you do use a widget it crashes, probably due to open being null
+
+https://london.hackspace.org.uk/spaceapi.php
+
+I/MyHackerspace(29223): Update widgetid 39 with url https://london.hackspace.org.uk/spaceapi
+V/MyHackerspace(29223): fetching https://london.hackspace.org.uk/spaceapi
+D/Launcher.Workspace(12400): 6557954 Animate widget drop, final view is appWidgetHostView
+D/AndroidRuntime(29223): Shutting down VM
+W/dalvikvm(29223): threadid=1: thread exiting with uncaught exception (group=0x4132e930)
+E/AndroidRuntime(29223): FATAL EXCEPTION: main
+E/AndroidRuntime(29223): java.lang.NullPointerException
+E/AndroidRuntime(29223):    at ch.fixme.status.Widget$GetApiTask.onPostExecute(Widget.java:232)
+E/AndroidRuntime(29223):    at ch.fixme.status.Widget$GetApiTask.onPostExecute(Widget.java:194)
+E/AndroidRuntime(29223):    at android.os.AsyncTask.finish(AsyncTask.java:631)
+E/AndroidRuntime(29223):    at android.os.AsyncTask.access$600(AsyncTask.java:177)
+E/AndroidRuntime(29223):    at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:644)
+E/AndroidRuntime(29223):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime(29223):    at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime(29223):    at android.app.ActivityThread.main(ActivityThread.java:5041)
+E/AndroidRuntime(29223):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(29223):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime(29223):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)
+E/AndroidRuntime(29223):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)
+E/AndroidRuntime(29223):    at dalvik.system.NativeStart.main(Native Method)
+W/DropBoxManagerService(  390): Dropping: data_app_crash (966 > 0 bytes)
+D/dalvikvm(29223): GC_CONCURRENT freed 565K, 10% free 9441K/10396K, paused 3ms+14ms, total 60ms
+D/Launcher.Model(12400): DbDebug    Add item (null) to db, id: 171 (-100, 0, 1, 0)
+I/Process (29223): Sending signal. PID: 29223 SIG: 9
+I/WindowState(  390): WIN DEATH: Window{42065258 u0 ch.fixme.status/ch.fixme.status.Widget_config}
+I/ActivityManager(  390): Process ch.fixme.status (pid 29223) has died.
+"
+fixme-lausanne/MyHackerspace,open,Reorganize the layout,"[Label(name=""enhancement"")]","It would be nice to have a better view of the different fields in order to have more information density. I propose having some kind of tiles. 
+"
+fixme-lausanne/MyHackerspace,closed,allow state -> open to be null,[],"The spaceapi v 0.13 spec says:
+
+open (Array)
+
+Description
+
+A flag which indicates if the space is currently open or closed. The state 'undefined' can be achieved by assigning this field the value 'null' (without the quotes). In most (all?) programming languages this is evaluated to false so that no app should break
+
+however if the value is null MyHackerspace throws an exception since null cannot be turned into a boolean.
+"
+fixme-lausanne/MyHackerspace,open,Notify user whenever a hackerspace open/close,"[Label(name=""enhancement"")]","I was thinking about the following feature:
+- The user would be allowed to ""watch"" a few hackerspaces;
+- With pooling, the app would automatically check the hackerspaces status and would generate notifications accordingly.
+
+Any considerations? I'm willing to put some effort on this matter.
+"
+fixme-lausanne/MyHackerspace,closed,Twitter handle results in wrong link,[],"I saw that every hackerspace puts an @ in front of their twitter handle
+in the spaceapi file (e.g. ""twitter"":""@HackerspaceBI"").
+
+In the MyHackerspace App this value is displayed as (e.g.) ""https://twitter.com/#!/@HackerspaceBI"".
+While this link works fine in my Firefoy browser on my laptop, my Android phone (KitKat)
+lanches the (default) browser and then twitter tells me that link is invalid.
+"
+fixme-lausanne/MyHackerspace,closed,Endless loading widgets,[],"I don't know, if it is a bug, but some icons of some hackerspaces have a loading animation that never stops (e.g. Munich Maker lab and FAU FabLab)
+"
+fixme-lausanne/MyHackerspace,closed,No widget,"[Label(name=""bug"")]","Hi, I'm not sure, but normally this app should contain a widget, right?
+But in the latest f-droid version and in the latest play store version, I can't find a widget.
+"
+fixme-lausanne/MyHackerspace,closed,Update strings.xml,[],"fixed german grammar
+"
+fixme-lausanne/MyHackerspace,closed,widget just shows 'updating' circle always,"[Label(name=""enhancement"")]","I've got a Note 2 running CM11M6 and was delighted to find this app!  I hang out at Nova Labs, which is in your list, but when set to Nova Labs, the widget just spins the 'updating' circle forever.  Is there a deficiency in the Nova Labs data? The full app shows the status correctly.
+"
+fixme-lausanne/MyHackerspace,closed,Add SNI support,[],"+TLSv1.1/v1.2 as an extra :)
+"
+fixme-lausanne/MyHackerspace,closed,Reading json problem,"[Label(name=""bug""), Label(name=""enhancement"")]","We have a valid space API integration. It is working in the other apps that uses space API. 
+The API endpoint is https://istanbulhs.org/api/spaceapi/
+
+I think the problem is that we redirect this link to another link to display the output. Maybe your network call does not support redirection. 
+"
+fixme-lausanne/MyHackerspace,closed,strings de_DE,[],
+fixme-lausanne/MyHackerspace,closed,Update strings.xml,[],"Translation into German - Übersetzung ins Deutsche
+"
+fixme-lausanne/MyHackerspace,closed,application crashes on open status 'null',"[Label(name=""bug"")]","Hi,
+the app crashes whenever our open status is undefined ('null'). We have to send this whenever the Internet connection in our space is down... (according to the specification under -> http://spaceapi.net/documentation -> state -> open)
+"
+fixme-lausanne/MyHackerspace,closed,Resize widget ,"[Label(name=""enhancement"")]","It would be a good thing if we could resize the widget
+"
+fixme-lausanne/MyHackerspace,closed,Widget is too small ,"[Label(name=""enhancement"")]","Widget is too small for high resolution screen
+"
+fixme-lausanne/MyHackerspace,closed,added German translation for MyHackerspace,"[Label(name=""enhancement"")]","Hello, voilà la traduction de ton soft :) Si tu as d'autre application à faire traduire fais moi signe ;)
+"
+fixme-lausanne/MyHackerspace,closed,Widget open associated Hackerspace,"[Label(name=""bug""), Label(name=""enhancement"")]","Touching the widget could open the associated hackerspace.
+"
+fixme-lausanne/MyHackerspace,closed,Fix widget image and add status message,"[Label(name=""enhancement"")]","In our Hackerspace, we have multiple open/closed modes, like 'open for public' and 'members only' for which we use the message field in the SpaceAPI. So, if provided, this message should also be shown on the widget.
+
+If there is a TextView on the bottom the widget, the ImageView wouldn't get centered, which looked weird. Also, the provided button background which would cause the ImageView to paint a grey border around the image.
+"
+fixme-lausanne/MyHackerspace,open,Favourites,"[Label(name=""enhancement"")]","Please consider adding a list of favourites so one can fast access often used hackerspaces.
+"
+fixme-lausanne/MyHackerspace,closed,Use git tags,"[Label(name=""enhancement"")]","Could you please use git tags? It would make updating your app on f-droid much easier :)
+
+Thanks!
+"
+fixme-lausanne/MyHackerspace,closed,Manual Hackerspace Name Entry Please,[],"The list of all hackerspaces at hackerspaces.org is so long (currently, well over 1000) that the list seems not to complete or load only so many.  Could a manual type in of the hackerspace name be added at the top?  I cannot access my own space, as of yet, with this app.  Thanks in advance.
+"
+fixme-lausanne/MyHackerspace,closed,widget doesn't support transparency,"[Label(name=""enhancement"")]","Our spaceapi provides an png24 for open/closed status 
+
+http://status.bckspc.de/spacestatus.php
+
+and it looks like this on my homescreen:
+
+http://cl.ly/image/0r1C2z1x3G2x
+"
+fixme-lausanne/MyHackerspace,closed,publish on f-droid market,"[Label(name=""enhancement"")]","http://f-droid.org/
+""The F-Droid Repository is an easily-installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. The server contains the details of multiple versions of each application, and the Android client makes it easy to browse, install them onto your device, and keep track of updates.""
+"
+fixme-lausanne/MyHackerspace,open,Show more api fields,"[Label(name=""enhancement"")]","Show every api fields instead of a fixed list.
+"
+fixme-lausanne/MyHackerspace,open,Password protected status,"[Label(name=""enhancement"")]","Extend the API adding something like ""status_external_url"" wich links to an HTTP Auth protected page.
+
+We must then support HTTP Basic Auth withing the app when clicking the a private status button on hackerspaces providing such feature.
+"
+fixme-lausanne/MyHackerspace,open,Filter spaces,"[Label(name=""enhancement"")]","Have a way to select spaces in the list with some filters like:
+- Country
+- Status (open/close)
+- API feature (events, sensors, webcam, ...)
+
+And order them by recent events/status changes, etc
+"
+fixme-lausanne/MyHackerspace,closed,Better UI,"[Label(name=""enhancement"")]","Change the UI so we can:
+- Refresh the hackerspace status
+- Better list of hackerspaces (not in a drop down list ?)
+- Use the ActionBar
+- ...
+"
+fixme-lausanne/MyHackerspace,open,Show a list of every hackerspaces,"[Label(name=""enhancement"")]","Some guy did an extraction from hackerspaces.org, find a way to integrate that into the app
+http://davr.org/hackerspace/
+"
+fixme-lausanne/MyHackerspace,closed,problem with https://bitlair.nl/statejson.php,"[Label(name=""bug"")]","I am getting a Error: java.io.FileNotFoundException on the hackerspace Bitlair
+https://bitlair.nl/statejson.php
+
+I can access the url from my phone's browser.
+"

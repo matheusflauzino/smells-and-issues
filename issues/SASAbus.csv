@@ -1,0 +1,292 @@
+repository,state,title,label,body
+SASAbus/SASAbus,closed,Bug fixes for version 3.0.7,[],"This pull request merges some important bug fixes shipped in version 3.0.7, mainly the missing timetables. Other notable changes are:
+
+- Added FAB to line course activity to view vehicle make
+- Removed ""Report a bus problem"" feature
+- Fixed wrong beacon telemetry parameters caused by ProGuard
+- Fixed a crash when downloading planned data (caused by RxJava missing back pressure)
+- Fixed removal of outdated timetable PDFs
+- Improved company logo appearance"
+SASAbus/SASAbus,closed,Bug fixes and performance improvements,[],"This pull request includes some bug fixes and performance improvements.
+
+#### Version 3.0.5
+
+- Added Catch & Solve library by @davidebz 
+- Added faster departure calculation
+- Fixed crash when opening line path
+- Fixed a rare crash which occurred when downloading the planned data
+- Other minor bug fixes"
+SASAbus/SASAbus,closed,Bug fixes and performance improvements,[],"This pull request includes some bug fixes and performance improvements:
+
+- All maps now default to online OSM tiles if no offline tiles are available. Offline tiles are still preferred to the online tiles to save bandwidth. They can be downloaded by accessing the map page listed in the navigation drawer.
+- Fixed a crash in line paths, caused by an invalid custom view
+- Fixed a crash in line course, caused by RecyclerView inconsistencies
+- Added a link to this GitHub project to the about page
+- Updated all outdated dependencies to their latest version"
+SASAbus/SASAbus,closed,API Compatibility Issues,"[Label(name=""f-droid""), Label(name=""won't fix"")]","Dear developers,
+
+We have recently developed a state-of-the-art static analysis tool for uncovering API compatibility issues in Android apps. Applying this tool to open source apps on F-droid, we have exposed a few instances of compatibility issues and submitting them to development teams for a fix. 
+
+For your app, we have found that this project has accessed the following APIs which are available only on an API level higher than the declared minSdkVersion and which are accessed without proper protection. In other words, if those APIs get called at runtime, it will trigger a NoSuchMethodError and thus result in a crash of the running application.
+
+<android.view.ScaleGestureDetector: boolean onTouchEvent(android.view.MotionEvent)>:[8,25]
+<android.view.ScaleGestureDetector: boolean isInProgress()>:[8,25]
+<android.view.MotionEvent: int getPointerId(int)>:[5,25]
+<android.view.MotionEvent: int findPointerIndex(int)>:[5,25]
+<android.view.MotionEvent: int getPointerCount()>:[5,25]
+<android.view.ScaleGestureDetector: void <init>(android.content.Context,android.view.ScaleGestureDetector.OnScaleGestureListener)>:[8,25]
+<android.view.MotionEvent: float getX(int)>:[5,25]
+<android.view.MotionEvent: float getY(int)>:[5,25]
+<android.view.ScaleGestureDetector: float getScaleFactor()>:[8,25]
+
+Note that, because of the nature of the static analysis, we cannot confirm whether the flagged APIs would actually be called at runtime (e.g., unreachable code). However, we still believe that those APIs, which may cause compatibility issues, should not be accessed or at least be accessed with proper protections. 
+
+In addition to the aforementioned APIs (i.e., backward-compatibility), which could cause app crashes if accessed, we have also identified that this project has also accessed some APIs that have been removed from the latest public SDK, making the app possibly suffer from forward-compatibility issues.
+
+<org.apache.http.util.EntityUtils: java.lang.String toString(org.apache.http.HttpEntity)>:[1,22]
+<org.apache.http.HttpResponse: org.apache.http.StatusLine getStatusLine()>:[1,22]
+<java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int[])>:[1,8]
+<org.apache.http.HttpResponse: org.apache.http.HttpEntity getEntity()>:[1,22]
+<org.apache.http.client.methods.HttpPost: void <init>(java.lang.String)>:[1,22]
+<org.apache.http.client.HttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>:[1,22]
+<org.apache.http.entity.AbstractHttpEntity: void setContentType(java.lang.String)>:[1,22]
+<org.apache.http.client.entity.UrlEncodedFormEntity: void <init>(java.util.List)>:[1,22]
+<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>:[1,22]
+<org.apache.http.client.methods.HttpEntityEnclosingRequestBase: void setEntity(org.apache.http.HttpEntity)>:[1,22]
+<org.apache.http.StatusLine: int getStatusCode()>:[1,22]
+<org.apache.http.impl.client.DefaultHttpClient: void <init>()>:[1,22]
+<org.apache.http.entity.StringEntity: void <init>(java.lang.String,java.lang.String)>:[1,22]
+
+We would be very much appreciated if you can acknowledge to us that those reported APIs are indeed problematic for the project’s long-term stability. please let us know if you need any more information relating to this issue report.
+"
+SASAbus/SASAbus,closed,Fixed Proguard issues and other bugs,[],"This PR fixes some more Proguard issues and other bugs in the app.
+
+Changes:
+- Fixed map not loading properly
+- Updated bus stop database
+- Fixed wrong TextView size in parking"
+SASAbus/SASAbus,closed,Fix Proguard rules,[],"Release 3.0.3.
+This fixes some Proguard rules which caused the previous release to not work properly.
+
+Other changes:
+- Compressed image assets
+- Added Timber logging
+- Updated AltBeacon library
+- Updated AppCompat
+- Updated Play Services"
+SASAbus/SASAbus,closed,Release 3.0.2,[],"This pull request **fixes some major bugs**. Important changes are:
+- The user's trip list has been removed due to privacy issues
+- App now starts in the departures tab (more useful for users)
+- Lines are now split in **Bolzano** and **Merano**"
+SASAbus/SASAbus,closed,Fixed bugs,[],"This pull request fixes a couple of bugs, the most important ones listed below:
+- Map now shows an online version of the tiles if the user doesn't want to download the map, instead of empty tiles (represented by the 'image not found icon')
+- Fixed favorites not getting saved properly
+- Fixed downloaded map zip file (osm-tiles.zip) not getting deleted after the download finishes
+"
+SASAbus/SASAbus,closed,Release v3.0.0,[],"This is the **final and public release** of the new SASAbus app.
+"
+SASAbus/SASAbus,closed,Added events,[],"Events are activities where users may use the beacon technology in the app in order to earn some additional points in the eco system. An event consists of multiple checkpoints where users can go and learn something about the event's topic. There will be attached beacons at every checkpoint of the event. If a user has scanned all beacons he will be awarded with a badge and a QR code. The QR code is used in order to proof the completion of the event to staff members who are handing out gifts to the users who went to all checkpoints.
+"
+SASAbus/SASAbus,closed,Fixed proguard rules,[],
+SASAbus/SASAbus,closed,Updated eco points,[],
+SASAbus/SASAbus,closed,"Added bus data and images, fixed bugs and crashes",[],"### Bus details
+
+Bus details show the users which type of bus they have selected. Bus data includes the manufacturer and model of the bus along with the fuel it uses (hydrogen, diesel or methane, in the future electricity might be added). The user additionally has the possibility to report a problem in the selected bus.
+### In-app badges
+
+The first two badges the user can achieve are:
+- Scanning a bus stop beacon
+- Scanning a bus beacon
+
+The completion of these badges is detected by the app itself, unlike the other ones which are handed out by the server upon the upload of the driven trip.
+### Favorite lines and bus stops, new list order of driving lines
+
+In case the user does not have any favorite lines or bus stops, the app automatically swipes to the second tab, instead of displaying an empty screen. The order of the driving lines was changed to match the one of the all lines tab.
+### Removal of vehicles 257, 263 and 265
+
+These vehicles are no longer in service and have thus been removed.
+"
+SASAbus/SASAbus,closed,Added eco points,[],"This commit adds eco points.
+
+Eco points are some sort of ""gamification"", where users can collect points by driving with SASA buses or by earning badges. The users will be displayed on a leaderboard with their corresponding points. Eco points use the beacon technology to track a bus ride and determine the driven meters, which will then result in the rewarded points. Each kilometer will earn you 10 points.
+
+Each user also has to create his own account to be able to participate. Account creation and login will be handled in the app.
+"
+SASAbus/SASAbus,closed,Added detailed bus notification,[],"This pull request adds a detailed bus notification which displays the next seven bus stops with the time of arrival at each stop.
+"
+SASAbus/SASAbus,closed,Fixed proguard rules,[],
+SASAbus/SASAbus,closed,Remove old web maps,[],"This commit removes the old web maps which were previously used as bus stop maps.
+"
+SASAbus/SASAbus,closed,Set version code and name for beta release,[],"The version code haven't been updated since the last release.
+"
+SASAbus/SASAbus,closed,Fix parking widget for beta release,[],"As the widget currently doesn't display any data, this pull request applies a fix for the beta release.
+"
+SASAbus/SASAbus,closed,Merge new SASAbus,[],"The new SASAbus from the dev branch should be merged into the master branch. The current version of SASAbus from the master branch has been copied to the [old](https://github.com/SASAbus/SASAbus/tree/old) branch.
+"
+SASAbus/SASAbus,closed,Readd support for F-Droid,"[Label(name=""enhancement""), Label(name=""f-droid"")]","We should consider readding support for F-Droid or at least a version which does not depend on Google Play Services, probably by readding a build flavor for F-Droid and one for the Play Store.
+
+Google Analytics can be replaced by the mock Analytics implementation which was previously added by @danielegobbetti with issue #13, but GCM probably has to be replaced entirely by another system to still receive push notifications on F-Droid builds. Also Crashlytics needs to be replaced or removed as it is not open source.
+"
+SASAbus/SASAbus,closed,Localisation,"[Label(name=""bug"")]","Button ""Show Departures"" in the bus stop details (balloon) on the map has not been language-localised yet.
+"
+SASAbus/SASAbus,closed,Crash when Bluetooth is turned on while SASAbus is running,"[Label(name=""bug"")]","12-07 11:10:16.805 18675-18675/? E/BeaconHandler: Started listening for beacons
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime: FATAL EXCEPTION: main
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime: Process: it.sasabz.android.sasabus, PID: 19300
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime: java.lang.RuntimeException: Unable to create service it.sasabz.sasabus.beacon.BeaconScannerService: java.lang.UnsupportedOperationException
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at android.app.ActivityThread.handleCreateService(ActivityThread.java:2887)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at android.app.ActivityThread.-wrap4(ActivityThread.java)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1427)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at android.os.Handler.dispatchMessage(Handler.java:102)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at android.os.Looper.loop(Looper.java:148)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at android.app.ActivityThread.main(ActivityThread.java:5417)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at java.lang.reflect.Method.invoke(Native Method)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:  Caused by: java.lang.UnsupportedOperationException
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at java.util.Collections$UnmodifiableCollection.add(Collections.java:932)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at it.sasabz.sasabus.beacon.BeaconObserver.startListening(BeaconObserver.java:77)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at it.sasabz.sasabus.beacon.BeaconScannerService.onCreate(BeaconScannerService.java:28)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at android.app.ActivityThread.handleCreateService(ActivityThread.java:2877)
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at android.app.ActivityThread.-wrap4(ActivityThread.java) 
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1427) 
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at android.os.Handler.dispatchMessage(Handler.java:102) 
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at android.os.Looper.loop(Looper.java:148) 
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at android.app.ActivityThread.main(ActivityThread.java:5417) 
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at java.lang.reflect.Method.invoke(Native Method) 
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726) 
+12-07 11:10:16.807 19300-19300/? E/AndroidRuntime:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616) 
+12-07 11:10:16.838 18675-18675/? E/BeaconHandler: onBeaconServiceConnect()
+"
+SASAbus/SASAbus,closed,added mock implementation of needed analytics methods,[],"This fixes https://github.com/SASAbus/SASAbus/issues/13
+"
+SASAbus/SASAbus,closed,Creating rules for tagging,"[Label(name=""enhancement"")]",
+SASAbus/SASAbus,closed,Extending .gitignore for AndroidStudio,"[Label(name=""bug"")]","See title
+"
+SASAbus/SASAbus,closed,Creating release cycle,"[Label(name=""enhancement"")]","With the community implementing a sort of release cycle of SASAbus, like the first monday every month ist the last day to commit for the monthly release. If there are no commits, there will be no new release.
+"
+SASAbus/SASAbus,closed,Create a valid readme file,"[Label(name=""enhancement"")]","Add a valid README to explain developers how to get into the project
+"
+SASAbus/SASAbus,closed,UI elements are clickable through the line path list,"[Label(name=""bug"")]","UI elements like DatePicker or lines list in the bus lines fragment are clickable through the lines path list appearing when clicking on a driving line (see attached screenshot). Using View.GONE instead of View.INVISIBLE would be a possible fix.
+
+![screenshot_2015-11-26-18-20-41](https://cloud.githubusercontent.com/assets/10795750/11428363/cddd609a-946a-11e5-8d53-ac375669c6af.png)
+"
+SASAbus/SASAbus,closed,App crashes when departures textview is empty,"[Label(name=""bug"")]","Clicking on refresh in the bus stops fragment results in a NullPointerException dialog when the ""Departures"" EditText is empty.
+Clicking in ""Searching..."" afterwards crashes the app due to a ClassCastException.
+"
+SASAbus/SASAbus,closed,Add a license file,"[Label(name=""bug"")]","I think the license statement inside the github repo description is not enough, as there is no trace of it in each developer's working copy.
+"
+SASAbus/SASAbus,closed,build flavours introduced: playstore and fdroid,[],"Added manifest file for fdroid flavour, removing the google play services inclusion.
+
+The fdroid flavour gives a compile error because of the missing inclusion, an alternative
+like https://github.com/mar-v-in/NoAnalytics must be intrduced.
+
+This fixes https://github.com/SASAbus/SASAbus/issues/14
+"
+SASAbus/SASAbus,closed,remove google play services dependency in the gradle script (fdroid flavour),"[Label(name=""f-droid"")]","Needed for #2 
+
+I can work on this issue in a fork, if you want. But in order to get the app in a buildable state #13 must be resolved as well.
+"
+SASAbus/SASAbus,closed,remove google analytics tracking in the fdroid flavour,"[Label(name=""enhancement""), Label(name=""f-droid"")]","Needed for #2 
+
+There are some apps in fdroid where google analytics dependency is removed at build time, replacing it with https://github.com/mar-v-in/NoAnalytics, that provides the same public methods.
+"
+SASAbus/SASAbus,closed,Provide link to source for the included jars,"[Label(name=""enhancement"")]","Needed for #2 
+
+Currently a build by fdroid gives the following warnings:
+WARNING: Found JAR file at app/libs/dm-web-lib-1.0.20140410.jar
+WARNING: Found JAR file at app/libs/org-json-parser-2013-12-13.jar
+WARNING: Found JAR file at app/libs/sasabus-backend-lib-1.0.20140417.jar
+WARNING: Found JAR file at app/libs/dm-xml-json-lib-1.0.20140408.jar
+WARNING: Found JAR file at app/libs/sasabus-opendata-lib-1.0.20140329.jar
+WARNING: Found JAR file at app/libs/sasabus-realtime-1.0.20140508.jar
+WARNING: Found JAR file at app/libs/commons-io-2.4.jar
+
+The jars may remain in the repository (fdroid may be told to discard them), but links to the corresponding repos should be provided.
+"
+SASAbus/SASAbus,closed,enhancement: enable ble scan only if user is moving,"[Label(name=""duplicate"")]","If the hardware supports this sensor, the BLE Scan could be stopped when the user is not moving. The scan may be started / stopped with the trigger described here:
+http://developer.android.com/reference/android/hardware/TriggerEventListener.html
+"
+SASAbus/SASAbus,closed,enhancement: enable ble scan only if user is moving,"[Label(name=""enhancement"")]","If the hardware supports this sensor, the BLE Scan could be stopped when the user is not moving. The scan may be started / stopped with the trigger described here:
+http://developer.android.com/reference/android/hardware/TriggerEventListener.html
+"
+SASAbus/SASAbus,closed,de/strings.xml - consistency fixes,[],"(according to [en]/strings.xml resp. it/strings.xml)
+"
+SASAbus/SASAbus,closed,current master not buildable,[],"Hi,
+
+it seems that current master is not buildable, as some resources are missing. This is the output when running gradle assembleDebug in a fresh git clone:
+
+```
+SASAbus/app/src/main/java/it/sasabz/sasabus/gson/survey/service/SurveyApiService.java:47: error: cannot find symbol
+        this.apiUrl = context.getResources().getString(R.string.survey_api_url);
+                                                               ^
+  symbol:   variable survey_api_url
+  location: class string
+SASAbus/app/src/main/java/it/sasabz/sasabus/gson/survey/service/SurveyApiService.java:48: error: cannot find symbol
+        this.apiUser = context.getResources().getString(R.string.survey_api_user);
+                                                                ^
+  symbol:   variable survey_api_user
+  location: class string
+SASAbus/app/src/main/java/it/sasabz/sasabus/gson/survey/service/SurveyApiService.java:49: error: cannot find symbol
+        this.apiPassword = context.getResources().getString(R.string.survey_api_password);
+                                                                    ^
+  symbol:   variable survey_api_password
+  location: class string
+SASAbus/app/src/main/java/it/sasabz/sasabus/gson/bus/service/BusApiService.java:44: error: cannot find symbol
+        this.apiUrl = context.getResources().getString(R.string.bus_api_url);
+                                                               ^
+  symbol:   variable bus_api_url
+  location: class string
+SASAbus/app/src/main/java/it/sasabz/sasabus/ui/MainActivity.java:255: error: cannot find symbol
+            this.getOpenDataStorage().asyncDownloadSASAbusOpenDataToLocalStore(this.getString(R.string.opendata_server_url),
+                                                                                                      ^
+  symbol:   variable opendata_server_url
+  location: class string
+SASAbus/app/src/main/java/it/sasabz/sasabus/ui/MainActivity.java:302: error: cannot find symbol
+        final String downloadzip = MainActivity.this.getString(R.string.maptiles_server_url) + ""/"" + this.OSM_ZIP_NAME;
+                                                                       ^
+  symbol:   variable maptiles_server_url
+  location: class string
+SASAbus/app/src/main/java/it/sasabz/sasabus/ui/MainActivity.java:427: error: cannot find symbol
+            this.getOpenDataStorage().asyncReadRemoteVersionDate(this.getString(R.string.opendata_server_url),
+                                                                                        ^
+  symbol:   variable opendata_server_url
+  location: class string
+SASAbus/app/src/main/java/it/sasabz/sasabus/ui/busstop/NextBusFragment.java:412: error: cannot find symbol
+       getActivity().registerReceiver(beaconBusstopReceiver, new IntentFilter(getString(R.string.station_beacon_uid)));
+                                                                                                ^
+  symbol:   variable station_beacon_uid
+  location: class string
+SASAbus/app/src/main/java/it/sasabz/sasabus/beacon/bus/trip/TripNotificationAction.java:79: error: cannot find symbol
+                .setContent(getBaseNotificationView(curentTrip)).setSmallIcon(R.drawable.ic_notification).setContentIntent(pendingIntent)
+                                                                                        ^
+  symbol:   variable ic_notification
+  location: class drawable
+SASAbus/app/src/main/java/it/sasabz/sasabus/beacon/busstop/BusStopBeaconHandler.java:50: error: cannot find symbol
+        Intent intent = new Intent(mApplication.getApplicationContext().getString(R.string.station_beacon_uid));
+                                                                                          ^
+  symbol:   variable station_beacon_uid
+  location: class string
+SASAbus/app/src/main/java/it/sasabz/sasabus/data/orm/NewsList.java:65: error: cannot find symbol
+         String newsserver = this.context.getString(R.string.newsserverjson);
+                                                            ^
+  symbol:   variable newsserverjson
+  location: class string
+```
+"
+SASAbus/SASAbus,closed,Offline mode,"[Label(name=""bug""), Label(name=""enhancement"")]","Would be useful to have some data available when offline.
+
+In this way people on the road, without good internet connection, could at least get basic time table information.
+"
+SASAbus/SASAbus,closed,EN translation typo,[],"Just seen now :)
+"
+SASAbus/SASAbus,closed,translation fixes,[],"I have also tried to unify the denominations as much as possible.
+"
+SASAbus/SASAbus,closed,GPS Search makes map useless when no GPS fix ,"[Label(name=""enhancement"")]","When I use the map to select a bus stop, the map performes a GPS search. Even if I disable GPS sensor on the device.
+
+While searching GPS fix the map is not usable. It is not possible to select a bus stop.
+"
+SASAbus/SASAbus,closed,Graphical refactoring required,"[Label(name=""enhancement"")]","We need some graphical refactoring to make the user experience even more intensive an user friendly
+"
+SASAbus/SASAbus,closed,F-droid compatible,"[Label(name=""enhancement""), Label(name=""f-droid"")]","Make the repository f-droid compatible, that all the users can download the newest version from f-droid too.
+"
+SASAbus/SASAbus,closed,Refactoring,[],

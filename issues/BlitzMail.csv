@@ -1,0 +1,261 @@
+repository,state,title,label,body
+grote/BlitzMail,open,Anti-Features on F-Droid,"[Label(name=""needs info"")]","BlitzMail has two anti-features on F-Droid:
+
+* [ ] [KnownVuln](https://f-droid.org/wiki/page/AntiFeature:KnownVuln)
+* [ ] [DisabledAlgorithm](https://f-droid.org/wiki/page/AntiFeature:DisabledAlgorithm)"
+grote/BlitzMail,open,Privacy.md,[],"Here's the privacy policy document I proposed to create. I included the information you provided me. Please if there are areas where corrections are needed, point them out and I'll make the corrections."
+grote/BlitzMail,open,Add Privacy Policy.,"[Label(name=""enhancement"")]","Hello, I'm Harry. I think having a privacy policy statement will be a good thing for your project seeing it kind of have functionalities that may lead to data collection on your end or not. It's a good end users are made aware of the safety of their privacy. I could draft a privacy policy statement if you wish. It's my way of contributing to open source projects."
+grote/BlitzMail,open,Mails with missing attachments stay around forever,"[Label(name=""bug"")]","Blitzmail shows me that two mails are waiting to be send. But I see no chance to inspect their contents nor to delete them. So they stay here until forever (or until I delete data of BlitzMail).
+
+I noticed the waiting mails after an upgrade cause blitzmail told me it could not find the ![attachments.]  "
+grote/BlitzMail,closed,Passwords should be invisible to the accessibility services,[],"Due to recent attacks, malicious apps that are using the accessibility service can capture all user inputs. In this case, the passwords should be ignored for the accessibility service, so such attacks cannot happen. This is done by our research project in CISPA, Saarland University, Germany."
+grote/BlitzMail,open,Issue When Used With Tasker,"[Label(name=""needs info"")]","When I tried to setup a [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en) 'Compose Email' task, BlitzMail was failing where other e-mail applications (K-9 for example) were not. 
+
+The task was to send an email with a bit of text for the subject and body and nothing else (so no attachments). When the task executed, BlitzMail would crash and I would be prompted to re-open it. However irregardless of if I did reopen it or not, a 'Sending BlitzMail' notification would appear. The email is never sent and the notification does not disappear (running the task again adds another similar notification). 
+
+Logcat:
+```
+10-20 00:09:39.945 I/ActivityManager(505): START u0 {act=android.intent.action.SEND typ=message/rfc822 flg=0x30000005 cmp=de.grobox.blitzmail/.SendActivity clip={message/rfc822 T:Testbshssbhs shshshshs shsjsjsjsjs
+10-20 00:09:40.008 I/ActivityManager(505): Start proc 15950:de.grobox.blitzmail/u0a115 for activity de.grobox.blitzmail/.SendActivity
+10-20 00:09:40.144 W/System  (15950): ClassLoader referenced unknown path: /data/app/de.grobox.blitzmail-1/lib/arm
+10-20 00:09:40.256 E/AndroidRuntime(15950): Process: de.grobox.blitzmail, PID: 15950
+10-20 00:09:40.256 E/AndroidRuntime(15950): java.lang.RuntimeException: Unable to start activity ComponentInfo{de.grobox.blitzmail/de.grobox.blitzmail.SendActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String android.net.Uri.getScheme()' on a null object reference
+10-20 00:09:40.256 E/AndroidRuntime(15950): 	at de.grobox.blitzmail.SendActivity.getMailWithAttachments(SendActivity.java:266)
+10-20 00:09:40.256 E/AndroidRuntime(15950): 	at de.grobox.blitzmail.SendActivity.handleSendAttachment(SendActivity.java:233)
+10-20 00:09:40.256 E/AndroidRuntime(15950): 	at de.grobox.blitzmail.SendActivity.onCreate(SendActivity.java:117)
+10-20 00:09:40.262 W/ActivityManager(505):   Force finishing activity de.grobox.blitzmail/.SendActivity
+10-20 00:09:40.276 W/ActivityManager(505):   Force finishing activity de.grobox.blitzmail/.SendActivity
+10-20 00:09:40.276 W/ActivityManager(505): Duplicate finish request for ActivityRecord{4730dac u0 de.grobox.blitzmail/.SendActivity t3153 f}
+10-20 00:09:40.776 W/ActivityManager(505): Activity pause timeout for ActivityRecord{4730dac u0 de.grobox.blitzmail/.SendActivity t3153 f}
+10-20 00:09:41.517 W/ActivityManager(505):   Force finishing activity de.grobox.blitzmail/.SendActivity
+10-20 00:09:41.518 I/ActivityManager(505): Killing 15950:de.grobox.blitzmail/u0a115 (adj 900): crash
+```
+Running Android 7.1.2 (LineageOS)
+
+I got a workaround working by creating a custom Intent task in Tasker and using `text/plain` as the MIME type - the email sends as expected using this method. If I change the MIME type to anything besides 'text/plain', it crashes in a similar manner to before so I suspect that might have something to do with it. 
+
+If this sounds like it's more on Tasker's end, feel free to close the issue and I can ping the developer. 
+
+
+
+For anyone stumbling upon this with a similar problem, the solution I found was:
+`A1: Send Intent [ Action:android.intent.action.SEND Cat:Default Mime Type:text/plain Data: Extra:android.intent.extra.SUBJECT:Test Extra:android.intent.extra.TEXT:Test Extra: Package: Class: Target:Activity ] `
+"
+grote/BlitzMail,closed,How do I retrieve or write an new Email?,"[Label(name=""question"")]","
+I installed BlitzMail from F-Droid.
+
+I opened BlitzMail, and got a [screen with title bar ""<- BlitzMail""](https://github.com/grote/BlitzMail/blob/master/artwork/screen_MainActivity.png) where I entered all configuration (Sending, Mail Server Settings, Interface).
+
+I see only one menu item: the backward key on the title bar, which closes BlitzMail.
+How do I retrieve or write an new Email?
+"
+grote/BlitzMail,open,Set subject when sending files,"[Label(name=""enhancement""), Label(name=""junior job"")]","When you have shared a lot of files using thr wonderful Blitzmail it's hard to gind them in your mailfolder because alle subject header show the same (non-linformation: 1 file shared with Blitzmail.
+
+So I would like to have an option in settings to allow Blitzmail to create a subject including the filename like [Blitzmail] name_of_transmittted_file
+
+This would help a lot. I prefer an option for that because not everybody would like to have this info in metadata or server logs..."
+grote/BlitzMail,closed,Cant send through a self signed SSL SMPT server.,"[Label(name=""duplicate"")]","I have a SMTP server that receives encrypted auth by self signed SSL. BlitzMail fails to send with the java error `java.security.cert.CertPathValidator`
+"
+grote/BlitzMail,open,multiple instances of BlitzMail?,"[Label(name=""enhancement"")]","It would be nice to have a few instances of it with different configurations on the same device. How would I do it?
+"
+grote/BlitzMail,open,recipient address rejected / smtp error 550 5.7.1,"[Label(name=""needs info"")]","I got error message with reason: helo/hostname mismatch. I was looking to the logs and found the MTA helo: ""android.com"", which is wrong in any case. Best way should be the name of IP.
+"
+grote/BlitzMail,open,Sending mail via mailbox.org on mobile connection fails with 501 SMTP error,"[Label(name=""needs info"")]","I have a mail account at mailbox.org. When I am using BlitzMail on my mobile connection (as opposed to my home wlan), I always get the following error message:
+
+`Der Server antwortete mit folgendem Fehlder: Bitte überprüfen Sie die SMTP-Einstellungen. 501 Syntax: HELO hostname`
+
+Sending mail via k-9 works with the same account on any connection.
+
+This is on version 0.6
+"
+grote/BlitzMail,open,set subject when sharing links,"[Label(name=""enhancement""), Label(name=""help wanted"")]","When sharing links from Firefox via longpress menu the subject of the generated email is empty. Should inlcude the link text if known and/or url.
+"
+grote/BlitzMail,closed,Use foreground service to send mails,"[Label(name=""enhancement""), Label(name=""help wanted"")]","The AsyncTask sometimes gets killed by the system after calling finish() in SendActivity (especially in low-memory situations). This results in a message that is not send and a notification without action that will never go away.
+
+Solution: Start a Service that handles sending mails. Use a foreground service with ongoing notification.
+"
+grote/BlitzMail,open,spurious but frequent failures with smtp.openmailbox.org,"[Label(name=""needs info"")]","after configuring smtp.openmailbox.org (which has some hurdles - like login name must be name@openmailbox.org and sender name must match it exactly, no  shortcuts, aliases etc) it mostly works. 
+
+However - in 1 of perhaps 5 cases I get this error:
+
+""Authentification failed. Please check your username and password!""
+
+""try again"" usually works.
+
+The errors are just too frequent to think it is a random failure, already had over 20 in 3 days. Never had this type of failure while using google smtp when used in similar conditions.
+
+The network connection is sometimes extremely slow - but that should not cause above error message?
+
+Tested on a Moto G with freshly updated system.
+"
+grote/BlitzMail,open,PGP encryption,"[Label(name=""enhancement""), Label(name=""help wanted"")]","It would be useful to add a possibility to encrypt/sign notes/messages uppon sending using a predefined public key. BlitzMail could use OpenKeychain for that.
+
+Cool app, thanks!
+"
+grote/BlitzMail,closed,"mailing from ""Downloads"" fails, permission error","[Label(name=""bug"")]","""permission Denial: reading com.android.providers.downloads.DownloadStorageProvider ....""
+
+happens when ""sharing"" from builtin ""Downloads"" app 5.0.2-1 on a Moto G, 1. gen.. OS Monitor calls it ""android.process.media""
+"
+grote/BlitzMail,closed,More descriptive subject when emailing files,"[Label(name=""enhancement""), Label(name=""help wanted""), Label(name=""junior job"")]","right now it say ""Files"", could be file type and name, possibly date of the file.
+"
+grote/BlitzMail,closed,retrying mail sending does not seem to work,"[Label(name=""bug""), Label(name=""needs info"")]","Tried to email a few pictures in short succession while in airplane mode which failed with the message can't contact smtp server.
+
+Disabled airplane mode and waited for a minute to see if it would retry automatically - it did not.
+
+Hit try again in the notification - it is displaying ""sending please wait"" with the progress bar since 2 hours and nothing is sent.
+"
+grote/BlitzMail,closed,Close BlitzNote Dialog When Pressing Back Button,"[Label(name=""enhancement""), Label(name=""junior job"")]","Currently, pressing the back button does nothing in BlitzNote.
+"
+grote/BlitzMail,closed,Don't send empty BlitzNotes,"[Label(name=""bug""), Label(name=""junior job"")]","Currently you can hit 'Send Mail' in BlitzNote and get an empty email.
+"
+grote/BlitzMail,closed,Major design updates,"[Label(name=""enhancement"")]",
+grote/BlitzMail,closed,Notification displaying error even though sending email actually succeeded,"[Label(name=""bug"")]","This happens after the latest update from f-droid.
+
+I have notifications for sent email enabled - when the email is sent it shows an error and a menu send again/dismiss etc. 
+
+As a feature wish.. an option to have the email sent notification transient, disappear without further user action after eg 1 minute.
+"
+grote/BlitzMail,closed,NullPointerException in AsyncMailTask,"[Label(name=""bug"")]","```
+java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Class java.lang.Object.getClass()' on a null object reference
+    at de.grobox.blitzmail.AsyncMailTask.onPostExecute(AsyncMailTask.java:110)
+    at de.grobox.blitzmail.AsyncMailTask.onPostExecute(AsyncMailTask.java:31)
+    at android.os.AsyncTask.finish(AsyncTask.java:636)
+    at android.os.AsyncTask.access$500(AsyncTask.java:177)
+    at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:653)
+    at android.os.Handler.dispatchMessage(Handler.java:102)
+    at android.os.Looper.loop(Looper.java:135)
+    at android.app.ActivityThread.main(ActivityThread.java:5293)
+    at java.lang.reflect.Method.invoke(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:372)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:699)
+
+```
+"
+grote/BlitzMail,closed,Crash in NotificationHandlerActivity.onCreate,"[Label(name=""bug"")]","```
+java.lang.RuntimeException: Unable to start activity ComponentInfo{de.grobox.blitzmail.lite/de.grobox.blitzmail.NotificationHandlerActivity}: java.lang.NullPointerException
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2092)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2117)
+at android.app.ActivityThread.access$600(ActivityThread.java:148)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1219)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:4812)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:789)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:556)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.NullPointerException
+at org.json.JSONTokener.nextCleanInternal(JSONTokener.java:116)
+at org.json.JSONTokener.nextValue(JSONTokener.java:94)
+at org.json.JSONObject.<init>(JSONObject.java:154)
+at org.json.JSONObject.<init>(JSONObject.java:171)
+at de.grobox.blitzmail.NotificationHandlerActivity.onCreate(NotificationHandlerActivity.java:43)
+at android.app.Activity.performCreate(Activity.java:5080)
+at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1079)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2056)
+... 11 more
+```
+"
+grote/BlitzMail,open,Add prefix for Subject,"[Label(name=""enhancement""), Label(name=""help wanted""), Label(name=""junior job"")]","Hi!
+
+Can you add feature for several subject prefixes? 
+
+Like in [AutoShare](https://play.google.com/store/apps/details?id=com.dngames.autoshare) app. Now i use it, but it's need input account details for each prefix template.
+"
+grote/BlitzMail,closed,Can't use it to share images?,"[Label(name=""enhancement""), Label(name=""junior job"")]","Hi,
+
+when sharing images (from gallery or file manager) Blitzmail isn't shown in the list of choices to share (Motorola G).
+
+Is it an error or simply missing functionality?
+
+It would be really nice to have.
+"
+grote/BlitzMail,closed,SMTP error 535 when debian-kit was launched before,"[Label(name=""invalid"")]","Hello,
+
+This may not be an issue for BlitzMail at all but I wanted to report it anyway: I have the latest Blitzmail installed from f-droid and everything works fine until I start Debian via debian-kit [1]. Then, I'll get the error ""Check SMTP settings: error 535 Authentication required"".
+
+So far, I only managed to fix this with a reboot until the next launch of debian-kit.
+
+So, it is obviously something what debian-kit does that stops Blitzmail from working. But as other mail sending apps (e.g. K9) continue to work, I thought it may be something that can be solved in Blitzmail. 
+
+Let me know if you need any further details and also if you have some hints for me to explain the problem  better to the Debian-kit developer.
+
+Thanks!
+
+Guido
+
+[1] https://f-droid.org/repository/browse/?fdfilter=debian%20kit&fdid=org.dyndns.sven_ola.debian_kit
+"
+grote/BlitzMail,closed,Listen for changes of network connectivity and send offline messages automatically,"[Label(name=""enhancement"")]","Hi,
+
+I have encountered the following problem:
+- go offline
+- send  blitzmail #1 
+- go online
+- send blitzmail #2 
+
+blitzmail #2 is immediately delivered, while blitzmail #1 still did not arrive. The notification that would allow me to resend it is gone after sending blitzmail #2 
+
+Next I tried
+- go offline
+- send blitzmail #3 (fails with notification)
+- go online
+- go to notification - try again
+- blitzmail #3 is delivered while blitzmail # 1 is still in nirvana
+"
+grote/BlitzMail,closed,Replace jar libraries with maven central dependencies,[],
+grote/BlitzMail,closed, when there is no Internet connection only the message entered last will be sent,[],"Hi Torsten,
+
+I today noticed a little error in BlitzMail that I want to report.
+
+When there is currently no internet connection BlitzMail will present a dialogue where you can choose to retry. When putting new message into this ""queue"" older messages get lost.
+
+Or put differently: when sending a new not the still waiting to be sent message is discarded.
+
+Greetings and thanks for this otherwise great time safer Felix
+"
+grote/BlitzMail,closed,Make sure there is no line break in the mail subject,"[Label(name=""bug"")]","Make sure there is no line break in the mail subject
+"
+grote/BlitzMail,closed,Crash on shaky internet connection,"[Label(name=""bug"")]","ERROR: Exception reading response
+javax.mail.MessagingException: Exception reading response;
+  nested exception is:
+   javax.net.ssl.SSLException: Read error: ssl=0xebf40: I/O error during system call, Connection timed out
+   at com.sun.mail.smtp.SMTPTransport.readServerResponse(SMTPTransport.java:1611)
+   at com.sun.mail.smtp.SMTPTransport.ehlo(SMTPTransport.java:936)
+   at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:415)
+   at javax.mail.Service.connect(Service.java:310)
+   at javax.mail.Service.connect(Service.java:169)
+   at javax.mail.Service.connect(Service.java:118)
+   at javax.mail.Transport.send0(Transport.java:188)
+   at javax.mail.Transport.send(Transport.java:118)
+   at de.grobox.blitzmail.MailSender.sendMail(MailSender.java:77)
+   at de.grobox.blitzmail.AsyncMailTask.doInBackground(AsyncMailTask.java:63)
+   at de.grobox.blitzmail.AsyncMailTask.doInBackground(AsyncMailTask.java:29)
+   at android.os.AsyncTask$2.call(AsyncTask.java:287)
+Caused by: javax.net.ssl.SSLException: Read error: ssl=0xebf40: I/O error during system call, Connection timed out
+   at org.apache.harmony.xnet.provider.jsse.NativeCrypto.SSL_read(Native Method)
+   at org.apache.harmony.xnet.provider.jsse.OpenSSLSocketImpl$SSLInputStream.read(OpenSSLSocketImpl.java:675)
+   at com.sun.mail.util.TraceInputStream.read(TraceInputStream.java:110)
+   at java.io.InputStream.read(InputStream.java:163)
+   at java.io.BufferedInputStream.fillbuf(BufferedInputStream.java:142)
+   at java.io.BufferedInputStream.read(BufferedInputStream.java:227)
+   at com.sun.mail.util.LineInputStream.readLine(LineInputStream.java:88)
+   at com.sun.mail.smtp.SMTPTransport.readServerResponse(SMTPTransport.java:1589)
+   ... 17 more
+
+FATAL EXCEPTION: main
+java.lang.NullPointerException
+       at de.grobox.blitzmail.AsyncMailTask.onPostExecute(AsyncMailTask.java:108)
+       at de.grobox.blitzmail.AsyncMailTask.onPostExecute(AsyncMailTask.java:29)
+       at android.os.AsyncTask.finish(AsyncTask.java:631)
+       at android.os.AsyncTask.access$600(AsyncTask.java:177)
+"
+grote/BlitzMail,closed,Missing headers,"[Label(name=""enhancement"")]","I just discovered BlitzMail (version 0.2 from f-droid.org) and I like it - it is quite useful in some cases. A minor problem though: it does not set the Date: and From: headers in the messages that are sent. It is usually not a problem but it could potentially trigger antispam filters. This should be a relatively easy fix.
+"
+grote/BlitzMail,open,Error while using self-signed TLS-Certificate,"[Label(name=""enhancement""), Label(name=""help wanted"")]","When using Blitzmail with an SMTP-Server which has an self-signed TLS-Certificate, it responds with an error:
+""Could not convert socket to TLS java.security.cert.CertPathValidatorException: Trust anchor for certification path not found.""
+
+Anything we can do about this?
+"

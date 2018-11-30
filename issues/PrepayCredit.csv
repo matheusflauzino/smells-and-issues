@@ -1,0 +1,111 @@
+repository,state,title,label,body
+DamienOReilly/PrepayCredit,open,"Internet prepay addon has been renamed to ""Internet in Republic of Ireland""",[],"A couple of months ago, the 500MB prepay internet addon stopped showing up in the tool.
+
+This could be because Three renamed it to ""Internet in Republic of Ireland"", possibly in an attempt to workaround the new EU regulations.
+
+This is what I can see now in Three.ie:
+
+Total cash credits
+--
+Internet in Republic of Ireland (1)
+Internet in Republic of Ireland		Valid until		        Remaining
+					                 Expires 14/08/17	486
+
+It'd be great if support for this could be re-added to the tool.
+Cheers!"
+DamienOReilly/PrepayCredit,open,Problem connecting to My3 website,[],"I was on O2 and my credentials for that website now work on login.three.ie. However v0.15 reports an error: damp.three.ie.util.PrepayException: Unexpected response from server. Logcat says nothing.
+"
+DamienOReilly/PrepayCredit,closed,Login not working as of 22-08-2014,"[Label(name=""bug"")]","Three changed the login procedure slightly under the hood which breaks the automated login.
+
+This login step now appears twice
+
+``` html
+<body class=""P00_id"">
+    <div class=""threePortlet P00_id P00_SsoGoService"">
+        <noscript>
+        <p>Login successful.</p>
+
+        <p>Click <a href=
+        ""http://my3account.three.ie/My_account_balance?ticket=ST-106264-HJW.........""
+        target=""_parent"">here</a> to access the service you
+        requested.</p></noscript>
+    </div>
+</body>
+```
+"
+DamienOReilly/PrepayCredit,closed,"Bug on ""My3 website"" menu item.","[Label(name=""bug"")]","Clicking on ""My3 website"" in the menu is clearing out cookies so you have to log back in.
+"
+DamienOReilly/PrepayCredit,closed,Application does not handle internet out-of-bundle charges (roaming),"[Label(name=""bug"")]","Uncategorized items fall under ""Other"" on the UI.
+
+Sample from HTML that is not parsed correctly (tidy'ed up with a cleaner first!)
+
+``` html
+    <tbody class=""portlet-table-body"" id=""dataUsageBody"">
+      <tr>
+        <td class=""leftBorder""><strong>Internet &nbsp;</strong></td>
+
+        <td class="""">6.411 Mb</td>
+
+        <td class=""rightBorder alignRight"">&euro;6.45</td>
+      </tr>
+
+      <tr class=""division"">
+        <td colspan=""3""></td>
+      </tr>
+
+      <tr>
+        <td class=""leftBorder""><strong>Internet &nbsp;Roaming Band 1 EU</strong></td>
+
+        <td class="""">0.718 Mb</td>
+
+        <td class=""rightBorder alignRight"">&euro;0.41</td>
+      </tr>
+    </tbody>
+
+    <tbody class=""portlet-table-body"">
+      <tr class=""summary"">
+        <td class=""noBorderR fourty"">Total value</td>
+
+        <td class=""noBorderR fourty"">&nbsp;</td>
+
+        <td class=""twenty alignRight""><b>&euro;6.86</b></td>
+      </tr>
+    </tbody>
+```
+"
+DamienOReilly/PrepayCredit,closed,GUI defects,"[Label(name=""bug"")]","- Email field in Settings activity does not have **android:inputType=""textEmailAddress""** set so the device tries to Auto-Correct and mess things up when you enter in an email address.
+- Icon for ""about"" on pre-honeycomb devices will have a gray icon with transparent background. This looks OK when the icon is actually on the old menu as standard. However if the device is rotated to landscape, the 3rd icon (about) may go into the action bar and will still be gray, which looks odd against the existing white icons.
+- ActionBarSherlock theme is Light, which means the overflow button is gray. I want this to be white to match our menu icons.
+"
+DamienOReilly/PrepayCredit,closed,NullPointerException thrown if usage fetched after app closes,"[Label(name=""bug"")]","A NullPointerExcption will be thrown if the user closes the App/activity while the ASyncTask is still fetching back the usage. It tries to display results on a non existing Activity.
+
+`java.lang.NullPointerException
+at damo.three.ie.fragment.AccountProcessorFragment.reportBackUsages(AccountProcessorFragment.java:164)
+at damo.three.ie.prepay.AccountProcessor.onPostExecute(AccountProcessor.java:342)
+at damo.three.ie.prepay.AccountProcessor.onPostExecute(AccountProcessor.java:58)
+at android.os.AsyncTask.finish(AsyncTask.java:631)
+at android.os.AsyncTask.access$600(AsyncTask.java:177)
+at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:644)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:5328)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1102)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:869)
+at dalvik.system.NativeStart.main(Native Method)`
+"
+DamienOReilly/PrepayCredit,closed,Reminder if internet usage expiring,"[Label(name=""enhancement"")]","It would be useful to have functionality to alert the user that their internet add-on is about to expire to prevent them getting expensive out of bundle charges.
+
+This could be as simple as a Notification: http://developer.android.com/guide/topics/ui/notifiers/notifications.html
+
+A bonus is to have an option that allows data to automatically be disabled when the add-on is about to expire. Its a bit hacky to implement this though.
+"
+DamienOReilly/PrepayCredit,closed,Small UI bugs,"[Label(name=""bug""), Label(name=""enhancement"")]","Some bugs found with the UI:
+- Number of days calculation is sometimes incorrect. In the attached snapshot, on the 30th, the day expiring summary is flagged as ""Tomorrow"" rather than ""Today""
+- 3-to-3 calls that are queued are missing their label, so fall under the ""Other"" usages. See screenshot.
+- ScrollView overlaps the last refreshed TextView. This is noticeable if the user has smaller screen or has many items to view. See screenshot.
+- Not bug as such, more an enhancement/change. Any currency value lower than €1 is showing without a decimal before the decimal point separator. e.g. ""€0.97"" will be shown as ""€.97"" 
+
+![screenshot_2013-07-30-07-01-04](https://f.cloud.github.com/assets/5133875/927639/ce79dc26-ffa3-11e2-924f-df4e149d5ba7.png)
+"

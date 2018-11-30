@@ -1,0 +1,67 @@
+repository,state,title,label,body
+cglapa/rights-alert,open,Detect applications dangerosity,"[Label(name=""feature"")]","Use their category to detect if it makes sense to use each rights (no problem if a GPS application access to the position, but it's a problem if a game want it).
+
+Maybe use this library: [Android Market API](http://code.google.com/p/android-market-api/).
+"
+cglapa/rights-alert,open,Match preference screen with Android recommendations,"[Label(name=""enhancement"")]","The summary of each preference must display the state of the option.
+For exemple, on the ""Show system applications"" preference, the summary must be ""System applications will be shown"" if the box is checked, and ""System applications won't be shown"" if not.
+"
+cglapa/rights-alert,open,Update dev/release codes,[],"Odd version codes will be development versions, and even version codes will be released version.
+If a version is in a development state, the version name will end with a beta letter (β).
+"
+cglapa/rights-alert,closed,Limit application icon width,"[Label(name=""bug"")]","With some applications (like [Wireless Tether](https://play.google.com/store/apps/details?id=android.tether), when icon has a bigger width than height, it can exceed the width of the other applications.
+Fix it by limiting icon width with the same as the height.
+"
+cglapa/rights-alert,closed,Add about popup,"[Label(name=""feature"")]","Add a popup to describe project authors, release notes…
+"
+cglapa/rights-alert,closed,Hide system applications,"[Label(name=""feature"")]","Add an option to permit to the user to hide system applications
+"
+cglapa/rights-alert,open,Live alert,"[Label(name=""enhancement"")]","Keep application in memory and live alert the user if an application is dangerous just after he installed it.
+"
+cglapa/rights-alert,open,Remove an application,"[Label(name=""enhancement"")]","Add a button in the application information view to remove this application.
+"
+cglapa/rights-alert,open,Add an information view for applications,"[Label(name=""feature"")]","An information screen will be displayed when the user click on an application in the list.
+This will contain useful informations about permissions asked by the application.
+"
+cglapa/rights-alert,open,Add a tablet specific view,"[Label(name=""feature"")]","Levels on the left of the screen, applications on the right, that's all.
+"
+cglapa/rights-alert,open,Display levels using ExpandableLists,"[Label(name=""enhancement"")]","See all applications in one view!
+"
+cglapa/rights-alert,open,Add levels of alerts,"[Label(name=""feature"")]","Levels can be ""Dangerous"", ""Keep an eye on"" and ""No perms"" (this last list applications that don't need any permission, to prevent an application to use security flaw).
+"
+cglapa/rights-alert,open,Default configurations,"[Label(name=""enhancement"")]","Add default pre-configurated score algorithms, like ""security paranoid"", ""I don't like big lists"" or ""security, what's that?"".
+"
+cglapa/rights-alert,closed,Display score in applications list,"[Label(name=""enhancement"")]","The user have to see the score of each dangerous application.
+"
+cglapa/rights-alert,closed,Personalize score calculation algorithm,"[Label(name=""enhancement"")]","The user must be able to change values of each permission and the score to reach to set application as dangerous.
+"
+cglapa/rights-alert,closed,Add French translation,"[Label(name=""feature"")]","The application have to be translated in French.
+"
+cglapa/rights-alert,closed,Choose dangerous applications sorting,"[Label(name=""feature"")]","User must have to choice to sort by applications names or by applications notes.
+He can change his setting in the preference activity.
+Default value is to sort them by names.
+"
+cglapa/rights-alert,closed,Class dangerous applications,"[Label(name=""feature"")]","Applications list have to be displayed in a alphabetical order.
+"
+cglapa/rights-alert,closed,Crash if screen rotates when the ProgressDialog is displayed,"[Label(name=""bug"")]","Stacktrace:
+
+```
+04-26 23:55:30.901: E/AndroidRuntime(745): FATAL EXCEPTION: main
+04-26 23:55:30.901: E/AndroidRuntime(745): java.lang.IllegalArgumentException: View not attached to window manager
+04-26 23:55:30.901: E/AndroidRuntime(745):      at android.view.WindowManagerImpl.findViewLocked(WindowManagerImpl.java:587)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at android.view.WindowManagerImpl.removeView(WindowManagerImpl.java:324)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at android.view.WindowManagerImpl$CompatModeWrapper.removeView(WindowManagerImpl.java:151)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at android.app.Dialog.dismissDialog(Dialog.java:321)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at android.app.Dialog$1.run(Dialog.java:119)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at android.app.Dialog.dismiss(Dialog.java:306)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at fr.keuse.rightsalert.handler.LoadApplicationsHandler.handleMessage(LoadApplicationsHandler.java:34)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at android.os.Handler.dispatchMessage(Handler.java:99)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at android.os.Looper.loop(Looper.java:137)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at android.app.ActivityThread.main(ActivityThread.java:4424)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at java.lang.reflect.Method.invokeNative(Native Method)                                                                                                   
+04-26 23:55:30.901: E/AndroidRuntime(745):      at java.lang.reflect.Method.invoke(Method.java:511)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)
+04-26 23:55:30.901: E/AndroidRuntime(745):      at dalvik.system.NativeStart.main(Native Method)
+```
+"

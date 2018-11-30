@@ -1,0 +1,51 @@
+repository,state,title,label,body
+hrk/no-frills-cpu-classic,closed,mmcblk0 ioscheduler not present on Minix X5,[],"Instead it has mtdblock0.
+I made a quick patch in SysUtils.java and now I can change noop, deadline or cfg:
+
+<pre><code>
+@@ -46,5 +46,6 @@
+    private final static String scaling_stats_time_in_state = cpufreq_sys_dir + ""stats/time_in_state"";
+ 
+-   private final static String ioscheduler = ""/sys/block/mmcblk0/queue/scheduler"";
++   private final static String ioscheduler1 = ""/sys/block/mmcblk0/queue/scheduler"";
++   private final static String ioscheduler2 = ""/sys/block/mtdblock0/queue/scheduler"";
+    private final static String RE_FAKE_BLKDEV = ""(loop|zram|dm-)[0-9]+"";
+ 
+@@ -235,4 +236,8 @@
+    public static String[] getAvailableIOSchedulers() {
+        String[] schedulers = null;
++       String ioscheduler = ioscheduler1;
++       if (!new File(ioscheduler1).exists()) {
++           ioscheduler = ioscheduler2;
++       }
+        String[] aux = readStringArray(ioscheduler);
+        if (aux != null) {
+@@ -294,4 +299,8 @@
+    public static String getIOScheduler() {
+        String scheduler = null;
++       String ioscheduler = ioscheduler1;
++       if (!new File(ioscheduler1).exists()) {
++           ioscheduler = ioscheduler2;
++       }
+        String[] schedulers = readStringArray(ioscheduler);
+        if (schedulers != null) {
+</code></pre>
+
+
+Btw, thank you for this open source code!
+"
+hrk/no-frills-cpu-classic,closed,CPUs nr bigger with 2,[],"Small bug counting the nr of cpu cores: for example for a dual-core was trying to set cpu0, 1, 2 and 3. Because last two don't exist on my minix x5 board, the ""SU"".waitFor was returning 1, which made it complain with err_update_failed... even the other two cpus were actually updated fine (and same time a su toast also appeared saying that the no frills cpu classic has been granted superuser permission, which created confusion). 
+
+The fix should be in src/it/sineo/android/noFrillsCPUClassic/extra/SysUtils.java::setFrequenciesAndGovernor: increment after break, and make the for loop only for smaller not equal:
+
+```
+            while (true) {
+                File f = new File(SysUtils.scaling_min_freq.replace(""cpu0"", ""cpu"" + cpus));
+                if (!f.exists()) {
+                    break;
+                }
+                cpus++;
+            }
+            for (int i = 0; i < cpus; i++) {
+```
+"

@@ -1,0 +1,1207 @@
+repository,state,title,label,body
+domogik/domodroid,open,Map fullscreen and widgets different size,"[Label(name=""Todo""), Label(name=""enhancement"")]","As seen in @jaywax installation:
+http://www.noelshack.com/2018-43-3-1540370899-img-20181023-193342.jpg
+
+It looks like we really need a fullscreens that hide top menu and could show graph in higher size.
+
+Also an option to display widget in another size (configurable widget by widget)."
+domogik/domodroid,open,Language rework,[],Please use the non-spying libre software https://hosted.weblate.org instead of Transifex for translations :)
+domogik/domodroid,open,Update api target,"[Label(name=""Todo"")]","https://developer.android.com/distribute/best-practices/develop/target-sdk
+
+New Google restriction to publish any update version on store."
+domogik/domodroid,closed,SQL injection security,"[Label(name=""Todo""), Label(name=""bug"")]","Hello Google Play Developer,
+
+The apps listed at the end of this email have a SQL Injection issue which can allow a malicious app to access affected database contents.
+
+What's happening
+
+One or more of your apps contain a SQL Injection vulnerability that must be fixed. Please refer to the notice on your Play Console for the deadline to fix this vulnerability. After this deadline, updates to affected apps will be blocked if the vulnerability is still present. Your published APK version will remain unaffected.
+
+Action required
+
+Implementations of query, update, and delete in exported ContentProviders can be vulnerable to SQL Injection if they pass unsanitized inputs to SQL statements. A malicious app can supply a crafted input to access private data or corrupt database contents. You can fix this problem in the following ways:
+
+If an affected ContentProvider does not need to be exposed to other apps:
+
+You can modify the tag of the affected ContentProvider in your Manifest to set android:exported=""false"". This will prevent other apps from sending Intents to the affected ContentProvider.
+
+You can also set the android:permission attribute to be a permission with android:protectionLevel=""signature"" to prevent apps written by other developers from sending Intents to the affected ContentProvider.
+
+If an affected ContentProvider needs to be exposed to other apps:
+
+You can prevent SQL Injection into SQLiteDatabase.query by using SQLiteQueryBuilder.query in strictmode with a projection map. Strict mode protects against malicious selection clauses and projection map protects against malicious projection clauses. You must use both of these features to ensure that your queries are safe.
+
+You can prevent SQL Injection into SQLiteDatabase.update and SQLiteDatabase.delete by using a selection clause that uses ""?"" as a replaceable parameter and a separate array of selection arguments. Your selection clause should not be constructed from untrusted inputs.
+
+Next steps
+
+Update your app using the steps highlighted above.
+
+Sign in to your Play Console and submit the updated version of your app.
+
+Check back after five hours. We'll show a warning message if the app hasn't been updated correctly.
+
+We're here to help
+
+If you have technical questions about the vulnerability, you can post to Stack Overflowand use the tag ""android-security."" For clarification on steps you need to take to resolve this issue, you can contact our developer support team.
+
+Affected app(s)
+
+Affected app(s) and version(s) are listed below, up to 20. You can sign in to the Play Console to view a full list of all affected apps and to find the relevant classes in your apps that contain the vulnerability.
+
+org.domogik.domodroid   12
+org.domogik.domodroid13   33"
+domogik/domodroid,closed,Question : Possible to connect under vpn ?,[],"Hi,
+I'm trying to connect (through ipsec vpn under wan ip) to my domogik server. The vpn part is ok and i can reach all my others lan services when my vpn is up, but i can't still connect (i don't see any traffic on my firewall). Due to the work done, i think it's a normal behavior. Can you confirm ? 
+
+French : 
+Hello, j'essaye de me connecter via un vpn ipsec depuis mon tél android à mon serveur domogik via domodroid. Je sais que pas mal de travail a été fait pour éviter les connexions lorsqu'on est pas en wifi (d'ailleurs je confirme, il n'y a rien qui part du téléhpone :p). Peux-tu confirmer que c'est normal que je ne vois rien sortir du téléphone, une fois connecter au vpn ?
+
+Merci."
+domogik/domodroid,open,Enchancement : Have the possibility to connect to more than one domogik server and store customisations and configurations,[],"Hi,
+Could be nice to save parameter connexion in the case of the use of more than one domogik server (developement purpose) to be able to switch between domogik server without loose all custom."
+domogik/domodroid,closed,Enchancement : Have the possibility to use dns name for MQ configuration,[],"Hi,
+Could be nice if we could use dns names for configuring MQ Address.
+Thanks.
+
+version : domodroid13 1.4_android_sudio Rev_33
+"
+domogik/domodroid,open,Zxing error,"[Label(name=""bug"")]","```
+ANDROID_VERSION=6.0.1
+PHONE_MODEL=SM-G900R4
+STACK_TRACE=java.lang.RuntimeException: Unable to start activity ComponentInfo{org.domogik.domodroid13/activities.config_with_qrcode}: java.lang.SecurityException: Permission Denial: starting Intent { act=com.google.zxing.client.android.SCAN cmp=io.shodan.app/com.google.zxing.client.android.CaptureActivity (has extras) } from ProcessRecord{fa4e130 16058:org.domogik.domodroid13/u0a255} (pid=16058, uid=10255) not exported from uid 10191
+```
+
+https://stackoverflow.com/questions/11388450/using-zxing-barcode-scanner-causes-securityexception
+"
+domogik/domodroid,closed,Other app for Domodroid,[],"Hi @domogik
+Is [this](https://play.google.com/store/apps/details?id=co.Black.android68) an old version of your app, or something completely new?"
+domogik/domodroid,closed,White screen at stratup,[],A big white screen appears when starting domodroid.
+domogik/domodroid,open,Connection Issue with no wifi client,[],"Device with no wifi card can't connect to the domogik server.
+During the synchronisation process, the error ""no connection"" is comming up."
+domogik/domodroid,open,Get sensor update after command sent,"[Label(name=""enhancement"")]","Get /device or /sensor after a command is send and not connected to MQ.
+"
+domogik/domodroid,closed,Prefered wifi,"[Label(name=""enhancement"")]",Don't ask user if already set in the past.
+domogik/domodroid,open,Map out of memory crash,"[Label(name=""bug"")]","STACK_TRACE=java.lang.OutOfMemoryError
+at android.graphics.BitmapFactory.nativeDecodeStream(Native Method)
+at android.graphics.BitmapFactory.decodeStreamInternal(BitmapFactory.java:709)
+at android.graphics.BitmapFactory.decodeStream(BitmapFactory.java:685)
+at e.a.a(MapView.java:1319)
+at e.a.d(MapView.java:372)
+at activities.Activity_Map$5.onItemClick(Activity_Map.java:397)
+at android.widget.AdapterView.performItemClick(AdapterView.java:308)
+at android.widget.AbsListView.performItemClick(AbsListView.java:1509)
+at android.widget.AbsListView$PerformClick.run(AbsListView.java:3467)
+at android.widget.AbsListView$3.run(AbsListView.java:4830)
+at android.os.Handler.handleCallback(Handler.java:733)
+at android.os.Handler.dispatchMessage(Handler.java:95)
+at android.os.Looper.loop(Looper.java:146)
+at android.app.ActivityThread.main(ActivityThread.java:5602)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:515)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1283)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1099)
+at dalvik.system.NativeStart.main(Native Method)"
+domogik/domodroid,open,Tutorial with Slideshow,"[Label(name=""enhancement"")]","Embedded a tutorial for basics configutrations and actions so user could easilly understand what to do.
+https://github.com/apl-devs/AppIntro
+
+It could also be used to configure domodroid step by step asking all basics and necessary value."
+domogik/domodroid,open,Qrcode activity improvements,"[Label(name=""enhancement"")]","original from #152 : 
+
+- [x] suite à la conf via QR code, afficher une autre fenêtre pour demander le user et le mot de passe si ils ne sont pas déjà renseignés (ça sera plus intuitif)
+
+- [x] conf via QR code, après photo affichage d'un dialogue : si possible, cacher le QR code (ne l'afficher que via appui sur un bouton détail par exemple). Renommer ""non"" en ""Annuler"", ""OK"" en ""Continuer""
+
+- [ ] j'ai scanné le QR code depuis le travail, donc il a configuré avec mon ip externe dans la partie conf interne... Peut-être préciser que ça ne fonctionne QUE sur le réseau local la ""easy conf"", non ?
+
+> Linked to #141 when MQ will be stoppped on external access"
+domogik/domodroid,open,Some menu related improvments (french inside),"[Label(name=""enhancement"")]","Quelques remarques en vrac :
+
+- [x]  affichage du changelog au démarrage après install : très beau, rien à dire!
+
+- [x]  menu de configuration : Paramètres : titres 'configurer serveur' => 'configurer le serveur'
+
+- [x]  menu de configuration : Paramètres : 1ère partie : ""EASY configuration"" => ""Configuration rapide"", ""Conf. auto. via QR code"" => ""Configurer avec un QR code""
+
+- [x]  menu de configuration : Paramètres : 2 ème partie : enlever l'icône devant ""Cet écran permet la configuration du serveur"" et renommer en ""Cette partie permet....""
+
+- [x]  menu configuration : Paramètres : il y a encore des trucs non traduits, je ne sais pas si c'est normal See #38 
+
+- [ ] menu de configuration : Paramètres : certains paramètres (les ports, le chemin rest) n'ont pas d'icônes, il faudrait en mettre
+
+- [ ]  tempo de mise à jour des données : pourquoi 125 secondes ?
+
+- [x]  dans le menu MQ configuration : pas d'icône. Ajouter un texte pour dire que cette conf sert uniquement sur le réseau local et pas sur le web (pour ne pas embrouiller l'utilisateur)"
+domogik/domodroid,closed,Improve the README.md,[],
+domogik/domodroid,closed,Handle proxy redirection,"[Label(name=""Todo""), Label(name=""bug""), Label(name=""enhancement"")]",In some case domodroid do not handle proxy permanent redirection.
+domogik/domodroid,closed,Handle dt_scaling for sensor,"[Label(name=""bug"")]","Related to last Domogik update for DT battery and humidity.
+
+Widget do not exist in domodroid for dt_scaling sensor."
+domogik/domodroid,closed,SSL in Domogik administration view,"[Label(name=""bug"")]",When using SSL it display a blank page instead of the login and admin page.
+domogik/domodroid,open,butler : use post to requets it ,[],See https://github.com/domogik/domogik/issues/405
+domogik/domodroid,closed,Rename don't work since new rest call,"[Label(name=""bug"")]",
+domogik/domodroid,open,Loading round on navigation,[],When a screen contain a lot of widgets display a loading information it could take some time if list is very long.
+domogik/domodroid,open,Handle multiple value for vigilance,"[Label(name=""bug""), Label(name=""enhancement"")]","Seen that vigilance plugins can display multiple alert like snow/ice , intense cold.
+
+This is not handle in translation process"
+domogik/domodroid,closed,Missing Yahoo weather translation,"[Label(name=""bug"")]",Rain and snow is not translate.
+domogik/domodroid,closed,MQ configuration,[],Check if MQ IP is different than 0.0.0.0 or 127.0.0.1
+domogik/domodroid,open,Set up the public ip/port,"[Label(name=""Todo""), Label(name=""enhancement"")]","Related to https://github.com/domogik/domogik/issues/417
+
+- [x] Need to check if on a wifi (with ssid_name or something unique) or gsm/data.
+
+- [x] While sync ask user if it is the local network.
+
+- [x] When outside of the saved local network change URL/PORT for REST requests.
+
+- [x] Adapt QRcode reader.
+
+- [x] Look at old code; in past it was named external_address/port.
+
+- [x] In menu adapt a list for wifi SSID.
+
+- [ ] Stop Mq if connected outside home.
+"
+domogik/domodroid,open,Implement location,[],"Implement locations inside domodroid
+
+- [ ] in setup choose an account and keep track of the person id + an update interval
+- [ ] every update interval, check if the location changed, if changed push to a specific rest url"
+domogik/domodroid,open,Notifications,"[Label(name=""Help wanted""), Label(name=""enhancement"")]",Be able to send android notifications to a device with String DT
+domogik/domodroid,open,issue with accent in domodroid butlers client,"[Label(name=""bug"")]",If string to send contains accent core_butler do not receive it (not seen in butler admin page)?
+domogik/domodroid,closed,crash if mq adress is invalid,"[Label(name=""bug"")]",Find a way to check MQ adresse before starting to listen MQ
+domogik/domodroid,closed,pub/sub port mixing,[],Pub port was not in the qrcode and it is bad translate at least for french.
+domogik/domodroid,closed,Multiple open/close history of a sensor,"[Label(name=""bug"")]","STACK_TRACE=java.lang.IllegalStateException: The specified child already has a parent. You must call removeView() on the child's parent first.
+        at android.view.ViewGroup.addViewInner(ViewGroup.java:4326)
+        at android.view.ViewGroup.addView(ViewGroup.java:4162)
+        at android.view.ViewGroup.addView(ViewGroup.java:4103)
+        at android.view.ViewGroup.addView(ViewGroup.java:4076)
+        at j.g$a.a(Graphical_Boolean.java:416)
+        at j.g$a.onPostExecute(Graphical_Boolean.java:309)
+        at android.os.AsyncTask.finish(AsyncTask.java:679)
+        at android.os.AsyncTask.access$500(AsyncTask.java:180)
+        at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:696)
+        at android.os.Handler.dispatchMessage(Handler.java:102)
+        at android.os.Looper.loop(Looper.java:150)
+        at android.app.ActivityThread.main(ActivityThread.java:5546)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:794)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:684)"
+domogik/domodroid,closed,Number conversion before sending to rest,"[Label(name=""bug"")]","""value_str"": ""5.8"", value_num"": 5.8
+""value_str"": ""5,8"", ""value_num"": null
+
+Must convert comma to point before sending value to rest.
+"
+domogik/domodroid,closed,Unable to sync domodroid (AUTH not working),[],"Quand j'essaie de synchroniser domodroid, il me dit qu'il ne peut pas charger la liste des device.
+
+Domodroid v25
+Domogik v0.5.0
+
+Quand je tente d'aller sur l'URL http://admin:123@10.0.101.25/rest/device/ : 
+""Could not verify your access level for that URL.\n You have to login with proper credentials."""
+domogik/domodroid,open,Json null or empty,"[Label(name=""bug"")]",Check to empty jsonobject or jsonarray instead of just null object in all request results.
+domogik/domodroid,open,Getting history from graph or list in asynctask to avoid ANR,"[Label(name=""Todo""), Label(name=""bug""), Label(name=""enhancement"")]","Problem with the history for sensor used in graph or list.
+As it is done in main thread and not asynctask, if network or admin didn't reponse fast it ends up with an ANR error.
+
+` at rinor.Rest_com.connect_jsonobject(Rest_com.java:73)`
+
+> response = httpclient.execute(httpget);
+"
+domogik/domodroid,open,Domodroid crash when get value from rest in background.,"[Label(name=""bug"")]","Send by jaywax on a 0.3.
+
+Attempt to invoke virtual method 'java.lang.String org.json.JSONObject.toString()' on a null object reference
+at h.b$a.a(Events_manager.java:363)
+at h.b$a.doInBackground(Events_manager.java:170)"
+domogik/domodroid,closed,Widget graph and Map scroll problem,[],"Allow to scroll the map or graph without scrolling the main view.
+
+Looks like #22 "
+domogik/domodroid,closed,Redraw the view correctly at the top of the screen when navigate throw elements,[],
+domogik/domodroid,open,More button on history,"[Label(name=""enhancement"")]","Add a mechanism to see more sensor history.
+Like for graph where we can have day/weeks/month/year value.
+A little '+' button at the bottom of the extended widgets."
+domogik/domodroid,closed,Weather widget,"[Label(name=""enhancement"")]",Breezy is not translate.
+domogik/domodroid,closed,Refresh widgets if start on map,"[Label(name=""bug"")]",Maps start do not wait launch rest sync to display widget. So at start widgets are displayed without the right value.
+domogik/domodroid,open,Store last sensors value and timestamp at close/get all changed sensors since this timestamp,"[Label(name=""enhancement"")]","Related to https://github.com/domogik/domogik/issues/370
+
+It will allow fast start and less request to domogik at start.
+Need:
+
+- [x] ON close store all sensors value and timestamp
+
+- [ ] ON start get all changed sensors after saved timestamp
+
+- [ ] when load compare to saved value and removed the saved one's if new"
+domogik/domodroid,closed,value0 for boolean N/A,[],"The image is set to N/A ok, but the text remain to off/down/close in fact it is value0"
+domogik/domodroid,open,Metrics,[],"Add metrics in domodroid too
+- [x] Add an option to disable this if user is against sending annonymous data.
+- [ ] Add an icon to this option.
+- To send measure:
+- [x] Unit (always 1)
+- [ ] Get cpu usage by domodroid
+- [x] Get mem usage by domodroid
+- [x] Get total device mem
+- To send tags:
+- [x] Unique device id (_Settings.Secure.ANDROID_ID_)
+- [x] domodroid VersionName (_BuildConfig.VERSION_NAME_) (_could be different depending on source and Branch_)
+- [x] domodroid VersionCode (_BuildConfig.VERSION_CODE_)
+- [x] android version (_Build.VERSION.SDK_INT_)
+- [x] domogik version (_api_version = sharedparams.getFloat(""API_VERSION"", 0)_)
+- [x] domogik version (_domogik_version = sharedparams.getString(""DOMOGIK-VERSION"", """")_)
+- [ ] Push them to metrics.domogik.org
+"
+domogik/domodroid,closed,Device rename encoding,"[Label(name=""bug"")]","When renaming a device description with accent from domodroid it replace accent by ASCII characters.
+"
+domogik/domodroid,closed,Catch ANR to be report by acra,[],"https://github.com/SalomonBrys/ANR-WatchDog/blob/master/README.md
+"
+domogik/domodroid,open,start domodroid using MQ get.device instead of /rest/sensor,"[Label(name=""Todo"")]","> tikismoke> cereal_, if i remember for the moment i still using /rest/sensor(s) about #296
+> cereal_> /rest/sensors?
+> cereal_> i think it should be some mq message
+> cereal_> like device.get
+> cereal_> it is currently implemented only for mq
+> tikismoke> looking for this part of code to confirm (maybe /rest/devices do not remmeber) but i'm tryng to use more MQ in domodroid
+> cereal_> for now it only works in device.get
+> cereal_> device.get qwithout params = all device
+> cereal_> device.get with timestamp as parm = return all devices changed after tthat timestamp
+> tikismoke> Confirm when domogik API version >0.8 the url to get all at start is currently /rest/sensor
+> cereal_> hmm
+> cereal_> let me check what i can do in rest
+> tikismoke> Not to sync?
+> cereal_> but not sure it will be easy
+> tikismoke> No problem a mq to advise user he need to sync is fine for me too ;)
+> cereal_> hmm, ok, but the mq message will also return you the updated devices
+> tikismoke> to sync i use /rest/device
+> cereal_> ok you should be able to convert this to device.get
+> tikismoke> INteresting to auto update the domodroid db. need to add this in the todo
+> cereal_> and if you then always do device.get timestamp=12345
+> cereal_> then you get only the updates from domogik
+> tikismoke> includeng delted one or not?
+> tikismoke> crapy keyboard....
+> cereal_> in case you do device.get timestamp=0000 will return all data
+> cereal_> or device.get without params also returns all data
+"
+domogik/domodroid,closed,Add a way to send crash reports,"[Label(name=""enhancement"")]","Basicelly implement ACRA libs to send crash reports by mail.
+"
+domogik/domodroid,open,command for datatype DT_DateTime,"[Label(name=""bug"")]","handle Dt_DateTime and is children in sensors but also in command to avoid sending inappropriate value.
+"
+domogik/domodroid,closed,"From datatype save ""values""",[],"Used to display and send right commands for dt_type using values.
+"
+domogik/domodroid,closed,History for Boolean sensors,"[Label(name=""enhancement"")]","Add the same history mechanism as string for Boolean widget when it's a sensor for domogik >0.4
+"
+domogik/domodroid,closed,Range widget command in 0.4+,"[Label(name=""bug"")]","This widget do not display command description.
+"
+domogik/domodroid,closed,Wheather plugin crash,"[Label(name=""bug"")]","See on too differents users and devices, the weather plugin just crash on dmd
+with sunset and sunrise only.
+"
+domogik/domodroid,closed,Menu button ,"[Label(name=""bug"")]","Menu physical button do no more open it.
+It close menu or navigation drawer but not opening menu.
+"
+domogik/domodroid,open,Export params and db,"[Label(name=""enhancement"")]","Allow user to save dB/params to restore them on other device.
+
+I found an arnova (API 15) that doesn't allow me to copy paste my dB in domodroid dir and restore the house directly from my backup.
+"
+domogik/domodroid,open,Map color text,"[Label(name=""enhancement"")]","Add an option in map to allow user change the color of text, I try with a new map white background and the text was invisible.
+"
+domogik/domodroid,open,Option graph size,"[Label(name=""enhancement"")]","Handle a slidebar that is proportional of screensize less action bar widget size and other things to allow user select from default to ~fullscreen.
+"
+domogik/domodroid,closed,Préférences order,"[Label(name=""enhancement"")]","Put debug to end.
+Reorder it by gravity emergency.
+"
+domogik/domodroid,closed,Start in map then back home bug,"[Label(name=""bug"")]","Big crash when starting from map then switch back to home view.
+"
+domogik/domodroid,closed,Start directly on map,"[Label(name=""bug"")]","It crash since appcompat and navigation drawer.
+I disable it from the store version.
+"
+domogik/domodroid,closed,Stats do no more works,[],
+domogik/domodroid,open,Map change draw to imageview,"[Label(name=""enhancement"")]","Actually mapview intercept the point click in map and search in table if something exists at this point.
+
+Should change the draw method to create imageview that will handle onclick and onlongclick method it will need to add ID of the feature in the imageview to now which feature map as been clicked.
+"
+domogik/domodroid,closed,Handle mq listen on localhost when syncing,"[Label(name=""enhancement"")]","Add test if mq is configured only for localhost.
+
+Tell user when sync that he will not receive instant update and should check his Domogik configuration.
+"
+domogik/domodroid,closed,QRcode reader for domogik options,"[Label(name=""enhancement"")]","Related to https://github.com/domogik/domogik/issues/308
+- [x] find a simple library that handle such things
+- [ ] ~~create method to test url before syncing~~
+"
+domogik/domodroid,open,Add final dt_type for icon,"[Label(name=""enhancement"")]","When syncing if dt_type of sensor/command as no childrens, add it to table_icon for this feature.
+If it as children (like dt_number) do nothing.
+It will avoid to check and maintain all sensor/command for all plugin that already have a dt_type.
+- [ ] create method to check if already as an icon in table (avoid personalisation loss)
+- [ ] List DT_type in graphicsmanager().adapt_usage()
+- [ ] Modify sync process
+"
+domogik/domodroid,closed,Add a menu button (for devices without dedicated menu button),[],"My tablet does not have a dedicated menu button (only back, home and task list), so I can't go into the configuration menu. Unfortunately, I can't use soft floating buttons to emulate a menu button (root required). This makes domodroid to be non-functional.
+"
+domogik/domodroid,closed,Listen for Mq device change & lookout at start,[],"- [x] Include the listener on MQ
+- [x] Implement a way to now if something change since last sync (when disconnect from domogik), https://github.com/domogik/domogik/issues/296
+- [x] Do the same on Map too
+"
+domogik/domodroid,closed,Camera widget from map not working,"[Label(name=""bug"")]","New 0.5 camera widget not working from map.
+Need to adapt the test case for the new datatype.
+"
+domogik/domodroid,closed,Caméra activity,"[Label(name=""enhancement"")]","When opening a camera widget it start a new activity but when going back it does not put user in the right area/room but at top house(the one 1st launch at startup).
+"
+domogik/domodroid,closed,SSL feature for domogik,"[Label(name=""enhancement"")]","- [x] Make a way to use ssl untrust cert for domogik.
+- [x] Try with basic auth too.
+- [x] Find somes users to validate on differents configurations.
+"
+domogik/domodroid,open,Widgets_manager,"[Label(name=""enhancement"")]","Find a way to simplify all case.
+Make a simple function for each widgets types.
+Separate with or without commands.
+Then define widgets easily.
+"
+domogik/domodroid,open,Fresh install display popup before option,"[Label(name=""enhancement"")]","On a fresh install domodroid show the option menu before all other popup.
+"
+domogik/domodroid,closed,Icon for state number,"[Label(name=""bug"")]","For some sensor the state is a string but in this case the value 0 should display off icon.
+In mind the  motion one with some device like zwave flood sensor or the door motion  sensor.
+Other like 0Wh should also display off.
+
+Until now if a string is present it display the on icon.
+"
+domogik/domodroid,closed,Renaming map image,"[Label(name=""bug"")]","Since #68 renaming option makes problems.
+"
+domogik/domodroid,open,Graph display scaled unit,"[Label(name=""enhancement"")]","Like display whas a problem for big value #30 .
+
+The graph sould also display scaled value like K,M,G,T to avoid big value with E7 or E12
+"
+domogik/domodroid,closed,Тranslation : AM / PM in the weather condition,[],"For example, in russian speak and write instead of ""AM/PM"" ""утром/вечером "" (morning/evening)
+"
+domogik/domodroid,open,mpandroidchart to replace achartengine,[],"Try to move graph to mpandroidchart libs.
+
+It look more beautiful and up to date than achatengine.
+"
+domogik/domodroid,closed,Multiple Id duplication in layout,[],"```
+ Explanation for issues of type ""DuplicateIds"":
+
+   Within a layout, id's should be unique since otherwise findViewById() can
+
+   return an unexpected view.
+
+16 errors, 0 warnings
+```
+"
+domogik/domodroid,closed,libpng warning when build,[],"`libpng warning: iCCP: Not recognizing known sRGB profile that has been edited`
+Need to make a pass on all png file.
+"
+domogik/domodroid,closed,Illegal input sequence at position 25147 of Domodroid/src/main/java/database/DomodroidDB.java,[],"It looks like Domodroid/src/main/java/database/DomodroidDB.java is ISO-8859 but includes illegal (utf8?) characters:
+
+```
+        // Si erreur c'est que le feature n'existe plus, on peut supprimer des tables feature_map et feature_associated liconv: illegal input sequence at position 25147
+```
+"
+domogik/domodroid,closed,room ID when sync,[],"The room ID store in table feature association is not good when syncing. It use an iteration too like in #81.
+"
+domogik/domodroid,closed,Automated build on Travis-CI,"[Label(name=""question"")]","See to add Travis-CI.
+"
+domogik/domodroid,closed,Add license information,[],"You should add a LICENSE or COPYING file or just state the license used in the readme. If you haven't thought about a license, please keep in mind that the common GPLv2 is incompatible with Android's Apache2 licensed support libraries. GPLv2 adding the ""and any later version""  fixes this.
+"
+domogik/domodroid,closed,Missing build.gradle file?,[],"It looks like `Domodroid/build.gradle` is missing?
+"
+domogik/domodroid,closed,last room id in db when syncing,[],"If a sync is done and then all house element remove.
+The last area or room ID will be 0.
+Creating a new area will be with ID 2 (A rule for default_area when syncing always be ID 1).
+Adding a new room will be with ID 1 (As it is the next id available).
+
+But when syncing room ID is an iteration from 1 to number of rooms.
+
+So all previous room will be delete :-1: 
+"
+domogik/domodroid,closed,Adding a widget from house menu,"[Label(name=""bug"")]","Seems that adding a widget make problem with move up/down function.
+
+Need to make a look to find what id is used in the db.
+"
+domogik/domodroid,closed,Move widget,"[Label(name=""enhancement"")]","In db if we remove a feature or if he no more exist on next sync it make a hole in positionid of feature_association.
+When moving up or down a widget it makes only a +1/-1 operation on position id and permut if this id already exists.
+But the next positionid could be far from +1.
+"
+domogik/domodroid,closed,Move area/room ,"[Label(name=""enhancement"")]","Find a method to move area/room up or down.
+"
+domogik/domodroid,closed,Device id,"[Label(name=""bug"")]","Device ID for debugging is no more displayed.
+"
+domogik/domodroid,closed,House organisation not saved,"[Label(name=""bug"")]","Related to #33 solved.
+When reloading house the widget disappeared.
+
+In adding area/room/widget we must saved them to json backup like when syncing.
+"
+domogik/domodroid,closed,Organize area Usage by user choice at sync ,"[Label(name=""enhancement"")]","When syncing ask user how he want the area 'Usage/Device' to be organize.
+
+This will add room by (from rest/device/ json information):
+-Device name (name) as actual;
+-Plugin (client_id);
+-Type (device_type_id);
+
+This will only be available in 0.4 and more.
+"
+domogik/domodroid,open,Offline voice,[],"Try this:
+http://forum.xda-developers.com/xposed/modules/mod-googleofflinevoice-force-offline-t2634630
+"
+domogik/domodroid,open,Domobutler,[],"Try to launch intent of domobutler. If not installed launch the incorporated one.
+"
+domogik/domodroid,open,Use awesome font instead of some animation or image.,"[Label(name=""enhancement"")]","See this simple exemple:
+
+http://stackoverflow.com/questions/15210548/how-to-use-a-icons-and-symbols-from-font-awesome-on-native-android-application
+"
+domogik/domodroid,closed,Color widget,[],"Get color name from RGB:
+https://gist.github.com/lunohodov/1995178
+"
+domogik/domodroid,closed,Remove feature_association if device id didn't exist,[],"Remove row if feature_assotiation and feature_map if feature device_id didn't exist anymore
+Could be done when trying to draw widget in house or map mode.
+"
+domogik/domodroid,closed,Handle command with multiparameters,"[Label(name=""enhancement"")]","Some commands have multiple parameters.
+Domodroid handle only one.
+Need a widget that can display multiple layout to pass all parameters in the command.
+"
+domogik/domodroid,closed,Select new image  for map with uri,"[Label(name=""enhancement"")]","Since lollypop the return value is not the path of a file but an uri.
+This is due to the gallery or photos apps.
+Because photos or image could be in the cloud....
+
+So with those problems you can't add a new map directly.
+"
+domogik/domodroid,closed,screenshot of weather forecast,"[Label(name=""bug"")]","![screenshot_2015-12-13-14-01-34](https://cloud.githubusercontent.com/assets/11463718/11766907/72f95bb6-a1a3-11e5-8042-e1ee3b36efc0.png)
+"
+domogik/domodroid,closed,Map crash if eventmanager die,"[Label(name=""bug"")]","Map are crashing when eventmanager is not running
+"
+domogik/domodroid,closed,AnR with 0.3,"[Label(name=""bug"")]","libcore.io.IoBridge.recvfrom(IoBridge.java:549)
+at java.net.PlainSocketImpl.read(PlainSocketImpl.java:481)
+at java.net.PlainSocketImpl.-wrap0(PlainSocketImpl.java:-1)
+at java.net.PlainSocketImpl$PlainSocketInputStream.read(PlainSocketImpl.java:237)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:108)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:196)
+at org.apache.http.impl.conn.DefaultResponseParser.parseHead(DefaultResponseParser.java:88)
+at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:179)
+at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:185)
+at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:240)
+at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:264)
+at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:284)
+at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:126)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:560)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:492)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:470)
+at rinor.Rest_com.connect_jsonobject(Rest_com.java:82)
+at widgets.Graphical_Binary$CommandeThread$1.run(Graphical_Binary.java:347)
+at android.os.Handler.handleCallback(Handler.java:739)
+at android.os.Handler.dispatchMessage(Handler.java:95)
+at android.os.Looper.loop(Looper.java:148)
+"
+domogik/domodroid,open,Drag in map doc/options.,"[Label(name=""bug"")]","The drag with 3 fingers is no more working since longclic menu.
+
+Remove it from doc and options.
+"
+domogik/domodroid,open,Remove drag and zoom,"[Label(name=""enhancement""), Label(name=""question"")]","As autozoom is now really good working, we can remove mechanism of zoom and drag.
+
+Drag is no more working since long touch for menu.
+"
+domogik/domodroid,closed,mapview widget touch,"[Label(name=""bug"")]","Change the method to find widget when touch as it is by pixel and with high density screen its not easy to touch them.
+"
+domogik/domodroid,closed,Device without xpl part,"[Label(name=""bug"")]","See Cereal_ device has command  (certainly sensor too) without xpl part in json description.
+
+It makes no more sync error, but the jsonexception make command not available.
+"
+domogik/domodroid,closed,Map icon and text relative position,"[Label(name=""enhancement"")]","In map mode on somes icon, the text is not far enough from the icon and is upside the icon.
+"
+domogik/domodroid,closed,sensor of type dt_trigger,[],"They don't seems to be available in domodroid....
+"
+domogik/domodroid,open,Type of Log,[],"Make a pass on missing trecerengine declaration;
+Look at level of log (e,w,i,d,v) they're not all really well atribute;
+Uncomment debug log and add more to help;
+"
+domogik/domodroid,closed,Widgets free command,"[Label(name=""bug"")]","Could not set a float value (for thermostat setpoint).
+"
+domogik/domodroid,closed,Map : widgets list 0.4,"[Label(name=""enhancement"")]","How to know which widget to choose for a switch ?
+See screenshot
+"
+domogik/domodroid,closed,Map : null displayed on temp and humidity widgets,"[Label(name=""duplicate"")]","See screenshot
+"
+domogik/domodroid,closed,Widget telephony 0.4,"[Label(name=""enhancement"")]","Put the last inbound call on top ;)
+"
+domogik/domodroid,closed,DT_OpenClose widget in 0.4,"[Label(name=""enhancement""), Label(name=""question"")]","In widget the animation representation for close say on an open off (state is correct open/close)
+But if you select the door, window or portal icon is representation will be ok.
+"
+domogik/domodroid,closed,Widget add last value date and time.,"[Label(name=""enhancement"")]","Fritz like to see time since when value is from.
+For example the door is closed since 1h32m22s.
+
+Need to add the last state date in DB. Hope it's in the Json.
+"
+domogik/domodroid,closed,dt_trigger in 0.4,"[Label(name=""bug"")]","Sensor for DT_trigger type is unavailable because this widget need a command to display something.
+Should be correct to display last value when in 0.4
+
+Also the command was not send correctly. Already corret on my computer with the same mechanism in asynctask with toast on error.
+"
+domogik/domodroid,closed,Mapview command for 0.4,"[Label(name=""bug"")]"," I'd >9999 where used to make a map switch widget.
+But now commands have I'd>50000 so command widget are interpreted as a map switch widget.
+"
+domogik/domodroid,closed,Mapview state for 0.4,"[Label(name=""bug"")]","Some widget display 0/1 instead of on/off in 0.4
+"
+domogik/domodroid,closed,Mapview widget name for 0.4,"[Label(name=""enhancement"")]","Change what is display between name address usage or description if in 0.4
+"
+domogik/domodroid,closed,Problem with value from mq or rest 0/1,"[Label(name=""bug"")]","Old domodroid was looking for a state=on/off or low/high.
+
+Now mq and rest gives only 0/1.
+So widget are not knowing the real state.
+
+Need to make a pass on each widget looking for value0/value1 or 0/1
+"
+domogik/domodroid,closed,command for 0.4,[],"Change parameters in widget url to send 0 or 1 and not the labels (on/off).
+"
+domogik/domodroid,closed,room icon change,"[Label(name=""bug"")]","In 0.4 the option to change an icon of a room in the house organisation menu did'nt work.
+In add a value in db but not not remove the previous one.
+This is due to table_icon construction when sync.
+"
+domogik/domodroid,closed,Labels from datatype,"[Label(name=""enhancement"")]","Get labels for value from datatype.
+Old use was value0 and value1.
+
+It's used in a lot of widget and map mode.
+so it should be write when sync is done.
+"
+domogik/domodroid,closed,Resync freeze,"[Label(name=""bug"")]","Every time a re-sync is done after the 1st one domodroid freeze and need a restart.
+"
+domogik/domodroid,closed,Icon choice.,"[Label(name=""enhancement"")]","If a widget have icon select in normal mode it is not change in map mode.
+
+Need to use table icon in map mode too. 
+"
+domogik/domodroid,closed,Graphical crash in 0.4,"[Label(name=""bug"")]","If a widget as graph but no value. DMD crash occasionally. Things it's a problem with empty or malformed json not catch.
+"
+domogik/domodroid,open,Update_URL update on ip change,"[Label(name=""bug"")]","If the Domogik ip or address is changed, the update URL should be update too.
+
+For example when we switch from inside or outside network.
+
+Should also be done if port changed.
+"
+domogik/domodroid,closed,Delete/rename title,"[Label(name=""enhancement"")]","Add description in title like name already done.
+"
+domogik/domodroid,open,Translate all message and option.,"[Label(name=""enhancement"")]","Make a pass on code to translate all option/toast/value/preferences.
+"
+domogik/domodroid,open,0.4 new widget,"[Label(name=""enhancement"")]","Need to create widget for basic data_type.
+
+Some are missing: like datatime
+"
+domogik/domodroid,closed,#1830  map widget not clickable,"[Label(name=""enhancement"")]","If map is resize to its origins size by the error in autozoom. the widget aren't clickable because they are not in the right place on screen (still the last one in full size).
+Historique
+1
+Mis à jour par tikismoke il y a environ un an
+Comment Edit
+
+Link to#1594
+2
+Mis à jour par tikismoke il y a environ un an
+
+```
+Assigné à mis à tikismoke
+```
+
+3
+Mis à jour par tikismoke il y a environ un an
+
+```
+Version cible changé de 2.0-Domogik 0.4 compatibility à 1.4-Bug fix and Small evolution before 0.4 compatible
+```
+
+4
+Mis à jour par tikismoke il y a environ un an
+
+```
+% réalisé changé de 0 à 10
+```
+
+Comment Edit
+
+Work in progress.
+5
+Mis à jour par tikismoke il y a 4 jours
+
+```
+% réalisé changé de 10 à 20
+```
+
+Comment Edit
+
+Works in 0.3 not sure for 0.4
+6
+Mis à jour par tikismoke il y a 3 jours
+
+```
+Statut changé de Nouveau à En cours
+% réalisé changé de 20 à 40
+```
+
+Comment Edit
+
+To be test by someone, no binary object in 0.4 for the moment.
+"
+domogik/domodroid,closed,#2030 Yahoo weather icon,"[Label(name=""enhancement"")]","See if we couls display yahoo weather icon like this set:
+http://wertstoff.deviantart.com/art/flat-weather-icons-281079512
+
+or try to adapt domoweb image as a widget background.
+"
+domogik/domodroid,open,#2035  DB sync with rest.,"[Label(name=""enhancement"")]","Make the sync process, working as a sync not overriding other data if still there. Ie: don't reset map data or house organisation if feature are still present in dB.
+"
+domogik/domodroid,closed,#2047  Widgets not refreshed on root,"[Label(name=""bug"")]","If a widget is add at the top view (house or root) it's never refreshed by events or mq.
+"
+domogik/domodroid,closed,#1667  normal menu with AppCompat,"[Label(name=""enhancement"")]","See if se should not try to make a standard menu, no more use procef spécial class.
+Historique
+1
+Mis à jour par tikismoke il y a presque 2 ans
+
+```
+Description mis à jour (diff)
+```
+
+2
+Mis à jour par tikismoke il y a environ un an
+Comment Edit
+
+5.2. L'odre des écrans dans le menu... il n'est pas bon pour moi : d'abord on doit configurer le serveur, puis faire un sync. Ici le sync est en premier (j'ai pas mis de screen ferllings là dessus, ne cherche pas)
+5.3. Je me demande si l'utilisation d'un thème ""perso"" pour la conf est vraiment intéressante.... Ca doit être plus lourd à coder non ? Utiliser les trucs par défaut android permettraient peut être aussi de mieux hiérarchiser la conf et simplifier sa compréhension
+5.4. Y a des options pas claires : widgets alternatifs en mode map : c'est quoi ?
+3
+Mis à jour par tikismoke il y a environ un an
+
+```
+% réalisé changé de 0 à 10
+```
+
+Comment Edit
+
+Re-order done.
+4
+Mis à jour par tikismoke il y a 12 mois
+Comment Edit
+
+Really need to implement AppCompat7 for the actionBar because of some new device did have no more menu button and are not using virtual button.
+"
+domogik/domodroid,open,#2008  widget Trigger,"[Label(name=""enhancement"")]","Fritz says:
+
+6.4. Le widget trigger. Depuis le début je ne le supporte pas ce gros bouton....
+
+NO Comment....
+"
+domogik/domodroid,closed,#2049  big value,"[Label(name=""enhancement"")]","set a scale for big value instead of e7.... like kilo mega giga tera.....
+"
+domogik/domodroid,open,#1797  graph view not correctly show,"[Label(name=""bug"")]","Comes when current view is full of widget. The last one can't correctly display a graph because the view is not big enough.
+
+file_23-12-2013 19_57.jpg (54,76 ko) Delete tikismoke, 23/12/2013 19:57
+Historique
+1
+Mis à jour par tikismoke il y a presque 2 ans
+Comment Edit
+
+will be close when using achartengine libs.
+2
+Mis à jour par tikismoke il y a presque 2 ans
+
+```
+Fichier file_23-12-2013 19_57.jpg ajouté
+```
+
+3
+Mis à jour par tikismoke il y a environ un an
+
+```
+Version cible changé de 1.3-(dmg 0.2/0.3) Bug fix and compatibility with domogik 0.3 à 113
+```
+
+4
+Mis à jour par tikismoke il y a environ un an
+
+```
+Assigné à mis à tikismoke
+```
+
+5
+Mis à jour par tikismoke il y a environ un an
+
+```
+Version cible changé de 113 à 2.0-Domogik 0.4 compatibility
+```
+
+6
+Mis à jour par tikismoke il y a environ un an
+Comment Edit
+
+Also a problem with other screen resolution:
+
+petit bug d'affichage des valeurs min/max/medianes : ça sort de l'écran. Le champ de choix de la date est indispo en portrait (en haut à droite). Sinon rien à dire.
+7
+Mis à jour par tikismoke il y a environ un an
+
+```
+Version cible changé de 2.0-Domogik 0.4 compatibility à 1.4-Bug fix and Small evolution before 0.4 compatible
+```
+
+8
+Mis à jour par tikismoke il y a environ un an
+Comment Edit
+
+really a problem with using pixel size instead of dp or sp for text witch are screen independent.
+9
+Mis à jour par tikismoke il y a 12 mois
+Comment Edit
+
+also see axis value out of screen
+"
+domogik/domodroid,closed,#2044  sensor name,"[Label(name=""bug"")]","Get device name to sensor if it as no name instead of null.
+"
+domogik/domodroid,closed,#2007  Move stats info elsewhere,"[Label(name=""enhancement"")]","1. le menu des stats... est-il vraiment nécessaire d'être directement sur la home ? Je pense que Mme Michu s'en cogne un peu. A garder quand même AMHA et à enrichir, mais ailleurs.
+   Historique
+   1
+   Mis à jour par tikismoke il y a 12 mois
+   
+   Version cible changé de 2.0-Domogik 0.4 compatibility à 1.3-(dmg 0.2/0.3) Bug fix and compatibility with domogik 0.3
+   % réalisé changé de 0 à 50
+
+Comment Edit
+
+Mis dans le menu avec son propre bouton.
+
+A enrichir, y compris y intégrer les stats de la MQ.
+"
+domogik/domodroid,open,#2032  Http error code,"[Label(name=""enhancement"")]","Should intercept http error code and display them instead of just *connection error""
+"
+domogik/domodroid,open,#1590  add missing icon,"[Label(name=""enhancement"")]","Lots of usage icon are missing for map mode.
+Historique
+1
+Mis à jour par tikismoke il y a presque 3 ans
+Comment Edit
+
+Added door and window from domoweb for normal usage (thank's nico).
+
+Need to find a designer.
+2
+Mis à jour par tikismoke il y a plus de 2 ans
+
+```
+% réalisé changé de 0 à 10
+```
+
+Comment Edit
+
+Add somes new ones for map mode.
+3
+Mis à jour par tikismoke il y a presque 2 ans
+
+```
+% réalisé changé de 10 à 20
+```
+
+4
+Mis à jour par tikismoke il y a environ un an
+Comment Edit
+
+Change area/room icon display by the usage icon (the green one awry) like this one: https://github.com/domogik/domodroid/blob/master/res/drawable/usage_air.png
+
+WAF request because grey one make her think's it is not selectable or empty.
+"
+domogik/domodroid,closed,#2028  Navigation Drawer,"[Label(name=""enhancement"")]","Should use the android navigation bar to navigate in house. It will looks like https://developer.android.com/design/patterns/navigation-drawer.html
+and act like the small bottom left icon in domoweb 0.3.
+
+Open the navigation bar on left like lot of android app. Display all the house, area containing room. And navigate to it directly.
+
+Will really extend user experience.
+"
+domogik/domodroid,closed,#1594  zoom auto,"[Label(name=""bug""), Label(name=""enhancement"")]","Add an option to adjust map to screen size
+Historique
+1
+Mis à jour par tikismoke il y a presque 3 ans
+Comment Edit
+
+adjust the map image to screen size
+2
+Mis à jour par tikismoke il y a presque 2 ans
+
+```
+Description mis à jour (diff)
+```
+
+3
+Mis à jour par tikismoke il y a presque 2 ans
+
+```
+Assigné à mis à tikismoke
+```
+
+Comment Edit
+
+Think we must adjust with only one direction, to keep proportion.
+4
+Mis à jour par tikismoke il y a presque 2 ans
+
+```
+% réalisé changé de 0 à 50
+```
+
+Comment Edit
+
+Done for png need test for svg.
+
+Need to add an option to use it or not.
+5
+Mis à jour par tikismoke il y a presque 2 ans
+
+```
+Statut changé de Nouveau à En cours
+Priorité changé de Normal à Bas
+% réalisé changé de 50 à 80
+```
+
+Comment Edit
+
+need to understand why the image sometimes goes under the menu :(
+6
+Mis à jour par tikismoke il y a presque 2 ans
+Comment Edit
+
+when moving map it comes back to its real size not the scaled one
+7
+Mis à jour par tikismoke il y a environ un an
+Comment Edit
+
+never seen on a small device. only on the nexus. maybe a problem with screen density?
+"
+domogik/domodroid,closed,#2022  Widget List & History,"[Label(name=""bug"")]","Both widget use a list view witch by default is scrollable. The main view is also scrollable. To avoid black screen bug with the interaction of two scrollable information i deactivate the scroll option but if the list view is too big or screen too small user can't scroll in it.
+"
+domogik/domodroid,open,#1658  DOMODROID full screen mode for smartphone,"[Label(name=""enhancement"")]","Hello,
+
+Graphs are cool and with a good sizing on tablet, but on smartphone like my Nexus 4 (4.7"") graphs are too small.
+
+Could you develop an option to get full screen graph on demand ?
+
+It could be set up like an option in configuration page, a checkbox ""Smartphone or Tablet"" in order to show graphs like today under widgets if tablet is checked, or fullscreen if smartphone is checked.
+
+Thanks to your work !
+Historique
+1
+Mis à jour par tikismoke il y a plus de 2 ans
+Comment Edit
+
+Need to be set to domodroid.
+2
+Mis à jour par fritz_smh il y a plus de 2 ans
+
+```
+Projet changé de Project administration à Domodroid
+```
+
+3
+Mis à jour par tikismoke il y a presque 2 ans
+Comment Edit
+
+will be done when a chart engine lib fully implement.
+4
+Mis à jour par tikismoke il y a environ un an
+
+```
+Assigné à mis à tikismoke
+```
+
+Comment Edit
+
+Ah si.... est-ce que inclure le graph dans le widget est vraiment une bonne idée ? C'était le principe initial dans domodroid à l'époque de Pierre mais je me demande si une sorte de pop up plein écran ne serait pas plus lisible d'un côté et plus simple à gérer d'un point de vue graphique de l'autre ?
+"
+domogik/domodroid,closed,#1729  svg not accepted,"[Label(name=""wontfix"")]","When I use the attached svg documents as map, domodroid stops
+
+jardin.svg (12,67 ko) Delete piratebab, 04/08/2013 20:44
+
+cour.svg (23,734 ko) Delete piratebab, 04/08/2013 20:44
+Historique
+1
+Mis à jour par tikismoke il y a environ 2 ans
+Comment Edit
+
+Comme je l'ai mentionné sur irc ce bug est connu:
+http://code.google.com/p/svg-android/issues/detail?id=30
+
+En fait il faudrait faire les svg en pixels et non pas en millimètre ou pouces.
+
+Maintenant il faut que l'on trouve une parade pour que ça ne fasse pas planter domodroid.
+2
+Mis à jour par tikismoke il y a environ 2 ans
+
+```
+% réalisé changé de 0 à 10
+```
+
+Comment Edit
+
+Déjà ca ne plante plus, par contre ça n'affichera rien.
+"
+domogik/domodroid,open,#2021  Start in a specific area,"[Label(name=""enhancement"")]","Allow user to start in an area (like in usage mode) but any one.
+"
+domogik/domodroid,open,#2019  House organisation,"[Label(name=""enhancement"")]","The house organisation is working but it could be simpler or more intuitive.
+
+8.1. On sent qu'il y a une mécanique de mise en place, qu'une fois configuré ça marche très bien (cf mes derniers screens) et ça apporte vachement de confort. Mais... c'est pas super intuitif et le nombre d'usages qui utilise (cause de 0.3) ce mécanisme le rend lourd...
+Je pense qu'ici il y aura un travail à faire pour la 0.4. On en reparle
+"
+domogik/domodroid,open,#1795  Launch a sync if server conf changed,"[Label(name=""enhancement"")]","Ask user to re-sync if server parameters change.
+
+Don't do it automatically if user make a mistake.
+
+Listener to know if a avalue change:
+
+http://www.vogella.com/tutorials/AndroidFileBasedPersistence/article.html#preferences_listener
+"
+domogik/domodroid,closed,#1649  Widget Range,[],"The widget Range don't work correctly.
+
+All are convert in percent, it's not the correct usage, If you use a range feature for a thermostat for exemple.
+
+Need to modify display value and check the command send (for exemple don't send 0 value if min is 7)
+Historique
+1
+Mis à jour par tikismoke il y a presque 2 ans
+Comment Edit
+
+Tu peu confirmer que le souci existe toujours, car d'après le code il y a une conversion en % en fonction des valeurs mini et maxi à la lecture et aussi à l'envoi d'ordre.
+Tout est dans le Graphical_Range.java:
+https://github.com/domogik/domodroid/blob/master/src/widgets/Graphical_Range.java
+2
+Mis à jour par tikismoke il y a environ un an
+Comment Edit
+
+Pour tester, créer un widget thermostat du knx il va de 7 à 30 ou 40°C et pas de 0 à 100
+3
+Mis à jour par tikismoke il y a environ un an
+Comment Edit
+
+Works from 26% to 76% while using knx.thermostat
+Don't sure it's good value.
+4
+Mis à jour par tikismoke il y a environ un an
+Comment Edit
+
+Min value is 7 and max are 30 in the json information.
+So it's not correctly draw and not the good Unit.
+
+But unit is not in the Json so domodroid can't know it.
+5
+Mis à jour par tikismoke il y a environ un an
+
+```
+Assigné à mis à tikismoke
+Version cible mis à 2.0-Domogik 0.4 compatibility
+% réalisé changé de 0 à 30
+```
+
+Comment Edit
+
+Unit sould be ok if in the json provide by rest
+6
+Mis à jour par tikismoke il y a environ un an
+
+```
+% réalisé changé de 30 à 80
+```
+
+Comment Edit
+
+To be test.
+"
+domogik/domodroid,open,#1596  graph zoom improvement,"[Label(name=""enhancement"")]","Could it be nice to have zoom with 2 fingers in graph, like on other apps.
+
+It will change the period dynamivally with zoom and move.
+Historique
+1
+Mis à jour par fritz_smh il y a presque 3 ans
+Comment
+
+I think you mean something like in this video : http://www.youtube.com/watch?v=j8FKXoY3pms&feature=youtu.be
+
+Notice that this zoom feature can only be done to zoom in and not zoom out (I mean, you can't zoom outside the original display zone).
+
+But yes, I agree, this may be cool!
+
+Maybe to do this we need to display the charts in another way ? Actually, the widget is expended to include the chart. I think this is too small to really use 2 fingers to zoom. We should display the graph in fullscreen for this no ?
+By the way, we could have the both : we keep the actual chart view and if we click on the graph, we get the fullscreen view with zoom feature ?
+2
+Mis à jour par tikismoke il y a presque 3 ans
+Comment Edit
+
+Exact ;)
+3
+Mis à jour par tikismoke il y a presque 2 ans
+Comment Edit
+
+need to try implementing this free lib:
+http://android-graphview.org/
+or
+http://www.achartengine.org/
+4
+Mis à jour par tikismoke il y a presque 2 ans
+Comment Edit
+
+started on my machine with this help:
+http://android.codeandmagic.org/2012/10/achartengine-live-scrolling-graph/
+very nice result
+5
+Mis à jour par tikismoke il y a environ un an
+
+```
+Assigné à mis à tikismoke
+% réalisé changé de 0 à 30
+```
+
+Comment Edit
+
+Last commit introduce this function.
+6
+Mis à jour par tikismoke il y a environ un an
+Comment Edit
+
+RedLine add if no value.
+7
+Mis à jour par tikismoke il y a environ un an
+
+```
+% réalisé changé de 30 à 40
+```
+
+Comment Edit
+
+moving graph to left or right to change day. need to implement a zoom to see week month or year
+"
+domogik/domodroid,open,#1835  crypt http password,"[Label(name=""enhancement""), Label(name=""wontfix"")]","need to crypt the password saved for httpauth in conf
+"
+domogik/domodroid,open,Futur widget type,"[Label(name=""enhancement"")]","1. Area/room et widgets. Cf point 3, y a un peu de taf ici.
+   5.1. Graphiquement tu peux garder les widgets tels qu'ils sont pour la plupart
+   5.2. Je verrais bien le truc suivant. Tu vas dans une area/room , tu fais ""menu>ajouter un widget"". Tu as une liste de widgets correspondant soit aux datatypes (si tu fais des widgets simples : switch, température, ...), soit à des trucs plus chiadés (genre le widget piscine). Tu valides, ton widget est ajouté en bas de l'écran.
+   5.3. Un widget placé non configuré devrait être grisé/dasactivé/noirci/ce que tu veux.
+   5.4. Un appui long (ou autre méthode) sur un widget afficherait le menu de configuration du widget : nommage libre, choix des fonctionnalités des devices
+   Historique
+   1
+   Mis à jour par tikismoke il y a environ un an
+   Comment Edit
+2. Mode map
+   6.1. Pourquoi ne pas proposer uniquement dans la liste des widgets ceux qui ont été déjà configurés pour les area/rooms ? Ca aurait plusieurs avantages : tu n'as pas à gérer en mode map la config des widgets ; tu peux classer les widgets dans la liste de choix par area/room ce qui simplifiera vachement la sélection
+"
+domogik/domodroid,closed,#2006  test app,"[Label(name=""question"")]","https://www.cloudmonkeymobile.com/download/monkeytalk-community
+
+seems there is a free tool to automate test and allow dev find bug with gesture detector (need for autozoom map bug). To be tested...
+"
+domogik/domodroid,open,Android default AppWidgets old 2004,"[Label(name=""enhancement"")]","Create widget from screen in android launcher, like other aps.
+Let user choice the device he want to see.
+"
+domogik/domodroid,open,#1793  Improve convention code,"[Label(name=""question"")]","Improve the source code by using correct name for object.
+Exemple
+For linearlayout add LL:
+LLfeaturePan=new LinearLayout(context); instead of featurePan=new LinearLayout(context)
+For seekbar add SB:
+SBseekBarOnOff=new SeekBar(context); instead of seekBarOnOff=new SeekBar(context)
+TVstate_key_view = new TextView(context); instead of state_key_view = new TextView(context)
+IVimg = new ImageView(context); instead of img = new ImageView(context);
+FLimgPan = new FrameLayout(context); instead of imgPan = new FrameLayout(context);
+etc etc etc
+
+Need a hard job but will be more readable after.
+Historique
+1
+Mis à jour par tikismoke il y a environ un an
+Comment Edit
+
+Maybe with an underscore _ beetween type and name:
+TV_frameRate
+"
+domogik/domodroid,closed,#1969  translation yahoo wheater,[],"light train with thunder.
+this text is not translate in french
+Historique
+1
+Mis à jour par tikismoke il y a environ un an
+Comment Edit
+
+Seems ""light rain with thunder"" is not in the yahoo weather api doc.
+"
+domogik/domodroid,open,"#1703  MAP : menu entry ""Afficher écran principal (views)""","[Label(name=""enhancement"")]","This entry in displayed only when the map mode is activated on domodroid startup. I think it would be better to have it in all cases.
+
+fritz_smh wrote:
+
+```
+This entry in displayed only when the map mode is activated on domodroid startup. I think it would be better to have it in all cases.
+```
+"
+domogik/domodroid,open,#1706  Add a way to manage more that one widget per type,"[Label(name=""enhancement"")]","I have a problem with the actual widget display. I have some groups actuator without state for my shutter. (like close all shutter)
+
+For domoweb I can use the widget without stat (2 buttons only) to choise If I when open or close, but in domodroid we can't, if the last command as close, the widget display close and I can't close again wihout open if all shutter are open it's not a problem, but if one or more are close i must be wait that all are open to close all.
+"
+domogik/domodroid,open,#1834 mainactivity,"[Label(name=""enhancement"")]","Decompose the main activity using android activity life cycle oncreate onstart onpause onresume on stop
+Use the existing saveinstance.
+"
+domogik/domodroid,closed,#1798 no external mem crash,"[Label(name=""bug"")]","See in android emulator. a VM without external storage. domodroid can't open the db and crash.
+Historique
+1
+Mis à jour par tikismoke il y a presque 2 ans
+
+```
+Sujet changé de no external card make crash à no external mems make crash
+Priorité changé de Urgent à Bas
+Version cible mis à 2.0-Domogik 0.4 compatibility
+```
+
+Comment Edit
+
+To avoid problem their is really not much device without external storage.
+
+It's not an external SD card the problem, but the internal partition only on android emulator vm.
+"
+domogik/domodroid,open,#1791 crash if domogik status changed or network status change,"[Label(name=""bug"")]","Domodroid crash if network status changed.
+Historique
+1
+Mis à jour par tikismoke il y a presque 2 ans
+
+```
+Sujet changé de crash if network status changed à crash if domogik status changed
+```
+
+Comment Edit
+
+When domogik became unreachable (ie restaring) domodroid crash, with this sor of log:
+
+11-27 23:30:09.826: E/AndroidRuntime(19336): FATAL EXCEPTION: AsyncTask #4
+11-27 23:30:09.826: E/AndroidRuntime(19336): java.lang.RuntimeException: An error occured while executing doInBackground()
+11-27 23:30:09.826: E/AndroidRuntime(19336): at android.os.AsyncTask$3.done(AsyncTask.java:299)
+11-27 23:30:09.826: E/AndroidRuntime(19336): at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:352)
+11-27 23:30:09.826: E/AndroidRuntime(19336): at java.util.concurrent.FutureTask.setException(FutureTask.java:219)
+11-27 23:30:09.826: E/AndroidRuntime(19336): at java.util.concurrent.FutureTask.run(FutureTask.java:239)
+11-27 23:30:09.826: E/AndroidRuntime(19336): at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1080)
+11-27 23:30:09.826: E/AndroidRuntime(19336): at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:573)
+11-27 23:30:09.826: E/AndroidRuntime(19336): at java.lang.Thread.run(Thread.java:856)
+11-27 23:30:09.826: E/AndroidRuntime(19336): Caused by: java.lang.NullPointerException
+11-27 23:30:09.826: E/AndroidRuntime(19336): at rinor.Events_manager$ListenerThread.doInBackground(Events_manager.java:256)
+11-27 23:30:09.826: E/AndroidRuntime(19336): at rinor.Events_manager$ListenerThread.doInBackground(Events_manager.java:1)
+11-27 23:30:09.826: E/AndroidRuntime(19336): at android.os.AsyncTask$2.call(AsyncTask.java:287)
+11-27 23:30:09.826: E/AndroidRuntime(19336): at java.util.concurrent.FutureTask.run(FutureTask.java:234)
+11-27 23:30:09.826: E/AndroidRuntime(19336): ... 3 more
+"
+domogik/domodroid,closed,#1637  domogik ui separation,"[Label(name=""enhancement"")]","Make new table to allow custom name, custom description, widget selector, visibility, and more if needed
+Historique
+1
+Mis à jour par tikismoke il y a plus de 2 ans
+Comment Edit
+
+custom usage to change displayed icon.
+2
+Mis à jour par tikismoke il y a plus de 2 ans
+Comment Edit
+
+custom room, if we re-implement the room usage.
+"
+domogik/domodroid,closed,#1650 multi host,"[Label(name=""enhancement""), Label(name=""wontfix"")]","Add the possibility to get a list of host, not only with one IP but with multi.
+
+This will need to add a new table to save the serveur list and adapt the other table to avoid data error.
+Mis à jour par fritz_smh il y a plus de 2 ans
+Comment
+
+You mean multi ""domogik"" ?
+2
+Mis à jour par tikismoke il y a plus de 2 ans
+Comment Edit
+
+Yes of course, multi domogik.
+
+For exemple it could help developer to test widgets on others users installations.
+3
+Mis à jour par Doume il y a plus de 2 ans
+Comment
+
+It's a good request, but that needs a lot of modifications in database structure
+"
+domogik/domodroid,closed,Allow user to choose if 'View' screen must display 1 or 2 columns of widgets,[],"On small screens (like smartphones) , the main view generates too small widgets to be usable : 
+Let the user to configure how many columns will be created on main View
+"

@@ -1,0 +1,396 @@
+repository,state,title,label,body
+domoritz/open-mensa-android,closed,Update README.md,[],"Hi,
+
+This small and useless PR adds a button to get your app on F-Droid, and also one for Google Play."
+domoritz/open-mensa-android,open,App crashes on screen orientation change while fetching canteens,[],
+domoritz/open-mensa-android,closed,RetrieveFeedTask: UI access on UI thread,[],"UI access in AsyncTask is only allowed inside onPreExecute(), onPostExecute(), onProgressUpdate(), constructor or using Activity.runOnUiThread()."
+domoritz/open-mensa-android,open,Encourage new devs,[],"Hi, as you point out at #33 , you lack of time to develop the app and maintain tickets etc. This isn't something bad, but the usual progress in RL and FLOSS projects as well ;)
+
+I suggest to ask for a fellow maintainer at the readme.md and open data mailinglists as well. Just write a few lines of what skills are requreed and if you would prefer an fork, or if you could give the accounts (playstore, fdroid, ...) away. A new dev might spend more time and new ideas, while you will get more time beside this nice project :)"
+domoritz/open-mensa-android,closed,Fixes UI thread exception on updating mensa data,[],"RetrieveFeedTask: run dialog.setIndeterminate(true) on UI thread, fixes #33
+
+I'm not sure, if i really understood the problem and probably this is more a bad hack than a good solution, but it seems to work and makes the app usable on Android 7.1.1...
+
+Please consider, if you want to merge this into your master or wait, until someone provides a better solution for this problem. Unfortunately I don't think i will find time to dig deeper into the problem in the next weeks. "
+domoritz/open-mensa-android,closed,Exception at startup,[],"Hi, this app worked great on my device while I have been on Marshmallow but with my new ROM (Nougat 7.1.1), it does not work. Once I start the app and tries downloading data, I get this error: 
+""Exception: Only the original thread that created a view hierarchy can touch its views.""
+
+Please have a look at my logcat:
+```
+03-09 22:43:37.244 I/ActivityManager(1103): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 pkg=de.uni_potsdam.hpi.openmensa cmp=de.uni_potsdam.hpi.openmensa/.MainActivity} from uid 10075 on display 0
+03-09 22:43:37.250 D/audio_hw_primary(700): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+03-09 22:43:37.253 D/audio_hw_primary(700): select_devices for use case (low-latency-playback)
+03-09 22:43:37.253 D/audio_hw_extn(700): audio_extn_set_anc_parameters: anc_enabled:0
+03-09 22:43:37.261 I/ActivityManager(1103): Start proc 27698:de.uni_potsdam.hpi.openmensa/u0a137 for activity de.uni_potsdam.hpi.openmensa/.MainActivity
+03-09 22:43:37.312 W/System  (27698): ClassLoader referenced unknown path: /data/app/de.uni_potsdam.hpi.openmensa-1/lib/arm64
+03-09 22:43:37.320 D/OpenGLRenderer(20456): endAllActiveAnimators on 0x7f8b9de400 (RippleDrawable) with handle 0x7f8b8c4040
+03-09 22:43:37.383 D/Canteendroid(27698): Got favourites []
+03-09 22:43:37.383 D/Canteendroid(27698): Update favourites: []
+03-09 22:43:37.386 D/Canteendroid(27698): Out of date because no last fetch date is set.
+03-09 22:43:37.386 D/Canteendroid(27698): Fetch canteens because storage is out of date or empty
+03-09 22:43:37.418 D/Canteendroid(27698): Refreshing favourite canteen list
+03-09 22:43:37.419 D/Canteendroid(27698): Got favourites []
+03-09 22:43:37.419 D/Canteendroid(27698): Fetching from http://openmensa.org/api/v2/canteens?limit=50
+03-09 22:43:37.419 D/Canteendroid(27698): Update favourites: []
+03-09 22:43:37.420 D/Canteendroid(27698): Got favourites []
+03-09 22:43:37.420 I/DpmTcmClient(27698): RegisterTcmMonitor from: com.android.okhttp.TcmIdleTimerMonitor
+03-09 22:43:37.420 D/Canteendroid(27698): Update favourites: []
+03-09 22:43:37.421 D/Canteendroid(27698): Spinner items: []
+03-09 22:43:37.425 D/NetworkSecurityConfig(27698): No Network Security Config specified, using platform default
+03-09 22:43:37.427 D/Canteendroid(27698): Got favourites []
+03-09 22:43:37.427 D/Canteendroid(27698): Update favourites: []
+03-09 22:43:37.459 I/Adreno  (27698): QUALCOMM build                   : 49a2ab3, Ifedc5bd8d0
+03-09 22:43:37.459 I/Adreno  (27698): Build Date                       : 12/15/16
+03-09 22:43:37.459 I/Adreno  (27698): OpenGL ES Shader Compiler Version: XE031.09.00.04
+03-09 22:43:37.459 I/Adreno  (27698): Local Branch                     : 
+03-09 22:43:37.459 I/Adreno  (27698): Remote Branch                    : 
+03-09 22:43:37.459 I/Adreno  (27698): Remote Branch                    : 
+03-09 22:43:37.459 I/Adreno  (27698): Reconstruct Branch               : 
+03-09 22:43:37.463 I/OpenGLRenderer(27698): Initialized EGL, version 1.4
+03-09 22:43:37.463 D/Canteendroid(27698): New Fragment requested 2
+03-09 22:43:37.463 D/OpenGLRenderer(27698): Swap behavior 1
+03-09 22:43:37.465 D/Canteendroid(27698): New Fragment requested 1
+03-09 22:43:37.465 D/Canteendroid(27698): New Fragment requested 3
+03-09 22:43:37.507 I/ActivityManager(1103): Displayed de.uni_potsdam.hpi.openmensa/.MainActivity: +258ms
+03-09 22:43:37.535 W/afwallstart(456): type=1400 audit(0.0:21291): avc: denied { getattr } for path=""/data/data/com.android.providers.downloads"" dev=""dm-0"" ino=2179129 scontext=u:r:sysinit:s0 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=dir permissive=0
+03-09 22:43:37.604 W/Canteendroid(27698): Exception: Only the original thread that created a view hierarchy can touch its views.
+03-09 22:43:37.605 D/Canteendroid(27698): android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.view.ViewRootImpl.checkThread(ViewRootImpl.java:6897)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.view.ViewRootImpl.invalidateChildInParent(ViewRootImpl.java:1083)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.view.ViewGroup.invalidateChild(ViewGroup.java:5205)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.view.View.invalidateInternal(View.java:13660)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.view.View.invalidate(View.java:13596)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.widget.ProgressBar.invalidateDrawable(ProgressBar.java:1689)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.graphics.drawable.Drawable.invalidateSelf(Drawable.java:435)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.graphics.drawable.Drawable.setVisible(Drawable.java:819)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.graphics.drawable.LayerDrawable.setVisible(LayerDrawable.java:1326)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.widget.ProgressBar.swapCurrentDrawable(ProgressBar.java:623)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.widget.ProgressBar.setIndeterminate(ProgressBar.java:608)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.app.ProgressDialog.setIndeterminate(ProgressDialog.java:297)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at de.uni_potsdam.hpi.openmensa.helpers.RetrieveFeedTask.doInBackground(RetrieveFeedTask.java:110)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at de.uni_potsdam.hpi.openmensa.helpers.RetrieveFeedTask.doInBackground(RetrieveFeedTask.java:29)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.os.AsyncTask$2.call(AsyncTask.java:305)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:243)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1133)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:607)
+03-09 22:43:37.605 D/Canteendroid(27698): 	at java.lang.Thread.run(Thread.java:761)
+03-09 22:43:38.535 W/afwallstart(456): type=1400 audit(0.0:21292): avc: denied { getattr } for path=""/data/data/com.android.providers.downloads"" dev=""dm-0"" ino=2179129 scontext=u:r:sysinit:s0 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=dir permissive=0
+03-09 22:43:39.224 I/AudioPolicyManagerCustom(700): FLAG None hence request for a primary output
+03-09 22:43:39.224 I/AudioPolicyManagerCustom(700): FLAG None hence request for a primary output
+03-09 22:43:39.224 D/audio_hw_primary(700): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+03-09 22:43:39.226 D/audio_hw_primary(700): select_devices for use case (low-latency-playback)
+03-09 22:43:39.226 D/audio_hw_extn(700): audio_extn_set_anc_parameters: anc_enabled:0
+03-09 22:43:39.535 W/afwallstart(456): type=1400 audit(0.0:21293): avc: denied { getattr } for path=""/data/data/com.android.providers.downloads"" dev=""dm-0"" ino=2179129 scontext=u:r:sysinit:s0 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=dir permissive=0
+03-09 22:43:39.784 I/ActivityManager(1103): START u0 {flg=0x10804000 cmp=com.android.systemui/.recents.RecentsActivity} from uid 10033 on display 0
+03-09 22:43:39.808 D/Canteendroid(27698): Save state, flushed cache storage
+
+```"
+domoritz/open-mensa-android,closed,"add suffix "".debug"" to application id when debugging",[],"With a different suffix for the application id, the application
+installed from Play Store will not be overwritten by the debug
+version.
+"
+domoritz/open-mensa-android,open,Use a more modern design,[],"OpenMensa uses a really old design. What about using material design (like it's recommended since android 5)?
+"
+domoritz/open-mensa-android,closed,Tag new version.,[],"Can you please add a new tag which includes 3f66198?
+
+Otherwise the app will not show up on FDroid for devices  with Android >= 5.1 (which should be quite a few now).
+"
+domoritz/open-mensa-android,open,add quick search filter to mensa multiselect dialog,[],"in order to be able to deal with different naming styles (start with city, ""Mensa"", or university name)
+"
+domoritz/open-mensa-android,closed,By some reason app is not available in playstore for LG Nexus 5 device,[],"By some reason app is not available in playstore for LG Nexus 5 device. 
+
+http://i.gyazo.com/e5990d0eae5c4c77b5129481d8dd312d.png
+
+I had a quick look into manifest, but haven't found any reason for this.
+"
+domoritz/open-mensa-android,open,"Crash when turning device in ""Favourite canteens"" dialogue","[Label(name=""bug"")]","The app crashes when you try to edit your favourite canteens and turn your device.
+
+Steps to reproduce:
+1. Open APP
+2. Open preferences dialogue
+3. tap on 'Favourite Canteens'
+4. Change the orientation of your device -> 'Unfortunately, OpenMensa has stopped'
+
+```
+01-30 01:38:43.638  24162-24162/de.uni_potsdam.hpi.openmensa D/AndroidRuntime﹕ Shutting down VM
+01-30 01:38:43.638  24162-24162/de.uni_potsdam.hpi.openmensa W/dalvikvm﹕ threadid=1: thread exiting with uncaught exception (group=0x41730d40)
+01-30 01:38:43.679  24162-24162/de.uni_potsdam.hpi.openmensa E/AndroidRuntime﹕ FATAL EXCEPTION: main
+    Process: de.uni_potsdam.hpi.openmensa, PID: 24162
+    java.lang.RuntimeException: Unable to start activity ComponentInfo{de.uni_potsdam.hpi.openmensa/de.uni_potsdam.hpi.openmensa.api.preferences.SettingsActivity}: android.view.InflateException: Binary XML file line #6: Error inflating class java.lang.reflect.Constructor
+            at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2198)
+            at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2257)
+            at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3805)
+            at android.app.ActivityThread.access$900(ActivityThread.java:139)
+            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1216)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:136)
+            at android.app.ActivityThread.main(ActivityThread.java:5097)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:515)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:785)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:601)
+            at dalvik.system.NativeStart.main(Native Method)
+     Caused by: android.view.InflateException: Binary XML file line #6: Error inflating class java.lang.reflect.Constructor
+            at android.preference.GenericInflater.createItem(GenericInflater.java:397)
+            at android.preference.GenericInflater.createItemFromTag(GenericInflater.java:430)
+            at android.preference.GenericInflater.rInflate(GenericInflater.java:481)
+            at android.preference.GenericInflater.rInflate(GenericInflater.java:493)
+            at android.preference.GenericInflater.inflate(GenericInflater.java:326)
+            at android.preference.GenericInflater.inflate(GenericInflater.java:263)
+            at android.preference.PreferenceManager.inflateFromResource(PreferenceManager.java:272)
+            at android.preference.PreferenceFragment.addPreferencesFromResource(PreferenceFragment.java:285)
+            at de.uni_potsdam.hpi.openmensa.api.preferences.SettingsFragment.onCreate(SettingsFragment.java:28)
+            at android.app.Fragment.performCreate(Fragment.java:1678)
+            at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:859)
+            at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:1062)
+            at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:1044)
+            at android.app.FragmentManagerImpl.dispatchCreate(FragmentManager.java:1850)
+            at android.app.Activity.onCreate(Activity.java:910)
+            at android.preference.PreferenceActivity.onCreate(PreferenceActivity.java:514)
+            at de.uni_potsdam.hpi.openmensa.api.preferences.SettingsActivity.onCreate(SettingsActivity.java:28)
+            at android.app.Activity.performCreate(Activity.java:5248)
+            at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1110)
+            at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2162)
+            at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2257)
+            at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3805)
+            at android.app.ActivityThread.access$900(ActivityThread.java:139)
+            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1216)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:136)
+            at android.app.ActivityThread.main(ActivityThread.java:5097)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:515)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:785)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:601)
+            at dalvik.system.NativeStart.main(Native Method)
+     Caused by: java.lang.reflect.InvocationTargetException
+            at java.lang.reflect.Constructor.constructNative(Native Method)
+            at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+            at android.preference.GenericInflater.createItem(GenericInflater.java:383)
+            at android.preference.GenericInflater.createItemFromTag(GenericInflater.java:430)
+            at android.preference.GenericInflater.rInflate(GenericInflater.java:481)
+            at android.preference.GenericInflater.rInflate(GenericInflater.java:493)
+            at android.preference.GenericInflater.inflate(GenericInflater.java:326)
+            at android.preference.GenericInflater.inflate(GenericInflater.java:263)
+            at android.preference.PreferenceManager.inflateFromResource(PreferenceManager.java:272)
+            at android.preference.PreferenceFragment.addPreferencesFromResource(PreferenceFragment.java:285)
+            at de.uni_potsdam.hpi.openmensa.api.preferences.SettingsFragment.onCreate(SettingsFragment.java:28)
+            at android.app.Fragment.performCreate(Fragment.java:1678)
+            at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:859)
+            at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:1062)
+            at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:1044)
+            at android.app.FragmentManagerImpl.dispatchCreate(FragmentManager.java:1850)
+            at android.app.Activity.onCreate(Activity.java:910)
+            at android.preference.PreferenceActivity.onCreate(PreferenceActivity.java:514)
+            at de.uni_potsdam.hpi.openmensa.api.preferences.SettingsActivity.onCreate(SettingsActivity.java:28)
+            at android.app.Activity.performCreate(Activity.java:5248)
+            at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1110)
+            at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2162)
+            at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2257)
+            at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3805)
+            at android.app.ActivityThread.access$900(ActivityThread.java:139)
+            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1216)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:136)
+            at android.app.ActivityThread.main(ActivityThread.java:5097)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:515)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:785)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:601)
+            at dalvik.system.NativeStart.main(Native Method)
+     Caused by: java.lang.NullPointerException
+            at android.preference.MultiSelectListPreference.onGetDefaultValue(MultiSelectListPreference.java:212)
+            at android.preference.Preference.<init>(Preference.java:268)
+            at android.preference.DialogPreference.<init>(DialogPreference.java:69)
+            at android.preference.DialogPreference.<init>(DialogPreference.java:90)
+            at android.preference.MultiSelectListPreference.<init>(MultiSelectListPreference.java:49)
+            at de.uni_potsdam.hpi.openmensa.api.preferences.SelectFavouritesPreference.<init>(SelectFavouritesPreference.java:43)
+            at java.lang.reflect.Constructor.constructNative(Native Method)
+            at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+            at android.preference.GenericInflater.createItem(GenericInflater.java:383)
+            at android.preference.GenericInflater.createItemFromTag(GenericInflater.java:430)
+            at android.preference.GenericInflater.rInflate(GenericInflater.java:481)
+            at android.preference.GenericInflater.rInflate(GenericInflater.java:493)
+            at android.preference.GenericInflater.inflate(GenericInflater.java:326)
+            at android.preference.GenericInflater.inflate(GenericInflater.java:263)
+            at android.preference.PreferenceManager.inflateFromResource(PreferenceManager.java:272)
+            at android.preference.PreferenceFragment.addPreferencesFromResource(PreferenceFragment.java:285)
+            at de.uni_potsdam.hpi.openmensa.api.preferences.SettingsFragment.onCreate(SettingsFragment.java:28)
+            at android.app.Fragment.performCreate(Fragment.java:1678)
+            at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:859)
+            at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:1062)
+            at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:1044)
+            at android.app.FragmentManagerImpl.dispatchCreate(FragmentManager.java:1850)
+            at android.app.Activity.onCreate(Activity.java:910)
+            at android.preference.PreferenceActivity.onCreate(PreferenceActivity.java:514)
+            at de.uni_potsdam.hpi.openmensa.api.preferences.SettingsActivity.onCreate(SettingsActivity.java:28)
+            at android.app.Activity.performCreate(Activity.java:5248)
+            at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1110)
+            at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2162)
+            at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2257)
+            at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3805)
+            at android.app.ActivityThread.access$900(ActivityThread.java:139)
+            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1216)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:136)
+            at android.app.ActivityThread.main(ActivityThread.java:5097)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:515)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:785)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:601)
+            at dalvik.system.NativeStart.main(Native Method)
+```
+"
+domoritz/open-mensa-android,closed,Ignore canteens without coordinates in selection of favorite canteens,[],"As discussed in #25, we need to remove canteens without coordinates from further consideration. This PR ensures that only those canteens are processed for the fav canteen selection that meet some basic criteria (coordinates present, at least 2 entries [lat/lon], none of them null).
+"
+domoritz/open-mensa-android,closed,Crash when selecting a favourite canteen,[],"I can reproduce the issue with the current 0.8 version on a Android 5 device (there installed via fdroid, because it is not available in the google play store) and on a Android 4.3 device (there installed via google play).
+
+Steps to reproduce it:
+1. open APP
+2. refresh canteens (-> progress dialog shows 1/4 to 4/4)
+3. app requests to setup a favourite canteen
+4. ok -> preferences dialog is displayed
+5. tap on 'Favourite Canteens => 'Unfortunately, OpenMensa has stopped'
+
+(step 2 is optional, app still crashes)
+
+I've captured following stack trace via `adb logcat`:
+
+```
+D/Canteendroid(24905): Got favourites []
+D/Canteendroid(24905): Update favourites: []
+D/Canteendroid(24905): Refreshing favourite canteen list
+D/Canteendroid(24905): Got favourites []
+D/Canteendroid(24905): Update favourites: []
+D/Canteendroid(24905): Got favourites []
+D/Canteendroid(24905): Update favourites: []
+D/Canteendroid(24905): Spinner items: []
+D/Canteendroid(24905): Got favourites []
+D/Canteendroid(24905): Update favourites: []
+D/Canteendroid(24905): New Fragment requested 2
+D/Canteendroid(24905): New Fragment requested 1
+D/Canteendroid(24905): New Fragment requested 3
+D/Canteendroid(24905): Got favourites []
+D/Canteendroid(24905): Update favourites: []
+D/Canteendroid(24905): Fetch canteens because storage is out of date or empty
+D/Canteendroid(24905): Fetching from http://openmensa.org/api/v2/canteens?limit=50
+D/Canteendroid(24905): Fetching from http://openmensa.org/api/v2/canteens?limit=50&page=2
+D/Canteendroid(24905): Fetching from http://openmensa.org/api/v2/canteens?limit=50&page=3
+D/Canteendroid(24905): Fetching from http://openmensa.org/api/v2/canteens?limit=50&page=4
+D/Canteendroid(24905): Fetched 196 canteen items
+D/Canteendroid(24905): Refreshing favourite canteen list
+D/Canteendroid(24905): Got favourites []
+D/Canteendroid(24905): Update favourites: []
+D/Canteendroid(24905): Got favourites []
+D/Canteendroid(24905): Update favourites: []
+D/Canteendroid(24905): Spinner items: []
+D/Canteendroid(24905): Got favourites []
+D/Canteendroid(24905): Update favourites: []
+D/Canteendroid(24905): Save state, flushed cache storage
+D/AndroidRuntime(24905): Shutting down VM
+E/AndroidRuntime(24905): FATAL EXCEPTION: main
+E/AndroidRuntime(24905): Process: de.uni_potsdam.hpi.openmensa, PID: 24905
+E/AndroidRuntime(24905): java.lang.NullPointerException: Attempt to invoke virtual method 'float java.lang.Float.floatValue()' on a null object reference
+E/AndroidRuntime(24905):    at de.uni_potsdam.hpi.openmensa.api.preferences.SelectFavouritesPreference$1.distanceToCurrentLocation(SelectFavouritesPreference.java:91)
+E/AndroidRuntime(24905):    at de.uni_potsdam.hpi.openmensa.api.preferences.SelectFavouritesPreference$1.compare(SelectFavouritesPreference.java:97)
+E/AndroidRuntime(24905):    at de.uni_potsdam.hpi.openmensa.api.preferences.SelectFavouritesPreference$1.compare(SelectFavouritesPreference.java:88)
+E/AndroidRuntime(24905):    at java.util.TimSort.binarySort(TimSort.java:261)
+E/AndroidRuntime(24905):    at java.util.TimSort.sort(TimSort.java:204)
+E/AndroidRuntime(24905):    at java.util.TimSort.sort(TimSort.java:169)
+E/AndroidRuntime(24905):    at java.util.Arrays.sort(Arrays.java:2010)
+E/AndroidRuntime(24905):    at java.util.Collections.sort(Collections.java:1883)
+E/AndroidRuntime(24905):    at de.uni_potsdam.hpi.openmensa.api.preferences.SelectFavouritesPreference.initializeValues(SelectFavouritesPreference.java:88)
+E/AndroidRuntime(24905):    at de.uni_potsdam.hpi.openmensa.api.preferences.SelectFavouritesPreference.showDialog(SelectFavouritesPreference.java:66)
+E/AndroidRuntime(24905):    at android.preference.DialogPreference.onClick(DialogPreference.java:274)
+E/AndroidRuntime(24905):    at android.preference.Preference.performClick(Preference.java:983)
+E/AndroidRuntime(24905):    at android.preference.PreferenceScreen.onItemClick(PreferenceScreen.java:214)
+E/AndroidRuntime(24905):    at android.widget.AdapterView.performItemClick(AdapterView.java:300)
+E/AndroidRuntime(24905):    at android.widget.AbsListView.performItemClick(AbsListView.java:1143)
+E/AndroidRuntime(24905):    at android.widget.AbsListView$PerformClick.run(AbsListView.java:3044)
+E/AndroidRuntime(24905):    at android.widget.AbsListView$3.run(AbsListView.java:3833)
+E/AndroidRuntime(24905):    at android.os.Handler.handleCallback(Handler.java:739)
+E/AndroidRuntime(24905):    at android.os.Handler.dispatchMessage(Handler.java:95)
+E/AndroidRuntime(24905):    at android.os.Looper.loop(Looper.java:135)
+E/AndroidRuntime(24905):    at android.app.ActivityThread.main(ActivityThread.java:5221)
+E/AndroidRuntime(24905):    at java.lang.reflect.Method.invoke(Native Method)
+E/AndroidRuntime(24905):    at java.lang.reflect.Method.invoke(Method.java:372)
+E/AndroidRuntime(24905):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:899)
+E/AndroidRuntime(24905):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:694)
+```
+"
+domoritz/open-mensa-android,closed,Add support for Android 4.3,[],"It is reported that the current version in the app store does not work with Android 4.3. It is displayed as incompatible.
+
+Since the number of Android 4.3 users is and will be increasing, support for this Android version is recommended.
+"
+domoritz/open-mensa-android,closed,+ theme switcher,[],
+domoritz/open-mensa-android,open,Encapsule Storage in Data Provider,[],"This will make app structure much nicer
+"
+domoritz/open-mensa-android,open,Also show local canteens somewhere,[],"as an addition to the favorite canteens
+"
+domoritz/open-mensa-android,closed,Selectable Theme,[],"Lets user decide between Dark and Light Theme
+"
+domoritz/open-mensa-android,open,Put only city names into the app description,[],"The application description should be improved by add only a list of supported cities (much smaller) and maybe later a full list or a link to a full list of canteens.
+"
+domoritz/open-mensa-android,open,Group meals by category,"[Label(name=""enhancement"")]","Meals are currently not grouped by category. That uses a lot of screen space on canteens that have more than one meal in a category:
+
+![device-2013-03-14-194333](https://f.cloud.github.com/assets/800848/260496/41c7ea00-8cd7-11e2-8389-c8a781a3577b.png)
+
+Maybe meals can be grouped by category visually like in that app: https://play.google.com/store/apps/details?id=cafeteria.multiple.aachen
+"
+domoritz/open-mensa-android,open,Preferences screen is sometimes opened on first start up,"[Label(name=""bug"")]",
+domoritz/open-mensa-android,open,Create small icon,"[Label(name=""enhancement"")]",
+domoritz/open-mensa-android,open,Version number from manifest file and strings is not synced,"[Label(name=""enhancement"")]","The perfect solution would be to show the version name from the manifest file on the preferences screen.
+"
+domoritz/open-mensa-android,open,"Find all nearby canteens, favorite or not","[Label(name=""enhancement"")]","I have the impression that the current use case of the app can be stated as: You have a certain set of so-called ""favorite canteens"" which you like and you choose between them according to their meals on a daily basis. So each day, you go to the canteen that offers the meal of your choice.
+
+However, this doesn't help you to discover canteens in a yet unknown location. Imagine a student that has recently arrived and now wants to explore her surroundings for opportunities to fill her stomach. A different example is a student that studies in Potsdam, but has to visit once or twice a university library in Berlin for her research and is interested in nearby canteens where she can have good food at an affordable (student) price.
+
+While this may seem as a duplicate of #13 at first glance, I would like to point out that the approach is somewhat different. While #13 aims at a location-based selection of favorite canteens, I propose to use the user's current location as one main entry point in order to navigate through the information openmensa.org provides, without being bound to the concept of maintaining one's favorite canteens.
+
+Having said that, the concept of favorite canteens is still valid and very useful, e.g. you could have a widget that gives you a short overview of your (closest) favorite canteens at lunch time.
+
+The question remains how those two usage patterns (well-known environment vs. unknown environment) ought to be combined.
+- Do you use two distinct Launchers for the different aspects (like Facebook/Facebook Messenger, Öffi Verbindungen/Öffi Haltestellen)?
+- Or: Do you switch explicitly between those two inside the app explicitly (e.g. button click)?
+- In the unknown environment setting, how do you turn a canteen into a favorite after having been there?
+"
+domoritz/open-mensa-android,open,Separate activity where you can choose favourite canteens,"[Label(name=""enhancement"")]","This will allow us to sort canteens by name or distance and display the closest canteens on map. It will also help to resolve #6 and is a prerequisite of #4.
+"
+domoritz/open-mensa-android,closed,Resolve dependencies via Ivy and build via Ant.,[],"Improve ant scripts to allow full build via ant. 
+
+Ant script requires an installed and properly configured SDK (via ENV var or `local.properties`) and does dependency resolving via Ivy.
+
+`ant resolve && ant release` is all needed to create an `apk`.
+"
+domoritz/open-mensa-android,closed,Automatic build system and dependency management,"[Label(name=""enhancement"")]",
+domoritz/open-mensa-android,closed,Enable support for Android 2.x,"[Label(name=""enhancement"")]",
+domoritz/open-mensa-android,closed,"Show ""edit favourites"" in canteen chooser","[Label(name=""enhancement"")]",
+domoritz/open-mensa-android,open,Enable back functionality in canteen view,"[Label(name=""enhancement"")]","Viewing canteen information and then pressing the back button closes the app, instead of going back to the meal view.
+"
+domoritz/open-mensa-android,closed,l10n,"[Label(name=""enhancement"")]","Translate app to German and other languages.
+"
+domoritz/open-mensa-android,closed,Favourites can be overwritten,"[Label(name=""bug"")]","Problem: Favourite is a flag of the canteen object in the storage. The storage might be overwritten after fetching new canteens.
+
+Fix: save ids of favourite canteens separately in storage
+"
+domoritz/open-mensa-android,closed,Changing the device orientation empties meals list,"[Label(name=""bug"")]","**How this can be reproduced**
+Open up the meal list for a certain day. Change the device orientation.
+
+**What happens**
+The list of meals for that day is not shown anymore. It seems that the neighboring days are also affected.
+
+**What should happen**
+Apart from adjusting to the new device orientation, the displayed contents should not change.
+
+**Possible solution**
+Is the state of the Activity saved and restored correctly (Activity#onSaveInstanceState(Bundle))? Not 100% sure, but I think this should solve the problem.
+"
+domoritz/open-mensa-android,open,List of canteens in settings too long,"[Label(name=""bug"")]","There needs to be a separate view with search capabilities and maybe a location based filter.  
+"
+domoritz/open-mensa-android,closed,Document needed dependencies in Ivy format (https://ant.apache.org/ivy/),[],"Ivy relies on Maven infrastructure to download libraries, see
+mvnrepository.com.
+"
+domoritz/open-mensa-android,closed,Add location services,"[Label(name=""enhancement"")]","The location services could mean to always show the closest canteen or a map view with available canteens. 
+"
+domoritz/open-mensa-android,closed,"Two fixes, nothing big",[],

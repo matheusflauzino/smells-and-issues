@@ -1,0 +1,2362 @@
+repository,state,title,label,body
+dschuermann/document-viewer,open,Update Google Play Release,[],"Latest version on Google Play is 2 versions behind the release in F-Droid.  I'm guessing most people install from Google Play, so would be good to update it."
+dschuermann/document-viewer,open,"Feature request - Viewing of Open Document files (ODT,ODS)",[],"Hi! 
+I just am in the process of switching from windows to linux and try to move away from all closed source software as far as possible.
+I converted all my documents to ODT/ODS, but there is no FOSS viewer (let alone useable editor) for android!
+I found a closed source viewer, but a FOSS alternative would of course make much more sense for an open format as Open Document.
+Thanks in advance,
+Greetings"
+dschuermann/document-viewer,closed,Mildly improve german translation,[],"Some of the translations were rather awkward (or just wrong), so I corrected them."
+dschuermann/document-viewer,open,"Crashes; Oreo 8.1, MuPDF related (crashes aswell)",[],"Tested versions 2.7.9 (armeabi-v7a and arm64-v8a) to 2.8.1 (arm64-v8a).
+Application works normally when opening PDF documents via system file explorer. However, if I press the upper left back button to go to file explorer the app can crash, no matter if in bookcase or list view.
+If I open the app via app drawer I can access configuration menu and etc. Once I open a document there in its file explorer and switch to another task via recents the app can crash.
+If I open a PDF file via system file exporer app behaves normally until I start switching tasks via recents, then it can crash.
+When I mean crash, I mean I get a system popup window which tells me “Document Viewer has stopped”.
+I have “Show all ANRs” (show **A**pp **N**ot **R**esponding dialog for background apps) enabled in developer options.
+Briefly tried MuPDF, crashing behaviour too. MuPDF and this app seem to share code.
+
+Cheers :-) "
+dschuermann/document-viewer,open,Feature request: Reading project,[],"Request to be able to add bookmarks across books. This would be useful when studying textbooks for which other reading material is required.
+
+A reading project would start from a ""main book"" (start reading project). Bookmarks would be added as usual but be persistent across books. They should be directly accessible through the menu with a name and an optional thumbnail. One more bookmark would be for to the last page visited in the main book with another entry to reset that bookmark (set to current page).
+"
+dschuermann/document-viewer,open,Crash after clicking on link without protocol,[],"It is possible to crash the app by clicking on a link without specified protocol.
+
+Steps to reproduce issue:
+
+- Download https://retro.wtf/kilobyte_magazin/KilobyteMagazine2018-2.pdf
+- Open document in app
+- Go to page 3
+- Click on the link (bottom of the page)
+
+-> The app crashes with the following stacktrace:
+
+```
+
+>     --------- beginning of system
+> 09-20 21:41:15.271 3426-8296/system_process I/ActivityManager: START u0 {act=android.intent.action.VIEW dat=file://www.patreon.com/kilobytemagazine cmp=org.thosp.yourlocalweather/.LicenseActivity} from uid 10114 on display 0
+> 09-20 21:41:15.272 3426-8296/system_process W/ActivityManager: Permission Denial: starting Intent { act=android.intent.action.VIEW dat=file://www.patreon.com/kilobytemagazine cmp=org.thosp.yourlocalweather/.LicenseActivity } from ProcessRecord{2f0a4d5 16639:org.sufficientlysecure.viewer/u0a114} (pid=16639, uid=10114) not exported from uid 10191
+> 09-20 21:41:15.296 16639-16639/org.sufficientlysecure.viewer D/AndroidRuntime: Shutting down VM
+> 09-20 21:41:15.309 16639-16639/org.sufficientlysecure.viewer I/System.out: Stacktrace is written: /storage/emulated/0/Android/data/org.sufficientlysecure.viewer/files/logs/org.sufficientlysecure.viewer.2.8.1.20180920.214115.stacktrace
+>     
+>     --------- beginning of crash
+> 09-20 21:41:15.309 16639-16639/org.sufficientlysecure.viewer E/AndroidRuntime: FATAL EXCEPTION: main
+>     Process: org.sufficientlysecure.viewer, PID: 16639
+>     java.lang.SecurityException: Permission Denial: starting Intent { act=android.intent.action.VIEW dat=file://www.patreon.com/kilobytemagazine cmp=org.thosp.yourlocalweather/.LicenseActivity } from ProcessRecord{2f0a4d5 16639:org.sufficientlysecure.viewer/u0a114} (pid=16639, uid=10114) not exported from uid 10191
+>         at android.os.Parcel.readException(Parcel.java:1684)
+>         at android.os.Parcel.readException(Parcel.java:1637)
+>         at android.app.ActivityManagerProxy.startActivity(ActivityManagerNative.java:3101)
+>         at android.app.Instrumentation.execStartActivity(Instrumentation.java:1520)
+>         at android.app.Activity.startActivityForResult(Activity.java:4229)
+>         at android.support.v4.app.BaseFragmentActivityApi16.startActivityForResult(BaseFragmentActivityApi16.java:54)
+>         at android.support.v4.app.FragmentActivity.startActivityForResult(FragmentActivity.java:67)
+>         at android.app.Activity.startActivityForResult(Activity.java:4187)
+>         at android.support.v4.app.FragmentActivity.startActivityForResult(FragmentActivity.java:732)
+>         at android.app.Activity.startActivity(Activity.java:4526)
+>         at android.app.Activity.startActivity(Activity.java:4494)
+>         at org.ebookdroid.core.AbstractViewController.goToURL(AbstractViewController.java:654)
+>         at org.ebookdroid.core.AbstractViewController.processLinkTap(AbstractViewController.java:641)
+>         at org.ebookdroid.core.AbstractViewController.processLinkTap(AbstractViewController.java:606)
+>         at org.ebookdroid.core.AbstractViewController.processTap(AbstractViewController.java:550)
+>         at org.ebookdroid.core.AbstractViewController$GestureListener.onSingleTapConfirmed(AbstractViewController.java:789)
+>         at android.view.GestureDetector$GestureHandler.handleMessage(GestureDetector.java:300)
+>         at android.os.Handler.dispatchMessage(Handler.java:102)
+>         at android.os.Looper.loop(Looper.java:154)
+>         at android.app.ActivityThread.main(ActivityThread.java:6186)
+>         at java.lang.reflect.Method.invoke(Native Method)
+>         at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:889)
+>         at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:779)
+> 09-20 21:41:15.315 3426-8297/system_process W/ActivityManager:   Force finishing activity org.sufficientlysecure.viewer/org.ebookdroid.ui.viewer.ViewerActivity
+
+```"
+dschuermann/document-viewer,open,"After swiping from edge of screen, navigation buttons never disappear",[],"First i tap the screen to enable fullscreen.
+
+After swiping from the edge of the screen, the status bar (translucent) and navigation buttons (opaque) appear. Only the status bar disappears, the navigation buttons never disappear and require tapping the screen twice to hide (three times if I'm in the middle of a swipe).
+
+Moto g5 plus, android 7.0"
+dschuermann/document-viewer,open,Fails to install on Oreo 8.1,[],"I tried using the latest APK from F-Droid and the slightly older one from Google Play, but they both fail to install on my tablet with LineageOS 15.1.  Strangely, they install fine on my phone, which is also using LineageOS 15.1.
+
+Logcat msgs:
+```
+07-24 09:10:57.277  1065  2692 I ActivityManager: START u0 {act=android.intent.action.VIEW dat=file:///data/user_de/0/com.android.packageinstaller/no_backup/package2742956882387370461.apk flg=0x10000 cmp=com.android.packageinstaller/.PackageInstallerActivity (has extras)} from uid 10020                                  
+07-24 09:10:57.327  5238  5238 I PackageInstaller: No source found for package org.sufficientlysecure.viewer                                                                                                         
+07-24 09:10:57.398  1065  1167 I ActivityManager: Displayed com.android.packageinstaller/.PackageInstallerActivity: +90ms (total +230ms)                                                                             
+07-24 09:10:57.539   851  1039 W libc    : Unable to set property ""sys.fake_bs_flag0"" to ""FALSE:0"": error code: 0x18                                                                                                  
+07-24 09:10:57.541   759  1038 W libc    : Unable to set property ""sys.fake_bs_flag1"" to ""FALSE:0"": error code: 0x18                                                                                                  
+07-24 09:10:57.543  1799  2377 I QcrilOemhookMsgTunnel: [0]processOemHookIndication length=21              
+07-24 09:10:57.544  1799  1799 D QcrilMsgTunnelIfaceManager: handleMessage what = 0                        
+07-24 09:10:59.426  1065  1082 I ActivityManager: START u0 {dat=file:///data/user_de/0/com.android.packageinstaller/no_backup/package2742956882387370461.apk cmp=com.android.packageinstaller/.InstallInstalling (has extras)} from uid 10020                                                                                    
+07-24 09:10:59.602  1065  1167 I ActivityManager: Displayed com.android.packageinstaller/.InstallInstalling: +149ms                                                                                                   
+07-24 09:10:59.983  1065  1335 W NativeHelper: Failure copying native libraries [errorCode=-113]           
+07-24 09:10:59.984  1065  1335 E PackageInstaller: Commit of session 796466799 failed: Failed to extract native libraries, res=-113
+07-24 09:11:00.004  1065  2692 I ActivityManager: START u0 {dat=file:///data/user_de/0/com.android.packageinstaller/no_backup/package2742956882387370461.apk flg=0x2000000 cmp=com.android.packageinstaller/.InstallFailed (has extras)} from uid 10020                                                                          
+07-24 09:11:00.053  5238  5238 D InstallFailed: Installation status code: 1                                
+07-24 09:11:00.101  1065  1167 I ActivityManager: Displayed com.android.packageinstaller/.InstallFailed: +71ms                                                                                                        
+07-24 09:11:00.419  1065  1081 I zygote64: Background concurrent copying GC freed 66914(6MB) AllocSpace objects, 39(1976KB) LOS objects, 42% free, 12MB/21MB, paused 564us total 137.594ms                            
+07-24 09:11:01.752  1065  2692 I ActivityManager: START u0 {flg=0x10804000 cmp=com.android.systemui/.recents.RecentsActivity} from uid 10026
+```"
+dschuermann/document-viewer,open,SD Card writing access,[],"Hey all,
+
+I wondered is there a way to grant the application rights to edit files on the sd card? 
+I have all my PDF in a folder there and it's actually pretty annoing that it's not possible to delete them from the document viewer directly. Especially since there is a delete function available, but does not work if the pdf is on the sd card.
+Nice Regards "
+dschuermann/document-viewer,open,Plesse add posibilities to add favorites icons into the top bar,[],"I wish to fast activate auto crop on empty spaces on paper. I also wish to fast activat nightmode. Because not all need this setting, I wish to add a function to add custom icons to the icon bar."
+dschuermann/document-viewer,open,Scrolling behavior,[],"I'm currently in the process to switch to open source apps on my phone. As a replacement for the adobe reader I found this app, but there is one thing which is terribly annoying in this otherwise great app: the scrolling behavior. There are two points:
+
+1. It keeps scrolling even after you stopped to swipe. I know this feature makes sense to allow to scroll fast through a document, but this happens even if you are just scrolling a tiny bit.
+
+1. Before you can scroll you have to single tap the screen, otherwise you can swipe but nothing will happen.
+
+It would be great if this gets fixed :smiley: "
+dschuermann/document-viewer,open,Page is split into 4 degrees of grey on zoom,[],"Hello,
+
+v2.8.1
+Android 8.0
+
+When I zoom in any document ([example](https://manuals.info.apple.com/MANUALS/1000/MA1565/en_US/iphone_user_guide.pdf)), the page shows the following:
+![1](https://user-images.githubusercontent.com/32372541/40879984-a61d0ce0-66a9-11e8-9a78-610f20700629.png)
+![2](https://user-images.githubusercontent.com/32372541/40879985-a6699df8-66a9-11e8-86b0-70fd99d452f6.png)
+![3](https://user-images.githubusercontent.com/32372541/40879983-a5c97cf6-66a9-11e8-9646-dcb41e320cb2.png)
+
+---
+
+This happens with every file.
+
+Thank you"
+dschuermann/document-viewer,open,Increase max aspect ratio to support device with 18:9 aspect ratio,[],There are black bars right now.
+dschuermann/document-viewer,closed,Logo Design Proposal,[],"Hello I wanted to contribute to document-viewer. I designed a logo for it. If you like it, I'll send you the editable files 
+
+Also, If you have a logo idea you want, I can design it.
+
+![documentveiwerlogo](https://user-images.githubusercontent.com/35470411/39411880-3256571c-4c0a-11e8-8909-60a07f0a8d5e.jpg)
+"
+dschuermann/document-viewer,closed,Changing the logo,[],"Hello, I want to make a logo for the project. The current logo seems like old I new one is going to be modern . If you want to let me know"
+dschuermann/document-viewer,open,EPUB: somme Greek letters and mathematical symbols aren't rendered correctly,[],"Here's a screenshot:
+![documentviewer](https://user-images.githubusercontent.com/1880768/38353736-adc513fe-38b7-11e8-9fc1-9cbc46fa435b.png)
+These squares are incorrect effects. They are rendered well in MuPDF, so I guess that it's a font issue."
+dschuermann/document-viewer,open,Allow zoom below 1.0,[],or even to make epub columns smaller than the screen. That would make some texts better readable on big screens (tablets) 
+dschuermann/document-viewer,open,FR: Adaptive icon,[],"Api 26 introduced adaptive icons where background and foreground are two different images.
+https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive.html"
+dschuermann/document-viewer,open,Moving book causes settings and bookmarks to be lost,[],"**Version: 2.7.9***
+
+*Document Viewer is a really nice piece of software. Thanks for developing it! Unfortunately, I encountered a bug...*
+
+### Steps to reproduce
+
+1. Add a bookmark to a book.
+1. Change the book's ""day"" or ""night"" status to whatever is not your default.
+1. On the bookshelf, long press on the book to bring up the contextual menu.
+1. Press ""File operations...""
+1. Press ""Move book to...""
+1. Select the new directory for the book, and press ""OK"".
+
+### Expected result
+
+When the book is opened after having been moved as above, the bookmark is still available, and the day/night setting is retained.
+
+### Observed result
+
+When the book is opened after having been moved as above, the bookmark is no longer available, and the day/night setting is not retained.
+
+
+\* *Yes, this is an old version, but I can't see anything in the issues, pull requests, or git log to indicate that the issue has been fixed.*"
+dschuermann/document-viewer,closed,"v2.8.0 and newer crash Launcher,App List etc. on some ROMs",[],"It seems to be a common issue with getPkgName on OEM and custom ROMs:
+https://issuetracker.google.com/issues/64434571
+https://gitlab.com/fdroid/fdroiddata/issues/979
+
+In short: Starting with the Gradle Android-Plugin 3.0.0 aapt2 will be used for packaging. Some ROMS don't copy a buffer in getPkgName, which with aapt is fine, with aapt2 will produce crashes.
+
+Actually a bug with the ROMs, but its easily fixed with adding `android.enableAapt2=false` to _grade.properties_ or using build tools >=27 (the latter I did not test though)"
+dschuermann/document-viewer,closed,PDF not well rendered,[],"I am ha ing trouble to render the following pdf https://arxiv.org/pdf/1801.10542.pdf
+
+The viewer seems to be unable to render the first page.
+
+The problem does not affect Google pdf viewer nor any other Desktop application."
+dschuermann/document-viewer,open,Better default gamma for night mode,"[Label(name=""enhancement"")]","I find night mode hard to read (fonts are too thin); it's better if I set gamma to 200 in Book Settings.
+
+Night mode is likely just inverting the pixel values.. should be doing sRGB -> linear -> invert -> sRGB instead. Try something like that?"
+dschuermann/document-viewer,closed,Add EPUB support to F-Droid description,[],"Right now an F-Droid search for 'ebook' or 'epub' doesn't return this app as a result, but it should. [The description](https://f-droid.org/packages/org.sufficientlysecure.viewer/) should be updated to match."
+dschuermann/document-viewer,open,Update MuPDF to 1.12,[],"With MuPDF 1.12 you could making build easier. Here is the release notes copied from official website:
+```
+MuPDF 1.12.0 (2017-12-13)
+
+You can now download the 1.12.0 release.
+MuPDF 1.12-rc1 (2017-11-23)
+
+The release candidate for version 1.12 is now available!
+
+This release has a new Android SDK which is easier to use.
+
+These are the git repositories for the SDK projects:
+
+    mupdf-android-fitz.git has the JNI bindings in a library.
+    mupdf-android-viewer.git has the viewer as an activity in a library.
+    mupdf-android-viewer-mini.git has the minimalist viewer as an activity in a library. 
+
+There are binary packages for these libraries in our Maven repository:
+
+    com.artifex.mupdf:fitz:1.12.+
+    com.artifex.mupdf:viewer:1.12.+
+    com.artifex.mupdf:mini:1.12.+ 
+
+Color Management:
+
+    LCMS2 library for color management.
+    CMYK rendering with overprint simulation.
+    Spot color rendering.
+    Transparency rendering fixes. 
+
+Structured text output improvements:
+
+    Reworked structured text API.
+    Faster text searching.
+    Highlight and copy text by selecting lines instead of by area.
+    New semantic XHTML output format.
+    New layout preserving HTML output format. 
+
+Features and improvements:
+
+    Improved non-AA rendering with new scan converter.
+    Improved LARGEFILE support.
+    Improved TIFF support.
+    Improved documentation.
+    PCLm output.
+    PSD output.
+    New ""mutool trace"" tool.
+    New ""mutool sign"" tool (work in progress).
+    Text redaction (work in progress). 
+
+Lots of bug fixes. 
+```"
+dschuermann/document-viewer,open,Crashes and weird behavior,[],"I had following issues on android 4.4.2:
+1) When opening a document, it opens another previously seen document
+2) When turning screen to landscape, the same thing occurs
+3) Sudden crashes on big documents
+
+(I love your app, it's lightweight and useful!)"
+dschuermann/document-viewer,closed,"make more string translatable, update Esperanto and Polish translations",[],"I've made strings ""Search"" and ""Show files"" translatable, I hope it will work."
+dschuermann/document-viewer,open,"support for legitamate filenames, even long ones with special characters",[],"Document viewer failed to open the following document untill it was renamed: Subsidieregeling+raadgevend+referendum+2017+%28definitief%2C+27+nov+2017%29.pdf
+
+Request support for legitamate filenames, even long ones with special characters."
+dschuermann/document-viewer,closed,Version 2.8.0 (on F-Droid) causes system crash and boot loops,[],"Unfortunately the f-droid build version 2.8.0 instantly crashes my system (Nexus 10, LineageOS 13 official nightly) after installation and forces my device into bootloops. Multiple other apps and devices are affected and more and more users will run into the same issue when installing the offered update through F-Droid.
+
+Please read this F-Doid issue for further details:
+https://gitlab.com/fdroid/fdroiddata/issues/979
+
+If you ran into the same problems use the ""safe mode"" to boot into android and uninstall Document Viewer 2.8.0.
+On Nexus phones you have to hold the ""volume down"" button during start to enter safe mode. (https://support.google.com/nexus/answer/2852139?hl=en)
+
+@dschuermann: Is there a way to delete 2.8.0 from f-droid till they have fixed their build issue?
+
+Beside of that the F-Droid page of Document Viewer looks a bit strange to me:
+https://f-droid.org/packages/org.sufficientlysecure.viewer/
+Version 2.8.0 is listed six times there ..."
+dschuermann/document-viewer,open,Search multiples (sub-)folders/whole phone,[],"Hi I am trying to add all ebooks of all folders and their sub folders to the app. But the best solution would be an autosearch for all ebooks on the device to be listed/shown in the app. Is that possible? How? 
+
+Normally when I try to add one folder the old one is removed from the list."
+dschuermann/document-viewer,closed,changed directory and effects on fontpack,[],"according to the [changelog](https://github.com/PrivacyApps/document-viewer/blob/master/document-viewer/src/main/assets/about/en/changelog.wiki#DV_v280) `/sdcard/.org.sufficientlysecure.viewer` is (thankfully) not created anymore... what does this mean for and is something similar also planed with the [DV fontpack](https://github.com/PrivacyApps/document-viewer-fontpack)?
+- while running it `/sdcard/.org.sufficientlysecure.viewer.fontpack` is still created, just for the logs
+- the fonts are ""installed"" into `/sdcard/.org.sufficientlysecure.viewer`, so this folder will still be needed... and does the new versions of DV even look for the fonts at this place?
+
+thanks for some clarification!"
+dschuermann/document-viewer,open,Any OPDS catalog shows empty screen,[],"I'm having this issue with OPDS catalogs.
+I checked several catalogs that work in another prorgram.
+Document Viewer connects, then shows ""Loading Catalog"" and then nothing, empty screen and top bar.
+I'm using Android 6."
+dschuermann/document-viewer,open,"Aspect ratio not kept, images distorted",[],"On a PDF with full-page images of different size, the images are distorted, the pages are all made the same size? The aspect ratio should be kept 1:1 in images."
+dschuermann/document-viewer,closed,F-Droid builds failing,[],F-Droid builds have been failing since version 2801. See https://f-droid.org/wiki/page/org.sufficientlysecure.viewer
+dschuermann/document-viewer,open,Switch to MuPDF Java API,[],"Our C bridge to MuPDF is a pain to update whenever we update MuPDF, and also out of date (annotations, etc.)"
+dschuermann/document-viewer,closed,MuPDF vulnerabilities,[],"https://gitlab.com/fdroid/fdroiddata/issues/956
+
+Please update to the latest version of the lib and make an new release."
+dschuermann/document-viewer,closed,Don't create directories in the root of the sdcard,[],"Could you, please, stop creating directory with 2 empty subdirectories at the root of the sdcard?
+Create it under Android/data or elsewhere if you absolutely need it, but please, don't pollute the root directory."
+dschuermann/document-viewer,closed,Fails to display Japanese characters,[],I'm currently taking Japanese language classes and because of this I'm accessing a lot of PDF files that contain Japanese characters. Some of these do not display properly or at all with document-viewer on LineageOS 14.1 (Android 7.1.2). Are there any font packs I can get? Or any fixes? Or any plans to add support?
+dschuermann/document-viewer,open,[Upgrade ]Do you plan to support additional Microsoft formats?,"[Label(name=""question"")]","Hello, I am very interested in this project.
+Do you plan to support additional Microsoft formats?"
+dschuermann/document-viewer,open,Crash on Emulator Nexus 5X API 26,[],"```
+
+10-20 07:38:47.522 22854-22854/org.sufficientlysecure.viewer E/Document Viewer.LibraryLoader: Native library cannot be loaded: 
+                                                                                              java.lang.UnsatisfiedLinkError: dalvik.system.PathClassLoader[DexPathList[[zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/base.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_dependencies_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_0_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_1_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_2_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_3_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_4_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_5_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_6_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_7_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_8_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_9_apk.apk""],nativeLibraryDirectories=[/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/lib/x86, /system/lib, /system/vendor/lib]]] couldn't find ""libebookdroid.so""
+                                                                                                  at java.lang.Runtime.loadLibrary0(Runtime.java:1011)
+                                                                                                  at java.lang.System.loadLibrary(System.java:1657)
+                                                                                                  at org.ebookdroid.EBookDroidLibraryLoader.load(EBookDroidLibraryLoader.java:17)
+                                                                                                  at org.ebookdroid.droids.mupdf.codec.MuPdfContext.<clinit>(MuPdfContext.java:24)
+                                                                                                  at java.lang.Class.newInstance(Native Method)
+                                                                                                  at org.ebookdroid.core.models.DocumentModel.<init>(DocumentModel.java:71)
+                                                                                                  at org.ebookdroid.ui.viewer.ViewerActivityController.afterCreate(ViewerActivityController.java:242)
+                                                                                                  at org.ebookdroid.ui.viewer.ViewerActivityController.afterCreate(ViewerActivityController.java:98)
+                                                                                                  at org.emdev.ui.AbstractActionActivity.onCreate(AbstractActionActivity.java:108)
+                                                                                                  at android.app.Activity.performCreate(Activity.java:6975)
+                                                                                                  at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1213)
+                                                                                                  at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2770)
+                                                                                                  at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2892)
+                                                                                                  at android.app.ActivityThread.-wrap11(Unknown Source:0)
+                                                                                                  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1593)
+                                                                                                  at android.os.Handler.dispatchMessage(Handler.java:105)
+                                                                                                  at android.os.Looper.loop(Looper.java:164)
+                                                                                                  at android.app.ActivityThread.main(ActivityThread.java:6541)
+                                                                                                  at java.lang.reflect.Method.invoke(Native Method)
+                                                                                                  at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)
+                                                                                                  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767)
+10-20 07:38:47.522 22854-22854/org.sufficientlysecure.viewer D/AndroidRuntime: Shutting down VM
+10-20 07:38:47.524 22854-22854/org.sufficientlysecure.viewer E/AndroidRuntime: FATAL EXCEPTION: main
+                                                                               Process: org.sufficientlysecure.viewer, PID: 22854
+                                                                               java.lang.RuntimeException: Unable to start activity ComponentInfo{org.sufficientlysecure.viewer/org.ebookdroid.ui.viewer.ViewerActivity}: java.lang.RuntimeException: java.lang.ExceptionInInitializerError
+                                                                                   at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2817)
+                                                                                   at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2892)
+                                                                                   at android.app.ActivityThread.-wrap11(Unknown Source:0)
+                                                                                   at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1593)
+                                                                                   at android.os.Handler.dispatchMessage(Handler.java:105)
+                                                                                   at android.os.Looper.loop(Looper.java:164)
+                                                                                   at android.app.ActivityThread.main(ActivityThread.java:6541)
+                                                                                   at java.lang.reflect.Method.invoke(Native Method)
+                                                                                   at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)
+                                                                                   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767)
+                                                                                Caused by: java.lang.RuntimeException: java.lang.ExceptionInInitializerError
+                                                                                   at org.ebookdroid.core.models.DocumentModel.<init>(DocumentModel.java:74)
+                                                                                   at org.ebookdroid.ui.viewer.ViewerActivityController.afterCreate(ViewerActivityController.java:242)
+                                                                                   at org.ebookdroid.ui.viewer.ViewerActivityController.afterCreate(ViewerActivityController.java:98)
+                                                                                   at org.emdev.ui.AbstractActionActivity.onCreate(AbstractActionActivity.java:108)
+                                                                                   at android.app.Activity.performCreate(Activity.java:6975)
+                                                                                   at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1213)
+                                                                                   at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2770)
+                                                                                   at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2892) 
+                                                                                   at android.app.ActivityThread.-wrap11(Unknown Source:0) 
+                                                                                   at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1593) 
+                                                                                   at android.os.Handler.dispatchMessage(Handler.java:105) 
+                                                                                   at android.os.Looper.loop(Looper.java:164) 
+                                                                                   at android.app.ActivityThread.main(ActivityThread.java:6541) 
+                                                                                   at java.lang.reflect.Method.invoke(Native Method) 
+                                                                                   at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240) 
+                                                                                   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767) 
+                                                                                Caused by: java.lang.ExceptionInInitializerError
+                                                                                   at java.lang.Class.newInstance(Native Method)
+                                                                                   at org.ebookdroid.core.models.DocumentModel.<init>(DocumentModel.java:71)
+                                                                                   at org.ebookdroid.ui.viewer.ViewerActivityController.afterCreate(ViewerActivityController.java:242) 
+                                                                                   at org.ebookdroid.ui.viewer.ViewerActivityController.afterCreate(ViewerActivityController.java:98) 
+                                                                                   at org.emdev.ui.AbstractActionActivity.onCreate(AbstractActionActivity.java:108) 
+                                                                                   at android.app.Activity.performCreate(Activity.java:6975) 
+                                                                                   at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1213) 
+                                                                                   at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2770) 
+                                                                                   at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2892) 
+                                                                                   at android.app.ActivityThread.-wrap11(Unknown Source:0) 
+                                                                                   at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1593) 
+                                                                                   at android.os.Handler.dispatchMessage(Handler.java:105) 
+                                                                                   at android.os.Looper.loop(Looper.java:164) 
+                                                                                   at android.app.ActivityThread.main(ActivityThread.java:6541) 
+                                                                                   at java.lang.reflect.Method.invoke(Native Method) 
+                                                                                   at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240) 
+                                                                                   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767) 
+                                                                                Caused by: java.lang.RuntimeException: java.lang.UnsatisfiedLinkError: dalvik.system.PathClassLoader[DexPathList[[zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/base.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_dependencies_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_0_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_1_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_2_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_3_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_4_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_5_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_6_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_7_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_8_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_9_apk.apk""],nativeLibraryDirectories=[/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/lib/x86, /system/lib, /system/vendor/lib]]] couldn't find ""libebookdroid.so""
+                                                                                   at org.ebookdroid.EBookDroidLibraryLoader.load(EBookDroidLibraryLoader.java:21)
+                                                                                   at org.ebookdroid.droids.mupdf.codec.MuPdfContext.<clinit>(MuPdfContext.java:24)
+                                                                                   at java.lang.Class.newInstance(Native Method) 
+                                                                                   at org.ebookdroid.core.models.DocumentModel.<init>(DocumentModel.java:71) 
+                                                                                   at org.ebookdroid.ui.viewer.ViewerActivityController.afterCreate(ViewerActivityController.java:242) 
+                                                                                   at org.ebookdroid.ui.viewer.ViewerActivityController.afterCreate(ViewerActivityController.java:98) 
+                                                                                   at org.emdev.ui.AbstractActionActivity.onCreate(AbstractActionActivity.java:108) 
+                                                                                   at android.app.Activity.performCreate(Activity.java:6975) 
+                                                                                   at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1213) 
+                                                                                   at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2770) 
+                                                                                   at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2892) 
+                                                                                   at android.app.ActivityThread.-wrap11(Unknown Source:0) 
+                                                                                   at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1593) 
+                                                                                   at android.os.Handler.dispatchMessage(Handler.java:105) 
+                                                                                   at android.os.Looper.loop(Looper.java:164) 
+                                                                                   at android.app.ActivityThread.main(ActivityThread.java:6541) 
+                                                                                   at java.lang.reflect.Method.invoke(Native Method) 
+                                                                                   at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240) 
+                                                                                   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767) 
+10-20 07:38:47.524 22854-22854/org.sufficientlysecure.viewer E/AndroidRuntime: Caused by: java.lang.UnsatisfiedLinkError: dalvik.system.PathClassLoader[DexPathList[[zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/base.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_dependencies_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_0_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_1_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_2_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_3_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_4_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_5_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_6_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_7_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_8_apk.apk"", zip file ""/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/split_lib_slice_9_apk.apk""],nativeLibraryDirectories=[/data/app/org.sufficientlysecure.viewer-364bcQin_DGkEPJTBg3tNQ==/lib/x86, /system/lib, /system/vendor/lib]]] couldn't find ""libebookdroid.so""
+                                                                                   at java.lang.Runtime.loadLibrary0(Runtime.java:1011)
+                                                                                   at java.lang.System.loadLibrary(System.java:1657)
+                                                                                   at org.ebookdroid.EBookDroidLibraryLoader.load(EBookDroidLibraryLoader.java:17)
+                                                                                   	... 18 more
+```
+
+
+Crash on Emulator Nexus 5X API 26
+
+Thank you so much."
+dschuermann/document-viewer,open,Display annotations,"[Label(name=""enhancement"")]","Thanks for this great app. Until now it did all I wanted it to do really well. What I found to be missing is viewing annotations:
+
+Document viewer does already display text merging and symbols of annotations, but there is no way to read/open the annotations or I couldn't find the way to do so.
+
+This is distinct from the existing annotation issue, as I don't want to add new annotations, I just want to read existing ones."
+dschuermann/document-viewer,closed,Cannot install App on arm64 / Android7.1.2 / LineageOS 14.1,"[Label(name=""bug"")]","- Tablet: Samsung Galaxy Tab S2 - SM-813
+- OS: LinageOS 14.1 (Android 7.1.2)
+
+```
+App not installed.
+This app isn't compatible with your tablet.
+```
+
+is this because of arm64? shouldn't arm64 be fully backwards compatible? is this an error in the app or in the os?
+even my aLogcat has an error (`/data/app/org.jtb.alogcat-1/lib/arm64`). "
+dschuermann/document-viewer,open,Double tap as zoom toggle,[],Seems to be a standard UI pattern in reading apps for double tap to cycle through a few predetermined zoom levels. This would be nice to have in DV.
+dschuermann/document-viewer,open,Unable to set full screen mode when tap toggles fullscreen is disabled,[],"Device: Samsung Galaxy Tab S2
+ROM: LineageOS 14.1
+document-viewer version: 2.7.9
+
+When ``Tab toggles fullscreen`` is enabled, tapping on a document properly sets fullscreen. However, when this option is disabled, selecting ``Full screen`` inside a document does not set the viewer to full screen."
+dschuermann/document-viewer,open,confirm Windows build instructions and update README.md,[],"I am assuming it's possible to build DV on Windows by installing
+- gcc
+- make
+- patch
+- bash
+- git
+
+from Cygwin and then running the `init.sh` script, then proceeding with ndk-build.
+
+Need to confirm if this actually works, or is there an easier way?"
+dschuermann/document-viewer,open,Restore .fb2.zip support,[],which was removed by 5ab37fa3ae7df20995863310b7547fea71d3a7b4
+dschuermann/document-viewer,closed,Drop internal FB2 support in favour of mudpdf?,[],"mupdf supports FB2 now. Their HTML renderer seems more complete than the one in DV used for displaying FB2.
+
+Edit: only drawback seems to be we would lose .fb2.zip support. I still think this is worth doing, and it should be easy to add .fb2.zip support to mupdf"
+dschuermann/document-viewer,open,Add  hightlighting possibility,"[Label(name=""enhancement"")]",I suggest to add  highlighting support for saving the most impotant into a document.
+dschuermann/document-viewer,closed,[FR] reflow PDF,[],"muPdf capable of reflowing text but it's not e-book Reading app. I think making up this feature + quick switch to ""original"" mode would make a very good PDF reading app"
+dschuermann/document-viewer,open,feature request: rewrap text for small screens,[],Please add an option that tryes to rewrap text documents to be easily readable on small screens. Thanks
+dschuermann/document-viewer,open,feature request: copy text to clipboard,[],Please add an Option to select Text of pdf (and other files with extractable text) files and copy it to android clipboard or share it. Thanks
+dschuermann/document-viewer,closed,the app can't open pdf files ,"[Label(name=""bug""), Label(name=""unconfirmed"")]","why I can't compile this code I tried many times 
+all pdf files look white 
+[https://drive.google.com/open?id=0B9x5c4hmdBIGNVloMkxjRWc5azA](url)
+"
+dschuermann/document-viewer,closed,Require API 14?,[],"Support library 26.0.0 is going to require API 14 (Android 4.0, released Oct 2011).
+Also, we need to require API 14 if we use https://github.com/mikepenz/MaterialDrawer
+
+@dschuermann if it's easy to check, does the Google Play developer console show how many DV users are on API 13 or less (Android 3.x or earlier)?"
+dschuermann/document-viewer,open,Update settings interface to material design,[],
+dschuermann/document-viewer,open,Bookmarks and Outline in a drawer in the viewer activity ,"[Label(name=""enhancement"")]","Currently it takes several taps to go to a bookmark (4 on a phone: toolbar menu, Go To, select bookmark, ""Go""). With a drawer, this could be reduced to 1 swipe + 1 tap (swipe from left edge to open the drawer, tap on the bookmark.)
+
+Do tabbed drawers exist on Android? I was thinking it could have two tabs, one for the document outline and one for the bookmarks.
+
+Look into https://github.com/mikepenz/MaterialDrawer"
+dschuermann/document-viewer,closed,Update mupdf to v1.11,[],"Fixes #244.
+
+This is simply an update of mupdf,
+dosen't include changes (on our application side) for loading system fonts.
+"
+dschuermann/document-viewer,closed,armeabi build broken on NDK r14b,[],"This is on 3ba4b87abf9dae3a45fe5ac0bb19e558b0bea7c6. `ndk-build V=1` fails with:
+
+```
+[armeabi] Compile++ arm  : djvu <= IW44Image.cpp
+/Users/ericwa/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ -MMD -MP -MF ./obj/local/armeabi/objs/djvu/djvulibre/libdjvu/IW44Image.o.d -gcc-toolchain /Users/ericwa/Library/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as -g -target armv5te-none-linux-androideabi -march=armv5te -mtune=xscale -msoft-float -fno-exceptions -fno-rtti -marm -O2 -DNDEBUG  -Ijni/djvu/../mupdf/mupdf/thirdparty/jpeg -Ijni/djvu/../mupdf/mupdf/scripts/jpeg -Ijni/djvu/djvulibre/libdjvu -Ijni/djvu -I/Users/ericwa/Library/Android/sdk/ndk-bundle/sources/cxx-stl/system/include -Ijni/djvu -DANDROID -DHAVE_CONFIG_H -DTHREADMODEL=POSIXTHREADS -DDIR_DATADIR=\""/usr/local/share\"" -Wa,--noexecstack -Wformat -Werror=format-security  -fexceptions     --sysroot /Users/ericwa/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-arm  -c  jni/djvu/djvulibre/libdjvu/IW44Image.cpp -o ./obj/local/armeabi/objs/djvu/djvulibre/libdjvu/IW44Image.o 
+In file included from jni/djvu/djvulibre/libdjvu/IW44Image.cpp:72:
+In file included from jni/djvu/djvulibre/libdjvu/IW44Image.h:165:
+In file included from jni/djvu/djvulibre/libdjvu/GSmartPointer.h:97:
+In file included from jni/djvu/djvulibre/libdjvu/DjVuGlobal.h:66:
+/Users/ericwa/Library/Android/sdk/ndk-bundle/sources/cxx-stl/system/include/new:14:7: warning: 'operator new' is missing exception specification 'throw(std::bad_alloc)' [-Wmissing-exception-spec]
+void* operator new(std::size_t);
+      ^
+                                throw(std::bad_alloc)
+/Users/ericwa/Library/Android/sdk/ndk-bundle/sources/cxx-stl/system/include/new:15:7: warning: 'operator new[]' is missing exception specification 'throw(std::bad_alloc)' [-Wmissing-exception-spec]
+void* operator new[](std::size_t);
+      ^
+                                  throw(std::bad_alloc)
+/Users/ericwa/Library/Android/sdk/ndk-bundle/sources/cxx-stl/system/include/new:16:7: warning: 'operator delete' is missing exception specification 'throw()' [-Wmissing-exception-spec]
+void  operator delete(void*);
+      ^
+                             throw()
+/Users/ericwa/Library/Android/sdk/ndk-bundle/sources/cxx-stl/system/include/new:17:7: warning: 'operator delete[]' is missing exception specification 'throw()' [-Wmissing-exception-spec]
+void  operator delete[](void*);
+      ^
+                               throw()
+4 warnings generated.
+/var/folders/sg/57wxmnq50t18qrgggm4h28sc0000gn/T/IW44Image-f1519e.s: Assembler messages:
+/var/folders/sg/57wxmnq50t18qrgggm4h28sc0000gn/T/IW44Image-f1519e.s:2085: Error: selected processor does not support ARM mode `ssat r2,#8,r2'
+/var/folders/sg/57wxmnq50t18qrgggm4h28sc0000gn/T/IW44Image-f1519e.s:4550: Error: selected processor does not support ARM mode `ssat r1,#8,r1'
+clang++: error: assembler command failed with exit code 1 (use -v to see invocation)
+make: *** [obj/local/armeabi/objs/djvu/djvulibre/libdjvu/IW44Image.o] Error 1
+```"
+dschuermann/document-viewer,closed,Update mupdf to 1.11,[],
+dschuermann/document-viewer,closed,Small lag with scrolling,[],"I found annoying behavior while reading.
+Scrolling begins not smoothly
+
+Tap and then scroll slowly, on the beginning, text dashes on about one string.
+At other times it mooves smooth  
+Without lifting a finger this doesn't happen. This is not noticeable with fast scrolling.
+This effect extends to all types of documents
+
+It's seems that program awaits actions of double taps or swipes, even if taps are disabled in options and taps zones are off
+Also if long tap applied, scrolling does not happen, this may some how related."
+dschuermann/document-viewer,open,Support for compressed pdfs,"[Label(name=""enhancement"")]","Wikipedia lists internet media types application/x-gzpdf and application/x-bzpdf for pdfs that have been compressed with gzip and bzip2. Some document viewers (like evince) also have support for xz, which make sense since it is the superior algorithm.
+Would it be possible to add support for this?
+The underlaying pdf-library might already have support for compression. If that is the case, it should bebe a matter of just accepting different file extensions."
+dschuermann/document-viewer,open,API Compatibility Issues,[],"Dear developers,
+
+We have recently developed a state-of-the-art static analysis tool for uncovering API compatibility issues in Android apps. Applying this tool to open source apps on F-droid, we have exposed a few instances of compatibility issues and submitting them to development teams for a fix. 
+
+For your app, we have found that this project has accessed the following APIs which are available only on an API level higher than the declared minSdkVersion and which are accessed without proper protection. In other words, if those APIs get called at runtime, it will trigger a NoSuchMethodError and thus result in a crash of the running application.
+
+<android.preference.PreferenceFragment: void <init>()>:[11,25]
+<android.app.Notification.Builder: android.app.Notification.Builder setContentText(java.lang.CharSequence)>:[11,25]
+<android.app.Notification.Builder: android.app.Notification getNotification()>:[11,25]
+<android.preference.PreferenceActivity: void loadHeadersFromResource(int,java.util.List)>:[11,25]
+<android.preference.PreferenceFragment: android.preference.PreferenceScreen getPreferenceScreen()>:[11,25]
+<android.app.Notification.Builder: void <init>(android.content.Context)>:[11,25]
+<android.app.Notification.Builder: android.app.Notification.Builder setDefaults(int)>:[11,25]
+<android.preference.PreferenceFragment: void addPreferencesFromResource(int)>:[11,25]
+<android.app.Fragment: void onCreate(android.os.Bundle)>:[11,25]
+<android.app.Notification.Builder: android.app.Notification.Builder setContentIntent(android.app.PendingIntent)>:[11,25]
+<android.app.Notification.Builder: android.app.Notification.Builder setAutoCancel(boolean)>:[11,25]
+<android.preference.TwoStatePreference: void setChecked(boolean)>:[14,25]
+<android.app.Notification.Builder: android.app.Notification.Builder setSmallIcon(int)>:[11,25]
+<android.app.Notification.Builder: android.app.Notification.Builder setTicker(java.lang.CharSequence)>:[11,25]
+<android.app.Notification.Builder: android.app.Notification.Builder setWhen(long)>:[11,25]
+<android.view.View: void setSystemUiVisibility(int)>:[11,25]
+<android.view.View: void setLayerType(int,android.graphics.Paint)>:[11,25]
+<android.app.Notification.Builder: android.app.Notification.Builder setContentTitle(java.lang.CharSequence)>:[11,25]
+
+Note that, because of the nature of the static analysis, we cannot confirm whether the flagged APIs would actually be called at runtime (e.g., unreachable code). However, we still believe that those APIs, which may cause compatibility issues, should not be accessed or at least be accessed with proper protections. 
+
+In addition to the aforementioned APIs (i.e., backward-compatibility), which could cause app crashes if accessed, we have also identified that this project has also accessed some APIs that have been removed from the latest public SDK, making the app possibly suffer from forward-compatibility issues.
+
+<org.apache.http.HttpResponse: org.apache.http.StatusLine getStatusLine()>:[1,22]
+<org.apache.http.message.AbstractHttpMessage: void setHeader(java.lang.String,java.lang.String)>:[1,22]
+<org.apache.http.HttpEntity: long getContentLength()>:[1,22]
+<org.apache.http.HttpResponse: org.apache.http.HttpEntity getEntity()>:[1,22]
+<java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int[])>:[1,8]
+<org.apache.http.HttpEntity: org.apache.http.Header getContentEncoding()>:[1,22]
+<org.apache.http.auth.UsernamePasswordCredentials: java.lang.String getPassword()>:[1,22]
+<org.apache.http.message.AbstractHttpMessage: org.apache.http.Header getFirstHeader(java.lang.String)>:[1,22]
+<org.apache.http.client.methods.HttpRequestBase: java.net.URI getURI()>:[1,22]
+<org.apache.http.auth.UsernamePasswordCredentials: void <init>(java.lang.String,java.lang.String)>:[1,22]
+<org.apache.http.auth.UsernamePasswordCredentials: java.lang.String getUserName()>:[1,22]
+<org.apache.http.StatusLine: java.lang.String getReasonPhrase()>:[1,22]
+<org.apache.http.Header: java.lang.String getValue()>:[1,22]
+<android.net.http.AndroidHttpClient: android.net.http.AndroidHttpClient newInstance(java.lang.String)>:[8,22]
+<android.net.http.AndroidHttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>:[1,22]
+<org.apache.http.HttpEntity: org.apache.http.Header getContentType()>:[1,22]
+<org.apache.http.HttpEntity: java.io.InputStream getContent()>:[1,22]
+<org.apache.http.HttpMessage: org.apache.http.Header getFirstHeader(java.lang.String)>:[1,22]
+<android.net.http.AndroidHttpClient: void close()>:[8,22]
+<org.apache.http.message.AbstractHttpMessage: void setHeader(org.apache.http.Header)>:[1,22]
+<org.apache.http.StatusLine: int getStatusCode()>:[1,22]
+<org.apache.http.client.methods.HttpGet: void <init>(java.net.URI)>:[1,22]
+<org.apache.http.message.BasicHeader: void <init>(java.lang.String,java.lang.String)>:[1,22]
+
+We would be very much appreciated if you can acknowledge to us that those reported APIs are indeed problematic for the project’s long-term stability. please let us know if you need any more information relating to this issue report.
+"
+dschuermann/document-viewer,open,"Redesign ""view options"" menu into a dialog","[Label(name=""enhancement"")]","The ""view options"" menu could make better use of the available space by changing from a menu into a special-purpose dialog.
+
+Some ideas:
+- Change night mode checkbox to a horizontal list of color swatches:
+    - black on white
+    - white on black 
+    - brown on sepia
+    - etc. (user defined tint presets?)
+- ""Force portrait / force landscape / use device default"" could be made a single button that cycles through those 3 options.
+- we may want to hide some of the labels for buttons and use icons only, so multiple icons can be stacked horizontally (needs to be done carefully.)
+- Could use two tabs like Play Books, since we have a *lot* of settings in DV.
+
+
+For reference here are some screenshots of current DV, Kindle, and Play Books:
+
+![screenshot_2017-02-05-14-06-49-841_org sufficientlysecure viewer](https://cloud.githubusercontent.com/assets/239161/22629883/95d310b0-ebac-11e6-8b0c-b142ac7f8418.png)
+
+Kindle:
+![screenshot_2017-02-05-13-34-34-793_com amazon kindle](https://cloud.githubusercontent.com/assets/239161/22629887/a39d634e-ebac-11e6-96b7-59428ff623a3.png)
+
+Play books:
+![screenshot_2017-02-05-13-31-07-126_com google android apps books](https://cloud.githubusercontent.com/assets/239161/22629894/d84035d6-ebac-11e6-8fdb-c9c3dcac0139.png)
+
+![screenshot_2017-02-05-13-31-13-678_com google android apps books](https://cloud.githubusercontent.com/assets/239161/22629913/2e554cf4-ebad-11e6-8549-77df015fb1a9.png)
+"
+dschuermann/document-viewer,closed,Android Devices Not recognizing document viewer as OXPS doc default,[],"Document viewer works great for viewing OXPS documents. However, Android OS is not recognizing DOCUMENT Viewer as a default app for OXPS documents. Anytime I receive on in an email with an OXPS document and click on it. It says no compatible viewer found. I have to save the attachment then open document viewer to see it.  I tried on an android 6 OS and 7 OS. Same result. Also tried different email apps (GMAIL and Blue Mail) Same result.  Even some file managers don't recognize it as default viewer for OXPS. "
+dschuermann/document-viewer,closed,Update strings_preferences_scroll.xml (eo),[],
+dschuermann/document-viewer,closed,Esperanto and Polish translations,[],Name of program and assets/about are not translated.
+dschuermann/document-viewer,open,Option to reflow EPUB on screen rotation,"[Label(name=""enhancement"")]","Closely related to: https://github.com/SufficientlySecure/document-viewer/issues/194
+
+With this option, the font size would stay the same when you rotate the screen, but lines would be reflowed (so rotating to landscape would give more words per line). Could change the number of pages in the document"
+dschuermann/document-viewer,closed,Android automatic refactor - Recycle,[],"Hi,
+
+I am developing a tool to automatically refactor Android applications with the goal of improving energy efficiency.
+This pull request has the changes generated while applying the rule ""Recycle"".
+
+Some resources (e.g., ```Cursor``` instances) should be closed when they are no longer necessary. 
+
+I have made a previous validation of the changes and they seem correct.
+Please consider them and let me know if you agree with them.
+
+Best,
+Luis"
+dschuermann/document-viewer,open,Defaults won't delete in OPDS Browser,"[Label(name=""enhancement"")]","Long press ""Flibusta"" and ""Plough"", then delete. Back out from the OPDS Browser then go back in, they're both back.
+
+A Thank You to Dominik for the development!"
+dschuermann/document-viewer,open,Performance improvement suggestion,"[Label(name=""enhancement"")]","Dear developers,
+I found several bitmap displaying issues in document-viewer. These issues could affect performance. 
+In the position of document-viewer:
+org.ebookdroid.common.cache.ThumbnailFile.java          load()
+https://github.com/SufficientlySecure/document-viewer/blob/master/document-viewer/src/main/java/org/ebookdroid/common/cache/ThumbnailFile.java
+`
+
+    private Bitmap load(final boolean raw) {
+        if (this.exists()) {
+            final Bitmap stored = BitmapFactory.decodeFile(this.getPath());
+            if (stored != null) {
+                return raw ? stored : paint(stored);
+            }
+        }
+        return getDefaultThumbnail();
+    }
+
+   `
+the bitmap object is created with the invocation of BitmapFactory.decodeFile(). 
+I found load() is invoked indirectly by:
+org.ebookdroid.ui.library.adapters.RecentAdapter.java     getView()
+org.ebookdroid.ui.library.adapters.BookShelfAdapter.java   getView()
+
+getView() callbacks are frequently invoked in the UI thread and this means that there will be many bitmap objects being created in the UI thread.
+Since image decoding is slow, for performance considerations, we should perform the image decoding operations in worker threads (e.g., via AsyncTask).
+
+In addition, maybe we can define memory cache and disk memory cache to store the bitmap objects. Then app can reuse them instead of creating new bitmap objects continuously. Also, we can use the Option.inbitmap to reuse the memory space of existing bitmap objects instead of consuming new memory space, which will greatly reduce the memory consumption and improves app's performance.
+
+By the way, I noticed that in the following code, disk memory cache is correctly applied:
+org.ebookdroid.ui.opds.adapters.LoadThumbnailTask.java  loadBookThumbnail()
+https://github.com/SufficientlySecure/document-viewer/blob/master/document-viewer/src/main/java/org/ebookdroid/ui/opds/adapters/LoadThumbnailTask.java
+`
+
+            final Bitmap image = BitmapFactory.decodeStream(new FileInputStream(file), null, opts);
+            if (image != null) {
+                thumbnailFile.setImage(image);
+                image.recycle();
+            }
+         `
+Maybe we can also define memory cache and use Option.inbitmap here.
+
+Do you think these optimizations can improve document-viewer's performance?
+
+Looking forward to your response and hope I can help improve document-viewer.
+Thanks.
+
+**References:** 
+Processing Bitmaps Off the UI Thread
+https://developer.android.com/training/displaying-bitmaps/process-bitmap.html
+the use of disk memory cache and memory cache:
+https://developer.android.com/training/displaying-bitmaps/cache-bitmap.html
+the use of Option.inbitmap: 
+https://developer.android.com/training/displaying-bitmaps/manage-memory.html
+
+"
+dschuermann/document-viewer,closed,unable to copy text PDF file,[],"2.7.9
+android 5.1 w/out play store
+ls-4001/lyf
+
+i am unable to copy text from PDF file, the file is available at [z]. by default we can't copy text in pdf ? i couldn't find anything in settings, or did i overlook something ?
+
+please excuse for not uploading file to any site, i am on extremely inconsistent 2g mobile data network.
+
+[z] http://self.gutenberg.org/eBooks/WPLBN0001235287-Mindgames-by-Sam-Vaknin-Ph-D-.aspx?
+"
+dschuermann/document-viewer,closed,ExceptionInInitializerError in org.emdev.utils.FileUtils.getAbsolutePath,"[Label(name=""bug"")]","From Google Play:
+most reported exception on G Play. Happens on many devices with Android 6/7 when opening specific files.
+
+```
+java.lang.ExceptionInInitializerError
+	at org.emdev.utils.FileUtils.getAbsolutePath(FileUtils.java:66)
+	at org.emdev.BaseDroidApp.init(BaseDroidApp.java:90)
+	at org.emdev.BaseDroidApp.onCreate(BaseDroidApp.java:56)
+	at org.ebookdroid.EBookDroidApp.onCreate(EBookDroidApp.java:46)
+	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1046)
+	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:5402)
+	at android.app.ActivityThread.-wrap2(ActivityThread.java)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1541)
+	at android.os.Handler.dispatchMessage(Handler.java:102)
+	at android.os.Looper.loop(Looper.java:154)
+	at android.app.ActivityThread.main(ActivityThread.java:6123)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:867)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:757)
+Caused by: java.lang.NullPointerException: Attempt to get length of null array
+	at org.emdev.utils.FileUtils.<clinit>(FileUtils.java:27)
+	... 14 more
+```"
+dschuermann/document-viewer,closed,Updated on Google Play,[],@ericwa just FYI: I updated DV on Google Play!
+dschuermann/document-viewer,open,Take font size into account when zooming to column,"[Label(name=""enhancement"")]","I read a lot of magazine-style PDFs, which use columns of different widths. I use the ""zoom to column"" action a lot, which I have bound to a double-click of the main area.
+
+On the whole, this works very well. However, some columns have smaller text than others. The current zoom to column action leaves quite a large ""margin"" to the left and the right. I can manually zoom in further, of course, but it is slightly awkward.
+
+So I was going to raise an issue with you to ask if the zoom to column action could zoom in a little further than it currently does (i.e. reduce the margins), maybe as a user setting. But then I thought that for some very narrow columns (e.g. ""sidebars"" in a magazine), this would actually cause things to be zoomed in too far, making only a few lines of very large text on the screen.
+
+So I was wondering, are you able to detect a font size when doing zoom to column? Ideally I'd like to be able to have a setting of a desired font size, and zoom to column would do its best to achieve that, zooming in as much as possible but not too much.
+
+I realise that this is almost a ""machine vision"" problem to detect the font size, but someone out there may have already solved it. You've obviously already got some kind of machine vision stuff going on to detect the column widths, although I couldn't work out in a brief look in your code where that was, when I was considering asking for the zoom to be slightly higher (thinner margins)."
+dschuermann/document-viewer,closed,Restore toolbar toggle,"[Label(name=""enhancement"")]","A user on a Google Play review misses the Toolbar toggle that I removed a while ago.
+
+I tend to agree it was hasty to remove; this is a ""power user"" app after all, and it could be useful to have the status bar visible but the toolbar hidden (you want to keep track of the time, or incoming mail, but not have the UI clutter of the toolbar)."
+dschuermann/document-viewer,open,Way to reset default tap areas,"[Label(name=""enhancement"")]","There should be a way to restore the default tap areas, besides clearing the app data"
+dschuermann/document-viewer,closed,First attempt at Configure Taps after deleting all fails,"[Label(name=""bug"")]","Steps to reproduce:
+1 Go into Configure Taps
+2 Repeatedly press Delete until all regions deleted
+3 Drag highlight a region
+4 Assign an action, e.g. Single Tap does Find Text
+5 Press Back
+6 Attempt the action, doesn't eork
+7 Go back into Configure Taps, observe no regions defined
+
+DV 2.7.8"
+dschuermann/document-viewer,closed,Tint + Night Mode not working as expected,"[Label(name=""enhancement"")]","It should apply the tint after inverting, so you can get off-white text on a black background.
+"
+dschuermann/document-viewer,closed,service_actions.xml out of sync,[],"File https://github.com/SufficientlySecure/document-viewer/blob/master/document-viewer/src/main/res/values/service_actions.xml bottom section doesn't match top (has one extra item) so labels are off by one when an action below Full Screen is selected.
+"
+dschuermann/document-viewer,open,FB2 font size in App Settings should take effect immediately,"[Label(name=""enhancement"")]","Not sure how easy this will be, looks like it will require running the `BookLoadTask` in `ViewerActivityController` again.
+
+Required for https://github.com/SufficientlySecure/document-viewer/issues/194
+"
+dschuermann/document-viewer,closed,Color picker is not rendering properly,"[Label(name=""bug"")]","The color pickers under All Settings -> Navigation and History aren't rendering properly. They still work though.
+![screen shot 2016-10-21 at 11 56 25 am](https://cloud.githubusercontent.com/assets/239161/19607198/6cc15126-9785-11e6-8efd-ff5d29968483.png)
+"
+dschuermann/document-viewer,closed,"there was some error when ,i was intialized ndk-build command in project",[],"there was some error when i was intialized ndk-build command in project
+
+error: Could not find incbin file 'resources/fonts/urw/NimbusMono-Regular.cff'
+.incbin ""resources/fonts/urw/NimbusMono-Regular.cff""
+"
+dschuermann/document-viewer,closed,Store book settings as JSON,"[Label(name=""enhancement"")]","The current `DBAdapterV8` is a pain to add new book settings to. I think it'd be better to just store the book settings as JSON, there is already JSON import/export code for backing up book settings.
+"
+dschuermann/document-viewer,closed,Support right-to-left page arrangement,"[Label(name=""enhancement"")]","This would be a (boolean) book setting, ""Right to left page order"" (not sure about the name).
+It would apply to Single Page view mode as well as Horizontal Scroll.
+"
+dschuermann/document-viewer,open,Ability to rearrange books in bookshelves,"[Label(name=""enhancement"")]","Suggested [here](https://github.com/SufficientlySecure/document-viewer/issues/142#issuecomment-161472126)
+
+It sounds like RecyclerView supports this so it should be possible with little effort.
+We'd just need:
+- to save the custom ordering for each directory
+- detect files added, and put them at the end of the list
+- detect when files have been deleted and remove the from the custom ordering
+"
+dschuermann/document-viewer,open,Add Toolbar button to toggle between bookshelf / list view,"[Label(name=""enhancement"")]","i.e. a toolbar button for ""All Settings -> File Browser -> Use bookcase view""
+
+It's complicated a bit because when the bookshelf mode is disabled, there's an extra toolbar button to toggle between recent books and the file browser.
+"
+dschuermann/document-viewer,open,Unutilized space in full screen mode on Samsung tablets,"[Label(name=""bug"")]","As can be seen in the screenshot below, the bottom portion of the screen is not being utilized.
+![screenshot_20160925-045947](https://cloud.githubusercontent.com/assets/11317451/18811502/2a17a9c0-82e4-11e6-8e67-59bf40410204.png)
+
+This is not a problem I have on other devices, so it does seem to be device-specific. Not sure if it has anything to do with Samsung devices not having on-screen navigation buttons.
+
+Device: Samsung Galaxy Tab S2 8.0 (SM-T713)
+Android version: 6.0.1
+Build number: MMB29M.T713XXU1APG1
+"
+dschuermann/document-viewer,closed,Use appcompat-v7,[],"Applies [this blog post](http://android-developers.blogspot.ca/2014/10/appcompat-v21-material-design-for-pre.html) to DV.
+- Most activities are now a subclass of AppCompatActivity. The only exception is the settings activity.
+- Toolbar is now used on all API levels.
+- Things from IUIManager which are no longer dependent on API level having ActionBar were moved to a new UIManagerAppCompat class.
+- Replaces the custom bookshelf header with a TabView.
+
+For Android <5.0, the app will now use the material theme (more or less - the settings activity will still be Holo or Android 2.x themed).
+
+Reasons we might not want to do this:
+- Main reason IMO is code churn / messing with things that worked.
+- Google removed API 8 support from the August release of the support libraries. We're using the last version prior to that that still support API8, but if we want to update we'll have to require API9+.
+
+On the plus side, if we merge this it'll allow modernizing the UI and reducing some of the multiple code paths which are hard to maintain.
+
+screenshot of the new bookshelf tabs:
+![screenshot_2016-09-24-14-30-56-413_org sufficientlysecure viewer](https://cloud.githubusercontent.com/assets/239161/18811338/bcf3f54e-8269-11e6-8307-445d96094632.png)
+"
+dschuermann/document-viewer,closed,Adding support for Android 7.0 Nougat,[],"After upgrading to Android 7.0 Nougat on my Nexus 6P, the app can no longer be launched. As can be seen in the screenshot below, the error message ""Document Viewer keeps stopping"" pops up, prompting the user to close the app.
+
+![screenshot_20160924-234004](https://cloud.githubusercontent.com/assets/11317451/18809628/937ef412-82b3-11e6-8649-dfc7f82f7e1b.png)
+Let me know if any further information / log is required for debugging purposes.
+
+![screenshot_20160924-234716](https://cloud.githubusercontent.com/assets/11317451/18809629/95c83a9e-82b3-11e6-9c03-22749e19e08d.png)
+
+Although I've included my device info above, this problem is unlikely to be specific to my device, but rather it should affect all devices running Android 7.0, the number of which will soon start to expand. Therefore, please consider adding support for Android 7.0.
+"
+dschuermann/document-viewer,open,Can't cancel a page-flip swipe,"[Label(name=""bug"")]","In most apps, you can cancel swipe gestures by moving your finger back to where you started the gesture; this doesn't work in DV's single page mode.
+"
+dschuermann/document-viewer,open,Swipe to show status bar in Fullscreen causes page flip,"[Label(name=""bug"")]","i.e. dragging from the top edge of the screen to show the system status bar.
+
+This should not be processed as a page flip swipe
+"
+dschuermann/document-viewer,closed,Crash on x86 API 10 (Google APIs) emulator,"[Label(name=""bug"")]","- install https://f-droid.org/repo/org.sufficientlysecure.viewer_2763.apk
+- Open a PDF, and DV crashes. 
+- logcat:
+
+```
+E/AndroidRuntime( 2411): FATAL EXCEPTION: main
+E/AndroidRuntime( 2411): java.lang.RuntimeException: Unable to start activity ComponentInfo{org.sufficientlysecure.viewer/org.ebookdroid.ui.viewer.ViewerActivity}: java.lang.RuntimeException: java.lang.ExceptionInInitializerError
+E/AndroidRuntime( 2411):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1647)
+E/AndroidRuntime( 2411):    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:1663)
+E/AndroidRuntime( 2411):    at android.app.ActivityThread.access$1500(ActivityThread.java:117)
+E/AndroidRuntime( 2411):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:931)
+E/AndroidRuntime( 2411):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime( 2411):    at android.os.Looper.loop(Looper.java:130)
+E/AndroidRuntime( 2411):    at android.app.ActivityThread.main(ActivityThread.java:3683)
+E/AndroidRuntime( 2411):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime( 2411):    at java.lang.reflect.Method.invoke(Method.java:507)
+E/AndroidRuntime( 2411):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:839)
+E/AndroidRuntime( 2411):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:597)
+E/AndroidRuntime( 2411):    at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime( 2411): Caused by: java.lang.RuntimeException: java.lang.ExceptionInInitializerError
+E/AndroidRuntime( 2411):    at org.ebookdroid.core.models.DocumentModel.<init>(DocumentModel.java:71)
+E/AndroidRuntime( 2411):    at org.ebookdroid.ui.viewer.ViewerActivityController.afterCreate(ViewerActivityController.java:238)
+E/AndroidRuntime( 2411):    at org.ebookdroid.ui.viewer.ViewerActivityController.afterCreate(ViewerActivityController.java:94)
+E/AndroidRuntime( 2411):    at org.emdev.ui.AbstractActionActivity.onCreate(AbstractActionActivity.java:107)
+E/AndroidRuntime( 2411):    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1047)
+E/AndroidRuntime( 2411):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1611)
+E/AndroidRuntime( 2411):    ... 11 more
+E/AndroidRuntime( 2411): Caused by: java.lang.ExceptionInInitializerError
+E/AndroidRuntime( 2411):    at java.lang.Class.newInstanceImpl(Native Method)
+E/AndroidRuntime( 2411):    at java.lang.Class.newInstance(Class.java:1409)
+E/AndroidRuntime( 2411):    at org.ebookdroid.core.models.DocumentModel.<init>(DocumentModel.java:68)
+E/AndroidRuntime( 2411):    ... 16 more
+E/AndroidRuntime( 2411): Caused by: java.lang.RuntimeException: java.lang.UnsatisfiedLinkError: Cannot load library: reloc_library[1311]:  1129 cannot locate 'sigsetjmp'...
+E/AndroidRuntime( 2411): 
+E/AndroidRuntime( 2411):    at org.ebookdroid.EBookDroidLibraryLoader.load(EBookDroidLibraryLoader.java:21)
+E/AndroidRuntime( 2411):    at org.ebookdroid.droids.mupdf.codec.MuPdfContext.<clinit>(MuPdfContext.java:24)
+E/AndroidRuntime( 2411):    ... 19 more
+E/AndroidRuntime( 2411): Caused by: java.lang.UnsatisfiedLinkError: Cannot load library: reloc_library[1311]:  1129 cannot locate 'sigsetjmp'...
+E/AndroidRuntime( 2411): 
+E/AndroidRuntime( 2411):    at java.lang.Runtime.loadLibrary(Runtime.java:434)
+E/AndroidRuntime( 2411):    at java.lang.System.loadLibrary(System.java:554)
+E/AndroidRuntime( 2411):    at org.ebookdroid.EBookDroidLibraryLoader.load(EBookDroidLibraryLoader.java:17)
+E/AndroidRuntime( 2411):    ... 20 more
+```
+"
+dschuermann/document-viewer,closed,Center single pages instead of top-aligning (option?),"[Label(name=""enhancement"")]","In Single Page view mode, if a page is not as tall as the screen, it's aligned to the top of the screen.
+This looks weird to me, I would expect it to be vertically centered.
+
+It's also inconsistent with the horizontal centering of pages that are narrower than the screen (e.g. viewing a portrait PDF on a landscape phone)
+"
+dschuermann/document-viewer,open,"[WIP] Integrate ACRA crash reporter, with a prompt to send an email.",[],"Adds a crash prompt that looks like this:
+![screen](https://cloud.githubusercontent.com/assets/239161/18234577/d82bd694-72c7-11e6-8f13-9f8166528439.png)
+If you click OK, it opens the email client.
+
+I'm not sure where the emails should go. Probably should be a private mailing list, so users' email addresses aren't exposed on the web when they report a crash.
+
+The data in the crash report is pretty minimal (phone model/brand/android version/app version/stack trace, plus user supplied comment)
+
+Message strings are borrowed from fdroidclient.
+If we go ahead with this, I should be able to copy all the translations from fdroidclient as well.
+"
+dschuermann/document-viewer,open,Option to reverse the top and bottom of the (landscape) view,"[Label(name=""enhancement"")]","There are times when it'd be useful to be able to switch which side of the phone is the bottom in the landscape mode. Currently the left side of the screen is always the bottom, which can be highly invconvenient at times.
+
+For example one can plug in the charger only to find that the limited cable length now causes you to stay in an unergonomical position to read. Or one might just prefer to hold the phone in the right hand without accidentally touching the home and back buttons.
+
+This should be a per-book boolean option, displayed under Force landscape, before Day/Night. After implementing #206 the user can be given the possibility to set the default. The option name can be simply Reverse, and all it would do is to switch the bottom and top of the view. It should also work in portrait mode.
+"
+dschuermann/document-viewer,closed,Global option to disable volume key scrolling,[],"It's common to put background music playing while reading. However, by default Document Viewer overrides the hardware volume keys to not be available for adjusting the volume but to be used for scrolling. I have never had a situation when I'd have wanted to use volume keys for scrolling, but always for adjusting the volume, which now requires going away from the app and then back.
+
+It'd be useful to have a global option to disable this behavior for example under All Settings > Taps, swipes and keys. The setting name could be ""Volume keys scroll"", with the additional text ""Use volume keys for scrolling instead of adjusting the volume.""
+"
+dschuermann/document-viewer,closed,Choose default rotation mode,"[Label(name=""enhancement"")]","Book Settings and All Settings > Rendering have options in common, like Split pages, Crop pages (auto) etc. Changing any of these settings in All Settings sets the default for new books. There's one very useful Book Setting missing here: Rotation mode.
+
+On many phones the most comfortable way to read books is Force landscape. Because it's not possible to set this as a default, this has to be set manually for every new opened book.
+
+Adding this option in All Settings is a nice improvement to the UX.
+"
+dschuermann/document-viewer,closed,Spanish translation complete,[],"_See title_
+"
+dschuermann/document-viewer,closed,Toolbar page number doesn't update in fullscreen,"[Label(name=""bug"")]","Tap the page to enter fullscreen mode, then scroll forward a few pages. Tap again to exit fullscreen.
+- Expected: toolbar shows the correct page number
+- Actual: toolbar shows the page number from when you first entered fullscreen mode
+"
+dschuermann/document-viewer,open,"The app crashes on ""Intro_to_Algo_Selected_Solutions.pdf""","[Label(name=""bug""), Label(name=""unconfirmed"")]","Document Viewer (Version 2.7.6 from F-Droid) crashes on the file
+https://mitpress.mit.edu/sites/default/files/titles/content/Intro_to_Algo_Selected_Solutions.pdf
+(it's a supplement for the famous book ""Introduction to Algorithms"" by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest and Clifford Stein).
+"
+dschuermann/document-viewer,closed,Enlarge touchable area of hyperlinks,"[Label(name=""enhancement"")]","It is difficult to tap on links in PDF files accurately. Maybe the target areas could be enlarged by a few dp on each side to make them easier to hit. (without altering the size of the rendered yellow highlight)
+"
+dschuermann/document-viewer,closed,Ger translate,[],"Adding German translations.
+"
+dschuermann/document-viewer,closed,PDF file renders with missing symbols; only displays properly in some applications,"[Label(name=""MuPDF"")]","I did screenshot of single file:
+http://imgur.com/a/juLNS
+**first** screen display by **Document Viewer**
+**second** screen display by **VuDroid** https://f-droid.org/repository/browse/?fdfilter=VuDroid&fdid=org.vudroid
+
+You can see gaps instead some symbols.
+There is file example http://rgho.st/85spjC2x7
+"
+dschuermann/document-viewer,closed,Direct link on compiled .apk,[],"Please, put compiled .apk files into release section of your repo!
+I don't have Google Play in my Android Phone and F-Droid usual has old version of apps.
+Thanks.
+"
+dschuermann/document-viewer,closed,Follow links within document,"[Label(name=""MuPDF"")]","Hi there,
+not sure, whether I'm simply missing something, but I thought I just ask...
+I'm using document viewer v2.7.5 as provided via F-Droid.
+When using epub or pdf documents, I'm not able to follow hyperlinks that refer to anchors within the same document (e.g. ""p275""). Maybe it's not implemented at all (even though they are displayed in blue colour), maybe it's because tapping the screen just toggles fullscreen, maybe I'm just too stupid (I hope not). However, I'd highly appreciate any help on this.
+Thanks so much for such a great application!
+Cheers
+"
+dschuermann/document-viewer,open,"couldn't find ""libebookdroid.so""","[Label(name=""bug"")]","reason:
+
+cpu = ""aarch64""
+"
+dschuermann/document-viewer,closed,Select/Copy,[],"I saw the low dev comment in a reply to annotation, but select/copy comes with most
+Document viewers. I like this app, but I have to use Polaris.
+"
+dschuermann/document-viewer,closed,Add Left/right screen edge tap areas to flip pages by default,[],"This would be especially useful in single page view mode: it would be natural if tapping the left or right edge of the screen flipped pages back/forward.
+"
+dschuermann/document-viewer,open,Font size controls for ePub books,"[Label(name=""enhancement"")]","mupdf exposes this.
+IIRC there are two methods:
+1. change the page size we are requesting mupdf to render the doument to
+2. provide a user stylesheet that changes the font size.
+
+We just need a UI for it and to deal with the number of pages in the book changing (clear book cache? Probably also requires https://github.com/SufficientlySecure/document-viewer/issues/136 to be fixed)
+"
+dschuermann/document-viewer,open,Reconsider / improve tap-to-toggle-fullscreen,[],"One review on the play store [found it annoying](https://play.google.com/store/apps/details?id=org.sufficientlysecure.viewer&reviewId=Z3A6QU9xcFRPRmV5dGpVQ3g5X3BxZ3NJSXhRRkZ4aGFhSWVTcDZpSXVveDN5Z0dkZkxnTy03X2NzOXJPa2Rxb1MtYzVyeWtkdXpqREp2LXMyMXhRMjdDcnRZ). They say they almost never use fullscreen.
+
+I do find myself accidentally toggling fullscreen too, especially when trying to tap on links.
+"
+dschuermann/document-viewer,closed,Copy Selected text or Share it ,[],"I have tried hard to find this function - Copy Selected text or be able to Share  with other app -  , but wasn't able.
+
+Thus, should I have missed it, please point me to it, and I will be more than happy to make a pull request for the FAQ. 
+
+Otherwise this would be an enchancement request. Selecting and Copying text would be best. Sharing would be nice. Anyhow thx a lot already for reading this. 
+"
+dschuermann/document-viewer,closed,Crashes on startup with Android 7 (Nougat),[],"Just updated to Android 7 with Nexus 5x and this app started crashing on opening. Might want to look at it before Android 7 is released. :)
+"
+dschuermann/document-viewer,open,some page missed,[],"some pdf parsed error ;
+some page missed; 
+this lib page max size = 237,but the file has 470 pages;
+"
+dschuermann/document-viewer,closed,keep watching,[],"Hi,
+i test and use this project.soo good!
+but i don't know how let it work on AS for NDK, 
+so i create Eclipse Project to use NDK .  
+one question: will you keep fix this project? 
+I hope to get an answer,thanks! please!
+"
+dschuermann/document-viewer,closed,Allow recoloring pages in addition to night mode,"[Label(name=""enhancement"")]","In addition to night mode, you should add a feature to recolor pages like [Zathura](https://pwmt.org/projects/zathura/) does.
+
+Instead of black background and white text, one should be able to set a custom color for the background and the text.
+"
+dschuermann/document-viewer,open,Page sync across multiple devices,[],"It would be nice to be able to sync the page currently being read, across multiple devices, considering the file names of the documents, for example.
+"
+dschuermann/document-viewer,closed,Added Japanese translation,[],
+dschuermann/document-viewer,open,Allow cancelling a search in progress,"[Label(name=""enhancement"")]","When searching a big PDF document, sometimes you want to cancel the search after pressing the ""Find Next"" button. 
+
+The back button should dismiss the ""Searching on page XXX..."" dialog and interrupt the current ""Find Next"" operation. 
+"
+dschuermann/document-viewer,open,Allow for multiple areas to be cropped on a single page.,"[Label(name=""enhancement"")]","Generalize cropping to eg cover the cases with multiple columns on a single page, allowing each one to be viewed independently of the others.
+"
+dschuermann/document-viewer,closed,Update common.html,[],"- grammar correction
+"
+dschuermann/document-viewer,closed,Update mupdf to 1.9a,[],"- Disabled overrides/fonts.patch because it no longer applies cleanly due to refactoring in mupdf
+- Core.mk and ThirdParty.mk update from mupdf repository. Paths tweaked to build in our repository, and restored the -DNOCJK flag we were using. Also added -DTOFU which disables more fonts that were added since mupdf 1.7.
+
+Question: should the fonts.patch be restored?
+
+I'm not sure what the original purpose of the patch was.
+- If the idea is to substitute fonts in EPUB documents, we should see if there is a proper API in mupdf for this rather than maintaining this hacky patch.
+- If the idea was to substitute fonts in PDF documents, this is wrong, afaik. Unless the idea was to compile mupdf without the PDF core fonts to save space, and then provide them from the DV font pack? Anyway, that seems too complex to maintain for a small space savings.
+"
+dschuermann/document-viewer,closed,Use AppCompat v7 support library to get a Toolbar + Material theme on all API levels,"[Label(name=""enhancement"")]","We currently have some different code paths and XML layouts for ActionBar and pre-ActionBar.. using the appcompat support library could help trim these down, although admittedly it will be a bit of work to set up. Also, making sure UI changes look good on 3 different themes (pre-Holo, Holo, Material) is a pain, and having Material everywhere would be nice.
+
+Another good side effect would be access to more standard widgets, like we could replace the ugly, custom search box with a standard one that appears in the Toolbar.
+
+see: http://android-developers.blogspot.ca/2014/10/appcompat-v21-material-design-for-pre.html
+"
+dschuermann/document-viewer,open,The app crashes on any pdf file on 4.4.4,"[Label(name=""bug"")]","```
+
+Application information:
+
+This file was generated by the org.sufficientlysecure.viewer.2.7.4(2747)
+
+Device information:
+
+VERSION     : 19
+BOARD       : smdk4x12
+BRAND       : samsung
+CPU_ABI     : null
+CPU_ABI2    : null
+DEVICE      : 
+DISPLAY     : cm_n7100-userdebug 4.4.4
+FINGERPRINT : samsung/
+ID          : 
+MANUFACTURER: null
+MODEL       : GT-N7100
+
+Error information:
+
+java.lang.RuntimeException: Unable to start activity ComponentInfo{org.sufficientlysecure.viewer/org.ebookdroid.ui.viewer.ViewerActivity}: java.lang.RuntimeException: java.lang.ExceptionInInitializerError
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2212)
+    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2271)
+    at android.app.ActivityThread.access$800(ActivityThread.java:144)
+    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1205)
+    at android.os.Handler.dispatchMessage(Handler.java:102)
+    at android.os.Looper.loop(Looper.java:136)
+    at android.app.ActivityThread.main(ActivityThread.java:5146)
+    at java.lang.reflect.Method.invokeNative(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:515)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:732)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:566)
+    at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:132)
+    at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.RuntimeException: java.lang.ExceptionInInitializerError
+    at org.ebookdroid.core.models.DocumentModel.<init>(DocumentModel.java:71)
+    at org.ebookdroid.ui.viewer.ViewerActivityController.afterCreate(ViewerActivityController.java:238)
+    at org.ebookdroid.ui.viewer.ViewerActivityController.afterCreate(ViewerActivityController.java:94)
+    at org.emdev.ui.AbstractActionActivity.onCreate(AbstractActionActivity.java:107)
+    at android.app.Activity.performCreate(Activity.java:5231)
+    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2169)
+    ... 12 more
+Caused by: java.lang.ExceptionInInitializerError
+    at java.lang.Class.newInstanceImpl(Native Method)
+    at java.lang.Class.newInstance(Class.java:1208)
+    at org.ebookdroid.core.models.DocumentModel.<init>(DocumentModel.java:68)
+    ... 18 more
+Caused by: java.lang.RuntimeException: java.lang.UnsatisfiedLinkError: Couldn't load ebookdroid from loader dalvik.system.PathClassLoader[DexPathList[[zip file ""/data/app/org.sufficientlysecure.viewer-1.apk""],nativeLibraryDirectories=[/data/app-lib/org.sufficientlysecure.viewer-1, /vendor/lib, /system/lib]]]: findLibrary returned null
+    at org.ebookdroid.EBookDroidLibraryLoader.load(EBookDroidLibraryLoader.java:21)
+    at org.ebookdroid.droids.mupdf.codec.MuPdfContext.<clinit>(MuPdfContext.java:24)
+    ... 21 more
+Caused by: java.lang.UnsatisfiedLinkError: Couldn't load ebookdroid from loader dalvik.system.PathClassLoader[DexPathList[[zip file ""/data/app/org.sufficientlysecure.viewer-1.apk""],nativeLibraryDirectories=[/data/app-lib/org.sufficientlysecure.viewer-1, /vendor/lib, /system/lib]]]: findLibrary returned null
+    at java.lang.Runtime.loadLibrary(Runtime.java:358)
+    at de.robv.android.xposed.XposedBridge.invokeOriginalMethodNative(Native Method)
+    at de.robv.android.xposed.XposedBridge.handleHookedMethod(XposedBridge.java:631)
+    at java.lang.Runtime.loadLibrary(Native Method)
+    at java.lang.System.loadLibrary(System.java:526)
+    at org.ebookdroid.EBookDroidLibraryLoader.load(EBookDroidLibraryLoader.java:17)
+    ... 22 more
+
+```
+"
+dschuermann/document-viewer,closed,Partially updated french translations,[],
+dschuermann/document-viewer,open,Support new permissions model in Android 6.0,"[Label(name=""enhancement"")]","See: http://developer.android.com/about/versions/marshmallow/android-6.0-changes.html
+and: http://developer.android.com/training/permissions/requesting.html
+
+As far as I understand, we would need to show a permission dialog to request filesystem access on first launch, since it'd be needed to show the bookshelf view. The network access request dialog would only happen if the user does something that would access the network.
+
+This will be necessary in order to update our target API level to 23.
+"
+dschuermann/document-viewer,closed,Error:error: 'set_new_handler' is not a member of 'std',[],"Hi 
+
+I am trying to run the code for DjVu, but getting the following error 
+
+Error:error: 'set_new_handler' is not a member of 'std'. I am using android ndk r-11. Do I need to use any particular NDK version. 
+"
+dschuermann/document-viewer,closed,PDF cut off after page 276,[],"I have a document of 312 pages, but document-viewer only shows 276. The document contains only plain text; the cut is in at an unremarkable position. I recompiled the document, leaving out some text in front. Some missing content then appears at the end, but the page number can not be greater than 276.
+Version is 2.7.4.
+"
+dschuermann/document-viewer,closed,Scrolling with hardware volume buttons causes beeps,[],"2.7.4 has fixed a problem that was present in 2.7.3 where scrolling with the volume buttons would cause the volume UI to appear. Now, in 2.7.4, the volume UI does not appear, but my device does ""beep"" as if the volume is changing. As far as I can tell, the volume isn't changing, but still, my device beeps when using the volume keys to scroll in Document Viewer, which didn't happen in 2.7.2 for example.
+"
+dschuermann/document-viewer,closed,Good time for a release?,[],"@SufficientlySecure/document-viewer-devs 
+There are quite a few changes since the last release, including some UI design changes (tap to toggle fullscreen, starting to use Material theme, etc.) that would be good to get feedback on from users.
+
+Let me know if there's anything I should do to help - update the changelog I guess?
+"
+dschuermann/document-viewer,closed,"Add ""Share"" and ""Open with..."" menu items",[],"This is @fid-jose 's pull request https://github.com/SufficientlySecure/document-viewer/pull/170 , plus some changes I made:
+- fixed security issue by making content provider non-exported
+- add a ""Open with..."" menu item, which is like Share but uses ACTION_VIEW. This gives me the option to open documents with other PDF viewers, whereas ""Share"" (ACTION_SEND) just has things like dropbox, gmail, etc.
+"
+dschuermann/document-viewer,closed,"GLES configuration: fall back to EGL_STENCIL_SIZE 0, if 1 is not available",[],"Previously, we were requesting 1 on non-emulators, and 0 on emulators, because emulators use Android's software GLES implementation that doesn't support stencil.
+That meant the app wouldn't run on devices without stencil support.
+
+This should fix https://github.com/SufficientlySecure/document-viewer/issues/94
+"
+dschuermann/document-viewer,open,Loading graphically intensive PDF pages crashes 2.7.1,[],"I have a few different textbook PDFs that cannot be read on 2.7.1, but can be read on 2.7 and other prior versions.
+Even when changing the amount of MuPDF cache and everything to max, it still isn't able to handle it, while 2.7 with default settings does it just fine.
+
+Typical symptom description:
+Open book first time - page loads a little, then Document Viewer dies.
+Open book second time - Document viewer shows white page then closes very fast.
+"
+dschuermann/document-viewer,closed,Share documents,[],"The functionality of sharing the opened document, allowing it to be opened or sent using other apps has been added.
+
+A content provider has been implemented so documents which might not be accessible by other means can be read by other apps.
+"
+dschuermann/document-viewer,closed,Full Network Access permissions,[],"I think it'd be relevant to explain why Document Viewer needs Full Network Access permissions (I guess it relates to OPDS but I don't really know about that).
+I added a question to the FAQs - can someone please answer it?
+https://github.com/SufficientlySecure/document-viewer/wiki/FAQ
+
+I'd also suggest to add a quick reference about this in the description page:
+https://github.com/SufficientlySecure/document-viewer
+
+(I'm new to contributing, please let me know if I'm doing this wrong)
+"
+dschuermann/document-viewer,open,Outline items should highlight when touched,"[Label(name=""enhancement"")]","Just a minor thing for appearance / usability..
+
+afaik the way to do it is set the following on the list item layout:
+
+```
+android:clickable=""true""
+android:focusable=""true""
+android:background=""?android:selectableItemBackground""
+```
+
+Source: 
+https://github.com/googlesamples/android-BorderlessButtons/blob/master/Application/src/main/res/layout/list_item.xml#L39
+
+However, ""android:selectableItemBackground"" is API11+, so we'd need an alternate layout for API8-10.
+
+Related to this, it would be good if the highlight for the current chapter came from a standard Android style, we're currently defining the colour in DV.
+"
+dschuermann/document-viewer,closed,Don't call System.exit(0) when last activity closes,[],"AFAIK this is considered bad practice on Android - it's supposed to be left up to the OS, and it slows down app startup because the process has to be started from scratch.
+"
+dschuermann/document-viewer,closed,Fix for closing the file browser or OPDS activity also closing the Library,[],"Fixes https://github.com/SufficientlySecure/document-viewer/issues/124
+Also, makes the file browser and OPDS activity close on keyUp (rather than keyDown, as before) of the Back button.
+"
+dschuermann/document-viewer,closed,Fix continuous scrolling when holding volume up/down buttons,[],"Key repeats when holding the volume up/down keys (to trigger scrolling) were broken in e7432ad.
+
+Fixes https://github.com/SufficientlySecure/document-viewer/issues/164
+"
+dschuermann/document-viewer,closed,No autorepeat in scrolling with hardware keys,[],"Something has changed negatively between versions 2.7.2 and 2.7.3 (obtained from f-droid) regarding scrolling using hardware keys, meaning e.g. volume keys, or physical keyboard keys on devices with slideout keyboard.
+
+In 2.7.2 I could hold down, e.g. volume down, and the document would continue to scroll down. There would be an initial delay after the first scroll, then a shorter delay between each subsequent scroll down, just like how keyboard autorepeats work.
+
+In 2.7.3, holding down volume down doesn't scroll at all until you release the key, and will only scroll one page. It will also reduce the volume, which didn't use to happen.
+
+There was no changelog update for 2.7.3 so I'm not sure if this was intentional, or which commit(s) caused it.
+"
+dschuermann/document-viewer,closed,Outline: visual tweaks for Material design.,[],"- fix outline not filling screen on Nexus 4 / Android 5
+- fix dialog title padding on Android 5.0+
+- change outline icons (expanded/contracted arrows) to chevron-right and chevron-down from https://github.com/Templarian/MaterialDesign (Creative Commons Attribution 4.0 International)
+- change green selection color to low-opacity white
+
+It's not perfect but looks better than before :)
+
+![screen shot 2016-01-20 at 8 56 24 pm](https://cloud.githubusercontent.com/assets/239161/12471183/739b2904-bfb8-11e5-89b2-e9b85e1bd587.png)
+
+Before:
+
+![screen shot 2016-01-20 at 9 00 42 pm](https://cloud.githubusercontent.com/assets/239161/12471241/e9c5f4ba-bfb8-11e5-9cbf-c957626e506e.png)
+"
+dschuermann/document-viewer,closed,German,[],"Where it was possible to use a generic term such as ""copy book"" I opted for ""copy"" since it's shorter in the menu and in most apps it's ok to just move things.
+
+Certainly far from perfect, but it should extend the german translation a bit.
+"
+dschuermann/document-viewer,open,Blank page when switching documents,"[Label(name=""bug"")]","When opening a second document on top of an already open one, and then closing the second one, the current page of the first document becomes a blank page.
+1. Exit DV if it is running, and launch it by tapping the app icon
+2. Open a book from the bookshelf
+3. Press the android home button, open a different document from a file manager (I used ES file explorer)
+4. Close the second document by pressing the android Back button. 
+5. You should see the first document again.
+
+Expected: appears normally
+Actual: the current page is blank, but if I scroll, other pages are visible. Scrolling back to the blank page will cause it to render properly
+"
+dschuermann/document-viewer,closed,"German naming of ""Book"" or ""Document""",[],"Hello
+
+I've been using Document Viewer and I much like it, however I recently realized there were still a couple of missing translations in german.
+
+Now I'm not so familiar with the code but but the app itselfs is called document viewer yet calls most items Books. So before I have to replace a word again, what is your preference Book (Buch) or document (Dokument).
+
+-- Mathieu
+"
+dschuermann/document-viewer,closed,could I show PDF in fragment?,[],"could I show PDF in fragment? if yes what should i do?
+"
+dschuermann/document-viewer,closed,DecodeServiceBase.calculateRootCropping(): remove goToPage call,[],"as discussed here: https://github.com/SufficientlySecure/document-viewer/issues/89
+
+I thought I would make a pr for this. I'll keep testing it.
+
+Agree in general we don't want to make changes without understanding the code.
+The bug this fixes is pretty annoying though. 
+"
+dschuermann/document-viewer,closed,Use correct extension for temporary files for content:// data,[],"Fixes https://github.com/SufficientlySecure/document-viewer/issues/149 (epub files not loading from the Downloads app.)
+"
+dschuermann/document-viewer,closed,Remove rotation from app settings.,[],"It's still present as a book setting, with the same options (unspecified, portrait, landscape) as before, and the toolbar buttons still work as expected.
+"
+dschuermann/document-viewer,closed,"init.sh: specify --force to ""git submodule update"" to discard local changes in submodules",[],"init.sh applies patches, so this makes it clear out the patches applied by a previous invocation of init.sh.
+"
+dschuermann/document-viewer,closed,Change default rotation mode from 'auto' (force auto-rotation) to 'unspecified',[],"(respect the device's setting).
+
+Since this gets saved in the app preferences it will only affect clean installs / if you clear app data.
+Partial fix for https://github.com/SufficientlySecure/document-viewer/issues/147
+"
+dschuermann/document-viewer,closed,"Add a ""Forward"" navigation button","[Label(name=""enhancement"")]","Having the system Back button navigate back (when you navigate with the outline / links / goto dialog) is a good feature, but it would be nice to have a matching ""Forward"" button. It could go in the viewer activity's ""..."" menu, just like in Chrome.
+"
+dschuermann/document-viewer,closed,Make unhandled taps in the viewer toggle fullscreen mode.,[],"Implements this idea: https://github.com/SufficientlySecure/document-viewer/issues/143
+Also, designed to work with https://github.com/SufficientlySecure/document-viewer/pull/148 (combine ""show title"" and ""fullscreen"")
+"
+dschuermann/document-viewer,open,enhancement: slider to browse through large books,"[Label(name=""enhancement"")]","When reading a large book or using single page view it can be awkward to quickly jump to a faraway page. It would be nice if there was a horizontal slider that let a person flip quickly to at least the general area. It'd be especially nice if the slider had detents marking chapters. I imagine it being enabled the same as the zoom wheel. This would also satisfy readers who like to have a progress bar as they read.
+"
+dschuermann/document-viewer,closed,Opening Epub files from Downloads app gives a black screen,"[Label(name=""bug"")]","This happens with master as well as the Play Store build.
+
+The same epub files work when opened though ES File Explorer, or from the document-viewer bookshelf. Maybe related to how files opened from the Downloads app use content:// rather than file:// URI's.
+"
+dschuermann/document-viewer,closed,"Remove the ""Show Title"" option, make it depend on !fullscreen.",[],"This implements the suggestion I made here: https://github.com/SufficientlySecure/document-viewer/issues/132 - the ""Show Title"" option/menu item is deleted, and now the title bar is always shown in non-fullscreen mode, and always hidden in fullscreen mode.
+
+I think it helps reduce a bit of UI clutter, and ensures we comply with UI guidelines (google specifically says never to show the action bar in fullscreen mode: https://developer.android.com/training/system-ui/status.htm ).
+
+On the other hand, this is just removing a feature - maybe people use non-fullscreen mode with the action bar hidden, which is no longer available with this PR. 
+"
+dschuermann/document-viewer,closed,"Restore a ""force auto rotation"" option","[Label(name=""enhancement"")]","I'm using slimrom 5.1.1. I locked the rotation on vertical using the quick toggle, but when I turn the screen the device screen rotates also.
+I opened an issue here because this bug only happens 
+"
+dschuermann/document-viewer,open,Printing documents,"[Label(name=""enhancement"")]","Android 4.4 added the ability to use print plugins to [print content over wifi](https://developer.android.com/training/printing/index.html). It looks like it's expecting a pdf to be passed to the print plugin so we could start with pdf documents.
+
+How feasible would this be to implement? If this is something you want to do and need help with something like this, let me know where to start.
+"
+dschuermann/document-viewer,closed,Fix a crash introduced by my recent change to ContentScheme,[],"https://github.com/SufficientlySecure/document-viewer/pull/140 introduced a bug where opening a pdf from the Gmail app causes a crash.
+
+ViewerActivityController.afterCreate() requres that if `temporary` is false, the document URI is a file:// URI that can be converted to a filename, which PR140 broke.
+Instead, I added a new ContentScheme.promptForSave field that's just used to decide whether to show a save dialog.
+
+edit: So the main change here is making the ""content"" scheme temporary again like it was before #140 , but still hiding the save prompt for the content:// scheme.
+"
+dschuermann/document-viewer,closed,Update mupdf to 1.8,[],"Besides updating the submodule commit:
+- small update to the mupdf patch we apply (`fz_paint_image_with_color` got an extra argument)
+- had to update `document-viewer/jni/mupdf/ThirdParty.mk` due to a file being renamed in Freetype
+- change most `fz_free` calls in `document-viewer/jni/ebookdroid/mupdfdroidbridge.c` to the proper `fz_drop_*` call. Was getting crashes when the code tried to `fz_free` an `fz_outline`. The remaining `fz_free()` calls are for `renderpage_t` structures that are allocated in `mupdfdroidbridge.c` with `fz_malloc_no_throw`, so it should be correct to `fz_free` those.
+
+In addition, (possibly undesirable) I had to remove `LOCAL_CFLAGS += -DNOCJK` from Core.mk, or else epubs failed to load. I reported this to the mupdf bugtracker: http://bugs.ghostscript.com/show_bug.cgi?id=696326
+NOCJK was also discussed here: https://github.com/SufficientlySecure/document-viewer/issues/115
+"
+dschuermann/document-viewer,closed,Tap to toggle fullscreen?,"[Label(name=""enhancement"")]","Would there be interest in having a single tap on the middle of the page toggle fullscreen?
+This would probably depend on my other suggestion to link ""show title"" to ""fullscreen"": https://github.com/SufficientlySecure/document-viewer/issues/132
+
+The majority of reading apps I have installed do this (Drive PDF Viewer, Dropbox PDF Viewer, Google Play Books, Kindle), although ""Google PDF Viewer"" is an exception, it's always in fullscreen but the actionbar/statusbar/navigation buttons show/hide automatically when you scroll.
+"
+dschuermann/document-viewer,open,Update bookshelf using material design,"[Label(name=""enhancement"")]","I think the wooden wallpaper in library should be removed. Would also be an easy step toward material guidelines :)
+"
+dschuermann/document-viewer,open,Default OPDS servers are down,[],"""Plough"" gives an error 404 and ""Flibusta"" gives a ""host not found"" error.
+Found a list here of other servers: http://wiki.mobileread.com/wiki/OPDS
+"
+dschuermann/document-viewer,closed,Make the content:// URI scheme non-temporary. Others are unchanged.,[],"This will remove the save confirmation dialog when closing a document opened from the Downloads app, or an email attachment, etc.
+"
+dschuermann/document-viewer,open,Option: Always start PDF view at first page,"[Label(name=""enhancement"")]","I want to  show a PDF and always show the first page when I finish the ViewerActivity, what should I do?
+"
+dschuermann/document-viewer,closed,Add an Up button to the viewer activity actionbar,[],"..to go back to the library activity (which is org.ebookdroid.ui.library.RecentActivity).
+
+Implemented as described in this guide: http://developer.android.com/training/implementing-navigation/ancestral.html
+- One thing I didn't handle is showing the ""Save?"" dialog like the ""Close"" menu action does: it's awkward to implement, and showing a confirmation dialog like that when navigating away from an activity is a UI anti-pattern, I think. (Related: https://github.com/SufficientlySecure/document-viewer/issues/64 ). However, this makes the ""Up"" button behaviour inconsistent with the ""Close"" menu item, so maybe I should implement the save confirmation dialog for the up button anyway.
+
+Screenshot: (it also looks good with my Material theme pull request)
+![screen4](https://cloud.githubusercontent.com/assets/239161/11012538/43128d86-84b2-11e5-9f9f-a84dd77e0426.png)
+"
+dschuermann/document-viewer,closed,Use material theme on Android 5.0+,[],"Small change to use the Material theme on Android 5.0+.
+
+I didn't bother copying using ebookdroid.ActionBarStyle in the new theme, because all that seemed to be doing was setting the foreground and background colors to @color/actionbar_white and @color/actionbar_black
+
+We could customize the status bar / action bar colours, see: http://developer.android.com/training/material/theme.html , but I'm not sure what they should be so I just left it alone. This gives a black status bar and dark grey action bar.
+
+With the material theme, the progress spinner when a page is loading is gone now, and the Action Bar icon is gone as well.
+
+Here are some screenshots:
+![screen1](https://cloud.githubusercontent.com/assets/239161/11009301/2af10d78-8493-11e5-8e82-c8ab8884c9a7.png)
+![screen2](https://cloud.githubusercontent.com/assets/239161/11009305/2fa817c6-8493-11e5-8c9c-3c53af7b9140.png)
+![screen3](https://cloud.githubusercontent.com/assets/239161/11009308/31424eda-8493-11e5-8294-9019c168975c.png)
+"
+dschuermann/document-viewer,open,Number of pages in a document does not update if the file is replaced with a longer/shorter one,[],"After updating a file which was previously opened, there are some issues. For example, previously it was foo.pdf with 10 pages, and I updated foo.pdf (in the same location) to attach 10 pages, then I open foo.pdf and Document Viewer gives me only first 10 pages to view. If I move foo.pdf to somewhere else and reopen it, then I can view the whole file.
+
+It seems to me that the history data affects, and hashing isn't coded well.
+
+Document Viewer v2.7.3 on Android
+"
+dschuermann/document-viewer,closed,Fix for volume UI appearing when scrolling with volume buttons,[],"AbstractViewController.dispatchKeyEvent(): If a key is bound, consume both key down and key up events.
+
+Previously, this code was only consuming the key up events.
+This fixes https://github.com/SufficientlySecure/document-viewer/issues/128  (tested on my Nexus 4 running Android 5.1.1); now the system volume control UI no longer appears when I use the volume buttons to flip pages.
+
+TODO: For the scroll up/down keybindings, it would be better if the scrolling continued as long as you held the buttons down, instead of just scrolling once upon releasing the button.
+"
+dschuermann/document-viewer,closed,Replace uses of FloatMath class with Math,[],"FloatMath was deprecated in API 22, and removed in API 23.
+
+This is a prerequisite for upgrading the target SDK version to 23.
+"
+dschuermann/document-viewer,closed,MuPDF released 1.8,"[Label(name=""enhancement"")]","I got a news from MuPDF website that they produced a release candidate of version 1.8. This version have large improvement for EPUB support.
+"
+dschuermann/document-viewer,closed,"Merge ""Fullscreen"" and ""Show Title""","[Label(name=""enhancement"")]","Sorry, hit submit by accident before writing the description.
+
+I suggest merging the ""Fullscreen"" and ""Show Title"" options, so being in fullscreen mode also hides the title (Action bar). Currently I find it cumbersome to have these as two separate options.
+
+I think this would improve the usability of fullscreen mode, and also allow make document-viewer's UI closer to other Android reader apps that use a single tap to show/hide the system+app UI.
+
+These Android docs mention ""You should never show the action bar without the status bar"", suggesting they should be linked:
+https://developer.android.com/training/system-ui/status.html
+"
+dschuermann/document-viewer,open,"Use new features of Android, transcluent status bar and navigation bar",[],"Just as Todo, Android 5.0 got new feature which makes system status bar transcluent http://blog.raffaeu.com/archive/2015/04/11/android-and-the-transparent-status-bar.aspx
+"
+dschuermann/document-viewer,closed,Ignore taps that stop scrolling,[],"If you do a ""fling"" to scroll quickly, and then tap to stop scrolling, currently that tap will also be handled as its own action (e.g. if you tap a link, or in the bottom of the screen to trigger a flip to the next page, those events will happen.)
+
+With this PR, a tap that stops a fling won't do anything else.
+
+Normally this wouldn't be a very noticeable change, since tapping on the middle of a page doesn't do anything by default. However, if you configure a tap in the middle of the screen to toggle fullscreen, it's quite annoying when a tap to stop a fling also toggles fullscreen.
+"
+dschuermann/document-viewer,open,New icon,"[Label(name=""enhancement"")]","I think Document Viewer should prepare for Material Design and this icon is just a suggestion.
+
+![icondv](https://cloud.githubusercontent.com/assets/12594372/10511865/3b3b54fe-7377-11e5-9ba9-4ee6e82dcf0c.png)
+
+_Download ![iconDV.svg.png](https://cloud.githubusercontent.com/assets/12594372/10511866/3b3f3ca4-7377-11e5-87cc-b53e8e5597d6.png) and change '.png' extension into '.svg' to get an original SVG file._
+
+**Released under CC BY-NC-SA.**
+"
+dschuermann/document-viewer,closed,Scrolling with volume buttons triggers volume control window,[],"This problem is only present in 2.7.3.
+Found with Nexus 7 ruining Lollipop.
+"
+dschuermann/document-viewer,open,Implement Text Reflow,"[Label(name=""MuPDF"")]","Should this be left to the muPDF people, or should it be here?
+Anyways, text reflow has to be one of the most important features for a pdf-capable reader on a small device. 
+
+Any ideas how this could be implemented?
+"
+dschuermann/document-viewer,open,Display page number alone in a corner.,[],"In current version, the page number can be viewed in title bar, but title bar is mostly hidden for more screen area. 
+
+So, please unlink page number from title bar, and show it independently small sized in a corner.
+
+With options on/off/hide-after-timeout.
+"
+dschuermann/document-viewer,closed,move /sdcard/.org.sufficientlysecure.viewer to /sdcard/Android/data/org.sufficientlysecure.viewer,[],"Please move /sdcard/.org.sufficientlysecure.viewer to /sdcard/Android/data/org.sufficientlysecure.viewer 
+
+Also gets rid of WRITE_EXTERNAL_STORAGE permission.
+"
+dschuermann/document-viewer,closed,Switching between the OPDS browser and Library View closes program,"[Label(name=""bug"")]","By the use of the software back button in v2.7.3 in Lollipop on Nexus 7, the program closes once I do the following 1 or more times:
+.Open program
+.Open OPDS Browser via icon
+.Press software back button
+
+UPDATE: This also happens when exiting the file browser, accessed from the icon, then using back button to go back to Library view (suddenly closing the whole program).
+"
+dschuermann/document-viewer,open,Thumbnails Are Not Generated in Library View,[],"This has been an issue that has grown on me about this program. If there could be a button to push or something to load the thumbnails for my collection, it would be a great enhancement.
+
+I should add that I am talking about automatically generated for every file, whether previously opened or not.
+
+Please forgive me if this already exists as a feature.
+"
+dschuermann/document-viewer,closed,"""Positive images in night mode"" not working?","[Label(name=""bug"")]","I am viewing this PDF with night-mode and ""positive images in night-mode"" enabled: http://gabriellacoleman.org/Coleman-Coding-Freedom.pdf
+
+Here are my book settings:
+
+![lopobqaufzyecvjsy_9omfrctujetejhfgwhbu-d-l-rgh2bxkzr2whv2_dtqun0uzoty4n800dxdb-kzsdbs5f7tw s1706](https://cloud.githubusercontent.com/assets/829698/9512412/eed31656-4c57-11e5-8812-0d32c6a73a6d.png)
+
+On page 23 you can see an image that shows in negative:
+
+![i-ngz4l6cce8cl8syawd6rcvhad0zqqaw7xwwaylkojnn-kfhhue8tp0tso5rqnmc08a8fqci315emiddnqeayvgns8 s1706](https://cloud.githubusercontent.com/assets/829698/9512422/11f71ace-4c58-11e5-93c6-c58436eddee2.png)
+
+I am running v2.7.2 on a Moto X (2013) with Android 5.1.
+"
+dschuermann/document-viewer,closed,Update the version history,[],
+dschuermann/document-viewer,closed,Assign a different vercode for each ABI build,[],"Since one cannot upload split-ABI APKs with the same vercode, hence
+assign each APK a different vercode.
+Since the least significant digit in the vercode doesn't change between
+releases (always 0), hence just change the least significant digit for
+each ABI build.
+"
+dschuermann/document-viewer,closed,Get jcifs from maven repository instead of using convenience .jar copy,[],
+dschuermann/document-viewer,closed,Samsung Multi Window support,[],
+dschuermann/document-viewer,closed,PDF view auto scroll,[],"hi, I have an requirement which PDF view need to auto scroll,  when user touch the PDF then end scroll , what should  I do ?
+"
+dschuermann/document-viewer,open,PDF view auto scroll,"[Label(name=""enhancement"")]","hi, I have an requirement which PDF view need to auto scroll,  when user touch the PDF then end scroll , what should  I do ?
+"
+dschuermann/document-viewer,closed,CJK support,"[Label(name=""enhancement"")]","Looks like this is due to the size of the APK (#88), but now with #99 merged, the size seems reasonable, and we can reintroduce CJK support.
+
+One thing I noticed is there is middle ground between using -DNOCJK and not using it: we could use -DNOCJKFONT. This way, support for CJK is included but not the fallback font (DroidSansFallback, which should be available on all android devices anyway).
+
+I did some measurements and removing -DNOCJK adds 3.5M to the APK, and replacing -DNOCJK by -DNOCJKFONT adds only 1.1M, and pdf with embedded fonts work.
+
+It would be nice to patch mupdf to use the DroidSansFallback from the device, but for now compiling with -DNOCJKFONT would be an easy solution for most cases.
+
+What do you think ?
+"
+dschuermann/document-viewer,closed,Catch MuPdf exception  (wrong zip local file signature),"[Label(name=""bug""), Label(name=""unconfirmed"")]","When reading CBZ files, the viewer process crashes occasionally. The crashes happen more often when scrolling fast and/or multithreaded decoding is enabled. It doesn't seem to depend on what kind of CBZ file is being viewed.
+
+Logcat shows the following:
+
+``` logcat
+E/libmupdf( 5858): error: exception stack overflow!
+E/libmupdf( 5858): warning: Ignoring error during interpretation
+E/libmupdf( 5858): error: exception stack overflow!
+E/libmupdf( 5858): warning: read error; treating as end of file
+E/libmupdf( 5858): error: exception stack overflow!
+E/libmupdf( 5858): error: exception stack overflow!
+E/libmupdf( 5858): error: exception stack overflow!
+E/libmupdf( 5858): warning: ... repeated 4 times ...
+E/libmupdf( 5858): error: wrong zip local file signature (0xffffffff)
+E/libmupdf( 5858): uncaught exception: wrong zip local file signature (0xffffffff)
+I/WindowState(  339): WIN DEATH: Window{418f8878 SurfaceView paused=false}
+I/ActivityManager(  339): Process org.sufficientlysecure.viewer (pid 5858) has died.
+...
+I/Document Viewer( 5975): Document Viewer (org.sufficientlysecure.viewer) 2.7.1(2710)
+```
+
+The stack overflow exceptions happen while scrolling and don't seem to be harmful, but as soon as the signature exception occurs, DV crashes and relaunches.
+
+This is on a Motorola Xoom tablet.
+"
+dschuermann/document-viewer,closed,Update the version history,[],
+dschuermann/document-viewer,closed,Printing support,"[Label(name=""enhancement"")]","Please add printing support over Android's printing subsystem.
+"
+dschuermann/document-viewer,closed,Remove single book from recent books list,"[Label(name=""enhancement"")]","Via google-groups/sufficientlysecure-apps by user Patrick B.:
+
+Thanks for a good pdf viewer. I would like to ask if there is a way to remove only one book from the recent book list without clearing the whole list? I hope that you would consider this as a new option in upcoming versions.
+"
+dschuermann/document-viewer,closed,Add Up navigation to action bar,"[Label(name=""enhancement"")]","The most confusing thing about DV is finding the bookshelf: it can depend on which app the document is launched from. Few people would guess that the Close item in the menu of the document activity achieves this. The standard way in Android is to have a sideways caret on the far left of the action bar. Since action bar doesn't exist on Gingerbread (in document activity anyway), the Close item can be kept.
+
+It doesnt make sense to introduce small UI tweaks in a piecemeal fashion, however I believe this change would be warranted pending an overhaul of the UI code.
+"
+dschuermann/document-viewer,open,Annotation?,"[Label(name=""enhancement"")]","Hi there,
+
+Thanks for this great pdf viewer. I have a question: is there any way to annotate a pdf? If not is it planned for a future implementation?
+
+Thanks,
+
+Jeff
+"
+dschuermann/document-viewer,closed,Upgrade targetSdkVersion in AndroidManifest.xml to 22,[],"PR #99 already upgraded build SDK in build.gradle,
+but targetSdkVersion in AndroidManifest is still 19.
+
+This PR fixes this situation.
+"
+dschuermann/document-viewer,closed,Upgrade MuPDF to v1.7a,[],"This fixes #106 .
+
+Seems we need `ndk-build clean && ndk-build`,
+but other than that, I did't find any problem with v1.7a.
+"
+dschuermann/document-viewer,closed,MuPDF 1.7a released,"[Label(name=""enhancement"")]","I found a news from MuPDF website that they have released a bugfix release for version 1.7. 
+
+> The 1.7a version is a bugfix release. Bug fixes:
+> 
+>    Fixed bug that allocated too much memory when packing paths.
+>    Fixed EPUB font scaling bug.
+>    Fixed EPUB file type handling in viewers.
+>    Improved tolerance for broken and unsupported CSS. 
+> 
+> New features:
+> 
+>    Added -z option to mutool clean.
+"
+dschuermann/document-viewer,closed,Support FZ_LINK_URI links in pdf documents.,[],"- Modify MuPdfLinks.fillPageLinkSourceRect() to fill in the link rect for any link type, not just FZ_LINK_GOTO
+- Check link.url in AbstractViewController.processLinkTap(), added a goToUrl method to open the URL.
+- In MuPdfLinks.getPageLinks(), always set link.rectType and link.sourceRect
+
+With these changes, URL hyperlinks in PDF documents are highlighted in yellow and open in the browser when tapped.
+"
+dschuermann/document-viewer,closed,Add EPUB file type to file browser preference,[],"This fixes #90.
+"
+dschuermann/document-viewer,closed,"Add more Korean localized names for user interface settings, looked up to the Wiktionary.",[],
+dschuermann/document-viewer,closed,Update strings_preferences_ui.xml,[],"Small fix.
+"
+dschuermann/document-viewer,closed,Update strings_preferences_ui.xml,[],"Update for Korean localization
+"
+dschuermann/document-viewer,closed,Update the version history,[],
+dschuermann/document-viewer,closed,Split apk for each ABIs (and upgrade SDK to v22),[],"This PR introduces splitting apk for each ABIs (which is suggessted in #88).
+
+This needs newer SDK than v19 (I guess),
+so I upgraded SDK and Gradle plugin as well.
+
+It seems to me like upgrading SDK alone makes no bad side effects to UI (which is mentioned in #92).
+"
+dschuermann/document-viewer,closed,Include libdjvu as submodule,"[Label(name=""ToDo"")]","My last attempt at this failed. Still, it would be good having libdjvu included into our git as a submodule from http://sourceforge.net/p/djvu/djvulibre-git/ci/master/tree/. This would also enable us updating to the latest version of libdjvu (the currently used version is from 2012-07 or something).
+
+In order to do so, we would need to understand which changes have been made by the original author of document-viewer to the source code in `document-viewer/jni/djvu/*`. In the (still accessible) google code SVN we can see, which files have been updated and why etc.
+
+For example in r56 (https://code.google.com/p/ebookdroid/source/detail?r=56) all print and save functions have been removed from ddjvuapi.cpp. r1375 reverts r1374, hence can be ignored. All other changes are always marked as ""DjVulibre updates"" etc.
+
+Just replacing the files in `document-viewer/jni/djvu/` by the current version of libdjvu lets the build fail. I can do the necessary changes (that have been done in the currently used source, as well) such that the build doesn't fail anymore. But then Document Viewer crashes whenever I try to open a djvu document...
+"
+dschuermann/document-viewer,closed,Adding Korean translation,[],"strings_actions
+
+```
+<resources xmlns:xliff=""urn:oasis:names:tc:xliff:document:1.2"">
+
+<string name=""actions_verticalConfigScrollUp"">뒤로 스크롤</string>
+<string name=""actions_verticalConfigScrollDown"">앞으로 스크롤</string>
+<string name=""actions_quickZoom"">빠른 확대</string>
+<string name=""actions_zoomToColumn"">세로단에 맞춰 확대</string>
+<string name=""actions_leftTopCorner"">왼쪽 상단 페이지 모서리로 스크롤</string>
+<string name=""actions_rightTopCorner"">오른쪽 상단 페이지 모서리로 스크롤</string>
+<string name=""actions_leftBottomCorner"">왼쪽 하단 페이지 모서리로 스크롤</string>
+<string name=""actions_rightBottomCorner"">오른쪽 하단 페이지 모서리로 스크롤</string>
+
+</resources>
+```
+"
+dschuermann/document-viewer,closed,Add donate button somewhere on site,"[Label(name=""wontfix"")]","Add donate button somewhere on site
+"
+dschuermann/document-viewer,closed,Default interface is not e-ink friendly,"[Label(name=""unconfirmed"")]","Main book choosing interface on Onyx Boox M96 not very good. Top bar buttons are not clearly visible and shelve background looks bad.
+"
+dschuermann/document-viewer,closed,GLES configuration on Onyx Boox M96,"[Label(name=""enhancement"")]","Cannot open pdf with `our device cannot support required GLES configuration` error on Onyx Boox M96 e-ink reader.
+
+Latest application from f-droid.
+"
+dschuermann/document-viewer,open,"Feature request: Selecting, copying text","[Label(name=""enhancement"")]","Hello,
+I really would like to select and copy text from the document opened in this app.
+I don't know how difficult this would be to implement into the current codebase. It seems like a really basic feature so maybe there is a reason why it's not there?
+"
+dschuermann/document-viewer,closed,Update compileSdkVersion version 22 not show actionBar,"[Label(name=""unconfirmed"")]","when I update    compileSdkVersion 19 to 22, not show menus on the top.
+"
+dschuermann/document-viewer,closed,Fix: no outline found with PDFs,[],"ttOutline() (in org.ebookdroid.droids.mupdf.codec.MuPdfOutline)
+fails to find any outline if the argument `outline` is negative.
+
+The JNI part of org.ebookdroid.droids.mupdf.codec.MuPdfOutline had
+the following code:
+
+```
+return (jlong) (long) doc->outline;
+```
+
+But this returns negative value if the most significant bit
+of outline handle is 1, because `sizeof long` is 4 (32 bit)
+and outline handler itself is a 32-bit pointer.
+"
+dschuermann/document-viewer,closed,File Browser settings does not include epub file type,"[Label(name=""enhancement"")]","Since epub support was added, this needs to be updated
+"
+dschuermann/document-viewer,closed,Scrolling abruptly stops when auto crop is active,"[Label(name=""bug"")]","I should note that the auto cropping of pages is enabled. If I try to scroll fast, it will scroll for a moment then stops abruptly.
+"
+dschuermann/document-viewer,closed,APK is markedly larger,"[Label(name=""enhancement"")]","Was this the result of the font pack being included? Storage isn't cheap.
+"
+dschuermann/document-viewer,open,Add CHM support,"[Label(name=""enhancement"")]","There is only a few Android apps can support CHM files, then the open source implementions inside is so less, I think DV can provide support for this format, and I have a proposal to use this library:
+
+https://github.com/jedwing/CHMLib
+"
+dschuermann/document-viewer,closed,MuPDF library 1.7 released,[],"Hi,
+
+The MuPDF website pressed a news that they are released version 1.7, I think DV should update with this library because I think this is a big update. The following content is copied from their news page.
+
+```
+Headline changes:
+
+    New 'Indie dev' licensing options - contact sales@artifex.com for more details.
+    New HTML layout engine, and (DRM-free) EPUB viewer.
+    Reduced memory usage - displaylists and internal PDF representation take much less memory, reducing total memory use on some files by over 60%. 
+
+Important API changes:
+
+    Bound contexts have been removed; we now pass fz_contexts explicitly.
+    Reference counting of paths and text structures. 
+
+Features:
+
+    Add mutool pages option.
+    Tweaked rendering to prevent feature dropout in common cases.
+    Viewer tweaks
+        Better mouse wheel handling
+        Shift-space support
+        Mouse button control of presentation mode
+        Failed reloads do not close document 
+
+Internal changes:
+
+    PDF filter revamp - simpler interface.
+    Devices use derived structures rather than user pointer.
+    Sparse PDF xrefs held in more compact form.
+    New gsview viewer split out to its own repository. 
+
+Bug fixes
+
+    Improved handling of broken files.
+    Fix BBoxes of Type 3 fonts.
+    Updated fonts (including greek and cyrillic).
+    Various memory leaks and crashes.
+    And many more.
+```
+
+By the way, the preview release can support CBZ natively.
+"
+dschuermann/document-viewer,closed,[suggestion] Get rid of the creepy bookshelf,[],"It frightens the children...
+
+![screenshot_2015-04-10-16-16-49](https://cloud.githubusercontent.com/assets/11886052/7096325/2ce8e074-df9d-11e4-869c-fdceebc1191b.png)
+"
+dschuermann/document-viewer,closed,Normalize line endings,[],"Fixes issue #83.
+"
+dschuermann/document-viewer,closed,"Mixed line endings make for a not-so-useful ""git status""",[],"I decided to start messing with some Android stuff; doing all this on a spare machine running Ubuntu 14.04 LTS.
+
+When I clone the repo and immediately cd into the directory and run ""git status"", it comes pre-loaded with unstaged changes:
+
+> colby@sepiatu:~/src/third-party/document-viewer$ git status
+> On branch master
+> Your branch is up-to-date with 'origin/master'.
+> 
+> Changes not staged for commit:
+>   (use ""git add <file>..."" to update what will be committed)
+>   (use ""git checkout -- <file>..."" to discard changes in working directory)
+> 
+>   modified:   art/drawables/sources/External Sources/Antarctica_on_the_globe_(red).svg
+>   modified:   art/drawables/sources/External Sources/Blank_globe.svg
+>   modified:   art/drawables/sources/External Sources/File Antarctica_on_the_globe_(red).svg.htm
+>   modified:   art/drawables/sources/External Sources/File Blank_globe.svg.htm
+>   modified:   art/drawables/sources/External Sources/File Question_book.svg.htm
+>   modified:   art/drawables/sources/External Sources/File Stop_hand_nuvola_black.svg.htm
+>   modified:   art/drawables/sources/External Sources/File Stop_hand_nuvola_black.svg_files/analytics_prod.js
+>   modified:   art/drawables/sources/External Sources/Question_book.svg
+>   modified:   art/drawables/sources/External Sources/Stop_hand_nuvola_black.svg
+>   modified:   art/drawables/sources/Original/Guidelines.txt
+>   modified:   art/drawables/sources/readme.txt
+>   modified:   document-viewer/src/main/java/org/afzkl/colorpicker/ColorPickerDialog.java
+>   modified:   document-viewer/src/main/java/org/afzkl/colorpicker/views/ColorPanelView.java
+>   modified:   document-viewer/src/main/java/org/afzkl/colorpicker/views/ColorPickerView.java
+>   modified:   document-viewer/src/main/res/layout/opdsitem.xml
+
+This seems to be due mixed usage of CRLF and LF line endings; there are some Windows-style CRLF line endings in the handful of files listed above.  We should [drop the carriage returns in these files and standardize on Unix-style line endings for the project](https://help.github.com/articles/dealing-with-line-endings/), otherwise ""git status"" is quite noisy and not terribly useful.
+"
+dschuermann/document-viewer,open,Show only page preview during scrolling,"[Label(name=""enhancement"")]","How to show only page preview during scrolling like Ebookdroid and Xodo?
+"
+dschuermann/document-viewer,closed,Add a donate link into donations.html,[],"Add a donate link for donation page. The donate link is found at [Android Apps page](https://sufficientlysecure.org/index.php/android-apps/), the image is found at PayPal official website through Google search.
+"
+dschuermann/document-viewer,closed,Add a donate link in donations.html,[],"Add a donate link for donation page. The donate link is found at [Android Apps page](https://sufficientlysecure.org/index.php/android-apps/), the image is found at PayPal official website through Google search.
+"
+dschuermann/document-viewer,closed,Update thanks.html,[],"Small fix for app's name.
+"
+dschuermann/document-viewer,closed,Update Google Play app also?,[],"Hey guys, would you mind update [Document Viewer app on Google Play](https://play.google.com/store/apps/details?id=org.sufficientlysecure.viewer) also? I'm using the F-Droid version which have the patch I sent last year, I was using the custom build for having that even but after releasing the new version I was expecting I could finally download it directly from Google Play? Thank you
+"
+dschuermann/document-viewer,closed,Update thanks.html,[],"Small fix.
+"
+dschuermann/document-viewer,closed,Update strings_preferences_typespec.xml,[],"Fix Chinese simp. translation for strings_preferences_typespec.xml
+"
+dschuermann/document-viewer,closed,Update strings_preferences_render.xml,[],"Fix Chinese simp. translation for strings_preferences_render.xml
+"
+dschuermann/document-viewer,closed,Update strings_preferences_performance.xml (zh-CN),[],"Fix Chinese simp. translation for strings_preferences_performance.xml
+"
+dschuermann/document-viewer,closed,Update strings_preferences_performance.xml,[],"Small fix.
+"
+dschuermann/document-viewer,closed,Update strings_preferences_navigation.xml,[],"Fix Chinese simp. translation for strings_preferences_navigation.xml
+"
+dschuermann/document-viewer,closed,Update strings_mainmenu.xml,[],"Fix Chinese simp. translation for strings_mainmenu.xml
+"
+dschuermann/document-viewer,closed,Update strings_common.xml,[],"Fix Chinese simp. translation for strings_common.xml
+"
+dschuermann/document-viewer,closed,Update release note,[],"Add 2 release notes for 2.6 and 2.6.1
+"
+dschuermann/document-viewer,closed,Add a download link for Font Pack,[],
+dschuermann/document-viewer,open,Selectable options for FontPack,"[Label(name=""enhancement"")]","Hi,
+I think DV FontPack can have selectable options to choose font familes before installing. Do you want to add this feature?
+
+By the way, what time can I see new release at Google Play or F-Droid?
+"
+dschuermann/document-viewer,closed,problem with djvu,"[Label(name=""unconfirmed"")]","I can't read this book http://rutracker.org/forum/viewtopic.php?t=4774400
+Phone: ThL W3+
+Android 4.0.4
+Other program on Android have problem to.
+
+DjView 4.9 on Debian work well.
+
+Sorry for my poor English.
+"
+dschuermann/document-viewer,closed,Problem with a particular PDF rendering text,[],"I'm having a problem using this pdf http://cdn.online-go.com/shape_up.pdf
+
+When looking at say ""Introduction: The scope of shape"" the headings render fine but the text is entirely small boxes, as though it's unsure how to render the characters in question.
+
+I'm running CM11.2 on a samsung galaxy s5 with Document Viewer and the font pack from f-droid.
+
+Any ideas what I can try to fix this?
+"
+dschuermann/document-viewer,closed,"Always asking ""close and save""","[Label(name=""bug"")]","When closing a PDF opened from downloads,  it always asks to save the document, even though it has already been downloaded and saved by the browser.
+Opened from ""Download"" app in the drawer.
+"
+dschuermann/document-viewer,closed,Update mupdf fixing #51,[],"The mupdf version was really way too old and, in future builds, we will profit from the latest mupdf versions because of a submodule integration of mupdf git. In the long run it would be desirable to have a submodule integration for djvulibre, as well.
+
+This will however disable the external font loading. It would be possible to enable the external font loading (commented out some lines of code that make the difference). But #51 will reappear in a slightly different manner.
+"
+dschuermann/document-viewer,closed,App crashes for some PDF files,"[Label(name=""bug"")]","Thanks to all devs, it is the most useful reader on android! :-)
+
+When opening some PDF files, this app will crash, there is some files that make this app crash:
+
+http://www.linuxlibertine.org/fileadmin/user_upload/PDF/Yggdrasil3-EN.pdf
+http://www.linuxlibertine.org/fileadmin/user_upload/PDF/Yggdrasil3.pdf
+https://www.huanghuagang.org/hhgLibrary/july2008/yan-an_riji.pdf
+"
+dschuermann/document-viewer,closed,PDF Problem: Bad anti-aliased rendering,"[Label(name=""unconfirmed"")]","I've a problem with the attached pdf, it feels rendering badly for anti-aliasing when open with Document Viewer.
+
+Name:
+Libertine’s XeTex-Documentation
+Link:
+"
+dschuermann/document-viewer,closed,PDF Proble,[],
+dschuermann/document-viewer,closed,Bad rendering for Chinese,[],"I found this app rendering badly if the file (such as PDF) is including Chinese characters or fonts, please fix it.  Please see some files attached: https://code.google.com/p/program-think/wiki/Books (from 微软网盘)
+"
+dschuermann/document-viewer,closed,Get support for cbr file format,"[Label(name=""duplicate""), Label(name=""enhancement"")]","I found the author of Sumatra PDF have a decompression library, I think use this library can help you to get support cbr or more file formats. Here is his library: https://github.com/sumatrapdfreader/sumatrapdf/tree/master/ext/unarr
+"
+dschuermann/document-viewer,open,inbetween deleted document causes unexp.error,"[Label(name=""bug""), Label(name=""enhancement"")]","If dialog opens on exit app, pending, deleted the opened .pdf by way of other app, ""unexpected error'.
+
+can you state in about pls if errors are feedbacked auto?
+"
+dschuermann/document-viewer,open,Fullscreen: status bar and soft keys remain on Nexus10 CyanogenMod,"[Label(name=""unconfirmed"")]","Hi. as you know, the notification bar at the top and virtual buttons at the bottom remains in the fullscreen mode.
+I hope fullscreen mode were fully fullscreen without notification bar and virtual buttons.
+"
+dschuermann/document-viewer,open,"Cannot swipe forward/back when viewing portrait document on landscape screen under ""Fit width (single page)"" rules","[Label(name=""enhancement"")]","Steps to reproduce:
+- Open a portrait PDF
+- Turn tablet to landscape orientation
+- Under settings select ""Single page"" navigation and ""Fit width"" zoom
+- Swipe left / right
+
+What should happen:
+- Turn page previous / next
+
+What happens instead:
+- Nothing
+
+Notes:
+- This works as expected in when the tablet is in portrait orientation
+- Can navigate to next page by scrolling down and pressing ""hand"" icon - no workaround to navigate to previous page
+"
+dschuermann/document-viewer,closed,"Support negative page offsets, fixing #35",[],
+dschuermann/document-viewer,closed,Proposal for issue #52,[],"At the moment, document-viewer doesn't specify any theme to use. That's in principle a very elegant solution. But the icon set for the action bar in document-viewer is so light that you can barely see the icons, when the system wide theme uses a light background color for the action bar.
+
+Furthermore, the text color for the browser items is forced to be white in document-viewer/src/main/res/values/service_styles.xml and that will also cause problems with light system-wide themes.
+
+In this pull request I propose to force the background color to be black with white text everywhere. Alternatively, you could use a differenct icon theme and/or stop forcing the textColor for the browser items to be black in service_styles.xml.
+"
+dschuermann/document-viewer,closed,UI unusable on Eink screens,"[Label(name=""enhancement"")]","Unfortunately, on Eink screens the user interface appears as white fonts (and icons) on white background so in the file browser, you can't see any file names. And the icons in the toolbar on top are invisible. Maybe some kind of night mode for the UI would fix this issue (something like this: http://stackoverflow.com/questions/13561786/how-to-set-day-and-night-theme-in-android-application)
+
+(I'm testing with an Icarus Illumina E653 ereader)
+"
+dschuermann/document-viewer,closed,Missing fonts?,"[Label(name=""bug"")]","The german pdf manuals from gnupg.org are unreadable. Seems that there are missing fonts.
+"
+dschuermann/document-viewer,open,Menu item to show properties of a PDF,"[Label(name=""enhancement"")]","Thanks to all devs, it is the most useful reader on android! :-)
+
+When reading aPDF, it is currently not possible to check the document properties (author, date, fonts used, etc). It would be very useful to have a feature that allows reading all properties as well.
+
+Thanks!
+"
+dschuermann/document-viewer,closed,Cyrillic fonts issue,"[Label(name=""unconfirmed"")]","PDF with Cyrillic fonts are displayed incorrectly.
+Please see screenshot attached.
+
+![screenshot_2014-07-20-00-27-18](https://cloud.githubusercontent.com/assets/8211534/3635739/e9578422-0f87-11e4-9bda-657f9417cfcd.png)
+"
+dschuermann/document-viewer,closed,Sometimes 'Go to...' or 'Outline' doesn't work,"[Label(name=""bug"")]","It's a weird issue. Usually when I press 'Go to...' and type a number and press 'Go', it simply refreshes at the original page, not the page I inputted. I need to do twice or so to switch to a new page. The problem of 'Outline' is similar. When I choose a page in 'Outline', it stops at the original page. I need to do this many times to switch a page.
+
+Android 4.1.2 (my Samsung phone) & Android 4.1.1 (my Samsung tab)
+Document Viewer 2.5, installed from F-Droid.
+"
+dschuermann/document-viewer,open,Fullscreen requires two swipes to work,"[Label(name=""bug"")]","When document viewer is on fullscreen, i need to swipe twice until the document starts scrolling. Happening on a Samsung S3 i9305. Version 2.5
+"
+dschuermann/document-viewer,closed,Add support for Samsung Multi-Window and Pen-Window,"[Label(name=""enhancement"")]","Please add a few lines to the AndroidManifest to enable support for these Samsung-specific features.
+
+HOWTO + links to the docs + link to Osmand's working implementation of one of thes features: https://f-droid.org/forums/topic/request-add-support-for-samsung-multi-window/
+
+I can test a custom APK on SGS3, Note8 and Note10.1 2014 upon request.
+"
+dschuermann/document-viewer,open,Add some additional scrolling actions,"[Label(name=""enhancement"")]","I am one of the lucky few to have a phone with a slideout hardware keyboard (Sony Xperia Pro), and I use it to read PDFs in Document Viewer with keys mapped to the Scroll Back and Scroll Forward actions. I have set the ""Scroll height"" setting to 85%. This allows me to to go through the document roughly one screenfull at a time without my fingers getting in the way of the screen. I have also configured taps at the top and bottom of the screen to do the same thing, useful if I wish to read without the keyboard open, e.g. in portrait mode, by the way.
+
+This is fine in itself but I often read multi-column text where, when I reach the bottom of the column, I have to scroll to the top of the current column then scroll right to reach the top of the next. I have to do the scrolling to the left and right with my finger on the screen, which breaks up the flow a little.
+
+So, I suggest some additional actions could be added, which users could map to key presses and screen taps.
+
+Firstly, it would be great to have some actions to go left and right by a screenfull, or a percentage of a screenfull. If you added such actions, I suggest that there needs to be a separate setting from the current ""Scroll height"" setting for the left and right percentage. For example, if I was zoomed into a column such that it was fitting the full width, I would want the ""Scroll width"" to be 100%, but keep ""Scroll height"" on 85%.
+
+Secondly, and in addition to the above, it would be great to have additional actions available to fine tune the scroll position up, down, left and right, without have to drag on the screen. That is, rather than going a screenful, or a percentage of a screenfull, go just a small amount. In many cases I'm sure that moving a screenfull to the left or right would not properly line up with the next column, so these actions would be useful to get the view into the correct position. This would also be useful for up and down when I don't wish to move a whole 85%.
+
+If I may be so bold, in my opinion the ideal model for the fine tuning scrolling actions would not be PC-style where pressing the key once moves by one line in a stepwise fashion, and after a while an autorepeat kicks in. Instead, it would be great to see a smooth scrolling solution, where if the key was pressed very briefly it would only move by a pixel or two, but if held down it would smoothly scroll continuously until the key is released. A small amount of acceleration would add some polish, up to not too high a maximum speed.
+
+(This was the keyboard scrolling model used in the default web browser on the non-Android Nokia N900, and it was a most satisfactory way of scrolling round a document smoothly, without fear of overshooting).
+
+If you implement the smooth scrolling suggestion, you might need to consider renaming the current Scroll Up and Scroll Down options, which are really more like Page Up and Page Down, or maybe Screen Up and Screen Down.
+"
+dschuermann/document-viewer,open,Often loses position when rotate portrait/landscape,"[Label(name=""bug"")]","I usually use the app in landscape orientation. If I rotate to portrait, often it will lose the current page, usually moving to the last page.
+
+Sony Xperia Pro, Android 2.3.4, Document Viewer 2.5
+"
+dschuermann/document-viewer,open,Often loses position when zoom,"[Label(name=""bug"")]","Many thanks for picking up and working on this app. I use it a lot to read PDF magazines and have a few issues to report.
+
+Often, when I double-click on a column to zoom in to fit the view to the column width, it will do the zoom but navigate to a completely different page at the same time. Usually when it does this it goes to somewhere much earlier in the document, but it once went to a later page.
+
+It doesn't always do this and I haven't yet managed to find a pattern as to why it does it some times and not others.
+
+If I bother to scroll to the correct page keeping the zoom level the same, I will see that the zoom percentage it has chosen it just right for the column that I double-clicked on, although I haven't checked that every time.
+
+Sony Xperia Pro, Android 2.3.4, Document Viewer 2.5
+"
+dschuermann/document-viewer,closed,Do not refresh on exiting immersive mode,[],"I didn't put it due this bug with action bar:
+![screenshot](https://f.cloud.github.com/assets/833473/2180130/1cbd6a94-96fb-11e3-80f1-a6e1d43b2e50.png)
+(on show title bar mode, a bit of action bar will shifted to down due some bug)
+But this totally worth to remove the annoying delay on refresh PDF pages every time you want bring android System UI or app switch and even not apparent when title bar is hide by preference (that I think most users would do that). This is my fault that I didn't it from the beginning and I am sorry. EbookDroid totally rewrote the menu bar seems due such bugs.
+"
+dschuermann/document-viewer,closed,Add CI and .gitattributes,[],"Buildhive CI should be enabled from [its control panel](https://buildhive.cloudbees.com/) then will work like [my project](https://github.com/ebraminio/DroidPersianCalendar).
+
+.gitattributes helps diff algorithm to know about changed place, [for more information](http://git-scm.com/docs/gitattributes)
+"
+dschuermann/document-viewer,closed,Make sure targeting KitKat above,[],"Follow up of #39. Sorry about the error.
+"
+dschuermann/document-viewer,closed,Use KitKat immersive full-screen,[],"Fixes #38
+"
+dschuermann/document-viewer,closed,UI shouldn't brought just by simple tap while Full Screen reading,[],"On latest version of EBookDroid which I tested, while Full Screen reading, System UI only will be appear when user would swipe top down but document viewer seems will brought back system ui every time I want scroll the page.
+"
+dschuermann/document-viewer,closed,request: replace white in night mode with a different color,"[Label(name=""enhancement""), Label(name=""unconfirmed"")]","I don't have much experience with programming, I'm more of a 'reader' and almost always I use the night mode for reading: it's easier on the eyes. However the white in the night mode is still too bright and contrasty for night reading and it would be very nice if one can change that text color to something less abrasive like beige or khaki. My brother is telling me that the process for getting into nightmode in this code (EbookDroid) is a series of loops that converts the document colors to their corresponding negative values (somehow) and its not straightforward to make the whites in nightmode to some other color like I mentioned. I would very much appreciate if you could consider this possibility as it really enhances the reading experience for those who do intensive reading on this app.
+"
+dschuermann/document-viewer,closed,New icon for fontpack,[],
+dschuermann/document-viewer,closed,Allow negative page-offsets,"[Label(name=""enhancement"")]","Please allow negative numbers as page-offsets in the book settings.
+
+I have some djvu ebooks that include some front matter (title page, etc.) before getting to page 1.
+"
+dschuermann/document-viewer,closed,Trying to add more functionally to the app ,[],"Hi i'm trying to add the following to the app:
+
+Calculator 
+and a activity that launches a flashcard app I have made 
+
+I have the code for the calculator i just need to know how to add it to the viewpager for the bookshelf 
+
+Thanks in advance 
+"
+dschuermann/document-viewer,closed,Choose new icon and put on Google Play,"[Label(name=""ToDo"")]","Choose new icon (to prevent conflicts with EBookDroid people) and put app on Google Play.
+"
+dschuermann/document-viewer,closed,grey areas displayed,"[Label(name=""unconfirmed"")]","https://code.google.com/p/ebookdroid/issues/detail?id=638
+
+When opening a (large) pdf file some pages are displayed with some grey areas (see attachment). With the reader from Adobe this is not the case.
+If you would like the the file causing the problem let me know.
+
+Seen on Xperia Arc (2.3.4) with app V1.6.6
+"
+dschuermann/document-viewer,closed,'Crop pages (auto)' fails at some pages of the attached file,"[Label(name=""unconfirmed"")]","https://code.google.com/p/ebookdroid/issues/detail?id=572
+
+What steps will reproduce the problem?
+1. Open the file at page 105.
+2. Enable option 'Crop pages (auto)'.
+3. Scroll pages up and down.
+
+What is the expected output?
+Normally zoomed image.
+
+What do you see instead?
+Very high level of zoom, cropped text. Sometimes gray pages instead of rendered images.
+
+What version of the product are you using?
+2.0.2
+
+On what operating system?
+Android 4.1.1
+
+What device are you using?
+Chuwi V99
+"
+dschuermann/document-viewer,closed,Slow scrolling and rendering on Huawei Mediapad 10 FHD,[],"https://code.google.com/p/ebookdroid/issues/detail?id=524
+
+What steps will reproduce the problem?
+1.Open any pdf or djvu document
+2.See slow, laggy scrolling and slow page rendering. Much slower than on single core Xperia Arc phone.
+3.
+
+What is the expected output?
+Maybe GPU acceleration used a wrong way, or Huawei GPU driver is not optimized. Maybe to add a setting for CPU-only (software) rendering and scrolling, or to repair the GPU rendering.
+
+What do you see instead?
+
+What version of the product are you using?
+
+On what operating system?
+Android 4.1.2, stock
+
+What device are you using?
+Huawei Mediapad 10 FHD, 1,4 GHz Cortex A9 CPU (Hisilicon K3V2), Vivante GC4000 GPU, 2 GB RAM.
+
+Please provide any additional information below.
+Feel free to contact me on e-mail, both russian and english. I can help you to test new versions.
+"
+dschuermann/document-viewer,closed,Incorrect page view on padfone 2,"[Label(name=""invalid"")]","https://code.google.com/p/ebookdroid/issues/detail?id=522
+
+What steps will reproduce the problem?
+1. Using application in both modes - tablet and phone
+2. Switching portrait/landscape view
+
+What is the expected output?
+Page should not be scaled vertically to half 
+
+What do you see instead?
+Normal width and scaled to half height
+
+What version of the product are you using?
+EbookDroid 1.6.6
+
+On what operating system?
+Android
+
+What device are you using?
+Padfone 2
+"
+dschuermann/document-viewer,closed,"Pinch-to-zoom should zoom around the pinching center, not the screen center","[Label(name=""enhancement"")]","https://code.google.com/p/ebookdroid/issues/detail?id=519
+
+What steps will reproduce the problem?
+0. (optional) Get a tablet, if possible. It is more noticeable on larger screens.
+1. Open any file in EBookDroid 1.6.6.
+2. (optional) Show pages side-by-side, and leave the tablet in landscape orientation. This way, you can see 2 or 3 pages at once on the screen.
+3. Use two-finger-pinch gesture to zoom in and out.
+
+What is the expected output?
+The zoom should happen around my fingers, centered on the pinch center. In other words, the touched page regions should keep touching my finger.
+
+What do you see instead?
+The zoom happens around the center of the screen.
+
+For comparison, open Google Maps and try the same gesture there.
+
+What version of the product are you using?
+1.6.6
+
+On what operating system?
+Android JellyBean
+
+What device are you using?
+Galaxy Nexus and also a CyanogenMod 7"" tablet.
+"
+dschuermann/document-viewer,closed,ebookdroid not offered as an app to open ePUB links,"[Label(name=""invalid"")]","https://code.google.com/p/ebookdroid/issues/detail?id=517
+
+In my Android FireFox browser, I'm clicking on a link to:
+
+http://archive.org/download/WarIsARacket/WarIsARacket.epub
+
+Host page is http://archive.org/details/WarIsARacket
+
+I don't get an option to open it with ebookdroid (only Adobe reader and some other readers I had downloaded to try them out).
+
+I'm using a Samsung Galaxy S3 with Android 4.1.2
+"
+dschuermann/document-viewer,closed,Bad rendering size in pdf,"[Label(name=""invalid""), Label(name=""wontfix"")]","https://code.google.com/p/ebookdroid/issues/detail?id=512
+
+What steps will reproduce the problem?
+1. Open and read pdf document: (Creating a Website - The Missing Manual (OReilly, 2011). See link at the end.
+2. Scroll from page to page
+
+What is the expected output?
+ Regular font size (or zoom factor) from page to page
+
+What do you see instead?
+ Every second page is rendered larger. The problem is apparently caused by the elimination of a margin and a higher zoom factor every second page.
+
+What version of the product are you using?
+ 1.6.6 
+
+On what operating system?
+ Android 4.2.2
+
+What device are you using?
+ Nexus 10
+
+Please provide any additional information below.
+ I put a copy of the problem pdf at
+https://dl.dropboxusercontent.com/u/22346285/books/Creating%20a%20Website%20-%20The%20Missing%20Manual%20%28OReilly%2C%202011%29.pdf
+"
+dschuermann/document-viewer,closed,"""Single page"" view settings too hidden","[Label(name=""enhancement"")]","https://code.google.com/p/ebookdroid/issues/detail?id=505
+
+What steps will reproduce the problem?
+1. Be a noob
+2. Download ebookdroid, and read in the description ""We do have page turning emulation - just switch to single page mode and choose page turning effect of your choice!""
+3. Try to find ""single page mode""
+
+What is the expected output?
+This should be very easy to find.
+I would expect it to be under the ""magnifying glass (?)"" icon, that has ""full screen"" ""Show title"", etc.
+
+What do you see instead?
+This setting is hidden very deeply.
+All Setting - makes sense, though a direct view mode menu would be better
+Rendering  - not really the place I'd expect this setting. Rendering sounds more like issues about fonts and stuff.
+Document View mode - makes sense. But it is the 5th option down, so one has to read fairly carefully.
+
+It is also available in Book settings, and there is a bit less hidden. But the noob (me) is looking to have ALL books behave in a certain way
+
+What version of the product are you using?
+1.6.6
+
+On what operating system?
+Android 4.1.2
+
+What device are you using?
+Galaxy Note 2
+
+Please provide any additional information below.
+May 14, 2013 Delete comment #1 mlachmann
+"
+dschuermann/document-viewer,open,"Store only book specific settings per book, not global settings","[Label(name=""enhancement"")]","https://code.google.com/p/ebookdroid/issues/detail?id=504
+
+What steps will reproduce the problem?
+1. Go to file browser mode
+2. All settings->Rendering->Page transitions->Fade in (for example)
+3. Open a previously unread book
+4. Exit the book, and now change the global setting: All settings->Rendering->Page transitions->Slide
+5. Open the same book again
+
+What is the expected output?
+I would expect the book to now have a page transition of 'slide"", which is the global option I chose.
+
+What do you see instead?
+Page transition stays ""Fade in"", from the first time the book was opened.
+
+A book should only remember the book-specific settings that were set via ""Book settings"", not those set via ""All Settings"".
+
+What version of the product are you using?
+1.6.6
+
+On what operating system?
+Android
+
+What device are you using?
+Galaxy Note 2
+
+Please provide any additional information below.
+"
+dschuermann/document-viewer,closed,File browser closing unexpectedly,[],"https://code.google.com/p/ebookdroid/issues/detail?id=482
+
+What steps will reproduce the problem?
+1. Read some short books. For example you have few books in dir.
+2. Press button ""Show files"", browse to where books are.
+3. Open one book
+4. Press button ""Back""  - you return to file browser.
+5. Open other book
+6. Press button ""Back""  - you return to file browser. (This is working as many times as you need)
+7. But! Press ""home"", or switch to other app, while book are opened
+8. Return/Rerun ebookdroid, after a while, or after some other action (Actually, I'm reporting this to find uot if there any other users with same problem/behavior)
+9. Press button ""Back""  - for an instant you see that dir in file browser, then it quickly closes and you see bookshelves instead.
+
+What is the expected output?
+Either show normally file browse dialog, or just go to shelve if it's not possible (I believe still it's possible, since for a moment you are see that right one dir)
+
+What do you see instead?
+
+What version of the product are you using?
+1.6.6
+
+On what operating system?
+Android 4.1.2
+
+What device are you using?
+SGS3
+
+Please provide any additional information below.
+
+Also, this is minor. If you read few books by this method from one directory, fiels aren't marked as read, until you close filebrowse or ebookdroid and reopen it.
+"
+dschuermann/document-viewer,closed,Jump to the first page when scrolling,"[Label(name=""unconfirmed"")]","While scrolling sometimes resets to the first page of the book.
+"
+dschuermann/document-viewer,closed,Tap-on-screen submenus not properly accessible,"[Label(name=""unconfirmed"")]","https://code.google.com/p/ebookdroid/issues/detail?id=467
+
+What steps will reproduce the problem?
+После официального обновления Samsung Galaxy S2 до Android 4.1.2 Jelly Bean:
+1. Во время просмотра PDF нажать кнопку меню или два раза тапнуть по экрану.
+2. Появляется меню ""Навигация, Вид, Настройки, О программе, Закрыть"".
+3. При нажатии на первые три пункта меню (Навигация, Вид, Настройки) на долю секунды появляется нужное меню и сразу пропадает. Пункты ""О программе"" и ""Закрыть"" работают нормально.
+
+What is the expected output?
+Меню навигации и настроек.
+
+What do you see instead?
+Ничего.
+
+What version of the product are you using?
+v 1.6.6
+
+On what operating system?
+официальный Android 4.1.2
+
+What device are you using?
+Samsung Galaxy S2
+
+Please provide any additional information below.
+Невозможность использовать меню в книге очень мешает. До этого программа была для меня лучшим и единственным PDF-ридером.
+"
+dschuermann/document-viewer,open,Multiple notifications on file adding to library,"[Label(name=""bug"")]","https://code.google.com/p/ebookdroid/issues/detail?id=463
+
+What steps will reproduce the problem?
+1. Open EbookDroid
+2. Open standard Android browser
+3. Find any big pdf file (which will load for a few seconds) and download it (""Save link"" from browser context menu)
+
+What is the expected output?
+After the file is loaded, the only one ""File added to library"" message appears in the Android status bar.
+
+What do you see instead?
+""File added to library"" messages continuously added in the Android notification list until the status bar will filled out with notification icons. After pressing the ""Clear"" button in the notification list, the notification list is cleared and messages continue to be added again, even after the file is already loaded.
+
+What version of the product are you using?
+1.6.6
+
+On what operating system?
+Google Android 2.3.7
+
+What device are you using?
+Pocket Book A10 3G
+
+Please provide any additional information below.
+This also applies to the Dolphin browser, but does not affect the Opera browser.
+"
+dschuermann/document-viewer,open,Crashes during search if split-pages is enabled,"[Label(name=""bug"")]","https://code.google.com/p/ebookdroid/issues/detail?id=460
+
+What steps will reproduce the problem?
+1. open a two-column pdf with split-pages enabled.
+2. Search for a string of text.
+3. The display moves and highlights a region (sometimes the wong one!)
+4. Select arrow to find the next match.
+5. EbookDroid closes.
+
+What is the expected output?
+I expected search to work as usual.  It does work if I disable split-pages.
+
+What do you see instead?
+Program closes.
+
+What version of the product are you using?
+1.6.6
+
+On what operating system?
+
+What device are you using?
+
+Please provide any additional information below.
+"
+dschuermann/document-viewer,closed,Color hue or saturation is off or washed out.,[],"https://code.google.com/p/ebookdroid/issues/detail?id=437
+
+What steps will reproduce the problem?
+1. open a PDF with color images.
+2.
+3.
+
+What is the expected output?
+Colors are darker and detailed.
+
+What do you see instead?
+Colors are washed out and overexposed.
+
+What version of the product are you using?
+1.6.4
+
+On what operating system?
+4.1.1
+
+What device are you using?
+Galaxy Note 10.1
+
+Please provide any additional information below.
+The color rendition is off with multiple PDF files. I've tried several textbooks and while text is sharp, there is a color difference with the entire file. I've attached photos to illustrate what I am seeing.
+
+I have tried adjusting the contrast, gamma, exposure for hours trying many combinations to get closer but all it does is wash it out more. Is there an unadjusted color scheme?
+"
+dschuermann/document-viewer,closed,Перескок на первую страницу при пролистывании,[],"https://code.google.com/p/ebookdroid/issues/detail?id=434
+
+При прокрутке страницы иногда сбрасывает на первую страницу книги.
+Баг возникает на книгах pdf и djvu форматов.
+
+Версия 1.6.4 optimized for Cortex A8
+Устройство Samsung Galaxy Note GT-N7000, Android 4.1.2, XXLSC
+"
+dschuermann/document-viewer,open,scrolling begins with a jerk,"[Label(name=""enhancement"")]","https://code.google.com/p/ebookdroid/issues/detail?id=433
+
+What steps will reproduce the problem?
+1. open document (djvu)
+2. hold finger on screen to scroll
+3. move finger
+
+What is the expected output?
+smooth document scrolling from the minimal finger move
+
+What do you see instead?
+document scrolling begins with a jerk after the displacement of a finger on a half-centimeter, in case of long hold with no displacement - scrolling does not start
+
+What version of the product are you using?
+ebookdroid 1.6.4
+
+On what operating system?
+android 2.3.5
+
+What device are you using?
+htc desire s
+
+Please provide any additional information below.
+"
+dschuermann/document-viewer,closed,Post-processing bug in night mode - black screen becomes grey,[],"https://code.google.com/p/ebookdroid/issues/detail?id=426
+
+The problem concerns decreesing brightness/contrast in night mode.
+When tuning any of graphic postprocessing options to decrease minimal Super_AMOLED+ screen brightness - black screen background becomes grey and awfully eye hurting...
+
+What is the expected output?
+- I want to block postprocessing of background, only for text and picture layers.
+- I want to tune text brightness increasing/decreasing via screen left border sliding, like it is implemented in the latest version of Cool Reader.
+- I want to use minimal text brightness, less than such in android tray settings (see Cool Reader).
+
+What version of the product are you using?
+1.6.4
+
+On what operating system?
+Android 3
+
+What device are you using?
+Samsung Galaxy Tab 7.7
+"
+dschuermann/document-viewer,closed,App switches to the bookshelf/home screen when attempting to scroll down a new eBook page.,"[Label(name=""unconfirmed"")]","https://code.google.com/p/ebookdroid/issues/detail?id=424
+
+What steps will reproduce the problem?
+1. Open a new eBook file. 
+2. Attempt to scroll down page.
+3. Application exits the file and switches to the bookshelf/home screen. 
+
+What is the expected output?
+
+File should continueto scroll in direction swiped. 
+
+What do you see instead?
+
+Bookshelf/Home screen
+
+What version of the product are you using?
+
+1.6.4
+
+On what operating system?
+
+Android 4.1
+
+What device are you using?
+
+ASUS TRANSFORMER TF300
+"
+dschuermann/document-viewer,open,multi-part PDF not working,"[Label(name=""enhancement"")]","https://code.google.com/p/ebookdroid/issues/detail?id=420
+
+What steps will reproduce the problem?
+1. Open a multi-part PDF
+2. Open Outline -- outline links to other files do not appear.
+3. Tap page-link to other file; nothing happens
+
+What is the expected output?
+- Outline should show links to other PDF files (usually in same folder)
+- PageLinks and OutlineLinks to other PDF files should open the other PDF file and target the specified page.
+
+What do you see instead?
+- PageLinks don't work
+- Outline is missing external links
+
+What version of the product are you using?
+1.6.4
+
+On what operating system?
+Android 2.3.3 - 4.1.2
+
+What device are you using?
+Various
+
+Please provide any additional information below.
+These are GOTOR links, and the filespec is available in muPDF. Just need to provide a way to switch documents (using intents?) internally. Extra credit if the navigation history maintains a path through multiple files.
+"
+dschuermann/document-viewer,closed,Text blinking with 'fade in' (single page mode),"[Label(name=""enhancement"")]","https://code.google.com/p/ebookdroid/issues/detail?id=392
+
+What steps will reproduce the problem?
+1. set User interface\Brightness to 30%
+2. set Rendering to 'Single page'
+3. set Page transition to 'Fade in'
+4. turn the page
+
+What is the expected output?
+the next page must brighten (fade out) from 0% brightness to 30% brightness
+
+What do you see instead?
+the next page brightens from 0% brightness to 100% brightness and then down to 30%. the page is 'blinking'
+
+What version of the product are you using?
+1.6.2
+
+On what operating system?
+4.1.1
+
+Please provide any additional information below.
+Blinking is very annoying when reading at night in 'Night mode'
+"
+dschuermann/document-viewer,closed,App fails on Replicant 4.0 0005,[],"Document Viewer fails when trying to view a PDF file on Replicant 4.0 0005 . I've used Document Viewer on a stock Android 2.3.5 with the same PDF file without any problems.
+
+The error is as follows:
+
+Title: Application error
+Message: Your device cannot support required GLES configuration
+
+I'm using version 2.2 of Document Viewer released through f-droid for both the Android device and the Replicant device.
+The hardware with Replicant 4.0 0005 installed is a Samsung Galaxy Tab 2 7.0 (GT-P3110)
+
+My initial thought is that ""GLES"" might refer to OpenGL ES [1].
+
+[1] https://en.wikipedia.org/wiki/OpenGL_ES
+"
+dschuermann/document-viewer,closed,Additional Fonts,"[Label(name=""enhancement"")]","Can you please add
+
+Linux Libertine and Linux Biolinum
+http://www.linuxlibertine.org/
+
+and the DejaVu Fonts
+http://dejavu-fonts.org/wiki/Main_Page
+"
+dschuermann/document-viewer,open,ability to add opds sites with http auth,"[Label(name=""enhancement"")]","Hi
+
+It will be great if it is possible to add opds sites that require passwords
+
+Thanks
+"
+dschuermann/document-viewer,closed,"PDF Problem: Bio Journal, Elsevier","[Label(name=""bug""), Label(name=""unconfirmed"")]","Came by mail:
+
+I've a problem with the attached pdf, it closes document viewer each
+time I try to reopen it (worked well the first time).
+
+I attached the syslog (part of it), I think the problem is due to
+something like that : 
+""error: cannot load page 9 contents""
+
+The file opens correctly using okular on linux and correctly using
+lecturenotes with pdfview import (using mupdf too).
+
+Name:
+Orthogonal analytical methods for botanical standardization:
+Determination of green tea catechins by qNMR and LC–MS/MS
+"
+dschuermann/document-viewer,closed,German translation,[],
+dschuermann/document-viewer,closed,Do not intrude to pdf download intent,[],"The app intercepts pdf downloads and takes up download function. This it's irritating. Can it be made optional? I'm tempted to uninstall it... ;)
+"
+dschuermann/document-viewer,open,Add CBR support,"[Label(name=""MuPDF""), Label(name=""enhancement"")]","- where is giflib?
+"
+dschuermann/document-viewer,closed,ClassCastException in AsyncTask,[],"`I/wpa_supplicant(15187): wlan0: WPA: Group rekeying completed with 00:0f:cc:cd:11:70 [GTK=TKIP]
+D/dalvikvm(16713): GC_CONCURRENT freed 1985K, 63% free 3179K/8451K, paused 8ms+4ms, total 34ms
+D/dalvikvm(16713): WAIT_FOR_CONCURRENT_GC blocked 21ms
+I/ActivityManager(  280): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.sufficientlysecure.viewer/org.ebookdroid.ui.library.RecentActivity u=0} from pid 464
+V/tiny_hw (  105): out_write(0x41efaa88) opening PCM(0), card,dev: 0,0
+D/dalvikvm(16967): Late-enabling CheckJNI
+I/ActivityManager(  280): Start proc org.sufficientlysecure.viewer for activity org.sufficientlysecure.viewer/org.ebookdroid.ui.library.RecentActivity: pid=16967 uid=10145 gids={1015, 3003, 1028}
+E/Trace   (16967): error opening trace file: No such file or directory (2)
+I/Document Viewer(16967): Document Viewer (org.sufficientlysecure.viewer) 2.0(2000)
+I/Document Viewer(16967): Root             dir: /system
+I/Document Viewer(16967): Data             dir: /data
+I/Document Viewer(16967): External storage dir: /storage/sdcard0
+I/Document Viewer(16967): App      storage dir: /storage/sdcard0/.org.sufficientlysecure.viewer
+I/Document Viewer(16967): Files            dir: /data/data/org.sufficientlysecure.viewer/files
+I/Document Viewer(16967): Cache            dir: /data/data/org.sufficientlysecure.viewer/cache
+I/Document Viewer(16967): System locale       : en_GB
+I/Document Viewer(16967): VERSION     : 16
+I/Document Viewer(16967): BOARD       : picasso
+I/Document Viewer(16967): BRAND       : Acer
+I/Document Viewer(16967): CPU_ABI     : armeabi-v7a
+I/Document Viewer(16967): CPU_ABI2    : armeabi
+I/Document Viewer(16967): DEVICE      : a500
+I/Document Viewer(16967): DISPLAY     : cm_a500-userdebug 4.1.2 JZO54K eng.pj.20121122.181927 test-keys
+I/Document Viewer(16967): FINGERPRINT : acer/a500_ww_gen1/picasso:4.0.3/IML74K/1329824557:user/release-keys
+I/Document Viewer(16967): ID          : JZO54K
+I/Document Viewer(16967): MANUFACTURER: Acer
+I/Document Viewer(16967): MODEL       : A500
+I/Document Viewer(16967): PRODUCT     : picasso
+I/Document Viewer(16967): Debug logging enabled by default
+D/Document Viewer.DBAdapter(16967): New DB connection created: null
+I/Document Viewer.SettingsManager(16967): BookSettingsUpdate thread started
+I/Document Viewer.CacheManager(16967): Default app cache dir: /data/data/org.sufficientlysecure.viewer/files
+I/Document Viewer(16967): No heap preallocation
+I/Document Viewer(16967): UI Locale: en_GB
+D/Document Viewer.RecentActivity.0(16967): onCreate(): null
+D/Document Viewer.RecentActivityController.0(16967): beforeCreate(): org.ebookdroid.ui.library.RecentActivity@421257a0
+D/Document Viewer.RecentActivityController.0(16967): afterCreate(): false
+D/Document Viewer.RecentActivityController.0(16967): Last book: , found: false, should load: false
+D/Document Viewer.RecentActivity.0(16967): onStart()
+D/Document Viewer.RecentActivity.0(16967): onCreate(): null
+D/Document Viewer.RecentActivity.0(16967): onResume()
+D/Document Viewer.RecentActivityController.0(16967): onResume(): false
+D/Document Viewer.RecentActivity.0(16967): onPostResume()
+D/libEGL  (16967): loaded /system/lib/egl/libEGL_tegra.so
+D/libEGL  (16967): loaded /system/lib/egl/libGLESv1_CM_tegra.so
+D/libEGL  (16967): loaded /system/lib/egl/libGLESv2_tegra.so
+D/OpenGLRenderer(16967): Enabling debug mode 0
+D/dalvikvm(16967): GC_FOR_ALLOC freed 687K, 25% free 6400K/8451K, paused 20ms, total 22ms
+W/dalvikvm(16967): threadid=14: thread exiting with uncaught exception (group=0x41d59300)
+I/System.out(16967): Stacktrace is written: /storage/sdcard0/.org.sufficientlysecure.viewer/logs/org.sufficientlysecure.viewer.2.0.20130704.111635.stacktrace
+E/AndroidRuntime(16967): FATAL EXCEPTION: ThumbnailLoader-1
+E/AndroidRuntime(16967): java.lang.RuntimeException: An error occured while executing doInBackground()
+E/AndroidRuntime(16967):    at org.emdev.ui.tasks.AsyncTask$2.done(AsyncTask.java:230)
+E/AndroidRuntime(16967):    at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:273)
+E/AndroidRuntime(16967):    at java.util.concurrent.FutureTask.setException(FutureTask.java:124)
+E/AndroidRuntime(16967):    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:307)
+E/AndroidRuntime(16967):    at java.util.concurrent.FutureTask.run(FutureTask.java:137)
+E/AndroidRuntime(16967):    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1076)
+E/AndroidRuntime(16967):    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:569)
+E/AndroidRuntime(16967):    at java.lang.Thread.run(Thread.java:856)
+E/AndroidRuntime(16967): Caused by: java.lang.ClassCastException: java.lang.Object[] cannot be cast to java.lang.Void[]
+E/AndroidRuntime(16967):    at org.ebookdroid.common.cache.ThumbnailFile$LoadingTask.doInBackground(ThumbnailFile.java:163)
+E/AndroidRuntime(16967):    at org.emdev.ui.tasks.AsyncTask$1.call(AsyncTask.java:215)
+E/AndroidRuntime(16967):    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305)
+E/AndroidRuntime(16967):    ... 4 more
+W/ActivityManager(  280):   Force finishing activity org.sufficientlysecure.viewer/org.ebookdroid.ui.library.RecentActivity
+W/dalvikvm(16967): threadid=15: thread exiting with uncaught exception (group=0x41d59300)
+I/System.out(16967): Stacktrace is written: /storage/sdcard0/.org.sufficientlysecure.viewer/logs/org.sufficientlysecure.viewer.2.0.20130704.111635.stacktrace
+I/Process (16967): Sending signal. PID: 16967 SIG: 9
+I/ActivityManager(  280): Process org.sufficientlysecure.viewer (pid 16967) has died.
+I/WindowState(  280): WIN DEATH: Window{420cc3f0 org.sufficientlysecure.viewer/org.ebookdroid.ui.library.RecentActivity paused=true}
+`
+Second after loading a document: `
+"
+dschuermann/document-viewer,closed,Test other architectures,[],"Compiling for other archs works, but is not tested
+- apk per arch?
+- or package all archs?
+"
+dschuermann/document-viewer,closed,Compile missing additional font packages,[],"EBookDroid has seperated font packages.
+- Build those based on the template
+"
+dschuermann/document-viewer,closed,Old Wiki pages need cleaning,"[Label(name=""ToDo"")]","They were converted from Html to Markdown
+"

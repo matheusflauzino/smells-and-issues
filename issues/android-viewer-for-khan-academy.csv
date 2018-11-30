@@ -1,0 +1,144 @@
+repository,state,title,label,body
+concentricsky/android-viewer-for-khan-academy,open,Translation to Brazilian Portuguese,[],Translation to Brazilian Portuguese
+concentricsky/android-viewer-for-khan-academy,open,Doesn't start,[],"Closes every time I try to open it.
+Android 5.1.1 (also didn't work with 5.1)
+F-Droid build 1.2.2"
+concentricsky/android-viewer-for-khan-academy,closed,Where are downloads stored?,[],"Hey!
+
+First of all, thank you for this app, works like a charm so far! The only problem I'm having is that I would like to view the lectures in split screen mode on my Galaxy Note Pro (in portrait mode), with the video in the top half of the screen and S-Note below for taking notes, which the app does not seem to support.
+
+A simple workaround could be to not use the app to display the videos but a video player capable of split screen display. I wanted to try that out and already searched for the videos but could not find them. I also searched e.g. in Constants.java and some other files on github to try and find the location in the source code, but to no success. 
+
+Could you please tell me where the downloads are stored?
+
+Regards,
+
+Christian
+"
+concentricsky/android-viewer-for-khan-academy,open,Cannot build project with mvn clean install,[],"I installed android sdk from macports and then ran mvn clean install and got the following error:
+## Missing:
+
+1) android.support:compatibility-v4:jar:r11
+
+  Try downloading the file manually from the project website.
+
+  Then, install it using the command:
+      mvn install:install-file -DgroupId=android.support -DartifactId=compatibility-v4 -Dversion=r11 -Dpackaging=jar -Dfile=/path/to/file
+
+  Alternatively, if you host your own repository you can deploy the file there:
+      mvn deploy:deploy-file -DgroupId=android.support -DartifactId=compatibility-v4 -Dversion=r11 -Dpackaging=jar -Dfile=/path/to/file -Durl=[url] -DrepositoryId=[id]
+
+  Path to dependency:
+    1) com.concentricsky.android:khanacademy:apk:1.0.0-SNAPSHOT
+    2) android.support:compatibility-v4:jar:r11
+
+---
+
+1 required artifact is missing.
+
+for artifact:
+  com.concentricsky.android:khanacademy:apk:1.0.0-SNAPSHOT
+
+from the specified remote repositories:
+  central (http://repo1.maven.org/maven2),
+  codehaus-snapshots (http://snapshots.repository.codehaus.org),
+  springsource-repo (http://repo.springsource.org/release)
+"
+concentricsky/android-viewer-for-khan-academy,open,Cannot connect with account. OAuth Error,[],"On my device (HTC One V) I cannot connect to my Khan account. Whenever I try to sign in I only see the message ""OAuth Error. Invalid Consumer"". 
+"
+concentricsky/android-viewer-for-khan-academy,open,Crash on startup,[],"I built this from source with the following patch to pom.xml, because I figured all the artifacts should be available on mvncentral :
+
+```
+diff --git a/pom.xml b/pom.xml
+index b762225..873eff9 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -7,17 +7,6 @@
+     <packaging>apk</packaging>
+     <name>Viewer for Khan Academy</name>
+
+-    <repositories>
+-        <repository>
+-            <id>codehaus-snapshots</id>
+-            <url>http://snapshots.repository.codehaus.org</url>
+-        </repository>
+-        <repository>
+-            <id>springsource-repo</id>
+-            <name>SpringSource Repository</name>
+-            <url>http://repo.springsource.org/release</url>
+-        </repository>
+-    </repositories>
+
+     <dependencies>
+         <dependency>
+@@ -27,15 +16,10 @@
+             <scope>provided</scope>
+         </dependency>
+         <dependency>
+-            <groupId>android.support</groupId>
+-            <artifactId>compatibility-v4</artifactId>
+-            <version>11</version>
+-        </dependency>
+-        <!-- <dependency>
+             <groupId>com.google.android</groupId>
+             <artifactId>support-v4</artifactId>
+             <version>r11</version>
+-        </dependency> -->
++        </dependency>
+         <dependency>
+             <groupId>com.fasterxml.jackson.core</groupId>
+             <artifactId>jackson-core</artifactId>
+@@ -132,7 +116,7 @@
+                 <plugin>
+                     <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                     <artifactId>android-maven-plugin</artifactId>
+-                    <version>3.3.2</version>
++                    <version>3.6.1</version>
+
+                     <extensions>true</extensions>
+                 </plugin>
+```
+
+It crashes with this on stock Nexus 7 running 4.3:
+`W/dalvikvm(21657): threadid=1: thread exiting with uncaught exception (group=0x41a2e700)
+E/AndroidRuntime(21657): FATAL EXCEPTION: main
+E/AndroidRuntime(21657): java.lang.RuntimeException: Unable to create service com.concentricsky.android.khanacademy.data.KADataService: java.lang.IllegalStateException: Could not construct instance of helper class class com.concentricsky.android.khanacademy.data.db.DatabaseHelper
+E/AndroidRuntime(21657):    at android.app.ActivityThread.handleCreateService(ActivityThread.java:2587)
+E/AndroidRuntime(21657):    at android.app.ActivityThread.access$1600(ActivityThread.java:141)
+E/AndroidRuntime(21657):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1338)
+E/AndroidRuntime(21657):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime(21657):    at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime(21657):    at android.app.ActivityThread.main(ActivityThread.java:5103)
+E/AndroidRuntime(21657):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(21657):    at java.lang.reflect.Method.invoke(Method.java:525)
+E/AndroidRuntime(21657):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+E/AndroidRuntime(21657):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+E/AndroidRuntime(21657):    at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime(21657): Caused by: java.lang.IllegalStateException: Could not construct instance of helper class class com.concentricsky.android.khanacademy.data.db.DatabaseHelper
+E/AndroidRuntime(21657):    at com.j256.ormlite.android.apptools.OpenHelperManager.constructHelper(OpenHelperManager.java:217)
+E/AndroidRuntime(21657):    at com.j256.ormlite.android.apptools.OpenHelperManager.loadHelper(OpenHelperManager.java:165)
+E/AndroidRuntime(21657):    at com.j256.ormlite.android.apptools.OpenHelperManager.getHelper(OpenHelperManager.java:75)
+E/AndroidRuntime(21657):    at com.concentricsky.android.khanacademy.data.KADataService.onCreate(KADataService.java:146)
+E/AndroidRuntime(21657):    at android.app.ActivityThread.handleCreateService(ActivityThread.java:2577)
+E/AndroidRuntime(21657):    ... 10 more
+E/AndroidRuntime(21657): Caused by: java.lang.reflect.InvocationTargetException
+E/AndroidRuntime(21657):    at java.lang.reflect.Constructor.constructNative(Native Method)
+E/AndroidRuntime(21657):    at java.lang.reflect.Constructor.newInstance(Constructor.java:417)
+E/AndroidRuntime(21657):    at com.j256.ormlite.android.apptools.OpenHelperManager.constructHelper(OpenHelperManager.java:215)
+E/AndroidRuntime(21657):    ... 14 more
+E/AndroidRuntime(21657): Caused by: java.lang.IllegalStateException: Could not load object config file
+E/AndroidRuntime(21657):    at com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper.<init>(OrmLiteSqliteOpenHelper.java:87)
+E/AndroidRuntime(21657):    at com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper.<init>(OrmLiteSqliteOpenHelper.java:54)
+E/AndroidRuntime(21657):    at com.concentricsky.android.khanacademy.data.db.DatabaseHelper.<init>(DatabaseHelper.java:104)
+E/AndroidRuntime(21657):    ... 17 more
+E/AndroidRuntime(21657): Caused by: java.sql.SQLException: DatabaseTableConfig reading from stream cannot parse line: {
+E/AndroidRuntime(21657):    at com.j256.ormlite.table.DatabaseTableConfigLoader.fromReader(DatabaseTableConfigLoader.java:74)
+E/AndroidRuntime(21657):    at com.j256.ormlite.table.DatabaseTableConfigLoader.loadDatabaseConfigFromReader(DatabaseTableConfigLoader.java:32)
+E/AndroidRuntime(21657):    at com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper.<init>(OrmLiteSqliteOpenHelper.java:85)
+E/AndroidRuntime(21657):    ... 19 more
+W/ActivityManager(  433):   Force finishing activity com.concentricsky.android.khan/com.concentricsky.android.khanacademy.app.HomeActivity
+I/WindowManager(  433): Screenshot max retries 4 of Token{42925988 ActivityRecord{42b9c190 u0 com.concentricsky.android.khan/com.concentricsky.android.khanacademy.app.HomeActivity}} appWin=Window{427d7720 u0 Starting com.concentricsky.android.khan} drawState=4
+W/WindowManager(  433): Screenshot failure taking screenshot for (1280x800) to layer 22060
+W/ActivityManager(  433): Activity pause timeout for ActivityRecord{42b9c190 u0 com.concentricsky.android.khan/com.concentricsky.android.khanacademy.app.HomeActivity}
+W/ActivityManager(  433): Activity destroy timeout for ActivityRecord{42b9c190 u0 com.concentricsky.android.khan/com.concentricsky.android.khanacademy.app.HomeActivity}`
+"

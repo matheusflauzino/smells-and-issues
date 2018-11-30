@@ -1,0 +1,50 @@
+repository,state,title,label,body
+brosmike/AirPush-Detector,closed,The application has stopped,[],"Using AirPush Detector on Samsung Galaxy J7 2016. The applications halts when scanning app 157. 
+"
+brosmike/AirPush-Detector,open,Added french translation,[],
+brosmike/AirPush-Detector,closed,Create iconkyboy,[],"Bagaimana mengunakan airpush detecter? /block iklan ads.
+"
+brosmike/AirPush-Detector,closed,Other bad packages,[],"You can add the following package names to your list:
+
+""com.urbanairship."", ""com.tapjoy."", ""com.sellaring.""
+"
+brosmike/AirPush-Detector,closed,License,[],"Under which license is this project?
+If you want to license it for example under GPLv3, add a header like in this file (https://gitorious.org/adaway/adaway/blobs/master/org_adaway/src/org/adaway/helper/ImportExportHelper.java) and a COPYING file like (https://gitorious.org/adaway/adaway/blobs/master/COPYING).
+
+This would enable projects like FDroid to include your app.
+"
+brosmike/AirPush-Detector,closed,Add support for LeadBolt ad detection.,[],"LeadBolt is another ad network that uses the same annoying notification tactics as AirPush.  From what I can tell it registers a receiver with the name ""com.Leadbolt.""  Here is a quick patch that adds detection support for LeadBolt-enabled apps to AirPush-Detector.
+
+```
+diff --git a/src/com/brosmike/airpushdetector/AirPushDetectorActivity.java b/src/com/brosmike/airpushdetector/AirPushDetectorActivity.java
+index bb7f6b7..3181bd9 100644
+--- a/src/com/brosmike/airpushdetector/AirPushDetectorActivity.java
++++ b/src/com/brosmike/airpushdetector/AirPushDetectorActivity.java
+@@ -103,24 +100,6 @@ public class AirPushDetectorActivity extends ListActivity {
+             }
+         }
+
++        for(ApplicationInfo appInfo : appInfos) {
++            try {
++                PackageInfo pkgInfo2 = pm.getPackageInfo(appInfo.packageName, PackageManager.GET_RECEIVERS);
++                if(pkgInfo2.receivers == null)
++                {
++                    continue;
++                }
++                for(ActivityInfo receiver: pkgInfo2.receivers ){
++                    if(receiver.name.startsWith(""com.Leadbolt."")) {
++                        airPushPackages.add(pkgInfo2);
++                        break;
++                    }
++                }
++            } catch (NameNotFoundException e) {
++                Log.e(TAG, ""Managed to not find a package we know about"");
++            }
++        }
++
+         return airPushPackages;
+     }
+ }
+\ No newline at end of file
+```
+"

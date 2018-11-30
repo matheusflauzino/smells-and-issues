@@ -1,0 +1,155 @@
+repository,state,title,label,body
+danielegobbetti/ICSImport,open,Added nl (Dutch) translation,[],"I have translated your application into `nl` (*Dutch*). Here is the xml:
+```xml
+<?xml version=""1.0"" encoding=""utf-8""?>
+<resources>
+    <string name=""app_name"">Toevoegen aan agenda</string>
+</resources>
+
+```
+
+---
+
+*Translation made with [Stringlate](https://github.com/LonamiWebs/Stringlate).*"
+danielegobbetti/ICSImport,open,End date of multi-all-day event is shifted by one day,[],"A all-day event spanning several days will be created one day too long.
+
+For example the following event will last to Nov 5th 2016, altough it should only last to Nov 4th according to [RFC 5545](https://tools.ietf.org/html/rfc5545#section-3.6.1):
+> The ""DTEND"" property for a ""VEVENT"" calendar component specifies the **non-inclusive** end of the event.
+
+```
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PYVOBJECT//NONSGML Version 1//EN
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20161031
+DTEND;VALUE=DATE:20161105
+SUMMARY:Allerheiligen 2016 (bayern)
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
+```"
+danielegobbetti/ICSImport,open,Won't import .ics file correctly,[],"I'm trying to import one of schulferien.org's .ics file:
+http://www.schulferien.org/media/ical/deutschland/ferien_nordrhein-westfalen_2017.ics
+into cyanogenmod13.0's calendar app.
+
+I expect the whole .ics file to be adopted either as a local calendar or as a subscription.
+Opening the downloaded file results in a new event dialog for the christmas holidays only, starting today (Jan 3rd), to be added to an existing calendar...
+The whole concept is wrong here, so please tell me how to help."
+danielegobbetti/ICSImport,open,"MS Outlook invitation: ""Invalid ICS file""",[],"Hi Daniele,
+
+When getting any MS Outlook Invitation received by K9-Mail, ICSImport says invalid ICS file.
+
+FYI same meeting processed by ICS-Importer seems to work, didn't perform the last step. But event was shown correctly, and all calendars are shown, esp. my calDAV OwnCloid ones.
+
+Could I be of any below for you, testing/debugging?
+
+Just drop me a note,
+Regards,
+Michael"
+danielegobbetti/ICSImport,open,Add to calendar interprets timezone wrong when importing all day event ,[],"```
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 16.0 MIMEDIR//EN
+VERSION:2.0
+METHOD:PUBLISH
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VEVENT
+CLASS:PUBLIC
+CREATED:20160624T120220Z
+DESCRIPTION:\n
+DTEND;VALUE=DATE:20160628
+DTSTAMP:20160624T120220Z
+DTSTART;VALUE=DATE:20160627
+LAST-MODIFIED:20160624T120220Z
+PRIORITY:5
+SEQUENCE:0
+SUMMARY;LANGUAGE=de:Urlaub
+TRANSP:OPAQUE
+UID:040000008200E00074C5B7101A82E00800000000802A73D2A8B1D101000000000000000
+    010000000595BA5925963B14C81DADA62FA224E80
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 3.2//E
+    N"">\n<HTML>\n<HEAD>\n<META NAME=""Generator"" CONTENT=""MS Exchange Server ve
+    rsion rmj.rmm.rup.rpr"">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n<!-- Converted 
+    from text/plain format -->\n<BR>\n\n</BODY>\n</HTML>
+X-MICROSOFT-CDO-BUSYSTATUS:OOF
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
+X-MS-OLK-AUTOFILLLOCATION:TRUE
+X-MS-OLK-AUTOSTARTCHECK:FALSE
+X-MS-OLK-CONFTYPE:0
+END:VEVENT
+END:VCALENDAR
+```
+
+When trying to import the above ics in my Android calendar (phone is time zone UTC+0200), add to calendar changes start and end time to 02:00 and doesn't check all day checkbox. 
+"
+danielegobbetti/ICSImport,closed,"""Invalid ICS file"" on Android Fairphone",[],"When I try to use the app I get the notification ""Invalid ICS file"". The file is not corrupted, as I can still open it with Lightning. Any idea what's going on here? I'm stuck. Thanks in advance.
+"
+danielegobbetti/ICSImport,open,Special foreign characters are not supported,[],"Hello,
+
+I wanted to import a [calendar entry](http://kalender.kjwien.at/site/calendar_list_month.siteswift?so=site_calendar&do=all&c=vcal&d=calendar%3A1200) from a German speaking webpage, which contains ""Büro"". 
+
+This is the Log I fetched:
+
+```
+03-09 09:47:55.931 E/ICS-Import(2409): error processing file:///storage/emulated/0/Download/calendar(8).ics : net.fortuna.ical4j.data.ParserException: Error at line 13:Illegal property [ BÜRO]
+```
+
+I hope you can fix this.
+"
+danielegobbetti/ICSImport,closed,Fixed #7,[],"by adding a new data attribute in the intent-filter
+"
+danielegobbetti/ICSImport,closed,"Add MIME type ""application/ics""",[],"When i try to open .ics Files attached to eMails in K9-Mail, my Android 5 says ""no application found for application/ics!""
+Could that be solved by adding this MIME type to your App?
+"
+danielegobbetti/ICSImport,open,End time not correct (if other day?),[],"hi,
+
+ics with:
+DTSTAMP:20141224T171430Z
+DTSTART:20141225T010000Z
+DTEND:20141225T090000Z
+
+see example here: https://drive.google.com/file/d/0B64LiJqofGGjNkxQcjF2dmVOdE0/view?usp=sharing
+
+after import it only show a one hour event (my local timezone is PST)
+
+here the text of the ICS
+
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HowAo//Engage Bookings Calendar//EN
+BEGIN:VEVENT
+UID:123415@HowAo.com
+STATUS:CONFIRMED
+DTSTAMP:20141224T171430Z
+DTSTART:20141225T010000Z
+DTEND:20141225T090000Z
+SUMMARY:Modo booking - My Villa - car #1234 - 2000 Red Nissan Sentra  (account 99999)
+DESCRIPTION:Car: #1234 - 2000 Red Nissan Sentra \n\nVehicle Notes: \n\nLocation: My Villa\nbehind 5555 Main St in stall 99. In the alley between Main St and 1 St, in the block between Main St and 1 St.
+LOCATION:My Villa
+SEQUENCE:1
+GEO:-123.128566;49.286385
+END:VEVENT
+END:VCALENDAR
+"
+danielegobbetti/ICSImport,open,How to view log file?,[],"Hi, like the much needed feature of ics import. 
+I notice it doesn't work anymore on my system and would like to investigate and provide logs. How can I do this :-) (sorry for the noob questions) 
+"
+danielegobbetti/ICSImport,closed,Does not work on Android 4.4 on the Xperia M,[],"This application does not work for me.
+Installed from F-Droid on CyanogenMod 11 (Android 4.4) on the Sony Xperia M.
+Tried both stock e-mail client and K-9 mail. In both cases Android is ""Unable to find viewer for application/ics"".
+When trying to open from file manager I get the option to use ICSImport. choosing it does not do anything (item not added to calendar not calendar application opened).
+
+Would be happy to provide any additional information.
+"
+danielegobbetti/ICSImport,open,Added compatibility support for android 2.1 recurrence rule,[],"hi in order to make it run on my old android 2.2 i made these changes
+
+My changes
+Added compatibility support for android 2.1 via local CalendarContract.java. 
+Added recurrence rule processing
+"
+danielegobbetti/ICSImport,closed,Doesn't work on android 4.4,[],"The intent is intercepted for the right filetype, but then a file access error is shown, it's probably related to the new file system abstraction, will need to look into this.
+"
+danielegobbetti/ICSImport,closed,Check target in AndroidManifest and build.prop,[],"See:
+
+https://gitorious.org/f-droid/fdroiddata/merge_requests/235
+"

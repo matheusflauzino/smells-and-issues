@@ -1,0 +1,80 @@
+repository,state,title,label,body
+abcdjdj/RootVerifier-APP,open,Doesn't work with Magisk root,[],It seems that this works with SuperSu but not with Magisk root. It'd be nice to see it updated. 
+abcdjdj/RootVerifier-APP,closed,Created a Norwegian Bokmål translation,[],"As simple as that, hopefully."
+abcdjdj/RootVerifier-APP,closed,Updated pl (Polish) translation,[],Commit made via [Stringlate](https://lonamiwebs.github.io/stringlate/)
+abcdjdj/RootVerifier-APP,closed,Permit install on external memory card,[],"Can you set the flag to allow it to be installed on an external memory card?
+"
+abcdjdj/RootVerifier-APP,closed,Add french translation,[],
+abcdjdj/RootVerifier-APP,closed,Update strings,[],"For provide translation, thanks
+"
+abcdjdj/RootVerifier-APP,closed,"dm-verity and squashfs are coming, /system might not always be remoun…",[],"dm-verity and squashfs are coming, /system might not always be remountable rw. Use / instead
+"
+abcdjdj/RootVerifier-APP,closed,su doesn't have to jump in /,[],"su doesn't have to jump in /. Makes detection more robust by using absolute path
+"
+abcdjdj/RootVerifier-APP,closed,RootVerifier doesn't work on Samsung Galaxy S2 CM11-Nightly-20150316,[],"Hi, I just tried your app (F-Droid version) and I found that it doesn't work on my device.
+I have a Galaxy S2 (old but gold) I9100, with CyanogenMod 11 official nightly (16/03/2015).
+
+I've found that, in your app, you check for root grants by remounting /system partition and writing a dummy file on it, then checking if the file exists.
+
+Besides the fact that this approach can be platform variant and thus not as easy as it seems to test, I would recommend you a patch (that seems to work in my own case) with a slightly different set of commands documented to work in this post ""http://android.stackexchange.com/questions/62671/mount-permission-denied-when-mounting-system-directory-on-android-device"".
+
+Thanks for your work.
+
+---
+
+```diff --git a/src/com/abcdjdj/rootverifier/CheckRoot.java b/src/com/abcdjdj/rootverifier/CheckRoot.java
+index d93a981..3d5dfaa 100644
+--- a/src/com/abcdjdj/rootverifier/CheckRoot.java
++++ b/src/com/abcdjdj/rootverifier/CheckRoot.java
+@@ -65,9 +65,8 @@ public class CheckRoot implements Runnable {
+                        true);
+
+```
+            // CREATING A DUMMY FILE in /system called abc.txt
+```
+-               pw.println(""mount -o remount rw /system/"");
+-               pw.println(""cd system"");
+-               pw.println(""echo \""ABC\"" > abc.txt"");
+-               pw.println(""mount -o remount,rw /system"");
+-               pw.println(""touch /system/abc.txt"");
+              pw.println(""exit"");
+              pw.close();
+              process.waitFor();
+  @@ -87,9 +86,8 @@ public class CheckRoot implements Runnable {
+              // DELETES THE DUMMY FILE IF PRESENT
+              process = Runtime.getRuntime().exec(""su"");
+              pw = new PrintWriter(process.getOutputStream());
+-               pw.println(""cd system"");
+-               pw.println(""rm abc.txt"");
+-               pw.println(""mount -o ro,remount /system"");
+-               pw.println(""rm /system/abc.txt"");
+-               pw.println(""mount -o remount,ro /system"");
+              pw.println(""exit"");
+              pw.close();
+              process.waitFor();
+  @@ -124,7 +122,6 @@ public class CheckRoot implements Runnable {
+      try {
+          File x = new File(""/system/abc.txt"");
+          flag = x.exists();
+  -
+      } catch (SecurityException e) {
+          showToast(""Checking by alternate method.."");
+          Process p = Runtime.getRuntime().exec(""ls /system"");
+  @@ -139,9 +136,7 @@ public class CheckRoot implements Runnable {
+              }
+          }
+          sc.close();
+  -
+      }
+      return flag;
+  }
+  -
+  }
+
+```
+```
+"
+abcdjdj/RootVerifier-APP,closed,RootVerifier: Redesign UI,[],
+abcdjdj/RootVerifier-APP,closed,Target to kitkat and new icon,[],
+abcdjdj/RootVerifier-APP,closed,Licence please?,[],"I wonder could you put copyright headers and a licence on the files? If it's a free licence such as Apache or GPLv3 then I would like to distribute the app built from source on f-droid.org.
+"

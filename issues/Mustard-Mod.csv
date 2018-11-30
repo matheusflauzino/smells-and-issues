@@ -1,0 +1,139 @@
+repository,state,title,label,body
+kromonos/Mustard-Mod,open,Add license scan report and status,[],"Your FOSSA integration was successful! Attached in this PR is a badge and license report to track scan status in your README.
+
+Below are docs for integrating FOSSA license checks into your CI:
+
+- [CircleCI](https://docs.fossa.io/docs/circleci)
+- [TravisCI](https://docs.fossa.io/docs/travisci)
+- [Jenkins](https://github.com/fossas/fossa-jenkins-plugin)
+- [Other](https://github.com/fossas/fossa-cli)"
+kromonos/Mustard-Mod,open,attachment is too big,[],view image > http://legadolibre.com.ar/notice/303647
+kromonos/Mustard-Mod,open,Higher usability through unfolding icons,[],"Other IM clients (like plume) are unfolding their icons below when you are tapping on an entry. Then you can tap on ""answer"" or ""forward"".
+
+Before tapping on the entry:
+![screenshot_2013-10-22-18-10-53](https://f.cloud.github.com/assets/844208/1382928/08f9d618-3b35-11e3-975d-b8a46d840d8e.png)
+
+After tapping on the entry:
+![screenshot_2013-10-22-18-11-56](https://f.cloud.github.com/assets/844208/1382929/1643f510-3b35-11e3-8d67-8924d3bb1aa2.png)
+
+I think that this is much more intuitive.
+"
+kromonos/Mustard-Mod,open,Synchronize Mustard-Mod between Android devices,"[Label(name=""enhancement"")]","When using one Mustard-Mod instance on multiple Android device, we should be able to synchronize Mustard state between devices.
+This could be achieved with a StatusNet plugin, providing a specific API.
+Each Mustard-Mod could save last seen status_id, mention, favorites, configuration, ... and get it back on startup
+"
+kromonos/Mustard-Mod,open,Keep Last notice on top when update done,"[Label(name=""enhancement"")]","Scrolling timeline after update to find last seen notice is pretty annoying.
+
+When updating timeline, new notices should be inserted on top of timeline, keeping last seen on top.
+"
+kromonos/Mustard-Mod,closed,Better display for RTs. Forgot user layout,[],"Add repeated_id TextView in user layout
+"
+kromonos/Mustard-Mod,closed,Enhance display for repeated notices,[],"When receiving repeated notice, current Mustard Mod version displays it as ""old style"" RT, begining with ""RT @username"". Therefore, text is often more than 140 characters long and got truncated. Since we often have links at the end of notices, we're unable to open them.
+
+Theses 3 commits change the way repeated notices are handled:
+- extract & store the original notice in DB, keeping track of repeated `status_id`, repeated `created_at` timestamp (to keep merged timeline working) as well as repeater's `screen_name` (to display who repeated notice).
+- Add new layout field to display who repeated the notice. Currently displayed like ""RT by screen_name"".
+- Adapt timeline loader to use `repeated_id` and not original `status_id` (so that old notice which were recently repeated won't prevent to load more notices)
+"
+kromonos/Mustard-Mod,closed,java.lang.SecurityException,"[Label(name=""bug"")]","java.lang.SecurityException: Requires VIBRATE permission
+at android.os.Parcel.readException(Parcel.java:1425)
+at android.os.Parcel.readException(Parcel.java:1379)
+at android.app.INotificationManager$Stub$Proxy.enqueueNotificationWithTag(INotificationManager.java:295)
+at android.app.NotificationManager.notify(NotificationManager.java:124)
+at android.app.NotificationManager.notify(NotificationManager.java:103)
+at org.mumod.android.service.MultiMention.a(Unknown Source)
+at org.mumod.android.service.MultiMention.d(Unknown Source)
+at org.mumod.android.service.b.a(Unknown Source)
+at org.mumod.android.service.b.onPostExecute(Unknown Source)
+at android.os.AsyncTask.finish(AsyncTask.java:631)
+at android.os.AsyncTask.access$600(AsyncTask.java:177)
+at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:644)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:4912)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:789)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:556)
+at dalvik.system.NativeStart.main(Native Method)
+"
+kromonos/Mustard-Mod,closed,Can Mustard-Mod support my own or local StatusNet？,[],"Can Mustard-Mod support my own or local StatusNet？
+And how do I change the source code?
+"
+kromonos/Mustard-Mod,open,Direct Messages,"[Label(name=""bug"")]","Missing window for direct messaging.
+"
+kromonos/Mustard-Mod,open,Push Messages,"[Label(name=""enhancement"")]","Push messages needs a plugin for statusnet to manage connections between node and device
+"
+kromonos/Mustard-Mod,open,Custom link shortners,"[Label(name=""enhancement"")]","Would be a good idea to have an option to use custom link shortener for URLS. (I have my own yourls install)
+"
+kromonos/Mustard-Mod,open,Unable to login when statusnet instance set to private,"[Label(name=""bug"")]","Appears that if a statusnet instance is set to private (via config.php) that Mustard-Mod is unable to log in. Returns message ""Does not appear to be a statusnet instance."" 
+
+Other clients are able to log in. (tried in seesmic and twidere)
+"
+kromonos/Mustard-Mod,open,Image preview,"[Label(name=""enhancement"")]","Tweetings and Twidere grab image urls and show them in a sort of preview. See: http://vnz.li/5u
+It would be very useful, as especially image links shared from statusnet nodes always load the complete website.
+"
+kromonos/Mustard-Mod,closed,Spam report for federated instances,"[Label(name=""enhancement"")]","At the moment, the ""Report spammer after Block?"" is only available if your account is on the identi.ca server.  However, even though I'm on my own instance I am subscribed to the !spamreport group.
+
+Therefore I should still be able to use that functionality.
+"
+kromonos/Mustard-Mod,open,Autocomplete for groups,"[Label(name=""enhancement"")]","In a similar vein to https://github.com/kromonos/Mustard-Mod/issues/14
+
+Cache all subscribed groups and show matching group names as scrollable dropdown when typing ![char] in the compose view.
+
+Example:
+!m -> !mediagoblin
+_____!mumble
+_____!mumod
+_____!mustard
+_____!...
+"
+kromonos/Mustard-Mod,open,Full conversation view,"[Label(name=""enhancement"")]","At the present time, Conversation view shows the thread from the selected dent back to the first dent in that thread.  I would like it to mimic the conversation view on the identi.ca site and show ALL dents in the conversation.
+"
+kromonos/Mustard-Mod,open,Autocomplete for usernames,"[Label(name=""enhancement"")]","Cache all usernames of all subscriptions and show matching names as scrollable dropdown when typing @[char] in the compose view.
+
+Example:
+@m -> @macno
+______@maha
+______@march
+______@morph
+______@...
+"
+kromonos/Mustard-Mod,closed,Streamlining dent view,"[Label(name=""enhancement"")]","- move time of the dent to the right
+- move ""in reply to"" to the top right after the username and replace it by "">"" or ""▸"" (& #9656;)
+- replace ""no avatar"" icon by social_person.svg from Holo Stock icons (same as ""profile view"" icon)
+
+Optional, needs review:
+- move ""via (client)"" to the right, after the timestamp.
+"
+kromonos/Mustard-Mod,open,Search for Update funktion,"[Label(name=""enhancement"")]","""Search for Update"" funktion for those, which does not have access to the android market.
+"
+kromonos/Mustard-Mod,open,New widget,"[Label(name=""enhancement"")]","Add new widget with holo design.
+- personal timeline widget
+- quick write widget
+"
+kromonos/Mustard-Mod,open,Hiding replies,[],"Not sure if MustardMOD or Statusnet issue:
+- add an option to show or hide replies to people not followed (a.k.a. the twitter behaviour).
+"
+kromonos/Mustard-Mod,open,Tabbing for Timelines,"[Label(name=""enhancement"")]","Add tabbing in main view for Public, Private, Answers Timeline
+"
+kromonos/Mustard-Mod,open,favorites marks,"[Label(name=""enhancement"")]","Favorites directly visible in the TL
+"
+kromonos/Mustard-Mod,closed,Own Consumer Informations,"[Label(name=""enhancement"")]","Add preferences for:
+- Own consumer key
+- Own consumer secret
+
+to enable using own OAuth Apps for posting i.e. (&lt;your.status.net&gt;/settings/oauthapps)
+"
+kromonos/Mustard-Mod,open,Send to all,"[Label(name=""enhancement"")]","Enable to send a new notice to all accounts
+"
+kromonos/Mustard-Mod,open,Themeing,"[Label(name=""bug"")]","atm. themeing is disabled, but should be reanabled, asap
+"
+kromonos/Mustard-Mod,closed,Dent Send Button,"[Label(name=""bug"")]","With hardware keys, the send button will be hidden in the menue
+"
+kromonos/Mustard-Mod,closed,Selected items on ListView,"[Label(name=""enhancement"")]","Mark selected items on listview as selected. I.e. with a holo blue background
+"
+kromonos/Mustard-Mod,open,Pull to Refresh,"[Label(name=""enhancement"")]","Pull to refresh integration
+"
+kromonos/Mustard-Mod,closed,Attachment Icon at tweet composer,"[Label(name=""bug"")]","Attachment ""icon"" is not shown as an Icon.
+"

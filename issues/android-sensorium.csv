@@ -1,0 +1,137 @@
+repository,state,title,label,body
+fmetzger/android-sensorium,closed,Translation to Brazilian Portuguese,[],
+fmetzger/android-sensorium,open,Cannot do HTTPS uploads,[],"When I try to do an HTTPS upload, it immediately appears to complete with the message:
+
+    Upload finished with:
+
+(nothing follows the colon).
+
+On the nginx server, I see:
+
+    Apr 10 20:54:12 www nginx[232]: www nginx: 2017/04/10 20:54:12 [info] 232#232: *1 client closed connection while SSL handshaking, client: ::ffff:1.2.3.4, server: [::]:443
+
+If an SSL handshake failure is happening, it would be good to show/log the reason. The server is a standard nginx TLS configuration. Please let me know if you want any additional information."
+fmetzger/android-sensorium,open,"My changes to address issues 17, 18, and 19",[],"1) I added broadcast receivers to bluetoothSensor, wifiSensor, and wifiSonnectionSensor classes to listen for changes in the status of bluetooth and wifi that is made by user. The receivers are registered in _enable() and unregistered in _disable(). If the user turns off bluetooth or wifi, the scantask will be stopped (callback is removed). If the user turns on bluetooth or wifi, scantask will be resumed. I intentionally didn't invoke _enable() or _disable() to avoid messing with core functionality of sensors.  
+
+2) I modified implementation of onProviderEnabled and onProviderDisabled for the locationlisteners in NetworkLocationSensor and GPSLocationSensor classes. I have to do a little refactoring (moving initialization of the listeners outside of _enable()) to make things work.
+
+I tested the app to ensure the changes don't break the functionality. Please let me know if things work fine as well on your side."
+fmetzger/android-sensorium,open,Meta-issue: Handle disabled sensors in a generic way,"[Label(name=""enhancement"")]","@ReyhanJB reports in issues #17, #18, #19 that Sensorium keeps trying to use sensors even if the user disabled them through Android's (but not the app's) configuration screens. Sensorium's [`AbstractSensor` class](https://github.com/fmetzger/android-sensorium/blob/master/Sensorium/src/at/univie/sensorium/sensors/AbstractSensor.java) deals with properties, data, and methods that are generic across different sensor types.
+
+It may make sense to add a generic way to auto-disable such turned-off sensors to `AbstractSensor` (and also re-enable them as fit) --- perhaps a configurable `BroadcastReceiver` that you configure for a specific intent relates to turning a sensor on or off, and an additional latch that enables/disables Sensorium's other actions for this sensor."
+fmetzger/android-sensorium,open,Stop scanning on low battery,[],"Currently, the app keeps running in the background and scans the sensors until the user terminate the app. Although this is kind of what the app is supposed to do, it's better that Sensorium stops scanning and collecting sensor information when the battery is running low. It would be nice to do it automatically (disable all the sensors when the battery drops under a certain level) or let users decide if the app should stop the background service when the battery is low. 
+
+Sensorium currently tracks the battery information. With a simple check on the battery level, you can fix this issue. 
+
+@aaaaalbert"
+fmetzger/android-sensorium,open,Scanning for wireless/cellular connections even if the wireless/radio is off,"[Label(name=""bug"")]","**What steps will reproduce the problem?**
+Turn on the wireless, start the app, go to setting and make sure that wireless connection sensor is enabled. After few minutes, turn off the wireless on the device.
+
+**What is the expected output? What do you see instead?**
+When I turn off the wireless, I expect the app stops scanning for wireless connections. However, it does not remove the scanTask callback and unnecessarily scans for wireless devices, which drains the battery.
+
+**What version are you using? On what operating system?**
+Latest version available on the F-Droid on both Nexus 5x and Nexus 6 running Android Marshmallow.
+
+**My suggestion to fix the problem**
+This issue can be fixed similar to what is suggested in #17. In the ""WifiConnectionSensor.java"", identify a broadcast receiver that listens to changes in the status of the wireless sensor (That would be a Broadcast Receiver registered with ""ConnectivityManager.CONNECTIVITY_ACTION"" intent filter). In the ""onReceive()"" method of the broadcast receiver, if the wireless is turned off, then remove the scanTask callback. If the wireless is turned on, register it again to resume scanning.
+
+`IntentFilter filters = new IntentFilter();
+filters.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+registerReceiver(connectivityChange, filters);`
+
+`private final BroadcastReceiver connectivityChange = new BroadcastReceiver() {
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		Intent intent1 = new Intent(getApplicationContext(), DisplayMessageActivity.class);
+		boolean disconnection = intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false);
+		if(!disconnection)
+			intent1.putExtra(EXTRA_MESSAGE, ""Connected to WiFi""); //The first parameter is the key for the intent
+		if(disconnection)
+			intent1.putExtra(EXTRA_MESSAGE, ""Disconnected from WiFi""); 
+	}
+}`
+
+@aaaaalbert"
+fmetzger/android-sensorium,open,Stop listening for GPS updates when GPS has been turned off,"[Label(name=""bug"")]","**What steps will reproduce the problem?**
+Turn on the GPS, start the app, go to setting and make sure that GPS sensor is enabled. After few minutes, turn off the GPS on the device.
+
+**What is the expected output? What do you see instead?**
+When I turn off the GPS, I expect the app stops listening to the GPS updates, since none would be available. However, it does not remove the location listener and unnecessarily drains the battery.
+
+**What version are you using? On what operating system?**
+Latest version available on the F-Droid on both Nexus 5x and Nexus 6 running Android Marshmallow.
+
+**My suggestion to fix the problem**
+This issue can be easily fixed by calling the method ""_disable()"" in the callback ""onProviderDisabled"" and call ""_enable"" in the callback ""onProviderEnabled"" to avoid consuming power unnecessarily. Therefore, you remove the listener when user turns off the GPS and register it to resume collecting GPS sensor when the user turns on GPS 
+
+@aaaaalbert"
+fmetzger/android-sensorium,open,Scanning for Bluetooth devices even if the Bluetooth is off,"[Label(name=""bug"")]","I have installed the latest version of the Sensorium from F-Droid (1.1.12) and installed it on Nexus 5, Nexus 6, and Galaxy S3. When I enable the Bluetooth sensor on the setting, the app shows the information about my phone Bluetooth status, discoverable devices, and paired devices, if the bluetooth is on. When I turn off the Bluetooth of the device, but the Bluetooth sensor of the sensorium is still enabled, the app keeps performing Bluetooth discovery (I can see the ""restart bluetooth scanning"" on the logCat every 10 seconds, which is the scan interval for Bluetooth sensor). I believe that the application should stop scanning for Bluetooth connections when the user turns of the Bluetooth on the device. 
+
+**My suggestion to fix the problem:**
+
+in ""at.univie.sensorium.sensors.BluetoothSensor"", you stop scanning for Bluetooth connections only when the bluetooth sensor is disabled:
+`protected void _disable() {
+		...
+		handler.removeCallbacks(scanTask);
+		...
+}`
+
+You can identify a broadcast receiver that listens to changes in the status of the device Bluetooth (with the ""android.bluetooth.BluetoothAdapter.ACTION_STATE_CHANGED"" intent filter). in the ""OnReceive"" method of this broadcast receiver, check if the Bluetooth is off or turning off. In either case, remove the callback that performs bluetooth discovery.
+
+`int state1 = android.bluetooth.BluetoothAdapter.STATE_OFF;
+int state2 = android.bluetooth.BluetoothAdapter.STATE_TURNING_OFF;
+`
+`if(state1 || state2){
+handler.removeCallbacks(scanTask);
+}`
+"
+fmetzger/android-sensorium,open,Network connection information ,[],"Would it be possible to add network related information (internal and external ipv4, ipv6, dns etc)? I've seen that wifi information shows only internal ipv4 and no ipv6 info. 
+"
+fmetzger/android-sensorium,open,Sensorium starts at boot regardless of settings,[],"I just rebooted my phone and sensorium is running even if i disabled that in the sensorium settings. I can't find a way to make it _not_ start at boot.
+"
+fmetzger/android-sensorium,open,List of WifiSensor data not written as (nested) JSON array,[],"The list of wifi networks discovered by Sensorium gets written as a simple String (at.univie.sensorium.sensors.WifiSensor.WifiDevice.toString()) instead of a nested JSON array.
+"
+fmetzger/android-sensorium,open,make privacy levels more descriptive,[],"Each privacy level should describe what it actually does to a specific sensor.
+"
+fmetzger/android-sensorium,open,Upload checkbox vs actually uploading data,[],
+fmetzger/android-sensorium,closed,Proprietary library,[],"Google Play Services (GMS) is proprietary, hence not compatible with GNU LGPL. (The jar inside the Android library referred to in the project.properties).
+
+F-Droid.org  publishes the ....o3gm package, but we cant publish this without removing this library. 
+"
+fmetzger/android-sensorium,closed,"Read out the SIM card's MCC and MNC, too!",[],"I don't know if this will be interesting, but it would represent another way of, (1), detecting roaming users, and (2), finding out which operators allow which to roam inside their networks. As always, the user needs to stay in control over the readouts of the sensor data.
+"
+fmetzger/android-sensorium,open,Sensorium Configuration File,[],"Instead of explicitly registering each invidiual sensor in the code, read a config file listing all the sensors and load them.
+"
+fmetzger/android-sensorium,open,Fold disabled sensors in the sensor view,[],
+fmetzger/android-sensorium,closed,100% CPU load when airplane mode is disabled,"[Label(name=""bug"")]","Source is unknown at the moment. No hints in logcat.
+"
+fmetzger/android-sensorium,open,Wifi Scan Sensor cannot be disabled,"[Label(name=""Yanyan""), Label(name=""bug"")]","wifiFilter is implemented as a local variable in scanTask, which makes it impossible to unregister when disabling the sensor
+"
+fmetzger/android-sensorium,open,Device Info Sensor pushes updates even after being disabled,"[Label(name=""Yanyan""), Label(name=""bug"")]","the run() code in the sensor is not disabled when the sensor is and thus continues to provide the SensorValue even in a disabled state
+"
+fmetzger/android-sensorium,closed,certain Battery Sensor field has no name,"[Label(name=""Florian""), Label(name=""enhancement"")]","Eg, battery voltage, battery temperature (not room temperature tho). Can be easily fixed in SensorValue
+"
+fmetzger/android-sensorium,open,Bluetooth scan results duplicate,"[Label(name=""Yanyan""), Label(name=""bug"")]","Newly scanned devices are duplicated beneath the old list. 
+"
+fmetzger/android-sensorium,closed,Wifi scan list grows too long,"[Label(name=""Yanyan""), Label(name=""bug"")]","Need to clear scanned device list whenever starts a new scan. 
+"
+fmetzger/android-sensorium,closed,Radio Sensor causes NullPointerException,"[Label(name=""Florian""), Label(name=""bug"")]","NullPointerException whenever radio cell sensor is enabled. Stack trace
+
+10-16 12:35:44.898: E/AndroidRuntime(5218): FATAL EXCEPTION: main
+10-16 12:35:44.898: E/AndroidRuntime(5218): java.lang.NullPointerException
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at at.univie.sensorium.sensors.SensorValue.getValueRepresentation(SensorValue.java:85)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at at.univie.sensorium.SensorViewItem.updateDisplay(SensorViewItem.java:40)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at at.univie.sensorium.SensorViewItem.sensorUpdated(SensorViewItem.java:53)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at at.univie.sensorium.sensors.AbstractSensor.notifyListeners(AbstractSensor.java:167)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at at.univie.sensorium.sensors.RadioSensor$1.onServiceStateChanged(RadioSensor.java:111)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at android.telephony.PhoneStateListener$2.handleMessage(PhoneStateListener.java:360)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at android.os.Handler.dispatchMessage(Handler.java:99)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at android.os.Looper.loop(Looper.java:137)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at android.app.ActivityThread.main(ActivityThread.java:4745)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at java.lang.reflect.Method.invokeNative(Native Method)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at java.lang.reflect.Method.invoke(Method.java:511)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+10-16 12:35:44.898: E/AndroidRuntime(5218):     at dalvik.system.NativeStart.main(Native Method)
+"

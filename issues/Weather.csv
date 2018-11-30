@@ -1,0 +1,280 @@
+repository,state,title,label,body
+Sparker0i/Weather,open,Strings are not translated in some versions of Android,"[Label(name=""bug"")]",Definitely not translated in Android 4.4. Need to check other versions for similar behaviour. Works fine on Android 8.0+
+Sparker0i/Weather,closed,Changed Wind Icon to Direction View and removed old reference,[],
+Sparker0i/Weather,closed,"Option to change time format from 12 to 24 and back, closes #40",[],"Added the feature and tested it out. Following is the change summary:
+
+- Create a preference to change time format setting, defaults to `false`
+- Added related strings in `nontranslatable.xml`, `string.xml` (default) and `Constants.java`
+- Added getter in `Prefs.java`
+- Added related java code in `WeatherFragment.java`"
+Sparker0i/Weather,open,Sometimes the app crashes on startup,"[Label(name=""bug""), Label(name=""hacktoberfest"")]","I have installed the version 5.3.2, and sometimes the app crashes on startup.
+A window is showing then with the message, that app has crashed.
+Restarting the app solves the problem.
+The device is an android 7.1.2 - LineageOS.
+
+> 10-15 07:30:38.622 14900 14900 E AndroidRuntime: FATAL EXCEPTION: main
+10-15 07:30:38.622 14900 14900 E AndroidRuntime: Process: com.a5corp.weather, PID: 14900
+10-15 07:30:38.622 14900 14900 E AndroidRuntime: java.lang.NullPointerException: Attempt to invoke virtual method 'void com.a5corp.weather.activity.WeatherActivity.o()' on a null object reference
+10-15 07:30:38.622 14900 14900 E AndroidRuntime:        at com.a5corp.weather.fragment.WeatherFragment$14$2.run(Unknown Source)
+10-15 07:30:38.622 14900 14900 E AndroidRuntime:        at android.os.Handler.handleCallback(Handler.java:751)
+10-15 07:30:38.622 14900 14900 E AndroidRuntime:        at android.os.Handler.dispatchMessage(Handler.java:95)
+10-15 07:30:38.622 14900 14900 E AndroidRuntime:        at android.os.Looper.loop(Looper.java:154)
+10-15 07:30:38.622 14900 14900 E AndroidRuntime:        at android.app.ActivityThread.main(ActivityThread.java:6236)
+10-15 07:30:38.622 14900 14900 E AndroidRuntime:        at java.lang.reflect.Method.invoke(Native Method)
+10-15 07:30:38.622 14900 14900 E AndroidRuntime:        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:891)
+10-15 07:30:38.622 14900 14900 E AndroidRuntime:        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:781)
+10-15 07:30:38.626  1102 15418 W ActivityManager:   Force finishing activity com.a5corp.weather/.activity.WeatherActivity
+10-15 07:30:38.644  1102 15418 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:883 com.android.server.am.AppErrors.crashApplicationInner:375 com.android.server.am.AppErrors.crashApplication:309 com.android.server.am.ActivityManagerService.handleApplicationCrashInner:13738 com.android.server.am.ActivityManagerService.handleApplicationCrash:13720"
+Sparker0i/Weather,open,app looks,"[Label(name=""enhancement"")]","A lot of info combined, which makes things look a bit cluttered\messy. I think some simple modifications would make it a bit cleaner.
+- Sunset\sunrise, change to a 24-hour time instead of using AM PM.
+07:35  19:14     is cleaner than      07:35 AM   07:14 PM
+
+- Replace the """"wind symbol"""" above the wind speed with the arrow (direction) that is now next to the temperature. Makes more sense and look cleaner. Please, a slightly bigger arrow. Also , I don't understand points in the direction the wind is coming from. Normally, it's the other way around. Arrow points in wind directions.
+Please allow wind speed km/h instead of m/s.
+
+- In the listed days (bottom of the screen) there is a large gap between the highest\lowest temperatures. Why? Looks odd. A smaller space or a dash looks better, I think."
+Sparker0i/Weather,closed,Some UI translation fixes and format error,"[Label(name=""question"")]","I have attached a screen dump running in Danish where 'Last update' isn't translated/translatable and time is shown with AM/PM
+![image](https://user-images.githubusercontent.com/24204069/45313483-55a88d00-b52f-11e8-8cb7-75462c311d1e.png)
+"
+Sparker0i/Weather,open,Integer vs. floating point,"[Label(name=""enhancement""), Label(name=""help wanted"")]",It would be great to have the possibility to choose integer instead of floating point for all measurements.
+Sparker0i/Weather,closed,The application crashes when first open it in landscape mode,"[Label(name=""fixed"")]","
+#### Expected behavior
+Supposedly, When I open the app in a skewed rotation (landscape mode), the application will not run into any problems, because the application does not support landscape mode at all.
+
+#### Actual behavior
+Initially, my smartphone was in a tilted position (Landscape), and I accidentally opened the app, and suddenly the app crashes and bounces out. Next, I try to do the same thing by opening the app with smartphone position in the landscape, and the error still occurs.
+
+
+#### How to reproduce
+1. Install the application first
+2. Make sure the <code>Auto Rotate</code> on smartphone is turned on
+3. Next, tilt the smartphone in landscape, then open the app. 
+*Then you will find the error as I experienced*
+
+----
+- Device: Xiaomi Redmi 4X
+- Operating system: Marshmallow, 6.0.1 mmb29m (CPU: Octa-core Max 1.9 GHz, RAM: 2 GB)
+- Application Version:  	5.3.2 
+
+#### Recording Of The Bug
+https://www.youtube.com/watch?v=kY1VIMyBjkM
+
+
+#### Logcat
+```
+--------- beginning of crash
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: FATAL EXCEPTION: main
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: Process: com.a5corp.weather, PID: 11595
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: java.lang.IllegalArgumentException: View=com.android.internal.policy.PhoneWindow$DecorView{e087ebf V.E...... R......D 0,0-712,286} not attached to window manager
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: 	at android.view.WindowManagerGlobal.findViewLocked(WindowManagerGlobal.java:430)
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: 	at android.view.WindowManagerGlobal.removeView(WindowManagerGlobal.java:356)
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: 	at android.view.WindowManagerImpl.removeViewImmediate(WindowManagerImpl.java:118)
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: 	at android.app.Dialog.dismissDialog(Dialog.java:365)
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: 	at android.app.Dialog$1.run(Dialog.java:135)
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: 	at android.os.Handler.handleCallback(Handler.java:742)
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:95)
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:154)
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:5527)
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:739)
+05-21 22:52:22.666 11595 11595 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:629)
+05-21 22:52:22.672 11595 11595 E MQSEventManagerDelegate: failed to get MQSService.
+```"
+Sparker0i/Weather,open,2x1 Widget,"[Label(name=""feature-request"")]","The 3x1 and the 4x2 widgets are great, but an additional space saving 2x1 widget would be nice. :-)"
+Sparker0i/Weather,closed,12 vs 24 hour time,"[Label(name=""enhancement""), Label(name=""feature-request"")]",A setting to display the time (e.g. for sunrise and sunset) in 12 versus 24 hour notation would be nice (a.m./p.m. versus military time).
+Sparker0i/Weather,closed,Danish translation update,[],"My first attempt with a pull request, if I made any mistakes please let me know so I can improve."
+Sparker0i/Weather,closed,[Bug] Problem building v5.0 in F-Droid,[],"Hello,
+
+as far as I can see, there's problem with building version 5 in [F-Droid](https://f-droid.org/wiki/page/com.a5corp.weather/lastbuild_642). Can you please check it out?
+
+Thank you in advance.
+
+--
+Best regards,
+Tomas."
+Sparker0i/Weather,closed,Screen rotation while settings are displayed,"[Label(name=""fixed"")]","Simple Weather 5.3 on Android 6.0.1:
+If the screen is rotated while the settings menu is displayed, then the screen starts flickering and redrawing repeatedly. Must kill the app to recover. This is repeatable every time.
+
+1. Make sure screen rotation is enabled in device settings 
+2. Hold device in portrait orientation
+3. Open Simple Weather
+4. Open hamburger menu
+5. Tap settings to open the Settings menu
+6. Rotate device to landscape orientation
+7. Screen starts flickering repeatedly, can't back out of settings
+"
+Sparker0i/Weather,closed,Simple Weather Randomly Unable to Load Data After Being Killed,"[Label(name=""fixed"")]","If Simple Weather is removed from the system memory, upon the first subsequent launch, Simple Weather may or may not be able to load it's data, with an endless loading pop up window showing if not.
+
+Environment:
+Device - Nexus 4
+ROM - CRDroid
+OS Version - 7.1.2
+
+Prerequisites:
+The app needs to be set up.
+Optional - On ROMs that include this functionality, whether natively or by mods, the ""Kill App"" function needs to be mapped to a certain button.
+
+Steps to Reproduce:
+1. Force Close, a.k.a. kill, ""Simple Weather"".
+2. Reopen ""Simple Weather"".
+
+Current Workaround:
+Kill ""Simple Weather"" again, and hope that the next time it launches all will be fine.
+
+Logs will be taken after I return from work.
+
+I had found this bug while reproducing the other bugs."
+Sparker0i/Weather,closed,"Indicator that the Location Was Succesfully Found Appears every single time the ""Home"" view is opened.",[],"Every time the ""Home"" view is shown, not just the first time a location is added, there is an indicator showing that the location was found.
+Is this supposed to be the intended behaviour?
+
+
+Prerequisites:
+The app needs to be already set up, i.e. after the introduction is completed.
+
+Environment:
+Device - Nexus 4
+ROM - CRDroid
+OS Version - 7.1.2
+
+Steps to Reproduce:
+1. Open the ""Home"" view, whether by opening the app, or by opening a different view within the app (""Weather Graphs"", settings, etc.), and returning to the ""Home"" view.
+
+If required, logs will be taken after I return from work."
+Sparker0i/Weather,closed,Simple Weather FC's when selecting Weather Graphs Before Going Through the Tutorial,"[Label(name=""cant-be-fixed-now"")]","This won't be an issue most will notice, as it won't happen without a specific chain of actions, however I think it uncovers a second bug: The tutorial takes an extra second or two to appear.
+
+Environment:
+Device - Nexus 4
+ROM - CRDroid
+OS Version - 7.1.2
+
+Steps to Reproduce:
+1. Start a fresh instance of Simple Weather (by uninstalling and reinstalling, or by clearing data).
+2. Enter Location name.
+3. Immediately pulling the side menu, before the tutorial could start.
+4. Select ""Weather Graphs"", and prevent the side menu from closing, or allowing the side menu from closing, and afterwards reopening the side menu.
+
+In this scenario, Simple Weather only crashes in the side menu, after selecting ""Weather Graphs"", i.e. it is fine when viewing ""Weather Graphs"" or the settings."
+Sparker0i/Weather,closed,Version 5.1 FC's Upon Entering City,[],"I had downloaded version 5.1 from XDA, and each time I had attempted to enter my city, first manually, and then automatically, however Simple Weather keeps on crashing on me.
+
+This does not happen with version 4.1, which is the latest version on F-Droid.
+
+I'll gladly send logs if needed, however I'd rather not make my location publicly available.
+
+
+Update: I had manually downloaded version 4.1 using APKPure, and then I had set it up without any issues (I saw what you had meant by that the weather maps don't work, which is a shame, but oh well).
+
+Afterwards, I went to update it to version 5.1, however XDA did not register the app as being installed (I presume that the XDA version has a different package name (I did not have time to check)), so I updated it using Yalp Store, and immediately upon opening, the app crashed, and would not open.
+
+The same happened upon updating to version 5.0 with APKPure.
+
+Update 2: I'm sorry I had forgotten to post my system details.
+Device: Nexus 4
+ROM: CRDroid, Android 7.1.2.
+Kernel: SINAI-N4
+UnifiedNLP: noGAPPS (I don't use the Play Services in any case)
+Location Backends: Mozilla Location Service, Radiocells.org Unified Network Location Provider Backend
+Address Lookup Backends: Nominatim
+I also have the latest XPosed Framework installed, but no modules that have to do with location."
+Sparker0i/Weather,closed,Danish translation info,"[Label(name=""fixed"")]",I have made a Danish translation but as not being a reviewer I'm not able to close it.
+Sparker0i/Weather,closed,"Widget ""sticks"" at wrong location and doesn't update ",[],"This looks similar to other report, but may be not identical.
+
+Using simple weather version 4.1 from fdroid. On nexus 6 with custom lineage 15.0 rom...
+
+Physically in Richmond, VA, in app, location button works, it seems. Shows ""Richmond, US"". But widget shows Richmond, CA, and does not appear to update when touching circle with arrow. Also, search for location Richmond goes direct to Richmond, CA; no option for Richmond, VA. Similar in other locations with multiple state choice, it just picks one ""US""."
+Sparker0i/Weather,closed,"simple widget location stuck on London, GB",[],"Good day,
+
+New user here. Found via Fdroid.
+
+Installed onto BlackBerry priv.
+Searched for city: ""London, CA""
+ , found it. The main app link works.
+
+But if one adds the simple whether widget to the main panel, it showed as null for a moment, then my city (yay), but then defaulted back to ""London, GB"" (boo)
+
+In this test, the user does not want to share their location always with the app. Search for city, retain that city. Only when travelling perhaps they would enable location access."
+Sparker0i/Weather,closed,Spelling fixery,[],
+Sparker0i/Weather,closed,Switch OpenWeatherMap API URLs to HTTPS,[],See http://openweathermap.org/news/post/ssl-free-and-startup-accounts
+Sparker0i/Weather,open,Splash Screen,"[Label(name=""good-first-issue""), Label(name=""hacktoberfest"")]","Good first issue for newbies. 
+
+Someone could implement the Splash screen, which keeps spinning until the Json is parsed and shown in the Weather Activity.
+
+If no internet, it could display the no internet dialog box"
+Sparker0i/Weather,closed,Add ability to store multiple locations,[],"Feature request: It would be nice to have the ability to store multiple locations in the app. 
+
+If this would increase the load on your API key, then maybe you could limit the app to a single location when using the default API key, but enable multiple locations when using a custom API key."
+Sparker0i/Weather,closed,Cannot setup custom API key,"[Label(name=""good-first-issue""), Label(name=""hacktoberfest"")]","Simple Weather 4.1 on Android 6.0.1:
+
+I registered for my own OWM API key. I am able to use it to access the OWM website, so I have verified that it is working. I am not able to use it in the app though. When I enter it into the app, there is no confirmation if the key was entered correctly. After entering the key, if I go back into the screen that allows you to enter a key, the field is blank, so I can't can't see if the key has been saved. After doing this, the app is no longer able to access any weather data. To get the app to work again, I have to reopen the custom API window and click ""Reset"". 
+
+I have tried this on two different devices and get the same behavior on both. It seems like maybe this feature is just not working?"
+Sparker0i/Weather,closed,Saved locations,[],"Here's an idea for an improvement: saved locations.
+
+I often look for weather from Paris, FR, and Stockholm, SE. As it is today, I have to manually look them up every time I open the app.
+
+I see that swiping from the right edge to the left doesn't do anything. It could be assigned to cycling through multiple saved locations quickly."
+Sparker0i/Weather,closed,Notification not showing when called from UpgradeReceiver at version 581,"[Label(name=""bug""), Label(name=""help wanted"")]","It should be some problem with `alarmManager.setInExactRepeating()` , otherwise code is all fine..
+
+The notification code works when the ACTION_MY_PACKAGE_REPLACED is called, but not when ACTION_BOOT_COMPLETED is called"
+Sparker0i/Weather,closed,Entering a Custom OWM API Key does not seem to work.,[],"I tried entering my own OWM API Key and couldn't seem to get it to work. The program gets no data back from the OWM server upon refresh and prompts for a new city, (although that's clearly not the problem as the city worked fine with the compiled in key). I even tried generating another new OWM key, but that one didn't work either. My key(s) work fine in Forcastie and Kodi, so I'm not aware of any issues with the key(s) themselves. In each case, I used copy/paste to enter the key without any typing to be sure it gets entered correctly.
+
+Just for grins, I cloned the source and found the OWM API Key compiled into the program (located in `../utils/Constants.java`) I then tried entering that key back through the runtime UI and that seemed to work fine!!!
+
+I had a quick look at the call-back code in `showApiKeyBox()` (located in `../activity/WeatherActivity.java`) and didn't see anything obviously wrong, but then my Java is rather rusty. It seems something is not getting updated properly or consistently, as it is very telling that re-entering the compiled in key works fine, but not a different key.
+
+Not a serious problem, but having your own OWM API Key has it's advantages."
+Sparker0i/Weather,open,Settings for units,"[Label(name=""feature-request"")]","A setting for wind speed units would be great.
+kilometer per sec.
+meter per sec.
+mile per sec.
+
+Could be grouped with the Celsius/Fahrenheit setting."
+Sparker0i/Weather,closed,German translation added,[],"Hi @Sparker0i,
+
+thanks for creating this app. I just added a German translation in case you were interested."
+Sparker0i/Weather,closed,rendering issues when closing and re-opening the app. ,"[Label(name=""bug"")]","![tmp_22984-screenshot_2017-06-25-01-43-151807274645](https://user-images.githubusercontent.com/19912122/27512655-4ca4ebc0-5948-11e7-8b55-7b2fa5413eb1.png)
+
+Device: LG g flex 2
+App version: 4.1"
+Sparker0i/Weather,closed,IllegalArguementException,[],"Okay, this is something new. I've just got some new form of error (one that I have been completely unaware of)
+
+![IllegalArguementException](http://i.imgur.com/VcKKiqh.png)
+
+_Sent from my Xiaomi Redmi Note 3 using [FastHub](https://play.google.com/store/apps/details?id=com.fastaccess.github)_"
+Sparker0i/Weather,closed,[Feature request] Please add wind direction on large widget,"[Label(name=""feature-request"")]",Please add wind direction on large widget
+Sparker0i/Weather,closed,UV index,"[Label(name=""feature-request"")]",Please add UV index info to the app.
+Sparker0i/Weather,closed,Imperial units on weather graphs,"[Label(name=""fixed"")]","It would be nice if the weather graphs and forecast details could use units more familiar to my country. Miles per hour, bars, and inches are all units we're accustomed to. "
+Sparker0i/Weather,closed,Pull to refresh happening while scrolling through days horizontally.,"[Label(name=""fixed"")]","Perhaps disabling the refresh pull down while scrolling through the days horizontally as it can get refreshed while scrolling.
+
+ "
+Sparker0i/Weather,closed,Updated layout for issue #12 possible,[],
+Sparker0i/Weather,closed,am/pm or 24h according to system; symbol size with bigger font sizes,[],"Is it possible to show the time of sunrise/sunset in 24h format according to system settings?
+
+Using android with bigger font size the weather symbol is overlapping the temperature (only in vertical view, in horizontal view it's ok). See screenshots.
+
+![screenshot_20170426-215330](https://cloud.githubusercontent.com/assets/4852079/25532491/d5f43ee6-2c2d-11e7-88c9-d5f84d15dbec.png)
+![screenshot_20170426-215313](https://cloud.githubusercontent.com/assets/4852079/25532492/d5fd1890-2c2d-11e7-9599-006101ec0788.png)
+"
+Sparker0i/Weather,closed,Updated main layout,[],Removed the elevation on the toolbar to create an 'full screen look'
+Sparker0i/Weather,closed,Transparent widget that opens the app on tap,[],"Can we have it? Also, a 2 × 1 size would be nice :3"
+Sparker0i/Weather,closed,Updated layout to fix issue #3,[],"Hope this is the correct way this way time. 
+
+Regards."
+Sparker0i/Weather,closed,Updated the layout to fix issue #3,[],
+Sparker0i/Weather,closed,weather maps question,[],"For first v0.31from fdroid is working fine. Thank you. But don't understand the wetter maps. Rain,wind, temperature is always the same map tainted in grey, green or orange. I can't see any additional information in these maps. Maybe I'm too stupid, but I see only a normal map with tainting."
+Sparker0i/Weather,open,hourly weather,"[Label(name=""feature-request"")]","this is a request to implement hourly weather forecast for particular days.
+Thank You."
+Sparker0i/Weather,closed,Update fragment_first_launch.xml,[],I suggest lowering this margin_bottom on the intro_text textview to solve the issue that is still open.
+Sparker0i/Weather,closed,UV Index,"[Label(name=""feature-request"")]",It would be nice to have the UV Index for the day and for the week in this App
+Sparker0i/Weather,closed,using android with bigger font size letters are cutted in simple weather,"[Label(name=""bug""), Label(name=""help wanted"")]","Using android with bigger font size letters are cutted in simple weather. See first screenshot.
+![screenshot_20170420-154951](https://cloud.githubusercontent.com/assets/4852079/25236303/d6bc7e7a-25e7-11e7-949f-74576fd5116f.png)
+![screenshot_20170420-154924](https://cloud.githubusercontent.com/assets/4852079/25236304/d6c2dca2-25e7-11e7-9ed8-709160146a10.png)
+"
+Sparker0i/Weather,closed,3.0 Can't Select a City,"[Label(name=""fixed"")]","When opening the app, we are prompted to enter a city. I entered my US city and the app indicated it was not in the database. I tried other cities including Chicago, New York and London - all failed to be recognized or in the database. Version 2+ had no difficulty finding my city. Thanks. Joe"
+Sparker0i/Weather,closed,no cities found,"[Label(name=""fixed"")]","Steps to reproduce
+1 open simple weather for first time
+2 when it asks for a city, type: New York
+
+Expected behavior: it should show a weather report
+
+Actual behavior: it says ""city not found""
+"

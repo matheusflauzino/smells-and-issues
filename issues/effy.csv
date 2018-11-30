@@ -1,0 +1,170 @@
+repository,state,title,label,body
+taky/effy,open,App crashes on opening settings dialog,[],"When I open the ""settings"" dialog the app crashes. Here is the log data from `adb logcat`. My system is Android 6.0.1/CyanogenMod 13.0
+
+`02-14 21:06:45.262   572  2895 I ActivityManager: START u0 {cmp=com.gmail.altakey.effy/.ConfigActivity} from uid 10135 on display 0
+02-14 21:06:45.364 13832 13832 D AndroidRuntime: Shutting down VM
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: FATAL EXCEPTION: main
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: Process: com.gmail.altakey.effy, PID: 13832
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: Theme: themes:{}
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: java.lang.RuntimeException: Unable to resume activity {com.gmail.altakey.effy/com.gmail.altakey.effy.ConfigActivity}: java.util.FormatFlagsConversionMismatchException: %o does not support '('
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3137)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3168)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2515)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at android.app.ActivityThread.-wrap11(ActivityThread.java)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1363)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:148)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:5461)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: Caused by: java.util.FormatFlagsConversionMismatchException: %o does not support '('
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at java.util.Formatter$FormatToken.checkFlags(Formatter.java:1361)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at java.util.Formatter.transform(Formatter.java:1442)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at java.util.Formatter.doFormat(Formatter.java:1081)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at java.util.Formatter.format(Formatter.java:1042)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at java.util.Formatter.format(Formatter.java:1011)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at java.lang.String.format(String.java:1554)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at java.lang.String.format(String.java:1528)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at android.preference.ListPreference.getSummary(ListPreference.java:169)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at com.gmail.altakey.effy.ConfigActivity.setSummary(ConfigActivity.java:79)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at com.gmail.altakey.effy.ConfigActivity.updateSummary(ConfigActivity.java:69)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at com.gmail.altakey.effy.ConfigActivity.onResume(ConfigActivity.java:48)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1259)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at android.app.Activity.performResume(Activity.java:6327)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3126)
+02-14 21:06:45.366 13832 13832 E AndroidRuntime: 	... 10 more
+02-14 21:06:45.368   572   590 W ActivityManager:   Force finishing activity com.gmail.altakey.effy/.ConfigActivity
+02-14 21:06:45.371   572   590 W ActivityManager:   Force finishing activity com.gmail.altakey.effy/.DrawActivity
+`"
+taky/effy,closed,topic/draw2: タイトルバーなどが空白になっている,[],
+taky/effy,closed,描画速度の向上,[],"FingerPaintなどを参考にして、描画速度の向上を図る。
+"
+taky/effy,open,回転させると書いた物が消える,[],"環境: Android 3.2
+
+Activityが再起動されているためだと思う。
+保存フラグを立てていない＋画面サイズが変わるためにScribbleも作り直しているのでこういうことが起きているんだろうけど…
+"
+taky/effy,closed,描画モードに入ってもすぐに設定に入れない,[],"二度起動しないと設定に入れない (L-06C)。
+"
+taky/effy,open,ボリュームキーで線質を変えられると良い,[],"例えばアルファや太さ。
+"
+taky/effy,closed,L-06C: 描画モードから設定に入れない,[],"入ろうとすると強制終了されるとのこと。
+
+実機でのログ:
+
+```
+--------- beginning of /dev/log/main
+I/nvos_linux_stub(  248): stub_helper: alloc iovmm
+D/        (   89): VOLUME : 0.100000
+I/nvos_linux_stub(   86): stub_helper: alloc iovmm
+--------- beginning of /dev/log/system
+I/ActivityManager(  152): Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 pkg=com.gmail.altakey.effy cmp=com.gmail.altakey.effy/.MainActivity bnds=[400,335][496,431] } from pid 248
+I/nvos_linux_stub(   86): stub_helper: alloc carveout_genric
+I/ActivityManager(  152): Start proc com.gmail.altakey.effy for activity com.gmail.altakey.effy/.MainActivity: pid=975 uid=10099 gids={}
+D/TabletStatusBar(  199): lights on
+V/TLINE   (  975): new: android.text.TextLine@406cdbb0
+I/nvos_linux_stub(   86): stub_helper: alloc carveout_genric
+I/nvos_linux_stub(  975): stub_helper: alloc iovmm
+V/TLINE   (  975): new: android.text.TextLine@406cfd90
+I/ActivityManager(  152): Displayed com.gmail.altakey.effy/.MainActivity: +569ms (total +1m31s564ms)
+D/        (   89): VOLUME : 0.100000
+D/        (   89): VOLUME : 0.100000
+I/nvos_linux_stub(   86): stub_helper: alloc carveout_genric
+I/nvos_linux_stub(   86): stub_helper: alloc carveout_genric
+I/nvos_linux_stub(   86): stub_helper: alloc carveout_genric
+I/nvos_linux_stub(   86): stub_helper: alloc iovmm
+I/ActivityManager(  152): Starting: Intent { cmp=com.gmail.altakey.effy/.ConfigActivity } from pid 975
+D/        (   89): VOLUME : 0.100000
+D/dalvikvm(  975): GC_FOR_ALLOC freed 53K, 3% free 6368K/6531K, paused 22ms
+I/dalvikvm-heap(  975): Grow heap (frag case) to 6.773MB for 513744-byte allocation
+D/dalvikvm(  975): GC_FOR_ALLOC freed 2K, 3% free 6867K/7047K, paused 20ms
+D/dalvikvm(  975): GC_CONCURRENT freed 2K, 3% free 6982K/7175K, paused 2ms+2ms
+W/Resources(  975): Converting to string: TypedValue{t=0x10/d=0xc0 a=-1}
+D/AndroidRuntime(  975): Shutting down VM
+W/dalvikvm(  975): threadid=1: thread exiting with uncaught exception (group=0x400a1760)
+E/AndroidRuntime(  975): FATAL EXCEPTION: main
+E/AndroidRuntime(  975): java.util.UnknownFormatConversionException: Conversion: 
+E/AndroidRuntime(  975):    at java.util.Formatter$FormatSpecifierParser.unknownFormatConversionException(Formatter.java:2338)
+E/AndroidRuntime(  975):    at java.util.Formatter$FormatSpecifierParser.advance(Formatter.java:2332)
+E/AndroidRuntime(  975):    at java.util.Formatter$FormatSpecifierParser.parseConversionType(Formatter.java:2411)
+E/AndroidRuntime(  975):    at java.util.Formatter$FormatSpecifierParser.parseArgumentIndexAndFlags(Formatter.java:2382)
+E/AndroidRuntime(  975):    at java.util.Formatter$FormatSpecifierParser.parseFormatToken(Formatter.java:2315)
+E/AndroidRuntime(  975):    at java.util.Formatter.doFormat(Formatter.java:1092)
+E/AndroidRuntime(  975):    at java.util.Formatter.format(Formatter.java:1063)
+E/AndroidRuntime(  975):    at java.util.Formatter.format(Formatter.java:1032)
+E/AndroidRuntime(  975):    at java.lang.String.format(String.java:2104)
+E/AndroidRuntime(  975):    at java.lang.String.format(String.java:2078)
+E/AndroidRuntime(  975):    at android.preference.ListPreference.getSummary(ListPreference.java:152)
+E/AndroidRuntime(  975):    at android.preference.Preference.onBindView(Preference.java:500)
+E/AndroidRuntime(  975):    at android.preference.Preference.getView(Preference.java:450)
+E/AndroidRuntime(  975):    at android.preference.PreferenceGroupAdapter.getView(PreferenceGroupAdapter.java:221)
+E/AndroidRuntime(  975):    at android.widget.AbsListView.obtainView(AbsListView.java:1970)
+E/AndroidRuntime(  975):    at android.widget.ListView.makeAndAddView(ListView.java:1756)
+E/AndroidRuntime(  975):    at android.widget.ListView.fillDown(ListView.java:656)
+E/AndroidRuntime(  975):    at android.widget.ListView.fillFromTop(ListView.java:716)
+E/AndroidRuntime(  975):    at android.widget.ListView.layoutChildren(ListView.java:1609)
+E/AndroidRuntime(  975):    at android.widget.AbsListView.onLayout(AbsListView.java:1800)
+E/AndroidRuntime(  975):    at android.view.View.layout(View.java:9581)
+E/AndroidRuntime(  975):    at android.view.ViewGroup.layout(ViewGroup.java:3877)
+E/AndroidRuntime(  975):    at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1542)
+E/AndroidRuntime(  975):    at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1403)
+E/AndroidRuntime(  975):    at android.widget.LinearLayout.onLayout(LinearLayout.java:1314)
+E/AndroidRuntime(  975):    at android.view.View.layout(View.java:9581)
+E/AndroidRuntime(  975):    at android.view.ViewGroup.layout(ViewGroup.java:3877)
+E/AndroidRuntime(  975):    at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1542)
+E/AndroidRuntime(  975):    at android.widget.LinearLayout.layoutHorizontal(LinearLayout.java:1527)
+E/AndroidRuntime(  975):    at android.widget.LinearLayout.onLayout(LinearLayout.java:1316)
+E/AndroidRuntime(  975):    at android.view.View.layout(View.java:9581)
+E/AndroidRuntime(  975):    at android.view.ViewGroup.layout(ViewGroup.java:3877)
+E/AndroidRuntime(  975):    at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1542)
+E/AndroidRuntime(  975):    at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1403)
+E/AndroidRuntime(  975):    at android.widget.LinearLayout.onLayout(LinearLayout.java:1314)
+E/AndroidRuntime(  975):    at android.view.View.layout(View.java:9581)
+E/AndroidRuntime(  975):    at android.view.ViewGroup.layout(ViewGroup.java:3877)
+E/AndroidRuntime(  975):    at android.widget.FrameLayout.onLayout(FrameLayout.java:400)
+E/AndroidRuntime(  975):    at android.view.View.layout(View.java:9581)
+E/AndroidRuntime(  975):    at android.view.ViewGroup.layout(ViewGroup.java:3877)
+E/AndroidRuntime(  975):    at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1542)
+E/AndroidRuntime(  975):    at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1403)
+E/AndroidRuntime(  975):    at android.widget.LinearLayout.onLayout(LinearLayout.java:1314)
+E/AndroidRuntime(  975):    at android.view.View.layout(View.java:9581)
+E/AndroidRuntime(  975):    at android.view.ViewGroup.layout(ViewGroup.java:3877)
+E/AndroidRuntime(  975):    at android.widget.FrameLayout.onLayout(FrameLayout.java:400)
+E/AndroidRuntime(  975):    at android.view.View.layout(View.java:9581)
+E/AndroidRuntime(  975):    at android.view.ViewGroup.layout(ViewGroup.java:3877)
+E/AndroidRuntime(  975):    at android.view.ViewRoot.performTraversals(ViewRoot.java:1253)
+E/AndroidRuntime(  975):    at android.view.ViewRoot.handleMessage(ViewRoot.java:2003)
+E/AndroidRuntime(  975):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime(  975):    at android.os.Looper.loop(Looper.java:132)
+E/AndroidRuntime(  975):    at android.app.ActivityThread.main(ActivityThread.java:4025)
+E/AndroidRuntime(  975):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(  975):    at java.lang.reflect.Method.invoke(Method.java:491)
+E/AndroidRuntime(  975):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:841)
+E/AndroidRuntime(  975):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:599)
+E/AndroidRuntime(  975):    at dalvik.system.NativeStart.main(Native Method)
+I/nvos_linux_stub(   86): stub_helper: alloc iovmm
+W/ActivityManager(  152):   Force finishing activity com.gmail.altakey.effy/.ConfigActivity
+W/ActivityManager(  152):   Force finishing activity com.gmail.altakey.effy/.MainActivity
+I/nvos_linux_stub(   86): stub_helper: alloc carveout_genric
+I/nvos_linux_stub(   86): stub_helper: alloc carveout_genric
+W/ActivityManager(  152): Activity pause timeout for ActivityRecord{40a42548 com.gmail.altakey.effy/.ConfigActivity}
+I/nvos_linux_stub(   86): stub_helper: alloc carveout_genric
+I/nvos_linux_stub(  248): stub_helper: alloc iovmm
+D/dalvikvm(  152): GC_CONCURRENT freed 707K, 43% free 16475K/28679K, paused 3ms+6ms
+I/nvos_linux_stub(   86): stub_helper: alloc carveout_genric
+D/        (   89): VOLUME : 0.100000
+I/Process (  975): Sending signal. PID: 975 SIG: 9
+E/JavaBinder(  152): !!! FAILED BINDER TRANSACTION !!!
+E/JavaBinder(  152): !!! FAILED BINDER TRANSACTION !!!
+I/ActivityManager(  152): Process com.gmail.altakey.effy (pid 975) has died.
+I/WindowManager(  152): WIN DEATH: Window{408a42d0 com.gmail.altakey.effy/com.gmail.altakey.effy.MainActivity paused=true}
+I/WindowManager(  152): WIN DEATH: Window{40a556d0 com.gmail.altakey.effy/com.gmail.altakey.effy.ConfigActivity paused=false}
+```
+
+エミュレータでもこれと同様だった。
+"
+taky/effy,open,描画モードインジケータの検討,[],"色のない描画モードなどに入ったときのために、なんらかのインジケータを検討する。
+"
+taky/effy,closed,ドロップの色が暗すぎる,[],"せめて濃淡の調整くらいでも。
+"

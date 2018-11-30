@@ -1,0 +1,90 @@
+repository,state,title,label,body
+PowerInside/syncplayer,open,Question: plans to go cross-platform?,[],"First of all, thank you for a great work! I think today people use mobile devices rather than computers, so SyncPlay app is a must! I don't understand why the officials don't go this way.
+
+There are many tools for cross-platform development. Do you plan to use them, so you can share and distribute your core code not just for Android, but also for iOS?"
+PowerInside/syncplayer,open,Handle slow networks and reconnection,[],
+PowerInside/syncplayer,open,Issues reported between android participants only,"[Label(name=""bug"")]","- User list not populated.
+- Ready button did not work.
+- Play/Pause became unresponsive as well. Pause button disappeared on click."
+PowerInside/syncplayer,open,Provide options to adjust aspect ratio,"[Label(name=""enhancement"")]",
+PowerInside/syncplayer,closed,No sound problems,"[Label(name=""wontfix"")]",This is likely a codec and/or hardware compatibility issues with the exoplayer library.
+PowerInside/syncplayer,open,Test syncplay UI,[],"- [ ] Ready button
+- [ ] Play/Pause buttons"
+PowerInside/syncplayer,open,Volume slider,"[Label(name=""enhancement"")]",
+PowerInside/syncplayer,closed,Set max line to avoid stream URL dialog box overflow,[],
+PowerInside/syncplayer,open,Crashes on Nvidia shield tv,"[Label(name=""bug"")]","When opening a stream, the app crashes. "
+PowerInside/syncplayer,closed,Update README.md,[],"Hi,
+
+This small and useless PR adds a button to get your app on F-Droid and Google Play 👍 "
+PowerInside/syncplayer,open,NumberFormatException,"[Label(name=""bug"")]","* Version number of app: 1.6.4
+* Android OS version: google/hammerhead/hammerhead:6.0.1/M4B30Z/3437181:user/release-keys
+
+
+### Steps to reproduce the bug/crash
+
+Trivial parseInt bug in the library.
+
+// 	at com.a.a.a.<init>(Unknown Source)
+
+### Logcat
+
+```
+// CRASH: io.github.powerinside.syncplay (pid 8720) (elapsed nanos: 19535838062136)
+// Short Msg: java.lang.NumberFormatException
+// Long Msg: java.lang.NumberFormatException: Invalid int: ""89953rry44kt22f728y4778620pk1q8y85e3ok8ifqv""
+// Build Label: google/hammerhead/hammerhead:6.0.1/M4B30Z/3437181:user/release-keys
+// Build Changelist: 3437181
+// Build Time: 1478203422000
+// java.lang.NumberFormatException: Invalid int: ""89953rry44kt22f728y4778620pk1q8y85e3ok8ifqv""
+// 	at java.lang.Integer.invalidInt(Integer.java:138)
+// 	at java.lang.Integer.parse(Integer.java:410)
+// 	at java.lang.Integer.parseInt(Integer.java:367)
+// 	at java.lang.Integer.parseInt(Integer.java:334)
+// 	at com.a.a.a.<init>(Unknown Source)
+// 	at io.github.powerinside.syncplay.MediaService.b(Unknown Source)
+// 	at io.github.powerinside.syncplay.videoPlayer$5.onServiceConnected(Unknown Source)
+// 	at android.app.LoadedApk$ServiceDispatcher.doConnected(LoadedApk.java:1223)
+// 	at android.app.LoadedApk$ServiceDispatcher$RunConnection.run(LoadedApk.java:1240)
+// 	at android.os.Handler.handleCallback(Handler.java:739)
+// 	at android.os.Handler.dispatchMessage(Handler.java:95)
+// 	at android.os.Looper.loop(Looper.java:148)
+// 	at android.app.ActivityThread.main(ActivityThread.java:5417)
+// 	at java.lang.reflect.Method.invoke(Native Method)
+// 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+// 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+// 
+
+```
+"
+PowerInside/syncplayer,closed,Syncplayer overrides Syncplay,"[Label(name=""bug"")]","* Version number of app: 1.6.2 (play store)
+* Android OS version: Android 7.1.2
+
+Syncplay client version: 1.5.0 - git commit: 1b873d16e31435c3b16ef3ca2e694533807b9a68
+
+### Steps to reproduce the bug
+
+1. Connect both syncplay and syncplayer client to same server and room. (Which one first doesn't matter)
+2. Play the media from syncplayer.
+3. Pause from syncplay.
+4. Syncplay goes back to being unpaused because syncplayer keeps playing. With seek, the issue is as described in https://github.com/PowerInside/syncplayer/issues/4
+"
+PowerInside/syncplayer,closed,"SyncPlayer crashes with two connected Android instances. When one linux and one android SyncPlayer are connected, it Resets seek to 0 when linux seeks.","[Label(name=""bug"")]","I was starting to hack together a syncplay client myself and then I stumbled upon this. Seems to work, thats great! But came upon a debilitating bug. I suspect it might be a simple thing in the interaction with the media player. based on some experiments I did. Before I dive into the code myself, thought I'd ask. (More than happy to help debug if you like.)
+
+1. One linux syncplay and one Android syncplayer, both connected to syncplay.pl:8996.
+Works great. If you use the seek bar on the Android, then Linux also seeks, Nice.
+But if you see on the Linux client, then the Android client jumps back to 0, and tells the Linux client also to jump back to zero.
+
+(I ran tcpflow to see the traffic and I can see the sequence of linux announcing the seek, and immediately the android version responds with a seek 0, so both are now back to the start of the video).
+
+2. Two androids syncplayers connected, same server and room as above.
+Seek on any Android syncplayer, and it immediately crashes. The android syncplayer on which you seek is the one that crashes.
+
+Without looking at the code, just based on the bhaviour, I am guessing that when the linux client announces a seek, the android syncplayer does the seek to the announced offset, this maybe fails for some reason, and maybe causes a jump back to 0sec. This is then announced to the server from the android syncplayer. Just a guess.
+
+Please let me know how I can help. tcpflow dumps. logcat, test runs of modified code, run connected to you when you are watching ... anything you like, just let me know.
+
+-- //Shrikumar
+"
+PowerInside/syncplayer,closed,japanese translation,[],Hello!
+PowerInside/syncplayer,closed,Upgrade constraint-layout:1.0.0-beta4 to release build,[],com.android.support.constraint:constraint-layout:1.0.2 should work as well
+PowerInside/syncplayer,open,User List interaction,"[Label(name=""enhancement"")]",It would be immensely helpful if a user could hold-tap on another user in the user list to be presented with an option to queue up the URL of another user or allow them to copy that URL. It's usually a lot more difficult for a mobile user to fetch a URL (especially an embedded one).

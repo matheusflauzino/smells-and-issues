@@ -1,0 +1,541 @@
+repository,state,title,label,body
+dougkeen/BartRunnerAndroid,closed,Add snackbar when route deleted to undo action,[],"Use the design support library to show a snackbar with an undo action
+
+I'm not a big fan of how the snackbar blends into the rest of the UI since both are dark themed, but the Snackbar class doesn't have a way to simple way of changing the theme of the widget. I could manually hack the colors of the background and text color if needed.
+
+![undo](https://user-images.githubusercontent.com/361209/46788116-6135d200-ccee-11e8-9e87-d65135cfaff8.gif)
+"
+dougkeen/BartRunnerAndroid,closed,Undo delete of favorite route,[],I accidently swiped away a favorite route but I wanted to. Please have a way of undoing the deletion or maybe have a confirmation
+dougkeen/BartRunnerAndroid,closed,Antioch extension broke estimates,[],"Now that the Antioch extension is open, and PITT trains are renamed ANTC, estimates all along the yellow line are broken."
+dougkeen/BartRunnerAndroid,closed,one API used in okhttp package may affect your app!,[],"Hi, We find ""<java.util.zip.Deflater: int deflate(byte[],int,int,int)>"" called in ""<okio.DeflaterSink: void deflate(boolean)>"" on line 94 are actually added in SDK since level 19, but your minSdkVersion is only 14. 
+Though this API is in external library, it  seems to be reachable from your APP. please help to check whether it may cause problem to your app.
+
+there are several possible path to that API, we list them here to facilitate your checking.
+
+all reachable paths:
+	reachable path 1:
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void setContentView(android.view.View,android.view.ViewGroup$LayoutParams)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void afterSetContentView_()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void afterViews()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void refreshFares()>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.Object doInBackground(java.lang.Object[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String doInBackground(com.dougkeen.bart.networktasks.GetRouteFareTask$Params[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String getFareFromNetwork(com.dougkeen.bart.networktasks.GetRouteFareTask$Params,int)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response execute()>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponseWithInterceptorChain(boolean)>
+		--><com.squareup.okhttp.Call$ApplicationInterceptorChain: com.squareup.okhttp.Response proceed(com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponse(com.squareup.okhttp.Request,boolean)>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void sendRequest()>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void connect()>
+		--><com.squareup.okhttp.OkHttpClient$1: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,com.squareup.okhttp.Connection,com.squareup.okhttp.internal.http.HttpEngine,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,java.lang.Object,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connect(int,int,int,com.squareup.okhttp.Request,java.util.List,boolean)>
+		--><com.squareup.okhttp.Connection: void connectSocket(int,int,int,com.squareup.okhttp.Request,com.squareup.okhttp.internal.ConnectionSpecSelector)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void sendConnectionPreface()>
+		--><com.squareup.okhttp.internal.framed.Http2$Writer: void windowUpdate(int,long)>
+		--><okio.RealBufferedSink: void flush()>
+		--><okio.DeflaterSink: void flush()>
+		--><okio.DeflaterSink: void deflate(boolean)>
+	reachable path 2:
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void setContentView(int)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void afterSetContentView_()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void afterViews()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void refreshFares()>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.Object doInBackground(java.lang.Object[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String doInBackground(com.dougkeen.bart.networktasks.GetRouteFareTask$Params[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String getFareFromNetwork(com.dougkeen.bart.networktasks.GetRouteFareTask$Params,int)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response execute()>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponseWithInterceptorChain(boolean)>
+		--><com.squareup.okhttp.Call$ApplicationInterceptorChain: com.squareup.okhttp.Response proceed(com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponse(com.squareup.okhttp.Request,boolean)>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void sendRequest()>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void connect()>
+		--><com.squareup.okhttp.OkHttpClient$1: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,com.squareup.okhttp.Connection,com.squareup.okhttp.internal.http.HttpEngine,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,java.lang.Object,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connect(int,int,int,com.squareup.okhttp.Request,java.util.List,boolean)>
+		--><com.squareup.okhttp.Connection: void connectSocket(int,int,int,com.squareup.okhttp.Request,com.squareup.okhttp.internal.ConnectionSpecSelector)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void sendConnectionPreface()>
+		--><com.squareup.okhttp.internal.framed.Http2$Writer: void windowUpdate(int,long)>
+		--><okio.RealBufferedSink: void flush()>
+		--><okio.DeflaterSink: void flush()>
+		--><okio.DeflaterSink: void deflate(boolean)>
+	reachable path 3:
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void onCreate(android.os.Bundle)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void setContentView(int)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void afterSetContentView_()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void afterViews()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void refreshFares()>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.Object doInBackground(java.lang.Object[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String doInBackground(com.dougkeen.bart.networktasks.GetRouteFareTask$Params[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String getFareFromNetwork(com.dougkeen.bart.networktasks.GetRouteFareTask$Params,int)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response execute()>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponseWithInterceptorChain(boolean)>
+		--><com.squareup.okhttp.Call$ApplicationInterceptorChain: com.squareup.okhttp.Response proceed(com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponse(com.squareup.okhttp.Request,boolean)>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void sendRequest()>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void connect()>
+		--><com.squareup.okhttp.OkHttpClient$1: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,com.squareup.okhttp.Connection,com.squareup.okhttp.internal.http.HttpEngine,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,java.lang.Object,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connect(int,int,int,com.squareup.okhttp.Request,java.util.List,boolean)>
+		--><com.squareup.okhttp.Connection: void connectSocket(int,int,int,com.squareup.okhttp.Request,com.squareup.okhttp.internal.ConnectionSpecSelector)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void sendConnectionPreface()>
+		--><com.squareup.okhttp.internal.framed.Http2$Writer: void windowUpdate(int,long)>
+		--><okio.RealBufferedSink: void flush()>
+		--><okio.DeflaterSink: void flush()>
+		--><okio.DeflaterSink: void deflate(boolean)>
+	reachable path 4:
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void setContentView(android.view.View)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void afterSetContentView_()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void afterViews()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void refreshFares()>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.Object doInBackground(java.lang.Object[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String doInBackground(com.dougkeen.bart.networktasks.GetRouteFareTask$Params[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String getFareFromNetwork(com.dougkeen.bart.networktasks.GetRouteFareTask$Params,int)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response execute()>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponseWithInterceptorChain(boolean)>
+		--><com.squareup.okhttp.Call$ApplicationInterceptorChain: com.squareup.okhttp.Response proceed(com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponse(com.squareup.okhttp.Request,boolean)>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void sendRequest()>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void connect()>
+		--><com.squareup.okhttp.OkHttpClient$1: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,com.squareup.okhttp.Connection,com.squareup.okhttp.internal.http.HttpEngine,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,java.lang.Object,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connect(int,int,int,com.squareup.okhttp.Request,java.util.List,boolean)>
+		--><com.squareup.okhttp.Connection: void connectSocket(int,int,int,com.squareup.okhttp.Request,com.squareup.okhttp.internal.ConnectionSpecSelector)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void sendConnectionPreface()>
+		--><com.squareup.okhttp.internal.framed.Http2$Writer: void windowUpdate(int,long)>
+		--><okio.RealBufferedSink: void flush()>
+		--><okio.DeflaterSink: void flush()>
+		--><okio.DeflaterSink: void deflate(boolean)>
+	reachable path 5:
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void setContentView(android.view.View,android.view.ViewGroup$LayoutParams)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void afterSetContentView_()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void afterViews()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void refreshFares()>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.Object doInBackground(java.lang.Object[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String doInBackground(com.dougkeen.bart.networktasks.GetRouteFareTask$Params[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String getFareFromNetwork(com.dougkeen.bart.networktasks.GetRouteFareTask$Params,int)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response execute()>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponseWithInterceptorChain(boolean)>
+		--><com.squareup.okhttp.Call$ApplicationInterceptorChain: com.squareup.okhttp.Response proceed(com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponse(com.squareup.okhttp.Request,boolean)>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void sendRequest()>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void connect()>
+		--><com.squareup.okhttp.OkHttpClient$1: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,com.squareup.okhttp.Connection,com.squareup.okhttp.internal.http.HttpEngine,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,java.lang.Object,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connect(int,int,int,com.squareup.okhttp.Request,java.util.List,boolean)>
+		--><com.squareup.okhttp.Connection: void connectSocket(int,int,int,com.squareup.okhttp.Request,com.squareup.okhttp.internal.ConnectionSpecSelector)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection$Builder: com.squareup.okhttp.internal.framed.FramedConnection build()>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void <init>(com.squareup.okhttp.internal.framed.FramedConnection$Builder,com.squareup.okhttp.internal.framed.FramedConnection$1)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void <init>(com.squareup.okhttp.internal.framed.FramedConnection$Builder)>
+		--><java.lang.Thread: void run()>
+		--><com.squareup.okhttp.internal.NamedRunnable: void run()>
+		--><com.squareup.okhttp.internal.framed.FramedConnection$2: void execute()>
+		--><com.squareup.okhttp.internal.framed.Http2$Writer: void windowUpdate(int,long)>
+		--><okio.RealBufferedSink: void flush()>
+		--><okio.DeflaterSink: void flush()>
+		--><okio.DeflaterSink: void deflate(boolean)>
+	reachable path 6:
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void setContentView(int)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void afterSetContentView_()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void afterViews()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void refreshFares()>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.Object doInBackground(java.lang.Object[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String doInBackground(com.dougkeen.bart.networktasks.GetRouteFareTask$Params[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String getFareFromNetwork(com.dougkeen.bart.networktasks.GetRouteFareTask$Params,int)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response execute()>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponseWithInterceptorChain(boolean)>
+		--><com.squareup.okhttp.Call$ApplicationInterceptorChain: com.squareup.okhttp.Response proceed(com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponse(com.squareup.okhttp.Request,boolean)>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void sendRequest()>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void connect()>
+		--><com.squareup.okhttp.OkHttpClient$1: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,com.squareup.okhttp.Connection,com.squareup.okhttp.internal.http.HttpEngine,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,java.lang.Object,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connect(int,int,int,com.squareup.okhttp.Request,java.util.List,boolean)>
+		--><com.squareup.okhttp.Connection: void connectSocket(int,int,int,com.squareup.okhttp.Request,com.squareup.okhttp.internal.ConnectionSpecSelector)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection$Builder: com.squareup.okhttp.internal.framed.FramedConnection build()>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void <init>(com.squareup.okhttp.internal.framed.FramedConnection$Builder,com.squareup.okhttp.internal.framed.FramedConnection$1)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void <init>(com.squareup.okhttp.internal.framed.FramedConnection$Builder)>
+		--><java.lang.Thread: void run()>
+		--><com.squareup.okhttp.internal.NamedRunnable: void run()>
+		--><com.squareup.okhttp.internal.framed.FramedConnection$2: void execute()>
+		--><com.squareup.okhttp.internal.framed.Http2$Writer: void windowUpdate(int,long)>
+		--><okio.RealBufferedSink: void flush()>
+		--><okio.DeflaterSink: void flush()>
+		--><okio.DeflaterSink: void deflate(boolean)>
+	reachable path 7:
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void onCreate(android.os.Bundle)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void setContentView(int)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void afterSetContentView_()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void afterViews()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void refreshFares()>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.Object doInBackground(java.lang.Object[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String doInBackground(com.dougkeen.bart.networktasks.GetRouteFareTask$Params[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String getFareFromNetwork(com.dougkeen.bart.networktasks.GetRouteFareTask$Params,int)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response execute()>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponseWithInterceptorChain(boolean)>
+		--><com.squareup.okhttp.Call$ApplicationInterceptorChain: com.squareup.okhttp.Response proceed(com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponse(com.squareup.okhttp.Request,boolean)>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void sendRequest()>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void connect()>
+		--><com.squareup.okhttp.OkHttpClient$1: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,com.squareup.okhttp.Connection,com.squareup.okhttp.internal.http.HttpEngine,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,java.lang.Object,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connect(int,int,int,com.squareup.okhttp.Request,java.util.List,boolean)>
+		--><com.squareup.okhttp.Connection: void connectSocket(int,int,int,com.squareup.okhttp.Request,com.squareup.okhttp.internal.ConnectionSpecSelector)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection$Builder: com.squareup.okhttp.internal.framed.FramedConnection build()>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void <init>(com.squareup.okhttp.internal.framed.FramedConnection$Builder,com.squareup.okhttp.internal.framed.FramedConnection$1)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void <init>(com.squareup.okhttp.internal.framed.FramedConnection$Builder)>
+		--><java.lang.Thread: void run()>
+		--><com.squareup.okhttp.internal.NamedRunnable: void run()>
+		--><com.squareup.okhttp.internal.framed.FramedConnection$2: void execute()>
+		--><com.squareup.okhttp.internal.framed.Http2$Writer: void windowUpdate(int,long)>
+		--><okio.RealBufferedSink: void flush()>
+		--><okio.DeflaterSink: void flush()>
+		--><okio.DeflaterSink: void deflate(boolean)>
+	reachable path 8:
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void setContentView(android.view.View)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void afterSetContentView_()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void afterViews()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void refreshFares()>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.Object doInBackground(java.lang.Object[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String doInBackground(com.dougkeen.bart.networktasks.GetRouteFareTask$Params[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String getFareFromNetwork(com.dougkeen.bart.networktasks.GetRouteFareTask$Params,int)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response execute()>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponseWithInterceptorChain(boolean)>
+		--><com.squareup.okhttp.Call$ApplicationInterceptorChain: com.squareup.okhttp.Response proceed(com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Call: com.squareup.okhttp.Response getResponse(com.squareup.okhttp.Request,boolean)>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void sendRequest()>
+		--><com.squareup.okhttp.internal.http.HttpEngine: void connect()>
+		--><com.squareup.okhttp.OkHttpClient$1: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,com.squareup.okhttp.Connection,com.squareup.okhttp.internal.http.HttpEngine,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connectAndSetOwner(com.squareup.okhttp.OkHttpClient,java.lang.Object,com.squareup.okhttp.Request)>
+		--><com.squareup.okhttp.Connection: void connect(int,int,int,com.squareup.okhttp.Request,java.util.List,boolean)>
+		--><com.squareup.okhttp.Connection: void connectSocket(int,int,int,com.squareup.okhttp.Request,com.squareup.okhttp.internal.ConnectionSpecSelector)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection$Builder: com.squareup.okhttp.internal.framed.FramedConnection build()>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void <init>(com.squareup.okhttp.internal.framed.FramedConnection$Builder,com.squareup.okhttp.internal.framed.FramedConnection$1)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void <init>(com.squareup.okhttp.internal.framed.FramedConnection$Builder)>
+		--><java.lang.Thread: void run()>
+		--><com.squareup.okhttp.internal.NamedRunnable: void run()>
+		--><com.squareup.okhttp.internal.framed.FramedConnection$2: void execute()>
+		--><com.squareup.okhttp.internal.framed.Http2$Writer: void windowUpdate(int,long)>
+		--><okio.RealBufferedSink: void flush()>
+		--><okio.DeflaterSink: void flush()>
+		--><okio.DeflaterSink: void deflate(boolean)>
+	reachable path 9:
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void setContentView(android.view.View,android.view.ViewGroup$LayoutParams)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void afterSetContentView_()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void afterViews()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void refreshFares()>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.Object doInBackground(java.lang.Object[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String doInBackground(com.dougkeen.bart.networktasks.GetRouteFareTask$Params[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String getFareFromNetwork(com.dougkeen.bart.networktasks.GetRouteFareTask$Params,int)>
+		--><com.squareup.okhttp.ResponseBody: java.lang.String string()>
+		--><com.squareup.okhttp.ResponseBody: byte[] bytes()>
+		--><okio.RealBufferedSource: byte[] readByteArray()>
+		--><okio.Buffer: long writeAll(okio.Source)>
+		--><com.squareup.okhttp.internal.framed.FramedStream$FramedDataSource: long read(okio.Buffer,long)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void writeWindowUpdateLater(int,long)>
+		--><com.squareup.okhttp.internal.NamedRunnable: void run()>
+		--><com.squareup.okhttp.internal.framed.FramedConnection$2: void execute()>
+		--><com.squareup.okhttp.internal.framed.Http2$Writer: void windowUpdate(int,long)>
+		--><okio.RealBufferedSink: void flush()>
+		--><okio.DeflaterSink: void flush()>
+		--><okio.DeflaterSink: void deflate(boolean)>
+	reachable path 10:
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void setContentView(int)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void afterSetContentView_()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void afterViews()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void refreshFares()>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.Object doInBackground(java.lang.Object[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String doInBackground(com.dougkeen.bart.networktasks.GetRouteFareTask$Params[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String getFareFromNetwork(com.dougkeen.bart.networktasks.GetRouteFareTask$Params,int)>
+		--><com.squareup.okhttp.ResponseBody: java.lang.String string()>
+		--><com.squareup.okhttp.ResponseBody: byte[] bytes()>
+		--><okio.RealBufferedSource: byte[] readByteArray()>
+		--><okio.Buffer: long writeAll(okio.Source)>
+		--><com.squareup.okhttp.internal.framed.FramedStream$FramedDataSource: long read(okio.Buffer,long)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void writeWindowUpdateLater(int,long)>
+		--><com.squareup.okhttp.internal.NamedRunnable: void run()>
+		--><com.squareup.okhttp.internal.framed.FramedConnection$2: void execute()>
+		--><com.squareup.okhttp.internal.framed.Http2$Writer: void windowUpdate(int,long)>
+		--><okio.RealBufferedSink: void flush()>
+		--><okio.DeflaterSink: void flush()>
+		--><okio.DeflaterSink: void deflate(boolean)>
+	reachable path 11:
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void onCreate(android.os.Bundle)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void setContentView(int)>
+		--><com.dougkeen.bart.activities.RoutesListActivity_: void afterSetContentView_()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void afterViews()>
+		--><com.dougkeen.bart.activities.RoutesListActivity: void refreshFares()>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.Object doInBackground(java.lang.Object[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String doInBackground(com.dougkeen.bart.networktasks.GetRouteFareTask$Params[])>
+		--><com.dougkeen.bart.networktasks.GetRouteFareTask: java.lang.String getFareFromNetwork(com.dougkeen.bart.networktasks.GetRouteFareTask$Params,int)>
+		--><com.squareup.okhttp.ResponseBody: java.lang.String string()>
+		--><com.squareup.okhttp.ResponseBody: byte[] bytes()>
+		--><okio.RealBufferedSource: byte[] readByteArray()>
+		--><okio.Buffer: long writeAll(okio.Source)>
+		--><com.squareup.okhttp.internal.framed.FramedStream$FramedDataSource: long read(okio.Buffer,long)>
+		--><com.squareup.okhttp.internal.framed.FramedConnection: void writeWindowUpdateLater(int,long)>
+		--><com.squareup.okhttp.internal.NamedRunnable: void run()>
+		--><com.squareup.okhttp.internal.framed.FramedConnection$2: void execute()>
+		--><com.squareup.okhttp.internal.framed.Http2$Writer: void windowUpdate(int,long)>
+		--><okio.RealBufferedSink: void flush()>
+		--><okio.DeflaterSink: void flush()>
+		--><okio.DeflaterSink: void deflate(boolean)>
+"
+dougkeen/BartRunnerAndroid,closed,No Notifications,[],Version 2.2.11 on Oreo has broken notifications. Selecting a specific train no longer pins a notification for that trip on the notification bar.
+dougkeen/BartRunnerAndroid,closed,Notification doesn't show up on Android Wear,[],"I've noticed that when I select a particular train, and an ongoing notification is created, the notification doesn't show up on Android Wear. Is there any chance you could fix that?"
+dougkeen/BartRunnerAndroid,open,NullPointerException,[],"//package name: com.dougkeen.bart
+//version: 2.2.6
+//target sdk version: android-18
+ java.lang.NullPointerException
+ 	at com.dougkeen.bart.services.EtdService$EtdServiceEngine.applyScheduleInformation(EtdService.java:285)
+ 	at com.dougkeen.bart.services.EtdService$EtdServiceEngine$2.onResult(EtdService.java:233)
+ 	at com.dougkeen.bart.networktasks.GetScheduleInformationTask.onPostExecute(GetScheduleInformationTask.java:104)
+ 	at com.dougkeen.bart.networktasks.GetScheduleInformationTask.onPostExecute(GetScheduleInformationTask.java:20)
+ 	at android.os.AsyncTask.finish(AsyncTask.java:631)
+ 	at android.os.AsyncTask.access$600(AsyncTask.java:177)
+ 	at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:644)
+ 	at android.os.Handler.dispatchMessage(Handler.java:99)
+ 	at android.os.Looper.loop(Looper.java:137)
+ 	at android.app.ActivityThread.main(ActivityThread.java:5103)
+ 	at java.lang.reflect.Method.invokeNative(Native Method)
+ 	at java.lang.reflect.Method.invoke(Method.java:525)
+ 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+ 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+ 	at dalvik.system.NativeStart.main(Native Method)"
+dougkeen/BartRunnerAndroid,open,NullPointerException,[],"//package name: com.dougkeen.bart
+//version: 2.2.6
+//target sdk version: android-18
+ java.lang.NullPointerException
+ 	at com.dougkeen.bart.data.DepartureArrayAdapter.getView(DepartureArrayAdapter.java:56)
+ 	at android.widget.AbsListView.obtainView(AbsListView.java:2177)
+ 	at android.widget.ListView.measureHeightOfChildren(ListView.java:1247)
+ 	at android.widget.ListView.onMeasure(ListView.java:1159)
+ 	at android.view.View.measure(View.java:15848)
+ 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5012)
+ 	at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1404)
+ 	at android.widget.LinearLayout.measureVertical(LinearLayout.java:695)
+ 	at android.widget.LinearLayout.onMeasure(LinearLayout.java:588)
+ 	at android.view.View.measure(View.java:15848)
+ 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5012)
+ 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:310)
+ 	at android.support.v7.internal.widget.ContentFrameLayout.onMeasure(ContentFrameLayout.java:135)
+ 	at android.view.View.measure(View.java:15848)
+ 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5012)
+ 	at android.support.v7.internal.widget.ActionBarOverlayLayout.onMeasure(ActionBarOverlayLayout.java:393)
+ 	at android.view.View.measure(View.java:15848)
+ 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5012)
+ 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:310)
+ 	at android.view.View.measure(View.java:15848)
+ 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5012)
+ 	at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1404)
+ 	at android.widget.LinearLayout.measureVertical(LinearLayout.java:695)
+ 	at android.widget.LinearLayout.onMeasure(LinearLayout.java:588)
+ 	at android.view.View.measure(View.java:15848)
+ 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:5012)
+ 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:310)
+ 	at com.android.internal.policy.impl.PhoneWindow$DecorView.onMeasure(PhoneWindow.java:2189)
+ 	at android.view.View.measure(View.java:15848)
+ 	at android.view.ViewRootImpl.performMeasure(ViewRootImpl.java:1905)
+ 	at android.view.ViewRootImpl.measureHierarchy(ViewRootImpl.java:1104)
+ 	at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1284)
+ 	at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1004)
+ 	at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:5481)
+ 	at android.view.Choreographer$CallbackRecord.run(Choreographer.java:749)
+ 	at android.view.Choreographer.doCallbacks(Choreographer.java:562)
+ 	at android.view.Choreographer.doFrame(Choreographer.java:532)
+ 	at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:735)
+ 	at android.os.Handler.handleCallback(Handler.java:730)
+ 	at android.os.Handler.dispatchMessage(Handler.java:92)
+ 	at android.os.Looper.loop(Looper.java:137)
+ 	at android.app.ActivityThread.main(ActivityThread.java:5103)
+ 	at java.lang.reflect.Method.invokeNative(Native Method)
+ 	at java.lang.reflect.Method.invoke(Method.java:525)
+ 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+ 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+ 	at dalvik.system.NativeStart.main(Native Method)"
+dougkeen/BartRunnerAndroid,open,Latest version missing in F-Droid,[],"The latest version in F-Droid is 2.2.6 (Added on Oct 31, 2015) as opposed to the Play Store, which has 2.2.10
+
+https://f-droid.org/packages/com.dougkeen.bart/
+https://play.google.com/store/apps/details?id=com.dougkeen.bart&hl=en"
+dougkeen/BartRunnerAndroid,closed,BART Runner crashes in airplane mode,[],"=====STEPS TO REPRODUCE=====
+1. enter airplane mode
+2. open bart runner app
+3. tap quick departure lookup at bottom of screen, choose an origin and destination, hit ok
+
+EXPECTED RESULTS:
+I'm actually not sure if it has cached offline data or is supposed to pop up an error message of some sort
+
+NUMBER OF TIMES YOU WERE ABLE TO REPRODUCE (e.g. 3/10): 10/10
+
+DEVICES TESTED: Nexus 5X Android O preview, Pixel Android N
+
+Issue is 100% reproducible with airplane mode.
+
+Build: sailfish-userdebug 7.1.2 N2G48C 4104010 dev-keys
+
+Package [com.dougkeen.bart] (a4f88e8):
+    versionCode=37 minSdk=14 targetSdk=25
+    versionName=2.2.10
+
+java.lang.RuntimeException: An error occurred while executing doInBackground()
+GMS RETRACE
+  at android.os.AsyncTask$3.done(AsyncTask.java:325)
+  at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:354)
+  at java.util.concurrent.FutureTask.setException(FutureTask.java:223)
+  at java.util.concurrent.FutureTask.run(FutureTask.java:242)
+  at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:243)
+  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1133)
+  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:607)
+  at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.NullPointerException: application interceptor com.dougkeen.bart.networktasks.NetworkUtils$RetryInterceptor@3c77394 returned null
+GMS RETRACE
+  at com.squareup.okhttp.Call$ApplicationInterceptorChain.proceed(Call.java:235)
+  at com.squareup.okhttp.Call.getResponseWithInterceptorChain(Call.java:205)
+  at com.squareup.okhttp.Call.execute(Call.java:80)
+  at com.dougkeen.bart.networktasks.GetRealTimeDeparturesTask.getDeparturesFromNetwork(GetRealTimeDeparturesTask.java:94)
+  at com.dougkeen.bart.networktasks.GetRealTimeDeparturesTask.doInBackground(GetRealTimeDeparturesTask.java:65)
+  at com.dougkeen.bart.networktasks.GetRealTimeDeparturesTask.doInBackground(GetRealTimeDeparturesTask.java:20)
+  at android.os.AsyncTask$2.call(AsyncTask.java:305)
+  at java.util.concurrent.FutureTask.run(FutureTask.java:237)"
+dougkeen/BartRunnerAndroid,open,Lock the list of favorite routes,[],"I was getting used of ""pull to refresh"" and frequently use pull trying to refresh the list, only to find some favorite routes get swiped away.
+
+It will be good if the list is locked by default and can only be swiped away by unlocking first."
+dougkeen/BartRunnerAndroid,closed,Return to route list after app has been backgrounded for 3+ hours,[],"@dougkeen 
+When returning to the app after a prolonged period of time, the app is still on the last page viewed, which is usually the departures page. I've screwed up my schedule a few too many times by opening up the app and inadvertently assuming that the departure times I'm looking at are correct, when they're actually for the opposite route from this morning or yesterday evening.   
+
+This is a change to return the user to the routes list page when returning to the app after three hours. I chose three hours semi-arbitrarily, but it feels long enough that there would be the expectation that the user would be returning to the app to look up a new route. 
+
+--
+I'm not sure if the way things currently work is intentional, but wanted to bring up this option!"
+dougkeen/BartRunnerAndroid,open,Feature Request: Add station for Oakland International Airport,[],"FWIW, I'm running version 2.2.8 on Android version 6.0.1.
+
+Now that there's a connector running between the Coliseum Station and OAK, it would be great to have OAK added to the list of stations. Not sure if you've already looked into this, but is this just a matter of adding the new station in, or does BART's API not support this station?
+
+Thanks for the app BTW! I'm a huge fan of it."
+dougkeen/BartRunnerAndroid,open,Seeing $null in current play store build,[],The release note said it should be fixed. Anything else I need to do?
+dougkeen/BartRunnerAndroid,open,squid:S1213 - The members of an interface declaration or class should appear in a pre-defined order,[],"This pull request is focused on resolving occurrence of Sonar rule
+squid:S1213 - The members of an interface declaration or class should appear in a pre-defined order.
+squid:ModifiersOrderCheck - Modifiers should be declared in the correct order.
+You can find more information about the issue here:
+https://dev.eclipse.org/sonar/rules/show/squid:S1213
+https://dev.eclipse.org/sonar/rules/show/squid:ModifiersOrderCheck
+Please let me know if you have any questions.
+George Kankava
+"
+dougkeen/BartRunnerAndroid,closed,Performance issue,[],"Hello, we are working on a project called DiagDroid (http://www.cudroid.com/DiagDroid/) for detecting potential performance issues. Our tool could find performance degradation caused by improper usage of asynchronous executions.
+We find that in some cases your app may suffer a long queuing/processing delay.
+
+Case 1:
+**Related source code Class**: `EtdService` Line [216](https://github.com/dougkeen/BartRunnerAndroid/blob/master/app/src/main/java/com/dougkeen/bart/services/EtdService.java#L216)
+**Circumstance**  The task would wait for a long time to get executed. 
+**Problem** I find that the execution of `GetRealTimeDeparturesTask` in this line often conflicts with `GetRouteFareTask` and `GetRouteFareTask`. This is because you invoke the AsyncTask via `execute()` method. This method executes the AsyncTasks in sequential which means all the scheduled tasks have to wait until the previous task finishes execution. 
+**Suggested modification** I suggest you use `executeOnExecutor` method with separate thread pool for different purposed AsyncTasks.
+
+Case 2:
+**Related source code Class**: `GetRealTimeDeparturesTask` Line: [64](https://github.com/dougkeen/BartRunnerAndroid/blob/master/app/src/main/java/com/dougkeen/bart/networktasks/GetRealTimeDeparturesTask.java#L64)
+**Circumstance** The task usually executes for a long time. During my test, it costs on average >1 second to finish. The cancellation of previous `GetRealTimeDeparturesTask` does not work properly.
+**Problem** I think you have noticed to cancel the obsolete tasks. But you immediately go into the method `getDeparturesFromNetwork` which consumes most time of the task. If the cancel command is not issued as soon as the asynctask is executed (which is very likely to happen), you failed to cancel this task.
+**Suggested modification** You may design an interrupt on cancelling the network request via utilizing the cancel() method of `OkHttpClient` `(Call` class). 
+
+Other AsyncTasks [GetScheduleInformationTask](https://github.com/dougkeen/BartRunnerAndroid/blob/master/app/src/main/java/com/dougkeen/bart/networktasks/GetScheduleInformationTask.java) and [GetRouteFareTask](https://github.com/dougkeen/BartRunnerAndroid/blob/master/app/src/main/java/com/dougkeen/bart/networktasks/GetRouteFareTask.java) which are separately invoked in Line [248](https://github.com/dougkeen/BartRunnerAndroid/blob/master/app/src/main/java/com/dougkeen/bart/services/EtdService.java#L248) of `EtdService` and Line [217](https://github.com/dougkeen/BartRunnerAndroid/blob/master/app/src/main/java/com/dougkeen/bart/activities/RoutesListActivity.java#L217) of `RoutesListActivity` have similar issue. 
+
+ps. I will release my tool with a tutorial on how to use it about one week later (http://www.cudroid.com/DiagDroid/), welcome to have a try on it.  Thanks.
+"
+dougkeen/BartRunnerAndroid,closed,Departure Alarm doesn't work,[],"Tested on both Android 5.1.1 and 6.0.1.
+
+Alarm doesn't sound after being created
+"
+dougkeen/BartRunnerAndroid,closed,Crashes on Marshmallow,[],"Received several reports of crashing. Looks related to ActionBarSherlock/HoloEverywhere:
+
+```
+java.lang.RuntimeException: Unable to start activity ComponentInfo{com.dougkeen.bart/com.dougkeen.bart.activities.RoutesListActivity_}: java.lang.RuntimeException: java.lang.IllegalAccessException: java.lang.Class<org.holoeverywhere.addon.AddonSherlock$HoloActionBarSherlockNative> is not accessible from java.lang.Class<com.actionbarsherlock.ActionBarSherlock>
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2416)
+    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2476)
+    at android.app.ActivityThread.-wrap11(ActivityThread.java)
+    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1344)
+    at android.os.Handler.dispatchMessage(Handler.java:102)
+    at android.os.Looper.loop(Looper.java:148)
+    at android.app.ActivityThread.main(ActivityThread.java:5417)
+    at java.lang.reflect.Method.invoke(Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+Caused by: java.lang.RuntimeException: java.lang.IllegalAccessException: java.lang.Class<org.holoeverywhere.addon.AddonSherlock$HoloActionBarSherlockNative> is not accessible from java.lang.Class<com.actionbarsherlock.ActionBarSherlock>
+    at com.actionbarsherlock.ActionBarSherlock.wrap(ActionBarSherlock.java:239)
+    at org.holoeverywhere.addon.AddonSherlock$AddonSherlockA.getSherlock(AddonSherlock.java:53)
+    at org.holoeverywhere.addon.AddonSherlock$AddonSherlockA.installDecorView(AddonSherlock.java:60)
+    at android.support.v4.app._HoloActivity$1.action(_HoloActivity.java:587)
+    at android.support.v4.app._HoloActivity$1.action(_HoloActivity.java:1)
+    at org.holoeverywhere.addon.IAddonBasicAttacher.performAddonAction(IAddonBasicAttacher.java:167)
+    at org.holoeverywhere.app.Activity.performAddonAction(Activity.java:497)
+    at android.support.v4.app._HoloActivity.requestDecorView(_HoloActivity.java:584)
+    at android.support.v4.app._HoloActivity.setContentView(_HoloActivity.java:604)
+    at com.dougkeen.bart.activities.RoutesListActivity_.setContentView(RoutesListActivity_.java:107)
+    at com.dougkeen.bart.activities.RoutesListActivity_.onCreate(RoutesListActivity_.java:42)
+    at android.app.Activity.performCreate(Activity.java:6237)
+    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1107)
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2369)
+    ... 9 more
+Caused by: java.lang.IllegalAccessException: java.lang.Class<org.holoeverywhere.addon.AddonSherlock$HoloActionBarSherlockNative> is not accessible from java.lang.Class<com.actionbarsherlock.ActionBarSherlock>
+    at java.lang.reflect.Constructor.newInstance(Native Method)
+    at com.actionbarsherlock.ActionBarSherlock.wrap(ActionBarSherlock.java:231)
+    ... 22 more
+```
+"
+dougkeen/BartRunnerAndroid,closed,Wear compatible notifications,[],"@dougkeen It seems android wear is not a big fan of ongoing notifications. The fix would be to create a wear app (https://possiblemobile.com/2014/07/create-custom-ongoing-notification-android-wear/) or make the notification ""not ongoing"". I went with the latter. Thoughts?
+
+![img_20150924_102632-2](https://cloud.githubusercontent.com/assets/51130/10080971/9c68e420-62a7-11e5-86d0-30304581bfad.jpg)
+![img_20150924_102625](https://cloud.githubusercontent.com/assets/51130/10080970/9c6602e6-62a7-11e5-8692-480e6e29e3f0.jpg)
+
+I'm not an Android/Java developer so, please, feel free to comment on anything you think could be done better.
+"
+dougkeen/BartRunnerAndroid,closed,Reorganize train info views and general code cleanup,[],"Reorganize the `your_train` and `departure_listing` layouts (and corresponding custom views) for easier editing, greater flexibility for different screens, and to fix a layout bug that was introduced when updating the libraries where the ""Your Train"" section would be too wide.
+
+Also includes general code cleanup, warnings fixes (eg around nullability), and readability improvements. As before, I'm happy to revert any of these changes.
+
+A few notes:
+- The new linear layout based approach (rather than using a relative layout) makes it easier for me to understand what's going on, and I think it's more clear to read through (the items come in the order you see them). Also the additional cost of using multiple layouts is negligible.
+- The reason the `YourTrainLayout` became a frame layout that only has a single linear layout in it is because the tooling works much better this way. Android Studio wasn't able to show a good preview for the `merge` tag, but by switching it to a linear layout, it's much faster to iterate in the IDE without having to push to the phone for each minor change. Similarly (in case you haven't seen them before) the `tools` attributes tell the IDE to override that value when rendering a preview of the view. It works for any attribute, just by replacing `android:` with `tools:`.
+- The notifications changes are bit unrelated. I was trying to see if there was an easier way to get the notification to show up on Wear, but it turns out for ongoing notifications you have to have an app :( But I felt like the changes to the builder made it easier to read and using the compat version of the notification manager shouldn't hurt.
+"
+dougkeen/BartRunnerAndroid,closed,Replace 3rd party shims with Google's support libraries,[],"Remove old third party shims for backwards compatibility, and replace them with the corresponding material support libraries. Has a number of visual issues, but these can be corrected in a subsequent diff to keep this self-contained.
+
+Finish converting from tabs to spaces and remove more old eclipse files.
+
+There are some stylistic changes/decisions I made in here, but I'm happy to undo them if you want. Specifically one of the things I've found when working with XML code is that putting the end of an opening tag (either `>` or `/>`) on its own line makes diffs that add/remove single attributes much cleaner. Also there were some things on two lines that I felt were easier to read on a single line, but again I'm happy to leave them on two if you have any sort of opinion about it :) Some indenting/unindenting may have been unintentional since I did most of this and then rebased off of your whitespace commit, so feel free to point out any issues with respect to that.
+
+Also sorry this is kinda a large/gross diff :(
+"
+dougkeen/BartRunnerAndroid,closed,Migrate the project to Android Studio and Gradle,[],"The main motivation for this change is to move to the tools that are going to be supported long term and make the project easier to work on moving forward. This would benefit efforts such as that Wear app pull request, or potentially moving to material design.
+
+This doesn't change any of the behavior, source code, resources, or libraries. It moves the folders around to match the standard Android Studio/Gradle folder structure and replaces a few jars with maven libraries to account for incorrect jar libraries and more complex behavior such as annotation processing. In more detail, the individual changes are:
+- Move the Java source, `res` folder, and `AndroidManifest.xml` file to a new `app/src/main` folder.
+- Move the app's `libs`, `lint.xml`, and `.svg` files (grouped in a new folder) to the `app` folder.
+- Remove the AndroidAnnotation jars (both the annotation processor and the API) and use the `android-apt` plugin to fetch them from maven.
+- Wrap HoloEverywhere, it's preferences addon, and the Drag Sort Listview libraries in Gradle projects in the root of the project in order to be able to modify the build setting (such as build tools version used) without needing to change the contents of the submodules.
+- Remove the Eclipse configuration files
+- Add in the Gradle wrapper and the project's Gradle configuration files.
+- Update the gitignore to ignore the Gradle build outputs and Android Studio's configuration files (which are automatically generated from the Gradle files).
+- Git automatically converted some files from CRLF to LF and added newlines to ends of some files that didn't have them.
+
+There's definitely more work to be done here, but since this is already such a large change, I was trying to do the minimal amount to make it work in Android Studio and Gradle. For instance, we probably want to replace the rest of the jars with maven artifacts (a relatively small change).
+
+To build the app, open the root `build.gradle` file with the latest Android Studio (I'm using 1.3 stable), wait for it to finish doing an initial Gradle sync, build the project via the **Build -> Make Project** menu to force the annotation processor to run, and finally build and deploy the app via the **Run -> Run 'app'** menu.
+
+I tested the app on a KitKat 4.4.3 device and a Lollipop 5.0 device and it seems to be working exactly the same as before. I wasn't able to get the emulator working for API 8 or 10, but given that the underlying libraries and targeted sdk version haven't changed, I'd be surprised if it was broken on those platforms. I can spend some more time trying to get those emulators to work if you'd like.
+"
+dougkeen/BartRunnerAndroid,open,Beginnigs of a Wear app,[],"This is very much still a work-in-progress, and you probably shouldn't merge it as-is.  I would like to get reviews for it in the meantime, but I am fixing a couple things as I go along.
+
+Known issues with this changeset:
+- I used the default ""robot"" icon for everywhere that needed an icon in the Wear app.
+- The Wear app is still launchable, and launches the ""Hello, {square,round} world!"" activity.
+- I still haven't figured out the correct threading for the handheld app — in particular, updates to the wearable via mergeEstimate() happen on a service thread, but deleting the notification altogether happens on the main thread.  This is probably racy, but it didn't bite me when I used the app today.
+- I haven't done any of the packaging work. The deployment strategy is to push the wearable app to the device via ADB; the automatic installation from the handheld app is yet to be added.
+
+I did have to upgrade holoeverywhere to get it to build (for reasons I can't quite remember, but maybe for the support library JAR that needs to be copied around), which had a trickle-down effect of needing to get rid of ActionBarSherlock too.
+
+You should be able to build the wearable project by simply ""Importing"" `wearable/build.gradle` in Android Studio.
+"
+dougkeen/BartRunnerAndroid,closed,Crashes when open,[],"Downloaded this app to try and it crashed immediately.
+"
+dougkeen/BartRunnerAndroid,closed,Build difficulty,[],"I wonder if the project.properties file is correct as it only references ActionBarSherlock within HoloEverywhere when it seems to require Holo theme sherlock. At any rate I get a build failure with such an error at Release_2.1.1.
+"

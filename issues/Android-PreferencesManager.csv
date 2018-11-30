@@ -1,0 +1,84 @@
+repository,state,title,label,body
+SimonMarquis/Android-PreferencesManager,open,Probable Memory Leak,[],"After a double background-foreground event of the AppListActivity there are in heap memory 2 instances more of:
+
+class fr.simon.marquis.preferencesmanager.roboto.RobotoTextView @ 0x12cd9000
+class fr.simon.marquis.preferencesmanager.ui.AppAdapter$HeaderViewHolder @ 0x12e20580
+class fr.simon.marquis.preferencesmanager.ui.AppAdapter$ViewHolder @ 0x12e20640
+
+It should not be like this because the background-foreground events return to the same GUI state and the memory should stay in the same state as well. It could be a symptom of a bad management of the onStart-onStop lifecycle. 
+
+I have encountered this problem on an Android emulator running 7.1.1 os version."
+SimonMarquis/Android-PreferencesManager,open,Scrollable xml selector is hard to use,[],"Please think about using simple list view for displaying available xml. If application have >5 xml prefs, it's very hard to find the right one. There are no any sorting, xmls are dispayed in random order."
+SimonMarquis/Android-PreferencesManager,closed,empty data from preference-files with whitespaces,[],"If the preference file name includes a whitespace (e.g. space) I can't edit the preferences. The Android framework does it perfect.
+"
+SimonMarquis/Android-PreferencesManager,closed,doesn't work in CM 12.1,[],"In cyanogenmod 12.1, PreferencesManager opens and gets root and displays list of apps, but clicking on any app produces error ""sh: <stdin>[43]: find: can't execute: Permission denied""  followed by ""no preferences for this file""
+
+It used to work on CM9
+"
+SimonMarquis/Android-PreferencesManager,closed,Problems with cm13/toybox,[],"Since cm replaced busybox with toybox, if you try to start the app with cm13, you just get the ""Problem detected"" error msg, but there's no way to change the path to busybox in the settings.
+
+oandbackup has such a path-setting, so its rather easy to just change it to /system/bin/toybox and everything is back to normal.
+
+Is there any chance to get such a setting for Preferences Manager?
+
+Many thanks in advance!
+"
+SimonMarquis/Android-PreferencesManager,closed,preferences manager not working,[],"Hi simon., i`m using LG P880 handphone and my handphone already root . My lg using stock rom not custom rom. But when i try to launch your application, preferences manager., the application display a pop up window mentioned that my lg phone dont have root access. Why is this happen? Tqvm for your help, .
+"
+SimonMarquis/Android-PreferencesManager,closed,Roottools,[],
+SimonMarquis/Android-PreferencesManager,closed,Theme switcher,[],
+SimonMarquis/Android-PreferencesManager,closed,Switch theme,"[Label(name=""enhancement"")]","Menu item to switch between Holo Light and Holo Dark.
+"
+SimonMarquis/Android-PreferencesManager,closed,Include FloatLabelLayout from @chrisbanes,[],
+SimonMarquis/Android-PreferencesManager,closed,Backup and restore,[],
+SimonMarquis/Android-PreferencesManager,closed,No preference files found,"[Label(name=""bug"")]","It seems Preference Manager cannot find any preference files for any of the apps I have tried. I used the terminal to find the preference files and they seem to be located here:
+
+```
+/data/data/{packagename}/shared_prefs/{packagename}_preferences.xml
+```
+
+I've looked a bit through the code and found that the app searches recursively through:
+
+```
+/data/data/{packagename}/
+```
+
+I'm not sure why it won't find the XML file. Other 'preference editors' seem to have the same problem on my phone (stock Nexus 5 with Superuser).
+
+I'd like to see this fixed, so I downloaded the source code, but using Eclipse I wasn't able to build it. What do you use to build this project? Can you include an build.xml for Ant or build.gradle for Gradle?
+"
+SimonMarquis/Android-PreferencesManager,closed,Color picker,"[Label(name=""wontfix"")]","A lot of apps store colors as integers. It'd be nice to have a color picker and RGB/HEX input available for these.
+
+I guess recognizing such color values isn't easy (maybe some fuzzy logic, like whether the value makes sense as a color and the name contains some string like ""color""?) the color picker should be available as an extra option from the menu.
+"
+SimonMarquis/Android-PreferencesManager,closed,Application does not recognize rooted device,[],"Application does not recognize rooted device
+App downloaded from google play, v. 1.5
+su command available in /system/xbin
+"
+SimonMarquis/Android-PreferencesManager,closed,Crashes on start on JellyTime 4.2.2,[],"Crashes on start on JellyTime 4.2.2
+"
+SimonMarquis/Android-PreferencesManager,closed,Application without title,"[Label(name=""bug"")]","Applications without title are throwing this exception:
+
+```
+java.lang.RuntimeException: An error occured while executing doInBackground()
+at android.os.AsyncTask$3.done(AsyncTask.java:299)
+at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:352)
+at java.util.concurrent.FutureTask.setException(FutureTask.java:219)
+at java.util.concurrent.FutureTask.run(FutureTask.java:239)
+at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1080)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:573)
+at java.lang.Thread.run(Thread.java:856)
+Caused by: java.lang.StringIndexOutOfBoundsException: length=0; index=0
+at fr.simon.marquis.preferencesmanager.model.AppEntry.formatChar(AppEntry.java:146)
+at fr.simon.marquis.preferencesmanager.model.AppEntry.loadLabels(AppEntry.java:134)
+at fr.simon.marquis.preferencesmanager.model.AppEntry.<init>(AppEntry.java:65)
+at fr.simon.marquis.preferencesmanager.util.Utils.getApplications(Utils.java:84)
+at fr.simon.marquis.preferencesmanager.ui.AppListActivity$GetApplicationsTask.doInBackground(AppListActivity.java:207)
+at fr.simon.marquis.preferencesmanager.ui.AppListActivity$GetApplicationsTask.doInBackground(AppListActivity.java:1)
+at android.os.AsyncTask$2.call(AsyncTask.java:287)
+at java.util.concurrent.FutureTask.run(FutureTask.java:234)
+... 3 more
+```
+
+Issue found by Levent Kılıç
+"

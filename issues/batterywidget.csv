@@ -1,0 +1,10 @@
+repository,state,title,label,body
+hmrocha/batterywidget,open,Memory Leak,[],"After a double rotation of the Postcode Activity there are in heap memory 2 instances more of:
+
+class net.tevp.postcode.Postcode @ 0x12c76800
+
+It should not be like this because the rotations return to the same GUI state and the memory should stay in the same state as well. It could be a symptom of a bad management of the onCreate-onDestroy lifecycle. 
+
+I have encountered this problem on an Android emulator running 7.1.1 os version. 
+
+"

@@ -1,0 +1,432 @@
+repository,state,title,label,body
+telecapoland/jamendo-android,open,Failing to remove callback when user disconnects from WiFi,[],"**What steps will reproduce the problem?**
+In the setting, enable wifi only mode. Create a playlist with several musics. Start the playlist. When the first song is playing, disable WiFi. 
+
+**What is the expected output? What do you see instead?**
+Jamendo keeps running in the background (It does not play any song, but keeps running in background) and does not remove the callback that is responsible to track the music play progress. 
+
+**Please provide any additional information below**
+In the ""PlayerEngineImpl.java"" class, ""mHandler"" is responsible to run ""mUpdateTimeTask"" periodically (every one second). It seems that mHandler will be remove when the player is not playing. However, it seems that disconnecting from internet does not impact the playing status of the playlist. To ensure the callback is still executed in background, I added a log file in the method ""run()"" of ""mUpdateTimeTask"". After reproducing the issue, I can see that the log appears in the logcat every second. "
+telecapoland/jamendo-android,closed,"Service seems running in the background, even when I stop the app",[],"**What steps will reproduce the problem?**
+Open the app. Go to Radio menu. Select a channel and start playing. Then switch to another application (Jamendo is going to background and keeps playing). After a while, remove Jamendo from the recent app (stop the app).
+
+**What is the expected output? What do you see instead?**
+I expect by removing the app from recent list, it stops. Although Jamendo stops playing the sound, I can still see Jamendo Player item on my notification bar. 
+
+**Please provide any additional information below**
+I checked the number of wakelocks before and after reproducing the issue. It seems that this issue causes the system to acquire a wakelock, which drastically drained the battery of my device. "
+telecapoland/jamendo-android,open,The internet accessed failed when loading the license picture?,[],"when I choose one ablum in the HomeActivity, It will start the PlayerActivity to play the ablum, but when the UI widget of mLicenseImageView uses internet to load the license picture the result is failed. I use a browser to visit ""http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png"",the browser will show ""https://licensebuttons.net/l/by-nc-nd/3.0/88x31.png"" and the picture.
+
+I want to know how to visit the URL of the license picture in the app . waitting for answer...
+"
+telecapoland/jamendo-android,closed,Wake lock permission,[],"Dear developers,
+
+I am a researcher from Hong Kong. I am developing a static analysis tool for Android applications.
+
+Recently, I applied my tool to analyze Jamendo and found that Jamendo does not use wake locks or wifi locks, but it acquires wake lock permission.
+
+<uses-permission android:name=""android.permission.WAKE_LOCK""></uses-permission>
+
+Is this really necessary? Looking forward to your reply and hope we can help improve your project.
+"
+telecapoland/jamendo-android,open,Question about json parse,[],"thank for you share code,let me learn lot of android develop.
+
+read your programe,I have a quesion:
+public abstract class JSONBuilder<T> {
+
+```
+protected String root;
+
+public JSONBuilder(){
+    root = """";
+}
+
+/**
+ * Sets root of the JSON params, useful when building object in joins
+ * 
+ * @param root
+ */
+public void setRoot(String root){
+    this.root = root;
+}
+
+public abstract T build(JSONObject jsonObject) throws JSONException;
+```
+
+}
+
+album.setImage(jsonObject.getString(root+""image""));
+
+why are your parsing image need to add ""root""?
+
+I think it is maybl not some help..
+
+my English is not good .Please forgive me
+"
+telecapoland/jamendo-android,closed,Explicit invalid intent makes application access privileged resources,[],"Explicit intent that violates intent filter for activity IntentDistributorActivity makes the application access the network in Caller class while attempting to get a Jamendo remote file from Jamendo host.
+Intent should be rejected before potentially causing security issues.
+
+Explicit intent example
+Action: PICK_ACTIVITY category: DEFAULT
+URI: http://www.jamendo.com/fr/track/147517
+Component: IntentDistributorActivity 
+while intent filter defined in the Manifest specifies VIEW/DEFAULT as possible actions for activity IntentDistributorActivity
+This intent makes the application attempt to connect with a remote host through execute method in class Caller. Part of the intent URI is also used in the call, making data coming from outside the application reach privileged method calls.
+"
+telecapoland/jamendo-android,closed,Adjusted RSSFunctions to new RSS format.,[],"Looks like the RSS feed format has changed on Jamendo side. It makes the _Most listened_ (top 100 week) feature unusable.
+
+This change fixes the problem.
+"
+telecapoland/jamendo-android,open,Quick fix for ICS/JB qualizer bug,[],"This fix FC on ICS devices, tested on SGS I900 CM9, the same should work on JB too
+"
+telecapoland/jamendo-android,closed,vedio,[],"视屏
+"
+telecapoland/jamendo-android,open,Crash  when skipping track,[],"Using  1.0.5 (or 1.0.6) (F-Droid.org build) on CyanogenMod10 p990:
+`--------- beginning of /dev/log/system
+W/InputMethodManagerService(  300): Window already focused, ignoring focus gain of: com.android.internal.view.IInputMethodClient$Stub$Proxy@41d37690 attribute=android.view.inputmethod.EditorInfo@4224dcd0
+I/ActivityManager(  300): No longer want android.process.media (pid 6295): hidden #5
+I/ActivityManager(  300): START {flg=0x10104000 cmp=com.teleca.jamendo/.activity.PlayerActivity u=0} from pid 30872
+--------- beginning of /dev/log/main
+I/jamendo ( 6443): PlayerActivity.onCreate
+I/jamendo ( 6443): PlayerActivity.handleIntent
+I/jamendo ( 6443): PlayerActivity.loadPlaylist
+I/jamendo ( 6443): PlayerActivity.onResume
+I/jamendo ( 6443): Player Service onStart - bind_listener
+I/jamendo ( 6443): PlayerActivity.onPause
+I/jamendo ( 6443): Player Service onStart - bind_listener
+W/InputMethodManagerService(  300): Starting input on non-focused client com.android.internal.view.IInputMethodClient$Stub$Proxy@41dada18 (uid=10091 pid=513)
+D/dalvikvm(  513): GC_CONCURRENT freed 1457K, 30% free 7216K/10183K, paused 6ms+8ms, total 55ms
+D/PhoneStatusBar(30872): addNotification score=0
+D/SizeAdaptiveLayout(30872): com.android.internal.widget.SizeAdaptiveLayout@41f9cf50child view android.widget.FrameLayout@42fa4ac0 measured out of bounds at 95px clamped to 96px
+D/SizeAdaptiveLayout(30872): com.android.internal.widget.SizeAdaptiveLayout@41f9cf50child view android.widget.FrameLayout@42fa4ac0 measured out of bounds at 95px clamped to 96px
+I/ActivityManager(  300): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.teleca.jamendo/.activity.SplashscreenActivity u=0} from pid 513
+D/dalvikvm(  300): GC_CONCURRENT freed 3507K, 34% free 17398K/26247K, paused 9ms+15ms, total 111ms
+D/dalvikvm(  300): WAIT_FOR_CONCURRENT_GC blocked 43ms
+W/IInputConnectionWrapper(  513): showStatusIcon on inactive InputConnection
+I/ActivityManager(  300): Displayed com.teleca.jamendo/.activity.SplashscreenActivity: +261ms (total +19s946ms)
+D/dalvikvm( 6443): GC_FOR_ALLOC freed 562K, 24% free 6500K/8451K, paused 48ms, total 48ms
+I/dalvikvm-heap( 6443): Grow heap (frag case) to 15.938MB for 1330576-byte allocation
+I/ActivityManager(  300): START {flg=0x4000000 cmp=com.teleca.jamendo/.activity.HomeActivity u=0} from pid 6443
+D/dalvikvm( 6443): GC_CONCURRENT freed 2820K, 44% free 5879K/10439K, paused 4ms+3ms, total 26ms
+I/ActivityManager(  300): Displayed com.teleca.jamendo/.activity.HomeActivity: +151ms
+D/jamendo ( 6443): Caller.doGet http://api.jamendo.com/get2/id+name+url+image+rating+artist_name/album/json/?n=20&order=ratingweek_desc
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/ActivityManager(  300): START {cmp=com.teleca.jamendo/.activity.DownloadActivity u=0} from pid 6443
+I/ActivityManager(  300): Displayed com.teleca.jamendo/.activity.DownloadActivity: +85ms
+W/InputMethodManagerService(  300): Window already focused, ignoring focus gain of: com.android.internal.view.IInputMethodClient$Stub$Proxy@41f2aa50 attribute=null
+I/ActivityManager(  300): START {cmp=com.teleca.jamendo/.activity.RadioActivity u=0} from pid 6443
+D/dalvikvm( 6443): GC_CONCURRENT freed 625K, 33% free 7033K/10439K, paused 5ms+8ms, total 37ms
+I/ActivityManager(  300): Displayed com.teleca.jamendo/.activity.RadioActivity: +145ms
+D/jamendo ( 6443): Caller.doGet http://api.jamendo.com/get2/id+idstr+name+image/radio/json/?id=9+4+5+6+7+8+283+
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+D/PhoneStatusBar(30872): addNotification score=0
+D/SizeAdaptiveLayout(30872): com.android.internal.widget.SizeAdaptiveLayout@41da3ee8child view android.widget.FrameLayout@41e784e8 measured out of bounds at 95px clamped to 96px
+D/SizeAdaptiveLayout(30872): com.android.internal.widget.SizeAdaptiveLayout@41da3ee8child view android.widget.FrameLayout@41e784e8 measured out of bounds at 95px clamped to 96px
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+I/jamendo ( 6443): Loading album cover from file
+D/dalvikvm( 6443): GC_CONCURRENT freed 1963K, 35% free 6884K/10439K, paused 5ms+3ms, total 42ms
+I/jamendo ( 6443): TESTs
+D/jamendo ( 6443): Caller.doGet http://api.jamendo.com/get2/track_id/track/json/radio_track_inradioplaylist/?radio_id=5&nshuffle=200&n=20
+D/jamendo ( 6443): Caller.doGet http://api.jamendo.com/get2/id+name+url+image+rating+artist_name/album/json/?n=20&track_id=381582+73068+194117+693365+355333+33545+225779+381575+75991+81237+172030+520937+97354+97358+190871+172025+156947+172018+413829+73059+
+D/jamendo ( 6443): Caller.doGet http://api.jamendo.com/get2/id+numalbum+name+duration+rating+url+stream/track/json/?streamencoding=mp31&n=20&id=381582+73068+194117+693365+355333+33545+225779+381575+75991+81237+172030+520937+97354+97358+190871+172025+156947+172018+413829+73059+
+I/jamendo ( 6443): Pobieram liste
+I/jamendroid( 6443): S12 by Direct Raption
+I/jamendroid( 6443): Real Talk by Brix by Cartel
+I/jamendroid( 6443): I Remember When by Gates by Cartel
+I/jamendroid( 6443): L'enfer du décor by AL-FAMI
+I/jamendroid( 6443): Se desenvuelve+Punto final by Jomeini Taim
+I/jamendroid( 6443): 04 Ma Vile, Ma Vie by N'OR
+I/jamendroid( 6443): 08 Avoue by N'OR
+I/jamendroid( 6443): La rue c'est quoi (remix) by La Fabrik
+I/jamendroid( 6443): Want You To Know by Jonay
+I/jamendroid( 6443): Let Loose by Jonay
+I/jamendroid( 6443): This Is Sweden by Jonay
+I/jamendroid( 6443): Tons Of Paper by The Crime Lords by Cartel
+I/jamendroid( 6443): Tarry, Big C & Kolega - Dreams by Big C
+I/jamendroid( 6443): The Love by Mallz by Cartel
+I/jamendroid( 6443): The_Tony_Rich_Project-The_Dream_Is_Real by Hidden Beach Recordings
+I/jamendroid( 6443): Tha Way  by Blackwell
+I/jamendroid( 6443): Un4givable by Blackwell
+I/jamendroid( 6443): House of the Rising Son by Tab
+I/jamendroid( 6443): Mothership  by Kellee Maize
+I/jamendroid( 6443): Tu mirada - El Menol by Dioscar Rodriguez
+I/ActivityManager(  300): START {flg=0x4000000 cmp=com.teleca.jamendo/.activity.PlayerActivity (has extras) u=0} from pid 6443
+W/InputMethodManagerService(  300): Focus gain on non-focused client com.android.internal.view.IInputMethodClient$Stub$Proxy@41e8e598 (uid=10088 pid=6443)
+I/jamendo ( 6443): PlayerActivity.onCreate
+I/jamendo ( 6443): PlayerActivity.handleIntent
+I/jamendo ( 6443): PlayerActivity.loadPlaylist
+I/AwesomePlayer(  110): setDataSource_l('http://storage-new.newjamendo.com/?trackid=381582&format=mp31&u=0')
+I/jamendo ( 6443): Player [buffering] Un4givable
+I/ChromiumHTTPDataSource(  110): connect to http://storage-new.newjamendo.com/?trackid=381582&format=mp31&u=0 @0
+I/jamendo ( 6443): PlayerActivity.onResume
+D/jamendo ( 6443): Image is not present, try to download
+D/SizeAdaptiveLayout(30872): com.android.internal.widget.SizeAdaptiveLayout@41e90470child view android.widget.FrameLayout@41e911b8 measured out of bounds at 95px clamped to 96px
+D/SizeAdaptiveLayout(30872): com.android.internal.widget.SizeAdaptiveLayout@41e90470child view android.widget.FrameLayout@41e911b8 measured out of bounds at 95px clamped to 96px
+D/dalvikvm( 6443): GC_FOR_ALLOC freed 1156K, 34% free 6982K/10439K, paused 35ms, total 35ms
+I/dalvikvm-heap( 6443): Grow heap (frag case) to 15.913MB for 810016-byte allocation
+I/jamendo ( 6443): Player Service onStart - bind_listener
+D/jamendo ( 6443): Caller.doGet http://api.jamendo.com/get2/id+url+image/license/json/?album_id=48416
+I/ActivityManager(  300): Displayed com.teleca.jamendo/.activity.PlayerActivity: +326ms
+I/jamendo ( 6443): File not cached supportedhttp://i.creativecommons.org/l/by-sa/3.0/88x31.png
+I/jamendo ( 6443): Image is not present, try to download
+D/dalvikvm( 6443): GC_CONCURRENT freed 574K, 33% free 8345K/12295K, paused 4ms+3ms, total 26ms
+D/jamendo ( 6443): Image cached http://imgjam.com/albums/s48/48416/covers/1.500.jpg
+I/jamendo ( 6443): Image saved to sd
+W/WVMExtractor(  110): Failed to open libwvm.so
+D/jamendo ( 6443): Image cached http://i.creativecommons.org/l/by-sa/3.0/88x31.png
+I/jamendo ( 6443): Player [playing] Un4givable
+E/AudioPolicyManagerBase(  110): registerEffect() effect CyanogenMod's Equalizer, io 3, strategy 0 session 762 id 763
+E/AudioPolicyManagerBase(  110): registerEffect() memory 1, total memory 1
+E/AudioPolicyManagerBase(  110): setEffectEnabled(true) total CPU 10
+W/NvAudioALSAPolicyManager(  110): startOutput() mHardwareOutput=3
+E/AudioPolicyManagerBase(  110): changeRefCount() stream 3, count 1
+E/AudioPolicyManagerBase(  110): getNewDevice() selected device 2
+E/AudioPolicyManagerBase(  110): setOutputDevice() output 3 device 2 delayMs 0
+E/AudioPolicyManagerBase(  110): setOutputDevice() setting same device 2 or null device for output 3 prevDevice=2
+E/AudioPolicyManagerBase(  110): 
+E/AudioPolicyManagerBase(  110): ************************* Check And Set Volume Start ***************************
+E/NvAudioALSAPolicyManager(  110): [NVALSA] Current Device[0x2] -> Device Selected[0x1]
+E/NvAudioALSAPolicyManager(  110): [NVALSA] Volume From Table [3][1][7]=[0.063096]
+E/NvAudioALSAPolicyManager(  110): [NVALSA] ComputeVolume() -> Stream[3], Index[7], Output[3], Device[0x00000002], PureVol[0.063096]->Vol[0.063096]
+E/AudioPolicyManagerBase(  110): ********************************************************************************
+I/NuCachedSource2(  110): ERROR_END_OF_STREAM
+E/AudioPolicyManagerBase(  110): stopOutput() output 3, stream 3, session 762
+E/AudioPolicyManagerBase(  110): changeRefCount() stream 3, count 0
+E/AudioPolicyManagerBase(  110): getNewDevice() selected device 0
+E/AudioPolicyManagerBase(  110): setOutputDevice() output 3 device 0 delayMs 0
+E/AudioPolicyManagerBase(  110): setOutputDevice() setting same device 0 or null device for output 3 prevDevice=2
+W/TimedEventQueue(  110): Event 5 was not found in the queue, already cancelled?
+E/AudioPolicyManagerBase(  110): setEffectEnabled(false) total CPU 0
+E/AudioPolicyManagerBase(  110): unregisterEffect() effect CyanogenMod's Equalizer, ID 763, memory 1 total memory 0
+I/AwesomePlayer(  110): setDataSource_l('http://storage-new.newjamendo.com/?trackid=73068&format=mp31&u=0')
+I/jamendo ( 6443): Player [buffering] I Remember When by Gates
+I/ChromiumHTTPDataSource(  110): connect to http://storage-new.newjamendo.com/?trackid=73068&format=mp31&u=0 @0
+D/jamendo ( 6443): Image is not present, try to download
+D/SizeAdaptiveLayout(30872): com.android.internal.widget.SizeAdaptiveLayout@41e90470child view android.widget.FrameLayout@41e911b8 measured out of bounds at 95px clamped to 96px
+D/SizeAdaptiveLayout(30872): com.android.internal.widget.SizeAdaptiveLayout@41e90470child view android.widget.FrameLayout@41e911b8 measured out of bounds at 95px clamped to 96px
+D/dalvikvm( 6443): GC_FOR_ALLOC freed 198K, 33% free 8345K/12295K, paused 17ms, total 17ms
+I/dalvikvm-heap( 6443): Grow heap (frag case) to 17.425MB for 1000016-byte allocation
+D/jamendo ( 6443): Caller.doGet http://api.jamendo.com/get2/id+url+image/license/json/?album_id=6450
+I/jamendo ( 6443): File not cached supportedhttp://i.creativecommons.org/l/by-sa/3.0/88x31.png
+D/jamendo ( 6443): Image cached http://imgjam.com/albums/s6/6450/covers/1.500.jpg
+I/jamendo ( 6443): Image saved to sd
+W/WVMExtractor(  110): Failed to open libwvm.so
+I/jamendo ( 6443): Player [playing] I Remember When by Gates
+E/AudioPolicyManagerBase(  110): registerEffect() effect CyanogenMod's Equalizer, io 3, strategy 0 session 764 id 765
+E/AudioPolicyManagerBase(  110): registerEffect() memory 1, total memory 1
+D/AndroidRuntime( 6443): Shutting down VM
+W/dalvikvm( 6443): threadid=1: thread exiting with uncaught exception (group=0x419b8300)
+E/AndroidRuntime( 6443): FATAL EXCEPTION: main
+E/AndroidRuntime( 6443): java.lang.RuntimeException: AudioEffect: set/get parameter error
+E/AndroidRuntime( 6443):    at android.media.audiofx.AudioEffect.checkStatus(AudioEffect.java:1247)
+E/AndroidRuntime( 6443):    at android.media.audiofx.Equalizer.getProperties(Equalizer.java:532)
+E/AndroidRuntime( 6443):    at com.teleca.jamendo.media.PlayerEngineImpl.play(PlayerEngineImpl.java:223)
+E/AndroidRuntime( 6443):    at com.teleca.jamendo.media.PlayerEngineImpl$3.onPrepared(PlayerEngineImpl.java:327)
+E/AndroidRuntime( 6443):    at android.media.MediaPlayer$EventHandler.handleMessage(MediaPlayer.java:1975)
+E/AndroidRuntime( 6443):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime( 6443):    at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime( 6443):    at android.app.ActivityThread.main(ActivityThread.java:4931)
+E/AndroidRuntime( 6443):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime( 6443):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime( 6443):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:791)
+E/AndroidRuntime( 6443):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:558)
+E/AndroidRuntime( 6443):    at dalvik.system.NativeStart.main(Native Method)
+W/ActivityManager(  300):   Force finishing activity com.teleca.jamendo/.activity.PlayerActivity
+W/ActivityManager(  300):   Force finishing activity com.teleca.jamendo/.activity.RadioActivity
+W/ActivityManager(  300): Activity pause timeout for ActivityRecord{41dfc5d8 com.teleca.jamendo/.activity.PlayerActivity}
+I/Process ( 6443): Sending signal. PID: 6443 SIG: 9
+E/AudioPolicyManagerBase(  110): setEffectEnabled(false) effect already disabled
+E/AudioPolicyManagerBase(  110): unregisterEffect() effect CyanogenMod's Equalizer, ID 765, memory 1 total memory 0
+W/TimedEventQueue(  110): Event 4 was not found in the queue, already cancelled?
+I/WindowState(  300): WIN DEATH: Window{425346c8 com.teleca.jamendo/com.teleca.jamendo.activity.RadioActivity paused=true}
+I/WindowState(  300): WIN DEATH: Window{4230cbc0 com.teleca.jamendo/com.teleca.jamendo.activity.HomeActivity paused=false}
+I/ActivityManager(  300): Process com.teleca.jamendo (pid 6443) has died.
+W/ActivityManager(  300): Service crashed 2 times, stopping: ServiceRecord{425f36d0 com.teleca.jamendo/.service.PlayerService}
+I/WindowState(  300): WIN DEATH: Window{42740050 com.teleca.jamendo/com.teleca.jamendo.activity.PlayerActivity paused=false}
+W/ActivityManager(  300): Force removing ActivityRecord{41d2d0a0 com.teleca.jamendo/.activity.HomeActivity}: app died, no saved state
+W/InputMethodManagerService(  300): Starting input on non-focused client com.android.internal.view.IInputMethodClient$Stub$Proxy@41dada18 (uid=10091 pid=513)
+W/InputMethodManagerService(  300): Got RemoteException sending setActive(false) notification to pid 6443 uid 10088
+D/PhoneStatusBar(30872): addNotification score=0
+D/SizeAdaptiveLayout(30872): com.android.internal.widget.SizeAdaptiveLayout@42ceee18child view android.widget.FrameLayout@41e2fc78 measured out of bounds at 95px clamped to 96px
+D/SizeAdaptiveLayout(30872): com.android.internal.widget.SizeAdaptiveLayout@42ceee18child view android.widget.FrameLayout@41e2fc78 measured out of bounds at 95px clamped to 96px
+D/dalvikvm(30872): GC_FOR_ALLOC freed 4693K, 38% free 17851K/28679K, paused 37ms, total 40ms
+W/IInputConnectionWrapper(  513): showStatusIcon on inactive InputConnection
+`
+"
+telecapoland/jamendo-android,closed,keeps crashing on Android 4.1.2 Build JZO54K,[],"reproducible on Galaxy Nexus and N7 devices: install, open radio channel, starts playing, user skip forward using gesture or buttons -> App crashes.
+
+Android 4.1.2 Build JZO54K
+"
+telecapoland/jamendo-android,open,Use appropriate version code scheme,[],"There are two apks for Jamendo, yet they both have the same version code. The Android developer documentation recommends a seven digit version code, but anything that allows for differentiation would improve matters.
+"
+telecapoland/jamendo-android,closed,Fixes potential ANR while searching for radios.,[],"There was another area of potential ANR (and StrictMode violation): searching for a radio station.
+
+I have introduced a private helper class to perform radio search in the background thread (RadioSearchDialog). Existing wording is reused.
+"
+telecapoland/jamendo-android,closed,Equalizer on ICS/JB,[],"I think I have a solution for the Equalizer problem ([issue #24](https://github.com/telecapoland/jamendo-android/issues/24)).
+
+The root cause was the fact that most probably on ICS+ versions Equalizer is bound to the lifetime of a MediaPlayer. As a result every time after MediaPlayer is released Equalizer needs to be released as well.
+
+This caused some architectural changes - a global equalizer object can no longer be used (since it was valid only as long as the same song was playing). 
+
+There were two special cases to be handled (when the global equalizer is unavailable):
+- the song is stopped (no MediaPlayer object) and we want to manipulate the equalizer
+- we open the equalizer during one song, it finishes and the next one is played - then we manipulate the equalizer
+  Those cases needed to be covered by some kind of settings serialization and passing to the next Equalizer. Luckily, the Equalizer.Settings class have all what was needed for that purpose.
+
+The global Equalizer object is used only when available (this is checked by the JamendoApplication.isEqualizerRunning method) to apply the settings in runtime. All other situations (no media playback) are covered using the Settings object instance passed to the newly created equalizer.
+
+As a side effect I have implemented an Equalizer settings persistence mechanism to store settings between app launches.
+
+Additionally I have found a typo in layout-mdpi/player.xml - pressing the Equalizer button was triggering 'Add to playlist' action.
+
+I have added an additional permission (android.permission.MODIFY_AUDIO_SETTINGS) to the manifest. This was necessary to occasionally create a global Equalizer object to obtain some common settings (presets, number of bands and their level range) when the JamendoApplication.mEqualizer was not available.
+
+I have verified this solution on Nexus S (JB), Sony Xperia P (ICS) and Samsung Galaxy Gio (GB). Seems to be working correctly.
+"
+telecapoland/jamendo-android,closed,Be prepared for incorrect format of RSS enclosures.,[],"Looks like http://www.jamendo.com/en/rss/top-track-week happens to be incorrect from time to time.
+Currently a part of this feed looks like this:
+
+``` xml
+<enclosure url=""http://storage-new.newjamendo.com/?trackid=964142"" type=""audio/mpeg"" length=""""/>
+<enclosure url=""http://storage-new.newja"" type=""audio/mpeg"" length=""""/>
+```
+
+The last line is obviously incorrect and caused a NumberFormatException followed by a crash of the application.
+"
+telecapoland/jamendo-android,closed,[Equalizer] AudioEffect crashing on ICS and JB,[],"I experience major problems using Jamendo Android app on ICS and JB.
+
+Starting one song works just fine, but when it switches to another one (either jumping to the next entry in the playlist or switched manually) the app crashes with:
+
+```
+09-08 20:20:14.335: E/AndroidRuntime(5704): java.lang.RuntimeException: AudioEffect: set/get parameter error
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at android.media.audiofx.AudioEffect.checkStatus(AudioEffect.java:1247)
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at android.media.audiofx.Equalizer.getProperties(Equalizer.java:532)
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at com.teleca.jamendo.media.PlayerEngineImpl.play(PlayerEngineImpl.java:223)
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at com.teleca.jamendo.media.PlayerEngineImpl$3.onPrepared(PlayerEngineImpl.java:327)
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at android.media.MediaPlayer$EventHandler.handleMessage(MediaPlayer.java:1975)
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at android.os.Handler.dispatchMessage(Handler.java:99)
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at android.os.Looper.loop(Looper.java:137)
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at android.app.ActivityThread.main(ActivityThread.java:4930)
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at java.lang.reflect.Method.invokeNative(Native Method)
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at java.lang.reflect.Method.invoke(Method.java:511)
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:791)
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:558)
+09-08 20:20:14.335: E/AndroidRuntime(5704):     at dalvik.system.NativeStart.main(Native Method)
+```
+
+The crash happens in this line (PlayerEngineImpl.java:223):
+
+```
+newEqualizer.setProperties(equalizer.getProperties());
+```
+
+According to what's pointed out on [StackOverflow](http://stackoverflow.com/questions/11193239/using-audiosessionid-value-to-instantiate-audiofx-class) and on [code.google.com](http://code.google.com/p/android/issues/detail?id=33669) it's caused by a bug in ICS and (probably) JB.
+
+Do you have any ideas how to fix this crash? 
+So far I just commented out lines 218-228 in PlayerEngineImpl.java which simply disables the Equalizer. It may be used as a temporary workaround for ICS and JB, but dropping equalizer is surely not the final solution.
+
+I have verified that this issue is reproducible on my Nexus S (with official ICS and Cyanogenmod 9 and 10) and Sony Xperia P.
+"
+telecapoland/jamendo-android,closed,Fixes potential ANR when starting a radio.,[],"This change removes a potential ANR when launching a selected radio. I experienced this during a temporary heavy network load. It also caused a StrictMode violation.
+
+I have introduced a new helper class (RadioPlaylistLoadingDialog extends LoadingDialog) to fetch a radio playlist off the UI thread and launch player afterwards. 
+"
+telecapoland/jamendo-android,closed,Fixing scrobble to last.fm . Closes #21,[],"Intens are sent warning if music has stopped or paused. When music is restarted, the point that it was stopped is sent, so scrobble should continue from this point.
+"
+telecapoland/jamendo-android,open,Scrooble last.fm doesn't stop,[],"Even if music was stopped, paused or some unexpected error occured, player continue scrobbling to `last.fm`, it just is finalized when Android is restarted.
+"
+telecapoland/jamendo-android,closed,Adjusting ldpi & land-ldpi layout,[],"I noticed that JamendoPlayer did not support the ldpi and land-ldpi resolutions, so I made some adjusts to work fine with it.
+"
+telecapoland/jamendo-android,closed,Fixing numberFormatException in MostListened,[],"https://github.com/telecapoland/jamendo-android/issues/18
+
+I updated the code to read the xml correctly and get the track Ids.
+"
+telecapoland/jamendo-android,closed,"NumberFormatException at ""Most Listened"" ",[],"By clicking on ""Most Listened"" at home, the JamendoPlayer throws a NumberFormatException. 
+It occur because (probably) the jamendo API has changed, and so the RSS XML containing the most listened.
+
+I updated the code to read the xml correctly and get the track Ids.
+"
+telecapoland/jamendo-android,closed,Equalizer beta,[],"I developed an equalizer, it's not all okay, but I want you see to give me some feedback :)
+
+In the menu of the player I added a button `Equalizer` And there you can see a list of radio buttons with presets equalizations, you click and works, if you change the music the settings will be keeped.
+
+The radio buttons are not okay yet, but I want solve this and put a `ScrollView` in this activity too.
+
+xD
+"
+telecapoland/jamendo-android,closed,Back to previous list,[],"I implemented a functionality that allows the user back to the last playlist (if any)
+I created a button and placed it in all the ""player.xml"". There is no layout broken :)
+"
+telecapoland/jamendo-android,closed,Equalizer,[],"I'm searching a way to develop the equalizer.
+
+I've found this class: http://developer.android.com/reference/android/media/audiofx/Equalizer.html
+
+I'm looking for a good solution because this one is only supported by Android 2.3 Gingerbread or up, it's only compatible with API 9 for Android.
+
+What do you think? Have some suggestion? 
+
+:)
+"
+telecapoland/jamendo-android,open,New Features,[],"What are new features you are planning for the next version? I liked contributing with this project, I wonder how can I contribute more :D
+"
+telecapoland/jamendo-android,closed,Transalating into Portugueses,[],"Strings.xml and Arrays.xml translation into portuguese
+"
+telecapoland/jamendo-android,closed,Jamendo status bar stays even when app is closed,[],"Using 1.0.4beta on android 2.3.5.  When I close Jamendo with enough back presses to get to home, I still have the play icon in the status bar mentioning the last track I listened to.  If I select it, I get a toast message that says ""This playlist does not contain any tracks yet""
+"
+telecapoland/jamendo-android,closed,Jamendo status bar stays even when app is closed,[],"Using 1.0.4beta on android 2.3.5.  When I close Jamendo with enough back presses to get to home, I still have the play icon in the status bar mentioning the last track I listened to.  If I select it, I get a toast message that says ""This playlist does not contain any tracks yet""
+"
+telecapoland/jamendo-android,open,Jamendo status bar stays even when app is closed,[],"Using 1.0.4beta on android 2.3.5.  When I close Jamendo with enough back presses to get to home, I still have the play icon in the status bar mentioning the last track I listened to.  If I select it, I get a toast message that says ""This playlist does not contain any tracks yet""
+"
+telecapoland/jamendo-android,closed,Correction of an error in translation (FR),[],"In French, Arreêter is incorrect, it's ""Arrêter"" 
+It's a little error 
+"
+telecapoland/jamendo-android,closed,Maint10,[],
+telecapoland/jamendo-android,open,MEDIA_INFO_UNKNOWN,[],"Hi everyone, nice work on the app BTW !
+The issue I have is this: whatever the streaming type (on 3G or wifi), sometimes, the streaming throws out a MEDIA_ERROR_UNKNOWN, which triggers an onTrackStreamError, and shows the toast string.stream_error, or sometimes an impossible to charge album info or something. I sometimes understand that the connection can be sketchy, especially when end of months throttled by the operator or whatnot. But that would be nice to have fallback plan to prevent playback from completely stopping. Sometimes when this happens, pushing the ""stop"" onscreen button and then play permits the track to finally play. Or have the fallback to begin downloading/caching the track so the streaming can happen from this cached track or whatnot. I'm no programmer so would be difficult to help you without creating a bunch more problems I would guess ;-)
+Cheers !
+"
+telecapoland/jamendo-android,closed,Scrobble to Last.fm/Libre.fm via Simple Last.FM Scrobbler,[],"Added Simple Last.Fm Scrobbler to list of scrobbling applications.
+Configuration settings to either enable/disable scrobbling
+and select desired application.
+
+Scrobbling to app is intent-based therefore if target application
+is not available on the system there will be no error.
+"
+telecapoland/jamendo-android,closed,Fixed #49 Crash on toast when failed loading radios,[],"Crash was caused by a Toast being displayed outside of UI thread.
+This toast is also unnecessary in loadRecommendedRadios because
+if null is returned from RadioLoadingDialog::doInBackground then fail message
+is displayed.
+"
+telecapoland/jamendo-android,open,Is it possible to intergrate automatic cover art download to the internal player base?,[],"Hello,
+is it possible to intergrate automatic cover art download to the internal player base? I go the way about an external cover art downloader anf this will this great app a little bit increase and make it smoother:).
+thx
+CyberPunkBln
+"
+telecapoland/jamendo-android,open,In tags from ogg-files the artist are missing?,[],"Hello,
+i use Cover Art Download and when iam switch to ogg-files he only put the name of the song and name of the album but not the artist in the tags. Order-names and files-names are okay. With the name of the artist i can download with one push:).
+thx
+CyberPunkBln
+"
+telecapoland/jamendo-android,closed,Support Scrobbling played tracks using the Simple last.FM Scrobbler,[],"I use this app to search for tracks to play in my podcast, but I don't always remember what I've played. It would be useful to scrobble my jamendo listening history. 
+"
+telecapoland/jamendo-android,open,Won't play on 3G,[],"Hi, I'm in France and I use Jamendo Player.
+
+I was able to listen music on 3G connection 6 month ago but I cannot use it now. In doubt I did my own player and it's the same... it only want stream from Wifi !
+
+I think it's a Jamendo problem but it could be nice that you know the problem
+"

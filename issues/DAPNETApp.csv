@@ -1,0 +1,239 @@
+repository,state,title,label,body
+DecentralizedAmateurPagingNetwork/DAPNETApp,open,NPE während Suche,[],"Hallo,
+
+ich fürchte, ich habe einen Bug und einen UI f*ckup gefunden.
+
+Reproduktion:
+
+1) Öffnen der DAPNET App
+2) Menü->Rubrics
+3) Suchfeld: Eingabe ""franken""
+-> Ergebnisliste  lt. Screenshot ""scrambled""
+4) Suchergebnis anklicken
+5) Neue Eingabe ins Suchfeld,
+-> NPE beim ersten Buchstaben
+
+Stacktrace:
+11-16 10:44:45.598 17316 17389 W Filter  : An exception occured during performFiltering()!
+11-16 10:44:45.598 17316 17389 W Filter  : java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String de.hampager.dap4j.models.News.getOwnerName()' on a null object reference
+11-16 10:44:45.598 17316 17389 W Filter  : 	at de.hampager.dapnetmobile.filters.RubricContentFilter.performFiltering(RubricContentFilter.java:32)
+11-16 10:44:45.598 17316 17389 W Filter  : 	at android.widget.Filter$RequestHandler.handleMessage(Filter.java:234)
+11-16 10:44:45.598 17316 17389 W Filter  : 	at android.os.Handler.dispatchMessage(Handler.java:102)
+11-16 10:44:45.598 17316 17389 W Filter  : 	at android.os.Looper.loop(Looper.java:154)
+11-16 10:44:45.598 17316 17389 W Filter  : 	at android.os.HandlerThread.run(HandlerThread.java:61)
+11-16 10:44:45.630 17316 17316 D AndroidRuntime: Shutting down VM
+11-16 10:44:45.634 17316 17316 E AndroidRuntime: FATAL EXCEPTION: main
+11-16 10:44:45.634 17316 17316 E AndroidRuntime: Process: de.hampager.dapnetmobile, PID: 17316
+11-16 10:44:45.634 17316 17316 E AndroidRuntime: java.lang.NullPointerException: Attempt to invoke interface method 'int java.util.List.size()' on a null object reference
+11-16 10:44:45.634 17316 17316 E AndroidRuntime: 	at de.hampager.dapnetmobile.adapters.RubricContentAdapter.getItemCount(RubricContentAdapter.java:57)
+
+![photo6014719124292349282](https://user-images.githubusercontent.com/10560448/48614075-aacca900-e98d-11e8-8c54-57cfb9e4d5ea.jpg)"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Crashes20180817,[],
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,201807tables,[],
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Sound announce when new msg arrive ,[],"Hi,
+
+It will be nice add sound announce when a new message arrives at our folder ""Calls"".
+
+
+73 Waldek SP2ONG"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Andere Tabellen integrieren,[],"- [x] Abstrakte Klasse
+- [x] Subscribers
+- [x] Rubrics
+- [x] Rubric Content
+- [x] Transmitters
+- [x] Transmitter Groups
+- [x] Nodes
+- [x] Users"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Licensing,[],
+DecentralizedAmateurPagingNetwork/DAPNETApp,open,Map: TileSource automatisch ändern je nach Netz,[],"Entnommen aus #61 
+> URL Karten-Server:
+> Internet: https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+> HAMNET: http://karten.db0sda.ampr.org/osm/{z}/{x}/{y}.png (kein Loadbalancing so einfach möglich)
+
+Referenz: https://github.com/osmdroid/osmdroid/wiki/Map-Sources"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Merge Dap4j1,[],Finally transfer to library
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Betrifft: URL-Unterscheidung HAMNET/Internet,"[Label(name=""enhancement""), Label(name=""new feature"")]","Hier nochmal die Übersicht für die URLs von Munin-Grafik und Kachel-Server
+
+Unterscheidung:
+HAMNET: Wenn API Server URL innerhalb von 44.0.0.0/8, oder Domain-Name enthält ``.ampr.org``
+Internet: Sonst
+
+URL Karten-Server:
+Internet: https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+HAMNET: http://karten.db0sda.ampr.org/osm/{z}/{x}/{y}.png  (kein Loadbalancing so einfach möglich)
+
+Munin-URL: Siehe #55 
+
+Abdeckungskarten (#54):
+Internet (Beispiel für db0sea): https://hampager.de/assets/coverage/on0sea.png
+HAMNET (Beispiel für db0sea): http://dapnet.db0sda.ampr.org/assets/coverage/on0sea.png"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Osmdroidv2,[],
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Zurück-Button,"[Label(name=""bug"")]","Wenn man die Calls oder die Karte aufgerufen hat, und den Zurück-Button drückt, minimiert sich die ganze App, statt das die Start-Ansicht angezeigt wird."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Switching from hampager.de to dapnet.db0sda.ampr.org,"[Label(name=""question"")]","Kann es sein, dass automatisch von der Internet- auf die HAMNET-Adresse gewechselt wird, dann aber nicht wieder zurück? Ich hatte schon öfter, dass der Zugriff nicht mehr ging und wenn ich mich dann ab- und angemeldet habe, war der HAMNET-Eintrag ausgewählt."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,"Add debug build, leakcanary etc",[],
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,DAPNET API-Client in eigene library auslagern,[],"Für bessere Modularität wäre es passend, alle API Calls als library zu implementieren und dieser ihr eigenes Repository zu geben. Sie sollte weiterhin Retrofit verwenden und über maven und gradle erreichbar sein."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Neue URL für Munin-Statistik,"[Label(name=""enhancement"")]","Bitte dies als neue URL benutzen. Falls zwischen Internet und HAMNET unterschieden wird:
+https://www.afu.rwth-aachen.de/munin-cgi/munin-cgi-graph/db0sda.ampr.org/dapnet.db0sda.ampr.org/dapnet-week.png
+
+http://db0sda.ampr.org/munin-cgi/munin-cgi-graph/db0sda.ampr.org/dapnet.db0sda.ampr.org/dapnet-week.png
+
+Sonst nur die www.-URL
+"
+DecentralizedAmateurPagingNetwork/DAPNETApp,open,Abdeckungskarten,"[Label(name=""enhancement"")]",
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Fix autocorrect errors,[],"Postcallactivity, callsigncompletion: Mindestens ein Keyboard versucht autocorrect zu benutzen und behält den getippten text trotz hinzufügen eines Tokens bei."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Snackbars unter softbuttons,[],
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Nur valide Callsigns in UI erlauben,[],
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,App Shortcuts,[],
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Reex,[],
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Closes #31,[],
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,"Implement first working version of caching, could be rewritten",[],
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,MapFragment not showing transmitters,[],
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Bei Calls gibt es 400 Fehler wenn man nicht einen Eintrag aus der Liste auswählt,"[Label(name=""bug"")]","Wenn man auf senden drückt, bevor ein Eintrag aus der Liste ausgewählt ist, kommt 400.
+"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Sendergruppe all automatisch vorschlagen,"[Label(name=""enhancement"")]","Neue User wissen nicht, dass die Eingabe von ""ALL"" zum Ziel führt. Daher bitte dies als Default eintragen und nach Druck auf das Feld die anderen anzeigen."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,App crash after update ,"[Label(name=""bug"")]","Es scheint, dass ich trotz anders lautender Meldung im Menü nicht angemeldet bin nach einem update. Dies brachte die Karte zum Absturz. Erst wurden keine Sender angezeigt und eine Änderung der anzuzeigen Sender Auswahl brachte den Crash."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Cache callsigns and transmittergroups,[],Useful if your network connection is unstable. Refreshing should be done automatically after 24 hours (adjustable?) and manually.
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Absender Rufzeichen automatisch an den Anfang schreiben ,[],"Wie im Web Interface, sonst weiß man nicht von wem die Nachricht ist."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Lock Navigation-drawer when using tablets,[],Momentan muss der navigation drawer aufgeklappt werden.
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Add FAQ,"[Label(name=""enhancement"")]","Bitte die FAQ https://github.com/DecentralizedAmateurPagingNetwork/Resources/blob/master/DAPNET-FAQ.docx als Textansicht einbauen und im Menu verlinken. Vielleicht machen wir alle Inhalte als XML Strings, dann können wir die beizeiten mal übersetzen?"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Initial commit,[],aber noch nicht fertig ;)
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Registration,[],How to​ register my self
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,japanese translation,[],Hello!
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Nicht-Admins Rufe zurück Button führt zu Logout,"[Label(name=""bug"")]","Moin Moin,
+
+Wenn man die App öffnet sich einloggt und über das Menü Calls anwählt und dann die zurück Taste am Android Gerät benutzt ist man wieder ausgeloggt. Macht man den gleichen Schritte nicht übers Menü sondern den Brief Button bleibt man eingeloggt. "
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Verbesserungen Tablet,"[Label(name=""enhancement"")]","- [x] Auf der Start-Seite ist der Text nicht zentriert
+
+![dsc_0348](https://cloud.githubusercontent.com/assets/16710361/26237758/b65df686-3c76-11e7-9431-16951742f8b3.JPG)
+
+
+- [x] Bei der Calls Seite ist die rote ""Message"" Meldung sehr nah am Rand oben"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Vorschläge description,[],Die Beschreibung ist bisher lediglich ein Platzhalter
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Vorschläge früher anzeigen,[],"Wenn möglich, callsigns und transmittergruppenvorschläge schon bein abtippen der Zeile, nicht erst nach zwei Buchstaben anzeigen."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Recyclerview Searchable,"[Label(name=""enhancement"")]",Der Recyclerview sollte nach relevanten Kriterien mit einem searchview durchsuchbar sein.
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Recyclerview expandable,"[Label(name=""enhancement"")]","Man sollte auf einzelne items in der Liste klicken können, welche daraufhin mehr Informationen preisgeben."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,OK Google/WearOS Support,"[Label(name=""new feature"")]","Spielerei:
+Android Wear unterstützen. Quasi:
+``""OK Google, sende Funkruf an D H 3 W R mit Inhalt Das ist aber ein tooles Feature""``
+
+Wie bei SMS oder IM Nachrichten
+
+Ein paar Infos:
+
+- https://jaxenter.de/android-am-arm-2-28150
+- https://www.android-user.de/workshop-einstieg-in-die-android-programmierung-mit-android-wear-teil-1"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Samsung S8 und andere große Seitenverhältnisse,"[Label(name=""enhancement"")]",https://android-developers.googleblog.com/2017/03/update-your-app-to-take-advantage-of.html
+DecentralizedAmateurPagingNetwork/DAPNETApp,open,Include Widget,"[Label(name=""enhancement"")]","DG5MM schreibt:
+``Vielleicht noch ein 4x2-Widget integrieren, nur Text und destCall für den quickie-Page zwischendurch:-)``
+
+Evtl. in Verbindung mit https://github.com/DecentralizedAmateurPagingNetwork/DAPNETApp/issues/26"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,App Shortcuts,"[Label(name=""enhancement"")]","Seit Android 7.1 besteht die möglichkeit, einen Nutzer direkt vom homescreen spezielle Aktionen in der App auszuführen. So sähe das aus:
+
+[Offizielle Dokumentation](https://developer.android.com/guide/topics/ui/shortcuts.html)
+![App Shortcuts](https://developer.android.com/images/guide/topics/ui/shortcuts.png)
+
+Falls wir App Shortcuts einbauen sollten, würde sich zunächst einer für das posten von calls anbieten."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Alternative Stores,"[Label(name=""enhancement"")]","Es kam gerade rein
+![grafik](https://cloud.githubusercontent.com/assets/16710361/26155779/a5966404-3b14-11e7-97f2-16c0a119cdcd.png)
+
+Bis jetzt kannte ich das noch nicht mal. Wenn wir Lust haben, können wir uns dem ja mal annehmen."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Abstürze durch java.lang.NullPointerException,[],"Es scheint ein Fehler aufzutreten, der die App zum absturz bringt. Eventuell ist auch dieser Fehler an #23 Schuld. Soweit ich sehen kann, ist die Server URL hier null, vielleicht wird das server feld geleert.
+```
+java.lang.NullPointerException: baseUrl == null
+	at retrofit2.Utils.checkNotNull(Utils.java:285)
+	at retrofit2.Retrofit$Builder.baseUrl(Retrofit.java:434)
+	at de.hampager.dapnetmobile.api.ServiceGenerator.changeApiBaseUrl(ServiceGenerator.java:60)
+	at de.hampager.dapnetmobile.fragments.CallFragment.fetchJSON(CallFragment.java:65)
+	at de.hampager.dapnetmobile.fragments.CallFragment.initViews(CallFragment.java:61)
+	at de.hampager.dapnetmobile.fragments.CallFragment.onCreateView(CallFragment.java:114)
+```"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Nicht-Admins Rufe bringen die APP zum abstürzen,"[Label(name=""bug"")]","Hallo, 
+
+mit dem letzten Patch funktionierte Menü - Calls wieder nicht. Beim drauf klicken stürzt die APP ab. 
+
+Gruß
+Johannes DK6FC"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Automatische APRS-Standortmeldung des Senders abschaltbar machen,[],"Hallo,
+aktuell werden die Standorte der POCSAG-Sender von PE2KMV
+ins APRS-Netz unter der Kennung ""PS-<Rufzeichen des Senders>""
+eingespeist. 
+Wäre es möglich diese Funktion für jeden Sender konfigurierbar zu machen ?
+Sinnvoll wären die Optionen ""Aus"" und  ""Einspeisen nur wenn online"",
+zusätzlich wäre eine konfigurierbare Sendehäufigkeit sinnvoll.
+
+
+Hintergrund: Wenn man am selben Standort des POCSAG-Senders eine
+für APRS sinnvollere Applikation wie eine Wetterstation betreibt, will man
+nicht, dass deren Icon andauernd durch die ""<call>-PS"" zugedeckt wird.
+Weiterhin halte ich es nicht für sinnvoll, _generell_ die Standorte von
+ausser Betrieb befindlichen Sendern oder von 10mW-RasPagern ins APRS-IS
+zu senden - sowas sollte besser vom Stationsbetreiber konfigurierbar sein."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Enhance Start screen,"[Label(name=""enhancement"")]","Auf dem Start Screen steht nun Welcome! und dann Text.
+
+Bitte oben statt Welcome dieses Bild einbauen
+https://github.com/DecentralizedAmateurPagingNetwork/Resources/blob/master/dapnet_transparent.png
+Entsprechend auf Seitenbreite skalieren oder dynamisch skalieren lassen.
+
+Oder vielleicht sogar noch besser: http://hampager.de/assets/img/afu-dapnet-logo.c1d1257.png
+Da musst du mal @MarvinMenzerath  fragen, ob es auch auch transparent gibt, falls nötig.
+
+Dann dadrunter den folgenden Erklärungstext:
+
+DAPNET is an international amateur radio paging network developed by the Amateur Radio Group at the RWTH Aachen University. In order to participate and use this app, you need to be a valid amateur radio operator and have an account at www.hampager.de . If you do not have a an account yet, visit ``www.hampager.de`` now and follow the instructions for subscription.
+
+
+"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Core Version ebenfalls in App anzeigen,"[Label(name=""enhancement"")]","Vielleicht App V 1.0.3, Core 1.3.3.2 . Vielleicht auch 2 zeilig?
+
+Die Version kann vom Core geholt werden. Wie weiß @MarvinMenzerath "
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,App für Blinde begreifbar machen,"[Label(name=""enhancement"")]","Email erhalten:
+
+Hallo ich bin ein Blinder Funkamateur
+dh0yay
+
+Ich arbeite mit dem Screenreader talkback von Google der für blinde und sehbehinderte gemacht wurde um ein Smartphone zu bedienen, es wäre schön wenn j das Programm so anpassen könnte das alle Schaltflächen beschriftet sind, Schalter Schaltflächen Daypacks und so weiter
+"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Nicht-Admins Rufe liefern 403,"[Label(name=""bug"")]","Moin Moin,
+kurzes Feedback zur DAPnet App, hab ich gerade auf die schnelle getestet. Ich mich eingeloggt und im Menue auf Calls gedrückt. Leider bekomme ich dann einen 403 Fehler (Screenshot am Ende der E-Mail). Wenn ich auf Briefsymbol drückte gehts.
+
+Nett wäre noch wenn man bei Transmitter Group names auch eine Dropdown Liste hätte wie bei der Web Version.
+Danke für die Arbeit die ihr macht!
+73 Johannes DK6FC
+![mmjlpjbdkfehdnaa](https://cloud.githubusercontent.com/assets/16710361/25942836/2a360d76-363e-11e7-84b9-7d48e61f875b.png)
+![eamjdnalphakacac](https://cloud.githubusercontent.com/assets/16710361/25942841/2e2b10ac-363e-11e7-8aa3-cde95a33cef3.png)
+"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Version in App anzeigen,[],Im Menü unten 
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Link in Menü auf bekannte Probleme,"[Label(name=""enhancement"")]","Im Menu einen Eintrag ""Feedback and known problems"" mit Ziel https://github.com/DecentralizedAmateurPagingNetwork/DAPNETApp/issues einbauen"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Ignore trailing space after username from Android keyboard,"[Label(name=""enhancement"")]",Manche Keyboards fügen ein Space beim Auto-Vervollständigen nach dem Usernamen ein. Das könnte man ignorieren.
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Auf Start-Seite die Statistik anzeigen,"[Label(name=""enhancement"")]","Es ist ja noch recht leer auf der Startseite. Bis wir sinnvollen Contenct gefunden haben, könnte man hier die Statistik von http://hampager.de/ anzeigen."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,"App crash, wenn man nicht eingeloggt ist und trotzdem auf Callls tippt","[Label(name=""bug"")]",Siehe Titel
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Default Rest-Server mit www und Server-Auswahl,"[Label(name=""enhancement"")]","Ändern in http://www.hampager.de:8080
+Ebenfalls Erklärungstext bei der Eingabemaske:
+
+``Enter the DAPNET-Core to connect with. Normal users do not have to change the default value of http://www.hampager.de:8080. To use the app on HAMNET-only networks, enter http://dapnet.db0sda.ampr.org:8080``
+
+Evtl. kann man auch eine Auswahlliste machen mit
+
+- www.hampager.de:8080 (Internet)
+- dapnet.db0sda.ampr.org:8080 (HAMNET)
+- Enter custom server
+Beim letzten Eintrag würde dann eine Freitext-Eingabebox erscheinen. Bitte mit regex testen, ob es sich um eine gültige URL handelt."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Hilfe-Eintrag hinzufügen im Menu,"[Label(name=""enhancement"")]","Der Text kommt noch, aber schon mal eine View anlegen, bitte"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Nach erfolgter geglückter Absendung die Eingabefelder löschen,"[Label(name=""enhancement"")]","Nach erfolgter und geglückter Absendung die Eingabefelder löschen, wie wenn man die Post Call Seite das erste mal aufmacht."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Transmittergruppen vorschlagen,"[Label(name=""enhancement"")]","Wie auch bei den Rufzeichen
+Default-Wert ist
+all"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Genau 80 Zeichen liefern trotzdem Fehler,"[Label(name=""bug"")]","Wenn man genau 80 / 80 Zeichen eingibt, sagt die APP Message above 80 Characters.
+
+Text ändern in
+Message longer than maximum of 80 characters."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,CallSignNames mit Vorschlägen,"[Label(name=""enhancement"")]",Rufzeiche Liste laden und durchsuchbar anzeigen. Letzte 5 Verwendungen abgesetz in der Liste oben anzeigen.
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Message-Eingabefeld automatisch mehrzeilig,"[Label(name=""enhancement"")]","Wenn man viel Text tippt, kann man beim einzeiligen Textfeld den Anfang nicht mehr sehen."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Automatisch Keyboard öffnen bei Call-Eingabe,"[Label(name=""enhancement"")]",Man muss zumindest bei mir noch auf das Feld tippen
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Reload der Calls durch ziehen nach unten,"[Label(name=""enhancement"")]","Die Calls-Liste soll neu geladen werden, wenn man sie nach unten zieht"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Kartenansicht der Sender einbauen,"[Label(name=""enhancement""), Label(name=""new feature"")]","Wie auf http://hampager.de/#/transmitters/map  Es gibt eine Leaflet-Variante glaub ich für Android. Sonst Google Maps.
+"
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,"Angaben über den ""Hersteller"" einbauen",[],"Text: Amateurfunkgruppe an der RWTH Aachen.
+Webseite (mit Link wenn möglich) https://www.afu.rwth-aachen.de
+Beteiligte Entwickler @IHFSchwarz und @dh3wr gerne mit Namen aufführen."
+DecentralizedAmateurPagingNetwork/DAPNETApp,closed,Crash Tracker einbauen,[],Evtl auch mit den Google Dev. Tools. Da kann man sich die Abstürze auch anzeigen lassen habe ich gesehen.

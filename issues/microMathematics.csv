@@ -1,0 +1,603 @@
+repository,state,title,label,body
+mkulesh/microMathematics,closed,Improve writing in README.md,[],"Problem: grammar, spelling, word choice
+-Fix grammar issues
+-Fix spelling issues
+-Improve word choice to better explain the product
+-Capitalize title to be more visually appealing"
+mkulesh/microMathematics,closed,Add Chinese Translation ,"[Label(name=""enhancement"")]","There are two parts:
+- Traditional Chinese Translation (#80)
+- Simplified Chinese Translation (#78)"
+mkulesh/microMathematics,closed,Traditional Chinese Translation,[],
+mkulesh/microMathematics,closed,XXE in ImportFromSMathStudio.java,"[Label(name=""bug"")]","# The Issue
+
+An XML External Entity attack is a type of attack against an application that parses XML input. This attack occurs when XML input containing a reference to an external entity is processed by a weakly configured XML parser. This attack may lead to the disclosure of confidential data, denial of service, server side request forgery, port scanning from the perspective of the machine where the parser is located, and other system impacts.
+
+# Where the Issue Occurred
+
+The following code snippets display the usage of `DocumentBuilderFactory` without securely disabling entities:
+
+https://github.com/mkulesh/microMathematics/blob/1b8a59e5464e37457342ffff85cf9fa506042b7d/app/src/main/java/com/mkulesh/micromath/io/ImportFromSMathStudio.java#L179"
+mkulesh/microMathematics,closed,Simplified Chinese Translation,[],
+mkulesh/microMathematics,closed,could I translate this into Chinese?,[],I guess that I just need to translate the string.xml
+mkulesh/microMathematics,open,Poor swiping scrolling controls,[],"Moto G5 Plus, rooted, Magisk and Xposed, Android 7.0.
+Tested on latest microMathematics+ on F-Droid and microMathematics on Play Store.
+
+The app feels very uncomfortable to use because of poor swiping controls. I would say the app is *unpredictable and completely uncontrollable*.
+
+- If I swipe once, the canvas scrolls along with my finger. If I let go and swipe again, the canvas keeps moving on its own, instead of following my finger (which other properly-designed apps do). The second swipe only takes effect after I let go of the screen.
+- Sometimes swiping twice causes the app to zoom in/out instead of scrolling twice (followed by some scrolling due to momentum).
+- The document zoom sometimes changes randomly.
+- I can zoom in so far I get text with letters flickering on top of each other, with toast ""Not enough memory for plot visualization"".
+- Pinch-to-zoom does not zoom around the locations of my 2 fingers. Instead the document scrolls about an unpredictable and uncontrollable point. And the document changes location 1/2 second after I let go of pinch-to-zoom or double-tap zoom.
+    - If you pinch in the middle of a text field, it jumps to the ""right"" location. If your cursor is in a text field but you scroll down then pinch, it jumps from your current location to the text field.
+- When I tap in a text field, the keyboard pushes the document around, causing it to move in unpredictable ways. I think it's trying to keep the cursor visible on-screen, and not covered by the keyboad."
+mkulesh/microMathematics,open,3D Plot with indexed variable,[],"A 3D plot y(x1,x2) does plot y against x1 and x2. If one of the variables is indexed, say y(x1[N],x2), then the plot axes are N and x2. Shouldn't the axes be x1[N] and x2? An example is attached. 
+Even zip won't work so 
+
+`<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt=""http://micromath.mkulesh.com"">
+  <formulaList documentVersion=""2"" author=""ken"" title=""dog_river"" description="""" textWidth=""60"" significantDigits=""6"" scale=""0.48428"" redefineAllowed=""true"">
+    <text_fragment>
+      <term key=""text"" text=""Dog swims across river.&#10;From Xint,Yint toward dock at 0,0.&#10;rdv is current/dog speed &lt;1.0&#10;"" />
+    </text_fragment>
+    <equation>
+      <term key=""leftTerm"" text=""Xint"" />
+      <term key=""rightTerm"" text=""2.0"" />
+    </equation>
+    <equation inRightOfPrevious=""true"">
+      <term key=""leftTerm"" text=""Yint"" />
+      <term key=""rightTerm"" text=""1.0"" />
+    </equation>
+    <equation>
+      <term key=""leftTerm"" text=""rdv1"" />
+      <term key=""rightTerm"" text=""0.3"" />
+    </equation>
+    <equation inRightOfPrevious=""true"">
+      <term key=""leftTerm"" text=""rdv2"" />
+      <term key=""rightTerm"" text=""0.5"" />
+    </equation>
+    <equation inRightOfPrevious=""true"">
+      <term key=""leftTerm"" text=""rdv3"" />
+      <term key=""rightTerm"" text=""0.7"" />
+    </equation>
+    <equation>
+      <term key=""leftTerm"" text=""C(rdv)"" />
+      <term key=""rightTerm"" code=""mult"">
+        <term key=""leftTerm"" code=""power"">
+          <term key=""leftTerm"" text=""Xint"" />
+          <term key=""rightTerm"" text=""rdv"" />
+        </term>
+        <term key=""rightTerm"" code=""identity"">
+          <term key=""argTerm"" code=""divide_slash"">
+            <term key=""leftTerm"" text=""Xint"" />
+            <term key=""rightTerm"" code=""plus"">
+              <term key=""leftTerm"" text=""Yint"" />
+              <term key=""rightTerm"" code=""sqrt_layout"">
+                <term key=""argTerm"" code=""plus"">
+                  <term key=""leftTerm"" code=""power"">
+                    <term key=""leftTerm"" text=""Xint"" />
+                    <term key=""rightTerm"" text=""2"" />
+                  </term>
+                  <term key=""rightTerm"" code=""power"">
+                    <term key=""leftTerm"" text=""Yint"" />
+                    <term key=""rightTerm"" text=""2"" />
+                  </term>
+                </term>
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key=""leftTerm"" text=""N1"" />
+      <term key=""rightTerm"" text=""200"" />
+    </equation>
+    <equation inRightOfPrevious=""true"">
+      <term key=""leftTerm"" text=""x"" />
+      <term key=""rightTerm"" code=""equidistant_interval"">
+        <term key=""minValue"" text=""0"" />
+        <term key=""nextValue"" code=""divide"">
+          <term key=""leftTerm"" text=""Xint"" />
+          <term key=""rightTerm"" text=""N1"" />
+        </term>
+        <term key=""maxValue"" text=""Xint"" />
+      </term>
+    </equation>
+    <equation>
+      <term key=""leftTerm"" text=""y(x,rdv)"" />
+      <term key=""rightTerm"" code=""mult"">
+        <term key=""leftTerm"" code=""divide"">
+          <term key=""leftTerm"" text=""1"" />
+          <term key=""rightTerm"" text=""2"" />
+        </term>
+        <term key=""rightTerm"" code=""minus"">
+          <term key=""leftTerm"" code=""divide"">
+            <term key=""leftTerm"" code=""power"">
+              <term key=""leftTerm"" text=""x"" />
+              <term key=""rightTerm"" code=""identity"">
+                <term key=""argTerm"" code=""plus"">
+                  <term key=""leftTerm"" text=""rdv"" />
+                  <term key=""rightTerm"" text=""1"" />
+                </term>
+              </term>
+            </term>
+            <term key=""rightTerm"" code=""content:com.mkulesh.micromath.link.C"">
+              <term key=""argTerm"" text=""rdv"" />
+            </term>
+          </term>
+          <term key=""rightTerm"" code=""divide"">
+            <term key=""leftTerm"" code=""content:com.mkulesh.micromath.link.C"">
+              <term key=""argTerm"" text=""rdv"" />
+            </term>
+            <term key=""rightTerm"" code=""power"">
+              <term key=""leftTerm"" text=""x"" />
+              <term key=""rightTerm"" code=""identity"">
+                <term key=""argTerm"" code=""minus"">
+                  <term key=""leftTerm"" text=""rdv"" />
+                  <term key=""rightTerm"" text=""1"" />
+                </term>
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key=""text"" text=""&#10;More points near zero&#10;"" />
+    </text_fragment>
+    <equation>
+      <term key=""leftTerm"" text=""N"" />
+      <term key=""rightTerm"" code=""equidistant_interval"">
+        <term key=""minValue"" text=""0"" />
+        <term key=""nextValue"" text=""1"" />
+        <term key=""maxValue"" text=""N1"" />
+      </term>
+    </equation>
+    <equation>
+      <term key=""leftTerm"" text=""x1[N]"" />
+      <term key=""rightTerm"" code=""mult"">
+        <term key=""leftTerm"" text=""Xint"" />
+        <term key=""rightTerm"" code=""power"">
+          <term key=""leftTerm"" code=""divide"">
+            <term key=""leftTerm"" code=""content:com.mkulesh.micromath.index.x"">
+              <term key=""argTerm"" text=""N"" />
+            </term>
+            <term key=""rightTerm"" text=""Xint"" />
+          </term>
+          <term key=""rightTerm"" text=""4"" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key=""leftTerm"" text=""y2(x)"" />
+      <term key=""rightTerm"" text=""0.0"" />
+    </equation>
+    <text_fragment>
+      <term key=""text"" text=""&#10;Path with various currents&#10;"" />
+    </text_fragment>
+    <plot_function width=""667"" height=""667"" axes_style=""boxed"" xLabelsNumber=""4"" yLabelsNumber=""4"" gridLineColor=""#FFE0E0E0"" xType=""linear"" yType=""linear"" functionsNumber=""4"">
+      <term key=""yMaxValue"" text="""" />
+      <term key=""yFunction1"" color=""#FF0000FF"" width=""6"" lineStyle=""solid"" shapeType=""none"" shapeSize=""300"" code=""content:com.mkulesh.micromath.link.y:2"">
+        <term key=""argTerm1"" text=""x"" />
+        <term key=""argTerm2"" text=""rdv1"" />
+      </term>
+      <term key=""yFunction2"" color=""#FFFF0080"" width=""6"" lineStyle=""dashed"" shapeType=""none"" shapeSize=""300"" code=""content:com.mkulesh.micromath.link.y:2"">
+        <term key=""argTerm1"" text=""x"" />
+        <term key=""argTerm2"" text=""rdv2"" />
+      </term>
+      <term key=""yFunction3"" color=""#FF008A39"" width=""6"" lineStyle=""dotted"" shapeType=""none"" shapeSize=""300"" code=""content:com.mkulesh.micromath.link.y:2"">
+        <term key=""argTerm1"" text=""x"" />
+        <term key=""argTerm2"" text=""rdv3"" />
+      </term>
+      <term key=""yFunction4"" color=""#FF003899"" width=""5"" lineStyle=""dash_dot"" shapeType=""none"" shapeSize=""300"" code=""content:com.mkulesh.micromath.link.y2"">
+        <term key=""argTerm"" text=""x"" />
+      </term>
+      <term key=""yMinValue"" text="""" />
+      <term key=""xMinValue"" text="""" />
+      <term key=""xFunction1"" text=""x"" />
+      <term key=""xFunction2"" text=""x"" />
+      <term key=""xFunction3"" text=""x"" />
+      <term key=""xFunction4"" text=""x"" />
+      <term key=""xMaxValue"" text="""" />
+    </plot_function>
+    <text_fragment>
+      <term key=""text"" text=""&#10;Close to zero&#10;"" />
+    </text_fragment>
+    <plot_function width=""688"" height=""688"" axes_style=""boxed"" xLabelsNumber=""4"" yLabelsNumber=""4"" gridLineColor=""#FF787878"" xType=""linear"" yType=""linear"" functionsNumber=""2"">
+      <term key=""yMaxValue"" text=""0.2"" />
+      <term key=""yFunction1"" color=""#FF0000FF"" width=""6"" lineStyle=""solid"" shapeType=""none"" shapeSize=""300"" code=""content:com.mkulesh.micromath.link.y:2"">
+        <term key=""argTerm1"" code=""content:com.mkulesh.micromath.index.x1"">
+          <term key=""argTerm"" text=""N"" />
+        </term>
+        <term key=""argTerm2"" text=""0.8"" />
+      </term>
+      <term key=""yFunction2"" color=""#FFFF0080"" width=""6"" lineStyle=""dashed"" shapeType=""none"" shapeSize=""300"" code=""content:com.mkulesh.micromath.link.y:2"">
+        <term key=""argTerm1"" text=""x"" />
+        <term key=""argTerm2"" text=""0.8"" />
+      </term>
+      <term key=""yMinValue"" text=""-0.3"" />
+      <term key=""xMinValue"" text="""" />
+      <term key=""xFunction1"" code=""content:com.mkulesh.micromath.index.x1"">
+        <term key=""argTerm"" text=""N"" />
+      </term>
+      <term key=""xFunction2"" text=""x"" />
+      <term key=""xMaxValue"" text=""0.01"" />
+    </plot_function>
+    <equation>
+      <term key=""leftTerm"" text=""p2"" />
+      <term key=""rightTerm"" code=""equidistant_interval"">
+        <term key=""minValue"" text=""0.3"" />
+        <term key=""nextValue"" text=""0.35"" />
+        <term key=""maxValue"" text=""0.8"" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key=""text"" text=""&#10;3D Plot&#10;"" />
+    </text_fragment>
+    <plot_contour plotStyle=""surface"" width=""667"" height=""667"" axes_style=""boxed"" meshLines=""false"" meshFill=""true"" meshOpacity=""181"" rotation=""335"" elevation=""20"" xLabelsNumber=""4"" yLabelsNumber=""4"" gridLineColor=""#FFE0E0E0"" xType=""linear"" yType=""linear"" zLabelsNumber=""10"" colorMap=""coldhot"">
+      <term key=""yMaxValue"" text="""" />
+      <term key=""yMinValue"" text="""" />
+      <term key=""xMinValue"" text="""" />
+      <term key=""zFunction"" code=""content:com.mkulesh.micromath.link.y:2"">
+        <term key=""argTerm1"" text=""x"" />
+        <term key=""argTerm2"" text=""p2"" />
+      </term>
+      <term key=""xMaxValue"" text="""" />
+    </plot_contour>
+    <text_fragment>
+      <term key=""text"" text=""&#10;Axis should be x1[N] not N?&#10;"" />
+    </text_fragment>
+    <plot_contour plotStyle=""surface"" width=""667"" height=""667"" axes_style=""boxed"" meshLines=""false"" meshFill=""true"" meshOpacity=""181"" rotation=""335"" elevation=""20"" xLabelsNumber=""4"" yLabelsNumber=""4"" gridLineColor=""#FFE0E0E0"" xType=""linear"" yType=""linear"" zLabelsNumber=""10"" colorMap=""coldhot"">
+      <term key=""yMaxValue"" text="""" />
+      <term key=""yMinValue"" text="""" />
+      <term key=""xMinValue"" text="""" />
+      <term key=""zFunction"" code=""content:com.mkulesh.micromath.link.y:2"">
+        <term key=""argTerm1"" code=""content:com.mkulesh.micromath.index.x1"">
+          <term key=""argTerm"" text=""N"" />
+        </term>
+        <term key=""argTerm2"" text=""p2"" />
+      </term>
+      <term key=""xMaxValue"" text="""" />
+    </plot_contour>
+  </formulaList>
+</micromath>`
+
+
+
+
+"
+mkulesh/microMathematics,closed,Implement logarithmic scale for function plot,"[Label(name=""enhancement"")]",
+mkulesh/microMathematics,closed,habrahabr.ru → habr.com,[],"Update links in `README.md`
+
+habrahabr.ru → habr.com
+
+- https://habr.com/post/93946/
+
+geektimes.ru → geektimes.com
+
+- https://geektimes.com/post/300291/"
+mkulesh/microMathematics,closed,Oreo icon shape,"[Label(name=""enhancement"")]","Please add support for icon shape
+https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive.html
+https://material.io/guidelines/style/icons.html"
+mkulesh/microMathematics,closed,Units for Telecoms,"[Label(name=""enhancement"")]","I would love to have the following units present:
+bits, Kbps, Mbps, Gbps, bytes := 8 bits, KB, MB, GB"
+mkulesh/microMathematics,open,Make formula editing on Android usable,[],"Hi, I'm having some issues with formula editing on Android. None of the methods I tried allow me to add a simple ""* cos( sqrt(x^2 + y^2) )"" to the example formula of the 3D plot example.
+
+Before I try to explain what I tried here in words, please see this [screencast](http://andaka.org/~dave/micromath.mp4).
+
+I concede that this is my first attempt with this app, and overall, it looks great and would fill some of my use cases like no other app, but if I can't enter some basic formulae, it ceases to have any value :/"
+mkulesh/microMathematics,closed,Invert color of image object depending on theme,"[Label(name=""enhancement"")]",
+mkulesh/microMathematics,open,RuntimeException with reason TransactionTooLargeException,[],"Passing a bitmap in CustomImageView.onSaveInstanceState causes 
+java.lang.RuntimeException: android.os.TransactionTooLargeException due to huge data parcel size
+see https://stackoverflow.com/questions/33182309/passing-bitmap-to-another-activity-ends-in-runtimeexception for more details"
+mkulesh/microMathematics,closed,Units calculation error,[],"Percentage is calculated with wrong target unit:
+1 % = 0.01 sr,
+100 + 1 % = NaN. "
+mkulesh/microMathematics,closed,"Add  ""New document"" menu to application shortcut",[],
+mkulesh/microMathematics,closed,Ask on exit/closing app,[],"Add an option in ""App settings"" that will help prevent closing app on single click ""Back"" button."
+mkulesh/microMathematics,open,Feature request,"[Label(name=""enhancement"")]",It would be really nice if we could define custom dataset to work on. Like an interval where all values are user defined
+mkulesh/microMathematics,closed,Allow to show interval values in the result view,[],
+mkulesh/microMathematics,open,Content of opened document fully removed if close app without saving results,[],"Its look like critical bug found on replacing source file if nothing saved on exit or closing app.
+
+REPRODUCING:
+
+1. Download `units_overview.mmt` and save on device, check its file size (I just save it in `/sdcard/documents` folder)
+2. Run *μMath+*
+3. Open document `/sdcard/documents/units_overview.mmt`
+4. Run calculating and wait for completing
+5. Close app
+6. RESULT: File `/sdcard/documents/units_overview.mmt` **rewrited by zero-bytes file!**
+
+μMath+ Version: latest `autobuild` (2.17.x)"
+mkulesh/microMathematics,closed,Implement units,"[Label(name=""SMath Studio Integration"")]",
+mkulesh/microMathematics,closed,Add new build-in functions,"[Label(name=""SMath Studio Integration"")]","Add new build-in functions for array manipulation: rows, cols"
+mkulesh/microMathematics,closed,Create google-fr.txt,[],"Here is the translation for the Play Store in French.
+
+I would like to translate the tutorials in [this forlder](https://github.com/mkulesh/microMathematics/tree/master/doc) too if I have the time"
+mkulesh/microMathematics,closed,Add new build-in functions,"[Label(name=""SMath Studio Integration"")]","Add some build-in functions from SMath Studio (see https://en.smath.info/wiki/Built%20In%20functions.ashx):
+- working with numbers: *round*, *mod*, *trunc*, *perc* (ok)
+- trigonometric functions: *cot*, *csc*, *sec* (ok)
+- inverse trigonometric functions: *acot*, *acsc*, *asec* (ok)
+- hyperbolic: *coth*, *csch*, *sech* (ok)
+- Logarithm of number to the specified base (ok)"
+mkulesh/microMathematics,closed,Introduce groups in the mathematical palette,[],Introduce groups in the mathematical palette and add a dialog that allows us to disable/enable groups in the toolbar 
+mkulesh/microMathematics,closed,Add document metadata,"[Label(name=""SMath Studio Integration"")]","Add following metadata to documents: author, title, description"
+mkulesh/microMathematics,closed,Refactor some build-in functions,"[Label(name=""SMath Studio Integration"")]","In order to improve the integration with SMath Studio, some build-in functions shall be refactored:
+- rename *log* to *ln*
+- rename *rnd* to *random*
+- rename *signum* to *sign*
+- remove function *hypot* since this function is not really useful
+
+The calculation results shall be stored within *.mmt file. SMath Studio can use these results in order to better align equations validate the calculation."
+mkulesh/microMathematics,closed,Add contrast light and dark themes,"[Label(name=""enhancement"")]","For the record, maybe, it would be usefull
+- add strong light *""E-Ink (Black on White)""* theme, with only black on white background (without grayscale) for E-Ink devices.
+- add strong dark ""Amoled (White on Black)"" theme, with only white on black background (without grayscale) for Amoled devices."
+mkulesh/microMathematics,closed,Add data import function,"[Label(name=""enhancement"")]","Analogously to matcad, implement READ function used as
+V_i,j := READ(fileName) "
+mkulesh/microMathematics,open,"Add ""Lock Zoom"" option in read-only mode",[],"During editing & reading some time mistakenly zoom changed.
+
+Please, add ""Lock Zoom"" option for prevent mistaken change of zoom level.
+
+P.S.: Also, it would usefull add ""Reset Zoom"" option too."
+mkulesh/microMathematics,closed,Can't install autobuild N.76,"[Label(name=""question"")]","When try install autobuild N.76 my device say that it could not be installed
+
+- https://github.com/mkulesh/microMathematics/commit/4b2e11183a43a50632a74387ff1552d64d494e62
+
+OS: Android 6.0
+Device: ASSISTANT AS-5432"
+mkulesh/microMathematics,closed,NullPointerException in ViewUtils.setMenuIconColor,"[Label(name=""bug"")]",
+mkulesh/microMathematics,open,Import / Export Jupyter Notebook (*.ipynb),[],"About Jupyter Notebook (ex'IPython Notebook)
+- https://ipython.org/notebook.html
+  - https://ipython.org/ipython-doc/1/interactive/nbconvert.html#nbconvert
+- http://nbviewer.jupyter.org
+
+Some interesting examples
+- http://nbviewer.jupyter.org/url/jakevdp.github.com/downloads/notebooks/XKCD_plots.ipynb
+- https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks
+- https://github.com/norvig/pytudes"
+mkulesh/microMathematics,closed,Porting to Qt5 (for Desktop & Mobile),[],"Since *μMath+* now look great, it would be cool make desktop version of it.
+
+But at this moment Java-based apps on desktop not too popular and Java also on many PC's not installed (or users won't install and use Java anymore), so itcwould be cool try make port (as separate branch) rewrited to Qt5, that will give a chance make it usable on not only on Android, but on Linux, macOS, Windows and many other OS where Qt5 already ported too.
+
+TODO
+- Design original *Mobile* UI using QtDesigner (as `.ui` files);
+  - Design *Desktop* similar to original *Mobile* UI;
+  - Create minimal number of shortcuts for *Desktop* with keyboard;
+- Make port of *μMath+ core* to `C++`;
+- ...
+
+P.S.: This is long-term feature request."
+mkulesh/microMathematics,closed,Create page on AlternativeTo wiki,"[Label(name=""enhancement"")]","Propose create page
+* https://alternativeto.net/software/micromathematics-plus/
+
+As example, look on
+* https://alternativeto.net/software/smath-studio-desktop/
+* https://alternativeto.net/software/mathcad/"
+mkulesh/microMathematics,closed,some functions are plotted incorrectly,[],"Some functions are plotted incorrectly (at least when using the standard setup for N, x1, x2 and x as defined in the Example for Function Plot).
+
+To reproduce: Just edit f(x) and the first coordinate system in the example for Function Plot:
+
+f(x) := 1/x
+Edit the lower boundary of the y-axis to -40.
+Calculate worksheet."
+mkulesh/microMathematics,closed,Improving French translation,[],https://github.com/mkulesh/microMathematics/issues/23
+mkulesh/microMathematics,closed,Disable zooming during editing mode,"[Label(name=""enhancement"")]","Its hard to edit document that could be zoomed if mistakenly touch screen by two fingers during editing.
+
+So, dissable zooming in editing mode."
+mkulesh/microMathematics,closed,Integrate android support design library,"[Label(name=""enhancement"")]",
+mkulesh/microMathematics,open,Implement ctrl+enter and shift+enter hotkeys for action,[],It's a common convention to make an action by these combinations.
+mkulesh/microMathematics,open,3D plots rotation control with swipes,[],"For now 3d plots rotation is controlled with a slider. If there is no online rotation, implement it too."
+mkulesh/microMathematics,closed,implement color themes,"[Label(name=""enhancement""), Label(name=""help wanted"")]",Black themes are usually more friendly to the devices with amoled screens. Also some users may want to have other color themes.
+mkulesh/microMathematics,closed,NumberFormatException,"[Label(name=""bug"")]","When parsing `Siginificant digits in result`, a `NumberFormatException` may be triggered if the input number is very large.
+
+```
+// CRASH: com.mkulesh.micromath.plus (pid 11486) (elapsed nanos: 5755378442858)
+// Short Msg: java.lang.NumberFormatException
+// Long Msg: java.lang.NumberFormatException: Invalid int: ""1274375155085100044673746644154457""
+// Build Label: Android/sdk_google_phone_x86/generic_x86:6.0/MASTER/4088240:userdebug/test-keys
+// Build Changelist: 4088240
+// Build Time: 1497047463000
+// java.lang.NumberFormatException: Invalid int: ""1274375155085100044673746644154457""
+// 	at java.lang.Integer.invalidInt(Integer.java:138)
+// 	at java.lang.Integer.parse(Integer.java:413)
+// 	at java.lang.Integer.parseInt(Integer.java:367)
+// 	at java.lang.Integer.parseInt(Integer.java:334)
+// 	at java.lang.Integer.valueOf(Integer.java:525)
+// 	at com.mkulesh.micromath.widgets.HorizontalNumberPicker.onClick(HorizontalNumberPicker.java:111)
+// 	at android.view.View.performClick(View.java:5198)
+// 	at android.view.View$PerformClick.run(View.java:21147)
+// 	at android.os.Handler.handleCallback(Handler.java:739)
+// 	at android.os.Handler.dispatchMessage(Handler.java:95)
+// 	at android.os.Looper.loop(Looper.java:148)
+// 	at android.app.ActivityThread.main(ActivityThread.java:5417)
+// 	at java.lang.reflect.Method.invoke(Native Method)
+// 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+// 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+// 
+```
+
+*How to repeat*:
+- Start app
+- Open ""Document setting"" dialog
+- In the field ""Significant digits in result"", put123456789012.
+- Press ""+"" button on the right of this field
+*Bad*: crash is observed
+*Desired*: field content is set to a maximum allowed value for this element"
+mkulesh/microMathematics,closed,Import/Export SMath Studio document (*.sm),"[Label(name=""SMath Studio Integration"")]","Since documents' format of SMath Studio (freeware desktop software, similar to MathCAD & μMath+) is open & XML-based, think, its possible add support for import/export SM files (extension: `.sm`)
+* https://smath.info/
+  * https://smath.info/wiki
+  * https://smath.info/svn/public
+
+Some tools, that could be usefull
+* https://github.com/shotInLeg/SMathParser
+* https://github.com/jonasmr/smath
+
+P.S.: Soon will try add some examples"
+mkulesh/microMathematics,closed,Add palette button for array index,"[Label(name=""enhancement"")]",
+mkulesh/microMathematics,closed,Embedded image is lost if undo is performed,"[Label(name=""bug"")]","HTR:
+- open square_wave_oscillator.mmt from resources of uMath
+- long click on the circuit image, and than press ""Object property"" floating button
+*good*: IMAGE SETTINGS dialog appears
+- Change Image with value and press OK
+*good*: size of image is changed
+- Press ""Undo"" menu button
+*Desired*: size of image is restored
+*Bad*: ""Can not open file ..."" message appears"
+mkulesh/microMathematics,closed,Actual crashes logged by Google Play,"[Label(name=""bug"")]","- java.lang.RuntimeException: Canvas: trying to draw too large(109906512bytes) bitmap.
+    at android.view.DisplayListCanvas.throwIfCannotDraw(DisplayListCanvas.java:260)
+    at android.graphics.Canvas.drawBitmap(Canvas.java:1336)
+    at com.mkulesh.micromath.plots.views.SurfacePlotView.onDraw(SurfacePlotView.java:320)
+    at android.view.View.draw(View.java:17071)
+    at android.view.View.updateDisplayListIfDirty(View.java:16053)
+    at android.view.View.draw(View.java:16837)
+    at android.view.ViewGroup.drawChild(ViewGroup.java:3764)
+    at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3550)
+    at android.view.View.draw(View.java:17074)
+    at android.view.View.updateDisplayListIfDirty(View.java:16053)
+    at android.view.View.draw(View.java:16837)
+    at android.view.ViewGroup.drawChild(ViewGroup.java:3764)
+    at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3550)
+    at android.view.View.draw(View.java:17074)
+    at android.view.View.updateDisplayListIfDirty(View.java:16053)
+    at android.view.View.draw(View.java:16837)
+    at android.view.ViewGroup.drawChild(ViewGroup.java:3764)
+    at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3550)
+    at android.view.View.draw(View.java:17074)
+    at android.view.View.updateDisplayListIfDirty(View.java:16053)
+    at android.view.View.draw(View.java:16837)
+    at android.view.ViewGroup.drawChild(ViewGroup.java:3764)
+    at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3550)
+    at android.view.View.draw(View.java:17074)
+    at android.view.View.updateDisplayListIfDirty(View.java:16053)
+    at android.view.View.draw(View.java:16837)
+    at android.view.ViewGroup.drawChild(ViewGroup.java:3764)
+    at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3550)
+    at android.view.View.draw(View.java:17074)
+    at com.mkulesh.micromath.widgets.TwoDScrollView.draw(TwoDScrollView.java:190)
+"
+mkulesh/microMathematics,open,VR mode (for viewing 3D plots),[],"If possible, add some VR features for viewing 3D plots
+
+REFERENCE:
+* https://news.ycombinator.com/item?id=15289766
+* https://vr.google.com/cardboard/
+* ..."
+mkulesh/microMathematics,closed,Document sometime is closed after device rotation,"[Label(name=""bug"")]","In some special case, the document can be unexpected closed if device orientation is changed.
+How to reproduce (100% reproducible on Xiaomi Redmi Note 4):
+- Ensure that app is not in memory (stop all running apps)
+- Run microMathematics
+*Good*: the last edited document is opened
+- In the navigation drawer, open the page ""About""
+*Good*: content of ""About"" page is shown
+- In the main menu, select ""New document""
+*Good*: empty document appears
+- In the main menu, select ""Open file"", than select any stored document or any example from resources of microMathematics
+*Good*: document is opened
+- Rotate the device in order to change orientation
+*Bad*: empty document appears
+*Desired*: document still be opened in the new orientation
+
+This bug is *NOT* critical since the changes made in the document before device rotation are not lost.
+"
+mkulesh/microMathematics,closed,Fix Brazilian Portuguese translation,[],Fix Brazilian Portuguese translation
+mkulesh/microMathematics,closed,Added the how_to_use translation to ptBR,[],
+mkulesh/microMathematics,closed,Fix Brazilian Portuguese translation,[],Fix Brazilian Portuguese translation
+mkulesh/microMathematics,closed,Fiz Brazilian Portuguese translation,[],Fiz Brazilian Portuguese translation
+mkulesh/microMathematics,closed,Fix Brazilian Portuguese translation,[],Fix Brazilian Portuguese translation
+mkulesh/microMathematics,closed,Reverse calculating,[],"Is it possible solve this formula
+
+```
+f=(1/2*l)*√(F/p*S)
+```
+
+Where `l` and `S` are uknown, that should be defined
+
+REFERENCE:
+* https://www.linux.org.ru/forum/talks/13682719"
+mkulesh/microMathematics,closed,Manual test build [ci skip],[],
+mkulesh/microMathematics,closed,Manual test build [ci skip],[],
+mkulesh/microMathematics,closed,Manual test build [ci skip],[],
+mkulesh/microMathematics,open,French Translation,"[Label(name=""help wanted"")]",
+mkulesh/microMathematics,closed,Improving french translation,[],https://github.com/mkulesh/microMathematics/pull/9#issuecomment-327027572
+mkulesh/microMathematics,closed,F-Droid badge icon broken,[],"Its look like link to badge on F-Droid website not work propperly
+* https://f-droid.org/badge/get-it-on.png
+
+I propose (temporary) use icon from F-Droid repo on Gitlab
+* https://gitlab.com/fdroid/artwork/raw/master/badge/get-it-on.png
+
+Fix it in `README.md`
+* https://github.com/mkulesh/microMathematics/blob/master/README.md
+
+REFERENCE:
+* https://gitlab.com/fdroid/artwork/tree/master/badge
+* https://f-droid.org/2016/05/29/get-it-on-f-droid-badges.html"
+mkulesh/microMathematics,open,Ukrainian Translating,"[Label(name=""help wanted"")]","Currently I'm working on Ukrainian translation, so hope add it in few days.
+
+TODO:
+* [ ] App interface translating (in work)
+* [ ] User guide translating
+* [ ] Samples translating"
+mkulesh/microMathematics,closed,Brazilian Portuguese Translation,"[Label(name=""enhancement"")]",
+mkulesh/microMathematics,closed,Brazilian Portuguese Translation,[],
+mkulesh/microMathematics,closed,Provide 'nightly' APK builds,"[Label(name=""enhancement"")]","Could you provide 'nightly' builds regullary? Maybe, for each git commit?
+* https://github.com/mkulesh/microMathematics/tree/master/release"
+mkulesh/microMathematics,closed,Input operands by typing symbols,[],"It would be nice to recognize the input of basic arithmetic and logic symbols (+-*/^<>, etc.) and automatically insert a corresponding operand to the desired position (with LHS defaults to the nearest symbol/operand)"
+mkulesh/microMathematics,closed,Allow to show 2D array in the result view,"[Label(name=""enhancement"")]",
+mkulesh/microMathematics,closed,Fix LaTeX and HTML export of result field,"[Label(name=""bug"")]","There are two points related to the export of a result field into the LaTeX and HTML format:
+- in the exported document, the right result field shall disappear if ""Hide result field"" setting is active for this formula
+- The left and right brackets of the array shall be in LaTeX format instead of plane text"
+mkulesh/microMathematics,closed,java.lang.OutOfMemoryError,"[Label(name=""bug"")]","  at java.util.ArrayList.<init> (ArrayList.java:151)
+  at com.mkulesh.micromath.formula.FormulaTermInterval.getInterval (FormulaTermInterval.java:305)
+  at com.mkulesh.micromath.formula.Equation.getInterval (Equation.java:415)
+  at com.mkulesh.micromath.formula.Equation.fillBoundedInterval (Equation.java:430)
+  at com.mkulesh.micromath.plots.PlotContour$Function3D.calculate (PlotContour.java:701)
+  at com.mkulesh.micromath.plots.PlotContour.calculate (PlotContour.java:190)
+  at com.mkulesh.micromath.formula.CalculaterTask.doInBackground (CalculaterTask.java:66)
+  at com.mkulesh.micromath.formula.CalculaterTask.doInBackground (CalculaterTask.java:30)
+  at android.os.AsyncTask$2.call (AsyncTask.java:304)
+  at java.util.concurrent.FutureTask.run (FutureTask.java:237)"
+mkulesh/microMathematics,closed,Tiny changes in some text files,[],
+mkulesh/microMathematics,closed,Minor changes in some XML files,[],
+mkulesh/microMathematics,closed,HTTPS is better than HTTP,[],
+mkulesh/microMathematics,closed,Starting a french translation,[],
+mkulesh/microMathematics,closed,Allow change app locale independently from current system locale,"[Label(name=""enhancement"")]",Make app locale indepedent from system locale.
+mkulesh/microMathematics,open,Export to PDF,"[Label(name=""help wanted"")]","Add possibility export directly in PDF using iTextPDF library (or any other)
+
+* https://github.com/itext/itextpdf
+
+There are few open-source apps that could be used as reference or examples
+
+* https://github.com/scoute-dich/PDFCreator
+* https://github.com/pratikbutani/Android-PDF
+* https://github.com/apjoex/PDFMaker
+* https://github.com/sotrh/android_print_demo
+
+It could be usefull also add few document design templates or some settings on customizing look of output PDF."
+mkulesh/microMathematics,closed,"The floating button ""Calculate"" shall disappear if file open operation is in progress","[Label(name=""bug"")]","Select menu ""Open file"", navigate to ""Resources of microMathematics"", select example ""rnd_plot.mmt"":
+Bad: floating button ""Calculate"" still be visible during file open operation is in progress
+Desired: floating button ""Calculate"" disappears and only appears after the file is completely opened."
+mkulesh/microMathematics,closed,Add info about creating/editing locales and translating docs (in README.md or as wiki),[],"Here are few apps that could be helpfull specially for Android users
+
+* https://f-droid.org/wiki/page/io.github.lonamiwebs.stringlate
+* https://f-droid.org/wiki/page/jp.forkhub"
+mkulesh/microMathematics,closed,"Use app name ""microMathematics Plus"" (""μMath+"" for short) in all languages/locales","[Label(name=""enhancement"")]","Please, don't use translated name of app (like ""Микро-математика плюс"" in Russian) in any documentation or posts as official name.
+
+Instead always use Latin character name ""**microMathematics Plus**"" as official app name in all locales and in official docs for all languages (official names of program should be like a brand, for example *LibreOffice Math*, *wxMaxima*, etc.)
+
+Also, for menu entry as sign under app icon use short name ""**μMath+**"", because original name is too long for menu entry.
+
+> **Micro-** (symbol **μ** ) is a unit prefix in the metric system
+* https://en.wikipedia.org/wiki/Micro-
+
+> Mathematics is commonly called Math in the US and Maths in the UK.
+* https://www.mathsisfun.com
+
+> **Mathematics** (from Greek μάθημα *máthēma*, ""knowledge, study, learning""; often shortened to maths and math)
+* https://en.wikipedia.org/wiki/Mathematics
+
+> The **plus and minus** signs ( **+** and **−** ) are mathematical symbols used to represent the notions of positive and negative as well as the operations of addition and
+subtraction. Their use has been extended to many other meanings, more or less analogous. *Plus* and *minus* are Latin terms meaning ""more"" and ""less"", respectively.
+* https://en.wikipedia.org/wiki/%2B"
+mkulesh/microMathematics,closed,Update welcome_ru.xml,[],I think that this is a more universal expression in the event that you didn't buy app.
+mkulesh/microMathematics,closed,Add the app into F-Droid,"[Label(name=""enhancement"")]",https://f-droid.org/wiki/page/FAQ_-_App_Developers#How_do_I_get_my_app_included.3F
+mkulesh/microMathematics,closed,Migrate to Gradle,[],

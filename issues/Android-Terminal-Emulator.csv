@@ -1,0 +1,614 @@
+repository,state,title,label,body
+jackpal/Android-Terminal-Emulator,open,Updated Swedish translation,[],It would be nice if the app have a language selector :)
+jackpal/Android-Terminal-Emulator,closed,Newchrootshell,[],
+jackpal/Android-Terminal-Emulator,closed,Fix broken headings in Markdown files,[],"GitHub changed the way Markdown headings are parsed, so this change fixes it.
+
+See [bryant1410/readmesfix](https://github.com/bryant1410/readmesfix) for more information.
+
+Tackles bryant1410/readmesfix#1
+"
+jackpal/Android-Terminal-Emulator,closed,Jeffrey o workspace,[],
+jackpal/Android-Terminal-Emulator,closed,Merge remote-tracking branch 'refs/remotes/jackpal/master',[],
+jackpal/Android-Terminal-Emulator,closed,Request permission on Marshmallow,[],"You can use now build tools 23 and up
+"
+jackpal/Android-Terminal-Emulator,closed,New window,[],
+jackpal/Android-Terminal-Emulator,closed,Update Chinese Translation,[],
+jackpal/Android-Terminal-Emulator,closed,Android Terminal Emulator1,[],
+jackpal/Android-Terminal-Emulator,closed,Material add/close Window icon on API20+,[],
+jackpal/Android-Terminal-Emulator,closed,Tv mode margins,[],"As requested for #425, adding margins for TV Mode / HDMI output
+"
+jackpal/Android-Terminal-Emulator,closed,Use ClipData.Item.coerceToText() to be able to paste data from any source,[],"Use the coerseToText function for getting text data to accept text from most source as described [here](http://developer.android.com/guide/topics/text/copy-paste.html#CoerceToText), which allow for pasting data copied from rich text source ( source as browser html ) as requested in issue #378.
+"
+jackpal/Android-Terminal-Emulator,closed,Custom font settings,[],"Allows for the user to set a custom font with a fallback to MONOSPACE as a default
+
+feature request #290
+
+Currently the path input is a little bit non-user-friendly as it requires to type the path of the font in the preferences text field. But it is better than writing the font path to an arbitrary config file.
+
+The cursor positioning, of course, go very wrong when using a non-monospaced font. 
+
+Currently looking to improve it by using a file picking intent if possible, but the feature is usable enough, and, in my opinion, would be greatly appreciated by the users for day to day task with the terminal emulator.
+"
+jackpal/Android-Terminal-Emulator,closed, handling of `shift+backspace` key to emit a `forward_delete` on TF101,[],"On TF101 intercepted the specified key combination in the `keyDown` handler to replace the event and keycode with one that simulate pressing the  the `delete` key.
+
+As requested the feature request #240 
+"
+jackpal/Android-Terminal-Emulator,closed,Toast position settings,[],"Feature request #339 
+The toast could momentary hide **important** content in the middle of the terminal screen.
+toast position setting in the preferences, with a list preference 
+Translation where possible to follow.
+
+it would be _great_ to have a preference list with image, but surely overkill
+"
+jackpal/Android-Terminal-Emulator,closed,Fix crashing on android wear,[],
+jackpal/Android-Terminal-Emulator,closed,Huge cleanup in Term,[],"1) Use [android-sdk-manager](https://github.com/JakeWharton/sdk-manager-plugin) Gradle plugin by Jake Wharton as an alternative to manually bootstrapping the SDK. It will automatically add correct sdk.dir to local.properties and fetch all necessary dependencies, updating the SDK itself when necessary. Note, that the plugin uses `ANDROID_HOME` to choose sdk location. Your build.gradle was modified to apply the plugin only if _some_ writable directory at that location already exists (suddenly having that stuff downloaded into `~/android-sdk` may be unpleasant at times).
+
+2) Huge cleanup in Term. Just... what... have lead you to writing THAT?! Anyway, these changes fix some unpleasant effects on AIDL-based sessions and should make further improvements easier.
+
+PS Your new UTF-8 mode code does not work! It always fails for me on KitKat with kernel 3.10.20.
+"
+jackpal/Android-Terminal-Emulator,closed,Install current sdk packages when installing on CLI,[],
+jackpal/Android-Terminal-Emulator,open,Create Yellowscreencomputers,[],"This is an add on for codio
+"
+jackpal/Android-Terminal-Emulator,open,Create Yellowscreencomputers,[],
+jackpal/Android-Terminal-Emulator,closed,Allow hiding of Material Design ActionBar,[],
+jackpal/Android-Terminal-Emulator,closed,Install Android Support Repository when installing from CLI,[],"Fixes #400, error message:
+
+Could not resolve all dependencies for configuration ':libtermexec:_debugCompile'.
+"
+jackpal/Android-Terminal-Emulator,closed,check for null value in mActionBar when pressing the back key,[],"fixing issue #410, checking for null values in `mActionBar` before checking the status, preventing the handlers to throw a NullPointerException when checking for Action bar visibility with `mActionBar.isShowing()`
+"
+jackpal/Android-Terminal-Emulator,closed,Improved german translation,[],
+jackpal/Android-Terminal-Emulator,closed,A bit of cleanup and refactoring in libtermexec and related native code.,[],"Moved former native hangupProcessGroup into TermExec as sendSignal. Added some documentation,
+that was accidentally removed in 13a90130e1a4bdb351aabc31952f28a0302b5d7e. Bump version numbers
+of native libraries to fix #401 and #403 (an ABI compatibility issue, encountered by firmware
+developers and people, using ATE as a system app).
+"
+jackpal/Android-Terminal-Emulator,closed,AIDL interface that allows people to forward their terminal output to the app,[],"Solves #381 
+Solves #169 
+More or less fixes #156 
+Fixes #120 
+
+This pull request aims to replace existing Intent-based interface for launching commands with AIDL-based API. The API uses Android/Linux ability to pass file descriptors between processes to grant ATE access to /dev/ptmx handle, created by someone else. In effect this means, that another program launches an executable (with it's own permissions), but leaves ATE in charge of showing it's console output.
+
+The AIDL interface is more or less a draft. There is, probably, no way to do it right except by letting people use it a bit and gathering suggestions. Feel free to ask, if you want to know, why it looks this way.
+
+I am personally interested in this for my [aria2 port](https://github.com/Alexander--/aria2-android). I will do my best to help with supporting the new code, as long as I am able to use it myself. You can look how an integration is done in [ate-support](https://github.com/Alexander--/aria2-android/tree/ate-support) branch or get [this build](https://github.com/Alexander--/aria2-android/releases/download/0.9.1.0-beta/net.sf.aria2-1.apk) to get a peek at preliminary implementation on device.
+
+This PR introduces new library in addition to emulatorview. It is called libtermexec and contains AIDL files, native code and Java wrapper for launching binaries with inbuilt console support. It can be very useful on it's own to replace _java.lang.System_ and _ProcessBuilder_ for launching executable files (and gives access to the PID unlike those). The library in Android AAR format, with AIDL and native binaries included, can be published on Maven to let people use it readily without using NDK themselves.
+
+This PR may have an impact on various parts of ATE. I tried to keep it minimal without refactoring unnecessary parts, other important changes may have to be done later, see below for details. Biggest changes done here are:
+- Splittig ShellSession in few subclasses
+- Changes to open /dev/ptmx in Java code and using ParcelFileDescriptor instead of digging integer fd out of FileDescriptor with Reflection. Some reflection still remains, but only on older versions. 
+
+Perfomance considerations:
+- Foreground mode probably should not be used unless necessary (e.g. don't go foreground when someone is still binding to the TermService). See also [this question](https://stackoverflow.com/q/6645193);
+- There should probably be some form of window recycling to prevent single client from opening loads of windows in the ""keep window open after session end"" mode. Also valid for exesting _RUN_SCRIPT_-based API.
+
+Security considerations:
+- No need for permissions, because no work is done on ATE side besides displaying text from file.
+- Someone can pass weird file descriptor (such as /dev/full or just some binary file) instead of /dev/ptmx handle to screw with emulator. Not exactly dangerous and can be mitigated by properly handling failures of native tty-related methods.
+- May be abused to impersonate important windows, same as _RUN_SCRIPT_-based API. I didn't notice any defense there either. Can be mitigated by prepending name of originating app in title. This is already done in AIDL binder, but something seems to be wrong with whole ""displaying window title thing"", it just does not work for me.
+
+Documentation considerations:
+- Must tell people to use Context.BIND_AUTO_CREATE to prevent [restart](https://stackoverflow.com/q/10676204) of TermService upon unbind. Maybe there is a way to disallow binding without the flag. Alternatively TermService can keep itself alive with startService and do stopSelf only when necessary.
+
+Hopefully, size and complexity of these changes won't stop you from reviewing them. If you'd rather look at iterative lineage of commits instead of single squashed one, see [this branch](https://github.com/Alexander--/Android-Terminal-Emulator/tree/new-api).
+
+PS I have changed the language level to Java 7, because Java 6 is dead, and multi-catch and string-switch are too good to miss out on. This won't introduce any compatibility changes, unless you try to use try-block  resource management (aka try-with-resources), in which case the IDE will loudly warn you. I can roll that one back, if you don't want it.
+"
+jackpal/Android-Terminal-Emulator,closed,Update ColorValue.java,[],"Change the EditText from single-line to multi-lene.
+"
+jackpal/Android-Terminal-Emulator,closed,Update TextIcon.java,[],"This change modifies 
+  TextIcon.java    to create a multi-line image if the input test contains multiple lines, and 
+  ColorValue.java  to change the applicable EditText to multi-line. 
+
+This change requires a simple test before acceptance. After build, 
+  create a shortcut with a single line of text and verify that it appears normal, and
+  create a shortcut with two or three short lines of text and verify that it appears as expected.
+
+I apologize for not testing but I cannot run Android Studio. I have tested the code in another application, but not in TEA.   
+"
+jackpal/Android-Terminal-Emulator,closed,Shortcut improvements,[],"These patches contain various improvements to the encrypted shortcut code:
+- Add workarounds for weak PRNGs on Android before 4.4, and use those workarounds before generating keys or encrypting
+- Address review comments on the original patch (thanks!)
+- Don't leave the terminal service running if it was only started in response to a failed shortcut intent
+
+The very paranoid who are using Android 4.3 or earlier should regenerate their keys and recreate their shortcuts to ensure that the generated keys are truly random.  Unfortunately, I can't think of a way of forcing keys to be regenerated at the moment short of clearing data.  (I tend to think that exploiting key generation, even with a bad PRNG, has much too high a cost to be practical given the low return on investment for the attacker.)
+
+Tested on various emulators and a device running 4.4.  I have test harness code that can generate encrypted shortcuts for use with ""am start""; with that, I've tested that the code rejects corrupted shortcuts, shortcuts generated with incorrect keys, and shortcuts encrypted with the wrong key (with correct MAC).  (I'm not sure what to do with the test code, since it's intended for use on the desktop, and therefore requires removing the Android-specific parts of the shortcut encryption code before it will build.)
+"
+jackpal/Android-Terminal-Emulator,closed,Prevent abuse of intents,[],"The patches in this series address the problem pointed out by @daoyuan14 in #374: the use of intent filters on activity aliases isn't sufficient to prevent outside users from triggering an intent if those intents are implemented by public, unprotected components.  Specifically:
+- Patch 1 (5112961) closes the security hole reported in #374 by moving RUN_SCRIPT handling into its own activity, ensuring that outside users cannot bypass the permssion check by explicitly targeting the main RemoteInterface.
+- Patch 2 (1c57509) protects a couple of internal-use-only intents in the Term activity from outside use by ignoring invocations that don't target the non-exported TermInternal alias.  The impact of any potential mischief here is relatively low (I was unable to do more than change the current window, though I wouldn't put a crash completely beyond the realm of possibility), but this patch should be fairly low-risk (the only legitimate user of these intents is the remote interface, and that should be completely broken if this patch were to break things).
+
+Lightly tested on a handful of emulators and a phone running 4.4.
+"
+jackpal/Android-Terminal-Emulator,closed,Updated Slovak translation,[],
+jackpal/Android-Terminal-Emulator,closed,[Translations] Add Serbian,[],
+jackpal/Android-Terminal-Emulator,closed,Forgot to add needed libs when making libjackpal-androidterm4 manditory ...,[],"...module
+
+derp... should have tested full build first.
+"
+jackpal/Android-Terminal-Emulator,closed,Fix Perms: remove unnecessary executable permissions.,[],
+jackpal/Android-Terminal-Emulator,closed,A grab bag of different improvements,[],"dslkjskl
+"
+jackpal/Android-Terminal-Emulator,closed,Improved Slovak translation,[],
+jackpal/Android-Terminal-Emulator,closed,Change FSNavigator name,[],
+jackpal/Android-Terminal-Emulator,closed,EmulatorView: don't crash when link ends on the last column in a line,[],"Targeted fix for #341 -- I tried to keep the changes to a minimum.  Very lightly tested in the 4.3/x86 emulator (mostly to check link wrapping and proper handling of the last character in the link).
+"
+jackpal/Android-Terminal-Emulator,closed,Allow external file picker,[],"This change to the shortcut feature launches a file picker chooser when the ""Find command"" button is pressed -- one of the choices is the internal FSNavigator. I should have done it this way initially. FSNavigator is ugly but it is functional, and the device might not have any other application which is registered as a file picker, so I left it in. 
+
+The code uses a shared preferences boolean to determine if the internal file picker should be used or if the request should be passed on to the system: 
+
+<CODE>
+                    if(SP.getBoolean(""useInternalScriptFinder"", false))
+</code>
+
+This is done so that programmers wishing to add the option to the preferences activity of their personal fork can do so by only modifying the preferences activity. 
+
+Frank
+"
+jackpal/Android-Terminal-Emulator,closed,Miscellaneous Unicode bugfixes and optimizations,[],"This patch series contains various bug fixes for combining character and East Asian wide character support, notably:
+- The second crash reported in #145
+- Text is rendered incorrectly (characters are drawn on top of one another) if the cursor is moved into the middle of a line with many East Asian wide characters; in extreme cases, the cursor can disappear entirely (regression caused by 9f1d71b and not addressed by e69a1b4)
+- Combining diacritics in the last column of the screen or at the end of a selection weren't displayed
+
+There are also additional test cases for Unicode support and a couple of small performance improvements.
+
+Lightly tested on various emulators; in addition, most of these patches have been running for some time on a phone running 4.4 without problems.
+"
+jackpal/Android-Terminal-Emulator,closed,Updated Hungarian translation,[],"Added new string.
+"
+jackpal/Android-Terminal-Emulator,closed,Shortcut Holo dialogs on translucent activity,[],"Thanks!
+
+Frank
+"
+jackpal/Android-Terminal-Emulator,closed,Update latest strings to spanish,[],
+jackpal/Android-Terminal-Emulator,closed,"Export ""make text icon"" string from code to values",[],
+jackpal/Android-Terminal-Emulator,closed,Updated Slovak translation,[],
+jackpal/Android-Terminal-Emulator,closed,Updated Hungarian translation,[],
+jackpal/Android-Terminal-Emulator,closed,Added calculation for visible rows/columns,[],"I needed these values to set the correct PTYsize on the shell when the view changed.
+"
+jackpal/Android-Terminal-Emulator,closed,EmulatorView library cleanup,[],"These patches update the documentation for the EmulatorView library API to match changes to the code and make some library internals package-private.  No functional changes are included.
+
+There are a couple of questions not addressed:
+- How much do we care about library API stability?  The ColorScheme change to accommodate 256-color terminals was an API break, strictly, but (at least in public) no one seems to have complained.
+- EmulatorView.getURLat(): the capitalization convention doesn't match the rest of the library (should probably be getUrlAt() or getURLAt()).  Also, I have a nagging feeling that this doesn't quite fit in the public API, possibly because this is the wrong place for that functionality (shouldn't EmulatorView users be able to control linkification themselves?).  That said, I haven't put any thought into how this might be improved, I'm not sure if there are outside users who would use the functionality anyway, and if we don't care about API stability, we can always fix this later if it ever becomes a problem.
+- The documentation in libraries/emulatorview/docs: should we have a pre-generated copy in the source tree, should we put it elsewhere (in the GitHub pages for the project, for instance), or should we just tell users of the library to generate it themselves?  (If we want to have a pre-generated copy around, it should be updated.)
+"
+jackpal/Android-Terminal-Emulator,closed,Linkification bugfixes,[],"These patches fix bugs with the placement of links:
+- The last character of a link's text wasn't being made clickable
+- The clickable portion of the line doesn't line up with the link text if the link is on a line containing non-BMP characters, combining characters or East Asian wide characters
+
+Lightly tested on various emulators and on a phone and tablet running 4.4.
+"
+jackpal/Android-Terminal-Emulator,closed,Shortcuts phase 2,[],"I am unable to test a feature. If the user tries to navigate into external storage when it is unavailable then a toast says that it is unavailable. If a path is entered into the path window that is a subdirectory of the external storage root then the path gets set to the external storage root. My Android version (4.3) does not permit mounting external storage to the PC so I can't test this feature. 
+
+I'm not a GUI guy but this is better then the previous, and this will probably be my last GUI improvement to shortcuts. I still need to export strings and spend some time on cleaning up and fine-tuning the code. 
+
+I also intend to update the example (examples/intents/src/jackpal/androidterm/sample/intents/IntentSampleActivity.java) but it will have to be more than simply replacing one procedure for the other. In the old procedure an entire command line was sent as a single string and in the new procedure the command and arguments are separate. Because they are separate they can be used differently. Here is basically what can now be done: 
+- If the Uri.path is specified it must be the full path, and this full path gets quoted for BASH. It must be the full path because it gets prefixed with '/' otherwise -- so 'ls' becomes '/ls'. 
+- The Uri.path may be left unused and the command placed in the Uri.fragment with the arguments, and the fragment may be a complete script. For example 'uri.fragment(""cd /sdcard; curl http://ti.com/ >ti.html"")'.
+
+So in the example I would convert the existing two sample scripts to fragments only, then add a third script sample which places the command in Uri.path. 
+
+Frank
+"
+jackpal/Android-Terminal-Emulator,closed,Fix screen resizing bugs introduced by alternate buffers patch,[],"These patches address a handful of bugs to do with screen resizing and the alternate buffer:
+- Increasing the number of rows beyond the original screen size causes corruption in the alternate buffer
+- The screen blanks until redrawn when resizing while the alternate buffer is current
+- Resizing the screen while the alternate buffer is current can crash the app
+
+Lightly tested on a phone running Android 4.4 and various emulators.
+"
+jackpal/Android-Terminal-Emulator,closed,Add READ_EXTERNAL_STORAGE permission.,[],"This fixes issue #315.
+"
+jackpal/Android-Terminal-Emulator,closed,Update RemoteInterface.java,[],"New Intent.data procedure for launching scripts. The new procedure is to build the path and arguments into a Uri and set that into Intent.data.
+
+<pre>intent.setDataAndType(
+  new Uri.Builder().setScheme(""File"").setPath(path).setFragment(arguments)
+, ""text/plain""
+)</pre>
+
+
+The old procedure of using an Extra is still available but is discouraged and will be attempted only if Intent.data is null.
+
+If both Intent.data and the extra are null then an empty string is sent to simply open ATE.
+"
+jackpal/Android-Terminal-Emulator,closed,Add 'Term here' feature.,[],"This addition adds ""Term here"" to the ""Send"" or ""Send to"" option on many file managers, 
+accessable by a long press. Long-press a file or directory in a file manager and select
+""Term here""; Term will open to a new window at that location. 
+
+The permission.RUN_SCRIPT permission is not used because no executables other than 'cd'
+are invoked. Choosing ""Term here"" performs essentially the same action as merely opening
+Term, but with the addition of the specified starting directory. 
+
+I chose to use the ""send"" intent option instead of a normal intent with 'data' because
+I think showing ""Term here"" for every file you wish to open normally is excessive, so
+for the special case where you want to open a terminal at a file or directory location
+the ""send"" feature can be used. 
+
+It might be desired to later add a the ability to launch scripts from a file manager
+by selecting the script, or other executable, and choosing ""Term"", or ""Run with Term"".
+This would be implemented with a normal Intent which uses 'data' to communicate the file
+and would be selected after a short-press in most or all file managers. 
+
+Related to all this, I'll soon pull-request a shortcut interface so that ATE can place 
+icons on the desktop which will launch scripts.
+"
+jackpal/Android-Terminal-Emulator,closed,A little bit more french,[],
+jackpal/Android-Terminal-Emulator,closed,Update AndroidManifest.xml,[],"These additions allow multi-window devices to resize ATE so that it can be displayed with one other application. These windows are resizable by the user and simply touching one or the other changes the focus. The effect, with ATE as one of the applications, can be that of an IDE if the other application is a script editor. One such multi-window device is the Galaxy Note 3.
+
+On other devices these additions will have no effect.
+
+This is issue #304.
+"
+jackpal/Android-Terminal-Emulator,closed,"abcs,mdm,,d,mdd,md,md,m",[],"amajsh
+"
+jackpal/Android-Terminal-Emulator,closed,Moving 'Help' to bottom of menu,[],"At the request of @pylerSM, moving 'Help' to the bottom of the menu makes the most sense and preserves original functioning on devices large enough to make room for the previously merged help icon.
+
+![ate-help](https://f.cloud.github.com/assets/5570483/2432849/3eecc15e-ad77-11e3-9696-ca09786fe8a0.jpg)
+"
+jackpal/Android-Terminal-Emulator,closed,SK translation for HELP,[],
+jackpal/Android-Terminal-Emulator,closed,Adding link to FAQ to Action Bar,[],"Based on frequent requests on [ATE's Google+ Community](https://plus.google.com/communities/106164413936367578283), a link to the FAQ in the app may help new users.
+![ate-faq](https://f.cloud.github.com/assets/5570483/2335879/dfb1bff6-a488-11e3-93c5-4a70f4f55a10.png)
+![ate-small](https://f.cloud.github.com/assets/5570483/2336772/33394f6c-a494-11e3-84fc-d93e2925f275.png)
+"
+jackpal/Android-Terminal-Emulator,closed,Updated Slovak translation - add missing strings,[],
+jackpal/Android-Terminal-Emulator,closed,Update spanish translation,[],
+jackpal/Android-Terminal-Emulator,closed,Exec procedure improvements,"[Label(name=""bug"")]","The java process maintains many open file descriptors that are inherited by the shell process (and later on by any command spawned by the shell). This code closes all of them by iterating over the /proc/self/fd directory. Also includes an ioctl call to make the pseudoterminal a controlling one for the shell process group.
+"
+jackpal/Android-Terminal-Emulator,closed,Update Hebrew Translation,[],
+jackpal/Android-Terminal-Emulator,closed,Update Italian translation,[],
+jackpal/Android-Terminal-Emulator,closed,Enable hardware acceleration,[],"The settings are pretty sluggish on not so powerful devices.
+If you think that it's not required to enable it for the entire application, I'd suggest to enable it at least for ""TermPreferences""
+"
+jackpal/Android-Terminal-Emulator,closed,Update arrays.xml,[],
+jackpal/Android-Terminal-Emulator,closed,Updated Slovak translation,[],
+jackpal/Android-Terminal-Emulator,closed,Updated Hungarian translation.,[],
+jackpal/Android-Terminal-Emulator,closed,Clickable URLs in Android Terminal Emulator,[],"(c) 2013 Kendall Stewart
+
+This pull request contains code to implement clickable URLs in Android Terminal Emulator.
+
+The general idea is that the `EmulatorView` class now contains a data structure called `mLinkLayer`, to store potential URLs at each row/column position on the current view. The data structure is cleared every time `updateSize` is called (so, when the size is actually changed, or when something a new character is drawn to the screen, etc), and lines of links are parsed one line at a time by a method called `createLinks`, which is called by the `onDraw` method after a line of text is drawn.
+
+`createLinks` supports multi-line-wrap links, and works by getting the Transcript line at the row being drawn, checking if its wrap flag is set, and concatenating multiple rows together if necessary. The result is then turned into a `SpannableString`, and URLs are matched using the `Linkify` class.
+
+The resulting URLs are then painted into `mLinkLayer` at the location of the text, such that they can be retrieved by touching the screen anywhere on the link. Retrieval is handled by the `getURLat` method, which converts screen coordinates into matrix coordinates, and then returns the link at that location, if any.
+
+To handle touch events, the `onSingleTapUp` method of the Term class has been updated to check for links at the tap location. An `execURL` method has also been added to create an Intent that allows the URL to be opened by a web browser, etc.
+
+Other changes:
+- A couple of wrapper functions have been added to the `TranscriptScreen` class to facilitate getting data from `UnicodeTranscript` to `EmulatorView`
+- For some reason, the lineWrap flag was not getting set for lines being typed by the user; instead, it was only being set for lines output by the terminal. I added a fix by forcing the current line's lineWrap flag to be set when the `mAboutToAutoWrap` flag becomes true. This may be a kludge; I am not sure if it has side-effects.
+
+Issues:
+- Links are not automatically underlined. As structured, this would be a challenge to implement. Several routines would have to be modified to allow the EmulatorView to signal the Renderer to change the text style. However, I don't think this is a necessary feature, especially since touch screens don't really have a concept of ""hovering"" over a link.
+- Only web URLs are linkified, not other types of links such as email addresses. This would not be too difficult to implement - one would have to change the type of the data structure from URLSpan to a more general type of Span, and do some type checking to make sure the right Intent gets generated. 
+"
+jackpal/Android-Terminal-Emulator,closed,ECMA-48 Status Report Commands and BLINK attribute,[],"ATE does not support ECMA-48 Status Report Commands.
+It's important for some programs which use them to detect
+if terminal is in UTF-8 or ISO mode. Such programs send
+\r and multibyte UTF8 char then request for cursor position
+to check if it was moved by one or more characters. Linux,
+xterm, screen and many other terminal emulators support
+this functionality so it's quite portable method to detect
+UTF8 mode.
+
+When ATE receives blink attribute it highlights foreground color.
+It's rather seldom behavior. Most of terminal I know which do not
+support blinking mode use blink attr to highlight background color.
+You can check it in PuTTY but also in pure windows console or
+in Linux console with frame buffer. In pure VGA text mode hardware
+bit controls if BLINK attribute causes blinking or background color
+highlighting what also can be seen in Linux console. It's quite
+common and many existing programs expects such behavior
+instead of highlighting foreground.
+"
+jackpal/Android-Terminal-Emulator,closed,Basic XTerm support,[],"This set of commits implements XTerm support (command and key sequences) enough to run Midnight Commander with the same level of comfort as in XTerm on typical Linux X Windows install: switching panels on/off to access underlying shell screen works, almost all keys work, etc.
+"
+jackpal/Android-Terminal-Emulator,closed,Update Russian translation,[],
+jackpal/Android-Terminal-Emulator,closed,Initial XTerm support,[],"This set of commits implements XTerm support (command and key sequences) enough to run Midnight Commander with the same level of comfort as in XTerm on typical Linux X Windows install: switching panels on/off to access underlying shell screen works, most keys work (not all so far), etc.
+
+More refactoring and elaboration is required for this patchset, I submit this for initial feedback/review and as FYI for people who may want/hack on the same functionality.
+"
+jackpal/Android-Terminal-Emulator,closed,Improve terminal input/output logging,[],"Log input data as strings instead of individual chars, and also log keycodes as produced by terminal.
+"
+jackpal/Android-Terminal-Emulator,closed,Added support for DECCKM (Cursor Keys Mode).,[],"This fixes arrow keys when using Mosh - which doesn't work properly with just keypad application mode. This should also fix issue #264.
+"
+jackpal/Android-Terminal-Emulator,closed,Update Simplified Chinese translation,[],
+jackpal/Android-Terminal-Emulator,closed,Improved/Updated Norwegian translation,[],"Updated the Norwegian translation, and made some changes in the old one.
+"
+jackpal/Android-Terminal-Emulator,closed,clip mouse to limits of 8-bit data,[],"When sending mouse events as terminal codes, avoid overflow due to the limitations of 8-bit data.  I chose to just not send events when out-of-bounds (even for scroll), which is what konsole does.  xterm chooses to send 0 for the coordinate in this case.  I don't know whether there is a reason that konsole doesn't do it that way...  Also, konsole maxes out at column 222 rather than 223 (corresponding to sending 0xfe).  I don't know why, perhaps that's a bug.  Xterm and gnome-terminal will send 0xff for column 223, and I do it this way.
+
+There are competing proposals for how to handle rows/columns greater than 223.  Konsole doesn't implement either of these, so I assume they are not currently in demand.  If someone needs columns >223 I can implement this.
+"
+jackpal/Android-Terminal-Emulator,closed,Send xterm mouse tracking codes,[],"This patch provides an option to send xterm mouse tracking codes to the terminal.  When the option is enabled, and when the console application requests mouse tracking, tap events are forwarded as clicks and drag/fling events are forwarded as scroll wheel events.  Examples of applications which can be configured to accept mouse events are `vim` and `tmux`.
+
+Currently `less` does not scroll.  Terminals such as gnome-terminal and konsole forward scroll events as cursor keys when applications are using the alternate screen buffer.  If the present patch is accepted, I plan to next implement this kludge so that `less` can scroll as well.
+
+I have not implemented the DEC save and restore commands for the mouse tracking flags, although this probably doesn't matter.  Probably the way forward here is to use a BitSet rather than an integer to store the flags, as this will enable handling flags greater than 32 in a unified way.
+"
+jackpal/Android-Terminal-Emulator,closed,Repair czech translate,[],
+jackpal/Android-Terminal-Emulator,closed,Updated Hungarian translation.,[],
+jackpal/Android-Terminal-Emulator,closed,Updated and Added Korean translations,[],"Updated, modified and added Korean translations by Koongchi
+"
+jackpal/Android-Terminal-Emulator,closed,Add Korean Translation,[],"Korean translation for Screen orientation, Home folder. The last Korean translation works well in the new version. Thank you! 
+"
+jackpal/Android-Terminal-Emulator,closed,Add new ClipboardManager support.,[],"text.ClipboardManager is obsolete.
+Recent versions of text.ClipboardManager seems to be incompatible with test.ClipboardManager.
+So it's better to use new ClipboardManager on recent Androids.
+
+My patch was tested on 4.2.2 and 2.4.3 and they works well.
+"
+jackpal/Android-Terminal-Emulator,closed,Add Korean translation,[],
+jackpal/Android-Terminal-Emulator,closed,Fixed hardware control 'stickyness' when switching views,[],"To reproduce bug:
+1. Hold down ctrl on a physical keyboard.
+2. Create a new window using the (+) icon.
+3. Type exit to close the new window.
+4. Attempt to type into the original, control key
+   is still flagged as being pressed.
+"
+jackpal/Android-Terminal-Emulator,closed,"Add android:minSdkVersion=""3"".",[],"We will get some errors on recent ADT without this patch.
+"
+jackpal/Android-Terminal-Emulator,closed,Add an option to fix screen-orientation.,[],"This patch will fix #233.
+"
+jackpal/Android-Terminal-Emulator,closed,create app_HOME dir inside app for use as a writable HOME folder,[],"This is related on #236. I rebased @eighthave's patch.
+"
+jackpal/Android-Terminal-Emulator,closed,Add the Japenese translation to example/intents.,[],
+jackpal/Android-Terminal-Emulator,closed,Code cleanup,[],"They are not serious but cosmetic changes.
+"
+jackpal/Android-Terminal-Emulator,closed,"Fix to avoid an error ""Apostrophe not preceded by \"".",[],"I got an error. This will be effective (even if I can't read French.)
+"
+jackpal/Android-Terminal-Emulator,closed,Window management keyboard shortcuts (attempt 2),[],"This push adds keyboard shortcuts for switching and creating new windows. This is something I find useful when using an external bluetooth keyboard.
+
+The push also refactors out the keycode constants from TermKeyListener and improves the explanatory comment.
+
+This is an update to https://github.com/jackpal/Android-Terminal-Emulator/pull/234 .
+"
+jackpal/Android-Terminal-Emulator,closed,Window management keyboard shortcuts,[],"This push adds keyboard shortcuts for switching and creating new windows. This is something I find useful when using an external bluetooth keyboard.
+
+The push also refactors out the keycode constants from TermKeyListener and improves the explanatory comment.
+"
+jackpal/Android-Terminal-Emulator,closed,failed attempt to add CAPS_LOCK as control key,[],"On the TF300T, I'd really like to have the CAPS-LOCK key be my control key.
+I suspect that it may be impossible: that another layer of Android is dealing with this, but it sure looks like the we do SHIFT processing in EmulatorView. I tried adding it to the preferences in this patch, but it didn't do anything. Ideas?
+"
+jackpal/Android-Terminal-Emulator,closed,added note about building,[],"This is a minor doc fix as the tools/setup.sh seems to be missing.
+I can see why it was removed, as it might need local knowledge.
+"
+jackpal/Android-Terminal-Emulator,closed,Update strings.xml,[],
+jackpal/Android-Terminal-Emulator,closed,Use new android.permission.ACCESS_SUPERUSER permission,[],"https://plus.google.com/103583939320326217147/posts/T9xnMJEnzf1
+"
+jackpal/Android-Terminal-Emulator,closed,Update res/values-fr/strings.xml,[],
+jackpal/Android-Terminal-Emulator,closed,Update res/values-fr/strings.xml,[],"I improve french translation and I reduce the titles to read them fully with a phone with a 800x480 resolution. Regards.
+"
+jackpal/Android-Terminal-Emulator,closed,Update res/values-fr/strings.xml,[],"Improve french translation
+"
+jackpal/Android-Terminal-Emulator,closed,Update res/values-fr/strings.xml,[],"Improve french translation.
+"
+jackpal/Android-Terminal-Emulator,closed,Add Solarized colors,[],
+jackpal/Android-Terminal-Emulator,closed,Increase default font size,[],"10 is pretty small, even on tablets.
+
+14 is a better default :)
+"
+jackpal/Android-Terminal-Emulator,closed,Update res/values-ru/strings.xml,[],"<string name=""reset_toast_notification"">""Терминальное состояние этого окна было сброшено.""</string>
+
++1 new line
+"
+jackpal/Android-Terminal-Emulator,closed,Update res/values-uk/strings.xml,[],"<string name=""reset_toast_notification"">""Термінальний стан цього вікна було скинуто.""</string>
+
++1 new line
+"
+jackpal/Android-Terminal-Emulator,closed,Update res/values-ru/strings.xml,[],"<string name=""reset_toast_notification"">""Терминальное состояние этого окна было сброшено.""</string>
+"
+jackpal/Android-Terminal-Emulator,closed,Update of Polish translation,[],"I've translated missing strings into polish.
+"
+jackpal/Android-Terminal-Emulator,closed,Update Japanese translations.,[],
+jackpal/Android-Terminal-Emulator,closed,"Remove ""Dead Code"" warnings.",[],"This is not a serious bug fix.  Just suppress warnings.
+"
+jackpal/Android-Terminal-Emulator,closed,Hook ctrl keys on hardware keyboards.,[],"Some IMEs (for example Google Japanese Input) consume key events around Ctrl-keys.
+So we should hook key events before they are got by IME.
+
+This patch is harmless also in case without IME.
+"
+jackpal/Android-Terminal-Emulator,closed,Add more Japanese translations.,[],
+jackpal/Android-Terminal-Emulator,closed,"Updated ""Alt sends ESC key..."" translations",[],
+jackpal/Android-Terminal-Emulator,closed,Added new Alt sends strings,[],"Maybe I shouldn't add these changes one-by-one, is there an ETA for the next release? Or is there a way to be notified before the next release so I (and maybe the other translators) could add all the new strings in one go?
+"
+jackpal/Android-Terminal-Emulator,closed,Added new strings.,[],
+jackpal/Android-Terminal-Emulator,closed,Miscellaneous bug fixes,[],"This patch series fixes a crash when selecting text (a regression caused by 54d2530), a crash involving East Asian wide character support (#145), and basic display of characters not in the Unicode Basic Multilingual Plane.  It also introduces a sample file with some non-BMP text for use in testing.
+
+Note that text editing (character insertion/deletion) on lines which contain East Asian wide characters not in the BMP is still broken (in certain situations, the FullUnicodeLine becomes corrupted).  I ran out of time to hunt down this bug -- will have to do that later.
+
+Tested on a Nexus S running 4.1.1 (JRO03E).
+"
+jackpal/Android-Terminal-Emulator,closed,Alt sends esc,[],"This series provides the following functionality
+- refactor TermKeyListener to be testable
+- write a few tests for the current key handling
+- Add an option - Alt sends ESC to switch between sending ^[ when alt is
+  pressed.
+- Allow TermKeyListener to handle deadkeys (untested)
+"
+jackpal/Android-Terminal-Emulator,closed,Deal with more cases of attempting to do something before initialization,[],"This should fix #146 as well as a couple of other Market topcrash bugs.
+"
+jackpal/Android-Terminal-Emulator,closed,Bugfixes,[],"Couple of quick fixes here -- one for the ConcurrentModificationException reported when destroying the TermService, and the other a quick fix for #142.  (I'm not 100% sure how you get mTermSessions == null there in the first place, so this may be papering over another bug.)
+"
+jackpal/Android-Terminal-Emulator,closed,Fix crash when resizing transcript containing non-BMP or combining characters,[],"Trying to resize a transcript with non-BMP characters or combining characters results in the following crash:
+
+<pre>
+E/AndroidRuntime( 1682): FATAL EXCEPTION: main
+E/AndroidRuntime( 1682): java.lang.ArrayIndexOutOfBoundsException: length=264; index=264
+E/AndroidRuntime( 1682):    at jackpal.androidterm.emulatorview.TextStyleLine.getStyle(UnicodeTranscript.java:1078)
+E/AndroidRuntime( 1682):    at jackpal.androidterm.emulatorview.TranscriptScreen.internalGetTranscriptText(TranscriptScreen.java:353)
+E/AndroidRuntime( 1682):    at jackpal.androidterm.emulatorview.TranscriptScreen.getTranscriptText(TranscriptScreen.java:296)
+E/AndroidRuntime( 1682):    at jackpal.androidterm.emulatorview.TerminalEmulator.updateSize(TerminalEmulator.java:414)
+...
+</pre>
+
+
+This appears to be a regression introduced by the 256-color series.  Included fix very lightly tested on a Nexus S running 4.1.1.  (The patches could really use another set of eyes ... the code in question isn't terribly easy to understand even when you don't have a cold.)
+"
+jackpal/Android-Terminal-Emulator,closed,Memory footprint reduction for text style storage,[],"This series implements the three-byte storage for text style format discussed in #136.  It also includes a build fix to the widget example, whose build system was broken by NDK r8.
+
+Lightly tested on a Nook Color running a CM9 nightly, and has seen a couple of days of normal usage without incident on a Nexus S running 4.1.1 (though 256-color display isn't part of my daily usage).
+"
+jackpal/Android-Terminal-Emulator,closed,Updated values-hu/arrays.xml,[],"Added the one extra untranslated line at the end, not sure if necessary, just to be up to date.
+"
+jackpal/Android-Terminal-Emulator,closed,Window title setting and miscellaneous bugfixes,[],"This series implements window title setting (as outlined in my email) and fixes a handful of bugs:
+- Bold text in one of the traditional 8 colors should be displayed using the bright palette -- this is behavior which some applications depend on (see #25), and regressed with the 256-color patches.
+- Commit c5b4ec4 back in 1.0.42 broke screen resize on API < 8 devices in landscape when the status bar wasn't showing.
+- A couple of bugs in OSC sequence handling were preventing window title setting using BEL (0x07) as the string terminator from working correctly.
+
+Very lightly tested on 1.5/arm, 2.0/arm, 4.0.3/x86, 4.1.1/arm phone emulators and a Nexus S running 4.1.1 (JRO03E).
+"
+jackpal/Android-Terminal-Emulator,closed,Fixed a typo,[],
+jackpal/Android-Terminal-Emulator,closed,Update Russian Translation,[],
+jackpal/Android-Terminal-Emulator,closed,Update Russian Translation,[],
+jackpal/Android-Terminal-Emulator,closed,Update res/values-fr/strings.xml,[],
+jackpal/Android-Terminal-Emulator,closed,Updated Hungarian translation,[],"Added new strings and fixed some old ones.
+"
+jackpal/Android-Terminal-Emulator,closed,"Sample widget activity, sending commands to existing windows via remote interface, miscellaneous bug fixes",[],"Patches 1-9 are the Telnet client which is the sample widget activity discussed in #40.
+
+Patch 10 fixes a crash observed during the testing of the Telnet client where screen resize causes the cursor to scroll off screen.  It also fixes a couple of other rarely-noticeable bugs involving screen resize and cursor placement.
+
+Patches 11-12 implement sending commands to existing windows from the remote interface by providing a handle (currently a randomly generated UUID, though users should not depend on that) which can be passed back to the remote interface to select a window to target, as proposed in #111.  Patch 13 fixes switching to a window via the remote interface if the Term activity has to be created in the process (e.g. if terminal sessions are running, but the activity was destroyed using the Back key before the remote request was sent).
+
+Patch 14 causes the Action Bar to be hidden on startup if the user has it set to hide via preferences, but has chosen to have the status bar remain visible.  Previous, the Action Bar would have to be hidden manually (by tapping on the screen) in this case.
+
+Tested lightly on 1.5, 2.3.7/x86, 4.0.3/arm phone emulators, 3.0/arm and 4.0.3/arm tablet emulators, and a Nexus S running 4.0.3.
+"
+jackpal/Android-Terminal-Emulator,closed,"EmulatorView library bugfixes and API improvements, focus bugfixes",[],"This patch series contains a number of fixes to bugs in the EmulatorView library and improvements in the API uncovered by the work on the sample library-using app, and also a small fix to input focus in the main Terminal Emulator app.
+
+Patches 1 and 2 address input focus bugs in Android Terminal Emulator on Honeycomb and later when the action bar is showing.
+
+Patches 3-5 make the library API match the documentation, allowing the use of EmulatorView and TermSession without calling setColorScheme() first and allowing the initialization of EmulatorView and TermSession at different times.
+
+Patch 6 makes EmulatorView request input focus when clicked on by default.  Previously, there was no way for the user to have EmulatorView request focus -- not a problem when EmulatorView is the only view visible (as in Android Terminal Emulator), but more of a problem with more complex layouts.
+
+Patch 7 scales the default font size with screen density, to avoid the problem of needing to call setTextSize() to get reasonably-sized text on high-density displays.
+
+Patches 8-10 deal with the I/O threads, and together probably carry the most risk to the main Terminal Emulator app.  Patch 8 moves writes to the terminal OutputStream in TermSession off the main thread, to allow use of network sockets as OutputStreams on Honeycomb and later.  Patch 9 renames the threads so that users looking at the VM can easily identify them as ours, and patch 10 ensures that the reader and writer threads shut down when finish() is called (by closing the attached InputStream and OutputStream).
+
+Patches 11-13 make changes in the API of TermSession to make it easier to use.  They provide processInput() and write(byte, int, int) methods which function as placeholders which subclasses can override to easily modify the stream of bytes coming into and out of the terminal, and clarify the function of the existing appendToEmulator() API to distinguish it from processInput().
+
+Patch 14 rips out code in TerminalEmulator which writes directly to the terminal OutputStream and replaces it with calls to TermSession's write() instead, ensuring that subclass implementations of write() see this data.
+
+Patch 15 improves the documentation of TermSession, noting the use of threads and offering a few additional hints on the use of the class.
+
+Patch 16 updates the generated HTML documentation for the library.
+
+Tested on the 1.5, 2.0, 2.2, 2.3.7/x86, 3.0/arm and 4.0.3/arm emulators and on a Nexus S running 4.0.3.  The threading changes could really use some testing on a multi-core device, though.
+"
+jackpal/Android-Terminal-Emulator,closed,Widget library and path broadcasts,[],"This series includes the EmulatorView library refactor discussed in #40 and the path broadcast mechanism discussed in #45.  It also includes one additional feature (patch 9), setting/clearing the IUTF8 flag on the tty when changing into or out of UTF-8 mode.
+
+Patch 1 is a minimal refactor of the existing code to move EmulatorView, TermSession, TerminalEmulator and friends into the new library project.  Patches 2, 3, and 4 represent cleanups to the exposed API.  Patch 5 is a trivial style fix.
+
+Patches 6-8 introduce JavaDoc documentation for the library.  The docs are probably a bit terse and could use some expansion.  Also, it's unclear whether shipping the generated HTML copy in docs/ is the best thing to do (if we do, we'll have to regenerate the documents regularly, as in patch 13, and there doesn't seem to be a good way to view the current docs in the GitHub repository on the web).
+
+Patches 10-12 add the broadcasts for outside additions to PATH.  Separate permissions are now required to append and to prepend to the PATH, as you requested.  I think the preferences and the descriptive strings (for both the permissions and the preferences) could stand to use some improvement; also, it might be worth reorganizing the bottom of the Preferences activity to give these prefs (or all the PATH-related stuff, perhaps) their own category.
+
+Tested on Android 1.5/arm, 2.2/arm, 2.3.7/x86, 4.0.1/arm, and 4.0.4/arm phone emulators, 3.0/arm, 3.2/arm, and 4.0.4/arm tablet emulators, and a Nexus S running 4.0.4 (IMM76D).
+"
+jackpal/Android-Terminal-Emulator,closed,IME enter key return char '/r' instead of '/n',[],"IME enter key return char '/r' instead of '/n', fixes issue #102 and #21.
+"
+jackpal/Android-Terminal-Emulator,closed,Improved German translation,[],"I've improved the German locale a bit, taking care of spelling (Umlaute, schliessen => schließen) and some consistency issues (like, 'control key' translating to two different words).
+"
+jackpal/Android-Terminal-Emulator,closed,Miscellaneous bugfixes and PATH/shell verification improvements,[],"Patch 1 fixes a corner case where the window title displayed in the action bar didn't change after a new window was created from the WindowList activity.
+
+Patch 2 logs shell verification errors to the system log, as you suggested.  (Combined with #99, should make debugging shell problems much easier.)
+
+Patches 3, 4, and 5 add a compatibility wrapper for <code>File.canExecute()</code>, introduced in Java 1.6 and made available in Android API level 9.  The method basically reduces to <code>access(filename, X_OK)</code>, so we also add a native code implementation for use on API 8 and below.  To facilitate adding native code methods to more than one class, patch 3 refactors the JNI code to separate JNI initialization from the code defining the methods.
+
+Patch 6 adds a check to make sure the user's shell has the execute bit set.  I wanted this in the original version of the shell verification patch, but couldn't use <code>canExecute()</code> at the time.
+
+Patch 7 implements an idea I had in the comments in #81 for preventing the misleading ""Permission denied"" errors which appear when users try to run nonexistent commands: check the PATH and remove directories for which we don't have execute permission (meaning we can't access them to run commands inside whose names we know).  This should be a major usability improvement for most users, but just in case anyone runs as root all the time (bad idea, I know) and really needs <code>/sbin/adbd</code> in their default PATH, there's a preference to turn this off.
+
+Patch 8 is the native code portion of steven676/Android-Terminal-Emulator@6cd2dc8 -- it strictly belongs with that commit, but I'm putting it here to try to avoid bumping the shared library ABI twice.
+
+Patch 9 bumps the shared library ABI to avoid problems with custom ROMs with ATE preinstalled.
+"
+jackpal/Android-Terminal-Emulator,closed,READ_LOGS Permission,[],"Fixes Issue #99
+"
+jackpal/Android-Terminal-Emulator,closed,Behave sanely when selected shell is the empty string or doesn't exist,[],"Yeah, I finally gave in and signed up for github ;)  This solves an occasionally reported regression where setting the default shell to the empty string or an invalid value causes a crash or an immediate exit (probably introduced by one of my defaults patches).
+"
+jackpal/Android-Terminal-Emulator,closed,Update res/values-fr/strings.xml,[],
+jackpal/Android-Terminal-Emulator,closed,Added Hungarian translation,[],
+jackpal/Android-Terminal-Emulator,closed,"Improve 7 Strings, Add 2 Strings and I translate CTRL / Fn Keys",[],";)
+"
+jackpal/Android-Terminal-Emulator,closed,Portuguese and German localization,[],"Hello,
+This is the up-to-date translation into portuguese (This time with the right files...), also added the translation of your newest features into german.
+
+David
+"
+jackpal/Android-Terminal-Emulator,closed,Update French Translation (arrays.xml) for action bar.,[],"Update French Translation (arrays.xml) for action bar.
+
+Regards.
+"
+jackpal/Android-Terminal-Emulator,closed,Update French translation for your new options.,[],"Update French translation for your new options.
+
+Regards.
+"
+jackpal/Android-Terminal-Emulator,closed,"Add context menus for sending control/fn keys, for the sake of Kindle Fire.",[],"Hi,
+
+I just bought a Kindle Fire, which doesn't have any physical buttons (apart from the power button). So there was no way to send control/fn keys in the Terminal Emulator, which hurted me a lot. Therefore, I added two context menu items as an alternative approach to send control and fn keys.
+
+Here is an screenshot:
+
+![kindle-fire-send-special-key.png](http://f.cl.ly/items/1h0N1u3a390F1C3j1W0Q/kindle-fire-send-special-key.png)
+
+For example, suppose we want to send ""ctrl-x"". We first long-tap the screen to bring out the context menu. Then we tap ""send control key"". Finally, we press the letter ""x"" on the keyboard.
+
+The ""send control key"" and ""send fn key"" here only modify the next key pressed. Let's say if we want to send ""ctrl-x ctrl-c"", then we need to tap the context menu, press ""x"", tap the context menu again, and press ""c"". This behavior is justified since in most cases we only need to modify a single key at a time.
+
+I would be grateful if you could pull my commit. Thanks.
+"
+jackpal/Android-Terminal-Emulator,closed,Portuguese Localization & Toast notification,[],"Addition of portuguese localization (values-pt)
+Display a toast after terminal reset, fixes #55
+"
+jackpal/Android-Terminal-Emulator,closed,Update res/values-fr/strings.xml,[],
+jackpal/Android-Terminal-Emulator,closed,German Translation Update,[],"Added the missing german translations for a few strings.
+"
+jackpal/Android-Terminal-Emulator,closed,Little update,[],"Hi,
+
+Just a little update. I think french can wait new release.
+
+Thanks a lot for your job.
+
+:)
+"
+jackpal/Android-Terminal-Emulator,closed,Update res/values-fr/strings.xml,[],"Update French translation.
+
+But I can't translate ""Window 1"", ""Window 2"" ... when I am in menu Windows.
+
+Regards,
+
+EL
+"
+jackpal/Android-Terminal-Emulator,closed,Update res/menu/main.xml,[],"I think here we have 2 errors when you use />
+
+Regards.
+"
+jackpal/Android-Terminal-Emulator,closed,Update res/values-fr/arrays.xml,[],"Add new list option in french arrays.xml.
+
+Regards.
+"
+jackpal/Android-Terminal-Emulator,closed,Update res/values-fr/strings.xml,[],"New french translation.
+
+Regards,
+
+EL
+"
+jackpal/Android-Terminal-Emulator,closed,changed back key to send escape to application instead of exiting,[],"it's still possible to exit by using menu to close window, and that makes vim much more usable.
+
+maybe the code is not the nicest, i'm not a java guy, but this behaviour was really irritating, so if you want to pull, that might please other users.
+"
+jackpal/Android-Terminal-Emulator,closed,missing translations,[],
+jackpal/Android-Terminal-Emulator,closed,Option for selecting part of the text on the screen with two touches,[],"Hi
+
+I've added an option to the longpress menu, it will allow you to select parts of text on the screen by touching it, and copy them to clipboard of course, pretty much like mouse selection in the Linux terminal.
+"
+jackpal/Android-Terminal-Emulator,closed,Support swype delete key long press,[],"When swype delete key is held down it should continue to generate delete key events.  Long presses are detected by both left and right length being zero.  This change detects the long press condition and sends a delete key event for each.  Delete events speed up as long as delete key is held down.
+"
+jackpal/Android-Terminal-Emulator,closed,Swype IME arrow key support,[],"This change allows the swype IME arrow keys to move cursor left and right.  Also, if using ash shell, up and down arrow keys will browse through command history.
+"

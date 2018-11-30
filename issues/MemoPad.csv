@@ -1,0 +1,36 @@
+repository,state,title,label,body
+zaki50/MemoPad,open,crash when quickly press the swap options ,[],"the suspicious code:
+
+private void swapCanvas() {
+        final FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        try {
+                tx.replace(R.id.container, mCanvases[1], FG_TAG_CANVAS);
+                tx.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+
+                final CanvasFragment prevCurrent = mCanvases[0];
+                mCanvases[0] = mCanvases[1];
+                mCanvases[1] = prevCurrent;
+        } finally {
+            tx.commit();
+        }
+     ...
+    }
+
+
+the safe/correct code:
+
+final FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        try {
+            if (!mCanvases[1].isAdded()) {
+                tx.replace(R.id.container, mCanvases[1], FG_TAG_CANVAS);
+                tx.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+
+                final CanvasFragment prevCurrent = mCanvases[0];
+                mCanvases[0] = mCanvases[1];
+                mCanvases[1] = prevCurrent;
+            }
+        } finally {
+            tx.commit();
+        }"
+zaki50/MemoPad,open,Untranslated button/string,[],"An untranslated string appears to the left of the pencil button on the top.
+"

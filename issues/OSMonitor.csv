@@ -1,0 +1,585 @@
+repository,state,title,label,body
+eolwral/OSMonitor,open,Memory Leak,[],"After a double rotation of the OSMonitor Activity there are in heap memory 2 instances more of:
+
+class com.eolwral.osmonitor.OSMonitor @ 0x12cf0000
+class com.eolwral.osmonitor.ui.ProcessFragment @ 0x12d8bc00
+class com.eolwral.osmonitor.ui.ConnectionFragment @ 0x12d8ec00
+class com.eolwral.osmonitor.ui.MiscFragment @ 0x12d8f800
+class com.eolwral.osmonitor.ui.MessageFragment @ 0x12d90800
+
+It should not be like this because the rotations return to the same GUI state and the memory should stay in the same state as well. It could be a symptom of a bad management of the onCreate-onDestroy lifecycle. 
+
+I have encountered this problem on an Android emulator running 7.1.1 os version. "
+eolwral/OSMonitor,open,[Feature Request] please Inform Mediamanager about exported csv,[],"please Inform Mediamanager about exported csv.
+At moment I have to reboot every time until I get the Files over MTP"
+eolwral/OSMonitor,open,Seems to work on LineageOS 14.1 (Android 7.1.2),[],"Hi,
+
+the README says: ""Due to Android 7.0's security enhancement, OS Monitor won't work any more, I decide to move the project into manitenance mode, it won't support Android 7.0 and following version.""
+
+I decided to try it out anyway and installed version 3.5.0.6, which seems to work fine for me (needed to give it root permissions to be able to view all processes, but that's kind of expected). Is there something I'm missing, or is it maybe dependent on the device or custom firmware being used?"
+eolwral/OSMonitor,open,Force-close only works in landscape mode,[],"Just discovered something odd. The force close button works in landscape mode, but when I switch to portrait mode, it no longer functions. (hold on process, press ""Force Close"" in popup, nothing happens -- switch to landscape, and it works)
+
+EDIT: Apparently it's that the popup's ""force close"" button doesn't work (in portrait or landscape), whereas the side panel's button does. Odd.
+
+How is the popup being created? I don't see any UI controls declared with the text ""Force close"" other than the sidebar's/ProcessFragment's button. Is it generated based on the buttons in the sidebar?"
+eolwral/OSMonitor,open,Android NDK: Module osmcore depends on undefined modules: stlport,[],"When I try to build the project I get an error, specifically on executing ndk-build.cmd command, the error says: ""Android NDK: Module osmcore depends on undefined modules: stlpo rt"", it's a missing dependencies and I noticed that this modules doesn't exists in this project. Could you guys help me? Thanks in Advance
+
+
+* What went wrong:
+Execution failed for task ':app:ndkBuild'.
+> Process 'command 'C:\Users\Admin\Downloads\android-ndk-r14b\ndk-build.cmd'' finished with non-zero exit value 2
+"
+eolwral/OSMonitor,open,"feature request: long tap a process, choose ""disable autorun""",[],"thank you for this great app! 
+
+currently i can long tap a process name and a contextual menu appears
+
+it would be awesome if that menu also contains an item named ""prevent autorun"" that would make that process not start automatically at boot and neither fired by an event.
+"
+eolwral/OSMonitor,open,Hungarian translation fixes,[],
+eolwral/OSMonitor,open,"looking for documentation to understand the message ""OS MONITOR"".",[],"hello, 
+2 questions :
+i am looking for documentation to understand the message ""OS MONITOR"" ?
+
+I have a message ""SQLiteDatabase database lock has-been available for 4 sec current owner off the lock is 1672."" How to get the name of the application that blocks? (1672 is not in the list of process)
+Thank you
+"
+eolwral/OSMonitor,open,Memory reported wrong on OP3,[],"I've recently gotten a OnePlus 3, and the memory that is being reported by OS Monitor is 2GB. The phone has 6...
+"
+eolwral/OSMonitor,open,How can you filter the ip traffic due to OSMonitor itself?,[],"Hi
+How can you filter the ip traffic due to OSMonitor itself?
+For example, I see a Google connection and it makes me nervous :-)
+Is it due to OSMonitor?
+JP
+CM 13/Android 6.0.1
+"
+eolwral/OSMonitor,open,Build Error: ndk-build.cmd finished with non-zero exit value 2. core.o file not found,[],"Hello,
+
+I cloned the project and i encountered with compile erro. Actually, project compiles successfully but not running. It throws an error. This is the screenshot of log. Are there any advices ?
+
+![osmonitorerror](https://cloud.githubusercontent.com/assets/1921050/15888927/a76d69a0-2d71-11e6-9e22-fc2107c15e1e.PNG)
+"
+eolwral/OSMonitor,open,Scaling CPU usage to per core,[],"With the architecture of modern smartphones, i think it would probably make more sense to show CPU usage scaled to 100% being full utilization of one core, at least as an option.
+
+With the current system, my phone ""pegs"" at 16%, and I don't think it could ever exceed 50%, since the little cores aren't use st the same time as the big cores from what I understand.
+"
+eolwral/OSMonitor,open,OS Monitor causes whole system stuttering on Xperia Z3,[],"Yes, I know it sounds weird. 
+
+I had a problem with my Z3 (stock Marshmallow) where it would freeze up for a fraction of a second every few seconds. I've tracked it down to OS Monitor: those stutters seem to happen only when it's polling the system. There's a bunch of lines like this printed to logcat when that happens, perhaps it's related:
+
+`05-01 21:02:07.877  6699  6699 W osmcore : type=1400 audit(0.0:3470533): avc: denied { getattr } for path=""/proc/1"" dev=""proc"" ino=935969 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:init:s0 tclass=dir permissive=0 ppid=1 pcomm=""init"" tgid=1 tgcomm=""init""
+05-01 21:02:07.877  6699  6699 W osmcore : type=1400 audit(0.0:3470534): avc: denied { getattr } for path=""/proc/2"" dev=""proc"" ino=935970 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:kernel:s0 tclass=dir permissive=0 ppid=1 pcomm=""init"" tgid=1 tgcomm=""init""
+05-01 21:02:07.877  6699  6699 W osmcore : type=1400 audit(0.0:3470535): avc: denied { getattr } for path=""/proc/3"" dev=""proc"" ino=935971 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:kernel:s0 tclass=dir permissive=0 ppid=1 pcomm=""init"" tgid=1 tgcomm=""init""
+05-01 21:02:07.877  6699  6699 W osmcore : type=1400 audit(0.0:3470536): avc: denied { getattr } for path=""/proc/6"" dev=""proc"" ino=935972 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:kernel:s0 tclass=dir permissive=0 ppid=1 pcomm=""init"" tgid=1 tgcomm=""init""
+05-01 21:02:07.877  6699  6699 W osmcore : type=1400 audit(0.0:3470537): avc: denied { getattr } for path=""/proc/7"" dev=""proc"" ino=935973 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:kernel:s0 tclass=dir permissive=0 ppid=1 pcomm=""init"" tgid=1 tgcomm=""init""
+05-01 21:02:09.987  6699  6699 W osmcore : type=1400 audit(0.0:3470793): avc: denied { getattr } for path=""/proc/1"" dev=""proc"" ino=935969 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:init:s0 tclass=dir permissive=0 ppid=1 pcomm=""init"" tgid=1 tgcomm=""init""
+05-01 21:02:09.987  6699  6699 W osmcore : type=1400 audit(0.0:3470794): avc: denied { getattr } for path=""/proc/2"" dev=""proc"" ino=935970 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:kernel:s0 tclass=dir permissive=0 ppid=1 pcomm=""init"" tgid=1 tgcomm=""init""
+05-01 21:02:09.987  6699  6699 W osmcore : type=1400 audit(0.0:3470795): avc: denied { getattr } for path=""/proc/3"" dev=""proc"" ino=935971 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:kernel:s0 tclass=dir permissive=0 ppid=1 pcomm=""init"" tgid=1 tgcomm=""init""
+05-01 21:02:09.987  6699  6699 W osmcore : type=1400 audit(0.0:3470796): avc: denied { getattr } for path=""/proc/6"" dev=""proc"" ino=935972 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:kernel:s0 tclass=dir permissive=0 ppid=1 pcomm=""init"" tgid=1 tgcomm=""init""
+05-01 21:02:09.987  6699  6699 W osmcore : type=1400 audit(0.0:3470797): avc: denied { getattr } for path=""/proc/7"" dev=""proc"" ino=935973 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:kernel:s0 tclass=dir permissive=0 ppid=1 pcomm=""init"" tgid=1 tgcomm=""init""
+`
+"
+eolwral/OSMonitor,open,Execution Failed for task ':app:ndkBuild'.,[],"please help me with this error
+
+make: /Users/mac/Library/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-g++: No such file or directory
+
+make: **\* [/Users/mac/Downloads/OSMonitor-master/app/src/main/obj/local/armeabi/objs/osmcore/core.o] Error 1
+:app:ndkBuild FAILED
+Error:Execution failed for task ':app:ndkBuild'.
+
+> Process 'command '/Users/mac/Library/Android/sdk/ndk-bundle/ndk-build'' finished with non-zero exit value 2
+"
+eolwral/OSMonitor,open,"Gear VR: ""Click to start OS Monitor...""",[],"When using with the Samsung Gear VR, a black box with:
+
+```
+   OS Montior
+   Click to start OS Monitor...
+```
+
+is displayed statically near the bottom (i.e. the `ui_shortcut_detail` string).
+
+Seems to be related to the notification, but OS Monitor is the only app I have installed that appears in VR mode.  Only resolution so far seems to be exit OS Monitor before using the Gear.  Has anyone else experienced this or have a workaround?
+
+Present on (from my testing):
+- Galaxy Note 4 with Gear VR Innovator Edition
+- Galaxy S7 Edge with Gear VR final
+"
+eolwral/OSMonitor,open,Event messages,[],"Event messages are not displaying correctly on marshmallow 6.0.1 http://i.imgur.com/3kuAJel.png
+
+@eolwral
+"
+eolwral/OSMonitor,open,Autostart and Expert Mode options broken since upgrade to Marshmallow,[],"Since I upgraded my phone (a Verizon HTC One M8) to Android 6.0, the Autostart and Expert Mode options don't seem to do anything anymore.  They seemingly cause no change in behavior.
+"
+eolwral/OSMonitor,open,only show own process on Android N,[],"Looks like Android N has blocked access to the other processes
+"
+eolwral/OSMonitor,open,Shows an empty process/connection/message list,[],"Latest SuperSU on rooted Cyanogen S4 has OS Monitor granted Super User permissions, all good.
+
+Happened immediately after SuperSU update: OS Monitor app starts, but processes, connections, messages lists show up as empty.
+
+ONLY OS Monitor stopped working (had been working all along for years), the other apps that require root continue to work with SuperSU.
+"
+eolwral/OSMonitor,open,Version on F-Droid newer than Google Play Store,[],"The version on F-Droid is newer than the version on the Google Play Store.
+
+Any plan to sync them to be the same?
+"
+eolwral/OSMonitor,closed,Translation to Hindi Language,[],"Created a directory _/app/src/main/res/values-hi_
+Translated both **arrays.xml** and **strings.xml** to **Hindi**.
+"
+eolwral/OSMonitor,open,Why does OSM connect to 104.131.68.237 ?,[],"Hi,
+
+I see that OSM always connecting to  ip above. It is 443 so encrypted, I can decrypt that ssl. However I wanted to ask the developer first about this particular connection before going ahead. If this is a map functionality why would it need to connect to  Digital Ocean in the first place?   
+
+Is this data leak?
+"
+eolwral/OSMonitor,open,FR: App grouping and filtering under connections that,[],"Hi
+
+It would be so awesome if the connections are grouped under per app. Also having a way to filter (port, connection, ip, app) connections can help users alot. The connections window is great but it can get convoluted.
+"
+eolwral/OSMonitor,closed,"Fixed text of last two buttons in process-detail panel, and added new ""Force Close"" button",[],"- Fixed that the ""Watch Log"" and ""Set Priority"" buttons, in the process detail panel (seen when in landscape mode), had the wrong text.
+- Added a ""Force Close"" button to the process detail panel, that executes the ""am force-close [package name]"" command, to kill and keep killed the given package. (the normal ""kill/reset process"" button's command will kill the process, but many will just restart at that point, making it useless for managing those tasks)
+"
+eolwral/OSMonitor,open,Add the extra field on process view,[],
+eolwral/OSMonitor,open,Checkbox contrast terrible,[],"![Uploading Screenshot_2015-11-15-21-09-40.png…]()
+Seen on Android 4.0.4.
+"
+eolwral/OSMonitor,open,OpenStreetMap view doesn't work,[],"v3.4.1.0 (from F-Droid)
+Android 5.1 (CM12.1-UNOFFICIAL)
+Samsung Galaxy Nexus (maguro)
+
+OpenStreetMap connexion view does not work and displays nothing.
+
+Google Map connexion view works properly.
+"
+eolwral/OSMonitor,open,disk io notification meter broken since 3.4.0.0,[],"Like the title says, the disk io meter in the notification area has not worked right since 3.4.0.0. Tested and confirmed this by digging out old versions in f-droid and found they worked fine with 3.3.1.1, but not anything more recent.
+"
+eolwral/OSMonitor,open,"use resident, not virtual for memory usage",[],"Right now OSMonitor use virtual size when sorting by memory usage.
+
+This however include various memory pages that are not in active use, or shared across multiple processed (shared libraries etc).
+
+resident is the size the process is actively using.
+"
+eolwral/OSMonitor,open,app info button/menu entry,[],"would it be possible to add a button/menu entry that brought the user to the app into dialog found in system settings?
+
+This because ending a process from there seems to be more potent than ending it from inside OSMonitor.
+"
+eolwral/OSMonitor,closed,Catch up the master branch,[],
+eolwral/OSMonitor,closed,Add Serbian translation files,[],
+eolwral/OSMonitor,open,Startup on boot,[],"This function isn't working on some devices, code review and testing are required. 
+"
+eolwral/OSMonitor,closed,CPU usage animated icon crash,[],"Hi, I'm the manteiner of a Theme for Cyanogenmod. An user report me an issue with Osmonitor: when enabling the CPU animated icon OSmonitor crashes, maybe an icon missing. Please, see https://gitlab.com/xphnx/twelf_cm12_theme/issues/47
+Thanks.
+"
+eolwral/OSMonitor,closed,Spanish translation,[],"I have included some not needed commits related to an issue I am trying to fix... I will open a Issue for this.
+"
+eolwral/OSMonitor,closed,Mac address is truncated by one character,"[Label(name=""bug"")]","On **MISC** tab/**Network**/ info about **MAC** addresesses of network interace are truncated by one character.
+It's look like bug in function network::getMACInformation() in network.cc file.
+
+> line 231: curMACLen = read(curMAC, readBuffer, 17); _// read from /sys/class/net/net_interface_name/address_
+> line 232: strncpy(curMACAddr, readBuffer, 16);
+
+Line 232 it's in my opinion not necessary, because on line 231 takes readings of mac address value and trim it to the right length. Mac Addres length is 16 chars + \0 (end string mark) = 17 chars. strncopy(curMACAddr, readBuffer, 16) cuts last char.
+I think that
+`line 231: curMACLen = read(curMAC, curMACAddr, 17);` 
+`line 232: delete it`
+or 
+`line 231: curMACLen = read(curMAC, readBuffer, 17);`
+`line 232: strncpy(curMACAddr, readBuffer, 17);`
+should  be fine
+"
+eolwral/OSMonitor,closed,Project structure not Gradle compliant. ,[],"Sorry for filing this. But Android Studio has been around for some time now. Looking forward to contribute to this open source project when I have free time. 
+
+PS: Thanks for the great tool. It helped me in development a lot. 
+"
+eolwral/OSMonitor,closed,Question / Request: make APK available outside Google Play,[],"Hi,
+
+I am trying to keep my Android device running without a google account - something more and more people appear to do. OS Monitor used to be available in the F-Droid store but it is no longer there. Is there any way to get the APK without a google account? I found an old version here but would love to get the most recent version of course...
+https://code.google.com/p/android-os-monitor/downloads/list
+
+Thanks!
+"
+eolwral/OSMonitor,closed,Please update the changelog for version 3.4.0.0,[],"The F-Droid market links to it.
+"
+eolwral/OSMonitor,closed,Feature: Generate log file,[],"There are any way to generate logs about the system from this application? 
+"
+eolwral/OSMonitor,closed,Wrong filenames / path in install_binary.sh and build.sh,[],"Hi,
+
+when running the ndk-build in the OSMonitor subdir the compiled native binaries are located in:
+
+```
+libs/armeabi/osmcore
+libs/mips/osmcore
+libs/x86/osmcore
+libs/armeabi/osmcore_pie
+libs/mips/osmcore_pie
+libs/x86/osmcore_pie
+```
+
+https://github.com/eolwral/OSMonitor/blob/master/build.sh uses the correct subdir but the wrong filenames for the build binaries.
+
+https://github.com/eolwral/OSMonitor/blob/master/OSMonitor/jni/install_binary.sh uses the correct filenames but the wrong path (expecting the binaries are located in the jni folder.
+"
+eolwral/OSMonitor,closed,More process information,[],"Hi,
+I have problems with an process mmcqd/0 on my S3. It is creating a lot of cpu usage. Is it possible to get some more information about that process. Which storage device cause that, or a special file write. It would be helpful to locate the problem.
+
+TIA
+  Dirk 
+"
+eolwral/OSMonitor,closed,osmcore_L Galaxy Nexus Kernel Panic,"[Label(name=""bug"")]","[ 5623.859741] osmcore_L invoked oom-killer: gfp_mask=0x200da, order=0, oom_adj=-17, oom_score_adj=-1000
+[ 5623.859863] Backtrace: 
+[ 5623.859985] [<c005c174>](dump_backtrace+0x0/0x10c) from [<c05d4624>](dump_stack+0x18/0x1c)
+[ 5623.860076]  r6:000200da r5:00000000 r4:c3ada000 r3:00000000
+[ 5623.860382] [<c05d460c>](dump_stack+0x0/0x1c) from [<c01041e8>](dump_header.isra.7+0x74/0x170)
+[ 5623.860504] [<c0104174>](dump_header.isra.7+0x0/0x170) from [<c0104788>](out_of_memory+0x248/0x348)
+[ 5623.860595]  r8:c3ada000 r7:00000000 r6:0002eed7 r5:00000000 r4:dc9aeac0
+[ 5623.860992] [<c0104540>](out_of_memory+0x0/0x348) from [<c0107dbc>](__alloc_pages_nodemask+0x748/0x76c)
+[ 5623.861053] [<c0107674>](__alloc_pages_nodemask+0x0/0x76c) from [<c011c95c>](handle_pte_fault+0x5cc/0xa9c)
+[ 5623.861175] [<c011c390>](handle_pte_fault+0x0/0xa9c) from [<c011ceec>](handle_mm_fault+0xc0/0x104)
+[ 5623.861297] [<c011ce2c>](handle_mm_fault+0x0/0x104) from [<c00623fc>](do_page_fault+0x1b8/0x324)
+[ 5623.861419] [<c0062244>](do_page_fault+0x0/0x324) from [<c0052500>](do_DataAbort+0x3c/0xa0)
+[ 5623.861541] [<c00524c4>](do_DataAbort+0x0/0xa0) from [<c0058608>](ret_from_exception+0x0/0x10)
+[ 5623.861602] Exception stack(0xc3adbfb0 to 0xc3adbff8)
+[ 5623.861694] bfa0:                                     5d056000 00000000 0e244c33 00000000
+[ 5623.861816] bfc0: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 bec939ac
+[ 5623.861877] bfe0: 00000000 bec93880 00000000 4019f448 200d0010 ffffffff
+[ 5623.861999]  r8:00000000 r7:00000000 r6:00000000 r5:00000007 r4:0000040f
+[ 5623.862335] Mem-info:
+[ 5623.862426] Normal per-cpu:
+[ 5623.862487] CPU    0: hi:  186, btch:  31 usd:   0
+[ 5623.862548] CPU    1: hi:  186, btch:  31 usd:   0
+[ 5623.862670] active_anon:159421 inactive_anon:322 isolated_anon:0
+[ 5623.862670]  active_file:15 inactive_file:18 isolated_file:0
+[ 5623.862670]  unevictable:378 dirty:0 writeback:0 unstable:0
+[ 5623.862670]  free:1396 slab_reclaimable:1199 slab_unreclaimable:4207
+[ 5623.862670]  mapped:20794 shmem:331 pagetables:1494 bounce:0
+[ 5623.863067] Normal free:3536kB min:3528kB low:15208kB high:16092kB active_anon:637684kB inactive_anon:1288kB active_file:60kB inactive_file:72kB unevictable:1512kB isolated(anon):0kB isolated(file):0kB present:778240kB mlocked:0kB dirty:0kB writeback:0kB mapped:83176kB shmem:1324kB slab_reclaimable:4796kB slab_unreclaimable:16828kB kernel_stack:3080kB pagetables:5976kB unstable:0kB bounce:0kB writeback_tmp:0kB pages_scanned:198 all_unreclaimable? yes
+[ 5623.863311] lowmem_reserve[]: 0 0 0
+[ 5623.863586] Normal: 881_4kB 7_8kB 0_16kB 0_32kB 0_64kB 0_128kB 0_256kB 0_512kB 0_1024kB 0_2048kB 0*4096kB = 3580kB
+[ 5623.864379] 766 total pagecache pages
+[ 5623.875976] 262144 pages of RAM
+[ 5623.876068] 1936 free pages
+[ 5623.876129] 69929 reserved pages
+[ 5623.876190] 4324 slab pages
+[ 5623.876251] 54064 pages shared
+[ 5623.876312] 0 pages swap cached
+[ 5623.876373] [ pid ]   uid  tgid total_vm      rss cpu oom_adj oom_score_adj name
+[ 5623.876495] [   97]     0    97      655      137   1     -17         -1000 ueventd
+[ 5623.876556] [  124]  1036   124     3784      708   0     -17         -1000 logd
+[ 5623.876678] [  125]     0   125      926       86   0     -17         -1000 healthd
+[ 5623.876800] [  126]     0   126     1101       80   0     -17         -1000 lmkd
+[ 5623.876861] [  127]  1000   127      807       69   1     -17         -1000 servicemanager
+[ 5623.876983] [  128]     0   128     2392      187   0     -17         -1000 vold
+[ 5623.877105] [  129]  1000   129    17127     6638   0     -17         -1000 surfaceflinger
+[ 5623.877166] [  132]  2000   132      797       73   0     -17         -1000 sh
+[ 5623.877258] [  133]  1049   133      775       55   1     -17         -1000 auditd
+[ 5623.877380] [  134]     0   134     4928      236   1     -17         -1000 netd
+[ 5623.877441] [  135]     0   135      950       69   0     -17         -1000 debuggerd
+[ 5623.877563] [  136]  1001   136     5013      223   0     -17         -1000 rild
+[ 5623.877655] [  137]  1019   137     3887      270   0     -17         -1000 drmserver
+[ 5623.877777] [  138]  1013   138    30913     1420   0     -17         -1000 mediaserver
+[ 5623.877838] [  139]  1012   139      796       67   1     -17         -1000 installd
+[ 5623.877960] [  140]  1017   140     1544      142   1     -17         -1000 keystore
+[ 5623.878082] [  142]     0   142   231717     4242   0     -17         -1000 main
+[ 5623.878143] [  144]  1023   144     2312      678   1     -17         -1000 sdcard
+[ 5623.878234] [  146]  2000   146     1935       91   0     -17         -1000 adbd
+[ 5623.878356] [  294]     0   294      797       72   1     -17         -1000 daemonsu
+[ 5623.878417] [  324]     0   324     2077       89   0     -17         -1000 daemonsu
+[ 5623.878540] [  456]  1000   456   282729    23639   0     -14          -941 system_server
+[ 5623.878662] [  568] 10014   568   266299    23389   0     -10          -705 ndroid.systemui
+[ 5623.878723] [  632]  1010   632     1578      147   0     -17         -1000 wpa_supplicant
+[ 5623.878845] [  784] 10007   784   233786     4347   0     -10          -705 ndroid.incallui
+[ 5623.878936] [  792] 10000   792   234115     4836   0     -10          -705 ogenmod.audiofx
+[ 5623.879058] [  816]  1001   816   234546     4823   0     -10          -705 .server.telecom
+[ 5623.879119] [  838]  1027   838   239081     5137   0     -10          -705 com.android.nfc
+[ 5623.879241] [  861]  1001   861   251571    12931   0     -10          -705 m.android.phone
+[ 5623.879364] [ 1030]  1014  1030      798       73   1     -17         -1000 dhcpcd
+[ 5623.879486] [ 1588]     0  1588     2333      119   1     -17         -1000 daemonsu
+[ 5623.879547] [ 2474]     0  2474     2589      121   1     -17         -1000 daemonsu
+[ 5623.879638] [16846]     0 16846     2589      121   1     -17         -1000 daemonsu
+[ 5623.879791] [17005]     0 17005     2845      137   1     -17         -1000 daemonsu
+[ 5623.879852] [17008]     0 17008   176527   117823   1     -17         -1000 osmcore_L
+[ 5623.884216] Kernel panic - not syncing: Out of memory and no killable processes...
+[ 5623.884216] 
+[ 5623.884399] Backtrace: 
+[ 5623.884521] [<c005c174>](dump_backtrace+0x0/0x10c) from [<c05d4624>](dump_stack+0x18/0x1c)
+[ 5623.884643]  r6:0002eed7 r5:c0803800 r4:c08326c0 r3:00000000
+[ 5623.884918] [<c05d460c>](dump_stack+0x0/0x1c) from [<c05d4ac8>](panic+0x80/0x1b8)
+[ 5623.885040] [<c05d4a48>](panic+0x0/0x1b8) from [<c0104798>](out_of_memory+0x258/0x348)
+[ 5623.885162]  r3:00000002 r2:00000000 r1:e4f42f80 r0:c0735a60
+[ 5623.885437]  r7:00000000
+[ 5623.885559] [<c0104540>](out_of_memory+0x0/0x348) from [<c0107dbc>](__alloc_pages_nodemask+0x748/0x76c)
+[ 5623.885681] [<c0107674>](__alloc_pages_nodemask+0x0/0x76c) from [<c011c95c>](handle_pte_fault+0x5cc/0xa9c)
+[ 5623.885772] [<c011c390>](handle_pte_fault+0x0/0xa9c) from [<c011ceec>](handle_mm_fault+0xc0/0x104)
+[ 5623.885894] [<c011ce2c>](handle_mm_fault+0x0/0x104) from [<c00623fc>](do_page_fault+0x1b8/0x324)
+[ 5623.886016] [<c0062244>](do_page_fault+0x0/0x324) from [<c0052500>](do_DataAbort+0x3c/0xa0)
+[ 5623.886077] [<c00524c4>](do_DataAbort+0x0/0xa0) from [<c0058608>](ret_from_exception+0x0/0x10)
+[ 5623.886199] Exception stack(0xc3adbfb0 to 0xc3adbff8)
+[ 5623.886291] bfa0:                                     5d056000 00000000 0e244c33 00000000
+[ 5623.886383] bfc0: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 bec939ac
+[ 5623.886474] bfe0: 00000000 bec93880 00000000 4019f448 200d0010 ffffffff
+[ 5623.886596]  r8:00000000 r7:00000000 r6:00000000 r5:00000007 r4:0000040f
+[ 5623.886932] CPU0: stopping
+[ 5623.887023] Backtrace: 
+[ 5623.887145] [<c005c174>](dump_backtrace+0x0/0x10c) from [<c05d4624>](dump_stack+0x18/0x1c)
+[ 5623.887268]  r6:c07dfad8 r5:fa240100 r4:00000000 r3:00000000
+[ 5623.887573] [<c05d460c>](dump_stack+0x0/0x1c) from [<c0052490>](do_IPI+0x190/0x1c4)
+[ 5623.887664] [<c0052300>](do_IPI+0x0/0x1c4) from [<c00580c8>](__irq_svc+0x48/0xe4)
+[ 5623.887725] Exception stack(0xd03c3ad0 to 0xd03c3b18)
+[ 5623.887847] 3ac0:                                     ef83c3fc 00000080 00000000 eecc54d0
+[ 5623.887969] 3ae0: 0000244b eecc5300 fffff5bd 000001b3 c0822654 c07e6ae0 ef83c000 d03c3b8c
+[ 5623.888031] 3b00: d03c3b18 d03c3b18 c04275f0 c0427578 200d0113 ffffffff
+[ 5623.888153] [<c0427428>](lowmem_shrink+0x0/0x410) from [<c010d210>](shrink_slab+0x1f8/0x2d0)
+[ 5623.888244] [<c010d018>](shrink_slab+0x0/0x2d0) from [<c010fb50>](try_to_free_pages+0x2c8/0x484)
+[ 5623.888336] [<c010f888>](try_to_free_pages+0x0/0x484) from [<c0107a84>](__alloc_pages_nodemask+0x410/0x76c)
+[ 5623.888427] [<c0107674>](__alloc_pages_nodemask+0x0/0x76c) from [<c0103588>](filemap_fault+0x268/0x4c0)
+[ 5623.888549] [<c0103320>](filemap_fault+0x0/0x4c0) from [<c0119e0c>](__do_fault+0x58/0x49c)
+[ 5623.888671] [<c0119db4>](__do_fault+0x0/0x49c) from [<c011c408>](handle_pte_fault+0x78/0xa9c)
+[ 5623.888793] [<c011c390>](handle_pte_fault+0x0/0xa9c) from [<c011ceec>](handle_mm_fault+0xc0/0x104)
+[ 5623.888854] [<c011ce2c>](handle_mm_fault+0x0/0x104) from [<c00623fc>](do_page_fault+0x1b8/0x324)
+[ 5623.888916] [<c0062244>](do_page_fault+0x0/0x324) from [<c00525a0>](do_PrefetchAbort+0x3c/0xa0)
+[ 5623.889038] [<c0052564>](do_PrefetchAbort+0x0/0xa0) from [<c0058608>](ret_from_exception+0x0/0x10)
+[ 5623.889129] Exception stack(0xd03c3fb0 to 0xd03c3ff8)
+[ 5623.889190] 3fa0:                                     00002144 46b261c0 0000003c 00000005
+[ 5623.889312] 3fc0: 7115ddab 3c000000 41000000 6fe0c348 00000b17 0000162d 70bab99c 70baba0c
+[ 5623.889434] 3fe0: 000010a2 58002800 4205c6f7 41ff7020 800f0030 ffffffff
+[ 5623.889495]  r8:00000b17 r7:6fe0c348 r6:41000000 r5:00000007 r4:0000040f
+[ 5623.889862] Rebooting in 5 seconds..
+"
+eolwral/OSMonitor,open,Crash if click soft menu button on advance mode,[],
+eolwral/OSMonitor,open,drop down menu,[],"On the messages tab, the little drop down menu that switches between Main/System/Events/Radio etc. Is completely white.
+"
+eolwral/OSMonitor,closed,Listening ipv6 app mistakenly marked as CLOSE,[],"I have an app that listens on an UDP6 port. It looks like this:
+
+UDP6
+127.0.0.1:45658
+:::*
+
+The connection monitor however marks it as CLOSE instead of LISTEN
+"
+eolwral/OSMonitor,open,Sort by status,[],
+eolwral/OSMonitor,closed,force close on start if app has no icon?,[],"Hello,
+
+I am using Kitkat 4.4.2 with the latest play store version 3.3.0.5 of OSMonitor. It worked fine till I changed theme of my phone. The major difference is that the new theme has no icon for some built-in system apps.(I looked this in Link2SD app). I am not very sure if this is the cause.
+
+I have also tried legacy version it also FC on start.
+
+Regards.
+"
+eolwral/OSMonitor,open,The troubleshooting manual ,"[Label(name=""enhancement"")]",
+eolwral/OSMonitor,closed,Frequency Min > Frequency Max,[],"Hello!
+
+In OS Monitor 3.3.0.5, there is a strange frequency bounds behavior. If I select any CPU frequency from Frequency Min menu, it instantly becomes back the maximum possible CPU frequency (1209000 on my chipset). But Frequency Max can be changed to each possible value (497250, 754000, 988000, 1209000) and remains until I leave CPU settings menu.
+
+But when I enter CPU settings menu again, Min/Max frequencies are always the same, equal to max chipset frequency (1209000). Only governor setting persists.
+
+I have Zopo ZP980/C2 (MT6589 chipset), Android 4.2.1 (the firmware from 18.08.2014).
+
+Is such behavior normal for my chipset/OS, or there is a bug in OS Monitor?
+
+Regards,
+Eugene
+"
+eolwral/OSMonitor,open,show notification info without animated icon,[],
+eolwral/OSMonitor,open,menus are not consistent for all tabs,"[Label(name=""enhancement"")]","When you switch processes, misc etc, the menu is always different, some of them have only ""exit"" some have also ""settings"" and some don't have anything.
+
+These should all have at least exit and settings, there is no point for all tabs to have different menus :P
+"
+eolwral/OSMonitor,closed,Radio logs,[],"Support for viewing radio logs
+
+http://developer.android.com/tools/debugging/debugging-log.html#alternativeBuffers
+"
+eolwral/OSMonitor,open,sort by memory (pss) on process tab,[],
+eolwral/OSMonitor,open,Kill processes if they have same name,[],
+eolwral/OSMonitor,open,Show the network in the notification bar in bits instead of bytes,[],
+eolwral/OSMonitor,closed,Incorrect icon size with QHD (2560x1440),[],
+eolwral/OSMonitor,open,Feature request: Please give support for external SD,[],
+eolwral/OSMonitor,closed,Russian translation,[],
+eolwral/OSMonitor,open,Show system load ,"[Label(name=""enhancement"")]",
+eolwral/OSMonitor,closed,How to configure build path after adding V7-appcompat library,"[Label(name=""question"")]","Hi,
+I am having below issue after adding v7 - appcompat library to the application.
+
+in the OSMonitor.java in the following interface ActionBarActivity the error message is displaying.
+
+The type android.support.v4.app.TaskStackBuilder$SupportParentable cannot be resolved. It is indirectly referenced from required .class files
+
+Any solution is there to resolve this problem??
+
+![flow](https://cloud.githubusercontent.com/assets/2821632/3129020/638c673a-e7dd-11e3-9f89-faa4ce9853ae.png)
+
+![error](https://cloud.githubusercontent.com/assets/2821632/3129033/897fc5d6-e7dd-11e3-943b-b074d77685b7.png)
+
+Please give solution for the above issue..
+"
+eolwral/OSMonitor,open,Alert system,"[Label(name=""enhancement"")]",
+eolwral/OSMonitor,closed,Monitor network IO,[],
+eolwral/OSMonitor,open,Monitor disk io,"[Label(name=""enhancement"")]","https://www.kernel.org/doc/Documentation/iostats.txt
+"
+eolwral/OSMonitor,closed,GetCpuUsage Method,"[Label(name=""question"")]","Hi,
+How can I have the implementation of GetCUPUsage in JNIInterface class?
+Thanks
+"
+eolwral/OSMonitor,closed,swap memory reporting,"[Label(name=""bug"")]","On an Asus Memo Pad HD7
+
+under the 'misc' tab swap reports as existing but always 100% empty, or unused. Other apps and especially the 'free' terminal command would disagree, and say the machine is using the swap fine.
+
+![screenshot_2014-03-31-17-00-56](https://cloud.githubusercontent.com/assets/7121141/2574373/066bb892-b931-11e3-9951-2a72b9a4646f.jpg)
+![screenshot_2014-03-31-17-00-43](https://cloud.githubusercontent.com/assets/7121141/2574374/11c67d3a-b931-11e3-8c48-cd9914835da9.jpg)
+![screenshot_2014-03-31-17-00-31](https://cloud.githubusercontent.com/assets/7121141/2574375/1f78aa70-b931-11e3-86a9-71f78f855b2c.jpg)
+"
+eolwral/OSMonitor,closed,Use native code binaries from libs/ and not from assets/,"[Label(name=""enhancement"")]","Doing the latter prevents Android from knowing what ABIs does a built APK support. It also overcomplicates the build process when it needn't be. You can access stuff from libs/<arch>/ in a similar way to how you access assets, if that's what keeps you from using the regular ndk-build output directory.
+"
+eolwral/OSMonitor,open,pstree and pkill functions,"[Label(name=""enhancement"")]","@eolwral You think you could add pstree view and pkill functions to osmon?
+
+Only app I can find with pstree view was the old
+
+ https://play.google.com/store/apps/details?id=com.AndroidStatus
+
+<a href=""http://imgur.com/4WkLefD""><img src=""http://i.imgur.com/4WkLefD.png"" title=""Hosted by imgur.com""/></a>
+"
+eolwral/OSMonitor,open,no dmesg,[],"No dmesg on 4.2.2 on G Flex and S4. Worked great on my other HTC's. Also, why does it give warning that it attempted to finish input receiver event but event was already disposed of? This is a great app, thanks for all your work.
+"
+eolwral/OSMonitor,closed,PlayStore beta releases,"[Label(name=""enhancement"")]","@eolwral Any chance you can release betas to the play store for osmon devoted users ;)
+"
+eolwral/OSMonitor,open,Track battery usage by each process,"[Label(name=""enhancement"")]","http://pastebin.com/bhqDq1sZ
+and 
+http://jasonshieh.iteye.com/blog/1173423
+"
+eolwral/OSMonitor,closed,Export connections list,"[Label(name=""enhancement"")]","From E-Mail. :)
+"
+eolwral/OSMonitor,closed,Does it returns Application usage?,[],"Hi, great work, well done man.
+
+I'm looking for application statistics for each installed app such as date installed, how many times used, how much time used and similar.  Something like this app:
+https://play.google.com/store/apps/details?id=com.smartappers.appusage
+
+Does your library provide these information?
+Any suggestion would be appreciated. Thanks.
+
+Warm regards
+Hesam
+"
+eolwral/OSMonitor,closed,Set some arrays as untranslatable,[],"make the work for translators easier if those arrays, which should not be
+translated as untranslatable
+"
+eolwral/OSMonitor,open,Android 4.4 KitKat procstats and meminfo usage,"[Label(name=""enhancement"")]","Android Developers Blog: Process Stats: Understanding How Your App Uses RAM - http://goo.gl/WCzo3G
+"
+eolwral/OSMonitor,closed,Messages,"[Label(name=""enhancement"")]","Would be awesome if we could long click export specific messages and control the message view type like aLogcat has
+
+https://github.com/p4r4n01d/alogcat
+
+Color control like DmesgLogViewer has
+
+https://github.com/t0mm13b/DmesgLogViewer
+"
+eolwral/OSMonitor,closed,add iowait ,"[Label(name=""enhancement"")]","help to detect lags. 
+"
+eolwral/OSMonitor,closed,Sum of Memory usage of processes,"[Label(name=""question"")]","Hi,
+
+my xperia MK16i is low of memory (it has only 512MB!) an I want to find out, what processes are consuming the memory.
+
+OSMonitor seems the right tool for this!
+
+I did the following:
+-  In the process list I sort after memory usage
+- I made screenshots of this list and typed each amount in Excel
+- I added each amount
+
+The sum is much higher as ""Memory Total"" in the footer of the list: 529,3 MB (manual sum) to 356,4 MB (OSMonitor sum). How can this be?
+
+How do you build the sum?
+
+I attach you the screenshots and a Excel file screenshot to make it possible for you to reconstruct what I mean.
+
+What type of memory does OSMonitor show in this list?
+
+Can this list help me me at all to show, from what App the memory is assumted?
+
+Best regards,
+
+Onurbi
+
+Screenshots of Memory Screens:
+
+![memory-osmonitor-summary](https://f.cloud.github.com/assets/6135509/1700476/cfa5ba4e-6019-11e3-847f-4695b95857b9.jpg)
+
+Last part of Excelsheet (github allows not to attach the execfile itself)
+
+![excel-sheet](https://f.cloud.github.com/assets/6135509/1700472/55317258-6019-11e3-829f-353de6152077.png)
+"
+eolwral/OSMonitor,closed,Add a app icon for each connection ,"[Label(name=""enhancement"")]","from Google Play's review
+"
+eolwral/OSMonitor,closed,sort by name function is incorrect.,"[Label(name=""bug"")]","from Goolge Play's Reviews
+"
+eolwral/OSMonitor,closed,f-droid build 3.0.7.0 serious issue,"[Label(name=""bug""), Label(name=""ready"")]","Just updated to the current latest build on f-droid repo and OS monitor will no longer display any data at all. The notification has no information either saying simply 'click Here to start os monitor'. Opening the notification opens the osmonitor app and everything looks fine except there is no information on processes or connections. Returning to the previous version and everything works as expected
+
+Nexus7 android 4.3
+"
+eolwral/OSMonitor,closed,Improve map function on connection tab,"[Label(name=""enhancement"")]","because map function embeds a web page, it is too slow to be loaded on some devices.
+"
+eolwral/OSMonitor,closed,add a fall back message on WHOIS ,"[Label(name=""enhancement"")]",
+eolwral/OSMonitor,closed,Frequency max and min,"[Label(name=""enhancement"")]","change the order for better UI
+"
+eolwral/OSMonitor,open, add the cpu frequency in the notification area,"[Label(name=""enhancement"")]",
+eolwral/OSMonitor,closed,CPU_ABI and CPU_ABI2 aren't same on some device,"[Label(name=""bug"")]","build.prop on Motorola XT8590 
+
+> ro.product.cpu.abi=x86
+> ro.product.cpu.abi2=armeabi-v7a
+"
+eolwral/OSMonitor,closed,Add a function to set font color (Notification),"[Label(name=""enhancement"")]","Need this function, because some device use specific theme. :)
+"
+eolwral/OSMonitor,closed,Short click can't work properly on process tab,"[Label(name=""bug"")]","It happens whenever I click on the tools icon, and then select an item from the sort order menu. (from Pete)
+"
+eolwral/OSMonitor,closed,Export log of specific process/app only produces empty files ,[],"Hi,as title says while export main message/log to sdcard works as always the ones from watch log>export log for individuals apps or processes only gives empty files.
+I don't really know since when it happens, I noticed this on two devices (samsung i9000 and i9505 running aosp/cyanogenmod based rom's), tried to add/change extension before export to sd with no success.
+Many thanks for keeping OsMonitor project alive! 
+"
+eolwral/OSMonitor,closed,Adding an option to display CPU time,"[Label(name=""enhancement"")]","Hi, OSMonitor is a great app! Very useful and well-designed.
+
+I think it's missing an important feature, the ability to display the total CPU time consumed by each process. 
+
+Current CPU usage is useful to determine if an app is misbehaving, but won't help much to find if an application is a CPU hog only when it's being used by the user. For example, a recent weather app I installed eats massive amounts of CPU time when being used, but stays idle when it's not. So it would display ""0%"" CPU usage on OSMonitor and it was harder to detect that there was a problem with it.
+
+Just a thought :)
+"
+eolwral/OSMonitor,closed,WHOIS Map can't load ,"[Label(name=""bug"")]","Map is broken because URL mechanism is broken.
+
+Info:
+Issue 17535: WebView - URL mechanism is broken - passing parameters does not work
+https://code.google.com/p/android/issues/detail?id=17535
+"
+eolwral/OSMonitor,closed,Can't report tun0 traffic,"[Label(name=""bug"")]","tun0 is an interface related to a VPN IPsec
+"
+eolwral/OSMonitor,closed,Build problem: missing symbols,[],"For 3.0.6.4:
+`compile:
+    [javac] Compiling 70 source files to /home/gerry/fdroiddata/build/com.eolwral.osmonitor/OSMonitor/bin/classes
+    [javac] /home/gerry/fdroiddata/build/com.eolwral.osmonitor/OSMonitor/src/com/eolwral/osmonitor/OSMonitorService.java:122: error: cannot find symbol
+    [javac]         Notification osNotification = nBuilder.build();
+    [javac]                                               ^
+    [javac]   symbol:   method build()
+    [javac]   location: variable nBuilder of type Builder
+    [javac] /home/gerry/fdroiddata/build/com.eolwral.osmonitor/OSMonitor/src/com/eolwral/osmonitor/OSMonitorService.java:297: error: cannot find symbol
+    [javac]         nBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(
+    [javac]                                                 ^
+    [javac]   symbol:   class BigTextStyle
+    [javac]   location: class NotificationCompat
+    [javac] /home/gerry/fdroiddata/build/com.eolwral.osmonitor/OSMonitor/src/com/eolwral/osmonitor/OSMonitorService.java:317: error: cannot find symbol
+    [javac]         nManager.notify(NOTIFYID, nBuilder.build());
+    [javac]                                           ^
+    [javac]   symbol:   method build()
+    [javac]   location: variable nBuilder of type Builder
+    [javac] 3 errors
+==== stdout end ====
+==== stderr begin ====
+BUILD FAILED`
+
+Also the latin1 encoding was used to avoid unmappable character warnings and had to do 
+`+sed -i 's/osinfo/osInfo/g' jni/include/core/os.h && \
++sed -i 's/ConnectionInfo.pb.h/connectionInfo.pb.h/g' \`
+"
+eolwral/OSMonitor,closed,Incorrect IPv6 addresses are shown on MISC>Network>Interfaces,"[Label(name=""bug"")]","IPv6 addresses are shown correctly on CONNECTION page, but not on MISC page.
+The loopback, which I believe it should be `::1/128`, is shown as `::1.0.0.0/128`.
+My wlan0, say it's `123:4567:890A:BCDE:FGHI:JKLM:NOPQ:RSTU/64`, is shown as `6745:2301:DEBC:A89:LMJK:HIFG:TURS:PQNO/64`.
+"
+eolwral/OSMonitor,closed,quadcore: os monitor only displays three cores,"[Label(name=""bug"")]","I have an Galaxy S 3 LTE with a quadcore cpu. In ""MISC"" I only see three cores (core 0, 1 and 2; two of them ""online"", one ""offline"") instead of four.
+"
+eolwral/OSMonitor,closed,>100% CPU Usage reported on Nexus S,"[Label(name=""bug"")]","After the recent update that overhauled the UI (I think two updates ago), I sometimes observe the total ""CPU Usage"" (reported in the Process tab) exceed 100%. Is this expected? I didn't observe this behavior previously. I'm using a 3G Nexus S with Android 4.1.2.
+
+By the way, thanks for this app -- it's terrific in general.
+"

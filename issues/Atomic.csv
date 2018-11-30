@@ -1,0 +1,743 @@
+repository,state,title,label,body
+indrora/Atomic,open,"Feature Request: Additional keys (arrow keys, tab, esc, etc.) similar to JuiceSSH",[],"Hi,
+
+it would be swell to have some additional keys that are in particular useful in IRC:
+
+- Tab (for auto-completion capability)
+- Arrow keys (for resending similar messages with f.e. changed nickname or the like)
+- ...
+
+This could be implemented in a similar way as JuiceSSH does it:
+
+![juicessh](https://user-images.githubusercontent.com/672020/38782639-ea92f5de-40f6-11e8-9e90-7b1237cd02ea.png)
+
+BR"
+indrora/Atomic,open,Log feature,[],"Will be nice if in future you add log feature, I know that can be dangerous in some situations but will be usefull"
+indrora/Atomic,open,Feature Request: Set reconnect delay,[],"I use a server, that blocks users trying to reconnect as fast as possible. So, on network transition, Atomic cannot reconnect, because it tries to reconnect as fast as it can. I that case, I need to disconnect manually and then connect again after a few seconds.
+
+Would be great, it this delay could be set in the configuration."
+indrora/Atomic,closed,Add license scan report and status,[],"Your FOSSA integration was successful! Attached in this PR is a badge and license report to track scan status in your README.
+
+Below are docs for integrating FOSSA license checks into your CI:
+
+- [CircleCI](http://fossa.io/docs/integrating-tools/circleci/)
+- [TravisCI](http://fossa.io/docs/integrating-tools/travisci/)
+- [Jenkins](https://github.com/fossas/fossa-jenkins-plugin)
+- [Other](https://github.com/fossas/license-cli)"
+indrora/Atomic,open,Atomic allows weak cyphersuites,[],"~~This shit~~Atomic allows weak ciphersuites, for example TLS_RSA_WITH_RC4_128_MD5 . It is completely insecure and means that all the passwords to IRC networks passed this way are compromised. Thank you very much."
+indrora/Atomic,open,Atomic hangs with weechat IRC relay,[],"Hi,
+
+running weechat-1.9 on Fedora 25 and Atomic 2.1 on Android, yesterday
+I was trying to use weechat's IRC relay with atomic:
+
+```
+/relay add ipv4.irc.Freenode 9001
+/set relay.network.password ""pwd""
+```
+Then I configured Atomic to connect to the weechat relay. Connect succeeds,
+but then it just hangs:
+
+```
+[12:05]  Connected to wee.free
+[12:05]  Now logging in...
+```
+I activated relay raw output, and it turns out that weechat gets a request from
+Atomic which it never replies to:
+
+```
+23.07 12:05 --> [1] irc.Freenode PASS pwd
+23.07 12:05 --> [1] irc.Freenode CAP LS
+23.07 12:05 NICK corinna
+23.07 12:05 USER corinna 8 * :Corinna Vinschen
+23.07 12:05 <-- [1] irc.Freenode :weechat.relay.irc CAP nick LS :server-time
+23.07 12:05 --> [1] irc.Freenode CAP REQ :
+```
+From the weechat source it seems that ""CAP REQ :"" will result in a call to
+relay_irc_search_server_capability() with an empty string. This in turn
+will skip the CAP ACK reply code.
+
+Question is, why does Atomic send ""CAP REQ :"" at all?  Shouldn't it
+send ""CAP REQ :server-time"" since that's what it got back from the
+""CAP LS"" call?
+
+If I'm correct here, is there a chance for a quick fix?  I really like
+Atomic and it's pretty unfortunate that it doesn't work with weechat.
+
+
+Thanks,
+Corinna"
+indrora/Atomic,closed,Updated ru (Russian) translation,[],Commit made via Stringlate
+indrora/Atomic,open,export/import server list,[],"I have both my phone and tablet, and I'd like to be able to just make the list on one, and not have to go through each of my 5+ networks I'm on and put each thing into the app one at a time."
+indrora/Atomic,open,A few minor issues with the Japanese translation,[],"## Synopsis
+
+In the Japanese translation, the word ""part"" was translated in the sense of ""car part"" not as in ""to part with..."" and the word ""leave"" as in ""leave (something) on the table"" not as in ""leave a room"". 
+
+To get straight to the point, here is a diff of some changes I might propose:
+
+```
+--- a/application/src/main/res/values-ja/strings.xml	2017-02-18 11:09:39.652997652 +0900
++++ b/application/src/main/res/values-ja/strings.xml	2017-02-18 11:28:46.088957393 +0900
+@@ -106,7 +106,7 @@
+     <string name=""command_desc_nick"">ニックネームを変更</string>
+     <string name=""command_desc_notice"">他のユーザーに通知を送信します</string>
+     <string name=""command_desc_op"">ユーザー操作ステータスを設定します</string>
+-    <string name=""command_desc_part"">現在のチャネルを残します</string>
++    <string name=""command_desc_part"">現在のチャネルから退出します</string>
+     <string name=""command_desc_query"">ユーザーとプライベート チャットを開きます</string>
+     <string name=""command_desc_quit"">サーバーから切断します</string>
+     <string name=""command_desc_raw"">行をそのままサーバーに送信します</string>
+@@ -131,7 +131,7 @@
+     <string name=""message_rename"">%1$s は現在 %2$s として知られています</string>
+     <string name=""message_self_rename"">現在あなたは %1$s として知られています</string>
+     <string name=""message_op"">%1$s 操作 %2$s</string>
+-    <string name=""message_part"">%1$s 一部</string>
++    <string name=""message_part"">%1$s 退出</string>
+     <string name=""message_quit"">%1$s 終了します (%2$s)</string>
+     <string name=""message_topic"">トピック: %1$s</string>
+     <string name=""message_topic_set"">%1$s がトピックを設定: %2$s</string>
+@@ -209,8 +209,8 @@
+     <string name=""settings_fontsize_dialog_title"">フォントサイズ</string>
+     <string name=""settings_voice_recognition_title"">音声認識</string>
+     <string name=""settings_voice_recognition_desc"">音声認識のボタンを表示</string>
+-    <string name=""settings_joinpartquit_title"">参加、一部および終了を表示</string>
+-    <string name=""settings_joinpartquit_desc"">チャネルに、参加、一部および終了メッセージを表示します</string>
++    <string name=""settings_joinpartquit_title"">参加、退出および終了メッセージの表示</string>
++    <string name=""settings_joinpartquit_desc"">チャネルの、参加、退出および終了メッセージを表示します</string>
+     <string name=""settings_noticeserverwindow_title"">通知サーバー ウィンドウ</string>
+     <string name=""settings_noticeserverwindow_desc"">サーバー ウィンドウに通知を表示します</string>
+     <string name=""settings_mirc_colors_title"">メッセージの色を表示</string>
+```"
+indrora/Atomic,closed,Where is the chat log?,[],"I've searched and searched my phone but can't find the directory where the chat log is stored. Can you point me to it please? Thanks
+:large_orange_diamond: "
+indrora/Atomic,open,Feature Request: Add option to change font for text,[],
+indrora/Atomic,open,One has to enter SASL password twice,[],"I wanted to set up SASL authentication on freenode on my Android device. I typed the password $passwd into the password field. Then SASL authentication fails
+
+Then I removed the password from here, clicked the authentication button, entered the SASL credentials. Authentication fails.
+
+Typed the password back on the main page - authentication succeeds. 
+
+Why do I have to type the password twice? It reminds me of the WiFi authentication in WinXP.
+"
+indrora/Atomic,closed,ZNC,[],"Could you please add ZNC support?
+"
+indrora/Atomic,open,Hostname is not checked against SSL certificate,[],"SSL certificates are checked to be valid, but no attempt is made to match the hostname against the hostname(s) the SSL certificate is valid for.
+
+I implemented a quick fix for this: https://github.com/xnrand/Atomic/commit/e2ed609735d3b628bdf4c15eea7e63b1d30174b
+It's not polished enough for a pull request, and I haven't tested it against anything other than Marshmallow, but I hope it helps :smile: 
+"
+indrora/Atomic,open,Server username (ident) doesn't accept dots (.),[],"I am getting invalid ident when using dot in my username.
+This should be allowed as I am connecting to ZNC with that username on desktop clients.
+"
+indrora/Atomic,closed,Use new F-Droid badge,[],"See https://f-droid.org/posts/get-it-on-f-droid-badges/.
+"
+indrora/Atomic,closed,Feature request: Background updating,[],"Perhaps I'm overlooking it, background updating would be nice: the channel doesn't seem to update unless the xhannel is on the screen.
+"
+indrora/Atomic,open,Custom colors,[],"The title explains it all. 
+I would love a way to choose my own colors for the text, messages, maybe even the pool of random nickname colors. Preferably with color picker or all the material design colors (not just a tiny amount of selected colors).
+And maybe a preview should also be added to the theme selection view.
+"
+indrora/Atomic,closed,Server password,[],"I would like to know if is there a way to auth using server password in the network settings, since I only can identify through Nickserv or SASL, I'm using a ZNC bouncer what requieres an auth like /quote PASS <user>:<pass>
+
+If I put that command between init commands doesn't work either. Ty so much :D
+"
+indrora/Atomic,open,Use only colors from Material Design,[],"Please, use only colors from Material Design and don't use dark blue on a black background. Probably some more colors need to be removed/replaces as the contrast with a dark background is not very readable.
+
+See https://www.google.com/design/spec/style/color.html#color-color-palette and http://www.materialui.co/colors
+
+Also check the app icon if it complies with Material Design. Not only in colors but also usage of shadow. See https://design.google.com/icons/ and https://materialdesignicons.com/
+"
+indrora/Atomic,open,Notification stuck in status bar,[],"I have noticed that if you disconnect from a network you have highlight on, you can't remove it from status bar if no said ""no"" to reconnect and then reopened the network window (thanks to Atomic closing the buffers).
+And if you reconnect and then get a buffer with same name open, attempt to see the highlight crashes Atomic.
+Maybe the notifications for a network should be cleared when you disconnect or when buffers get closed?
+"
+indrora/Atomic,closed,Sent messages echoed back when connected through ZNC,[],"Apparently I'm not the first to report this, but @indrora has been unable to reproduce. Hopefully others can chime in with their experiences. With some other data points—versions of Atomic and ZNC in use and whether this behavior occurs with that combination—maybe this can be pinned to a new capability in ZNC that Atomic isn't handling (or handles incorrectly), or a regression in ZNC that needs to be reported and fixed there.
+
+The issue manifests itself as follows:
+- Send a message through Atomic
+- The message appears in the channel view
+- The message appears again in the channel view when ZNC receives it
+
+I'll start: Using Atomic 1.19 from F-Droid with ZNC 1.6.0, I **am seeing** my own messages twice. I **do not** experience this behavior in other clients, either on Android or desktop.
+"
+indrora/Atomic,open,Brackets in nicknames aren't being allowed,[],"In the server settings, Atomic isn't accepting [ or ] as a valid character for a nickname, however, those _are_ valid characters for IRC.
+"
+indrora/Atomic,open,Autostart feature,[],"Hi, I would like to be able to have Atomic start automatically when I switch on my phone. So a setting that allows this would be nice.
+"
+indrora/Atomic,open,Can't join a channel on Rizon with SSL,[],"Running Android 4.2.2, Atomic 2.1 (r21)
+"
+indrora/Atomic,closed,Removing a channel from a network's auto-connect won't remove it,[],"If I delete a channel from a network's auto-connect, Atomic will still connect to that channel after connecting to a network.
+
+Running Android 4.2.2, Atomic 2.1 (r21)
+"
+indrora/Atomic,open,App crash when attempting to use nick completion,[],"- If no nicks match the partial word entered, the behaviour does not occur.
+- Behaviour started about an hur ago.
+- I have been running version 2.1 without this or any other major issue for weeks
+- Re-installing the app does not solve the problem.
+- I am running a nightly of CyanogenMod 13, and have been for several days. This behaviour only started occuring tonight, for no apparent reason.
+"
+indrora/Atomic,open,TLS not available on Kitkat,[],"See http://stackoverflow.com/questions/24357863/making-sslengine-use-tlsv1-2-on-android-4-4-2 to fix it
+"
+indrora/Atomic,open,WHERE IS THE LOG ,[],"I enabled the log option in misc
+(Because I cant copy paste)
+
+I will change the client, txt if this mistakes are fixed
+"
+indrora/Atomic,open,The settings background should be black,[],"At the moment, the network's list background is black but the settings background is not. Is it possible to make them both black? 
+"
+indrora/Atomic,open,Version 2.1 new read identity permission,[],"When installing v2.1 (from F-Droid) 3 new permissions were added. The two regarding the storage are presumably reasonable however the permission ""read phone status and identity"" surely isn't required.
+"
+indrora/Atomic,closed,Where can you change the quit message?,[],"I can't find it anywhere.
+"
+indrora/Atomic,open,registration timeout,[],"Can't connect to irc.anonops.com, it throws a registration timeout error. But Andchat (playstore -__-) does not, with the same settings.
+"
+indrora/Atomic,open,copy doesn't work,[],"I'm on the latest f-droid version, and copy doesn't copy. The previous contents remain in the clipboard. 
+"
+indrora/Atomic,closed,Avira reports SPR/ANDR.SMSreg.GE.Gen has been detected in Atomic,[],"Avira for Android reports Atomic as a ""potentially unwanted application"":
+indrora.atomic-1.apk
+SPR/ANDR.SMSreg.GE.Gen has been detected
+
+I am not sure if this is just a false positive on Avira, but I better report it here.
+"
+indrora/Atomic,open,"Reconnect loop with ""Reconnect on error""",[],"I have just installed v2.1 from Fdroid. Atomic is shaping up quite nicely, but is not without some bugs.
+
+After enabling _Reconnect on error_, Atomic connects to my ZNC bouncer successfully, but then reconnects after a couple of seconds, reconnects again, etc. Could it be that it is mistakenly flagging something as an error during a successful connect?
+"
+indrora/Atomic,open,Feature request: enable notifications for all messages in a channel,"[Label(name=""Feature Request"")]","I use bitlbee to connect to IM services through irc and would like to enable notifications for all messages sent to certain channels.
+
+I don't have any Android experience but I can see about making a pull request if anyone else is interested.
+"
+indrora/Atomic,open,Colorize conversation list,[],"This makes it easier to see channel statuses if you have more than a few channels.
+"
+indrora/Atomic,open,Read server's ISUPPORT and get prefix there,[],"Also stores the ISUPPORT parameters in an easily accessible HashMap and fixes a slight parsing bug with IRCv3 message tags
+"
+indrora/Atomic,closed,Server username (ident) doesn't accept @.,[],"And that's useful for [ZNC idents](http://wiki.znc.in/FAQ#Why_do_I_get_an_.22Incorrect_Password.22_every_time_I_connect_even_though_my_pass_is_correct.3F).
+"
+indrora/Atomic,open,Allow making the persistant notification hidden,[],"By setting a notification to the lowest priority, it won't appear in your status bar. Please add the ability to do this. Thanks.
+"
+indrora/Atomic,closed,Feature Request: Add a checkbox to ignore SSL verification,[],
+indrora/Atomic,open,"Inside a channel, if I select text and then receive some lines with text, the copy and the select all buttons will disappear",[],
+indrora/Atomic,closed,Fix typo for Tomorrow theme,[],"It's called Tomorrow, not Tomrorrow. :)
+"
+indrora/Atomic,open,keep awake,[],"great irc client, thank you!
+would it be possible to add a switch to keep a device from falling asleep while the app is open?
+thanks!
+"
+indrora/Atomic,closed,Channel user quick navigation ,[],"If you have multiple channels, it's hard to quickly navigate. Could you add first and last arrows in the begginig and end of the channel bar?
+"
+indrora/Atomic,open,Limited channel list,[],"The auto join channel list is too small. Any chance it could be made bigger?
+
+BTW, is it possible to make the list editable like a txt? I can only add one channel each time I press add. It's not possible to paste my list.
+"
+indrora/Atomic,open,Contact list,[],"Is it possible to save contacts somehow?
+"
+indrora/Atomic,open,"please add changelog to f-droid, thanks","[Label(name=""in progress""), Label(name=""not a bug"")]","No further text
+"
+indrora/Atomic,closed,Solves Issue #76,[],"If issue #76 is describing desired functionality, this simple change should fix the problem.
+"
+indrora/Atomic,open,Questions about Atomic vs yaaic,[],"Wasn't sure where else to put this, but I have a couple questions for @indrora regarding Atomic vs yaaic:
+- Are Atomic and yaaic going in different directions, or are there plans to merge them back together eventually?
+- Are new features commonly interchanged between the two?  For example, will my halfop addition end up in yaaic?
+- Currently yaaic is in the play store (though I can't install it because it is set to Android 5.0+ for some reason), do you have an ETA on getting Atomic into the play store?
+"
+indrora/Atomic,closed,Added support for halfop and dehalfop and added # of users in a channel,[],"I saw that issue #87 was requesting halfop support, so I implemented it. I tested the implementation on a Nexus 5 Emulator running 5.0.1 on Mibbit IRC.
+
+Also implemented issue #33, which was very straightforward (Listing the number of users in a channel).
+
+Edit: Note, some of the new translations may be somewhat off.
+"
+indrora/Atomic,closed,"Issues with promoting users, no halfop support.",[],"Been noticing that i cant promote users through the userlist or just by doing /op, im not sure if this has to do woth the use of a bouncer or what, but its worked fine on other clients so im not sure whats going wrong. Also i noticed a severe lack of support for halfop, whenever someone is halfopped the message doesnt appear for me untill i reconnect to mu bouncer, and the same goes for them showing as halfopped in the user list, theres also not an option to promote someone to halfop. Just another couple bugs ive noticed, but otherwise this is still my favorite client.
+"
+indrora/Atomic,closed,[Feature Request] Allow Export/Import of config files,[],"This would be great for people:
+1. On multiple devices
+2. Who would like to edit manually
+
+The latter applies to ZNC users who connect to lots of networks. The 'password' is elaborate (username/network:zncpass) and hard to edit by simply duplicating settings and changing it. However, with a text editor this task would be a breeze since the field only has one variable for every network - it's just awkward to deal with on the phone.
+
+Perhaps an initial step would be to enable a 'show password' field? This would solve the latter problem but probably isn't as universally handy as an import/export feature.
+"
+indrora/Atomic,closed,virusscanner alarms,[],"Hey,
+my virusscanner is doing a alarm for Atomic. Android CM11 Antivir
+
+Regards
+"
+indrora/Atomic,open,[Feature request]Proxy support,[],"I was just wondering if it would be possible to get proxy support some time in the future to connect through tor and stuff. Thought i'd add another request instead of cluttering with a new issue, could we get highlight notifications? I know in the atomic notification it tells you if youve been mentioned, but it never actually pops up as a toast or anything so I usually miss things when people mention me, so could there be like a second notifcation(optional of course) that comes up when you get mentioned?
+"
+indrora/Atomic,open,Lines from self detected as PRIVMSG,[],"With Atomic 1.19(r19) used to connect to the bip IRC proxy.
+
+Context: the use of the bip IRC proxy implies that several IRC clients are simultaneously connected to the proxy - from the IRC server's point of view a single connection is seen. A line entered in a channel on one of the clients is seen on the others - likewise that channel's whole traffic.
+
+Steps to reproduce:
+- Connect Atomic to the proxy
+- Connect another IRC client to the proxy
+- Check that both IRC clients correctly see the chosen channel's traffic
+- On the second IRC client, enter a line
+- Atomic displays that line as a PRIVMSG, which is rather annoying
+
+Desired behavior: a lines from self in a channel should be detected as normal channel traffic, not as PRIVMSG.
+"
+indrora/Atomic,closed,[Feature Request] Support logging into ZNC ,[],"I would like to suggest a feature: normal logging in to ZNC, because now I have to place my ZNC username in password field. I know, that some clients support this. 
+"
+indrora/Atomic,open,(Feature Request) Logging to disk,[],"As #36, but with clarification: logging to disk for future review (with a text viewer/editor, etc).  Not sure if I should remark on the closed issue or open a new one.
+"
+indrora/Atomic,closed,"""No such user"" message appears in wrong tab","[Label(name=""Interface detail"")]","When querying an user who is offline, the server reponds with ""no such user"". That message ends up in the server tab. It should go into the query tab instead.
+"
+indrora/Atomic,open,No notifications come up.,[],"Android version: 4.4.4(Cyanogenmod 11)
+
+Atomic Version: 1.19(r19)
+
+When other guys mention me, I don't get notification in top left conrner. 
+"
+indrora/Atomic,open,Stacked user modes break queries,[],"I have an issue, where if i select a user from the user list of a channel who has two usermodes, ~@user for exapmle, it drops the first mark but leaves the @ resulting in a query to @user which is, of course, invalid.
+Edit: Updated to 1.19, seems to just not drop any symbol now, user with one usermlde symbol work fine however, and doing /msg works fine as well, only the query option from the menu you get after selecting a user from the user list results in this.
+"
+indrora/Atomic,open,otr support?,[],"are there any plans to support OTR (or FiSH, or Axolotl...)? i haven't found an android irc client that does :)
+"
+indrora/Atomic,closed,Unable to send message beginning with /,[],"Atomic treats input beginning with ""//"" (slash followed by slash) as a command instead of a message, making it impossible to send messages beginning with a slash. Additionally, "" /"" (space followed by slash) and is also treated as an attempt to send a command.
+
+Both should be treated as messages, as other clients do.
+"
+indrora/Atomic,open,Support ZNC playback module,[],"This seems like a cool feature - I'll just copy this from the issue tracker of another IRC client:
+
+The advanced playback module [1] makes it possible for IRC clients to avoid undesired repetitive buffer playback. IRC clients may request the module to send a partial buffer playback starting from a certain point of time.
+
+Furthermore, the latest ZNC master [2] has support for persistent query buffers [3]. A client may choose to keep query buffers until they get explicitly closed in the GUI. This can be also easiest done via the same playback module to avoid undesired responses from ZNC [4].
+
+The way it's supposed to work:
+
+```
+restart the client
+    full buffer playback (/msg *playback play *)
+    queries stay open
+disconnect & reconnect
+    buffer playback of channel & private messages received meanwhile (/msg *playback play )
+close a query
+    the appropriate query buffer gets cleared (/msg *playback clear )
+```
+
+[1] http://wiki.znc.in/Playback
+[2] znc/znc#598
+[3] http://wiki.znc.in/Query_buffers
+[4] znc/znc#620
+
+Cheers!
+"
+indrora/Atomic,open,Support ZNC buffextras,[],"Buffextras is a ZNC module that adds additional events to the playback, such as joins/parts/nick changes/kicks/mode changes, etc. These events appear to come from the user *buffextras.
+
+Those currently don't look very nice in Atomic. They could be modified to look ""native"" instead.
+
+A reference implemention for handling them can be found in Hexchat's plugin: https://github.com/knitori/tools/blob/master/hexchat/buffextras.py
+"
+indrora/Atomic,open,Keyboard is inconsistent and could use improvements,[],"Hey,
+
+I hope you don't mind all these issues being opened by me, I'm just interested in making this great client even better. :)
+
+The way the keyboard is handled seems a bit unpolished. Here are a few things I've noticed:
+
+a) It seems to pop up automatically under some circumstances, which can be distracting and annoying, especially when you just want to read. Could be made configurable (e.g. ""Hide keyboard when regaining focus"")
+
+b) If the keyboard is closed, it usually takes two taps on the input box to open it. One selects the box, the other one brings it up. That's confusing. The first tap seems to just focus the input box, but why doesn't it bring up the keyboard?
+
+c). My keyboard has left/right arrow keys that I use to navigate text in the input box. It sometimes happens that when cursor went all the way to the left and I press left again, the focus jumps out of the input box and the arrow keys start switching the channel view instead. Strangely enough, I cannot reproduce this again until I restart the app.
+"
+indrora/Atomic,open,Small menu labels usability improvement,[],"Hi again,
+
+just a tiny usability suggestion this time.
+
+The menu offers three options, Join Channel, Close and Disconnect. It's not entirely clear what ""close"" does. I hit it a couple of times expecting  the program to close, when in fact it leaves the current channel.
+
+Imho a better label for this would be ""Leave Channel"", similar to ""Join Channel"" above it. For queries, it could be labelled ""Close Query"" instead.
+
+Atomic still rocks! :)
+"
+indrora/Atomic,open,Atomic gets stuck in a disconnected state,[],"Hello,
+
+several times now I've noticed that switching the device's connectivity (Wifi access points, mobile data to Wifi or back) makes Atomic go crazy for a bit. I can't remember the exact error (will post it here when it happens again), but it came from the SSL backend.
+
+Anyway, when it fails to connect, Atomic seems to be stuck and makes no further attempts to reconnect anymore. The ""Reconnect"" setting is enabled and the interval set to 1 minute. I've waited more than 15 minutes and it did nothing without my intervention. Additionally, when the channel view/server window of this network is opened, the menu shows a (non-functional) 'disconnect' entry, despite it not being connected to begin with. Turning that into a 'connect' entry would make more sense imo.
+"
+indrora/Atomic,open,Feature request,"[Label(name=""Feature Request""), Label(name=""not a bug"")]","Not sure if this is an appropriate place to post this but is there any possibility of adding CertFP authentication?
+"
+indrora/Atomic,closed,Let user to disable/remove Atomic icon from status menu(Android top),[],"Atomic icon is always there.
+I want to keep status bar clean. Please add an option to disable Atomic icon completely.
+
+I want to be notified ONLY if
+1. someone chat directly to me. (PRIVMSG)
+2. Atomic is not opened in front. (e.g. I'm using other application)
+"
+indrora/Atomic,open,"chat some ""Users"" with no rooms",[],"When I tap ""Users"" icon on top screen, nothing happend.
+Why should I join to ""##room""?
+
+Thunderbird and Pidgin can
+1. chat to any users without joining room(s).
+2. Add any username to its buddy list.
+
+Please let me
+1. Connect to IRC server without joining nothing
+2. Tap Users
+3. Tap IKnowThisUser (or Add IKnowThisUser manually)
+4. Chat with IKnowThisUser, 1:1 chat.
+"
+indrora/Atomic,open,Clicking links can be improved,[],"Hey. This is just a tiny usability improvement. I've often found that I tap a link and nothing happens. Probably because I didn't quite hit it (although I'm sure I was pretty accurate).
+
+Could the tappable around links be increased? Firefox for instance still allows links to be tapped with some degree of fuzziness.
+
+Furthermore, a successfully clicked link should be marked in a different color for a second or so. The reason is to show the user that the tap was successful. That's especially important on slower devices, as it tells the user whether their browser is now loading or if they need to tap again.
+
+Thanks! Great client btw!
+"
+indrora/Atomic,open,Nick command doesn't work over SSL,[],"When connecting over SSL it seems /nick has no effect. However ""/raw nick"" works.
+The network I'm using is PonyChat (irc.ponychat.net:6600).
+Also when disabling SSL (and using port 6667) the command works.
+
+Awesome client, by the way.
+"
+indrora/Atomic,closed,Mark away people in the userlist,[],"Hey,
+
+another feature that I'm missing in the userlist. Away users could be grayed out to show that they are.
+
+Atomic is great! :)
+
+Cheers
+"
+indrora/Atomic,open,Add /whois option to userlist,"[Label(name=""Interface detail"")]","Hey,
+
+would be cool if the userlist menu also had an option to get a /whois from an user. Currently, it needs to be typed in manually.
+
+Cheers!
+"
+indrora/Atomic,open,Operator icons in channel messages and input box,"[Label(name=""Feature Request""), Label(name=""bug""), Label(name=""in progress"")]","Having op indicators next to channel messages would be a nice addition. Right now, the only way to see channel operators is to open the user list.
+
+Also in cases where the Atomic user has ops, prepending the input box with the character that corresponds user mode would be cool (having a ""+"" before the input box in channels where the user has voice).
+"
+indrora/Atomic,open,Automatically close keyboard after sending message,[],"This is a feature that I enjoyed from another client that I tried out - an option to toggle automatically closing the keyboard after sending a message. When I'm on mobile, I do a lot more reading than typing, so it would be a nice little convenience to have the keyboard automatically out of the way after I send a message.
+
+It would also be nice if the keyboard didn't automatically open upon connecting to a server, since the first thing I always do is close the keyboard so that I have more room to read bouncer playback.
+"
+indrora/Atomic,closed,Onconnect nickserv authentication fails,[],"Whenever Atomic connects to the tawx network it sends the identify command, nickserv responds with the message ""You have not registered"" and finally nickserv changes my nick because I'm using a registered nick but haven't issued an identify command.
+
+Here's a screenshot of the server screen with the unexpected behaviour:
+![Screenshot](http://i.imgur.com/ynZk8Jc.png)
+
+One way to get around this would be investigate on why it fails and implement correct behaviour (maybe it's sending the command before it should?), another would be recognizing that the login has actually failed and retry at a later time.
+
+I'm using version 1.18 from f-droid. 
+"
+indrora/Atomic,open,Bouncer playback triggers notifications,[],"When playback is loaded after connecting to my bouncer, all old highlights trigger my notification events. It also seems to trigger a new event for every single highlight, and since I have a decent sized playback with a number of old highlights, my phone goes wild for a while shortly after connecting to my bouncer.
+"
+indrora/Atomic,closed,Tabs do not scroll to bottom when loading bouncer playback,[],"When I connect to my ZNC bouncer, most of the tabs scroll down only about 5% of the way from the top and then stop. It seems like when a channel is loaded, it begins the process of scrolling down to the newest message, but when another channel is loaded shortly thereafter and focus is changed to said channel, the previous channel stops being automatically scrolled down.
+"
+indrora/Atomic,closed,CAP negotiation refactor,[],"This fixes SASL problem on freenode.net (on 1.18 and HEAD it was impossible to login from TOR, where SASL is a must). Hopefully it wouldn't break other servers, at least rizon.net is still working for me.
+"
+indrora/Atomic,closed,Highlights don't trigger a standard notification,"[Label(name=""Interface detail"")]","While the response to highlight is almost fully configurable (sound, vibration and LED independently, plus the highlighting message in the notification bar), and thus can imitate a notification's behavior, it is not an actual notification in the standard Android sense.
+This has as a consequence that other programs meant to catch notifications for various purpose (waking up the phone aka ""Active Display""; reading notifications alout with TTS; remotely execute actions; etc) cannot hook into Atomic's highlights.
+More over, the ""non-notification"" with the message's text cannot be swiped away (because it's a permanent notification), meaning that to stop the LED from blinking, one has to tap on it and bring up Atomic's foreground activity, which is needlessly disruptive for notifications one wishes to discard.
+
+I suggest that the present mechanism not be removed, as people might still find the ad-hoc configurability convenient (on Android flavors that don't allow configuring notification behavior per-app), but instead that a standard notification be added as an runtime configurable alternative.
+"
+indrora/Atomic,closed,waffle.io Badge,[],"Merge this to receive a badge indicating the number of issues in the ready column on your waffle.io board at https://waffle.io/indrora/Atomic
+
+This was requested by a real person (user indrora) on waffle.io, we're not trying to spam you.
+"
+indrora/Atomic,closed,Starting from 1.16 it is not possible to connect to rizon.net,[],"With the same settings i can connect to irc.rizon.net just fine on 1.15.
+Later versions ain't able to connect.
+Each time registration timeout is happening after atomic has connected to rizon.
+I haven't tried any other servers as i have no need for them...
+
+host: irc.rizon.net
+port: 6667
+
+Were there any changes related to connection/registration procedure in atomic?
+
+more detailed:
+Clear or upgraded install of 1.18:
+Log:
+Found your hostname (cached)
+Checking Ident
+No Ident response
+
+Then:
+ERROR :Closing link: -my host name-
+ (Registration time out)
+
+P.s. atomic is very good client
+"
+indrora/Atomic,closed,Can't select the text box when connecting.,[],"When I launch a server in atomic, the keyboard automatically opens but I can't type anything nor select the box.
+The ""hotfix"" is pretty simple, I simply switch to another app or the launcher and when I switch back to Atomic, I can use the keyboard and/or select the textbox.
+
+Atomic 1.18
+Android 4.4
+"
+indrora/Atomic,closed,Keep the keyboard open when changing display orientation,[],"When the keyboard is open and I change the orientation from portrait to landscape, the keyboard dismisses and I need to reopen it. This seems not like being the standard behaviour on Android (and it is quite impractical).
+
+The other way round (landscape to portrait) it works fine.
+"
+indrora/Atomic,open,"Reconnection feature is un-intuitive, sometimes clears the backlog","[Label(name=""in progress"")]","About the automatic reconnect feature, I cannot get the full grasp how this works. Mostly when I am sitting in the train and the connection gets lost, I just continue typing and after some time Atomic reconnects. But when I put the phone on standby (with Atomic in foreground) after connection lost and open it up a few minutes later, in most cases Atomic asks me with a popup if I want to reconnect this server. Event if it already _had_ reconnected in the background. What should I press? Yes? No? Either option does nothing, but I don’t know what to press.
+
+It gets worse if Atomic already reconnected in background and lost connection again. Clicking no does quite nothing and it will not get the conection again. Clicking yes could work … have to try out.
+
+In some cases the backlog will be cleared. I think it’s when I click No on the popup message. I cannot say for sure, most channels aren’t so chatty to test properly. And it happens of course when I have to manually disconnect because Atomic won’t reconnect even with a connection.
+
+Maybe at least the pop-up meaning could be explained, and what option does what (because I have automatic reconnect set, so why the popup?).
+"
+indrora/Atomic,closed,Nickname completion,[],"Nickname completion would be a nice feature to have. This could work either by typing part of the name and using tab to complete, or by touching the user's nickname.
+"
+indrora/Atomic,closed,Atomic and DashNotifier,[],"Atomic notifications do not appear when utilizing DashNotifier. 
+
+Thank you. 
+"
+indrora/Atomic,open,Playback buffers > 20K lines cause issues with Atomic,[],"I have a use case where I prefer ZNC playback to show me ~ 20K lines.  This causes Atomic to give a ANR.
+
+Maybe an LRU would be useful to store and sync the buffer.
+"
+indrora/Atomic,closed,Action messages sent by ZNC on reconnect bear the wrong timestamp,[],"I am using ZNC as a bouncer. On reconnect ZNC sends me the log that I have missed while offline. This includes messages and actions (/me messages).
+
+Atomic displays messages with the correct timestamp provided by ZNC, but actions bear the timestamp when I reconnect. Though the message order is preserved. An example:
+
+```
+19:03:01 User1: I am writing a message.
+22:50:00 User1 is writing a message
+19:04:17 User1: I am writing another message
+```
+
+Where I go online on 22:50:00, but the second action was sent e.g. 19:03:36. The order is correct but not the timestamp.
+"
+indrora/Atomic,closed,Links are clickable but try to call a number,[],"When I get a link I can click on it, but instead of opening the browser, the phone app opens. There is a workaround: select the link with long-press and copy the text. Then clicking on the link opens an intent to a browser, but only once.
+
+I might be wrong, but I think this was no issue until 1.13 or 1.14. Also #21 is related with this.
+"
+indrora/Atomic,closed,No connection to ZNC,[],"When I try to connect I'm getting a password error everytime. With other clients same configuration works.
+Might it be the Atomic uses ""USER@SERVER"" to connect instead to use simple ""SERVER""?
+"
+indrora/Atomic,closed,Server console is parsed with emoticons,"[Label(name=""Interface detail"")]","Emoticons are displayed in the server console pane.
+"
+indrora/Atomic,open,[feature request] nicklist,"[Label(name=""Feature Request"")]","the ability to select whether to have a nicklist docked in the main screen or not.
+would be great if there will be an option to select if always on, or only when in landscape or portrait mode.
+"
+indrora/Atomic,open,"[feature request] an option to ignore server ""pong"" replies","[Label(name=""Feature Request"")]",
+indrora/Atomic,open,[feature request] realtime preview for themes,"[Label(name=""Feature Request"")]","more convenient method to view the theme.
+"
+indrora/Atomic,closed,"""smilies"" being parsed as emoticons",[],"don't know if this is a designed feature, pretty sure it caused by one of the os libraries.
+anyway, it feels wrong for such irc client.
+"
+indrora/Atomic,closed,[feature request] clear function,"[Label(name=""Feature Request""), Label(name=""Interface detail"")]","/clear [target]
+target is optional, if not provided, clear active screen.
+
+/clearall
+"
+indrora/Atomic,closed,textbox is disabled after reconnect,[],"enabled after going back to server list and selecting the server.
+"
+indrora/Atomic,open,[feature request] ctcp implementation,[],
+indrora/Atomic,open,Arbitrary highlight strings,"[Label(name=""Feature Request""), Label(name=""ready"")]","Is there a chance to implement a feature as in xchat, to allow arbitrary strings to be
+highlighted?
+
+As an example, consider a user who's logged in from home using the usual nick ""user"".
+This session keeps running even 24x7.  Now the user, being out and about, logs in via
+Atomic using the nick ""user|atomic"", but she would still like to be notified if somebody pings her default nick ""user"".
+
+In a situation like this it would be very helpful to be able to define ""user"" as another
+string to highlight on.
+
+Thanks,
+Corinna 
+"
+indrora/Atomic,closed,logging feature,"[Label(name=""Feature Request"")]","Hi, thanks for this nice irc client. But could you please add a logging feature like that in xchat? 
+Thanks
+"
+indrora/Atomic,closed,The app crashes after first boot presentation,[],"The app crashes once I go past the first screenshots and opening it again crashes it instantly. I'm using a Samsung tablet (SM-T110)
+"
+indrora/Atomic,closed,fc on open,[],"android 4.4.4 on gt-i9500
+using cyanogenmod 11 nightly
+
+crashes immediately after first rub wizard, then app icon exists in notifications, and re-crashes constantly on open.
+
+logcat: https://db.tt/lKb93es4
+"
+indrora/Atomic,closed,"View ""n people connected""",[],"View number of online people somewhere may be a good improvement :)
+"
+indrora/Atomic,closed,No mIRC colors when using solarized theme,"[Label(name=""Interface detail""), Label(name=""bug"")]","Ansi colors in messages are not displayed when using the solarized theme. Only italic and bold is displayed correctly.
+
+Thx for your work.
+"
+indrora/Atomic,closed,[feature request] Option to keep alive the irc background process,"[Label(name=""Feature Request"")]","It'd be good if this was added to prevent auto closure due to low memory.
+"
+indrora/Atomic,closed,[feature request] Add easier way to change channels,[],"Add an easier way to change channels. In androirc you can tap anywhere in the window to open a channel list (with the list having differently coloured channel names depending on if you were highlighted, someone said something, etc). Even a accessible button one click away would do this.
+
+I will start hacking away at it, but I am busy.
+"
+indrora/Atomic,closed,Atomic is recognized as a Possibly Unwanted Application,"[Label(name=""bug""), Label(name=""not a bug"")]","On my Nexus 10 tablet, with Avast as antivirus, I got a warning today for Atomic being a Possibly Unwanted Application (Pircob-F).
+
+It seems Avast is not the only scanner giving a positive result : https://www.virustotal.com/fr/file/eddf376b1d5133df17629ae90c7577c74a2c9d742a08a65c9f5a0f9376e16418/analysis/
+
+Maybe you could contact the guys from Avast & co. to discover why Atomic is seen as malware ?
+"
+indrora/Atomic,open,[feature] simple bookmarks for channels and/or privates,"[Label(name=""Feature Request"")]","One russian-speak user ask me about it.
+"
+indrora/Atomic,closed,Time like 'HH:43:44' after update,[],"Now time print like 'HH:43:44' after update(after version at 13.06 too), i've seen strings sth like:
+
+```
+variable=(FormatTime(24)?""HH"":""hh"");
+```
+
+in last updates, recheck it please.
+"
+indrora/Atomic,closed,404 on search,[],"![404](https://cloud.githubusercontent.com/assets/3531127/3424432/cced4744-ffcf-11e3-8413-0b0f0d1459c9.jpg)
+
+WTF?
+"
+indrora/Atomic,closed,Can't connect after update[master],[],"I dont know why i cant connect after update, chat.freenode.net:6697 (SSL) auth under SASL.
+"
+indrora/Atomic,closed,drop gingerbread support,[],"V2.0 (which will come shortly after 1.16) will drop support for android 2.3. I want to know if there are any users who need critical bugs patched before then who use gingerbread.
+"
+indrora/Atomic,closed,Crash when using user/network ident method via znc,[],"Hi,
+
+I tried using the `user/network` method as suggested in #17. It works (the correct network is shown), but atomic immediately crashes. This is using version  1.15 which I just upgraded to in F-Droid.
+
+Is there no way to get a stack trace. I feel like my bug reports are not very useful without this info.
+
+Cheers
+"
+indrora/Atomic,closed,Side bar with list of conversations / channels,"[Label(name=""Feature Request"")]","### Description
+
+Currently there are two forms of displaying the current channel. Also there are three ways of switching through the channels.
+Unfortunately you can either switch easily **or** have overview to all channels. The switch is possible with swiping left/right or (if displayed) touching a channel name left/right to the current one. But if you have a lot of channels it is quite annoying switching from one end to the other.
+There is also the conversations view menu, but here you need to touch two times a specific position before the list appears.
+### Suggestion
+
+I would like to have a possibility for easy switch while viewing all channels at once. I’ve seen it in many apps where you can swipe in an additional list from either of the side. Try the app “Temaki” (available via F-Droid), where you can swipe in the defined lists on the left side. I find this rather useful and suggest to add this as an option: swiping between channels as usual or swiping to the channel list.
+
+Additionally it would be helpful to see the coloring for the channel items, e.g. blue when there are new messages. Just like it is now for the channel names in the top bar.
+
+This is just a suggestion, I’d like to hear what you all think about it.
+"
+indrora/Atomic,closed,Do not display short numbers as phone number links,"[Label(name=""Interface detail""), Label(name=""bug"")]","### Description
+
+Short numbers with two or more digits are displayed as links. On touch they open the phone app with the digits predialed. This is even done for the message timestamps.
+
+I am not sure whether I just noticed it or it is a new feature in the pre-1.16 git head, but I think of this “feature” very annoying. It is very useful for links, but not so for very short numbers, hence the timestamps. Maybe you could provide an option to select whether numbers / URLs are linked? It would also help (if possible) to set a minimal number length, because two digits seems quite useless as a phone number.
+"
+indrora/Atomic,open,One window per nick when connecting to icb over icbirc.,"[Label(name=""bug"")]","Warning: this is obscure.
+
+I use icbirc (http://www.benzedrine.cx/icbirc.html) so I can use ICB with an irc bouncer (znc). 
+
+So I have: atomic -> znc -> icbirc -> icbd.
+
+When i jump to an icb network in such a way in atomic, I get weird situation when the history is replayed by znc.  Each nick that spoke in the main group has its own window. So instead of one public group I appear to have lots of private messages.
+
+I note that other clients get it kinda right. E.g. androirc has a single group as expected, but every nick appears twice in the nick list.
+
+I understand if you don't want to fix this :) Of course it may not be your bug to fix. There may well be a bug in icbirc, znc, ...
+"
+indrora/Atomic,open,Alias Support,"[Label(name=""Feature Request""), Label(name=""Interface detail""), Label(name=""not a bug"")]","Would be neat if you could define aliases like in irssi. E.g. you alias ""/n1"" to ""/msg *status jumpnetwork mynet1"".
+
+Cheers
+"
+indrora/Atomic,closed,Ability to duplicate configurations.,"[Label(name=""Feature Request""), Label(name=""Interface detail""), Label(name=""not a bug"")]","Due to a limitation in ZNC I need to connect to my bouncer multiple times with different  commands issued upon connection (/msg *status jumpnetwork <thenetwork>). It is quite laborious to type the configs in multiple times. Could there be an option to duplicate an existing server config?
+
+Cheers!
+"
+indrora/Atomic,closed,Crash when sending a command upon connect,[],"Hi,
+
+Atomic crashes when I add the following command to the autosend upon connect option:
+
+```
+/msg *status jumpnetwork irc-freenode
+```
+
+This is asking my irc bouncer (znc) to change network. I get the standard ""Unfortunately,  Atomic has stopped"" message. When I remove this command, the client connects fine without crashing.
+
+I am not sure if it is the sending of the message that is directly responsible. The bouncer is doing magic when I issue the command, and it could be this magic that disagrees with atomic:
+- Removing the channels for the current bouncer network. The client is expected to close the channel windows.
+-  Opening a load of new channels. The client is expected to open windows for these channels.
+- Replaying scrollback. I have my bouncer set to replay 50 lines per channel and I have about 10 channels open.
+
+FWIW, the command ""/msg *status help"" works as expected, so that rules out the star in the command from being a source of issues.
+
+Shame I can't get any useful backtrace (I am not an android developer).
+"
+indrora/Atomic,closed,Implemented the sorting of servers and conversations,[],"These two patches implement sorting of servers and their conversations, which should provide a cleaner look and feel. 
+"
+indrora/Atomic,closed,Writing not possible when server gets disconnected,"[Label(name=""Interface detail""), Label(name=""not a bug"")]","Often it happens I am writing a message in a channel but then the connection gets closed temporarily. Now during I wait for a reconnect (I am traveling by train) I would like to at least finish my message, but the keyboard is disabled until reconnection.
+
+This seems impractical. It is right, I cannot _send_ a message when disconnected, but since the channel has already been opened (and is listed!) I should be able to prewrite my message, only block the send button.
+"
+indrora/Atomic,closed,Push notification not forwarding to channel with highlight,"[Label(name=""Interface detail"")]","When a highlight occurs in one channel, the message appears as push notification. When I click on the notification I am only directed to the Atomic app, but it opens with the last active channel, not with the channel where the highlight occured. So I need to manually search through my channels.
+
+I think it should not be a problem switching the channel accordingly?
+
+Also when the app is already in foreground it would be great not getting a push notification on highlight but a pop-up dialog (configurable!) where I can switch to the channel with one touch.
+"
+indrora/Atomic,closed,Set shorter reconnect intervals,"[Label(name=""Feature Request""), Label(name=""bug"")]","The possible interface for trying to automatically reconnect are 1, 5, 10, 15, 20 and 30 minutes. This seems a little bit useless, because for flaky connections (I am driving train) there is often no connection but 20 seconds later it is. In such a situation it’s not practicable waiting a full minute or – if the connection returns e.g. after 61 seconds – wait another minute without the chance to manually reconnect.
+
+Oh yes, I could close the connection, then manually reconnect. But then the history is gone. :(
+
+I would like to see setting the interval myself, maybe in 10-second-steps? Or provide less huge distances, e.g. 15, 30, 60, 120 seconds.
+"
+indrora/Atomic,closed,Input does not show cursor in Solarized theme,"[Label(name=""Interface detail"")]","The cursor is not displayed in input line, not in portrait nor landscape mode. You can move the cursor marker as usual but the vertical line indicating the current position is not displayed.
+### Steps to reproduce
+- Use Solarized theme. The bug does not occur with Monokai.
+- Keyboard app either AOSP Keyboard or Smart Keyboard Pro
+- Using Android 4.4.2? On Android 4.2 (Samsung) there was no problem. That occured with my switch to 4.4.2 (Cyanogenmod).
+### Preconditions
+- Android 4.4.2 (Cyanogenmod)
+- Atomic 1.14 or 1.15
+"
+indrora/Atomic,closed,IRCConnection: sort users by their mode and their nickname,[],"Currently, users are only naturally sorted which leaves their prefixes
+in the mix. While this gets the ordering of users correct, it also
+neglects the priority of their prefixes. For a cleaner looking sort,
+users should first be sorted by their prefix, and then by their
+nicknames.
+"
+indrora/Atomic,closed,Autocomplete nicks by button in interface.,"[Label(name=""Interface detail"")]","Or by touch to message, just really every time use user list for reply by nick is....crazy.
+"
+indrora/Atomic,closed,Localization request,"[Label(name=""Interface detail""), Label(name=""bug"")]","Please, added i18n support in application.I be happy help you, if you tell me how to.
+"
+indrora/Atomic,closed,Linebreaks are not handled correctly,[],"When pasting text from another app which includes linebreaks Atomic sends everything after the first line break raw to the irc server.
+"
+indrora/Atomic,closed,Fix IndexOutOfBoundsException in the Message model,[],"When connecting to my bouncer, Atomic sometimes crashes with an `IndexOutOfBoundsException` on `setSpan` (most notably when there are highlights involved).
+"
+indrora/Atomic,closed,Keyboard not working in landscape mode,"[Label(name=""API version dependent""), Label(name=""Interface detail""), Label(name=""bug"")]","Keyboard does not appear in landscape, changed atomic's keyboard setting but nothing changes.
+Running on Wiko Cink Peax 2 with Android 4.1.2.
+"
+indrora/Atomic,closed,Settings and IRC channel ,"[Label(name=""Interface detail""), Label(name=""not a bug"")]","Need to be changed. It looks really 2.3. 
+
+What's the IRC channel that you're usually on  
+"
+indrora/Atomic,closed,Client will only connect to the same server once. (with bip proxy),"[Label(name=""bug"")]","I'm attempting to use this client to connect to the same server several times. It's BIP proxy that I've used for years and with many other clients. 
+
+It will only connect to the **first server** in the list that is the same as the others. (I tested and attempted to connect to a subsequent server after a reboot, but it failed as expected.) Connecting to the first server works normally. 
+
+I am using:
+- Android 2.3.6
+- Version 1.14 - Added on 2014-04-17 from the F-Droid.org store.
+- Bip uses passwords in the form: username:password:server-name (if that matters)
+
+I turned on debugging and attempted to glean something though logcat, but nothing of relevance appeared. 
+
+I will be happy to test any pre-release versions but I currently don't have a build system setup to test the current trunk.
+
+I'd like to take this opportunity to thank you for taking the time to fork yaaic and 'scratch your itch,' as it fulfilled the same expectations I've had for a mobile IRC client (current bug notwithstanding). I'd also like to thank you for supplying APK files on F-Droid and on github, making it easier for users like myself who don't use google services on their android devices.
+"
+indrora/Atomic,closed,ANR for no reason,"[Label(name=""bug"")]","There's an ANR debugging.
+
+Problem appears to be in `indrora.atomic.model.Message.getSenderColor():int`. Causes app slowdown or ANR, then loses messages. ANR on low-end devices primarily.
+
+Hopefully fixed in upcoming commits.
+"
+indrora/Atomic,closed,Replay not recieved when connecting to a Bouncer ,"[Label(name=""Hardware dependent"")]","Carrying over pocmo/Yaaic#145
+
+When connecting to a bouncer the connected Channels are not opened and the backlog is not received.
+
+For me this happens when connecting to Rizon's ZNC
+"
+indrora/Atomic,closed,Nicknames do not preserve their uppercase letters in queries,[],"### Description and steps to reproduce
+
+When I start a private chat (query) with a user whose nickname uses uppercase letters, the query will have the name lowercased. E.g. a query to _NickServ_ will have _nickserv_ as title.
+### Impacts
+
+This is at first only annoying because I recognize my contacts also in exact writing, and even if IRC does not distinguish between lower und upper case, it is not what I expect.
+
+The second effect is worse: I use ZNC as bouncer which keeps logs from conversations on the server. When I start e.g. a query with NickServ, ZNC creates a file NickServ_[date].log where all messages from NickServ are logged. But since Atomic starts indeed a conversation with _nickserv_, ZNC also creates a file nickserv_[date].log where just my messages are logged. So the conversation is split into two files, where normally it’s just the one file `NickServ_[date].log`.
+### Comments on the bug
+
+It looks to me as if Atomic forcefully lowercases the nickname for queries (because it is written correctly in the user’s list), which is unnecessary and leads to other bugs as described above.
+"

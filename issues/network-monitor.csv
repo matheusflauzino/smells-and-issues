@@ -1,0 +1,706 @@
+repository,state,title,label,body
+caarmen/network-monitor,open,view log file ui enhancement,[],"Hello,
+
+I would like to propose a change that will greatly enhance the usability of viewing the log. After all the gist of this app is reviewing the log file periodically.
+
+Currently the view is that of a spreadsheet with way too many columns which makes difficult the viewing and also makes it difficult to be certain which is the right line that is being viewed (despite the alternate line coloring).
+
+I suggest two enhancement variations
+
+1. the ""fields to monitor"" selection screen select the fields that will be displayed in the spreadsheet (same functionality as of now), but it will be possible to click on a row and get to a new ""detail"" screen that lists all fields (vertically preferably)
+in this variation all fields are really monitored always but we select which to view quickly in the spreadsheet so we pick the row of interest and if we like we can peek deeper to see all fields
+
+2. this is same as 1. except the following difference
+the ""fields to monitor"" selection screen will now contain two check marks for each field, the 1st check mark selects the field to be displayed in the spreadsheet and the 2nd selects if it will be monitored and displayed in the ""detail"" screen
+
+I think option 1. is much easier to implement"
+caarmen/network-monitor,open,Missing download monitor file,[],"Description:
+------------
+The speed download test specifies 
+https://github.com/caarmen/network-monitor/archive/netmon-1.12.2.zip
+as the target.
+The archive directory seems not to exist, so the test cannot work.
+
+Steps to reproduce:
+-------------------
+Select Advanced Options => Speed Test => Download Test to see the URL.
+Browse to https://github.com/caarmen/network-monitor/ and see that the URL target does not exist.  
+
+Stacktrace (if reporting a crash):
+----------------------------------
+not applicable
+
+Environment:
+------------
+* Android version: 7.0
+* Device model:  Samsung Galaxy J5
+* App version: v1.30.1
+* App downloaded from (play store, f-droid, github, other):Play Store
+"
+caarmen/network-monitor,open,Falls Cell Signal Strength (0-4) & (dBm),[],"Description:
+-------------------
+I was monitoring the network signal of the area and noticed from the log file that when ASU level was 11 the dBm was -91 always and (0-3) 3 and when it was 8 the dBm was -97 and again (0-3) 3. 
+I've checked from the system in Settings, About Phone, Status, SIM status, Signal strength while the log was running and the ASU value was correct the other data was different.
+
+Steps to reproduce:
+-------------------
+
+Stacktrace (if reporting a crash):
+----------------------------------
+
+Environment:
+------------
+* Android version: 7.0
+* Device model: iQK700
+* App version: 1.30
+* App downloaded from (play store, f-droid, github, other): play store
+"
+caarmen/network-monitor,closed,Add adaptive launcher icon.,[],
+caarmen/network-monitor,open,"The app crashes and exits by itself while accessing the ""Frequency Log"" feature when changing the rotation to landscape mode and back to portrait mode.",[],"
+#### Expected behavior
+Supposedly, when accessing the ""Frequency Log"" feature and when changing the screen rotation 2 times, the app will not experience errors.
+
+#### Actual behavior
+When I click on the ""Frequency Log"" feature and after being on the Log frequency setting page, I accidentally changed the rotation to landscape mode, and when returned to portrait mode again, the app crashes and exits by itself. I have done the repetition, but the error persists.
+
+
+#### How to reproduce
+1. Install and Open apps
+2. Next click the feature ""Log Frequency""
+3. If the log frequency settings page is open, change the rotation to landscape mode, and then return the rotation to the portrait mode. *Then you will find the error as I experienced.*
+
+----
+- Device: Xiaomi Redmi 4X
+- Operating system: Marshmallow, 6.0.1 mmb29m (CPU: Octa-core Max 1.9 GHz, RAM: 2 GB)
+- Application Version: 1.30.0 
+
+#### Recording Of The Bug
+https://www.youtube.com/watch?v=aHuDCDFAymE
+
+#### Logcat
+``` 
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: FATAL EXCEPTION: main
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: Process: ca.rmen.android.networkmonitor, PID: 5898
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: java.lang.IllegalStateException: Failure saving state: ListPreferenceDialogFragmentCompat{d05e308 #1 android.support.v7.preference.PreferenceFragment.DIALOG} has target not in fragment manager: NetMonPreferenceFragmentCompat{6de4aa1}
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at android.support.v4.app.FragmentManagerImpl.saveAllState(FragmentManager.java:2937)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at android.support.v4.app.FragmentActivity.onSaveInstanceState(FragmentActivity.java:18125)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at android.support.v7.app.AppCompatActivity.onSaveInstanceState(AppCompatActivity.java:509)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at android.app.Activity.performSaveInstanceState(Activity.java:1313)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at android.app.Instrumentation.callActivityOnSaveInstanceState(Instrumentation.java:1290)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at android.app.ActivityThread.callCallActivityOnSaveInstanceState(ActivityThread.java:4131)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:4093)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at android.app.ActivityThread.access$1100(ActivityThread.java:153)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1381)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:154)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:5527)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:739)
+05-20 22:38:49.874  5898  5898 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:629)
+05-20 22:38:49.878  5898  5898 E MQSEventManagerDelegate: failed to get MQSService.
+```"
+caarmen/network-monitor,closed,LOGO,[],"
+https://www.facebook.com/waqasanwar68"
+caarmen/network-monitor,open,support for dual sim,[],"On dual sim phones, only the first sim is monitored, but not the second. There are two options to support dual sim: (1) add a mechanism to select the sim card to monitor; or (2) add columns to log the result of both sim cards.
+
+I have no clue to the feasibility or amount of effort, but it would be a valuable feature imo.
+
+Environment:
+------------
+* Android version: 7.1.1
+* Device model: motorola moto g5s plus
+* App version: 1.30.0
+* App downloaded from (play store, f-droid, github, other): fdroid
+"
+caarmen/network-monitor,closed,API incompatible use.,[],"Hi, Our tool report that API ""<java.lang.reflect.Method: boolean isAnnotationPresent(java.lang.Class)> "" called in ""<org.greenrobot.eventbus.SubscriberMethodFinder: void findUsingReflectionInSingleClass(org.greenrobot.eventbus.SubscriberMethodFinder$FindState)>"" on line 179  is not in level [24, 25].
+
+We also checked your codes but we are not sure whether ""strictMethodVerification"" is always false when your app run on devices of level [24, 25].
+
+Please help to check it, thanks very much.
+
+best regards,
+
+Dongjie He
+
+"
+caarmen/network-monitor,closed,this is also very likely to be a real bug.,[],"Although there are annotations ""@targetAPI"" in your code, we still believe the report below is also likely to be a real bug. because <android.app.AppOpsManager: int checkOpNoThrow(java.lang.String,int,java.lang.String)> not exist under level 19.
+
+ please help to check.
+Thanks again.
+
+report info: 
+<android.app.AppOpsManager: int checkOpNoThrow(java.lang.String,int,java.lang.String)> called in <ca.rmen.android.networkmonitor.util.PermissionUtil: boolean hasUsageStatsPermission(android.content.Context)> on line 55 not in [16, 17, 18, 14, 15]
+reachable paths:
+		--><ca.rmen.android.networkmonitor.app.prefs.SelectFieldsActivity: void onRequestPermissionsResult(int,java.lang.String[],int[])>
+		--><ca.rmen.android.networkmonitor.app.prefs.SelectFieldsActivityPermissionsDispatcher: void onRequestPermissionsResult(ca.rmen.android.networkmonitor.app.prefs.SelectFieldsActivity,int,int[])>
+		--><ca.rmen.android.networkmonitor.app.prefs.SelectFieldsActivity: void requestUsagePermission()>
+		--><ca.rmen.android.networkmonitor.util.PermissionUtil: boolean hasUsageStatsPermission(android.content.Context)>
+               --> <android.app.AppOpsManager: int checkOpNoThrow(java.lang.String,int,java.lang.String)>"
+caarmen/network-monitor,closed,external library may cause your capp crash.,[],"we notice that in your app codes, you use external library ""net.sourceforge.streamsupport:streamsupport:1.5.6"". In this library, method ""long estimateSize()"" in class ""java8.util.DelegatingSpliterator"" use ""java.util.Spliterator"" not ""java8.util.Spliterator"". However, ""java.util.Spliterator"" is added since level 24. So when your app run on level under 24 machine, it maybe
+crash.
+
+there are several reachable path from your application to that method call. we list them below, please help to check.
+
+all reachable paths:
+	reachable path 1:
+		--><ca.rmen.android.networkmonitor.app.service.NetMonService: void onDestroy()>
+		--><java8.util.stream.ReferencePipeline$Head: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.ReferencePipeline: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.AbstractPipeline: java.lang.Object evaluate(java8.util.stream.TerminalOp)>
+		--><java8.util.stream.ForEachOps$ForEachOp$OfRef: java.lang.Object evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.stream.ForEachOps$ForEachOp: java.lang.Void evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.stream.ForEachOps$ForEachOrderedTask: void <init>(java8.util.stream.PipelineHelper,java8.util.Spliterator,java8.util.stream.Sink)>
+		--><java8.util.DelegatingSpliterator: long estimateSize()>
+               --> <java.util.Spliterator: long estimateSize()>
+	reachable path 2:
+		--><ca.rmen.android.networkmonitor.provider.NetMonProvider: android.content.ContentProviderResult[] applyBatch(java.util.ArrayList)>
+		--><java8.util.stream.ReferencePipeline: java.lang.Object collect(java8.util.stream.Collector)>
+		--><java8.util.stream.ReferencePipeline$Head: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.ReferencePipeline: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.AbstractPipeline: java.lang.Object evaluate(java8.util.stream.TerminalOp)>
+		--><java8.util.stream.ForEachOps$ForEachOp$OfRef: java.lang.Object evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.stream.ForEachOps$ForEachOp: java.lang.Void evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.stream.ForEachOps$ForEachOrderedTask: void <init>(java8.util.stream.PipelineHelper,java8.util.Spliterator,java8.util.stream.Sink)>
+		--><java8.util.DelegatingSpliterator: long estimateSize()>
+               --> <java.util.Spliterator: long estimateSize()>
+	reachable path 3:
+		--><ca.rmen.android.networkmonitor.provider.NetMonProvider: android.content.ContentProviderResult[] applyBatch(java.util.ArrayList)>
+		--><java8.util.stream.ReferencePipeline: java.lang.Object collect(java8.util.stream.Collector)>
+		--><java8.util.stream.ReferencePipeline: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.AbstractPipeline: java.lang.Object evaluate(java8.util.stream.TerminalOp)>
+		--><java8.util.stream.ForEachOps$ForEachOp$OfRef: java.lang.Object evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.stream.ForEachOps$ForEachOp: java.lang.Void evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.stream.ForEachOps$ForEachOrderedTask: void <init>(java8.util.stream.PipelineHelper,java8.util.Spliterator,java8.util.stream.Sink)>
+		--><java8.util.DelegatingSpliterator: long estimateSize()>
+                --> <java.util.Spliterator: long estimateSize()>
+	reachable path 4:
+		--><ca.rmen.android.networkmonitor.provider.NetMonProvider: android.content.ContentProviderResult[] applyBatch(java.util.ArrayList)>
+		--><java8.util.stream.ReferencePipeline: java.lang.Object collect(java8.util.stream.Collector)>
+		--><java8.util.stream.AbstractPipeline: java.lang.Object evaluate(java8.util.stream.TerminalOp)>
+		--><java8.util.stream.ForEachOps$ForEachOp$OfRef: java.lang.Object evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.stream.ForEachOps$ForEachOp: java.lang.Void evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.stream.ForEachOps$ForEachOrderedTask: void <init>(java8.util.stream.PipelineHelper,java8.util.Spliterator,java8.util.stream.Sink)>
+		--><java8.util.DelegatingSpliterator: long estimateSize()>
+                --><java.util.Spliterator: long estimateSize()>
+	reachable path 5:
+		--><ca.rmen.android.networkmonitor.app.service.NetMonService: void onDestroy()>
+		--><java8.util.stream.ReferencePipeline$Head: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.ReferencePipeline: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.AbstractPipeline: java.lang.Object evaluate(java8.util.stream.TerminalOp)>
+		--><java8.util.stream.ForEachOps$ForEachOp$OfRef: java.lang.Object evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.stream.ForEachOps$ForEachOp: java.lang.Void evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.concurrent.ForkJoinTask: java.lang.Object invoke()>
+		--><java8.util.concurrent.ForkJoinTask: int doExec()>
+		--><java8.util.concurrent.CountedCompleter: boolean exec()>
+		--><java8.util.stream.ForEachOps$ForEachTask: void compute()>
+		--><java8.util.DelegatingSpliterator: long estimateSize()>
+                --><java.util.Spliterator: long estimateSize()>
+	reachable path 6:
+		--><ca.rmen.android.networkmonitor.provider.NetMonProvider: android.content.ContentProviderResult[] applyBatch(java.util.ArrayList)>
+		--><java8.util.stream.ReferencePipeline: java.lang.Object collect(java8.util.stream.Collector)>
+		--><java8.util.stream.ReferencePipeline$Head: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.ReferencePipeline: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.AbstractPipeline: java.lang.Object evaluate(java8.util.stream.TerminalOp)>
+		--><java8.util.stream.ForEachOps$ForEachOp$OfRef: java.lang.Object evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.stream.ForEachOps$ForEachOp: java.lang.Void evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.concurrent.ForkJoinTask: java.lang.Object invoke()>
+		--><java8.util.concurrent.ForkJoinTask: int doExec()>
+		--><java8.util.concurrent.CountedCompleter: boolean exec()>
+		--><java8.util.stream.ForEachOps$ForEachTask: void compute()>
+		--><java8.util.DelegatingSpliterator: long estimateSize()>
+                --><java.util.Spliterator: long estimateSize()>
+	reachable path 7:
+		--><ca.rmen.android.networkmonitor.provider.NetMonProvider: android.content.ContentProviderResult[] applyBatch(java.util.ArrayList)>
+		--><java8.util.stream.ReferencePipeline: java.lang.Object collect(java8.util.stream.Collector)>
+		--><java8.util.stream.ReferencePipeline: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.AbstractPipeline: java.lang.Object evaluate(java8.util.stream.TerminalOp)>
+		--><java8.util.stream.ForEachOps$ForEachOp$OfRef: java.lang.Object evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.stream.ForEachOps$ForEachOp: java.lang.Void evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.concurrent.ForkJoinTask: java.lang.Object invoke()>
+		--><java8.util.concurrent.ForkJoinTask: int doExec()>
+		--><java8.util.concurrent.CountedCompleter: boolean exec()>
+		--><java8.util.stream.ForEachOps$ForEachTask: void compute()>
+		--><java8.util.DelegatingSpliterator: long estimateSize()>
+                --><java.util.Spliterator: long estimateSize()>
+	reachable path 8:
+		--><ca.rmen.android.networkmonitor.provider.NetMonProvider: android.content.ContentProviderResult[] applyBatch(java.util.ArrayList)>
+		--><java8.util.stream.ReferencePipeline: java.lang.Object collect(java8.util.stream.Collector)>
+		--><java8.util.stream.AbstractPipeline: java.lang.Object evaluate(java8.util.stream.TerminalOp)>
+		--><java8.util.stream.ForEachOps$ForEachOp$OfRef: java.lang.Object evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.stream.ForEachOps$ForEachOp: java.lang.Void evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.concurrent.ForkJoinTask: java.lang.Object invoke()>
+		--><java8.util.concurrent.ForkJoinTask: int doExec()>
+		--><java8.util.concurrent.CountedCompleter: boolean exec()>
+		--><java8.util.stream.ForEachOps$ForEachTask: void compute()>
+		--><java8.util.DelegatingSpliterator: long estimateSize()>
+                --><java.util.Spliterator: long estimateSize()>
+	reachable path 9:
+		--><ca.rmen.android.networkmonitor.app.service.NetMonService: void onDestroy()>
+		--><java8.util.stream.ReferencePipeline$Head: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.ReferencePipeline: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.AbstractPipeline: java.lang.Object evaluate(java8.util.stream.TerminalOp)>
+		--><java8.util.stream.ReduceOps$ReduceOp: java.lang.Object evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.concurrent.ForkJoinTask: java.lang.Object invoke()>
+		--><java8.util.concurrent.ForkJoinTask: int doExec()>
+		--><java8.util.concurrent.CountedCompleter: boolean exec()>
+		--><java8.util.stream.ForEachOps$ForEachTask: void compute()>
+		--><java8.util.DelegatingSpliterator: long estimateSize()>
+                --><java.util.Spliterator: long estimateSize()>
+	reachable path 10:
+		--><ca.rmen.android.networkmonitor.provider.NetMonProvider: android.content.ContentProviderResult[] applyBatch(java.util.ArrayList)>
+		--><java8.util.stream.ReferencePipeline: java.lang.Object collect(java8.util.stream.Collector)>
+		--><java8.util.stream.ReferencePipeline$Head: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.ReferencePipeline: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.AbstractPipeline: java.lang.Object evaluate(java8.util.stream.TerminalOp)>
+		--><java8.util.stream.ReduceOps$ReduceOp: java.lang.Object evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.concurrent.ForkJoinTask: java.lang.Object invoke()>
+		--><java8.util.concurrent.ForkJoinTask: int doExec()>
+		--><java8.util.concurrent.CountedCompleter: boolean exec()>
+		--><java8.util.stream.ForEachOps$ForEachTask: void compute()>
+		--><java8.util.DelegatingSpliterator: long estimateSize()>
+                --><java.util.Spliterator: long estimateSize()>
+	reachable path 11:
+		--><ca.rmen.android.networkmonitor.provider.NetMonProvider: android.content.ContentProviderResult[] applyBatch(java.util.ArrayList)>
+		--><java8.util.stream.ReferencePipeline: java.lang.Object collect(java8.util.stream.Collector)>
+		--><java8.util.stream.ReferencePipeline: void forEach(java8.util.function.Consumer)>
+		--><java8.util.stream.AbstractPipeline: java.lang.Object evaluate(java8.util.stream.TerminalOp)>
+		--><java8.util.stream.ReduceOps$ReduceOp: java.lang.Object evaluateParallel(java8.util.stream.PipelineHelper,java8.util.Spliterator)>
+		--><java8.util.concurrent.ForkJoinTask: java.lang.Object invoke()>
+		--><java8.util.concurrent.ForkJoinTask: int doExec()>
+		--><java8.util.concurrent.CountedCompleter: boolean exec()>
+		--><java8.util.stream.ForEachOps$ForEachTask: void compute()>
+		--><java8.util.DelegatingSpliterator: long estimateSize()>
+                --> <java.util.Spliterator: long estimateSize()>"
+caarmen/network-monitor,open,Update build environment:,[],"agp 3.0.1
+supportLib 27.0.2
+build tools 27.0.3
+permissions dispatcher: 3.1.0
+play services: 11.8.0
+stream support: 1.6.1"
+caarmen/network-monitor,open,"[FR] improve ""limit database size""",[],"The option in number oriented which isn't always comfortable for humans.
+Could you please extend the option to:
+1,2,7,14,30,60 days?"
+caarmen/network-monitor,closed,Add tips for the speed columns,[],
+caarmen/network-monitor,closed,Update environment,[],"Update build environment
+
+AGP 3.0.0
+gradle 4.2.1
+ben-manes 0.17.0
+support lib 27.0.1
+target 27
+permissionsdispatcher 3.0.1
+
+Allow installation of debug and release versions at the same time
+
+Fix android studio code inspection warnings"
+caarmen/network-monitor,closed,Use new APIs to get cell id info,[],
+caarmen/network-monitor,closed,Added a privacy policy.,[],
+caarmen/network-monitor,closed,Code cleanup,[],"Fix android studio code inspection issues
+Remove resources and code that is no longer needed now that the minSdkVersion is 14
+
+----
+
+These need to be tested for no regressions:
+
+✔️  About screen version text
+✔️  About screen menu item (none)
+✔️  Logging
+✔️  Refresh icon in log screen
+✔️  Make sure test server can't be set to empty
+✔️  Logging ip addresses
+✔️  Disable service if user clicks on cancel on the warning
+✔️  Disable service when selecting ""stop"" from notification
+✔️  Button icon style on bottom button bar
+✔️  Speed test about activity opening play store: task stack
+✔️  HTML css style in log
+✔️  Email sending (html attachment)
+✔️  Preference export/import
+✔️  Display of last download test in speed test download settings
+✔️  Set 10000 record limit when fast interval selected
+✔️  Disabling speed test when fast interval selected
+✔️  Disabling connection tests when fast interval selected
+✔️  Disabling speed test when disabled from speed test settings
+
+☑️  Notifications for file import/export (icon, autocancel, ongoing): tested import and export completely on 7.0. Tested import and some export on 8.0.
+☑️  Preference style: on ICS the categories have no margin
+
+* Wakelock release after each test
+"
+caarmen/network-monitor,closed,Target o,[],"* Update build environment (libraries, gradle, etc)
+* Target Android O.
+    * Create a notification channel.
+    * Use `startForegroundService()` if the device is on O.
+    * Use `JobIntentService` instead of `IntentService`"
+caarmen/network-monitor,closed,WIFI and mobile network history capability,[],"Hello,
+
+I had asked for the enhancement of issue #94 and I am glad you acted so swiftly. Also congratulations for the great work you do. I hope I have some free time in the future and I contribute too.
+
+I would like to ask you for a very much needed feature that it would be great to implement or perhaps spin-off into a separate app. Let me explain.
+
+I use your app not to check a connection but with the intent to check when (exact time) and to which WIFI station (name, ethernet address, and other info) my mobile connects or disconnects to. Same for mobile connection. I can do this because you provide the WIFI and mobile connection details along with many other data (even when no data connection is done).
+
+But this approach is not very accurate because I have set the log every 5 minutes in order to conserve cpu/log size etc., it is not so practical (I have to wade thru the log and trim it regularly and if I forget to do this and the log grows big, I'm in trouble)  and also it is not efficient in the end.
+
+Believe me, this is a very much needed and useful capability for many reasons. Just a single and indirect usage example is that I use it to record power grid failure and restart time :D (using apps that record mobile charging/discharging is not helpful because most are not working reliably and I must have the phone on the charger always; there are other uses too relating to mobile security).
+
+In order to do this, you do not need to log periodically but rather catch the intents that indicate network connections or disconnections and record them. 
+
+There is no other app that has this capability (well not exactly, there are 1-2 but don't work correctly).
+
+This could be an extra feature of your current app (best with a separate log) or a new app (mostly a copy of the old with many things removed and just the new feature implemented and why not even include charging/discharging history :D).
+
+I hope you implement it considering its usefulness, uniqueness and rather easy implementation."
+caarmen/network-monitor,closed,Log frequency below 10 seconds,[],"This is a feature request and not really an issue, but I'd really like to be able to log more frequently than every 10 seconds. Especially for HT 802.11 traffic, a frequency of 10 seconds doesn't provide enough accuracy. (1 or 3 seconds would be great.)
+
+And thanks for the excellent app! :D"
+caarmen/network-monitor,open,"Wifi channel row only shows ""0""",[],"Testing on frequencies 5180 and 5260, but I only get value 0 in ""WiFi Channel"". (PLK-L01 on Android 6.0)
+
+Not a big issue since frequency is logged."
+caarmen/network-monitor,closed,Not possible to make screenshot,[],"When I try to make a screenshot, I get a message that making screenshots is not allowed by the app. Why is this so? I would like to send a screenshot to an app maker to complain about his app not using encrypted connections."
+caarmen/network-monitor,closed,Added ongoing notification priority setting.,[],
+caarmen/network-monitor,closed,Option to hide notification icon,"[Label(name=""enhancement"")]","User request:
+
+Add an option for the notification icon. All apps have such an option and the user chooses if wants to see it. Here the notification is enforced, it is not useful and takes space from the task bar. It is possible to have notifications without icon on task bar (low priority). "
+caarmen/network-monitor,closed,Remove external storage,[],"Issue for this repo: https://github.com/caarmen/network-monitor/issues/92
+
+TODO: 
+* ~~~update copyrights~~~
+* retest
+* ~~~sleep~~~"
+caarmen/network-monitor,closed,Remove EXTERNAL_STORAGE permissions,[],"See how it was done for scrum chatter: https://github.com/caarmen/scrumchatter/pull/56
+
+"
+caarmen/network-monitor,closed,Toujours des boutons,[],
+caarmen/network-monitor,open,Speed test clarification,"[Label(name=""enhancement"")]","Rename ""speed test"" to ""simple speed test"" or ""basic speed test"" or ""limited speed test"" and make the user read a disclaimer before using it. "
+caarmen/network-monitor,closed,Issue #88 attempt to fix some memory leaks (AsyncTask static field refering to activities?),[],
+caarmen/network-monitor,closed,ca.rmen.android.networkmonitor.app.prefs.AdvancedPreferencesActivity may leak,[],"I ran the app with a tool based on UiAutomator, and dumped the heap to analyze if there was any leaked activities. Finally I found that  instances of ""ca.rmen.android.networkmonitor.app.prefs.AdvancedPreferencesActivity"" might leak as it they were indirectly referenced by an static field ""SERIAL_EXECUTOR"" of android.os.AsyncTask, as shown in following figure:
+
+![image](https://cloud.githubusercontent.com/assets/13826031/20878192/6ed94f62-bb08-11e6-9a3d-662b5123cb0f.png)
+
+Likely, some instances of ""ca.rmen.android.networkmonitor.app.speedtest.SpeedTestPreferencesActivity"" were indirectly referenced by an static field ""SERIAL_EXECUTOR"" of android.os.AsyncTask as well :
+
+![image](https://cloud.githubusercontent.com/assets/13826031/20878254/d810a368-bb08-11e6-9bbd-c0b9b0cef391.png)
+"
+caarmen/network-monitor,closed,Add lambdas and streamsupport,[],
+caarmen/network-monitor,closed,"Issue #85: Use greenrobot instead of otto, for the event bus.",[],
+caarmen/network-monitor,closed,Eventbus crash,[],"```
+Caused by: java.lang.IllegalArgumentException: Missing event handler for an annotated method. Is class ca.rmen.android.networkmonitor.app.log.LogActivity registered?
+	at com.squareup.otto.Bus.unregister(Bus.java:290)
+	at ca.rmen.android.networkmonitor.app.log.LogActivity.onPause(LogActivity.java:114)
+	at android.app.Activity.performPause(Activity.java:5382)
+	at android.app.Instrumentation.callActivityOnPause(Instrumentation.java:1239)
+	at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3224)
+	... 12 more
+```
+
+Let's try to replace otto with greenrobot to see if that fixes the problem."
+caarmen/network-monitor,closed,Selected fields help,[],
+caarmen/network-monitor,closed,Issue #82: add columns for the most consuming app,[],
+caarmen/network-monitor,closed,Add a column for the app consuming the most data,"[Label(name=""enhancement"")]","http://stackoverflow.com/questions/11939939/how-can-i-find-the-data-usage-on-a-per-application-basis-on-android
+"
+caarmen/network-monitor,closed,Advertise availability on F-Droid and logos,[],
+caarmen/network-monitor,closed,1.28.4: Some fixes to get signal strength on a Huawei P9 Lite,[],
+caarmen/network-monitor,closed,Timestamp messed up during export. ,"[Label(name=""bug"")]","From the main screen, choose to share the file. Choose excel format (for example). 
+
+Then open the log view. 
+
+The timestamps are messed up. 
+"
+caarmen/network-monitor,closed,Add battery and data consumption warning,[],"Add a warning when the user starts the service, that the app may consume quite a bit of battery and data.
+"
+caarmen/network-monitor,closed,Html fixed header,[],
+caarmen/network-monitor,closed,Html fixed header,[],"So much effort for such a small feature.....................  
+"
+caarmen/network-monitor,closed,Daynight,[],
+caarmen/network-monitor,closed,License change,[],"Could you change your license to GPLv2 or compatible?
+
+Apache would foce us to move th GPLv3.
+
+At least for PreferenceFragmentCompatHack, we need this until Google has fixed it.
+"
+caarmen/network-monitor,closed,Support lib update,[],"- update the version of gradle to 2.12
+- update the android gradle plugin to 2.0.0
+- update the support library to 23.3.0
+- fixed some Android Studio code inspection issues
+- (attempted to) simplify the themes/styles
+- added a timeout to the ftp upload test
+"
+caarmen/network-monitor,closed,Check if longitude/latitude can have better precision,[],"(more numbers after the decimal point)
+"
+caarmen/network-monitor,open,Document the different columns,"[Label(name=""enhancement"")]","Create a documentation page explaining the values of the different columns.
+"
+caarmen/network-monitor,closed,Add export/import of shared preferences,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Allow changing sort order of data,"[Label(name=""enhancement"")]","I want to plot with Gnuplot, which as I recall basically connects data points in the order in which they appear in the data file.  I want them chronologically sorted, not in order of inverse signal strength or some such.  I gave up and wrote something to preprocess the data anyway because I was having trouble getting the dates and times to work in Gnuplot.
+
+Great app though, most of the time my cell signal is at -95 dbm or worse.  The strength varies by itself without even moving the phone.  I'm a ham, and it's good to have something more quantitative than a number of bars.
+
+So enhancement, by all means, for this one.
+"
+caarmen/network-monitor,closed,Added GPS speed to location attributes.,[],"I've added GPS speed to the location attributes to track how fast the device is moving at the specified location, but I'm not sure how useful that is to others.  Please pull if you think it would be useful.
+"
+caarmen/network-monitor,closed,Share using application/octet-stream,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,"When filter is selected on a column, the refresh button continues to spin even after filter is complete. ",[],"Not sure if the behavior is as intended. When selecting a filter on a column, and the filter is applied, the refresh button continues to spin even after the filtering seems to be complete. I'm wondering if the application is continuously trying to update, perhaps consuming more CPU cycles, and in turn consuming more battery.
+P.S. Thank you for creating such an awesome Android application; now I can keep tabs on my service provider [Comcast <-- who sucks] and have 'evidence' when their service is down. Again, much appreciated, and a thank you for posting on F-Droid repository!  
+"
+caarmen/network-monitor,closed,Incorrect values reported for CDMA cell latitude and longitude,"[Label(name=""bug"")]","They need to be divided by (3600*4).
+"
+caarmen/network-monitor,closed,Export to file on local storage,[],"Is there a way to save the database as CSV file to storage? The Share feature only allows to send the log via email or chat, or to save it to Google Drive.
+
+(Ideally I'd like to send the log via HTTP to my custom server, but saving it to storage would be a nice start...)
+"
+caarmen/network-monitor,open,LTE,"[Label(name=""blocked""), Label(name=""bug"")]","Hello,
+
+the computation from the fields GSM RNC and GSM Short CellId is wrong if the Mobile Data Network Type is LTE.
+Maybe you can add the new fields eNB ID and N2CellId if the Mobile Data Network Type is LTE and let the fields GSM RNC and GSM Short CellId empty or eNB ID=GSM RNC and GSM Short CellId=N2CellId.
+
+GSM Full CellId/256=eNB Id (GSM Full CellId div 256=eNB Id)
+GSM Full CellId mod256=N2CellID (Physical Layer Identity)
+"
+caarmen/network-monitor,closed,root,[],"give root permisson
+"
+caarmen/network-monitor,closed,Notification icon colors ,"[Label(name=""enhancement"")]","Should be orange. 
+"
+caarmen/network-monitor,closed,Crash when exporting large excel file,"[Label(name=""bug"")]","Could reproduce this on a Nexus One emulator, exporting about 7100 rows:
+
+```
+05-30 13:14:52.944 10257 10460 E AndroidRuntime: FATAL EXCEPTION: AsyncTask #1
+05-30 13:14:52.944 10257 10460 E AndroidRuntime: java.lang.RuntimeException: An error occured while executing doInBackground()
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at android.os.AsyncTask$3.done(AsyncTask.java:200)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:274)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at java.util.concurrent.FutureTask.setException(FutureTask.java:125)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:308)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1088)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:581)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at java.lang.Thread.run(Thread.java:1019)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime: Caused by: java.lang.OutOfMemoryError
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at jxl.write.biff.WritableSheetImpl.getRowRecord(WritableSheetImpl.java:1223)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at jxl.write.biff.WritableSheetImpl.addCell(WritableSheetImpl.java:1151)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at ca.rmen.android.networkmonitor.app.dbops.backend.export.ExcelExport.insertCell(ExcelExport.java:176)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at ca.rmen.android.networkmonitor.app.dbops.backend.export.ExcelExport.writeRow(ExcelExport.java:103)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at ca.rmen.android.networkmonitor.app.dbops.backend.export.TableFileExport.export(TableFileExport.java:112)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at ca.rmen.android.networkmonitor.app.dbops.backend.export.ExcelExport.export(ExcelExport.java:54)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at ca.rmen.android.networkmonitor.app.dbops.backend.export.TableFileExport.execute(TableFileExport.java:80)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at ca.rmen.android.networkmonitor.app.dbops.backend.export.ExcelExport.execute(ExcelExport.java:54)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at ca.rmen.android.networkmonitor.app.dbops.backend.export.TableFileExport.execute(TableFileExport.java:48)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at ca.rmen.android.networkmonitor.app.dbops.ui.DBOpAsyncTask.doInBackground(DBOpAsyncTask.java:74)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at ca.rmen.android.networkmonitor.app.dbops.ui.Share$2.doInBackground(Share.java:121)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at ca.rmen.android.networkmonitor.app.dbops.ui.Share$2.doInBackground(Share.java:112)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at android.os.AsyncTask$2.call(AsyncTask.java:185)
+05-30 13:14:52.944 10257 10460 E AndroidRuntime:        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:306)
+```
+"
+caarmen/network-monitor,closed,Add ServiceState,"[Label(name=""enhancement"")]","http://developer.android.com/reference/android/telephony/ServiceState.html
+"
+caarmen/network-monitor,closed,Added a feature that enables speedtests to be configured not to run on every tick,[],"While using the application I noticed if I wanted to have decent accuracy while running speed test my data usage got huge. Just setting the interval to very slow is not an option since I also want to keep track of the signal strength. 
+
+The download and upload speed does not change as much as the signal strength. So to enable high accuracy on the speed test I just made it so that the test is not run on every tick, there are different levels of how often one want to run the speed test.
+
+The implementation for the network change and dbm change options are probably not the most accurate since I only check these when the application requests a speed test and not when the changes occurs.
+"
+caarmen/network-monitor,closed,Fixed bug with FTP upload causing it to cap due to low buffer size,[],"Had an issue with gaining higher upload speeds in the application even though I had a higher speed using other FTP clients. This fix has been tested on my own phone LG G2 D802 running Android 5.0.2 and I can confirm that the speed is more accurate (comparing to other measuring applications). 
+
+The reason for not setting the buffer size to 0 or negative is that setting an infinite buffer size did not yield any better result, default buffer size should be 8192 bytes.
+"
+caarmen/network-monitor,closed,Improve disabled button rendering,"[Label(name=""bug"")]","Ex: go to ""fields to monitor"" and uncheck everything.  The OK button is disabled.
+"
+caarmen/network-monitor,closed,No spinner when loading the log page?,"[Label(name=""bug"")]",
+caarmen/network-monitor,closed,Update librairies,"[Label(name=""enhancement"")]","- Use gradle dependencies instead of jars in the libs/ directory
+- Upgrade the material dialogs library to fix the progress color on Samsung Lollipop.
+"
+caarmen/network-monitor,closed,clear or reset the log files,"[Label(name=""question"")]","Hello Caarmen, 
+
+this is more a question then a problem (sorry if i am at the wrong place) . Is ther a way to automaticaly reset the log files ( just like the ""clear log files"" option.
+
+i am using on a android minipc and i want to prevent from connecting a screen and a keyboard to the device to manualy clear the log files.
+
+FYI, im able to connect by SSH and im able to delete the ""CSV ""files but that do not clear the log !
+
+Thank in advance
+
+Redge 
+"
+caarmen/network-monitor,closed,unable to send sceduled email,[],"Hello , 
+
+im wondering if i am doing someting wrong because i am unable to send a email by the schedule option.
+It give me a error unable to send email.
+
+if y tried the option to send  manually the rapport , if y chose the google option every thing work.
+
+P.S. iam shure that my email setting are ok
+
+thank
+"
+caarmen/network-monitor,closed,Migrate to gradle,[],
+caarmen/network-monitor,closed,Add rxqual (ber) and rsrq fields,"[Label(name=""enhancement"")]","This is implemented: it just need to be published!
+"
+caarmen/network-monitor,closed,"Allow fast polling frequencies, but disable connection tests",[],
+caarmen/network-monitor,closed,Add option to compress the database,[],"This is more or less implemented in the compress branch, but the deletion needs to be optimized/batched.
+"
+caarmen/network-monitor,closed,Add option to run a test only when the network state/type changes,[],
+caarmen/network-monitor,closed,Add preferences for notifications,[],
+caarmen/network-monitor,closed,Show a notification if a test fails,[],"And clear the notification if the next test passes.
+
+Only show the failure notification if the test failed AND we assume we should have an internet connection.  We know we have an internet connection if:
+- We are connected to a WiFi access point, OR
+- We are not in airplane mode AND mobile data is enabled.
+"
+caarmen/network-monitor,closed,Only show the GPS popup when starting the service,[],
+caarmen/network-monitor,closed,Investigate adding upload and download speed,"[Label(name=""enhancement"")]","Add a preference screen for speed test, in advanced settings:
+- Explanation text: 
+  - the bigger the file, the more accurate the test
+  - data charges
+  - Choose a test interval which is not too frequent
+- URL of file to download for speed test
+- FTP credentials to test upload: host, username, password, path
+- Switch to enable or disable the speed test.
+- Warning when enabling the speed test that this may result in significant network traffic.
+
+If the speed test is enabled:
+- At each test, upload the file, download the file.  Consider using the Android TrafficStats class, if available, to measure the amount of bytes transferred when the file was uploaded and downloaded.
+"
+caarmen/network-monitor,closed,Add the WiFi channel frequency,[],
+caarmen/network-monitor,closed,Add option to only keep the last X logs,"[Label(name=""enhancement"")]","There are a few ways to manage large log files.
+
+Need to choose one of the following (or think of other ideas):
+
+1) Setting to periodically purge logs and only store the most recent X logs
+2) Action to purge logs and only keep the most recent X logs (similar to the setting, instead of doing it automatically, it is only done when the user explicitly invokes it)
+3) Keep all logs, but add a setting for exporting: only export the most recent X logs
+"
+caarmen/network-monitor,closed,remove telephony as a required feature,[],"So WiFi only devices can install it
+"
+caarmen/network-monitor,closed,"When refreshing the log view, keep the horizontal scroll position",[],
+caarmen/network-monitor,closed,Add option to periodically send a report by mail,[],
+caarmen/network-monitor,open,Allow changing the column positions,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Automatically start at boot,[],"If the user turns on the service, make sure the service will restart if the phone reboots.
+"
+caarmen/network-monitor,closed,Include start and end date in the summary export,[],
+caarmen/network-monitor,closed,Allow filtering in the log view,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Add separate gsm and cdma profiles for preselection of fields to monitor ,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Chinese operator not encoded properly,"[Label(name=""bug"")]",
+caarmen/network-monitor,closed,Add option to choose field to sort by.,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Add DB import function,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,open,Test the app on cdma. ,[],"Make sure to test summary export 
+"
+caarmen/network-monitor,closed,Export to nmf,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Add setting to show cell ids in hex format,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Add a setting to request location updates,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Add RxQual,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Add RNC,[],"http://stackoverflow.com/questions/13235122/android-get-rnc-radio-network-controller
+"
+caarmen/network-monitor,closed,Add column for gps accuracy,[],
+caarmen/network-monitor,closed,Put the MCC and MNC in separate columns,[],
+caarmen/network-monitor,closed,Duplicate entries,"[Label(name=""bug"")]","Looks like during a call (or any case where there's no connection?) we accumulate connection tests until we get the connection, and then these accumulated tests all fail at once, all having the same timestamp.
+"
+caarmen/network-monitor,closed,Timeout should be shorter than the test frequency,"[Label(name=""bug"")]",
+caarmen/network-monitor,closed,Cell signal strength appears as -1 or 2147483647,[],"Seen as -1 on a Galaxy Note 2, and as 2147483647 (max int) on a Samsug Galaxy S3.
+"
+caarmen/network-monitor,closed,Put share option on main menu. ,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Refactoring: create a view for the summary uris,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Include WiFi tests in the summary report,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Very good application,"[Label(name=""enhancement"")]","It will be great if could include signal in dBm level. 
+"
+caarmen/network-monitor,closed,Add column for WiFi signal strength,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,"PlayStore crash, NPE in LogActivity","[Label(name=""bug"")]","java.lang.NullPointerException
+at org.jraf.android.networkmonitor.app.log.LogActivity$3.void onPostExecute(java.lang.Object)(Unknown Source)
+at android.os.AsyncTask.finish(AsyncTask.java:602)
+at android.os.AsyncTask.access$600(AsyncTask.java:156)
+at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:615)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:4424)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:817)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:584)
+at dalvik.system.NativeStart.main(Native Method)
+"
+caarmen/network-monitor,closed,"PlayStore crash when exporting on a non-gsm, non-cdma device","[Label(name=""bug"")]","java.lang.RuntimeException: An error occured while executing doInBackground()
+at android.os.AsyncTask$3.done(AsyncTask.java:299)
+at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:352)
+at java.util.concurrent.FutureTask.setException(FutureTask.java:219)
+at java.util.concurrent.FutureTask.run(FutureTask.java:239)
+at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:230)
+at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1080)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:573)
+at java.lang.Thread.run(Thread.java:856)
+Caused by: java.lang.IllegalArgumentException: Error: unknown phone type 0
+at org.jraf.android.networkmonitor.app.a.g.a(Unknown Source)
+at org.jraf.android.networkmonitor.app.log.b.a(Unknown Source)
+at org.jraf.android.networkmonitor.app.log.b.doInBackground(Unknown Source)
+at android.os.AsyncTask$2.call(AsyncTask.java:287)
+at java.util.concurrent.FutureTask.run(FutureTask.java:234)
+... 4 more
+"
+caarmen/network-monitor,closed,Add the Wifi network ssid,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Add request time field,"[Label(name=""enhancement"")]","If the request takes longer than 10 seconds, mark as ""slow"" (amber) instead of pass or fail. 
+"
+caarmen/network-monitor,closed,Incorrectly showing FAIL when Onavo extend is installed.,"[Label(name=""bug"")]","When using Onavo extend, the Google connection test column shows fail
+"
+caarmen/network-monitor,closed,Crash when exporting to Excel,"[Label(name=""bug"")]","OutOfMemory error in the JExcel library.
+
+Caused by: java.lang.OutOfMemoryError
+at a.e.a.df.d(Unknown Source)
+at a.e.a.df.a(Unknown Source)
+at org.jraf.android.networkmonitor.app.a.c.a(Unknown Source)
+at org.jraf.android.networkmonitor.app.a.c.a(Unknown Source)
+at org.jraf.android.networkmonitor.app.a.d.b(Unknown Source)
+at org.jraf.android.networkmonitor.app.log.b.doInBackground(Unknown Source)
+at android.os.AsyncTask$2.call(AsyncTask.java:287)
+at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305)
+... 5 more
+
+Unfortunately, retrace resolves these methods ambiguously:
+
+Caused by: java.lang.OutOfMemoryError
+at jxl.write.biff.WritableSheetImpl.jxl.write.biff.RowRecord getRowRecord(int)(Unknown Source)
+                                    jxl.SheetSettings getSettings()
+at jxl.write.biff.WritableSheetImpl.jxl.Cell getCell(int,int)(Unknown Source)
+                                    int getRows()
+                                    void addCell(jxl.write.WritableCell)
+                                    void setColumnView(int,jxl.CellView)
+                                    void setRowView$33b4bc5(jxl.CellView)
+                                    void rationalize(jxl.biff.IndexMapping,jxl.biff.IndexMapping,jxl.biff.IndexMapping)
+                                    jxl.CellView getColumnView(int)
+                                    java.lang.String validateName(java.lang.String)
+                                    void addDrawing(jxl.biff.drawing.DrawingGroupObject)
+                                    void removeDataValidation(jxl.write.biff.CellValue)
+                                    void setComboBox(jxl.biff.drawing.ComboBox)
+at org.jraf.android.networkmonitor.app.export.ExcelExport.void writeHeader(java.lang.String[])(Unknown Source)
+                                                          void writeRow(int,java.lang.String[])
+                                                          void writeFooter()
+                                                          int getLongestWordLength(java.lang.String)
+                                                          void insertCell(java.lang.String,int,int,jxl.format.CellFormat)
+at org.jraf.android.networkmonitor.app.export.ExcelExport.void writeHeader(java.lang.String[])(Unknown Source)
+                                                          void writeRow(int,java.lang.String[])
+                                                          void writeFooter()
+                                                          int getLongestWordLength(java.lang.String)
+                                                          void insertCell(java.lang.String,int,int,jxl.format.CellFormat)
+at org.jraf.android.networkmonitor.app.export.FileExport.java.io.File export()(Unknown Source)
+at org.jraf.android.networkmonitor.app.log.LogActivity$2.java.lang.Object doInBackground(java.lang.Object[])(Unknown Source)
+at android.os.AsyncTask$2.call(AsyncTask.java:287)
+at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305)
+... 5 more
+"
+caarmen/network-monitor,closed,reading convenience in the exported xls ,[],"May you please freeze the and word wrap the first line in the exported xls file, so  user can read easily at once after export? Thanks!
+"
+caarmen/network-monitor,closed,Add a preference for the server to ping,"[Label(name=""enhancement"")]",
+caarmen/network-monitor,closed,Sometimes the time between tests is too long,"[Label(name=""bug"")]","I configured it to every 10 seconds but saw tests at:
+10:50:45
+10:51:59
+10:52:27
+"
+caarmen/network-monitor,closed,Investigate using a wake lock,"[Label(name=""enhancement"")]","To prevent the data connection from being disconnected after 30 minutes 
+"
+caarmen/network-monitor,closed,Improve monitor loop,"[Label(name=""bug"")]","Use wait and notify instead of sleep. When prefs change, notify. 
+"
+caarmen/network-monitor,closed,French strings ,"[Label(name=""enhancement"")]","Also use plurals in the summary export for ""tests"" 
+"
+caarmen/network-monitor,closed,Summary report,"[Label(name=""enhancement"")]","When exporting, set the body of the mail to a summary report.
+
+For each cell id, include:
+LAC/CID: Pass rate (%), X tests
+
+Sort by pass rate.
+"

@@ -1,0 +1,1881 @@
+repository,state,title,label,body
+durka/HallMonitor,open,Support CM14.1,[],"It does not work on CM14.1 (on a samsung galaxy S5).
+Do you plan to support it in the near future?"
+durka/HallMonitor,open,Lock screen time out not being respected,[],"I have my lock screen set to come on 10 minutes after the screen shuts off but when I close my lid with hall monitor and the sview disappears it locks right away forcing me to enter my pin when I open the lid. Also for whatever reason despite my trust location here at work the lock screen is still coming on while I'm here and close and open the lid. I use CM13 on my note 3. Love this tho. Just wish it used my whole sview. The notes have larger sview flip covers than the so. 
+"
+durka/HallMonitor,open,Support for CM13,[],"not yet: FLAG_TURN_SCREEN_ON needs to be implemented
+"
+durka/HallMonitor,open,Support for Note 4,[],"My N910G with CM12 for N910F seems close to working:
+The log shows that de flipping of the cover is detected, but nothing is being displayed even though the log indicates it should have been. See log below:
+
+```
+04-17 10:56:09.283: I/Sensors(792): ProximitySensor - 0(cm)
+04-17 10:56:09.287: D/VCPS.onSensorChanged(1138): Proximity sensor changed, value=0.0
+04-17 10:56:09.289: D/F.Evt.proximity(1138): Proximity method called with value: 0.0 ,whilst cover_closed is: false
+04-17 10:56:09.290: D/F.Is.cover_closed(1138): Is cover closed called.
+04-17 10:56:09.293: D/F.Is.cover_closed(1138): Cover closed state is: true
+04-17 10:56:09.361: I/PowerManagerService(792): Going to sleep due to lid switch (uid 1000)...
+04-17 10:56:09.361: I/PowerManagerService(792): Sleeping (uid 1000)...
+04-17 10:56:09.494: D/F.Evt.proximity(1138): Proximity method called with value: 0.0 ,whilst cover_closed is: false
+04-17 10:56:09.495: D/F.Is.cover_closed(1138): Is cover closed called.
+04-17 10:56:09.495: D/F.Is.cover_closed(1138): Cover closed state is: true
+04-17 10:56:09.496: D/F.Act.close_cover(1138): Close cover event receieved.
+04-17 10:56:09.497: D/F.Act.enableCoverTouch(1138): We're root enabled so lets boost the sensitivity...
+04-17 10:56:09.498: D/F.Act.enableCoverTouch(1138): ...Sensitivity boosted, hold onto your hats!
+04-17 10:56:09.498: I/Timeline(1138): Timeline: Activity_launch_request id:org.durka.hallmonitor time:2590479
+04-17 10:56:09.499: I/ActivityManager(792): START u0 {flg=0x10090000 cmp=org.durka.hallmonitor/.DefaultActivity} from uid 10060 on display 0
+04-17 10:56:09.501: I/ActivityManager(792): Ignoring FLAG_ACTIVITY_NEW_DOCUMENT, launchMode is ""singleInstance"" or ""singleTask""
+04-17 10:56:09.523: D/su(3233): su invoked.
+04-17 10:56:09.526: D/su(3233): starting daemon client 10060 10060
+04-17 10:56:09.528: D/su(3236): remote pid: 3233
+04-17 10:56:09.528: D/su(3236): remote pts_slave: 
+04-17 10:56:09.529: D/su(3236): waiting for child exit
+04-17 10:56:09.531: D/HMAWM.constructor(1138): HMAppWidgetManager instantiated.
+04-17 10:56:09.533: D/su(3238): su invoked.
+04-17 10:56:09.534: E/su(3238): SU from: u0_a60
+04-17 10:56:09.535: D/su(3238): Checking whether app [uid:10060, pkgName: org.durka.hallmonitor] is allowed to be root
+04-17 10:56:09.540: D/su(3238): Privilege elevation allowed by appops
+04-17 10:56:09.540: D/su(3238): Allowing via appops.
+04-17 10:56:09.540: D/su(3238): 10060 /system/bin/app_process32 executing 0 /system/bin/sh using binary /system/bin/sh : sh
+04-17 10:56:09.541: D/su(3238): Waiting for pid 3239.
+04-17 10:56:09.551: D/su(3238): Finishing su operation for app [uid:10060, pkgName: org.durka.hallmonitor]
+04-17 10:56:09.553: I/SuControllerImpl(1042): Got change
+04-17 10:56:09.555: D/su(3236): sending code
+04-17 10:56:09.555: D/su(3236): child exited
+04-17 10:56:09.555: I/SuControllerImpl(1042): Got change
+04-17 10:56:09.556: D/su(3233): client exited 0
+04-17 10:56:09.562: D/DA.onCreate(1138): onCreate of DefaultView.
+04-17 10:56:09.562: D/F.Act.setLockTimer(1138): Delay set to: 10000
+04-17 10:56:09.574: D/hm-cam(1138): context/attributeset constructor
+04-17 10:56:09.638: D/DA-oS(1138): starting
+04-17 10:56:09.644: D/NS-gAN(1138): com.android.mms
+04-17 10:56:09.644: D/NS-gAN(1138): android
+04-17 10:56:09.644: D/NS-gAN(1138): android
+04-17 10:56:09.644: D/DA-oC(1138): 1 notifications
+04-17 10:56:09.645: D/DA.onResume(1138): On resume called.
+04-17 10:56:09.653: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: media
+04-17 10:56:09.653: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: default
+04-17 10:56:09.657: D/OpenGLRenderer(1138): Render dirty regions requested: true
+04-17 10:56:09.660: D/Atlas(1138): Validating map...
+04-17 10:56:09.681: I/Adreno(1138): EGLInit: QTI Build: 01/26/15, 3231f06, I08fcdcf8c2, LA.BF.2.1.074_20150126
+04-17 10:56:09.689: I/OpenGLRenderer(1138): Initialized EGL, version 1.4
+04-17 10:56:09.696: D/OpenGLRenderer(1138): Enabling debug mode 0
+04-17 10:56:09.732: D/DA-oS(1138): stopping
+04-17 10:56:09.794: D/F.Evt.proximity(1138): Proximity method called with value: 0.0 ,whilst cover_closed is: true
+04-17 10:56:09.799: I/ActivityManager(792): Displayed org.durka.hallmonitor/.DefaultActivity: +256ms (total +288ms)
+04-17 10:56:09.799: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{2368b578 u0 org.durka.hallmonitor/.DefaultActivity t19} time:2590780
+04-17 10:56:09.820: I/Sensors(792): Acc old sensor_state 129, new sensor_state : 128 en : 0
+04-17 10:56:09.820: D/DA-oS(1138): starting
+04-17 10:56:09.830: D/PhoneStatusBar(1042): disable: < expand icons* alerts system_info* back HOME RECENT clock SEARCH >
+04-17 10:56:09.833: D/NS-gAN(1138): com.android.mms
+04-17 10:56:09.833: D/NS-gAN(1138): android
+04-17 10:56:09.833: D/NS-gAN(1138): android
+04-17 10:56:09.833: D/DA-oC(1138): 1 notifications
+04-17 10:56:09.835: D/DA.onResume(1138): On resume called.
+04-17 10:56:09.839: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: media
+04-17 10:56:09.839: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: default
+04-17 10:56:09.868: D/F.Act.enableCoverTouch(1138): We're root enabled so lets boost the sensitivity...
+04-17 10:56:09.869: D/F.Act.enableCoverTouch(1138): ...Sensitivity boosted, hold onto your hats!
+04-17 10:56:09.869: I/DisplayManagerService(792): Display device changed: DisplayDeviceInfo{""Built-in Screen"": 1440 x 2560, 60.0 fps, supportedRefreshRates [60.0], density 560, 508.0 x 516.063 dpi, appVsyncOff 0, presDeadline 17666667, touch INTERNAL, rotation 0, type BUILT_IN, state OFF, FLAG_DEFAULT_DISPLAY, FLAG_ROTATES_WITH_CONTENT, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS}
+04-17 10:56:09.869: V/ActivityManager(792): Display changed displayId=0
+04-17 10:56:09.878: D/PhoneStatusBar(1042): disable: < expand icons alerts system_info back home* RECENT clock SEARCH >
+04-17 10:56:09.879: D/SurfaceFlinger(311): Set power mode=0, type=0 flinger=0xb6962000
+04-17 10:56:09.879: D/qdhwcomposer(311): hwc_blank: Blanking display: 0
+04-17 10:56:09.884: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: media
+04-17 10:56:09.884: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: default
+04-17 10:56:09.895: D/su(3246): su invoked.
+04-17 10:56:09.895: D/su(3246): starting daemon client 10060 10060
+04-17 10:56:09.896: D/su(3248): remote pid: 3246
+04-17 10:56:09.896: D/su(3248): remote pts_slave: 
+04-17 10:56:09.896: D/su(3248): waiting for child exit
+04-17 10:56:09.897: D/su(3250): su invoked.
+04-17 10:56:09.898: E/su(3250): SU from: u0_a60
+04-17 10:56:09.898: D/su(3250): Checking whether app [uid:10060, pkgName: org.durka.hallmonitor] is allowed to be root
+04-17 10:56:09.900: D/su(3250): Privilege elevation allowed by appops
+04-17 10:56:09.900: D/su(3250): Allowing via appops.
+04-17 10:56:09.900: D/su(3250): 10060 /system/bin/app_process32 executing 0 /system/bin/sh using binary /system/bin/sh : sh
+04-17 10:56:09.900: I/SuControllerImpl(1042): Got change
+04-17 10:56:09.900: D/su(3250): Waiting for pid 3253.
+04-17 10:56:09.902: I/Timeline(1138): Timeline: Activity_idle id: android.os.BinderProxy@303c5cc6 time:2590884
+04-17 10:56:09.903: I/Timeline(1138): Timeline: Activity_idle id: android.os.BinderProxy@303c5cc6 time:2590885
+04-17 10:56:09.906: D/su(3250): Finishing su operation for app [uid:10060, pkgName: org.durka.hallmonitor]
+04-17 10:56:09.908: D/su(3248): sending code
+04-17 10:56:09.908: D/su(3248): child exited
+04-17 10:56:09.908: D/su(3246): client exited 0
+04-17 10:56:09.917: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{2368b578 u0 org.durka.hallmonitor/.DefaultActivity t19} time:2590898
+04-17 10:56:09.919: I/SuControllerImpl(1042): Got change
+04-17 10:56:10.161: I/qdhwcomposer(311): handle_blank_event: dpy:0 panel power state: 0
+04-17 10:56:10.161: D/qdhwcomposer(311): hwc_blank: Done blanking display: 0
+04-17 10:56:10.162: D/SurfaceControl(792): Excessive delay in setPowerMode(): 293ms
+04-17 10:56:10.162: D/PowerHAL_TR_Ext(792): cm_power_set_interactive_ext: disabling input devices
+04-17 10:56:10.169: I/QCOM PowerHAL(792): Got set_interactive hint
+04-17 10:56:10.194: D/DA-oS(1138): stopping
+04-17 10:56:10.225: D/BrcmNfcJni(1399): nfcManager_disableDiscovery: enter;
+04-17 10:56:10.225: D/BrcmNfcJni(1399): pn544InteropAbortNow
+04-17 10:56:10.225: D/BrcmNfcJni(1399): startRfDiscovery: is start=0
+04-17 10:56:10.225: I/BrcmNfcNfa(1399): NFA_StopRfDiscovery ()
+04-17 10:56:10.226: I/BrcmNfcNfa(1399): NFA got event 0x010F
+04-17 10:56:10.226: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_STOP_RF_DISCOVERY_EVT (0x0f)
+04-17 10:56:10.226: I/BrcmNfcNfa(1399): nfa_dm_act_stop_rf_discovery ()
+04-17 10:56:10.226: I/BrcmNfcNfa(1399): nfa_dm_rf_deactivate () deactivate_type:0x0
+04-17 10:56:10.226: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): state: DISCOVERY (1), event: DEACTIVATE_CMD(6) disc_flags: 0x2
+04-17 10:56:10.226: I/BrcmNfcNfa(1399): NFC_Deactivate 4 (IDLE) deactivate_type:0
+04-17 10:56:10.226: D/NfcAdaptation(1399): NfcAdaptation::HalWrite
+04-17 10:56:10.226: I/SecHAL(1399): nfc_hal_write: enter;
+04-17 10:56:10.226: I/SecHAL(1399): nfc_hal_write: exit;
+04-17 10:56:10.226: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): new state: DISCOVERY (1), disc_flags: 0x22
+04-17 10:56:10.226: I/BrcmNfcNfa(1399): nfa_sys_ptim_stop_timer af7a99e8
+04-17 10:56:10.226: I/BrcmNfcNfa(1399): ptim timer stop
+04-17 10:56:10.226: I/BrcmNfcNfa(1399): Stopped presence check timer (if started)
+04-17 10:56:10.227: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_WRITE(3)
+04-17 10:56:10.227: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:56:10.229: I/SecHAL(1399): device_wakeup: Wakeup! in 20 ms
+04-17 10:56:10.233: D/audio_hw_primary(335): adev_set_parameters: enter: screen_state=off
+04-17 10:56:10.233: E/audio_a2dp_hw(335): adev_set_parameters: ERROR: set param called even when stream out is null
+04-17 10:56:10.241: E/native(792): do suspend true
+04-17 10:56:10.249: D/SecHAL(1399): data_trace:  Send(  4) 21 06 01   00 
+04-17 10:56:10.253: D/SecHAL(1399): read_thread: Sent message to HAL message task, remind que: 2
+04-17 10:56:10.253: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_READ(4)
+04-17 10:56:10.253: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:56:10.253: D/SecHAL(1399): data_trace:  Recv(  4) 41 06 01   00 
+04-17 10:56:10.253: I/SecHAL(1399): nfc_data_callback: !
+04-17 10:56:10.253: D/NfcAdaptation(1399): NfcAdaptation::HalDeviceContextDataCallback: len=4
+04-17 10:56:10.253: I/BrcmNfcNfa(1399): NFC received rsp gid:1
+04-17 10:56:10.253: I/BrcmNfcNfa(1399): nfc_set_state 4 (IDLE)->4 (IDLE)
+04-17 10:56:10.253: I/BrcmNfcNfa(1399): nfa_dm_disc_data_cback ()
+04-17 10:56:10.253: I/BrcmNfcNfa(1399): nfa_dm_disc_discovery_cback (): event:0x4005
+04-17 10:56:10.253: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): state: DISCOVERY (1), event: DEACTIVATE_RSP(7) disc_flags: 0x22
+04-17 10:56:10.254: I/BrcmNfcNfa(1399): nfa_dm_disc_new_state (): old_state: DISCOVERY (1), new_state: IDLE (0) disc_flags: 0x2
+04-17 10:56:10.254: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 31
+04-17 10:56:10.254: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_RF_DISCOVERY_STOPPED_EVT: status = 0
+04-17 10:56:10.254: I/BrcmNfcNfa(1399): nfa_dm_start_rf_discover ()
+04-17 10:56:10.254: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): new state: IDLE (0), disc_flags: 0x0
+04-17 10:56:10.254: D/BrcmNfcJni(1399): PeerToPeer::enableP2pListening: enter isEnable: 0  mIsP2pListening: 0
+04-17 10:56:10.254: D/BrcmNfcJni(1399): PeerToPeer::enableP2pListening: exit; mIsP2pListening: 0
+04-17 10:56:10.254: D/BrcmNfcJni(1399): PowerSwitch::setModeOff(deactivated=0x1) : mCurrActivity=0x0
+04-17 10:56:10.255: D/BrcmNfcJni(1399): PowerSwitch::setLevel: level=PS-LOW-POWER (2)
+04-17 10:56:10.255: D/BrcmNfcJni(1399): PowerSwitch::setLevel: actual power level=PS-FULL
+04-17 10:56:10.255: D/BrcmNfcJni(1399): nfcManager_disableDiscovery: exit
+04-17 10:56:11.344: I/SecHAL(1399): device_sleep: NFC can be going to sleep
+04-17 10:56:12.528: D/TaskPersister(792): removeObsoleteFile: deleting file=13_task.xml
+04-17 10:56:12.529: D/TaskPersister(792): removeObsoleteFile: deleting file=13_task_thumbnail.png
+04-17 10:56:52.323: V/ActivityManager(792): Display changed displayId=0
+04-17 10:56:52.331: I/PowerManagerService(792): Waking up from sleep (uid 1000)...
+04-17 10:56:52.332: I/DisplayPowerController(792): Blocking screen on until initial contents have been drawn.
+04-17 10:56:52.334: D/PowerHAL_TR_Ext(792): cm_power_set_interactive_ext: enabling input devices
+04-17 10:56:52.337: I/Sensors(792): Acc old sensor_state 128, new sensor_state : 129 en : 1
+04-17 10:56:52.347: V/KeyguardServiceDelegate(792): onScreenTurnedOn(showListener = com.android.internal.policy.impl.PhoneWindowManager$2@e9e221e)
+04-17 10:56:52.350: V/KeyguardServiceDelegate(792): **** SHOWN CALLED ****
+04-17 10:56:52.395: I/Sensors(792): ProximitySensor - 8(cm)
+04-17 10:56:52.699: I/QCOM PowerHAL(792): Got set_interactive hint
+04-17 10:56:52.700: D/PowerManagerService-JNI(792): Excessive delay in setInteractive(true) while turning screen on: 365ms
+04-17 10:56:52.702: W/art(792): Long monitor contention event with owner method=void com.android.server.power.PowerManagerService$2.onDisplayStateChange(int) from PowerManagerService.java:2127 waiters=0 for 362ms
+04-17 10:56:52.706: W/art(792): Long monitor contention event with owner method=void com.android.server.wm.WindowManagerService$H.handleMessage(android.os.Message) from WindowManagerService.java:7672 waiters=0 for 359ms
+04-17 10:56:52.714: W/art(792): Long monitor contention event with owner method=void com.android.server.wm.WindowManagerService$H.handleMessage(android.os.Message) from WindowManagerService.java:7672 waiters=1 for 344ms
+04-17 10:56:52.720: D/VCPS.onSensorChanged(1138): Proximity sensor changed, value=8.0
+04-17 10:56:52.720: D/F.Evt.proximity(1138): Proximity method called with value: 8.0 ,whilst cover_closed is: true
+04-17 10:56:52.720: D/F.Is.cover_closed(1138): Is cover closed called.
+04-17 10:56:52.723: D/F.Is.cover_closed(1138): Cover closed state is: true
+04-17 10:56:52.723: D/F.Act.open_cover(1138): Open cover event receieved.
+04-17 10:56:52.730: D/SurfaceFlinger(311): Set power mode=2, type=0 flinger=0xb6962000
+04-17 10:56:52.730: D/qdhwcomposer(311): hwc_blank: Unblanking display: 0
+04-17 10:56:52.740: I/DisplayManagerService(792): Display device changed: DisplayDeviceInfo{""Built-in Screen"": 1440 x 2560, 60.0 fps, supportedRefreshRates [60.0], density 560, 508.0 x 516.063 dpi, appVsyncOff 0, presDeadline 17666667, touch INTERNAL, rotation 0, type BUILT_IN, state ON, FLAG_DEFAULT_DISPLAY, FLAG_ROTATES_WITH_CONTENT, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS}
+04-17 10:56:52.957: I/qdhwcomposer(311): handle_blank_event: dpy:0 panel power state: 1
+04-17 10:56:52.961: E/qdexternal(311): writeHPDOption: file write failed '/sys/devices/virtual/graphics/fb1/hpd'
+04-17 10:56:52.961: D/qdhwcomposer(311): hwc_blank: Done unblanking display: 0
+04-17 10:56:52.965: D/SurfaceControl(792): Excessive delay in setPowerMode(): 234ms
+04-17 10:56:53.050: I/WindowManager(792): Screenshot max retries 4 of Token{db00451 ActivityRecord{2368b578 u0 org.durka.hallmonitor/.DefaultActivity t19 f}} appWin=Window{126bbafd u0 org.durka.hallmonitor/org.durka.hallmonitor.DefaultActivity} drawState=3
+04-17 10:56:53.051: E/ActivityManager(792): Invalid thumbnail dimensions: 672x672
+04-17 10:56:53.056: W/art(792): Long monitor contention event with owner method=void com.android.server.am.ActivityManagerService.wakingUp() from ActivityManagerService.java:10284 waiters=2 for 325ms
+04-17 10:56:53.056: D/F.Act.enableCoverTouch(1138): We're root enabled so lets revert the sensitivity...
+04-17 10:56:53.057: W/art(792): Long monitor contention event with owner method=boolean com.android.server.am.ActivityManagerService.finishActivity(android.os.IBinder, int, android.content.Intent, boolean) from ActivityManagerService.java:4555 waiters=1 for 314ms
+04-17 10:56:53.062: D/F.Act.enableCoverTouch(1138): ...Sensitivity reverted, sanity is restored!
+04-17 10:56:53.063: W/art(792): Long monitor contention event with owner method=boolean com.android.server.am.ActivityManagerService.finishActivity(android.os.IBinder, int, android.content.Intent, boolean) from ActivityManagerService.java:4555 waiters=2 for 319ms
+04-17 10:56:53.065: D/F.Util.rs(1138): aww why can't I hit snooze
+04-17 10:56:53.072: W/art(792): Long monitor contention event with owner method=boolean com.android.server.am.ActivityManagerService.finishActivity(android.os.IBinder, int, android.content.Intent, boolean) from ActivityManagerService.java:4555 waiters=4 for 322ms
+04-17 10:56:53.083: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{2368b578 u0 org.durka.hallmonitor/.DefaultActivity t19 f} time:2634064
+04-17 10:56:53.096: V/ActivityManager(792): Display changed displayId=0
+04-17 10:56:53.099: D/DA-oS(1138): starting
+04-17 10:56:53.119: D/PhoneStatusBar(1042): disable: < expand ICONS* alerts SYSTEM_INFO* back home RECENT clock SEARCH >
+04-17 10:56:53.131: D/NS-gAN(1138): com.android.mms
+04-17 10:56:53.131: D/NS-gAN(1138): android
+04-17 10:56:53.131: D/NS-gAN(1138): android
+04-17 10:56:53.131: D/DA-oC(1138): 1 notifications
+04-17 10:56:53.132: I/Choreographer(1138): Skipped 45 frames!  The application may be doing too much work on its main thread.
+04-17 10:56:53.143: V/ActivityManager(792): Display changed displayId=0
+04-17 10:56:53.162: D/su(3271): su invoked.
+04-17 10:56:53.163: D/su(3271): starting daemon client 10060 10060
+04-17 10:56:53.165: D/su(3273): remote pid: 3271
+04-17 10:56:53.166: D/su(3273): remote pts_slave: 
+04-17 10:56:53.167: D/su(3273): waiting for child exit
+04-17 10:56:53.169: D/su(3277): su invoked.
+04-17 10:56:53.169: E/su(3277): SU from: u0_a60
+04-17 10:56:53.169: D/su(3277): Checking whether app [uid:10060, pkgName: org.durka.hallmonitor] is allowed to be root
+04-17 10:56:53.171: D/su(3277): Privilege elevation allowed by appops
+04-17 10:56:53.171: D/su(3277): Allowing via appops.
+04-17 10:56:53.171: D/su(3277): 10060 /system/bin/app_process32 executing 0 /system/bin/sh using binary /system/bin/sh : sh
+04-17 10:56:53.171: D/su(3277): Waiting for pid 3278.
+04-17 10:56:53.176: D/su(3277): Finishing su operation for app [uid:10060, pkgName: org.durka.hallmonitor]
+04-17 10:56:53.178: D/su(3273): sending code
+04-17 10:56:53.178: D/su(3273): child exited
+04-17 10:56:53.180: D/su(3271): client exited 0
+04-17 10:56:53.200: E/UsbSettings(2568): USB Normal Mode
+04-17 10:56:53.208: I/DisplayPowerController(792): Unblocked screen on after 876 ms
+04-17 10:56:53.217: D/PhoneStatusBar(1042): disable: < expand ICONS alerts SYSTEM_INFO back HOME* RECENT clock SEARCH >
+04-17 10:56:53.217: E/UsbSettings(2568): UsbAccessoryMode false
+04-17 10:56:53.218: E/UsbSettings(2568): USB Normal Mode
+04-17 10:56:53.257: I/Timeline(2568): Timeline: Activity_idle id: android.os.BinderProxy@104fca3a time:2634238
+04-17 10:56:53.267: D/DA-oS(1138): stopping
+04-17 10:56:53.267: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{3ef86174 u0 com.android.settings/.UsbSettings t16} time:2634248
+04-17 10:56:53.299: D/F.Evt.proximity(1138): Proximity method called with value: 8.0 ,whilst cover_closed is: false
+04-17 10:56:53.329: I/SuControllerImpl(1042): Got change
+04-17 10:56:53.329: I/SuControllerImpl(1042): Got change
+04-17 10:56:53.332: D/BrcmNfcJni(1399): nfcManager_enableDiscovery: enter; tech_mask = 00
+04-17 10:56:53.332: D/BrcmNfcJni(1399): PowerSwitch::setLevel: level=PS-FULL (1)
+04-17 10:56:53.332: D/BrcmNfcJni(1399): stopPolling_rfDiscoveryDisabled: disable polling
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): NFA_DisablePolling ()
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): NFA got event 0x0107
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_DISABLE_POLLING_EVT (0x07)
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): nfa_dm_act_disable_polling ()
+04-17 10:56:53.332: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 1
+04-17 10:56:53.332: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_POLL_DISABLED_EVT: status = 3
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): NFA_EeSetDefaultTechRouting(): handle:<0x3>technology_mask:<0x1>/<0x0>/<0x0>
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): nfa_ee_find_ecb ()
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): NFA got event 0x0204
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): nfa_ee_evt_hdlr (): Event API_SET_TECH_CFG(0x204), State: INIT_DONE(1)
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): nfa_ee_update_route_size nfcee_id:0x3 size_mask:10
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): nfa_ee_total_lmrt_size size:0
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): nfa_dm_is_active () flags:0x1
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): nfa_sys_ptim_start_timer af7a7a68
+04-17 10:56:53.332: I/BrcmNfcNfa(1399): ptim timer start
+04-17 10:56:53.332: D/BrcmNfcJni(1399): RoutingManager::nfaEeCallback: NFA_EE_SET_TECH_CFG_EVT; status=0x0
+04-17 10:56:53.333: I/BrcmNfcNfa(1399): NFA_EeSetDefaultProtoRouting(): handle:<0x3>protocol_mask:<0x8>/<0x0>/<0x0>
+04-17 10:56:53.333: I/BrcmNfcNfa(1399): nfa_ee_find_ecb ()
+04-17 10:56:53.333: I/BrcmNfcNfa(1399): NFA got event 0x0205
+04-17 10:56:53.333: I/BrcmNfcNfa(1399): nfa_ee_evt_hdlr (): Event API_SET_PROTO_CFG(0x205), State: INIT_DONE(1)
+04-17 10:56:53.333: I/BrcmNfcNfa(1399): nfa_ee_update_route_size nfcee_id:0x3 size_mask:10
+04-17 10:56:53.333: I/BrcmNfcNfa(1399): nfa_ee_total_lmrt_size size:0
+04-17 10:56:53.333: I/BrcmNfcNfa(1399): nfa_dm_is_active () flags:0x1
+04-17 10:56:53.333: I/BrcmNfcNfa(1399): nfa_sys_ptim_start_timer af7a7a68
+04-17 10:56:53.333: D/BrcmNfcJni(1399): RoutingManager::nfaEeCallback: NFA_EE_SET_PROTO_CFG_EVT; status=0x0
+04-17 10:56:53.333: D/BrcmNfcJni(1399): RoutingManager::commitRouting
+04-17 10:56:53.333: I/BrcmNfcNfa(1399): NFA_EeUpdateNow()
+04-17 10:56:53.333: I/BrcmNfcNfa(1399): NFA got event 0x0209
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfa_ee_evt_hdlr (): Event API_UPDATE_NOW(0x209), State: INIT_DONE(1)
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfa_sys_ptim_stop_timer af7a7a68
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): ptim timer stop
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfa_ee_rout_timeout()
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfa_ee_need_recfg() ee_cfged: 0x82 ee_cfg_sts: 0x00
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): 0: ecb_flags  : 0x00, mask: 0x10
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): 1: ecb_flags  : 0x00, mask: 0x01
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): 2: ecb_flags  : 0x06, mask: 0x02
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfa_ee_update_rout ee_cfg_sts:0x00
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfa_ee_evt_hdlr (): Event CFG_TO_NFCC(0x217), State: INIT_DONE(1)
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): last_active: 0x1
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfa_ee_route_add_one_ecb max_len:256, max_tlv:253, cur_offset:0, more:1, num_tlv:0
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfa_ee_total_lmrt_size size:0
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): ee_cfg_sts:0x00 lmrt_size:0
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfcee_id:0x1, last_active: 0x1
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfa_ee_route_add_one_ecb max_len:256, max_tlv:253, cur_offset:0, more:0, num_tlv:0
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfa_ee_total_lmrt_size size:0
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): ee_cfg_sts:0x00 lmrt_size:0
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfa_ee_update_rout ee_cfg_sts:0x00 ee_cfged:0x02
+04-17 10:56:53.334: I/BrcmNfcNfa(1399): nfa_ee_report_update_evt ee_wait_evt:0x10 wait_rsp:0
+04-17 10:56:53.334: D/BrcmNfcJni(1399): RoutingManager::nfaEeCallback: NFA_EE_UPDATED_EVT
+04-17 10:56:53.335: D/BrcmNfcJni(1399): startRfDiscovery: is start=1
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): NFA_StartRfDiscovery ()
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): NFA got event 0x010E
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_START_RF_DISCOVERY_EVT (0x0e)
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): nfa_dm_act_start_rf_discovery ()
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): nfa_dm_start_rf_discover ()
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): nfa_ee_get_tech_route(): 1
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): 0x0, 0x0, 0x0, 0x0
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): nfa_dm_cb.disc_cb.entry[0].selected_disc_mask = 0x40000
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): dm_disc_mask = 0x40000
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): nfa_dm_set_rf_listen_mode_config () tech_proto_mask = 0x00040000
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): nfa_dm_check_set_config ()
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): nfa_dm_set_total_duration ()
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): nfa_dm_check_set_config ()
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): NFC_DiscoveryStart
+04-17 10:56:53.335: D/NfcAdaptation(1399): NfcAdaptation::HalPrediscover
+04-17 10:56:53.335: I/SecHAL(1399): nfc_hal_pre_discover: enter;
+04-17 10:56:53.335: I/SecHAL(1399): nfc_hal_pre_discover: exit;
+04-17 10:56:53.335: D/NfcAdaptation(1399): NfcAdaptation::HalWrite
+04-17 10:56:53.335: I/SecHAL(1399): nfc_hal_write: enter;
+04-17 10:56:53.335: I/SecHAL(1399): nfc_hal_write: exit;
+04-17 10:56:53.335: I/BrcmNfcNfa(1399): NFC_DiscoveryStart status: 0xe3
+04-17 10:56:53.337: D/SecHAL(1399): nfc_hal_task: Got a event: Uknown event.(2)
+04-17 10:56:53.337: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:56:53.337: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_WRITE(3)
+04-17 10:56:53.337: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:56:53.338: I/SecHAL(1399): device_wakeup: Wakeup! in 20 ms
+04-17 10:56:53.359: D/SecHAL(1399): data_trace:  Send(  6) 21 03 03   01 80 01 
+04-17 10:56:53.360: D/SecHAL(1399): read_thread: Sent message to HAL message task, remind que: 2
+04-17 10:56:53.360: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_READ(4)
+04-17 10:56:53.360: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:56:53.360: D/SecHAL(1399): data_trace:  Recv(  4) 41 03 01   00 
+04-17 10:56:53.360: I/SecHAL(1399): nfc_data_callback: !
+04-17 10:56:53.360: D/NfcAdaptation(1399): NfcAdaptation::HalDeviceContextDataCallback: len=4
+04-17 10:56:53.360: I/BrcmNfcNfa(1399): NFC received rsp gid:1
+04-17 10:56:53.360: I/BrcmNfcNfa(1399): nfa_dm_disc_discovery_cback (): event:0x4000
+04-17 10:56:53.360: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): state: IDLE (0), event: DISCOVER_RSP(1) disc_flags: 0x31
+04-17 10:56:53.360: I/BrcmNfcNfa(1399): nfa_dm_disc_new_state (): old_state: IDLE (0), new_state: DISCOVERY (1) disc_flags: 0x11
+04-17 10:56:53.360: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 30
+04-17 10:56:53.360: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_RF_DISCOVERY_STARTED_EVT: status = 0
+04-17 10:56:53.360: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): new state: DISCOVERY (1), disc_flags: 0x1
+04-17 10:56:53.360: D/BrcmNfcJni(1399): PowerSwitch::setModeOn(activated=0x1) : mCurrActivity=0x1
+04-17 10:56:53.360: D/BrcmNfcJni(1399): nfcManager_enableDiscovery: exit
+04-17 10:56:53.406: D/audio_hw_primary(335): adev_set_parameters: enter: screen_state=on
+04-17 10:56:53.407: E/audio_a2dp_hw(335): adev_set_parameters: ERROR: set param called even when stream out is null
+04-17 10:56:53.413: E/native(792): do suspend false
+04-17 10:56:53.598: D/F.Evt.proximity(1138): Proximity method called with value: 8.0 ,whilst cover_closed is: false
+04-17 10:56:53.615: I/wpa_supplicant(1147): wlan0: CTRL-EVENT-SCAN-STARTED 
+04-17 10:56:54.481: I/SecHAL(1399): device_sleep: NFC can be going to sleep
+04-17 10:56:55.783: D/PhoneStatusBar(1042): disable: < expand ICONS alerts SYSTEM_INFO back HOME RECENT clock SEARCH >
+04-17 10:56:55.805: W/AudioTrack(1042): AUDIO_OUTPUT_FLAG_FAST denied by client
+04-17 10:56:55.806: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:56:55.809: D/PhoneStatusBar(1042): disable: < expand icons* alerts system_info* back HOME RECENT clock SEARCH >
+04-17 10:56:55.818: D/audio_hw_primary(335): start_output_stream: enter: stream(0xb605f600)usecase(1: low-latency-playback) devices(0x2)
+04-17 10:56:55.818: D/audio_hw_primary(335): start_output_stream: enter: usecase(1: low-latency-playback) devices(0x2)
+04-17 10:56:55.818: D/audio_hw_primary(335): select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+04-17 10:56:55.818: W/msm8974_platform(335): Codec backend bitwidth 16, samplerate 48000
+04-17 10:56:55.818: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:56:55.818: I/msm8974_platform(335): platform_send_audio_calibration: sending audio calibration for snd_device(2) acdb_id(15)
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> send_audio_cal, acdb_id = 15, path =  0
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> send_adm_topology
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TOPOLOGY_ID
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> send_asm_topology
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_STREAM_TOPOLOGY_ID
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> send_audtable
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TABLE
+04-17 10:56:55.818: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_CAL
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> send_audvoltable
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_GAIN_DEP_STEP_TABLE
+04-17 10:56:55.818: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_VOL_CAL
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> send_afe_cal
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AFE_COMMON_TABLE
+04-17 10:56:55.818: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:56:55.818: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AFE_CAL
+04-17 10:56:55.827: D/audio_hw_primary(335): select_devices: done
+04-17 10:56:55.851: D/BrcmNfcJni(1399): nfcManager_enableDiscovery: enter; tech_mask = ef
+04-17 10:56:55.851: D/BrcmNfcJni(1399): PowerSwitch::setLevel: level=PS-FULL (1)
+04-17 10:56:55.851: D/BrcmNfcJni(1399): startRfDiscovery: is start=0
+04-17 10:56:55.851: I/BrcmNfcNfa(1399): NFA_StopRfDiscovery ()
+04-17 10:56:55.851: I/BrcmNfcNfa(1399): NFA got event 0x010F
+04-17 10:56:55.851: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_STOP_RF_DISCOVERY_EVT (0x0f)
+04-17 10:56:55.851: I/BrcmNfcNfa(1399): nfa_dm_act_stop_rf_discovery ()
+04-17 10:56:55.851: I/BrcmNfcNfa(1399): nfa_dm_rf_deactivate () deactivate_type:0x0
+04-17 10:56:55.851: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): state: DISCOVERY (1), event: DEACTIVATE_CMD(6) disc_flags: 0x2
+04-17 10:56:55.851: I/BrcmNfcNfa(1399): NFC_Deactivate 4 (IDLE) deactivate_type:0
+04-17 10:56:55.851: D/NfcAdaptation(1399): NfcAdaptation::HalWrite
+04-17 10:56:55.851: I/SecHAL(1399): nfc_hal_write: enter;
+04-17 10:56:55.851: I/SecHAL(1399): nfc_hal_write: exit;
+04-17 10:56:55.851: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_WRITE(3)
+04-17 10:56:55.851: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:56:55.852: I/SecHAL(1399): device_wakeup: Wakeup! in 20 ms
+04-17 10:56:55.855: D/PhoneStatusBar(1042): disable: < expand icons alerts system_info back home* recent* clock search* >
+04-17 10:56:55.859: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): new state: DISCOVERY (1), disc_flags: 0x22
+04-17 10:56:55.860: I/BrcmNfcNfa(1399): nfa_sys_ptim_stop_timer af7a99e8
+04-17 10:56:55.860: I/BrcmNfcNfa(1399): ptim timer stop
+04-17 10:56:55.860: I/BrcmNfcNfa(1399): Stopped presence check timer (if started)
+04-17 10:56:55.873: D/SecHAL(1399): data_trace:  Send(  4) 21 06 01   00 
+04-17 10:56:55.875: D/SecHAL(1399): read_thread: Sent message to HAL message task, remind que: 2
+04-17 10:56:55.876: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_READ(4)
+04-17 10:56:55.876: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:56:55.876: D/SecHAL(1399): data_trace:  Recv(  4) 41 06 01   00 
+04-17 10:56:55.876: I/SecHAL(1399): nfc_data_callback: !
+04-17 10:56:55.876: D/NfcAdaptation(1399): NfcAdaptation::HalDeviceContextDataCallback: len=4
+04-17 10:56:55.876: I/BrcmNfcNfa(1399): NFC received rsp gid:1
+04-17 10:56:55.876: I/BrcmNfcNfa(1399): nfc_set_state 4 (IDLE)->4 (IDLE)
+04-17 10:56:55.876: I/BrcmNfcNfa(1399): nfa_dm_disc_data_cback ()
+04-17 10:56:55.877: I/BrcmNfcNfa(1399): nfa_dm_disc_discovery_cback (): event:0x4005
+04-17 10:56:55.877: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): state: DISCOVERY (1), event: DEACTIVATE_RSP(7) disc_flags: 0x22
+04-17 10:56:55.877: I/BrcmNfcNfa(1399): nfa_dm_disc_new_state (): old_state: DISCOVERY (1), new_state: IDLE (0) disc_flags: 0x2
+04-17 10:56:55.877: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 31
+04-17 10:56:55.877: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_RF_DISCOVERY_STOPPED_EVT: status = 0
+04-17 10:56:55.877: I/BrcmNfcNfa(1399): nfa_dm_start_rf_discover ()
+04-17 10:56:55.877: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): new state: IDLE (0), disc_flags: 0x0
+04-17 10:56:55.877: D/BrcmNfcJni(1399): stopPolling_rfDiscoveryDisabled: disable polling
+04-17 10:56:55.877: I/BrcmNfcNfa(1399): NFA_DisablePolling ()
+04-17 10:56:55.877: I/BrcmNfcNfa(1399): NFA got event 0x0107
+04-17 10:56:55.877: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_DISABLE_POLLING_EVT (0x07)
+04-17 10:56:55.877: I/BrcmNfcNfa(1399): nfa_dm_act_disable_polling ()
+04-17 10:56:55.877: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 1
+04-17 10:56:55.877: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_POLL_DISABLED_EVT: status = 3
+04-17 10:56:55.878: D/BrcmNfcJni(1399): startPolling_rfDiscoveryDisabled: enable polling
+04-17 10:56:55.878: I/BrcmNfcNfa(1399): NFA_EnablePolling () 0xEF
+04-17 10:56:55.878: I/BrcmNfcNfa(1399): NFA got event 0x0106
+04-17 10:56:55.878: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_ENABLE_POLLING_EVT (0x06)
+04-17 10:56:55.878: I/BrcmNfcNfa(1399): nfa_dm_act_enable_polling ()
+04-17 10:56:55.878: I/BrcmNfcNfa(1399): nfa_dm_start_polling ()
+04-17 10:56:55.878: I/BrcmNfcNfa(1399): nfa_dm_add_rf_discover () disc_mask=0x3d7f
+04-17 10:56:55.878: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 0
+04-17 10:56:55.878: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_POLL_ENABLED_EVT: status = 0
+04-17 10:56:55.879: D/BrcmNfcJni(1399): startPolling_rfDiscoveryDisabled: wait for enable event
+04-17 10:56:55.879: D/BrcmNfcJni(1399): nfcManager_enableDiscovery: Enable p2pListening
+04-17 10:56:55.879: D/BrcmNfcJni(1399): PeerToPeer::enableP2pListening: enter isEnable: 1  mIsP2pListening: 0
+04-17 10:56:55.879: I/BrcmNfcNfa(1399): NFA_P2pSetListenTech (): tech_mask:0xC5
+04-17 10:56:55.879: I/BrcmNfcNfa(1399): NFA got event 0x010D
+04-17 10:56:55.879: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_SET_P2P_LISTEN_TECH_EVT (0x0d)
+04-17 10:56:55.879: I/BrcmNfcNfa(1399): nfa_dm_set_p2p_listen_tech ()  tech_mask = 197
+04-17 10:56:55.879: I/BrcmNfcNfa(1399): nfa_p2p_update_listen_tech ()  tech_mask = 0xc5
+04-17 10:56:55.879: I/BrcmNfcNfa(1399): nfa_p2p_enable_listening () sys_id = 3, update_wks = 0
+04-17 10:56:55.879: I/BrcmNfcNfa(1399): nfa_dm_add_rf_discover () disc_mask=0xc480000
+04-17 10:56:55.879: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 33
+04-17 10:56:55.879: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_SET_P2P_LISTEN_TECH_EVT
+04-17 10:56:55.880: D/BrcmNfcJni(1399): PeerToPeer::enableP2pListening: exit; mIsP2pListening: 1
+04-17 10:56:55.880: I/BrcmNfcNfa(1399): NFA_EeSetDefaultTechRouting(): handle:<0x3>technology_mask:<0x1>/<0x0>/<0x0>
+04-17 10:56:55.880: I/BrcmNfcNfa(1399): nfa_ee_find_ecb ()
+04-17 10:56:55.880: I/BrcmNfcNfa(1399): NFA got event 0x0204
+04-17 10:56:55.880: I/BrcmNfcNfa(1399): nfa_ee_evt_hdlr (): Event API_SET_TECH_CFG(0x204), State: INIT_DONE(1)
+04-17 10:56:55.880: I/BrcmNfcNfa(1399): nfa_ee_update_route_size nfcee_id:0x3 size_mask:10
+04-17 10:56:55.880: I/BrcmNfcNfa(1399): nfa_ee_total_lmrt_size size:0
+04-17 10:56:55.880: I/BrcmNfcNfa(1399): nfa_dm_is_active () flags:0x5
+04-17 10:56:55.880: I/BrcmNfcNfa(1399): nfa_sys_ptim_start_timer af7a7a68
+04-17 10:56:55.880: I/BrcmNfcNfa(1399): ptim timer start
+04-17 10:56:55.880: D/BrcmNfcJni(1399): RoutingManager::nfaEeCallback: NFA_EE_SET_TECH_CFG_EVT; status=0x0
+04-17 10:56:55.881: I/BrcmNfcNfa(1399): NFA_EeSetDefaultProtoRouting(): handle:<0x3>protocol_mask:<0x8>/<0x0>/<0x0>
+04-17 10:56:55.881: I/BrcmNfcNfa(1399): nfa_ee_find_ecb ()
+04-17 10:56:55.881: I/BrcmNfcNfa(1399): NFA got event 0x0205
+04-17 10:56:55.881: I/BrcmNfcNfa(1399): nfa_ee_evt_hdlr (): Event API_SET_PROTO_CFG(0x205), State: INIT_DONE(1)
+04-17 10:56:55.881: I/BrcmNfcNfa(1399): nfa_ee_update_route_size nfcee_id:0x3 size_mask:10
+04-17 10:56:55.881: I/BrcmNfcNfa(1399): nfa_ee_total_lmrt_size size:0
+04-17 10:56:55.881: I/BrcmNfcNfa(1399): nfa_dm_is_active () flags:0x5
+04-17 10:56:55.881: I/BrcmNfcNfa(1399): nfa_sys_ptim_start_timer af7a7a68
+04-17 10:56:55.881: D/BrcmNfcJni(1399): RoutingManager::nfaEeCallback: NFA_EE_SET_PROTO_CFG_EVT; status=0x0
+04-17 10:56:55.881: D/BrcmNfcJni(1399): RoutingManager::commitRouting
+04-17 10:56:55.881: I/BrcmNfcNfa(1399): NFA_EeUpdateNow()
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): NFA got event 0x0209
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfa_ee_evt_hdlr (): Event API_UPDATE_NOW(0x209), State: INIT_DONE(1)
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfa_sys_ptim_stop_timer af7a7a68
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): ptim timer stop
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfa_ee_rout_timeout()
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfa_ee_need_recfg() ee_cfged: 0x82 ee_cfg_sts: 0x00
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): 0: ecb_flags  : 0x00, mask: 0x10
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): 1: ecb_flags  : 0x00, mask: 0x01
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): 2: ecb_flags  : 0x06, mask: 0x02
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfa_ee_update_rout ee_cfg_sts:0x00
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfa_ee_evt_hdlr (): Event CFG_TO_NFCC(0x217), State: INIT_DONE(1)
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): last_active: 0x1
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfa_ee_route_add_one_ecb max_len:256, max_tlv:253, cur_offset:0, more:1, num_tlv:0
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfa_ee_total_lmrt_size size:0
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): ee_cfg_sts:0x00 lmrt_size:0
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfcee_id:0x1, last_active: 0x1
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfa_ee_route_add_one_ecb max_len:256, max_tlv:253, cur_offset:0, more:0, num_tlv:0
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfa_ee_total_lmrt_size size:0
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): ee_cfg_sts:0x00 lmrt_size:0
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfa_ee_update_rout ee_cfg_sts:0x00 ee_cfged:0x02
+04-17 10:56:55.882: I/BrcmNfcNfa(1399): nfa_ee_report_update_evt ee_wait_evt:0x10 wait_rsp:0
+04-17 10:56:55.882: D/BrcmNfcJni(1399): RoutingManager::nfaEeCallback: NFA_EE_UPDATED_EVT
+04-17 10:56:55.883: D/BrcmNfcJni(1399): startRfDiscovery: is start=1
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): NFA_StartRfDiscovery ()
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): NFA got event 0x010E
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_START_RF_DISCOVERY_EVT (0x0e)
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_dm_act_start_rf_discovery ()
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_dm_start_rf_discover ()
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_ee_get_tech_route(): 1
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): 0x0, 0x0, 0x0, 0x0
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_dm_cb.disc_cb.entry[0].selected_disc_mask = 0x40000
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_dm_cb.disc_cb.entry[1].selected_disc_mask = 0x3d7f
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_dm_cb.disc_cb.entry[2].selected_disc_mask = 0xc480000
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_p2p_set_config ()
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): LLCP_GetDiscoveryConfig ()
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_dm_check_set_config ()
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_dm_check_set_config ()
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): dm_disc_mask = 0xc4c3d7f
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_dm_set_rf_listen_mode_config () tech_proto_mask = 0x0C4C3D7F
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_dm_check_set_config ()
+04-17 10:56:55.883: D/NfcAdaptation(1399): NfcAdaptation::HalWrite
+04-17 10:56:55.883: I/SecHAL(1399): nfc_hal_write: enter;
+04-17 10:56:55.883: I/SecHAL(1399): nfc_hal_write: exit;
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_dm_set_total_duration ()
+04-17 10:56:55.883: I/BrcmNfcNfa(1399): nfa_dm_check_set_config ()
+04-17 10:56:55.884: I/BrcmNfcNfa(1399): NFC_DiscoveryStart
+04-17 10:56:55.884: I/BrcmNfcNfa(1399): NFC_DiscoveryStart status: 0xe3
+04-17 10:56:55.885: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_WRITE(3)
+04-17 10:56:55.885: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:56:55.886: D/SecHAL(1399): data_trace:  Send( 10) 20 02 07   02 32 01 60 50 01 02 
+04-17 10:56:55.886: D/SecHAL(1399): read_thread: Sent message to HAL message task, remind que: 2
+04-17 10:56:55.887: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_READ(4)
+04-17 10:56:55.887: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:56:55.887: D/SecHAL(1399): data_trace:  Recv(  5) 40 02 02   00 00 
+04-17 10:56:55.887: I/SecHAL(1399): nfc_data_callback: !
+04-17 10:56:55.887: D/NfcAdaptation(1399): NfcAdaptation::HalDeviceContextDataCallback: len=5
+04-17 10:56:55.887: I/BrcmNfcNfa(1399): NFC received rsp gid:0
+04-17 10:56:55.887: I/BrcmNfcNfa(1399): nci_proc_core_rsp opcode:0x2
+04-17 10:56:55.887: I/BrcmNfcNfa(1399): nfa_dm_nfc_response_cback () NFC_SET_CONFIG_REVT(0x5002)
+04-17 10:56:55.887: D/NfcAdaptation(1399): NfcAdaptation::HalPrediscover
+04-17 10:56:55.887: I/SecHAL(1399): nfc_hal_pre_discover: enter;
+04-17 10:56:55.887: I/SecHAL(1399): nfc_hal_pre_discover: exit;
+04-17 10:56:55.887: D/NfcAdaptation(1399): NfcAdaptation::HalWrite
+04-17 10:56:55.887: I/SecHAL(1399): nfc_hal_write: enter;
+04-17 10:56:55.887: I/SecHAL(1399): nfc_hal_write: exit;
+04-17 10:56:55.888: D/SecHAL(1399): nfc_hal_task: Got a event: Uknown event.(2)
+04-17 10:56:55.888: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:56:55.888: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_WRITE(3)
+04-17 10:56:55.888: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:56:55.889: D/SecHAL(1399): data_trace:  Send( 26) 21 03 17   0b 00 01 01 01 02 01 03 01 05 01 80 01 82 01 83 01 85 01 06 01 77 01 
+04-17 10:56:55.914: D/SecHAL(1399): read_thread: Sent message to HAL message task, remind que: 2
+04-17 10:56:55.914: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_READ(4)
+04-17 10:56:55.914: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:56:55.914: D/SecHAL(1399): data_trace:  Recv(  4) 41 03 01   00 
+04-17 10:56:55.914: I/SecHAL(1399): nfc_data_callback: !
+04-17 10:56:55.914: D/NfcAdaptation(1399): NfcAdaptation::HalDeviceContextDataCallback: len=4
+04-17 10:56:55.915: I/BrcmNfcNfa(1399): NFC received rsp gid:1
+04-17 10:56:55.915: I/BrcmNfcNfa(1399): nfa_dm_disc_discovery_cback (): event:0x4000
+04-17 10:56:55.915: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): state: IDLE (0), event: DISCOVER_RSP(1) disc_flags: 0x31
+04-17 10:56:55.915: I/BrcmNfcNfa(1399): nfa_dm_disc_new_state (): old_state: IDLE (0), new_state: DISCOVERY (1) disc_flags: 0x11
+04-17 10:56:55.915: I/BrcmNfcNfa(1399): nfa_dm_poll_disc_cback (): event:0x00
+04-17 10:56:55.915: I/BrcmNfcNfa(1399): nfa_p2p_discovery_cback (): event:0x00
+04-17 10:56:55.915: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 30
+04-17 10:56:55.915: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_RF_DISCOVERY_STARTED_EVT: status = 0
+04-17 10:56:55.915: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): new state: DISCOVERY (1), disc_flags: 0x1
+04-17 10:56:55.915: D/BrcmNfcJni(1399): PowerSwitch::setModeOn(activated=0x1) : mCurrActivity=0x1
+04-17 10:56:55.915: D/BrcmNfcJni(1399): nfcManager_enableDiscovery: exit
+04-17 10:56:56.420: D/ConnectivityService(792): updateNetworkScore for NetworkAgentInfo [WIFI () - 100] to 60
+04-17 10:56:56.420: D/ConnectivityService(792): rematching NetworkAgentInfo [WIFI () - 100]
+04-17 10:56:56.420: D/ConnectivityService(792): Network NetworkAgentInfo [WIFI () - 100] was already satisfying request 1. No change.
+04-17 10:56:56.420: D/ConnectivityService(792): notifyType AVAILABLE for NetworkAgentInfo [WIFI () - 100]
+04-17 10:56:56.421: D/ConnectivityManager.CallbackHandler(1042): CM callback handler got msg 524290
+04-17 10:56:57.106: I/ActivityManager(792): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10200000 cmp=com.cyanogenmod.trebuchet/com.android.launcher3.Launcher} from uid 1000 on display 0
+04-17 10:56:57.107: I/SecHAL(1399): device_sleep: NFC can be going to sleep
+04-17 10:56:57.209: I/Timeline(1664): Timeline: Activity_idle id: android.os.BinderProxy@28a1f4d6 time:2638189
+04-17 10:56:57.468: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{11ad61e7 u0 com.cyanogenmod.trebuchet/com.android.launcher3.Launcher t15} time:2638449
+04-17 10:56:57.727: W/OpenGLRenderer(1664): Incorrectly called buildLayer on View: ShortcutAndWidgetContainer, destroying layer...
+04-17 10:56:57.727: W/OpenGLRenderer(1664): Incorrectly called buildLayer on View: ShortcutAndWidgetContainer, destroying layer...
+04-17 10:56:58.327: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:00.132: I/Timeline(1664): Timeline: Activity_launch_request id:com.android.settings time:2641114
+04-17 10:57:00.134: I/ActivityManager(792): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.android.settings/.Settings (has extras)} from uid 10019 on display 0
+04-17 10:57:00.147: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:00.237: D/Index(2568): Locale 'en_US' is already indexed
+04-17 10:57:00.261: D/BluetoothAdapter(2568): 782393973: getState() :  mService = null. Returning STATE_OFF
+04-17 10:57:00.339: D/DashboardSummary(2568): rebuildUI took: 93 ms
+04-17 10:57:00.344: D/BluetoothAdapter(2568): 782393973: getState() :  mService = null. Returning STATE_OFF
+04-17 10:57:00.399: D/Index(2568): Deleting data for locale 'en_US' took 3 millis
+04-17 10:57:00.418: D/Index(2568): Indexing locale 'en_US' took 19 millis
+04-17 10:57:00.432: D/Index(2568): Deleting data for locale 'en_US' took 1 millis
+04-17 10:57:00.432: D/BluetoothAdapter(2568): 782393973: getState() :  mService = null. Returning STATE_OFF
+04-17 10:57:00.434: D/Index(2568): Indexing locale 'en_US' took 2 millis
+04-17 10:57:00.462: I/ActivityManager(792): Displayed com.android.settings/.Settings: +306ms
+04-17 10:57:00.466: D/Index(2568): Deleting data for locale 'en_US' took 2 millis
+04-17 10:57:00.483: D/Index(2568): Indexing locale 'en_US' took 17 millis
+04-17 10:57:00.520: I/Timeline(2568): Timeline: Activity_idle id: android.os.BinderProxy@3ae8f552 time:2641501
+04-17 10:57:00.911: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{1889429e u0 com.android.settings/.Settings t16} time:2641892
+04-17 10:57:03.266: D/audio_hw_primary(335): out_standby: enter: stream (0xb605f600) usecase(1: low-latency-playback)
+04-17 10:57:03.318: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:57:03.380: I/Timeline(2568): Timeline: Activity_launch_request id:com.android.settings time:2644361
+04-17 10:57:03.381: I/ActivityManager(792): START u0 {act=android.intent.action.MAIN cmp=com.android.settings/.SubSettings (has extras)} from uid 1000 on display 0
+04-17 10:57:03.395: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:03.408: D/audio_hw_primary(335): start_output_stream: enter: stream(0xb605f600)usecase(1: low-latency-playback) devices(0x2)
+04-17 10:57:03.408: D/audio_hw_primary(335): start_output_stream: enter: usecase(1: low-latency-playback) devices(0x2)
+04-17 10:57:03.408: D/audio_hw_primary(335): select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+04-17 10:57:03.408: W/msm8974_platform(335): Codec backend bitwidth 16, samplerate 48000
+04-17 10:57:03.408: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:57:03.408: I/msm8974_platform(335): platform_send_audio_calibration: sending audio calibration for snd_device(2) acdb_id(15)
+04-17 10:57:03.408: D/ACDB-LOADER(335): ACDB -> send_audio_cal, acdb_id = 15, path =  0
+04-17 10:57:03.408: D/ACDB-LOADER(335): ACDB -> send_adm_topology
+04-17 10:57:03.408: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TOPOLOGY_ID
+04-17 10:57:03.408: D/ACDB-LOADER(335): ACDB -> send_asm_topology
+04-17 10:57:03.408: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_STREAM_TOPOLOGY_ID
+04-17 10:57:03.408: D/ACDB-LOADER(335): ACDB -> send_audtable
+04-17 10:57:03.408: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TABLE
+04-17 10:57:03.408: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:03.408: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_CAL
+04-17 10:57:03.409: D/ACDB-LOADER(335): ACDB -> send_audvoltable
+04-17 10:57:03.409: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_GAIN_DEP_STEP_TABLE
+04-17 10:57:03.409: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:03.409: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_VOL_CAL
+04-17 10:57:03.409: D/ACDB-LOADER(335): ACDB -> send_afe_cal
+04-17 10:57:03.409: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AFE_COMMON_TABLE
+04-17 10:57:03.409: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:03.409: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AFE_CAL
+04-17 10:57:03.416: D/audio_hw_primary(335): select_devices: done
+04-17 10:57:03.480: D/SubSettings(2568): Launching fragment com.android.settings.lockscreen.LockScreenSettings
+04-17 10:57:03.657: I/ActivityManager(792): Displayed com.android.settings/.SubSettings: +257ms
+04-17 10:57:03.687: D/OpenGLRenderer(2568): endAllStagingAnimators on 0x9f4c9b80 (RippleDrawable) with handle 0x9de5e830
+04-17 10:57:03.695: I/Timeline(2568): Timeline: Activity_idle id: android.os.BinderProxy@343e4b73 time:2644676
+04-17 10:57:04.031: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{2a8ad7b9 u0 com.android.settings/.SubSettings t16} time:2645012
+04-17 10:57:05.754: I/Timeline(2568): Timeline: Activity_launch_request id:com.android.settings time:2646735
+04-17 10:57:05.754: I/ActivityManager(792): START u0 {act=android.intent.action.MAIN cmp=com.android.settings/.SubSettings (has extras)} from uid 1000 on display 0
+04-17 10:57:05.762: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:05.790: D/SubSettings(2568): Launching fragment com.android.settings.ChooseLockGeneric$ChooseLockGenericFragment
+04-17 10:57:05.802: E/Cryptfs(310): not running with encryption, aborting
+04-17 10:57:05.927: I/ActivityManager(792): Displayed com.android.settings/.SubSettings: +158ms
+04-17 10:57:05.997: D/OpenGLRenderer(2568): endAllStagingAnimators on 0xa3ba7780 (ListView) with handle 0xaf3bdac0
+04-17 10:57:06.003: I/Timeline(2568): Timeline: Activity_idle id: android.os.BinderProxy@2c4e9668 time:2646984
+04-17 10:57:06.306: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{f82ccae u0 com.android.settings/.SubSettings t16} time:2647287
+04-17 10:57:07.889: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:07.940: D/StrictMode(792): Wrote violation #0 of 1: 13548 bytes
+04-17 10:57:07.942: D/StrictMode(1042): Wrote violation #0 of 1: 15184 bytes
+04-17 10:57:07.948: D/StrictMode(792): Wrote violation #0 of 1: 19468 bytes
+04-17 10:57:07.950: D/Error(2568): ERR: exClass=android.os.StrictMode$StrictModeDiskReadViolation
+04-17 10:57:07.950: D/Error(2568): ERR: exMsg=policy=903 violation=2
+04-17 10:57:07.950: D/Error(2568): ERR: file=StrictMode.java
+04-17 10:57:07.950: D/Error(2568): ERR: class=android.os.StrictMode$AndroidBlockGuardPolicy
+04-17 10:57:07.950: D/Error(2568): ERR: method=onReadFromDisk line=1137
+04-17 10:57:07.950: D/Error(2568): ERR: stack=android.os.StrictMode$StrictModeDiskReadViolation: policy=903 violation=2
+04-17 10:57:07.950: D/Error(2568):  at android.os.StrictMode$AndroidBlockGuardPolicy.onReadFromDisk(StrictMode.java:1137)
+04-17 10:57:07.950: D/Error(2568):  at android.database.sqlite.SQLiteConnection.applyBlockGuardPolicy(SQLiteConnection.java:1043)
+04-17 10:57:07.950: D/Error(2568):  at android.database.sqlite.SQLiteConnection.executeForCursorWindow(SQLiteConnection.java:844)
+04-17 10:57:07.950: D/Error(2568):  at android.database.sqlite.SQLiteSession.executeForCursorWindow(SQLiteSession.java:836)
+04-17 10:57:07.950: D/Error(2568):  at android.database.sqlite.SQLiteQuery.fillWindow(SQLiteQuery.java:62)
+04-17 10:57:07.950: D/Error(2568):  at android.database.sqlite.SQLiteCursor.fillWindow(SQLiteCursor.java:144)
+04-17 10:57:07.950: D/Error(2568):  at android.database.sqlite.SQLiteCursor.getCount(SQLiteCursor.java:133)
+04-17 10:57:07.950: D/Error(2568):  at android.database.AbstractCursor.moveToPosition(AbstractCursor.java:197)
+04-17 10:57:07.950: D/Error(2568):  at android.database.AbstractCursor.moveToFirst(AbstractCursor.java:237)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.LockSettingsService.readFromDb(LockSettingsService.java:614)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.LockSettingsService.getLong(LockSettingsService.java:254)
+04-17 10:57:07.950: D/Error(2568):  at com.android.internal.widget.ILockSettings$Stub.onTransact(ILockSettings.java:108)
+04-17 10:57:07.950: D/Error(2568):  at android.os.Binder.execTransact(Binder.java:446)
+04-17 10:57:07.950: D/Error(2568):  at android.os.BinderProxy.transactNative(Native Method)
+04-17 10:57:07.950: D/Error(2568):  at android.os.BinderProxy.transact(Binder.java:496)
+04-17 10:57:07.950: D/Error(2568):  at com.android.internal.policy.IKeyguardService$Stub$Proxy.isSecure(IKeyguardService.java:271)
+04-17 10:57:07.950: D/Error(2568):  at com.android.internal.policy.impl.keyguard.KeyguardServiceWrapper.isSecure(KeyguardServiceWrapper.java:54)
+04-17 10:57:07.950: D/Error(2568):  at com.android.internal.policy.impl.keyguard.KeyguardServiceDelegate.isSecure(KeyguardServiceDelegate.java:211)
+04-17 10:57:07.950: D/Error(2568):  at com.android.internal.policy.impl.PhoneWindowManager.isKeyguardSecure(PhoneWindowManager.java:5809)
+04-17 10:57:07.950: D/Error(2568):  at com.android.internal.policy.impl.PhoneWindowManager.applyPostLayoutPolicyLw(PhoneWindowManager.java:4471)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.wm.WindowManagerService.performLayoutAndPlaceSurfacesLockedInner(WindowManagerService.java:9714)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.wm.WindowManagerService.performLayoutAndPlaceSurfacesLockedLoop(WindowManagerService.java:8760)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.wm.WindowManagerService.performLayoutAndPlaceSurfacesLocked(WindowManagerService.java:8702)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.wm.WindowManagerService.executeAppTransition(WindowManagerService.java:4162)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.am.ActivityStackSupervisor.reportResumedActivityLocked(ActivityStackSupervisor.java:2815)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.am.ActivityStack.completeResumeLocked(ActivityStack.java:1092)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.am.ActivityStack.resumeTopActivityInnerLocked(ActivityStack.java:1915)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.am.ActivityStack.resumeTopActivityLocked(ActivityStack.java:1489)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.am.ActivityStackSupervisor.resumeTopActivitiesLocked(ActivityStackSupervisor.java:2453)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.am.ActivityStack.completePauseLocked(ActivityStack.java:1029)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.am.ActivityStack.activityPausedLocked(ActivityStack.java:927)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.am.ActivityManagerService.activityPaused(ActivityManagerService.java:6555)
+04-17 10:57:07.950: D/Error(2568):  at android.app.ActivityManagerNative.onTransact(ActivityManagerNative.java:514)
+04-17 10:57:07.950: D/Error(2568):  at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2477)
+04-17 10:57:07.950: D/Error(2568):  at android.os.Binder.execTransact(Binder.java:446)
+04-17 10:57:07.950: D/Error(2568): # via Binder call with stack:
+04-17 10:57:07.950: D/Error(2568): android.os.StrictMode$LogStackTrace
+04-17 10:57:07.950: D/Error(2568):  at android.os.StrictMode.readAndHandleBinderCallViolations(StrictMode.java:1717)
+04-17 10:57:07.950: D/Error(2568):  at android.os.Parcel.readExceptionCode(Parcel.java:1521)
+04-17 10:57:07.950: D/Error(2568):  at android.os.Parcel.readException(Parcel.java:1490)
+04-17 10:57:07.950: D/Error(2568):  at com.android.internal.widget.ILockSettings$Stub$Proxy.getLong(ILockSettings.java:340)
+04-17 10:57:07.950: D/Error(2568):  at com.android.internal.widget.LockPatternUtilsCache.getLong(LockPatternUtilsCache.java:90)
+04-17 10:57:07.950: D/Error(2568):  at com.android.internal.widget.LockPatternUtils.getLong(LockPatternUtils.java:1493)
+04-17 10:57:07.950: D/Error(2568):  at com.android.internal.widget.LockPatternUtils.getKeyguardStoredPasswordQuality(LockPatternUtils.java:951)
+04-17 10:57:07.950: D/Error(2568):  at com.android.internal.widget.LockPatternUtils.getKeyguardStoredPasswordQuality(LockPatternUtils.java:941)
+04-17 10:57:07.950: D/Error(2568):  at com.android.internal.widget.LockPatternUtils.isSecure(LockPatternUtils.java:1543)
+04-17 10:57:07.950: D/Error(2568):  at com.android.systemui.keygu
+04-17 10:57:07.950: D/Error(2568): ERR: TOTAL BYTES WRITTEN: 21384
+04-17 10:57:08.019: D/OpenGLRenderer(2568): endAllStagingAnimators on 0x9d6bb900 (ListView) with handle 0xa3be0a00
+04-17 10:57:08.029: I/Timeline(2568): Timeline: Activity_idle id: android.os.BinderProxy@343e4b73 time:2649011
+04-17 10:57:08.296: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{2a8ad7b9 u0 com.android.settings/.SubSettings t16} time:2649277
+04-17 10:57:10.639: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:11.950: I/Sensors(792): ProximitySensor - 0(cm)
+04-17 10:57:11.952: D/VCPS.onSensorChanged(1138): Proximity sensor changed, value=0.0
+04-17 10:57:11.952: D/F.Evt.proximity(1138): Proximity method called with value: 0.0 ,whilst cover_closed is: false
+04-17 10:57:11.952: D/F.Is.cover_closed(1138): Is cover closed called.
+04-17 10:57:11.962: D/F.Is.cover_closed(1138): Cover closed state is: true
+04-17 10:57:12.006: I/PowerManagerService(792): Going to sleep due to lid switch (uid 1000)...
+04-17 10:57:12.007: I/PowerManagerService(792): Sleeping (uid 1000)...
+04-17 10:57:12.163: D/F.Evt.proximity(1138): Proximity method called with value: 0.0 ,whilst cover_closed is: false
+04-17 10:57:12.163: D/F.Is.cover_closed(1138): Is cover closed called.
+04-17 10:57:12.164: D/F.Is.cover_closed(1138): Cover closed state is: true
+04-17 10:57:12.164: D/F.Act.close_cover(1138): Close cover event receieved.
+04-17 10:57:12.164: D/F.Act.enableCoverTouch(1138): We're root enabled so lets boost the sensitivity...
+04-17 10:57:12.165: D/F.Act.enableCoverTouch(1138): ...Sensitivity boosted, hold onto your hats!
+04-17 10:57:12.165: I/Timeline(1138): Timeline: Activity_launch_request id:org.durka.hallmonitor time:2653146
+04-17 10:57:12.165: I/ActivityManager(792): START u0 {flg=0x10090000 cmp=org.durka.hallmonitor/.DefaultActivity} from uid 10060 on display 0
+04-17 10:57:12.165: I/ActivityManager(792): Ignoring FLAG_ACTIVITY_NEW_DOCUMENT, launchMode is ""singleInstance"" or ""singleTask""
+04-17 10:57:12.195: D/su(3319): su invoked.
+04-17 10:57:12.195: D/su(3319): starting daemon client 10060 10060
+04-17 10:57:12.196: D/su(3321): remote pid: 3319
+04-17 10:57:12.196: D/su(3321): remote pts_slave: 
+04-17 10:57:12.197: D/su(3321): waiting for child exit
+04-17 10:57:12.198: D/su(3323): su invoked.
+04-17 10:57:12.198: E/su(3323): SU from: u0_a60
+04-17 10:57:12.199: D/su(3323): Checking whether app [uid:10060, pkgName: org.durka.hallmonitor] is allowed to be root
+04-17 10:57:12.203: D/su(3323): Privilege elevation allowed by appops
+04-17 10:57:12.203: D/su(3323): Allowing via appops.
+04-17 10:57:12.203: D/su(3323): 10060 /system/bin/app_process32 executing 0 /system/bin/sh using binary /system/bin/sh : sh
+04-17 10:57:12.203: D/su(3323): Waiting for pid 3324.
+04-17 10:57:12.217: D/su(3323): Finishing su operation for app [uid:10060, pkgName: org.durka.hallmonitor]
+04-17 10:57:12.219: D/su(3321): sending code
+04-17 10:57:12.219: D/su(3321): child exited
+04-17 10:57:12.221: D/su(3319): client exited 0
+04-17 10:57:12.249: I/SuControllerImpl(1042): Got change
+04-17 10:57:12.254: D/F.Act.setLockTimer(1138): Delay set to: 10000
+04-17 10:57:12.256: I/SuControllerImpl(1042): Got change
+04-17 10:57:12.289: D/DA.onCreate(1138): onCreate of DefaultView.
+04-17 10:57:12.298: D/hm-cam(1138): context/attributeset constructor
+04-17 10:57:12.320: D/DA-oS(1138): starting
+04-17 10:57:12.330: D/NS-gAN(1138): com.android.mms
+04-17 10:57:12.330: D/NS-gAN(1138): android
+04-17 10:57:12.330: D/NS-gAN(1138): android
+04-17 10:57:12.330: D/DA-oC(1138): 1 notifications
+04-17 10:57:12.330: D/DA.onResume(1138): On resume called.
+04-17 10:57:12.332: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: media
+04-17 10:57:12.332: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: default
+04-17 10:57:12.394: D/F.Act.enableCoverTouch(1138): We're root enabled so lets boost the sensitivity...
+04-17 10:57:12.394: D/F.Act.enableCoverTouch(1138): ...Sensitivity boosted, hold onto your hats!
+04-17 10:57:12.404: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: media
+04-17 10:57:12.404: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: default
+04-17 10:57:12.410: I/ActivityManager(792): Displayed org.durka.hallmonitor/.DefaultActivity: +156ms
+04-17 10:57:12.410: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{2e563a0e u0 org.durka.hallmonitor/.DefaultActivity t20} time:2653391
+04-17 10:57:12.418: D/su(3329): su invoked.
+04-17 10:57:12.418: D/su(3329): starting daemon client 10060 10060
+04-17 10:57:12.418: I/Timeline(1138): Timeline: Activity_idle id: android.os.BinderProxy@cfbae03 time:2653399
+04-17 10:57:12.419: D/su(3333): remote pid: 3329
+04-17 10:57:12.419: D/su(3333): remote pts_slave: 
+04-17 10:57:12.420: D/su(3333): waiting for child exit
+04-17 10:57:12.420: D/su(3335): su invoked.
+04-17 10:57:12.420: E/su(3335): SU from: u0_a60
+04-17 10:57:12.421: D/su(3335): Checking whether app [uid:10060, pkgName: org.durka.hallmonitor] is allowed to be root
+04-17 10:57:12.422: D/su(3335): Privilege elevation allowed by appops
+04-17 10:57:12.422: D/su(3335): Allowing via appops.
+04-17 10:57:12.422: D/su(3335): 10060 /system/bin/app_process32 executing 0 /system/bin/sh using binary /system/bin/sh : sh
+04-17 10:57:12.422: D/su(3335): Waiting for pid 3336.
+04-17 10:57:12.428: D/su(3335): Finishing su operation for app [uid:10060, pkgName: org.durka.hallmonitor]
+04-17 10:57:12.428: I/SuControllerImpl(1042): Got change
+04-17 10:57:12.432: D/su(3333): sending code
+04-17 10:57:12.432: D/su(3333): child exited
+04-17 10:57:12.433: D/su(3329): client exited 0
+04-17 10:57:12.442: I/SuControllerImpl(1042): Got change
+04-17 10:57:12.463: D/F.Evt.proximity(1138): Proximity method called with value: 0.0 ,whilst cover_closed is: true
+04-17 10:57:12.494: I/Sensors(792): Acc old sensor_state 129, new sensor_state : 128 en : 0
+04-17 10:57:12.539: D/SurfaceFlinger(311): Set power mode=0, type=0 flinger=0xb6962000
+04-17 10:57:12.539: I/DisplayManagerService(792): Display device changed: DisplayDeviceInfo{""Built-in Screen"": 1440 x 2560, 60.0 fps, supportedRefreshRates [60.0], density 560, 508.0 x 516.063 dpi, appVsyncOff 0, presDeadline 17666667, touch INTERNAL, rotation 0, type BUILT_IN, state OFF, FLAG_DEFAULT_DISPLAY, FLAG_ROTATES_WITH_CONTENT, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS}
+04-17 10:57:12.539: D/qdhwcomposer(311): hwc_blank: Blanking display: 0
+04-17 10:57:12.539: V/ActivityManager(792): Display changed displayId=0
+04-17 10:57:12.819: I/qdhwcomposer(311): handle_blank_event: dpy:0 panel power state: 0
+04-17 10:57:12.820: D/qdhwcomposer(311): hwc_blank: Done blanking display: 0
+04-17 10:57:12.820: D/SurfaceControl(792): Excessive delay in setPowerMode(): 281ms
+04-17 10:57:12.820: D/PowerHAL_TR_Ext(792): cm_power_set_interactive_ext: disabling input devices
+04-17 10:57:12.826: I/QCOM PowerHAL(792): Got set_interactive hint
+04-17 10:57:12.831: D/DA-oS(1138): stopping
+04-17 10:57:12.842: D/BrcmNfcJni(1399): nfcManager_disableDiscovery: enter;
+04-17 10:57:12.842: D/BrcmNfcJni(1399): pn544InteropAbortNow
+04-17 10:57:12.842: D/BrcmNfcJni(1399): startRfDiscovery: is start=0
+04-17 10:57:12.842: I/BrcmNfcNfa(1399): NFA_StopRfDiscovery ()
+04-17 10:57:12.842: I/BrcmNfcNfa(1399): NFA got event 0x010F
+04-17 10:57:12.842: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_STOP_RF_DISCOVERY_EVT (0x0f)
+04-17 10:57:12.842: I/BrcmNfcNfa(1399): nfa_dm_act_stop_rf_discovery ()
+04-17 10:57:12.842: I/BrcmNfcNfa(1399): nfa_dm_rf_deactivate () deactivate_type:0x0
+04-17 10:57:12.842: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): state: DISCOVERY (1), event: DEACTIVATE_CMD(6) disc_flags: 0x2
+04-17 10:57:12.842: I/BrcmNfcNfa(1399): NFC_Deactivate 4 (IDLE) deactivate_type:0
+04-17 10:57:12.842: D/NfcAdaptation(1399): NfcAdaptation::HalWrite
+04-17 10:57:12.842: I/SecHAL(1399): nfc_hal_write: enter;
+04-17 10:57:12.842: I/SecHAL(1399): nfc_hal_write: exit;
+04-17 10:57:12.843: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): new state: DISCOVERY (1), disc_flags: 0x22
+04-17 10:57:12.843: I/BrcmNfcNfa(1399): nfa_sys_ptim_stop_timer af7a99e8
+04-17 10:57:12.843: I/BrcmNfcNfa(1399): ptim timer stop
+04-17 10:57:12.843: I/BrcmNfcNfa(1399): Stopped presence check timer (if started)
+04-17 10:57:12.843: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_WRITE(3)
+04-17 10:57:12.843: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:57:12.843: I/SecHAL(1399): device_wakeup: Wakeup! in 20 ms
+04-17 10:57:12.847: D/audio_hw_primary(335): adev_set_parameters: enter: screen_state=off
+04-17 10:57:12.847: E/audio_a2dp_hw(335): adev_set_parameters: ERROR: set param called even when stream out is null
+04-17 10:57:12.855: E/native(792): do suspend true
+04-17 10:57:12.864: D/SecHAL(1399): data_trace:  Send(  4) 21 06 01   00 
+04-17 10:57:12.867: D/SecHAL(1399): read_thread: Sent message to HAL message task, remind que: 2
+04-17 10:57:12.867: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_READ(4)
+04-17 10:57:12.867: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:57:12.867: D/SecHAL(1399): data_trace:  Recv(  4) 41 06 01   00 
+04-17 10:57:12.867: I/SecHAL(1399): nfc_data_callback: !
+04-17 10:57:12.867: D/NfcAdaptation(1399): NfcAdaptation::HalDeviceContextDataCallback: len=4
+04-17 10:57:12.867: I/BrcmNfcNfa(1399): NFC received rsp gid:1
+04-17 10:57:12.867: I/BrcmNfcNfa(1399): nfc_set_state 4 (IDLE)->4 (IDLE)
+04-17 10:57:12.867: I/BrcmNfcNfa(1399): nfa_dm_disc_data_cback ()
+04-17 10:57:12.867: I/BrcmNfcNfa(1399): nfa_dm_disc_discovery_cback (): event:0x4005
+04-17 10:57:12.867: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): state: DISCOVERY (1), event: DEACTIVATE_RSP(7) disc_flags: 0x22
+04-17 10:57:12.867: I/BrcmNfcNfa(1399): nfa_dm_disc_new_state (): old_state: DISCOVERY (1), new_state: IDLE (0) disc_flags: 0x2
+04-17 10:57:12.867: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 31
+04-17 10:57:12.867: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_RF_DISCOVERY_STOPPED_EVT: status = 0
+04-17 10:57:12.868: I/BrcmNfcNfa(1399): nfa_dm_start_rf_discover ()
+04-17 10:57:12.868: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): new state: IDLE (0), disc_flags: 0x0
+04-17 10:57:12.868: D/BrcmNfcJni(1399): stopPolling_rfDiscoveryDisabled: disable polling
+04-17 10:57:12.868: I/BrcmNfcNfa(1399): NFA_DisablePolling ()
+04-17 10:57:12.868: I/BrcmNfcNfa(1399): NFA got event 0x0107
+04-17 10:57:12.869: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_DISABLE_POLLING_EVT (0x07)
+04-17 10:57:12.869: I/BrcmNfcNfa(1399): nfa_dm_act_disable_polling ()
+04-17 10:57:12.869: I/BrcmNfcNfa(1399): nfa_dm_deactivate_polling ()
+04-17 10:57:12.869: I/BrcmNfcNfa(1399): nfa_dm_delete_rf_discover () handle=0x1
+04-17 10:57:12.869: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 1
+04-17 10:57:12.869: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_POLL_DISABLED_EVT: status = 0
+04-17 10:57:12.869: D/BrcmNfcJni(1399): PeerToPeer::enableP2pListening: enter isEnable: 0  mIsP2pListening: 1
+04-17 10:57:12.869: I/BrcmNfcNfa(1399): NFA_P2pSetListenTech (): tech_mask:0x0
+04-17 10:57:12.869: I/BrcmNfcNfa(1399): NFA got event 0x010D
+04-17 10:57:12.869: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_SET_P2P_LISTEN_TECH_EVT (0x0d)
+04-17 10:57:12.869: I/BrcmNfcNfa(1399): nfa_dm_set_p2p_listen_tech ()  tech_mask = 0
+04-17 10:57:12.869: I/BrcmNfcNfa(1399): nfa_p2p_update_listen_tech ()  tech_mask = 0x0
+04-17 10:57:12.869: I/BrcmNfcNfa(1399): nfa_dm_delete_rf_discover () handle=0x2
+04-17 10:57:12.869: I/BrcmNfcNfa(1399): nfa_p2p_enable_listening () sys_id = 3, update_wks = 0
+04-17 10:57:12.869: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 33
+04-17 10:57:12.869: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_SET_P2P_LISTEN_TECH_EVT
+04-17 10:57:12.869: D/BrcmNfcJni(1399): PeerToPeer::enableP2pListening: exit; mIsP2pListening: 0
+04-17 10:57:12.869: D/BrcmNfcJni(1399): PowerSwitch::setModeOff(deactivated=0x1) : mCurrActivity=0x0
+04-17 10:57:12.869: D/BrcmNfcJni(1399): PowerSwitch::setLevel: level=PS-LOW-POWER (2)
+04-17 10:57:12.869: D/BrcmNfcJni(1399): PowerSwitch::setLevel: actual power level=PS-FULL
+04-17 10:57:12.869: D/BrcmNfcJni(1399): nfcManager_disableDiscovery: exit
+04-17 10:57:13.758: D/audio_hw_primary(335): out_standby: enter: stream (0xb605f600) usecase(1: low-latency-playback)
+04-17 10:57:13.809: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:57:13.963: I/SecHAL(1399): device_sleep: NFC can be going to sleep
+04-17 10:57:14.603: V/ActivityManager(792): Display changed displayId=0
+04-17 10:57:14.612: I/PowerManagerService(792): Waking up from sleep (uid 1000)...
+04-17 10:57:14.613: I/DisplayPowerController(792): Blocking screen on until initial contents have been drawn.
+04-17 10:57:14.616: I/Sensors(792): Acc old sensor_state 128, new sensor_state : 129 en : 1
+04-17 10:57:14.619: D/PowerHAL_TR_Ext(792): cm_power_set_interactive_ext: enabling input devices
+04-17 10:57:14.628: V/KeyguardServiceDelegate(792): onScreenTurnedOn(showListener = com.android.internal.policy.impl.PhoneWindowManager$2@e9e221e)
+04-17 10:57:14.631: V/KeyguardServiceDelegate(792): **** SHOWN CALLED ****
+04-17 10:57:14.715: I/Sensors(792): ProximitySensor - 8(cm)
+04-17 10:57:14.973: I/QCOM PowerHAL(792): Got set_interactive hint
+04-17 10:57:14.982: D/PowerManagerService-JNI(792): Excessive delay in setInteractive(true) while turning screen on: 362ms
+04-17 10:57:14.982: W/art(792): Long monitor contention event with owner method=void com.android.server.power.PowerManagerService$2.onDisplayStateChange(int) from PowerManagerService.java:2127 waiters=0 for 356ms
+04-17 10:57:14.983: W/art(792): Long monitor contention event with owner method=void com.android.server.wm.WindowManagerService$H.handleMessage(android.os.Message) from WindowManagerService.java:7672 waiters=0 for 349ms
+04-17 10:57:14.984: W/art(792): Long monitor contention event with owner method=void com.android.server.wm.WindowManagerService$H.handleMessage(android.os.Message) from WindowManagerService.java:7672 waiters=1 for 330ms
+04-17 10:57:14.985: D/VCPS.onSensorChanged(1138): Proximity sensor changed, value=8.0
+04-17 10:57:14.985: D/F.Evt.proximity(1138): Proximity method called with value: 8.0 ,whilst cover_closed is: true
+04-17 10:57:14.985: D/F.Is.cover_closed(1138): Is cover closed called.
+04-17 10:57:14.986: D/F.Is.cover_closed(1138): Cover closed state is: true
+04-17 10:57:14.986: D/F.Act.open_cover(1138): Open cover event receieved.
+04-17 10:57:15.001: W/art(792): Long monitor contention event with owner method=void com.android.server.am.ActivityManagerService.wakingUp() from ActivityManagerService.java:10284 waiters=0 for 368ms
+04-17 10:57:15.003: D/SurfaceFlinger(311): Set power mode=2, type=0 flinger=0xb6962000
+04-17 10:57:15.003: D/qdhwcomposer(311): hwc_blank: Unblanking display: 0
+04-17 10:57:15.236: I/qdhwcomposer(311): handle_blank_event: dpy:0 panel power state: 1
+04-17 10:57:15.239: E/qdexternal(311): writeHPDOption: file write failed '/sys/devices/virtual/graphics/fb1/hpd'
+04-17 10:57:15.239: D/qdhwcomposer(311): hwc_blank: Done unblanking display: 0
+04-17 10:57:15.243: D/SurfaceControl(792): Excessive delay in setPowerMode(): 242ms
+04-17 10:57:15.320: I/WindowManager(792): Screenshot max retries 4 of Token{353b2c2f ActivityRecord{2e563a0e u0 org.durka.hallmonitor/.DefaultActivity t20 f}} appWin=Window{279cc26c u0 org.durka.hallmonitor/org.durka.hallmonitor.DefaultActivity} drawState=3
+04-17 10:57:15.320: E/ActivityManager(792): Invalid thumbnail dimensions: 672x672
+04-17 10:57:15.321: W/art(792): Long monitor contention event with owner method=void com.android.server.am.ActivityManagerService.wakingUp() from ActivityManagerService.java:10284 waiters=2 for 327ms
+04-17 10:57:15.321: I/DisplayManagerService(792): Display device changed: DisplayDeviceInfo{""Built-in Screen"": 1440 x 2560, 60.0 fps, supportedRefreshRates [60.0], density 560, 508.0 x 516.063 dpi, appVsyncOff 0, presDeadline 17666667, touch INTERNAL, rotation 0, type BUILT_IN, state ON, FLAG_DEFAULT_DISPLAY, FLAG_ROTATES_WITH_CONTENT, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS}
+04-17 10:57:15.322: D/F.Act.enableCoverTouch(1138): We're root enabled so lets revert the sensitivity...
+04-17 10:57:15.322: D/F.Act.enableCoverTouch(1138): ...Sensitivity reverted, sanity is restored!
+04-17 10:57:15.322: D/F.Util.rs(1138): aww why can't I hit snooze
+04-17 10:57:15.323: W/art(792): Long monitor contention event with owner method=void com.android.server.am.ActivityManagerService.wakingUp() from ActivityManagerService.java:10284 waiters=3 for 328ms
+04-17 10:57:15.324: W/art(792): Long monitor contention event with owner method=boolean com.android.server.am.ActivityManagerService.finishActivity(android.os.IBinder, int, android.content.Intent, boolean) from ActivityManagerService.java:4555 waiters=3 for 306ms
+04-17 10:57:15.324: W/art(792): Long monitor contention event with owner method=boolean com.android.server.am.ActivityManagerService.finishActivity(android.os.IBinder, int, android.content.Intent, boolean) from ActivityManagerService.java:4555 waiters=2 for 321ms
+04-17 10:57:15.327: V/ActivityManager(792): Display changed displayId=0
+04-17 10:57:15.344: D/BrcmNfcJni(1399): nfcManager_enableDiscovery: enter; tech_mask = ef
+04-17 10:57:15.344: D/BrcmNfcJni(1399): PowerSwitch::setLevel: level=PS-FULL (1)
+04-17 10:57:15.344: D/BrcmNfcJni(1399): stopPolling_rfDiscoveryDisabled: disable polling
+04-17 10:57:15.344: I/BrcmNfcNfa(1399): NFA_DisablePolling ()
+04-17 10:57:15.344: I/BrcmNfcNfa(1399): NFA got event 0x0107
+04-17 10:57:15.344: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_DISABLE_POLLING_EVT (0x07)
+04-17 10:57:15.344: I/BrcmNfcNfa(1399): nfa_dm_act_disable_polling ()
+04-17 10:57:15.344: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 1
+04-17 10:57:15.344: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_POLL_DISABLED_EVT: status = 3
+04-17 10:57:15.345: D/BrcmNfcJni(1399): startPolling_rfDiscoveryDisabled: enable polling
+04-17 10:57:15.345: I/BrcmNfcNfa(1399): NFA_EnablePolling () 0xEF
+04-17 10:57:15.345: I/BrcmNfcNfa(1399): NFA got event 0x0106
+04-17 10:57:15.345: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_ENABLE_POLLING_EVT (0x06)
+04-17 10:57:15.345: I/BrcmNfcNfa(1399): nfa_dm_act_enable_polling ()
+04-17 10:57:15.345: I/BrcmNfcNfa(1399): nfa_dm_start_polling ()
+04-17 10:57:15.345: I/BrcmNfcNfa(1399): nfa_dm_add_rf_discover () disc_mask=0x3d7f
+04-17 10:57:15.346: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 0
+04-17 10:57:15.346: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_POLL_ENABLED_EVT: status = 0
+04-17 10:57:15.346: D/BrcmNfcJni(1399): startPolling_rfDiscoveryDisabled: wait for enable event
+04-17 10:57:15.346: D/BrcmNfcJni(1399): nfcManager_enableDiscovery: Enable p2pListening
+04-17 10:57:15.347: D/BrcmNfcJni(1399): PeerToPeer::enableP2pListening: enter isEnable: 1  mIsP2pListening: 0
+04-17 10:57:15.347: I/BrcmNfcNfa(1399): NFA_P2pSetListenTech (): tech_mask:0xC5
+04-17 10:57:15.347: I/BrcmNfcNfa(1399): NFA got event 0x010D
+04-17 10:57:15.347: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_SET_P2P_LISTEN_TECH_EVT (0x0d)
+04-17 10:57:15.347: I/BrcmNfcNfa(1399): nfa_dm_set_p2p_listen_tech ()  tech_mask = 197
+04-17 10:57:15.347: I/BrcmNfcNfa(1399): nfa_p2p_update_listen_tech ()  tech_mask = 0xc5
+04-17 10:57:15.347: I/BrcmNfcNfa(1399): nfa_p2p_enable_listening () sys_id = 3, update_wks = 0
+04-17 10:57:15.347: I/BrcmNfcNfa(1399): nfa_dm_add_rf_discover () disc_mask=0xc480000
+04-17 10:57:15.347: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 33
+04-17 10:57:15.347: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_SET_P2P_LISTEN_TECH_EVT
+04-17 10:57:15.348: D/BrcmNfcJni(1399): PeerToPeer::enableP2pListening: exit; mIsP2pListening: 1
+04-17 10:57:15.348: I/BrcmNfcNfa(1399): NFA_EeSetDefaultTechRouting(): handle:<0x3>technology_mask:<0x1>/<0x0>/<0x0>
+04-17 10:57:15.348: I/BrcmNfcNfa(1399): nfa_ee_find_ecb ()
+04-17 10:57:15.349: I/BrcmNfcNfa(1399): NFA got event 0x0204
+04-17 10:57:15.349: I/BrcmNfcNfa(1399): nfa_ee_evt_hdlr (): Event API_SET_TECH_CFG(0x204), State: INIT_DONE(1)
+04-17 10:57:15.349: I/BrcmNfcNfa(1399): nfa_ee_update_route_size nfcee_id:0x3 size_mask:10
+04-17 10:57:15.349: I/BrcmNfcNfa(1399): nfa_ee_total_lmrt_size size:0
+04-17 10:57:15.349: I/BrcmNfcNfa(1399): nfa_dm_is_active () flags:0x5
+04-17 10:57:15.349: I/BrcmNfcNfa(1399): nfa_sys_ptim_start_timer af7a7a68
+04-17 10:57:15.349: I/BrcmNfcNfa(1399): ptim timer start
+04-17 10:57:15.349: D/BrcmNfcJni(1399): RoutingManager::nfaEeCallback: NFA_EE_SET_TECH_CFG_EVT; status=0x0
+04-17 10:57:15.352: I/BrcmNfcNfa(1399): NFA_EeSetDefaultProtoRouting(): handle:<0x3>protocol_mask:<0x8>/<0x0>/<0x0>
+04-17 10:57:15.352: I/BrcmNfcNfa(1399): nfa_ee_find_ecb ()
+04-17 10:57:15.355: I/BrcmNfcNfa(1399): NFA got event 0x0205
+04-17 10:57:15.355: I/BrcmNfcNfa(1399): nfa_ee_evt_hdlr (): Event API_SET_PROTO_CFG(0x205), State: INIT_DONE(1)
+04-17 10:57:15.355: I/BrcmNfcNfa(1399): nfa_ee_update_route_size nfcee_id:0x3 size_mask:10
+04-17 10:57:15.355: I/BrcmNfcNfa(1399): nfa_ee_total_lmrt_size size:0
+04-17 10:57:15.355: I/BrcmNfcNfa(1399): nfa_dm_is_active () flags:0x5
+04-17 10:57:15.355: I/BrcmNfcNfa(1399): nfa_sys_ptim_start_timer af7a7a68
+04-17 10:57:15.355: D/BrcmNfcJni(1399): RoutingManager::nfaEeCallback: NFA_EE_SET_PROTO_CFG_EVT; status=0x0
+04-17 10:57:15.356: D/BrcmNfcJni(1399): RoutingManager::commitRouting
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): NFA_EeUpdateNow()
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): NFA got event 0x0209
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): nfa_ee_evt_hdlr (): Event API_UPDATE_NOW(0x209), State: INIT_DONE(1)
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): nfa_sys_ptim_stop_timer af7a7a68
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): ptim timer stop
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): nfa_ee_rout_timeout()
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): nfa_ee_need_recfg() ee_cfged: 0x82 ee_cfg_sts: 0x00
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): 0: ecb_flags  : 0x00, mask: 0x10
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): 1: ecb_flags  : 0x00, mask: 0x01
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): 2: ecb_flags  : 0x06, mask: 0x02
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): nfa_ee_update_rout ee_cfg_sts:0x00
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): nfa_ee_evt_hdlr (): Event CFG_TO_NFCC(0x217), State: INIT_DONE(1)
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): last_active: 0x1
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): nfa_ee_route_add_one_ecb max_len:256, max_tlv:253, cur_offset:0, more:1, num_tlv:0
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): nfa_ee_total_lmrt_size size:0
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): ee_cfg_sts:0x00 lmrt_size:0
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): nfcee_id:0x1, last_active: 0x1
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): nfa_ee_route_add_one_ecb max_len:256, max_tlv:253, cur_offset:0, more:0, num_tlv:0
+04-17 10:57:15.356: I/BrcmNfcNfa(1399): nfa_ee_total_lmrt_size size:0
+04-17 10:57:15.358: I/BrcmNfcNfa(1399): ee_cfg_sts:0x00 lmrt_size:0
+04-17 10:57:15.358: I/BrcmNfcNfa(1399): nfa_ee_update_rout ee_cfg_sts:0x00 ee_cfged:0x02
+04-17 10:57:15.358: I/BrcmNfcNfa(1399): nfa_ee_report_update_evt ee_wait_evt:0x10 wait_rsp:0
+04-17 10:57:15.358: D/BrcmNfcJni(1399): RoutingManager::nfaEeCallback: NFA_EE_UPDATED_EVT
+04-17 10:57:15.358: D/BrcmNfcJni(1399): startRfDiscovery: is start=1
+04-17 10:57:15.358: I/BrcmNfcNfa(1399): NFA_StartRfDiscovery ()
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): NFA got event 0x010E
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_START_RF_DISCOVERY_EVT (0x0e)
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_dm_act_start_rf_discovery ()
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_dm_start_rf_discover ()
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_ee_get_tech_route(): 1
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): 0x0, 0x0, 0x0, 0x0
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_dm_cb.disc_cb.entry[0].selected_disc_mask = 0x40000
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_dm_cb.disc_cb.entry[1].selected_disc_mask = 0x3d7f
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_dm_cb.disc_cb.entry[2].selected_disc_mask = 0xc480000
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_p2p_set_config ()
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): LLCP_GetDiscoveryConfig ()
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_dm_check_set_config ()
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_dm_check_set_config ()
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): dm_disc_mask = 0xc4c3d7f
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_dm_set_rf_listen_mode_config () tech_proto_mask = 0x0C4C3D7F
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_dm_check_set_config ()
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_dm_set_total_duration ()
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): nfa_dm_check_set_config ()
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): NFC_DiscoveryStart
+04-17 10:57:15.359: D/NfcAdaptation(1399): NfcAdaptation::HalPrediscover
+04-17 10:57:15.359: I/SecHAL(1399): nfc_hal_pre_discover: enter;
+04-17 10:57:15.359: I/SecHAL(1399): nfc_hal_pre_discover: exit;
+04-17 10:57:15.359: D/SecHAL(1399): nfc_hal_task: Got a event: Uknown event.(2)
+04-17 10:57:15.359: D/NfcAdaptation(1399): NfcAdaptation::HalWrite
+04-17 10:57:15.359: I/SecHAL(1399): nfc_hal_write: enter;
+04-17 10:57:15.359: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:57:15.359: I/SecHAL(1399): nfc_hal_write: exit;
+04-17 10:57:15.359: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_WRITE(3)
+04-17 10:57:15.359: I/BrcmNfcNfa(1399): NFC_DiscoveryStart status: 0xe3
+04-17 10:57:15.359: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:57:15.360: I/SecHAL(1399): device_wakeup: Wakeup! in 20 ms
+04-17 10:57:15.362: D/audio_hw_primary(335): adev_set_parameters: enter: screen_state=on
+04-17 10:57:15.362: E/audio_a2dp_hw(335): adev_set_parameters: ERROR: set param called even when stream out is null
+04-17 10:57:15.371: E/native(792): do suspend false
+04-17 10:57:15.373: D/DA-oS(1138): starting
+04-17 10:57:15.380: D/NS-gAN(1138): com.android.mms
+04-17 10:57:15.380: D/NS-gAN(1138): android
+04-17 10:57:15.380: D/NS-gAN(1138): android
+04-17 10:57:15.380: D/DA-oC(1138): 1 notifications
+04-17 10:57:15.381: I/Choreographer(1138): Skipped 43 frames!  The application may be doing too much work on its main thread.
+04-17 10:57:15.381: D/SecHAL(1399): data_trace:  Send( 26) 21 03 17   0b 00 01 01 01 02 01 03 01 05 01 80 01 82 01 83 01 85 01 06 01 77 01 
+04-17 10:57:15.388: V/ActivityManager(792): Display changed displayId=0
+04-17 10:57:15.389: D/SecHAL(1399): read_thread: Sent message to HAL message task, remind que: 2
+04-17 10:57:15.389: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_READ(4)
+04-17 10:57:15.389: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:57:15.389: D/SecHAL(1399): data_trace:  Recv(  4) 41 03 01   00 
+04-17 10:57:15.389: I/SecHAL(1399): nfc_data_callback: !
+04-17 10:57:15.389: D/NfcAdaptation(1399): NfcAdaptation::HalDeviceContextDataCallback: len=4
+04-17 10:57:15.390: I/BrcmNfcNfa(1399): NFC received rsp gid:1
+04-17 10:57:15.390: I/BrcmNfcNfa(1399): nfa_dm_disc_discovery_cback (): event:0x4000
+04-17 10:57:15.390: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): state: IDLE (0), event: DISCOVER_RSP(1) disc_flags: 0x31
+04-17 10:57:15.390: I/BrcmNfcNfa(1399): nfa_dm_disc_new_state (): old_state: IDLE (0), new_state: DISCOVERY (1) disc_flags: 0x11
+04-17 10:57:15.390: I/BrcmNfcNfa(1399): nfa_dm_poll_disc_cback (): event:0x00
+04-17 10:57:15.390: I/BrcmNfcNfa(1399): nfa_p2p_discovery_cback (): event:0x00
+04-17 10:57:15.390: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 30
+04-17 10:57:15.390: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_RF_DISCOVERY_STARTED_EVT: status = 0
+04-17 10:57:15.390: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): new state: DISCOVERY (1), disc_flags: 0x1
+04-17 10:57:15.394: D/BrcmNfcJni(1399): PowerSwitch::setModeOn(activated=0x1) : mCurrActivity=0x1
+04-17 10:57:15.394: D/BrcmNfcJni(1399): nfcManager_enableDiscovery: exit
+04-17 10:57:15.405: D/NfcService(1399): Discovery configuration equal, not updating.
+04-17 10:57:15.414: D/DA.onReceive(1138): Screen on event received.
+04-17 10:57:15.414: D/F.Is.cover_closed(1138): Is cover closed called.
+04-17 10:57:15.414: D/su(3352): su invoked.
+04-17 10:57:15.414: D/su(3352): starting daemon client 10060 10060
+04-17 10:57:15.414: D/F.Is.cover_closed(1138): Cover closed state is: true
+04-17 10:57:15.414: D/DA.onReceive(1138): Cover is open, stopping Default Activity.
+04-17 10:57:15.415: W/ActivityManager(792): Duplicate finish request for ActivityRecord{2e563a0e u0 org.durka.hallmonitor/.DefaultActivity t20 f}
+04-17 10:57:15.416: D/su(3354): remote pid: 3352
+04-17 10:57:15.416: D/su(3354): remote pts_slave: 
+04-17 10:57:15.416: D/su(3354): waiting for child exit
+04-17 10:57:15.417: D/su(3356): su invoked.
+04-17 10:57:15.417: E/su(3356): SU from: u0_a60
+04-17 10:57:15.417: D/su(3356): Checking whether app [uid:10060, pkgName: org.durka.hallmonitor] is allowed to be root
+04-17 10:57:15.421: D/su(3356): Privilege elevation allowed by appops
+04-17 10:57:15.421: D/su(3356): Allowing via appops.
+04-17 10:57:15.421: D/su(3356): 10060 /system/bin/app_process32 executing 0 /system/bin/sh using binary /system/bin/sh : sh
+04-17 10:57:15.421: D/su(3356): Waiting for pid 3357.
+04-17 10:57:15.422: I/SuControllerImpl(1042): Got change
+04-17 10:57:15.427: D/su(3356): Finishing su operation for app [uid:10060, pkgName: org.durka.hallmonitor]
+04-17 10:57:15.433: I/SuControllerImpl(1042): Got change
+04-17 10:57:15.433: D/su(3354): sending code
+04-17 10:57:15.433: D/su(3354): child exited
+04-17 10:57:15.434: I/DisplayPowerController(792): Unblocked screen on after 821 ms
+04-17 10:57:15.438: D/su(3352): client exited 0
+04-17 10:57:15.484: I/Timeline(2568): Timeline: Activity_idle id: android.os.BinderProxy@343e4b73 time:2656465
+04-17 10:57:15.495: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{2a8ad7b9 u0 com.android.settings/.SubSettings t16} time:2656476
+04-17 10:57:15.496: D/DA-oS(1138): stopping
+04-17 10:57:15.525: D/F.Evt.proximity(1138): Proximity method called with value: 8.0 ,whilst cover_closed is: false
+04-17 10:57:15.571: I/wpa_supplicant(1147): wlan0: CTRL-EVENT-SCAN-STARTED 
+04-17 10:57:15.824: D/F.Evt.proximity(1138): Proximity method called with value: 8.0 ,whilst cover_closed is: false
+04-17 10:57:16.515: I/SecHAL(1399): device_sleep: NFC can be going to sleep
+04-17 10:57:16.876: I/Sensors(792): ProximitySensor - 0(cm)
+04-17 10:57:16.876: D/VCPS.onSensorChanged(1138): Proximity sensor changed, value=0.0
+04-17 10:57:16.876: D/F.Evt.proximity(1138): Proximity method called with value: 0.0 ,whilst cover_closed is: false
+04-17 10:57:16.876: D/F.Is.cover_closed(1138): Is cover closed called.
+04-17 10:57:16.879: D/F.Is.cover_closed(1138): Cover closed state is: true
+04-17 10:57:17.046: I/Sensors(792): ProximitySensor - 8(cm)
+04-17 10:57:17.047: D/VCPS.onSensorChanged(1138): Proximity sensor changed, value=8.0
+04-17 10:57:17.047: D/F.Evt.proximity(1138): Proximity method called with value: 8.0 ,whilst cover_closed is: false
+04-17 10:57:17.050: D/PhoneStatusBar(1042): disable: < expand ICONS* alerts SYSTEM_INFO* back home recent clock search >
+04-17 10:57:17.080: D/F.Evt.proximity(1138): Proximity method called with value: 0.0 ,whilst cover_closed is: false
+04-17 10:57:17.080: D/F.Is.cover_closed(1138): Is cover closed called.
+04-17 10:57:17.081: D/F.Is.cover_closed(1138): Cover closed state is: true
+04-17 10:57:17.247: D/F.Evt.proximity(1138): Proximity method called with value: 8.0 ,whilst cover_closed is: false
+04-17 10:57:17.379: D/F.Evt.proximity(1138): Proximity method called with value: 0.0 ,whilst cover_closed is: false
+04-17 10:57:17.379: D/F.Is.cover_closed(1138): Is cover closed called.
+04-17 10:57:17.380: D/F.Is.cover_closed(1138): Cover closed state is: true
+04-17 10:57:17.424: D/BluetoothAdapter(1042): 600622693: getState() :  mService = null. Returning STATE_OFF
+04-17 10:57:17.424: D/BluetoothAdapter(1042): 600622693: getState() :  mService = null. Returning STATE_OFF
+04-17 10:57:17.428: D/BluetoothAdapter(1042): 600622693: getState() :  mService = null. Returning STATE_OFF
+04-17 10:57:17.428: D/BluetoothAdapter(1042): 600622693: getState() :  mService = null. Returning STATE_OFF
+04-17 10:57:17.431: D/BluetoothAdapter(1042): 600622693: getState() :  mService = null. Returning STATE_OFF
+04-17 10:57:17.431: D/BluetoothAdapter(1042): 600622693: getState() :  mService = null. Returning STATE_OFF
+04-17 10:57:17.548: D/F.Evt.proximity(1138): Proximity method called with value: 8.0 ,whilst cover_closed is: false
+04-17 10:57:18.854: D/PhoneStatusBar(1042): disable: < expand icons* alerts system_info* back home recent clock search >
+04-17 10:57:18.873: W/InputMethodManagerService(792): Window already focused, ignoring focus gain of: com.android.internal.view.IInputMethodClient$Stub$Proxy@30a99d15 attribute=null, token = android.os.BinderProxy@2f99d757
+04-17 10:57:19.725: I/ActivityManager(792): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10200000 cmp=com.cyanogenmod.trebuchet/com.android.launcher3.Launcher} from uid 1000 on display 0
+04-17 10:57:19.835: I/Timeline(1664): Timeline: Activity_idle id: android.os.BinderProxy@28a1f4d6 time:2660816
+04-17 10:57:20.103: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{11ad61e7 u0 com.cyanogenmod.trebuchet/com.android.launcher3.Launcher t15} time:2661084
+04-17 10:57:20.350: W/OpenGLRenderer(1664): Incorrectly called buildLayer on View: ShortcutAndWidgetContainer, destroying layer...
+04-17 10:57:20.350: W/OpenGLRenderer(1664): Incorrectly called buildLayer on View: ShortcutAndWidgetContainer, destroying layer...
+04-17 10:57:28.373: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:28.386: D/audio_hw_primary(335): start_output_stream: enter: stream(0xb605f600)usecase(1: low-latency-playback) devices(0x2)
+04-17 10:57:28.386: D/audio_hw_primary(335): start_output_stream: enter: usecase(1: low-latency-playback) devices(0x2)
+04-17 10:57:28.386: D/audio_hw_primary(335): select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+04-17 10:57:28.386: W/msm8974_platform(335): Codec backend bitwidth 16, samplerate 48000
+04-17 10:57:28.386: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:57:28.386: I/msm8974_platform(335): platform_send_audio_calibration: sending audio calibration for snd_device(2) acdb_id(15)
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> send_audio_cal, acdb_id = 15, path =  0
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> send_adm_topology
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TOPOLOGY_ID
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> send_asm_topology
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_STREAM_TOPOLOGY_ID
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> send_audtable
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TABLE
+04-17 10:57:28.386: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_CAL
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> send_audvoltable
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_GAIN_DEP_STEP_TABLE
+04-17 10:57:28.386: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_VOL_CAL
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> send_afe_cal
+04-17 10:57:28.386: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AFE_COMMON_TABLE
+04-17 10:57:28.386: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:28.387: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AFE_CAL
+04-17 10:57:28.397: D/audio_hw_primary(335): select_devices: done
+04-17 10:57:28.486: W/OpenGLRenderer(1664): Incorrectly called buildLayer on View: SlidingUpPanelLayout, destroying layer...
+04-17 10:57:29.940: I/Timeline(1664): Timeline: Activity_launch_request id:org.durka.hallmonitor time:2670921
+04-17 10:57:29.941: I/ActivityManager(792): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.durka.hallmonitor/.Configuration (has extras)} from uid 10019 on display 0
+04-17 10:57:29.946: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:30.059: D/PreferenceFragmentLoader(1138): PFL-oC
+04-17 10:57:30.059: D/PreferenceFragmentLoader(1138): loading preferences from preferences.xml
+04-17 10:57:30.070: D/PreferenceSwitchable(1138): Root Features oDP from Enable, dD=false
+04-17 10:57:30.071: D/PreferenceFragmentLoader(1138): versionCode = 16
+04-17 10:57:30.071: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:30.074: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverHallService service is NOT running.
+04-17 10:57:30.074: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:30.076: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverProximityService is running.
+04-17 10:57:30.077: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:30.077: D/F.Is.service_running(1138): The org.durka.hallmonitor.NotificationService is running.
+04-17 10:57:30.211: I/ActivityManager(792): Displayed org.durka.hallmonitor/.Configuration: +248ms
+04-17 10:57:30.220: I/Timeline(1138): Timeline: Activity_idle id: android.os.BinderProxy@3a0fc074 time:2671201
+04-17 10:57:30.464: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{2c444364 u0 org.durka.hallmonitor/.Configuration t21} time:2671445
+04-17 10:57:33.070: D/audio_hw_primary(335): out_standby: enter: stream (0xb605f600) usecase(1: low-latency-playback)
+04-17 10:57:33.147: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:57:35.575: I/wpa_supplicant(1147): wlan0: CTRL-EVENT-SCAN-STARTED 
+04-17 10:57:36.243: D/PreferenceFragmentLoader-oSPC(1138): toggling switch
+04-17 10:57:36.243: D/PreferenceSwitchable(1138): Root Features oDP from Enable, dD=true
+04-17 10:57:36.243: D/PreferenceFragmentLoader(1138): pref_enabled is now false
+04-17 10:57:36.243: D/F.Act.stop_service(1138): Stop service called.
+04-17 10:57:36.275: D/VCPS.onStartCommand(1138): View cover Proximity service stopped
+04-17 10:57:36.276: I/Sensors(792): Proximity old sensor_state 129, new sensor_state : 1 en : 0
+04-17 10:57:36.284: D/F.Evt.dev_adm_status(1138): Device admin status called with admin status: false
+04-17 10:57:38.589: D/PreferenceFragmentLoader-oSPC(1138): toggling switch
+04-17 10:57:38.589: D/PreferenceSwitchable(1138): Root Features oDP from Enable, dD=false
+04-17 10:57:38.589: D/PreferenceFragmentLoader(1138): pref_enabled is now true
+04-17 10:57:38.589: D/F.Act.start_service(1138): Start service called.
+04-17 10:57:38.590: D/F.Act.start_service(1138): launching dpm overlay
+04-17 10:57:38.600: I/ActivityManager(792): START u0 {act=android.app.action.ADD_DEVICE_ADMIN cmp=com.android.settings/.DeviceAdminAdd (has extras)} from uid 10060 on display 0
+04-17 10:57:38.617: D/su(3386): su invoked.
+04-17 10:57:38.617: D/su(3386): starting daemon client 10060 10060
+04-17 10:57:38.618: D/su(3390): remote pid: 3386
+04-17 10:57:38.619: D/su(3390): remote pts_slave: 
+04-17 10:57:38.619: D/su(3390): waiting for child exit
+04-17 10:57:38.622: D/su(3392): su invoked.
+04-17 10:57:38.622: E/su(3392): SU from: u0_a60
+04-17 10:57:38.623: D/su(3392): Checking whether app [uid:10060, pkgName: org.durka.hallmonitor] is allowed to be root
+04-17 10:57:38.624: D/su(3392): Privilege elevation allowed by appops
+04-17 10:57:38.624: D/su(3392): Allowing via appops.
+04-17 10:57:38.625: D/su(3392): 10060 /system/bin/app_process32 executing 0 /system/bin/sh using binary /system/bin/sh : sh
+04-17 10:57:38.625: D/su(3392): Waiting for pid 3393.
+04-17 10:57:38.626: I/SuControllerImpl(1042): Got change
+04-17 10:57:38.637: D/su(3392): Finishing su operation for app [uid:10060, pkgName: org.durka.hallmonitor]
+04-17 10:57:38.641: D/su(3390): sending code
+04-17 10:57:38.641: D/su(3390): child exited
+04-17 10:57:38.644: I/SuControllerImpl(1042): Got change
+04-17 10:57:38.646: D/su(3386): client exited 0
+04-17 10:57:38.689: W/ResourceType(2568): No package identifier when getting value for resource number 0x00000000
+04-17 10:57:38.689: W/PackageManager(2568): Failure retrieving resources for org.durka.hallmonitor: Resource ID #0x0
+04-17 10:57:38.748: I/ActivityManager(792): Displayed com.android.settings/.DeviceAdminAdd: +102ms
+04-17 10:57:38.773: W/IInputConnectionWrapper(2568): showStatusIcon on inactive InputConnection
+04-17 10:57:38.773: I/Timeline(2568): Timeline: Activity_idle id: android.os.BinderProxy@203cc0d1 time:2679754
+04-17 10:57:39.127: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{1490bb2c u0 com.android.settings/.DeviceAdminAdd t21} time:2680108
+04-17 10:57:41.165: D/F.Evt.dev_adm_status(1138): Device admin status called with admin status: true
+04-17 10:57:41.171: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:41.182: D/audio_hw_primary(335): start_output_stream: enter: stream(0xb605f600)usecase(1: low-latency-playback) devices(0x2)
+04-17 10:57:41.182: D/audio_hw_primary(335): start_output_stream: enter: usecase(1: low-latency-playback) devices(0x2)
+04-17 10:57:41.182: D/audio_hw_primary(335): select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+04-17 10:57:41.182: W/msm8974_platform(335): Codec backend bitwidth 16, samplerate 48000
+04-17 10:57:41.182: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:57:41.182: I/msm8974_platform(335): platform_send_audio_calibration: sending audio calibration for snd_device(2) acdb_id(15)
+04-17 10:57:41.182: D/ACDB-LOADER(335): ACDB -> send_audio_cal, acdb_id = 15, path =  0
+04-17 10:57:41.182: D/ACDB-LOADER(335): ACDB -> send_adm_topology
+04-17 10:57:41.182: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TOPOLOGY_ID
+04-17 10:57:41.182: D/ACDB-LOADER(335): ACDB -> send_asm_topology
+04-17 10:57:41.182: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_STREAM_TOPOLOGY_ID
+04-17 10:57:41.182: D/ACDB-LOADER(335): ACDB -> send_audtable
+04-17 10:57:41.182: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TABLE
+04-17 10:57:41.182: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:41.183: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_CAL
+04-17 10:57:41.183: D/ACDB-LOADER(335): ACDB -> send_audvoltable
+04-17 10:57:41.183: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_GAIN_DEP_STEP_TABLE
+04-17 10:57:41.183: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:41.183: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_VOL_CAL
+04-17 10:57:41.183: D/ACDB-LOADER(335): ACDB -> send_afe_cal
+04-17 10:57:41.183: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AFE_COMMON_TABLE
+04-17 10:57:41.183: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:41.183: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AFE_CAL
+04-17 10:57:41.194: D/audio_hw_primary(335): select_devices: done
+04-17 10:57:41.226: D/F.Evt.activity_result(1138): Activity result received: request=42, result=-1
+04-17 10:57:41.234: D/PreferenceFragmentLoader(1138): versionCode = 16
+04-17 10:57:41.234: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:41.237: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverHallService service is NOT running.
+04-17 10:57:41.237: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:41.238: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverProximityService is running.
+04-17 10:57:41.238: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:41.239: D/F.Is.service_running(1138): The org.durka.hallmonitor.NotificationService is running.
+04-17 10:57:41.255: D/VCPS.onStartCommand(1138): View cover Proximity service started
+04-17 10:57:41.256: I/Sensors(792): Proximity old sensor_state 1, new sensor_state : 129 en : 1
+04-17 10:57:41.270: D/VCPS.onAccuracyChanged(1138): OnAccuracyChanged: Sensor=MAX88922 Proximity Sensor, accuracy=3
+04-17 10:57:41.270: D/VCPS.onSensorChanged(1138): Proximity sensor changed, value=8.0
+04-17 10:57:41.270: D/F.Evt.proximity(1138): Proximity method called with value: 8.0 ,whilst cover_closed is: false
+04-17 10:57:41.289: W/IInputConnectionWrapper(1138): showStatusIcon on inactive InputConnection
+04-17 10:57:41.289: I/Timeline(1138): Timeline: Activity_idle id: android.os.BinderProxy@3a0fc074 time:2682270
+04-17 10:57:41.309: D/OpenGLRenderer(2568): endAllStagingAnimators on 0x9d649780 (RippleDrawable) with handle 0x9f390570
+04-17 10:57:41.471: D/F.Evt.proximity(1138): Proximity method called with value: 8.0 ,whilst cover_closed is: false
+04-17 10:57:41.567: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{2c444364 u0 org.durka.hallmonitor/.Configuration t21} time:2682548
+04-17 10:57:41.772: D/F.Evt.proximity(1138): Proximity method called with value: 8.0 ,whilst cover_closed is: false
+04-17 10:57:43.711: W/AppOps(792): Finishing op nesting under-run: uid 10060 pkg org.durka.hallmonitor code 45 time=1429261058837 duration=2545 nesting=0
+04-17 10:57:43.733: I/ActivityManager(792): START u0 {act=android.settings.SECURITY_SETTINGS cmp=com.android.settings/.Settings$SecuritySettingsActivity} from uid 10060 on display 0
+04-17 10:57:43.743: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:43.788: W/Resources(2568): Converting to string: TypedValue{t=0x10/d=0x1e a=-1}
+04-17 10:57:43.796: W/Settings(2568): Setting install_non_market_apps has moved from android.provider.Settings.Global to android.provider.Settings.Secure, returning read-only value.
+04-17 10:57:43.806: D/Index(2568): Deleting data for locale 'en_US' took 9 millis
+04-17 10:57:43.853: D/Index(2568): Indexing locale 'en_US' took 47 millis
+04-17 10:57:43.903: I/ActivityManager(792): Displayed com.android.settings/.Settings$SecuritySettingsActivity: +156ms
+04-17 10:57:43.941: I/Timeline(2568): Timeline: Activity_idle id: android.os.BinderProxy@3f082559 time:2684923
+04-17 10:57:44.279: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{1aecf2de u0 com.android.settings/.Settings$SecuritySettingsActivity t21} time:2685260
+04-17 10:57:46.869: D/audio_hw_primary(335): out_standby: enter: stream (0xb605f600) usecase(1: low-latency-playback)
+04-17 10:57:46.918: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:57:51.001: I/Timeline(2568): Timeline: Activity_launch_request id:com.android.settings time:2691983
+04-17 10:57:51.002: I/ActivityManager(792): START u0 {act=android.intent.action.MAIN cmp=com.android.settings/.SubSettings (has extras)} from uid 1000 on display 0
+04-17 10:57:51.010: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:51.024: D/audio_hw_primary(335): start_output_stream: enter: stream(0xb605f600)usecase(1: low-latency-playback) devices(0x2)
+04-17 10:57:51.024: D/audio_hw_primary(335): start_output_stream: enter: usecase(1: low-latency-playback) devices(0x2)
+04-17 10:57:51.024: D/audio_hw_primary(335): select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+04-17 10:57:51.024: W/msm8974_platform(335): Codec backend bitwidth 16, samplerate 48000
+04-17 10:57:51.024: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:57:51.024: I/msm8974_platform(335): platform_send_audio_calibration: sending audio calibration for snd_device(2) acdb_id(15)
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> send_audio_cal, acdb_id = 15, path =  0
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> send_adm_topology
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TOPOLOGY_ID
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> send_asm_topology
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_STREAM_TOPOLOGY_ID
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> send_audtable
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TABLE
+04-17 10:57:51.024: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_CAL
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> send_audvoltable
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_GAIN_DEP_STEP_TABLE
+04-17 10:57:51.024: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_VOL_CAL
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> send_afe_cal
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AFE_COMMON_TABLE
+04-17 10:57:51.024: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:51.024: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AFE_CAL
+04-17 10:57:51.036: D/audio_hw_primary(335): select_devices: done
+04-17 10:57:51.049: D/SubSettings(2568): Launching fragment com.android.settings.DeviceAdminSettings
+04-17 10:57:51.166: W/ResourceType(2568): No package identifier when getting value for resource number 0x00000000
+04-17 10:57:51.167: W/PackageManager(2568): Failure retrieving resources for com.cyanogenmod.account: Resource ID #0x0
+04-17 10:57:51.180: W/ResourceType(2568): No package identifier when getting value for resource number 0x00000000
+04-17 10:57:51.180: W/PackageManager(2568): Failure retrieving resources for org.durka.hallmonitor: Resource ID #0x0
+04-17 10:57:51.236: I/ActivityManager(792): Displayed com.android.settings/.SubSettings: +223ms
+04-17 10:57:51.286: D/OpenGLRenderer(2568): endAllStagingAnimators on 0x9d6bdc00 (ListView) with handle 0x9f390f50
+04-17 10:57:51.296: I/Timeline(2568): Timeline: Activity_idle id: android.os.BinderProxy@2fb907d5 time:2692277
+04-17 10:57:51.611: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{1dded3af u0 com.android.settings/.SubSettings t21} time:2692593
+04-17 10:57:52.292: W/Resources(2568): Converting to string: TypedValue{t=0x10/d=0x1e a=-1}
+04-17 10:57:52.300: W/Settings(2568): Setting install_non_market_apps has moved from android.provider.Settings.Global to android.provider.Settings.Secure, returning read-only value.
+04-17 10:57:52.317: D/Index(2568): Deleting data for locale 'en_US' took 16 millis
+04-17 10:57:52.391: D/Index(2568): Indexing locale 'en_US' took 74 millis
+04-17 10:57:52.395: I/Timeline(2568): Timeline: Activity_idle id: android.os.BinderProxy@3f082559 time:2693376
+04-17 10:57:52.633: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{1aecf2de u0 com.android.settings/.Settings$SecuritySettingsActivity t21} time:2693614
+04-17 10:57:53.126: D/PreferenceFragmentLoader(1138): versionCode = 16
+04-17 10:57:53.126: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:53.128: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverHallService service is NOT running.
+04-17 10:57:53.128: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:53.130: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverProximityService is running.
+04-17 10:57:53.130: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:53.133: D/F.Is.service_running(1138): The org.durka.hallmonitor.NotificationService is running.
+04-17 10:57:53.184: W/InputMethodManagerService(792): Starting input on non-focused client com.android.internal.view.IInputMethodClient$Stub$Proxy@32b0b425 (uid=1000 pid=2568)
+04-17 10:57:53.188: I/Timeline(1138): Timeline: Activity_idle id: android.os.BinderProxy@3a0fc074 time:2694169
+04-17 10:57:53.466: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{2c444364 u0 org.durka.hallmonitor/.Configuration t21} time:2694447
+04-17 10:57:54.190: D/audio_hw_primary(335): out_standby: enter: stream (0xb605f600) usecase(1: low-latency-playback)
+04-17 10:57:54.275: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:57:55.456: D/PreferenceFragmentLoader(1138): PFL-oC
+04-17 10:57:55.456: D/PreferenceFragmentLoader(1138): loading preferences from preferences_widgets.xml
+04-17 10:57:55.462: D/PreferenceFragmentLoader(1138): versionCode = 16
+04-17 10:57:55.462: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:55.463: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverHallService service is NOT running.
+04-17 10:57:55.463: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:55.463: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverProximityService is running.
+04-17 10:57:55.464: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:55.464: D/F.Is.service_running(1138): The org.durka.hallmonitor.NotificationService is running.
+04-17 10:57:55.465: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:55.479: D/audio_hw_primary(335): start_output_stream: enter: stream(0xb605f600)usecase(1: low-latency-playback) devices(0x2)
+04-17 10:57:55.479: D/audio_hw_primary(335): start_output_stream: enter: usecase(1: low-latency-playback) devices(0x2)
+04-17 10:57:55.479: D/audio_hw_primary(335): select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+04-17 10:57:55.479: W/msm8974_platform(335): Codec backend bitwidth 16, samplerate 48000
+04-17 10:57:55.479: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:57:55.479: I/msm8974_platform(335): platform_send_audio_calibration: sending audio calibration for snd_device(2) acdb_id(15)
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> send_audio_cal, acdb_id = 15, path =  0
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> send_adm_topology
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TOPOLOGY_ID
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> send_asm_topology
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_STREAM_TOPOLOGY_ID
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> send_audtable
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TABLE
+04-17 10:57:55.479: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_CAL
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> send_audvoltable
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_GAIN_DEP_STEP_TABLE
+04-17 10:57:55.479: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_VOL_CAL
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> send_afe_cal
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AFE_COMMON_TABLE
+04-17 10:57:55.479: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:57:55.479: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AFE_CAL
+04-17 10:57:55.486: D/audio_hw_primary(335): select_devices: done
+04-17 10:57:55.572: I/wpa_supplicant(1147): wlan0: CTRL-EVENT-SCAN-STARTED 
+04-17 10:57:58.310: D/PreferenceFragmentLoader-oSPC(1138): toggling check box
+04-17 10:57:58.310: D/F.Is.wid_enabled(1138): Is default widget enabled called with widgetType: default
+04-17 10:57:58.310: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: default
+04-17 10:57:58.310: D/F.Is.wid_enabled(1138): default widget enabled state is: false
+04-17 10:57:58.311: D/F.Act.register_widget(1138): Register widget called for type: default
+04-17 10:57:58.312: D/HMAWM.register_widget(1138): Register widget called with type: default
+04-17 10:57:58.318: D/HMAWM.register_widget(1138): appWidgetId allocated: 5
+04-17 10:57:58.319: I/ActivityManager(792): START u0 {act=android.appwidget.action.APPWIDGET_PICK cmp=com.android.settings/.AppWidgetPickActivity (has extras)} from uid 10060 on display 0
+04-17 10:57:58.323: D/F.Is.wid_enabled(1138): Is default widget enabled called with widgetType: default
+04-17 10:57:58.323: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: default
+04-17 10:57:58.323: D/F.Is.wid_enabled(1138): default widget enabled state is: false
+04-17 10:57:58.323: D/F.Act.register_widget(1138): Register widget called for type: default
+04-17 10:57:58.323: D/F.Act.register_widget(1138): skipping, already inflight
+04-17 10:57:58.328: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:57:58.407: I/AppWidgetAdapter(2568): EXTRA_CUSTOM_INFO not present.
+04-17 10:57:58.572: I/ActivityManager(792): Displayed com.android.settings/.AppWidgetPickActivity: +242ms
+04-17 10:57:58.578: I/Timeline(2568): Timeline: Activity_idle id: android.os.BinderProxy@8bc2a03 time:2699559
+04-17 10:57:58.754: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{25be29fa u0 com.android.settings/.AppWidgetPickActivity t21} time:2699735
+04-17 10:57:59.842: D/F.Evt.activity_result(1138): Activity result received: request=9, result=0
+04-17 10:57:59.842: D/HMAWM.deleteAppWidgetId(1138): Deleting widget id: 0
+04-17 10:57:59.849: D/PreferenceFragmentLoader-oSPC(1138): toggling check box
+04-17 10:57:59.850: D/F.Is.wid_enabled(1138): Is default widget enabled called with widgetType: default
+04-17 10:57:59.850: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: default
+04-17 10:57:59.850: D/F.Is.wid_enabled(1138): default widget enabled state is: false
+04-17 10:57:59.850: D/F.Is.wid_enabled(1138): Is default widget enabled called with widgetType: default
+04-17 10:57:59.850: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: default
+04-17 10:57:59.850: D/F.Is.wid_enabled(1138): default widget enabled state is: false
+04-17 10:57:59.851: D/PreferenceFragmentLoader(1138): versionCode = 16
+04-17 10:57:59.851: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:59.859: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverHallService service is NOT running.
+04-17 10:57:59.860: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:59.863: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverProximityService is running.
+04-17 10:57:59.863: D/F.Is.service_running(1138): Is service running called.
+04-17 10:57:59.865: D/F.Is.service_running(1138): The org.durka.hallmonitor.NotificationService is running.
+04-17 10:57:59.886: W/InputMethodManagerService(792): Window already focused, ignoring focus gain of: com.android.internal.view.IInputMethodClient$Stub$Proxy@37bfad9e attribute=null, token = android.os.BinderProxy@3e537fa6
+04-17 10:57:59.892: I/Timeline(1138): Timeline: Activity_idle id: android.os.BinderProxy@3a0fc074 time:2700874
+04-17 10:58:00.588: D/PreferenceSwitchable(1138): Root Features oDP from Enable, dD=false
+04-17 10:58:00.589: D/PreferenceFragmentLoader(1138): versionCode = 16
+04-17 10:58:00.589: D/F.Is.service_running(1138): Is service running called.
+04-17 10:58:00.590: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverHallService service is NOT running.
+04-17 10:58:00.590: D/F.Is.service_running(1138): Is service running called.
+04-17 10:58:00.591: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverProximityService is running.
+04-17 10:58:00.591: D/F.Is.service_running(1138): Is service running called.
+04-17 10:58:00.592: D/F.Is.service_running(1138): The org.durka.hallmonitor.NotificationService is running.
+04-17 10:58:01.447: D/audio_hw_primary(335): out_standby: enter: stream (0xb605f600) usecase(1: low-latency-playback)
+04-17 10:58:01.526: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:58:02.120: D/PreferenceFragmentLoader(1138): PFL-oC
+04-17 10:58:02.120: D/PreferenceFragmentLoader(1138): loading preferences from preferences_features.xml
+04-17 10:58:02.126: D/PreferenceFragmentLoader(1138): versionCode = 16
+04-17 10:58:02.126: D/F.Is.service_running(1138): Is service running called.
+04-17 10:58:02.127: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverHallService service is NOT running.
+04-17 10:58:02.127: D/F.Is.service_running(1138): Is service running called.
+04-17 10:58:02.127: D/F.Is.service_running(1138): The org.durka.hallmonitor.ViewCoverProximityService is running.
+04-17 10:58:02.127: D/F.Is.service_running(1138): Is service running called.
+04-17 10:58:02.128: D/F.Is.service_running(1138): The org.durka.hallmonitor.NotificationService is running.
+04-17 10:58:02.130: D/audio_hw_primary(335): out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=2
+04-17 10:58:02.142: D/audio_hw_primary(335): start_output_stream: enter: stream(0xb605f600)usecase(1: low-latency-playback) devices(0x2)
+04-17 10:58:02.142: D/audio_hw_primary(335): start_output_stream: enter: usecase(1: low-latency-playback) devices(0x2)
+04-17 10:58:02.142: D/audio_hw_primary(335): select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+04-17 10:58:02.142: W/msm8974_platform(335): Codec backend bitwidth 16, samplerate 48000
+04-17 10:58:02.142: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:58:02.142: I/msm8974_platform(335): platform_send_audio_calibration: sending audio calibration for snd_device(2) acdb_id(15)
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> send_audio_cal, acdb_id = 15, path =  0
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> send_adm_topology
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TOPOLOGY_ID
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> send_asm_topology
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_STREAM_TOPOLOGY_ID
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> send_audtable
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_COMMON_TABLE
+04-17 10:58:02.142: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_CAL
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> send_audvoltable
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AUDPROC_GAIN_DEP_STEP_TABLE
+04-17 10:58:02.142: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AUDPROC_VOL_CAL
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> send_afe_cal
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> ACDB_CMD_GET_AFE_COMMON_TABLE
+04-17 10:58:02.142: D/(335): ACDBFILE_MGR:Read the devices count as zero, please check the acdb file
+04-17 10:58:02.142: D/ACDB-LOADER(335): ACDB -> AUDIO_SET_AFE_CAL
+04-17 10:58:02.149: D/audio_hw_primary(335): select_devices: done
+04-17 10:58:05.306: D/audio_hw_primary(335): out_standby: enter: stream (0xb605f600) usecase(1: low-latency-playback)
+04-17 10:58:05.386: D/hardware_info(335): hw_info_append_hw_type : device_name = speaker
+04-17 10:58:05.460: I/Sensors(792): ProximitySensor - 0(cm)
+04-17 10:58:05.461: D/VCPS.onSensorChanged(1138): Proximity sensor changed, value=0.0
+04-17 10:58:05.462: D/F.Evt.proximity(1138): Proximity method called with value: 0.0 ,whilst cover_closed is: false
+04-17 10:58:05.462: D/F.Is.cover_closed(1138): Is cover closed called.
+04-17 10:58:05.466: D/F.Is.cover_closed(1138): Cover closed state is: true
+04-17 10:58:05.503: I/PowerManagerService(792): Going to sleep due to lid switch (uid 1000)...
+04-17 10:58:05.503: I/PowerManagerService(792): Sleeping (uid 1000)...
+04-17 10:58:05.667: D/F.Evt.proximity(1138): Proximity method called with value: 0.0 ,whilst cover_closed is: false
+04-17 10:58:05.668: D/F.Is.cover_closed(1138): Is cover closed called.
+04-17 10:58:05.670: D/F.Is.cover_closed(1138): Cover closed state is: true
+04-17 10:58:05.670: D/F.Act.close_cover(1138): Close cover event receieved.
+04-17 10:58:05.670: D/F.Act.enableCoverTouch(1138): We're root enabled so lets boost the sensitivity...
+04-17 10:58:05.670: D/F.Act.enableCoverTouch(1138): ...Sensitivity boosted, hold onto your hats!
+04-17 10:58:05.671: I/Timeline(1138): Timeline: Activity_launch_request id:org.durka.hallmonitor time:2706652
+04-17 10:58:05.671: I/ActivityManager(792): START u0 {flg=0x10090000 cmp=org.durka.hallmonitor/.DefaultActivity} from uid 10060 on display 0
+04-17 10:58:05.671: I/ActivityManager(792): Ignoring FLAG_ACTIVITY_NEW_DOCUMENT, launchMode is ""singleInstance"" or ""singleTask""
+04-17 10:58:05.696: D/F.Act.setLockTimer(1138): Delay set to: 10000
+04-17 10:58:05.717: D/DA.onCreate(1138): onCreate of DefaultView.
+04-17 10:58:05.728: D/hm-cam(1138): context/attributeset constructor
+04-17 10:58:05.743: D/su(3428): su invoked.
+04-17 10:58:05.744: D/su(3428): starting daemon client 10060 10060
+04-17 10:58:05.745: D/DA-oS(1138): starting
+04-17 10:58:05.745: D/su(3431): remote pid: 3428
+04-17 10:58:05.745: D/su(3431): remote pts_slave: 
+04-17 10:58:05.746: D/su(3431): waiting for child exit
+04-17 10:58:05.748: D/su(3433): su invoked.
+04-17 10:58:05.749: E/su(3433): SU from: u0_a60
+04-17 10:58:05.752: D/su(3433): Checking whether app [uid:10060, pkgName: org.durka.hallmonitor] is allowed to be root
+04-17 10:58:05.759: D/su(3433): Privilege elevation allowed by appops
+04-17 10:58:05.759: D/su(3433): Allowing via appops.
+04-17 10:58:05.759: D/su(3433): 10060 /system/bin/app_process32 executing 0 /system/bin/sh using binary /system/bin/sh : sh
+04-17 10:58:05.759: D/su(3433): Waiting for pid 3434.
+04-17 10:58:05.760: I/SuControllerImpl(1042): Got change
+04-17 10:58:05.763: D/NS-gAN(1138): com.android.mms
+04-17 10:58:05.763: D/NS-gAN(1138): android
+04-17 10:58:05.763: D/NS-gAN(1138): android
+04-17 10:58:05.763: D/DA-oC(1138): 1 notifications
+04-17 10:58:05.765: D/DA.onResume(1138): On resume called.
+04-17 10:58:05.765: D/su(3433): Finishing su operation for app [uid:10060, pkgName: org.durka.hallmonitor]
+04-17 10:58:05.768: D/su(3431): sending code
+04-17 10:58:05.768: D/su(3431): child exited
+04-17 10:58:05.769: D/su(3428): client exited 0
+04-17 10:58:05.775: I/SuControllerImpl(1042): Got change
+04-17 10:58:05.777: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: media
+04-17 10:58:05.777: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: default
+04-17 10:58:05.830: D/F.Act.enableCoverTouch(1138): We're root enabled so lets boost the sensitivity...
+04-17 10:58:05.830: D/F.Act.enableCoverTouch(1138): ...Sensitivity boosted, hold onto your hats!
+04-17 10:58:05.837: I/ActivityManager(792): Displayed org.durka.hallmonitor/.DefaultActivity: +138ms
+04-17 10:58:05.841: I/Timeline(792): Timeline: Activity_windows_visible id: ActivityRecord{16f505aa u0 org.durka.hallmonitor/.DefaultActivity t21} time:2706822
+04-17 10:58:05.845: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: media
+04-17 10:58:05.845: D/HMAWM.doesWidgetExist(1138): Checking for Widget of type: default
+04-17 10:58:05.858: D/su(3439): su invoked.
+04-17 10:58:05.858: D/su(3439): starting daemon client 10060 10060
+04-17 10:58:05.859: D/su(3441): remote pid: 3439
+04-17 10:58:05.859: D/su(3441): remote pts_slave: 
+04-17 10:58:05.859: D/su(3441): waiting for child exit
+04-17 10:58:05.859: D/su(3443): su invoked.
+04-17 10:58:05.860: E/su(3443): SU from: u0_a60
+04-17 10:58:05.860: D/su(3443): Checking whether app [uid:10060, pkgName: org.durka.hallmonitor] is allowed to be root
+04-17 10:58:05.861: D/su(3443): Privilege elevation allowed by appops
+04-17 10:58:05.861: D/su(3443): Allowing via appops.
+04-17 10:58:05.861: D/su(3443): 10060 /system/bin/app_process32 executing 0 /system/bin/sh using binary /system/bin/sh : sh
+04-17 10:58:05.861: D/su(3443): Waiting for pid 3444.
+04-17 10:58:05.863: I/SuControllerImpl(1042): Got change
+04-17 10:58:05.866: D/su(3443): Finishing su operation for app [uid:10060, pkgName: org.durka.hallmonitor]
+04-17 10:58:05.868: D/su(3441): sending code
+04-17 10:58:05.868: D/su(3441): child exited
+04-17 10:58:05.868: D/su(3439): client exited 0
+04-17 10:58:05.872: I/SuControllerImpl(1042): Got change
+04-17 10:58:05.880: I/Timeline(1138): Timeline: Activity_idle id: android.os.BinderProxy@390705cd time:2706862
+04-17 10:58:05.979: D/F.Evt.proximity(1138): Proximity method called with value: 0.0 ,whilst cover_closed is: true
+04-17 10:58:05.981: I/Sensors(792): Acc old sensor_state 129, new sensor_state : 128 en : 0
+04-17 10:58:06.019: I/DisplayManagerService(792): Display device changed: DisplayDeviceInfo{""Built-in Screen"": 1440 x 2560, 60.0 fps, supportedRefreshRates [60.0], density 560, 508.0 x 516.063 dpi, appVsyncOff 0, presDeadline 17666667, touch INTERNAL, rotation 0, type BUILT_IN, state OFF, FLAG_DEFAULT_DISPLAY, FLAG_ROTATES_WITH_CONTENT, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS}
+04-17 10:58:06.019: D/SurfaceFlinger(311): Set power mode=0, type=0 flinger=0xb6962000
+04-17 10:58:06.020: D/qdhwcomposer(311): hwc_blank: Blanking display: 0
+04-17 10:58:06.022: V/ActivityManager(792): Display changed displayId=0
+04-17 10:58:06.313: I/qdhwcomposer(311): handle_blank_event: dpy:0 panel power state: 0
+04-17 10:58:06.314: D/qdhwcomposer(311): hwc_blank: Done blanking display: 0
+04-17 10:58:06.314: D/SurfaceControl(792): Excessive delay in setPowerMode(): 294ms
+04-17 10:58:06.314: D/PowerHAL_TR_Ext(792): cm_power_set_interactive_ext: disabling input devices
+04-17 10:58:06.320: I/QCOM PowerHAL(792): Got set_interactive hint
+04-17 10:58:06.325: D/DA-oS(1138): stopping
+04-17 10:58:06.355: D/BrcmNfcJni(1399): nfcManager_disableDiscovery: enter;
+04-17 10:58:06.355: D/BrcmNfcJni(1399): pn544InteropAbortNow
+04-17 10:58:06.355: D/BrcmNfcJni(1399): startRfDiscovery: is start=0
+04-17 10:58:06.355: I/BrcmNfcNfa(1399): NFA_StopRfDiscovery ()
+04-17 10:58:06.355: I/BrcmNfcNfa(1399): NFA got event 0x010F
+04-17 10:58:06.355: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_STOP_RF_DISCOVERY_EVT (0x0f)
+04-17 10:58:06.355: I/BrcmNfcNfa(1399): nfa_dm_act_stop_rf_discovery ()
+04-17 10:58:06.355: I/BrcmNfcNfa(1399): nfa_dm_rf_deactivate () deactivate_type:0x0
+04-17 10:58:06.355: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): state: DISCOVERY (1), event: DEACTIVATE_CMD(6) disc_flags: 0x2
+04-17 10:58:06.355: I/BrcmNfcNfa(1399): NFC_Deactivate 4 (IDLE) deactivate_type:0
+04-17 10:58:06.355: D/NfcAdaptation(1399): NfcAdaptation::HalWrite
+04-17 10:58:06.355: I/SecHAL(1399): nfc_hal_write: enter;
+04-17 10:58:06.355: I/SecHAL(1399): nfc_hal_write: exit;
+04-17 10:58:06.356: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): new state: DISCOVERY (1), disc_flags: 0x22
+04-17 10:58:06.356: I/BrcmNfcNfa(1399): nfa_sys_ptim_stop_timer af7a99e8
+04-17 10:58:06.356: I/BrcmNfcNfa(1399): ptim timer stop
+04-17 10:58:06.356: I/BrcmNfcNfa(1399): Stopped presence check timer (if started)
+04-17 10:58:06.356: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_WRITE(3)
+04-17 10:58:06.356: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:58:06.357: I/SecHAL(1399): device_wakeup: Wakeup! in 20 ms
+04-17 10:58:06.360: D/audio_hw_primary(335): adev_set_parameters: enter: screen_state=off
+04-17 10:58:06.360: E/audio_a2dp_hw(335): adev_set_parameters: ERROR: set param called even when stream out is null
+04-17 10:58:06.374: E/native(792): do suspend true
+04-17 10:58:06.378: D/SecHAL(1399): data_trace:  Send(  4) 21 06 01   00 
+04-17 10:58:06.381: D/SecHAL(1399): read_thread: Sent message to HAL message task, remind que: 2
+04-17 10:58:06.382: D/SecHAL(1399): nfc_hal_task: Got a event: HAL_EVT_READ(4)
+04-17 10:58:06.382: D/SecHAL(1399): nfc_hal_task: current state: SERVICE
+04-17 10:58:06.382: D/SecHAL(1399): data_trace:  Recv(  4) 41 06 01   00 
+04-17 10:58:06.383: I/SecHAL(1399): nfc_data_callback: !
+04-17 10:58:06.383: D/NfcAdaptation(1399): NfcAdaptation::HalDeviceContextDataCallback: len=4
+04-17 10:58:06.384: I/BrcmNfcNfa(1399): NFC received rsp gid:1
+04-17 10:58:06.384: I/BrcmNfcNfa(1399): nfc_set_state 4 (IDLE)->4 (IDLE)
+04-17 10:58:06.385: I/BrcmNfcNfa(1399): nfa_dm_disc_data_cback ()
+04-17 10:58:06.386: I/BrcmNfcNfa(1399): nfa_dm_disc_discovery_cback (): event:0x4005
+04-17 10:58:06.387: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): state: DISCOVERY (1), event: DEACTIVATE_RSP(7) disc_flags: 0x22
+04-17 10:58:06.387: I/BrcmNfcNfa(1399): nfa_dm_disc_new_state (): old_state: DISCOVERY (1), new_state: IDLE (0) disc_flags: 0x2
+04-17 10:58:06.388: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 31
+04-17 10:58:06.390: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_RF_DISCOVERY_STOPPED_EVT: status = 0
+04-17 10:58:06.391: I/BrcmNfcNfa(1399): nfa_dm_start_rf_discover ()
+04-17 10:58:06.391: I/BrcmNfcNfa(1399): nfa_dm_disc_sm_execute (): new state: IDLE (0), disc_flags: 0x0
+04-17 10:58:06.392: D/BrcmNfcJni(1399): stopPolling_rfDiscoveryDisabled: disable polling
+04-17 10:58:06.392: I/BrcmNfcNfa(1399): NFA_DisablePolling ()
+04-17 10:58:06.392: I/BrcmNfcNfa(1399): NFA got event 0x0107
+04-17 10:58:06.392: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_DISABLE_POLLING_EVT (0x07)
+04-17 10:58:06.392: I/BrcmNfcNfa(1399): nfa_dm_act_disable_polling ()
+04-17 10:58:06.392: I/BrcmNfcNfa(1399): nfa_dm_deactivate_polling ()
+04-17 10:58:06.392: I/BrcmNfcNfa(1399): nfa_dm_delete_rf_discover () handle=0x1
+04-17 10:58:06.392: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 1
+04-17 10:58:06.392: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_POLL_DISABLED_EVT: status = 0
+04-17 10:58:06.393: D/BrcmNfcJni(1399): PeerToPeer::enableP2pListening: enter isEnable: 0  mIsP2pListening: 1
+04-17 10:58:06.393: I/BrcmNfcNfa(1399): NFA_P2pSetListenTech (): tech_mask:0x0
+04-17 10:58:06.393: I/BrcmNfcNfa(1399): NFA got event 0x010D
+04-17 10:58:06.393: I/BrcmNfcNfa(1399): nfa_dm_evt_hdlr event: NFA_DM_API_SET_P2P_LISTEN_TECH_EVT (0x0d)
+04-17 10:58:06.393: I/BrcmNfcNfa(1399): nfa_dm_set_p2p_listen_tech ()  tech_mask = 0
+04-17 10:58:06.393: I/BrcmNfcNfa(1399): nfa_p2p_update_listen_tech ()  tech_mask = 0x0
+04-17 10:58:06.393: I/BrcmNfcNfa(1399): nfa_dm_delete_rf_discover () handle=0x2
+04-17 10:58:06.394: I/BrcmNfcNfa(1399): nfa_p2p_enable_listening () sys_id = 3, update_wks = 0
+04-17 10:58:06.394: D/BrcmNfcJni(1399): nfaConnectionCallback: event= 33
+04-17 10:58:06.394: D/BrcmNfcJni(1399): nfaConnectionCallback: NFA_SET_P2P_LISTEN_TECH_EVT
+04-17 10:58:06.394: D/BrcmNfcJni(1399): PeerToPeer::enableP2pListening: exit; mIsP2pListening: 0
+04-17 10:58:06.395: D/BrcmNfcJni(1399): PowerSwitch::setModeOff(deactivated=0x1) : mCurrActivity=0x0
+04-17 10:58:06.395: D/BrcmNfcJni(1399): PowerSwitch::setLevel: level=PS-LOW-POWER (2)
+04-17 10:58:06.395: D/BrcmNfcJni(1399): PowerSwitch::setLevel: actual power level=PS-FULL
+04-17 10:58:06.395: D/BrcmNfcJni(1399): nfcManager_disableDiscovery: exit
+04-17 10:58:07.607: I/SecHAL(1399): device_sleep: NFC can be going to sleep
+```
+"
+durka/HallMonitor,open,Support OnePlus One,[],"Is it possible to implement the support for oneplus one hall sensor?
+"
+durka/HallMonitor,open,Feature Request: The Palm Swipe for Screenshots,[],"Would it be possible for the Palm Swipe for Screenshots Feature to be implemented?
+"
+durka/HallMonitor,open,Support for CM12,[],"hello,
+
+great piece of software,thanks for your work. Today i installed CM12 unstable ROM for my S4 mini.So far so good, but the only major thing i cant get running is Hallmonitor (but maybe im doing something wrong). Do you plan support for lollipop?
+
+thx
+"
+durka/HallMonitor,open,Problem to accept or reject calls,[],"Hello,
+
+First of all, many thanks for your work.
+My config : Galaxy S4 I9505 + CM11
+I checked the otpion ""Phone control"".
+It works fine, but when the cover is closed, I can not have interaction with the window.
+I can not switch ON/OFF the torsh, the camera and I can not accept or reject calls.
+
+Another detail : Before I installed CM11, all worked fine with the native samsung rom.
+
+Excuse me for my poor english.
+
+Thks
+"
+durka/HallMonitor,open,Feature request: support for different sized views,[],"Right now, the app seems to be calibrated specifically for the ""Samsung Galaxy S4"" as advertised.
+
+This app does work wonderfully with the Note 3, but the opening in the Note 3's s-view is larger than the opening in the S4's s-view, so there's quite a lot of space in the bottom half of the opening when the app activates.
+
+I was hoping a setting to change the view's width, height, and position could be implemented.
+
+Also, if possible, a way to change the position of widgets would be amazing.
+"
+durka/HallMonitor,open,2.0.2 beta,[],"- 2.0.2 beta
+  Major code update:
+      - Boost performance
+  
+  Fixes:
+      - Fix possible crash turning on/off torch
+      - Fix camera log
+      - Fix not all but main security warning in log
+      - Fix screen off during alert/activity
+  
+  Know issues:
+      - Alternative layout broken
+  
+  Next big beta (2.1.0):
+      - Gesture/Swipe over the cover (bottom&left to: open camera, hang up call, snooze alarm / bottom right to: toggle torch, pickup call, dismiss alarm / bottom top to: pop-up menu)
+      - Pop-up menu like habeIchVergessen propose (using over cover touch): https://github.com/durka/HallMonitor/issues/18
+      - Network connectivity indicator (WIFI/2G/3G/4G): https://github.com/durka/HallMonitor/issues/24
+      - Add landscape layout to avoid rotate animation & rotate background app
+- 2.0.1 beta
+  Major code update:
+      - Clean/Reorder preferences
+      - Clean/Reorder strings
+      - Better preferences change/update
+      - Better preferences dependencies
+  
+  Feature:
+      - Support 3 modes:
+          Lock (require admin)
+          OS PowerManagement
+          Internal/HallMonitor Powermanagement (require system app)
+  
+  Fixes:
+      - Fix CM 11 LID support
+      - Fix widget crash (to confirm)
+  
+  Know issues:
+      - Alternative layout broken
+- 2.0.0 beta
+  Major code update:
+      - Rewrite many code to exclude much as possible from UI thread
+      - Add share value between application parts
+  
+  Feature:
+      - Normally support last CM 11 LID action (to test): turn off Use internal service
+      - Support 4x1 widget (from my test)
+      - Add lock mode option when system app (fixed to lock mode if not system app)
+      - New Input Controls menu under Optional Features
+      - Pick Up & Hang Up a call without use command line
+  
+  Fixes:
+      - https://github.com/durka/HallMonitor/issues/33 (to test)
+      - Fix swipe
+  
+  Know issues:
+      - Alternative layout broken
+      - Must force restart application (through Configuration activity) to get widget content updated after the first attachment
+"
+durka/HallMonitor,open,SW_LID vs SW_FLIP,[],"Today I noticed this commit in ""my"" CM11 nightly: http://review.cyanogenmod.org/#/c/70739/
+After I updated CM, the ""real Hall"" method did not work anymore (I reflashed HallMonitor.zip).
+But a cool thing is: Even after deinstalling HallMonitor, my screen lights up now when I open the cover. Closing has not visisble effect.
+
+I wonder if this is the real hall method, implemented by CM and ready to use for HallMonitor?
+"
+durka/HallMonitor,closed,serrano3gxx support,[],"testing only
+"
+durka/HallMonitor,closed,Feature Request,[],"Is it possible to disable the home button when Hall Monitor is active? I sometimes wake the phone to find it in the state arising from the action of the home button. 
+Not a major concern, but an annoyance nonetheless. 
+P.S. This is for S4mini (CM 11)
+"
+durka/HallMonitor,closed,Bootloop,[],"Hi .
+i wrongly installed this hallmonitor and i cant delete it so i delete apk from /data/app and now my phone in bootloop
+
+how can i fix it ? can you send me /data/app/com.blabla.hall.apk ?
+"
+durka/HallMonitor,closed,Version 0.4.2,[],"Features
+                    - Added a new alternative layout
+                    - Answer/Reject call with ""swipe""
+            Fixes
+                    - If a torch button is enabled, refuse to enable the second button at the same time
+                    - Stopped TimerTask when receiving a call
+            Partial Fixes
+                    - Incoming call screen now works 99% times in both layouts when the screen is off and the cover closed. Does not work if the screen is on and the cover closed (need to open and close the cover manually)
+                    - Alternative and media widgets works for 4x1 widgets and for some 4x2 widget, but only on alternative layout
+For all the other changes please see commits
+"
+durka/HallMonitor,closed,Version 0.3.9,[],"```
+    - Features
+            - Added italian translation
+            - Added alternative torch button (tested on i9505, need test on other devices)
+    - Fixes
+            - Removed HallMonitor from ""recent app list""
+            - Fix 5 seconds delay on start activity after home button pression (System App only)
+            - Minor changes
+```
+
+Hi Durka, if you want to add my work into your repo i have included all changes made by manusfreedom, because i' m following his great work!
+Hope this helps
+"
+durka/HallMonitor,closed,NullPointerException on local machine,[],"I tried to modify the code a bit on my machine but I get a `NullPointerException` in the Functions class because `defaultActivity` is null. I can't find the line where to set it before starting the Activity. I tried to run the code while the Activity is not initialised. Where do you do that?
+"
+durka/HallMonitor,closed,0.3.0-0.3.7,[],"- 0.3.7
+  - Features
+    - Real HallMonitor support for SERRANO device
+  - Fixes
+    - Remove submenu on Real HallMonitor on/off
+- 0.3.6
+  - Features
+    - Data & Time feature
+    - Fix HallMonitor as System App on CM (gotosleep working): read special Readme
+    - Try better touch when cover is closed (nothing change but more often call but more often call to enble it)
+    - Build for more system
+    - Fix licenses
+- 0.3.5
+  - Features
+    - Possibility to choose between real Hall or simule with Proximity sensor (under Root menu)
+    - Change licencing to Apache
+    - Use eu.chainfire.libsuperuser in place of net.pocketmagic.android.eventinjector
+    - All su access through eu.chainfire.libsuperuser.Shell
+    - Removed unused library import
+    - Suppress navigation bar (Softkey)
+    - Remove su call from main thread
+    - To test: gotosleep instead of lock if installed as SystemApp
+- 0.3.0
+  - Features
+    - Add real Hall Event
+    - Root is now a requirement
+  - Remove
+    - Proximity sensor use
+  - Notes
+    - Next version add settings to choose between Proximity sensor or Hall Event?
+
+Signed-off-by: Manus Freedom manus@manusfreedom.com
+"
+durka/HallMonitor,closed,S4 mini CM11 support (fix typos),[],
+durka/HallMonitor,closed,S4 mini CM11 support,[],
+durka/HallMonitor,closed,Flip Cover ?,[],"When will the compatibility of ""Flip Cover""?
+"
+durka/HallMonitor,closed,Most recent used background app pops up after unlocking screen,[],"Hi I've been using HallMonitor and it is weird on my phone. When finished using the phone I went back to the Home screen and closed the cover. After HallMonitor turned off the screen as desired, I opened the cover again (and unlock the screen if armed with screen lock) and the last used app popped up, although I was at Home screen before closing the cover.
+
+The last used background app would not appear if the screen was locked manually by pressing the power button other than by closing the cover.
+
+I would be grateful if I can be informed whether this is the way HallMonitor is designed to behave. Sorry I am not familiar with Android programming architecture. After checking the code I noticed that in the implementation of `org.durka.hallmonitor.Functions.open_cover(Context)` method a call of `defaultActivity.moveTaskToBack(true)` was used to hide the UI of HallMonitor. Does this call bring up the 2nd topmost application OTHER THAN the home screen in the activity stack? I'm using CM11 (nightly, oops) on jflte.
+
+I apologize if this post is annoying. Just curious about it.
+"
+durka/HallMonitor,closed,Dies nothing at all on S4,[],"I've tried with cm 10 and 11, device is a european jftexx.
+Gt i9505, running 
+"
+durka/HallMonitor,open,Feature Request: Galaxy Mega Support,[],"Maybe this can be added.
+On my Galaxy Mega, Hall Monitor still uses the S4 format smart view.
+This results in alot of space not being used.
+Android: 4.4.2 KitKat, CM11
+Device: i9205 Galaxy Mega, International version
+![unnamed 1](https://f.cloud.github.com/assets/6720492/2200358/15988860-98e1-11e3-874c-0fb995227b49.png)
+"
+durka/HallMonitor,open,Widgets dont resize the right way,[],"![unnamed](https://f.cloud.github.com/assets/6720492/2200335/ae7bef0a-98e0-11e3-8423-16cb239c5655.png)
+
+Widgets dont seem to resize. The Google Play Music widget is missing the next arrow.
+Android: 4.4.2 KitKat, CM11
+Device: i9205 Galaxy Mega, International version
+"
+durka/HallMonitor,open,Widget settings lost on reboot,"[Label(name=""bug"")]","If an alternative widget is set and the phone is rebooted, the widget does not appear. It may need to be reinitialized or something -- not sure if the setting is actually changing or just the widget manager needs to do something on device startup.
+"
+durka/HallMonitor,open,Blue bg green font,"[Label(name=""bug"")]","Version: 0.1
+
+Environment:
+Galaxy S4 SGH-I337
+CM11 ROM
+TWRP
+
+Description:
+Installed Hall Monitor and enabled Root access function + notifications.
+
+Within a day the S-view when closed went from being the standard black bg white font to a bright blue bg with green font (hard to read for color blind).
+
+Only way to resolve issue was to uninstall apk and reinstall.
+"
+durka/HallMonitor,closed,small improvements for preference dependencies,[],
+durka/HallMonitor,closed,Preferences,[],
+durka/HallMonitor,closed,FragmentTransaction runs into exception (caused by unresolvable dependencies in preferences_general.xml).,[],
+durka/HallMonitor,open,general discussion: framework,[],"i have add the branch [framework](https://github.com/habeIchVergessen/HallMonitor/tree/framework) (my ideas about an component framework).
+
+objective target:
+- standardized handling of views (clock, phone, camera, etc.)
+- loading on demand (visibility)
+- shared code base
+- distributed functionality (reduce complexity of merges)
+- consolidate layout and code (runtime)
+- alternative layout implementations
+
+i guess we need something like that.
+"
+durka/HallMonitor,closed,popBackStack: title confusion fixed,[],
+durka/HallMonitor,closed,missing file added. sorry my bad.,[],
+durka/HallMonitor,closed,preference improvements,[],"- Configuration inherits from PreferenceActivity
+- generic PreferenceFragmentLoader implemented (renamed ConfigurationFragment)
+- backStack support implemented
+- PreferenceSwitchable implemented (enables switchable PreferenceScreens. see preferences.xml)
+- separation of preferences for different application parts (preferences.xml, preferences_phone.xml)
+- preview for phone settings (a simple AlertDialog by now; configurable via xml see. preferences_phone.xml)
+- debug on/off via about preference (7 times tapping to switch)
+"
+durka/HallMonitor,open,network connectivity indicator,"[Label(name=""enhancement"")]","Show an icon in DefaultActivity for whether mobile data and/or wi-fi are connected
+"
+durka/HallMonitor,closed,notification blacklist,"[Label(name=""bug"")]","Some notifications aren't important enough to be shown on the cover view. There should be a short list of these, to filter out.
+
+Examples:
+- input method select
+- flashlight (because we have our own flashlight indicator, and also the light itself is pretty bright)
+"
+durka/HallMonitor,closed,news: thoughts on 0.1,[],"So, I'm thinking about cutting release 0.1, soon. Meaning, in the next couple of days.
+
+Things that I want to get in for 0.1:
+- [x] a little much-needed preference de-complexifying **(in branch _pref-cleanup_)**
+- [ ] hIV's code for slide-to-answer/reject phone calls
+- [x] notification blacklist
+- [ ] fix all the remaining bugs :)
+
+Things that are going to slip to 0.2:
+- [ ] more preference de-complexifying
+- [x] network indicators **(in branch _signal-indicators_)**
+- [ ] hIV's radial context menu
+- [ ] rearrangeable DefaultActivity layout
+- [ ] code clean-up and refactoring :)
+"
+durka/HallMonitor,open,make the DefaultActivity components rearrangeable,"[Label(name=""enhancement"")]","I'm not sure if this is a good idea, but I think it is, because it can simplify the preferences a lot while adding more configurability. But it can wait until after the next release, I think. I just wanted to write it down.
+
+Here is my n-point plan to reorganize the UI preferences:
+1. kill all of the ""show/hide X"" checkboxes
+2. kill the current DA layout hierarchy and put everything in a flat AbsoluteLayout (or similar)
+3. make a new configuration mode which shows the same content as the DA, as well as a ""palette"" below with all of the available widgets (clock, torch button, camera button, battery indicator, custom widget, ...)
+   - (the palette will obviously change if some of the buttons are moved into hV's radial menu)
+   - You can drag things back and forth between the palette and the DA, and also freely rearrange them within the DA. Things left in the palette will of course not be displayed at all when the DA comes up.
+   - Maybe if you tap on one of the things, a toast or dialog pops up explaining what it is?
+4. ???
+5. ~~Profit!~~ Open source!
+"
+durka/HallMonitor,open,be more careful about leaking Activity references,"[Label(name=""bug"")]","We might be fine... but some classes such as Functions and CameraHelper do have references to the DefaultActivity. These may or may not need to be refactored to avoid leaks. Source: idle conversations on IRC and http://www.curious-creature.org/2008/12/18/avoid-memory-leaks-on-android/
+"
+durka/HallMonitor,closed,Add camera control,"[Label(name=""enhancement"")]","I want to implement a basic camera capability for whilst the cover is closed - press a button to get an image preview showing in the windowed area, then press another button to take a photo. I've created a new 'camera' branch for this.
+"
+durka/HallMonitor,closed,"general discussion: prevent user action until we are sure, that it user driven was",[],"the new flash light control by wallace is an good/bad example for my point of view.
+i guess we have to ensure that button driven functionality is only available when the user controls the phone.
+
+maybe an wiped in option view is visible for 1 - 2s. each button is covered by this view.
+a possible gesture: from outside to inside across bottom edge of main panel.
+"
+durka/HallMonitor,closed,Add flashlight control,"[Label(name=""enhancement"")]","I've added a new branch from tidy-up with some modifications to add a flashlight control button to the display,
+"
+durka/HallMonitor,closed,"phone: swipe added, merge latest changes from durka:master",[],"i guess we need something like an agenda. because i have disabled all your phone stuff.
+
+![swipe_phone](https://f.cloud.github.com/assets/3988506/1790575/c68e588a-6979-11e3-9a98-627814e4fa33.png)
+"
+durka/HallMonitor,closed,phone controls on→off→on,[],"@VolMi wrote:
+
+> Ha, the phone call interaction is seriously cool! The screen is very sensitive, totally nice. Finally, I can use the phone without fiddling with the open cover and smearing the display. :-)
+> But it is important to have the default lock screen disabled. Otherwise, I need to press the power button twice (on→off→on) to bring up HallMonitor's notification.
+
+Can you explain? Do you mean, when the phone rings, the screen doesn't come on at first, and the first time you press the power key Hall Monitor doesn't come up?
+"
+durka/HallMonitor,closed,serranolte specific touch sensivity,[],
+durka/HallMonitor,closed,avoid the SuperUser toast every time,"[Label(name=""bug""), Label(name=""enhancement"")]","It's kind of annoying to see the toast from SuperUser every time the cover is opened. There are two ways I see to fix this low-priority annoyance:
+1. [edit] Do nothing, and let the user go into SuperUser and turn off the toasts if they wish.
+2. Instead of running a new ""su"" process every time, just keep the process open from when the service starts. Then we can send it echo commands as needed.
+3. Write a little shell script or NDK program that we run when the service starts, and stays open to receive our commands and do the root actions.
+
+3 seems a little more secure, since it still keeps a root-privileged process running, but it's much more restricted in what it will do than a full-fledged ""su"" shell. Right now, the only commands run are ""whoami"" and ""echo clear_cover_mode..."" so the program would be nearly as simple as ""cat"". But for answering phone calls we will need to run another process (""input"") as well, to spoof keystrokes.
+
+I was talking to some people on #android-root and they more or less suggested 3. I didn't even realize 1 was an option until it was pointed out below. It still might be cleaner to have a process/script centralizing the root actions in one place.
+"
+durka/HallMonitor,open,S4 Mini issues,[],"This could serve as a thread for issues that are specific for the S4 Mini for which an S-View Cover exists, as well. AFAIK, there are at least three different versions of this device (LTE/3G/Dual SIM).
+
+I have the LTE version which is officially known as the _GT-I9195_ and on Cyanogenmod as [_serranoltexx_](http://wiki.cyanogenmod.org/w/Serranoltexx_Info). I started with CM10.2, but now I am on the CM11 nightlies.
+
+It turns out that HallMonitor is really useful on the Mini, too. However, the on and off trigger seems to be firing less reliable than on the big S4. The apk in the master branch is mostly unfunctional, but @Wallace0 has refined the detection so that the hit rate is much better now. Currently I use the [apk in the merge branch](https://github.com/durka/HallMonitor/tree/merge/bin).
+
+To come up with some real numbers, I opened and closed the cover 20 times, with these results:
+
+<table>
+  <tr>
+    <th> </th><th>open</th><th>close</th>
+  </tr>
+  <tr>
+    <td>success</td><td>14 (70%)</td><td>7 (35%)</td>
+  </tr>
+  <tr>
+    <td>fail</td><td>6 (30%)</td><td>13 (65%)</td>
+  </tr>
+</table>
+
+
+The last change that introduced a further event refire after 500ms and that Wallace0 [mentioned here](https://github.com/durka/HallMonitor/issues/10#issuecomment-29530545) did not affect the situation noticeably.
+
+The hit rate is strongly dependent on the opening/closing speed: If i move the cover really calmly, everything is fine. Fast motion is especially difficult on close.
+"
+durka/HallMonitor,closed,Allow alarm clock control through window,[],
+durka/HallMonitor,open,General Discussion,[],"Thought we could do with a place for general comments. Can also use this to agree division of labour etc.
+
+So, it looks like you are getting busy with the notifications piece and the telephone answering bit.
+
+To my mind that leaves the media player controls bit, and the alarm clock snooze. I think I'll get cracking with the media player bit first. I'll create a new branch for that off from Master - hopefully we won't have too much fun dealing with merge conflicts when we both merge back in!
+"
+durka/HallMonitor,closed,display notifications on lockscreen,"[Label(name=""enhancement"")]",
+durka/HallMonitor,open,Air Gestures,"[Label(name=""enhancement"")]","Well, I still have no idea how Air Gestures really work. But, check this out:
+
+```
+shell@android:/ # cat /sys/devices/virtual/input/input7/name
+gesture_sensor
+```
+
+It exists! Nothing is happening on `/dev/input/event7`, whereas other sensors such as `/dev/input/event9` (the proximity sensor) are definitely producing output. So maybe the gesture sensor is not turned on?
+"
+durka/HallMonitor,closed,delay timer starts before lockscreen comes up,"[Label(name=""bug"")]","It takes a little bit of time for the lock screen to come up after calling `DevicePolicyManager.lockNow`. But Hall Monitor's timer doesn't know this. So when the lockscreen is already up and the cover is closed, it _seems_ to stay up longer than when the cover is closed on an unlocked phone. This makes it hard to set a good delay time.
+
+Solutions include:
+- two delay settings
+- multiply the delay by 0.75 or something
+- wait for the lockscreen to come up (somehow) before starting the countdown
+- replace the lockscreen with our own thing that comes up instantly (i.e. #4)
+"
+durka/HallMonitor,closed,"""About"" screen","[Label(name=""enhancement"")]",
+durka/HallMonitor,closed,Wake on phone call,"[Label(name=""enhancement"")]","Depends on #4.
+
+Ideally you'd get to answer/reject the call without opening the cover, but this might be difficult. At least you should get to see what's happening before you open the cover.
+"
+durka/HallMonitor,closed,Put our own activity or widget on top of the lockscreen,"[Label(name=""enhancement"")]","The default lockscreen, with cLock, happens to have the clock visible through the view cover, and you can kind of see the notification bar, but nothing else. There's a bunch of wasted space above the clock.
+
+S View has a whole different activity that is ""on top"" of the lockscreen, and is black except for under the view cover. It has a clock and some notifications (email, text) but it's not configurable.
+
+I want to either make an activity like that, or make a lockscreen widget, or enhance cLock, to make better use of the space.
+"
+durka/HallMonitor,closed,App ignores result of Device Admin request,"[Label(name=""bug"")]","It assumes the device admin request was granted and starts the service without checking. This could result in a crash if admin status was not, in fact, granted.
+
+Since this is called from the Configuration activity, it should be possible to use `startActivityForResult` and use the response. Or, just wait for the `DEVICE_ADMIN_ENABLED` intent to start the service.
+"
+durka/HallMonitor,closed,"Device Admin request under the name ""SensorCat""","[Label(name=""bug"")]","Oops. Now you know what the development codename was.
+"
+durka/HallMonitor,closed,Add a real icon,"[Label(name=""enhancement"")]",

@@ -1,0 +1,170 @@
+repository,state,title,label,body
+jerickson314/sdscanner,open,[FR] List of scan paths,[],"Discovered this app the other day and it's very useful if I SSH music to my phone and Android doesn't detect it.
+
+Anyway, would it be possible to make a dropdown list or a bookmark list for paths to scan? Eg. /storage/emulated/0, /storage/extsd"
+jerickson314/sdscanner,closed,Virustotal false positive by Dr.Web,[],"F-Droid URL:
+* https://f-droid.org/repo/com.gmail.jerickson314.sdscanner_13.apk
+
+Status on Virustotal:
+* https://virustotal.com/#/url/0df030e36929ffc9287202a648fe364edca235b0218990bfe85763a7d773f431/detection"
+jerickson314/sdscanner,closed,SDScanner has been moved to F-Droid archive,[],"SDScanner  has been moved to F-Droid archive. It  should be enough to introduce a small change (e.g. merge translation pull request) and update the manifest to move it back to the main repository.
+"
+jerickson314/sdscanner,closed,French translation,[],
+jerickson314/sdscanner,open,Paths that contain the '@' character are silently skipped,[],"Sadly, the NextCloud client app stores its synchronized folders under accountname@servername/...
+I believe the AT-sign is a valid character in file- and directory names on Android, so the place to report this is here.
+
+Observed under LineageOS 14.1 (nightly 2017-05-04) / Android 7.1.2 on Motorola G3 (osprey).
+"
+jerickson314/sdscanner,closed,Add German translation.,[],"German translation, partially not perfectly worded due to #17.
+
+I deleted the string `delete_proc` because I didn't know how to properly translate it, and then found out that it is not used anywhere in the code.
+"
+jerickson314/sdscanner,open,translation strings too rigid,[],"I just created a german translation (PR will come). It tourned out a little difficult, because the way the translation strings are used is a little unflexible. For example, in english, one says `Examined /storage/emulated/0/foo/bar`, while a proper german sentence would be something like `/storage/emulated/0/foo/bar examined`.
+It would be cool if you could change the usage from
+
+```
+R.string.something + ' ' + filename
+<string name=""something"">Examined</string>
+```
+
+to
+
+```
+String.format(R.string.something, filename)
+<string name=""something"">Examined %1$s</string>
+```
+
+I hope it is clear what I mean.
+(Of course this should not only be changed at that ""examined"" place, but everywhere other text is going to be added.)
+"
+jerickson314/sdscanner,closed,Added spanish translation.,[],
+jerickson314/sdscanner,open,NPE on start scan,[],"05-30 15:58:03.594 E/AndroidRuntime( 5877): Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String java.io.File.getCanonicalPath()' on a null object reference
+05-30 15:58:03.594 E/AndroidRuntime( 5877):     at com.gmail.jerickson314.sdscanner.ScanFragment$ScanParameters.shouldScan(ScanFragment.java:330)
+05-30 15:58:03.594 E/AndroidRuntime( 5877):     at com.gmail.jerickson314.sdscanner.ScanFragment$PreprocessTask.recursiveAddFiles(ScanFragment.java:341)
+05-30 15:58:03.594 E/AndroidRuntime( 5877):     at com.gmail.jerickson314.sdscanner.ScanFragment$PreprocessTask.recursiveAddFiles(ScanFragment.java:359)
+05-30 15:58:03.594 E/AndroidRuntime( 5877):     at com.gmail.jerickson314.sdscanner.ScanFragment$PreprocessTask.doInBackground(ScanFragment.java:428)
+05-30 15:58:03.594 E/AndroidRuntime( 5877):     at com.gmail.jerickson314.sdscanner.ScanFragment$PreprocessTask.doInBackground(ScanFragment.java:337)
+"
+jerickson314/sdscanner,open,Warning if .nomedia exists in the root folder and aborting the scan,[],"It took quite some time to realize that SD Scanner didn't work for me just because of a .nomedia file got planted somehow into the root of the sdcard.
+This pull request contains code that will look for a .nomedia in the root of the given path, and if found, will both issue a message and abort the scan (which won't yield any results anyway).
+
+If you accept this pull request, feel free to adjust the message text, which should probably be translated to the other supported languages.
+
+Cheers.
+
+(*) The better solution would be to introduce the ability to remove this /sdcard/.nomedia file with a click of a button, but this will require adding the WRITE_EXTERNAL_STORAGE permission. So I leave it up to you.
+"
+jerickson314/sdscanner,open,doubled pictures due to symlinks,[],"it seems sd scanner doubles all pictures which are also avaiable via symlink.
+
+i found this setup on my device:
+
+ /storage/emulated
+ /storage/sdcard0 -> /storage/emulated/legacy
+ /storage/sdcard1
+ /storage/usbdisk0
+ /sdcard -> /storage/emulated/legacy
+
+i scann from /storage to scann emulated and real sd card. after that most pictures (and dirs) are doubled. i assume the symlink /storage/sdcard0 is not disregarded by sd scanner as it should be.
+
+anyway i wonderful & usefull app because if often push images via adb! thank you!
+"
+jerickson314/sdscanner,open,Direct Access to External SD card (new feature),[],"SD scanner always opens up pointing to /storage/emulated/0.  Phones with a physically external SD card also have /storage/extSdCard.  (Lots of Android/manufacture/upgrade history over the definition of SDcard -- is it physical or logical... TL;DR).
+
+Anyway, it would be nice for SD Scanner to have an easy way to direct the scan to \storage\extSdCard\,, as opposed to having to carefully edit (capitalization counts!) the path before starting the scan.
+
+PS: When I first opened the app, I saw what is the ""refresh arrow"", and assumed it was ""browse for folder"".  Couldn't figure out why it didn't do anything until I was in the middle of editing the path and accidentally brushed it.
+"
+jerickson314/sdscanner,open,"After using sdscanner, new folders show up as files",[],"After using sdscanner, new folders show up as files (4K in size) on the Windows 7 SP1 PC connected to the Android KitKat device via MTP.
+
+Performing an internet search reveals a Ubuntu user having similar issues as well as this person on XDA: http://forum.xda-developers.com/showthread.php?t=2670759
+"
+jerickson314/sdscanner,open,Disable media scanner,[],"Could you please add an option to disable it?
+"
+jerickson314/sdscanner,closed,Update Russian translation,[],"BTW I'm not sure about the original (English) message.
+
+> Ignore updated and deleted files outside _of the_ scanned _folder_.
+
+or even
+
+> Ignore updated and deleted files outside _of the_ scanned _path_.
+
+Would be better IMO.
+"
+jerickson314/sdscanner,closed,Czech translation updated,[],"for sdscanner
+"
+jerickson314/sdscanner,closed,Allow option to skip examining existing entries,[],"For some reason, whenever I scan a directory, e.g. /storage/external_SD, after the examination phase, the app keeps processing files under /storage/emulated/0/Android/data/.
+
+I suspect that this is due to the app not having permission to access files under /storage/emulated/0/Android/data/, hence assuming they are removed and being processed.
+
+I have millions of small picture files and the processing phase takes hours every time, so I often have to leave it on overnight. The process could definitely be sped up if it avoided reprocessing directories where I know there do not exist photos.
+
+Maybe there could be an option to skip examining existing entries, and/or only process update/deleted files under the specified directory?
+
+Anyhow, the app is great!  Saves me from the frustrating unreliable alternative of repeatedly plugging in and out my SD card and rebooting. Ugh.
+"
+jerickson314/sdscanner,closed,Russian translation created,[],"Just in case here's how it looks:
+
+![screenshot_2014-11-23-23-50-12](https://cloud.githubusercontent.com/assets/8256809/5159160/b6cd36d0-736b-11e4-8970-0688c9b2c3e7.png)
+"
+jerickson314/sdscanner,closed,Update UI in accordance with Android design guidelines,[],"Screenshots are the best explanation to this patch.
+
+Vertical:
+
+![v1](https://cloud.githubusercontent.com/assets/8256809/5113648/617bf788-7042-11e4-82b4-56aa75d1f44b.png) ![v2](https://cloud.githubusercontent.com/assets/8256809/5113650/6310c6f0-7042-11e4-8510-d2279a2bfa2b.png)
+
+Horizontal:
+
+![h1](https://cloud.githubusercontent.com/assets/8256809/5113653/67db7d6a-7042-11e4-80f5-ccaeaa75ba2f.png) ![h2](https://cloud.githubusercontent.com/assets/8256809/5113654/69e9c7f6-7042-11e4-9a4e-a6c0b55a7fc1.png)
+"
+jerickson314/sdscanner,closed,Czech translation created,[],
+jerickson314/sdscanner,closed,NPE at startup,[],"E/AndroidRuntime(21166): FATAL EXCEPTION: main
+E/AndroidRuntime(21166): Process: com.gmail.jerickson314.sdscanner, PID: 21166
+E/AndroidRuntime(21166): java.lang.RuntimeException: Unable to start activity ComponentInfo{com.gmail.jerickson314.sdscanner/com.gmail.jerickson314.sdscanner.
+MainActivity}: java.lang.NullPointerException
+E/AndroidRuntime(21166):        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2184)
+E/AndroidRuntime(21166):        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2233)
+E/AndroidRuntime(21166):        at android.app.ActivityThread.access$800(ActivityThread.java:135)
+E/AndroidRuntime(21166):        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1196)
+E/AndroidRuntime(21166):        at android.os.Handler.dispatchMessage(Handler.java:102)
+E/AndroidRuntime(21166):        at android.os.Looper.loop(Looper.java:136)
+E/AndroidRuntime(21166):        at android.app.ActivityThread.main(ActivityThread.java:5001)
+E/AndroidRuntime(21166):        at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(21166):        at java.lang.reflect.Method.invoke(Method.java:515)
+E/AndroidRuntime(21166):        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:785)
+E/AndroidRuntime(21166):        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:601)
+E/AndroidRuntime(21166):        at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime(21166): Caused by: java.lang.NullPointerException
+E/AndroidRuntime(21166):        at com.gmail.jerickson314.sdscanner.MainActivity.updateProgressText(MainActivity.java:52)
+E/AndroidRuntime(21166):        at com.gmail.jerickson314.sdscanner.ScanFragment.updateProgressText(ScanFragment.java:90)
+E/AndroidRuntime(21166):        at com.gmail.jerickson314.sdscanner.ScanFragment.onCreate(ScanFragment.java:152)
+E/AndroidRuntime(21166):        at android.app.Fragment.performCreate(Fragment.java:1678)
+E/AndroidRuntime(21166):        at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:859)
+E/AndroidRuntime(21166):        at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:1062)
+E/AndroidRuntime(21166):        at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:1044)
+E/AndroidRuntime(21166):        at android.app.FragmentManagerImpl.dispatchCreate(FragmentManager.java:1848)
+E/AndroidRuntime(21166):        at android.app.Activity.onCreate(Activity.java:902)
+E/AndroidRuntime(21166):        at com.gmail.jerickson314.sdscanner.MainActivity.onCreate(MainActivity.java:77)
+E/AndroidRuntime(21166):        at android.app.Activity.performCreate(Activity.java:5231)
+E/AndroidRuntime(21166):        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)
+E/AndroidRuntime(21166):        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2148)
+E/AndroidRuntime(21166):        ... 11 more
+W/ActivityManager(  858):   Force finishing activity com.gmail.jerickson314.sdscanner/.MainActivity
+"
+jerickson314/sdscanner,closed,"""Unknown"" Folder",[],"when I create a new folder, or this is created by another app, if i use Sd Scanner when i connect my device to the pc, the folder is corrupted, it doesn't seem a folder, it seems like a file with no extension and i have to delete it.
+
+BTW, i like your app :}
+"
+jerickson314/sdscanner,open,Tasker plugin (feature request),[],"Hi @jerickson314 .
+
+First: thanks for sdscanner, it's the best (only) rescanner I've found for KitKat.
+
+Here's a big ask:  Any chance of a Tasker plugin?
+
+In particular, with a Tasker plugin, you could trigger rescans programatically, either based on time or based on events.
+
+Second best: export a ""rescan now"" broadcast intent receiver.  That's probably easier and could be called from Tasker.
+
+Once again, thanks for your efforts!
+
+Steve
+"

@@ -1,0 +1,1050 @@
+repository,state,title,label,body
+greenaddress/GreenBits,closed,Where is the repo for the iOS version?,[],"keep up the good work, we need it :+1: "
+greenaddress/GreenBits,open,Sweep functionality doesn't scan segwit adresses.,[],"For a bitcoin paperwallet giveaway someone sent some bitcoin to different addresses using bitcoin core, then manually exported the private keys and printed them as QR codes on paper.
+Other wallets (edge) were able to find the funds and sweep to the local wallet, not so greenbits.
+This is for the p2sh(p2wkh) version of segwit. Probably native version doesn't work either."
+greenaddress/GreenBits,closed,wallet code sms ,[],Hi.. 15 days can not receive SMS code to confirm the transfer of the BTC .when will work 2 FA SMS ? I need the money .help . thank you
+greenaddress/GreenBits,open,authentication invalid after being open for a long idle time,[],"when I try to open greenbits after a long idle time it tries to authenticate and gives wrong pin answer. i don't touch the fingerprint scanner.
+after leaving the screen and reentering, I scan the fingerprint and it gives invalid pin again.
+I need to close the app and restart it to be able to authenticate."
+greenaddress/GreenBits,open,Disable Android 8 autofill on all EditText,[],"Created new style for API 26 and disabled the autofill for all EditText (ref. https://developer.android.com/guide/topics/text/autofill)
+
+This is a proposal, if you prefer eventually we can disable autofill only for a specific fields."
+greenaddress/GreenBits,closed,Request incognito keyboard on sensitive fields,[],
+greenaddress/GreenBits,open,Select the current network on network dialog,[],
+greenaddress/GreenBits,open,Debug build and icons,[],"- added **.debug** suffix to package name and **-debug** to app version
+- updated icons to new adaptive icons introduced in Android 8 ( ref. https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive )
+- use different icon for release and debug build target"
+greenaddress/GreenBits,closed,Circularbutton fix and features,[],
+greenaddress/GreenBits,closed,Resolve Lint,[],"* fix gradle lint errors reported in lint-results.html
+* removed deprecated resources
+* add lint options to gradle.build
+* run lint before assembling production release on gitlab-ci and travis"
+greenaddress/GreenBits,closed,Fix German locale: Spelling and grammar,[],"I just found some spelling and grammar mistakes that made it hard to understand for German native speakers (like me) and fixed them.
+I hope, this is easier to understand for others as well.
+
+Thank you!"
+greenaddress/GreenBits,closed,Passwords should be invisible to the accessibility services,[],"Due to recent attacks, malicious apps that are using the accessibility service can capture all user inputs. In this case, the passwords should be ignored for the accessibility service, so such attacks cannot happen. This is done by our research project in CISPA, Saarland University, Germany."
+greenaddress/GreenBits,closed,Cache local encryption password to prevent HW wallets causing timeouts,[],
+greenaddress/GreenBits,closed,Remove old manual checking for connectivity on pin login,[],The pin login code already handles disconnection correctly by closing the activity so this should prevent UI timeout crashes.
+greenaddress/GreenBits,closed,Trezor updates,[],"Fixes bech32 sending, updates firmware and adds support for Trezor v2."
+greenaddress/GreenBits,closed,Prevent an NPE on the PIN entry screen when restored,[],
+greenaddress/GreenBits,closed,Reconnect on HW wallet plugin if the user previously logged out,[],
+greenaddress/GreenBits,closed,Disable the (meaningless) password toggle on the trezor login dialog,[],
+greenaddress/GreenBits,closed,Return the passed intent data when the twofactor activity completes,[],
+greenaddress/GreenBits,closed,Use the 2fa method given in our activities intent,[],
+greenaddress/GreenBits,closed,Wrap message controls in a scrollview to fix long message display,[],
+greenaddress/GreenBits,closed,Screen flicker happend with error log on production debug build.,[],"07-09 17:44:10.325 26720 26720 E AbstractFuture: RuntimeException while executing runnable CallbackListener{com.greenaddress.greenbits.ui.GaActivity$1@965fab8} with executor MoreExecutors.directExecutor()
+07-09 17:44:10.325 26720 26720 E AbstractFuture: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean java.lang.Boolean.booleanValue()' on a null object reference
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.greenaddress.greenapi.WalletClient.isTwoFactorResetDisputed(WalletClient.java:893)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.greenaddress.greenbits.GaService.isTwoFactorResetDisputed(GaService.java:1432)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.greenaddress.greenbits.ui.TabbedMainActivity.launch(TabbedMainActivity.java:276)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.greenaddress.greenbits.ui.TabbedMainActivity.onCreateWithService(TabbedMainActivity.java:122)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.greenaddress.greenbits.ui.GaActivity$1$1.run(GaActivity.java:63)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at android.app.Activity.runOnUiThread(Activity.java:6190)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.greenaddress.greenbits.ui.GaActivity$1.onSuccess(GaActivity.java:58)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.greenaddress.greenbits.ui.GaActivity$1.onSuccess(GaActivity.java:55)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.google.common.util.concurrent.Futures$CallbackListener.run(Futures.java:1347)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.google.common.util.concurrent.MoreExecutors$DirectExecutor.execute(MoreExecutors.java:398)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.google.common.util.concurrent.AbstractFuture.executeListener(AbstractFuture.java:1027)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.google.common.util.concurrent.AbstractFuture.addListener(AbstractFuture.java:672)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.google.common.util.concurrent.AbstractFuture$TrustedFuture.addListener(AbstractFuture.java:107)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.google.common.util.concurrent.Futures.addCallback(Futures.java:1322)
+07-09 17:44:10.325 26720 26720 E AbstractFuture: 	at com.google.common.util.concurrent.Futures.addCallback(Futures.java:1276)
+"
+greenaddress/GreenBits,closed,wallycore.jar does not exist,[],Transform output file \GreenBits-master\app\libwally-core\src\swig_java\wallycore.jar does not exist
+greenaddress/GreenBits,closed,Toast logging,[],Log toasts for easier testing.
+greenaddress/GreenBits,closed,jawampa-netty maven wont build with netty-codec-http 4.0.24.Final,[],"
+[pom.xml](https://github.com/greenaddress/GreenBits/blob/master/jawampa/jawampa-netty/pom.xml)
+```xml
+     <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-codec-http</artifactId>
+      <version>4.0.24.Final</version>
+    </dependency>
+```
+
+
+[NettyWampClientConnectorProvider.java](https://github.com/greenaddress/GreenBits/blob/master/jawampa/jawampa-netty/src/main/java/ws/wamp/jawampa/transport/netty/NettyWampClientConnectorProvider.java)
+
+    import class is not found:
+```java
+import io.netty.handler.proxy.Socks5ProxyHandler;
+```
+
+
+none of these versions built without errors 
+```xml
+            <version>4.0.13.Final</version>      
+            <version>4.0.14.Final</version>
+            <version>4.0.15.Final</version>
+            <version>4.0.17.Final</version>
+            <version>4.0.18.Final</version>
+            <version>4.0.19.Final</version>
+            <version>4.0.20.Final</version>
+            <version>4.0.21.Final</version>
+            <version>4.0.22.Final</version>
+            <version>4.0.23.Final</version>
+            <version>4.0.24.Final</version> 
+            <version>4.0.25.Final</version>
+            <version>4.0.26.Final</version>
+            <version>4.0.27.Final</version>
+            <version>4.0.28.Final</version>
+            <version>4.0.29.Final</version>
+            <version>4.0.3.Final</version>
+            <version>4.0.30.Final</version>
+            <version>4.0.31.Final</version>
+            <version>4.0.39.Final</version>
+            <version>4.0.4.Final</version>
+            <version>4.0.40.Final</version>            
+            <version>4.0.56.Final</version>
+            <version>4.1.18.Final</version>           
+            <version>4.1.23.Final</version>
+            <version>4.1.22.Final</version>
+            <version>4.1.23.Final</version>
+            <version>4.1.25.Final</version>
+            <version>4.1.26.Final</version>
+            <version>4.1.55.Final </version>
+            <version>5.0.0.Alpha1 </version>
+            <version>5.0.0.Alpha2 </version>
+            <version>4.0.22.Final</version>
+```"
+greenaddress/GreenBits,closed,maven compiler error: PaymentChannelServer.java references Futures.transformAsync not found in Guava 18.0,[],"[PaymentChannelServer.java](https://github.com/greenaddress/GreenBits/blob/master/bitcoinj/core/src/main/java/org/bitcoinj/protocols/channels/PaymentChannelServer.java)
+
+```java
+     result = Futures.transformAsync(...)
+```
+[pom.xml](https://github.com/greenaddress/GreenBits/blob/master/bitcoinj/core/pom.xml)
+ 
+ <urn>com.google.guava:***guava:18.0***:jar:null:compile:cce0823396aa693798f8882e64213b1772032b09</urn>
+
+Futures.java does not contain method transformAsync:
+[Futures.html](https://google.github.io/guava/releases/18.0/api/docs/index.html?com/google/common/util/concurrent/Futures.html)
+
+
+
+"
+greenaddress/GreenBits,closed,More bip70 fixes,[],
+greenaddress/GreenBits,closed,update checkpoints,[],
+greenaddress/GreenBits,closed,Allow skipping system message acknowlegement,[],"If skipped, attempting a 2FA reset will return an error until all messages are acked."
+greenaddress/GreenBits,closed,Bip70 fixes,[],
+greenaddress/GreenBits,closed,Watch only 2fa reset,[],
+greenaddress/GreenBits,closed,Fix circularbutton old API,[],
+greenaddress/GreenBits,closed,Android updates 27,[],"- updates to android 27
+- updates guava to fix android 19 bug
+- update gradle and other deps
+- removed circular library
+- minor bug fixing"
+greenaddress/GreenBits,closed,Avoid problems with earlier toasts overwriting later ones,[],
+greenaddress/GreenBits,closed,Fix qrcodes for bech32 sending,[],
+greenaddress/GreenBits,closed,Don't fall through to BIP70 logic when sending non-BIP70 txs,[],This prevents (otherwise harmless) errors in the log.
+greenaddress/GreenBits,closed,Don't pre-check the amount against the dust threshold when sending all,[],
+greenaddress/GreenBits,closed,Include nlocktime in the reset description,[],
+greenaddress/GreenBits,closed,Two factor reset,[],Add support for the two factor reset/dispute process using the new backend APIs.
+greenaddress/GreenBits,closed,'android.enableAapt2' should be set to true by default,[],"'android.enableAapt2' should be set to true by default
+
+This may require removing the Circular Button lib or forking/upgrading it. "
+greenaddress/GreenBits,open,Flipping orientation in the Receive activity creates a new address,[],Go to the Receive activity. Create a new address. Flip the orientation of the device and address changes.
+greenaddress/GreenBits,closed,Misc updates,[],"- Native Bech32 sending
+- Improved HW Wallet support
+- Show system messages
+- BIP 70 improvements
+- Updates and bug fixes"
+greenaddress/GreenBits,closed,Remove wally source,[],
+greenaddress/GreenBits,closed,Clientside BIP70,[],"Clientside BIP70 implementation
+Only one question: elements and BIP70?"
+greenaddress/GreenBits,closed,Hardware wallet updates,[],"- remove support for keepkey
+- update min version of trezor to 1.6.0 (note: 1.6.1 is released but not via the Android Trezor manager yet)"
+greenaddress/GreenBits,closed,Fix testnet post-sending crash,[],
+greenaddress/GreenBits,open,"Can't login into wallet, pin get asked in loop ",[],"
+I'm trying to access my wallet but when I enter my pin on use the fingerprint scanner it doesn't work. it keeps asking me my pin even if it was right. 
+Here's what happens :
+![videotogif_2018 01 19_23 03 19](https://user-images.githubusercontent.com/13220181/35173836-364d6720-fd6d-11e7-9706-d5d06411a4a8.gif)
+
+I'm using a One Plus 3 running android 8"
+greenaddress/GreenBits,closed,How are Green Bits' Segwit addresses derived?,[],"I understand from here [https://github.com/greenaddress/GreenBits/issues/269] that Green Bits does not support BIP49. But how are the Segwit addresses for a ""normal"" (non-multisig) Green Bits installation derived?"
+greenaddress/GreenBits,closed,Showing mnemonic should require 2FA when enabled,[],"Someone can just show the mnemonic and sidestep 2FA altogether.
+
+Same thing with the PIN, when a PIN is set it's not asking for it before showing the mnemonic.
+
+For the business use I have I'd actually need a separate password to enabling showing the mnemonic.
+
+I want to limit access to the bitcoin to this physical device."
+greenaddress/GreenBits,closed,sms 2FA non sending any more sms... What can a user do?,[],"what can be the possible origin of the problem if sms are not arriving any more?
+
+...and which the solution for a user who cannot even disable 2FA not receiving the sms?"
+greenaddress/GreenBits,closed,Fix finding change outputs for send to subaccounts with change,[],"If we send to a subaccount and the tx includes change, then bump the transaction, we may inadvertently increase the wrong output depending on which subaccount has generated more addresses.
+
+Fix this by only considering outputs paying to the current subaccount as change. In the event we have more than one, the existing logic to choose the higher address pointer is the correct way to determine which one is change."
+greenaddress/GreenBits,closed,User setting to disable RBF is not respected,[],Transactions are opted in for RBF regardless of the users settings.
+greenaddress/GreenBits,closed,Fix handling of users RBF setting,[],Fixes #300
+greenaddress/GreenBits,closed,Two factor warning,[],
+greenaddress/GreenBits,closed,Add warning for having a single two factor authentication method,[],
+greenaddress/GreenBits,closed,[UI] Make it clear that the tx hash can be clicked,[],Right now there is no indication that by clicking the tx hash a block explorer can be opened with it. Either make it clear on the text or on a small button near it
+greenaddress/GreenBits,closed,fee cut in half,[],"i'm not sure if this is a problem with only custom fees or also with the other fee options.
+I was trying out greenbits today and sent a transaction where i put 270000 sat/Kb as my custom fee.
+That fee was cut in half on the transaction, here is the hash: fbbaa43c51ee75441e5e787e45a3cbbaf898b7e19768191f9cc052eb0536b7b1
+
+I believe this is a problem related to segwit enabled transactions, because a friend of mine reported the same issue on his Ledger wallet, while this never happened to him before the upgrade of the wallet.
+
+Also, please change the display to sat/B :)"
+greenaddress/GreenBits,open,"Unclear ""insufficient funds"" message",[],"If I have too many output transactions to be confirmed, perhaps I have all the outputs being used in unconfirmed transactions and if I try to send another transaction it will say, ""Insufficient funds"", even though I clearly have funds that will become available when the change outputs are confirmed.
+The message could be more clear in this cases.
+ "
+greenaddress/GreenBits,closed,Add support for sending to BIP173 addresses,[],"[BIP173](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki) (""bech32"") enables native segwit transactions on the Bitcoin network. Using it will allow for smaller on-chain transactions. For bech32-addresses to gain adoption, wallet support is needed.
+
+Please add support for sending to BIP173 addresses."
+greenaddress/GreenBits,closed,Cannot connect via tor,[],"I get the following error message:
+""Tor Conectivity Disabled! You need to enable the proxy configuration (Orbot Socks5) first to enable Tor.""
+
+But Orbot is already running and Orfox which uses Socks5 to connect via Tor does also work. So why can I not add a bitcoin node via tor?"
+greenaddress/GreenBits,closed,Ask user to unlock the the hardware wallet when a hardware wallet is detected as locked/pin protected after lock timeout,[],Ask user to unlock the the hardware wallet when a hardware wallet is detected as locked/pin protected after lock timeout
+greenaddress/GreenBits,closed,Allow network settings to be changed without a logged in service,[],Fixes issue #289 
+greenaddress/GreenBits,closed,"Network Configuration does not open, throws error",[],"Steps to reproduce:
+
+1. starting from the ""Welcome to Greenbits"" screen, press the vertical ... menu button
+2. select ""Network Configuration""
+3. select ""(i) Network configuration"" from the menu
+
+This results in the following error:
+
+> Unable to contact the GreenAddress service. Please check your network connection and wait to be reconnected.
+
+and returns to the welcome screen
+
+I experienced this with android 7, upgraded to 8, and am still experiencing this.
+
+Version 2.02, installed from play store
+
+Update to add: downgrading to 1.99 from f-droid worked around this issue for me"
+greenaddress/GreenBits,closed,Display satoshis per byte not only in custom,[],"The priority selection allows high, normal, low, economy, custom and instant.
+Except for custom which shows you the satoshis per virtual byte, the selections are vague into what they mean exactly. Even if only custom allows the user to edit the satoshis per vbyte, it could at least show it. That way the user could rapidly get an idea of what each of them mean in terms of sat/vbyte just by going through them before sending
+
+Actually, custom uses satoshis/kbyte. perhaps satoshis per byte would be better.
+"
+greenaddress/GreenBits,open,Display error message when hardware wallet fails to sign a transaction,[],"Some hardware wallets like the Ledger Unplugged and the Fidesmo Yubikey use NFC to sign transactions. When the user taps Review & Send, the transaction data is sent over NFC to the hardware wallet for signing. Due to the nature and short range of the NFC link, this process is prone to failure.  
+
+As of GreenBits 2.02, there seems to be no feedback to inform the user when the signing goes wrong. It does not tell the user when to tap the wallet on the NFC reader, either. All the user can do is wait on the Send tab, and log out/close/restart the app to try again if it seems to be stuck.  
+
+GreenBits should at least display an error message in that case, and ideally allow the user to retry the operation, prompting to tap the wallet and asking for the PIN again if needed."
+greenaddress/GreenBits,closed,Display info message when disabling SegWit is not possible,[],"Once a SegWit address has been generated for a given wallet, it is no longer possible to disable SegWit for that wallet.
+
+If the user tries to disable SegWit in such a case, GreenBits simply does nothing.
+GreenBits should probably display a toast to inform the user of the reason that SegWit cannot be disabled, just like the web and Chrome versions of GreenAddress already do."
+greenaddress/GreenBits,closed,Fix the version detection for Trezor,[],
+greenaddress/GreenBits,closed,Trezor fixes,[],"This patchset updates Trezor signing, fixing pre-segwit, segwit and mixed inputs, as well as correctly identifying and marking segwit change addresses. It also adds support for anti-fee sniping, makes signing faster by avoiding some roundtrips, and fixes a bug with changeless transactions in 2of3 subaccounts.
+
+Includes updates to our protobuf code bringing it to the latest treazor-lib version as of submitting.
+
+There are a number of code cleanups along the way in order to ease the implementation and testing, the end result should be easier to maintain going forward."
+greenaddress/GreenBits,closed,Fix Trezor signing for non-segwit transactions,[],Based on a patch by Jeremy.
+greenaddress/GreenBits,closed,updates for getHash() exception,[],
+greenaddress/GreenBits,closed,Fix for mixed inputs,[],
+greenaddress/GreenBits,closed,show fee in fiat,[],"If you ""show Fiat""  the fee shows as $0 but it is 0.89c so maybe it should round to $ 0.01"
+greenaddress/GreenBits,closed,Support transaction priority and custom fees,[],"This enables transaction priority and custom fees, including settings defaults for both.
+
+In order to use custom fees, RBF is enforced to be enabled to prevent a surge in support requests from stuck un=bumpable txs.
+
+This branch includes some other minor fixes/features/enhancements for review.
+
+Fixes #275"
+greenaddress/GreenBits,closed,More fixes,[],
+greenaddress/GreenBits,closed,Fiat fees and fixes,[],"Updates to allow toggling the amount/fees between fiat and BTC to prevent user confusion, along with various other fixes.
+
+Note this includes #276 so will need rebasing."
+greenaddress/GreenBits,closed,Standardise and share code to prevent crashes when restoring preferences,[],"When connectivity is lost or the app is restored without a
+service/connection, this bumps the user back to the main activity from
+settings instead of crashing."
+greenaddress/GreenBits,closed,request: custom fee,[],"Please, add an option to set a custom fee. "
+greenaddress/GreenBits,closed,Force timeout to be minimum 1 minute,[],
+greenaddress/GreenBits,closed,Setting pin timeout to zero causes looping pin entry request,[],"If you enter zero as the timeout the app just keeps asking for your pin. There is no way to then get around this.
+
+Suggest you don't allow 0 to be set."
+greenaddress/GreenBits,closed,Fix send max amount,[],
+greenaddress/GreenBits,closed,Don't crash if the SPV preferences are resumed after service death,[],
+greenaddress/GreenBits,closed,More Fixes,[],
+greenaddress/GreenBits,closed,Use BIP49 for SegWit addresses,[],"TREZOR and Ledger use BIP49 path for generating SegWit addresses. It would be great if GreenBits followed the suite.
+
+See: https://github.com/bitcoin/bips/blob/master/bip-0049.mediawiki
+
+TL;DR just replace 44 with 49 in derivation path for SegWit."
+greenaddress/GreenBits,closed,invalid phone number: unknown country code or invalid number format,[],"Dear Sir/Madam,
+
+for 6 months i have my own bitcoin account and when i payed with BTC i always got my code through sms. web interface now told me my phone number was invalid. I have made multiple receive and send transactions through phone client before and I have changed nothing. I probably entered my phone number in +-country-code-and-number format or as 00-country-code-and-number. And when I was setting up my account, it didn't tell me two or more 2FA options were recommended. Now I can log in but I can't send BTC. Please help quick i need to pay important bills!
+
+kind regarts,
+
+Jona Smidt"
+greenaddress/GreenBits,closed,Remove duplicated permission checking code,[],"Also check the granted permissions to prevent crashes on broken Android
+versions that don't return an array matching the one we passed."
+greenaddress/GreenBits,closed,More fixes,[],
+greenaddress/GreenBits,closed,Exchanger fix,[],
+greenaddress/GreenBits,closed,Update libs and sdk,[],
+greenaddress/GreenBits,closed,Prevent a crash when Android restores our fragment,[],
+greenaddress/GreenBits,closed,Work around an NPE when restoring,[],"There is an activation path that leaves the main activity alive without
+creating the tab view, such that if the app is restored it attempts to
+access it and NPEs.
+
+If this occurs, instead of crashing, bounce the user back to re-login."
+greenaddress/GreenBits,closed,Don't show the two factor warning if our two factor data hasn't loaded,[],
+greenaddress/GreenBits,closed,Add support for manual locktime requests,[],Also includes a minor fix to wally fetching to use the correct java compile flags.
+greenaddress/GreenBits,closed,Fix fetch_libwally_binaries.sh to work from a fully cleaned libwally dir,[],Also make it more robust and able to be run from any directory.
+greenaddress/GreenBits,closed,Updates for release,[],A few minor updates before the next release
+greenaddress/GreenBits,closed,Update README.md,[],"This small and useless PR adds two buttons to get your app on F-droid and Google Play Store
+
+Thanks for this app :)"
+greenaddress/GreenBits,closed,Update wally,[],"More updates for wally.
+
+Pushing to test on the travis builds, there should be more changes to come."
+greenaddress/GreenBits,closed,Update wally,[],Wally updates to fix building on OSX.
+greenaddress/GreenBits,closed,Update libwally,[],Updates libwally to the latest Elements version and uses its build infrastructure instead of our own scripts.
+greenaddress/GreenBits,closed,I have a snapshot of my mnemonic,[],When it said my pin wasn't working after making several transactions in the last couple days in the in my mnemonic like it asked accept it said it need to be 24 or 26 words which mine was not that. 
+greenaddress/GreenBits,closed,Fix 2FA enablement not working due to proguard stripping,[],
+greenaddress/GreenBits,closed,Update wally,[],
+greenaddress/GreenBits,closed,Fix docker and update debian to stretch,[],
+greenaddress/GreenBits,closed,Don't reset fiat limits in watch only mode,[],This prevents a crash when logging in in watch only mode
+greenaddress/GreenBits,closed,"Mnemonic, RBF, Fee and general updates",[],"- Fix summary dialog not showing for RBF when no 2FA is setup
+- Fix fee rate calculations for segwit
+- Add support for spending limits in fiat or BTC
+- Allow retrying two factor codes up to 3 times
+- Support mnemonic auto-completion from the world list (helps with typos)
+- Mark incorrect mnemonic words directly while typing
+- Force users to verify 4 random mnemonic words when signing up
+- Don't show the scan button on login when no camera is present
+- Force the user to verify their PIN after creating a new one
+- Refactored transaction construction in preparation for moving to wally
+- Cleanups, leak removal and general fixes all over the code base
+"
+greenaddress/GreenBits,closed,Updates to mnemonic entry,[],"- Support auto-completion from the world list (helps with typos)
+- Don't show the scan button when no camera is present
+- Mark incorrect words directly while typing
+- Force users to verify 4 random words when signing up
+- Various cleanups for the mnemonic activity"
+greenaddress/GreenBits,closed,Phone authentication [bug] ,[],"I'm not exactly sure of the reason, but after I changed phones(from a non-android, Blackberry Passport to an LG G5), my phone authentication method isn't working. No number change, I even use the same SIM. 
+The 2FA settings don't even show up(meaning the GUI objects don't show, it stays blank if I try to set up a new method of 2FA), and the GreenAddress client I am using says 'Internal error'. I guess this is a backup problem, because just a few days ago, the phone auth was working perfectly.  
+I use GreenBits client 1.96. This issue occurred with the Chrome Extension and Cordova app as well, so it's probably a more serious issue. "
+greenaddress/GreenBits,closed,2FA modal disappears on wrong 2FA rather than allow user to enter correct one.,[],"2FA modal disappears on wrong 2FA rather than allow user to enter correct one.
+
+This requires the user to repeat the transaction process including signing.
+
+It should only allow retry a few times - as many retrials as the server says are left."
+greenaddress/GreenBits,open,2FA modal disappears on orientation change,[],"2FA modal disappears on orientation change, this requires the user to repress send and if he already asked for a 2FA code he will have to ask for a new one (which can confuse users if they receive multple and use the wrong one)
+
+the modal should survive orientation changes"
+greenaddress/GreenBits,open,Needs restart after inactivity,[],"After a few hours of inactivity, Greenbits shows blank white as the main body of all three tabs.  The tabs themselves (at the top where you choose between them) are visible as usual. 
+
+If I close the app (by pressing the Android square in the bottom right of the screen and swiping Greenbits off the screen and then reopening the app) I can log in again and it works. 
+
+If instead I choose ""log out"" from within Greenbits then it crashes. After reopening the app it works fine. "
+greenaddress/GreenBits,open,Changing 2FA settings via PGP or mnemonic?,[],"GreenAddress in Chrome, nor GreenBits on Android, no longer accepts my OTP codes (generated by Authy); thus, I have no way of changing my 2FA settings (Google Auth is the only 2FA method turned on). Oddly, Google Authenticator and other OTP-generating apps I've tried do not consider the GreenAddress Google Authenticator QR code I recorded as valid, but for some reason Authy doesn't complain, but Authy doesn't generate valid OTPs.
+
+Is there a way of changing my 2FA settings via PGP? My public PGP key is associated with my GreenAddress account.
+
+Or is there another way that I can disable the Google Authenticator 2FA setting on my account? I know the mnemonics, PIN, and Google Authenticator code that GreenAddress generated when I first opened my account years ago."
+greenaddress/GreenBits,open,amount should be visible in tx details even for redeposits/send to self,[],when doing a redeposit or send to self the app shows only the fee in the amount spent. This is correct but in the details it would be good to know what it was sent and to clarify if the amount there is including fees or not.
+greenaddress/GreenBits,closed,update checkpoints and force build to use local nodes rather than att…,[],…empt SPV
+greenaddress/GreenBits,closed,Fee calculation and UI fixes,[],Corrects the vsize calculation for segwit client side constructed transactions using dummy witness data. Also includes a number of UI cleanups based on new user feedback.
+greenaddress/GreenBits,closed,Convert JSONMap values through Object.toString,[],"This makes the parsing more relaxed which means we can handle different types from the server identically, which in turn makes the client more robust to api type changes (including accidental ones).
+
+This is currently required for CA/non-CA to work correctly (thanks to Jerzy for reporting)."
+greenaddress/GreenBits,closed,Minor fixes and minimum fee,[],"Hello,
+- I found a couple of problems sending coins
+- and added an absolute minimum fee for txs. Transactions are often not relayed on testnet due to low fee."
+greenaddress/GreenBits,closed,Fee estimates,[],"Updates to fee estimation for instant and non-instant txs, as well as better defaults when no rates are available."
+greenaddress/GreenBits,closed,remove PasswordEdit dependency since deprecated/available in android now,[],
+greenaddress/GreenBits,closed,Various Fixes,[],
+greenaddress/GreenBits,closed,Update tx construction to behave like the JS client,[],Plus some related clean up.
+greenaddress/GreenBits,closed,"RBF, when trying to rbf a tx that is already confirmed ",[],"![screenshot_1493217949](https://cloud.githubusercontent.com/assets/5269298/25440519/9bb968c4-2a97-11e7-9e47-89d7e3250ea5.png)
+
+When trying to opt-in RBF a tx that has already been confirmed the user is presented with an internal error. The app should instead tell the user the transaction has already been confirmed."
+greenaddress/GreenBits,closed,RBF increase fee button doesn't show a summary before increasing,[],"In a wallet without 2FA enabled and with RBF enabled, when clicking on ""Increase fee"" the fee is increased without first a confirmation summary dialog"
+greenaddress/GreenBits,closed,Don't show the network monitor menu item if SPV is disabled.,[],Fixes issue #229
+greenaddress/GreenBits,closed,Don't show network monitor in menu if SPV is disabled,[],"The top right menu has the network monitor entry even if SPV is disabled.
+
+The monitor is empty in this case. The menu shouldn't show the monitor if SPV is disabled."
+greenaddress/GreenBits,closed,Correct the number of confs required for spending on mainnet/for instant txs,[],
+greenaddress/GreenBits,closed,Elements and exchanger,[],"Adds support for elements, with some caveats e.g. blinding keys are not yet derived properly. Also adds the exchanger functionality from inbitcoin and adds support for CA to it."
+greenaddress/GreenBits,closed,2FA field (tested on email but should apply to all) should be submitted on keyboard enter,[],When performing a transaction or an rbf fee bump if 2FA is enabled 2FA is requested. Upon entering 2FA if the user hits enter with the keyboard (especially on emulator) the cancel button gets selected (a bit like tab) while instead it should submit the 2FA value.
+greenaddress/GreenBits,closed,Question about use with Tor,[],"Hello. I would like to ask you something: 
+
+1) if I use Orbot (+ transparent proxy with Root permission), the entire traffic will be filtered through Tor, or ""simply"" my identity will be masked?
+
+2) using Orbot, I can send bitcoin in other portfolios reached exclusively through Tor ("".onion"" wallet)?"
+greenaddress/GreenBits,closed,Fees and fx,[],"Updates to fee and FX rate handling. Fixes issue #222.
+
+This should also fix a number of somewhat uncommon possible errors such as using different rates between different subaccounts and the user changing their currency preference in a different logged in client while using GreenBits. This is done by always updating the currency and exchange rate whenever a balance update request is made, so we always have the latest values fetched used everywhere.
+
+When a balance is not available, we use the last good value or display 'N/A' in the event no value is currently available.
+
+"
+greenaddress/GreenBits,closed,Fee rate,[],"Minor updates, fix to fee calculation"
+greenaddress/GreenBits,closed,Handle currency pair being returned None,[],"Currently GreenBits may show a modal with a debug error if the currency pair requested is none.
+
+The app should be able to hanlde no pairs (testnet, regtest) and pairs that are not set (i.e. None)"
+greenaddress/GreenBits,closed,Tx list refresh,[],Some UI improvements
+greenaddress/GreenBits,closed,"In the event of a hard fork, will both coin types be accessible for GB/GA wallets?",[],
+greenaddress/GreenBits,closed,share address button disappears,[],"if you touch the share button on the receive tab and click cancel the share button disappears until you move away from the tab and back.
+
+It also disappears if you don't click cancel and proceed with sharing. It shouldn't disappear."
+greenaddress/GreenBits,closed,"Client side transaction construction, bug fixes",[],A number of updates to client side tx construction plus other bug fixes and enhancements.
+greenaddress/GreenBits,open,Subaccount created and sent to in one client crashes GB,[],"We should check when subaccounts are not found in GB to avoid it crashing.
+
+Note that on restarting the app works fine so this isn't a high priority issue."
+greenaddress/GreenBits,closed,While on Receive tab if tx is received on address shown  then show notification OR move to Activity,[],While on Receive tab if tx is received on address shown then show notification (Snackbar?) OR move to Activity
+greenaddress/GreenBits,closed,Preload receive address and cache,[],"Rather than loading an address each time one moves to the ""Receive"" tab we should fetch one as soon as we login and show that one on Receive (while also prefetching in the background the next one)
+
+We should only do so if:
+- Segwit is not enabled server side
+- Segwit is enabled server side and user has activated it
+
+If not used the address should be cached client side for the next time (ideally not in clear text)
+"
+greenaddress/GreenBits,closed,Hide the segwit preference if the server does not support it,[],
+greenaddress/GreenBits,closed,field for SMS phone number should use numeric keyboard,[],"when entering the mobile number the keyboard has the numbers on my phone butnis phone dependent and is not the numbers  ""only"" keyboard which would be more useful."
+greenaddress/GreenBits,closed,Enable RBF for segwit,[],"This enables RBF for segwit and cleans up a fair amount of related code.
+
+RBF can still be improved but this fixes the last bit of unimplemented segwit functionality I think."
+greenaddress/GreenBits,closed,Add elements build,[],Add an elements-regtest build to GB for further development.
+greenaddress/GreenBits,closed,Update bitcoinj,[],"This updates bitcoinj to master and applies xenogs swegit branch. As a result it removes the GA specific segwit/alpha changes and the alpha target which had bitrotted into non-functionality.
+
+A couple of bitcoinj fixes that haven't been merged that we rely on are then applied, and the existing code updated to use xenogs sehwit hashing code.
+
+This will require a lot of testing since a lot of code is new, however it means we can implement segwit RBF and client side tx construction using the likely eventual bitcoinj master code base."
+greenaddress/GreenBits,closed,Initial elements support,[],
+greenaddress/GreenBits,closed,Upon showing a new address and receiving funds user has to move to tx list to see any activity,[],"Currently if a user shows an address to someone and receives some funds on it he won't be aware of the new transaction until he moves to the middle tab/transaction list.
+
+One option could be to show a notification if the app is open and a new transaction is received, another option could be to move automatically to the transaction list upon receiving an inbound transaction.
+
+The former may be less intrusive (say in case when one wants to receive multiple transactions) but ideally users shouldn't receive multiple transactions on the same address so if we were to just show a notification we ought to also refresh/change the address in the Receive tab to avoid receiving multiple transaction on the same address."
+greenaddress/GreenBits,closed,Cleanup,[],"Cleanups prior to adding general asset support as per the JS client. The initial commits rework the display of BTC symbols and amounts to remove the separate (from the symbol) prefix UI element and to eliminate the split prefix + symbol mappings. Displayed amounts are also now made consistent (by running through the same code path) whereas before they may have differed when large amounts were shown. The actual mapping is now mostly internal to UI.java, where it can be generalised for non BTC amount display as part of later work. This removes quite a lot of redundant code around value formatting.
+
+The remainder of the cleanups are designed to make it easier to review and merge changes when we have more branches being actively developed at once."
+greenaddress/GreenBits,closed,Trying to spend with Keepkey crashes greenbits,[],"Hi!
+
+I am trying to use my keepkey+greenaddress wallet on my phone with GreenBits. Login works perfectly, but when I try to spend a transactions PIN screen shows up as normal on the keepkey but GreenBits crashes. Help!"
+greenaddress/GreenBits,open,Constantly asks for BTChip PIN,[],"I have version 1.94 installed on a Pixel. It constantly interrupts other apps to ask for my BTChip PIN. I do not have a BTChip or Ledger, and never haven"
+greenaddress/GreenBits,closed,move transaction creation client side only,[],move transaction creation client side only
+greenaddress/GreenBits,closed,Fingerprint support,[],"Hi, 
+
+I hate have to type PIN all time to login on greenbits. Could you support fingerprint?
+
+Thanks."
+greenaddress/GreenBits,closed,Nlocktime,[],Some minor cleanups; Allow the user to specify whether or not to enable nlocktime emails.
+greenaddress/GreenBits,closed,Wally format update,[],Update wally to the latest version and use it instead of bitcoinj to format challenge signing messages.
+greenaddress/GreenBits,closed,Android automatic refactor - ObsoleteLayoutParam,[],"Hi,
+
+I am developing a tool to automatically refactor Android applications with the goal of improving energy efficiency.
+This pull request has the changes generated while applying the rule ""ObsoleteLayoutParam"".
+
+While developing your application's views you might be specifying attributes in a view's artefact that are not necessary due to the nature of its parent. In this PR, those attributes were replaced by a comment.
+
+I have made a previous validation of the changes and they seem correct.
+Unfortunately, this tool is not able keep the original whitespace of the files, so comparison without ignoring whitespace might be confusing.
+Please consider the changes and let me know if you agree with them.
+
+Best,
+Luis"
+greenaddress/GreenBits,closed,Android automatic refactor - Recycle,[],"Hi,
+
+I am developing a tool to automatically refactor Android applications with the goal of improving energy efficiency.
+This pull request has the changes generated while applying the rule ""Recycle"".
+
+Some resources (e.g., ```Cursor``` instances) should be closed when they are no longer necessary. 
+
+I have made a previous validation of the changes and they seem correct.
+Please consider them and let me know if you agree with them.
+
+Best,
+Luis"
+greenaddress/GreenBits,closed,org.json.JSONException: Value <!DOCTYPE of type java.lang.String cannot be converted to JSONObject,[],"After I successfully log in, I try so send and I get the following message pop up: 
+
+org.json.JSONException: Value <!DOCTYPE of type java.lang.String cannot be converted to JSONObject
+
+Seems like som expected JSON result is hitting an HTML page 
+
+Tried Wifi and LTE network.
+
+Android 6.0.1  in a Samsung S6"
+greenaddress/GreenBits,closed,Version 1.94 isn't connecting,[],Update happened overnight and the connection icon is there but it doesn't connect. Is there a way to debug of what's actually trying to do? 
+greenaddress/GreenBits,closed,sweep is too slow only in mainnet,[],"The Greenaddress site and GreenBits are too slow to sweep the private key, only in mainnet and not in testnet.
+I think the problem is in the WAMP call ""prepare_sweep_social""; this call is long more than 1 minute.
+
+Please check the server code to confirm the bug server-side. Thank you"
+greenaddress/GreenBits,closed,update support libs from 25.0.1 to 25.1.0,[],
+greenaddress/GreenBits,closed,remove support for httpseed,[],
+greenaddress/GreenBits,open,Problem with Tor on PIN page,[],"Orbot is running on Nexus 7.  Browser over Tor is working fine.  Fire up GreenBits and enter correct PIN.  The following exception is displayed.  Entering the PIN again gives the same results (same ""3 attempts left"" message).
+
+![screenshot_2016-12-12-19-01-53](https://cloud.githubusercontent.com/assets/11914193/21122042/f4b721dc-c09d-11e6-88fb-e0e9dcec8ced.png)
+
+If instead of using a PIN, I use a Ledger Nano, after I enter the correct BTChip PIN and click OK, the red circle spins for a five seconds and then the app crashes (goes back to the home screen).
+
+Occasionally, this will work and I will get logged in and can send and received funds, but most of the time it behaves as described above.
+"
+greenaddress/GreenBits,open,Add/improve user messages when not connected to the platform/internet,[],During Ledger authentication or new wallet creation if the connection to the platform or to the internet is not available the app simply fails to authenticate or create a new wallet without some user friendly message.
+greenaddress/GreenBits,closed,Public regtest,[],"- adds regtestwss.greenaddress.it support (no onion, no dns peer discovery, no block explorer)"
+greenaddress/GreenBits,closed,Segwit updates,[],Also updates the client to v2 of the api.
+greenaddress/GreenBits,closed,Add a script to build wally with clang (Issue #185),[],"Use the NDK build infratructure to minimise the maintence burden going
+forward. ARM still requires a bit of massaging, and the ARM assembly for
+secp doesn't want to build with the clang ABI compatible flags. We do
+enable optimisation for secp though which is missing and untested from
+the gcc builds.
+
+ARM v7 was tested (HTC One m8) and seems stable."
+greenaddress/GreenBits,closed,Twofactor cleanup,[],"A cleanup of the two factor code, motivated by back end work around 2FA and email processing."
+greenaddress/GreenBits,closed,Backend updates,[],"This is PR #186 plus some after the fact cleanup.
+
+I have verified that receive addresses generated with an amount present change the qrcode as they are entered, and that copying the address results in a correct bitcoin: URI in the clipboard.
+
+It would be nice additionally if the send tab could handle a bitcoin: URI being pasted into the address field. Nonetheless this should be fine to merge now IMO."
+greenaddress/GreenBits,closed,Amount in receive,[],Moved conversions from send fragment to specific class and added amount in receive activity (disabled by default)
+greenaddress/GreenBits,closed,libwally: use clang to build android shared libraries rather than gcc,[],currently the shared library is built using gcc but google announced that the gcc available in the ndk is unsupported and people should move off to clang
+greenaddress/GreenBits,closed,Fix pushed error,[],
+greenaddress/GreenBits,closed,Wally updates,[],this updates wally to the latest version in preparation for using more functionality from wally such as the base58 code.
+greenaddress/GreenBits,closed,cleaned some activities from hardcoded texts,[],
+greenaddress/GreenBits,closed,Pay dialog,[],"- bip70 show ""pay"" instead ""send"" in send page
+- other cases use ""pay"" instead ""review and pay"""
+greenaddress/GreenBits,closed,Send page fixes,[],
+greenaddress/GreenBits,closed,minor grammar and spelling improvements,[],
+greenaddress/GreenBits,closed,fixed text resize in FontFitEditText,[],"Now use dp instead px to resize text because px scaling could create different results on different devices.
+"
+greenaddress/GreenBits,closed,Ledger segwit: support for mixed segwit/nonsegwit transactions,[],
+greenaddress/GreenBits,closed,better layout for list element transaction,[],
+greenaddress/GreenBits,closed,fixed bad view about replaceable info,[],"fix #173 
+"
+greenaddress/GreenBits,closed,Ledger Segwit support,[],"MAYBE TODO : only generate Segwit addresses after at least one compatible device has been plugged
+"
+greenaddress/GreenBits,closed,"[UI] ""replaceable"" text is bugged",[],"GreenBits 1.92
+## ""Remplaçable""
+
+![screenshot_20161022-131000](https://cloud.githubusercontent.com/assets/6627786/19620531/e6e4aa70-987f-11e6-9e48-06e5349dca98.png)
+"
+greenaddress/GreenBits,closed,Increase max message size,[],"Removes the use of http downloading to work around prevout transaction fetching, currently for REGTEST only.
+"
+greenaddress/GreenBits,closed,Updates,[],"- Update wally to the latest master
+- Take advantage of the new optimisation to avoid some work when deriving keys
+- Fix sending on regtest
+"
+greenaddress/GreenBits,closed,workaround for textNoSuggestions on non AOSP keyboard,[],
+greenaddress/GreenBits,closed,fix F2A/fab problems with keyboard opened,[],
+greenaddress/GreenBits,closed,Prevent the denomination characters trailing space being removed,[],"As mentioned in issue #166.
+"
+greenaddress/GreenBits,closed,Update README to include wally dependencies for rebuilding,[],"As mentioned on issue #166.
+"
+greenaddress/GreenBits,closed,[UI] monetary formatting,[],"Hi there. I'm using GreenBits 1.91 from F-Droid and would like to suggest some improvements in the user interface.
+
+I can not get the local builds running, so I will try to simply point out the code fragement which are probably important for what I describe.
+- Space between currency symbol and the amount is missing, e.g., [ListTransactionsAdapter.java:L57](https://github.com/greenaddress/GreenBits/blob/master/app/src/main/java/com/greenaddress/greenbits/ui/ListTransactionsAdapter.java#L57) vs. [ListTransactionsAdapter.java:L59](https://github.com/greenaddress/GreenBits/blob/master/app/src/main/java/com/greenaddress/greenbits/ui/ListTransactionsAdapter.java#L59): `""bits ""` comes with space, but somehow `R.string.fa_btc_space` not; is it possible to add a space behind the latter?
+- If possible, please set fixed number of decimals, i.e., always 8 decimals for BTC or 2 decimals for _bits_. Is that possible? I had a look into [MonetaryFormat.java:354](https://github.com/greenaddress/GreenBits/blob/master/bitcoinj/core/src/main/java/org/bitcoinj/utils/MonetaryFormat.java#L354) and it looks like a feature to trim trailing zeros. This makes the amounts _jumping_ around in the interface (as they are aligned right) and it's not obvious on first glance which are big and which are small amounts. A cool way would be not to trim them but to style them in a very light grey. What do you think?
+
+It also sometimes looks very strage, if you have fiat currency values with only one decimal digit, e.g., `$ 210.4`.
+
+Thanks
+5chdn
+"
+greenaddress/GreenBits,closed,ES-translations: Improve spanish translations,[],
+greenaddress/GreenBits,closed,Tag dispatcher can be null if we are paused before the view is created,[],"Guard against this to prevent an NPE.
+"
+greenaddress/GreenBits,closed,Zombie fragments,[],
+greenaddress/GreenBits,closed, add russian translation and minor ukrainian fixes,[],
+greenaddress/GreenBits,closed,Greenbits 1.91 crashed two times,[],"Greenbits 1.91 crashed two times. I sent the report to Google Store.
+
+Did you see it?
+
+Thanks.
+"
+greenaddress/GreenBits,closed,Don't reload transactions when we are being zombie-restored,[],
+greenaddress/GreenBits,open,Why need to create new login and password to login as watch only mode?,[],"Hi, I see greenbits added watch only login mode, where is necessary to create a new login and password.
+
+I think watch only login mode shouldn't request to add login and password. I would like to start greenbits as watch only login mode, without be necessary to insert passwords or login. Is it possible?
+"
+greenaddress/GreenBits,closed,fix ukrainian misconceptions,[],"fix little misunderstandings
+"
+greenaddress/GreenBits,closed,Transaction list fix for device rotation,[],
+greenaddress/GreenBits,closed,hide max button on nfc read with amount,[],
+greenaddress/GreenBits,closed,removed focus from input text box on nfc read,[],
+greenaddress/GreenBits,closed,Avoid accessing our service members if restored and logged out,[],
+greenaddress/GreenBits,closed,More fragment fixes,[],
+greenaddress/GreenBits,closed,restore UI on processBip70URL failure,[],
+greenaddress/GreenBits,closed,Plug another hole in unsubscribing racing with executor shutdown,[],
+greenaddress/GreenBits,closed,Settings: Handle the service being destroyed while we were paused,[],
+greenaddress/GreenBits,closed,fix denomination in send confirmation dialog and bump fee,[],
+greenaddress/GreenBits,closed,Pinning updates,[],"- Move from single PIN to PIN list
+- Move from SHA1 to SHA256
+- Add new PIN for each env
+"
+greenaddress/GreenBits,closed,Ledger fixes,[],
+greenaddress/GreenBits,closed,Receive fragment updates,[],
+greenaddress/GreenBits,closed,Fixes for the send tab,[],
+greenaddress/GreenBits,closed,Correctly block an already showing wait dialog when asked to,[],
+greenaddress/GreenBits,closed,Wally update,[],
+greenaddress/GreenBits,closed,Improve receive ui,[],"some minor improvements on the receive tab UI files and new address UI handling
+"
+greenaddress/GreenBits,closed,Fix tx view not updating when subaccount changed in another page,[],"This also reduces many uneeded roundtrips by delaying them until the viewer selects the page again.
+"
+greenaddress/GreenBits,closed,Only show the tx loading dialog when we have no tx's or we change subaccounts,[],
+greenaddress/GreenBits,closed,Don't show wait dialogs when selecting subaccounts,[],
+greenaddress/GreenBits,closed,Some issues with Greenbits 1.89,[],"Hi,
+
+Since Blockstream bought Greenbits wallet, I decided to put my bitcoins on it. But I'm experiencing some problems:
+1- Many times when I insert PIN to login, Greenbits crash.
+2- Today when I logged, something very stranged happened:
+- The bitcoins balance showed NOT on the correct account.
+- Then showed duplicated on two of my accounts
+- When I selected the account with bitcoin, I didn't see transfers history.
+  Obs. All showed correctly after I restart the app.
+
+![screenshot_2016-09-24-16-10-35](https://cloud.githubusercontent.com/assets/1178856/18810726/d920caf8-8273-11e6-9046-b2b8fc92b825.png)
+
+![screenshot_2016-09-24-16-09-31](https://cloud.githubusercontent.com/assets/1178856/18810728/df1bb706-8273-11e6-9e02-7ea4334b5c19.png)
+
+![screenshot_2016-09-24-16-09-19](https://cloud.githubusercontent.com/assets/1178856/18810729/e671b7da-8273-11e6-84d6-2ee4ade2aa64.png)
+"
+greenaddress/GreenBits,closed,GreenBits crashes during QR code recognition,[],"Hi,
+trying to send an amount, just after the QR code is found (it becomes green) GreenBits crashes.
+
+I'm using version 1.87 taken from F-Droid on Android 6.0 (ulefone Vienna).
+"
+greenaddress/GreenBits,closed,Minor cleanup for string and subaccount handling,[],
+greenaddress/GreenBits,closed,Correct the workaround for the SPV null peer group issues,[],
+greenaddress/GreenBits,closed,Fix arguments to get_trezor_challenge,[],
+greenaddress/GreenBits,closed,add Ukrainian,[],"[app-production_21-universal-debug.apk.zip](https://github.com/greenaddress/GreenBits/files/483717/app-production_21-universal-debug.apk.zip)
+"
+greenaddress/GreenBits,closed,Cache our bespoke font to prevent memory leaks,[],"See https://code.google.com/p/android/issues/detail?id=9904 for context.
+"
+greenaddress/GreenBits,closed,Workaround for an SPV crash whose cause isn't fully understood yet,[],"This will prevent the crash, but I've put in a FIXME since the state
+machine really should be fully understood/documented.
+"
+greenaddress/GreenBits,closed,SubaccountFragment updates,[],"These changes attempt to fix the handling of object lifetimes and callbacks in the 3 fragments providing the main view. This should help with SubaccountFragment related crashes.
+
+Theres some assorted cleanup in here that came up while developing as well.
+"
+greenaddress/GreenBits,closed,Don't crash if our subaccounts havent been loaded when building the UI,[],"This crashes when we have enabled showing the balance in the title and
+UI construction races with login. Also fix the same race when this option
+is not enabled; In this case we would not crash previously but would not
+show a title at all.
+
+We should also update the title when we are notified that the balance
+is updated. This change does not do that, its just to fix the crash.
+"
+greenaddress/GreenBits,closed,Forget Mnemonic ,[],"Hi,
+
+I forgot my mnemonic. I only remember my bitcoin address and email associated with my account. 
+
+Can you please help me to login by email or help me to recover/update my mnemonic using my email?
+
+Thanks,
+"
+greenaddress/GreenBits,closed,use per wallet preference for subwallet ,[],"…device
+
+This fixes a bug that can happen if you access from the same device different wallets that have a different number of subwallet.
+
+This prevents the app from attempting to listen for subwallet that are not available in a wallet.
+
+i.e.
+
+`java.lang.RuntimeException: Unable to start activity ComponentInfo{com.greenaddress.greenbits_android_wallet/com.greenaddress.greenbits.ui.TabbedMainActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'void com.greenaddress.greenbits.GaService$GaObservable.addObserver(java.util.Observer)' on a null object reference
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2416)
+    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2476)
+    at android.app.ActivityThread.-wrap11(ActivityThread.java)
+    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1344)
+    at android.os.Handler.dispatchMessage(Handler.java:102)
+    at android.os.Looper.loop(Looper.java:148)
+    at android.app.ActivityThread.main(ActivityThread.java:5422)
+    at java.lang.reflect.Method.invoke(Method.java)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'void com.greenaddress.greenbits.GaService$GaObservable.addObserver(java.util.Observer)' on a null object reference
+    at com.greenaddress.greenbits.GaService.addBalanceObserver(GaService.java:763)
+    at com.greenaddress.greenbits.ui.MainFragment.onCreateView(MainFragment.java:160)
+    at android.support.v4.app.Fragment.performCreateView(Fragment.java:2080)
+    at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManagerImpl.java:1108)
+    at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManagerImpl.java:1290)
+    at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManagerImpl.java:1272)
+    at android.support.v4.app.FragmentManagerImpl.dispatchActivityCreated(FragmentManagerImpl.java:2149)
+    at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:201)
+    at android.support.v7.app.AppCompatActivity.onStart(AppCompatActivity.java:178)
+    at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1237)
+    at android.app.Activity.performStart(Activity.java:6268)
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2379)
+    ... 9 more`
+"
+greenaddress/GreenBits,closed,Fix default peer handling in regtest mode,[],
+greenaddress/GreenBits,closed,fix open bitcoin uri when logged out,[],
+greenaddress/GreenBits,closed,Ignore RejectedExecutionException from the scheduler if it is shut down,[],"Diff intentionally made as small as possible for easy review.
+"
+greenaddress/GreenBits,closed,always enable reconciliation in debug builds,[],
+greenaddress/GreenBits,closed,move int to object hashmaps to sparsearray,[],
+greenaddress/GreenBits,closed,Remove unused resources,[],
+greenaddress/GreenBits,closed,do not open app on notification touch on old android,[],
+greenaddress/GreenBits,closed,Work around Android versions where radio clicks arent passed to their view,[],
+greenaddress/GreenBits,closed,Ensure that only the current subaccount is selected when choosing,[],
+greenaddress/GreenBits,closed,Spv initial hang,[],"Try to work around the sporadic hangs we see on SPV startup. This appears to be caused by updating the bloom filter once syncing has already started. So we instead populate the bloom filter beforehand.
+"
+greenaddress/GreenBits,closed,SPV updates,[],"Unspent output fix - this fixes my testnet setup to confirm all tx's after a reset.
+"
+greenaddress/GreenBits,closed,misc,[],
+greenaddress/GreenBits,closed,Monitoring updates,[],
+greenaddress/GreenBits,closed,Spv ui improvement,[],
+greenaddress/GreenBits,closed,add basic support for multiple bip39 langs,[],"Adds on top of English support for Spanish, French, Italian, Japanese, Chinese Traditional and Chinese Simplified.
+
+It also fixes a couple of bugs in SignUpActivity related to state (as it was needed for the above support), and simplifies.
+
+It also fixes a bug if there's a space at the end of the mnemonics.
+
+The language is not stored. It is used to generate and validate the words and then forgotten past login.
+"
+greenaddress/GreenBits,closed,Spv config,[],
+greenaddress/GreenBits,closed,update platform build tools to 24.0.2,[],
+greenaddress/GreenBits,closed,add logging of call args and result when running DEBUG builds,[],
+greenaddress/GreenBits,closed,Make Network conectivity updates async too,[],"This should complete the pushing of external access through our
+single thread serialiser. All that remains is thread safety for
+accessing data members and making the locking more fine-grained.
+"
+greenaddress/GreenBits,closed,SPV updates,[],"More thread safety and fixes for the mobile data setting.
+
+There are a couple more changes coming for complete thread safety and to improve concurrency.
+"
+greenaddress/GreenBits,closed,update platform build tools to 24.0.2,[],
+greenaddress/GreenBits,closed,share some common code across login activities,[],
+greenaddress/GreenBits,closed,Prepared transaction,[],
+greenaddress/GreenBits,closed,add support for remembering userin watch only,[],
+greenaddress/GreenBits,closed,Fix bitcoinj's DownloadProgressTracker on sync completion,[],"Previous behaviour was to call progress() after doneDownload which
+is counterintuitive and incorrect.
+"
+greenaddress/GreenBits,closed,Fix a login race and LoginFailed for PIN logins,[],
+greenaddress/GreenBits,closed,Ui improvements issue #89,[],
+greenaddress/GreenBits,closed,Fix SPV exception,[],"We could also make the fake wallet cheaper to construct with further bitcoinj changes - lets see if this change is taken first.
+"
+greenaddress/GreenBits,closed,remove Node use URI instead,[],
+greenaddress/GreenBits,closed,turn on spv when enabled and enabling spv on mobile,[],
+greenaddress/GreenBits,closed,"add example to rebuild checkpoints, add gradle helper and update README",[],
+greenaddress/GreenBits,closed,Respect the users mobile data preference for SPV,[],
+greenaddress/GreenBits,closed,"remove deprecated calls from bitcoinj, simplify code",[],
+greenaddress/GreenBits,closed,Set the fiat ccy correctly in LoginData,[],"Simple fix.
+"
+greenaddress/GreenBits,closed,Set notification title and icon on construction,[],"This prevents races where it seems bitcoinj can callback progress before
+the download started callback.
+"
+greenaddress/GreenBits,closed,SPV updates,[],"Many changes to simplify SPV and make it more robust, as well as adding logging and notification of SPV sync state for users. There is still more to do here, but the large number of changes and the fact that other work is being done suggests we should merge now to avoid the worst of the inevitable merge conflicts. The rest of this work will follow shortly.
+"
+greenaddress/GreenBits,closed,Networkcleanup,[],
+greenaddress/GreenBits,closed,UI suggestions,[],"Hi, I really like Greenbits app. Here are some sugestions to the UI that I would like to see implemented:
+
+1- I would like to see the account name removed from the top. Instead of show account name, should show account balance. Something like Circle app.
+
+![screenshot_2016-08-21-18-00-03](https://cloud.githubusercontent.com/assets/1178856/17839830/1f7cf102-67cb-11e6-8174-c5308e041657.png)
+
+2- I Like the account button of on bottom right. When I open it, I would like to see the account names, but I would like to see the balance of each account too, and which account is selected.
+
+![screenshot_2016-08-21-18-03-32](https://cloud.githubusercontent.com/assets/1178856/17839844/8c28eba8-67cb-11e6-8bda-641375a36b40.png)
+
+3- I like Greenbits color, but I think should have an option to change the colors of the app. Something like what Copay app has.
+"
+greenaddress/GreenBits,closed,Avoid an NPE if our menu is created before the view,[],
+greenaddress/GreenBits,closed,Show the disconnected menu indicator immediately on PIN entry,[],"Its otherwise rather frustrating to mash the enter button while
+waiting to connect.
+"
+greenaddress/GreenBits,closed,add cert pinning for all envs minus regtest,[],"add cert pinning for all envs minus regtest
+
+no alert in case cert validation fails - reconnect rescheduled
+
+Maybe we want to add a notification to the user that his network is being manipulated
+"
+greenaddress/GreenBits,closed,Nano - S support,[],
+greenaddress/GreenBits,closed,"remove unused imports, casting, modifiers, simplify some stringbuffer…",[],"…s, order imports
+"
+greenaddress/GreenBits,closed,Wipe any native PIN when saving a non-native PIN,[],"This allows the user to change their PIN entry method; previously even after
+changing the PIN to non-native, the native screen would still be shown, while
+the servers stored key would no longer match it.
+"
+greenaddress/GreenBits,closed,Run finish in ui thread,[],"Some cleanups/fixes ensuring that Activity.finish() is not called from background threads. This is one class of error resulting from extensive use of futures (other UI calls will be tackled separately).
+"
+greenaddress/GreenBits,closed,Return to the mnemonics screen if the user cancels PIN entry,[],"This allows the user to login using mnemonics if they have forgotten
+their PIN or a something unexpected causes it to become inaccessable.
+"
+greenaddress/GreenBits,closed,Only export API endpoints from libwally when building it,[],"enable-export-all should only be used for testing
+"
+greenaddress/GreenBits,closed,Remove unused Log import,[],
+greenaddress/GreenBits,closed,Remove hdkey reconciliation,[],"Includes an patch to bitcoinj which then allows a much more compatible implementation.
+"
+greenaddress/GreenBits,closed,Use ui more,[],"Changes to make use of the UI class to simplify the code further.
+
+Beyond these changes we should standardise on using class members to hold UI controls, and fix the remaining class members to have an 'm' prefix. Currently there are class members that are not obvious when used and also that are shadowed by local variables with the same name.
+"
+greenaddress/GreenBits,closed,Add loading indicator when loading transactions,[],"On some networks (think GPRS/edge) sometimes loading transactions can take a couple of seconds or more.
+
+Add some loading indicator instead of no content while transactions are being fetched.
+"
+greenaddress/GreenBits,closed,Prefer TextUtils.isEmpty() to null+isEmpty checks,[],"We should probably use TextUtils everywhere we currently use isEmpty as well, but I'll leave that for another change.
+"
+greenaddress/GreenBits,closed,Add watch only support (both setup and login),[],"- Added support for setup/current status in settings
+- Added support to login (no send tab or no settings available, nor transaction replacement)
+- Cleaned up in separate commits emerging commonality between signed login and watch only
+"
+greenaddress/GreenBits,closed,Error:Configuration with name 'default' not found.,[],"When using gradle 2.13 to sync there is an error such in title
+source/target compatiliblity 1.7
+build tool version: 23.0.3
+compile SDK version: API 23
+"
+greenaddress/GreenBits,open,[UX] Verify 2FA after logging in with mnemonic,[],"After logging in to the app using your mnemonic key, a user should verify via 2FA (if enabled).
+
+The purpose of this change is to ensure that users who have lost access to 2FA are unable to receive bitcoin to the account, preventing any further losses.
+
+It avoids a certain class of error that is otherwise not apparent to the user.
+"
+greenaddress/GreenBits,closed,No Peers Connected,[],"Hi, im having problems with GreenBits ( I think last update )... Any way to debug this?... Now the app always is offline.
+
+Thanks.
+"
+greenaddress/GreenBits,closed,Update french,[],
+greenaddress/GreenBits,closed,Update french,[],
+greenaddress/GreenBits,closed,Update french,[],
+greenaddress/GreenBits,closed,Update French translation,[],"created from https://github.com/greenaddress/GreenBits/pull/66
+https://github.com/greenaddress/GreenBits/pull/66/commits/ad5a1a35005878fbf52ee5582bd86eb5a3808510
+"
+greenaddress/GreenBits,closed,Update french,[],
+greenaddress/GreenBits,closed,Update french,[],
+greenaddress/GreenBits,closed,Update French,[],"Thanks for the APK :)
+
+Transifex auto translate link:
+`<a href=""http://howtobuybitcoins.info/"">acheter</a>`
+to
+`&lt;a href=""http://howtobuybitcoins.info/""&gt;acheter&lt;/a&gt;`
+
+So I made manual corrections, otherwise it breaks the links in the APK:
+
+Also note that "" SETUP 2FA "" is not on Transifex
+
+![screenshot_20160424-152600](https://cloud.githubusercontent.com/assets/6627786/14767958/c8ca7f2c-0a33-11e6-94b1-0996b521bf26.png)
+"
+greenaddress/GreenBits,closed,[Translation] Important french update from Transifex,[],"Please update the app asap :kissing:
+"
+greenaddress/GreenBits,closed,[UI] Word problem,[],"### "" Nouvelle "" is cut
+
+![screenshot_20160424-135555](https://cloud.githubusercontent.com/assets/6627786/14767445/508b1b92-0a25-11e6-941a-5a1f10d2277d.png)
+"
+greenaddress/GreenBits,closed,[UI] Add padding to button,[],"![screenshot_20160424-135636](https://cloud.githubusercontent.com/assets/6627786/14767428/d741a8b4-0a24-11e6-8370-1cacbf048d40.png)
+"
+greenaddress/GreenBits,closed,App crash when I send bits,[],"Hi, I use Android 4.2.2 on Samsung S3 mini.
+Thanks for any help! 
+"
+greenaddress/GreenBits,closed,SPV not synching,[],"Even if the blocks seem to be downloaded (0 blocks left) the question mark next to the balance remain.
+I tried twice to reset the SPV but the app crashes.
+There is a strange message: ""Downloading chain from trusted peer: com.google.util.concurrent.SettableFuture@21ee59f."" and the writings in the end changes continuously. 
+"
+greenaddress/GreenBits,closed,pin confirmation,[],"it seems to me it would be important to have a two step process for the PIN entry. as it is now, the first time I used this, it was totally unclear i was setting something i could not change later (#57) nor what it was for or how secure it should be...
+"
+greenaddress/GreenBits,closed,changing PIN,[],"is it possible to change the PIN on the app?
+"
+greenaddress/GreenBits,open,fix leak,[],"`04-03 23:42:52.459 20296-20296/com.greenaddress.greenbits_android_wallet E/WindowManager: android.view.WindowLeaked: Activity com.greenaddress.greenbits.ui.TabbedMainActivity has leaked window android.widget.PopupWindow$PopupDecorView{c8adcb7 V.E...... ........ 0,0-515,504} that was originally added here
+                                                                                              at android.view.ViewRootImpl.<init>(ViewRootImpl.java:368)
+                                                                                              at android.view.WindowManagerGlobal.addView(WindowManagerGlobal.java:299)
+                                                                                              at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:85)
+                                                                                              at android.widget.PopupWindow.invokePopup(PopupWindow.java:1258)
+                                                                                              at android.widget.PopupWindow.showAsDropDown(PopupWindow.java:1110)
+                                                                                              at android.support.v7.widget.AppCompatPopupWindow.showAsDropDown(AppCompatPopupWindow.java:78)
+                                                                                              at android.support.v4.widget.PopupWindowCompatKitKat.showAsDropDown(PopupWindowCompatKitKat.java:30)
+                                                                                              at android.support.v4.widget.PopupWindowCompat$KitKatPopupWindowImpl.showAsDropDown(PopupWindowCompat.java:92)
+                                                                                              at android.support.v4.widget.PopupWindowCompat.showAsDropDown(PopupWindowCompat.java:171)
+                                                                                              at android.support.v7.widget.ListPopupWindow.show(ListPopupWindow.java:680)
+                                                                                              at android.support.v7.view.menu.MenuPopupHelper.tryShow(MenuPopupHelper.java:163)
+                                                                                              at android.support.v7.widget.ActionMenuPresenter$OpenOverflowRunnable.run(ActionMenuPresenter.java:781)
+                                                                                              at android.os.Handler.handleCallback(Handler.java:739)
+                                                                                              at android.os.Handler.dispatchMessage(Handler.java:95)
+                                                                                              at android.os.Looper.loop(Looper.java:148)
+                                                                                              at android.app.ActivityThread.main(ActivityThread.java:5417)
+                                                                                              at java.lang.reflect.Method.invoke(Native Method)
+                                                                                              at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+                                                                                              at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)`
+"
+greenaddress/GreenBits,closed,On using SNAPSHOT dependencies for release builds...,[],"The last two releases fail to build on fdroid because bitcoinj 0.14-SNAPSHOT is required:
+
+```
+> Could not resolve all dependencies for configuration ':app:_regtestDebugCompile'.
+   > Could not resolve org.bitcoinj:orchid:1.2.
+     Required by:
+         com.greenaddress.greenbits_android_wallet:app:unspecified > org.bitcoinj:core:0.13.5
+      > Could not resolve org.bitcoinj:orchid:1.2.
+         > Could not parse POM https://jcenter.bintray.com/org/bitcoinj/orchid/1.2/orchid-1.2.pom
+            > Could not find org.bitcoinj:bitcoinj-parent:0.14-SNAPSHOT.
+              Searched in the following locations:
+                  https://jcenter.bintray.com/org/bitcoinj/bitcoinj-parent/0.14-SNAPSHOT/maven-metadata.xml
+                  https://jcenter.bintray.com/org/bitcoinj/bitcoinj-parent/0.14-SNAPSHOT/bitcoinj-parent-0.14-SNAPSHOT.pom
+                  https://jcenter.bintray.com/org/bitcoinj/bitcoinj-parent/0.14-SNAPSHOT/bitcoinj-parent-0.14-SNAPSHOT.jar
+                  file:/home/krt/tmp/fdroid/android-sdk-linux/extras/android/m2repository/org/bitcoinj/bitcoinj-parent/0.14-SNAPSHOT/maven-metadata.xml
+                  file:/home/krt/tmp/fdroid/android-sdk-linux/extras/android/m2repository/org/bitcoinj/bitcoinj-parent/0.14-SNAPSHOT/bitcoinj-parent-0.14-SNAPSHOT.pom
+                  file:/home/krt/tmp/fdroid/android-sdk-linux/extras/android/m2repository/org/bitcoinj/bitcoinj-parent/0.14-SNAPSHOT/bitcoinj-parent-0.14-SNAPSHOT.jar
+      > Could not resolve org.bitcoinj:orchid:1.2.
+         > Could not parse POM https://jcenter.bintray.com/org/bitcoinj/orchid/1.2/orchid-1.2.pom
+            > Could not find org.bitcoinj:bitcoinj-parent:0.14-SNAPSHOT.
+```
+
+Snapshots are.. ""undefined"", without a proper state and shouldn't be used for release builds.
+"
+greenaddress/GreenBits,closed,2Fa email can't be activated,[],"When i try to activate email 2FA the code receive on the email is not accepted. 
+"
+greenaddress/GreenBits,closed,"Include a Changelog Link, within the F-Droid App', on Info' Page; 1.64.",[],"Include a Changelog Link, within the F-Droid App', on Info' Page.  Not present, as of: 1.64.
+"
+greenaddress/GreenBits,open,[NTH] 2FA not effective on a stolen or lost phone. U2F on Yubiko NEO a better solution.,[],"# The weakness
+
+While for a web app it makes perfect sense to have the 2FA on sms phone call or google authenticator because you have to show the possess of a second device, in the case of an android app you have everything you need to confirm the transaction on the same device the app is on.
+
+This well known and hardly avoidable weakness could be healed by having the second factor on a device  other from the phone.
+## One possible solution
+
+Yubiko NEO [supports U2F over NFC](https://www.yubico.com/faq/does-my-yubikey-neo-support-u2f-over-nfc/). It would be possible to set up an other confirmation method based on this kind of devices.
+## Use case
+
+The user make ""sign and verify"" the transaction on Greenbits.
+A message reports the detail of the transaction and ask to swipe the yubikey on the phone.
+The U2F enabled yubiko NEO is swapped on the phone and the transaction is authorized.
+"
+greenaddress/GreenBits,closed,Allowing more than one trusted peer for SPV,[],"In the actual form only one trusted node is allowed unger settings / SPV synchronization.
+
+For backup and verification purposes it would be wise to allow plural nodes connections.
+
+One may be down or not in sync with the other (or with the rest of the network). If these are trusted peers it could be a signal that something is not going as expected too.
+
+Probably the best syntax could be a comma separated one for simplicity.
+"
+greenaddress/GreenBits,closed,Fixed toasts for camera permission notification.,[],
+greenaddress/GreenBits,closed,Fixed camera functionality for API 23,[],
+greenaddress/GreenBits,closed,"Camera issues on Android 6, reported on Nexus 5X","[Label(name=""bug"")]","As per title, the camera doesn't seem to work correctly on Android 6 Nexus 5X.
+
+This issue is unrelated to #47
+"
+greenaddress/GreenBits,closed,Crash on opening camera if clicking back - Tested on v1.54/v1.55,"[Label(name=""bug"")]","If you click the back button while the screen is still in black (you have to be fast), the app will crash.
+It happens with both sweep and send functions of the camera.
+
+Nexus 4.
+"
+greenaddress/GreenBits,closed,Disabled Tor connectivity for Android 6.0 and above.,[],
+greenaddress/GreenBits,closed,Take down SPV only in the case of intent to log out.,[],"This lets client re-connect to SPV after temporary loss of connection. 
+"
+greenaddress/GreenBits,closed,Enable auto-reconnect of SPV when connection is lost.,[],
+greenaddress/GreenBits,closed,Checking for nulls. Null errors being found here.,[],"Encountered when cycling data and opening/closing the Network Monitor activity.
+
+> 10-08 16:22:21.611    6030-6030/com.greenaddress.greenbits_android_wallet E/AndroidRuntime﹕ FATAL EXCEPTION: main
+>     Process: com.greenaddress.greenbits_android_wallet, PID: 6030
+>     java.lang.RuntimeException: Unable to pause activity {com.greenaddress.greenbits_android_wallet/com.greenaddress.greenbits.ui.NetworkMonitorActivity}: java.lang.NullPointerException
+>             at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3260)
+>             at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3219)
+>             at android.app.ActivityThread.handlePauseActivity(ActivityThread.java:3194)
+>             at android.app.ActivityThread.access$1000(ActivityThread.java:151)
+>             at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1321)
+>             at android.os.Handler.dispatchMessage(Handler.java:102)
+>             at android.os.Looper.loop(Looper.java:135)
+>             at android.app.ActivityThread.main(ActivityThread.java:5254)
+>             at java.lang.reflect.Method.invoke(Native Method)
+>             at java.lang.reflect.Method.invoke(Method.java:372)
+>             at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903)
+>             at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698)
+>      Caused by: java.lang.NullPointerException
+>             at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:213)
+>             at org.bitcoinj.utils.ListenerRegistration.removeFromList(ListenerRegistration.java:38)
+>             at org.bitcoinj.core.PeerGroup.removeEventListener(PeerGroup.java:689)
+>             at com.greenaddress.greenbits.ui.NetworkMonitorActivity.onPause(NetworkMonitorActivity.java:61)
+"
+greenaddress/GreenBits,closed,"Whited out mnemonics on NFC log-in, fixed race issue.",[],"Previous behavior would leave previous future fulfilled, but State being ""DISCONNECTED"". 
+
+Code would still attempt to fire rather than wait for full connection, leading typically to a ""Not connected"" message, and user has to manually press ""ok"". This happens after the app has successfully been connected previously and logged off.
+"
+greenaddress/GreenBits,closed,Added Network monitoring activity.,[],
+greenaddress/GreenBits,closed,SPV button now enables/disables SPV dynamically,[],"If there is no Wifi and SPV is behind by more than 1000 blocks, user will be asked if they want to enable SPV sync anytime they turn it on, or as they load the app, unless they click ""cancel"". If user clicks ""cancel"" they will be prompted the next time they cycle the SPV sync button until they click ""ok"".
+"
+greenaddress/GreenBits,closed,Changed Exit to Log out for user clarity.,[],
+greenaddress/GreenBits,closed,Force SettingsActivity to log out when timeout finishes. ,[],"Matches behavior of TabbedMainActivity. 
+
+Current behavior is to allow the user who re-opens app to mess with settings, then once back is pressed, gets kicked out to FirstScreenActivity.
+"
+greenaddress/GreenBits,closed,Fixes issue where peergroup fails to start syncing,[],"Doing a proper check to see if it's started so we can stop the process.
+"
+greenaddress/GreenBits,closed,Fix race condition that causes wallet to log out randomly after altim…,[],"…eout period. Start timer was being called one PIN ends, followed by setState(from successful connection to GAit servers), then right after stopTimer was being called for TabbedMainActivity, only to find the timeout variable null.
+
+{start/stop}Timer and setState still seems too race-prone. We simply remove the nullification of the timeout variable. 
+
+This should get rid of issue where Tor SPV users get logged out 100% of the time after altimeout. 
+"
+greenaddress/GreenBits,closed,spv was loading regardless,[],"add simple conditional
+"
+greenaddress/GreenBits,closed,Fixed error when output count is only 1 and rest goes to fees,[],"null case is actually handled, and correct output grabbed.
+"
+greenaddress/GreenBits,closed,Improved back button and post-send behavior.,[],"Pressing back brings user to ""ALL"" tab first then exits. (Improved life-cycle makes old behavior unneeded) 
+
+Sending (when app not sent from external intent) brings user back to ""ALL"" tab as well.
+"
+greenaddress/GreenBits,closed,Google Authenticator shared secret cannot be copied,[],"The shared secret below the qr code cannot be copied.
+"
+greenaddress/GreenBits,closed,removed now unecessary Sys.exit hack,[],"Unneeded after our recent fixes.
+"
+greenaddress/GreenBits,closed,Fix nfc login when already logged in. For now show text instructing u…,[],"…ser to log out.
+"
+greenaddress/GreenBits,closed,Updated strings,[],"Added languages.
+"
+greenaddress/GreenBits,closed,Fix URI case from pin login. Missing exchange rate. ,[],"Also fix EternityWall case where Intent category is missing.
+"
+greenaddress/GreenBits,closed,Lots of moves and improvements to spv connectivity.,[],
+greenaddress/GreenBits,closed,Lots of moves and improvements to spv connectivity. Timeout logs out …,[],"…properly and selecting new SPV modes changes on the fly.
+"
+greenaddress/GreenBits,closed,Create MnemonicCode.INSTANCE before creating Wallet instance.,[],"Required for Android as normal instantiation of Wallet is assumed to fail.
+"
+greenaddress/GreenBits,closed,fix spelling,[],
+greenaddress/GreenBits,closed,"isEmpty only for Strings, not charsequence",[],
+greenaddress/GreenBits,closed,logging out kills the app for now,[],"Mirrors current behavior of double-back on mainscreen and exit. Unfortunately the activity itself isn't killed before the exit call, so if user clicks on the icon before the activity is killed by the OS, it pops up briefly and disappears. 
+"
+greenaddress/GreenBits,closed,"Experimental support for trusted spv peer connections, including .onion addresses.",[],"UI steers user to use .onion addresses for their additional security and privacy properties.
+
+An additional quick fix to ensure peergroups are reset has been included. This will be replaced with more proper Android behavior. 
+"
+greenaddress/GreenBits,closed,TEE and Unplugged support,[],
+greenaddress/GreenBits,closed,Rebase Bitrefill with master,[],"Only a quick look-over so far.
+"
+greenaddress/GreenBits,closed,Updated back button behavior on main screen.,[],
+greenaddress/GreenBits,closed,Mixed bag of Ledger integration ... let's see what happens,[],
+greenaddress/GreenBits,closed,Fix display of blocks left when not connected to spv,[],"Previously displayed 0, now simply tells user that you are not yet connected.
+
+It also instantiates the spvblocksleft value to Integer.MAX_VALUE for sanity purposes.
+"
+greenaddress/GreenBits,closed,Fix Spv race condition,[],"Simple lock to make sure subsequent threads attempting to start sync get kicked out.
+"
+greenaddress/GreenBits,closed,Improve Backbutton behavior,[],"Pressing back twice now exits the app instead of refreshing.
+
+Pressing back on any of the main tabs will lead to this behavior.
+"
+greenaddress/GreenBits,closed,Improve back button behavior,[],"Pressing back twice now exits the app instead of refreshing.  
+
+Pressing back on any of the main tabs will lead to this behavior.
+"
+greenaddress/GreenBits,closed,Can not enable SMS 2FA,[],"As soon as I enter in phone number and click ""continue"", I get an ""Internal error"" toast message. I have tried with no previous active 2FA as well as with e-mail 2FA already enabled.
+"
+greenaddress/GreenBits,closed,Upgrade bitcoinj to 0.13.1,[],
+greenaddress/GreenBits,closed,Ledger transport,[],"Add new Ledger firmware & Proton transports
+"
+greenaddress/GreenBits,closed,Fix crash after sending funds by doing some code cleanup.,[],"When sending funds on my phone the GreenBits app always crashed after submitting the transaction. It was annoying enough, so I tracked it down to [MainFragment:153](https://github.com/greenaddress/GreenBits/blob/2da72b1c2946c2a6f3486a3f3477eec18de7efa1/app/src/main/java/com/greenaddress/greenbits/ui/MainFragment.java#L153) where getActivity() returned null due to the fragment being in the detached state and crashed the whole app.
+
+The (quick) fix is to cache the GreenAddressApplication reference in the GAFragment, such that when the transaction is processed by MainFragment it doesn't crash the app due to still being in the detached state.
+
+I got somewhat carried away and refactored the whole usage pattern of `((GreenAddressApplication) getApplication())` to `getGAApp()` and `getGAService()` functions.
+
+I did some basic testing and it seems my changes didn't break anything else, however, it would be great if someone else verifies that the app doesn't crash due to anything I did.
+"
+greenaddress/GreenBits,closed,font size scaling proposal for balance in main and send,[],"![screenshot_2015-02-19-08-56-29](https://cloud.githubusercontent.com/assets/6470319/6265192/aa8ce9f6-b82b-11e4-9f71-6fec11654714.png)
+"
+greenaddress/GreenBits,closed,GreenBits/app/src/main/res/values-es/strings.xml,[],"Translated to Spanish.
+Traducido al Español.
+"
+greenaddress/GreenBits,closed,"fix on non-us fiat display, moving buy btc button",[],
+greenaddress/GreenBits,closed,Fix for correctly formatting numbers,[],"added withLocale on monetary format otherwise it use english
+smaller font for balance
+less padding on list
+"
+greenaddress/GreenBits,closed,fixing broken lolli build and copy and add on receive tab improved,[],
+greenaddress/GreenBits,closed,"UI and language improvements, dev build on lolli (faster)",[],
+greenaddress/GreenBits,closed,Keyboard not available for passphrase,[],"After popup for passphrase appears, keyboard will not show.
+
+Nexus 5  5.0.1
+"
+greenaddress/GreenBits,closed,Missing translations,[],"There are some strings that still need to be translated in italian language, and maybe it's the same for other languages.
+
+I can be a good idea to open another project on Crowdin / Transifex, to make it easier even for outsiders.
+"

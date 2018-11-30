@@ -1,0 +1,644 @@
+repository,state,title,label,body
+bherrmann7/Car-Cast,open,Play button not working,[],"Play button does not work. Samsung galaxy s8, Android 7.0"
+bherrmann7/Car-Cast,open,total times on podcast screen,"[Label(name=""Feature Request"")]","I find it would be helpful to know the remaining playtime of my offline Carcast podcasts.
+Some feeds take only 1 minute, others 2 hours. To know that I carry next 13h52 with me, would be great.
+
+-> Playtime all Podcasts or
+-> Playtime actual cast until last or
+-> Playtime next cast until last   (would I prefer if refreshed not so often)
+-> Livecounter (but needs too much ressources I mean)
+
+j.teichmann@googlemail.com
+"
+bherrmann7/Car-Cast,open,NPE on send intent,[],"I think (though I haven't confirmed this) that sending the PAUSE command to car cast when it's already paused causes this crash.  I have Llama set up to send it to CC when it disconnects from my car's bluetooth.
+
+If I get a chance, I'll dig into the code further.
+
+```
+ java.lang.RuntimeException: Unable to start service com.jadn.cc.services.ContentService@353b99d0 with Intent { cmp=com.jadn.cc/.services.ContentService (has extras) }: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean java.lang.String.equals(java.lang.Object)' on a null object reference
+    at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:2906)
+    at android.app.ActivityThread.access$2100(ActivityThread.java:144)
+    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1376)
+    at android.os.Handler.dispatchMessage(Handler.java:102)
+    at android.os.Looper.loop(Looper.java:135)
+    at android.app.ActivityThread.main(ActivityThread.java:5246)
+    at java.lang.reflect.Method.invoke(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:372)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:899)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:694)
+ Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean java.lang.String.equals(java.lang.Object)' on a null object reference
+    at com.jadn.cc.services.ContentService.onStartCommand(ContentService.java:687)
+    at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:2889)
+    ... 9 more
+Force finishing activity com.jadn.cc/.ui.CarCast
+```
+"
+bherrmann7/Car-Cast,closed,Add a Gitter chat badge to README.md,[],"### bherrmann7/Car-Cast now has a Chat Room on Gitter
+
+@bherrmann7 has just created a chat room. You can visit it here: [https://gitter.im/bherrmann7/Car-Cast](https://gitter.im/bherrmann7/Car-Cast?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&content=body_link).
+
+This pull-request adds this badge to your README.md:
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/bherrmann7/Car-Cast?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
+
+If my aim is a little off, please [let me know](https://github.com/gitterHQ/readme-badger/issues).
+
+Happy chatting.
+
+PS: [Click here](https://gitter.im/settings/badger/opt-out) if you would prefer not to receive automatic pull-requests from Gitter in future.
+"
+bherrmann7/Car-Cast,open,"download screen, allow orientation change.",[],"I really like CarCast for it's simplicity, however I do not use it as intended - on a phone. Instead I used to listen to podcasts in the mornings on my 10"" tablet.
+
+Please consider the development of a landscape orientation view of the podcast download page. It is a bit annoying that this page ignores the orientation of the device and force the user to turn the tablet to clockwise when cheching for new podcasts and then backward after finished with the download page.
+"
+bherrmann7/Car-Cast,open,"podcast screen, more space between checkbox",[],"But I have big, lazy fingers. When i try to touch the check box to select a podcast, or often stats playing instead.  I would like more space between the check box and the show title please.
+"
+bherrmann7/Car-Cast,open,change quick jump size,[],"Make the quick jumps default to 30 seconds, but be adjustable by users in a preference setting.
+"
+bherrmann7/Car-Cast,open,Podcast list is compressed on Android 5.0,[],"The list of downloaded podcasts appears not to be scaling properly on Lollipop. This is with a large number (more than the screen size). 
+See below:
+![screenshot_2014-12-10-13-48-01](https://cloud.githubusercontent.com/assets/479643/5382995/67dad5d6-8073-11e4-90d1-34d5f0679f9d.png)
+"
+bherrmann7/Car-Cast,closed,some NPR casts not downloading,[],"I just added 'all things considered' and 'morning edition' using the links off NPR.org/rss. Even though he XML file seems to have new casts, carcast doesn't seem to want to download any of them.
+"
+bherrmann7/Car-Cast,closed,Podcast list fixes,[],"- Improves performance for podcasts with long descriptions (still needs work)
+- Strips html out of descriptions.
+- Replaces dp with sp in font sizes.
+
+Also eliminates or renames confusingly-named layouts.
+"
+bherrmann7/Car-Cast,closed,Fix NPE during phone calls,[],"Sometimes I was randomly getting this exception.  This should fix it.
+
+```
+java.lang.NullPointerException
+at com.jadn.cc.services.ContentService$1.onCallStateChanged(ContentService.java:535)
+at android.telephony.PhoneStateListener$2.handleMessage(PhoneStateListener.java:739)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:158)
+at android.app.ActivityThread.main(ActivityThread.java:5751)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1083)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:850)
+at dalvik.system.NativeStart.main(Native Method)
+```
+"
+bherrmann7/Car-Cast,open,Scheduled download not (re)starting after reboot,[],"I'm not sure about this, but I think there might be an issue around the scheduled download alarm not being reinstalled following a reboot.  Several times, after reboot, my next download fails to be triggered.
+
+Unfortunately, I don't reboot my phone frequently enough to be sure of the pattern.
+
+(This is a separate matter to the DOWNLOAD PR I posted a moment ago).
+"
+bherrmann7/Car-Cast,closed,Add DOWNLOAD broadcast intent.,[],"Hi Bob,
+
+Would you consider the attached PR?
+
+It adds an additional test to trigger a DOWNLOAD via an external broadcast request.
+
+Thanks!
+"
+bherrmann7/Car-Cast,open,allow downloading a specific podcast from a subscription,[],
+bherrmann7/Car-Cast,open,Play Order should default to Oldest First,[],"When adding a subscription, the ""Newest first"" setting should default to unchecked as this is the natural order for most listeners for podcasts of radio programs, etc.  I'm not sure when I would even want to play them in reverse order.
+
+If there really are usage scenarios where it makes sense for this to be checked by default, we should have the default set in ""Global Settings"" so that a user can configure whether they want this check box to be initialized to On or Off.
+"
+bherrmann7/Car-Cast,open,Confirm Delete of Subscription,[],"I was editting my subscriptions and accidently released my finger over Delete instead of Edit (They are so close so very easy to do; should really be separated better).
+
+Delete happened immediately and without confirmation or undo possibility.
+
+Anything descructive like this should either have a specifc confirmation (""Confirm delete of entire subscription for ""Black Coat, White Art"") or and UnDo Delete.
+
+Love the player,
+
+Gerard
+"
+bherrmann7/Car-Cast,closed,Record GPS position and times.,[],"Keep track of when and where CarCast is used during a typical ""commute"" 
+
+Mostly so I can collect statistics about when I commute and how long it takes.
+"
+bherrmann7/Car-Cast,open,"Add ""Import OPML"" or ""Import Subscriptions"" ",[],"Right now the subscriptions page has ""Export OPML"" - but only a small batch of nerds know what OPML is.   Should probably have ""Save Subscriptions"" or ""Send Subscriptions to other"" or something.     And a corresponding way to do ""Import of OPML"" as well.    
+"
+bherrmann7/Car-Cast,open,Audio Recorder improvments/fixes,[],"include a delete and play button right on list screen.   Vary entries color
+"
+bherrmann7/Car-Cast,open,"""Top"" button should be ""Play Next"".",[],"The only reason I have ever used the ""Top"" button on the podcasts page is to move a podcast to the top so I can then move it _again_ down to after the currently-playing podcast.
+
+Suggest:
+- the ""Top"" button should be replaced with ""Play Next"" button which moves the indicated podcast(s) to immediately after the currently-playing podcast.
+
+In fact, I can't really think of any particularly good reason for a ""Top"" button at all.  If you move a podcast to the top and leave it there, it'll never be played.
+
+I'd be happy to work on this.  I'm just sounding out (Bob's) opinion before doing so.
+"
+bherrmann7/Car-Cast,open,"When changing data directory, copy data files",[],
+bherrmann7/Car-Cast,open,Volume Keys on Face,[],"roberto.camisana@gmail.com writes:
+
+Hi,
+I'm using Carcast Pro since years and it works great.
+The only feature I miss is a volume setting, now that it's possible to
+remove the recording icon (I did) and there is free space on the
+screen, would it be possible to put two big buttons to raise/lower the
+playback volume?
+
+While in car my phone is in a phone holder and the phone volume keys
+are not reachable, and changing it while driving could be dangerous
+
+(pick up phone, adjust volume, place phoen back on holder, all this
+with a single hand and while driving... argh!  )
+
+Please please add a volume change slider or buttons! 
+  Roberto.
+"
+bherrmann7/Car-Cast,open,Pause on Dictation,[],"mattevans@hushmail.com says:
+Bob,  thanks for contacting me. My  pro version doesn't automatically pause when I use the Google search function (desktop widget), Google voice dictation, when I play an mp3 file or when listening to Pandora. It does pause when I receive a phone call (and set to ring or vibrate). Thanks and good luck with the app. Matt Evans
+"
+bherrmann7/Car-Cast,closed,Volume normalization between podcasts,[],"I listen to different podcasts and each uses its own volume setting, it would be nice if CarCast adjusted the volume based on measuring the average volume of each podcast or by using the likes of ReplayGain which I believe has support in Android.
+"
+bherrmann7/Car-Cast,closed,"Only focus subscription URL for ""Add"".",[],"Hi again Bob,
+
+Here's a small thing that's been bugging me.  Perhaps it bugs you and/or others too.
+
+Whenever you edit a subscription, the URL text box gets the focus.  So the keyboard jumps onto the screen.  Usually, that's not what I want.
+
+You can get to this activity in one of three ways:
+- From the subscription list (`Edit`); in which case we probably don't want to edit the URL, rather change one of the other settings.  So don't focus the URL.
+- From the `Add` entry on the subscription list menu; in which case it _does_ make sense to focus the URL; that's probably where the user will type/paste next.
+- From externally; in which case we already have a URL, so we're unlikely to want to change it; so don't focus it.
+
+I promise.  After this, I have just one change I'm interested in proposing.  Well, for the time being.  So I'll be off your back soon.
+
+Thanks for the great work!
+
+Steve
+"
+bherrmann7/Car-Cast,closed,Better ordering of priority podcasts.,[],"Hi Bob,
+
+Thanks for taking yesterday's PR.
+
+Here's some better code for inserting new priority podcasts when the currently-playing file is in `podcast-order.txt`.  I hope you'll consider it.  Basically, it ensures that multiple podcasts from a single priority subscription remain in the order in which they otherwise would have been.
+
+Say we have: `CP, P1, P2, N1` in `podcast-order.txt` (the first being the Current podcast, the next two from a Priority subscription, and the fourth a Non-priority podcast.
+
+Now, we download two new podcasts, `P3` and `P4` from the same subscription.  And let's say that this is order that the user has selected via ""Newest first"" on the subscription page.  So this is the order the user wants.
+
+With the code I submitted yesterday, we end up with `CP, P4, P3, P1, P2, N1`.  Why? because, in effect, podcasts are added individually.  A new `MetaHolder` is created after each podcast is downloaded.
+
+This PR fixes the order to `CP, P1, P2, P3, P4, N1`, which I think is more intuitive:
+- after the current podcast, we get the priority podcasts in the same order as they otherwise would have been, followed by any remaining podcasts.
+
+And, podcasts from a single subscription always end up in the correct order, whether they're in `podcast-order.txt` or not.
+
+Thanks,
+   Steve
+"
+bherrmann7/Car-Cast,closed,Priority subscriptions.,[],"Hi Bob,
+
+I've another pull request which I hope you'll consider.  This one is considerably more complicated than the previous one, so here's a bit of a walk through...
+
+The idea is to add priority subscriptions.  I have a long list of subscriptions and a long list of downloaded podcasts.  However, there are a couple of subscriptions which -- when there's a new episode -- I absolutely want to listen to it next.  In my case, this is typically coverage of multi-day sports events.  For somebody else, it might be a daily news briefing or the like.
+
+The idea: add a `priority` checkbox to the subscription activity and have newly-downloaded priority podcasts added immediately after the currently-playing file.
+
+The changes are fairly substantial.
+
+First, I added the checkbox and fixed the code that reads/writes subscriptions such that it can handle both old-style and new-style subscriptions.  I see you've made similar changes in the past. Then I pushed the new `priority` property through the download logic such that we know a podcast's priority at the point where it's downloaded.
+
+For priority podcasts, I changed the way file are named.  Where previously it was `XXXXX.mp3` (where `XXXXX` is the timestamp) now it's `YYYYY-XXXXX.mp3`, where `XXXXX` is as before, but `YYYYY` is the timestamp of the currently-playing file.  The idea is that priority podcasts will just sort into the right place. 
+
+Aside:  I also changed the sort order from being based on file creation/modification time to being based on the actual file name.
+
+Up to this point, everything works fine.  Except if there is a `podcast-order.txt` file present and the currently-playing podcast is one of the files named therein.
+
+So there are two cases.  The simple case where the sort on the file name does the trick, and a second case where a newly-encountered file is inserted at the correct position within the initial `metas` list.
+
+Sorry, it's long and a touch tricky.  I hope you'll nevertheless take the time to work through it.
+
+Many thanks,
+   Steve
+"
+bherrmann7/Car-Cast,closed,Documentation for broadcast intents.,[],"Thanks for merging the earlier pull request.
+
+It makes sense to document the feature somewhere.  However, it's probably too obscure to warrant adding it to your web page.  It's only likely to confuse most folks.
+
+But if you leave this README file lying around then geeks will find it, and Google will pick it up.
+"
+bherrmann7/Car-Cast,open,Audio Recorder improvments/fixes,[],"- automatic translation to text
+- setting to always email immediately
+- fix auto send on wifi... why is this broken?
+- save location with audio.
+"
+bherrmann7/Car-Cast,closed,Add receivers for broadcast intents.,[],"Hi.
+
+I wonder if you might consider incorporating the attached.
+
+It implements three broadcast receivers for CC:
+- `com.jadn.cc.services.external.PAUSE` (pause playback)
+- `com.jadn.cc.services.external.PLAY` (begin playback)
+- `com.jadn.cc.services.external.PAUSEPLAY` (toggle play/pause)
+
+Why?  Because these let me control CC from Tasker (or any similar automation app).
+
+For example, I can have CC begin playback automatically when headphones are inserted, but -- in my case -- only in the morning.  I use a different audio app in the evening.
+
+I'm not too familiar with Android intent handling, so there may be a better way to achieve the same thing.  But, at least this doesn't seem to break anything.
+
+Thanks!
+
+Steve (long-time CC-pro user).
+"
+bherrmann7/Car-Cast,closed,Streamer,[],"Hi.
+
+I wonder if you might consider incorporating the attached.
+
+It implements three broadcast receivers for CC:
+- `com.jadn.cc.services.external.PAUSE` (pause playback)
+- `com.jadn.cc.services.external.PLAY` (begin playback)
+- `com.jadn.cc.services.external.PAUSEPLAY` (toggle play/pause)
+
+Why?  Because these let me control CC from Tasker (or any similar automation app).
+
+For example, I can have CC begin playback automatically when headphones are inserted, but -- in my case -- only in the morning.  I use a different audio app in the evening.
+
+I'm not too familiar with Android intent handling, so there may be a better way to achieve the same thing.  But, at least this doesn't seem to break anything.
+
+Thanks!
+
+Steve (long-time CC-pro user).
+"
+bherrmann7/Car-Cast,closed,Variable Speed improvements,[],"Changes to variable speed settings, so that they apply dynamically.
+
+Implemented the warning if you try to enable variable speed playback without having an appropriate library installed. 
+
+PLEASE NOTE that the links to Google Play store only kinda work, because _something_ in Car Cast is firing and causes Car Cast to redisplay itself, and close the Google Play app.
+
+I suspect it's CarCast.onActivityResult
+
+If you can't see what's causing this refresh issue, then I can just take out the links to the Play store, and user will have to do it manually. Very weird though!
+"
+bherrmann7/Car-Cast,closed,fix layout on Nexus4,[],"Nexus 4 is 768x1280 on a 4.7"" screen.
+The Feedback / Help menu does not look good at all on this device.
+
+Change the way buttons are created: all are relative to qanda or parent
+"
+bherrmann7/Car-Cast,closed,Variable Speed Support added,[],"Hi Bob,
+
+I've added the client code for the ""Presto"" variable speed sound library, so that Car Cast can now playback podcasts at variable speeds using both [""Presto""](https://play.google.com/store/apps/details?id=com.aocate.presto), which is kinda buggy, and my own [""Stable Speed""](https://play.google.com/store/apps/details?id=com.stuntbyte.stablespeed) 
+
+Cheers
+Kerry
+"
+bherrmann7/Car-Cast,closed,Base the search option on public podcast directories,[],"I tried to see if your app would find my podcast, Sceptici în România (http://podcast.sceptici.ro), and if not, to check which podcast directory is using, so I can register my podcast.
+
+I was surprised to see it didn't find it, then I looked into the code, and, from my superficial analysis, I concluded that the app is using a private list which is under your control at http://jadn.com/carcast/, via http://jadn.com/carcast/search?q=... queries.
+
+Is my assessment correct? If so, could you please use some public podcast directory like podbean.com, iTunes, podcastalley.com or other such services? This would help CarCast to gain more popularity, since its search function would yield better results.
+"
+bherrmann7/Car-Cast,open,demos,"[Label(name=""Defect"")]","demos out of date (aka canceled podcasts)
+"
+bherrmann7/Car-Cast,closed,Build problems,[],"I get a lot of errors when trying to build 1.0.142 with ant. Firstly to do with the Manifest and then other things.
+"
+bherrmann7/Car-Cast,open,podcast filtering / unmark deleted,[],"the ability to sort the podcast list into displaying only certain subscriptions and also the ability to mark a listened to podcast as not listened to.
+"
+bherrmann7/Car-Cast,open,prefix downloads with subscription identifier,"[Label(name=""Feature Request"")]","aka AA383838383 for one subscription BB3737373 for another.
+"
+bherrmann7/Car-Cast,closed,App seems to forget location,[],"Quite often it forgets where I left off. It will remember where I left off previously.
+It seems to get confused sometimes where it will refuse to delete podcasts. After I hit delete they stay in the list. The only way to fix this is to force close the app.
+
+I love the new ability to reorder podcasts, but it gets confused if I move a new podcast to the top. For example lets say I have listened to 15 minutes of a long podcast, the next day I download a new batch of podcasts which includes a short podcast (such as the npr hourly news summary) which I like to listen to before resuming the long podcast. When I move the short one to the top it will say I am 15 minutes into a 5 min podcast. I need to skip ahead and back again to get the app back to sanity.
+
+reported by: kfitch42@gmail.com
+"
+bherrmann7/Car-Cast,open,Feature request: Localization,[],"Is wiould be awesome if Car Cast would be available in languages other than English.
+It could be done using https://www.transifex.com/ or http://crowdin.net/ for example.
+I'd volunteer to translate it to Russian.
+"
+bherrmann7/Car-Cast,open,Feature Request: -7 seconds (to complement +30 seconds),[],"Sometimes we jump too far skipping recorded commercials, so backing up a little would be a nice new simple feature.
+
+Thanks!!
+"
+bherrmann7/Car-Cast,open,Audio recordings to email,"[Label(name=""Feature Request"")]","Should have an option to send audio recordings to email (and have them arrive as mp3. )     
+"
+bherrmann7/Car-Cast,open,"Subscription ""Test"" should be better","[Label(name=""Feature Request"")]","If you enter any valid xml into the subscription page, the Test button doesnt tell you that the feed is bad (aka no enclosure's with URLs which contain .mp3)
+"
+bherrmann7/Car-Cast,closed,Make playback faster (up to 2x?),"[Label(name=""Feature Request"")]","See if the SoundPool can do this, http://developer.android.com/reference/android/media/SoundPool.html
+
+Let me first say that I enjoy your app and use it daily.  Thank you.  I have a suggestion for a future feature.  I would love to be able to listen to a podcast at 110% or 125% of its intended speed.  I'm certain that you are quite busy with improvements that are needed instead of just desired.  But if it would go on the bottom of your improvement list, I think that would be great.  Thank you again for this app.
+
+-- Carl (cdwittework@gmail.com)
+"
+bherrmann7/Car-Cast,open,specify storage location,[],"any app that does not allow specification of the storage location will store its storage card data or backups on the internal SD Card.  This is why I asked you to allow users to specify where to store the files.  Some apps allow this, thus allowing its users to specify the external storage card.  On the Razr Maxx, this is designated ""/mnt/sdcard/"" (internal card) or ""/mnt/sdcard-ext/"" (external card).
+ --- dbfree01@ausdbs.com
+"
+bherrmann7/Car-Cast,open,Confirm on Delete all recordings,[],"Whilst driving, I accidentally hit '
+delete all' voice recordings. Can I get them back? Wd you consider adding a confirmation step?
+Ta,
+David davidm@dr.com
+
+Perhaps an ""Undo delete all"" button on the recorder screen - in black on yellow, would be better.
+-bob
+"
+bherrmann7/Car-Cast,closed,ftp is unsupported as enclosure protocol,"[Label(name=""Defect"")]","A user had a stream with a podcast specified with the ftp protocol
+"
+bherrmann7/Car-Cast,open,"Attempt recover from ""unexpected end of stream""","[Label(name=""Defect"")]","Probably should try 3 attempts with a 10 second sleep when we get ""unexpected end of stream""  (If the number of bytes read already is greater than zero.)
+
+07-20 22:50:06.113 D/dalvikvm(12303): GC_CONCURRENT freed 665K, 22% free 10941K/13959K, paused 2ms+3ms
+07-20 22:50:06.113 I/CarCast/Download(12303): Problem downloading http://feedproxy.google.com/~r/TruthdigPodcast/~5/T5HMGAVPUEU/TDRadio_062812.mp3 e:java.io.IOException: unexpected end of stream
+07-20 22:50:06.113 I/CarCast/Download(12303): Finished. Downloaded 0 new podcasts. Jul-20 10:50PM
+07-20 22:50:06.257 D/dalvikvm( 204): GC_CONCURRENT freed 1195K, 41% free 13330K/22279K, paused 2ms+7ms
+"
+bherrmann7/Car-Cast,open,List podcasts with section headers?,"[Label(name=""Feature Request"")]","http://www.coderzheaven.com/2012/02/24/listview-with-sections-in-android/
+"
+bherrmann7/Car-Cast,closed,Bluetooth play/pause/skip,[],"Having issues with BT clivedjames@hotmail.com
+"
+bherrmann7/Car-Cast,open,OPML,"[Label(name=""Feature Request"")]","No OPML support.   Makes it hard to switch from phone to phone.
+
+Would be nice to have ""CarCast"" ML too which kept track of history.... and current locations and podcasts.  (aka everything but mp3s) Almost a cloud sync
+"
+bherrmann7/Car-Cast,open,Rotation preference seems sticky,[],"After changing the preference back to AUTO, the app remains stuck in either portrait or landscape
+"
+bherrmann7/Car-Cast,open,"Rotate phone, loose selections on Podcasts screen",[],
+bherrmann7/Car-Cast,closed,Audio focus,[],"should pause when temporarily loosing audio focus (think GPS chatting)  - should resume after focus is returned.
+
+Should pause when audiofocus is permanently lost
+"
+bherrmann7/Car-Cast,open,ICS Lockscreen controls,[],"Hi Bob,
+
+Would you be interested in adding a feature to Car Cast?
+I enjoy applications that show basic control buttons on ICS lock screen.
+One example is TuneIn Radio.
+
+What do you think about this idea?
+
+Cheers,
+Kari 
+kari.koivisto@iki.fi
+"
+bherrmann7/Car-Cast,open,Better ordering,"[Label(name=""Feature Request"")]","Hi,
+Acctually there is no sort option, podcast are placed by auto download order.
+I'd like, in order of preferences
+By subscription and download date
+By size
+By podcast title
+Thx
+
+Ps another feauter : filter auto remove on end , like black/whitelist subscription
+I.e. auto remove on end subscription A C and not B
+I.e auto remove on end all bat not E and F
+
+-- a.zanin@sirti.it
+"
+bherrmann7/Car-Cast,closed,Bluetooth on tablet not working,[],"issue is with my bluetooth devices. When I use car cast on my android phone the controls (pause/play etc) work perfectly, but on my tablet, they don't work at all.   railrider66@gmail.com
+"
+bherrmann7/Car-Cast,open,Car Cast Cloud account,"[Label(name=""Feature Request"")]","Create a way to add a cloud account.
+
+Will allow sync subscription list between phones.
+Will allow sharing of subscriptions with others (if checked make public)
+"
+bherrmann7/Car-Cast,open,"Automatic deletes, global and per subscription settings.",[],"I stopped using it because it got into
+data bloat land. It would be kewl if one could set selected casts on
+the fly,  to delete automagically after whatever time frame  a user
+requests for a particular feed, IE: Wired feeds: 1 week, PopSci: 2
+Weeks and so forth.
+pete.hrmn@gmail.com
+"
+bherrmann7/Car-Cast,closed,Investigate pause and resume on notification,"[Label(name=""Defect"")]","Hi,
+
+Like the problem, but one request: when a mail arrives with a sound while playing, the podcast continues, and i lose two seconds. I've used other apps before which pause when the system plays a sound, i think. Would you be so kind as to investigate this possible enhancement?
+
+Cheers
+tom.muylle@gmail.com
+"
+bherrmann7/Car-Cast,closed,add orientation preference: Auto/Landscape/Portrait,"[Label(name=""Feature Request"")]","Some users dont like the screen rotating on them.   Add a ""orientation"" preference.
+
+---
+
+Because I like to keep all other applications auto rotating but in my opinion it is no use to rotate carcast buttons interface. 
+
+The cons is interface inconsistency on a slow smartphone.
+Often when I am handling the phone, (putting the phone close to my ear or getting into the car or laying down on bed) the accelerometer senses a tilt and rotates. The app immediately remaps touch sensitive areas to new button positions, but the graphical redraw is slow hence for a couple of seconds I still see the old button layout. So when I press where I can see the ""start button"" this often activates the ""record note"" function or other unwanted behaviors happen.
+
+daniel@fastoffice.it
+"
+bherrmann7/Car-Cast,open,Multiple download times,"[Label(name=""Feature Request"")]","Hi.
+Would it be possible to have it as an option to automatically download feeds twice a day?
+I work shifts so often miss out on downloading as I'm at work either during the day, or night.
+
+Thanks.
+
+gtfctim@gmail.com
+"
+bherrmann7/Car-Cast,closed,update podcast database,[],"I'm unable to find a podcast by Dave gorman of absolute radio. It does exist because I can download it via Google's listen. If I copy the download address I get an error...see the 9th entry from the top.
+
+owenpassey@gmail.com
+"
+bherrmann7/Car-Cast,closed,More ordering/display options for podcast list.,"[Label(name=""Feature Request"")]","Love your app. It just works. I would like to be able to change the order in which downloaded podcasts play. A re-sequence feature would make your app perfect. Thanks.
+Patrick
+railrider66@gmail.com
+"
+bherrmann7/Car-Cast,open,Delete All causes ForceClose,"[Label(name=""Defect"")]","if you delete all, then go back - you get a force close...    Sloppy
+
+reported by rich.wookey@yahoo.com
+"
+bherrmann7/Car-Cast,closed,CarCast stats,"[Label(name=""Feature Request"")]","I'd like a CarCast stats page which shows what other people are doing with carcast.    
+"
+bherrmann7/Car-Cast,closed,My CarCast Page,"[Label(name=""Feature Request"")]","I'd like a web page to see what I've listened to with Car Cast.
+
+AKA   http://jadn.com/carcast/bherrmann7/
+
+When running CarCast,  I'd like to be able to specify if I want such a page, if I want it to be private or if I want it to be public.  I will be prompted for a username, email address and password.  
+"
+bherrmann7/Car-Cast,open,clicking on Notification icon ...,[],"- The ""when downloading notification icon""  should take the user to the download activity
+- The ""finished downloading notification"" should either take the user to the podcast list - or ideally a ""download summary"" which can show the user what was downloaded.
+
+feedback from erikhburton@yahoo.com
+"
+bherrmann7/Car-Cast,closed,adding a podcast,[],"- should ignore double ""http://http://"" when entering a podcast (happens on cut/paste)
+- if no http:// prefix is entered, it should just add one (instead of giving a java error.)
+"
+bherrmann7/Car-Cast,open,Microphone gets giant on tablet,[],"The ""Microphone"" shouldnt grow huge on tablets
+"
+bherrmann7/Car-Cast,open,"The ""per subscription default when upgrading"" isnt global",[],"I downloaded the latest update and got the per subscription download feature.  Seems to work so far.
+The only oddity was that the default setting for all subs was unlimited, although it should have been global.  After the upgrade, I suddenly got over 100 podcasts.
+"
+bherrmann7/Car-Cast,open,Feature Request: View show notes,"[Label(name=""Feature Request"")]","It would be useful to view show notes. For example, cchits.net (my own site) has relevant information for the podcast in the RSS feeds (http://cchits.net/daily/rss)
+"
+bherrmann7/Car-Cast,closed,Removing Headphone Jack does not necessarily set bookmark,[],"This might be a duplicate of Bug #8, but recently I haven't been able to reliably resume playback from the same spot after pulling the headphone jack out. 
+
+This may or may not be related to installing a new ROM (if there's some way to test, I'd be happy to do so).
+
+My symptoms:
+1. Play a podcast. 
+2. Pull the headphone jack
+3. Playback stops, but the currently playing podcast resumes at either the most previous bookmark or the beginning of the podcast.
+
+Thanks for all your work!
+"
+bherrmann7/Car-Cast,closed,Review if  debug mode is needed on release builds.,[],"Carcast has ""android:debuggable=true"" in the manifest, even on release builds. Apparently this is not needed anymore and may slow down the device. Please see the answers on this stackoverflow page:
+http://stackoverflow.com/questions/4580595/what-would-happen-if-android-app-is-released-with-debuggable-on
+"
+bherrmann7/Car-Cast,open,Download specific podcast from subscription list...,[],"I would like to, from my subscription list i could click to select a pcast from that sub. 
+"
+bherrmann7/Car-Cast,open,podcasts are truncated,"[Label(name=""Defect"")]","> I frequently find podcasts are truncated if the data connection is anything less than 100% stable. To complete the download the process has to restart again from the beginning. With an edge dialup connection this takes time and burns battery life. Would it be possible to add an option when starting each download session to resume partially completed downloads? Richard - HTC desire S
+"
+bherrmann7/Car-Cast,open,sleep timer function,"[Label(name=""Feature Request"")]","we get a request for this about once a month..... 
+"
+bherrmann7/Car-Cast,closed,preference: dont use lightbulb notification of audio recordings,[],"The recording portion may have been overlooked, I've used it to record important conversations but now theres a lightbulb always in my top bar telling me that I have recordings. The only way to get rid of it is to Force Stop the app in settings.
+"
+bherrmann7/Car-Cast,open,share button,"[Label(name=""Feature Request"")]","be awesome if I could share my recordings with others so that I wouldn't have to txt it out, like a share button. 
+"
+bherrmann7/Car-Cast,open,"When you delete podcasts, CarCast forgets where it currently is (if playing)",[],"Today I was listening to a podcast. I pressed ""Menu"" and chose ""Podcasts."" I had some podcasts that I had already listened to so I pressed ""Menu"" and pressed ""Delete Listened To."" The podcast I was listening to stopped playing and when I returned to the playing screen it had been reset to 0:00.
+
+This is an example of the situation we have discussed previously where Car Cast doesn't maintain the current location of a playing podcasts.
+
+Could Car Cast automatically retain the current location of playing podcasts before leaving the playing screen? Like pressing ""Pause"" does?
+
+Ben Moore
+http://benmoore.info
+"
+bherrmann7/Car-Cast,open,"New feature, Volume memory",[],"Would it be possible to have a ""volume override"" option that, if set,
+would put automatically the media volume to a desired level when
+starting Carcast?
+"
+bherrmann7/Car-Cast,closed,Nightly delete of listened to podcasts,[],"If ""Nightly auto delete listened to"" is checked, then delete listened to podcasts at nightly download time.
+"
+bherrmann7/Car-Cast,open,Save progress every 30,[],"seems on gingerbread we occasionally top playing, for unknown reasons....   CarCast seems to completely loose it's place.   To make this even sligly less painful, we should save our location about every 30 seconds.
+"
+bherrmann7/Car-Cast,closed,Fixing issue #38: Missing notification during play,[],"This fixes the missing notification issue, it adds it only during playing sessions so that if the app is paused it can be removed from memory. I tested it on my device and it works perfectly now.
+"
+bherrmann7/Car-Cast,open,Download Progress counter acting strange,[],"Thanks for a very useful piece of software that I enjoy using a lot.
+
+While downloading some podcasts a counter is shown on the download page like this:
+
+142341k/103443k
+
+Sometimes the first part of of the counter goes further that the last part. I take that must be a programming mistake that can easily be corrected. According to my understanding the first number should reach the second number and then start downloading the next episode. This is purely a cosmetic problem since the podcasts are downloaded error free.
+
+All the best from
+Copenhagen
+"
+bherrmann7/Car-Cast,closed,Foreground mode,[],"Hi,
+
+thanks for carcast, I'm using it everyday.
+Is there a reason why you don't use the android foreground mode? I have a Mot Milestone (Droid) which is a bit underpowered and if there is a lot happening on the device (navigation + general sync) sometimes CC gets stuttery or gets killed. There is the ""Foreground mode"" for apps in Android to improve scheduling for the app and avoid getting killed, specifically for things like music players.
+http://developer.android.com/reference/android/app/Service.html#startForeground%28int,%20android.app.Notification%29
+
+Andreas.
+"
+bherrmann7/Car-Cast,closed,selective history erase,[],"In the next update can there be a way to selectively delete from the podcast download history? For example when a download is incomplete?   Notify aashd@comcast.net when completed
+"
+bherrmann7/Car-Cast,open,more description,[],"Like the program. It would be nice if the descriptions in the list of podcasts was more than one line. Many of the podcasts have similar titles. 
+"
+bherrmann7/Car-Cast,closed,Fixed ArrayIndexOutOfBoundsException(HTTP redirects) and added Ogg Vorbis,[],"Hi Bob,
+
+see subject :)
+
+Seems like Android is not handling HTTP redirects very well. The InputStream of the connection does return the response body from the original request. What we want however is the response body from the _redirected request_.
+Caveat: the new code is assuming that it's a HTTP url. If you want to support others (e.g. file://) it needs some more massaging (e.g. some instanceof).
+
+As for Ogg Vorbis support: I added the file extension plus the mime type (also for mp3) to the audio recognition method.
+Caveat: I introduced the new property mimetype to MetaNet => this affects backwards compatibility, see MetaNet.getMimetype() for details.
+
+Hope this helps
+Christoph
+"
+bherrmann7/Car-Cast,open,per subscription downloding,[],"Per subscription downloading...  add a menu item on the subscription screen to allow for downloading of just that subscription...
+
+Tell, Robert Liles robert.liles@gmail.com when implemented.
+
+-bob
+"
+bherrmann7/Car-Cast,closed,Use a headset receiver attached to the ContentService.,[],"This is a pull request of a branch, but it looks like GitHub will pull it straight into bhermann7:master...
+"
+bherrmann7/Car-Cast,closed,"This seems to work, player in background or downloads in background.",[],
+bherrmann7/Car-Cast,closed,"add warning to ""Erase download history""",[],"I clicked the button to ""Erase download history."" It's in the same place as ""Download podcasts"" is on the primary menu screen. Please put a confirmation on that too!
+
+benmoore@desotonet.com
+"
+bherrmann7/Car-Cast,open,Add delete button to player,[],"add delete button to player.
+"
+bherrmann7/Car-Cast,closed,Preference to keep display on,[],"Preference to say dont sleep when android is running.
+"
+bherrmann7/Car-Cast,closed,Save button hard to find,[],"when adding a subscription the save button is hard to find when the screen is oriented....
+
+Probably a ""done"" button should be on the keyboard so that the keyboard can be dismissed - or a scroll bar should appear showing that there is more stuff to do on this page...  
+"
+bherrmann7/Car-Cast,closed,Audio Recorder layout sucky,[],"Uses absolute positioning which looks terrible on my Samsung Vibrant
+"
+bherrmann7/Car-Cast,closed,Change feedback email address,[],"I edited the  googlegroup settings, it now accepts thirdparty emails, so change the CarCast feedback to carcast-devs@googlegroups.com
+"
+bherrmann7/Car-Cast,closed,next/prev podcast size cache seems busted.,[],"I will take a look into that.   Car Cast is supposed to ""cache"" the size/length of the file, sounds like it's failing to do that and trying to size it when doing next/prev.  I will investigate.
+
+Thanks
+-bob
+
+On 12/20/2010 06:07 PM, Phil Buonomo wrote:
+
+> Thanks once again for this excellent app. I wanted to let you know it sometimes get locked up while skipping forward and backward. This may be because 
+> the file size of the podcast I download reports a different download size than the file actually is.
+"
+bherrmann7/Car-Cast,open,No Download Details on Tribe,[],"When downloading podcasts, the Details button is below the fold, and once again, the screen won't scroll. 
+"
+bherrmann7/Car-Cast,closed,"Fix shitty ""Add"" button on Add Subscription screen",[],"Alfred writes,  Tried subscribing to Boagworld.  Was able to copy and paste feed URL.  Test was successful.  But the subscribe button has been pushed off the bottom of the screen, and it won't scroll. (The Tribe has a resistive touch screen with dimensions 240 x 320.)
+"
+bherrmann7/Car-Cast,open,"""delete all previous"" did a ""delete All""",[],"[Alfred writes] On my Nexus One, while playing a podcast decided to delete all previous podcasts.  I touch held the previous podcast to the one that was playing,
+and selected Delete Previous.  CarCast crashed.  When I came back to it, all podcasts were gone. 
+"
+bherrmann7/Car-Cast,open,AlarmHost issues,"[Label(name=""Defect"")]","if CarCast starts and alarm is set, but no service.... bitch and star the alarm host
+
+This is a workaround for the problem of the alarm host getting killed... typically by task killers.
+"
+bherrmann7/Car-Cast,closed,Add Delete Listened To,"[Label(name=""Feature Request"")]","Add ""Delete Listened To"" to podcasts screen
+"
+bherrmann7/Car-Cast,open,Downloading should retry 3 times per podcast,[],"- Downloading should retry to download three times per podcast
+- perhaps downloading should have a pause / resume button....
+"
+bherrmann7/Car-Cast,open,Deleting a podcast during downloads causes CC to force-close,"[Label(name=""Defect""), Label(name=""Downloads"")]","During a two-podcast download, the first podcast completed downloading, and CC started on the second.  Since I didn't want to listen to the first podcast, I went to the podcast list, to delete the file.  The force-close dialog immediately came up.  When CC came back, downloads had been aborted and the first file was still on the filesystem.
+"
+bherrmann7/Car-Cast,closed,Version number,[],"Only nerds care about the version number, move it to the Settings page.
+"
+bherrmann7/Car-Cast,closed,We need some tests,"[Label(name=""Internal"")]","Info here:
+http://developer.android.com/guide/topics/testing/testing_android.html
+"
+bherrmann7/Car-Cast,open,Podcast Sorting,"[Label(name=""Defect""), Label(name=""Feature Request"")]","rich.okere@gmail.com would like it if we sorted podcasts alphabetically.
+
+Perhaps a page off the Podcasts screen which lets you tinker with sort options
+"
+bherrmann7/Car-Cast,closed,"When jadn.com is down, Car Cast is poorly behaved","[Label(name=""Downloads"")]","I can't pull down podcasts (doesn't even get to the scanning stage,
+always showing 0/0) unless I uncheck Data Collection in settings.
+
+Is something  wrong with jadn.com's web service?  I wonder if we should drop
+that on a thread or something so as not to block users when something
+like this happens.
+"
+bherrmann7/Car-Cast,closed,Subscription and/or Podcast List changes cause loss of place,"[Label(name=""Defect""), Label(name=""Subscriptions"")]","If you delete a subscription or a podcast from the list, your place in the list is lost (because car cast rebuilds the entire list view instead of just marking the data dirty)
+
+I'm working on a fix, should be out later today.   
+"
+bherrmann7/Car-Cast,closed,Let me know what you think...,[],
+bherrmann7/Car-Cast,closed,Nightly download,"[Label(name=""Feature Request"")]"," Nightly download (with configurable time - default 2am) with an adjustable cap (default 50) of podcasts which cause it to not fetch anymore.
+"
+bherrmann7/Car-Cast,closed,Deleting a podcast can cause metadata mismatch,"[Label(name=""Defect"")]","Deleting a podcast (while playing, I think) caused the wrong podcast to show as playing on the podcast list, and also when returning to the player page.
+"
+bherrmann7/Car-Cast,open,Player won't pick up metadata from manually downloaded podcasts,"[Label(name=""Feature Request"")]","If I manually download some podcasts or mp3s and place them in the carcast/podcasts directory, Car-Cast will play them, but will not find their metadata like title or feed.  I _think_ it does read total length, though.
+"
+bherrmann7/Car-Cast,closed,Sometimes player forgets my bookmark,"[Label(name=""Defect""), Label(name=""Player"")]","I don't know what triggers it (perhaps listening through the end of a podcast or end of the whole list?) but there are times when the player seems to pick a random time to resume playing as I next and prev through things.
+
+Often, this time is 00:43 seconds.  Not sure why.
+"
+bherrmann7/Car-Cast,closed,Player progress bar can sometimes drift from real time,"[Label(name=""Defect""), Label(name=""Player""), Label(name=""UI"")]","Player progress bar can sometimes drift from real time, or the max time is not calculated correctly.  In either case, I've seen the player go about 2 minutes past maximum.  When I manually dragged the slider to near the end, the bar showed normal behavior, ie when actual time met max time, the podcast was over.  Thus, I think there is some drift in effect rather than a miscalc.
+"
+bherrmann7/Car-Cast,open,Have to hit back button too many times,"[Label(name=""Downloads""), Label(name=""UI"")]","Sometimes, often as a result of selecting the ""downloads complete"" notification, Car-cast will present 3 or 4 screens as I press ""back"".  This sometimes depends upon which CC screen I was on.  For example:  Alert -> player -> download status -> player -> home.
+"
+bherrmann7/Car-Cast,closed,Loss of SD card access confuses car-cast,"[Label(name=""Defect""), Label(name=""Player""), Label(name=""SD card"")]","After mounting the SDCard to a computer, CC won't read the podcasts directory until after a download session completes.
+"
+bherrmann7/Car-Cast,open,When downloading and network is lost... confusion happens.,"[Label(name=""Defect""), Label(name=""Downloads"")]","I believe if you are downloading two podcasts, say A and B
+
+If A is downloaded fine, then while B is downloading the network is lost (or if you press abort) - even though A was correctly downloaded - it seems to not be available.   worse it wont be downloaded on the next try.  A seems to be lost forever (I think it is in the download history, but for some reason the file doesnt seem to be in the filesystem.)
+
+This could use some investigating.
+"
+bherrmann7/Car-Cast,closed,Download progess sometimes shows a partial download even though the whole podcast comes down.,"[Label(name=""Defect""), Label(name=""Downloads""), Label(name=""UI"")]","I've had times when the graphical progress bar seems to indicate only 30% or so of the podcast downloads, but when I check it, it is there in its entirety.
+"
+bherrmann7/Car-Cast,closed,Car-Cast simply aborts a download sometimes,"[Label(name=""Defect""), Label(name=""Downloads"")]","If a network connection goes away, Car-cast will just abort a download in progress.  This needs to retry or restart or at least notify users about what went wrong.
+"
+bherrmann7/Car-Cast,closed,Test issue,[],"This is a test.
+"

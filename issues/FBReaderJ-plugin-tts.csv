@@ -1,0 +1,57 @@
+repository,state,title,label,body
+geometer/FBReaderJ-plugin-tts,open,Intermitantly skipping text surrounded in <...>,[],"I've noticed a number of authors use <...> for special forms of communications, although in comparison to `<h1></h1>` header tages when editing the epub's they appear as [html entities](https://www.w3schools.com/html/html_entities.asp).
+
+As such,
+
+`< = &lt;`
+`> = &gt;`
+
+The issue here tho is that while using TTS most times it'll skip reading out text surrounded by both, although this doesn't always occur and in those situations it'll read the entity (""Lesser than"" or ""Greater than"") then the text followed by the closing entity.
+
+As a work-a-round I've been converting epub's that use those entities to instead replace them with similar symbols, although native support would be preferable."
+geometer/FBReaderJ-plugin-tts,open,Crash starting TTS,[],"I've been using the TTS / Speak feature of FBReader on my phone for a while now, and it works fine there.
+
+I just got a Transformer Infinity and tried to use it there, and it crashes every time I try to start it.
+
+I captured this exception trace with aLogrec:
+
+I/ActivityManager(  210): Displayed org.geometerplus.fbreader.plugin.tts/.SpeakActivity: +576ms
+I/ActivityManager(  210): Displayed android/com.android.internal.app.ResolverActivity: +152ms
+I/ActivityManager(  210): START {act=android.speech.tts.engine.CHECK_TTS_DATA flg=0x3000000 cmp=com.google.android.tts/.CheckVoiceData} from pid 210
+I/ActivityManager(  210): Start proc com.google.android.tts for activity com.google.android.tts/.CheckVoiceData: pid=10632 uid=10035 gids={3003, 1015}
+D/WindowManager(  210): adjustConfigurationLw, config:{1.0 0mcc0mnc (no locale) layoutdir=0 sw800dp w1280dp h752dp xlrg land ?uimode ?night finger -keyb/v/h -nav/v} mLidOpen:-1 mHasDockFeature:true mHasHallSensorFeature:true config.hardKeyboardHidden:2
+W/InputManagerService(  210): Starting input on non-focused client com.android.internal.view.IInputMethodClient$Stub$Proxy@416ec928 (uid=10096 pid=10569)
+D/WindowManager(  210): adjustConfigurationLw, config:{1.0 0mcc0mnc (no locale) layoutdir=0 sw800dp w1280dp h752dp xlrg land ?uimode ?night finger -keyb/v/h -nav/v} mLidOpen:-1 mHasDockFeature:true mHasHallSensorFeature:true config.hardKeyboardHidden:2
+I/TextToSpeech(10582): Sucessfully bound to com.google.android.tts
+I/flint   (10632): Flint JNI loaded successfully.
+I/flint   (10632): Embedded HMM synthesizer initialized.
+I/TextToSpeech(10582): Connected to ComponentInfo{com.google.android.tts/com.google.android.tts.GoogleTTSService}
+D/AndroidRuntime(10582): Shutting down VM
+W/dalvikvm(10582): threadid=1: thread exiting with uncaught exception (group=0x40a5f1f8)
+E/AndroidRuntime(10582): FATAL EXCEPTION: main
+E/AndroidRuntime(10582): java.lang.NullPointerException: replacement == null
+E/AndroidRuntime(10582):    at java.lang.String.replace(String.java:1358)
+E/AndroidRuntime(10582):    at org.geometerplus.fbreader.plugin.tts.SpeakActivity.c(Unknown Source)
+E/AndroidRuntime(10582):    at org.geometerplus.fbreader.plugin.tts.SpeakActivity.onInit(Unknown Source)
+E/AndroidRuntime(10582):    at android.speech.tts.TextToSpeech.dispatchOnInit(TextToSpeech.java:627)
+E/AndroidRuntime(10582):    at android.speech.tts.TextToSpeech.access$1000(TextToSpeech.java:52)
+E/AndroidRuntime(10582):    at android.speech.tts.TextToSpeech$Connection.onServiceConnected(TextToSpeech.java:1279)
+E/AndroidRuntime(10582):    at android.app.LoadedApk$ServiceDispatcher.doConnected(LoadedApk.java:1068)
+E/AndroidRuntime(10582):    at android.app.LoadedApk$ServiceDispatcher$RunConnection.run(LoadedApk.java:1085)
+E/AndroidRuntime(10582):    at android.os.Handler.handleCallback(Handler.java:605)
+E/AndroidRuntime(10582):    at android.os.Handler.dispatchMessage(Handler.java:92)
+E/AndroidRuntime(10582):    at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime(10582):    at android.app.ActivityThread.main(ActivityThread.java:4424)
+E/AndroidRuntime(10582):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(10582):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime(10582):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+E/AndroidRuntime(10582):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)
+E/AndroidRuntime(10582):    at dalvik.system.NativeStart.main(Native Method)
+W/ActivityManager(  210):   Force finishing activity org.geometerplus.fbreader.plugin.tts/.SpeakActivity
+
+I looked into the source for SpeakActivity, and I'm guessing the problem was missing language info.  The book I was reading was a text file.  I went into FBReader and edited the book info, which displayed English (not a blank), but I saved it anyways.  After that, the TTS started OK.
+"
+geometer/FBReaderJ-plugin-tts,open,TTS does not continue running in background,[],"Hi! I've noticed that the TTS plugin stops reading once I switch to another app or lock the screen. This is not very good as those seem to be the two most logical use cases.
+
+Also, there is the minor flaw that when TTS starts text is dimmed and the TTS interface overlays it, which actually seems to rule out the third possible use case.
+"

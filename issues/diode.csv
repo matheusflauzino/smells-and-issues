@@ -1,0 +1,382 @@
+repository,state,title,label,body
+zagaberoo/diode,closed,Move project to gradle and change target Sdk version to 26,[],
+zagaberoo/diode,closed,Move project to gradle and change target sdk to 26,[],
+zagaberoo/diode,open,"Starting November 1, we must target API level 26. We currently target 11.",[],"On my android studio + gradle fork, I was able to successfully compile and run diode by just changing the targetSdkVersion, even though it gave me a warning that the compileSdkVersion shouldn't be higher than the target. Changing the compile version resulted in tons of errors that don't look like we're ever going to fix.
+
+Also, we should migrate the project to gradle so its easier for newer people to start using it."
+zagaberoo/diode,open,"""Sort by rising"" sorts by new instead of rising",[],"Pics: 
+diode: https://i.imgur.com/E9X13Sw.png 
+browser: https://i.imgur.com/yYqMyBW.png"
+zagaberoo/diode,closed,Add a setting to load v.redd.it links directly,[],"Loading v.redd.it links currently takes you to the reddit mobile site, which is very slow and unsightly. This allows loading the videos directly. Audio doesn't work though, so it's defaulted to off with a message saying that audio will not work."
+zagaberoo/diode,closed,Fixes issue zagaberoo/diode#75 - Mergeable changes.,[],"Also changes the default front page to be ""hot"" since reddit has changed
+the default front page to be 'best' (which Diode doesn't have as a sort
+option yet.)"
+zagaberoo/diode,closed,Reddit Front Page link erroneously tries to load /r/redditfrontpage,[],
+zagaberoo/diode,closed,v.redd.it links open the reddit page in the browser instead of the actual video,"[Label(name=""enhancement"")]","Currently, opening v.redd.it links opens the reddit site in the browser, which takes really long to load. It would be nice to be able to load the video directly/by itself. "
+zagaberoo/diode,open,AsyncTask.execute() is not really multi-threaded after Honeycomb,[],"Another thing, I noticed AsyncTask.execute() is used in CommentsListActivity. For your information, the [document](https://developer.android.com/reference/android/os/AsyncTask.html#execute(Params...)) specified that since honeycomb or API 11, the tasks will be executed on a single thread. Since there could be multiple tasks registered at the same time (at least two in MyLoginTask#onPostExecute), so using [executeOnExecutor()](https://developer.android.com/reference/android/os/AsyncTask.html#executeOnExecutor(java.util.concurrent.Executor,%20Params...)) may speed up the tasks and avoid potential blocking."
+zagaberoo/diode,closed,CookieSyncManager deprecated on API 21,[],"Hi,
+
+I found that CookieSyncManager is used in many classes such as BrowserActivity, CommentsListActivity, Common, InboxListActivity, etc. As specified in the [document](https://developer.android.com/reference/android/webkit/CookieSyncManager.html), this class has been deprecated since API 21 and may not be guaranteed to work. From API 21, cookies are automatically synced by the webview. ([A related stack overflow post](https://stackoverflow.com/questions/31983300/android-webview-sync-cookies-on-older-apis)). 
+
+Thx."
+zagaberoo/diode,closed,Updated de (German) translation,[],"Sorry for the long pause. I've been quite busy lately and totally forgot to translate the rest.
+
+Commit made via Stringlate"
+zagaberoo/diode,closed,Adds the ability to load imgur images and gifvs in the internal browser.,[],A new preference has been added to the 'Browser' section.
+zagaberoo/diode,closed,Adds a 'Copy Url' menu item to the BrowserActivity.,[],"Gets annoying sometimes if you open a link from a comment, and there isn't an easy way to copy the URL."
+zagaberoo/diode,closed,Fixes issue zagaberoo/diode#67,[],"Makes a constant for the boolean array size in the serialization Parcel.
+
+I tested the change directly (write out to Parcel, then read back from Parcel), I still don't have a reliable way to test the restore state code naturally on my phone."
+zagaberoo/diode,closed,Something is causing an Activity crash with the new archived/locked code,[],"I've seen a couple times now that the app will crash if I go to a locked/archived thread, then allow the app to get written to disk ( I think ), and then when I open it up, and try to go back to the thread listing, the Activity crashes.
+
+I'm pretty sure this is something I've introduced, I just need to catch the error occurring when I have the Android monitor open."
+zagaberoo/diode,closed,Locked thread support,[],"Addresses issue #65, designed to handle locked threads. 
+It also removes the toasts that were added for archived threads, in favor of a warning banner."
+zagaberoo/diode,closed,Handle locked threads,[],"First obvious way is to disable the 'reply' button for locked threads.
+
+I'm wondering about the visual indication though. 
+
+I've got a version showing the lock emoji (🔒) next to the comments count at the top, but I don't think it's necessarily big enough.
+
+I was thinking that it could have a similar banner like the ""viewing a single comment's context"" banner. 
+
+Any thoughts?"
+zagaberoo/diode,closed,Disallow voting and replying on/to archived threads and comments.,[],"Pops up a toast alerting users to the archived nature of the post. 
+
+I was going to add a separate pull request for disallowing replies to LOCKED threads as well, but I'll wait until you decide if you want this one."
+zagaberoo/diode,closed,Adds the ability to view saved posts when logged in.,[],"This works in concert with the 'Save' option available in the menu
+option for posts, not comments.
+Just view your profile in the app, then hit the options button and hit
+'View saved posts'."
+zagaberoo/diode,closed,Remove all spaces from subreddit text on subreddit entry,[],"Subreddits can't have spaces anyway, and entering multiple word subreddits with suggestive text is annoying."
+zagaberoo/diode,closed,np.reddit.com uses browser,[],"Links to np.reddit.com do not get handled by diode, but go to the browser, which in turn gives the mobile website. These links should be handled by diode internally like normal reddit links"
+zagaberoo/diode,closed,Enable auto linking to subreddits that start with r/,[],"Subreddits that start with /r/ are already auto-linked to. When the subreddit starts with r/ instead of /r/, it turns blue but does not show up as a link when the links dialog pops up. This fixes that."
+zagaberoo/diode,closed,Updated de (German) translation,[],Commit made via Stringlate
+zagaberoo/diode,closed,Updated de (German) translation,[],Commit made via Stringlate
+zagaberoo/diode,closed,Add an option for sharing a link to the comments.,[],"Create a constant in common/Constants.java called SHARE_COMMENTS for use in CommentsListActivity.java.
+
+Create a menu option when holding on a post when in the comments page to share a link to the comments. (As opposed to a link to the item that was submitted.) Shares the title of the post and the link to the comments.
+
+"
+zagaberoo/diode,closed,"Bug fix, added subject to email Share, added clipboard copying of posts. ",[],"-Fixed issue with viewing context of post replies from the inbox. 
+-Added new menu items to copy the text of any post to the clipboard. 
+-Added subject line into ""Share"" options so it is populated on new emails."
+zagaberoo/diode,open,Table rendering,"[Label(name=""enhancement"")]","Hi,
+There currently is a problem with table rendering on diode, at least on my phone. 
+I didn't really investigate yet. 
+Example:
+For [this thread](https://reddit.com/r/DotA2/comments/53e38e/the_postti6_shuffle_final_rosters/), here is the [album](http://m.imgur.com/a/N3MPR) with the problem on diode, and an expected result.
+"
+zagaberoo/diode,closed,sharing discussions,[],"Sometimes you may want to share an interesting discussion on reddit from diode. Consider adding a share option which is a link to the discussion on the reddit website.
+"
+zagaberoo/diode,closed,Add share option to internal browser overflow menu,"[Label(name=""enhancement"")]","It's pretty common to want to share a link while you're browsing it, so it makes sense to add share to the internal browser's overflow menu.
+"
+zagaberoo/diode,closed,Updated build system to use gradle,[],"Google moved to Android-Studio and Gradle in 2013... So 2 years ago.
+
+Screenshot of the app working fine off my build:
+![adb-screenshot-2015-08-20-12-24-16-913067076](https://cloud.githubusercontent.com/assets/4326714/9390653/094c94d2-4738-11e5-8069-4ac70d7ee2dc.png)
+"
+zagaberoo/diode,closed,"Load imgur links directly, also put a rounded border on comment flair.",[],"I was tired of being taken to imgur's mobile site (loads like crap on my phone), so I made single-image links go directly to the image itself, rather than the mobile site.  
+
+Also put a rounded-border on comment flair (in my opinion, it looks fine in light and dark themes).
+"
+zagaberoo/diode,closed,Loads thumbnails on demand (rather than all-at-once),[],"Also added the 'ViewHolder' pattern to the ThreadsListActivity and
+CommentsListActivity.  This will cache the items in a view, so that when
+a view is recycled, the code doesn't have to find all the elements
+again.
+
+Also addressed some Android Lint findings.
+"
+zagaberoo/diode,closed,Adds support for the 'distinguished' field,[],"Now comments that are 'distinguished' (moderator or admin) take
+precedence over the submitter's style. This will now also show in
+threads where the submitter has been distinguished. (This required
+creating a separate field for the submitter's name.)
+
+Also made it so that OP's comments are marked as the comments are parsed, not as an after-thought. (Should help the app load a little faster.)
+
+This works in the comments view, and user's profile view. The inbox is
+designed differently, so it doesn't work there. Maybe in the future?
+
+Also changed the 'when' strings from inline-constants to be localizable
+strings.
+"
+zagaberoo/diode,closed,Added the ability to get to links from the Inbox and Profile listings.,[],"Also, Thing contents are not parsed until the user clicks on them.
+(There's no current reason to parse the comments for URLs if the user
+may not ever click on them -- doing so just slowed things down,
+especially in a thread with a lot of links in the comments.)
+
+Added a common utility function in Common to display the 'Links' dialog.
+(It no longer adds an onclick listener to a button argument)
+
+Removed some unused variables from the modified files.
+"
+zagaberoo/diode,closed,Comment listing remembers context.,[]," If the user chooses to load context for a comment, make sure this information is stored, so that when the comments page is reloaded, it will reload with the proper context, rather than reloading
+the whole thread.
+
+Say you reply to a comment when in the context view, the app will now
+keep the context view, rather than going back to the full thread.
+
+Also fixed an app crash when the user clicks the 'load more comments'
+button quickly. (Click one element more than once, or click two very
+quickly)
+
+Also added logic to make it so the app won't attempt to load a [deleted]
+user's profile. (The context menu doesn't even show up)
+
+Also fixes an issue with markdown not getting parsed correctly in the context view.
+"
+zagaberoo/diode,closed,Adds the 'Go to thread' option to comments on users' profiles. ,[],"Also makes it so to 'Go to comment' goes to the comment with context.
+"
+zagaberoo/diode,closed,Properly loads the context of a comment if context is asked for.,[],"When using the 'Go to comment' menu item in your inbox, it is supposed to go to the context, this fixes that functionality by using the proper API call.
+"
+zagaberoo/diode,closed,Only use HTTPS connections to Reddit,[],"Since setting my reddit preferences to HTTPS only, I can't use any logged-in functionality in diode.
+
+I don't want cafe owners / mobile network provider / my government / other governments / etc. snooping on everything I do, so it wouldn't be appropriate to offer HTTP fallback. An application that, at any time, can be made to fallback to HTTP operation just by DDoSing or blocking the HTTPS URL doesn't reassure me.
+"
+zagaberoo/diode,open,[Feature request] Don't reset to top after replying to a comment,[],"It would be better to remember the user's previous position for long comment threads where it would be tedious to find one's position.
+"
+zagaberoo/diode,closed,can't open links,[],"I can't open links. I also tried copying to my browser, but couldn't find out how to.
+"
+zagaberoo/diode,open,Adding flare and custom up/down images?,[],"How 'bout it? Works great otherwise. B-)
+"
+zagaberoo/diode,open,Loading Circle keeps spinning when opening a comment thread,[],"When I open a comment thread the loading circle (to the left of the menu button) keeps spinning even after the thread is done loading. I have not noticed a real impact other than it keeps spinning.
+
+![screenshot_2014-10-02-15-23-42](https://cloud.githubusercontent.com/assets/1533462/4498706/94f38060-4a7a-11e4-9e1e-5e0d36cde0f5.png)
+"
+zagaberoo/diode,closed,SSL enable in reddit breaks Diode,[],"I am unable to see my subreddits in diode when SSL is on for my account.
+"
+zagaberoo/diode,closed,  [Feature request] - Direct gfycat links to HTML5 video,[],"Currently clicking on a link from gfycat.com (see http://www.reddit.com/r/gfycats) directs you to a page where you need to choose between the HTML5 video and the gif.
+Having to make one less click would be great.
+Ideally I think a reddit client should direct to the HTML5 video, as that is the whole point of using gfycat, but directing to the gif would still be better than having to choose.
+"
+zagaberoo/diode,closed,"Crash on ""load more comments"" race condition ",[],"Running on Android 4.4.4
+
+I think this is a race condition caused by loading more then one ""more comments"" section. :dizzy_face:
+
+Steps to reproduce:
+- Find large thread
+- Click ""load more comments"" at least twice in two different sections of the thread 
+
+_Expected:_
+**Comments are loaded for both sections of the thread**
+
+_Actual:_
+**Crash**
+
+Logcat:
+
+```
+java.lang.IllegalStateException: Cannot execute task: the task is already running.
+            at android.os.AsyncTask.executeOnExecutor(AsyncTask.java:576)
+            at android.os.AsyncTask.execute(AsyncTask.java:535)
+            at in.shick.diode.comments.CommentsListActivity.onListItemClick(CommentsListActivity.java:598)
+            at android.app.ListActivity$2.onItemClick(ListActivity.java:319)
+            at android.widget.AdapterView.performItemClick(AdapterView.java:298)
+            at android.widget.AbsListView.performItemClick(AbsListView.java:1113)
+            at android.widget.AbsListView$PerformClick.run(AbsListView.java:2911)
+            at android.widget.AbsListView$3.run(AbsListView.java:3645)
+            at android.os.Handler.handleCallback(Handler.java:733)
+            at android.os.Handler.dispatchMessage(Handler.java:95)
+            at android.os.Looper.loop(Looper.java:136)
+            at android.app.ActivityThread.main(ActivityThread.java:5141)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:515)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:795)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:611)
+            at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+zagaberoo/diode,closed,Browser settings,[],"Added the ability to modify the following WebView browser settings:
+- Useragent
+- Disable Javascript
+
+I'd also like to add the ability to disable plugins, unfortunately this is difficult due to [deprecated WebView settings](https://stackoverflow.com/questions/19362049/setpluginsenabled-not-exist-for-webview).
+
+One main issue with these changes is that the user agent is a set string. Ultimately I'd like to pull the default WebView user agent from the device and populate the setting, assistance on this would be appreciated (_it's probably easy_)
+
+This is my first contribution to an Android project so please be nice :+1: 
+"
+zagaberoo/diode,closed,Fixed markdown link parsing,[],"Reddit allows markdown links to have a space between the [] and () tags. These links are not parsed correctly by Diode. Here is an [example comment](http://www.reddit.com/r/pics/comments/1z5xbz/fishing/cfr7eso) demonstrating this issue. This fix has been tested.
+"
+zagaberoo/diode,closed,Fixed markdown link parsing,[],"Reddit allows markdown links to have a space between the [] and () tags. These links are not parsed correctly by Diode. Here is an [example comment](http://www.reddit.com/r/pics/comments/1z5xbz/fishing/cfr7eso) demonstrating this issue. This fix has been tested.
+"
+zagaberoo/diode,closed,Improve submission titles.,[],"Many apps using the SEND intent for messages put a perspective title in the EXTRA_SUBJECT field. However, Diode doesn't check that field. This patch will check the EXTRA_SUBJECT field for a perspective title, but use the olg logic as a fallback.
+
+The new logic. If there is data in both the EXTRA_SUBJECT and EXTRA_TEXT field, it will check to make sure that the EXTRA_TEXT is a valid URL. If so, it will use that data for submission. In this scenario is the EXTRA_SUBJECT fields is a blank string (as opposed to null value), I assume that the sending app meant to do that.
+
+If there is no valid URL in EXTRA_TEXT, then it will use the old logic. If either field does not have data (null value as opposed to blank string), then it will use the old logic.
+
+I've tested the new functionality, but I couldn't actually find a test case with the URL and the description in the EXTRA_TEXT field. I'm willing to regression test that part if you know how to replicate it.
+"
+zagaberoo/diode,closed,Fix JSON parse on Samsung devices running 4.3.,[],"This is a one-liner, but I've walking around with the fix on my Verizon Galaxy S3 running 4.3 for the past couple days.
+
+After digging through some Jackson code, I found out what's happening. It is true that when you mark a field `transient`, it won't get (de)serialized. However, it appears that Jackson conforms to the JavaBean spec in that if there's a public getter or setting, it considers that a bean property. In the case of ThingInfo, Jackson was trying to deserialize `thumbnailBitmap` because of the public setter.
+
+In actuality, it looks like it tries to deserialize other similar fields (`thumbnailResource`), for example, but since those fail, it fails quietly. It only just now occurred to me that it might be because `FAIL_ON_UNKNOWN_PROPERTIES` is set to `false`, but I'm not going to go back and verify that just yet.
+
+Why did this start happening and Samsung devices running newer versions of Android? My best guess is that Samsung created a new version of `android.graphics.Bitmap` that has the bean property `imagePath` on it, and that confuses Jackson. That's my best guess. Samsung has messed up other parts of the API before; `ListView` for example.
+
+Everything here might be total bullshit, but I do know that this patch has allowed me to use Diode.
+
+Finally, I bet you could get a performance bump by adding `@JsonIgnore` to all setter functions backed by transient class members.
+"
+zagaberoo/diode,closed,"""No threads here"" for every subreddit on Jelly Bean",[],"I am able to login and my subscribed subs show up when I select the ""Pick subreddit"" menu option, but no matter which one I select from the list, all that ever shows up is ""No threads here.""
+
+I am using a Samsung Galaxy S4 with Android version 4.2.2.
+
+There are some clues to the problem in [this Reddit post](http://www.reddit.com/r/diode/comments/1ewi9e/new_phoneno_threads_found/).
+## 
+
+Andy
+"
+zagaberoo/diode,closed,Shared title goes in URL field,[],"When I share a story from The Guardian app to Diode, the title is placed in the URL field, before the actual URL.
+"
+zagaberoo/diode,closed,"Added the ability to save comments, and view and manipulate them.",[],"Here are some images of the new additions:
+
+The option to view saved comments appears when viewing threads or comments, and only if the user is logged in.
+![menu1](https://f.cloud.github.com/assets/857608/859939/d55584ba-f58e-11e2-85a1-71584cc6ba24.png)
+![menu2](https://f.cloud.github.com/assets/857608/859943/14ae4bba-f58f-11e2-87cc-0566486198b4.png)
+
+View of the comment click dialog when the comment is unsaved and the user is logged in:
+![ccd1](https://f.cloud.github.com/assets/857608/859949/6e90f948-f58f-11e2-93d1-cb508242ebae.png)
+
+View of the comment click dialog when the comment is saved and the user is logged in:
+![ccd2](https://f.cloud.github.com/assets/857608/859957/9dc67bf2-f58f-11e2-8b5a-98f8cbdc0ef3.png)
+
+View of the comment click dialog when the user is not logged in:
+![ccd3](https://f.cloud.github.com/assets/857608/859960/d2b6ee82-f58f-11e2-83d4-e9a600ff6a5d.png)
+
+View of the list of a user's saved comments. Note, the usual menu comes up when the user hits the menu button on their phone, just like on all other pages. The functionality for this page is no different.:
+![savedlist](https://f.cloud.github.com/assets/857608/859969/1849430a-f590-11e2-8278-ae74f028f365.png)
+
+View of the dialog that pops up when a user clicks on one of their saved comments in the previous view. The view option takes them to the comment in the thread it was posted in.:
+![sdialog](https://f.cloud.github.com/assets/857608/859983/63b994a2-f590-11e2-9116-bf04e738d3cc.png)
+
+That's the majority of the new content added. The workings of it can all be viewed in the code of course.
+"
+zagaberoo/diode,closed,Comment list refresh fix,[],"Earlier if you change orientation while comments are loading, then it used to show ""No comments found"".
+Now it works properly. The changes are similar in concept to what we did for the ThreadListActivity in https://github.com/zagaberoo/diode/commit/1dee920b1399df5bd3817d479c6ce48c5236fcd7
+"
+zagaberoo/diode,open,Loading reddit thread list is extremely slow in some cases.,[],"Loading reddit thread list is extremely slow in some cases.
+
+If happens when the main browser on the device has lots and lots of bookmarks and history.
+
+On my tablet Asus TF201, I have synced it up with my Google account. And due to that all my chrome bookmarks are synced with the tablet. They are around 4000 bookmarks.
+
+The slowness happens in the call DownloadThreadsTask class.
+
+This code causes slowness:
+
+```
+-           // Go through the children and get the ThingInfos
+-           for (ThingListing tiContainer : data.getChildren()) {
+-               // Only add entries that are threads. kind=""t3""
+-               if (Constants.THREAD_KIND.equals(tiContainer.getKind())) {
+-                   ThingInfo ti = tiContainer.getData();
+-                   ti.setClicked(Common.isClicked(mContext, ti.getUrl()));
+-                   if((mSettings.getShowNSFW() || !ti.isOver_18()) && !mFilterEngine.isFiltered(ti)) {
+-                       mThingInfos.add(ti);
+-                   }
+-               }
+-           }
+```
+
+**Common.isClicked(mContext, ti.getUrl())** is used to query Content Resolver to check against browser's history and bookmarks if the url was already visited or not.
+
+If I comment that out the performance improves **exponentially**. But ofcourse then I am not able to see indication if the reddit link was visited previously or not.
+
+I don't know yet what the solution would be. Lets discuss.
+
+One suggestion I would like to float is this: How about we maintain a temporary cache of urls visited from within App for about last 72 hours? And we check against the cache if the url was visited or not. Local cache would be fast. Typically all the content is pretty much rotated so fast on reddit, so it would never be the case that someone would click next 10 times and not be happy about not seeing the old links as visited.
+"
+zagaberoo/diode,closed,Performance tweaks,[],"1. Using OnStop instead of OnPause for anything related to storing preferences.
+2. Using webview in High priority mode as described here - http://stackoverflow.com/questions/7422427/android-webview-slow
+"
+zagaberoo/diode,closed,add option to copy url in comments view,[],"Add option to copy url from comments view.
+"
+zagaberoo/diode,closed,Subreddit list now effectively uses cache.,[],"In order to refresh, we have to manually do it (except when we log in).
+Added a 'refresh' menu option.
+"
+zagaberoo/diode,closed,Added Android-PullToRefresh support to subreddit list.,[],"1. Added Android-PullToRefresh support to subreddit list. Pull the list down to refresh it.
+2. Subreddit list enhancements which make it much faster. Now it won't query the list from reddit.com every time. So it feels super snappy.
+
+Since I am adding a new submodule to Diode, I am not super sure if this won't create any trouble in development environment of others.
+
+You don't have to pull right away. Clone my repo, check it out if it would work fine in your dev environment.
+
+If there are build issues, you can try the apk meanwhile: https://docs.google.com/file/d/0B4VtWtp1e2j5YWtXMUhKUmdqUFE/edit?usp=sharing
+"
+zagaberoo/diode,closed,Added NSFW indication to subreddit list.,[],"Once the user is logged in, the pick subreddit now shows a red NSFW text in the same manner as it does for the threads.
+
+First time making any change in any Android code.
+So please review once.
+"
+zagaberoo/diode,open,Allow downloading images directly from the internal browser,[],"Whenever I see a good image through Diode, it's bothersome to end up downloading it three times: one from the internal browser, another from a browser that does allow to download, and a third one to actually save the picture. Can the option be added in a future release?
+"
+zagaberoo/diode,open,Jar references,[],"Please provide references (origins and licences) for the jars that are included in the project.
+"
+zagaberoo/diode,open,"""Multireddit of your subscriptions"" is ""invalid subreddit""",[],"Choose
+menu > pick subreddit > multireddit of your subscriptions
+I have an HTC Amaze running ICS 4.0.3, Diode installed from F-Droid.
+"
+zagaberoo/diode,closed,Lagginess when opening links,[],"Whenever I click the right side of a post, internal browser window with imgur image or comments thread is opened after a brief lag. (About a couple of seconds, tops.) I don't know what causes this, but it is frustrating. Had this problem on my stock Nexus 7 with JB 4.1.1 ROM. (Latest version of app from Play Store.)
+"
+zagaberoo/diode,closed,You can now limit the search to a subreddit,[],"I just implemented the ability to limit the search to the currently selected subreddit (if applicable).
+
+I'm going to look at changing the behavior of the back button after performing a search, though to be honest once you get used to it the way it is now it isn't _that_ bad.  It just isn't that intuitive.
+
+I also think it might be helpful to put the search tips in since there's a lot of blank UI space, and maybe do some other UI enhancements.
+"
+zagaberoo/diode,closed,Copy URL to Clipboard context menu item,[],"Added a ""Copy URL to clipboard"" context menu item to both the thread list and the comment view. It was annoying to have to open a link in the browser to copy the URL to send to a friend, so this makes that a bit easier :)
+"
+zagaberoo/diode,closed,Infinite scrolling support!,[],"Hi!
+Don't know if this is ready for mainline yet (haven't tested it in detail), but at least it appears to work.
+It's an Alpha feature, and is marked as such in the menu. Anyways, you can take a look and see if you like it :)
+
+Signed-off-by: Tord Øygard tord@oygard.org
+"
+zagaberoo/diode,closed,Filters again,[],"Hi again.
+
+I've tested it with an Android 1.6 (API4) emulator now, and it seems to work. I hope I didn't forget anything this time!
+"
+zagaberoo/diode,closed,Subreddit-specific filters again - now without putStringSet/getStringSet dependence,[],"Here you go!
+"
+zagaberoo/diode,closed,Subreddit-specific filters,[],"Hi! RES-style subreddit filters!
+"
+zagaberoo/diode,closed,Search functionality,[],"This is just what I had previously implemented merged with master on RIF and then master on Diode.  Access the search UI using the hardware button when on the threads list.  Currently there's no way to sort results but that's what I'm doing now.  The goal is to have all of the functionality present on reddit, including sorting, the ability to limit the search the current subreddit (if applicable) and show the tips displayed on the website.  Let me know what you think, and obviously any feedback is welcome.
+"
+zagaberoo/diode,closed,NSFW Filter,[],"Hi! I was missing an NSFW filter for this app, so I implemented it :)
+
+Signed-off-by: Tord Øygard tord@oygard.org
+"
+zagaberoo/diode,open,Search functionality,[],"Last december I and another individual implemented basic search capability.  It kind of got put on hold for a few months but now I'm working on it again.  
+
+At the moment it's probably not ready for prime time.  Currently there's no way to sort results but that's what I want to do next, though I'm not sure how to build that into the UI.
+
+Feel free pull what I have and/or give me feedback.
+"
+zagaberoo/diode,closed,Fix flair display bug,[],"The flair of other commenters would show up when the user didn't have any flair of their own due to view recycling in ListViews.
+"
+zagaberoo/diode,closed,Inability to login,[],"While using Diode on my Droid (First generation running cyanogenmod 7), I'm unable to login. It gets to the ""logging in"" progress bar and stays there. I've seen similar reports in the reviews on the market/Play Store.
+"
+zagaberoo/diode,open,Load more comments.,[],"Sometimes Load More Comments gets lost and loads the entire set of comments from the post.
+Often timed with bigger posts it won't let you load all the comments.
+"
+zagaberoo/diode,open,Text disappears when submitting a post.,[],"It happens in the title field of text posts. It happens if you change the orientation of your screen from portrit to landscape. Might happen other places on that screen as well but I havent gone though to test each field.
+"
+zagaberoo/diode,open,"""Go to comment"" link from inbox view no longer working.",[],"Some other options there could be nice too, like a link to the users' page or a link to all comments in that thread.
+"
+zagaberoo/diode,closed,Strikethrough formatting,[],"Hi, it's king_of_blades from reddit. I've finally managed to get my head around git. I was about to give up and just send you zipped source files :) 
+
+Now a few things:
+- I put DelTagHandler class in in.shick.diode.common package, for lack of a better idea, you may want to move it somewhere else,
+- pretty much all of the code in DelTagHandler class comes from [this Stack Overflow post.](http://stackoverflow.com/questions/4044509/android-how-to-use-the-html-taghandler)
+  Do you think that it would be appropriate to give some credit to the author? Maybe in a comment?
+
+Ask me if you have any questions. I'm going to sleep now, I'll be reachable in 9-10 hours.
+"
+zagaberoo/diode,closed,Add user flair support,[],"Does what it says on the tin, appends users flair to the end of the comment header if present
+"
+zagaberoo/diode,closed,Use native backgrounds with Holo (Gradient),[],"This removes the hardcoded black backgrounds and allows the better ICS gradients to show through.
+"

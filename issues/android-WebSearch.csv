@@ -1,0 +1,66 @@
+repository,state,title,label,body
+balesz/android-WebSearch,open,HUN bug: a beirt url-t html kodkent parseolja az input fieldben,[],"pl: https://rarbg.to/torrents.php?page=1&order=size&by=DESC&imdb=tt{searchTerms}
+eseten a &or helyett egy OR matematikai jel jelenik meg, pedig nincs ; az &or; vegen! Es amugy is, itt nem kell ertelmezni semmilyen html kodot, ebben a sorban, input fieldben.
+"
+balesz/android-WebSearch,open,"HUN ha az image url ures, legyen default favicon.ico",[],"Szia Balint,
+
+Epp az asztali chrome-ombol importalom at kezzel a keresomotorjaimat. Ott is van icon mezo, de egyikhez sincs beallitva, mert a user nem tudja beallitani, annak ellenere, hogy az sqlite fel van keszitve ra. Viszont a websearch igenyli az ikont, hogy joval atlathatobb legyen. Ezert hat kezzel nekialltam vegigbogaraszni az 59 keresomotoromhoz (egyik se automata-regisztralt) az ikonokat, es arra jutottam, hogy az 59-bol csak 10-nel nem mukodott a ://$domain/favicon.ico megoldas. Es ez a 10 valojaban 5 kulonbozo domaint takarnak, szoval eleg jo az ara'ny. Erdemes lenne tehat ezt automatikusan az appban elvegezni: ha az ikont nem toltotte ki a user, akkor menteskor raprobalni a ://$domain/favicon.ico cimre, hatha jon egy kep.
+"
+balesz/android-WebSearch,open,HUN a levo lista legyen case-INsensitive,[],"Szia Balint,
+Mind az appban levo folista, mind a share dialogban megjeleno lista legyen case-INsensitive.
+"
+balesz/android-WebSearch,open,HUN feature request: kozvetlen tovabbitas url-encode nelkul,[],"Szia Balint,
+
+A keresomotorok elott lehetne egy elso opcio, ami allando es beegetett: egyszeruen a kijelolt szoveg tovabbitasa es megnyitasa a bongszonek, mintha a keresomotor teljes urlje csak ennyi lenne ""{searchTerm}"" es ezt url-encode nelkul, magyarul arra szamitva, hogy a user egy plain text (be-nem-linkelt) linket jelolt ki, es azt share-elte.
+
+Ha lenne ilyen, akkor [eggyel kevesebb appot](https://gitlab.com/marc.nause/openlink/tree/HEAD/app/src/main/java/de/audioattack/openlink) kellene telepitenem. Es egyszerunek is hangzik. Meg jobb lenne, ha a fenti app [teljes funkcionalitasat](https://gitlab.com/marc.nause/openlink) atveve, barmilyen zavaros kijelolt szovegben (a fent irt elso/beegetett opcio valasztasa eseten) megkeresne a szovegben az elso linket, es azt kuldene tovabb, igy mar tenyleg le lenne fedve a fenti app teljes tudasa. Ez persze joval nehezebb munka, mert kell hozza valami url-parser library is.
+"
+balesz/android-WebSearch,open,HUN bug az app nem tartja tiszteletben a globalis orientacios beallitast,[],"Szia Balint,
+Xiaomi Redmi Note 2-n ki van kapcsolva a forgatas, az a'gyban fekve mindent alloban olvasok, az app megis fekvoben indul el.
+"
+balesz/android-WebSearch,open,Use Android 6 lookup feature,[],"On Android 6 when text is selected there is a floating bar for copy/paste. Other apps can register to appear in the bar. Wikipedia for Android is the only one I know that does this.
+"
+balesz/android-WebSearch,open,Let user input text,[],"Currently WebSearch will only search for text that's been shared from another app. On occasion one would like to input text directly. Therefore an activity with a text field should be available. 
+
+One could always install another app like https://github.com/felixb/clipboard-beam but who even knows such an app exists?
+"
+balesz/android-WebSearch,open,Various changes to the default engines and a few more,[],"First off, I'm not even familiar with XML and apologies for all the commits.
+
+Fix many current engines to use TLS even though their opensearch.xml
+hasn't been updated.
+
+Add four new search providers: a web search engine, duckduckgo.com,
+a regional Wikipedia and the same for Wiktionary. They can be easily
+adapted to the user‘s favourite language.
+
+Kickass and PirateBay favicons weren't showing but that could just be down to my ISP blocking them. I haven't been able to test the latter as I wasn't able to get a VPN to work on the phone I'm using.
+"
+balesz/android-WebSearch,closed,WebSearch 1.0.4 - Crash on orientation change,[],"Application crashes with the following stack trace when the next sequence of events is fired:
+starting by main activity,
+click on ""Yes"" Button in Dialog ""Import Defaults"",
+and rotate the device while the info are imported.
+
+E/AndroidRuntime(12625): FATAL EXCEPTION: main
+E/AndroidRuntime(12625): java.lang.IllegalStateException: Fragment ListFragment{41522ab8} not attached to Activity
+E/AndroidRuntime(12625):    at android.support.v4.app.Fragment.getLoaderManager(Fragment.java:863)
+E/AndroidRuntime(12625):    at net.solutinno.websearch.ListFragment$5$1.onPostExecute(ListFragment.java:131)
+E/AndroidRuntime(12625):    at net.solutinno.websearch.ListFragment$5$1.onPostExecute(ListFragment.java:122)
+E/AndroidRuntime(12625):    at android.os.AsyncTask.finish(AsyncTask.java:631)
+E/AndroidRuntime(12625):    at android.os.AsyncTask.access$600(AsyncTask.java:177)
+E/AndroidRuntime(12625):    at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:644)
+E/AndroidRuntime(12625):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime(12625):    at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime(12625):    at android.app.ActivityThread.main(ActivityThread.java:4802)
+E/AndroidRuntime(12625):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(12625):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime(12625):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:813)
+E/AndroidRuntime(12625):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:580)
+E/AndroidRuntime(12625):    at dalvik.system.NativeStart.main(Native Method)
+"
+balesz/android-WebSearch,closed,Wikipedia url is incorrect,[],"I think it should be Special%3ASearch&search= , not Special:Search&amp;search=
+"
+balesz/android-WebSearch,closed,Set dynamic version number in about dialog,"[Label(name=""bug"")]","The version number is static in the about dialog!
+"
+balesz/android-WebSearch,closed,Missing About info,"[Label(name=""enhancement"")]",
+balesz/android-WebSearch,closed,Detail Toast hint bug,"[Label(name=""bug"")]","The Toast hint don't disappear when change the focus to an empty field.
+"

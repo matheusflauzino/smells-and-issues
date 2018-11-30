@@ -1,0 +1,72 @@
+repository,state,title,label,body
+monakhv/samlib-Info,open,NullPointerException,[],"//package name: monakhv.android.samlib
+//version: 3.2.2
+ java.lang.RuntimeException: An error occured while executing doInBackground()
+ 	at android.os.AsyncTask$3.done(AsyncTask.java:299)
+ 	at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:352)
+ 	at java.util.concurrent.FutureTask.setException(FutureTask.java:219)
+ 	at java.util.concurrent.FutureTask.run(FutureTask.java:239)
+ 	at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:230)
+ 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1080)
+ 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:573)
+ 	at java.lang.Thread.run(Thread.java:841)
+ Caused by: java.lang.NullPointerException
+ 	at java.util.regex.Matcher.appendEvaluated(Matcher.java:131)
+ 	at java.util.regex.Matcher.appendReplacement(Matcher.java:111)
+ 	at java.util.regex.Matcher.replaceFirst(Matcher.java:304)
+ 	at java.lang.String.replaceFirst(String.java:1793)
+ 	at monakhv.android.samlib.sql.entity.SamLibConfig$SamIzdat.getSearchAuthorURL(SamLibConfig.java:194)
+ 	at monakhv.android.samlib.sql.entity.SamLibConfig$SamIzdat.access$400(SamLibConfig.java:128)
+ 	at monakhv.android.samlib.sql.entity.SamLibConfig.getSearchAuthorURL(SamLibConfig.java:336)
+ 	at monakhv.samlib.http.HttpClientController.searchAuhors(HttpClientController.java:153)
+ 	at monakhv.android.samlib.tasks.SearchAuthor.makeSearch(SearchAuthor.java:132)
+ 	at monakhv.android.samlib.tasks.SearchAuthor.doInBackground(SearchAuthor.java:94)
+ 	at monakhv.android.samlib.tasks.SearchAuthor.doInBackground(SearchAuthor.java:43)
+ 	at android.os.AsyncTask$2.call(AsyncTask.java:287)
+ 	at java.util.concurrent.FutureTask.run(FutureTask.java:234)"
+monakhv/samlib-Info,open,StringIndexOutOfBoundsException,[],"//package name: monakhv.android.samlib
+//version: 3.2.2 / 3.2.3
+ java.lang.RuntimeException: An error occured while executing doInBackground()
+ 	at android.os.AsyncTask$3.done(AsyncTask.java:299)
+ 	at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:352)
+ 	at java.util.concurrent.FutureTask.setException(FutureTask.java:219)
+ 	at java.util.concurrent.FutureTask.run(FutureTask.java:239)
+ 	at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:230)
+ 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1080)
+ 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:573)
+ 	at java.lang.Thread.run(Thread.java:841)
+ Caused by: java.lang.StringIndexOutOfBoundsException: length=0; regionStart=0; regionLength=1
+ 	at java.lang.String.startEndAndLength(String.java:583)
+ 	at java.lang.String.substring(String.java:1464)
+ 	at monakhv.android.samlib.sql.entity.SamLibConfig$SamIzdat.getSearchAuthorURL(SamLibConfig.java:190)
+ 	at monakhv.android.samlib.sql.entity.SamLibConfig$SamIzdat.access$400(SamLibConfig.java:128)
+ 	at monakhv.android.samlib.sql.entity.SamLibConfig.getSearchAuthorURL(SamLibConfig.java:336)
+ 	at monakhv.samlib.http.HttpClientController.searchAuhors(HttpClientController.java:153)
+ 	at monakhv.android.samlib.tasks.SearchAuthor.makeSearch(SearchAuthor.java:132)
+ 	at monakhv.android.samlib.tasks.SearchAuthor.doInBackground(SearchAuthor.java:94)
+ 	at monakhv.android.samlib.tasks.SearchAuthor.doInBackground(SearchAuthor.java:43)
+ 	at android.os.AsyncTask$2.call(AsyncTask.java:287)
+ 	at java.util.concurrent.FutureTask.run(FutureTask.java:234)"
+monakhv/samlib-Info,closed,Не компилируется,[],"Android Studio ругается:
+
+```
+E:\android\workspace\samlib-Info\samlib-core\src\monakhv\samlib\db\entity\SamLibConfig.java
+Error:(53, 146) error: unmappable character for encoding Cp1251
+Error:(80, 65) error: unmappable character for encoding Cp1251
+```
+
+Зачем ей 1251 понадобился?
+Везде где можно вроде UTF8 выбран...
+"
+monakhv/samlib-Info,open,Merge pull request #1 from monakhv/develop,[],"Обновление из оригинального репозитория
+"
+monakhv/samlib-Info,closed,Строка состояния,[],"Очень не хватает информации о текущем авторе во время обновления. Было бы неплохо выводить, например, в строку состояния информацию об обновляемом авторе в таком виде:
+
+```
+Обновление [14/56]: Н.В.Гоголь
+```
+
+где 56 - общее количество авторов, 14 - номер текущего обновления.
+
+Насколько сложно реализовать такое?
+"

@@ -1,0 +1,92 @@
+repository,state,title,label,body
+andybotting/tramhunter,open,Latest code ?,[],"Hi, i'm part of a research group and we are analyzing open source android apps, however i think this is not the latest code and i would really appreciate to have access to it.
+
+If you want more information about the research i am part of don't doubt to write me 
+< ca.escobar2434@uniandes.edu.co >
+
+Thanks."
+andybotting/tramhunter,open,homescreen widget for favourite stops,[],"Feature: homescreen widget for favourite stops (#14)
+Add a homescreen widget/shortcut to a favourite stop to your homescreen, via the favourites context menu. This will need a new icon, at the moment it's using a very blurry star!
+
+Future enhancement: support android 7.1 app shortcuts (by pressing on the launcher icon)
+
+Also:
+-Use `headboardRouteNumber` instead of `routeNo` so it shows route 3a instead of 4 (which you can only notice on weekends!)
+-Fix some lint issues with menu item action view (would cause issues on Android<11)
+
+"
+andybotting/tramhunter,open,Update Gradle for Studio 2.3.3,[],
+andybotting/tramhunter,closed,Don't crash when Yarra builds new tram stops,[],"For example, YT build a new tram stop (3022) for rt 58 to Toorak at Toorak Rd.  `TramRunActivity` would crash because the stop was null. Now it will show as `Unknown stop (3022)` instead.
+
+(The other way to fix this is to update the db, remove the Park St and Domain Rd stops, rename stop 1561, insert stop 3022. But stops can only be inserted after YT builds them)."
+andybotting/tramhunter,closed,New feature: Enter vehicle number,[],"New dialog to enter a vehicle number, and go to the `TramRunActivity`. Reused the search button on the home screen for now (can still use the search button in action bar for other searches).
+Changed the dialog import to use `android.support.v7.app.AlertDialog`, so updated the About dialog style to match.
+Changed `TramRunActivity` to prepend tram class in title bar, and navigate to `StopDetailsActivity` on stop click."
+andybotting/tramhunter,closed,"Update to Google Maps API 2, correct build errors to properly compile with API 23",[],"-correct compileSdkVersion to 'Google Inc.:Google APIs:23' (required for old android maps v1)
+-targetSdkVersion 22 so runtime permission check is not yet required
+-correct other conflicts in build.gradle
+-Add AppCompatMapActivity so old v1 maps can still have AppCompat's Action Bar
+-Replace all android:showAsAction with app:showAsAction in menu xmls, required by appcompat lib
+-delete improperly tracked *.iml files and unused jar file"
+andybotting/tramhunter,closed,CompileSDK and target updated to 25.,[],"Support lib updated to 25.3.1.
+MinSDK bump to 9.
+Gradle version updated for Studio 2.3.2.
+
+We should be able to build with these changes but now have:
+Error:(706) Error retrieving parent for item: No resource found that matches the given name 'Theme.AppCompat.Light.DarkActionBar'."
+andybotting/tramhunter,open,Disruption messages never displaying,[],"When Yarra Trams make a service disruption notice active in tramTRACKER (shown in yellow), this information is never displayed in Tramhunter. This affects all tram routes and has been an ongoing issue for some time now.
+Service updates (which appear to be a different category of message, appear in orange in Tramtracker) do get shown in Tramhunter, however the icon for these (exclamation mark) is more like an icon that would be used for a disruption, not an update.
+"
+andybotting/tramhunter,closed,First basic test for HomeActivity,[],
+andybotting/tramhunter,closed,Android studio migration,[],"Update Gradle version
+"
+andybotting/tramhunter,closed,Ignore /build,[],"Ignore /build directory.
+This is a default in the Android Studio .gitignore file.
+"
+andybotting/tramhunter,closed,More tram interval,[],"Not quite sure how the tram api works and get updated, but is there a chance to make the tram stop display more trams like within 1 or 2 hours? So that the user can plan their day ahead earlier.
+"
+andybotting/tramhunter,closed,"Departure times, Route 75 towards city",[],"Instead of showing the time to departure as usual, the stops on Route 75 (towards the city) are showing what look like the departure times from Camberwell Depot. Examples: all times begin with ""Camberwell Depot"" and then give times like Sat 12.22 am, Sat 12.41 am, Sat 12.55 am. Refreshing the screen and removing the stop from Favourites then reinstating it doesn't do anything. I looked at a few stops on the same route going towards Vermont South and they don't seem to be affected; just the city bound ones. Thanks! 
+"
+andybotting/tramhunter,open,Widget support?,[],"Hi, just wondering if you've considered some kind of widget for this app? Being able to use Wearable Widgets to put my tram times on my watch so I don't need to keep checking my phone would be an absolutely killer feature. Being able to simply glance at your home screen would also be great. Are there any plans to add a feature like this?
+"
+andybotting/tramhunter,closed,Trams not seen (depot exit?) ,[],"In the morning trams arrive at my stop which are not tracked by Tram Hunter (or the Yarra trams app). This is route 109 direction box hill. I suspect these are trams starting from Kew depot rather than port Melbourne.  
+"
+andybotting/tramhunter,closed,Extremely slow compared to TramTracker,[],"Over the past few months, I've noticed that Tram Hunter has been loading stop information a LOT slower than usual, ranging from 8-40+ seconds on average. In some cases it loads within a few seconds, but most of it time it takes longer. I've replicated the results on both 3G and WiFi. The official TramTracker app loads this information in just a few seconds.
+"
+andybotting/tramhunter,open,Tram Hunter cannot update to current location,[],"Hey.. Fantastic app.. but 1.3 seems to not function correctly for me either with data turned on out in the streets of Melbourne or wireless and data on at my home. The last location is used until I select the map icon within the app and it updates my location then Tram Hunter uses that as the current one.. Jelly bean 4.1.1 Tram Hunter V1.3  Maps  V 7.0.2
+"
+andybotting/tramhunter,closed,frustrating blackberry ,[],"I just bought a blackberry and can't get Tramtracker on it... Please could you talk to them and create an app....
+"
+andybotting/tramhunter,closed,Version code confusion,[],"Hi, f-droid.org distributes this app but we are not sure what to do now that there is 1.2 on the Google Play. The latest here is 1.2RC1/1191 and it is hard to tell whether it ought to be built where the version is bumped as the description talks about prepping. Tags would be the best thing from our point of view. 
+"
+andybotting/tramhunter,open,tram stop details are not always correct,[],"The stop details often show stops for trams going in the opposite direction.
+"
+andybotting/tramhunter,closed,latest code?,[],"Is this the latest code? Not sure I see a commit for the final release of 1.1, maybe you need to do a push?
+
+Thanks
+"
+andybotting/tramhunter,closed,old links on website,[],"http://tramhunter.andybotting.com/ still has a number of links to code.google.com, e.g. http://code.google.com/p/tramhunter/source/checkout
+"
+andybotting/tramhunter,closed,Forced close when search for local stops.,[],"Since the last update (late nov 2012) the app causes a 'forced close' when the user selects 'search for local stops'.
+"
+andybotting/tramhunter,closed,"Twitter feed shows raw HTML entities (e.g. ""&amp;"")",[],
+andybotting/tramhunter,closed,Consider a donate button on the website,[],"If the Android ecosystem has told us anything is that people like great free apps so much they want to pay for them - or at least tip the author, buy them a coffee, beer, etc,...
+
+I understand you may be shy with a donate button in the app - so how about one on the ""About"" page of the website.
+"
+andybotting/tramhunter,closed,Bug fix and receiver on manifest,[],"Hey Andy
+I found a small issue with my code that I fixed - double digit entry was not being accepted - and for the notification to be raised you need a <receiver /> on the manifest.
+
+I have added that as well.
+
+Cheers
+"
+andybotting/tramhunter,closed,Here it goes,[],"I saw you are using the 2.2 API.
+I guess my ADT plugin replaced your `default.properties` with `project.properties`. They have the same content, just different names.
+
+I also did not checkin the new `.classpath` file. Not sure if it will cause any problems on your end - it shouldn't - but it's a bit different from what you have.
+
+Anyway.. hope it all makes sense :-)
+
+Cheers
+"

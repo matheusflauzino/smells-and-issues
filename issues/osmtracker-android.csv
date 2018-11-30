@@ -1,0 +1,1148 @@
+repository,state,title,label,body
+nguillaumin/osmtracker-android,open,Feature Requests: Log trackpoint accuracy and GPSImgDirection,[],"I use OSMTracker extensively for surveying work. Two bits of data that would be hugely useful to me are GPS accuracy of tracks (which I guess can be saved in a trackpoint field, similarly to how point accuracy is saved?) and the GPSImgDirection (ie: compass bearing) EXIF tag added to photos or saved in the corresponding GPX file. This would help greatly in visualising track accuracy and also understanding which direction the camera was pointing when a photo was taken.
+
+I've never helped with app development before but I do know the basics of software development so am happy to try and implement this if you can help me figure out where to start!"
+nguillaumin/osmtracker-android,open,incrementally numbered waypoints,[],"Should address issue #82.
+
+A new button (type=""incwp"") which generates incrementally numbered waypoints. The format of the waypoint text is by default ""WPT_0000"", ""WPT_0001""... The user can specify a different format in the button layout XML file if desired."
+nguillaumin/osmtracker-android,open,allow editing/deleting waypoints,[],"This PR allows editing or deleting existing waypoints. Tap on a waypoint in the list to open a dialogue to edit/delete.
+
+I also slightly modified the layout of the waypoint list to accommodate for longer waypoint names."
+nguillaumin/osmtracker-android,open,Tags lost when stopping track,[],"I noticed that when I stop the track (by tapping the disk icon in the top screen action bar), any tags I previously assigned to the track get overwritten by ""osmtracker"". Repro steps as far as I can tell:
+
+- Start new track
+- Assign tags to it, e.g. ""holiday,usa,bike"". Confirm them by tapping the SAVE button (disk icon)
+- Stop the track
+- Resume tracking
+- Stop the track
+
+Now long tap the track in the list, select ""details"" and you see the tracks ""holiday,usa,bike"" have been replaced by the default ""osmtracker"" again.
+
+Not sure whether this is on purpose or a bug. I wouldn't know in which situation the behaviour would be useful, though."
+nguillaumin/osmtracker-android,open,Fix: Upload-track-icon does not dissapear when scrolling any more.,[],"Problem fixed: When have too many tracks and you scroll all over them eventually some track-status-icons disappear.
+
+I have tested with all the icons and some at the same time. It works fine.
+
+This PR fix the issue #113
+"
+nguillaumin/osmtracker-android,closed,Updating develop branch,[],The develop branch is some commits behind master.
+nguillaumin/osmtracker-android,open,GPX file failed to import in Open StreetMap,[],"The message i get when i upload a trace:
+
+> Hi,
+
+>It looks like your GPX file
+
+>  osm_upload201855087.gpx
+
+>with the description
+
+  >juan
+
+>and the following tags:
+
+>  osmtracker
+
+>failed to import. Here's the error:
+
+```
+  Unable to read data from /store/rails/gpx/traces/2829773.gpx (errno=Success)
+  XML parser at line 0 column 0
+```
+
+>More information about GPX import failures and how to avoid
+>them can be found at:
+"
+nguillaumin/osmtracker-android,open,Include the track's tags into the GPX file,[],"I put the track's tags into the GPX file. Format:
+
+```
+<extensions>
+  <tags>
+    holiday2018,bike
+  </tags>
+</extensions>
+```
+Comment: According to the GPX specification, every element inside `<extensions>` should use a private namespace, so actually it should read for example `<osmtracker:tags>` (only an example, the exact name would be up for discussion). I didn't do it because all other places in the app which use `<extensions>` also don't do it."
+nguillaumin/osmtracker-android,open,Motion detection/minimum distance between subsequent track points,[],"I found it would be useful to have kind of a ""motion detection"" to avoid polluting the track with redundant points while the user is standing still. The PR implements this in a most simple way by using Android LocationManager.requestLocationUpdates's parameter ""minDistance"". A new preference has been introduced to set the threshold (value in meters):
+
+Settings -> GPS logging distance"
+nguillaumin/osmtracker-android,open,map view: names unreadable,[],"This is how map view looks like in the closest zoom on my  Nexus 6:
+
+![obrazek](https://user-images.githubusercontent.com/9153595/47152097-fed76580-d2db-11e8-9b5c-b56bffe3219f.png)
+
+The names of the streets and building are simply unreadable so I don't know whether they are correct or they need updating. I cannot zoom in anymore to get them bigger.
+
+Mapnik on PC (www.openstreetmap.org) is readable without problems. Most likely this is related to display DPI but I could not find any option in the settings regarding DPI."
+nguillaumin/osmtracker-android,open,"OSMTracker: upload to OSM fails with authorization error, but it does not ask for credentials",[],"Tested today (Oct. 17) with the current version of OSMTracker in F-Droid (v0.6.11; August 24). According to F-Droid, it is up-to-date.
+
+When trying to upload: oauth.signpost.exception.OAuthCommunicationExxception: Communication with the service provider failed responded in error: 500 (Internal Server Error)
+
+No OSM credentials are saved, and OSMTracker does not ask for credentials. A further observation: In the Settings menu, it is not possible to try to remove the OSM credentials (which do not exist in my case): the menu item is not greyed out. There seems to be no other option to check, create or edit the OSM credentials. There is probably a bug somewhere, causing OSMTracker to not ask for credentials even if there are no credentials available.
+
+I reinstalled OSMTracker 2 weeks ago, due to the same problem. But re-installation did not fix it."
+nguillaumin/osmtracker-android,open,initial track name time stamp in ISO-style,[],"As of today when one starts a new track it gets its name in form ""Oct 6, 2018 08:14:24"" which is exported as ""Oct_6,_2018_08;14;24.gpx"". But in other cases OSMTracker uses ISO-style naming - for directories and audio files.
+
+![obrazek](https://user-images.githubusercontent.com/9153595/46799191-6d547a80-cd54-11e8-9901-264c3d37fb38.png)
+
+
+Please make the initial track name consistent with this style or give us an option to switch into it."
+nguillaumin/osmtracker-android,open,use GPX name for containing directory as well,[],"Please add possibility to name the containing directory with the track's name when chosen ""One directory per track"".
+
+I archive my tracks. The directories names are constructed using date and time in ISO-like manner which is good but I get directory named e.g. ""2018-10-06_08-14-24"" (see the screenshot). When I transfer the directory to my PC I need to manually append its name with the track's name so that it becomes self-descriptive in my archive. (like ""2018-10-06_08-14-24_Prace_u_hřbitova"")
+
+![obrazek](https://user-images.githubusercontent.com/9153595/46796072-fd41f680-cd4b-11e8-9d59-7b3b388d31ee.png)
+
+When I'm looking at the screenshot now I realize it would be useful first to be able to use the ISO-date style with the initial track naming. I sure can overwrite it everytime in OSMTracker but typing special chars like hyphens and underscores is inconvenient on the phone display. I'l file a separate issue for that..."
+nguillaumin/osmtracker-android,closed,Transifex ownership,[],"Hi there,
+
+When I transferred the project to you guys I also transferred the Transifex project for the translations, but it seems I've been retaining control of some of the languages.
+
+I would like to transfer that to, but to do that I need to name someone coordinator for these languages (as it needs at least one coordinator for each language).
+
+Who should I name?
+
+Thank you,
+
+Nico"
+nguillaumin/osmtracker-android,closed,Cannot upload track to OSM - app stops working,[],"I select a track, then from the drop down menu select 'OpenStreetMap upload.'
+
+I see the Exporting progress bar, then the Sending progress bar, then very briefly I see a 'Waiting for OpenStreetMap server response' message, then I get an error message ""OSMTracker for Android has stopped"" with the options to close app or send feedback. The track is not uploaded to OSM. 
+
+OSMTracker v0.6.11 running on a Moto G4 with Android 7.0"
+nguillaumin/osmtracker-android,closed,Doesn't work in background ,[],It used to keep recording in the background (0.6.11). I'm using a Huawei P8 Lite. 
+nguillaumin/osmtracker-android,open,Please add an option for defaut track name ,[],"Currently, the default track name is simply tamestamp written in device locale, but it would be more convenient to have a separate option to set a default track name. So you can set ""Trip to AAA"" as default and quickly rename it to ""Trip to AAA, track 1"". 
+
+This enhancement may be related to #99"
+nguillaumin/osmtracker-android,closed,Push transifex strings,[],"Hi,
+Can you push transifex strings to the project ?
+https://www.transifex.com/projects/p/osmtracker-android/
+
+Regards,"
+nguillaumin/osmtracker-android,closed,F-Droid app,[],"Greetings,
+Instead of bumping the closed #137 thread again, I figured this request should probably be its own issue.
+
+After sitting for a month, the fdroid package finally has activity! :tada: 
+https://gitlab.com/fdroid/fdroiddata/merge_requests/3402
+
+It looks like a fairly simple request before it is merged. Will someone please adjust for us f-droid users?
+
+Thank you!"
+nguillaumin/osmtracker-android,open,Add schema for extension elements,[],"`compass` and `compass_accuracy` (and maybe others?) are currently using the `gpx` namespace: http://www.topografix.com/GPX/1/1 . The gpx schema however says the following for `extensions`:
+
+> You can add extend GPX by adding your own elements from another schema here.
+
+(see also http://www.topografix.com/GPX/1/1/gpx.xsd )
+
+It doesn't really matter what/where that schema is. The schema URL doesn't need to resolve either but somewhere reliable long term would be useful to look it up, or at least an intention to create it later it. A wiki entry on github will sort of do, but that might not be persistent in the future (especially if the definition is to be relied on). Something to consider..."
+nguillaumin/osmtracker-android,closed,version 0.7,[],
+nguillaumin/osmtracker-android,closed,Unable to authenticate in OSM,[],This happen again even that I deleted and uploaded the app twice in my S5. Service provider responded in error: 500 (Internal Server Error)
+nguillaumin/osmtracker-android,open,Fix travis build failing because of missing license agreement,[],"But it fails anyway at an other point:
+
+```
+net.osmtracker.test.gpx.ExportTrackTaskTest > test[test(AVD) - 4.4.2] FAILED 
+	junit.framework.AssertionFailedError
+	at net.osmtracker.test.gpx.ExportTrackTaskTest.test(ExportTrackTaskTest.java:76)
+:app:connectedDebugAndroidTest FAILED
+FAILURE: Build failed with an exception.
+* What went wrong:
+Execution failed for task ':app:connectedDebugAndroidTest'.
+> There were failing tests. See the report at: file:///home/travis/build/dadosch/osmtracker-android/app/build/reports/androidTests/connected/index.html
+```"
+nguillaumin/osmtracker-android,open,Have a Default Privacy option,[],Why is the default Private? Some of us think the default should be Identifiable Therefore you should offer a setting to adjust the default.
+nguillaumin/osmtracker-android,open, missing icon takes two lines perhaps,[], Here we see uploaded tracks take two lines and non uploaded tracks take one line. I believe this was supposed to look different.
+nguillaumin/osmtracker-android,closed,Minor fixes,[],"This PR fixes notifications and set highcontrast theme, both in android 8. Also change the apply plugin syntax in gradle (the change will help building for fdroid)."
+nguillaumin/osmtracker-android,closed,Custom buttom file not working,[],"I am trying to make a custom button file, but it always shows a parse error.
+I started with the default file from GitHub, but that didn't work, so I have gradually reduced the content until I now have one root layout with one button, but I still get a parse error.
+What could be the problem? Has the format changed? Where is the default file stored on the device?
+In the source stored on GitHub I cannot fine the default icons, where are they?"
+nguillaumin/osmtracker-android,closed,Language cannot be changed,[],How can the language be changed? I cannot find any way. In the settings there is no choice. On my device it appears in German and I would like to change it to English.
+nguillaumin/osmtracker-android,closed,Tiny icons in custom layout,[],"I've made a custom layout, but all the icons are too small to see.
+I'm using the icons from the source page, but I've renamed them. I don't see how that would make any difference.
+![screenshot_20180705-190912](https://user-images.githubusercontent.com/15833248/42352242-29b9d352-8087-11e8-838b-3cc99faa5267.png)
+"
+nguillaumin/osmtracker-android,open,Add setting to show background map only when connected to WiFi,[],"For those of us conscious about our mobile data usage, it would be nice if the ""Background Map"" setting wasn't just a checkbox, but had three possible values:
+- Never
+- If using WiFi
+- Always
+
+Just a quality of life improvement that would save having to constantly toggle the setting to review tracks against the map only when connected to WiFi.
+"
+nguillaumin/osmtracker-android,closed,Master and fork,[],This PR closes issue #119. 
+nguillaumin/osmtracker-android,closed,V0.6.12d,[],"This PR includes:
+ * package path name changed from org.osmtracker to net.osmtracker (former was already in use in Play Store).
+ * set targetSdkVersion to 26.
+ * support android 6 permissions."
+nguillaumin/osmtracker-android,open,Crash due to IllegalArgumentException: Unknown URI,[],"java.lang.IllegalArgumentException: Unknown URI: content://me.guillaumin.android.osmtracker.provider/track/-1/trackpoints
+
+(track -1 ???)
+
+It crashed when switched to the app. Recording was on.
+
+On a Moto G3 (X1541) with Android 7.1.2 (LineageOS for microG 14.1)
+
+
+Could be related to #135
+
+[logcat.txt](https://github.com/labexp/osmtracker-android/files/2075210/logcat.txt)
+"
+nguillaumin/osmtracker-android,open,Rendering issues: some tracks appear intermittently and cause lag,[],"Happened on a Nexus 5 with Android 7.1.2 (LineageOS for microG 14.1)
+
+Only 2500 points so lag shouldn't come from there
+
+## Video
+https://video.tedomum.net/videos/watch/69b6c7d4-36a9-49cb-b859-7001ffe259b7
+lag best shown at 0:27
+
+## Logcat
+> Path too large to be rendered into a texture
+[logcat1.txt](https://github.com/labexp/osmtracker-android/files/2066081/logcat1.txt)
+
+
+## Chronology to match both
+- started recording
+- started logcat
+- showed the issues
+- stopped logcat
+- stopped recording
+
+What else can I provide?
+"
+nguillaumin/osmtracker-android,closed,Fix when upload GPX data to OSM (error 500),[],"This PR intend to fix the error mentioned in issue #137:
+
+This error appears in **OpenStreetMapConstants** class
+
+Line with error:  
+ 
+```Java
+private static final String OSM_API_URL_DEV = ""http://master.apis.dev.openstreetmap.org"";  
+private static final String OSM_API_URL_PROD = ""http://www.openstreetmap.org"";
+```
+
+The solution is to change from `http` to `https` in both lines:  
+
+```Java
+private static final String OSM_API_URL_DEV = ""https://master.apis.dev.openstreetmap.org"";  
+private static final String OSM_API_URL_PROD = ""https://www.openstreetmap.org"";
+```"
+nguillaumin/osmtracker-android,closed,Update F-Droid link in README,[],
+nguillaumin/osmtracker-android,closed,Error 500: Internal Server Error when upload GPX data to OSM,"[Label(name=""bug"")]","Hi OSMTracker Developer,
+
+I got some issue when I tried to upload GPX data to OSM. It said that ""Unable to authenticate to OSM.......internal server error"".
+
+Not sure why this happen but I think it related to OSM change their http into https. Because I got same error like this in our local tasking manager version 2.
+
+Hopefully this screenshot will help you guys:
+
+![whatsapp image 2018-05-22 at 9 24 06 am](https://user-images.githubusercontent.com/2520159/40339062-c22c5b58-5da2-11e8-8f99-a52569fb075b.jpeg)
+
+My colleagues also got this error since a week ago.
+
+Thank you.."
+nguillaumin/osmtracker-android,closed,Added Travis CI build status,[],
+nguillaumin/osmtracker-android,open,fix IllegalArgumentException from dismiss,[],"Hi I am with the University of Colorado programming languages and verification group.  We are working on methods to automatically detect hard to find defects in Android applications. I recently found this crash with the tools I am developing for my research and attempted to fix it to the best of my abilities.
+
+To reproduce:
+--------------
+* You should be able to use any device, however I tested on the emulator and my Samsung galaxy s7
+* Create a track
+* Export or upload track and quickly rotate phone
+* Application will crash with an IllegalArgumentException if the timing right
+* To make the crash easier to observe in testing, delay the doInBackground method of ExportTrackTask by half a second, however this is not necessary as a slow SD card or network connection could cause this.
+```
+        @Override
+        protected Boolean doInBackground(Void... params) {
+                try {
+                        Thread.sleep(500);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+```
+
+ADB logcat / stacktrace
+---------------
+```
+E/AndroidRuntime: FATAL EXCEPTION: main
+                  Process: org.osmtracker, PID: 4182
+                  java.lang.IllegalArgumentException: View=DecorView@5bd7f9f[] not attached to window manager
+                      at android.view.WindowManagerGlobal.findViewLocked(WindowManagerGlobal.java:473)
+                      at android.view.WindowManagerGlobal.removeView(WindowManagerGlobal.java:382)
+                      at android.view.WindowManagerImpl.removeViewImmediate(WindowManagerImpl.java:124)
+                      at android.app.Dialog.dismissDialog(Dialog.java:357)
+                      at android.app.Dialog.dismiss(Dialog.java:340)
+                      at org.osmtracker.gpx.ExportTrackTask.onProgressUpdate(ExportTrackTask.java:160)
+                      at org.osmtracker.gpx.ExportTrackTask.onProgressUpdate(ExportTrackTask.java:42)
+                      at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:680)
+                      at android.os.Handler.dispatchMessage(Handler.java:102)
+                      at android.os.Looper.loop(Looper.java:154)
+                      at android.app.ActivityThread.main(ActivityThread.java:6077)
+                      at java.lang.reflect.Method.invoke(Native Method)
+                      at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:865)
+                      at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:755)
+```
+
+Explanation
+------------
+
+The ```dismiss()``` method on ```ProgressDialog`` cannot be called after the associated ```Activity``` object has been paused.  Since there are dismiss methods in the ```doInBackground()``` and ```onPostExecute()``` callbacks it is possible for these to be invoked after the activity has paused but before it has resumed.
+
+
+Fix
+---
+To fix this I dismiss the dialog when the activity is paused and then check if it is showing before dismiss is invoked.  Unfortunately the ```isShowing()``` method will return true after the dialog has been hidden through a rotation so the ```dismiss()``` in the ```onPause()``` callback is necessary.
+
+I hope this helps!  Great application by the way."
+nguillaumin/osmtracker-android,open,JOSM compatible audio,[],"I like to process my tracks with JOSM. Unfortunately it doesn't know how to deal with 3gpp audio and will open a browser when clicking on an audio note. It can deal with WAV though and perhaps mp3. Could you add an option to save the audio as WAV please?
+
+"
+nguillaumin/osmtracker-android,closed,Domain changed to org.osmtracker,[],Collaborating to the repository migrating process. This PR changes the app's packages structure from `me.guillaumin.android.osmtracker` to `org.osmtracker` closing [this issue](https://github.com/labexp/osmtracker-android/issues/121)
+nguillaumin/osmtracker-android,closed,Porting to iOS?,[],"This app is fantastic. Sadly there is no equivallent for iOS. Has anyone thought about porting the app to iOS? I have no idea if this is possible or how labor intensive this would be, but it would be very great to have on iOS."
+nguillaumin/osmtracker-android,closed,"Update Gradle to version 4.5, update dependency versions and fix Travis build",[],"@nguillaumin as you said in #129, only updating `gradle-wrapper.properties` is not enough. Normally at least `gradle-wrapper.jar` also changes. In this case also `gradlew` and `gradlew.bat` changed. The update can be done by executing `./gradlew wrapper --gradle-version 4.5 --distribution-type all` two times. Or I normally use a small shell script doing that for me: https://gist.github.com/floscher/162c8559258550a4173a6c87b2454f47
+
+So the commits do the following:
+* f60f39430941034698e72fdf3274d261fa6ba61c Update Gradle to the latest version 4.5
+* 434bd983495f7afaf5d6b9dd4def14688a0668e3 Update several dependencies to their latest versions and use some newer Gradle notation
+* 066fe28381f549db76eec85c57f79d7c45e72c5c Fix the currently failing Travis build: It's related to the issue mentioned in #129 (travis-ci/travis-ci#7425). Though I'm not sure if Travis is at fault or Google/Android, https://stackoverflow.com/a/45177269 seems to indicate that for some Android versions there are simply no ABI images available. See https://travis-ci.org/floscher/osmtracker-android/builds/333501292#L2110-L2132: 16 and 25 don't have an ABI image, but 19 has. That's why I changed the emulator version to 19."
+nguillaumin/osmtracker-android,closed,source code repository URL to README,[],This PR only add to the README file the URL of the official source code repository of OSM Tracker. 
+nguillaumin/osmtracker-android,closed,fixes gradle error while building apk,[],"This fixes the error:
+`Error:Failed to complete Gradle execution.
+Cause:
+The version of Gradle you are using (2.14.1) does not support the forTasks() method on BuildActionExecuter. Support for this is available in Gradle 3.5 and all later versions.`
+When trying to build the APK from Android Studio"
+nguillaumin/osmtracker-android,open,Add method to add custom background maps,[],Give a way for users to add custom background maps if they prefer.
+nguillaumin/osmtracker-android,open,MapQuest Open background map is all white.,"[Label(name=""bug""), Label(name=""map-view"")]",MapQuest Open background map is all white.
+nguillaumin/osmtracker-android,closed,Allow changing background map while looking at background map,"[Label(name=""enhancement""), Label(name=""map-view"")]","Have a way to change the background map right while we are looking at the background map.
+
+Currently one must go all the way into preferences, and then all the way back out, to change it."
+nguillaumin/osmtracker-android,open,Cycle map says API key required,"[Label(name=""bug""), Label(name=""map-view"")]",Cycle map background map says API key required in a watermark on top of the map.
+nguillaumin/osmtracker-android,closed,Add units to the numbers on the sending track screen.,[],"Add units to the numbers on the sending track screen. For example ""bytes""."
+nguillaumin/osmtracker-android,open,Add an option to keep screen on while sending tracks.,"[Label(name=""enhancement""), Label(name=""osm"")]",Add an option to keep screen on while sending tracks.
+nguillaumin/osmtracker-android,open,Button produces unknown message,[],I am offline. At the top of the screen there is a button. On the button there is a square with an arrow curving upwards and to the right. If I push the button some message appears in the middle of the screen very fast and then disappears. That is all I know.
+nguillaumin/osmtracker-android,open,Show how many points have already been collected during collection,[],Made me some indication should be given to the user about how many points have already been collected *during* collection.
+nguillaumin/osmtracker-android,open,Don't say 100% if there's something still left to do,[],"Never leave the screen in this state, even for one second.
+![screenshot_20171029-063447](https://user-images.githubusercontent.com/1230959/32139139-d71fadd8-bc73-11e7-9e13-cb598c886ef8.jpg)
+Because the user will think something is stuck, and start pounding on keys.
+When users see the word 100% they think that it means the operation is 100% finished, even though you are just talking about the bytes transfer portion and not the remaining actions. The user is not aware that there are further screens about to come."
+nguillaumin/osmtracker-android,closed,Facilitate download and installation of custom Layouts,"[Label(name=""enhancement"")]","As @jamescr mentioned in issue #85, explain, to a person who does not have technical knowledge, how to use different Layouts sometimes can be difficult. That is why we want to add extra functionality, to facilitate the task and so anyone can do it without problems.
+
+With the following screenshots I hope to be able to explain our proposal to implement the enhancement. 
+
+We will change the option of **buttons presets** so that instead of opening a pop-up with the Layouts that can be activated, open a new activity, such as the one shown below.
+
+<img src=""https://github.com/LabExperimental-SIUA/osmtracker-android/blob/docu/documentaci%C3%B3n/Screenshots/buttons_presets.png?raw=true"" alt=""buttons presets"" />
+
+In this activity we will have three sections, the first is the Layout that comes by default in the application, the second section are the Layouts that the user have downloaded and are available for being install. The custom layouts will have emerging options, such as **update and install** and **delete** (the default layout will not have these options).  Finally, the third section consists of a **add new** button which brings us to another activity where we will be able to download new Layouts.
+
+
+<img src=""https://github.com/LabExperimental-SIUA/osmtracker-android/blob/docu/documentaci%C3%B3n/Screenshots/available_layouts.png?raw=true"" alt=""available layouts"" />
+
+This activity shows the available Layouts for download on a specified server (by default a Git Hub repository), the server must follow a structure of folders and files specified to be able to work, see more information in [Guide to create Layout](https://github.com/LabExperimental-SIUA/osmtracker-android/wiki/Guide-to-create-Layouts)
+
+When a Layout is pressed a description will be displayed in the language of the device (in case the Layout is not in the language of the device it will be given a pop-up with the available languages  for the user to select in which language the  description will be shown), the same window will show the options for download or cancel (the downloaded layout will be in the default language or the selected language by the user).
+
+Also, in the upper right (tool bar), you will have an option to configure the server where you want to download Layouts, if it is invalid an error message will be displayed.
+
+We will be developing this proposal in the [LabExperimental-SIUA repository](https://github.com/LabExperimental-SIUA/osmtracker-android) and then we will make a pull request.   
+
+We have two options for storing Layouts:
+- The first option is to create a new ""Layouts"" branch inside the **osmtracker-android** repository or on the **Fork of LabExperimental-SIUA**.
+- The second option is to create a completely new repository that the community can manipulate, where the Layouts can be added by means of a Pull Request following the indications of the structure."
+nguillaumin/osmtracker-android,closed,"Don't call it ""OSM Tracker for Android"". Just call it OSM Tracker or OSMTracker.",[],"Don't call it ""OSM Tracker for Android"".
+No other app adds the words ""for Android"" to the app name.
+
+Go ahead and look in the Launcher. No other app has that added to the
+name, making the name overflow in the Launcher. Also on Google Play no
+other app adds those words.
+
+And see you are the only Android app with the name OSM Tracker so there
+is no conflict,
+https://play.google.com/store/search?q=OSMTracker&c=apps
+
+You might say what about the conflict on
+https://wiki.openstreetmap.org/wiki/OSMtracker
+
+Well the Windows Mobile version is for Windows Mobile and is no longer
+maintained, and https://en.wikipedia.org/wiki/Windows_Mobile says
+Windows Mobile has been deprecated."
+nguillaumin/osmtracker-android,open,Is upload dependent on export?,[],"I recorded a track yesterday and once home I selected upload.  I checked my GPS traces on OSM this morning and this new track was not listed but in the app it was shown with what I assume to be an uploaded symbol in the track list.
+So I selected export and then re-uploaded this track.  I then refreshed my gps tracks list online and it was then visible.
+Please correct me if I am wrong but this experience suggests that that upload function is dependent on a previous export.  I am not sure this is what the author intended but without having seen the use cases this is guesswork.
+
+However, as a user, I want to minimise my intereactions with an app so I would prefer to able to upload recorded tracks in one operation. 
+
+"
+nguillaumin/osmtracker-android,open,Remember Privacy selection ,"[Label(name=""enhancement""), Label(name=""osm""), Label(name=""ux"")]","Each time I want to upload a track I have to set the privacy from
+Private to Identifiable, etc.. I wish there was a default privacy option,
+or at least it could remember my previous selection. Not everybody likes Private the most.
+
+Also when implementing this be sure it will work with any future
+'upload all tracks' function (#114)."
+nguillaumin/osmtracker-android,open,New track button,[],"I am running V0.6.11 on a Samsung S6. The screen contains a list of tracks a + symbol (in a circle) and drop down menu.
+
+The instruction at the bottom of the screen states ""To record a track press **New Track**""
+
+I assume that the + symbol is the New Track button.  Before going any further please could someone confirm this.  (I have seen apps before where buttons are missing on some platforms).
+
+I also note that:
+- if I return to the track list screen and select the + button it Stops a currently recording track before starting a new one.
+- however, there does not seem to be an explicit method for stopping or pausing recording.
+
+There may be other ways of resolving this but  I suggest changing the + symbol for a standard Button labelled ""Record New Track"" and that once a recording is in progress, that the label be changed to ""Stop Recording"". 
+
+
+"
+nguillaumin/osmtracker-android,open,Feature Request: Upload all tracks to OSM,"[Label(name=""feature""), Label(name=""osm"")]","Uploading all tracks one-by-one takes time.
+It would be great to have a ""Upload all tracks to OSM"" button below the ""Export all as GPX"" button.
+Thanks!"
+nguillaumin/osmtracker-android,open,"""uploaded"" icon disappears when scrolling","[Label(name=""bug"")]","Steps:
+1. Have a lot of tracks (I have about 20)
+2. Upload a few of them. They get a ↑ icon which means they have been uploaded, if I understand correctly
+3. Scroll up and down a few times
+4. Some of the ↑ icons have disappeared, so I can not tell anymore what tracks I have uploaded already.
+
+Workaround: Pretending to upload a file then pressing ""Back"" to cancel makes the  ↑ icons reappear."
+nguillaumin/osmtracker-android,closed,Waypoints should be uploaded along with trackpoints,[],"http://learnosm.org/en/mobile-mapping/osmtracker/ says
+
+Caution, do not delete your track yet. You have only uploaded the basic
+trace and not the waypoints, photographs etc. Retain everything until it
+is transferred to a computer for editing purposes.
+
+https://wiki.openstreetmap.org/wiki/Upload_Waypoints
+says one can upload waypoints along with trackpoints.
+
+Therefore the OSMtracker documentation should document just what gets uploaded.
+1. Trackpoins
+2. Waypoints?
+3. Voice notes?
+4. Photos?
+5. Etc.
+
+And if waypoints aren't currently getting uploaded, they should be.
+"
+nguillaumin/osmtracker-android,closed,Every jpg is saved in two places!,[],Every photograph is saved in two different directories. That makes an average waste of 5 megabytes per photograph!
+nguillaumin/osmtracker-android,closed,Include GPS precision,"[Label(name=""enhancement""), Label(name=""gps"")]","That would be so useful to know whether my trace is reliable or not, when adding very curvy/narrow streets in crowded South-Asian urban environments.
+
+Currently I can not use my traces, because I don't know what is precise and what is not.
+
+http://www.topografix.com/gpx/1/1/gpx.xsd :
+```
+		  <xsd:element name=""hdop"" type=""xsd:decimal"" minOccurs=""0""><xsd:annotation><xsd:documentation>
+			Horizontal dilution of precision.
+		  </xsd:documentation></xsd:annotation></xsd:element><xsd:element name=""vdop"" type=""xsd:decimal"" minOccurs=""0""><xsd:annotation><xsd:documentation>
+			Vertical dilution of precision.
+		  </xsd:documentation></xsd:annotation></xsd:element><xsd:element name=""pdop"" type=""xsd:decimal"" minOccurs=""0""><xsd:annotation><xsd:documentation>
+			Position dilution of precision.
+		  </xsd:documentation></xsd:annotation></xsd:element>
+```"
+nguillaumin/osmtracker-android,closed,Do not offer to upload if there is no way to authorize,[]," In each track's menu there is an option to upload to OSM.
+
+ This option should be greyed out if the authorization option is already also greyed out in the settings menu."
+nguillaumin/osmtracker-android,closed, cannot enter authorization settings,[],
+nguillaumin/osmtracker-android,closed,Feature Request: Multi-Window Support,[],"Nice to have: add support for displaying more than one app at the same time
+
+Info: https://developer.android.com/guide/topics/ui/multi-window.html
+
+Why: It would be useful if you could display osmtracker and for example the note app or an OSM router at the same time.
+"
+nguillaumin/osmtracker-android,closed,Reorga maxspeed,[],"hi !
+
+to map the tag maxspeed correct there are several vales required for many countries:
+
+missing: 20,40,70,90 no more maxspeed (look http://www.strassenschilder.de/vorschriftszeichen/ende-der-geschwindigkeitsbegrenzung/)
+
+Jan alias User:Lübeck"
+nguillaumin/osmtracker-android,closed,Icons do not show up in custom preset,[],"I would like to add custom images to my buttons in my preset but they are not displayed.
+
+I've tried : 
+* svg images
+* png images
+* using the default layout images
+
+Here is my preset : 
+
+```xml
+<layouts>
+ <layout name=""root"">
+   <row>
+   <button type=""tag"" label=""Poteau d'arrêt_"" icon=""pole.svg"" />
+   <button type=""tag"" label=""Poteau d'arrêt"" icon=""shelter.png"" />
+   <button type=""tag"" label=""Abribus"" icon=""button_misc_shelter.svg""/>
+  </row>
+     <row> (...) </row>
+ </layout>
+</layouts>
+
+```
+Here is the content of my layouts folder : 
+.
+├── my_layout.xml
+├── pole.svg
+└── shelter.png
+
+
+Thanks in advance for your support."
+nguillaumin/osmtracker-android,closed,Map view when not tracking feature,[],"Hi !
+I've used OSMTracker for a long time and I found it was such a great app. How about you adding map view feature ? It would be nice because I wouldn't have to open up web browser and go to openstreetmap.org . Just a minor suggestion
+Cheers ;)"
+nguillaumin/osmtracker-android,open,Added track sharing feature,[],"It solves #69, #84 and a little bit of #85. It exports the track with media to cache dir (if there's more then 1 file, the files are packed into zip archive) and shares it with other apps via ContentProvider. Checked it on my device with standard email app, Gmail and DropBox.
+Also I've slightly changed logic of writability check when exporting track: now it checks writability of target dir instead of writability of external storage (since we do not need writable external storage when saving temporary file)"
+nguillaumin/osmtracker-android,open,Feature Request: warn on low accuracy,"[Label(name=""feature""), Label(name=""gps"")]","Nice to have: indicate when the HDOP is bigger than a parameter setting (feeback: sound, notification, different style for the text...).
+
+Why? If we want to take pictures, notes etc..., it's good to be aware of low accuracy."
+nguillaumin/osmtracker-android,open,Only show a SAVE button when the data is not already saved,"[Label(name=""enhancement""), Label(name=""ux"")]","At the bottom we sometime see two buttons, one of which is called SAVE.
+
+However these often appear when the data is already in the saved state.
+
+Please only show such buttons when the data is not in the saved state and does not need to be saved again.
+"
+nguillaumin/osmtracker-android,closed,Limit the number of accuracy digits,"[Label(name=""export"")]","Please limit the number of digits!
+```
+""Photo (4.550999641418457m)""
+""big turn (4.550999641418457m)""
+```"
+nguillaumin/osmtracker-android,closed,Always write consistent .gpx filenames,"[Label(name=""expected"")]","Please always write consistent .gpx filenames.
+```
+$ find * -name \*.gpx
+2017-02-03_08-18-49/2017-02-03_08-18-49.gpx
+2017-02-03_08-34-46/2017-02-03_08-34-46.gpx
+2017-02-03_08-35-34/2017-02-03_08-35-34.gpx
+2017-05-11_15-28-44/2017-05-11_15-28-44.gpx
+2017-05-11_15-34-11/2017-05-11_15-34-11.gpx
+2017-05-11_15-50-45/2017-05-11_15-50-45.gpx
+2017-05-16_16-43-59/May_16,_2017_16;43;59_2017-05-16_16-43-59.gpx
+2017-05-17_05-50-17/May_17,_2017_05;50;17_2017-05-17_05-50-17.gpx
+2017-05-17_07-00-14/2017-05-17_07-00-14.gpx
+2017-05-23_08-03-21/2017-05-23_08-03-21.gpx
+2017-05-23_08-33-26/2017-05-23_08-33-26.gpx
+2017-05-23_08-44-19/2017-05-23_08-44-19.gpx
+2017-05-23_09-13-18/2017-05-23_09-13-18.gpx
+2017-05-26_07-29-25/2017-05-26_07-29-25.gpx
+2017-05-26_09-04-43/2017-05-26_09-04-43.gpx
+2017-05-27_05-47-47/2017-05-27_05-47-47.gpx
+2017-05-29_10-50-38/2017-05-29_10-50-38.gpx
+```
+
+No I have no idea why there are two odd ones.
+Did I press a different button to generate them?"
+nguillaumin/osmtracker-android,closed,™ is not UTF-8,"[Label(name=""invalid"")]","The exported gpx file says it has encoding UTF-8, but it includes the '™' character.
+
+This causes some parsers (i.e. strava.com) to reject the file."
+nguillaumin/osmtracker-android,open,"Cancel belongs at the bottom of menus, not the top","[Label(name=""ux"")]","Looking at a track Details page, in the menu we see Cancel, Display track, and Upload to OSM. Cancel should always be the last item."
+nguillaumin/osmtracker-android,open,Cycle map says API key required,"[Label(name=""bug""), Label(name=""map-view"")]",In settings choose Cycle Map as the tile source. The background of the image seen says API key required.
+nguillaumin/osmtracker-android,open,Allow zooming a track display,"[Label(name=""map-view""), Label(name=""ux"")]","One can display tracks, but no matter how much we unpinch the map, it won't zoom."
+nguillaumin/osmtracker-android,open,Link to documentation directly from the app,"[Label(name=""ux"")]",The user looks for documentation. He goes from the GitHub link poking around and finally finds https://github.com/nguillaumin/osmtracker-android/wiki which is apparently the documentation. I would put a direct link from the apps about page to the documentation. Also note that the Wiki page is not suitable for viewing on a cell phone because it spreads over the edge.
+nguillaumin/osmtracker-android,open,0 meter scale bar,"[Label(name=""bug""), Label(name=""map-view"")]","Try this: sit on a park bench and push the plus symbol that creates a new track. Now don't go anywhere just sit there. After a while press in the menu Display Track. You will notice in the upper right corner the scale bar has below it  ""0"" meters. Yes an actual 0 meter scale bar. It says 0 meters."
+nguillaumin/osmtracker-android,open,Scale bar pressed up against the top of the screen,"[Label(name=""map-view""), Label(name=""ux"")]",When we display a track in the upper right corner there is a tiny little scale bar with the bar above the number. The worst thing is the bar is pressed very much up against the top of the screen that one can't even see it probably. Also if you look at other people's maps they have a longer bar with several little segments. That would be easier to read.
+nguillaumin/osmtracker-android,open,No way to tell what the green balls mean without a manual,"[Label(name=""export""), Label(name=""ux"")]","On the list of tracks some tracks have a green ball next to them. And yellow balls next to tracks that are currently being recorded. However the user in the field, has no way to tell what the green balls mean, without a manual."
+nguillaumin/osmtracker-android,open,Differentiate items that have sub items,"[Label(name=""ux"")]","While recording a track, one sees 12 buttons on the screen. However some of these buttons lead to further sub items and some of them don't. Alas there is no way to tell the difference. Therefore kindly add three dots after the title of each item that leads to a sub item.."
+nguillaumin/osmtracker-android,closed,Delete all tracks menu item too close to other menu items,[],"The delete all tracks menu item  is extremely dangerously close to the export all  tracks to GPX menu item. One fears that if one puts on's finger just a little too close, all will be lost. No I didn't dare try to test it to see what would happen. Maybe it really does have a confirmation question. But the user would be still so scared all the time."
+nguillaumin/osmtracker-android,open,Make a backup copy of the database when a corruption happens,"[Label(name=""enhancement"")]","I just encountered a crash while trying to display a track. It wiped all my tracks. And it seems I have no way of getting them back!
+
+Here is the logcat of my device at the time:
+
+    05-09 19:02:11.460  1843  1843 W ViewPager: Requested offscreen page limit 0 too small; defaulting to 1
+    05-09 19:02:11.480  1843  1843 I LatinIME: Starting input. Cursor position = 0,0
+    05-09 19:02:11.497  2740  2740 W IInputConnectionWrapper: getTextBeforeCursor on inactive InputConnection
+    05-09 19:02:11.497  2740  2740 W IInputConnectionWrapper: getSelectedText on inactive InputConnection
+    05-09 19:02:11.508  2740  2740 W IInputConnectionWrapper: requestCursorAnchorInfo on inactive InputConnection
+    05-09 19:02:11.510  2740  2740 W IInputConnectionWrapper: getTextBeforeCursor on inactive InputConnection
+    05-09 19:02:11.511  1843  1843 E RichInputConnection: Unable to connect to the editor to retrieve text.
+    05-09 19:02:11.511  1843  1843 D RichInputConnection: Will try to retrieve text later.
+    05-09 19:02:11.536  2740  2740 W IInputConnectionWrapper: getTextBeforeCursor on inactive InputConnection
+    05-09 19:02:11.537  1843  1843 E RichInputConnection: Unable to connect to the editor to retrieve text.
+    05-09 19:02:11.537  1843  1843 W RichInputConnection: Unable to connect to the editor. Setting caps mode without knowing text.
+    05-09 19:02:11.709  1843  2938 D OpenGLRenderer: Use EGL_SWAP_BEHAVIOR_PRESERVED: true
+    05-09 19:02:11.743  1843  1843 I LatinIME: Starting input. Cursor position = 19,19
+    05-09 19:02:12.043  1843  2938 W Adreno-GSL: <get_panel_settings:3802>: Android framework reported version 2. So, don't force ES30
+    05-09 19:02:12.064  1843  2938 I Adreno-EGL: <qeglDrvAPI_eglInitialize:381>: EGL 1.4 QUALCOMM build: AU_LINUX_ANDROID_KK_2.7_RB1.04.04.00.007.018_msm8960_KK_2.
+    7_RB1_CL3869936_release_AU (CL3869936)
+    05-09 19:02:12.064  1843  2938 I Adreno-EGL: OpenGL ES Shader Compiler Version: 17.01.10.SPL
+    05-09 19:02:12.064  1843  2938 I Adreno-EGL: Build Date: 12/09/13 Mon
+    05-09 19:02:12.064  1843  2938 I Adreno-EGL: Local Branch: mybranch2092625
+    05-09 19:02:12.064  1843  2938 I Adreno-EGL: Remote Branch: quic/kk_2.7_rb1.15
+    05-09 19:02:12.064  1843  2938 I Adreno-EGL: Local Patches: NONE
+    05-09 19:02:12.064  1843  2938 I Adreno-EGL: Reconstruct Branch: AU_LINUX_ANDROID_KK_2.7_RB1.04.04.00.007.018 +  NOTHING
+    05-09 19:02:12.099  1843  2938 I OpenGLRenderer: Initialized EGL, version 1.4
+    05-09 19:02:12.492  1088  1105 I ActivityManager: Process com.android.cellbroadcastreceiver (pid 2868) has died
+    05-09 19:02:12.492  1088  1105 D ActivityManager: cleanUpApplicationRecord -- 2868
+    05-09 19:02:13.641   199   199 I surfaceflinger: type=1400 audit(0.0:117): avc: denied { read write } for path=""/dev/kgsl-3d0"" dev=""tmpfs"" ino=1818 scontext=u:
+    r:surfaceflinger:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+    05-09 19:02:13.811  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:13.811  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:14.488  1843  1939 I LatinIME:LogUtils: Dictionary info: dictionary = contacts.fr ; version = 1494349334 ; date = ?
+    05-09 19:02:14.672  1943  1956 I art     : Waiting for a blocking GC DisableMovingGc
+    05-09 19:02:14.685  1943  1954 I art     : CollectorTransition marksweep + semispace GC freed 9498(687KB) AllocSpace objects, 0(0B) LOS objects, 24% free, 4MB/
+    6MB, paused 148.254ms total 148.254ms
+    05-09 19:02:14.686  1943  1956 I art     : WaitForGcToComplete blocked for 14.312ms for cause DisableMovingGc
+    05-09 19:02:14.686  1943  1956 I art     : Starting a blocking GC DisableMovingGc
+    05-09 19:02:14.932  1843  1939 I LatinIME:LogUtils: Dictionary info: dictionary = contacts.fr ; version = 1494349334 ; date = 1494349334
+    05-09 19:02:16.650  1843  1843 I LatinIME: Starting input. Cursor position = 0,0
+    05-09 19:02:16.839  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:16.839  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:17.463  1843  1843 I LatinIME: Starting input. Cursor position = 0,0
+    05-09 19:02:17.679  2740  2750 I art     : Background sticky concurrent mark sweep GC freed 11997(656KB) AllocSpace objects, 1(24KB) LOS objects, 31% free, 4MB
+    /6MB, paused 579us total 167.663ms
+    05-09 19:02:18.292  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.309  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.322  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.336  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.350  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.363  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.369  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:18.369  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:18.440  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.454  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.473  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.487  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.500  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.513  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.527  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.540  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.554  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.568  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.583  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.598  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.612  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.624  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.637  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.647  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.657  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.668  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.682  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.693  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.702  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.714  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.726  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.741  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.752  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.765  1088  1287 D WifiService: Client connection lost with reason: 4
+    05-09 19:02:18.769  1088  2018 I ActivityManager: Process com.android.settings (pid 2854) has died
+    05-09 19:02:18.770  1088  2018 D ActivityManager: cleanUpApplicationRecord -- 2854
+    05-09 19:02:18.805  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.820  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.838  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.851  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.862  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.874  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.887  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.900  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.914  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.930  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:18.941  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:18.941  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:18.988  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.001  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.015  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.028  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.043  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.053  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.063  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.079  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.092  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.106  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.117  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.128  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.143  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.154  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.163  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.179  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.189  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.201  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.216  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.235  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.295  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.316  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.330  1088  1294 D AudioService: Stream muted, skip playback
+    05-09 19:02:19.390  2740  2740 V TrackContentProvider: query(), uri=content://me.guillaumin.android.osmtracker.provider/track
+    05-09 19:02:19.442  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:19.488  2740  2740 V TrackContentProvider: query(), uri=content://me.guillaumin.android.osmtracker.provider/track/active
+    05-09 19:02:20.146  2740  2753 D OpenGLRenderer: endAllStagingAnimators on 0xa698d8 (RippleDrawable) with handle 0xa26c48
+    05-09 19:02:20.177  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:20.230   199   199 W SurfaceFlinger: couldn't log to binary event log: overflow.
+    05-09 19:02:20.352  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:20.387  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:20.415  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:20.427  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:20.441  1322  2252 W ExifInterface: Skip the tag entry since tag number is not defined: 2
+    05-09 19:02:20.736  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:20.736  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:21.281  1088  1294 D AudioService: Stream muted, skip playback
+    05-09 19:02:21.284  1088  1363 I ActivityManager: START u0 {cmp=me.guillaumin.android.osmtracker/.activity.TrackDetail (has extras)} from uid 10076 on display 0
+    05-09 19:02:21.497  2740  2740 V TrackContentProvider: query(), uri=content://me.guillaumin.android.osmtracker.provider/track/4
+    05-09 19:02:21.563  2740  2740 V TrackContentProvider: query(), uri=content://me.guillaumin.android.osmtracker.provider/track/4/start
+    05-09 19:02:21.575  2740  2740 V TrackContentProvider: query(), uri=content://me.guillaumin.android.osmtracker.provider/track/4/end
+    05-09 19:02:21.730  1843  1939 I LatinIME:LogUtils: Dictionary info: dictionary = spellcheck_contacts.fr ; version = 1494164709 ; date = 1494164709
+    05-09 19:02:21.738  1843  1939 I LatinIME:LogUtils: Dictionary info: dictionary = spellcheck_userunigram.fr ; version = 1494349341 ; date = ?
+    05-09 19:02:21.955  1943  1954 I art     : CollectorTransition marksweep + semispace GC freed 90(-103KB) AllocSpace objects, 0(0B) LOS objects, 24% free, 4MB/5MB, paused 193.634ms total 193.634ms
+    05-09 19:02:22.054  1843  1939 I LatinIME:LogUtils: Dictionary info: dictionary = main:fr ; version = 54 ; date = 1414726264
+    05-09 19:02:22.086  2740  2740 I Choreographer: Skipped 30 frames!  The application may be doing too much work on its main thread.
+    05-09 19:02:22.169  1088  1158 I ActivityManager: Displayed me.guillaumin.android.osmtracker/.activity.TrackDetail: +853ms
+    05-09 19:02:22.548   199   199 W SurfaceFlinger: couldn't log to binary event log: overflow.
+    05-09 19:02:22.976  1322  2252 W MediaScanner: Error opening directory '/oem/media/', skipping: No such file or directory.
+    05-09 19:02:23.013  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:23.013  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:23.406  1088  1294 D AudioService: Stream muted, skip playback
+    05-09 19:02:23.544  2049  2150 E ELEVEN  : calling refresh!
+    05-09 19:02:25.297  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:25.297  1322  2252 I art     : Starting a blocking GC Alloc
+    05-09 19:02:25.448  1088  1294 D AudioService: Stream muted, skip playback
+    05-09 19:02:25.486  1088  1959 I ActivityManager: START u0 {cmp=me.guillaumin.android.osmtracker/.activity.DisplayTrackMap (has extras)} from uid 10076 on display 0
+    05-09 19:02:25.704  2740  2740 I AndroidLoggerFactory: Logger name 'org.osmdroid.views.MapView' exceeds maximum length of 23 characters, using 'o*.o*.v*.MapView' instead.
+    05-09 19:02:25.718  2740  2740 I AndroidLoggerFactory: Logger name 'org.osmdroid.DefaultResourceProxyImpl' exceeds maximum length of 23 characters, using 'o*.o*.DefaultResourceP*' instead.
+    05-09 19:02:25.731  2740  2740 I AndroidLoggerFactory: Logger name 'org.osmdroid.tileprovider.tilesource.BitmapTileSourceBase' exceeds maximum length of 23 characters, using 'o*.o*.t*.t*.BitmapTile*' instead.
+    05-09 19:02:25.743  2740  2740 I AndroidLoggerFactory: Logger name 'org.osmdroid.tileprovider.tilesource.CloudmadeTileSource' exceeds maximum length of 23 characters, using 'o*.o*.t*.t*.CloudmadeT*' instead.
+    05-09 19:02:25.743  2740  2740 I o*.o*.v*.MapView: Using tile source: org.osmdroid.tileprovider.tilesource.XYTileSource@488ee25
+    05-09 19:02:25.744  2740  2740 I AndroidLoggerFactory: Logger name 'org.osmdroid.tileprovider.MapTileProviderBase' exceeds maximum length of 23 characters, using 'o*.o*.t*.MapTileProvid*' instead.
+    05-09 19:02:25.750  2740  2740 I AndroidLoggerFactory: Logger name 'org.osmdroid.tileprovider.LRUMapTileCache' exceeds maximum length of 23 characters, using 'o*.o*.t*.LRUMapTileCac*' instead.
+    05-09 19:02:25.751  2740  2740 I AndroidLoggerFactory: Logger name 'org.osmdroid.tileprovider.modules.TileWriter' exceeds maximum length of 23 characters, using 'o*.o*.t*.m*.TileWriter' instead.
+    05-09 19:02:25.768  2740  2740 I AndroidLoggerFactory: Logger name 'org.osmdroid.tileprovider.modules.MapTileModuleProviderBase' exceeds maximum length of 23 characters, using 'o*.o*.t*.m*.MapTileMod*' instead.
+    05-09 19:02:25.768  2740  2740 I AndroidLoggerFactory: Logger name 'org.osmdroid.tileprovider.modules.MapTileFileStorageProviderBase' exceeds maximum length of 23 characters, using 'o*.o*.t*.m*.MapTileFil*' instead.
+    05-09 19:02:25.786  2740  2740 I o*.o*.t*.m*.MapTileFil*: sdcard state: mounted
+    05-09 19:02:25.801  2740  2740 I o*.o*.t*.m*.MapTileFil*: sdcard state: mounted
+    05-09 19:02:25.868  2740  2740 I AndroidLoggerFactory: Logger name 'org.osmdroid.tileprovider.modules.ArchiveFileFactory' exceeds maximum length of 23 characters, using 'o*.o*.t*.m*.ArchiveFil*' instead.
+    05-09 19:02:25.869  2740  2740 I AndroidLoggerFactory: Logger name 'org.osmdroid.tileprovider.modules.MapTileDownloader' exceeds maximum length of 23 characters, using 'o*.o*.t*.m*.MapTileDow*' instead.
+    05-09 19:02:25.871  2740  2740 I AndroidLoggerFactory: Logger name 'org.osmdroid.views.overlay.TilesOverlay' exceeds maximum length of 23 characters, using 'o*.o*.v*.o*.TilesOverl*' instead.
+    05-09 19:02:25.975  2740  2740 I o*.o*.t*.MapTileProvid*: rescale tile cache from 0 to 18
+    05-09 19:02:25.980  2740  2740 I o*.o*.t*.MapTileProvid*: Finished rescale in 5ms
+    05-09 19:02:26.314  2740  2750 W art     : Suspending all threads took: 5.004ms
+    05-09 19:02:26.347  2740  2961 W System  : ClassLoader referenced unknown path: /system/framework/tcmclient.jar
+    05-09 19:02:26.353  2740  2960 W System  : ClassLoader referenced unknown path: /system/framework/tcmclient.jar
+    05-09 19:02:26.393  2740  2750 I art     : Background partial concurrent mark sweep GC freed 13054(934KB) AllocSpace objects, 11(328KB) LOS objects, 24% free, 6MB/8MB, paused 15.258ms total 394.775ms
+    05-09 19:02:26.484  2740  2740 V TrackContentProvider: query(), uri=content://me.guillaumin.android.osmtracker.provider/track/4/waypoints
+    05-09 19:02:26.509  2740  2740 V TrackContentProvider: query(), uri=content://me.guillaumin.android.osmtracker.provider/track/4
+    05-09 19:02:26.532  2740  2740 V TrackContentProvider: query(), uri=content://me.guillaumin.android.osmtracker.provider/track/4/trackpoints
+    05-09 19:02:26.710  1088  1101 I art     : Background sticky concurrent mark sweep GC freed 22337(1095KB) AllocSpace objects, 3(60KB) LOS objects, 11% free, 11MB/13MB, paused 3.692ms total 119.842ms
+    05-09 19:02:26.761  2740  2740 E SQLiteLog: (11) database corruption at line 67578 of [2ef4f3a5b1]
+    05-09 19:02:26.761  2740  2740 E SQLiteLog: (11) statement aborts at 11: [SELECT latitude, longitude, _id FROM trackpoint WHERE (track_id = ?) ORDER BY _id asc] database disk image is malformed
+    05-09 19:02:26.762  2740  2740 E DefaultDatabaseErrorHandler: Corruption reported by sqlite on database: /data/user/0/me.guillaumin.android.osmtracker/databases/OSMTracker
+    05-09 19:02:26.763  2740  2740 E DefaultDatabaseErrorHandler: deleting the database file: /data/user/0/me.guillaumin.android.osmtracker/databases/OSMTracker
+    05-09 19:02:26.773  2740  2740 D AndroidRuntime: Shutting down VM
+    --------- beginning of crash
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime: FATAL EXCEPTION: main
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime: Process: me.guillaumin.android.osmtracker, PID: 2740
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime: Theme: themes:{}
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime: java.lang.RuntimeException: Unable to resume activity {me.guillaumin.android.osmtracker/me.guillaumin.android.osmtracker.activity.DisplayTrackMap}: android.database.sqlite.SQLiteDatabaseCorruptException: database disk image is malformed (code 11)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3137)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3168)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2515)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.app.ActivityThread.-wrap11(ActivityThread.java)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1363)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.os.Handler.dispatchMessage(Handler.java:102)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.os.Looper.loop(Looper.java:148)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.app.ActivityThread.main(ActivityThread.java:5461)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at java.lang.reflect.Method.invoke(Native Method)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime: Caused by: android.database.sqlite.SQLiteDatabaseCorruptException: database disk image is malformed (code 11)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.database.sqlite.SQLiteConnection.nativeExecuteForCursorWindow(Native Method)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.database.sqlite.SQLiteConnection.executeForCursorWindow(SQLiteConnection.java:845)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.database.sqlite.SQLiteSession.executeForCursorWindow(SQLiteSession.java:836)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.database.sqlite.SQLiteQuery.fillWindow(SQLiteQuery.java:62)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.database.sqlite.SQLiteCursor.fillWindow(SQLiteCursor.java:143)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.database.sqlite.SQLiteCursor.getCount(SQLiteCursor.java:132)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.content.ContentResolver.query(ContentResolver.java:512)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.content.ContentResolver.query(ContentResolver.java:435)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at me.guillaumin.android.osmtracker.activity.DisplayTrackMap.pathChanged(DisplayTrackMap.java:413)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at me.guillaumin.android.osmtracker.activity.DisplayTrackMap.onResume(DisplayTrackMap.java:269)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1259)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.app.Activity.performResume(Activity.java:6327)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3126)
+    05-09 19:02:26.794  2740  2740 E AndroidRuntime:        ... 10 more
+    05-09 19:02:26.805  1088  2090 W ActivityManager:   Force finishing activity me.guillaumin.android.osmtracker/.activity.DisplayTrackMap
+    05-09 19:02:26.813  1088  2090 W ActivityManager:   Force finishing activity me.guillaumin.android.osmtracker/.activity.TrackDetail
+    05-09 19:02:26.870  1088  2965 D OpenGLRenderer: Use EGL_SWAP_BEHAVIOR_PRESERVED: true
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer: Could not acquire gfx stats buffer
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer: android.os.RemoteException: Invalid package name
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at com.android.server.GraphicsStatsService.requestBufferForProcess(GraphicsStatsService.java:97)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at android.view.ThreadedRenderer$ProcessInitializer.initGraphicsStats(ThreadedRenderer.java:459)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at android.view.ThreadedRenderer$ProcessInitializer.init(ThreadedRenderer.java:447)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at android.view.ThreadedRenderer.<init>(ThreadedRenderer.java:126)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at android.view.HardwareRenderer.create(HardwareRenderer.java:436)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at android.view.ViewRootImpl.enableHardwareAcceleration(ViewRootImpl.java:759)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at android.view.ViewRootImpl.setView(ViewRootImpl.java:492)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at android.view.WindowManagerGlobal.addView(WindowManagerGlobal.java:310)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:86)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at android.app.Dialog.show(Dialog.java:319)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at com.android.server.am.ActivityManagerService$UiHandler.handleMessage(ActivityManagerService.java:1491)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at android.os.Handler.dispatchMessage(Handler.java:102)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at android.os.Looper.loop(Looper.java:148)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at android.os.HandlerThread.run(HandlerThread.java:61)
+    05-09 19:02:26.913  1088  1139 W HardwareRenderer:      at com.android.server.ServiceThread.run(ServiceThread.java:46)"
+nguillaumin/osmtracker-android,closed,Unable to upload to OSM,[],"![temp](https://cloud.githubusercontent.com/assets/6815174/25755454/ceca9b44-31cb-11e7-98da-0f330325d53f.jpeg)
+
+OSM tracker v0.611 Android 4.4.2
+
+I am unable to upload to OSM directly from Osmtracker.
+Is there a log somewhere I should look for more details of the problem shown in the attached screenshot? If not any advice please?
+
+"
+nguillaumin/osmtracker-android,open,Tasker Support,"[Label(name=""feature"")]",Would love to be able to kick this off using tasker. Any plans to add support?
+nguillaumin/osmtracker-android,open,osmtracker for special purposes,"[Label(name=""feature"")]","Osmtracker is excellent. i created [a custom layout](https://github.com/jamescr/osmtracker-android/tree/layout_alajuela) for mapping a couple of things related with fire hydrants and local public transport. For me it's perfect but problems begin when I explain to another person, without technical knowledge, how to use the custom layout and how to upload data to OSM in a way I could find it latter.
+
+I think a general approach to make osmtracker customizable to fit special purposes could be positive for the tool. For example a mechanism to download a custom layout, setting default values for the trace details and uploading the gpx to a specific server or service (not only OSM). 
+
+The are other issues related ( #83 #84 #69 ) to this ideas but, I'll like to hear if this idea/proposal of enhacement makes sense. 
+
+"
+nguillaumin/osmtracker-android,open,Feature request: allow gpx tracks to be mailed,"[Label(name=""enhancement""), Label(name=""export"")]",Enable gpx tracks to be emailed as attachments.
+nguillaumin/osmtracker-android,open,Add more custom buttons layouts,"[Label(name=""enhancement"")]","Put several button layout XMLs for typical usages into OSMTracker distro. So that one can get more comfortable layout for his needs without having to create an XML file, putting files somewhere, etc.
+Typical usages:
+1) _Cycling_ - more buttons for mapping cycling infrastructure, different way types, etc.
+2) _Highway mapping_ - more buttons with road signs, restrictions, etc.
+3) Other ideas on typical usages?
+
+I can create and commit the _cycling_ layout and, may be, the ""_highway mapping_"" layout."
+nguillaumin/osmtracker-android,open,Add an incremental number button,"[Label(name=""feature""), Label(name=""recording""), Label(name=""ux"")]","Would be great to have the possibility to add waypoints with an incrementing number as any basic classic GPS device does, for the case the surveyor is using a thematic paper form to describe precisely and systematically the objects of interest."
+nguillaumin/osmtracker-android,closed,Add badges with download links,[],
+nguillaumin/osmtracker-android,open,Upload photos to Flickr,"[Label(name=""feature"")]","I would like to have a way to automatically upload the photos associated with a track to Flickr, with whatever tags are necessary (in both Flickr and OSM) for the photos to be linked to specific spots in the specific tracks. I would like to be able to specify, for the Flickr upload, a set to put the photos into in my personal account, and also an option to add them to the OpenStreetMap group."
+nguillaumin/osmtracker-android,closed,Fixes #61: Upgrade OSMDroid to latest 5.5,[],
+nguillaumin/osmtracker-android,open,Show page levels and ask if leaving tagging screen,"[Label(name=""enhancement""), Label(name=""ux"")]","Show the page levels and the name of the page would be helpful.
+In addition, a confirmation should be given when the root page should be left. (change to track view)"
+nguillaumin/osmtracker-android,open,Support external Bluetooth logger,"[Label(name=""feature""), Label(name=""gps"")]",Have greater reception accuracy than internal smartphone GPS
+nguillaumin/osmtracker-android,closed,Need way to stop recording a track,"[Label(name=""expected"")]","When recording a track, there is no way in the UI to stop recording.  The back button doesn't work; it keeps recording in the background.  I looked all over the GUI, and ultimately had to kill the app to get it to stop.  This is a huge glaring flaw.  Can't there simply be a nice clear button somewhere that says ""Stop""?"
+nguillaumin/osmtracker-android,closed,fix potential database cursor leaks ,[],"Dear developers,
+
+I edited the code to fix the two resource leaks reported in issue #74 
+
+Please let me know if there are any problems. @nguillaumin 
+
+Thanks.
+"
+nguillaumin/osmtracker-android,closed,resource leak: database cursor not closed,"[Label(name=""bug"")]","Dear developers,
+
+I found two potential leaks of database cursor in your code.
+
+(1) In the method private void manageNewStoragePath(SQLiteDatabase db) of DatabaseHelper class at line 203 and 234:
+
+[https://github.com/nguillaumin/osmtracker-android/blob/master/app/src/main/java/me/guillaumin/android/osmtracker/db/DatabaseHelper.java](https://github.com/nguillaumin/osmtracker-android/blob/master/app/src/main/java/me/guillaumin/android/osmtracker/db/DatabaseHelper.java)
+
+If the cursor is empty (no rows), it will not be closed as in the code only when moveToFirst() returns true (non-empty cursors), the cursor.close() statement at line 234 will execute.
+
+(2) In the public static File getTrackDirFromDB(ContentResolver cr, long trackId) of DataHelper class at line 341:
+
+[https://github.com/nguillaumin/osmtracker-android/blob/master/app/src/main/java/me/guillaumin/android/osmtracker/db/DataHelper.java](https://github.com/nguillaumin/osmtracker-android/blob/master/app/src/main/java/me/guillaumin/android/osmtracker/db/DataHelper.java)
+
+```
+if (c != null && c.getCount() != 0) {
+            c.moveToFirst();
+            @SuppressWarnings(""deprecation"")
+            String trackPath = c.getString(c.getColumnIndex(Schema.COL_DIR));
+            if (trackPath != null) {
+                trackDir = new File(trackPath);
+            }
+            c.close();
+            c = null;
+        }
+```
+
+In the above code, if the cursor is empty (getCount() == 0), the cursor will be not closed.
+"
+nguillaumin/osmtracker-android,open,Feature Request: Variable length audio notes,"[Label(name=""enhancement""), Label(name=""needs-pr""), Label(name=""recording"")]","Firstly: Fantastic app. Thank you!
+
+It would be extremely useful to have the option of recording variable length audio notes, rather than notes of a predetermined length. This could be done with a press-and-hold button, perhaps.
+"
+nguillaumin/osmtracker-android,closed,Contribution OSMTracker,"[Label(name=""invalid"")]","Hello, I am a student of the National University of Comahue located in the city of Neuquén (Patagonia), Argentina. I'm currently pursuing a career course for Technician Management Systems and Free Software.
+I work on a project of Libre Software because It is a course requirement (course: Libre Software) in which I have to collaborate in a libre project.
+So the project that I chose is OSMTracker. I think I can contribute with streets of my town that have wrong name or no name at all..
+I hope my contribution be useful for your project.
+Best Regard
+Anahi
+"
+nguillaumin/osmtracker-android,open,FR: Enable Voice Note during Lock,"[Label(name=""bug""), Label(name=""needs-pr""), Label(name=""recording"")]","When I travel on my bike I'd like to take notes with the microphone of my headset. When the screen is on I can trigger a recording with the button at the headset. When the screen is locked this is not possible. Would be nice to have.
+"
+nguillaumin/osmtracker-android,closed,Applocation crash when UI language is Hebrew,"[Label(name=""bug"")]","If any translation is missing, I'd be happy to provide it.
+"
+nguillaumin/osmtracker-android,open,"Enable Android ""Share"" functionality so that GPX can be emailed (feature)","[Label(name=""export""), Label(name=""feature""), Label(name=""needs-pr"")]","Would it be possible to add an ""export to gpx and share"" option to the contextual menu for tracks (alongside ""export to gpx"")? (It could just be called ""Share"" with a prompt to save GPX first if needed.)
+
+We'd like to use osmtracker for non-experts to map their educational institutions, and there needs to be a simple way for them to transfer the data. Saving as GPX, and then locating the track using a ""file explorer"" isn't really an option, as many services may not have that software and storage locations may differ.
+
+It wouldn't matter if only the GPX track is shared (if that makes it easier), though sharing of all media could be possible as well.
+"
+nguillaumin/osmtracker-android,open,Upload failure on Marshmallow,"[Label(name=""bug""), Label(name=""osm"")]","When I touch the button to upload a track to Openstreetmap, the app instead performs an address search and then shows the map at 0.00 lat by 0.00 long.  I am using an SGS 7 Edge running Marshmallow.
+"
+nguillaumin/osmtracker-android,open,Feature Request: Deleting Waypoints,"[Label(name=""enhancement""), Label(name=""ux"")]","Hello,
+
+First of all, thank you for your work! I'm trying to use this app to track my university campus indoors.
+
+Here's my question: I noticed that more than once, I added waypoints by accident. After that, I tried to delete them from the Waypoint List. However, I couldn't find an option to do so. I could export the GPX and delete it manually, but I was wondering if we could have that feature in the user interface? Or perhaps I am missing something.
+
+Either way, thank you in advance.
+"
+nguillaumin/osmtracker-android,open,"""ele"" values need to be ""above mean sea level""","[Label(name=""enhancement""), Label(name=""gps"")]","According to the OSM wiki on the [""ele"" key](http://wiki.openstreetmap.org/wiki/Key:ele), it is expected to be ""the elevation above mean sea level"". 
+Specifically, it says :
+
+> This is not the height above the WGS84 ellipsoid (see [Geoid](http://en.wikipedia.org/wiki/Geoid)) which is shown by some GPS devices.
+
+The ""ele"" values provided by OSMTracker is, unfortunately, the height above the WGS84 ellipsoid, as provided by [Location.getAltitude()](http://developer.android.com/reference/android/location/Location.html#getAltitude%28%29).
+
+Translating from one datum to another is feasible, but not simple. Fortunately, Android also provides NMEA 0183 API through the [GpsStatus.NmeaListener](http://developer.android.com/reference/android/location/GpsStatus.NmeaListener.html) class. Specifically, the [GGA statement](http://aprs.gids.nl/nmea/#gga) provides the altitude above mean sea level. Will it be possible to take the ""ele"" values from the NMEA API and comply with OSM?
+"
+nguillaumin/osmtracker-android,closed,Ignore GPS clock not working,"[Label(name=""expected""), Label(name=""gps""), Label(name=""question"")]","Ticking the option to 'ignore GPS clock and use Android clock for timestamps' in the settings menu appears to make no difference to the timestamps recorded in the gpx file - they are recorded at GMT regardless of whether this option is selected or not. The gpx filename takes the time from the Android device, but the timestamp associated with each event recorded is always GMT.
+
+This becomes a problem when using OSMtracker early morning in Nepal as the events appear to have been recorded late at night the previous day as opposed to early morning in Nepal.
+"
+nguillaumin/osmtracker-android,open,Feature Request: Compressed track upload,"[Label(name=""enhancement""), Label(name=""osm"")]","Please implement the possibility to upload recorded tracks as compressed zip or gzip. OSM reads these compressed data as easily as gpx files. You could even make this behaviour the default without disadvantages (IMHO).
+Advantage of uploading compressed files:
+Much less traffic - which is desired when no WLAN is available and the user has to pay bis traffic.
+"
+nguillaumin/osmtracker-android,closed,"Ability to upload waypoints to OSMTracker, so the app can be used like a GPS.","[Label(name=""invalid"")]","If anyone is working on this, it would make the app very useful.
+"
+nguillaumin/osmtracker-android,open,Should open the keyboard automatically when creating notes,"[Label(name=""enhancement""), Label(name=""ux"")]","When clicking the `Notes` button osmtracker doesn't open the keyboard automatically.
+For example:
+
+![](http://i.imgur.com/iNhtLuY.png)
+
+It's always necessary to click at the text area to bring up the keyboard.
+
+When creating a note osmtracker should always open the keyboard together, so we can start typing as soon as possible.
+"
+nguillaumin/osmtracker-android,closed,switching off the display makes OSMTracker forget tiles,"[Label(name=""bug""), Label(name=""osmdroid"")]","**Screen 1**: OSMTracker is tracking, all tiles in the current area are downloaded. Then I switch off the display to save battery...
+![pic1](https://cloud.githubusercontent.com/assets/9153595/12873685/529037b2-cdc4-11e5-851f-b70679e44270.png)
+
+**Screen 2**: after switching on the display I see this - couple of tiles are missing. OSMTracker reloads them, it takes some time and data from my data limit. In the end everything is loaded just like in the first screenshot. Then again I turn off the display...
+![pic2](https://cloud.githubusercontent.com/assets/9153595/12873686/529b3f22-cdc4-11e5-9813-6a65636ce799.png)
+
+**Screen 3**: ... to find out that after switching it on I have lost another tiles. And again, it starts reloading the missing tiles.
+![pic3](https://cloud.githubusercontent.com/assets/9153595/12873687/529c38e6-cdc4-11e5-9fd8-3275766ad9e5.png)
+
+Sometimes when mapping I get to areas without service and then no reload can occur so I am a little bit blinded.
+
+OSMTracker for Android v0.6.11
+HW: Nexus 6 (Android 6.0.1)
+"
+nguillaumin/osmtracker-android,open,Pressing a headset media button should start recording voice ,"[Label(name=""enhancement"")]","Feature request: The app should have this configurable (!) feature:
+
+When a media button of a connected bluetooth headset device is pressed, the app should start voice recording (for the configured time or until the button is pressed again), preferable using the microphone of the headset. (This seems to work already on a wired headset, but not with bluetooth.)
+
+From efforts made by the authors of osmand I know that this is tricky: Different bluetooth headsets cause different intends in different moments; thus the app must be configurable in a way that allows to switch this feature off (which should be the default) and to select the signals to react to.
+
+The feature itself will be very useful when mapping by car or bike in countries where you are not allowed to touch a smartphone while driving.
+"
+nguillaumin/osmtracker-android,closed,Updating details for the active track,[],"Here's another take at this. The setAdapter(getAdapter) hack is what it is (a hack), but then again, I don't know what else to do.
+"
+nguillaumin/osmtracker-android,open,"Display distance, average and maximum speed",[],"While I'm working on the other patch, please have a look at this one. Also, note that this is the second time I ever encountered Java in any way (the previous patch being the first one) so I could have done something really stupid, watch out :)
+
+Incidentally, is there a way to test GPS tracking that doesn't involve getting my arse on a tram? Running around my apartment doesn't help, and it's cold outside.
+"
+nguillaumin/osmtracker-android,closed,Update track details for the active track,[],"Is there a way to get my useless first commit out of the pull request? Any time I try to do that in various ways, the ""create pull request"" button is gone. Can you merge without a particular commit?
+
+Anyway, I guess this is not the most efficient way to do this because it rebuilds the whole thing, but it's only twice as CPU-intensive as the list of tracks with a single active track, so maybe it'll do (I may try to optimize it later).
+"
+nguillaumin/osmtracker-android,closed,"Displaying distance, speed and average speed [patches to follow]","[Label(name=""enhancement""), Label(name=""on hold"")]","Hi Nicolas,
+
+I hope you're doing well, because osmtracker appears to be THE gps tracker on f-droid and so I want to implement that distance, as well as the speed.
+
+Before I start coding, I'd like to ask. How should I implement calculating/storing the total length of the currently recording track?
+1) don't store it, calculate it from scratch every second by going through all points in the track;
+2) store it in the database right next to name of the track;
+3) store it in a new field of TrackLogger or something, update that upon adding new points, pull it from there in Track.build for track that's being recorded, recalculate from scratch for all other tracks; 
+4) don't care.
+
+I'd prefer option 3, but maybe you have other ideas?
+
+For now, here's a patch to keep updting ""Details"" for the track that's being recorded: I want to add length and speed there, and those should be updated (right now it just makes the number of points update, meaning that it works for me).
+
+[osmtracker-update-track-details.txt](https://github.com/nguillaumin/osmtracker-android/files/76809/osmtracker-update-track-details.txt)
+"
+nguillaumin/osmtracker-android,open,Support offline OSM maps,"[Label(name=""feature"")]","I'm mapping my location for osm and unfortunately i dont have a data connection outside of wifi at home and the best that i can do would be to download my location's osm data for offline rendering on osmand and use its trip recording plugin, but after discovering osmtracker, i want to use it instead, but unfortunately it doesnt have offline rendering of osm data, so i'd like to suggest that it could be integrated by using the mapsforge library, which is used by many android osm apps.
+
+https://github.com/mapsforge/mapsforge
+"
+nguillaumin/osmtracker-android,closed,[Feature request] Integrate offline maps,[],"Would make the app more useful in situations where tiles cannot be downloaded.
+
+One I know of is [maps.me API](https://github.com/mapswithme/api-android) which requires [maps.me](https://github.com/mapsme/omim) to be installed.
+
+There may be others as well.
+"
+nguillaumin/osmtracker-android,closed,Navigating between activities may cause OSMTracker to continue track recording,[],"Steps to reproduce:
+1. Start **OSMTracker**
+2. Touch **New track**. TrackLogger activity will appear.
+3. From the menu select **Waypoints** (or Display track/Settings/About)
+4. Return to TrackLogger activity by touching the **status bar notification**.
+5. Touch **Stop & save**. The activity will be closed. Waypoint list will come back.
+6. Touch **back** button. TrackLogger activity will appear and continue recording the track.
+Version: 0.6.11
+"
+nguillaumin/osmtracker-android,closed,Explain the red dot on the UI,[],"To the right of the signal strength meter bars on the UI there is a red dot  It doesn't turn red when you start recording, it turns red later at some other time.  There is no documentation and no overt reason for the dot to the user. Describe the function on the UI, use a different icon, etc.
+"
+nguillaumin/osmtracker-android,closed,Make it possible to customize special buttons label,[],"While https://github.com/nguillaumin/osmtracker-android/wiki/Custom-buttons-layouts says:
+
+`For special buttons like voicerec, picture or textnote the label is automatically retrieved from the application string resources and cannot be changed.`
+
+It would be good to have a way to customize their values.
+For example, I am trying to get a smaller customized layout and ""Gravação de voz"" (the Portuguese translation for `voicerec`) is just too wide.
+"
+nguillaumin/osmtracker-android,closed,Display distance,[],"A feature request: next to waypoints & co one could display the distance. So, a little more stats about a track. Thx.
+"
+nguillaumin/osmtracker-android,closed,Emulated vs. real (SD card) external storage path,[],"I use a Sony Xperia Tablet for tracking. It runs currently Android 5.0.2.
+When I set a custom path it always stores in the `/sdcard` path (emulated SD card in internal memory) and not on `/sdcard1` which is the external/additional actual SD card.
+So if I put a path `/sdcard1/osmtracker` in the settings it acutally stores the data then in `/sdcard/sdcard1/osmtracker`. (took me some time to find my tracked data...)
+Is there any way to enable OSMtracker to write on the acutal SD card?
+((On my (rooted) smartphone running Android 4.1.2 this is no issue... but this device is not my main tracking device due to age, accuracy and speed.))
+Also I think it would be a good thing to be able to set the path by browsing to the desired directory than needing to type in the path. Then OSMtracker maybe should check if it can actually access the desired path.
+"
+nguillaumin/osmtracker-android,closed,Current location icon on track display is too large,[],"That guy with yellow clothes is always standing in my map, who is used to show the current/last recorded point is too large and unnecessary covering my track. Could any one please tell him to go home?
+
+If it is made transparent, just small ball point or a pin shape, it will much better.
+
+![screenshot_2015-08-24-20-58-08](https://cloud.githubusercontent.com/assets/1183049/9451521/123f27fe-4aa7-11e5-88af-5635f34a28f6.png)
+"
+nguillaumin/osmtracker-android,closed,Allow keeping old tile cache for longer time,[],"I used to map for OSM in Sahara area with a limited Internet access.
+
+There is nothing  on the ground to reference to like buildings, trees... Topographic map as background is best. However, I always loose them after relatively  short time, zooming out/in somewhere else.
+
+Is possible to add tile cache folder to SD storage with predefined max size ex:100MB and never delete it, if it does not go over max size or unavailable Internet source to update them?
+"
+nguillaumin/osmtracker-android,closed,Pull dependencies from jcenter,[],"All dependencies are also available on jcenter. If those are pulled from this location we could enable auto-updates on f-droid: https://f-droid.org/repository/browse/?fdfilter=osmtracker&fdid=me.guillaumin.android.osmtracker
+
+The only problem i'm seeing here is, that slf4j-android-1.5.8.jar is not available on jcenter. The oldest version available is the 1.6.1-RC1:
+
+https://bintray.com/bintray/jcenter/org.slf4j:slf4j-android
+
+which i'm currently pulling in for the f-droid build.
+"
+nguillaumin/osmtracker-android,closed,[issue #261] Run media scanner on all exported files,[],"As discussed, here's the merge request with the code changes I originally proposed. To avoid future uses of the file handling routines suffering from the same bug, I have documented the requirement to perform a media scan after calling one of the methods in question.
+
+On a side note: at first glance, it looked like `MediaScannerConnection.scanFile(file, mimeType)` could solve all our problems by scanning a single file without requiring a context – alas, it requires an instance of `MediaScannerConnection`, whose constructor requires – guess what – a `Context`.
+"
+nguillaumin/osmtracker-android,closed,[issue #261] Run media scanner on all exported files,[],"Tested successfully.
+"
+nguillaumin/osmtracker-android,closed,add support for media button for android 3.0 and later,[],"add support for media button for android 3.0 and later
+"
+nguillaumin/osmtracker-android,open,Support for unlimited audio recording by pressing headset button twice,[],"Added an option to allow for ""unlimited"" audio recording (well, actually it is limited to a maximum of 10 minutes) by pressing the headset button twice: first to start recording, and second to stop recording. I have tested this option with a real headset, but it should also work with the touch-screen audio note button: when pressed, this button shows up a window that prints the number of seconds of recording, and a ""cancel"" button. When pressing this cancel button, recording stops - although I'm not sure whether the audio file is deleted or not, I'll check this also.
+Anyway, the default length of 2 seconds is preserved, so that users are not surprised by a change in behaviour. I have also seen when looking at the code that there is still much to do about the ""audio record"" feature: listening to an audio note, deleting an audio file, exporting... I might have a look at all this if you agree, because that's the kind of feature I want to implement anyway for a (future) related project.
+"
+nguillaumin/osmtracker-android,closed,Add some more icons,[],"A few XXHDPI and XXXHDPI icons
+"
+nguillaumin/osmtracker-android,closed,Compass,[],"This modification stores current magnetic compass heading with track- and waypoints, allows to export those values to the gpx file in either the cmt field or in a <compass> field within <extensions> (configurable by user). It also displays the current compass reading in the logging gui.
+
+There is one hunk in GpsStatusRecord that is not directly related to this: in onGpsStatusChanged, I look at how many of the visible satellites are actually being used in the fix to determine the signal indicator and in addition if this number goes to zero, the buttons are disabled (since location might not be the current one anymore). I don't know if that fits your philosopy. One probably also want's to disable the hardware button functions, when buttons are disabled. However I did not manage to figure out where to do that...
+
+Hope you like this. 
+"
+nguillaumin/osmtracker-android,open,"In a track's Waypoint List, tap to edit text or delete waypoint",[],"This feature lets you fix mistakes before uploading or exporting the track.
+"
+nguillaumin/osmtracker-android,open,Added distance and elevation (min/max) computation,[],"Added distance and elevation (in/max) display.
+Unfortunately the GeoPoint distance computation is not correct: after double checking the computed distance with Pedometer hand-drawn path.
+The included DistanceUtil class implements the standard Spherical Law of Cosines as in http://movable-type.co.uk/scripts/latlong.html
+"
+nguillaumin/osmtracker-android,closed,Issue #105 Setting to choose other tile provider for OSM map ,[],"add setting to select map tile provider. this allows the user to choose between mapnik (default), cyclemap and mapquestosm.
+
+sadly, the other tile providers do not seem to work anymore (URL changed?).
+"
+nguillaumin/osmtracker-android,closed,"Address Issue 86: Ability to use a photo from the gallery for a waypoint, instead of taking a new one ",[],
+nguillaumin/osmtracker-android,open,PreferencesFragement,[],"I suggest a version where I migrated from PreferencesActivity to PreferencesFragment to get rid of ""deprecated"" issues. Otherwise, findPreferences() always shows a deprecatedWarning for Honeycomb and higher.
+"
+nguillaumin/osmtracker-android,open,New feature: custom dialog,[],"Hello!
+I added a custom dialog feature to the program. It is fully customizable in the layout xml, so you can add named fields and assign default values, too.
+
+![customdialog](https://f.cloud.github.com/assets/2035617/606339/7f8982ae-cd28-11e2-886d-003b3f29ea65.png)
+"
+nguillaumin/osmtracker-android,closed,Add icon sources,[],"This adds the SVG sources of the icons
+"
+nguillaumin/osmtracker-android,closed,Would you accept speed extension to track point (exported to GPX file)?,[],"I can add Settings option if it is something that you would merge in.
+"
+nguillaumin/osmtracker-android,closed,Enable the app to be movable to external storage - issue #170,[],"Fix google code #170
+"
+nguillaumin/osmtracker-android,closed,Add new launcher and notification icons,[],"Updated to use the newer OSM logo, and nicer status bar icons (depending on which Android version is being used).
+"
+nguillaumin/osmtracker-android,closed,Do not restart tracking on resume from context menu,[],
+nguillaumin/osmtracker-android,open,"Store trackpoint,waypoint count fields in track table for inactive tracks",[],"Currently, the track listing queries all tracks' TP and WP counts dynamically from the database. My change adds them as fields to the track table.  The active track is still queried directly, since its counts are always changing.
+"
+nguillaumin/osmtracker-android,closed,"DisplayTrack: If first use, ask if would rather show OSM DisplayTrackMap",[],"Currently, a newly installed OSMTracker's preferences will show tracks using DisplayTrack, which has a plain dark background. New users might expect to see an OSM background instead. This push request has DisplayTrack ask the user once if they would rather see OSM under their track. If so, it sets the preference and switches to DisplayTrackMap.
+"
+nguillaumin/osmtracker-android,open,OSM upload: Reuse export file if already exists,[],"To save time for OSM upload: Check for an existing export file, and use it, in ExportToTempFileTask.  Added some related javadocs.
+"
+nguillaumin/osmtracker-android,closed,TrackContentProvider allow custom queries,[],"Minor changes to help coding custom queries against this provider.
+- getType: Throw if uri not recognized; I found this is easier to debug than a NullPointerException later, if I've made a typo or mistake constructing my uri
+- query: use custom projection if provided; allows control of the set of returned columns
+"
+nguillaumin/osmtracker-android,closed,Message tweaks,[],"Some improvements to messages, should not be controversial.
+"
+nguillaumin/osmtracker-android,closed,Update res/values-pl/strings.xml,[],
+nguillaumin/osmtracker-android,closed,Update res/values-pl/strings-preferences.xml,[],"corrected mindless string translations :)
+"
+nguillaumin/osmtracker-android,closed,Update ES translation,[],"Update es strings.xml, strings-preferences.xml with recently added strings.
+"
+nguillaumin/osmtracker-android,closed,DisplayTrackMap: Pinch to zoom; set bounds to show entire track if inactive; WaypointListAdapter UTC,[],"Hello,
+
+This pull request contains 3 small things for DisplayTrackMap:
+- Enable osmdroid's built-in pinch-to-zoom 
+  This makes it a little friendlier, and could close out old issue http://code.google.com/p/osmtracker-android/issues/detail?id=135 ""Pinch doesn't allow zoom in/out"".
+- For inactive tracks, set initial zoom level and bounds so the track fills the screen
+  Otherwise, when you view several old tracks, you need to keep zooming and panning around in order to view each whole track.
+- A few javadocs
+
+Also contains 1 small fix for WaypointListAdapter: show times in UTC, not local timezone.
+
+I hope these are useful.
+
+Thank you!
+-Jeremy Monin
+"
+nguillaumin/osmtracker-android,closed,Honeycomb,[],"I've been using (pretty much) this branch on my Galaxy Nexus for a couple of months now, and it works well.
+"
+nguillaumin/osmtracker-android,closed,[new feature] Log raw NMEA data,[],"Records NMEA data to the SD card.
+"
+nguillaumin/osmtracker-android,closed,Osmdroid 308,[],"Update osmdroid-android to 3.0.8
+"
+nguillaumin/osmtracker-android,closed,Fixed change of a voice recording duration,[],"VoiceRecDialog should use recording duration from preferences rather than value on class initialization.
+"
+nguillaumin/osmtracker-android,closed,Center to the first known gps location,[],
+nguillaumin/osmtracker-android,closed,Save scrolled position of OSM view across activity re-creation,[],"Fixed a bug where map always scrolls to the last known position on screen orientation change.
+"
+nguillaumin/osmtracker-android,closed,Updated Russian translation,[],
+nguillaumin/osmtracker-android,closed,Minor fixes,[],"These commits just do minor things, such as string fixes and adding a en_GB button layout.
+"
+nguillaumin/osmtracker-android,closed,Update res/values/strings.xml,[],"Polish ver
+"
+nguillaumin/osmtracker-android,closed,Update res/values/waypoints.xml,[],"Polish ver
+"
+nguillaumin/osmtracker-android,closed,Update res/values/strings-preferences.xml,[],"Polish ver
+"
+nguillaumin/osmtracker-android,closed,Update res/xml/default_buttons_layout.xml,[],"Translation into Polish
+"
+nguillaumin/osmtracker-android,closed,Support ICS,[],"These commits mainly add full support for the new menu system in ICS.
+
+There is also the addition of a en_GB default button layout with common speed limits, and a few string fixes.
+"
+nguillaumin/osmtracker-android,closed,"Need ""no"" locale in addition to ""nb"" and ""nn""",[],"It seems Norwegian language support isn't ideal in Android. There are two written forms of Norwegian, which each have their own ISO code: Norwegian bokmål (nb) and Norwegian Nynorsk (nn). Unfortunately ""Norwegian"" without any for specification also has an ISO code: no.
+
+By law they are equal in Norway, but in practice, bokmål is far more prevalent and in use (80-90 % of written text is probably bokmål).
+
+It seems both no and nb are used in Android: http://stackoverflow.com/questions/5153674/android-localization-question
+
+The only practical way to solve this seems to be to have two copies of Norwegian bokmål, one under ""nb"" and one under ""no"". Symbolic links are not supported on FAT filesystems, and thus the app cant be moved to memory cards, string aliases doesn't seem to be practical as one would still need to make the string files containing aliases(?), and I don't know of any way to ""prioritize"" languages (if no ""no"", then use ""nb"").
+
+I've added a readme file to all folders containing nb and no noting that they should be kept in sync.
+
+The ""nb"" Android market text should probably also be copied to ""no"".
+"
+nguillaumin/osmtracker-android,closed,Minor changes,[],"See commit message
+"
+nguillaumin/osmtracker-android,closed,"Completed nn translation, added nb translation and did minor corrections to english original. Market descriptions included here.",[],"Hi nguillaumin!
+
+I've completed the nn translation and added a nb (""Norwegian (bokmål)"") translation. In the course of translation I also did some minor corrections to the original english: removed a space before a question mark, upper case to lower case in paranthesis, and removed superflous (I think) dot.
+
+Market descriptions:
+nn:
+OSMTracker let deg spore turane dine, merke av viktige punkt ved hjelp av eit notat, foto eller stemmeopptak. Sporet kan du så eksportere til GPX-formatet som så kan brukast med ulike OpenStreetMap-verkty som til dømes JOSM. OSMTracker er inspirert av OSMTracker for Windows Mobile.
+
+Spor turane dine med notat, stemmeopptak og foto for bidrag til OpenStreetMap!
+
+nb:
+OSMTracker lar deg spore turene dine, merke av viktige punkt ved hjelp av et notat, foto eller stemmeopptak. Sporet kan du så eksportere til GPX-formatet som så kan brukes med ulike OpenStreetMap-verktøy som til dømes JOSM. OSMTracker er inspirert av OSMTracker for Windows Mobile.
+
+Spor turene dine med notat, stemmeopptak og foto for bidrag til OpenStreetMap!
+"
+nguillaumin/osmtracker-android,closed,Russian translation update,[],
+nguillaumin/osmtracker-android,closed,Hebrew translation,[],"Hi,
+
+I've translated osmtracker to Hebrew. In addition to translating the strings, the branch contains a few mirrored UI layout files, since Hebrew is written from right to left. These layout files could possibly be used for other right-to-left languages.
+
+Regards,
+Haggai
+"
+nguillaumin/osmtracker-android,closed,Issue 151: Button to delete all tracks,[],"Here the patch for #151. This is my first Android patch, so please review :)
+
+Cheers
+Danilo
+"

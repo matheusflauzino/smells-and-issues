@@ -1,0 +1,2515 @@
+repository,state,title,label,body
+andOTP/andOTP,open,contents of app visible for a split second with Android Keystore + Device credentials,"[Label(name=""bug""), Label(name=""help wanted"")]","#### General information
+
+* **App version:**
+0.6.0
+* **App source:** Google Play / F-Droid / GitHub / ...
+Google Play
+* **Android Version:**
+8.1
+* **Custom ROM:**
+LineageOS
+
+I've setup andOTP to use Android Keystore + Device credentials. My screen lock is set to Pattern.
+When I open the app, I see its contents for a split second before the Android screen lock shows up.
+
+If I lock the device and unlock it later on, the same happens: andOTP shows me the contents for a split second, before the unlock screen for the app shows up.
+
+With Password/PIN this problem does not happen.
+"
+andOTP/andOTP,open,Some Improvements,"[Label(name=""maybe"")]","I'm coming from freeOTP and I noticed some aspects which I don't like about your app which prevents me from using it. Maybe my suggestions can help you to improve andOTP.
+
+- The first thing I've noticed is the fact that I have to set a password (keystore is not working). Yes you can argue it improves security, but it is still 2FA. If someone has your phone and access to the app he still needs your login information and if someone has your login credentials and steals your phone to generate the token he might also spend some effort in figuring out the password for andOTP. Besides that if you loose your phone you should change your passwords anyway. But maybe it's just my opinion.
+
+- The app is sluggish. Maybe this is related to the continuous generation of the tokens?! For example, opening the settings dialog takes ~8s on my Galaxy S5 mini. I would like an option to generate the token only if I click on  the entry, like it is in freeOTP.
+
+- The size of the label is very small even with the lowest possible text size (12). I would suggest multiple rows or to align the icons on the right with the generated token so we have a complete line available.
+
+I will continue watching this app, because in freeOTP I'm definitely missing the backup feature."
+andOTP/andOTP,open,Layout is inverted in Hebrew (and possibly other RTL environments),"[Label(name=""enhancement""), Label(name=""help wanted"")]","#### General information
+
+* **App version:** 0.6.0
+* **App source:** Google Play
+* **Android Version:** 7.1.2
+* **Custom ROM:** AICP LIBRA
+
+#### Expected result
+**What is expected?** 
+
+Latin layout should be aligned as LTR (left to right)
+
+**What does happen instead?**
+
+The layout is aligned as RTL (right to left)
+
+In most cases this is just annoying, however, if there are spaces in PIN (by default) it is presented as YYY XXX instead of XXX YYY, it took me a while to realize that PIN are correct.
+
+Workaround: configure application not to add space between digits.
+
+#### Steps to reproduce
+ 
+ * Have Hebrew/Arabic locale phone
+ * Notice that the entire layout is switched to RTL
+ * Notice that PINs are printed as YYY XXX instead of XXX YYY
+
+I tried to add a screenshot but application rightfully does not permit that.
+"
+andOTP/andOTP,open,Last digit of PIN is available in application preview,"[Label(name=""bug""), Label(name=""help wanted""), Label(name=""maybe"")]","#### General information
+
+* **App version:** 0.6.0
+* **App source:** Google Play
+* **Android Version:** 7.1.2
+* **Custom ROM:** AICP LIBRA
+
+#### Expected result
+**What is expected?** 
+
+Keep PIN hidden at all time
+
+**What does happen instead?**
+
+Last digit of PIN is available in application preview when switching between applications.
+
+I know this is edge condition, but I believe it should be fixed.
+
+#### Steps to reproduce
+ 
+1.  Open CometOTP
+2.  Type PIN when prompted
+3.  Goto settings
+4.  Lock display
+5.  Unlick display
+6.  Enter PIN as requested
+7.  Switch applications ""<""
+8.  Notice the preview
+"
+andOTP/andOTP,open,Add AVM icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Hi,  
+
+could you add the AVM icon?
+
+(AVM a german router manufacturer)
+
+Website: https://avm.de/ 
+Image: https://upload.wikimedia.org/wikipedia/commons/3/32/AVM-Logo.svg
+
+Thanks!"
+andOTP/andOTP,open,Add Home Assistant/Hass.io icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Hi,  
+
+could you add the Home Assistant/Hass.io icon?
+
+Website: https://www.home-assistant.io/
+Image: https://upload.wikimedia.org/wikipedia/commons/6/6e/Home_Assistant_Logo.svg 
+
+Thanks!"
+andOTP/andOTP,open,Keep issuer and label separate,"[Label(name=""enhancement"")]","Currently issuer and label are [concatenated](https://github.com/andOTP/andOTP/blob/master/app/src/main/java/org/shadowice/flocke/andotp/Database/Entry.java#L128) at import time. I think it would be cleaner if issuer and label were stored separately.
+
+This would allow showing them more nicely (with less truncation), e.g. like [how it's done in freeotp](https://user-images.githubusercontent.com/179599/48661436-ffe1eb00-ea71-11e8-8708-4ff321c3ea5f.png) (which is actually where I found this project as a more active alternative!).
+
+It would also allow things such as grouping by issuer."
+andOTP/andOTP,open,Remove issuer from label to avoid repetition,"[Label(name=""enhancement"")]","For example, the otpauth URL imported via QR code for my Google account is this:
+
+    otpauth://totp/Google:my%40email.com?secret=lolnicetry&issuer=Google
+
+This results in the pretty ugly label `Google - Google:my@email.com`.
+The [spec](https://github.com/google/google-authenticator/wiki/Key-Uri-Format#label) shows that the part before the colon is the issuer (and should match the one in the query string). So my suggestion would be to remove the `foo:` part from the label if it matches the issuer."
+andOTP/andOTP,open,Add Jagex/Runescape icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Hi,
+
+Could you add the Jagex logo?
+You have to enable 2FA to receive in-game bonus for doing so. 
+
+Website: https://www.jagex.com/
+Image: https://www.jagex.com/webfiles/1533194022770/jagex/img/icons/jagex-192.png
+Logo exist on [wikipedia](https://en.wikipedia.org/wiki/File:Jagex_Logo.svg) as svg.
+
+There are smaller sizes available, if you need them.
+Just exchange 192 at the end of the url with either: 16, 32, 57, 60, 72, 76, 96, 114, 120, 144, 152, 180 or 192.
+
+Thanks!"
+andOTP/andOTP,closed,add support for importing freeotp+ json backup file,[],"Would you accept a pull request that adds support for importing a FreeOTP+ json backup file?
+
+I believe it would be a small amount of code based on this:
+
+I modified one of the FreeOTP migration scripts, to support reading FreeOTP json export.
+https://github.com/rich-murphey/freeotp-to-andotp
+
+I'd be glad to submit some proposed code.
+"
+andOTP/andOTP,open,Add phpMyAdmin logo,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Could you also add the phpMyAdmin logo?
+
+Since version 4.8.0, pma installations support [two-factor authentication](https://docs.phpmyadmin.net/en/latest/two_factor.html)
+
+A favivon is [here](https://github.com/phpmyadmin/phpmyadmin/blob/master/favicon.ico), I didn't find it in a different format."
+andOTP/andOTP,open,Instagram manual import,"[Label(name=""enhancement"")]","#### General information
+
+* **App version: 0.6.0**
+* **App source:** Google Play
+* **Android Version: 8.1.0**
+* **Custom ROM: OmniRom**
+
+Instagram now support 2fa via App. They give two options:
+1. Use an app, but then you are redirected to the play store page of google authenticator. Not working with andotp
+2. Do it manually: Then they give you a key/code(?), you enter that in andotp and check with the generated code. Like usual with scanning QR codes.
+
+The problem with number 2: The key has 2 spaces between a set of letters, like this:
+ERGT  326T  MI3Y  6W4S  XXXX  GTHG  XXXX  FYVX
+For me this didn't work until I removed all the spaces. I'm not sure if this Instagram 2fa without SMS is a staged rollout, but I'd expect many people with the same problem.
+
+But maybe someone else can verify first that I didn't just mess up something else while setting this up."
+andOTP/andOTP,closed,Update Settings.java,[],Enable backup service by default as it can result in you not backing up by mistake
+andOTP/andOTP,open,Add OpenVZ logo,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Hi,
+
+Could you add the OpenVZ logo?
+
+Website: https://openvz.org/
+Image: https://static.openvz.org/artwork/Logos/
+
+Cheers!"
+andOTP/andOTP,closed,Intent encrypted backup error,"[Label(name=""bug""), Label(name=""maybe"")]","Currently Im backing up my data via intent(org.shadowice.flocke.andotp.broadcast.ENCRYPTED_BACKUP) all was well, but when I upgraded from 5.0.1 stable to latest 6.0.3 beta I get an error: 
+Encrypted backups currently not allowed. Please enabled them in settings.
+
+I looked for a toggle or anything but on first look through settings everything seems OK, also I did a manual encrypted backup and it was successful.
+
+Am I missing something?
+
+_Sent from my Nexus 5X using [FastHub](https://play.google.com/store/apps/details?id=com.fastaccess.github)_"
+andOTP/andOTP,open,Add Snapchat icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Closes #248.
+
+I've simplified the SVG from Wikipedia which was linked in that issue by using the ghost's stroke instead of another path filled with black and some other minor fixes.
+
+Here is the modified SVG: [Snapchat_logo-optim.zip](https://github.com/andOTP/andOTP/files/2518565/Snapchat_logo-optim.zip)"
+andOTP/andOTP,open,Add Snapchat icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Hi,
+
+Could you add the Snapchat logo as well?
+
+Website: https://www.snapchat.com/
+Image: https://it.wikipedia.org/wiki/File:Snapchat_logo.svg
+
+Thanks!"
+andOTP/andOTP,open,Add Instagram icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Hi,
+
+Could you add the Instagram logo?
+
+Website: https://www.instagram.com/
+Image: https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg
+
+Thanks!"
+andOTP/andOTP,open,Add the MediaWiki logo,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Add the logo for https://www.mediawiki.org/
+Closes #231
+
+I went with a bitmap instead of an SVG for this one, because the Vector Drawable importer does not support some SVG tags used by [this](https://commons.wikimedia.org/wiki/Category:SVG_MediaWiki_logos#/media/File:MediaWiki_logo_1.svg) logo. Hopefully that's OK."
+andOTP/andOTP,open,Add the ComputerBase logo,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Add the logo for https://www.computerbase.de/
+Closes #229"
+andOTP/andOTP,open,Add the MEGA icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Add the icon for https://mega.nz/
+Closes #239 "
+andOTP/andOTP,open,Add the Backblaze icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]",Add the logo for https://www.backblaze.com/
+andOTP/andOTP,closed,add fingerprint login,"[Label(name=""enhancement""), Label(name=""invalid"")]",Add the ability to log on to devices with appropriate sensors
+andOTP/andOTP,open,See the keys of the accounts added by scan QR codes?,"[Label(name=""enhancement"")]","Check if all requirements are fulfilled otherwise the issue will be closed without any comment
+
+  * Add details to fields  below
+  * Use search. Check if the issue is already reported before creating a new one. 
+    https://github.com/andOTP/andOTP/issues
+  * Try again after clearing the apps data before posting (**don't forget to backup**)
+  * Record a logcat: https://goo.gl/mc71vk
+  * Bug reports without logcat will be closed (I can not reproduce every bug myself and I can not fix them without logs)
+  * Delete this info block
+
+-----------------------------
+
+#### General information
+
+* **App version:all
+* **App source:F-Droid
+* **Android Version:all
+* **Custom ROM:Lineage
+
+#### Expected result
+**What is expected?** 
+Edit button to edit the key
+**What does happen instead?**
+Doesn't have it
+#### Logcat
+Don't have
+Paste your logcat here (or use something like Pastbin for long logs)
+Don't have
+
+#### Steps to reproduce
+ 
+ I want to see the key after adding an account by scan QR code. Is it possible? Because I need that key to add to another app without re-enable 2FA from the account.
+
+"
+andOTP/andOTP,open,Improve error messages on backup restore,"[Label(name=""enhancement"")]",Make sure the message tells the user exactly what went wrong when restoring a backup. For example when the decryption failed tell the user to double check his password.
+andOTP/andOTP,open,Add mega icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Hello
+Would be cool if the http://mega.nz icon could be added. 
+https://commons.m.wikimedia.org/wiki/File:01_mega_logo.svg"
+andOTP/andOTP,closed,Add LogMeIn and Mapbox icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]",
+andOTP/andOTP,closed,next release?,[],"I was wondering, if something is blocking the 0.6.0 release.
+
+beta3 has been out for 3 months now and there have not been any essential commits since then (other than icons)..."
+andOTP/andOTP,open,Add Tutanota icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","**Website:** https://tutanota.com/
+**SVG:** https://github.com/tutao/tutanota/raw/master/resources/favicon/logo-favicon.svg"
+andOTP/andOTP,closed,Add an icon for Mapbox,"[Label(name=""enhancement""), Label(name=""thumbnail"")]",The icon comes from their official brand guidelines: https://www.mapbox.com/about/press/brand-guidelines/
+andOTP/andOTP,closed,Extend thumbnail generation to non-latin letters and digits,"[Label(name=""enhancement"")]","I updated LetterBitmap.java so that it generates thumbnails for labels that don't start with latin letters, by using Character.isAlphabetic().
+It seems to work fine for labels in Chinese, Japanese, Korean, Arabic, etc.
+For other characters that can't properly be displayed on a bitmap, it still shows a question mark:
+
+![non-latin-thumbnails](https://user-images.githubusercontent.com/23304955/46570362-e4c58b00-c99d-11e8-8592-c915b54167d7.png)
+"
+andOTP/andOTP,closed,Add Adobe and VK icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]",Added #232 and #227 
+andOTP/andOTP,closed,Add Adobe icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]",Icon for Adobe website
+andOTP/andOTP,open,Add icon for MediaWiki,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Hello,
+
+I've missing an icon for MediaWiki.
+For all my other services I've found a corresponding icon.
+
+Would be nice, if you can add it.
+
+Regards, webracer999"
+andOTP/andOTP,open,Rename/Edit Tags,[],"I created all my tags for the 50+ OTP entries I have, but realized afterwards, I would have prefixed them with a sort/type string, so I can figure out which is which easier. I could export my settings as plain text, edit the file, then re-import them, but I think it would be nicer to have this in the app."
+andOTP/andOTP,open,Add ComputerBase icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","First of all, thank you very much for this app! :slightly_smiling_face:
+
+Could you please add the ComputerBase icon to andOTP? We [added support for TOTP in May 2018](https://www.computerbase.de/2018-05/das-neue-computerbase-forum-ist-da/).
+
+I've uploaded a suitable SVG icon: [ComputerBase-Logo.zip](https://github.com/andOTP/andOTP/files/2423286/ComputerBase-Logo.zip)"
+andOTP/andOTP,closed,Possiblity to auto-sync,[],"Hey,
+
+Thanks for the great application. I have recently added the backup/restore support of andOTP to a Linux 2FA application https://gitlab.gnome.org/World/Authenticator.
+People have been requesting to add the auto-sync with Authy servers which is not possible. I was thinking if there's a possibility that you add the auto-sync from whatever service you want (like Dropbox, Google Drive or whatever) which could be used by the application I'm working on to keep the accounts on sync between both mobile and laptop for Linux users.
+
+Thanks!"
+andOTP/andOTP,closed,Add VK icon,"[Label(name=""enhancement""), Label(name=""help wanted""), Label(name=""thumbnail"")]",Could you add VK icon? This is the largest social network in Russia. https://vk.com
+andOTP/andOTP,closed,Allow app-only storage without encryption,"[Label(name=""enhancement""), Label(name=""security""), Label(name=""wontfix"")]","Hello,
+
+I would like to request the ability to store OTP secrets within the app's own storage (/data/data/org.shadowice.flocke.andotp/) unencrypted. It seems the only way to store them without extra passwords currently is to use Android's credential storage (which has its own problems, e.g. enforcing a lockscreen)
+
+The reason I ask for this is because my automatic backup procedure dumps the entirety of /data. If the secrets in /data are encrypted, my backups will be of limited use - I cannot import them anywhere wihout the help of a working copy of andOTP - which is not always a given. So ultimately my reason for requesting this is portability and independence.
+
+It would be very much appreciated. Thanks!"
+andOTP/andOTP,open,Custom image support,"[Label(name=""enhancement"")]","#### General information
+
+* **App version:** 0.5.1
+* **App source:** Google Play Store
+* **Android Version:** 8.1.0
+* **Custom ROM:** TouchWiz, Galaxy Note 9
+
+#### Expected result
+**What is expected?**  
+Being able to set custom images from native image libraries (Gallery, icon packs, etc.)
+
+**What does happen instead?**
+Only able to use preloaded icons.
+
+#### Steps to reproduce
+
+1. Open andOTP
+2. Open the menu on any existing OTP, and select _Change Image_
+3. Observe lack of custom icon support
+
+"
+andOTP/andOTP,closed,[feature request] openkeychain integration for backups,"[Label(name=""invalid"")]","I'd like to be able to backup the database by encrypting with a public key in my keychain.
+
+I am willing to do this work, if it's likely to be accepted (the feature, I am not asking pre-approval for any old sloppy code).
+
+The way I would see this working is user wants to backup, so the store is decrypted using pin / device key then re-encrypted with a pgp key of the users choosing. "
+andOTP/andOTP,closed,"Add firefox, disroot, bitfinex icons","[Label(name=""enhancement""), Label(name=""thumbnail"")]","Add firefox icon (for Firefox Sync Account), disroot (disroot.org) and bitfinex (bitfinex.com) icons."
+andOTP/andOTP,closed,Add icon for Hetzner Online,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","This PR adds an icon for Hetzner Online GmbH, a german internet hosting company.
+
+The source is here: https://www.hetzner.com/themes/hetzner/images/favicons/safari-pinned-tab.svg
+I have splitted the logo in two separate paths in order to have a white foreground instead of transparent.
+
+![Preview](https://user-images.githubusercontent.com/11437439/45032036-f0e1c400-b050-11e8-99da-b97d52450ffb.png)
+"
+andOTP/andOTP,closed,Update project url in ISSUE_TEMPLATE.md,"[Label(name=""bug"")]",
+andOTP/andOTP,closed,Fixed typo in strings_settings.xml,"[Label(name=""bug"")]",Thanks for andOTP! It's a great app.
+andOTP/andOTP,closed,Can't use andOTP with Google account,"[Label(name=""bug""), Label(name=""maybe""), Label(name=""more information required"")]","#### General information
+
+* **App version:** 0.6.0-beta3
+* **App source:** F-Droid
+* **Android Version:** LineageOS 14.1
+* **Custom ROM:** MicroG LineageOS fork
+
+#### Expected result
+**What is expected?** When adding 2FA to Google account, Google shows a QR code (otpauth:// url) and then asks for a OTP to confirm. 
+
+**What does happen instead?** The OTP generated by andOTP is not accepted by Google : ""Incorrect code""
+
+#### Steps to reproduce
+ 
+Enable 2FA with Authenticator on myaccount.google.com
+Scan QRcode with andOTP
+Type code when prompted by Google
+
+"
+andOTP/andOTP,closed,Add autofill hints to password fields,"[Label(name=""enhancement"")]",Fixes #215
+andOTP/andOTP,closed,[feature request] generating shared secret,"[Label(name=""enhancement"")]","Hi,
+
+thanks for this app. Would you consider adding generating random secrets? There's an online service which requires me to fill in one.
+
+Thanks.
+
+knezi"
+andOTP/andOTP,open,Unlocking with password is not always necessary,"[Label(name=""enhancement""), Label(name=""maybe"")]","#### General information
+
+* **App version:** 0.5.1
+* **App source:** Google Play 
+* **Android Version:** 7.0
+* **Custom ROM:** No
+
+#### Expected result
+**What is expected?**
+Whenever the app goes into background (e.g. by pressing the home button) it should prompt for the unlock password when going to the foreground again (e.g. via the menu button).
+
+**What does happen instead?**
+It sometimes requires the password, it sometimes does not require the password.
+
+#### Logcat
+[log_no_password_prompt.txt](https://github.com/andOTP/andOTP/files/2300228/log_no_password_prompt.txt)
+
+
+#### Steps to reproduce
+* Unlock the app.
+* Press the home button.
+* Wait a few seconds.
+* Open the app again.
+* No password is (most often) required.
+
+Hint: ""requireAuthentication"" is only set in onCreate() (and via ScreenOffReceiver), I believe it should be set in onResume() instead.
+
+"
+andOTP/andOTP,closed,Password autofill is kind-of broken,"[Label(name=""bug"")]","#### General information
+
+* **App version:** 0.6.0-beta3
+* **App source:** F-Droid
+* **Android Version:** 8.1
+* **Custom ROM:** LineageOS 15.1
+
+#### Expected result
+**What is expected?** The autofill api should prefill the password fields in the new-device wizard.
+![screenshot_andotp_20180816-145510](https://user-images.githubusercontent.com/3768500/44209843-f5f3d780-a164-11e8-8bbb-b396c384c9cb.png)
+
+**What does happen instead?** Only the ""repeat password"" gets filled but not the first password
+
+#### Logcat
+can provide if needed
+
+#### Steps to reproduce
+ 
+ * Install the app on an Android 8+ device, use password auth in the wizard, try to autofill the password with e.g. ""Keepass2Android Offline""
+"
+andOTP/andOTP,open,OpenKeychain as authentication source,"[Label(name=""enhancement"")]","Would it be possible to use openkeychain as authenticator for andOTP? I image using a NFC based key with openkeychain to make myself known/unlock a GPG key once and it will use this key for Conversation, K9-Mail, Passwordstore and potentially andOTP. Thanks to the NFC key this should be sufficently secure even with a short PIN.
+
+Am I misunderstanding something (quite possible) or could this be an alternative to use the application specific password/PIN?
+
+PS: Great app, thank you for your work!"
+andOTP/andOTP,closed,obsolete,[],You may close this issue!  I found a fatal flaw in my proposal.
+andOTP/andOTP,open,UI Modification Request,[],"It would be nice if the options of (main screen's) Sidebar and Dropdown interchange.
+And add dynamic color to the time bar, eg- [Red - Blue - Green]."
+andOTP/andOTP,closed,Adding a new entry should put it on the top of the MRU list,"[Label(name=""bug""), Label(name=""enhancement"")]","#### General information
+
+* **App version:** 0.6.0-beta3
+* **App source:** Google Play
+* **Android Version:** 8.0
+* **Custom ROM:** LineageOS
+
+#### Expected result
+
+When I add a new entry by scanning the QR code, and I have ""most recently used first"" sorting enabled, the entry goes to the bottom of the list.
+
+It should go to the top, as 100% of the time I will need to use that entry to generate a TOTP code to verify correct installation, and scrolling to the bottom when you have a lot of entries is cumbersome.
+
+This is a small UX annoyance, but hopefully the fix is equally quick."
+andOTP/andOTP,open,Passwords should be invisible to the accessibility services,"[Label(name=""bug"")]","Due to recent attacks, malicious apps that are using the accessibility service can capture all user inputs. In this case, the passwords should be ignored for the accessibility service, so such attacks cannot happen. This is done by our research project in CISPA, Saarland University, Germany."
+andOTP/andOTP,closed,Clone without attribution?,[],"#### General information
+
+* **App version:** n/a
+* **App source:** GitHub
+* **Android Version:** n/a
+* **Custom ROM:** n/a
+
+#### Expected result
+Attribution. 
+
+**What does happen instead?**
+
+Just to inform you: looks like [CometOTP](https://github.com/gigabytedevelopers/CometOTP) is using your code without attribution, copyright headers removed. Even the README.md is almost literally identical, just the app names replaced.
+
+If you can confirm it's your code (I just compared a few places, and they looked very much alike) I wouldn't be surprised. A little while ago they did the same with ""their"" file manager (FireFiles, see [this issue](https://github.com/gigabytedevelopers/FireFiles/issues/2)). Looks like they haven't learned a thing from the shitstorm they earned then, though we gave them the ""benefit of doubt"" at that time, considering it a ""beginners issue"".
+
+Sorry for abusing the template this way, but in the past I've made the experience that if I deleted the template, some bot auto-closed my issue …
+
+#### Logcat
+```
+Paste your logcat here (or use something like Pastbin for long logs)
+```
+
+#### Steps to reproduce
+ 
+ * take a loog at [Entry.java](https://github.com/gigabytedevelopers/CometOTP/blob/master/app/src/main/java/com/gigabytedevelopersinc/app/CometOTP/Database/Entry.java) ""over there""
+* take a look at the same file in your repo
+* optionally, compare a few more files. The [README.md](https://github.com/gigabytedevelopers/CometOTP/blob/a2ff6d2016b10b89d4cd947608f39833feac8acb/README.md) is most obvious even to non-developers.
+* the license file has just the two attribution lines removed
+
+PS: I raised that issue [in their repo](https://github.com/gigabytedevelopers/CometOTP/issues/1) as well."
+andOTP/andOTP,open,Back takes you back to app bypassing password,"[Label(name=""bug"")]","I was able to go back to app by clicking back button which took me to main screen, although toast appeared:
+![](https://i.imgur.com/LvjPgZ2.png)
+Returned to main screen with codes"
+andOTP/andOTP,open,Garena Authentication,"[Label(name=""enhancement""), Label(name=""maybe"")]","You can add Garena Authentication but manually because QRCode format ""KKKKKKKKKKKKKKK|Username"" it'll read invalid format. But you just can scan it with QR code reader and manually add 15 keyword SHA-1 with timeout 180s and you can then add the Authentication manually. If you be generous enough to add qr scan format for Garena Authentication (with the logo if you may) I'll be very thankful. (Sorry for my bad English)"
+andOTP/andOTP,closed,Allow installation to external media (SD card),"[Label(name=""enhancement"")]","This change will enable installation of the app to external as well as internal flash memory which is important for devices where internal memory is limited but external memory is cheap and abundant in form of micro SD cards.  Thank you for your consideration.
+
+More information at https://developer.android.com/guide/topics/data/install-location"
+andOTP/andOTP,closed,EntryThumbnail: Add Plurk icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","This PR adds an icon for [Plurk](https://www.plurk.com/), a famous social media mainly in Taiwan. The icon is taken from the [official brand info page](https://www.plurk.com/brandInfo).
+"
+andOTP/andOTP,open,"""Export to external storage failed"" when exporting to an external SD","[Label(name=""bug""), Label(name=""maybe"")]","I'm using the latest version from the Play store, Android 8.0. I've configured the backups to use password and to add date to the name.
+
+* Auto backup to external SD card (/storage/9106-4FE8/Folder) says ""Export to external storage failed"".
+* Auto backup to internal SD card (/storage/emulated/0/Folder) works fine.
+* Manual backup to any place works fine (and produces files).
+* If I choose a non-existent folder on an external SD it says ""Failed to create backup directory""
+
+Log:
+```
+07-31 12:23:34.000 19829 19829 W System.err: java.io.FileNotFoundException: open failed: EACCES (Permission denied)
+07-31 12:23:34.000 19829 19829 W System.err:    at android.os.ParcelFileDescriptor.openInternal(ParcelFileDescriptor.java:313)
+07-31 12:23:34.000 19829 19829 W System.err:    at android.os.ParcelFileDescriptor.open(ParcelFileDescriptor.java:211)
+07-31 12:23:34.000 19829 19829 W System.err:    at android.content.ContentResolver.openAssetFileDescriptor(ContentResolver.java:1248)
+07-31 12:23:34.000 19829 19829 W System.err:    at android.content.ContentResolver.openOutputStream(ContentResolver.java:1013)
+07-31 12:23:34.000 19829 19829 W System.err:    at android.content.ContentResolver.openOutputStream(ContentResolver.java:989)
+07-31 12:23:34.000 19829 19829 W System.err:    at org.shadowice.flocke.andotp.Utilities.FileHelper.writeBytesToFile(FileHelper.java:117)
+07-31 12:23:34.000 19829 19829 W System.err:    at org.shadowice.flocke.andotp.Activities.BackupActivity.doBackupCrypt(BackupActivity.java:468)
+07-31 12:23:34.000 19829 19829 W System.err:    at org.shadowice.flocke.andotp.Activities.BackupActivity.showSaveFileSelector(BackupActivity.java:324)
+07-31 12:23:34.000 19829 19829 W System.err:    at org.shadowice.flocke.andotp.Activities.BackupActivity.saveFileWithPermissions(BackupActivity.java:343)
+07-31 12:23:34.000 19829 19829 W System.err:    at org.shadowice.flocke.andotp.Activities.BackupActivity.access$200(BackupActivity.java:67)
+07-31 12:23:34.000 19829 19829 W System.err:    at org.shadowice.flocke.andotp.Activities.BackupActivity$3.onClick(BackupActivity.java:136)
+07-31 12:23:34.000 19829 19829 W System.err:    at android.view.View.performClick(View.java:6897)
+07-31 12:23:34.000 19829 19829 W System.err:    at android.view.View$PerformClick.run(View.java:26101)
+07-31 12:23:34.000 19829 19829 W System.err:    at android.os.Handler.handleCallback(Handler.java:789)
+07-31 12:23:34.000 19829 19829 W System.err:    at android.os.Handler.dispatchMessage(Handler.java:98)
+07-31 12:23:34.000 19829 19829 W System.err:    at android.os.Looper.loop(Looper.java:164)
+07-31 12:23:34.000 19829 19829 W System.err:    at android.app.ActivityThread.main(ActivityThread.java:6944)
+07-31 12:23:34.000 19829 19829 W System.err:    at java.lang.reflect.Method.invoke(Native Method)
+07-31 12:23:34.000 19829 19829 W System.err:    at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:327)
+07-31 12:23:34.001 19829 19829 W System.err:    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1374)
+07-31 12:23:34.017  3168  3201 V MARsPolicyManager: handelAlertToastWindowStarted pkgName = org.shadowice.flocke.andotp, userId = 0
+```
+
+Maybe this is the reason:
+https://developer.android.com/guide/topics/providers/document-provider#permissions
+
+I don't understand Android permission system well, but if I'm getting it right, I guess andOTP should ask for the ""persistent backup folder"" via some system intent, and then ```takePersistableUriPermission(FLAG_GRANT_PERSISTABLE_URI_PERMISSION | FLAG_GRANT_WRITE_URI_PERMISSION | FLAG_GRANT_PREFIX_URI_PERMISSION)``` ? 
+
+https://developer.android.com/reference/android/content/Intent#FLAG_GRANT_PREFIX_URI_PERMISSION"
+andOTP/andOTP,closed,(Feature request) Winauth support,[],"As both projects are open source, it would be great to have an option to export to Winauth (https://winauth.github.io/winauth/index.html)
+
+Authenticator+ have an option to do this, but, as I'm trying to stay with open source apps, thought to ask here :)
+
+Thanks
+"
+andOTP/andOTP,closed,EntryThumbnail: Add SAP thumb,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","Source: https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg
+Test Screenshot: https://imgur.com/An8I3k2"
+andOTP/andOTP,closed,Add teahub icon,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","I hope the icon is okay. Transforming this into XML which actually looks good took me a while.
+[Source Image](https://teahub.io/images/teahub-logo.svg)"
+andOTP/andOTP,open,EntryThumbnail: Add Codegiant thumb,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","This also needs to be built and tested, for the same reasons as my previous PR."
+andOTP/andOTP,open,EntryThumbnail: Add Electronic Arts thumb,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","This needs to be built and tested, since my internet connection doesn't allow me to download Android Studio (or Android SDK)."
+andOTP/andOTP,closed,add scaleway thumbnail,"[Label(name=""enhancement""), Label(name=""thumbnail"")]",https://cloud.scaleway.com/images/e3809753.logo-purple.svg
+andOTP/andOTP,closed,Blank screen instead of settings,"[Label(name=""bug"")]","
+Version 0.6.0-beta3 from fdroid
+Devide: android 8.1.0
+Custom rom: copperheadOS with latest security patch (june 2018)
+There is an issue when i try to go to settings. When i press this button appears a blank screen and app crashes all the time.
+
+"
+andOTP/andOTP,closed,Details dialog not usable in portrait mode on small screens,"[Label(name=""bug"")]","# General information
+- App version: 0.5.0.1 & 0.6.0-beta3
+- App source: Play Store
+- Android Version: 6.0 and 7.1
+- Custom ROM: no
+
+# Description
+When using a phone in portrait mode the ""Details"" (German: Details eingeben) dialog is not usable because it can not be scrolled vertically and most of the settings are unreachable. The ""Save"" and ""Cancel"" butzons show up correctly though.   "
+andOTP/andOTP,open,Fails to add entry via QR-Code,"[Label(name=""bug""), Label(name=""help wanted""), Label(name=""more information required"")]","#### General information
+
+* **App version:** 0.5.0.1 & 0.6.0-beta2
+* **App source:** F-Droid
+* **Android Version:** 7.1.2
+* **Custom ROM:** ResurrectionRemix v5.8.5
+
+#### Expected result
+**What is expected?** 
+The app fails to add a new entry via scanning the qr-code.
+I've added all my previous entries on version 0.4.x without any problem.
+My os has not changed since then, so i assume its some internal problem.
+
+After scanning the qr-code the error ""Verschlüsselungsschlüssel nicht geladen (encryption key was not loaded)"" is displayed. However I can add new entries if I configure them manually, so there seems to be no problem with encrypting the database.
+
+**What I tried so far**
+* Reset the cache
+* Clear the KeyStore
+
+#### LogCat
+Im not that familiar with android debugging, so here a excessive Log.
+https://pastebin.com/5419mBKB
+"
+andOTP/andOTP,closed,Add icon for sciebo.de,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","This PR adds an icon for the german university cloud Sciebo, which is based on ownCloud."
+andOTP/andOTP,closed,Codes Provided By App Don't Work For Some Accounts,[],"#### General information
+
+* **App version:** 0.6.0-beta2 (been using since at least 0.5.0.1 however, possibly even earlier - got from F-Droid either late last year or early this year; been letting it update since)
+* **App source:** F-Droid
+* **Android Version:** 7.0
+* **Custom ROM:** None
+
+#### Expected result
+**What is expected?** 
+All of the 2FA codes provided by the app should work as expected.
+**What does happen instead?**
+The 2FA codes provided by the app are denied, locking me out of some of my accounts. This happens on some of the accounts but not all. Some examples would be my Discord and Ubisoft account. My Google/Github accounts work fine however. I can access the accounts just fine with the backup codes they each provided but the 2FA codes from this app don't work at all. They worked when I first added 2FA to my accounts but as the months have gone on it has become less and less reliable.
+
+One interesting bit of info - my Amazon account didn't work with the code the app provided but without changing it the code eventually worked after a few seconds. Maybe a timing issue? Not too well-versed on the technical side of 2FA and how it works exactly so apologies if it doesn't operate on timings at all.
+
+I didn't backup/restore at all before I saw this issue start to happen. As a test I backed up, reinstalled the app, and restored my codes but the exact issue with the same accounts that are affected is still present, even after doing this a few times.
+
+Used Android KeyStore authentication. Recently switched to Password / PIN but this issue started occurring while using Android KeyStore. Might have something to do with it?
+
+As a test I used a backup code for one of my accounts and disabled 2FA. When I try to re-enable, it rejects all codes given by the app. I scanned in the QR code multiple times to make sure there wasn't any errors in reading.
+
+#### Logcat
+```
+https://drive.google.com/file/d/1a03ud_p2uxyqpwFJsKcqdLbk_MvJ74lb/view?usp=sharing
+```"
+andOTP/andOTP,closed,Fixes #71: Use Android's font size settings,"[Label(name=""bug""), Label(name=""enhancement"")]","Updates the existing configuration on a config change instead of overriding
+existing settings.
+
+This should fix the issue for now, but still calls the deprecated method `updateConfiguration`."
+andOTP/andOTP,closed,Fixes #190: Changes the import order of gradle repositories.,"[Label(name=""bug"")]","Fetch dependencies from Google's repository first. Prevents a build failure caused by missing artifacts in JCenter.
+
+```
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Could not resolve all files for configuration ':app:debugCompileClasspath'.
+> Could not find common.jar (android.arch.core:common:1.1.0).
+  Searched in the following locations:
+      https://jcenter.bintray.com/android/arch/core/common/1.1.0/common-1.1.0.jar
+```"
+andOTP/andOTP,closed,Build fails because of missing dependency,[],"The build fails after clearing my repository cache. It seems like common-1.1.0 was removed from JCenter.
+I'll provide a pull request now.
+
+```
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Could not resolve all files for configuration ':app:debugCompileClasspath'.
+> Could not find common.jar (android.arch.core:common:1.1.0).
+  Searched in the following locations:
+      https://jcenter.bintray.com/android/arch/core/common/1.1.0/common-1.1.0.jar
+```"
+andOTP/andOTP,open,Compact layout for the cards,"[Label(name=""enhancement"")]","- [ ] Add a compact layout to use for the cards so we can display more cards at once.
+- [ ] Add a settings toggle to switch to the compact view"
+andOTP/andOTP,open,Crash at startup after app update,"[Label(name=""bug"")]","#### General information
+
+* **App version:** 0.6.0-beta1
+* **App source:** F-Droid 1.2.2
+* **Android Version:** 4.4.4
+* **Custom ROM:** Lineage OS 11-20170417-UNOFFICAL
+
+#### Expected result
+**What does happen instead?**
+The app has been updated from 0.5.0.1 to 0.6.0-beta1 then crashed at first use after.
+It seems to have an inconsistency between my data and what is expected by the new version: if the app is reset by clearing the data, the app does not crash at startup and I get the wizard.
+Unfortunately if I restore my previous data from a backup, then the app crashed again at startup or I get a message for KeyStore loading failure. After switching to Password / PIN  in settings, I can't find my previous OTP.
+
+#### Logcat
+```
+I/GeofencerStateMachine( 6387): removeGeofences: removeRequest=RemoveGeofencingRequest[REMOVE_ALL packageName=org.shadowice.flocke.andotp]
+E/NfcHelper( 9071): android.content.pm.PackageManager$NameNotFoundException: org.shadowice.flocke.andotp
+D/VoicemailCleanupService(13449): Cleaning up data for package: org.shadowice.flocke.andotp
+I/GrowthService(13166): Package org.shadowice.flocke.andotp uninstalled. Removing from storage.
+D/InstalledAppProviderSer( 9071): deleteAppFromDb org.shadowice.flocke.andotp
+I/LocationSettingsChecker(13166): Removing dialog suppression flag for package org.shadowice.flocke.andotp
+I/Icing   (13166): doRemovePackageData org.shadowice.flocke.andotp
+E/WorkSourceUtil(13166): Could not find package: org.shadowice.flocke.andotp
+I/Icing   (13166): doRemovePackageData org.shadowice.flocke.andotp
+I/PackageManager(  553): Running dexopt on: org.shadowice.flocke.andotp
+D/Launcher.Model( 8860): shortcutWasRestored is false for org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity
+I/ChromeSync(13166): [Sync,SyncIntentOperation] Handling the intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:org.shadowice.flocke.andotp flg=0x4000010 cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+I/FontsPackageChangeOp(13166): Package org.shadowice.flocke.andotp has no metadata
+D/InstalledAppProviderSer( 9071): insertAppIntoDb org.shadowice.flocke.andotp
+I/Timeline( 8860): Timeline: Activity_launch_request id:org.shadowice.flocke.andotp time:5008024
+D/dalvikvm(14002): Process 14002 nice name: org.shadowice.flocke.andotp
+D/ActivityThread(14002): handleBindApplication:org.shadowice.flocke.andotp
+I/dalvikvm(14002): Could not find method android.app.KeyguardManager.createConfirmDeviceCredentialIntent, referenced from method org.shadowice.flocke.andotp.Activities.MainActivity.authenticate
+I/dalvikvm(14002): Could not find method org.shadowice.flocke.andotp.Activities.MainActivity.finishAndRemoveTask, referenced from method org.shadowice.flocke.andotp.Activities.MainActivity.onActivityResult
+W/dalvikvm(14002): VFY: unable to resolve virtual method 27361: Lorg/shadowice/flocke/andotp/Activities/MainActivity;.finishAndRemoveTask ()V
+I/dalvikvm(14002): Could not find method android.content.res.Configuration.getLocales, referenced from method org.shadowice.flocke.andotp.Utilities.Tools.getSystemLocale
+E/dalvikvm(14002): Could not find class 'android.security.keystore.KeyGenParameterSpec$Builder', referenced from method org.shadowice.flocke.andotp.Utilities.KeyStoreHelper.loadOrGenerateAsymmetricKeyPair
+W/dalvikvm(14002): VFY: unable to resolve new-instance 354 (Landroid/security/keystore/KeyGenParameterSpec$Builder;) in Lorg/shadowice/flocke/andotp/Utilities/KeyStoreHelper;
+D/dalvikvm(14002): DexOpt: unable to opt direct call 0x0736 at 0x29 in Lorg/shadowice/flocke/andotp/Utilities/KeyStoreHelper;.loadOrGenerateAsymmetricKeyPair
+I/ActivityManager(  553): Displayed org.shadowice.flocke.andotp/.Activities.MainActivity: +2s413ms
+I/Timeline(  553): Timeline: Activity_windows_visible id: ActivityRecord{22042ea4 u0 org.shadowice.flocke.andotp/.Activities.MainActivity t30} time:5010560
+W/System.err(14002): java.io.FileNotFoundException: /data/data/org.shadowice.flocke.andotp/files/secrets.dat: open failed: ENOENT (No such file or directory)
+W/System.err(14002): 	at org.shadowice.flocke.andotp.Utilities.FileHelper.readFileToBytes(FileHelper.java:78)
+W/System.err(14002): 	at org.shadowice.flocke.andotp.Utilities.DatabaseHelper.loadDatabase(DatabaseHelper.java:122)
+W/System.err(14002): 	at org.shadowice.flocke.andotp.View.EntriesCardAdapter.loadEntries(EntriesCardAdapter.java:135)
+W/System.err(14002): 	at org.shadowice.flocke.andotp.Activities.MainActivity.populateAdapter(MainActivity.java:185)
+W/System.err(14002): 	at org.shadowice.flocke.andotp.Activities.MainActivity.updateEncryption(MainActivity.java:425)
+W/System.err(14002): 	at org.shadowice.flocke.andotp.Activities.MainActivity.access$000(MainActivity.java:80)
+W/System.err(14002): 	at org.shadowice.flocke.andotp.Activities.MainActivity$3.onClick(MainActivity.java:117)
+W/InputDispatcher(  553): channel '224ea924 org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity (server)' ~ Consumer closed input channel or an error occurred.  events=0x9
+E/InputDispatcher(  553): channel '224ea924 org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity (server)' ~ Channel is unrecoverably broken and will be disposed!
+W/InputDispatcher(  553): Attempted to unregister already unregistered input channel '224ea924 org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity (server)'
+I/oandbackup(14034): restoring: andOTP
+I/Timeline( 8860): Timeline: Activity_launch_request id:org.shadowice.flocke.andotp time:5076842
+D/dalvikvm(14218): Process 14218 nice name: org.shadowice.flocke.andotp
+D/ActivityThread(14218): handleBindApplication:org.shadowice.flocke.andotp
+I/dalvikvm(14218): Could not find method android.app.KeyguardManager.createConfirmDeviceCredentialIntent, referenced from method org.shadowice.flocke.andotp.Activities.MainActivity.authenticate
+I/dalvikvm(14218): Could not find method org.shadowice.flocke.andotp.Activities.MainActivity.finishAndRemoveTask, referenced from method org.shadowice.flocke.andotp.Activities.MainActivity.onActivityResult
+W/dalvikvm(14218): VFY: unable to resolve virtual method 27361: Lorg/shadowice/flocke/andotp/Activities/MainActivity;.finishAndRemoveTask ()V
+I/dalvikvm(14218): Could not find method android.content.res.Configuration.getLocales, referenced from method org.shadowice.flocke.andotp.Utilities.Tools.getSystemLocale
+E/dalvikvm(14218): Could not find class 'android.security.keystore.KeyGenParameterSpec$Builder', referenced from method org.shadowice.flocke.andotp.Utilities.KeyStoreHelper.loadOrGenerateAsymmetricKeyPair
+W/dalvikvm(14218): VFY: unable to resolve new-instance 354 (Landroid/security/keystore/KeyGenParameterSpec$Builder;) in Lorg/shadowice/flocke/andotp/Utilities/KeyStoreHelper;
+D/dalvikvm(14218): DexOpt: unable to opt direct call 0x0736 at 0x29 in Lorg/shadowice/flocke/andotp/Utilities/KeyStoreHelper;.loadOrGenerateAsymmetricKeyPair
+D/dalvikvm(14248): Process 14248 nice name: org.shadowice.flocke.andotp
+D/ActivityThread(14248): handleBindApplication:org.shadowice.flocke.andotp
+I/dalvikvm(14248): Could not find method android.app.KeyguardManager.createConfirmDeviceCredentialIntent, referenced from method org.shadowice.flocke.andotp.Activities.MainActivity.authenticate
+I/dalvikvm(14248): Could not find method org.shadowice.flocke.andotp.Activities.MainActivity.finishAndRemoveTask, referenced from method org.shadowice.flocke.andotp.Activities.MainActivity.onActivityResult
+W/dalvikvm(14248): VFY: unable to resolve virtual method 27361: Lorg/shadowice/flocke/andotp/Activities/MainActivity;.finishAndRemoveTask ()V
+I/dalvikvm(14248): Could not find method android.content.res.Configuration.getLocales, referenced from method org.shadowice.flocke.andotp.Utilities.Tools.getSystemLocale
+E/dalvikvm(14248): Could not find class 'android.security.keystore.KeyGenParameterSpec$Builder', referenced from method org.shadowice.flocke.andotp.Utilities.KeyStoreHelper.loadOrGenerateAsymmetricKeyPair
+W/dalvikvm(14248): VFY: unable to resolve new-instance 354 (Landroid/security/keystore/KeyGenParameterSpec$Builder;) in Lorg/shadowice/flocke/andotp/Utilities/KeyStoreHelper;
+D/dalvikvm(14248): DexOpt: unable to opt direct call 0x0736 at 0x29 in Lorg/shadowice/flocke/andotp/Utilities/KeyStoreHelper;.loadOrGenerateAsymmetricKeyPair
+I/Timeline( 8860): Timeline: Activity_launch_request id:org.shadowice.flocke.andotp time:5687861
+I/ActivityManager(  553): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.shadowice.flocke.andotp/.Activities.MainActivity} from pid 8860
+D/dalvikvm(15124): Process 15124 nice name: org.shadowice.flocke.andotp
+I/ActivityManager(  553): Start proc org.shadowice.flocke.andotp for activity org.shadowice.flocke.andotp/.Activities.MainActivity: pid=15124 uid=10182 gids={50182, 1028, 1015, 1023, 1006}
+D/ActivityThread(15124): handleBindApplication:org.shadowice.flocke.andotp
+I/dalvikvm(15124): Could not find method android.app.KeyguardManager.createConfirmDeviceCredentialIntent, referenced from method org.shadowice.flocke.andotp.Activities.MainActivity.authenticate
+I/dalvikvm(15124): Could not find method org.shadowice.flocke.andotp.Activities.MainActivity.finishAndRemoveTask, referenced from method org.shadowice.flocke.andotp.Activities.MainActivity.onActivityResult
+W/dalvikvm(15124): VFY: unable to resolve virtual method 27361: Lorg/shadowice/flocke/andotp/Activities/MainActivity;.finishAndRemoveTask ()V
+I/dalvikvm(15124): Could not find method android.content.res.Configuration.getLocales, referenced from method org.shadowice.flocke.andotp.Utilities.Tools.getSystemLocale
+E/dalvikvm(15124): Could not find class 'android.security.keystore.KeyGenParameterSpec$Builder', referenced from method org.shadowice.flocke.andotp.Utilities.KeyStoreHelper.loadOrGenerateAsymmetricKeyPair
+W/dalvikvm(15124): VFY: unable to resolve new-instance 354 (Landroid/security/keystore/KeyGenParameterSpec$Builder;) in Lorg/shadowice/flocke/andotp/Utilities/KeyStoreHelper;
+D/dalvikvm(15124): DexOpt: unable to opt direct call 0x0736 at 0x29 in Lorg/shadowice/flocke/andotp/Utilities/KeyStoreHelper;.loadOrGenerateAsymmetricKeyPair
+E/AndroidRuntime(15124): Process: org.shadowice.flocke.andotp, PID: 15124
+E/AndroidRuntime(15124): java.lang.RuntimeException: Unable to resume activity {org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity}: java.lang.IllegalArgumentException: key.length == 0
+E/AndroidRuntime(15124): 	at org.shadowice.flocke.andotp.Utilities.SecretKeyWrapper.unwrap(SecretKeyWrapper.java:79)
+E/AndroidRuntime(15124): 	at org.shadowice.flocke.andotp.Utilities.EncryptionHelper.loadOrGenerateWrappedKey(EncryptionHelper.java:177)
+E/AndroidRuntime(15124): 	at org.shadowice.flocke.andotp.Utilities.KeyStoreHelper.loadEncryptionKeyFromKeyStore(KeyStoreHelper.java:113)
+E/AndroidRuntime(15124): 	at org.shadowice.flocke.andotp.Activities.MainActivity.updateEncryption(MainActivity.java:413)
+E/AndroidRuntime(15124): 	at org.shadowice.flocke.andotp.Activities.MainActivity.onResume(MainActivity.java:324)
+W/ActivityManager(  553):   Force finishing activity org.shadowice.flocke.andotp/.Activities.MainActivity
+I/WindowManager(  553): Screenshot max retries 4 of Token{225a5860 ActivityRecord{2200ec78 u0 org.shadowice.flocke.andotp/.Activities.MainActivity t36 f}} appWin=Window{21e46244 u0 Starting org.shadowice.flocke.andotp} drawState=4
+W/ActivityManager(  553): Activity pause timeout for ActivityRecord{2200ec78 u0 org.shadowice.flocke.andotp/.Activities.MainActivity t36 f}
+I/ActivityManager(  553): Process org.shadowice.flocke.andotp (pid 15124) has died.
+I/ActivityManager(  553): START u0 {act=android.settings.APPLICATION_DETAILS_SETTINGS dat=package:org.shadowice.flocke.andotp flg=0x10808000 cmp=com.android.settings/.applications.InstalledAppDetails} from pid 8860
+I/InstalledAppDetails(15377): Clearing user data for package : org.shadowice.flocke.andotp
+I/ActivityManager(  553): Force stopping org.shadowice.flocke.andotp appid=10182 user=0: clear data
+I/GeofencerStateMachine( 6387): removeGeofences: removeRequest=RemoveGeofencingRequest[REMOVE_ALL packageName=org.shadowice.flocke.andotp]
+I/LocationSettingsChecker(14164): Removing dialog suppression flag for package org.shadowice.flocke.andotp
+I/InstalledAppDetails(15377): Cleared user data for package : org.shadowice.flocke.andotp
+I/Icing   (14164): doRemovePackageData org.shadowice.flocke.andotp
+I/ActivityManager(  553): START u0 {act=android.intent.action.UNINSTALL_PACKAGE dat=package:org.shadowice.flocke.andotp cmp=com.android.packageinstaller/.UninstallerActivity (has extras)} from pid 15377
+I/ActivityManager(  553): Force stopping org.shadowice.flocke.andotp appid=10182 user=-1: uninstall pkg
+W/PackageManager(  553): Couldn't delete native library directory /data/app-lib/org.shadowice.flocke.andotp
+I/ActivityManager(  553): Force stopping org.shadowice.flocke.andotp appid=10182 user=0: pkg removed
+D/BackupManagerService(  553): Received broadcast Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:org.shadowice.flocke.andotp flg=0x4000010 (has extras) }
+I/GeofencerStateMachine( 6387): removeGeofences: removeRequest=RemoveGeofencingRequest[REMOVE_ALL packageName=org.shadowice.flocke.andotp]
+E/InstalledAppDetails(15377): Exception when retrieving package:org.shadowice.flocke.andotp
+E/InstalledAppDetails(15377): android.content.pm.PackageManager$NameNotFoundException: org.shadowice.flocke.andotp
+W/AppSecurityPermissions(15377): Couldn't retrieve permissions for package:org.shadowice.flocke.andotp
+D/VoicemailCleanupService(14349): Cleaning up data for package: org.shadowice.flocke.andotp
+I/GrowthService(14164): Package org.shadowice.flocke.andotp uninstalled. Removing from storage.
+I/LocationSettingsChecker(14164): Removing dialog suppression flag for package org.shadowice.flocke.andotp
+I/Icing   (14164): doRemovePackageData org.shadowice.flocke.andotp
+I/AppUpdateStatusService(15677): org.shadowice.flocke.andotp:16 is NOT pending install, probably just left over from a previous install.
+I/AppUpdateStatusService(15677): org.shadowice.flocke.andotp:14 is NOT pending install, probably just left over from a previous install.
+D/InstalledAppProviderSer(15677): deleteAppFromDb org.shadowice.flocke.andotp
+D/InstalledAppProviderSer(15677): deleteAppFromDb org.shadowice.flocke.andotp
+W/ActivityManager(  553): No content provider found for permission revoke: file:///storage/sdcard1/oandbackups/org.shadowice.flocke.andotp/org.shadowice.flocke.andotp-2.apk
+I/PackageManager(  553): Verification timed out for file:///storage/sdcard1/oandbackups/org.shadowice.flocke.andotp/org.shadowice.flocke.andotp-2.apk
+I/PackageManager(  553): Continuing with installation of file:///storage/sdcard1/oandbackups/org.shadowice.flocke.andotp/org.shadowice.flocke.andotp-2.apk
+W/ActivityManager(  553): No content provider found for permission revoke: file:///storage/sdcard1/oandbackups/org.shadowice.flocke.andotp/org.shadowice.flocke.andotp-2.apk
+I/PackageManager(  553): Running dexopt on: org.shadowice.flocke.andotp
+I/ActivityManager(  553): Force stopping org.shadowice.flocke.andotp appid=10185 user=-1: update pkg
+D/BackupManagerService(  553): Received broadcast Intent { act=android.intent.action.PACKAGE_ADDED dat=package:org.shadowice.flocke.andotp flg=0x4000010 (has extras) }
+I/BackupManagerService(  553): Scheduling backup for new app org.shadowice.flocke.andotp
+D/BackupManagerService(  553): Now staging backup of org.shadowice.flocke.andotp
+D/Launcher.Model( 8860): shortcutWasRestored is false for org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity
+I/oandbackup(14034): restoring: andOTP
+I/ChromeSync(14164): [Sync,SyncIntentOperation] Handling the intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:org.shadowice.flocke.andotp flg=0x4000010 cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+I/FontsPackageChangeOp(14164): Package org.shadowice.flocke.andotp has no metadata
+D/InstalledAppProviderSer(15677): insertAppIntoDb org.shadowice.flocke.andotp
+I/Timeline( 8860): Timeline: Activity_launch_request id:org.shadowice.flocke.andotp time:6023930
+I/ActivityManager(  553): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.shadowice.flocke.andotp/.Activities.MainActivity} from pid 8860
+D/dalvikvm(16062): Process 16062 nice name: org.shadowice.flocke.andotp
+I/ActivityManager(  553): Start proc org.shadowice.flocke.andotp for activity org.shadowice.flocke.andotp/.Activities.MainActivity: pid=16062 uid=10185 gids={50185, 1028, 1015, 1023, 1006}
+D/ActivityThread(16062): handleBindApplication:org.shadowice.flocke.andotp
+I/dalvikvm(16062): Could not find method android.app.KeyguardManager.createConfirmDeviceCredentialIntent, referenced from method org.shadowice.flocke.andotp.Activities.MainActivity.authenticate
+I/dalvikvm(16062): Could not find method org.shadowice.flocke.andotp.Activities.MainActivity.finishAndRemoveTask, referenced from method org.shadowice.flocke.andotp.Activities.MainActivity.onActivityResult
+W/dalvikvm(16062): VFY: unable to resolve virtual method 30808: Lorg/shadowice/flocke/andotp/Activities/MainActivity;.finishAndRemoveTask ()V
+I/dalvikvm(16062): Could not find method android.content.res.Configuration.getLocales, referenced from method org.shadowice.flocke.andotp.Utilities.Tools.getSystemLocale
+W/System.err(16062): 	at org.shadowice.flocke.andotp.Activities.MainActivity.onCreate(MainActivity.java:172)
+E/dalvikvm(16062): Could not find class 'android.app.NotificationChannel', referenced from method org.shadowice.flocke.andotp.Utilities.NotificationHelper.createNotificationChannel
+W/dalvikvm(16062): VFY: unable to resolve new-instance 56 (Landroid/app/NotificationChannel;) in Lorg/shadowice/flocke/andotp/Utilities/NotificationHelper;
+D/dalvikvm(16062): DexOpt: unable to opt direct call 0x016f at 0x14 in Lorg/shadowice/flocke/andotp/Utilities/NotificationHelper;.createNotificationChannel
+E/dalvikvm(16062): Could not find class 'android.security.keystore.KeyGenParameterSpec$Builder', referenced from method org.shadowice.flocke.andotp.Utilities.KeyStoreHelper.loadOrGenerateAsymmetricKeyPair
+W/dalvikvm(16062): VFY: unable to resolve new-instance 555 (Landroid/security/keystore/KeyGenParameterSpec$Builder;) in Lorg/shadowice/flocke/andotp/Utilities/KeyStoreHelper;
+D/dalvikvm(16062): DexOpt: unable to opt direct call 0x0aa1 at 0x29 in Lorg/shadowice/flocke/andotp/Utilities/KeyStoreHelper;.loadOrGenerateAsymmetricKeyPair
+W/System.err(16062): 	at org.shadowice.flocke.andotp.Utilities.SecretKeyWrapper.unwrap(SecretKeyWrapper.java:80)
+W/System.err(16062): 	at org.shadowice.flocke.andotp.Utilities.EncryptionHelper.loadOrGenerateWrappedKey(EncryptionHelper.java:177)
+W/System.err(16062): 	at org.shadowice.flocke.andotp.Utilities.KeyStoreHelper.loadEncryptionKeyFromKeyStore(KeyStoreHelper.java:113)
+W/System.err(16062): 	at org.shadowice.flocke.andotp.Activities.MainActivity.updateEncryption(MainActivity.java:398)
+W/System.err(16062): 	at org.shadowice.flocke.andotp.Activities.MainActivity.onResume(MainActivity.java:304)
+E/AndroidRuntime(16062): Process: org.shadowice.flocke.andotp, PID: 16062
+W/ActivityManager(  553):   Force finishing activity org.shadowice.flocke.andotp/.Activities.MainActivity
+I/WindowManager(  553): Screenshot max retries 4 of Token{22496c0c ActivityRecord{222affec u0 org.shadowice.flocke.andotp/.Activities.MainActivity t38 f}} appWin=Window{22424d34 u0 Starting org.shadowice.flocke.andotp} drawState=4
+W/ActivityManager(  553): Activity pause timeout for ActivityRecord{222affec u0 org.shadowice.flocke.andotp/.Activities.MainActivity t38 f}
+I/ActivityManager(  553): Process org.shadowice.flocke.andotp (pid 16062) has died.
+I/WindowState(  553): WIN DEATH: Window{2232ca0c u0 org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity}
+I/WindowState(  553): WIN DEATH: Window{21ed0e40 u0 org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity}
+```"
+andOTP/andOTP,closed,Partial key loss,"[Label(name=""bug"")]","
+#### General information
+
+* **App version:** 0.5.0.1
+* **App source:** F-Droid 
+* **Android Version:** 7.1.2
+* **Custom ROM:** LineageOS
+
+#### Expected result
+**What is expected?** TOTP keys are stored
+
+**What does happen instead?** Some are lost
+
+Very sorry for the vague report, but I can't really reproduce what happened.
+
+I am storing tokens using password authentication. I added 4 or 5 keys to the app last week, now when I log in they are gone!
+
+I can't empirically say that it's the ones I added that time, but I know at least two of them are.
+
+Many of the other tokens I have stored are still there.
+
+Is there anything I might have done wrong?"
+andOTP/andOTP,closed,Fix crash on KitKat,"[Label(name=""bug"")]","On KitKat devices andOTP will crash after the initial setup wizard, which happens due to a bug in [FABsMenu](https://github.com/jahirfiquitiva/FABsMenu).
+
+Since [FABsMenu](https://github.com/jahirfiquitiva/FABsMenu) has been marked as deprecated by the author and won't receive any further updates this should be easily fixed by switching to another implementation like [FloatingActionButtonSpeedDial](https://github.com/leinardi/FloatingActionButtonSpeedDial)."
+andOTP/andOTP,closed,[Feature Request] App Shortcuts,"[Label(name=""enhancement"")]","It would be cool to add App Shortcuts (Android 7.1+) to perform quick actions like ""Scan QR-Code"" and ""Enter details""."
+andOTP/andOTP,closed,"Few questions, need clarification",[],"I've created a backup of my andOTP (json.aes file).
+
+If I lose my phone, would I just need to install andOTP on my new phone, import the backup and that's it? And if I want to sell my phone, how would I get rid of andOTP and my settings on it?
+
+"
+andOTP/andOTP,closed,Change encrypt method will delete all accounts?,"[Label(name=""bug""), Label(name=""more information required"")]","Hello, I just tried to change the encrypt method from using gpg keys to pin code, then all accounts were wiped out. Is this intended or a bug? If so, I guess there should be a warning at least. And I'm not sure why it must wipe all accounts to re-encrypt?"
+andOTP/andOTP,closed,Encrypted backup not possible - shown greyed,"[Label(name=""bug""), Label(name=""help wanted""), Label(name=""question"")]","#### General information
+
+* **App version:** 0.5.0.1 & 0.6.0-beta1
+* **App source:** F-Droid
+* **Android Version:** 8.1
+* **Custom ROM:** LineageOS 15.1
+
+#### Expected result
+**What is expected?** 
+after setting a password for backups, it should work
+
+**What does happen instead?**
+No encrypted backup possible
+
+
+#### Steps to reproduce
+ 
+ * go to options. set password for encrypted backup
+ * try to create a encrypted backup
+
+"
+andOTP/andOTP,closed,"""Select OpenPGP key"" wants key for alice@example.com","[Label(name=""bug"")]","#### General information
+
+* **App version:** 0.5.0.1
+* **App source:** F-Droid
+* **Android Version:** 8.1
+* **Custom ROM:** OnePlus 5T stock OS
+
+#### Expected result
+**What is expected?**
+When I should be able to specify any recipient for which I have a public key.
+Ideally, I should be able to pick multiple recipients (I have different keys for laptop and phone, because I don't trust the phone with my main PGP key).
+
+**What does happen instead?**
+The email ""alice@example.com"" appears to be hard-coded (couldn't find any UI to configure it).
+#### Steps to reproduce
+ 
+ * Go to Settings
+ * Select OpenKeychain as your OpenPGP provider
+ * Click Select OpenPGP key
+ * Selection dialog pops up asking to pick a key for ""alice@example.com"", which I don't have
+
+"
+andOTP/andOTP,closed,LOGO,[],"Hello, @andOTP I want to contribute in ""andOTP"" so i want to design a new logo for ""andOTP"" and it's free.
+
+I hope you like it. If you like it, I will send you to pull request, editable files/original source and .png format files. If there's something you want to change, I'll do it.
+
+if you want i will send you my design
+
+Contact me on facebook for fast delivery 
+https://www.facebook.com/waqasanwar68"
+andOTP/andOTP,closed,Manual code input,"[Label(name=""more information required"")]",I think manual code input instead of scan QR code could be a great option for just in case. 
+andOTP/andOTP,open,Paper Backups,[],"This is a feature request, but I should have time / be able to implement it sometime this summer.
+
+It would be very convenient to have access to a paper backup scheme for local secrets. Translation to words is convenient for hand transcription; most schemes get ~12 bits per word so the secret size is totally viable to just copy over by hand. This prevents concerns about accidentally saving a screenshot somewhere, printers, etc.
+
+I would suggest that this feature should be behind some sort of password protection, to prevent the ""borrows phone and screenshots secrets"" attack. 
+
+I think that this backup method (write down secrets and put them in an envelope) achieves a very desirable combination of security+convenience, and it's how I want to back up my 2fa secrets.
+
+I understand that it is lower security than one-time backup codes; but as I understand it these cannot be implemented in a service-agnostic way.
+
+Does this sound sane to people / is it a feature that they would also be interested in?
+"
+andOTP/andOTP,closed,Add feature graphic and screenshots for F-Droid,"[Label(name=""enhancement"")]","This PR aims to add screenshots to the listing in the F-Droid store.
+Descriptions/ images can either be added to this repo or to https://gitlab.com/fdroid/fdroiddata/tree/master/metadata
+
+The files get updated to the F-Droid store on a release, not by merging this PR.
+
+- [ ] You could also import all metadata from the Google Play store using `fastlane supply init`.
+
+How to add screens to F-Droid: https://f-droid.org/en/docs/All_About_Descriptions_Graphics_and_Screenshots/
+
+Fastlane's doc: https://docs.fastlane.tools/actions/supply/#images-and-screenshots"
+andOTP/andOTP,open,Import password-encrypted backup doesn't require password,"[Label(name=""enhancement""), Label(name=""security"")]","#### General information
+
+* **App version:** 0.5.1
+* **App source:** Google Play
+* **Android Version:**
+* **Custom ROM:**
+
+#### Expected result
+I expected that when I press ""Restore (encrypted)"" a prompt would come up for the encryption password.
+
+#### Actual result
+What happens instead is that the password-protected backup is successfully imported without a password being required. This leads me to think that the backup password is stored somewhere on the phone. Or maybe the backup password is stored encrypted using the app authentication password which isn't great either.
+"
+andOTP/andOTP,closed,[Poll] More screenshot restrictions,"[Label(name=""enhancement""), Label(name=""help wanted""), Label(name=""maybe"")]","As you most likely know the main screen of andOTP doesn't allow you to take screenshots for security reasons. Recently I got the request to additionally disable screenshots on the Authentication and Settings screen. While I personally don't really see the security benefit I wanted to ask some more users what they think of this suggestion.
+
+Just cast your vote by adding a reaction to this issue:
+- :+1: : Yes, restrict screenshots in Authentication and Settings screen
+- :-1: : No, keep it as it is now"
+andOTP/andOTP,open,Request for copywriting ,[],"Hi, I would like to make a copywriting pull for your project. I would propose to write About us, FAQ that would help promote the project. "
+andOTP/andOTP,closed,HOTP improvements,"[Label(name=""WIP""), Label(name=""enhancement"")]","Checklist for HOTP improvements before releasing 0.6.0, feel free to comment what you are missing in the beta:
+- [ ] Update counter if tap-to-reveal is enabled: update the counter on reveal but show the old value (most accounts come with the counter already set to 1 on import)"
+andOTP/andOTP,open,Thumbnail background colour doesn't change for dark themes,"[Label(name=""enhancement""), Label(name=""maybe"")]","#### General information
+
+* **App version:** 0.5.0.1
+* **App source:** F-Droid
+* **Android Version:** Android 8
+* **Custom ROM:** OxygenOS 5.0.2
+
+#### Expected result
+**What is expected?** 
+When switching themes, the thumbnail background colour should also change accordingly.
+
+**What does happen instead?**
+When I switch to the dark or black theme, the thumbnail background remains light.
+
+#### Steps to reproduce
+ 
+ * With the thumbnails visible, switch the theme to dark or black.
+
+Thanks for working on the app :)"
+andOTP/andOTP,closed,add new thumb requested from wiki v2,"[Label(name=""enhancement""), Label(name=""thumbnail"")]","@RichyHBM 
+i hope now it's right
+
+- Bitpanda
+- Bitwala
+- HitBTC
+- Miraheze
+- Standardnotes
+- SyncCom"
+andOTP/andOTP,closed,add new thumb requested from wiki,[],"The following thumbs are in this OR. I hope, i have do this right :-)
+
+- Bitpanda
+- Bitwala
+- CexIO
+- HitBTC
+- Kraken
+- Miraheze
+- RockstarGames
+- Standardnotes
+- SyncCom
+
+I'm working on the others, but unfortunately I have some problems with the svg files.
+
+**Bing Thanks for your work on the great app.**
+
+
+sorry i don't seen the other pr"
+andOTP/andOTP,closed,Request for additional logos,[],"I would really appreciate it if logos for the following services could be added to the app:
+
+ - Bitwala - https://bitwala.io
+ - HitBTC - https://hitbtc.com
+ - BitPanda - https://www.bitpanda.com
+
+Out of about 20 different accounts that I'm using the app for these are the only ones missing a logo for me ;)
+
+Many thanks!"
+andOTP/andOTP,open,Streamline backup and restore,"[Label(name=""enhancement"")]","Enhancement
+
+Right now if you want to restore a file it has to be in the Download directory unless you enable 'Ask for Filename' is enable for both restores and backups. 
+
+1.  I think 'Ask for Filename' should always be enabled for restore. This is also to confirm that the application is importing the expected file.
+2. Backups should have time stamped filename enabled by default. This help with versioning and if we enable more frequent updates like in #46, it is easier to overwrite a backup that could be needed if the filename is static. If a user needs a constant filename, they can disable time stamps explicitly. 
+3. One touch backups: Once the backup methodology is configured, backups should be one click and done. This is where backups should have 'Ask for Filename' disabled. As you can see, 1 and 3 conflict with each other.  
+4. When a backup file is generated, it should show a transient overlay dialog with the file name and path. 
+This is for confirmation that backup completed and info on what the file name is. 
+
+
+ 
+
+"
+andOTP/andOTP,open,Add support otpauth:// schema url import ,"[Label(name=""enhancement"")]","Add support to  import OTP consumer from otpauth:// url
+
+https://github.com/google/google-authenticator/wiki/Key-Uri-Format"
+andOTP/andOTP,open,UI option request,"[Label(name=""enhancement""), Label(name=""maybe"")]","#### General information
+
+* **App version:** 0.5.0.1
+* **App source:** Google Play
+* **Android Version:** N 7.0
+* **Custom ROM:** n/a
+
+I was wondering if we could get an option to hide the ""timeout bar""/""code change bar"", perhaps only show it when the code has been reveled (assuming that setting has been turned on). 
+
+Or something along those lines... I know it is weird, but having the bar at the top always going down makes me feel very anxious.
+
+"
+andOTP/andOTP,closed,"Add gandi, kraken and rockstar","[Label(name=""WIP""), Label(name=""enhancement""), Label(name=""thumbnail"")]",Maybe worthleaving this until closer to when we are making a new release in order to capture more thumbnails
+andOTP/andOTP,open,Grid view,"[Label(name=""enhancement"")]","This is a first pass on the grid view, for now just using a dialog to display the entry information"
+andOTP/andOTP,closed,Add a thumbnail for Trello,"[Label(name=""enhancement""), Label(name=""thumbnail"")]",Resized to 198x198. SVG source: trello-mark-blue.svg from https://trello.com/about/logo
+andOTP/andOTP,closed,UI: Multiple columns?,"[Label(name=""WIP""), Label(name=""enhancement"")]","#### General information
+
+* **App version:** 0.4.0.1
+* **App source:** F-Droid
+* **Android Version:** 6.0.1
+* **Custom ROM:** Stock Google Nexus 5
+
+#### Expected result
+**What is expected?** The UI could used a column or ""cards"" -based layout.  As it is, regardless of screen resolution or orientation, one entry gets one row with a whole whack of dead space between the numbers and the copy/settings icons.  If instead these values were stacked vertically (you could even move the `copy` icon inside the three-dot settings icon) you could effectively double the information you can fit on the screen.
+
+**What does happen instead?**  The UI works, but for users like me with **16** different OTP accounts, I end up scrolling/searching a lot more than I'd like.
+
+#### Logcat
+
+n/a
+
+#### Steps to reproduce
+
+n/a
+
+I want to stress that this is by far the best of all the OTP apps I've tried out there.  If I knew anything about Java or Material design, I'd offer a pull request, but as I'm more a Python nerd, I'm afraid I've not much to offer on this front.
+
+I've got this though, a mockup I did with draw.io :-)
+
+![andotp-example](https://user-images.githubusercontent.com/218205/37647494-4b297a72-2c24-11e8-95f8-b47ddcaf771c.png)
+"
+andOTP/andOTP,closed,Support SDK API 23 on empty PIN code,"[Label(name=""bug""), Label(name=""security"")]",Fixes #159
+andOTP/andOTP,closed,PIN code can simply be bypassed on SDK 23,"[Label(name=""bug""), Label(name=""security"")]","#### General information
+
+* **App version:** 0.5.0
+* **App source:** F-Droid* 
+* **Android Version:** SDK 23
+* **Custom ROM:** no
+
+#### Expected result
+**What is expected?** PIN code to block the view of the OTPs
+
+**What does happen instead?** App crashes and the restarts by showing the OTPs.
+
+#### Logcat
+```
+03-17 16:37:28.359 5469-5469/org.shadowice.flocke.andotp.dev E/AndroidRuntime: FATAL EXCEPTION: main
+                                                                               Process: org.shadowice.flocke.andotp.dev, PID: 5469
+                                                                               java.lang.IllegalArgumentException: password empty
+                                                                                   at com.android.org.bouncycastle.jcajce.provider.digest.SHA1$BasePBKDF2WithHmacSHA1.engineGenerateSecret(SHA1.java:135)
+                                                                                   at javax.crypto.SecretKeyFactory.generateSecret(SecretKeyFactory.java:187)
+                                                                                   at org.shadowice.flocke.andotp.Utilities.EncryptionHelper.generatePBKDF2Credentials(EncryptionHelper.java:77)
+                                                                                   at org.shadowice.flocke.andotp.Activities.AuthenticateActivity.checkPassword(AuthenticateActivity.java:145)
+                                                                                   at org.shadowice.flocke.andotp.Activities.AuthenticateActivity.onClick(AuthenticateActivity.java:129)
+                                                                                   at android.view.View.performClick(View.java:5198)
+                                                                                   at android.view.View$PerformClick.run(View.java:21147)
+                                                                                   at android.os.Handler.handleCallback(Handler.java:739)
+                                                                                   at android.os.Handler.dispatchMessage(Handler.java:95)
+                                                                                   at android.os.Looper.loop(Looper.java:148)
+                                                                                   at android.app.ActivityThread.main(ActivityThread.java:5417)
+                                                                                   at java.lang.reflect.Method.invoke(Native Method)
+                                                                                   at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+                                                                                   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+
+```
+
+#### Steps to reproduce
+ 
+1. open the app
+2. tap unlock
+3. see the app crash
+4. tap ok -> app reloads without requesting the PIN code
+"
+andOTP/andOTP,closed,EA / Origin Not Supported,"[Label(name=""bug""), Label(name=""enhancement""), Label(name=""more information required"")]","At the moment, it doesn't support EA / Origin.
+When I scan the QR Code, the APP tolds me, it is invalid."
+andOTP/andOTP,open,Improved security for Broadcast backups,"[Label(name=""bug""), Label(name=""enhancement""), Label(name=""security"")]","In the latest release the BroadcastReceiver for the plain text backups has been disabled due to the fact that every 3rd-party app would be able to just dump the users OTP accounts in plain text.
+
+In the next release that should be addressed, combining the ideas I and @RichyHBM came up with we currently have 3 methods of doing this:
+
+- [x] Disable all broadcast receivers by default and add a settings option to manually enable only the ones actually used by the user.
+- [ ] Add a passphrase the broadcast has to contain for the backup to be triggered.
+- [ ] (_maybe_) Add a settings item to select apps installed on the phone, only selected apps are allowed to trigger the backups.
+
+I vote for definitely implementing the 1st option as a kind of first layer and one of the other two for additional protection."
+andOTP/andOTP,closed,What's new Test Activity,[],"Check if started for the first time after fresh install or after a new update or if it is a normal launch of the andOTP app! 
+Calls an intent to the Test What's New Activity if it's launched after a new update! 
+Calls the Intro Screen Activity if the user is installing and launching andOTP for the very first time! 
+Does nothing if the app was launched normally (neither first run as fresh install nor first run as app update) so as not to annoy our users!"
+andOTP/andOTP,closed,UI improvement request,"[Label(name=""enhancement"")]","Hey dear developers!
+
+The app is very useful with its function and being open source. But for user interface there's a little imperfection.
+
+The FAB menu is not very _Material Design-ish_ . The label for menu options, the FAB menu animation and screen dimming still require improvement.
+
+Thanks guys for hard work! 👍👍
+
+  "
+andOTP/andOTP,open,andOTP rewordings [Improved English Strings],"[Label(name=""WIP""), Label(name=""enhancement"")]",Cleaned up andOTP wordings as proposed by @flocke in #149 and promised in https://github.com/andOTP/andOTP/issues/149#issuecomment-370519141 
+andOTP/andOTP,open,Proposal to allow automatic login,"[Label(name=""Password / PIN""), Label(name=""WIP""), Label(name=""enhancement""), Label(name=""maybe""), Label(name=""security"")]","Currently andOTP requires you to hit enter to log you in.
+
+This has been addressed before but was decided against due to the performance of trying to decrypt the database or having to store the length of the password.
+
+I propopose the following(This could always be hidden behind a setting so it is opt in):
+
+1. Add a dictionary to the app, maybe few hundred words
+2. When the user enters a pin/password we randomly select a word from the list
+3. We encrypt the word and store it in a file on device
+4. We also encrypt the word with a key stored in the key store
+5. When the user opens the app, and based on the minimum pin/password length we wait for them to enter a long enough password
+6. We decrypt the keystore based file so we know what word we are comparing it
+7. On each pin/password change we spin up an Async task to try to decrypt the file and compare it to the valid word
+8. We allow the user to hit enter and try a full decryption as it does Currently
+9. If the async task completes succesfully we automatically log the user in
+
+This achieves a number of things, performance should remain, we are doing all tasks in background threads so the main thread should stay as it is.
+
+We are not storing any damaging data unencrypted, and because there are hundreds of seed words posibility it would hopefully also be hard to brute force
+
+Worst case scenario it loses the keystore key and you just lose the ability to auto login"
+andOTP/andOTP,closed,andOTP locked after screen rotation,"[Label(name=""bug"")]","The app locks itself after turning the screen.
+
+andOTP version: 0.4.0.1
+
+Android version: 8.1.0
+"
+andOTP/andOTP,closed,Polish translation is outdated,[],"#### General information
+
+* **App version:** 0.4.0.1
+* **App source:** F-Droid
+* **Android Version:** 5.0.2 (API 21)
+* **Custom ROM:** MIUI 9
+
+1)
+Some strings are not translated mainly in settings activity but some other are also not translated. For example in `<string name=""settings_title_tap_to_reveal_timeout"">Timeout for tap to reveal</string>` in andOTP/app/src/main/res/values-pl-rPL/strings_settings.xml is in English.
+
+2) 
+Second thing I found is wrong string name i.e. `<string name=""auth_msg_password"">Wprowadź proszę hasło, aby otworzyć andOTP.</string>` string with that name don't exist in english version, but I am sure that it should be equivalent to `<string name=""auth_msg_authenticate"">Please authenticate to start andOTP!</string>`
+
+It is only few samples. I'm ready to help if it is needed. 
+"
+andOTP/andOTP,closed,Feature request: fingerprint support,"[Label(name=""enhancement""), Label(name=""maybe""), Label(name=""more information required"")]","I'd like to ask to support the fingerprint reader if one uses encrypted storage based on password/PIN. It would mean to be able to quickly/easily unlock the app.
+
+Thanks in advance!"
+andOTP/andOTP,open,[Help wanted] Improve English strings,"[Label(name=""WIP""), Label(name=""enhancement""), Label(name=""help wanted"")]","While I am a pretty good English speaker (in my opinion) I am no native speaker, and even I notice that some of the wording in andOTP is not really ideal (but I have no idea on how to improve it). I would love if someone wanting to contribute could look over all the strings in andOTP and, if he deems it necessary, suggest me a better wording (or even complete rewording to better explain the functions of andOTP).
+
+While this is mainly targeted at native speakers anyone with sufficient English knowledge can feel free to suggest something.  "
+andOTP/andOTP,closed, Merge branch 'master' of https://github.com/andOTP/andOTP,[],
+andOTP/andOTP,closed,Additional Fix for Intro Screen Screenshot issue,[],"This applies an additional fix to Intro Screen Screenshot issue! 
+This Pull Request would work perfectly well with commit by @flocke at https://github.com/andOTP/andOTP/commit/4366aee3cbdd1ce1732dceb8d848ebf2611786c6"
+andOTP/andOTP,closed,Added Scroll to the Database Encryption fragment on Intro screen and forced portrait orientation,[],Scrollbars and no need for landscape orientation on the Intro Screens
+andOTP/andOTP,closed,Suggestion: Remove fork relationship,[],"I think that andOTP is so much farther ahead of the original project. Maybe it's time to recognize it as it's own project.  This would maybe also attract new contributors to andOTP, as it's more than a fork now. 
+
+What do you think about this suggestion?
+
+"
+andOTP/andOTP,closed,Intro screen,"[Label(name=""enhancement"")]",Closes #141 
+andOTP/andOTP,closed,Fix crash caused by sharedPreferenceListener in fragment,[],
+andOTP/andOTP,open,Support for mOTP,"[Label(name=""enhancement""), Label(name=""maybe"")]","Are there any plans to support MOTP, I would love to use this App to authenticate with a Draytek VPN"
+andOTP/andOTP,closed,Intro screen on first launch,"[Label(name=""WIP""), Label(name=""enhancement"")]","Instead of just a simple dialog I would like to show the user an intro screen on the first launch of the app (similar to Nextcloud, Substratum, ...). This is something I would like to have before the first stable release on Google Play.
+
+In that intro the user should be able to:
+- [x] Choose a database encryption
+- [x] Set an authentication method (depending on the encryption this might be optional)
+
+A library that could be used for that can be found here: https://github.com/heinrichreimer/material-intro"
+andOTP/andOTP,closed,Can't open app after system update,"[Label(name=""KeyStore""), Label(name=""bug""), Label(name=""duplicate""), Label(name=""upstream bug"")]","#### General information
+
+* **App version:** 0.4.0.1
+* **App source:** F-Droid
+* **Android Version:** 7.1.2
+* **Custom ROM:** LineageOS 14.1.20180220
+
+#### Expected result
+**What is expected?**  
+Application launched
+
+**What does happen instead?**
+Application crash
+
+#### Logcat
+```
+02-22 11:23:32.707  4894  7188 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.shadowice.flocke.andotp/.Activities.MainActivity (has extras)} from uid 10028 on display 0
+02-22 11:23:32.773  4894  4911 I ActivityManager: Start proc 5303:org.shadowice.flocke.andotp/u0a91 for activity org.shadowice.flocke.andotp/.Activities.MainActivity
+02-22 11:23:32.785  4894  4894 D ZenLog  : intercepted: 0|android|17039403|null|1000,alarmsOnly
+02-22 11:23:32.786  4894  4894 V NotificationService: pkg=android canInterrupt=false intercept=true
+02-22 11:23:32.805  5303  5303 I art     : Starting a blocking GC AddRemoveAppImageSpace
+02-22 11:23:32.808  5303  5303 W System  : ClassLoader referenced unknown path: /data/app/org.shadowice.flocke.andotp-1/lib/arm
+02-22 11:23:32.922  5303  5303 D AndroidRuntime: Shutting down VM
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: FATAL EXCEPTION: main
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: Process: org.shadowice.flocke.andotp, PID: 5303
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: java.lang.RuntimeException: Unable to resume activity {org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity}: java.lang.UnsupportedOperationException
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3454)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3494)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2757)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at android.app.ActivityThread.-wrap12(ActivityThread.java)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1496)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:154)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:6186)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:889)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:779)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: Caused by: java.lang.UnsupportedOperationException
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at java.security.KeyStoreSpi.engineGetEntry(KeyStoreSpi.java:482)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at java.security.KeyStore.getEntry(KeyStore.java:1323)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at org.shadowice.flocke.andotp.Utilities.KeyStoreHelper.loadOrGenerateAsymmetricKeyPair(KeyStoreHelper.java:99)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at org.shadowice.flocke.andotp.Utilities.KeyStoreHelper.loadEncryptionKeyFromKeyStore(KeyStoreHelper.java:111)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at org.shadowice.flocke.andotp.Activities.MainActivity.updateEncryption(MainActivity.java:413)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at org.shadowice.flocke.andotp.Activities.MainActivity.onResume(MainActivity.java:324)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1270)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at android.app.Activity.performResume(Activity.java:6788)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3431)
+02-22 11:23:32.923  5303  5303 E AndroidRuntime: 	... 10 more
+02-22 11:23:32.926  4894  6470 W ActivityManager:   Force finishing activity org.shadowice.flocke.andotp/.Activities.MainActivity
+02-22 11:23:32.969  4894  7930 I OpenGLRenderer: Initialized EGL, version 1.4
+02-22 11:23:32.969  4894  7930 D OpenGLRenderer: Swap behavior 1
+02-22 11:23:33.429  4894  4952 W ActivityManager: Activity pause timeout for ActivityRecord{e9cab99 u0 org.shadowice.flocke.andotp/.Activities.MainActivity t5525 f}
+02-22 11:23:33.900  4894  4984 W WindowManager: Failed looking up window
+02-22 11:23:33.900  4894  4984 W WindowManager: java.lang.IllegalArgumentException: Requested window android.view.ViewRootImpl$W@5c75b36 does not exist
+02-22 11:23:33.900  4894  4984 W WindowManager: 	at com.android.server.wm.WindowManagerService.windowForClientLocked(WindowManagerService.java:9469)
+02-22 11:23:33.900  4894  4984 W WindowManager: 	at com.android.server.wm.WindowManagerService.windowForClientLocked(WindowManagerService.java:9460)
+02-22 11:23:33.900  4894  4984 W WindowManager: 	at com.android.server.wm.WindowManagerService.removeWindow(WindowManagerService.java:2401)
+02-22 11:23:33.900  4894  4984 W WindowManager: 	at com.android.server.wm.Session.remove(Session.java:202)
+02-22 11:23:33.900  4894  4984 W WindowManager: 	at android.view.ViewRootImpl.dispatchDetachedFromWindow(ViewRootImpl.java:3290)
+02-22 11:23:33.900  4894  4984 W WindowManager: 	at android.view.ViewRootImpl.doDie(ViewRootImpl.java:5923)
+02-22 11:23:33.900  4894  4984 W WindowManager: 	at android.view.ViewRootImpl$ViewRootHandler.handleMessage(ViewRootImpl.java:3629)
+02-22 11:23:33.900  4894  4984 W WindowManager: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+02-22 11:23:33.900  4894  4984 W WindowManager: 	at android.os.Looper.loop(Looper.java:154)
+02-22 11:23:33.900  4894  4984 W WindowManager: 	at android.os.HandlerThread.run(HandlerThread.java:61)
+02-22 11:23:33.900  4894  4984 W WindowManager: 	at com.android.server.ServiceThread.run(ServiceThread.java:46)
+```
+
+#### Steps to reproduce
+ 
+ * Open application
+
+"
+andOTP/andOTP,closed,[#138] Fix exception when saving empty label,"[Label(name=""bug"")]","This fixes #138
+
+But it will permit saving empty labels. Further work will have to be done to prevent saving an empty label (Disable the *Save* button or show a message).
+
+I'm also currently working on another PR where I'm going to refactor the `Entry` a bit so that it will not be possible to have such inconsistent states saved at all."
+andOTP/andOTP,closed,CRITICAL: App crashes when editing label and leaving it empty,[],"### General information
+**THIS IS VERY CRITICAL!**
+
+When editing the label of an entry and saving with an empty label, the app crashes. Furthermore the app keeps crashing on starup! **So there is no way to get it to work again without wiping app data**.
+
+* **App version:** 0.4.0.1
+* **App source:** Google Play
+* **Android Version:** 7.1.2
+* **Custom ROM:** LineageOS 14.1
+
+### Expected result
+**What is expected?** 
+Either label should be empty or app should not permit saving with empty label.
+
+**What does happen instead?**
+App crashes **and keeps crashing on startup**.
+
+#### Logcat
+The exception occures here:
+https://github.com/andOTP/andOTP/blob/03714739fe9e45d42c2eba4eb505a7bf6d22951e/app/src/main/java/org/shadowice/flocke/andotp/Utilities/LetterBitmap.java#L92
+As the `displayName` is empty, there is no `.charAt(0)`.
+
+BTW: Pull request incoming 😉 
+
+#### Steps to reproduce
+ 
+ * **BACKUP YOUR APPDATA / MAKE AN IN APP BACKUP**
+    **This will lock you out of the app and you will have to delete appdata to make it work again!**
+    **You will lose all your keys without proper backup!**
+ * Create a new entry and save it
+ * Click the three-dot-menu button on that entry and select ""*Edit label*""
+ * Clear the label and press the ""*Save*"" button.
+
+"
+andOTP/andOTP,closed,"Add new amazon thumbnail, rackspace, vultr, degiro and hmrc","[Label(name=""enhancement"")]",
+andOTP/andOTP,closed,"Check if ""Advanced Options"" are valid before enabling the ""Save"" button","[Label(name=""bug"")]",This fixes #135.
+andOTP/andOTP,closed,App crashes due to invalid values being processed,"[Label(name=""bug"")]","### General information
+
+When entering an invalid value (empty or ""0"") in the ""Advanced Options"" section when manually entering details, the app crashes. This seems to be due to conversion of """" (empty string) to number or a division by 0 (when value is 0). This happens for both, the ""Period"" and ""Digits"" fields.
+
+* **App version:** 0.4.0.1
+* **App source:** Google Play
+* **Android Version:** 7.1.2
+* **Custom ROM:** LineageOs 14.1
+
+(This also happens on my main phone but the logcat on the device above is way less cluttered 😋)
+
+### Expected result
+**What is expected?** 
+The ""Save"" button should be disabled while input fields contain invalid information (and maybe the input field containing a wrong value should have a short description why the value is invalid).
+
+**What does happen instead?** 
+App crashes.
+
+### Logcat
+I've extracted the *exceptions + stack trace* from the logcat. If you really need the whole logcat, I'm willing to send it to you via mail or so, but I don't want to post it publicly (I've seen my WiFi name in there and I'm curious of what other sensitive information (like GPS coordinates?) might be there as well..).
+
+*Empyt value in field ""Period"":*
+```
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: FATAL EXCEPTION: main
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: Process: org.shadowice.flocke.andotp, PID: 10690
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: java.lang.NumberFormatException: For input string: """"
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: 	at java.lang.Integer.parseInt(Integer.java:533)
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: 	at java.lang.Integer.parseInt(Integer.java:556)
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: 	at org.shadowice.flocke.andotp.View.ManualEntryDialog$7.onClick(ManualEntryDialog.java:172)
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: 	at com.android.internal.app.AlertController$ButtonHandler.handleMessage(AlertController.java:166)
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:154)
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:6186)
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:889)
+02-17 23:22:36.627 10690 10690 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:779)
+```
+
+*Value ""0"" in field Period:*
+```
+02-17 23:23:47.004 11016 11016 E AndroidRuntime: FATAL EXCEPTION: main
+02-17 23:23:47.004 11016 11016 E AndroidRuntime: Process: org.shadowice.flocke.andotp, PID: 11016
+02-17 23:23:47.004 11016 11016 E AndroidRuntime: java.lang.ArithmeticException: divide by zero
+02-17 23:23:47.004 11016 11016 E AndroidRuntime: 	at org.shadowice.flocke.andotp.Database.Entry.updateOTP(Entry.java:300)
+02-17 23:23:47.004 11016 11016 E AndroidRuntime: 	at org.shadowice.flocke.andotp.View.ManualEntryDialog$7.onClick(ManualEntryDialog.java:176)
+02-17 23:23:47.004 11016 11016 E AndroidRuntime: 	at com.android.internal.app.AlertController$ButtonHandler.handleMessage(AlertController.java:166)
+02-17 23:23:47.004 11016 11016 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+02-17 23:23:47.004 11016 11016 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:154)
+02-17 23:23:47.004 11016 11016 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:6186)
+02-17 23:23:47.004 11016 11016 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+02-17 23:23:47.004 11016 11016 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:889)
+02-17 23:23:47.004 11016 11016 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:779)
+```
+
+### Steps to reproduce
+ 
+ * Click the ""+"" button to add a new OTP
+ * Select ""Enter details""
+ * Fill in ""Label"" and ""Secret""
+ * Click ""Advanced Options""
+ * Change the value of ""Period"" or ""Digit"" to be empty or ""0""
+ * Click ""Save""
+
+"
+andOTP/andOTP,closed,Add setting to select different tags behaviour,"[Label(name=""enhancement"")]",Fixes #133 
+andOTP/andOTP,closed,"Tags selection should be ""AND"", not ""OR""","[Label(name=""enhancement"")]","#### General information
+
+* **App version:** 0.4.0.1
+* **App source:** Google Play
+* **Android Version:** 8.0
+* **Custom ROM:** No
+
+#### Expected result
+**What is expected?** 
+When you select multiple tags, it would be great that the result show only the items part of both tags.
+For example we have various Google Account for various clients, so we have a tag for everything that belong to the client, and another one that belong all Google Accounts of every clients. It would be great that when we select both tags, it shows only the Google account for client X (the result that match all requirement)
+
+**What does happen instead?**
+When we select more than one tag, instead of to show what is part of all tags (search result AND), it show all the results of all selected tags (search result OR). In our example before, it shows all Google accounts of all clients and all items of the client X, so it is hard to find the item we look for.
+
+**Comment**
+Maybe can be an option to select both way to do in settings because it can be probably useful to other people to have it this actual way.
+
+#### Logcat
+```
+Paste your logcat here (or use something like Pastbin for long logs)
+```
+
+#### Steps to reproduce
+ 
+ * ...
+
+"
+andOTP/andOTP,closed,Camera permission in the manifest,[],"This might be a stupid question, I am not sure.
+
+How come the android manifest doesn't have the camera permission? Is it not updated with the latest code update?"
+andOTP/andOTP,closed,"Add Evernote, Namecheap and Kraken Icon","[Label(name=""enhancement"")]","Would be awesome to get those icons. [Kraken](https://kraken.com), [Evernote](https://evernote.com) and [Namecheap](https://namecheap.com).
+
+Or is there some universal guide on how to add Icons? I think this would come in handy for the future, so it would be a lot easier for anyone to create a pull request and add icons themselves.
+
+Or do you not want to bloat the icon choice too much?"
+andOTP/andOTP,closed,Unable to overwrite existing otp accounts backup,"[Label(name=""bug""), Label(name=""maybe"")]","So, I made a backup of my accounts on my andOTP straight to my internal storage a few weeks ago and then after making some changes by adding more accounts, I decided to make a new backup to the same directory, only to get an error toast message saying the backup was unsuccessful but the moment I deleted the existing json backup file from the directory, I noticed that exporting a backup from andOTP now works. 
+This isn't right because andOTP should be able to overwrite the existing backup file, or at least prompt a dialog box asking the user if he/she wants to overwrite the existing backup file or if they want to save it as a different backup with a different name of their choice! "
+andOTP/andOTP,closed,Steam-style OTP,[],"Support Steam-style OTP tokens in addition to TOTP.
+https://github.com/DoctorMcKay/node-steam-totp
+"
+andOTP/andOTP,closed,Crashes after update to 0.4.0.1,"[Label(name=""bug"")]","#### General information
+
+* **App version:** 0.4.0.1
+* **App source:** F-Droid
+* **Android Version:** 5.1
+* **Custom ROM:** No (Flyme 6)
+
+#### Expected result
+**What is expected?** 
+Starting up normally
+
+**What does happen instead?**
+Crashes after entering PIN
+
+#### Logcat
+```
+I/InstalledAppProviderSer(28859): Marking org.shadowice.flocke.andotp as installed
+E/AndroidRuntime(32618): Process: org.shadowice.flocke.andotp, PID: 32618
+E/AndroidRuntime(32618): java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=100, result=-1, data=null} to activity {org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'byte[] android.content.Intent.getByteArrayExtra(java.lang.String)' on a null object reference
+E/AndroidRuntime(32618): 	at org.shadowice.flocke.andotp.Activities.MainActivity.onActivityResult(MainActivity.java:401)
+W/ActivityManager( 1286):   Force finishing activity 1 org.shadowice.flocke.andotp/.Activities.MainActivity
+I/WindowManager( 1286): Screenshot max retries 4 of Token{eebcdf2 ActivityRecord{256f0cfd u0 org.shadowice.flocke.andotp/.Activities.MainActivity t25103 f}} appWin=Window{128f0120 u0 org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity} drawState=1
+I/ActivityManager( 1286): Process org.shadowice.flocke.andotp (pid 32618) has died
+I/WindowState( 1286): WIN DEATH: Window{128f0120 u0 org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity}
+I/Utils   (29366): uid is : 10150  packagesInfo is : org.shadowice.flocke.andotp
+I/Utils   (29366): uid is : 10150  packagesInfo is : org.shadowice.flocke.andotp
+W/PackageManager( 2080): Failure retrieving resources for org.shadowice.flocke.andotp: Resource ID #0x0
+```
+
+#### Steps to reproduce
+ Upgrade 0.3.1 to 0.4.0.1, start the app
+
+
+"
+andOTP/andOTP,closed,Add Fingerprint and Face Authentication,"[Label(name=""enhancement""), Label(name=""maybe"")]","Nice work so far! Though the Google backup feature is yet to be implemented, a new feature that would be really awesome to see in andOTP is the ability to set up authentication mode to Fingerprint or Face ID! 
+Just like the way u added password and PIN authentication! I think it would be nice to allow a user to open/authenticate andOTP using his Fingerprint or his face, andOTP when authentication is set to Fingerprint in the dialog, an activity or fragment should open and ask him to enroll his Fingerprint, it should ask to enroll his face if he/she decides to authenticate with his face id, after enrollment, it should be stored somewhere so that when the user opens andOTP, a request for his Fingerprint touch or Face scan should be made, the moment the scanned face or Fingerprint touch matches the ones stored within andOTP, then the app should open to the MainActivity. 
+
+I would have tried getting something by this week but I am out of schedule and having written some codes on this, am stuck at the enrollment because currently, I can only use the already enrolled Fingerprint data on the phone and not the enrolled Fingerprint/Face ID within andOTP but this would cause some security problems because most people enroll more than 1 Fingerprint data on their devices and I wouldn't like a situation where another enrolled Fingerprint data outside andOTP can be able to authenticate the app! 
+PS: Same thing goes for the Face ID (I believe can be achieved using the FACESDK) and there should be an ability to reenroll or change/edit the already enrolled Fingerprint and Face ID data! "
+andOTP/andOTP,closed,Feature Request: Rename and delete tags,"[Label(name=""enhancement""), Label(name=""maybe"")]","Currently it doesn't seem to be possible to rename tags in the app or to delete existing tags.
+
+Is that right or am I missing something?
+
+Using version from Google PlayStore from February 1, 2018 - 0.4.0.1"
+andOTP/andOTP,closed,Suggestion: Add service logo: Evernote,[],"Hello, 
+
+in my change from thenticate to andOTP I noticed one very popular service, that is missing a represeting logo within andOTP: Evernote.
+
+There are plenty of logos to be found online, my suggestion is taking the App-Logo from the official Play Store listing: it's square, should scale well and has the Evernote colors, which makes it visible in all app design (bright/dark/black).
+
+You can find it here: https://play.google.com/store/apps/details?id=com.evernote
+I hope direct linking works: https://lh3.googleusercontent.com/atqaMgabx_ZXVi4AJUcDiHTy-G3nwMAGsjoCsfpebwPjXMV_QXTPefko7Wbwen-EnUo
+
+512x512px should be plenty big I suppose?
+
+I would be glad if you could include the logo, thank you!
+
+If is it too much hassle to add I will try to make it a pull request, but that could take a little learning first.
+
+"
+andOTP/andOTP,closed,Append date backup,[],Allows option to auto append the current date-time to the backup filename
+andOTP/andOTP,closed,Add generic icons and reddit icon,"[Label(name=""enhancement"")]",Fixes #121 and Fixes #122 
+andOTP/andOTP,closed,Add some universal icons,"[Label(name=""enhancement"")]",I'd like to suggest to add more universal icons that aren't specific to a particular service. For example an e-mail icon (envelope) and a controller of some sort (NES/XBox styled) for gaming related accounts. Especially when using less known sites this could help to reduce the amount of icons needed to be included in the app.
+andOTP/andOTP,closed,Add Reddit Icon,"[Label(name=""enhancement"")]","Could you add the reddit icon as they seem to activate 2FA for more users now?
+
+"
+andOTP/andOTP,open,Add Grid/Tile based view,"[Label(name=""WIP""), Label(name=""enhancement""), Label(name=""question"")]","As you add more and more entries the default list view starts to get a bit unwielding. To mitigate this, as well as the tabs, I purpose allowing a grid/tile based view.
+
+I have been working on this over the last couple days and have reached the point where I would like some user input. 
+
+Currently I have it like this: 
+<img width=""431"" alt=""grid"" src=""https://user-images.githubusercontent.com/5472275/35352455-e38d3be6-013b-11e8-9bcf-99ea9ce86a10.png"">
+
+
+As you see, this just shows thumbnail and label, my question is: what approach would be preferred for displaying the full entry info?
+
+2 suggestions:
+
+- Have a popup with full details when you click on an entry
+
+- Have an authy like view where the top half of the screen displays the details of the currently selected entry
+![authy-100736003-orig](https://user-images.githubusercontent.com/5472275/35352475-ed2f4446-013b-11e8-8691-8560df933e81.jpg)
+"
+andOTP/andOTP,closed,Humble Bundle icon,"[Label(name=""enhancement"")]","It would be nice that Humble Bundle icon would be added.
+
+Couple vector options for icon:
+- [""Bindle"" logo](https://drive.google.com/open?id=0BxnfJ5MQi2uTSmtyeUdRQkM2QU0) (.EPS)
+- [""H"" logo](https://drive.google.com/open?id=0BxnfJ5MQi2uTOHBobVBCbk5MVU0) (vectorized .PSD, for some reason)
+
+Source: https://support.humblebundle.com/hc/en-us/articles/202742060-Bundle-Logos
+
+Just in case, I uploaded these as ZIP too.
+[Humble Bundle vectors.zip](https://github.com/andOTP/andOTP/files/1649745/Humble.Bundle.vectors.zip)
+
+
+
+"
+andOTP/andOTP,closed,Add thumbnail for OVH,"[Label(name=""enhancement"")]",Add thumbnail for OVH (<https://www.ovh.com/fr/espace-presse/documents/logos-OVH-com.zip>).
+andOTP/andOTP,closed,Add thumbnails for Heroku and npm,"[Label(name=""enhancement"")]",Add thumbnails for heroku (https://brand.heroku.com/) and npm (https://github.com/npm/logos).
+andOTP/andOTP,closed,Updated de-rDE (German (Germany)) translation,"[Label(name=""enhancement""), Label(name=""wontfix"")]",Commit made via Stringlate
+andOTP/andOTP,closed,Broadcast receivers for backups,"[Label(name=""enhancement"")]","Here are some receivers to trigger backups via tasker/easer
+
+I am currently having issues with the PGP one, I followed the same logic as in BackupActivity but it keeps failing, as I dont know OpenKeystore that well it may be worth someone looking over it, alternatively maybe we remove that receiver for now until we can get it working"
+andOTP/andOTP,closed,Copy to clipboard when opening the uri fails,[],Fixes #113 
+andOTP/andOTP,closed,Fix crash with no Bitcoin app installed,"[Label(name=""bug"")]",This is just a reminder for myself to fix the app crashing when you have no Bitcoin app installed and click on the donate link for @RichyHBM.
+andOTP/andOTP,closed,Language switcher doesn't work,"[Label(name=""bug"")]","So I noticed that when I switch languages from the settings page, the screen of andOTP flashes but yet nothing happens, the language still remains in English, it just doesn't switch! 
+Could this be a bug or what? Am quite confused 😕 because I noticed the strings for other languages exist in the source of andOTP but it doesn't work within the app, why? "
+andOTP/andOTP,closed,Allow auto backups to Google sync,"[Label(name=""enhancement"")]","Fixes #109 
+
+This adds a backup agent which allows android to backup data onto the users google account, or any other backup-restore service installed onto their phone.
+
+It will auto disable on changing back to keystore from password encryption"
+andOTP/andOTP,closed,Whitespace between three figures,"[Label(name=""duplicate""), Label(name=""enhancement"")]","Might be just a small issue:
+
+I think it improves readability a bit if you there would be a whitespace between number triples (like Google Authenticator have it for example)
+
+so it would be nice to have something like `343 343` instead of `343343`
+
+Thank you very much for your work 👍 "
+andOTP/andOTP,closed,Support Google Sync for backups (Where available),"[Label(name=""WIP""), Label(name=""enhancement"")]","This is a ticket to detail the requirements and current standing of the google sync support branch
+
+As per https://developer.android.com/guide/topics/data/testingbackup.html
+
+> If a device does not have any backup transports, then the data cannot be backed up. Your app is not adversely affected.
+
+Non Google Play installs of the app will continue to function as they currently do, they just wont support this feature.
+
+This will also only work if the user is using PIN/Password based encryption as the KeyStore based encryption is under the same limitations as with using something like Titanium Backup.
+
+Lastly, this shouldnt be used as an alternative to the manual backups, I envision this to be used more in extenuating circumstances (phone breaks abroad and you dont have access to your backup) rather than as a backup alternative.
+
+Current work is at https://github.com/RichyHBM/andOTP/tree/google-backups"
+andOTP/andOTP,closed,Add myself as a developer,[],
+andOTP/andOTP,closed,Automatic Authentication of Users,"[Label(name=""enhancement"")]","Well, I setup PIN mode for authentication and I must say, it is just overkill, love it but a suggestion to help enhance it is, for the PIN, there should be a limit (probably between 4-10), then for the password type of authentication, you could as well set a limit too. Well, the password can be limitless (your choice), but I strongly recommend setting a limit for the PIN mode.
+That's my first suggestion!
+
+Then here comes my second, most important and major suggestion.
+After the PIN/Password has been set, I noticed that on the page that requests for the user's authentication (when the app is run), there's no `NEXT` or `ENTER` or `GO` button in that window except for the user's installed keyboard, this doesn't seem right to me because I was actually caught up in the loop asking myself where the `GO` button is on the screen and where exactly am I to click in order to continue. To be honest, most apps I've seen in recent times that have some kind of security feature, they have a `CONTINUE` button that is grayed out if nothing has been entered in the Password/PIN box and only becomes visible when the minimum or maximum number of digits has been entered in the box. Lets take for example: U set the limit for PIN authentication to 4 digits and a user's authentication PIN is `5050`, on the authentication page, the `GO` or `CONTINUE` button should be grayed out/deactivated even if the user enters 5 or enters 50 or enters 505, the button should only become visible and clickable after the user has inputted up to 4 digits.
+
+I would have even suggested not to add a button at all, instead there should be some kind of automatic validation that automatically brings the user to the MainActivity after the right 4 digit pin has been inputted, lets say my PIN is 5050, if I input 5051 (probably on purpose or by mistake), it should automatically prompt me that the PIN i entered is wrong/incorrect, then if I input it correctly, it should automatically grant me access...
+This might be a lot of work or I might not even have explained my suggestions well, all that am saying is **""there just has to be some kind of limit (minimum and maximum) and a security validation when authenticating a user""**"
+andOTP/andOTP,closed,Setting the password to setup encrypted backups but doesnt get enabled,[],"
+  "
+andOTP/andOTP,closed,[information] linux client available,"[Label(name=""enhancement"")]","Hello,
+I developed a [GTK+ OTP client](https://github.com/paolostivanin/OTPClient) for Linux that supports importing andOTP (password) encrypted backups.
+If you find this info useful I could open a PR for updating the README. Otherwise feel free to just close this :)
+
+PS in case you change the backup format, please let me know :+1: 
+
+BR"
+andOTP/andOTP,closed,Add HackerOne icon,"[Label(name=""enhancement"")]","First let me say thank you for this great app. I use it every day! 😃  
+
+Now my small feature request: It would be nice to have a hackerone (https://www.hackerone.com/) icon."
+andOTP/andOTP,closed,Too many duplicates of the default icon in the Thumbnail Selector,"[Label(name=""bug"")]","I noticed a count of about 4-6 default icons in the section to select a new thumbnail image
+I believe this is a bug as I have had a little look at the EntryThumbnail.java file and can't seem to see the cause of this problem"
+andOTP/andOTP,closed,Move thumbnail toggle into the size selector,"[Label(name=""enhancement"")]","Fixes #98 
+Currently this will just reset thumbnails settings (if user has thumbnails hidden), let me know if this is acceptable or if we need some mechanism to migrate
+"
+andOTP/andOTP,closed,Draggable fab,"[Label(name=""enhancement""), Label(name=""wontfix"")]","Here is a first pass example of what the draggable fab would be like, let me know what you think.
+Personally after playing around with it, I think it would look better just adding some padding to the last element"
+andOTP/andOTP,closed,Option to disable or enable ability to take screenshots,[],"So, I've been messing around with andOTP trying to see if there are any issues with it or detect any bugs. Well, nothing so far! 
+But about the disabled ability for users to take screenshots, I personally think it's a nice feature but shouldn't be so on default, so I think that there should be option in the settings page that toggles on/off the ability to take screenshots on andOTP! 
+Just a humble suggestion! "
+andOTP/andOTP,closed,Add ability to show seed from within andOTP,"[Label(name=""enhancement""), Label(name=""maybe""), Label(name=""security"")]","Hello, would it be possible to add an option to show the seed from within the app? Maybe with a password prompt before showing them. I use WinAuth on Windows and usually add seeds to both at the same time when I'm setting up 2 factor authorization for a website. However if I am away from my computer and set up the authenticator on andOTP only I would have to export a plain text backup to be able to see and copy the seed manually into WinAuth if I'm not mistaken."
+andOTP/andOTP,closed,Hide thumbnails should just be option in the thumbnails size picker,"[Label(name=""enhancement"")]","As the title suggests I would like to get rid of the additional ""show thumbnails"" preference and just roll that as an option in the thumbnail size picker"
+andOTP/andOTP,closed,"Add thumbnails for binance, bittrex, blockchaininfo, iconomi, kucoin,…","[Label(name=""enhancement"")]",… liqui
+andOTP/andOTP,closed,scroll description,[],"When the description is too longer, it is cut by ... depending on screen size. Maybe the text can slowly scroll to be able to read it. I have the description like <site, url: account>. The important information to decide which account of a site I have to use is in the end. I could change the description, but the account name I use on more sites and then the site information is hidden behind the ..."
+andOTP/andOTP,closed,"3 dots menu is hidden behind ""+"" button","[Label(name=""bug""), Label(name=""enhancement"")]","when add more accounts and the accounts are just enough to fit the screen and you can not scroll up/down, then the 3 dot menu of the last account is hidden behind the ""+"" button. Other apps handle this with a ""jumping"" add button."
+andOTP/andOTP,closed,[Testing] Password-based encryption,"[Label(name=""bug""), Label(name=""enhancement""), Label(name=""help wanted"")]","**Please report all bugs encountered in the test version for password-based encryption here!**
+Provide a detailed description of how you encountered/reproduced the bug and a logcat!
+
+Download of the test version:
+ - v6 (**current**, beta): https://cloud.shadowice.org/s/a5RE3UovB6BuFjf
+ - v5 (beta): https://cloud.shadowice.org/s/y1Ckm2Ar5ewGBEk
+ - v4 (beta): https://cloud.shadowice.org/s/0vdIcBNKBA6wZ4n
+ - v3 (beta): https://cloud.shadowice.org/s/0keZJG5jzBIG4st
+ - v2 (alpha): https://cloud.shadowice.org/s/Ek6dxFqOyg60nYh
+ - v1 (pre-pre-pre-alpha) https://cloud.shadowice.org/s/32vZoc5Qojd53OE
+
+You will have to uninstall previous versions from F-Droid or Google Play before installing the test version.
+  
+  
+  "
+andOTP/andOTP,closed, split token with a space every three letters,"[Label(name=""enhancement"")]","Split the token string with an space every 3rd letter - its imo easier to copy it that way by hand
+
+![image](https://user-images.githubusercontent.com/1370302/34413949-d06cf46c-ebe6-11e7-9358-9820eef47294.png)"
+andOTP/andOTP,closed,Cannot save otp_accounts.json on LineageOS,"[Label(name=""bug""), Label(name=""duplicate"")]","Further to issue #91:
+
+I have two Fdroid-sourced installations of andOTP on two different LineageOS-based Android devices, which I keep in sync and (thankfully) use to back one another up. A few days ago I updated my primary andOTP instance, and the next time I used it, ALL of the tokens were gone, like I had installed it cleanly from the start.
+
+Next step, on the old, un-updated and still perfect version of andOTP on the other device, I saved the tokens to a JSON file with the Backup (plain-text) button and copied it over to the other device. On the other device with the updated version of andOTP, I tried to import the JSON file, and absolutely nothing happened.
+
+So I used a text editor and copied the tokens over to the new version of andOTP, one-by-one, from the JSON file. That works, and the two versions of andOTP are now in sync again.
+
+Now I go to SAVE the JSON file in the new version, just to make sure I have a copy of both before going any further, and the result is an empty file with errors in the Android log.
+
+#### General information
+
+* **App version:**
+0.3.1
+* **App source:** Google Play / F-Droid / GitHub / ...
+FDroid
+* **Android Version:**
+7.1.2
+* **Custom ROM:**
+LineageOS 14.1-20171221
+
+Here are the log errors when I try to save the plain-text JSON:
+
+#### Logcat
+```
+12-25 17:23:50.396   632 19434 I ActivityManager: START u0 {act=android.intent.action.CREATE_DOCUMENT cat=[android.intent.category.OPENABLE] typ=application/json cmp=com.android.documentsui/.DocumentsActivity (has extras)} from uid 10071 on display 0
+12-25 17:23:50.692   632   655 I ActivityManager: Displayed com.android.documentsui/.DocumentsActivity: +272ms
+12-25 17:23:50.852 17944 17944 W IInputConnectionWrapper: finishComposingText on inactive InputConnection
+12-25 17:23:51.164 21025 21025 W chromium: [WARNING:render_frame_host_impl.cc(2646)] OnDidStopLoading was called twice.
+12-25 17:23:52.187 21025 21025 W chromium: [WARNING:render_frame_host_impl.cc(2646)] OnDidStopLoading was called twice.
+12-25 17:23:52.654 10230 10230 W System.err: java.lang.UnsupportedOperationException
+12-25 17:23:52.655 10230 10230 W System.err: 	at java.security.KeyStoreSpi.engineGetEntry(KeyStoreSpi.java:482)
+12-25 17:23:52.655 10230 10230 W System.err: 	at java.security.KeyStore.getEntry(KeyStore.java:1323)
+12-25 17:23:52.655 10230 10230 W System.err: 	at org.shadowice.flocke.andotp.Utilities.KeyStoreHelper.loadOrGenerateAsymmetricKeyPair(KeyStoreHelper.java:85)
+12-25 17:23:52.655 10230 10230 W System.err: 	at org.shadowice.flocke.andotp.Utilities.SecretKeyWrapper.<init>(SecretKeyWrapper.java:52)
+12-25 17:23:52.655 10230 10230 W System.err: 	at org.shadowice.flocke.andotp.Utilities.KeyStoreHelper.loadOrGenerateWrappedKey(KeyStoreHelper.java:96)
+12-25 17:23:52.655 10230 10230 W System.err: 	at org.shadowice.flocke.andotp.Utilities.DatabaseHelper.loadDatabase(DatabaseHelper.java:68)
+12-25 17:23:52.655 10230 10230 W System.err: 	at org.shadowice.flocke.andotp.Utilities.DatabaseHelper.exportAsJSON(DatabaseHelper.java:115)
+12-25 17:23:52.655 10230 10230 W System.err: 	at org.shadowice.flocke.andotp.Activities.BackupActivity.doBackupPlain(BackupActivity.java:402)
+12-25 17:23:52.655 10230 10230 W System.err: 	at org.shadowice.flocke.andotp.Activities.BackupActivity.onActivityResult(BackupActivity.java:287)
+12-25 17:23:52.655 10230 10230 W System.err: 	at android.app.Activity.dispatchActivityResult(Activity.java:6937)
+12-25 17:23:52.655 10230 10230 W System.err: 	at android.app.ActivityThread.deliverResults(ActivityThread.java:4122)
+12-25 17:23:52.655 10230 10230 W System.err: 	at android.app.ActivityThread.handleSendResult(ActivityThread.java:4169)
+12-25 17:23:52.655 10230 10230 W System.err: 	at android.app.ActivityThread.-wrap20(ActivityThread.java)
+12-25 17:23:52.656 10230 10230 W System.err: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1552)
+12-25 17:23:52.656 10230 10230 W System.err: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+12-25 17:23:52.656 10230 10230 W System.err: 	at android.os.Looper.loop(Looper.java:154)
+12-25 17:23:52.656 10230 10230 W System.err: 	at android.app.ActivityThread.main(ActivityThread.java:6186)
+12-25 17:23:52.656 10230 10230 W System.err: 	at java.lang.reflect.Method.invoke(Native Method)
+12-25 17:23:52.656 10230 10230 W System.err: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:889)
+12-25 17:23:52.656 10230 10230 W System.err: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:779)
+12-25 17:23:52.682 17817 17817 D MediaScannerReceiver: action: android.intent.action.MEDIA_SCANNER_SCAN_FILE path: /storage/emulated/0/Download/otp_accounts.json (2)
+12-25 17:23:53.185 21025 21025 W chromium: [WARNING:render_frame_host_impl.cc(2646)] OnDidStopLoading was called twice.
+```"
+andOTP/andOTP,closed,All tokens wiped out on update to 0.3.1,"[Label(name=""bug""), Label(name=""duplicate"")]","I have two Fdroid-sourced installations of andOTP on two different LineageOS-based Android devices, which I keep in sync and (thankfully) use to back one another up. A few days ago I updated my primary andOTP instance, and the next time I used it, ALL of the tokens were gone, like I had installed it cleanly from the start. I do not recall (but of course cannot absolutely guarantee) I did nothing manually that would cause this erasure.
+
+#### General information
+
+* **App version:**
+0.3.1
+* **App source:** Google Play / F-Droid / GitHub / ...
+FDroid
+* **Android Version:**
+7.1.2
+* **Custom ROM:**
+LineageOS 14.1-20171221
+
+Yep, there was a Lineage OS update that happened in there somewhere too, just to complicate matters.
+
+#### Logcat
+
+log of update time no longer available
+"
+andOTP/andOTP,closed,Thumbnail dark theme,"[Label(name=""enhancement"")]","Fixes #88
+
+Adds a white background and small amount of padding to thumbnails for dark themes"
+andOTP/andOTP,closed,"Add new thumbnails for: ArenaNet, Hurricane Electric, Itch.io, Patreo…",[],"Add new thumbnails for: ArenaNet, Hurricane Electric, Itch.io, Patreon, Skrill, TeamViewer, Ubisoft, Ubuntu"
+andOTP/andOTP,closed,Dark Thumbnails (nearly) invisible black theme,"[Label(name=""enhancement"")]","#### General information
+
+* App version: 0.3.1
+* App source: F-Droid
+* Android Version: 7.1.2
+* Custom ROM: LineageOS 14.1-20171215
+
+#### Problem description
+All dark thumbnails are (nearly) invisible if the black theme is selected.
+
+These thumbnails are affected:
+* Amazon
+* AWS
+* AngelList
+* Apple
+* Bitstamp
+* GitHub
+* LastPass
+* Steam
+
+#### Steps to reproduce
+* Switch andOTP to the black theme
+* Choose one of the thumbnails listed above
+
+#### Possible solution/workaround
+1. Adding an background to all thumbnails
+2. Adding an outline around each logo with transparent background
+3. Placing an light background behind the/some thumbnails in the black and dark theme
+4. Including different thumbnail for dark/black theme, where needed"
+andOTP/andOTP,closed,"Can't submit PIN, access OTPs [F-Droid]","[Label(name=""bug""), Label(name=""enhancement"")]","I'm missing logcat because I'm currently traveling which is making this issue more serious for me. 
+
+-----------------------------
+
+#### General information
+
+* **App version:0.3.0**
+* **App source:** F-Droid...
+* **Android Version: 6**
+* **Custom ROM:Lineage 13**
+
+#### Expected result
+**What is expected?** 
+I type in my PIN and it takes me to my OTPs.
+**What does happen instead?**
+there is no way to submit my PIN, no button, enter doesn't work, just stuck at the Pin page. Because I set the pin before I added any OTPS I think it may have something to do with the problem.
+#### Logcat
+```
+Paste your logcat here (or use something like Pastbin for long logs)
+```
+
+#### Steps to reproduce
+ 
+ * ...
+
+"
+andOTP/andOTP,closed,[Feature Request] Add git support to push and pull encrpyted backup from remote repository.,"[Label(name=""wontfix"")]","
+
+"
+andOTP/andOTP,closed,Clarify default parameters,"[Label(name=""enhancement"")]","The form to manually add new entries comes up with the default algorithm options already selected (TOTP, 30 second period, 6 digits, SHA-1 hashing). This is great, but I think the form can still be improved a bit:
+
+- TOTP is a selection list even though there are no other selections, so it would be better if it was static text until and unless someone implements other options.
+- I've used a few OTP providers, and I don't think any of them mentioned the period, digits or algorithm settings in their manual instructions. I assume this is because virtually everyone use the same parameters for now. If so, then to avoid confusing users it would be better to hide these options behind an ""Advanced options"" thingie (deliberately left vague) until some other set of options become the norm. For example, after a few minutes' web searching I was only somewhat sure that these were indeed the correct parameters, and re-entering a 32-character string plus label (for example if I had thought that TOTP would use the now common SHA-256) is not fun.
+- I know someone must have put a lot of effort into the tagging feature, but it very much feels like overkill. I would bet not one in 100 users have more than a screenful of entries, at which point the tagging starts to be useful."
+andOTP/andOTP,closed,[feature request] please add the label to removal confirmation dialog,"[Label(name=""enhancement"")]","On account removal andOTP asks: ""Are you sure you want to delete this account?"", but does not display the label of the account to be removed. Please consider to add the label.
+"
+andOTP/andOTP,closed,[Feature request] add option to separate token into blocks,"[Label(name=""enhancement"")]",To improve readability of tokens with a length >= 6 please consider to add an option to separate the token into blocks (e.g. 123456 -> 123 456 or 12345678 -> 1234 5678).
+andOTP/andOTP,closed,Save button should be always disabled until a secret key is entered,[],"When I try to mess around with the app by clicking on Save without actually inputting the secret key, the app just crashes and trying to restart the app, it keeps crashing on startup, so only option is to clear the app's data which shouldn't be so, I think it's rather better to maybe disable the save button when the edittext fields are still empty so as to prevent the crash from happening for people that might click save button by mistake!"
+andOTP/andOTP,closed,Replace existing entries should default to false,"[Label(name=""enhancement"")]","Currently the default behaviour when restoring from a backup is to wipe all entries and add the restored ones, this can cause you to lose entries if you for example added a new entry before restoring an old backup.
+
+I think by default this should be set to false, that way the worse that can happen is you end up with duplicates (which you can remove manually)
+
+Ideally we could have some logic to detect and not add duplicates, but for now I think defaulting that setting to false should suffice.
+
+This should be an easy task if anyone wants to try some android development, else I'll do a PR later in the week
+"
+andOTP/andOTP,closed,[Feature request] Autofill ,"[Label(name=""enhancement""), Label(name=""maybe"")]",Would it be possible to implement an autofill feature like in bitwarden? 
+andOTP/andOTP,closed,[Feature Request] Symantec VIP Support,[],"Symantec has this proprietary TOTP management system called Symantec VIP. It is the only option for 2FA on some services.
+
+However there exists a somewhat actively maintained Python implementation that supports creating registration credentials and outputting a a TOTP secret that can be then imported into any standard TOTP app.
+Python implementation: https://github.com/dlenski/python-vipaccess
+
+This will probably never be implemented, but I figured I'd ask anyone in case anyone was up to the task. I'm sure it would be well appreciated by many.
+
+There are some downsides...
+- It would add network access, which might deter some people from using the app
+- Symantec might not like that a convenient alternative exists"
+andOTP/andOTP,closed,"show password with a separate timeout, not till renew","[Label(name=""enhancement"")]","Feature request!
+
+* **App version:** 0.3.0
+* **App source:** Google Play
+* **Android Version:** 7.1.1
+* **Custom ROM:** stock, no root or other modifications
+
+#### Expected result
+**What is expected?**
+I set the option to hide the password and need to manually tap them to show up. I suggest to show the passwords for a defined time and not only till the next period starts. For example I unhide it with 10 seconds left, I want that the next password is shown after the actual expires without tap it again. After some time, for example 30 seconds, after the last tap, the password is gotten again. A tap during the visible period, reset the timeout.
+
+**What does happen instead?**
+They will be shown till the time of the password expires and then need to tab them again. If there is only a few seconds left I have to tap twice."
+andOTP/andOTP,closed,andOTP crashes the launcher and Settings-Apps,"[Label(name=""bug"")]","#### General information
+
+* **App version:** Version 0.3.0 (11) - Added on 2017-11-28 
+* **App source:** F-Droid
+* **Android Version:** 6.0.1
+* **Custom ROM:** KonstaKANG LineageOS 
+
+#### Expected result
+**What is expected?** 
+The app installs/upgrades without crashes parts of the system or the whole system.
+
+**What does happen instead?**
+It crashes the App-Launcher and Settings -> Apps Menu.
+No uninstallation possible without ADB-access.
+
+
+#### Steps to reproduce
+ 
+ * Install latest version.
+
+I got this same issue with mastalab, but without crashing the launcher, it could be the same root here:
+
+The problems are the Android SDK Platform 25 and 26, with 27 (revision: 1) it should work like a charm.
+
+Sources:
+https://github.com/stom79/mastalab/issues/31
+What helped us figuring this out:  https://forums.bitfire.at/topic/1603/replicant-lineage-1-9-1-causing-instant-crash-and-bootloops/15
+
+"
+andOTP/andOTP,closed,Predefined images,"[Label(name=""WIP""), Label(name=""enhancement"")]",Fixes #14 includes images mentioned in #73
+andOTP/andOTP,closed,Label sort should be alphabetical and locale-sensitive,[],"Doing ascii sort on natural language text will result in unexpected sorting. ie: Lowercase words being sorted after uppercase block or accents messing ordering.
+
+Previous behaviour:
+- A
+- D
+- a
+- b
+
+Current behaviour:
+- a
+- A
+- b
+- D"
+andOTP/andOTP,closed,[Question] Which icons should be included in andOTP?,"[Label(name=""help wanted""), Label(name=""question"")]","Hey guys, it's time to ask for your opinion again.
+
+@RichyHBM is currently in the process of implementing the ability to assign icons to the entries in andOTP (see #14).
+
+We decided not to implement an option to manually select icons as this would make storage and backups very large and a lot more complicated. Instead we will be shipping a selection of pre-defined icons with andOTP which can be selected. For that reason we wanted to know:
+
+**Which icons do you want to see shipped with andOTP?**
+
+If you want to help even more please link an icon with your suggestion so I don't have to search every single one myself. Please only use icons that are available as vector graphics, everything else will increase the size of andOTP to much. You can head over to [this](https://github.com/gilbarbara/logos) Github repository to find a large collection of vector icons (searchable website [here](https://svgporn.com/)).
+
+I will try to collect the suggestions periodically in this first post to give a quick overview. Icons I added to this post will be crossed out of the original post suggesting them.
+
+**Icons to be included**
+
+Icon | License | Comment | Included
+----- | ---------- | ------------- | -----------
+[Amazon](https://cdn.worldvectorlogo.com/logos/amazon-icon.svg) | | | ✅
+AngelList | CC0-1.0 | | ✅
+Apple | CC0-1.0 | | ✅
+[BattleNet / Blizzard](https://visualpharm.com/assets/183/Battle.net-595b40b65ba036ed117d3c21.svg) | | | ✅
+[Bitbucket](https://github.com/gilbarbara/logos/blob/master/logos/bitbucket.svg) | CC0-1.0 | | ✅
+Bitcoin | CC0-1.0 | | ✅
+Bitstamp | | | 🔶 **(no vector)**
+[Bitwarden](https://ncloud.zaclys.com/index.php/s/kb74znzGX10e3Bn) | | | 🔶 **(no vector)**
+Cloudflare | CC0-1.0  | | ✅
+Coinbase | | | ✅
+[Cozycloud](https://ncloud.zaclys.com/index.php/s/B6YH9x2caGPRyPL) | | to large | ✅
+Digital Ocean | CC0-1.0 | | ✅
+Discord | CC0-1.0 | | ✅
+[Dropbox](https://upload.wikimedia.org/wikipedia/commons/3/3a/Dropbox_Logo_02.svg) | CC0-1.0 | | ✅
+[Facebook](https://github.com/gilbarbara/logos/blob/master/logos/facebook.svg) | CC0-1.0 | | ✅
+[Git](https://github.com/gilbarbara/logos/blob/master/logos/git-icon.svg) | CC0-1.0 | generic | ✅
+[Github](https://github.com/gilbarbara/logos/blob/master/logos/github-icon.svg) | CC0-1.0 | | ✅
+[GitLab](https://github.com/gilbarbara/logos/blob/master/logos/gitlab.svg) | CC0-1.0 | | ✅
+[Google](https://github.com/gilbarbara/logos/blob/master/logos/google-icon.svg) | CC0-1.0 | | ✅
+IFTTT | CC0-1.0 | | ✅
+[Kickstarter](https://github.com/gilbarbara/logos/blob/master/logos/kickstarter.svg) | CC0-1.0 | | ✅
+[LastPass](https://lastpass.com/press-room/) | | | ✅
+Mailgun | CC0-1.0 | | ✅
+[Mastodon](https://ncloud.zaclys.com/index.php/s/EMpJSov2fSIW7TF) | | too large | ✅
+[Microsoft](https://github.com/gilbarbara/logos/blob/master/logos/microsoft.svg)| CC0-1.0 | only the icon | ✅
+Origin | | | ✅
+[Nextcloud](https://ncloud.zaclys.com/index.php/s/YBL1rJtYlDyxvPL) | | | ✅
+Paypal | CC0-1.0 | | ✅
+[Protonmail](https://ncloud.zaclys.com/index.php/s/UcI9pbijdxee4RQ) | | too large | ✅
+[RSS-Feeds](https://de.m.wikipedia.org/wiki/RSS_(Web-Feed)#/media/Datei%3AFeed-icon.svg) | | | ✅
+[Slack](https://cdn.worldvectorlogo.com/logos/slack-1.svg) | CC0-1.0 | | ✅
+[Steam](https://github.com/gilbarbara/logos/blob/master/logos/steam.svg) | CC0-1.0 | | ✅
+Stripe | CC0-1.0 | | ✅
+Twitch | CC0-1.0 | | ✅
+[Twitter](https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg) | CC0-1.0 | | ✅
+[WordPress](https://en.m.wikipedia.org/wiki/WordPress.com#/media/File%3AWordPress_blue_logo.svg) | CC0-1.0 | | ✅
+
+**Icons without image (yet)**
+
+- ArenaNet
+- Hurricane Electric
+- Teamviewer
+- Ubisoft"
+andOTP/andOTP,closed,Version 0.3 seems to be Version 0.2.8,"[Label(name=""bug"")]","Something seems to be wrong with the version numbering. The apk says 0.3 but on the app it says 0.2.8 also when you go to system settings.
+
+The day 0.3 got released the f-droid repo git updated but it still shows the old version. "
+andOTP/andOTP,closed,Please enable menu font sizes according to system accessibility settings (or manual settings),"[Label(name=""bug""), Label(name=""help wanted"")]","#### General information
+
+* **App version:*0.3.0.*
+* **App source:*Google Play*
+* **Android Version:*7.1.1.*
+* **Custom ROM:*rooted stock*
+
+#### Expected result
+**What is expected?** 
+Fonts in menu should be the size according to system accessibility settings, or at least manual (app) settings. At the moment you can only set the label font sizes (that was solved in Issue  #18) not the font sizes in menus.
+
+**What does happen instead?**
+Menu fonts are to small for people with sight problems.
+"
+andOTP/andOTP,closed,Improve (error) messages,"[Label(name=""WIP""), Label(name=""enhancement"")]","There are a lot of places, mostly in the BackupActivity, where a wrong message is shown.
+Especially when the import of a backup failed a lot of time a success message is displayed anyways."
+andOTP/andOTP,closed,"Failure to import exported OTP entries, success message wrongly shown.","[Label(name=""bug""), Label(name=""possible duplicate"")]","#### General information
+
+* **App version:** 0.2.8
+* **App source:** F-Droid
+* **Android Version:** 7.1.2
+
+#### Expected result
+**What is expected?** 
+When importing an encrypted backup (generated using ""Backup (encrypted)""), it should be possible to import it and the OTP entries should reappear.
+
+**What does happen instead?**
+After the message ""Import from external storage successful."", the entries do not appear in the app.
+
+#### Logcat
+```
+11-21 11:09:31.054  2587  2587 D SoftKeymaster: system/keymaster/soft_keymaster_device.cpp, Line 701: Requested digest(s) supported for algorithm 1 and purpose 1
+11-21 11:09:31.054  2587  2587 D SoftKeymaster: system/keymaster/soft_keymaster_device.cpp, Line 1203: Operation supported by Keymaster QTI HAL, passing through to keymaster1 module
+11-21 11:09:31.137  2587  2587 E keymaster1_device: Finish send cmd failed
+11-21 11:09:31.137  2587  2587 E keymaster1_device: ret: 0
+11-21 11:09:31.137  2587  2587 E keymaster1_device: resp->status: -1000
+11-21 11:09:31.138  7677  7677 W System.err: java.security.InvalidKeyException: Failed to unwrap key
+11-21 11:09:31.138  7677  7677 W System.err: 	at android.security.keystore.AndroidKeyStoreCipherSpiBase.engineUnwrap(AndroidKeyStoreCipherSpiBase.java:682)
+11-21 11:09:31.138  7677  7677 W System.err: 	at javax.crypto.Cipher.unwrap(Cipher.java:2435)
+11-21 11:09:31.138  7677  7677 W System.err: 	at org.shadowice.flocke.andotp.Utilities.SecretKeyWrapper.unwrap(SecretKeyWrapper.java:80)
+11-21 11:09:31.138  7677  7677 W System.err: 	at org.shadowice.flocke.andotp.Utilities.KeyStoreHelper.loadOrGenerateWrappedKey(KeyStoreHelper.java:114)
+11-21 11:09:31.138  7677  7677 W System.err: 	at org.shadowice.flocke.andotp.Utilities.DatabaseHelper.loadDatabase(DatabaseHelper.java:65)
+11-21 11:09:31.138  7677  7677 W System.err: 	at org.shadowice.flocke.andotp.View.EntriesCardAdapter.loadEntries(EntriesCardAdapter.java:102)
+11-21 11:09:31.138  7677  7677 W System.err: 	at org.shadowice.flocke.andotp.View.EntriesCardAdapter.<init>(EntriesCardAdapter.java:71)
+11-21 11:09:31.138  7677  7677 W System.err: 	at org.shadowice.flocke.andotp.Activities.MainActivity.onCreate(MainActivity.java:276)
+11-21 11:09:31.138  7677  7677 W System.err: 	at android.app.Activity.performCreate(Activity.java:6684)
+11-21 11:09:31.138  7677  7677 W System.err: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1119)
+11-21 11:09:31.138  7677  7677 W System.err: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2637)
+11-21 11:09:31.138  7677  7677 W System.err: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2751)
+11-21 11:09:31.138  7677  7677 W System.err: 	at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:4556)
+11-21 11:09:31.138  7677  7677 W System.err: 	at android.app.ActivityThread.-wrap19(ActivityThread.java)
+11-21 11:09:31.138  7677  7677 W System.err: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1502)
+11-21 11:09:31.138  7677  7677 W System.err: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+11-21 11:09:31.138  7677  7677 W System.err: 	at android.os.Looper.loop(Looper.java:154)
+11-21 11:09:31.138  7677  7677 W System.err: 	at android.app.ActivityThread.main(ActivityThread.java:6186)
+11-21 11:09:31.138  7677  7677 W System.err: 	at java.lang.reflect.Method.invoke(Native Method)
+11-21 11:09:31.138  7677  7677 W System.err: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:889)
+11-21 11:09:31.138  7677  7677 W System.err: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:779)
+11-21 11:09:31.138  7677  7677 W System.err: Caused by: javax.crypto.IllegalBlockSizeException
+11-21 11:09:31.138  7677  7677 W System.err: 	at android.security.keystore.AndroidKeyStoreCipherSpiBase.engineDoFinal(AndroidKeyStoreCipherSpiBase.java:519)
+11-21 11:09:31.139  7677  7677 W System.err: 	at android.security.keystore.AndroidKeyStoreCipherSpiBase.engineUnwrap(AndroidKeyStoreCipherSpiBase.java:680)
+11-21 11:09:31.139  7677  7677 W System.err: 	... 20 more
+11-21 11:09:31.139  7677  7677 W System.err: Caused by: android.security.KeyStoreException: Unknown error
+11-21 11:09:31.139  7677  7677 W System.err: 	at android.security.KeyStore.getKeyStoreException(KeyStore.java:676)
+11-21 11:09:31.139  7677  7677 W System.err: 	at android.security.keystore.KeyStoreCryptoOperationChunkedStreamer.doFinal(KeyStoreCryptoOperationChunkedStreamer.java:224)
+11-21 11:09:31.139  7677  7677 W System.err: 	at android.security.keystore.AndroidKeyStoreCipherSpiBase.engineDoFinal(AndroidKeyStoreCipherSpiBase.java:506)
+11-21 11:09:31.139  7677  7677 W System.err: 	... 21 more
+```
+
+#### Steps to reproduce
+ 
+ * Exported, install LineageOS, import.
+ * I am not sure that I did anything different then that. 
+
+"
+andOTP/andOTP,open,Android Wear support,"[Label(name=""enhancement"")]","In the very distant future I would like to add an Android Wear app to display OTP tokens on a smartwatch.
+It should only be able to display tokens, editing and adding should still only be able on the phone."
+andOTP/andOTP,closed,"""Most recent first"" option","[Label(name=""enhancement"")]","It would be nice if the app had an option where the most recently used entry would be shown first the next time the app was launched. That way, the entries I use more often would be shown at the top, and the ones I rarely use would slowly drop to the bottom."
+andOTP/andOTP,closed,FreeOTP migration script,[],"Hello,  
+congratulations on such a nice OTP app. It has everything I want in an app, so I migrated my codes from FreeOTP to andOTP. I wrote a short script to do this.
+
+To run the script, get the `tokens.xml` file from the FreeOTP directory on the phone, run the script with the filename as a parameter (`./freeotp_migrate.py tokens.xml`), and the script will output an andOTP-compatible plaintext JSON file. Just restore that and you're done.
+
+Here's the script, released under the MIT license:
+
+```python
+#!/usr/bin/env python3
+
+import base64
+import json
+import sys
+import xml.etree.ElementTree
+
+
+def read_tokens(filename):
+    e = xml.etree.ElementTree.parse(filename).getroot()
+    for item in e.findall(""string""):
+        if item.get(""name"") == ""tokenOrder"":
+            continue
+        token = json.loads(item.text)
+        token[""secret""] = base64.b32encode(
+            bytes(x & 0xff for x in token[""secret""])
+        ).decode(""utf8"")
+
+        issuer = token.get(""issuerAlt"") or \
+            token.get(""issuerExt"") or \
+            token.get(""issuerInt"")
+        label = token.get(""label"") or token.get(""labelAlt"")
+
+        if label and issuer:
+            token_label = ""%s - %s"" % (issuer, label)
+        else:
+            token_label = label or issuer
+
+        yield {
+            ""algorithm"": token[""algo""],
+            ""secret"": token[""secret""],
+            ""digits"": token[""digits""],
+            ""type"": token[""type""],
+            ""period"": token[""period""],
+            ""label"": token_label,
+        }
+
+
+def main():
+    if len(sys.argv) != 2:
+        print(""Usage: ./freeotp_migrate.py <filename>"")
+        sys.exit(1)
+
+    # Dump the tokens.
+    output = json.dumps(
+        list(read_tokens(sys.argv[1])),
+        sort_keys=True,
+        indent=2,
+        separators=(',', ': ')
+    )
+
+    print(output)
+
+
+if __name__ == ""__main__"":
+    main()
+```
+
+If you want, I can put it on a page on my site and you can link to it, for convenience."
+andOTP/andOTP,closed,[Poll] Adaptive icons,"[Label(name=""enhancement""), Label(name=""help wanted"")]","Hey guys, I am currently re-working the andOTP icon to support [Adaptive Icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive.html) introduced in Android 8.0. Everything is looking fine so far, the only question is which icon you guys want to see as default for Android versions **below** 8.0:
+
+1. The old **round** one
+![ic_launcher_round](https://user-images.githubusercontent.com/76665/32725911-474a969a-c877-11e7-9424-69d197819da9.png)
+
+2. or the new **square** one
+![ic_launcher](https://user-images.githubusercontent.com/76665/32725929-51e7fdcc-c877-11e7-83a3-5ed9c24e30a6.png)
+
+## Help wanted: Please use the poll below to indicate your preference!
+
+[![](https://api.gh-polls.com/poll/01BYTNQQSKTYZCWXT73GC48H24/Round)](https://api.gh-polls.com/poll/01BYTNQQSKTYZCWXT73GC48H24/Round/vote)
+[![](https://api.gh-polls.com/poll/01BYTNQQSKTYZCWXT73GC48H24/Square)](https://api.gh-polls.com/poll/01BYTNQQSKTYZCWXT73GC48H24/Square/vote)
+"
+andOTP/andOTP,closed,Tagging support,"[Label(name=""enhancement"")]","Fixes #37
+
+This adds support for tagging entries, the tags can then be used to filter entries shown in the main view."
+andOTP/andOTP,closed,Support exporting as a UriKeyFormat file,"[Label(name=""wontfix"")]","Fixes #62 
+
+This commit adds the option to save backups as UriKeys rather than JSON. The toggle is under a new settings section which visible if a user has enabled special features."
+andOTP/andOTP,closed,[Feature Request] Support saving backups in UriKey format,"[Label(name=""wontfix"")]","It would be great if andOTP had the ability to save backups in the UriKey format, this would make it compatible with tools like WinAuth.
+"
+andOTP/andOTP,closed,Checklist for v0.2.9,[],"# TODO before release v0.2.9:
+
+- [x] Add option to scroll the label if truncated
+- [x] Adaptive icon (WIP, see #65)"
+andOTP/andOTP,closed,Backup Crash ,"[Label(name=""bug"")]","Check if all requirements are fulfilled otherwise the issue will be closed without any comment
+
+  * Add details to fields  below
+  * Use search. Check if the issue is already reported before creating a new one. 
+    https://github.com/flocke/andOTP/issues
+  * Try again after clearing the apps data before posting
+  * Record a logcat: https://goo.gl/mc71vk
+  * Bug reports without logcat will be closed (I can not reproduce every bug myself and I can not fix them without logs)
+  * Delete this info block
+-----------------------------
+
+#### General information
+
+* **App version: 0.2.8
+* **App source:  F-Droid
+* **Android Version: 6.0.1
+
+#### Expected result
+**What is expected?** 
+Want to create a backup of my accounts 
+
+**What does happen instead?**
+App crashed with: unfortunately app has stopped 
+
+#### Logcat
+```
+Log-Bericht - build.board: MSM8974
+build.bootloader: s1
+build.brand: Sony
+build.cpu_abi: armeabi-v7a
+build.cpu_abi2: armeabi
+build.device: D5803
+build.display: 23.5.A.1.291
+build.fingerprint: Sony/D5803/D5803:6.0.1/23.5.A.1.291/2769308465:user/release-keys
+build.hardware: qcom
+build.host: BuildHost
+build.id: 23.5.A.1.291
+build.manufacturer: Sony
+build.model: D5803
+build.product: D5803
+build.radio: unknown
+build.serial: YT9112LXDF
+build.tags: release-keys
+build.time: 1467083751000
+build.type: user
+build.user: BuildUser
+version.codename: REL
+version.incremental: 2769308465
+version.release: 6.0.1
+version.sdk_int: 23
+
+11-09 08:25:30.740 I/Timeline(1816): Timeline: Activity_windows_visible id: ActivityRecord{832061f u0 org.shadowice.flocke.andotp/.Activities.MainActivity t12129} time:22655894
+11-09 08:25:32.716 I/Timeline(10601): Timeline: Activity_launch_request id:org.shadowice.flocke.andotp time:22657871
+11-09 08:25:32.717 I/ActivityManager(1816): START u0 {cmp=org.shadowice.flocke.andotp/.Activities.BackupActivity} from uid 10440 on display 0
+11-09 08:25:33.198 I/ActivityManager(1816): Displayed org.shadowice.flocke.andotp/.Activities.BackupActivity: +436ms
+11-09 08:25:33.211 I/Timeline(1816): Timeline: Activity_windows_visible id: ActivityRecord{d265ec3 u0 org.shadowice.flocke.andotp/.Activities.BackupActivity t12129} time:22658365
+11-09 08:25:35.663 E/AndroidRuntime(10601): Process: org.shadowice.flocke.andotp, PID: 10601
+11-09 08:25:35.663 E/AndroidRuntime(10601): 	at org.shadowice.flocke.andotp.Activities.BackupActivity.showSaveFileSelector(BackupActivity.java:329)
+11-09 08:25:35.663 E/AndroidRuntime(10601): 	at org.shadowice.flocke.andotp.Activities.BackupActivity.saveFileWithPermissions(BackupActivity.java:354)
+11-09 08:25:35.663 E/AndroidRuntime(10601): 	at org.shadowice.flocke.andotp.Activities.BackupActivity.access$200(BackupActivity.java:65)
+11-09 08:25:35.663 E/AndroidRuntime(10601): 	at org.shadowice.flocke.andotp.Activities.BackupActivity$8.onClick(BackupActivity.java:402)
+11-09 08:25:35.665 D/ActivityManager(1816): New dropbox entry: org.shadowice.flocke.andotp, data_app_crash, a4e35840-9a39-485a-b09c-f603c346cd07
+11-09 08:25:35.666 W/ActivityManager(1816):   Force finishing activity org.shadowice.flocke.andotp/.Activities.BackupActivity
+11-09 08:25:36.172 W/ActivityManager(1816): Activity pause timeout for ActivityRecord{d265ec3 u0 org.shadowice.flocke.andotp/.Activities.BackupActivity t12129 f}
+11-09 08:25:39.446 I/WindowState(1816): WIN DEATH: Window{36d2496 u0 org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.BackupActivity}
+11-09 08:25:39.450 I/WindowState(1816): WIN DEATH: Window{8c306e u0 org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.BackupActivity}
+11-09 08:25:39.453 W/InputDispatcher(1816): channel 'f84af0a org.shadowice.flocke.andotp/org.shadowice.flocke.andotp.Activities.MainActivity (server)' ~ Consumer closed input channel or an error occurred.  events=0x9
+11-09 08:25:39.453 I/Windo
+```
+
+#### Steps to reproduce
+ 
+ * everytime I want to backup data, no matter if with or without encryption. 
+
+"
+andOTP/andOTP,closed,Auto login after entering correct PIN/PASSWORD,"[Label(name=""enhancement""), Label(name=""maybe""), Label(name=""security"")]",
+andOTP/andOTP,closed,[French translation] Visual bugs,"[Label(name=""bug"")]","Hi!
+
+I fixed a lot of mistakes in the French translation, and discovered a few display bugs:
+
+\# | File | String | Bug
+---|---|---|---
+1 | strings_about.xml | [Help to translate andOTP to your language](https://crowdin.com/translate/andotp/18/en-fr#338) | Truncated after ""votre""
+2 | strings_about.xml | [Report bugs or request new features](https://crowdin.com/translate/andotp/18/en-fr#245) | Truncated after ""demander de""
+3 | strings_main.xml | [Digits](https://crowdin.com/translate/andotp/20/en-fr#373) | Truncated. We can only read ""Nombre de"". Then there is a line break and ""chiffres"" is hidden
+
+Screenshots are blocked by the app for the screen were translation 3 appears, but here is a screenshot where you can see translations 1 and 2:
+
+![screenshot_20171102-114018_01](https://user-images.githubusercontent.com/1931963/32338974-52bf74de-bfc4-11e7-9d0e-93bc954b9fe2.jpg)
+
+Let me know if I can do something more!"
+andOTP/andOTP,closed,Append backups to existing entries,"[Label(name=""enhancement"")]",Add a switch to disable replacing all current entries when importing a backup and append them instead.
+andOTP/andOTP,closed,Remove duplicate credits for german translation,[],"The second account was accidently created by me, using the wrong login provider...
+I've already deleted the account."
+andOTP/andOTP,closed,Case sensitive secrets,"[Label(name=""bug"")]","#### General information
+* **App version:** 0.2.7
+* **App source:** F-Droid
+* **Android Version:** 7.1.2 (LineageOS 14.1)
+
+I was migrating from Google Autenticator, so I've copied its sqlite database from /data/data/** and created `otp_accounts.json` file in the format andOTP expects. However, only those secrets that were in uppercase generated the same codes as Google Authenticator, those that were lowercase generated wrong codes. As soon as I've converted all lowercase secrets to uppercase, they've all started to generate correct codes.
+
+Following generates wrong codes:
+```
+{""secret"":""xyz"",""label"":""user@gmail.com"",""period"":30,""digits"":6,""type"":""TOTP"",""algorithm"":""SHA1""}
+```
+Following generates correct codes:
+```
+{""secret"":""XYZ"",""label"":""user@gmail.com"",""period"":30,""digits"":6,""type"":""TOTP"",""algorithm"":""SHA1""}
+```
+
+I haven't read the spec whether these codes should always be uppercase, but looks like they should.
+
+I think this is something that can/should be fixed (converted to uppercase on backup restoration), but feel free to close this if it is not relevant."
+andOTP/andOTP,closed,Importing Google authenticator data? ,[],Is there a way to import the Google authenticator data? 
+andOTP/andOTP,closed,In-app language switch (enhancement),"[Label(name=""enhancement"")]","If this is not too difficult and time consuming, please add the ability to switch languages in the application. Sometimes it is more convenient for people to use the application in the original language, and OS in their native language. In addition, it will be useful for translators (an example for me, yes) — it is more convenient to check the translation."
+andOTP/andOTP,closed,Turn on Documents error when creating backup,"[Label(name=""enhancement""), Label(name=""upstream bug"")]","#### General information
+
+* **App version:** 0.2.7
+* **App source:** Google Play
+* **Android Version:** 5.0.2
+
+#### Expected result
+I expect that after I click Backup (both plain text and OpenPGP) app will create file somewhere and tell me where is that file.
+
+Instead ""Turn on Documents in Settings > Installed apps first"" popup appears.
+I don't have such option in settings, all permissions are turned on. 
+
+
+
+#### Logcat
+I tried to get log specific to this app using following command `adb -d logcat 'org.shadowice.flocke.andotp:E'` but it was massive spam. I'm not Android dev, I'd be grateful for hints how to get useful logs. Anyway here is raw logcat dump I created following linked instruction: [Gist](https://gist.github.com/TeddyDD/80fbe8389378f104b6a5fa05e17ea97f)
+
+#### Steps to reproduce
+ 
+ * click Backup > Backup (plain text) or Backup (OpenPGP)
+"
+andOTP/andOTP,closed,How do I set the app with Google's 2 factor authentication?,[],"#### General information
+
+* **App version:** 0.2.7
+* **App source:** F-Droid
+* **Android Version:** 7.1.2 LineageOS (no GAPPS)"
+andOTP/andOTP,closed,Authentication bypass via panic app,[],"On the latest 0.2.7 version from F-Droid having both an authentication method enabled combined with the ""Reset app settings"" panic trigger, results in bypassing the password/pin prompt after triggering a panic.
+
+Steps to reproduce
+- Install app
+- Set 'Authentication' to ""Device credentials"" (or any other)
+- Set 'Panic Trigger' to ""Reset app settings""
+- Add some tokens
+- Exit app
+- Open app to confirm that its locked and exit again
+- Open panic app (eg. Ripple) and trigger a panic
+- Open andOTP
+- See keys without having to enter password/pin
+
+Ways to fix
+- [clear()](https://github.com/flocke/andOTP/commit/247f4e938ed6def7668e3259c81a6fc9e1dd5db0#diff-db821fc78f1767243d1038deacbcd954R85) needs to be amended to not reset the settings for Authentication
+- or simply remove the ""Reset app settings choice"", although ""Wipe all accounts"" is pretty aggressive, simply locking the app should be the default"
+andOTP/andOTP,closed,Encrypted password storage,"[Label(name=""enhancement""), Label(name=""help wanted""), Label(name=""security"")]","* [x] Authentication passwords
+* [x] Backup password
+
+This is just a reminder for myself to implement some kind of encrypted/hashed storage for the authentication passwords (password and PIN) and the backup password.
+
+Until now both are stored in plain-text which is not really secure at all.
+
+For the authentication it should be sufficient to simply store the credentials hashed.
+
+For the backup password this is not really an options since the hash of the password is used to generate the key, so knowing the hash would allow someone to decrypt the backups. The simplest solution would be to don't store the backup password at all and ask every time a backup is created or imported. This on the other hand would break support for automated encrypted backups since it would require user-interaction.
+
+**Help wanted**: I would like to hear some opinions of the users what would be their preferred solution to storing the backup password."
+andOTP/andOTP,closed,Can't import Backup,"[Label(name=""bug"")]","Hi,
+
+first of all: great app! Thank you very much.
+
+But I'm having trouble importing a backup. I keep getting the following message:
+""Import vom externen Speicher fehlgeschlagen"""
+andOTP/andOTP,closed,Black Theme,"[Label(name=""enhancement"")]","a black theme would make the app perfect for me (and my OnePlus 3 with an OLED screen)
+thanks"
+andOTP/andOTP,closed,Automatic backup (import / export) synchronisation to file,"[Label(name=""enhancement""), Label(name=""wontfix"")]","I know there is already an automatic backup ticket but this request is a bit broader.
+
+I use Syncthing to synchronise files in a decentralised manner across devices. It would be great if andOTP would automatically read from and write to the unencrypted / encrypted backup file, so that it can be then picked up by Syncthing (pure file based synchronisation) and sent to other devices, to for example another Android device with andOTP, which can then automatically synchronise any new changes.
+
+andOTP Device #1 <-> entries.json.aes <-> Syncthing <-> entries.json.aes <-> andOTP Device #2"
+andOTP/andOTP,closed,andOTP (F-Droid) on LineageOS: all tokens lost after update of LineageOS,[],"Dear all,
+
+### my system:
+* Motorola Moto G3 https://en.wikipedia.org/wiki/Moto_G_(3rd_generation)
+* LineageOS as a replacement for stock Android https://download.lineageos.org/osprey
+* andOTP 0.2.6 https://f-droid.org/packages/org.shadowice.flocke.andotp/
+* before: lineage-14.1-20170914-nightly-osprey-signed.zip 2017-09-14 18:38:33
+* after: lineage-14.1-20170921-nightly-osprey-signed.zip 2017-09-21 12:23:08
+* no such thing like root/SuperUser/SU
+
+### issue:
+* after update of LineageOS all tokens are lost within andOTP (as seen in GUI)
+* I do have a backup otp_accounts.json.aes
+* but when trying to import: no question for password
+* tokens not restored (as seen in GUI)
+
+### maybe similar issue:
+* https://github.com/flocke/andOTP/issues/16
+
+### actions taken so far:
+* actually none
+* waiting for questions
+
+Thank you for any help!
+
+Kind regards,
+
+Gunner
+"
+andOTP/andOTP,closed,Add french translation,[],"_Sorry for the previous PR, I fucked up between my accounts._
+
+This commit adds French translation to the app.
+
+I'm prone to do grammatical mistakes so a complete review by another French speaker would be appreciated.
+
+I also don't know how to translate “Panic Trigger” in a short sentence."
+andOTP/andOTP,closed,Add french translation,[],"This commit adds French translation to the app.
+
+I'm prone to do grammatical mistakes so a complete review by another French speaker would be appreciated.
+
+I also don't know how to translate “Panic Trigger” in a short sentence. "
+andOTP/andOTP,closed,Restore not working,"[Label(name=""upstream bug"")]","I backed up the encypted JSON.
+
+When backed up, it shows, 'Import from external storage sucessful', but with no output.
+
+Log: https://pastebin.com/xLEjXdrM"
+andOTP/andOTP,closed,prevent duplicates to be added,"[Label(name=""bug"")]","I just tried to add 3 times the same account (label, issuer and key always the same) and I ended up having 3 identical entries.
+IMO, this shouldn't be allowed. What should be allowed instead is having same label & issuer but different key."
+andOTP/andOTP,closed,can not select a OpenPGP key ,[],"I can not select a OpenPGP key from OpenKeychain (all version app from F-droid)
+Meizu Pro5, Android 5.1 stock 
+Also in OpenKeychain is no andOTP in the list of applications
+But everything is good on BQ Aquaris M10 FHD with Android 5.1 stock"
+andOTP/andOTP,closed,[question] encryption details,[],"Hello,
+I'm implementing a GTK+ OTP client for GNU/Linux and I would like to add support to import andOTP *encrypted* backup files.
+Looking into the [source code](https://github.com/flocke/andOTP/blob/master/app/src/main/java/org/shadowice/flocke/andotp/Utilities/EncryptionHelper.java#L48), I saw that you are using AES128 GCM with a 12 bytes IV.
+So the final encrypted file struct is `IV+ENC_TEXT+TAG`, right? And what about the key? It seems that it [is not entirely](https://github.com/flocke/andOTP/blob/master/app/src/main/java/org/shadowice/flocke/andotp/Utilities/EncryptionHelper.java#L95) user provided, so things here are getting complicated. Or am I missing something?
+
+Thanks :)"
+andOTP/andOTP,closed,Feature request: Steam mobile authenticator codes,"[Label(name=""enhancement""), Label(name=""maybe"")]","Hi,
+
+The [Steam Mobile Authenticator](https://support.steampowered.com/kb_article.php?ref=4440-RTUI-9218) uses standard TOTP passwords, but differs in that it generates a 5 character string. Is this something that could be implemented in andOTP?
+
+For reference WinAuth has this implemented [here](https://github.com/winauth/winauth/blob/master/Authenticator/SteamAuthenticator.cs), see [this](https://winauth.com/2015/06/11/steam-guard-mobile/) for a short write up about it. The KeeTrayTOTP plugin for KeePass2 has a somewhat more concise implementation [here](https://github.com/victor-rds/KeeTrayTOTP/blob/b122a8b568e7f6770cda2770f854b1424ebaf865/Libraries/TOTPEncoder.cs).
+
+Would be convenient with one less authenticator app on ones phone :)"
+andOTP/andOTP,closed,Feature request: tabs for grouping,"[Label(name=""WIP""), Label(name=""enhancement"")]","Hi!
+I have more than 20 OTPs, and it's really hard sometimes to search required one.
+What if OTPs could be grouped by tab?
+I.e. mail tab: and all OTPs for all mails, then work tab: and all OTPs for work.
+Thank you."
+andOTP/andOTP,closed,Added app locking when screen switched off,[],"Pull request for #28.
+
+App requries credentials again after the screen has been locked"
+andOTP/andOTP,closed,Make destructive Panic trigger opt-in,"[Label(name=""enhancement"")]","## In short
+
+* Change PanicKit wipe data response to opt-in rather than always-on
+  * Recommended by [Guardian Project's design patterns](https://guardianproject.info/2016/01/12/panickit-making-your-whole-phone-respond-to-a-panic-button/ )
+  * Avoids unexpectedly losing tokens if using an 'anxious trigger' instead of panic
+  * Allows choosing to keep OTP while using a panic trigger for other apps
+  * Requires a new settings activity, possibly modeled after [Zom with multiple destructive responses and a default lock response](https://github.com/zom/Zom-Android/blob/master/app/src/main/java/org/awesomeapp/messenger/ui/PanicSetupActivity.java )
+
+Criteria | Rank | Reason
+---------|---------|-------------
+Impact | ★★☆ *2/3* | User-facing but niche, matches other Panic-enabled apps
+Risk | ★★☆ *2/3* | Changes default, should be noted in changelog
+Intrusiveness | ★★☆ *2/3* | New UI page, new strings, mostly independent
+
+*This would build upon the excellent work in [pull request #27](https://github.com/flocke/andOTP/pull/27 ).*
+
+---
+
+## Standard template
+
+#### General information
+
+* **App version:** [0.2.6](https://github.com/flocke/andOTP/releases/tag/v0.2.6 )
+* **App source:** GitHub
+* **Android Version:** *N/A*
+
+#### Expected result
+**What is expected?** 
+On triggering the Panic button, nothing happens by default.
+
+The panic settings must be manually configured to enable wiping OTP data.
+
+**What does happen instead?**
+
+On triggering the Panic button, OTP data is wiped without any opt-out.
+
+#### Logcat
+```
+[Not recorded, but if needed I can set up the Android emulator to test this]
+```
+
+#### Steps to reproduce
+ 
+ * Install and set up andOTP
+ * Install some form of panic-button app, e.g. [Ripple](https://play.google.com/store/apps/details?id=info.guardianproject.ripple )
+ * Check the panic app configuration for an Edit option
+ * Try triggering a panic"
+andOTP/andOTP,closed,OTP list empty on Android O,"[Label(name=""bug""), Label(name=""invalid"")]","#### General information
+
+* App version: 0.2.5
+* App source: F-Droid
+* Android Version: Android O 8.0
+
+#### Expected result
+
+OTP list remains empty after restoring the app from a TitaniumBackup or restoring a previous backup using the built-in backup feature. When restoring a JSON backup, app states that import has been successfull. Tried to clear cache as well but that didn't help."
+andOTP/andOTP,closed,Updated pl-rPL (Polish (Poland)) translation,[],"Added new translation. 
+
+Commit made via Stringlate"
+andOTP/andOTP,closed,Feature Request: allow more token lengths,"[Label(name=""duplicate""), Label(name=""enhancement"")]","andOTP uses the default token length 6 for new tokens.
+
+Please add an option to select another token length (6,7 or 8).
+"
+andOTP/andOTP,closed,The backup can not be gpg encrypted with only a pubkey,"[Label(name=""upstream bug"")]","Motivation:
+I do not actively use gpg on my phone but would like to use it to encrypt backups.
+I have OpenKeychain installed and my personal public key imported, but I keep no private gpg key on the phone.
+This should be sufficient to encrypt the backup, I am aware that I could not re-import the backup like that.
+
+Setup:
+ - andOTP and OpenKeychain installed
+ - Setup up accounts in andOTP
+ - Empty keychain in OpenKeychain
+ - Import just a gpg public key in OpenKeychain (still no entry in ""My Keys"")
+ - Set OpenKeychain as gpg provider in andOTP
+ - Try to select the imported gpg key for encryption
+
+Result:
+ - The imported gpg key can not be selected to be used for encryption
+
+Expected:
+ - I can use a gpg key without a private key on the android device to encrypt my backups"
+andOTP/andOTP,closed,Variable digits lenths,"[Label(name=""enhancement"")]",Adding support for variable digits. Battle.net requires 8 digits instead of 6.
+andOTP/andOTP,closed,Support for variable digit lengths,"[Label(name=""enhancement"")]","Adding support for variable digits.
+Battle.net requires 8 digits instead of 6."
+andOTP/andOTP,open,The app should 're-lock' (require credentials again),"[Label(name=""enhancement""), Label(name=""help wanted""), Label(name=""security"")]","I would like it to re-lock and request device credentials again:
+ - [x] Immediately after the screen has been locked
+ - [ ] After a certain time of non-usage (e.g. 60 seconds)
+ - [x] Maybe: when exited through the back button"
+andOTP/andOTP,closed,Added support to Panic trigger.,"[Label(name=""enhancement"")]","After reading https://github.com/flocke/andOTP/issues/23#issuecomment-321928171
+I realized that it would be a nice feature to have.
+
+When the user triggers a Panic action the user preferences and secrets database are wiped.
+The user will be able to restore from a secure backup when she's in a safe place.
+
+Let me know if there's something that needs to be changed/added for it to be merged.
+
+Cheers 😄 "
+andOTP/andOTP,closed,Backup password input method is bad,"[Label(name=""bug"")]","Having only one field to enter a password without a button to reveal it is not safe. You could also implement 2 password boxes where the user has to enter the same password twice which IMO is the best way.
+
+We can all make mistakes typing and this is a must have feature!
+"
+andOTP/andOTP,closed,Fixing #20,[],Old intent is supposed to be reused after user interaction.
+andOTP/andOTP,closed,Feature request: allow more Hash Algorithms,"[Label(name=""enhancement"")]","Hi,
+seems there´s a hardcoded hash algorithm (sha1).
+in redhats FreeOTP (also on F-Droid) for example you can choose between md5, sha1, sha256, sha512.
+
+I´m trying to avoid changing the algorithm on our companys OTP server :)"
+andOTP/andOTP,closed,Feature request: Option to use individual password to protect the app,"[Label(name=""enhancement"")]","I suggest to include the option to define an individual password/PIN to protect the app. Currently, (v0.2.4 F-Droid) only the phone credentials can be used."
+andOTP/andOTP,closed,New Crowdin translations,[],Enjoy!
+andOTP/andOTP,closed,Updated pl-rPL (Polish (Poland)) translation,[],"Dodanie polskich tłumaczeń.
+Translater : Daniel Pustuła.
+Commit made via Stringlate"
+andOTP/andOTP,closed,OpenPGP with OpenKeychain and security token,"[Label(name=""bug""), Label(name=""help wanted"")]","Using OpenKeychain with a security token ends up in an infinite loop.
+
+OpenKeychain prompt says it has finished succesfully and then then it asks again to put the token near the device.
+Using another key that doesn't require security token works as expected.
+
+Tested on 0.2.3(F-Droid) and 0.2.4(Google Play)
+
+Thank you for keeping this awesome project alive 😄 "
+andOTP/andOTP,closed,FYI: I wrote a script to decrypt password-protected backups,"[Label(name=""enhancement"")]","Maybe useful to you or other users:
+https://github.com/asmw/andOTP-decrypt
+
+I guess this could also be extended to create valid import files."
+andOTP/andOTP,closed,Possibility to change label font size,"[Label(name=""enhancement"")]",If the font size of entry labels could be adjustable then the whole entry would be readable.
+andOTP/andOTP,closed,Copy Token when clicking on the item instead of clicking on the clipboard icon,"[Label(name=""enhancement""), Label(name=""wontfix"")]",Currently we need to click the clipboard icon to copy the Token. For easy copying Clicking on the entry to copy is good. Like freeOTP app 
+andOTP/andOTP,open,All tokens are lost after leaving the app,"[Label(name=""KeyStore""), Label(name=""bug""), Label(name=""help wanted""), Label(name=""upstream bug"")]","## Password-based encryption:
+
+**This issue is the result of an upstream bug in certain custom ROMs. Since version 0.4.0 everyone facing this problem can switch the database encryption to the new password-based encryption in the Settings, which SHOULD solve it.**
+
+## Help wanted:
+
+Could everyone facing this problem please tell me those things:
+
+- Model of your phone
+- Which ROM are you using (exact version please)
+- Which Gapps are you using (as well with the exact version)
+- Which method are you using to lock your phone (PIN, Pattern, Swipe, Facelock, Fingerprint, ...)
+
+You can add those information directly to the [wiki](https://github.com/andOTP/andOTP/wiki/Issue-%2316) or post them here.
+
+## Original issue
+
+Since the last update all my tokens are gone if i restart the app (or even if it it just moved to the background).
+
+Steps to reproduce
+---------------------
+1.) add new token via QR-Code scan -> token is listed in the app
+2.) go to homescreen
+3.) switch to app again
+
+Expected Behaviour
+--------------------------
+added token is still there
+
+Actual Behaviour
+----------------------
+no token listed
+
+
+App Version: 0.2.3 (Play Store)
+Android Version: 5.0
+Device: BQ Aquaris E4.5  "
+andOTP/andOTP,closed,Cannot scroll on the backup page,"[Label(name=""bug"")]","On my device there is no scroll bar on the backup page. So I'm not able to see all options.
+LineageOS 14.1 (Android 7.1.2)"
+andOTP/andOTP,closed,Have an icon or picture for each entry,"[Label(name=""enhancement"")]",In order to quickly select the right entry or simply view the associated OTP in a faster way it would be nice to have a user selectable little icon/picture for each line.
+andOTP/andOTP,closed,Option to disable swipe to delete,"[Label(name=""enhancement""), Label(name=""help wanted""), Label(name=""question"")]","## Help wanted: Please see the first comment and tell me your opinion.
+
+While swiping is quite useful in applications like emails it may not be so much of a daily use in an application like andOTP that deals with pretty static entries. I mean have cliking on the three dots to remove an entry is enough.
+I find the swipe quite dangerous since it doesn't remind the name of the entry to be removed in the confirmation pop-up. It would be nice to have an option to completely disable such swiping feature and avoid unexpected removal."
+andOTP/andOTP,closed,Add a way to sort the entries,"[Label(name=""enhancement"")]","Just migrated from freeOTP to andOTP. I like the support for fingerprint authentication and also import/export functions.
+I have quite a number of entries in my list and would find very usefully to have an option to sort the entries based upon the label."
+andOTP/andOTP,open,Auto Backup / Schedule Backup,"[Label(name=""enhancement"")]",Option to schedule backup daily/every 2 days/weekly/monthly similar will be a good idea
+andOTP/andOTP,closed,"""Tap to reveal"" behaviour","[Label(name=""bug"")]","Just a little improvement - When tapping on entries while ""tap to reveal"" is enabled, show the OTP when tapping anywhere on the entry, not just the title."
+andOTP/andOTP,closed,Long labels are displayed behind the buttons,"[Label(name=""bug"")]","When the label of an entry is long enough, it will be displayed behind the ""copy"" and ""menu"" buttons."
+andOTP/andOTP,closed,"Hide the ""Add"" button when scrolling down","[Label(name=""bug"")]","I have over 15 entries in the app, however I can't edit the last one since the + button is in the way.
+
+Simplest solution should be to hide the button when scrolling down or when scrolled to the bottom."
+andOTP/andOTP,closed,Device Authentication Asked Again After Configuration Change,"[Label(name=""bug"")]","Version: 0.2.2
+
+Steps to Reproduce:
+
+1. In Settings, check ""Require device credentials""
+
+2. Swipe the app off the overview screen, so you start from a clean slate
+
+3. Restart the app from the home screen, and authenticate against the device
+
+4. Rotate the screen
+
+Expected Results: Nothing out of the ordinary
+
+Actual Results: You have to authenticate again
+
+----
+
+Right now, you execute [these lines](https://github.com/flocke/andOTP/blob/v0.2.2/app/src/main/java/org/shadowice/flocke/andotp/MainActivity.java#L135-L144) for every `onCreate()` of `MainActivity`. Hence, on a configuration change, we have to re-authenticate, which IMHO is aggravating.
+
+Some options for addressing this:
+
+- Only execute that code if `savedInstanceState` is `null`. This requires re-authentication after the task expires (~30 minutes or until manually removed from the overview screen).
+
+- Use `onRetainNonConfigurationInstance`, the Architecture Components' `ViewModel` stuff, or a retained fragment to retain your view model (entries data, a have-we-authenticated `boolean`, etc.) across configuration changes, retrieving it in `onCreate()` via `getLastNonConfigurationInstance()`, and only re-authenticate if we need to load the data again
+
+- Block configuration changes in the manifest via `android:configChanges` on the `<activity>` element. Personally, I don't recommend this option.
+
+- Say that this behavior is working as intended. :-)
+
+"
+andOTP/andOTP,closed,[Poll] App name inaccurate in some places,"[Label(name=""bug""), Label(name=""help wanted"")]","# Help wanted: Please head down to the poll and vote for a name for the andOTP launcher icon
+
+Android 7.1.1
+andOTP 0.22
+
+## Steps to reproduce
+1) Install app from F-droid
+
+## Actual result
+App name is 'OTP Authenticator' in app drawer/Android Home, and in the main screen of the app. App is named 'andOTP' accurately in the about section of the app and in Settings>Apps
+
+## Expected result
+App name should be 'andOTP' in every instance"
+andOTP/andOTP,closed,HOTP Support,"[Label(name=""enhancement"")]",Support HOTP tokens in addition to TOTP
+andOTP/andOTP,closed,Encrypt backup using master password,"[Label(name=""enhancement"")]","Currently we have 2 backup options, plain text JSON backup and encrypted OpenPGP backup.
+
+Plain text is not safe and OpenPGP is safe. 
+
+The problem is not everyone is using OpenPGP and some are not interested in using OpenPGP and the remaining others dont know how to use OpenPGP.
+
+For me i dont know how to use OpenPGP and i dont like to use it.
+
+My idea is to add a master password option to the app and encrypt the backup using that master password (like password manager apps are doing)
+
+
+This help the people who are not using OpenPGP.
+
+
+Current issues :
+
+1) Already password/lock option is available.
+
+Solution : For this implimentation we need to remove the current lock method we are using in the app (using the device default lock method ) 
+
+2)  Hard to type password everytime to open app. 
+
+Solution : We can add a PIN option to easily unlock app. (like password managers)
+
+"
+andOTP/andOTP,closed,Dark theme,"[Label(name=""enhancement"")]",I really love dark themes and enable them on every app that offers them. Right now I'm using Google Authenticator for its dark theme but I much prefer this app because it lets you backup your keys in a simple JSON or encrypted format.
+andOTP/andOTP,closed,Import FreeOTP tokens.xml file,"[Label(name=""enhancement"")]","How can I import my codes from [FreeOTP](https://github.com/freeotp/freeotp-android)? They are stored in a xml file, entries look like this:
+
+```
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name=""example@example:Example"">{&quot;algo&quot;:&quot;SHA1&quot;,&quot;counter&quot;:0,&quot;digits&quot;:6,&quot;issuerExt&quot;:&quot;example@example&quot;,&quot;label&quot;:&quot;Example&quot;,&quot;period&quot;:30,&quot;secret&quot;:[98,-92,-87,46,76,-1,117],&quot;type&quot;:&quot;TOTP&quot;}</string>
+    <string name=""tokenOrder"">[&quot;example@example:Example&quot;]</string>
+</map>
+```
+
+"
+andOTP/andOTP,closed,Distribute via F-Droid,"[Label(name=""enhancement"")]","Would be really nice for getting automatic updates without relying on Google Play.
+
+https://f-droid.org/"

@@ -1,0 +1,814 @@
+repository,state,title,label,body
+T-Rex96/Easy_xkcd,open,Hiding the Action Bar subtitle is broken,[],The subtitle should disappear and the number should be added to the comic title.
+T-Rex96/Easy_xkcd,open,Translations are out of date,[],"@svetlemodry 
+@ludoux 
+@giobeatle1794 
+@pejakm 
+
+"
+T-Rex96/Easy_xkcd,closed,Some comics are not rotated properly,[],Some xkcd comics such as 104 are upside down.
+T-Rex96/Easy_xkcd,closed,Fixes #134 : app crash when removed from Favorites,[],When there are no favorites the FavoritesFragment gets hidden and ComicBrowser is shown. The issue is resolved by removing FavoritesFragment from the activity instead of hiding it.
+T-Rex96/Easy_xkcd,closed,Add an option to disable Custom Tabs,[],"I have several browsers installed, however, Fennec is the only one that supports Custum Tabs.
+So, whenever I press Explain Commic, it always opens the explanation as a Fenec Custom tab.
+However, I want to be able to read the explanation in another browser, without opening the custom tab and clicking ""Open in..."" first, which also creates a history entry in Fennec.
+For example, when I press ""Menu > Open Reddit/Forum > Redit"", it just asks me which browser to open.
+I'd like an option for the same behaviour when I click Explain Comic."
+T-Rex96/Easy_xkcd,closed,update gradle and dependencies,[],also compile is deprecated now so implementation is there
+T-Rex96/Easy_xkcd,closed,no tag for version 6.1,[],"F-Droid didn't detect this version for some reason so couldn't build it until now.
+
+Could you add a tag for this?"
+T-Rex96/Easy_xkcd,open,Large or high aspect ratio comic images don't display on a Nexus 7(2012) Android 7.1.2,[],"This appears to be an OpenGL issue. I looked at the source code and noted you have a [debug log](https://github.com/T-Rex96/Easy_xkcd/blob/091f3e8af89dd59aadda2b9df33c636d46d02398/app/src/main/java/de/tap/easy_xkcd/fragments/comics/ComicBrowserFragment.java#L270) after the image is displayed. The latest comic that doesn't display is 2002. I can see items in the log for the adjacent comics, but not that one, although 1998, GDPR appears in the log but doesn't display. This log was produced by scrolling through recent comics and using `adb logcat | grep xkcd`.
+```shell
+06-08 10:09:22.882  4605  4605 D url:    : https://imgs.xkcd.com/comics/xkcd_phone_2000_2x.png
+06-08 10:09:23.722  4605  4605 D url:    : https://imgs.xkcd.com/comics/selection_effect_2x.png
+06-08 10:09:26.102  4605  4605 D url:    : https://imgs.xkcd.com/comics/sun_and_earth_2x.png
+06-08 10:09:27.483  4605  4605 D url:    : https://imgs.xkcd.com/comics/selection_effect_2x.png
+06-08 10:09:41.417  4605  4605 D url:    : https://imgs.xkcd.com/comics/sun_and_earth_2x.png
+06-08 10:20:05.242  4605  4605 D url:    : https://imgs.xkcd.com/comics/selection_effect_2x.png
+06-08 10:20:07.918  4605  4605 D url:    : https://imgs.xkcd.com/comics/sun_and_earth_2x.png
+06-08 10:24:44.759  4605  4605 D url:    : https://imgs.xkcd.com/comics/selection_effect_2x.png
+06-08 10:24:50.421  4605  4605 D url:    : https://imgs.xkcd.com/comics/gdpr_2x.png
+06-08 10:24:56.428  4605  4605 D url:    : https://imgs.xkcd.com/comics/presidential_succession_2x.png
+06-08 10:25:33.475  4605  4605 D url:    : https://imgs.xkcd.com/comics/gdpr_2x.png
+06-08 10:25:34.776  4605  4605 D url:    : https://imgs.xkcd.com/comics/business_update_2x.png
+06-08 10:25:48.377  4605  4605 D url:    : https://imgs.xkcd.com/comics/morning_news_2x.png
+06-08 10:25:54.478  4605  4605 D url:    : https://imgs.xkcd.com/comics/mc_hammer_age_2x.png
+06-08 10:25:56.731  4605  4605 D url:    : https://imgs.xkcd.com/comics/xkcd_phone_2000_2x.png
+```
+The above log items are interspersed with  large numbers of OpenGL warnings, which all appear to be the same...
+```shell
+06-08 10:09:41.339  4605  4626 W OpenGLRenderer: Bitmap too large to be uploaded into a texture (1206x2536, max=2048x2048)
+06-08 10:09:41.340  4605  4626 W OpenGLRenderer: Bitmap too large to be uploaded into a texture (1206x2536, max=2048x2048)
+06-08 10:09:41.340  4605  4626 W OpenGLRenderer: Bitmap too large to be uploaded into a texture (1206x2536, max=2048x2048)
+06-08 10:09:41.357  4605  4626 W OpenGLRenderer: Bitmap too large to be uploaded into a texture (1206x2536, max=2048x2048)
+```"
+T-Rex96/Easy_xkcd,closed,app crash when removed from Favorites ,[],"#### Expected behavior
+this app shouldn't be crash while click on remove from favourite and rotated phone from portrait to landscape .
+
+#### Actual behavior
+when i  click on remove from favorites button and i rotated my phone from portrait to landscape after remove it occurs to crash .
+
+#### How to reproduce
+* download the app
+* open it then select a comics to add favorites
+* now go to **Favorites** and click on remove (love) icon to remove 
+* rotated your phone from portrait to landscape when comics reomved
+* note the bug
+
+> Browser/App version: 6.0.4
+ Operating system: android 6.0
+
+#### Recording Of The Bug
+https://www.youtube.com/watch?v=3R2dN_UrNOQ
+"
+T-Rex96/Easy_xkcd,closed,App freeze  and back button not working,[],"#### Expected behavior
+it shouldn't be freeze when searching a comics and user should be able to back when click on back button while in Updating database
+#### Actual behavior
+when i click on search option in Comics and searching new this app become freeze and back button not working for return to app
+
+#### How to reproduce
+* download the app and run it
+* now click on search button and type new 
+* note the bug and
+* then click on back button and see the another bug
+
+> Browser/App version: 6.0.4
+ Operating system: android 6.0
+
+#### Recording Of The Bug
+https://www.youtube.com/watch?v=nZXC5WgQnQ4"
+T-Rex96/Easy_xkcd,closed,Offline cache shows up in gallery applications,[],"When saving comics or What if for offline use, the respective files show up in your typical gallery app (the one preinstalled on an average Android device, [Simple Gallery](https://github.com/SimpleMobileTools/Simple-Gallery), etc).
+
+To fix this, all that has to be done is placing an empty `.nomedia` file in the folder that the image is stored in. This will cause the Android media scanner to ignore the files in that folder."
+T-Rex96/Easy_xkcd,closed,Feature request: Add a button to open the current comic in explain xkcd,[],[Explain xkcd](http://www.explainxkcd.com/wiki/index.php/Main_Page)
+T-Rex96/Easy_xkcd,closed,Add option to go to a random comic. ,[],
+T-Rex96/Easy_xkcd,open,WebView scroll position lost after device rotation,[],"Steps to reproduce:
+1. Open What if?
+2. Click any article in the list
+3. Scroll the article
+4. Rotate device
+
+Scroll position should persist after rotation, however, it get lost. It's annoying because user has to manually scroll to the expected position every time screen orientation change.
+
+![screen shot 2018-04-12 at 11 19 56 pm](https://user-images.githubusercontent.com/38213896/38686917-10a0cc3e-3ea8-11e8-9238-be846e2baa36.png)
+Screenshot before rotation
+
+
+![screen shot 2018-04-12 at 11 20 07 pm](https://user-images.githubusercontent.com/38213896/38686923-17fb8fc8-3ea8-11e8-9421-fe1994b4b03a.png)
+Screenshot after rotation."
+T-Rex96/Easy_xkcd,closed,Add adaptive icon,[],"Fixed #124 
+
+I just see that the image I used has too low resolution. Can you send me the image you used for the icon?"
+T-Rex96/Easy_xkcd,closed,Add Simplified Chinese translation,[],"Yet another translation.
+The file is exported from stringlate. The order is different from the original file. Hope it can work well.
+Some items didn't contain translation because of [this](https://github.com/LonamiWebs/Stringlate/issues/184).
+I'll update these missing items after stringlate fix that issue. Or I may just simply use editor to add translation for these items."
+T-Rex96/Easy_xkcd,closed,'Earliest Unread Comic' button crashes app when all comics are read.,[],"First off, great app! I use it every day!
+
+So, I recently had a quest to ensure I haven't ever missed an XKCD comic. As part of that process, I repeatedly used the 'Earliest Unread Comic' button on the main list to page to any comic I hadn't read inside the app. This afternoon, I was sure to have read them all, and pressing the 'Earliest Unread Comic' button crashed the app.
+
+I was only able to get part of the stacktrace, but hopefully this should help.
+![stacktrace partial](https://user-images.githubusercontent.com/2546219/36447191-99d128d4-1651-11e8-8e08-063a54180e46.png)
+
+I was looking through the code to see if I could fix it simply through a PR, but the bug seems to be actually bubbling up from the [Realm](https://realm.io/) Java library. Any ideas?"
+T-Rex96/Easy_xkcd,closed,FR: Adaptive icon,[],"Api 26 introduced adaptive icons where background and foreground are two different images.
+https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive.html"
+T-Rex96/Easy_xkcd,open,Black bar in bottom area on every comic,[],"An example: https://i.imgur.com/j4mQZih.jpg
+
+Using Android Oreo on OxygenOS 5.0/OnePlus 5"
+T-Rex96/Easy_xkcd,closed,Crashes When trying to like comic,[],Every time I'm trying to like a comic the app force closes. Running Oreo on a OnePlus 5 (Stock OxygenOS)
+T-Rex96/Easy_xkcd,open,Crashes when tapping on the donate button,[],"When I enable the donate button in the F-Droid version and try to use it, it crashes.
+
+BTW as for domains you may check out https://liberapay.com/. It is made for floss software.
+"
+T-Rex96/Easy_xkcd,closed,Add menu option to mark all comics as read,[],
+T-Rex96/Easy_xkcd,closed,Adding spanish translation,[],Hi! I've translated the app to spanish language.
+T-Rex96/Easy_xkcd,closed,Version 6.0.2 is mistagged as release_6.2.0,[],Could you please fix tag (6.2.0 🡒 6.0.2)? It causes F-Droid failure: https://f-droid.org/wiki/page/de.tap.easy_xkcd/lastbuild_141
+T-Rex96/Easy_xkcd,closed,App does not load comics on KitKat,[],"When launching easy_xkcd on my Asus Padfone 2 with 4.4.2 KitKat, the app does not show any comics, just a white screen and the share(?) symbol in the lower right corner. Clicking the icon displays a toast saying ""No connection"".
+I can open the settings menu and enable ""Launch to Overview Mode"", which will then - on next launch - open the ""Comics loading"" fragment for a short time. Then it changes to the overview, displaying comics 1 to 1645. Clicking on any comic does yield the white screen again.
+
+The bug is somewhat reproduceable using a Virtual Device, although the exception that is thrown differs on the Virtual Device. The root of the problem seems to be the same, though.
+
+Error thrown on App Start in Virtual Device (4.4,2 KitKat):
+`11-15 19:55:47.635 2341-2359/de.tap.easy_xkcd W/System.err: java.net.ConnectException: Failed to connect to xkcd.com/2a04:4e42:600::67:443
+11-15 19:55:47.635 2341-2359/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.io.RealConnection.connectSocket(RealConnection.java:142)
+11-15 19:55:47.635 2341-2359/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.io.RealConnection.connect(RealConnection.java:111)
+11-15 19:55:47.635 2341-2359/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.http.StreamAllocation.findConnection(StreamAllocation.java:188)
+11-15 19:55:47.655 2341-2359/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.http.StreamAllocation.findHealthyConnection(StreamAllocation.java:127)
+11-15 19:55:47.655 2341-2359/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.http.StreamAllocation.newStream(StreamAllocation.java:97)
+11-15 19:55:47.655 2341-2359/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.http.HttpEngine.connect(HttpEngine.java:289)
+11-15 19:55:47.665 2341-2359/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.http.HttpEngine.sendRequest(HttpEngine.java:241)
+11-15 19:55:47.675 2341-2359/de.tap.easy_xkcd W/System.err:     at okhttp3.RealCall.getResponse(RealCall.java:240)
+11-15 19:55:47.675 2341-2359/de.tap.easy_xkcd W/System.err:     at okhttp3.RealCall$ApplicationInterceptorChain.proceed(RealCall.java:198)
+11-15 19:55:47.675 2341-2359/de.tap.easy_xkcd W/System.err:     at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:160)
+11-15 19:55:47.675 2341-2359/de.tap.easy_xkcd W/System.err:     at okhttp3.RealCall.execute(RealCall.java:57)
+11-15 19:55:47.685 2341-2359/de.tap.easy_xkcd W/System.err:     at de.tap.easy_xkcd.utils.JsonParser.getJSONFromUrl(JsonParser.java:45)
+11-15 19:55:47.685 2341-2359/de.tap.easy_xkcd W/System.err:     at de.tap.easy_xkcd.fragments.comics.ComicBrowserFragment$updateNewest.doInBackground(ComicBrowserFragment.java:151)
+11-15 19:55:47.685 2341-2359/de.tap.easy_xkcd W/System.err:     at de.tap.easy_xkcd.fragments.comics.ComicBrowserFragment$updateNewest.doInBackground(ComicBrowserFragment.java:128)
+11-15 19:55:47.685 2341-2359/de.tap.easy_xkcd W/System.err:     at android.os.AsyncTask$2.call(AsyncTask.java:288)
+11-15 19:55:47.685 2341-2359/de.tap.easy_xkcd W/System.err:     at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+11-15 19:55:47.685 2341-2359/de.tap.easy_xkcd W/System.err:     at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:231)
+11-15 19:55:47.685 2341-2359/de.tap.easy_xkcd W/System.err:     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)
+11-15 19:55:47.685 2341-2359/de.tap.easy_xkcd W/System.err:     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)
+11-15 19:55:47.685 2341-2359/de.tap.easy_xkcd W/System.err:     at java.lang.Thread.run(Thread.java:841)`
+
+Error thrown on Padfone 2 (4.4.2 KitKat):
+`11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err: javax.net.ssl.SSLHandshakeException: javax.net.ssl.SSLProtocolException: SSL handshake aborted: ssl=0x613fb730: Failure in SSL library, usually a protocol error
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err: error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version (external/openssl/ssl/s23_clnt.c:741 0x5d817d74:0x00000000)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at com.android.org.conscrypt.OpenSSLSocketImpl.startHandshake(OpenSSLSocketImpl.java:448)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.io.RealConnection.connectTls(RealConnection.java:195)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.io.RealConnection.connectSocket(RealConnection.java:148)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.io.RealConnection.connect(RealConnection.java:111)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.http.StreamAllocation.findConnection(StreamAllocation.java:188)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.http.StreamAllocation.findHealthyConnection(StreamAllocation.java:127)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.http.StreamAllocation.newStream(StreamAllocation.java:97)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.http.HttpEngine.connect(HttpEngine.java:289)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at okhttp3.internal.http.HttpEngine.sendRequest(HttpEngine.java:241)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at okhttp3.RealCall.getResponse(RealCall.java:240)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at okhttp3.RealCall$ApplicationInterceptorChain.proceed(RealCall.java:198)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:160)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at okhttp3.RealCall.execute(RealCall.java:57)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at de.tap.easy_xkcd.utils.JsonParser.getJSONFromUrl(JsonParser.java:45)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at de.tap.easy_xkcd.fragments.comics.ComicBrowserFragment$updateNewest.doInBackground(ComicBrowserFragment.java:151)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at de.tap.easy_xkcd.fragments.comics.ComicBrowserFragment$updateNewest.doInBackground(ComicBrowserFragment.java:128)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at android.os.AsyncTask$2.call(AsyncTask.java:288)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:231)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at java.lang.Thread.run(Thread.java:841)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err: 	Suppressed: javax.net.ssl.SSLHandshakeException: javax.net.ssl.SSLProtocolException: SSL handshake aborted: ssl=0x613fb730: Failure in SSL library, usually a protocol error
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err: error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version (external/openssl/ssl/s23_clnt.c:741 0x5d817d74:0x00000000)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err: 		... 22 more
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err: 	Caused by: javax.net.ssl.SSLProtocolException: SSL handshake aborted: ssl=0x613fb730: Failure in SSL library, usually a protocol error
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err: error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version (external/openssl/ssl/s23_clnt.c:741 0x5d817d74:0x00000000)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at com.android.org.conscrypt.NativeCrypto.SSL_do_handshake(Native Method)
+11-16 02:04:06.144 11157-11197/de.tap.easy_xkcd W/System.err:     at com.android.org.conscrypt.OpenSSLSocketImpl.startHandshake(OpenSSLSocketImpl.java:405)
+11-16 02:04:06.154 11157-11197/de.tap.easy_xkcd W/System.err: 		... 21 more
+11-16 02:04:06.154 11157-11197/de.tap.easy_xkcd W/System.err: Caused by: javax.net.ssl.SSLProtocolException: SSL handshake aborted: ssl=0x613fb730: Failure in SSL library, usually a protocol error
+11-16 02:04:06.154 11157-11197/de.tap.easy_xkcd W/System.err: error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version (external/openssl/ssl/s23_clnt.c:741 0x5d817d74:0x00000000)
+11-16 02:04:06.154 11157-11197/de.tap.easy_xkcd W/System.err:     at com.android.org.conscrypt.NativeCrypto.SSL_do_handshake(Native Method)
+11-16 02:04:06.154 11157-11197/de.tap.easy_xkcd W/System.err:     at com.android.org.conscrypt.OpenSSLSocketImpl.startHandshake(OpenSSLSocketImpl.java:405)
+11-16 02:04:06.154 11157-11197/de.tap.easy_xkcd W/System.err: 	... 21 more`
+
+I'd appreciate any help on this problem,
+thanks!"
+T-Rex96/Easy_xkcd,closed,1913 should not be inverted in night mode,[],"IMHO today's comic should not be inverted. It had a big yellow area, which looks a big bad in not."
+T-Rex96/Easy_xkcd,closed,Version 6.0 on Play Store?,[],"There's a version 6.0 of Easy xkcd on Play Store for quite a while now but it's neither on here nor on F-Droid.
+
+What is going on?"
+T-Rex96/Easy_xkcd,open,No comics are shown when blocked via firewall,[],"I use afwall+ to block easyxkcd from using cellular internet. Wifi is allowed and i have enabled offline mode.
+When i am not on wifi easyxkcd searches for new images and as result no comics are shown"
+T-Rex96/Easy_xkcd,closed,Xkcd 404 displays as 403,[],"When one searches for comic 404, it shows the image of comic 403 instead.
+
+
+"
+T-Rex96/Easy_xkcd,closed,Html is not rendered in title,[],See comic 472 House of pancakes
+T-Rex96/Easy_xkcd,open,Share the image and title,[],"When sharing an XKCD comic the person I send it too should be able to have the ""full experience"" so a share function like Twidere does would be perfect:
+- Image
+- Title (comment of the author)
+- Link (to use his own app on it)
+
+Maybe we would also include the comic title.
+"
+T-Rex96/Easy_xkcd,open,Crashes when opened from widget,[],"The app is shown shortly, but afterwards crashes.
+```
+D/AndroidRuntime( 9370): Shutting down VM
+E/AndroidRuntime( 9370): FATAL EXCEPTION: main
+E/AndroidRuntime( 9370): Process: de.tap.easy_xkcd, PID: 9370
+E/AndroidRuntime( 9370): Theme: themes:{com.android.providers.downloads.ui=overlay:com.spastef.inversion, com.fsck.k9=overlay:com.chummy.jezebel.material.dark.regression, default=overlay:com.chummy.jezebel.material.dark.regression, iconPack:system, fontPkg:com.chummy.jezebel.material.dark, com.android.systemui=overlay:com.chummy.jezebel.material.dark.regression, com.android.systemui.navbar=overlay:com.chummy.jezebel.material.dark.regression}
+E/AndroidRuntime( 9370): java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object android.content.Context.getSystemService(java.lang.String)' on a null object reference
+E/AndroidRuntime( 9370): 	at de.tap.easy_xkcd.fragments.comics.ComicFragment$ComicAdapter.<init>(ComicFragment.java:134)
+E/AndroidRuntime( 9370): 	at de.tap.easy_xkcd.fragments.comics.ComicBrowserFragment$ComicBrowserPagerAdapter.<init>(ComicBrowserFragment.java:193)
+E/AndroidRuntime( 9370): 	at de.tap.easy_xkcd.fragments.comics.ComicBrowserFragment$updateNewest.onPostExecute(ComicBrowserFragment.java:167)
+E/AndroidRuntime( 9370): 	at de.tap.easy_xkcd.fragments.comics.ComicBrowserFragment$updateNewest.onPostExecute(ComicBrowserFragment.java:125)
+E/AndroidRuntime( 9370): 	at android.os.AsyncTask.finish(AsyncTask.java:651)
+E/AndroidRuntime( 9370): 	at android.os.AsyncTask.-wrap1(AsyncTask.java)
+E/AndroidRuntime( 9370): 	at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:668)
+E/AndroidRuntime( 9370): 	at android.os.Handler.dispatchMessage(Handler.java:102)
+E/AndroidRuntime( 9370): 	at android.os.Looper.loop(Looper.java:148)
+E/AndroidRuntime( 9370): 	at android.app.ActivityThread.main(ActivityThread.java:5461)
+E/AndroidRuntime( 9370): 	at java.lang.reflect.Method.invoke(Native Method)
+E/AndroidRuntime( 9370): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+E/AndroidRuntime( 9370): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+E/AndroidRuntime( 9370): 	at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:102)
+```
+
+After the crash the widget is empty. (Which is also not nice)
+
+CM 13"
+T-Rex96/Easy_xkcd,closed,1815 inverted in overview,[],"The today's comic 1815 (flag) is - as supposed to be - not inverted when you view it in ""full screen"".
+However in the overview of all comics it is inverted."
+T-Rex96/Easy_xkcd,closed,Added executable bit,[],"To run any program in Ubuntu you need an [executable bit](https://wiki.ubuntu.com/Security/ExecutableBit).
+> Ubuntu Policy requires that software not marked as executable not be runnable."
+T-Rex96/Easy_xkcd,closed,Inefficient API is used,[],"Dear developers,
+
+I found an inefficient API, setImageResource(), is used in Easy_xkcd. 
+
+For setImageResource(), Google says this: 
+
+https://developer.android.com/reference/android/widget/ImageView.html
+"" This does Bitmap reading and decoding on the UI thread, which can cause a latency hiccup. If that's a concern, consider using setImageDrawable(android.graphics.drawable.Drawable) or setImageBitmap(android.graphics.Bitmap) and BitmapFactory instead. ""
+
+I noticed that in the following code, setImageResource() is used:
+de.tap.easy_xkcd.Activities.WhatIfActivity.java     performClick()   (lineNumber: 92 )
+https://github.com/T-Rex96/Easy_xkcd/blob/master/app/src/main/java/de/tap/easy_xkcd/Activities/WhatIfActivity.java
+
+Do you think the use of setImageResource() will affect Easy_xkcd's performance? If yes, maybe we should move Bitmap reading and decoding to a background thread.
+
+Thanks.
+"
+T-Rex96/Easy_xkcd,open,Open displayed image when opening app from widget,[],"STR: tap on the widget to open the app
+
+What happens: app starts as usual (with the last displayed comic in the app) and e.g. shows a ""there are new comics"" bar at the bottom
+
+What should happen: start app with the comic displayed in the widget and suppress ""new comics"" notification when this is the latest comic"
+T-Rex96/Easy_xkcd,closed,Add option to notify user when a new comic is published,[],
+T-Rex96/Easy_xkcd,closed,Images in what if posts should be inverted in night mode,[],"Currently they are barely readable in night mode.
+"
+T-Rex96/Easy_xkcd,closed,Crash when started in flight mode,[],"STR:
+0. Enable flight mode.
+1. Start easy xkcd from the widget.
+2. As you have no connection choose ""show favorites"".
+3. Press back button. (Hardware key here)
+
+What happens: crashes and closes app.
+What should happen: only close app
+
+Logcat:
+
+```
+I/ActivityManager(  651): START u0 {act=de.tap.easy_xkcd.ACTION_COMIC flg=0x10000000 cmp=de.tap.easy_xkcd/.Activities.MainActivity bnds=[36,200][1044,1203] (has extras)} from uid 10248 on display 0
+I/ActivityManager(  651): Start proc 16954:de.tap.easy_xkcd/u0a248 for activity de.tap.easy_xkcd/.Activities.MainActivity
+E/AndroidRuntime(16954): Process: de.tap.easy_xkcd, PID: 16954
+E/AndroidRuntime(16954): java.lang.NullPointerException: Attempt to invoke virtual method 'boolean de.tap.easy_xkcd.fragments.comics.ComicFragment.zoomReset()' on a null object reference
+E/AndroidRuntime(16954):    at de.tap.easy_xkcd.Activities.MainActivity.onBackPressed(MainActivity.java:728)
+W/ActivityManager(  651):   Force finishing activity de.tap.easy_xkcd/.Activities.MainActivity
+W/ActivityManager(  651): Activity pause timeout for ActivityRecord{aa719c0 u0 de.tap.easy_xkcd/.Activities.MainActivity t9814 f}
+I/WindowState(  651): WIN DEATH: Window{98771ab u0 de.tap.easy_xkcd/de.tap.easy_xkcd.Activities.MainActivity}
+I/ActivityManager(  651): Process de.tap.easy_xkcd (pid 16954) has died
+I/ActivityManager(  651): START u0 {act=de.tap.easy_xkcd.ACTION_COMIC flg=0x10000000 cmp=de.tap.easy_xkcd/.Activities.MainActivity bnds=[36,200][1044,1203] (has extras)} from uid 10248 on display 0
+I/ActivityManager(  651): Start proc 17063:de.tap.easy_xkcd/u0a248 for activity de.tap.easy_xkcd/.Activities.MainActivity
+E/AndroidRuntime(17063): Process: de.tap.easy_xkcd, PID: 17063
+E/AndroidRuntime(17063): java.lang.NullPointerException: Attempt to invoke virtual method 'boolean de.tap.easy_xkcd.fragments.comics.ComicFragment.zoomReset()' on a null object reference
+E/AndroidRuntime(17063):    at de.tap.easy_xkcd.Activities.MainActivity.onBackPressed(MainActivity.java:728)
+W/ActivityManager(  651):   Force finishing activity de.tap.easy_xkcd/.Activities.MainActivity
+W/ActivityManager(  651): Activity pause timeout for ActivityRecord{124ff4f u0 de.tap.easy_xkcd/.Activities.MainActivity t9815 f}
+I/WindowState(  651): WIN DEATH: Window{f8e9336 u0 de.tap.easy_xkcd/de.tap.easy_xkcd.Activities.MainActivity}
+I/ActivityManager(  651): Process de.tap.easy_xkcd (pid 17063) has died
+I/ActivityManager(  651): Start proc 20450:de.tap.easy_xkcd/u0a248 for broadcast de.tap.easy_xkcd/.widget.WidgetLatestProvider
+I/ActivityManager(  651): Killing 20450:de.tap.easy_xkcd/u0a248 (adj 15): empty for 1957s
+I/ActivityManager(  651): Start proc 21697:de.tap.easy_xkcd/u0a248 for broadcast de.tap.easy_xkcd/.widget.WidgetLatestProvider
+I/ActivityManager(  651): Killing 21697:de.tap.easy_xkcd/u0a248 (adj 15): empty for 3801s
+I/ActivityManager(  651): Start proc 24011:de.tap.easy_xkcd/u0a248 for broadcast de.tap.easy_xkcd/.widget.WidgetLatestProvider
+I/ActivityManager(  651): Killing 24011:de.tap.easy_xkcd/u0a248 (adj 15): empty for 1800s
+I/ActivityManager(  651): START u0 {act=de.tap.easy_xkcd.ACTION_COMIC flg=0x10000000 cmp=de.tap.easy_xkcd/.Activities.MainActivity bnds=[36,200][1044,1203] (has extras)} from uid 10248 on display 0
+I/ActivityManager(  651): Start proc 26260:de.tap.easy_xkcd/u0a248 for activity de.tap.easy_xkcd/.Activities.MainActivity
+W/XPrivacy(26260): Hooking package=de.tap.easy_xkcd
+W/System.err(26260):    at de.tap.easy_xkcd.Activities.MainActivity.onResume(MainActivity.java:772)
+I/ActivityManager(  651): Displayed de.tap.easy_xkcd/.Activities.MainActivity: +1s940ms
+E/MessageQueue-JNI(26260): java.lang.NullPointerException: Attempt to invoke virtual method 'boolean de.tap.easy_xkcd.fragments.comics.ComicFragment.zoomReset()' on a null object reference
+E/MessageQueue-JNI(26260):  at de.tap.easy_xkcd.Activities.MainActivity.onBackPressed(MainActivity.java:728)
+E/AndroidRuntime(26260): Process: de.tap.easy_xkcd, PID: 26260
+E/AndroidRuntime(26260): java.lang.NullPointerException: Attempt to invoke virtual method 'boolean de.tap.easy_xkcd.fragments.comics.ComicFragment.zoomReset()' on a null object reference
+E/AndroidRuntime(26260):    at de.tap.easy_xkcd.Activities.MainActivity.onBackPressed(MainActivity.java:728)
+W/ActivityManager(  651):   Force finishing activity de.tap.easy_xkcd/.Activities.MainActivity
+W/ActivityManager(  651): Activity pause timeout for ActivityRecord{53e7d5c u0 de.tap.easy_xkcd/.Activities.MainActivity t9820 f}
+I/WindowState(  651): WIN DEATH: Window{7b792b7 u0 de.tap.easy_xkcd/de.tap.easy_xkcd.Activities.MainActivity}
+I/ActivityManager(  651): Process de.tap.easy_xkcd (pid 26260) has died
+```
+
+CM13
+"
+T-Rex96/Easy_xkcd,open,Implement special treatment in cards mode for Earth Temperature Timeline (#1732),[],"Speaks for itself, really.
+![Screenshot_20160930-070230.png](http://i.imgur.com/LWT3HNJ.png)
+"
+T-Rex96/Easy_xkcd,open,Xkcd 1732 problems,[],"The current - maybe too big - comic causes two issues:
+1. It let's easy xkcd regularly crash in the background (I think this is caused by the widget)
+2. Even when starting the app manually the comic is not displayed
+"
+T-Rex96/Easy_xkcd,closed,"App opens, but crashes when a comic is selected",[],"Version 5.3.2, Android 6.0.1 (Cyanogenmod nightly 20160830)
+
+The app opens to the comics listing (comic overview). When a comic is selected, it crashes with the message ""Unfortunately, Easy xkcd has stopped"". 
+
+I have reported it from the pop up error message. 
+
+What-if opens to the listing, but when an article is selected, it shows just a plain white page.
+"
+T-Rex96/Easy_xkcd,open,Use cached icon when no internet connection available,[],"When e.g. the widget updates and later I go into flight mode so no internet connection is available and I tap on the widget it cannot load the current image even through it is already displayed in the widget.
+
+What's worse is that once I did this also the widgets is cleared and only shows a transparent widget now.
+"
+T-Rex96/Easy_xkcd,closed,Crashes always when accessed from widget,[],"Reproducible: Always
+
+Logcat:
+
+```
+E/AndroidRuntime(17298): Process: de.tap.easy_xkcd, PID: 17298
+E/AndroidRuntime(17298): java.lang.NullPointerException: Attempt to invoke virtual method 'android.support.design.widget.FloatingActionButton de.tap.easy_xkcd.Activities.MainActivity.getFab()' on a null object reference
+E/AndroidRuntime(17298):    at de.tap.easy_xkcd.fragments.comics.ComicFragment.onPrepareOptionsMenu(ComicFragment.java:572)
+E/AndroidRuntime(16522): Process: de.tap.easy_xkcd, PID: 16522
+E/AndroidRuntime(16522):    at de.tap.easy_xkcd.fragments.comics.ComicFragment$ComicAdapter.<init>(ComicFragment.java:133)
+E/AndroidRuntime(16522):    at de.tap.easy_xkcd.fragments.comics.ComicBrowserFragment$ComicBrowserPagerAdapter.<init>(ComicBrowserFragment.java:193)
+E/AndroidRuntime(16522):    at de.tap.easy_xkcd.fragments.comics.ComicBrowserFragment$updateNewest.onPostExecute(ComicBrowserFragment.java:167)
+E/AndroidRuntime(16522):    at de.tap.easy_xkcd.fragments.comics.ComicBrowserFragment$updateNewest.onPostExecute(ComicBrowserFragment.java:125)
+I/ActivityManager(  619): Start proc 10553:de.tap.easy_xkcd/u0a248 for broadcast de.tap.easy_xkcd/.widget.WidgetLatestProvider
+I/ActivityManager(  619): Process de.tap.easy_xkcd (pid 10553) has died
+I/ActivityManager(  619): Start proc 17341:de.tap.easy_xkcd/u0a248 for broadcast de.tap.easy_xkcd/.widget.WidgetLatestProvider
+I/ActivityManager(  619): Process de.tap.easy_xkcd (pid 17341) has died
+I/ActivityManager(  619): START u0 {act=de.tap.easy_xkcd.ACTION_COMIC flg=0x10000000 cmp=de.tap.easy_xkcd/.Activities.MainActivity bnds=[36,200][1044,1203] (has extras)} from uid 10248 on display 0
+I/ActivityManager(  619): Start proc 21711:de.tap.easy_xkcd/u0a248 for activity de.tap.easy_xkcd/.Activities.MainActivity
+W/XPrivacy(21711): Hooking package=de.tap.easy_xkcd
+E/WindowManager(21711): android.view.WindowLeaked: Activity de.tap.easy_xkcd.Activities.MainActivity has leaked window com.android.internal.policy.PhoneWindow$DecorView{5c08c23 V.E...... R.....ID 0,0-1026,488} that was originally added here
+E/WindowManager(21711):     at de.tap.easy_xkcd.fragments.comics.ComicBrowserFragment$updateNewest.onPreExecute(ComicBrowserFragment.java:141)
+E/WindowManager(21711):     at de.tap.easy_xkcd.fragments.comics.ComicBrowserFragment.onCreateView(ComicBrowserFragment.java:90)
+E/WindowManager(21711):     at de.tap.easy_xkcd.Activities.MainActivity.onStart(MainActivity.java:758)
+E/AndroidRuntime(21711): Process: de.tap.easy_xkcd, PID: 21711
+E/AndroidRuntime(21711): java.lang.NullPointerException: Attempt to invoke virtual method 'android.support.design.widget.FloatingActionButton de.tap.easy_xkcd.Activities.MainActivity.getFab()' on a null object reference
+E/AndroidRuntime(21711):    at de.tap.easy_xkcd.fragments.comics.ComicFragment.onPrepareOptionsMenu(ComicFragment.java:572)
+W/ActivityManager(  619):   Force finishing activity de.tap.easy_xkcd/.Activities.MainActivity
+I/WindowManager(  619): Screen frozen for +813ms due to Window{488f8e7 u0 Starting de.tap.easy_xkcd}
+I/WindowManager(  619): Screenshot max retries 4 of Token{b6b2bce ActivityRecord{ad408c9 u0 de.tap.easy_xkcd/.Activities.MainActivity t5032 f}} appWin=Window{8560a8a u0 Lade Comics…} drawState=1
+W/ActivityManager(  619): Activity pause timeout for ActivityRecord{ad408c9 u0 de.tap.easy_xkcd/.Activities.MainActivity t5032 f}
+D/Launcher( 2023): bindAppWidget: id=22 belongs to component ComponentInfo{de.tap.easy_xkcd/de.tap.easy_xkcd.widget.WidgetLatestProvider}
+I/WindowState(  619): WIN DEATH: Window{e924556 u0 de.tap.easy_xkcd/de.tap.easy_xkcd.Activities.MainActivity}
+I/ActivityManager(  619): Process de.tap.easy_xkcd (pid 21711) has died
+D/Launcher( 2023): bindAppWidget: id=22 belongs to component ComponentInfo{de.tap.easy_xkcd/de.tap.easy_xkcd.widget.WidgetLatestProvider}
+
+```
+"
+T-Rex96/Easy_xkcd,open,Widgets: Option to choose betwen w/b and color display,[],"I think for dark backgrounds it would also be useful to have the black/white display in the Widget. It should be choosable per widget.
+"
+T-Rex96/Easy_xkcd,closed,"Rename overview view types to compact list, list, and cards",[],
+T-Rex96/Easy_xkcd,closed,Feature request: Widget Settings,[],"I'm not sure how much work this would be, but it would be great if the widgets had configurable settings. The one I would like to see personally is the option to display the title text below the comic.
+
+Thanks!
+
+-Russ
+"
+T-Rex96/Easy_xkcd,closed,Feature request: Switch night mode in context menu,[],"Right now, it is only accessible by going to the settings. However, I think it would be a better experience if I were able to do that quickly by tapping the three dots on top and toggling night mode. 
+"
+T-Rex96/Easy_xkcd,open,Explain comic,[],"Internal view of the explanation instead of a browser requirement. 
+"
+T-Rex96/Easy_xkcd,closed,Czech translation update,[],
+T-Rex96/Easy_xkcd,closed,Opening a search result when app is set to launch in overview mode just kicks the app back to overview mode,[],"It does have the comic number in the app bar's subtext, though.
+"
+T-Rex96/Easy_xkcd,closed,ArrayIndexOutOfBoundsException in favorites overview ,[],"Whenever I click on one of the lower items in the favorites overview, I get an `ArrayIndexOutOfBoundsException` and the application crashes:
+
+```
+E/AndroidRuntime(24006): FATAL EXCEPTION: main
+E/AndroidRuntime(24006): Process: de.tap.easy_xkcd, PID: 24006
+E/AndroidRuntime(24006): java.lang.ArrayIndexOutOfBoundsException: length=61; index=-38
+E/AndroidRuntime(24006):    at de.tap.easy_xkcd.fragments.overview.OverviewBaseFragment.goToComic(OverviewBaseFragment.java:107)
+E/AndroidRuntime(24006):    at de.tap.easy_xkcd.fragments.overview.OverviewBaseFragment.showComic(OverviewBaseFragment.java:69)
+E/AndroidRuntime(24006):    at de.tap.easy_xkcd.fragments.overview.OverviewRecyclerBaseFragment$CustomOnClickListener.onClick(OverviewRecyclerBaseFragment.java:103)
+E/AndroidRuntime(24006):    at android.view.View.performClick(View.java:5204)
+E/AndroidRuntime(24006):    at android.view.View$PerformClick.run(View.java:21158)
+```
+"
+T-Rex96/Easy_xkcd,closed,what if overview: thumbnails are only inverted after scrolling if night mode is active,[],"When opening the app and navigating to the what if overview list for the first time, the first 2 pages or so of thumbnails are not inverted correctly. When scrolling down, cards that are loaded in get a correct inversion filter for the thumbnail. If you scrolled down enough lines so that the first few cards are not loaded anymore you can scroll up again to load them back into the list and then the thumbnails are inverted correctly. Unfortunately I don't know the concept enough to fix the bug myself, but I think an invocation of `comicViewHolder.thumbnail.setColorFilter(themePrefs.getNegativeColorFilter());` is missing for the items loaded in initially. I found this call in `fragments/whatIf/WhatIfOverviewFragment.java` line 203, maybe it should be called before the return in line 187 too?
+"
+T-Rex96/Easy_xkcd,closed,make what if questions and links more readable in night mode,[],"I just inverted the brightness of this color. Did not test how it looks, but the patch is simple enough to just work.
+"
+T-Rex96/Easy_xkcd,closed,Screen clears after toggling night mode or changing the phone orientation,[],"Nothing is displayed in the app anymore, I could only 'fix' it by killing and restarting the App.
+
+If you need more info, let me know.
+"
+T-Rex96/Easy_xkcd,closed,Overview in favoured comics,[],"The search menu already has a kind of overview, but it would be nice if the favourites many would also have such a menu, so one can have a look at all favoured comics at a glance.
+
+A grid view would possibly also suitable here.
+"
+T-Rex96/Easy_xkcd,closed,only 1655 comics viewable,[],"I can only access Comic 1-1655, as well as on the latest.
+i have the version 5.2, I have activated th Offline mode for the comics and for What-If, also the large image setting.
+"
+T-Rex96/Easy_xkcd,closed,Explain xkcd supports HTTPS,[],"Because they are using Cloudflare.
+
+https://explainxkcd.com/
+
+So what about changing the links?
+"
+T-Rex96/Easy_xkcd,closed,After night mode invert switch app needs to restart,[],"If you switch the invert setting of the night mode the asp needs to restart.
+Otherwise most of the (already) downloaded pictures are still shown in the old way.
+
+So please either
+1) request a restart after changing this setting or
+2) get the asp to instantly apply the new setting
+"
+T-Rex96/Easy_xkcd,closed,Night mode should only invert black/white pictures,[],"E.g. this picture is also inverted which does not look good: https://xkcd.com/766
+"
+T-Rex96/Easy_xkcd,closed,Widgets,[],"It would be awesome to have a wdget with xkcd comics.
+
+Please let us choose between ""daily comic"" (the most up-to-date comic) and ""random comic"" (where a random comic is chosen). So these 2 widgets would be nice...
+"
+T-Rex96/Easy_xkcd,closed,Using HTTPS,[],"At least an option would be nice to use [HTTPS](https://xkcd.com/). Please also use HTTPS when sharing a link...
+"
+T-Rex96/Easy_xkcd,closed,"When enabling offline mode, app doesn't realize it can't download comic 404.",[],">_>
+"
+T-Rex96/Easy_xkcd,closed,Offline mode,[],"Loading comics stops at 403.
+"
+T-Rex96/Easy_xkcd,closed,Unicode/UTF-8 support missing.,[],"This is a suggestion/enhancement. 
+![2016-04-13-174241_862x737_scrot](https://cloud.githubusercontent.com/assets/6516167/14511747/48e2ba78-019f-11e6-8092-b89a3f928766.png)
+
+The character missing in the word centrifuetal is ""ᵫ"" (U+1D6B). 
+
+I haven't seen many  comics/what-ifs with too much unicode, but would be nice if done.
+"
+T-Rex96/Easy_xkcd,closed,Alternate card style for overview,[],"https://i.imgur.com/dDWtf4M.png
+
+Something like the image above, _maybe_ with only a single column.
+"
+T-Rex96/Easy_xkcd,closed,Feature request: Show article number in what-if ,[],"In the title bar on what-if, there is currently no indication of the article number. But the comic view does. 
+
+Having it makes it easier to look up the article later. 
+"
+T-Rex96/Easy_xkcd,closed,Favorites double,[],"My favorites all appear twice. I use version 5.0.4.
+Anyone else who has the same problem?
+"
+T-Rex96/Easy_xkcd,open,Allow External SD Card for Offline Storage,[],"When trying to choose my SD card as the offline storage location by going up a directory from the default view, it says operation not permitted.
+"
+T-Rex96/Easy_xkcd,closed,Having a way to now about new features,[],"Is it possible to have a pop up message when first launching the app after an upgrade to now that there's a new feature available in the app ?
+Or a changelog. Whatever you find the least bothersome :)
+"
+T-Rex96/Easy_xkcd,closed,Checking offline mode option and what if? offline mode just after make the app bug,[],"Checking the 2nd option before the first one is over make the download overview bug. It constantly switch between the 2 of them until one of them is over.
+"
+T-Rex96/Easy_xkcd,closed,Added comic 1509 to the list of large comics,[],"I found another one.
+"
+T-Rex96/Easy_xkcd,closed,Don't import de.tap.easy_xkcd.database.DatabaseManager,[],"You import  `de.tap.easy_xkcd.database.DatabaseManager` but it is not included included in this repository. However, it doesnt look it's actually ever used, so it might be a left over.
+"
+T-Rex96/Easy_xkcd,closed,Switch commonsware repo url,[],"You should use  `https://s3.amazonaws.com/repo.commonsware.com` instead of `https://repo.commonsware.com.s3.amazonaws.com` -- see upstream at https://github.com/commonsguy/cwac-wakeful/commit/94928b9769e422c6117d36a4ef8a999263a68099.
+"
+T-Rex96/Easy_xkcd,closed,"Favorites export doesn't work for email, hangouts, etc.",[],"Favorites export now tries to export as a text file. It works if exporting to apps like Dropbox and OneDrive, but if exporting to Gmail or Hangouts, it says ""Can't attach empty file"" or ""Media format not supported."" Information on the issue [here](http://stackoverflow.com/questions/32981194/android-6-cannot-share-files-anymore) and [here](http://stackoverflow.com/questions/32318692/android-attaching-a-file-to-gmail-cant-attach-empty-file).
+
+[FavoritesFragment.java](https://github.com/T-Rex96/Easy_xkcd/tree/master/app/src/main/java/de/tap/easy_xkcd/fragments/FavoritesFragment.java)
+"
+T-Rex96/Easy_xkcd,closed,FAB in overview mode causes crash,[],"Pressing the random-FAB in the favorites overview mode causes an `ArrayIndexOutOfBoundsException`.
+Here's the log output:
+
+```
+E/AndroidRuntime(21188): FATAL EXCEPTION: main
+E/AndroidRuntime(21188): Process: de.tap.easy_xkcd, PID: 21188
+E/AndroidRuntime(21188): java.lang.ArrayIndexOutOfBoundsException: length=509; index=-1108
+E/AndroidRuntime(21188):        at android.util.SparseArray.keyAt(SparseArray.java:271)
+E/AndroidRuntime(21188):        at de.tap.easy_xkcd.fragments.OverviewBaseFragment.showComic(OverviewBaseFragment.java:55)
+E/AndroidRuntime(21188):        at de.tap.easy_xkcd.fragments.OverviewCardsFragment.showComic(OverviewCardsFragment.java:73)
+E/AndroidRuntime(21188):        at de.tap.easy_xkcd.Activities.MainActivity.onClick(MainActivity.java:233)
+E/AndroidRuntime(21188):        at de.tap.easy_xkcd.Activities.MainActivity$$ViewBinder$1.doClick(MainActivity$$ViewBinder.java:18)
+```
+"
+T-Rex96/Easy_xkcd,closed,"When overview mode is shown by default, opening a link to a comic from another app opens to its position in the overview",[],
+T-Rex96/Easy_xkcd,open,"Should only ""switch comic when zoomed in"" when initiating new swipe",[],"Right now, I can be zoomed into the comic, then swipe to pan around.
+
+If my pan extends beyond the end of the comic, the app will automatically switch comics. That's generally not what I want.
+
+It should first stop at the edge of the comic, then only switch comics if I swipe again in that direction.
+
+Probably lots of corner cases...
+"
+T-Rex96/Easy_xkcd,closed,Added comic 930 to the list of large comics,[],"I found another large comic.
+"
+T-Rex96/Easy_xkcd,closed,Added drawer close if open on back press,[],
+T-Rex96/Easy_xkcd,closed,Display .gif images properly,[],"The comic browser fails to display the animations of comics that are .gif images (such as [961](https://xkcd.com/961/)).
+It would be nice if we could implement proper support for .gif files.
+"
+T-Rex96/Easy_xkcd,closed,Changed pager margin to padding for edge-to-edge zoom,[],
+T-Rex96/Easy_xkcd,closed,Czech translation,[],"updated
+"
+T-Rex96/Easy_xkcd,closed,Add feature - Export Favorites list as text,[],"Added ability to export favorites list as text. Available under the
+Advanced settings. Exports in a format like this:
+
+```
+627 - Tech Support Cheat Sheet
+641 - Free
+645 - RPS
+675 - Revolutionary
+688 - Self-Description
+```
+
+The user can choose any app to export to that supports text/plain, such
+as Gmail or a note-taking app.
+
+Note that my computer and phone are not set up for Android development,
+so I haven't tested or even compiled this, but it's a pretty simple
+feature and hopefully I have done everything right. I used google
+translate to add new text to the other languages, but I cannot vouch for
+their accuracy.
+"
+T-Rex96/Easy_xkcd,closed,Pressing Go to bookmark when in the favorite list overview crash the app,[],"If you press go to bookmark when you're in the favorite list view, the app crash
+"
+T-Rex96/Easy_xkcd,closed,Issue with comic 1193,[],"There's just a blank picture and the alt text isn't displayed (it might be because there seems to be multiple alt text)
+https://xkcd.com/1193/
+"
+T-Rex96/Easy_xkcd,closed,Comic 1227 isn't displayed,[],"I've got the alt text and title but the comic isn't displayed
+https://xkcd.com/1227/
+"
+T-Rex96/Easy_xkcd,closed,Issue with title,[],"The title of https://xkcd.com/1137/ isn't displayed properly instead I have ""â(a symbol)LTR""
+"
+T-Rex96/Easy_xkcd,closed,Issue with alt text,[],"I've found others so maybe keeping this issue open for some time in case I found other again to avoid creating a lot of issue just for that ?
+
+https://xkcd.com/1234/ the ""you're"" isn't displayed properly it show ""youâ re""
+
+https://xkcd.com/1147/ the ""é"" of ""Pokémon"" isn't displayed properly too
+"
+T-Rex96/Easy_xkcd,closed,Fixed #51,[],"We really need a long-term solution for these alt text issues.
+"
+T-Rex96/Easy_xkcd,closed,Another small issue with the alt text,[],"In the heartbleed comic (https://xkcd.com/1353/) the ä of Tannhäusser isn't displayed properly in the alt text
+"
+T-Rex96/Easy_xkcd,closed,A Changelog would be nice!,[],"Could you make a simple Changelog just to keep us updated about the changes from a release to another?
+
+Thanks
+"
+T-Rex96/Easy_xkcd,closed,Add to favorites option in the comics list,[],"When you're in the comic list, there's an option ""add to favorites"" which doesn't add to favorites but switch to a favorite list. The option is present here too and it switch back to the normal comic list.
+"
+T-Rex96/Easy_xkcd,closed,No remove from favorite in the favorite menu,[],"When in the favorite menu, there's no option to remove the comic which is displayed, only one to clear all favorites
+"
+T-Rex96/Easy_xkcd,closed,Improved back button behaviour and fixed #46,[],"When the user opens a comic via the SearchResultsActivity and then presses the back button, the application would usually first open the overview mode before going back to the SearchResultsActivity.
+I tried to improve this by making the application check if the user had previously opened a SearchResultsActivity.
+The back button should now either open the overview mode or navigate back to your search results depending on whether you just performed a search or not.
+I also fixed issue #46.
+"
+T-Rex96/Easy_xkcd,closed,Alt text isn't displayed properly,[],"For the comics 1379 (https://xkcd.com/1379/), the alt text isn't displayed properly on my phone, the ""2°C"" is displayed ""2Â°C"".
+
+Not really a big issue but just to let you know about it as it may occur again.
+"
+T-Rex96/Easy_xkcd,closed,Add to favorites doesn't change if already favorite,[],"When pressing the add to favorites button to a comic which isn't a favorite, the phrase doesn't switch to delete from favorites (or whatever it should be). It still shows add to favorites and pressing it again delete the comic from favorites.
+
+With version 3.8.3
+"
+T-Rex96/Easy_xkcd,closed,Added comic 832 to the list of large comics,[],"I just found another large comic.
+"
+T-Rex96/Easy_xkcd,closed,Issue with the comic list when going back from a comic,[],"When going back from a comic to the comic list, the app doesn't show the list near the comic I was reading (for example 1518) but close to the first one (it's around 100).
+So I have to go back to the top and search for my comic.
+But once I've done that and if I go back again, it shows the right place in the list.
+But if I close the app(not just quitting it), and do this again, the issue is here again.
+
+Not sure if I'm clear enough ^^
+"
+T-Rex96/Easy_xkcd,closed,Add a bookmark option,[],"Is it possible to have a bookmark option ?
+Right now, I'm reading all the xkcd comics starting from the most recent one but when there is a new one and I go to see it, I have to search for the one I was reading before.
+Having an option as save current comic as bookmark and go to bookmark to easily go to the saved one would be nice.
+
+Thanks in advance :)
+"
+T-Rex96/Easy_xkcd,closed,Show the new comic available button longer,[],"The button that tells that there is a new comic doesn't stay long enough. Could it stays a couple of seconds longer ?
+"
+T-Rex96/Easy_xkcd,closed,Added comic 1461 to the list of large comics,[],"Comic 1461 was missing in the large_comics array, so I added it.
+
+I also tried to add comic 1127 and 980, but comic 1127 lagged quite severely and comic 980 caused an OutOfMemoryError, which is why I decided to remove them again.
+"
+T-Rex96/Easy_xkcd,closed,Comic 104 is upside down,[],"The [JPEG file](http://imgs.xkcd.com/comics/find_you.jpg) of comic 104 seems to be upside down.
+Perhaps someone can find a way to turn this image before it is displayed.
+"
+T-Rex96/Easy_xkcd,closed,Czech translation,[],"update
+"
+T-Rex96/Easy_xkcd,closed,Added new Options to the options menu in the FavoritesFragment and the OfflineFragment,[],"I've now added the ""Open in browser"" option to the FavoritesFragment and the OfflineFragment.
+I've also noticed that the ""Explain Comic"" option wasn't working in the FavoritesFragment, so I fixed that too.
+There are a lot of redundant methods in the FavoritesFragment and the OfflineFragment, which already exist in the ComicBrowserFragment (e.g. shareComic(), showTranscript() and now also openInBrowser()). Perhaps somebody should clean this up a bit.
+"
+T-Rex96/Easy_xkcd,closed,"Added ""Open in browser"" option to the comic browser",[],"I took the liberty of adding a ""Open in Browser"" option to the options menu in the ComicBrowserFragment.
+This might come in handy if somebody wants to view one of the interactive comics in a normal web browser.
+"
+T-Rex96/Easy_xkcd,closed,translation update,[],
+T-Rex96/Easy_xkcd,closed,Suggestion for overview mode,[],"I don't know how far you are with implementing a better overview mode, but I just noticed there already is a pretty good list-based one: the search results.
+If you search something, then search again (from the search activity), and finally clear your search you'll get a satisfying list of all comics out there.
+
+![device-2015-12-06-181919](https://cloud.githubusercontent.com/assets/8741140/11614552/494ff2be-9c46-11e5-8ded-eaf93c24c2f1.png)
+
+Wouldn't it be easier to improve this one (e.g. reverse it, so the newest comic is on top, and add a scroll bar) than completely writing a  new one? As an extra, we'd have a consistent design in the whole app.
+Of course, there might be a grid-based one too, and the user can select which is shown with an entry in the settings.
+"
+T-Rex96/Easy_xkcd,closed,Add Inverted Comics,[],"There should be an option to have a night/dark theme and have inverted comics (white on black instead of black on white). It shouldn't take much processing power and would add more options. 
+"
+T-Rex96/Easy_xkcd,closed,Large comics don't zoom in enough,[],"Comics like #657 don't zoom in enough on my Galaxy S5 to be readable. (I don't remember if 657 specifically is like this, I just know 657 is a large comic. The problem is with the really large ones.)
+"
+T-Rex96/Easy_xkcd,closed,Fixes #30,[],"Allows repository to be opened in Android Studio.
+"
+T-Rex96/Easy_xkcd,closed,Project Doesn't Open in Android Studio on Mac,[],"I was very excited to look into the code on this project, but when I tried to open it by importing it from GitHub into Android Studio, it didn't load. The reason I'm suspecting this is an issue with the repository and not with the IDE itself is because the error it gave me (see below) involved converting a URL from a local C:/ drive. I attached the log because I'm new to this and I may be completely wrong in my guess, but I'd love to be able to browse the code.
+![screen shot 2015-11-17 at 3 07 49 pm](https://cloud.githubusercontent.com/assets/8755783/11223591/be278f82-8d3e-11e5-83a6-ccae16f93344.PNG)
+
+```
+Caused by: org.gradle.api.InvalidUserDataException: Cannot convert URL 'C:/' to a file.
+    at org.gradle.api.internal.file.AbstractFileResolver.convertObjectToFile(AbstractFileResolver.java:188)
+    at org.gradle.api.internal.file.BaseDirFileResolver.doResolve(BaseDirFileResolver.java:69)
+    at org.gradle.api.internal.file.AbstractFileResolver.resolve(AbstractFileResolver.java:77)
+    at org.gradle.api.internal.file.AbstractFileResolver.resolve(AbstractFileResolver.java:60)
+    at org.gradle.api.internal.file.DefaultFileOperations.file(DefaultFileOperations.java:69)
+    at org.gradle.api.internal.project.AbstractProject.file(AbstractProject.java:620)
+    at org.gradle.groovy.scripts.DefaultScript.file(DefaultScript.java:113)
+    at org.gradle.api.internal.BeanDynamicObject$GroovyObjectAdapter.invokeMethod(BeanDynamicObject.java:268)
+    at org.gradle.api.internal.BeanDynamicObject.invokeMethod(BeanDynamicObject.java:129)
+    at org.gradle.api.internal.ConfigureDelegate.invokeMethod(ConfigureDelegate.java:78)
+    at build_1tk45g2ye7zc7fvkpg0vvppds$_run_closure1_closure3_closure8.doCall(/Users/lindafiscus/github/Easy_xkcd/app/build.gradle:7)
+    at org.gradle.api.internal.ClosureBackedAction.execute(ClosureBackedAction.java:63)
+    at org.gradle.api.internal.AbstractNamedDomainObjectContainer.create(AbstractNamedDomainObjectContainer.java:59)
+    at org.gradle.api.internal.AbstractNamedDomainObjectContainer.create(AbstractNamedDomainObjectContainer.java:52)
+    at org.gradle.api.internal.NamedDomainObjectContainerConfigureDelegate._configure(NamedDomainObjectContainerConfigureDelegate.java:39)
+    at org.gradle.api.internal.ConfigureDelegate.invokeMethod(ConfigureDelegate.java:73)
+    at build_1tk45g2ye7zc7fvkpg0vvppds$_run_closure1_closure3.doCall(/Users/lindafiscus/github/Easy_xkcd/app/build.gradle:4)
+    at org.gradle.api.internal.ClosureBackedAction.execute(ClosureBackedAction.java:63)
+    at org.gradle.util.ConfigureUtil.configure(ConfigureUtil.java:130)
+    at org.gradle.util.ConfigureUtil.configure(ConfigureUtil.java:91)
+    at org.gradle.api.internal.AbstractNamedDomainObjectContainer.configure(AbstractNamedDomainObjectContainer.java:68)
+    at org.gradle.api.internal.AbstractNamedDomainObjectContainer.configure(AbstractNamedDomainObjectContainer.java:24)
+    at org.gradle.api.internal.ClosureBackedAction.execute(ClosureBackedAction.java:55)
+    at org.gradle.api.Action$execute.call(Unknown Source)
+    at com.android.build.gradle.BaseExtension.signingConfigs(BaseExtension.groovy:318)
+    at com.android.build.gradle.AppExtension_Decorated.signingConfigs(Unknown Source)
+    at build_1tk45g2ye7zc7fvkpg0vvppds$_run_closure1.doCall(/Users/lindafiscus/github/Easy_xkcd/app/build.gradle:3)
+    at org.gradle.api.internal.ClosureBackedAction.execute(ClosureBackedAction.java:63)
+    at org.gradle.api.internal.plugins.ExtensionsStorage$ExtensionHolder.configure(ExtensionsStorage.java:145)
+    at org.gradle.api.internal.plugins.ExtensionsStorage.configureExtension(ExtensionsStorage.java:69)
+    at org.gradle.api.internal.plugins.DefaultConvention$ExtensionsDynamicObject.invokeMethod(DefaultConvention.java:207)
+    at org.gradle.api.internal.CompositeDynamicObject.invokeMethod(CompositeDynamicObject.java:147)
+    at org.gradle.groovy.scripts.BasicScript.methodMissing(BasicScript.java:79)
+    at build_1tk45g2ye7zc7fvkpg0vvppds.run(/Users/lindafiscus/github/Easy_xkcd/app/build.gradle:2)
+    at org.gradle.groovy.scripts.internal.DefaultScriptRunnerFactory$ScriptRunnerImpl.run(DefaultScriptRunnerFactory.java:52)
+    ... 43 more
+2015-11-17 15:20:53,971 [58749561]   WARN - nal.AbstractExternalSystemTask - Cannot convert URL 'C:/' to a file. 
+com.intellij.openapi.externalSystem.model.LocationAwareExternalSystemException: Cannot convert URL 'C:/' to a file.
+    at org.jetbrains.plugins.gradle.service.project.AbstractProjectImportErrorHandler.createUserFriendlyError(AbstractProjectImportErrorHandler.java:103)
+    at org.jetbrains.plugins.gradle.service.project.BaseProjectImportErrorHandler.getUserFriendlyError(BaseProjectImportErrorHandler.java:158)
+    at org.jetbrains.plugins.gradle.service.project.BaseGradleProjectResolverExtension.getUserFriendlyError(BaseGradleProjectResolverExtension.java:438)
+    at com.android.tools.idea.gradle.project.AndroidGradleProjectResolver.getUserFriendlyError(AndroidGradleProjectResolver.java:348)
+    at org.jetbrains.plugins.gradle.service.project.AbstractProjectResolverExtension.getUserFriendlyError(AbstractProjectResolverExtension.java:164)
+    at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver$ProjectConnectionDataNodeFunction.fun(GradleProjectResolver.java:366)
+    at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver$ProjectConnectionDataNodeFunction.fun(GradleProjectResolver.java:332)
+    at org.jetbrains.plugins.gradle.service.project.GradleExecutionHelper.execute(GradleExecutionHelper.java:225)
+    at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver.resolveProjectInfo(GradleProjectResolver.java:97)
+    at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver.resolveProjectInfo(GradleProjectResolver.java:65)
+    at com.intellij.openapi.externalSystem.service.remote.RemoteExternalSystemProjectResolverImpl$1.produce(RemoteExternalSystemProjectResolverImpl.java:41)
+    at com.intellij.openapi.externalSystem.service.remote.RemoteExternalSystemProjectResolverImpl$1.produce(RemoteExternalSystemProjectResolverImpl.java:37)
+    at com.intellij.openapi.externalSystem.service.remote.AbstractRemoteExternalSystemService.execute(AbstractRemoteExternalSystemService.java:59)
+    at com.intellij.openapi.externalSystem.service.remote.RemoteExternalSystemProjectResolverImpl.resolveProjectInfo(RemoteExternalSystemProjectResolverImpl.java:37)
+    at com.intellij.openapi.externalSystem.service.remote.wrapper.ExternalSystemProjectResolverWrapper.resolveProjectInfo(ExternalSystemProjectResolverWrapper.java:49)
+    at com.intellij.openapi.externalSystem.service.internal.ExternalSystemResolveProjectTask.doExecute(ExternalSystemResolveProjectTask.java:51)
+    at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:138)
+    at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:124)
+    at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$4.execute(ExternalSystemUtil.java:540)
+    at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$5$1.run(ExternalSystemUtil.java:612)
+    at com.intellij.openapi.progress.impl.CoreProgressManager$TaskRunnable.run(CoreProgressManager.java:563)
+    at com.intellij.openapi.progress.impl.CoreProgressManager$8.run(CoreProgressManager.java:367)
+    at com.intellij.openapi.progress.impl.CoreProgressManager$2.run(CoreProgressManager.java:152)
+    at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:452)
+    at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:402)
+    at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:54)
+    at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:137)
+    at com.intellij.openapi.application.impl.ApplicationImpl$10$1.run(ApplicationImpl.java:617)
+    at com.intellij.openapi.application.impl.ApplicationImpl$8.run(ApplicationImpl.java:400)
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:439)
+    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+    at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
+    at java.lang.Thread.run(Thread.java:695)
+    at org.jetbrains.ide.PooledThreadExecutor$1$1.run(PooledThreadExecutor.java:56)
+
+2015-11-17 15:20:54,999 [58750589]   WARN - ij.ui.messages.SheetController - URL is null; HyperlinkEvent: javax.swing.event.HyperlinkEvent[source=javax.swing.JEditorPane[,120,45,311x39,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.basic.BasicBorders$MarginBorder@600ccf6f,flags=16777504,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],disabledTextColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],editable=false,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=javax.swing.plaf.ColorUIResource[r=255,g=255,b=255],selectionColor=javax.swing.plaf.ColorUIResource[r=47,g=101,b=202],kit=javax.swing.text.html.HTMLEditorKit@240906be,typeHandlers={text/html=javax.swing.text.html.HTMLEditorKit@240906be}]] 
+2015-11-17 15:20:57,469 [58753059]   WARN - ij.ui.messages.SheetController - URL is null; HyperlinkEvent: javax.swing.event.HyperlinkEvent[source=javax.swing.JEditorPane[,120,45,311x39,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.basic.BasicBorders$MarginBorder@600ccf6f,flags=16777504,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],disabledTextColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],editable=false,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=javax.swing.plaf.ColorUIResource[r=255,g=255,b=255],selectionColor=javax.swing.plaf.ColorUIResource[r=47,g=101,b=202],kit=javax.swing.text.html.HTMLEditorKit@240906be,typeHandlers={text/html=javax.swing.text.html.HTMLEditorKit@240906be}]] 
+2015-11-17 15:20:57,622 [58753212]   WARN - ij.ui.messages.SheetController - URL is null; HyperlinkEvent: javax.swing.event.HyperlinkEvent[source=javax.swing.JEditorPane[,120,45,311x39,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.basic.BasicBorders$MarginBorder@600ccf6f,flags=16777504,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],disabledTextColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],editable=false,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=javax.swing.plaf.ColorUIResource[r=255,g=255,b=255],selectionColor=javax.swing.plaf.ColorUIResource[r=47,g=101,b=202],kit=javax.swing.text.html.HTMLEditorKit@240906be,typeHandlers={text/html=javax.swing.text.html.HTMLEditorKit@240906be}]] 
+2015-11-17 15:20:59,050 [58754640]   WARN - ij.ui.messages.SheetController - URL is null; HyperlinkEvent: javax.swing.event.HyperlinkEvent[source=javax.swing.JEditorPane[,120,45,311x39,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.basic.BasicBorders$MarginBorder@600ccf6f,flags=16777504,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],disabledTextColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],editable=false,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=javax.swing.plaf.ColorUIResource[r=255,g=255,b=255],selectionColor=javax.swing.plaf.ColorUIResource[r=47,g=101,b=202],kit=javax.swing.text.html.HTMLEditorKit@240906be,typeHandlers={text/html=javax.swing.text.html.HTMLEditorKit@240906be}]] 
+2015-11-17 15:20:59,185 [58754775]   WARN - ij.ui.messages.SheetController - URL is null; HyperlinkEvent: javax.swing.event.HyperlinkEvent[source=javax.swing.JEditorPane[,120,45,311x39,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.basic.BasicBorders$MarginBorder@600ccf6f,flags=16777504,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],disabledTextColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],editable=false,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=javax.swing.plaf.ColorUIResource[r=255,g=255,b=255],selectionColor=javax.swing.plaf.ColorUIResource[r=47,g=101,b=202],kit=javax.swing.text.html.HTMLEditorKit@240906be,typeHandlers={text/html=javax.swing.text.html.HTMLEditorKit@240906be}]] 
+2015-11-17 15:20:59,359 [58754949]   WARN - ij.ui.messages.SheetController - URL is null; HyperlinkEvent: javax.swing.event.HyperlinkEvent[source=javax.swing.JEditorPane[,120,45,311x39,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.basic.BasicBorders$MarginBorder@600ccf6f,flags=16777504,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],disabledTextColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],editable=false,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=javax.swing.plaf.ColorUIResource[r=255,g=255,b=255],selectionColor=javax.swing.plaf.ColorUIResource[r=47,g=101,b=202],kit=javax.swing.text.html.HTMLEditorKit@240906be,typeHandlers={text/html=javax.swing.text.html.HTMLEditorKit@240906be}]] 
+2015-11-17 15:21:50,630 [58806220]   WARN - ij.ui.messages.SheetController - URL is null; HyperlinkEvent: javax.swing.event.HyperlinkEvent[source=javax.swing.JEditorPane[,120,45,311x39,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.basic.BasicBorders$MarginBorder@600ccf6f,flags=16777504,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],disabledTextColor=javax.swing.plaf.ColorUIResource[r=187,g=187,b=187],editable=false,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=javax.swing.plaf.ColorUIResource[r=255,g=255,b=255],selectionColor=javax.swing.plaf.ColorUIResource[r=47,g=101,b=202],kit=javax.swing.text.html.HTMLEditorKit@240906be,typeHandlers={text/html=javax.swing.text.html.HTMLEditorKit@240906be}]] 
+```
+
+I apologize if this is not an issue with your repository, as I said, I'm new to this.
+"
+T-Rex96/Easy_xkcd,closed,updated Czech translation,[],"for Easy_xkcd
+"
+T-Rex96/Easy_xkcd,closed,New materialized icons proposition,[],"I feel like the icons are not so pretty, so here's something cleaner, if you want something else I can make it however you want
+"
+T-Rex96/Easy_xkcd,closed,Small comics are too big,[],"For example, 1602 takes up my entire phone display and cannot be zoomed out.
+
+You could add a ""maximum zoom""option or depend on screen DPI.
+"
+T-Rex96/Easy_xkcd,closed,Cannot swipe when zoomed in,[],"I decided to try this app out again. I see that you still can't swipe to switch when zoomed in.
+
+Suggestions to fix:
+- Double-swipe to switch comics.
+- Swipe action bar to switch comics.
+
+Of course this should be user-configurable.
+"
+T-Rex96/Easy_xkcd,closed,App closes when phone turned in landscape mode,[],"Hi
+I just noticed that your app closes when I turn my phone sideways. There is no error message though.
+"
+T-Rex96/Easy_xkcd,closed,Commics appear twice,[],"Hello,
+I've recently noticed that Easy xkcd sometimes displays the same comic twice when you swipe from one comic to the next. The title of the comic changes and the number in the toolbar increases, but the applications simply shows me the previous comic.
+
+Here's an example (please excuse the size of the screenshots):
+
+**This is comic 1306:**
+![screenshot_2015-10-28-09-34-17](https://cloud.githubusercontent.com/assets/11149991/10784477/a7b7b97e-7d5e-11e5-9b29-0288fc136240.png)
+
+**When I swipe to comic 1307, the application also displays comic 1306:**
+![screenshot_2015-10-28-09-34-14](https://cloud.githubusercontent.com/assets/11149991/10784502/c53aa5b0-7d5e-11e5-9f83-e83ee3d5f48c.png)
+
+I hope that you somehow manage to fix this.
+I'd be delighted to provide any help if necessary.
+"
+T-Rex96/Easy_xkcd,closed,Update Serbian,[],
+T-Rex96/Easy_xkcd,closed,Invisible actionbar when comic opened from search,[],"Hi
+When I sesrch for a comic, open it and want to share it, there is no actionbar. But the menu can still be opened.
+"
+T-Rex96/Easy_xkcd,closed,query on external storage,[],"hi, i see you closed the issue on saving to external sdcard.  however on my moto g 4g (firstgen) the app (ver3.3) saves to the internal scdard storage and no to my micro sd external card.  the internal storage is at /storage/sdcard0 and the microsd card at /storage/sdcard1, 
+am i missing something about getting comics to store on the microsd card?
+
+diziet
+"
+T-Rex96/Easy_xkcd,open,No tests,[],"Well, OK, there is one default test but that's it. It would be good to have a nice test suite that can then be run on travis
+"
+T-Rex96/Easy_xkcd,closed,Create README.md,[],"It's always good to have a README file to explain what the app is, where people can get it, etc.
+"
+T-Rex96/Easy_xkcd,closed,Hangs at loading comics ,[],"Ever since I see google play biking service permission added
+Whenever I start easy xk it just hangs at loading comics if I have no internet
+
+It's been a few updates since this started.
+"
+T-Rex96/Easy_xkcd,closed,Overview mode,[],"So I personally have a small bit of a distaste for comic readers that show the comic like the site does, with just the comic and navigation back and forth. It'd be nice if part of the UI was a bit of an overview mode, a scrollable list of the comics. Maybe not a basic textual list, something visual like [this iOS app](https://i.imgur.com/CAbNFT2.png) could work nicely.
+"
+T-Rex96/Easy_xkcd,closed,No pictures in what-if,[],"I noticed, there are no pictures displayed for the what-ifs, just some tiny \* or something like that which shows the alt-text when touched. Switching to offline mode for what-if and being on W-LAN instead of mobile internet did not change that behaviour, so I assume it is not related to those settings.
+"
+T-Rex96/Easy_xkcd,closed,Tag releases,[],"It would be great if you could tag releases (e.g. the commits bumping the versioncode) in a simple and consistent scheme (e.g. the plain versioname or versioncode) using `git tag TAGNAME` and then `git push --tags`. Readable tags are really helpful when checking out ""known good"" versions.
+"
+T-Rex96/Easy_xkcd,closed,Fixed favorites comic number bug,[],"The favorites were broken, because the wrong comic number was loaded . . .
+Hope that fixed it!
+"
+T-Rex96/Easy_xkcd,closed,WebView Layout issue,[],"There is still a layout issue in the WebView on my phone.
+The text is incredibly huge with no possibility to zoom out (see screenshot).
+
+I couldn't reproduce the issue on an emulator, it is only present on my device (Android 4.3) . . .
+
+![device-2015-09-04-174758](https://cloud.githubusercontent.com/assets/8741140/9688206/0a1932ce-532e-11e5-9ad0-cdd4f812a8f9.png)
+"
+T-Rex96/Easy_xkcd,closed,OutOfMemory Exception when selecting too many favorites,[],"Seems like all favorites are loaded into memory, so when you just select enough of them the app crashes.
+"
+T-Rex96/Easy_xkcd,closed,Lime theme needs dark font in toolbar,[],"According to the [guidelines](https://www.google.com/design/spec/style/color.html#color-color-palette) the lime theme should use a dark font for better contrast. Technically the green theme is affected as well, but I think the contrast is fine there and having white font on the darker (700-tone) system bar and black font in the toolbar right below probably looks weird.
+
+I looked at the source, but could not find an easy fix. The dark actionbar theme seems to be hardcoded in `tool_bar.xml` and the parents of the styles in `styles.xml` seem to be ignored, since only single values are extracted from those custom styles.
+"
+T-Rex96/Easy_xkcd,closed,changing screen orientation resets color scheme,[],"When rotating the device to go into landscape mode, the ActionBar resets itself to the default gray/blue scheme.
+"
+T-Rex96/Easy_xkcd,closed,Update Serbian,[],
+T-Rex96/Easy_xkcd,closed,High memory usage causes OutOfMemoryError,[],"Because the app crashes occasionally on my phone, I did some researches with Android Studio:
+When using the app (and swiping through the comics) the memory usage increases and increases . . .
+When it reaches ca. 55 MB an OutOfMemoryError is thrown.
+Also it seems like all favourites are loaded into Memory, which isn't a perfect behaviour when there are a number of favourites . . .
+Maybee it's possible to unload more comics that are not needed any more and don't load all favourites into RAM?
+"
+T-Rex96/Easy_xkcd,closed,Support for What-if,[],"Is there any plan for supporting What-if in a future version?
+"
+T-Rex96/Easy_xkcd,closed,Enhancement - Setting directory for offline downloads,[],"I prefer to download the offline entries to my external SDCARD because it has much more room than the internal storage.
+The directory for offline storage could be a configuration setting.
+"
+T-Rex96/Easy_xkcd,closed,Enhancement - Setting to force auto-landscape,[],"I prefer to view the images in landscape mode, so it would be helpful to have a Settiing that forces the device into landscape mode when in the Easy XKCD app.
+
+Thanks!
+"
+T-Rex96/Easy_xkcd,closed,Czech translation for Easy xkcd,[],"created
+"
+T-Rex96/Easy_xkcd,closed,Serbian translation,[],"Thanks for this fantastic app! :)
+"
+T-Rex96/Easy_xkcd,closed,Holding down finger after double-clicking to zoom causes the alt text to activate,[],"I'm a big one-hand user of phones, and use one-finger zoom almost exclusively. I noticed that double clicking zooms in by some arbitrary amount. However, when using this method to zoom, if one continues to hold down their finger, the alt text will show on the bottom, the phone will vibrate, and the image will no longer be zoomed in. It's rather off-putting.
+"
+T-Rex96/Easy_xkcd,closed,Showing alt text resets zoom,[],"I feel like this shouldn't happen.
+"

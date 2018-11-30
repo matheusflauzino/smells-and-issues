@@ -1,0 +1,68 @@
+repository,state,title,label,body
+cgogolin/library,closed,Author parser,[],"This PR adds an authorSortKey field to the bibtex entries, in the format ""Lastname Firstname Jr"", based on info from [Tame the BeaST](http://tug.ctan.org/info/bibtex/tamethebeast/ttb_en.pdf)
+To test it I made the attached bib file with several variations of an author's name, and also tested a bit on my own bibtex library.
+[testAuthorSorting.txt](https://github.com/cgogolin/library/files/1951972/testAuthorSorting.txt)
+
+We should probably also add an option to show all entries of an author, similar to the groups feature
+"
+cgogolin/library,closed,URL field corrupted by howpublished,[],"If a BibTeX entry has both the `howpublished` field and the `url` field set, the contents of the `howpublished` field seem to be appended onto the URL displayed by Library, causing the hyperlink to fail in the app.
+
+For example, the following BibTex fragment (generated using JabRef), causes Library to display the corrupted URL ""`http://www.adelard.com/asce/choosing-asce/cae.htmlOnline`"":
+
+    @Misc{CAE,
+      author =       {Adelard},
+      title =        {Claims, Arguments and Evidence {(CAE)}},
+      howpublished = {Online},
+      note =         {Accessed 12 Feb 2017.},
+      url =          {http://www.adelard.com/asce/choosing-asce/cae.html}
+    }
+
+This doesn't seem to happen if the `url` field is empty."
+cgogolin/library,closed,Author sort order,[],"When sorting a BibTeX library by Author, I would expect it to sort by the last name of the first listed author.  Instead, Library seems to use a simple alphabetic sort on the whole `author` field.  This gives inconsistent results, depending on the format of the text in the field.
+
+I would expect `author = {Firstname Lastname}` and `author = {Lastname, Firstname}` both to be listed under `L`.  Instead, the first example is listed under `F`.
+
+Information about valid formats for BibTeX author names is online at https://nwalsh.com/tex/texhelp/bibtx-23.html"
+cgogolin/library,closed,"Support filtering by ""groups"" field, use seperators in the entry list, and cleaner ui",[],"Hello cgogolin,
+This is a really nice app, thank you!
+
+To make it more useful for myself ,I added groups support based on the ""groups"" field created by JabRef, which I find very useful for large bibtex collections.
+I also tweeked the ui a bit into what I think is a more efficient display of the entry list.
+Changes:
+1) Introduce a ""groups"" menu item, to display only entries of a specific group.
+2) Move the arxiv and doi fields to the extra-info, as they clatter the list and are not useful as a visual cue when looking for an entry.
+3) Use smaller fonts - it should probably be a user setting though.
+4) Add separators to the sorted list - by letter, year, or journal, depending on the sort mode. Makes it easier to browse the list.
+5) Add a sort-by-title mode.
+6) Fix a small bug where clearing the filter returns an unsorted list.
+
+If you find these useful, please consider merging these changes.
+
+Thanks,
+Niv"
+cgogolin/library,closed,Add relative path management,[],"Hello,
+
+JabRef exports only the name of the pdf (as below), the path of the subfolder containing all the pdf files is specified in the bib file. Can you add the management of files with only the name specified ?
+
+Thanks for your work, the app is really nice.
+
+```
+@Article{Zadeh1965,
+  author       = {Zadeh, Lotfi Aliasker},
+  title        = {Fuzzy sets},
+  journaltitle = {Information and control},
+  file         = {:Zadeh1965.pdf:PDF}
+}
+
+@Comment{jabref-meta: fileDirectory:./PDF;}
+```"
+cgogolin/library,closed,Add buttons to get the app easily,[],
+cgogolin/library,closed,Added Japanese translation,[],Hello!
+cgogolin/library,closed,Enhancement: Owncloud support,[],"It will be good if it were possible to open bibtex and pdf file from an owncloud instance (webdav). 
+"
+cgogolin/library,closed,Enhancement: add browsing to path,[],"Add a browse dialogue to the location of the bibtex file and to select the directory where the articles are stored (the part which should replace the pdf path in the file fields).
+"
+cgogolin/library,closed,Enhancement: add sort by (year / journal),[],"I hope this is a good place to add ideas for the Library app... If not let me know and I'll add it somewhere else. Thanks for the cool app though!
+
+Add sorting by year or by journal (can create buttons for each of the journals that appear). I don't know Java so I can't supply a pull request but I imagine it shouldn't be too difficult to implement.
+"

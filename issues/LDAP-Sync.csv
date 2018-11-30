@@ -1,0 +1,194 @@
+repository,state,title,label,body
+weisserd/LDAP-Sync,open,"Some usability improvements, and update to Android Studio",[],"Hi,
+to be able to build and modify the project I updated it to android studio compatibility.
+I did some improvements for usability, like giving a list of bindDNs, allowing to add server config based on a QR code or ldaps:// URI scheme, and adding some menu options on the account list.
+Feel free to pull the changes in. If you don't like to do further development, it's also fine for me, I'll just continue on the fork then :-)
+Viele Grüße
+Max"
+weisserd/LDAP-Sync,open,LDAP Sync not working in Android 7.1.1,[],"Hi @weisserd ,
+Great Job. I found this app on [F-Droid](https://f-droid.org/repository/browse/?fdfilter=ldap&fdid=de.danielweisser.android.ldapsync). I installed it on a CyanogenMod 14.1 (basically android 7.1.1) on my Nexus 5. I configured an openldap instance on my remote server and connected the app. So far so good, but the sync doesn't work :)
+I can create new contacts, namely:
+ ```
+dn: cn=Pinco Pallino+gn=Pinco+sn=Pallino+o=Incognita+telephoneNumber=061234567
+ +mail=pinco.pallino@incognita.org+mobile=3276666666,ou=addressbook,dc=myserver
+ i,dc=org
+changetype: add
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+mail: pinco.pallino@incognita.org
+mobile: 5556666666
+gn: Pinco
+o: Incognita
+sn: Pallino
+telephoneNumber: 1234567
+cn: Pinco Pallino
+```
+and I see the phone receives the contact, but it does not shows up in the Contacts app. Also no contact from the phone address book appears in the addressbook in my ldap server.
+
+
+What to do?
+
+Thanks again!"
+weisserd/LDAP-Sync,open,"Settings are sometimes lost, when the phone is rebooted",[],
+weisserd/LDAP-Sync,open,Feature Request: Add Account by QR-Code Scanning,[],"Hi Daniel,
+
+first of all a Thanks for your awesome work, i use it every day!
+
+In case you have a little bit time and fun...
+
+here is a short feature request:
+It would be great to configure LDAP-Sync by scanning a QR code
+
+... in other case close this issue and see it as kudos to your great work!
+
+Carpe diem
+bittracker
+"
+weisserd/LDAP-Sync,open,entries with empty givenName are ignored,[],"It seems like entries with an empty givenName are ignored...
+"
+weisserd/LDAP-Sync,open,version_2 BUILD FAILED,[],"BUILD FAILED
+/Applications/ADT Bundle/sdk/tools/ant/build.xml:710: The following error occurred while executing this line:
+/Applications/ADT Bundle/sdk/tools/ant/build.xml:723: Compile failed; see the compiler error output for details.
+
+710 line :
+`<do-only-if-manifest-hasCode elseText=""hasCode = false. Skipping..."">`
+
+723 line :
+`fork=""${need.javac.fork}"">`
+"
+weisserd/LDAP-Sync,closed,Adding more fields,[],"First of all LDAP-Sync is a very useful app for me. 
+
+To cover more cases need some plus fields. 
+
+I note some of them.
+1) Fax
+2) Pager: (as another phone) This will be used for a 2nd mobile or for another regular phone
+3) Note: is useful to add some notes for a contact. For example you can use this field for the profession of the contact's person.
+
+Fax and pager I will try to add and I think will be easier than note. Could someone help me for this ?
+"
+weisserd/LDAP-Sync,open,Will this work for LDAP servers with a lot of entries?,[],"I'm trying to test this out now that I've successfully built it. I tried via the [Virginia Tech](http://its.virginia.edu/network/publicldap.html) public LDAP server. My settings (basic):
+- URL: ldap.virginia.edu
+- Port: 389
+- No security, empty username/password
+- Base DN: o=University of Virginia, c=us
+
+That's it. When LDAP-Sync tries to do it's thing, I get the error, ""Size limit exceeded.""
+
+This is going to be a problem to use at work, as when I setup Thunderbird to test my corporate LDAP and chose to import contacts, it brought in something like 90k.
+
+How does one either:
+1) Change the limit, or 
+2) Search directories live (vs. sync) -- perhaps I can add contacts to LDAP synced account as I look them up, or
+3) Something else for this type of situation?
+
+Thanks,
+John
+"
+weisserd/LDAP-Sync,closed,Any hope for a build tutorial?,[],"I'm not familiar with eclipse and/or android development. This looks like what I'm looking for... but I have no idea how to build it.
+
+I've gotten as far as installing eclipse, the ADT plugin, android-sdk/platform.
+
+I can import your project, but don't know how to create an .apk for it. I tried following some tutorials on building apps, but am not really making any progress after a couple of hours.
+
+Any help would be greatly appreciated!
+
+John
+"
+weisserd/LDAP-Sync,open,LDAP-Sync is loosing Entries when updating the DB,[],"Hi,
+first of all: I really appreciate the work you've put into this. I really like to have my raspberry-pi handing over my addressbook to my Samsung Galaxy Nexus and Thunderbird. Still I would like it to be a bit more smooth.
+
+So I am using phpldapadmin to update an jpeg photo for a contact. Afterwards I am syncing with Android and the new/edited Contact shows up, but an older one gets deleted. I can not really reproduce it in a stable way, but after deleting the whole account, I will get all new/edited contacts synced to my phone. Thunderbird has no problems to sync with everything in the meantime, so the problem is probably caused by ldap-sync. Maybe it is possible to ""forget"" the whole addressbook and get a complete new sync without typing in the whole configuration once again? Setting up that all those information is a pain in the **\* all the time ;)
+
+A small off-topic question: Are there any future plans for enabling contact editing from whithin Android? That would be so good!
+
+Thanks in advance!
+"
+weisserd/LDAP-Sync,open,LDAP-Sync makes my phone very unstable,[],"When I have an LDAP-Sync account set up (it's syncing a set of about 600 contacts from a company server), it makes my phone (an LG Optimus V, running Android 2.2.1) very unstable.  The instability takes a little while to start and then worsens with time (until the phone is rebooted).  Removing the LDAP-Sync account makes the instability go away.  (There's no need to remove the app to make the phone stable again.)  (I verified this a number of months back, and figured today that I'd give it another try to see if it was better; it's not.)
+
+The most common symptom is frequent dialogs ""The application Google Services Framework (process ...) has stopped unexpectedly"", but sometimes it's other things that stop unexpectedly (e.g., ""android.process.acore"") and sometimes the instability gets bad enough that crashes make it impossible to answer a phone call.  (It's hard to transcribe these messages accurately since they go away after a few seconds; my quotes are really approximate.)
+"
+weisserd/LDAP-Sync,open,hitting the back key on the second page of account creation boots me out of account creation instead of back to the first page,[],"When I hit the hardware ""back"" key on my phone on the second page of the account creation dialog, I get booted back outside of the account creation dialog instead of back to the first page (where I wanted to correct one of the things I entered, but not have to retype all the rest).
+
+Steps to reproduce:
+1. Settings -> Accounts & Sync -> Add Account -> LDAP
+2. fill out the first (""LDAP Server Settings"") page of the wizard (but with something you want to correct)
+3. hit Next
+4. hit the back key on the phone
+
+Expected results: I'm back on the first page that I just filled out (""LDAP Server Settings"")
+
+Actual results: I'm back on the page that lets me choose what type of account I want to create (LDAP, Corporate, ...)
+"
+weisserd/LDAP-Sync,open,BaseDN field in second page of account setup gives wrong hints to virtual keyboard,[],"In Settings -> Accounts & Sync -> Add Account -> LDAP, I noticed that the ""BaseDN"" textfield seems not to give the right hints to the virtual keyboard that I'm using (unlike, say, the BindDN textfield in the first page of the setup wizard).  In particular, I'm using Swype, and:
+
+When I enter text in BindDN in the first page of the account creation wizard:
+- the first letter of the field does not get capitalized by default
+- if I enter an entire word (not letter-by-letter) and then an equals sign, the equals sign immediately follows the word
+
+However, entering text in BaseDN on the second page of the account creation wizard:
+- the first letter of the field gets capitalized by default
+- if I enter an entire word (not letter-by-letter) and then an equals sign, swype inserts a space between the word and the equals sign
+
+I think the BaseDN textfield should behave like the BindDN textfield.
+"
+weisserd/LDAP-Sync,open,no way to edit the configuration of an existing account,[],"There appears to me to be no way to edit the configuration of an existing LDAP-Sync account.  In particular, there are some things that I set up in the Settings -> Accounts & Sync -> Add Account -> LDAP UI that I've wanted to change, but required me to remove the existing account and recreate it from scratch:
+- my password
+- the base DN (for narrower vs. broader searches)
+- whether to have the ""jpegphoto"" present or blank
+
+I'd have expected this UI to be available when I click on the LDAP account in Settings -> Accounts & Sync -> Manage Accounts, but the only option there is a checkbox for ""Sync Contacts"".
+"
+weisserd/LDAP-Sync,closed,[feature-request] Change LDAP default port to 636 on SSL,[],"Might make it necessary to change the order of security and port in the settings so that is a logical sequence.
+"
+weisserd/LDAP-Sync,closed,License for LDAP-Sync?,[],"Hi there,
+
+On your blog, you declare that this project has been released ""Open Source."" What license is this project available under? I'd like to distribute a custom version with some slight modifications and customization for a particular LDAP system, and I'd like to also potentially release it open source; so far, I'm thinking I'd like to use the Apache 2.0 license.
+
+I didn't want to run afoul of the original license if it isn't compatible; I'd be happy with any open source license, but I wanted to ask which you are releasing the code under.
+
+Thank you!
+
+Martin
+"
+weisserd/LDAP-Sync,closed,"After deleting a phone-only contact, adding it back, LDAP-Sync will never resync with it",[],"Howdy!
+
+I'm trying to customize your LDAP Sync component so that it will sync with a public LDAP directory. I've already modified it so that it only searches for existing phone contacts in LDAP, and only syncs up those that match (instead of everyone).
+
+Unfortunately, I noticed when I deleted a raw ""phone-only"" contact that had been aggregated with an LDAP raw contact, and then re-added the raw ""phone-only"" contact, I could never get it to sync up again with the raw LDAP contact. Is that just a deficiency in Android? Or could it have to do with your implementation of ContactManager#syncContacts?
+
+Thanks in advance,
+
+Martin
+"
+weisserd/LDAP-Sync,closed,Too large JPEGs result in Sync Error due to uncaught exception,[],"From logCat:
+
+V/LDAPUtilities( 3943): LDAPException on fetching contacts
+V/LDAPUtilities( 3943): LDAPSearchException(resultCode=81 (server down), numEntries=26, numReferences=0, errorMessage='The connection to server addressbook.mozilla.com:636 was closed while waiting for a response to search request SearchRequest(baseDN='dc=mozilla', scope=SUB, deref=NEVER, sizeLimit=0, timeLimit=0, filter='(objectClass=organizationalPerson)', attrs={givenName, st, homephone, postalCode, mobile, co, l, street, mail, telephonenumber, jpegphoto, sn}):  An I/O error occurred while trying to read the response from the server:  java.io.IOException: The element indicated that it required 1773923 bytes to hold the value, but this is larger than the maximum of 1048576 bytes that the client has been configured to accept.')
+
+I guessed that this was the jpegphoto, and recreated the LDAP Sync account with that field blank and indeed, no more exceptions.
+
+Should probably put some sort of catch there that restricts the size, and if it's too large, just tosses it out.
+"
+weisserd/LDAP-Sync,closed,Null pointer exception after LDAP Authentication,[],"When I connect to my LDAP server (over SSL, port 636) LDAP-Sync crashes with a null pointer exception. Here's the stack trace:
+
+2.2
+Nexus One
+java.lang.NullPointerException
+    at java.util.Arrays$ArrayList.<init>(Arrays.java:49)
+    at java.util.Arrays.asList(Arrays.java:171)
+    at android.widget.ArrayAdapter.<init>(ArrayAdapter.java:125)
+    at de.danielweisser.android.ldapsync.authenticator.LDAPAuthenticatorActivity.onAuthenticationResult(LDAPAuthenticatorActivity.java:317)
+    at de.danielweisser.android.ldapsync.client.LDAPUtilities$2.run(LDAPUtilities.java:73)
+    at android.os.Handler.handleCallback(Handler.java:587)
+    at android.os.Handler.dispatchMessage(Handler.java:92)
+    at android.os.Looper.loop(Looper.java:123)
+    at android.app.ActivityThread.main(ActivityThread.java:4627)
+    at java.lang.reflect.Method.invokeNative(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:521)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:868)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:626)
+    at dalvik.system.NativeStart.main(Native Method)
+"

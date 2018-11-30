@@ -1,0 +1,178 @@
+repository,state,title,label,body
+termux/termux-widget,open,Update icon to match app icon,[],"On my phone (Pixel 3) the widget icon has a white border around it, while the icon in the app drawer doesn't have this. It would be nice if the widget icon is changed to match the app drawer icon.
+
+Current widget icon:
+![image](https://user-images.githubusercontent.com/601966/49258673-94672880-f436-11e8-8c5c-3a0ebc9d8886.png)
+
+Current app drawer icon:
+![image](https://user-images.githubusercontent.com/601966/49258679-9c26cd00-f436-11e8-846a-11a285c1cb5b.png)"
+termux/termux-widget,open,Termux:Styling ,[],Termux:Styling doesn't apply on widget 
+termux/termux-widget,open,Sort order of numbers,[],"The sort order of numbers in All Shortcuts is 1,10,2
+Can you change that to 1,2,10?"
+termux/termux-widget,open,[request] Show only scripts with specific string in widget,[],"Just a suggestion, I would like to know if it's possible to add a parameter when setting the widget to only shows scripts that have a specific string in the filename. This would make it possible to have multiple multi-scripts widgets, each one searching for a specific substring."
+termux/termux-widget,closed,updated gradles and code,[],"updated gradles to 28, java 1.8 compatibility, etc"
+termux/termux-widget,closed,script not executing external commands,[],"I've been facing a frustrating error when executing Nodejs/bash scripts in Termux-Widget app.
+
+**Android**: 7.1.1
+**Node**: 9.11.1
+**NPM**: 6.1.0
+**Termux**: 0.61
+**Termux-Widget**: 0.8
+
+I saved a Nodejs script in $HOME/.shortcuts as usual.
+
+    #!/data/data/com.termux/files/usr/bin/env node
+
+    const { exec } = require(""child_process"");
+  
+     exec(""npm -v"", (err, stdout) => {
+       if(err) {
+         console.log(err);
+         return;
+       }
+       console.log(`stdout: ${stdout}`);
+     });
+
+When i execute this script in the shell with `node test.js`, I get the expected result, which is the current version of my installed npm. But when i execute it using the Termux-Widet, it outputs following error message:
+
+    err: Error: Command failed: npm -v
+    /data/data/com.termux/files/usr/bin/sh: 1: npm: not found
+
+**Obs 1**: The same output was given when I tried `npm -v` using bash language.
+
+**Obs 2**: It doesn't execute commands like **npm** and **ng generate...**, but do execute **ls** and **cd**
+
+**Obs 3**: I already tried **termux-fix-shebang** and **termux-exec**.
+
+**Obs 4**: In the same script, when i execute the following snippet, it lists NPM inside /bin directory.
+
+    exec(""ls /data/data/com.termux/files/usr/bin"", (err, stdout) => {
+      console.log(stdout);
+    });
+
+    ...
+    node
+    nohup
+    npm
+    nproc
+    npx
+    ...
+
+If it's not related to the approach used, i guess there's a bug, or not notified feature, in the execution context of Termux-Widget, because inside the script, it lists NPM package, but doesn't execute it at all."
+termux/termux-widget,open,[wishlist] Support .desktop files,[],"Current shortcuts are typically command-line programs that use stdin/out and have a delimited life time. With [git-annex](http://git-annex.branchable.com/devblog/day_497__rethinking_the_android_port/) [coming to termux](https://github.com/termux/termux-packages/issues/420), the possibility of other webapp-style local apps following, as well as envisioning the consequenes of an [SDL2 port to termux](https://github.com/termux/termux-packages/issues/51), those might be only a part of what we might want to launch from a desktop icon. Scripts that utilize `termux-toast` or `termux-dialog` likely would also prefer to indicate that they don't need the background terminal.
+
+I suggest that [Linux desktop files](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html) be adopted for that purpose. termux-widget could not only look for executable files in `~/.shortcuts`, but also for .desktop files as `$XDG_DATA_DIRS/applications/**/*.desktop`. Those files could state a localized name of the launcher, an icon, carry custom metadata (like for #20 / #10) and indicate whether a terminal window should be shown at all by setting the `Terminal` key.
+
+(Alternatives are assuming that everything is shell script and putting metadata in comment lines after the shebang (a practice that has some spread but which I deplore), or Windows 3.1 style [PIF files](https://en.wikipedia.org/wiki/Program_information_file)).
+
+Games like `moria` already have appropriate .desktop files in their Debian packages, and could thus easily become launcher-enabled through termux-widget, complete with name and icon. (Or through a successor to termux-widget, if it turns out that .desktop files are the way to go but termux-widget should stay and there'd be another app that implements .desktop files)."
+termux/termux-widget,open,Feature request: Make the widget's fg & bg colors user configurable,[],"The widget is a great addition to termux. Unfortunately, it doesn't look pretty.
+
+I think the user experience could be greatly improved by making the title/list background/foreground colors user configurable somehow.
+
+Regards"
+termux/termux-widget,open,Termux widget shows non-executable files,[],"### Current behavior
+Widget shows non-executable files.
+
+### Expected behavior
+Only executable files should appear in the widget.
+"
+termux/termux-widget,open,Termux-widget not starting termux ,[],"If i press on any shortcut on the widget, it does not open termux (cold start).
+But if i open termux, and leave it and then click on any shortcut, it opens up and runs fine.
+
+Let me know how can i help debug it more for you!
+
+Thanks for termux!"
+termux/termux-widget,closed,All Shortcuts widget crashes after update to Termux 0.54,[],"Since updating to Termux 0.54 trying to run a script from the All Shortcuts widgets cause an error to pop up sating that Termux-Widget has crashed. After that the widget stops working and I need to remove it and add it again. Initially the scripts run as expected but after a short time the same happens.
+
+This is on a Pixel 2."
+termux/termux-widget,open,"1x1 shortcut widgets become ""invalid"" after reboot",[],"On my LG G3, when i add a ""shortcut"" widget to my launcher (and select the script from ~/.shortcuts/ directory) it works fine until next reboot, after which trying to start it just pops up a ""toast"" message at the bottom of the screen saying: ""This shortcut has become invalid - remove and add again"" It doesn't seem to be a permission issue, because running 'setenforce 0' and immediately trying one of these ""invalid"" shortcuts produces the same error.
+
+Works fine on my galaxy s3.
+Both phones are running Lineage OS 14.1 (android 7.1.2)
+
+Tested with nova launcher and trebuchet, same result.
+"
+termux/termux-widget,open,termux-exec integration,[],It seems that `LD_PRELOAD` is not set when executing shortcuts as it happens with `$PREFIX/bin/login`. It would be a great addition to allow running the same scripts on both Termux and symlinked shortcuts :)
+termux/termux-widget,open,Allow files to be opened with a shortcut,[],"When in a file browser, users can open files with eligible apps. Users can select termux to open a file, which will make termux to copy the file to Downloads.
+
+It would preferable, if termux could make use of the shortcuts defined for termux-widget to open a file sent to termux.
+
+Example:
+
+- Define a shortcut for VIM
+- Open a file from a file browser and send it to termux
+- Choose the VIM shortcut to handle the file
+- The file is opened in vim and the user won''t hardly notice vim isn't a native android app.
+
+There actually is no need to copy the file to Downloads first, since the storage is available via 
+ ~/storage/shared once termux-setup-storage is run.
+
+Regards"
+termux/termux-widget,open,[Request] Add widget for folder,[],Add widget for folder please
+termux/termux-widget,open,Option to restore sessions from widget,"[Label(name=""enhancement"")]","_From @kokoko3k on March 2, 2017 9:54_
+
+Would it be possible, or maybe it already is, to restore opened sessions when tapping an entry on the widget, instead of launching a new one?
+
+To be clear,
+-make an ssh shortcut to a remote server
+-start it
+-do not close/disconnect from it
+-start it again
+
+You ends having 2 connections to the same server, i would like to have a way to choose the running one.
+
+_Copied from original issue: termux/termux-app#265_"
+termux/termux-widget,closed,After update to Termux-0.44 widget scripts crash,[],"Just updated to Termux-0.44 and now all scripts that I try to run via the widget extension cause Termux to crash, if I connect my phone (Pixel) via adb logcat I get the following around the time of the crash.
+
+http://pastebin.com/cv7fASQd
+
+Reverting to 0.42 gets things working again."
+termux/termux-widget,open,[Request] Add ability to set widget background color and opacity,"[Label(name=""enhancement"")]","This is an optional function, but for visual satisfaction it would be nice to configure at least the transparency of the widget background. Accordingly when changing the background you should also add the ability to change the color of text (white for dark background and black for light)."
+termux/termux-widget,closed,Run shortcut in the background,"[Label(name=""enhancement"")]","This has been talked about extensively in the IRC channel and (I think) in the Google+ community. For me personally, this is a the most important feature that Termux needs. It would allow for communication between apps like Tasker and Termux. 
+
+Examples that I would like to do:
+- Launch a backup script at a certain time, location and if plugged in with Tasker (I have that, it retries if it fails for some reason. Yesterday my internet didn't work and in the morning I had to close 137 Termux sessions)
+- Get the output of a command with Tasker and add it to a Zooper or Minimalistic Text widget. (Like [this](https://oliverse.ch/tech/2016/02/16/display-output-of-a-bash-script-on-a-widget.html), but without the need for a constantly running Termux loop)
+- Run scripts on a [Flic ](https://flic.io/)button press
+"
+termux/termux-widget,closed,"""App isn't installed"" after reboot","[Label(name=""bug report"")]","I've added a couple of Single Shortcut widgets from some scripts I've written and they work great, until I reboot the phone. After rebooting trying to run the shortcuts results in a flash message stating ""App isn't installed"". Removing the widgets and re-adding them gets things working again.
+
+Another issue is with the ""All Shortcuts"" widgets, if I add this and then reboot it also doesn't work. Initially it says ""No files in $HOME/.shortcuts"". After a minute or so the list of scripts appears and I can run the scripts. However, no matter how long I wait the single shortcut shortcuts don't start working again.
+
+I'm using the latest versions, available from the Play Store, of both Termux (0.42) and Termux-Widget (0.3) on Android NPD90G (7.0 DP5) on a Nexus 6.
+
+I'm also using the Nova Launcher if that makes a difference.
+"
+termux/termux-widget,closed,[request] shortcuts tree,"[Label(name=""enhancement"")]","I think it would be useful for the shortcuts widget to be able to read shortcuts in a tree mode. So you could have a directory structure within the '.shortcuts' folder where shortcuts could be sorted into different directories.
+
+For example:
+
+|--.shortcuts
+|    |-- ssh
+|    |    |-- server1
+|    |    |-- server2
+|    |-- scripts
+|    |    |-- python
+|    |    |    |-- pythonscript1
+|    |    |    |-- pythonscript2
+|    |    |-- bash
+|    |    |    |-- bashscript1
+|    |    |    |-- bashscript2
+"
+termux/termux-widget,open,[request] Add ability to start script in floating mode,"[Label(name=""enhancement"")]","It would be very handy to be able to launch a script directly in a floating termux window, instead of manually having to resort to selecting the scipt after the start of the terminal
+"
+termux/termux-widget,closed,No user setup? ,[],"I try to make a script that executes a custom (zsh) function defined in `$HOME.zshrc` however the widget seems not to source .profile .
+
+Is this by design? If so how do I force the termux widget to source it and run it as my user? 
+"
+termux/termux-widget,open,Make Watch App!,"[Label(name=""enhancement"")]","I couldn't find better place for it. I would love to much to run ""screen -x"" on watch to attach and view something! (Or to have option to view selected termux termial session running on phone to view on watch. I would be so hand for me, I would happily pay for such paid app (as I've apready bought all Termux paid apps ;) ). It opens so many possibilities (including vibrating watch on console bell)
+"
+termux/termux-widget,open,Shortcut doesn 't work with KISS Launcher,"[Label(name=""bug report"")]","The shortcut dosen't work with the [KISS Launcher](https://f-droid.org/repository/browse/?fdfilter=kiss&fdid=fr.neamar.kiss). With KISS other shortcut maker work (like Any Cut or firefox bookmarks).
+"
+termux/termux-widget,closed,Problem running Frotz,[],"If I execute frotz Trinity.z4 I'm fine but if I launch it via a widget I get : ""[Screen too narrow] [Hit any key to exit ]. I've tried setting the screen and script widths as Frotz options and zooming termux but nothing works. 
+
+Nexus 7 Android 6 Custom ROM.
+"
+termux/termux-widget,closed,Keep tagging releases,[],"You released version 0.4, but 0.3 is still the only tag. Maybe you didn't tag it or forgo to `git push --tags`.
+"

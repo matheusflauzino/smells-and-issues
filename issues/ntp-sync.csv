@@ -1,0 +1,223 @@
+repository,state,title,label,body
+dschuermann/ntp-sync,open,"""time request and adjust (need Root-Access)"" not working",[],"Hello,
+
+I use a rooted android 5.1 phone, the ""time request"" is working. I see the time is not correct.
+I use ""time request and adjust (need Root-Access)""
+The message ""the system time was converted to 08.11.2016 19:56:30"" appears, but in reality nothing happens, the wrong time always exist.
+I translated the messages from german to english!
+I use the latest version of ntpsync from november 2016, i tested it also with versions before.
+I test this with another rooted android 5.0 phone, its not working too."
+dschuermann/ntp-sync,closed,Updating for Marshmallow,[],"I have updated this code so that it can be easily imported and used in newer versions of Android.
+"
+dschuermann/ntp-sync,open,use ntpserver provided via dhcp,[],"in an increasing number of networks, NTP traffic is generally blocked, and a few ""known good"" (an unblocked) NTP-servers are pushed via DHCP.
+
+it would be great if NTPsync would be able to directly use these servers, and only fall-back to a globally accessible server (or make the use of DHCP provided ntp-servers totally optional)
+"
+dschuermann/ntp-sync,open,apiDemo cannot run  Null exception,[],"apiDemo cannot run  Null exception
+"
+dschuermann/ntp-sync,open,support/fork this repo?,[],"Hi, are any of the other contributors here interested in forking this software and supporting it? The original dev has stated he/she is not maintaining it anymore; it would be nice if some of the issues were fixed, it's a useful software.
+
+Cheers,
+
+Robin
+"
+dschuermann/ntp-sync,open,Mitigate NTP attacks,[],"It would be prudent to set an encrypted default NTP server as default, if a reliable one exists.
+
+More information [here](https://www.cs.bu.edu/~goldbe/NTPattack.html).
+"
+dschuermann/ntp-sync,open,Not working with KitKat,[],"on a Samsung Galaxy Note 10.1 2014 (android 4.4.2).
+
+No related message with logcat.
+"
+dschuermann/ntp-sync,open,Not working on Lollipop,[],"It does not work on Lollipop, logcat reports that app does not have permission to set time. 
+"
+dschuermann/ntp-sync,open,Use GPS to sync,[],"GPS does not require an Internet connection so it is useful for devices without one.
+
+I realize and respect your decision not to actively develop this app any more so I will leave this as a general idea.
+"
+dschuermann/ntp-sync,closed,Added Serbian language to the list,[],"The commit 8b2fdc24eb18c2c54fa93adf758e8da61ce96a35 didn't pull Serbian language from Transifex. I have added ""sr: sr"" to the .tx list to make sure next pull will be done correctly.
+
+Please let me know if you're going to make another pull from Transifex or do I need to make a patch to add Serbian language files.
+"
+dschuermann/ntp-sync,open,Implicit intents with startService are not safe.,[],"change line 100 in https://github.com/dschuermann/ntp-sync/blob/master/API-Demo/src/main/java/org/ntpsync/apidemo/BaseActivity.java#L100
+
+Intent i = new Intent(INtpSyncRemoteService.class.getName());
+i.setPackage(""org.ntpsync"");
+bindService(i, mConnection,
+Context.BIND_AUTO_CREATE);
+"
+dschuermann/ntp-sync,closed,Serbian translation,[],"Please accept my request for adding Serbian language in Transifex NTPSync project page.
+"
+dschuermann/ntp-sync,open,/dev/alarm no longer works for setting the time,[],"NTPSync silently fails to set the time on my SGH-T889 (a T-Mobile-dehanced Samsung Galaxy Note 2), creating log entries like this:
+
+> E/DatabaseUtils( 3612): Writing exception to parcel
+> E/DatabaseUtils( 3612): java.lang.SecurityException: Permission Denial: get/set setting for user asks to run as user -2 but is calling from user 0; this requires android.permission.INTERACT_ACROSS_USERS_FULL
+> E/DatabaseUtils( 3612):   at com.android.server.am.ActivityManagerService.handleIncomingUser(ActivityManagerService.java:13175)
+> E/DatabaseUtils( 3612):   at android.app.ActivityManager.handleIncomingUser(ActivityManager.java:2044)
+> E/DatabaseUtils( 3612):   at com.android.providers.settings.SettingsProvider.callFromPackage(SettingsProvider.java:615)
+> E/DatabaseUtils( 3612):   at android.content.ContentProvider$Transport.call(ContentProvider.java:279)
+> E/DatabaseUtils( 3612):   at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:273)
+> E/DatabaseUtils( 3612):   at android.os.Binder.execTransact(Binder.java:388)
+> E/DatabaseUtils( 3612):   at dalvik.system.NativeStart.run(Native Method)
+> W/ActivityManager( 3612): Permission Denial: get/set setting for user asks to run as user -2 but is calling from user 0; this requires android.permission.INTERACT_ACROSS_USERS_FULL
+> _[...]_
+> D/SystemClock( 7840): Setting time of day to sec=1410443164
+> D/SystemClock( 7840): Trying to open a file
+> E/SystemClock( 7840): File Open Failed
+> W/SystemClock( 7840): Unable to open alarm driver: Permission denied
+
+The [SuperSU](https://play.google.com/store/apps/details?id=eu.chainfire.supersu) log clearly shows NTPSync successfully chmoding `/dev/alarm` to mode 666 and back. Oddly, there are no log entries with the tag `NTPSync` and I haven't been able to trigger the making of any Debug-level entries with `/data/local.prop`.
+
+A [StackExchange answer](http://stackoverflow.com/questions/8739074/setting-system-time-of-rooted-phone#8752130) lays out the `/dev/alarm` technique, but goes on to claim that on newer Samsung firmwares, it doesn't work because of SELinux restrictions, and that use of `date` is needed.
+
+So, how about some use of `date` if `setCurrentTimeMillis` fails? Or at least an error message.
+"
+dschuermann/ntp-sync,open,Wrong issue-tracker link in Description text on Play,[],"The Description for ntpsync on Google Play directs users to the broken link http://code.google.com/p/ntp-sync/issues to file bugs. It should point to https://github.com/dschuermann/ntp-sync/issues (i.e. this bug tracker).
+"
+dschuermann/ntp-sync,open,Improvement,[],"Hi,
+First all thanks for this useful app! 
+No update since October 2013, I hope that this project is not dead! 
+
+I've an esthetic request can you please remove divider line blue for match UI of app with KitKat style? 
+
+Thanks in advance.
+"
+dschuermann/ntp-sync,closed,Translations fixes and a small option,[],"This adds italian translations, fixes two missing translations in detailed query ui and adds an option to show/hide syncing result on daily/boot update.
+"
+dschuermann/ntp-sync,open,NTPSync always times out when using Tor (Orbot),[],"The ""Query"" ,""Detailed Query"" and ""Query and set time"" functions always show a ""Server timeout!"" flash message while Tor is active for all connections using Orbot.
+
+As a side note: Another of Dominiks apps, that uses NTP (FasterGPS) seems to be working fine under the same scenario.
+
+Best regards, Oliver
+"
+dschuermann/ntp-sync,open,Galaxy S4 sync,[],"Hi, I'm not able to sync the clock in my Samsung S4 as root, have you tried it before?
+"
+dschuermann/ntp-sync,open,Put Apache lib files into own library folder,[],"move apache files to own library folder
+"
+dschuermann/ntp-sync,closed,Time is not synced,[],"I debugged the application. It turns out that the shell commands are run via toolbox. Unfortunately I only have busybox. I am running cyanogenmod 7.2 on a Motorola defy. I cannot remember that I have had the choice to select toolbox in the installation. Please advice me how I can fix it.
+
+By the way. It works if I remove the reference to toolbox in the shell commands in the code.
+"
+dschuermann/ntp-sync,closed,Incorrect toast ,[],"The 1.5 release shows instead of the new synced time only # timestamp here# in the toast message after the sync and set function 
+"
+dschuermann/ntp-sync,open,Cannot change language,"[Label(name=""enhancement"")]","There should be an option available for the user to override default system locale being used in NTPSync.
+"
+dschuermann/ntp-sync,closed,Doesn't sync,"[Label(name=""Priority-Medium""), Label(name=""bug""), Label(name=""imported"")]","_Original author: diegorub...@gmail.com (February 13, 2013 18:33:05)_
+
+Steps to reproduce the problem:
+1. Install version 1.3 through market
+2. Open NTPSync
+3. Choose &quot;Query and set time&quot;
+
+It doesn't sync time. I'm running Android 2.2.1 (CyanogenMod-6.1.0-DS) on HTC Magic.
+
+Log output from &quot;adb logcat&quot;:
+
+I/global  (18319): Default buffer size used in BufferedReader constructor. It would be better to be explicit if an 8k-char buffer is required.
+D/su      (18484): 10061 org.ntpsync executing 0 /system/bin/sh using shell /system/bin/sh : sh
+D/SystemClock(18319): Setting time of day to sec=1360780166
+W/SystemClock(18319): Unable to open alarm driver: Permission denied
+
+_Original issue: http://code.google.com/p/ntp-sync/issues/detail?id=12_
+"
+dschuermann/ntp-sync,open,lack of time zones,"[Label(name=""Priority-Medium""), Label(name=""bug""), Label(name=""imported"")]","_Original author: vas...@gmail.com (February 11, 2013 22:42:53)_
+
+<b>What steps will reproduce the problem?</b>
+1. Any sync causes Greenwich time installed, though not all the users live in this zone  
+<b>2.</b>
+<b>3.</b>
+
+<b>What is the expected output? What do you see instead?</b>
+Expectations: exact time according actual time zone that user selected
+Instead: several hours mistake
+
+<b>What version of the product are you using? On what operating system?</b>
+Android 3.2
+
+<b>Please provide any additional information below.</b>
+
+_Original issue: http://code.google.com/p/ntp-sync/issues/detail?id=11_
+"
+dschuermann/ntp-sync,closed,generic error,"[Label(name=""Priority-Medium""), Label(name=""bug""), Label(name=""imported"")]","_Original author: dettw...@gmail.com (December 31, 2012 15:01:49)_
+
+<b>What steps will reproduce the problem?</b>
+1.Tap query and set
+<b>2.</b>
+<b>3.</b>
+
+<b>What is the expected output? What do you see instead?</b>
+I expected the app to perform a query and update the device's clock.  I received the &quot;generic error&quot; message instead.
+
+<b>What version of the product are you using? On what operating system?</b>
+My device is a Samsung Galaxy Tab 7.0.
+
+<b>Please provide any additional information below.</b>
+
+_Original issue: http://code.google.com/p/ntp-sync/issues/detail?id=10_
+"
+dschuermann/ntp-sync,closed,No sync in 1.3,"[Label(name=""Priority-Medium""), Label(name=""bug""), Label(name=""imported"")]","_Original author: eike.j.g...@gmail.com (December 16, 2012 10:24:04)_
+
+Steps to reproduce:
+1. Install NTPSync 1.3 from Play Store
+2. Check offset with &quot;Detailed query!&quot;
+3. Sync wit &quot;Query and set time!&quot;
+4. Check again.
+
+Expected: A significantly lower offset
+Instead: Nearly the same offset (in my case it was about 7000ms)
+
+The error occurs with version 1.3 (from the Play Store) on a HTC Incredible S, running Cyanogenmod 7. Version 1.2 (from FDroid) has no problems.
+
+_Original issue: http://code.google.com/p/ntp-sync/issues/detail?id=9_
+"
+dschuermann/ntp-sync,open,Implement AIDL with callbacks?,"[Label(name=""enhancement"")]","Implement AIDL with callbacks for easier use?
+"
+dschuermann/ntp-sync,open,Ability to run ntp-sync via shell,"[Label(name=""enhancement"")]","_Original author: asafge (July 14, 2012 16:58:22)_
+
+<b>What is the expected output? What do you see instead?</b>
+An option to run an ntp-sync command from the shell and have parameters such as the NTP server's IP, the timeout and so on.
+This in order to write a script that will sync the time when I want to.
+
+<b>What version of the product are you using? On what operating system?</b>
+CM9 ICS
+
+_Original issue: http://code.google.com/p/ntp-sync/issues/detail?id=7_
+"
+dschuermann/ntp-sync,open,try again on timeout?,"[Label(name=""enhancement"")]","try again on timeout?
+"
+dschuermann/ntp-sync,open,Keep track of the clock jitter and drift,"[Label(name=""enhancement"")]","_Original author: edoca...@gmail.com (May 21, 2012 09:19:14)_
+
+It would be useful if ntpsync could automatically sync date after a given interval of time (i.e. sync every 6 hours, every 12 hours, every 24 hours, every week, et cetera).
+
+The &quot;Set on boot&quot; is fine, but I don't reboot my phone very often and my clock lags so I have to sync date manually.
+
+_Original issue: http://code.google.com/p/ntp-sync/issues/detail?id=5_
+"
+dschuermann/ntp-sync,closed,Improve time setting by using device,"[Label(name=""Priority-Medium""), Label(name=""bug""), Label(name=""imported"")]","_Original author: domschuermann@gmail.com (May 17, 2012 17:00:26)_
+
+see http://stackoverflow.com/questions/8739074/setting-system-time-of-rooted-phone
+
+Use device /dev/alarm instead of date command?
+
+_Original issue: http://code.google.com/p/ntp-sync/issues/detail?id=4_
+"
+dschuermann/ntp-sync,closed,Unknown element under <manifest>,"[Label(name=""Priority-Medium""), Label(name=""bug""), Label(name=""imported"")]","_Original author: domschuermann@gmail.com (May 13, 2012 13:51:27)_
+
+  1392          PackageParser  W  Unknown element under &lt;manifest&gt;: service at /data/app/org.ntpsync-2.apk Binary XML file line #  29
+  1392          PackageParser  W  Unknown element under &lt;manifest&gt;: receiver at /data/app/org.ntpsync-2.apk Binary XML file line #  31
+
+_Original issue: http://code.google.com/p/ntp-sync/issues/detail?id=3_
+"
+dschuermann/ntp-sync,closed,translation and strings externalisation,"[Label(name=""Priority-Medium""), Label(name=""bug""), Label(name=""imported"")]","_Original author: domschuermann@gmail.com (May 10, 2012 12:04:27)_
+
+translation and strings externalisation
+
+_Original issue: http://code.google.com/p/ntp-sync/issues/detail?id=2_
+"
+dschuermann/ntp-sync,closed,make intents or aidl to be usable from other apps,"[Label(name=""Priority-Medium""), Label(name=""bug""), Label(name=""imported"")]","_Original author: domschuermann@gmail.com (May 10, 2012 12:04:09)_
+
+make intents or aidl to be usable from other apps
+
+_Original issue: http://code.google.com/p/ntp-sync/issues/detail?id=1_
+"
+dschuermann/ntp-sync,closed,Readme currently describes project as an ad-blocker.,[],

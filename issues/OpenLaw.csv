@@ -1,0 +1,68 @@
+repository,state,title,label,body
+jfreax/OpenLaw,open,Performance enhancement,[],"  We are working on a project called DiagDroid  (http://www.cudroid.com/PersisDroid/) for detecting potential performance issues. Our tool could find performance degradation caused by improper usage of asynchronous executions.
+  We find that in some cases your app may suffer a long processing delay.
+
+  Case 1:
+  **Related source code** Class: [LawListFragment](https://github.com/jfreax/OpenLaw/blob/master/src/de/jdsoft/law/LawListFragment.java) function: [onCreate](https://github.com/jfreax/OpenLaw/blob/master/src/de/jdsoft/law/LawListFragment.java#L89)
+  **Circumstance** The law list update is often quite slow.
+  **Problem** You have remarked ""And parallel update the list from network"", but use _execute_ function of _sectionDB_ and _updater_. _execute_ function will execute the two task in sequential instead of in parallel.
+  **Suggested modification** use _executeOnExecutor_ instead of _execute_ function.
+
+  Case 2:
+  **Related source code** Class: [HeadlineComposerAdapter](https://github.com/jfreax/OpenLaw/blob/master/src/de/jdsoft/law/HeadlineComposerAdapter.java) Method: [getHeadlinesRaw](https://github.com/jfreax/OpenLaw/blob/master/src/de/jdsoft/law/HeadlineComposerAdapter.java#L68)
+  **Circumstance** The request to RestClient sometimes takes very long.
+  **Problem** Improperly use third party library RestClient. Using RestClient.get method, the operation is time-costly. When the page switches, the previous law is not necessary to be downloaded and displayed. Therefore some network requests should be cancelled. 
+  **Suggested modification** Invoke _cancel_ operation of RestClient when necessary.
+"
+jfreax/OpenLaw,open,Volltextsuche,"[Label(name=""enhancement"")]","Es scheint nicht möglich Gesetze nach Inhalt zu durchsuchen. Die Suche hält sich nur an die Namen der Gesetzbücher. Eine solche ""Machete"" wäre aber durchaus brauchbar im Dschungel der Gesetze. Besonders Nicht-Juristen (wie ich) könnten davon profitieren.
+"
+jfreax/OpenLaw,open,"""About"" Sektion","[Label(name=""enhancement"")]","Die könnte z.B. in die Einstellungen. Um einfach zu sehen, wer die APP geschrieben hat und welche Version installiert ist.
+"
+jfreax/OpenLaw,open,Favoritisieren einzelner Gesetze,"[Label(name=""enhancement"")]","Es ist nur möglich ein Gesetzbuch zu favoritisieren, nicht aber einzelne Gesetze/Paragraphen. Das wäre aber wirklich klasse.
+"
+jfreax/OpenLaw,closed,Weird problems when building app on your own,[],"Hello jfreax,
+
+Since I cannot find your email address anywhere, I'm writing to you via a github issue :)
+
+I come from F-Droid. We included and activated your app about a week ago. It builds fine, but some strange issues appear. The settings button doesn't work, with the following logcat:
+
+```
+D/SherlockFragmentActivity(10771): [onMenuItemSelected] featureId: 0, item: Einstellungen
+D/ActionBarSherlock(10771): [dispatchOptionsItemSelected] item: Einstellungen
+D/ActionBarSherlock(10771): [callbackOptionsItemSelected] item: Einstellungen
+D/Watson  (10771): [onMenuItemSelected] featureId: 0, item: com.actionbarsherlock.internal.view.menu.MenuItemWrapper@41fa37d0
+D/ActionBarSherlock(10771): [callbackOptionsItemSelected] returning true
+D/ActionBarSherlock(10771): [dispatchOptionsItemSelected] returning true
+D/SherlockFragmentActivity(10771): [onMenuItemSelected] returning true
+```
+
+Also, it sometimes crashes when pressing back (it just crashed on me when exiting the app):
+
+```
+E/AndroidRuntime(10406): java.lang.NullPointerException
+E/AndroidRuntime(10406):    at de.jdsoft.law.LawTextFragment.getContext(LawTextFragment.java:233)
+E/AndroidRuntime(10406):    at de.jdsoft.law.LawTextFragment.access$000(LawTextFragment.java:24)
+E/AndroidRuntime(10406):    at de.jdsoft.law.LawTextFragment$2$1.run(LawTextFragment.java:112)
+E/AndroidRuntime(10406):    at android.os.Handler.handleCallback(Handler.java:725)
+E/AndroidRuntime(10406):    at android.os.Handler.dispatchMessage(Handler.java:92)
+```
+
+I haven't noticed any more issues, but there could be more. Basically, our build procedure for your app is quite strange because of the following reasons:
+1. You don't provide a project.properties file, so we have to link to the libraries ourselves and make up a target (we used 18).
+2. The android support jar you're using is very old! r7 should not be used. At least use r12 or r13 if you don't want to use r18.
+3. You're using rather old versions of libraries. For example, you use ABS 4.2.0, while 4.4 is already out. This could be why the settings button doesn't work.
+
+Well, you get why it's hard for us. If you tidied it up a bit and made the building process more clear, we would be able to follow your build instructions more easily and our apk wouldn't differ from yours that much.
+
+If you have any questions or would like my help, don't hesitate to ask.
+
+Regards.
+"
+jfreax/OpenLaw,closed,GPLv2 not compatible with Apache License from libraries,[],"Please consider switching from GPLv2 to GPLv3 as GPLv2 is not compatible with Licenses from your used libraries. This stops F-Droid from putting your app in their repo. See https://f-droid.org/forums/topic/openlaw/
+"
+jfreax/OpenLaw,open,Download law,"[Label(name=""enhancement"")]","Download law in different formats.
+
+HTML/PDF/Markdown/txt ....
+"
+jfreax/OpenLaw,closed,Favorites,"[Label(name=""enhancement"")]","Save whole laws or individual paragraphs as favorite.
+"

@@ -1,0 +1,147 @@
+repository,state,title,label,body
+pyload/pyload-android,open,Include app into fdroid ,[],"Hi there,
+
+I know this version of the app only works against current stable and will probably get a complete rewrite for version 1.0.0 of pyload. 
+But until then it would be nice to have the app available in fdroid. 
+This would also fix #17.
+I would try to prepare this as much as possible, if I have a chance of getting a Pull-Request with these changes accepted. 
+
+Please give me quick feedback about this issue so I know on whether I should get started on this.
+
+Best regards
+WhiteHatTux. "
+pyload/pyload-android,closed,Make gradlew executable on unix and sort remote settings by name,[],"Is there a style guide or specific formatting requests? 
+I tried to keep the changes low for easier reviewing, but this meant introducing possible style inconsistencies. If there is a guide, please let me know, and I will gladly take it up. 
+Fixes #22 "
+pyload/pyload-android,closed,Remotesettings should be ordered by name,[],"Currently remote settings are taken from the backend as they come. 
+For general config this is not an issue, but it is a real pain to find a specific plugin config in an unordered list. 
+There should be a very simple sort for the settings section."
+pyload/pyload-android,closed,Pyload URL is wrong,[],Please fix the URL in the `README.md`: `pyload.org` redirects to a broker site. The correct URL would be: https://pyload.net/
+pyload/pyload-android,open,Lost connection - please try to refresh,[],"Hi guys!
+I keep getting this error when trying to connect to my pyload installation
+It was working for years. I recently changed my server (It was an ubuntu 14.04 LTS now it is an 16.04)
+And frankly, since I haven't used the client for a while, I am not even 100% sure that this started after migrating to the new server, or before..
+But the new server has the same IP address as the older one
+All port forwarding setting are correct on my firewall.
+In any case, however, the android client cannot even connect using the internal address from inside my network
+The backend port is the default (7227) and the machine is listening normally to port 7227:
+~# netstat -an | grep 7227 | grep -i listen
+tcp        0      0 0.0.0.0:7227            0.0.0.0:*               LISTEN
+I also tried a different one (7777) without any luck
+Any ideas?
+My android version is 7.1.2 (Nexus 5x) 
+ "
+pyload/pyload-android,closed,Migrate to Android Studio,[],No other changes were done.
+pyload/pyload-android,closed,Migrate to Android Studio,[],No other changes were done.
+pyload/pyload-android,open,APK not available,[],APK is not available anymore in F-Droid. Where to download?
+pyload/pyload-android,open,Migrate to Android Studio,"[Label(name=""question"")]","As there has been recent activity on this repo again. Instead of merging a few minor improvements, wouldn't it be more useful to merge a fork that has migrated the code to Android Stuido already?
+
+Like https://github.com/kaarl/pyload-android"
+pyload/pyload-android,closed,Can't seem to abort downloads.,[],"On the Android client, while on the ""overview"" section, I tried to abort a download by holding down on an active download and pressing abort, however, it doesn't seem to do anything, on the web interface it works fine.
+"
+pyload/pyload-android,closed,Typo in de/strings.xml,[],
+pyload/pyload-android,open,Android L Preview,[],"Hi There,
+
+Im an android developer and installed the Android L Preview to check my projects, while i use my phone also in private i noticed that pyload-android crashes during settings when i try to change the ip adress.
+
+Some log i see:
+
+06-30 11:08:31.610  14060-10050/? W/ActivityManager﹕ Exception thrown during pause
+    android.os.DeadObjectException
+            at android.os.BinderProxy.transact(Native Method)
+            at android.app.ApplicationThreadProxy.schedulePauseActivity(ApplicationThreadNative.java:670)
+            at com.android.server.am.ActivityStack.startPausingLocked(ActivityStack.java:829)
+            at com.android.server.am.ActivityStack.finishActivityLocked(ActivityStack.java:2610)
+            at com.android.server.am.ActivityStack.finishTopRunningActivityLocked(ActivityStack.java:2493)
+            at com.android.server.am.ActivityStackSupervisor.finishTopRunningActivityLocked(ActivityStackSupervisor.java:2203)
+            at com.android.server.am.ActivityManagerService.handleAppCrashLocked(ActivityManagerService.java:9952)
+            at com.android.server.am.ActivityManagerService.makeAppCrashingLocked(ActivityManagerService.java:9849)
+            at com.android.server.am.ActivityManagerService.crashApplication(ActivityManagerService.java:10490)
+            at com.android.server.am.ActivityManagerService.handleApplicationCrashInner(ActivityManagerService.java:10041)
+            at com.android.server.am.NativeCrashListener$NativeCrashReporter.run(NativeCrashListener.java:86)
+06-30 11:08:31.615  14060-10050/? I/am_resume_activity﹕ [0,19792466,141,org.pyload.android.client/.pyLoad]
+06-30 11:08:31.617  14060-10050/? I/ActivityManager﹕ Restarting because process died: ActivityRecord{12e0252 u0 org.pyload.android.client/.pyLoad t141}
+06-30 11:08:31.618  14060-10050/? I/am_restart_activity﹕ [0,19792466,141,org.pyload.android.client/.pyLoad]
+06-30 11:08:31.618  14060-10050/? W/ActivityManager﹕ Exception when starting activity org.pyload.android.client/.pyLoad
+    android.os.DeadObjectException
+            at android.os.BinderProxy.transact(Native Method)
+            at android.app.ApplicationThreadProxy.scheduleLaunchActivity(ApplicationThreadNative.java:765)
+            at com.android.server.am.ActivityStackSupervisor.realStartActivityLocked(ActivityStackSupervisor.java:1064)
+            at com.android.server.am.ActivityStackSupervisor.startSpecificActivityLocked(ActivityStackSupervisor.java:1160)
+            at com.android.server.am.ActivityStack.resumeTopActivityLocked(ActivityStack.java:1784)
+            at com.android.server.am.ActivityStack.resumeTopActivityLocked(ActivityStack.java:1400)
+            at com.android.server.am.ActivityStack.startPausingLocked(ActivityStack.java:873)
+            at com.android.server.am.ActivityStack.finishActivityLocked(ActivityStack.java:2610)
+            at com.android.server.am.ActivityStack.finishTopRunningActivityLocked(ActivityStack.java:2493)
+            at com.android.server.am.ActivityStackSupervisor.finishTopRunningActivityLocked(ActivityStackSupervisor.java:2203)
+            at com.android.server.am.ActivityManagerService.handleAppCrashLocked(ActivityManagerService.java:9952)
+            at com.android.server.am.ActivityManagerService.makeAppCrashingLocked(ActivityManagerService.java:9849)
+            at com.android.server.am.ActivityManagerService.crashApplication(ActivityManagerService.java:10490)
+            at com.android.server.am.ActivityManagerService.handleApplicationCrashInner(ActivityManagerService.java:10041)
+            at com.android.server.am.NativeCrashListener$NativeCrashReporter.run(NativeCrashListener.java:86)
+
+maybe it can help ;)
+"
+pyload/pyload-android,closed,Queue - Choose an action,[],"In the queue, if you want to restart, delete or move a package it doesn´t work. The options: ""Restart"", ""Delete"" and ""Move Location"" won´t do anything. If you do the point in the menu ""Restart Failed Files"" it works. Please add a point ""Clear Queue"" or ""Delete Queue"" to the Menu if it isn´t possible to get the actions (restart, delete, move location) to work.
+"
+pyload/pyload-android,closed,Fixed DLC file association,[],
+pyload/pyload-android,open,Captcha Notification Service,[],"Added (optional) Notification Service to check for new Captchas in Background even when screen is turned off.
+This is done by using the AlarmManager, which starts the Service repeatedly (using the interval from the preferences) when leaving the App.
+The Service can be enabled/disabled very easily with a checkbox in the menu.
+
+The implementation is done in a pretty simple way. So maybe it could be done in a more efficient way by using the background thread which holds the connection? As far as I know the Threads won't be alive for a long time when the screen was turned off.
+"
+pyload/pyload-android,closed,Update FileChooser.java,[],"Replace hardcoded ""folder"" and ""parent directory"" with ""R.string.folder"" and ""R.string.parent_dir"" in function ""onListItemClick"".
+
+That should fix the bug reported by Gronkdalonka (Unable to open Subfolders).
+"
+pyload/pyload-android,closed,added statusbar notification for captchas,[],
+pyload/pyload-android,closed,Unable to open Subfolders,"[Label(name=""bug"")]","When manually adding a Container File the app doesn't open a subfolder on the sd-card but is trying to use the ""selected"" folder as a Container File.
+Only happens if i select german language, when language is set to english everything works perfectly normal.
+"
+pyload/pyload-android,open,Force-Close when opening Settings on Honeycomb,"[Label(name=""bug"")]","I installed pyLoad-Android on my old stock HTC Flyer (3.2.1) and could not access the settings menu because of a FC.
+
+Stacktrace below:
+
+E/AndroidRuntime( 8658): FATAL EXCEPTION: main
+E/AndroidRuntime( 8658): java.lang.NoSuchMethodError: android.app.ActionBar.setHomeButtonEnabled
+E/AndroidRuntime( 8658): at org.pyload.android.client.Preferences.onCreate(Unknown Source)
+E/AndroidRuntime( 8658): at android.app.Activity.performCreate(Activity.java:4521)
+E/AndroidRuntime( 8658): at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1072)
+E/AndroidRuntime( 8658): at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1961)
+E/AndroidRuntime( 8658): at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2018)
+E/AndroidRuntime( 8658): at android.app.ActivityThread.access$500(ActivityThread.java:139)
+E/AndroidRuntime( 8658): at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1124)
+E/AndroidRuntime( 8658): at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime( 8658): at android.os.Looper.loop(Looper.java:152)
+E/AndroidRuntime( 8658): at android.app.ActivityThread.main(ActivityThread.java:4636)
+E/AndroidRuntime( 8658): at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime( 8658): at java.lang.reflect.Method.invoke(Method.java:491)
+E/AndroidRuntime( 8658): at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:841)
+E/AndroidRuntime( 8658): at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:599)
+E/AndroidRuntime( 8658): at dalvik.system.NativeStart.main(Native Method)
+E/EmbeddedLogger( 1571): App crashed! Process: org.pyload.android.client
+E/EmbeddedLogger( 1571): App crashed! Package: org.pyload.android.client v17 (0.3.4)
+E/EmbeddedLogger( 1571): Error getting package label: org.pyload.android.client
+E/EmbeddedLogger( 1571): java.lang.NullPointerException
+E/EmbeddedLogger( 1571): at com.htc.embedded.EmbeddedLogger.onHandleApplicationCrash(EmbeddedLogger.java:56)
+E/EmbeddedLogger( 1571): at com.android.server.am.ActivityManagerService.handleApplicationCrash(ActivityManagerService.java:7355)
+E/EmbeddedLogger( 1571): at android.app.ActivityManagerNative.onTransact(ActivityManagerNative.java:1045)
+E/EmbeddedLogger( 1571): at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:1672)
+E/EmbeddedLogger( 1571): at android.os.Binder.execTransact(Binder.java:339)
+E/EmbeddedLogger( 1571): at dalvik.system.NativeStart.run(Native Method)
+E/EmbeddedLogger( 1571): Application Label: <ERROR>
+"
+pyload/pyload-android,closed,Play store update,[],"Hi,
+it would be great if you could just pack the current version and push it to the play store. The multiple link receiving feature (last pull request) should be reason enough ;-)
+Regards
+"
+pyload/pyload-android,open,Captcha notification,"[Label(name=""enhancement"")]","Hello!
+
+I am a bit disappointed that there is no function to get notified when the app is on stand-by (or not running). In my opinion this function is missing because you aren't looking at the app all the time. So a meassage like ""New Captacha available"" with sound & vibration + entry in the normal notification bar would be nice.
+
+Is it possible to add this function?
+"
+pyload/pyload-android,closed,Make share Intent accept multiple URLs,[],
+pyload/pyload-android,closed,Package sort order,[],
+pyload/pyload-android,closed,"Captcha input field, restart failed and sort order",[],

@@ -1,0 +1,1612 @@
+repository,state,title,label,body
+microg/android_packages_apps_UnifiedNlp,open,typo,[],
+microg/android_packages_apps_UnifiedNlp,open,Issues with unifiednlp location!!!  In android 9,[],"Hello devs  , 
+I want to let u know that our unified nlp no longer works perfect , as it is having issues in Android 9 , its working like a charm in oreo and below , but in android 9 if we install the standalone application there are issue in registering and binding it into system , but whenwe install microg using installer like nanodroid , the it registers into system but always show plzz check ur location backends nmand unified nlp has no location to test geocoders! 
+
+I have given all the permission to it , and even using terminal  too , as describes in issue
+https://github.com/microg/android_packages_apps_GmsCore/issues/366#issuecomment-427252345
+
+So plz take a look into this and fix it if possible as many of the users are forced to be on oreo as there are compatibilty issue with pie!!
+
+Also i have checked the same on 3 to 4 ROMs. 
+And i the issue was same in all of them ! "
+microg/android_packages_apps_UnifiedNlp,open,No satellite localization at all (LOS 15.1 for Microg),[],"Hi I'm using LOS 15.1 with microg, I setted up microg services and everything in the check section is marked as ""working"". I installed mozilla location services, GSM location services and dejavu location services. Everything is working except mozilla location. I cannot receive GPS satellite info (according to SatStat), I can find my location but only if I'm near wifi or gsm antennas. If I open mozilla stumbler, it cannot find a single satellite :(
+How can I solve the problem?"
+microg/android_packages_apps_UnifiedNlp,open,Android P integration issues,[],"I'm able to build from master and include the built apk as a priv-app. However, opening settings->location crashes the settings apps.
+
+```
+10-12 09:49:02.231  1016  2029 W ActivityManager: Background start not allowed: service Intent { cmp=com.google.android.gms/org.microg.nlp.ui.SettingInjectorService (has extras) } to com.google.android.gms/org.microg.nlp.ui.SettingInjectorService from pid=1610 uid=1000 pkg=com.android.settings startFg?=false
+10-12 09:49:02.231  1610  1610 D AndroidRuntime: Shutting down VM
+--------- beginning of crash
+10-12 09:49:02.231  1610  1610 E AndroidRuntime: FATAL EXCEPTION: main
+10-12 09:49:02.231  1610  1610 E AndroidRuntime: Process: com.android.settings, PID: 1610
+10-12 09:49:02.231  1610  1610 E AndroidRuntime: java.lang.IllegalStateException: Not allowed to start service Intent { cmp=com.google.android.gms/org.microg.nlp.ui.SettingInjectorService (has extras) }: app is in background uid UidRecord{a0ae399 u0a81 TRNB idle change:uncached procs:1 seq(0,0,0)}
+10-12 09:49:02.231  1610  1610 E AndroidRuntime:        at android.app.ContextImpl.startServiceCommon(ContextImpl.java:1577)
+10-12 09:49:02.231  1610  1610 E AndroidRuntime:        at android.app.ContextImpl.startServiceAsUser(ContextImpl.java:1549)
+10-12 09:49:02.231  1610  1610 E AndroidRuntime:        at android.content.ContextWrapper.startServiceAsUser(ContextWrapper.java:680)
+10-12 09:49:02.231  1610  1610 E AndroidRuntime:        at com.android.settings.location.SettingsInjector$Setting.startService(SettingsInjector.java:561)
+10-12 09:49:02.231  1610  1610 E AndroidRuntime:        at com.android.settings.location.SettingsInjector$StatusLoadingHandler.handleMessage(SettingsInjector.java:457)
+10-12 09:49:02.231  1610  1610 E AndroidRuntime:        at android.os.Handler.dispatchMessage(Handler.java:106)
+10-12 09:49:02.231  1610  1610 E AndroidRuntime:        at android.os.Looper.loop(Looper.java:193)
+10-12 09:49:02.231  1610  1610 E AndroidRuntime:        at android.app.ActivityThread.main(ActivityThread.java:6669)
+10-12 09:49:02.231  1610  1610 E AndroidRuntime:        at java.lang.reflect.Method.invoke(Native Method)
+10-12 09:49:02.231  1610  1610 E AndroidRuntime:        at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:493)
+10-12 09:49:02.231  1610  1610 E AndroidRuntime:        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:858)
+10-12 09:49:02.234  1016  2029 W ActivityManager:   Force finishing activity com.android.settings/.SubSettings
+10-12 09:49:02.239  1610  1610 I Process : Sending signal. PID: 1610 SIG: 9
+10-12 09:49:02.255  1016  2029 I WindowManager: WIN DEATH: Window{941e4e0 u0 com.android.settings/com.android.settings.SubSettings}
+10-12 09:49:02.256  1016  1421 I ActivityManager: Process com.android.settings (pid 1610) has died: fore TOP
+10-12 09:49:02.256  1016  1421 I ActivityManager: Killing 2828:com.android.settings.intelligence/u0a21 (adj 200): depends on provider com.android.settings/.dashboard.suggestions.SuggestionStateProvider in dying proc com.android.settings (adj 0)
+10-12 09:49:02.257  1016  1658 I WindowManager: WIN DEATH: Window{ac9515f u0 com.android.settings/com.android.settings.Settings}
+10-12 09:49:02.259  1016  1072 W libprocessgroup: kill(-1610, 9) failed: No such process
+10-12 09:49:02.266   653   653 I Zygote  : Process 1610 exited due to signal (9)
+10-12 09:49:02.276  1016  1077 W ActivityManager: setHasOverlayUi called on unknown pid: 1610
+10-12 09:49:02.286  1016  1536 I WindowManager: WIN DEATH: Window{60b2f72 u0 com.android.settings.intelligence/com.android.settings.intelligence.search.SearchActivity}
+10-12 09:49:02.286  1016  1421 W ActivityManager: Force removing ActivityRecord{a3750a4 u0 com.android.settings.intelligence/.search.SearchActivity t3}: app died, no saved state
+10-12 09:49:02.295   653   653 I Zygote  : Process 2828 exited due to signal (9)
+10-12 09:49:02.298  1016  1077 W ActivityManager: setHasOverlayUi called on unknown pid: 2828
+10-12 09:49:02.307  1016  1072 W libprocessgroup: kill(-1610, 9) failed: No such process
+10-12 09:49:02.307  1016  1072 I libprocessgroup: Successfully killed process cgroup uid 1000 pid 1610 in 49ms
+10-12 09:49:02.307  1016  1072 W libprocessgroup: kill(-2828, 9) failed: No such process
+10-12 09:49:02.307  1016  1072 I libprocessgroup: Successfully killed process cgroup uid 10021 pid 2828 in 0ms
+10-12 09:49:02.310  1016  1071 I ActivityManager: Start proc 3360:com.android.settings/1000 for activity com.android.settings/.Settings
+
+```"
+microg/android_packages_apps_UnifiedNlp,open,unifiednlp do not have location to test geocoder on Android Pie,[],"I've flashed NanoDroid-patcher-18.2.20180916.zip and then NanoDroid-microG-18.2.20180916.zip
+On my LineageOS 16.0 (Android 9).
+Signature spoofing is working, but the last checkbox (unifiednlp do not have location to test geocoder) is unchecked.
+I've checked in SatStat app and it shows me location, but only from GPS. 
+In conclusion my GPS is working, microG with network location isn't
+I have Apples and DejaVu backend turn on, as well as unifednlp and localisation."
+microg/android_packages_apps_UnifiedNlp,open,new release / project status,[],"@mar-v-in There were quite some commits since the last release. Are you actively maintaining this project or is a new release planned :-)?
+
+Thanks for your great work here!"
+microg/android_packages_apps_UnifiedNlp,open,"Google Maps API was updated yesterday, some apps stopped working",[],"OK, so I have noticed that at least an application I used (which relies on Google Services, at least on the Google Maps API for location purposes) refuses to even start since two days ago with an error ""Google Services is needed to run this app"".  
+ 
+This is coinciding with the Google Maps API being updated. Among other things this update introduces the need to have any request sent to the API propperly signed  with an API key and tied to a billing account. The deadline to start signing all the requests with a valid key was June 16th.
+
+Now, we know that MicroG sings the petitions with a spoofed (or whatever, I don't know the details  tbh) but I doubt that the key tied to any active billing account, so the call gets rejected and the app doesn't start.
+
+Find here the related documentation for this: https://cloud.google.com/maps-platform/user-guide/
+
+Also, the fact that some apps stopped working but others still do make me think that either I am horribly wrong about this or that it is dependent on how the app makes these calls or which services they are using (maybe the only ones failing right now are the ones using the [Premium API](https://developers.google.com/maps/premium/overview).
+
+Anyway, leaving this here hoping it can be helpful. Please move it to the appropiate place if this is not the correct one."
+microg/android_packages_apps_UnifiedNlp,open,warning in logcat: DeadObjectException,[],"device: gts28vewifi <br/> 
+operating system: lineageos 15.1 <br/>
+newest microg version, <br/> 
+lineageos from download.lineage.microg.org 
+
+logcat: 
+```
+android.os.DeadObjectException
+	at android.os.BinderProxy.transactNative(Native Method)
+	at android.os.BinderProxy.transact(Binder.java:764)
+	at org.microg.nlp.api.LocationBackend$Stub$Proxy.update(LocationBackend.java:157)
+	at org.microg.nlp.location.BackendHelper.update(BackendHelper.java:71)
+	at org.microg.nlp.location.BackendFuser.update(BackendFuser.java:83)
+	at org.microg.nlp.location.ThreadHelper.run(ThreadHelper.java:73)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:457)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:307)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:302)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+	at java.lang.Thread.run(Thread.java:764)
+```
+This warning is flooding my logcat.    "
+microg/android_packages_apps_UnifiedNlp,open,Installation of UnifiedNlp GAPPS on FP Open OS loses backend activation after each reboot,[],"Here's a [description of my setup](https://forum.fairphone.com/t/a-guide-to-install-open-gapps-while-minimizing-google-dependency/40354/3) that follows on [M.A.K.'s instructions](https://forum.xda-developers.com/android/software-hacking/unifiednlp-gapps-patch-t3567887).
+FP Open framework has an org.microg.nlp line item, so patching isn't needed. Google location stops scanning with the deactivation of two services, what allows for UnifiedNlp to bind the backends, but backend boxes need to be cleared and rechecked after every reboot. UnifiedNlp is installed in priv-app and backends as user apps, moving backends to priv-app doesn't change anything.
+This setup is the only one that allows for all Google Location dependent apps that I have to run, so I cannot change which services can be reactivated or deactivated without breaking it. It has shown to be pretty solid except for the clearing and rechecking of backend boxes after each reboot."
+microg/android_packages_apps_UnifiedNlp,closed,Fix sdk platform,[],"It seems sdk platform-27 is used to build. But in build.gradle it ask for platform-25, so I updated the value."
+microg/android_packages_apps_UnifiedNlp,open,UnifiedNlp does not have Location to test Geocoder / no last location: Android 8.1,[],"Hi all,
+
+I have successfully registered UnifiedNlp in the system (that included copying Gmscore.apk into /system/priv-app
+
+![screenshot_microg_services_core_20180529-125452](https://user-images.githubusercontent.com/39718166/40635975-25bf5f06-6340-11e8-8a94-305f82a3c905.png)
+
+But on the microg self check it says (please see screenshot)
+1. Unified has no known location
+2. Unified does not have a location to test Geocoder.
+
+I have GSM Location Service & Mozilla Location service enabled as backends. They both have location permissions. I also have Nominatim installed as the address lookup back end.
+
+GPS is working on the device (I can use OsmAnd+ on the device successfully).
+
+I am running CarbonROM on Android 8.1
+
+
+
+"
+microg/android_packages_apps_UnifiedNlp,closed,No network localization at all (LineageOS 15.1 MicroG),[],"The only way i can get localization is to use GPS, i'm using UnifiedNlp with Mozilla location service.
+Everything is updated to latest version, MicroG self check has everything checkmarked except last entry about location, says UnifiedNlp has no last known location and UnifiedNlp do not have Location to test Geocoder, Please verify your location Backend.
+I have 3G with Data enabled and also i'm connected to WiFi, my localization is enabled and set to battery saving (also tried high accuracy but doesn't do anything)
+Any suggestions?"
+microg/android_packages_apps_UnifiedNlp,open,Build fails unless Android SDK Platform 25 is manually installed.,[],"It isn't listed anywhere in dependencies, but `build.gradle` does reference file from there:
+
+https://github.com/microg/android_packages_apps_UnifiedNlp/blob/b331309c66d399918f7b293ceb6c3533ad24af88/unifiednlp-compat/build.gradle#L28
+
+Without manually installing Android SDK Platform 25 the build fails with a lot of errors like `error: package android.os does not exist`. By default only Android SDK Platform 27 is automatically installed. Is something missing in https://github.com/microg/android_packages_apps_UnifiedNlp/commit/b331309c66d399918f7b293ceb6c3533ad24af88, or should Android SDK Platform 25 be required explicitly (here or in https://github.com/microg/android_packages_apps_GmsCore, maybe just as additional step in [build instruction](https://github.com/microg/android_packages_apps_GmsCore/wiki/Building))?
+
+Full error message: [build-fail.txt](https://github.com/microg/android_packages_apps_UnifiedNlp/files/1998889/build-fail.txt)
+"
+microg/android_packages_apps_UnifiedNlp,open,Inaccurate Location data.,[],"Problem : 
+Map application shows an inaccuracy of over 300KM from my actual location when I use the Mozilla UnifiedNlp where as on the stock ROM, the inaccuracy is just around 20 M .
+
+Here are my specs : 
+Phone : Lenovo P2 (p2a42) 
+ROM : LineageOS 14.1 with MicroG installed.
+
+I know there is many variable here but I want to determine if it is the UnifiedNlp's fault or the Lineage ROM."
+microg/android_packages_apps_UnifiedNlp,open,Lineage 14.1 and gapps ,[],"Hi,
+I am experiencing some issues with the UnifiedNLP.
+My phone is running Lineage 14.1 with gapps (the pico package).
+
+I have followed the tutorial to make unifiedNLP work with Gapps.
+* install UnifiedNLP (GAPPS) package from F-droid
+* configure backends
+* install XposedUnifiedNLP (from here https://repo.xposed.info/module/de.r3w6.xposedunifiednlp )
+
+After that, in the self check status, I have two ""errors"":
+* System support location provider 
+Your system does not support this unifed package
+*UnifiedNLP is registered in system 
+The system did not bind the UnifiedNLP service.
+
+""Location backend set up"" and ""Network based location enabled"" are both checked but the it says that Unified has no last known location and No UnifiedNlp location was provided by the system
+
+(I've rebooted the phone multiple times.)
+
+Do you have any clue about my issue?
+
+Thanks"
+microg/android_packages_apps_UnifiedNlp,open,Created a Norwegian translation,[],As simple as that.
+microg/android_packages_apps_UnifiedNlp,closed,Unable to bind with Android 8.1 (Lineage for microG),[],"Using [LineageOS microG fork](https://lineage.microg.org/) 15.1 for the OnePlus 3T, it looks like UnifiedNlp is unable to bind to the system. It's causing my GPS to take forever to get a location, unlike in 14.1 when UnifiedNlp is able to bind. I have **Mozilla Location Service**, **Deja Vu Location Service**, and **Apple Wi-Fi** as my backends. The same as when I used 14.1
+
+Checking `/system/priv-app/`. GmsCore is definitely there, with 644 permissions. Automatically installed and set from the fork.
+
+This is using Lineage for microG 15.1 OnePlus3T 03/12/18.
+
+![UnifiedNlp](https://i.imgur.com/xCqF1jX.png)"
+microg/android_packages_apps_UnifiedNlp,open,Integration with AOSP 8.1 fails,[],"
+I added the repositories as documented here: https://github.com/microg/android_packages_apps_UnifiedNlp#aosp-build-system-integration
+
+However the build fails with:
+
+    ./packages/apps/UnifiedNlp/Android.mk:84: error: FindEmulator: find: `packages/apps/UnifiedNlp/unifiednlp-compat/src/v9/aidl': No such file or directory
+
+"
+microg/android_packages_apps_UnifiedNlp,open,LocationProvider sometimes returning NaN,[],"Hi,
+
+First of all, I'm not sure this is the right repo to post this issue. Please, let me know if it should belong to another repo and I'll fix it.
+
+I'm using LineageOS with microg ROM on my Nexus 5, together with UnifiedNlp and Apple Wifi backend. I am also using [OwnTracks](http://owntracks.org/) (which relies on `FusedLocationProvider` as far as I know) to track my phone's position every 5 minutes and send the location to a remote server. My phone geolocation setting is always set to ""power saving"".
+
+I noticed that from time to time, I receive a `NaN, NaN` location, which is directly coming from the `FusedLocationProvider` implementation, as far as I know. I'm not exactly sure what happens here, and I guess this might be actually a regular behavior of `FusedLocationProvider` (when it cannot acquire a location for instance). Still, apparently, from reading the official docs of this Google API, it should never return a `NaN` value.
+
+This is not a really big deal in OwnTracks as it handles it quite fine, and simply implicitly converts it to zero and this can be filtered away afterwards on the server side. On the contrary, many apps I've encountered so far are not resilient to an unexpected `NaN` value here and simply crash.
+
+Thanks!"
+microg/android_packages_apps_UnifiedNlp,open,UnifiedNLP not registered in Omnirom 8.1.0,[],"Hi!
+UnifiedNLP is not registered in Omnirom 8.1.0. It worked before in 7.1.2. My device is a Sony Xperia X 
+What will I need to post?"
+microg/android_packages_apps_UnifiedNlp,closed,Configure location backends on small devices,[],"Hello, I installed the LocalWifiNlpBackend and I wanted to activate it, but I can´t access the checkbox or the settings icon with my device.
+
+Is there a way to activate it via Command Line?"
+microg/android_packages_apps_UnifiedNlp,open,Improved readme,[],"Merged info for all Android versions to have a global idea
+Make it usable when the device is inside the recovery or inside the system
+Added separate adb commands for various Android versions
+Added info for Oreo
+Added Déjà Vu Location Service
+
+(Based on pull request #146 by @David-Guillot)
+
+<!-- Reviewable:start -->
+---
+This change is [<img src=""https://reviewable.io/review_button.svg"" height=""34"" align=""absmiddle"" alt=""Reviewable""/>](https://reviewable.io/reviews/microg/android_packages_apps_unifiednlp/147)
+<!-- Reviewable:end -->
+"
+microg/android_packages_apps_UnifiedNlp,open,readme: clarify installation instructions,[],"* ADB commands directly as Shell snippets
+* Move Nougat to a separate case, since the KK/L/M procedure doesn't work
+
+<!-- Reviewable:start -->
+---
+This change is [<img src=""https://reviewable.io/review_button.svg"" height=""34"" align=""absmiddle"" alt=""Reviewable""/>](https://reviewable.io/reviews/microg/android_packages_apps_unifiednlp/146)
+<!-- Reviewable:end -->
+"
+microg/android_packages_apps_UnifiedNlp,open,UnifiedNlp is not registered in system on nougat caf-based,[],"I am using nougat caf based rom (Citrus-CAF) that has been already applied signature spoofing patch and also unifiednlp patch from microg official page.
+I have installed GmsCore and UnifiedNlp in /system/priv-app but unifiednlp still can't be checked in registered in system box even after I rebooted my device for many times.
+Tried unofficial installer from @ale5000-git still got no luck.
+"
+microg/android_packages_apps_UnifiedNlp,closed,Your system does not support this UnifiedNlp package,[],"I have a Chinese Android watch (Android 4.4.4 API 19 - not Android Wear) on which I'm trying to install the UnifiedNlp package.
+
+I keep getting the error ""Your system does not support this UnifiedNlp package. Either install a matching package or a compatibility Xposed module."" when self-checking. Alongside 2 other errors:
+""The system did not bind the UnifiedNlp service. If you just installed UnifiedNlp you should try to reboot this device."" (device was rebooted) and
+""You either disabled network-based location (in system settings) or the system is not supported."" (location is enabled and on ""High Accuracy"")
+
+I tried all different versions (NetworkLocation.apk, LegacyNetworkLocation.apk, and UnifiedNlp.apk), all in vain. No version worked.
+
+Also, installing the standalone UnifiedNlp or the one that comes witch microG does make a difference.
+
+Am I missing something?
+If the system is not supported: why? What is the cause for a system not to be supported?"
+microg/android_packages_apps_UnifiedNlp,closed,Add release files description to README.md,[],"This information is missing in readme. It was confusing for me and I believe it is needed, so I summarized discussion from issue https://github.com/microg/android_packages_apps_UnifiedNlp/issues/34. 
+
+"
+microg/android_packages_apps_UnifiedNlp,open,Which UnifiedNlp package to use?,[],"Hello!
+
+I have identified 3 different UnifiedNlp packages [here](https://github.com/microg/android_packages_apps_UnifiedNlp/releases):
+LegacyNetworkLocation.apk
+NetworkLocation.apk
+UnifiedNlp.apk
+
+What is the correct package for my device? What are the criterias for identifying the suitable packages?
+I tried first NetworkLocation.apk and put this package to /system/priv-app.
+But the installation of this apk fails.
+
+Then I tried another package where the installation is working: UnifiedNlp.apk
+
+But GMSCore self-check is reporting failure of UnifiedNlp registration. Please check the following screenshot.
+
+And is it correct that GMSCore.apk and NetworkLocation.apk that I put to /system/priv-app are gone after reboot.
+
+![screenshot_20170802-214852 1](https://user-images.githubusercontent.com/12523591/28892004-be3a69ca-77cc-11e7-9525-42648d573776.png)
+"
+microg/android_packages_apps_UnifiedNlp,open,Feature request: Button to reload all backends,[],"Please add a button in microG settings to reload all backends.
+
+When permissions of backends are lost I have to disable them, confirm and re-enable them in microG settings to get the permission requests again."
+microg/android_packages_apps_UnifiedNlp,closed,Failure: Register for Push Notifications,[],"Hello!
+I have installed
+- GMSCore 0.2.4-103 (preview)
+- Xposed Framework ver 87
+- FakeGapps 1.1
+- XposedGmsCoreUnifiedNlp 1.0.4-beta
+on LineageOS-13.0-20170211-Stable.
+
+The function ""Self Check"" in GMSCore reports no errors (see [here](https://ibb.co/eF7ph5), [here](https://ibb.co/n3djFQ), and [here](https://ibb.co/jCBt9k)).
+In GMSCore I have [checked](https://ibb.co/dWmh25) ""Google Cloude Messaging"".
+
+To verify if push notification is working, I use app ""Push Notification Tester version 2.5"".
+And this tool reports:
+- [Google Play Services are not available](https://ibb.co/e1PAN5)
+- Play Services Installed - [false](https://ibb.co/cwdtaQ)
+- Register for Push Notifications - [false](https://ibb.co/cwdtaQ)
+
+The error ""Google Play Services"" is also reported by other apps, e.g. [Burger King](https://ibb.co/j78gUk).
+
+Presuming this is not a false fault, how can I fix this?
+
+THX"
+microg/android_packages_apps_UnifiedNlp,closed,Module unifiednlp-standalone added to enable network providers on non…,[],"I've added module unifiednlp-standalone for systems which cannot be rooted. The main part of this module is UnifiedNlpLocationManager - it receives intent to get location update and returns location by another intent.
+The main motivation for this app is to add possibility to use UnifiedNLP backends on non-rooted devices - so everybody can install this app and use it.
+Of course, client application has to be modified to use this location manager."
+microg/android_packages_apps_UnifiedNlp,closed,how to import com.android.location.provider.LocationProviderBase ?,[],I am writing a custom network location provider like UnifiedNLP . In order to create an unbundled location provider we should inherit from LocationProviderBase . But this class is not in Public SDK . How you import this class in  LocationProviderV2 class ? I saw LocationProviderBase is @hide and we cannot use in code in IDE .
+microg/android_packages_apps_UnifiedNlp,closed,apps which do not work with MicroG,[],"On my system (MicroG 0.2.4-79-g7f13738, CM 6) everything used to be fine, but recently a number of new installed apps are requesting either ""update google play"" or ""install google play"". I'm providing a (yet quite short) list of those - maybe other fellows want to contribute:
+
+- Free2move https://play.google.com/store/apps/details?id=com.ghm.carjump (Google Play Services have to be installed in order to use Free2move)
+- Urbi https://play.google.com/store/apps/details?id=com.batsharing.android (urbi can only be executed when you update your Google Play services)"
+microg/android_packages_apps_UnifiedNlp,closed,add Chinese simplified translation,[],add Chinese simplified translation
+microg/android_packages_apps_UnifiedNlp,open,Feature request: Implement Reproducible Builds,[],"Please implement Reproducible Builds to allow using the developer signature on the default F-Droid server.
+
+> F-Droid supports reproducible builds of apps, so that anyone can run the build process again and reproduce the same APK as the original release. This means that F-Droid can verify that an app is 100% free software while still using the original developer’s APK signatures.
+
+More info [here](https://eighthave.gitlab.io/fdroid-website/docs/Reproducible_Builds/).
+
+"
+microg/android_packages_apps_UnifiedNlp,open,Update strings.xml,[],Fix small typo
+microg/android_packages_apps_UnifiedNlp,closed,[Q] Using both UnifiedNlp and GApps without Xposed,[],"Hi,
+
+Is it possible to use UnifiedNlp on a phone using GApps (basically only Play Store and necessary parts) ?
+
+I used to use XposedUnifiedNlp on CyanogenMod 13, but I'd like to switch to LineageOS 14 for which Xposed isn't available (yet or never).
+
+What I'm aiming at is :
+- LineageOS
+- Play Store (and its dependencies)
+- NO other Google service
+- UnifiedNlp to allow the use of other location providers"
+microg/android_packages_apps_UnifiedNlp,open,Not working on LineageOS 14.1 03/09/2017,[],"The following patch to allow location providers outside of /system doesn't seem to work any more.
+
+https://github.com/microg/android_packages_apps_UnifiedNlp/blob/master/patches/android_frameworks_base-N.patch
+
+I built a fresh rom using code grabbed on 03/09/2017 and the self check doesn't show UnifiedNlp being registered in system. I have installed ""Wifi Location Service"", ""Mozilla Location Service"", and ""Nominatim"". The ""Locations backend(s) set up"" is checked.
+
+Possibly related issue, https://github.com/microg/android_packages_apps_GmsCore/issues/341
+
+System:
+Moto X Pure (Clark)
+LineageOS 14.1 Built on 03/09/2017
+microG Services Framework Proxy v0.1.0
+UnifiedNlp (no GAPPS) v0.2.4-79-g7f13738
+LocalWifiNlpBackend v1.1.6
+MozillaNlpBackend v1.3.2
+NominatimNlpBackend v1.2.1"
+microg/android_packages_apps_UnifiedNlp,open,"Apps with map, map views don't work 7.1",[],"So I have ""Nominatim"", ""Mozilla Location Service"", and ""WiFi Location Service"" along with the microG stuff all installed from F-Droid. I also flashed the Legacy v1 Maps zip but nothing seems to work.  I thought apps that used Google Maps as a backend instead got OpenStreetMaps instead. 
+
+One app I'm noticing this on is the Starbucks app. 
+
+System:
+Moto X Pure (Clark) 
+LineageOS 14.1 with ""NLP"" and ""Signature Spoof"" patches compiled in."
+microg/android_packages_apps_UnifiedNlp,closed,Update Russian translation,[],Translation for new lines and minor string fixes
+microg/android_packages_apps_UnifiedNlp,open,"location consent.  yes, a thousand times, yes",[],What changes can be made to forever allow location consent [never prompt again]?  gapps removed from android 4.4.4  unified nlp from fdroid
+microg/android_packages_apps_UnifiedNlp,open,move to system,[],"Should I use Lucky Patcher to move package to /system/app 
+
+android 4.4.4"
+microg/android_packages_apps_UnifiedNlp,open,[Feature request] Allow access per connection type,"[Label(name=""enhancement"")]",Currently all backends are active on both WiFi and mobile data. Can you add a filter to allow backends to operate on selected connection type?Generally when I on mobile data it is outdoors so GPS is sufficient. Currently have to change location settings each time.
+microg/android_packages_apps_UnifiedNlp,open,Enable compilation with Jack,[],
+microg/android_packages_apps_UnifiedNlp,open,Need an option to disable support for pre-v2 Location API,[],Otherwise Dex throws fits about all sorts of things.
+microg/android_packages_apps_UnifiedNlp,open,feed local wifi from bluetooth gnss (mock location provider),[],"Sometimes to avoid battery drain i use GNS2000 via bluetooth with Bluetooth GPS app:
+
+googoo.android.btgps 
+
+
+Can the local wifi database be fed from this GPS source? 
+
+#lessgoogleismorebetter "
+microg/android_packages_apps_UnifiedNlp,open,"no last known location, no location in 10 either",[],"android 444
+gapps uninstalled from system 
+root
+
+uNLP gapps version, fdroid 
+apple wifi location
+local gsm location
+local wifi
+
+
+uNLP self test
+
+first 5 checked
+
+6.  no last known location
+  
+7. no location provided in 10 seconds
+
+
+wifi settings: always allow scan, always on
+
+
+uNLP noGapps version would not pass self test first 5
+
+(recent few uNLP updates or provider updates causes nominatum address lookup crash.  it is now disabled.I don't have enough info for separate ticket yet)"
+microg/android_packages_apps_UnifiedNlp,closed,Add ukrainian translation,[],
+microg/android_packages_apps_UnifiedNlp,closed,Translations (eo+pl),[],
+microg/android_packages_apps_UnifiedNlp,closed,SelfCheck: Add Geocoder test,[],"This pull request use Geocoder Android API to make an address request from current location.
+
+This way we can check if Geocoder backend is working.
+
+Reference : https://github.com/microg/NominatimGeocoderBackend/issues/2
+"
+microg/android_packages_apps_UnifiedNlp,closed,Add Chinese(Taiwan) Translation.,[],
+microg/android_packages_apps_UnifiedNlp,closed,Added Russian translation,[],I just added Russian translation :)
+microg/android_packages_apps_UnifiedNlp,open,No position update between network location and GPS Fix,[],"Network Location is in Most situation active on my phone. But if I need GPS, between activating GPS and getting a fix, my phone is not able to update the position over network anymore.
+
+Shouldn't it be the case that the position gets more and more accurate until it get a full GPS Fix?"
+microg/android_packages_apps_UnifiedNlp,closed,Polish and Esperanto translations,[],"   I have 1 question about that lines:
+
+```
+<string name=""perm_force_coarse_location_label"">enforce approximate location</string>
+    <string name=""perm_force_coarse_location_desc"">Force the network-based location provider to report a certain location</string>
+```
+
+in first line it says about approximate location, in the next about certain (definitive, fixed) location. Maybe it should be ""**un**certain""?"
+microg/android_packages_apps_UnifiedNlp,closed,Missing build,[],"@mar-v-in: There is the zip of the sources and the tag of UnifiedNlp v1.6.7 but the compiled version is missing.
+
+Also the v1.6.6 is set as [latest release](https://github.com/microg/android_packages_apps_UnifiedNlp/releases/latest).
+Why?"
+microg/android_packages_apps_UnifiedNlp,open,Not able to build with LineageOS(former Cyanogenmod),[],"Hi!
+I am not able to build UnifiedNLP with LineageOS. I added the sources according to the documentation to my local manifests and added the PRODUCT_PACKAGE.
+I run into the errors in this log: 
+[unifiednlp.txt](https://github.com/microg/android_packages_apps_UnifiedNlp/files/683045/unifiednlp.txt)
+"
+microg/android_packages_apps_UnifiedNlp,open,Unable to install NO GAPPS version without gapps installed,[],"Hi, I had to reflash my rom due to.. user error and now I can't install ug UnifiedNLP NO GAPPS.
+
+F-droid tells me 'Failed to install due to an unkown error'.
+Installing through adb:
+```
+$ adb install Downloads/NetworkLocation.apk 
+[100%] /data/local/tmp/NetworkLocation.apk
+        pkg: /data/local/tmp/NetworkLocation.apk
+Failure [INSTALL_FAILED_UPDATE_INCOMPATIBLE]
+```
+
+Note: I HAD gapps (they come with the rom) but I removed them.. there might be something left over? 
+
+On device:
+
+```
+# pm list packages | grep -i goog                                 
+package:com.google.android.configupdater
+package:com.google.android.webview
+package:com.google.android.packageinstaller
+package:com.google.android.diskusage
+
+# pm list packages | grep -i locat                                
+package:org.fitchfamily.android.gsmlocation
+package:com.android.location.fused
+```
+
+Edit: I'm on 6.0.1"
+microg/android_packages_apps_UnifiedNlp,closed,Update README,[],"Minor fixes to the README
+Added Android 7
+Include most of the changes of @KAMiKAZOW at #95
+Better separation for the lists of backends
+Added special note for Nougat
+Corrected name
+Report last update year for unmaintained backends
+
+<!-- Reviewable:start -->
+---
+This change is [<img src=""https://reviewable.io/review_button.svg"" height=""34"" align=""absmiddle"" alt=""Reviewable""/>](https://reviewable.io/reviews/microg/android_packages_apps_unifiednlp/112)
+<!-- Reviewable:end -->
+"
+microg/android_packages_apps_UnifiedNlp,closed,Fix typo in strings,[],"Again, spotted while working on french translation.
+
+This might require fixing in the other languages too (just checked Serbian, which is affected). I didn’t verified it for GmsCore either. Would you want me to check both and push commits to fix if necessary or will you handle it?"
+microg/android_packages_apps_UnifiedNlp,closed,Update Serbian,[],
+microg/android_packages_apps_UnifiedNlp,open,Provide easy method for /system install,[],"As unpatched Android 7 does not allow Location providers outside of /system and as most Android 7 variants are not patched in this regard, I think that it would be reasonable to provide an easy installation method for UnifiedNLP.
+There are 2 possibilities:
+1. Provide a flashable .zip
+2. An installer to push the .apk to /system (requiring root)
+
+I personally think that the 1. option is better. It is easier to achieve (based on my amateurish knowledge) and also works for people who do not like to enable root on their phones."
+microg/android_packages_apps_UnifiedNlp,closed,No gapps unifiednlp with gapps.,[],"Guys, hi, i'm stupid and install no gapps version with gapps for my Galaxy s4. But when i try uninstall it - have error. Can you send me step-by-step uninstall guide, please?
+p.s. sorry for my english"
+microg/android_packages_apps_UnifiedNlp,closed,UnifiedNlp works on Cyanogenmod 9 but not on 10,[],"So from [here](https://download.cyanogenmod.org/?device=smultron) I originally flashed the newest nightly cm-10-20131006-NIGHTLY-smultron.zip onto the Sony Ericsson Xperia Mini and the UnifiedNlp (legacy) from F-droid would not work. Then eventually as maps were important to me I flashed the newest stable cm-9.1.0-smultron.zip onto the device. Here I got it to work, but felt that was mainly through using /system/app mover to move UnifiedNlp to be a system app. After reboot all or most of the boxes in UnifiedNlp were ticked and it worked wonderfully with either MozillaNlpBackend or LocalGsmNlpBackend (with the offline DB), the device finding itself quickly in OsmAnd~ and network/GPS locations in the small Here GPS Location app
+
+A few weeks went by and I noticed that the stable CM-9 had no FM radio like 10 did. Realising I couldn't install one I thought that the network location mainly worked as I had made it into a system app and rebooted. So feeling adventurous, I went from 9 back up to CM-10 and now I've got the FM radio back but even with UnifiedNlp as a system app it will not work! Android-Version is 4.1.2 .  Only the ""system supports"" and ""backend is set up"" boxes are ticked under CM-10
+
+Does anyone have a clue why this is not working with CM-10 when it works so easily in CM-9 and if there is any way to fix it, patches etc? "
+microg/android_packages_apps_UnifiedNlp,open,UnifiedNlp on Android 7 / Cyanogenmod 14.1,[],A suggested [here](https://github.com/microg/android_packages_apps_UnifiedNlp/issues/104) when you use Cyanogenmod 14.1 UnifiedNlp doesn't work - the only solution is to pull the patch by Cyanogenmod developers.
+microg/android_packages_apps_UnifiedNlp,closed,Doesn't work well ?,[],"Hello,
+
+I don't know if it's UnifiedNlp or the backend (IchnaeaNlpBackend) that doesn't work well but often my map apps can't find my location. I use maps.me and osmand. Here are the problems I have :
+
+- Sometimes the location is never found
+- Sometimes the location is totally wrong (100+ km)
+- Sometimes the location is quite imprecise (200+ km radius)
+- Sometimes the location is wrong and correspond to the location where the last time I used the map apps
+
+Here is a log that show that osmand find me, then lost the location, and find me again. I will provide more logs if needed when problems appears.
+
+[2016-12-13-07-25-14.txt](https://github.com/microg/android_packages_apps_UnifiedNlp/files/648144/2016-12-13-07-25-14.txt)
+
+Thanks !"
+microg/android_packages_apps_UnifiedNlp,closed,UnifiedNlp is not registered in system on Android 4.1,[],"Quote from mandayugana's [post](http://forum.xda-developers.com/showpost.php?p=69964961&postcount=207) to keep track of the problem.
+
+> Currently I'm using Samsung 4.1.2 firmware. I have successfully removed Google and Samsung apps from system. But I have an issue that UnifiedNlp is not registered in system. It is finally registered after adding the third line into Manifest.xml.
+
+```
+        <service android:exported=""true"" android:name=""org.microg.nlp.location.LocationServiceV1"" android:permission=""android.permission.ACCESS_COARSE_LOCATION"">
+            <intent-filter>
+		<action android:name=""com.android.location.service.NetworkLocationProvider""/>
+                <action android:name=""com.google.android.location.NetworkLocationProvider""/>
+            </intent-filter>
+            <meta-data android:name=""serviceVersion"" android:value=""1""/>
+            <meta-data android:name=""version"" android:value=""1""/>
+        </service>
+```"
+microg/android_packages_apps_UnifiedNlp,closed,Allow location providers also outside of /system,[],"This restores the behavior of android M. Tested on AOSP 7.0.0_r14.
+Closes https://github.com/microg/android_packages_apps_UnifiedNlp/issues/102
+"
+microg/android_packages_apps_UnifiedNlp,closed,Unified NLP not working on self-compiled AOSP 7,[],"Background info here:
+https://github.com/microg/android_packages_apps_GmsCore/issues/216
+I was directed here to check #55 but I couldn't find any overlay that would interfere with the Android 6 patch (which adds the required package name to the framework).
+"
+microg/android_packages_apps_UnifiedNlp,open,Long delays until position is acquired,[],"I noticed that UnifiedNLP has really long delays until a changed location is being reported. E.g. a weather widget might stay for several hours (some times more than 12h) on the same location until it notices a change in location. Especially annoying is that Tasker (the automation app) profiles based on network location (without GPS) are extremely unreliable: Tasker cell contexts, i.e. profiles based on the ID of the current cell tower, work perfectly, the same profile with UnifiedNLP and location context has a delay of 15+ minutes to hours. And that even if the phone is definitely logged into cell towers which should trigger the context.
+
+I also can have Mozilla stumbler running in parallel. As this programm shows the current location as computed by Mozilla NLS, I see that the correct position is available, but UnifiedNLP does not report it until much later.
+
+I use a Samsung S7 with different custom MM-ROMs, and MicroG-UnifiedNLP with different backends (Mozilla and OpenCellID). It somehow seems as if UnifiedNLP is kind of dozing and not updating its position info. Maybe some power saving mechanism of Android MM is interfering with the continuous work of UnifiedNLP, but I have not yet found a solution.
+"
+microg/android_packages_apps_UnifiedNlp,closed,Added item to disable battery optimizations,[],"See https://github.com/microg/android_packages_apps_GmsCore/pull/197
+"
+microg/android_packages_apps_UnifiedNlp,closed,WhatsApp crashes when opening chat with Location,[],"When someone sends a location in WhatsApp, it is displayed as a small preview of the map. This works fine in 0.2.4-7-g5a0c235, but causes the following crash in 0.2.4-8-g2fa70c1 (both versions from the microg F-Droid repo). This was on an LG G4.
+
+```
+09-13 11:52:12.717 32184 32184 E AndroidRuntime: java.lang.UnsatisfiedLinkError: dlopen failed: ""/data/app/com.google.android.gms-1/lib/arm64/libvtm-jni.so"" is 64-bit instead of 32-bit
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at java.lang.Runtime.loadLibrary(Runtime.java:372)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at java.lang.System.loadLibrary(System.java:1076)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at org.oscim.android.MapView.<clinit>(MapView.java:52)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at org.microg.gms.maps.BackendMap.<init>(BackendMap.java:70)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at org.microg.gms.maps.GoogleMapImpl.<init>(GoogleMapImpl.java:136)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at org.microg.gms.maps.GoogleMapImpl.create(GoogleMapImpl.java:149)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at org.microg.gms.maps.MapViewImpl.myMap(MapViewImpl.java:51)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at org.microg.gms.maps.MapViewImpl.getView(MapViewImpl.java:107)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.google.android.gms.maps.internal.IMapViewDelegate$Stub.onTransact(IMapViewDelegate.java:119)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at org.microg.gms.maps.MapViewImpl.onTransact(MapViewImpl.java:127)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at android.os.Binder.transact(Binder.java:387)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.google.android.gms.maps.a.o.f(Unknown Source)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.google.android.gms.maps.n.a(Unknown Source)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.google.android.gms.a.d.b(Unknown Source)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.google.android.gms.a.c.a(Unknown Source)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.google.android.gms.maps.p.e(Unknown Source)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.google.android.gms.maps.p.a(Unknown Source)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.google.android.gms.a.b.a(Unknown Source)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.google.android.gms.a.b.a(Unknown Source)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.google.android.gms.maps.MapView.onCreate(Unknown Source)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.whatsapp.rd.run(ConversationRowLocation.java:134)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at android.os.Handler.handleCallback(Handler.java:739)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at android.os.Handler.dispatchMessage(Handler.java:95)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at android.os.Looper.loop(Looper.java:148)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at android.app.ActivityThread.main(ActivityThread.java:5461)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at java.lang.reflect.Method.invoke(Native Method)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+09-13 11:52:12.717 32184 32184 E AndroidRuntime:        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+```
+"
+microg/android_packages_apps_UnifiedNlp,open,Service org.microg.nlp.location.LocationServiceV2 has leaked ServiceConnection org.microg.nlp.location.BackendHelper,[],"I noticed this backtrace in logcat when viewing something unrelated, and thought I would report it. I'm running:
+
+ug unified nlp: 0.2.4-8-g2fa70c1 
+LocalWifiNlpBackend: 1.1.6
+LocalGsmNlpBackend: 1.4.7
+
+```
+09-10 08:56:36.246 31295 31295 E ActivityThread: Service org.microg.nlp.location.LocationServiceV2 has leaked ServiceConnection org.microg.nlp.location.BackendHelper@9940075 that was originally bound here
+09-10 08:56:36.246 31295 31295 E ActivityThread: android.app.ServiceConnectionLeaked: Service org.microg.nlp.location.LocationServiceV2 has leaked ServiceConnection org.microg.nlp.location.BackendHelper@9940075 that was originally bound here
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at android.app.LoadedApk$ServiceDispatcher.<init>(LoadedApk.java:1093)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at android.app.LoadedApk.getServiceDispatcher(LoadedApk.java:987)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at android.app.ContextImpl.bindServiceCommon(ContextImpl.java:1313)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at android.app.ContextImpl.bindService(ContextImpl.java:1296)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at android.content.ContextWrapper.bindService(ContextWrapper.java:610)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at org.microg.nlp.AbstractBackendHelper.bind(AbstractBackendHelper.java:94)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at org.microg.nlp.location.BackendFuser.bind(BackendFuser.java:75)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at org.microg.nlp.location.ThreadHelper.enable(ThreadHelper.java:66)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at org.microg.nlp.location.ThreadHelper.reload(ThreadHelper.java:39)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at org.microg.nlp.location.LocationProviderV2.reload(LocationProviderV2.java:59)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at org.microg.nlp.location.AbstractLocationService.onHandleIntent(AbstractLocationService.java:77)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:66)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at android.os.Handler.dispatchMessage(Handler.java:102)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at android.os.Looper.loop(Looper.java:148)
+09-10 08:56:36.246 31295 31295 E ActivityThread:        at android.os.HandlerThread.run(HandlerThread.java:61)
+09-10 08:56:36.258 31295 31295 E ActivityThread: Service org.microg.nlp.location.LocationServiceV2 has leaked ServiceConnection org.microg.nlp.location.BackendHelper@ba6080a that was originally bound here
+09-10 08:56:36.258 31295 31295 E ActivityThread: android.app.ServiceConnectionLeaked: Service org.microg.nlp.location.LocationServiceV2 has leaked ServiceConnection org.microg.nlp.location.BackendHelper@ba6080a that was originally bound here
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at android.app.LoadedApk$ServiceDispatcher.<init>(LoadedApk.java:1093)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at android.app.LoadedApk.getServiceDispatcher(LoadedApk.java:987)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at android.app.ContextImpl.bindServiceCommon(ContextImpl.java:1313)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at android.app.ContextImpl.bindService(ContextImpl.java:1296)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at android.content.ContextWrapper.bindService(ContextWrapper.java:610)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at org.microg.nlp.AbstractBackendHelper.bind(AbstractBackendHelper.java:94)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at org.microg.nlp.location.BackendFuser.bind(BackendFuser.java:75)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at org.microg.nlp.location.ThreadHelper.enable(ThreadHelper.java:66)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at org.microg.nlp.location.ThreadHelper.reload(ThreadHelper.java:39)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at org.microg.nlp.location.LocationProviderV2.reload(LocationProviderV2.java:59)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at org.microg.nlp.location.AbstractLocationService.onHandleIntent(AbstractLocationService.java:77)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:66)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at android.os.Handler.dispatchMessage(Handler.java:102)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at android.os.Looper.loop(Looper.java:148)
+09-10 08:56:36.258 31295 31295 E ActivityThread:        at android.os.HandlerThread.run(HandlerThread.java:61)
+```
+"
+microg/android_packages_apps_UnifiedNlp,closed,F-Droid cannot replace Android's version with your no-GAPPS version,[],"F-Droid offers µg UnifiedNlp (no GAPPS) in the list of Updates.
+When I try to update, I get this message: ""The new version is signed with a different key to the old one. To install the new version, the old one must be uninstalled first.""
+When I try to uninstall Android's version, that appears in F-Droid in the list of installed apps, i get this message: ""Failed to uninstall due to an unknown error""
+"
+microg/android_packages_apps_UnifiedNlp,closed,GPS signal not found in Pokémon Go (KitKat),[],"It seems Pokémon Go does not work as expected with UnifiedNlp.
+I am in the middle of the ocean and I have this message: GPS signal not found.
+Backend: GSM Location Service.
+Android KitKat 4.4.4.
+Am I the only one? If not any idea why?
+"
+microg/android_packages_apps_UnifiedNlp,closed,Revamp backend section in Readme,[],"Fix some typos along the way.
+"
+microg/android_packages_apps_UnifiedNlp,closed,Location aging seems wrong,[],"Some location backends, like the IchnaeaNlpBackend, report a position only on change in detected Cells/WiFis. Last position reported is still good until the next report. At present that means that UnifiedNLP will start aging the report even when the position is still current and accurate.
+
+The aging should only start when a null (unknown position) report is given by the backend at which point the last non-null report returned by the backend should be aged.
+"
+microg/android_packages_apps_UnifiedNlp,closed,"Installation Failure ""UnifiedNlp (no GAPPS)""",[],"Hello!
+
+I have installed CM13 (13.0-20160605-NIGHTLY-ks01lte) from scratch w/o GApps.
+Threema support adviced to use microG to overcome some issues related to polling.
+
+Based on this I started installation with F-Droid and succeeded for some packages.
+
+But the installation of UnifiedNlp (no GAPPS) fails with unknown error:
+![screenshot_20160606-113538 1](https://cloud.githubusercontent.com/assets/12523591/15818776/7ed4aa82-2bdf-11e6-8cfc-36c6bffe3e78.png)
+
+At this point I'd like to understand why this installation fails.
+Furthermore it would be helpful if somebody could explain which packages should be installed:
+UnifiedNlp.apk
+NetworkLocation.apk
+LegacyNetworkLocation.apk
+
+This is not clear, but my understanding was that I should have UnifiedNlp (no GAPPS) installed on devices w/o Google services.
+
+THX
+"
+microg/android_packages_apps_UnifiedNlp,closed,UnifiedNlp is full checked but no position,[],"UnifiedNlp is full checked but no position
+
+![unifiednlp-f-droid](https://cloud.githubusercontent.com/assets/7795891/15469650/f0bb34c6-20eb-11e6-88a5-852cda366b6b.png)
+
+![unifiednlp](https://cloud.githubusercontent.com/assets/7795891/15469529/12103bc2-20eb-11e6-9690-8f7ccd204bb7.png)
+![screenshot_2016-05-23-13-35-43](https://cloud.githubusercontent.com/assets/7795891/15469613/9dd8cdae-20eb-11e6-94f1-e9a82461a1c3.png)
+"
+microg/android_packages_apps_UnifiedNlp,closed,fix another typo in readme,[],
+microg/android_packages_apps_UnifiedNlp,closed,fix typo in readme,[],
+microg/android_packages_apps_UnifiedNlp,closed,Display color yellowish,"[Label(name=""invalid"")]","After installing µg UnifiedNlp (no GAPPS) v1.6.6 and MozillaNlpBackend v1.3.2 my phone's display changes color temperature to yellowish tint after switching Location services on.
+
+(During reboot color temperature is normal, after disabling Location services and reboot color is also normal)
+
+My device is Moto G 2014 (titan) with Cyanogemod 12.1 (https://download.cyanogenmod.org/get/jenkins/135150/cm-12.1-20151117-SNAPSHOT-YOG7DAO1K5-titan.zip)
+"
+microg/android_packages_apps_UnifiedNlp,open,Self test reports no known location/updates but applications work,[],"I have installed unifiedNLP from F-Droid on a  Fairphone 2 with a self-built image.
+
+The selftest reports issues but apps seem to work.
+This could be a duplicate of #72."
+microg/android_packages_apps_UnifiedNlp,closed,java.lang.SecurityException: Not allowed to start service Intent without permission com.google.android.c2dm.permission.RECEIVE,[],"```
+java.lang.SecurityException: Not allowed to start service Intent { 
+act=com.google.android.c2dm.intent.REGISTER pkg=com.google.android.gms (has extras) }
+without permission
+com.google.android.c2dm.permission.RECEIVE
+at android.app.ContextImpl.startService(ContextImpl.java:1217)
+at android.content.ContextWrapper.startService(ContextWrapper.java:383)
+at org.microg.gms.gcm.PushRegisterProxy.onHandleIntent(PushRegisterProxy.java:32)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:153)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+```
+
+Same device, android 4.1.2 LG, stock ROM.
+"
+microg/android_packages_apps_UnifiedNlp,closed,NoSuchMethodError: android.location.Location.getElapsedRealtimeNanos,[],"I get this exception when I (re-)enable a location backend. 
+
+```
+java.lang.NoSuchMethodError: android.location.Location.getElapsedRealtimeNanos at 
+org.microg.nlp.location.BackendHelper.updateElapsedRealtimeNanos(BackendHelper.java:112) at 
+org.microg.nlp.location.BackendHelper.setLastLocation(BackendHelper.java:102) at 
+org.microg.nlp.location.BackendHelper.access$200(BackendHelper.java:40) at 
+org.microg.nlp.location.BackendHelper$Callback.report(BackendHelper.java:156) at 
+org.microg.nlp.api.LocationCallback$Stub.onTransact(LocationCallback.java:55) at 
+android.os.Binder.execTransact(Binder.java:367) at 
+dalvik.system.NativeStart.run(Native Method)
+```
+
+When this exception is thrown, Apple backend crashes with NPE:
+
+```
+java.lang.NullPointerException
+at org.microg.nlp.backend.apple.BackendService$1.run(BackendService.java:79)
+at java.lang.Thread.run(Thread.java:856)
+```
+
+Android 4.1.2 LG phone, stock ROM, I removed GAPPS manually.
+"
+microg/android_packages_apps_UnifiedNlp,closed,no icon to launch UnifiedNLP if installed under /system/app,[],"If i move the apk to /system/app or /system/priv-app there is no icon to launch the app in the app drawer.
+i want to distribute my rom with UnifiedNLP as a system app because of adding UnifiedNLP to the system location providers and it might be a security issue otherwise.
+its also not possible to start the app via android.intent.action.MAIN if the app is installed in the system partition.
+"
+microg/android_packages_apps_UnifiedNlp,open,Question about setting Mozilla Network Location enabled by default,[],"## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/32708750-question-about-setting-mozilla-network-location-enabled-by-default?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,lost Settings after phone reboot,[],"I have installed [µg UnifiedNlp (no GAPPS)](https://f-droid.org/repository/browse/?fdfilter=UnifiedNlp&fdid=com.google.android.gms) on my Motorola Moto E 2. Generation with [Cyanogenmod 13 nightly](http://www.cmxlog.com/13/surnia/) ( cm-13.0-20160330-NIGHTLY-surnia.zip) and also installed 
+[OpenBmapNlpBackend](https://f-droid.org/repository/browse/?fdid=org.openbmap.unifiedNlp)
+
+In UnifiedNLP Settings i Configure location backends:
+-Online/offline mode --> ""Offline mode""
+-Offline database --> ""openbmap""
+-Database folder --> /storage/emulated/0/Android/data/org.openbmap.unifiedNlp/files
+
+After reboot the phone the settings are gone and it is
+-Online/offline mode --> ""Online mode""
+-Offline database --> ""None""
+
+I am not sure if it is a bug in UnifiedNlp or in CM 13 nightly. Maybe you can help? Sorry for my bad english.
+"
+microg/android_packages_apps_UnifiedNlp,closed,OpenWLANMap can never find GPS fix,"[Label(name=""invalid"")]","It's starts, no exceptions in logs, initiates GPS connection but even when it's established still ""Waiting for GPS fix..."". Same with OpenWLANMapMini
+
+[Logs](https://gist.github.com/vermut/7dfe371554ce1b67c43c)
+"
+microg/android_packages_apps_UnifiedNlp,closed,Please add support for Copperhead OS,"[Label(name=""wontfix"")]","Hi,
+
+i just installed CopperheadOS, a hardened android version for Nexus models. (https://copperhead.co/android/)
+
+But unfortunately the network based location does not work. I can install UnifiedNlp and some backends. But the selfcheck says, my system does not support this package. I also left a comment on the copperhead bug tracker: https://github.com/copperhead/bugtracker/issues/186#issuecomment-200861801
+
+It would be great if both awesome projects could collaborate.
+
+Thx and keep the good work up.
+
+Christoph
+"
+microg/android_packages_apps_UnifiedNlp,closed,Gsm location doesn't work,[],"I'm using the mozilla location backend. The location work on Wifi and GPS but not with the Gsm (2G, 3G) network.
+
+UnifiedNlp 1.6.2 dirty (fdroid)
+
+Android 4.4 (CM 11)
+Motorola Razr i (x86)
+
+Thanks
+"
+microg/android_packages_apps_UnifiedNlp,closed,"unifiedNLP (GAPPS) ""System supports location provider"" is not checked",[],"im using unifiedNLP (GAPPS) from f-droid (v1.6.2-dirty https://f-droid.org/repository/browse/?fdid=org.microg.nlp)
+i added org.microg.nlp to config_locationProviderPackageNames (http://pastebin.com/XiE3L1FA#110) as stated here:
+https://f-droid.org/repository/browse/?fdid=org.microg.nlp (second paragraph)
+
+""System supports location provider"" and ""UnifiedNLP is registered in system"" arent checked.
+
+if im using the unifiedNLP xposed module everything is working fine.
+
+am i missing something?
+
+im running sony z ultra on omnirom mm
+"
+microg/android_packages_apps_UnifiedNlp,closed,Revert to plain versioncode in gradle files,[],"Since you switched to generate version and versioncode on build, there is no way to get those information without building it. This breaks updatechecks and auto-update for f-droid. Could you revert to using plain values?
+"
+microg/android_packages_apps_UnifiedNlp,closed,Report a new location only after receiving a non-null update,[],"Prevents stale locations from being re-sent when backends supply null locations, fixes #75 
+"
+microg/android_packages_apps_UnifiedNlp,open,Self-Check reports errors despite the setup working,[],"On my device (OnePlus One running CyanogenMod 12, never had GApps), the following tests fail:
+- System supports location provider
+- UnifiedNLP has known location
+- UnifiedNLP provides location updates
+
+However, both SatStat and Navit receive location updates from UnifiedNLP.
+
+Tested with `NetworkLocation-debug.apk` built locally from bcf1cff and installed as a regular user app, rebooted after install.
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/31990573-self-check-reports-errors-despite-the-setup-working?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,Stale location reported when backend calls report(null),[],"This came out of an issue in the openBmap backend, https://github.com/wish7code/org.openbmap.unifiedNlpProvider/issues/13: After getting stale locations under some circumstances, I did some investigations and introduced some modifications into the backend.
+
+The backend does a combined cell/wifi lookup, either online or using an offline DB (all my tests were done with the offline DB).
+
+Steps to reproduce:
+1. Fire up an appropriate app in an environment with known wifis. I used SatStat, available on F-Droid, which visualizes both GPS and network location along with their accuracies. Check location, then return to home screen making sure no other app requests location updates).
+1. Move to a location with no known cells and wifis at all, and fire up the app again.
+
+The first step behaved as I expected: the modified backend gave me a crisp (+/- 20 m) location. The second step was performed some 5 minutes after leaving the previous location. SatStat claimed I was still within 20 meters of the old location, even after I killed and restarted it (to rule out any caching in SatStat).
+
+Analyzing the logcat, I find that I originally had 26 wifis in range, from which the backend calculated a location and reported it. In the metro station, the backend reported that no wifis were in range and the only visible cell was not in the DB. It reported a null location, <del>resulting in a call to `report()` with a `null` argument</del>. Then, however, UnifiedNLP (specifically NlpLocationBackendFuser) reports the same location it has given out 5 minutes before, with the same et=+15d21h34m50s905ms (which I suppose is the timestamp) and the same accuracy acc=20.
+
+Are backends supposed to call `report(null)` when they are unable to determine the current location, or should they simply not call `report()` at all? This should probably be documented in the API README.
+
+In any case, the fuser probably should not give out old locations unmodified: when processing any location, its accuracy should be penalized based on its age (if you're interested, I can provide a link to my branch of the openBmap backend for an example on how to fuse locations of different ages) and the resulting location should have a recent timestamp.
+"
+microg/android_packages_apps_UnifiedNlp,closed,Enabling in SailfishOS AlienDalvik,[],"I installed microG and some backends. 
+
+Checklist:
+- [x] Spoofing enabled
+- [x] GmsCore installed
+- [x] GmsCore correct signature
+- [ ] GSF not installed (not needed for maps?)
+- [ ] System supports location provider (Sailfish has 4.1.2 API16)
+- [ ] UnifiedNlp registered in system
+- [x] Location backends set up
+- [x] Network-based location enabled
+- [ ] No last known location
+
+I tried to copy LegacyNetworkProvider.apk to /apps (no priv-apps here).
+
+Where can I look next?
+
+[Logcat starting system and launching NextBike app (which crashed)](https://gist.github.com/vermut/187184d66cdb21fe3d9b)
+
+Some excepts:
+
+```
+I/dalvikvm( 5335): Could not find method org.microg.gms.gservices.GServicesProvider.getCallingPackage, referenced from method org.microg.gms.gservices.GServicesProvider.getCallingPackageName
+W/dalvikvm( 5335): VFY: unable to resolve virtual method 32796: Lorg/microg/gms/gservices/GServicesProvider;.getCallingPackage ()Ljava/lang/String;
+D/dalvikvm( 5335): VFY: replacing opcode 0x6e at 0x0006
+```
+
+```
+W/ActivityManager( 5145): Permission Denial: Accessing service ComponentInfo{com.google.android.gms/org.microg.gms.gcm.PushRegisterService} from pid=5575, uid=10016 requires com.google.android.c2dm.permission.RECEIVE
+W/dalvikvm( 5575): threadid=10: thread exiting with uncaught exception (group=0x40b61360)
+E/AndroidRuntime( 5575): FATAL EXCEPTION: AsyncTask #1
+E/AndroidRuntime( 5575): java.lang.RuntimeException: An error occured while executing doInBackground()
+E/AndroidRuntime( 5575):    at android.os.AsyncTask$3.done(AsyncTask.java:299)
+E/AndroidRuntime( 5575):    at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:273)
+E/AndroidRuntime( 5575):    at java.util.concurrent.FutureTask.setException(FutureTask.java:124)
+E/AndroidRuntime( 5575):    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:307)
+E/AndroidRuntime( 5575):    at java.util.concurrent.FutureTask.run(FutureTask.java:137)
+E/AndroidRuntime( 5575):    at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:230)
+E/AndroidRuntime( 5575):    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1076)
+E/AndroidRuntime( 5575):    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:569)
+E/AndroidRuntime( 5575):    at java.lang.Thread.run(Thread.java:856)
+E/AndroidRuntime( 5575): Caused by: java.lang.SecurityException: Not allowed to start service Intent { act=com.google.android.c2dm.intent.REGISTER pkg=com.google.android.gms (has extras) } without permission com.google.android.c2dm.permission.RECEIVE
+E/AndroidRuntime( 5575):    at android.app.ContextImpl.startService(ContextImpl.java:1167)
+E/AndroidRuntime( 5575):    at android.content.ContextWrapper.startService(ContextWrapper.java:383)
+E/AndroidRuntime( 5575):    at com.google.android.gms.b.a.c(Unknown Source)
+E/AndroidRuntime( 5575):    at com.google.android.gms.b.a.a(Unknown Source)
+E/AndroidRuntime( 5575):    at de.nextbike.b.c.a(Unknown Source)
+E/AndroidRuntime( 5575):    at de.nextbike.b.c.doInBackground(Unknown Source)
+E/AndroidRuntime( 5575):    at android.os.AsyncTask$2.call(AsyncTask.java:287)
+E/AndroidRuntime( 5575):    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305)
+E/AndroidRuntime( 5575):    ... 5 more
+
+```
+"
+microg/android_packages_apps_UnifiedNlp,closed,Added button Get it on F-Droid,[],
+microg/android_packages_apps_UnifiedNlp,open,"No data in ""UnifuedNlp has known location:""",[],"![screenshot_20160309-125132](https://cloud.githubusercontent.com/assets/17610552/13625739/bf8fb8da-e5f5-11e5-93f0-cfe98a4ff8ea.png)
+"
+microg/android_packages_apps_UnifiedNlp,closed,"“Address lookup"" have no options",[],"![screenshot_20160309-124338](https://cloud.githubusercontent.com/assets/17610552/13625705/5e35271e-e5f5-11e5-875c-eedfef86a9ec.png)
+"
+microg/android_packages_apps_UnifiedNlp,closed,The Installation guide in frist page should be changed,[],"Should tell user how to install it on android M。
+"
+microg/android_packages_apps_UnifiedNlp,open,[Feature Request] NL Tester app to show all provider results,[],"It would a lot easier to know if provider works at all if we can see result from each provider, including TTFF (Time To First Fix)
+
+maybe one can start from by forking existing open source app like [Android GPS Testing Tool](https://github.com/Esri/android-gps-test-tool/)
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/31611257-feature-request-nl-tester-app-to-show-all-provider-results?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,open,[MM] Permission Denial requires android.permission.ACCESS_COARSE_LOCATION,[],"android 6.0.1, UnifiedNlp.apk (1.6.1)
+
+after installing UnifiedNlp, Location perimssion default to ""off""
+selecting any location backend raise the following exception in log
+
+```
+03-04 23:14:50.335  9088 10256 W ActivityManager: Permission Denial: Accessing service ComponentInfo{org.microg.nlp.backend.ichnaea/org.microg.nlp.backend.ichnaea.BackendService} from pid=12474, uid=10080 requires2 android.permission.ACCESS_COARSE_LOCATION
+03-04 23:14:50.336 12474 12474 D AndroidRuntime: Shutting down VM
+03-04 23:14:50.338 12474 12474 E AndroidRuntime: FATAL EXCEPTION: main
+03-04 23:14:50.338 12474 12474 E AndroidRuntime: Process: org.microg.nlp, PID: 12474
+03-04 23:14:50.338 12474 12474 E AndroidRuntime: Theme: themes:{}
+03-04 23:14:50.338 12474 12474 E AndroidRuntime: java.lang.SecurityException: Not allowed to bind to service Intent { act=org.microg.nlp.LOCATION_BACKEND pkg=org.microg.nlp.backend.ichnaea cmp=org.microg.nlp.backend.ichnaea/.BackendService }
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at android.app.ContextImpl.bindServiceCommon(ContextImpl.java:1334)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at android.app.ContextImpl.bindService(ContextImpl.java:1298)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at android.content.ContextWrapper.bindService(ContextWrapper.java:610)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at org.microg.nlp.ui.AbstractBackendPreference.enableBackend(AbstractBackendPreference.java:208)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at org.microg.nlp.ui.AbstractBackendPreference$Adapter$1.onClick(AbstractBackendPreference.java:175)03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at android.view.View.performClick(View.java:5204)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at android.widget.CompoundButton.performClick(CompoundButton.java:122)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at android.view.View$PerformClick.run(View.java:21156)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at android.os.Handler.handleCallback(Handler.java:739)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at android.os.Handler.dispatchMessage(Handler.java:95)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at android.os.Looper.loop(Looper.java:148)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at android.app.ActivityThread.main(ActivityThread.java:5466)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at java.lang.reflect.Method.invoke(Native Method)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+03-04 23:14:50.338 12474 12474 E AndroidRuntime:        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+03-04 23:14:50.339  9088 10145 W ActivityManager:   Force finishing activity org.microg.nlp/.ui.SettingsActivity
+```
+
+UnifiedNlp is not requesting permission automatically like it should. same applies to the backend apps made by you, like IchnaeaNlpBackend which crash after selected this backend and pressing ""ok""
+
+i suppose it's called runtime permissions under 6.0
+apps like org.fitchfamily.android.wifi_backend, however can request for permission at runtime
+
+yes we can grant permission manually in app permission setting dialog
+but chance are only after first installation but before it is used by system (hack or custom framework-res.apk/config.xml + reboot), i can grant permission in UnifiedNlp app permission setting page to avoid this issue
+
+after reboot, since UnifiedNlp is used as system NLP, I can no longer grant permission because it looks like permission is already granted while it's not. (seems like 6.0 bug). can't even toggle it off
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/31592439-mm-permission-denial-requires-android-permission-access_coarse_location?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,[Feature Request] Support for non-unified NLP,[],"UnifiedNlp should list and support for pre-UnifiedNlp network location providers, like gms, AMAPNetworkLocation, BaiduNetworkLocation. etc. these NLP is supported and used by original system, although only 1 of them is used. they works without any configuration. UnifiedNlp should be able to use them like UnifiedNlp-providers. supporting to post-kk (4.4 ~ ) is enough
+"
+microg/android_packages_apps_UnifiedNlp,closed,NullPointerException,[],"```
+java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.os.Bundle.containsKey(java.lang.String)' on a null object reference
+    at org.microg.tools.selfcheck.NlpStatusChecks$2.onLocationChanged(NlpStatusChecks.java:106)
+    at android.location.LocationManager$ListenerTransport._handleMessage(LocationManager.java:285)
+    at android.location.LocationManager$ListenerTransport.-wrap0(LocationManager.java)
+    at android.location.LocationManager$ListenerTransport$1.handleMessage(LocationManager.java:230)
+    at android.os.Handler.dispatchMessage(Handler.java:102)
+    at android.os.Looper.loop(Looper.java:148)
+    at android.app.ActivityThread.main(ActivityThread.java:5466)
+    at java.lang.reflect.Method.invoke(Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+    at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:117)
+```
+
+CM-13.0. UnifiedNlp.apk is moved to /system/priv-app/UnifiedNlp/UnifiedNlp.apk, resource override'd using xposed
+exception thrown after clicking ""Self-check""
+
+using UnifiedNlp.apk 1.6.0 (but apps says 1.5.1)
+"
+microg/android_packages_apps_UnifiedNlp,closed,Generate Gradle BuildConfig.java file during AOSP build,[],"This fix compilation problem using AOSP source tree since it does
+not handle (yet?) Gradle generated files.
+
+Signed-off-by: Julien Bolard jbolard@genymobile.com
+"
+microg/android_packages_apps_UnifiedNlp,closed,unable to uninstall from nexus 6,[],"i installed the no gapps version from f-droid on my nexus 6(no root, on marshmallow). when i try to uninstall it from f-droid, i get an error saying ""unable to uninstall due to an unknown error."" is there any way i can uninstall it without a reset?
+"
+microg/android_packages_apps_UnifiedNlp,closed,SecurityException,[],"Hi!
+I found this error in my logcat several times (Im on CopperheadOS):
+
+```
+02-17 18:59:35.308 17609 17609 I SignalStrengthTracker: Removing old signal strength entries from DB.
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider: Exception
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider: java.lang.SecurityException: need INSTALL_LOCATION_PROVIDER permission, or UID of a currently bound location provider
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at android.os.Parcel.readException(Parcel.java:1620)
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at android.os.Parcel.readException(Parcel.java:1573)
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at android.location.ILocationManager$Stub$Proxy.reportLocation(ILocationManager.java:1281)
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at com.android.location.provider.LocationProviderBase.reportLocation(LocationProviderBase.java:136)
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at org.microg.nlp.location.BackendFuser.updateLocation(BackendFuser.java:101)
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at org.microg.nlp.location.BackendFuser.update(BackendFuser.java:86)
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at org.microg.nlp.location.ThreadHelper.run(ThreadHelper.java:77)
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:423)
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:278)
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:270)
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)
+02-17 18:59:35.767 24807 25051 E NlpLocationProvider:   at java.lang.Thread.run(Thread.java:818)
+
+```
+"
+microg/android_packages_apps_UnifiedNlp,open,Doesn't work with online backends,[],"I use a hammerhead (Nexus 5) device with OmniROM 6.0.1. I tried it on CopperheadOS as well and it did't work either.
+
+Since I tried Mozillas backend (crashes) and the openbmap one from F-Droid and both fail to get a location fix I guess the problem should be in the middleware....
+
+I cloudln't try locale backends yet.
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/30837245-doesn-t-work-with-online-backends?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,Send location through mock location,[],"Would it be possible to post the location from nlp through the mock location, for the device without root and with preinstalled Google services?
+Mock location or any non-root way, or course.
+"
+microg/android_packages_apps_UnifiedNlp,closed,NullPointerException in self-check,[],"Whenever the self-check in 1.5.0 receives a location from a backend, it says: _An exception occured during self-check. Please report this issue_. OsmAnd~ does receive the location successfully.
+
+```
+W/SelfCheck( 5923): Failed during check UnifiedNlp status
+W/SelfCheck( 5923): java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.os.Bundle.containsKey(java.lang.String)' on a null object reference
+W/SelfCheck( 5923):     at org.microg.tools.selfcheck.NlpStatusChecks.isProvidingLastLocation(NlpStatusChecks.java:79)
+W/SelfCheck( 5923):     at org.microg.tools.selfcheck.NlpStatusChecks.doChecks(NlpStatusChecks.java:50)
+W/SelfCheck( 5923):     at org.microg.tools.ui.AbstractSelfCheckFragment.onCreateView(AbstractSelfCheckFragment.java:60)
+W/SelfCheck( 5923):     at android.support.v4.app.Fragment.performCreateView(Fragment.java:1962)
+W/SelfCheck( 5923):     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1067)
+W/SelfCheck( 5923):     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1248)
+W/SelfCheck( 5923):     at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:738)
+W/SelfCheck( 5923):     at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1613)
+W/SelfCheck( 5923):     at android.support.v4.app.FragmentManagerImpl$1.run(FragmentManager.java:517)
+W/SelfCheck( 5923):     at android.os.Handler.handleCallback(Handler.java:739)
+W/SelfCheck( 5923):     at android.os.Handler.dispatchMessage(Handler.java:95)
+W/SelfCheck( 5923):     at android.os.Looper.loop(Looper.java:135)
+W/SelfCheck( 5923):     at android.app.ActivityThread.main(ActivityThread.java:5254)
+W/SelfCheck( 5923):     at java.lang.reflect.Method.invoke(Native Method)
+W/SelfCheck( 5923):     at java.lang.reflect.Method.invoke(Method.java:372)
+W/SelfCheck( 5923):     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904)
+W/SelfCheck( 5923):     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:699)
+W/SelfCheck( 5923):     at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:117)
+```
+"
+microg/android_packages_apps_UnifiedNlp,closed,Update README to include AOSP sample config,[],
+microg/android_packages_apps_UnifiedNlp,closed,Update Serbian language,[],
+microg/android_packages_apps_UnifiedNlp,open,Resource not found when compiling on CM13/Android M,[],"I added UnifiedNLP to my CM13 build, synced and get the following errors. Does anyone know how this can be fixed?
+
+packages/apps/UnifiedNlp/unifiednlp-base/src/main/res/layout/settings_activity.xml:22: error: Error: No resource found that matches the given name (at 'layout' with value '@layout/toolbar').
+
+packages/apps/UnifiedNlp/unifiednlp-base/src/main/res/xml/nlp_setup_preferences.xml:20: error: Error: No resource found that matches the given name (at 'title' with value '@string/prefcat_setup').
+
+packages/apps/UnifiedNlp/unifiednlp-base/src/main/res/xml/nlp_setup_preferences.xml:21: error: Error: No resource found that matches the given name (at 'key' with value '@string/self_check_title').
+
+packages/apps/UnifiedNlp/unifiednlp-base/src/main/res/xml/nlp_setup_preferences.xml:21: error: Error: No resource found that matches the given name (at 'summary' with value '@string/self_check_desc').
+
+packages/apps/UnifiedNlp/unifiednlp-base/src/main/res/xml/nlp_setup_preferences.xml:21: error: Error: No resource found that matches the given name (at 'title' with value '@string/self_check_title').
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/30215181-resource-not-found-when-compiling-on-cm13-android-m?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,Removed syntax error typo,[],
+microg/android_packages_apps_UnifiedNlp,open,Does not work on FairphoneOS,[],"Hi,
+
+NLP doesn't work on my Fairphone 2 using the open source version of FairphoneOS (derived from AOSP 5.1; Sources here: http://code.fairphone.com/gerrit/). I tried the normal and the legacy version both as a user and a system app. It installs fine, but I don't get a location (tried different providers and same configuration works on an other phone using Omnirom). Is there some special patch I need to apply to the OS? Any way to debug?
+
+Thanks!
+"
+microg/android_packages_apps_UnifiedNlp,open,How deactivate gapps location provider?,[],"I need GAPPs only for the PlayStore. I added the second location provider and added other location services.  is it somehow posible to only activate the new and deactivate the google provider?
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/29947590-how-deactivate-gapps-location-provider?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,NlpLocBackendHelper: Not (yet) bound on M,[],"On Android M, NlpLocBackendHelper/BackendHelper.java continually spits this message out 3 times almost every second in the log when any combination of location back-ends are enabled:
+
+```
+01-03 22:39:37.053  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:37.053  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:37.053  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:38.552  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:38.553  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:38.553  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:40.053  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:40.053  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:40.053  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:41.552  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:41.553  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:41.554  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:43.053  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:43.053  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+01-03 22:39:43.053  3450  5366 D NlpLocBackendHelper: Not (yet) bound.
+```
+
+Tested on Android 6.0.1 CyanogenMod 13-20160101 using GmsCore
+"
+microg/android_packages_apps_UnifiedNlp,open,"mock GPS, bluetooth GNSS receivers ",[],"I have found BT GNSS receivers both use less battery than phone GPS, and it overcomes wonky compass in phones (like samsung note4 or s5 (which often have waze showing me driving backwards on the freeway)).  
+
+The various free BT android apps use mock location (atop enabled gps). I have not yet encountered a navigation app that complains. Many apps are happy even if the phone gps is not enabled (toggled on). 
+
+Will your app collect position information this way? Allowing wifi correlation? or whatever BackEnds or lookup apps are installed? 
+
+with- or without android device gps toggled on?
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/29190851-mock-gps-bluetooth-gnss-receivers?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,marshmallow ,[],
+microg/android_packages_apps_UnifiedNlp,closed,updated buildtools,[],
+microg/android_packages_apps_UnifiedNlp,closed,Autozoom on maps,"[Label(name=""invalid"")]","I noticed that when using e.g. DB Navigator to show the calculated route, the route is perfectly shown using the maps from opensciencemap but it is not zoomed into the interesting region where the route is drawn.
+"
+microg/android_packages_apps_UnifiedNlp,closed,Add romanian translation,[],
+microg/android_packages_apps_UnifiedNlp,closed,Include initial Polish translation,[],"Just initial translation to Polish
+"
+microg/android_packages_apps_UnifiedNlp,closed,[solved] Can't uninstall / reinstall UnifiedNlp,[],"I already had it, but cant find the solution again...embarassing... ):
+
+I installed the wrong UnifiedNlp package (""with GAPS""), uninstalled it again, now tried to install the GAPPS-free flavour on F-Droid, but  F-Droid keeps saying ""You are trying to install a prior version of an already installed app"". I dont find anything in /system/apps, nor in /system/priv-apps, and a search for ""nlp"" doesnt give me results.
+
+What can I do?
+"
+microg/android_packages_apps_UnifiedNlp,open,"UnifiedNlp disapperars after ""freezing"" by Titanium Backup",[],"Unluckily, occasionally I need play services for certain apps. So I freeze UnifiedNlp in titBackup, unfreeze play services and use my app.
+
+Unluckily, after frezzing play services, UnifiedNlp is disappeared from my system. Cannot be found in TitBack - can not even be reinstalled via Fdroid (you are trying to install a prior version...).
+
+Downloading the apk and reinstalling that helped in the end - but it would be nice being able to switch back and forward between play services and U-Nlp.
+"
+microg/android_packages_apps_UnifiedNlp,open,Signature conflicts with pre-installed GApps,[],"I still cannot get UnifiedNlp working on my LG P880 (stock Android 4.1.2 with GApps pre-installed of course). I've downloaded the `UnifiedNlp.apk` from here, and installed it on the device with `adb install` (see also: #34 ). Can open the app, configured two backends so far (the local GSM and openBmap backend). Still, the Xposed module claims it gets a location, but that it doesn't look like a UnifiedNlp one. Checking logcat revealed:
+
+```
+W/LocationManagerService(13440): org.microg.nlp implements com.android.location.service.GeocodeProvider but its signatures don't match those in com.google.android.location, ignoring
+```
+
+So what's wrong here, and how to fix? Note that uninstalling GApps or using a different ROM is no option for me currently.
+
+**Edit:** I've tried working around that making UnifiedNlp a system app, but the very same error remains. So whatever it is, it seems to have protectioLevel ""signature"" (not ""signatureOrSystem""), so this work-around doesn't work around.
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/23123452-signature-conflicts-with-pre-installed-gapps?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,Add Serbian translation,[],
+microg/android_packages_apps_UnifiedNlp,closed,"Migrate from the ""old NOGAPPS""",[],"I have a device where, when I last flashed it, I installed NetworkLocation from NOGAPPS. Is there a recommended migration path to switch to µg, so I can use additional backends? It's of course a device with no GApps on (CyanogenMod with Android 4.3), having them replaced by all the NOGAPPS components (MapsAPI, BlankStore, NetworkLocation).
+"
+microg/android_packages_apps_UnifiedNlp,closed,"Position known in logcat, but not for apps",[],"Hi,
+
+without GPS location it often happens that the position is known in logcat, but not to apps.
+
+Logcat example, when the app does not know the location:
+
+```
+V/NlpLocationBackendFuser(18127): location=Location[network 48.732133,11.180442 acc=1090 et=+2d9h24m35s23ms {Bundle[{noGPSLocation=Location[network 48.732133,11.180442 acc=1090 et=+2d9h24m35s23ms {Bundle[{AVERAGED_OF=1, SERVICE_BACKEND_PROVIDER=gsm, SERVICE_BACKEND_COMPONENT=org.fitchfamily.android.gsmlocation/.GSMService}]}], AVERAGED_OF=1, SERVICE_BACKEND_PROVIDER=gsm, SERVICE_BACKEND_COMPONENT=org.fitchfamily.android.gsmlocation/.GSMService}]}]
+```
+
+The sitation varies, and after waiting for a while the position is sometimes known in the app again
+Logcat example when the app currently does know the location:
+
+```
+V/NlpLocationBackendFuser(18127): location=Location[network 48.732758,11.180404 acc=799 et=+2d9h30m48s403ms {Bundle[{noGPSLocation=Location[network 48.732758,11.180404 acc=799 et=+2d9h30m48s403ms {Bundle[{AVERAGED_OF=1, SERVICE_BACKEND_PROVIDER=gsm, SERVICE_BACKEND_COMPONENT=org.fitchfamily.android.gsmlocation/.GSMService}]}], AVERAGED_OF=1, SERVICE_BACKEND_PROVIDER=gsm, SERVICE_BACKEND_COMPONENT=org.fitchfamily.android.gsmlocation/.GSMService}]}]
+```
+
+CM12.1(Android 5.1) nightly builds from end of March to mid May
+UnifiedNlp for Gapps free devices 1.3.0
+LocalGsmNlpBackend 0.7.0 with different builds of OpenCellID/Mozilla databases.
+Google Maps or OsmAnd as apps using the location.
+
+Hopefully you can find an easy solution, it is really annoying when apps don't know the location quite often.
+Let me know if you need more information or need me to run a debug build of the apps with more logcat activity.
+"
+microg/android_packages_apps_UnifiedNlp,open,"spoof ""high accuracy"" for whining apps",[],"After one has built a High Precision GNSS local database of mac addresses and mobile towers subsequent selection of ""low power"" mode should not needlessly inflict notifications urging [or outright requiring] ""high power"" mode. Glympse, a social gps app, is tedious in this regard. 
+
+Especially for those without g.apps provide an option to spoof power mode reported to location apps /while/ retaining an NLP mode not querying GNSS. 
+
+Can alternate NLP offer more than 3 power modes?
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/12752398-spoof-high-accuracy-for-whining-apps?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,add backends to README,[],"+OpenBmapNlpBackend
++MozillaNlpBackend
+"
+microg/android_packages_apps_UnifiedNlp,closed,μg UnifiedNLP for GAPPS via F-Droid: cannot update,[],"This may be an F-Droid issue, let me know then.
+
+F-Droid propmts me that a new version of μg UnifiedNLP for GAPPS is available. I currently have 1.1.08 and 1.3.0 is offered. When I try to update, it informs me that the new versions is signed with a different key and must be deleted first. When I try to delete it, I get a de-installation error. I thought that for some reason I may have made a system app out of it, but when I look for it with the /syste/app mover, I don't find it.
+
+What may be the issue here?
+"
+microg/android_packages_apps_UnifiedNlp,open,play vs. location services,[],"I noticed that quite some apps are picky. They are not happy with the (gapps-free) location service provided on my phone, but explicitly want ""google play services"". An example is the German Mail app, but some more as well.
+
+What can I do?
+
+Is it misconfiguration at my phone?
+Is it sloppy programming - and should app providers be blamed for that?
+Or should / could UnifiedNlp be extended by a component which pretends ""I'm google play location services"" ?
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/10049830-play-vs-location-services?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,open,location services can no longer be switched on,[],"That quite likely is not a UnifiedNlp issue - but hopefully somebody here has an idea what to do...
+
+After 2 weeks of happily using a gapps-free UnifiedNLP I suddenly can not any longer switch on location services at all. The slider just sweeps back - that's all.  I re-installed google play services - but that doesnt change anything.
+
+What could I do? - I've got titanium backups of everything - what components should I restore?
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/10049669-location-services-can-no-longer-be-switched-on?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,open,Clarify use of UnifiedNlp.apk in readme ,"[Label(name=""docs"")]","The releases provide three apks: LegacyNetworkLocation.apk, NetworkLocation.apk, and UnifiedNlp.apk. The readme makes clear that LegacyNetworkLocation.apk is for Android 2.3 - 4.3, NetworkLocation.apk is for Android 4.4 - 5.0, but I cannot determine when or if I would need to use UnifiedNlp.apk. Suggest clarifying its use in the readme. Thnks!
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/9782627-clarify-use-of-unifiednlp-apk-in-readme?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,Germany - only Apple WiFi backend works,[],"Hi everybody,
+great approach - I really appreciate it!
+
+Installed ug UnifiedNlp via f-droid on a Huawei y300, slimkat 4.4.4. No trouble - and with the Apple WiFi backend I get instant location data.
+
+But:
+I couldnt make any other backend work. Are there insufficient data for Berlin, Germany? - Or how can I troubleshoot the backends? - No idea where I could find error messages.
+
+On the ""Here GPS location"" app I get ""network not enabled"", allthough location services are switched on and are set to ""energy saving mode"".
+
+Btw: 
+Wouldnt it a good idea to split GSM and WiFi databases by country / continent - as map providers do? - And combine it with an option to load missing data online? - 400MB is not so little - and it's quite likely I'll not travel to US in the next few years...
+
+Cheers,
+Wolf
+"
+microg/android_packages_apps_UnifiedNlp,closed,tag apps properly,[],"Tag apps properly with [antifeature](https://f-droid.org/wiki/page/Antifeatures) tags. For example, most of providers should be tagged with ""tracking"" antifeature.
+"
+microg/android_packages_apps_UnifiedNlp,closed,F-Droid standalone repo,[],"Hello.
+0 I don't trust F-Droid much because they sign packages themselves that means that they can insert malware into updates any time.
+1 F-droid app allows anyone to create own repos, to do it you just need to drop apk and xml somewhere. For example, to GitHub.
+2 I've heard that f-droid has reproducable builds, so it'd be good to compare your builds with fdroid ones (and make fdroid compare your builds with its).
+"
+microg/android_packages_apps_UnifiedNlp,closed,Adding Unwired Labs Geolocation API to Nlp,[],"Hi,
+
+I'm a founder at Unwired Labs (https://unwiredlabs.com), and we offer a Geolocation service as an alternative to Google. We take privacy pretty seriously and want to offer this free of charge to power users.
+
+How do we integrate our API as an option to the Unified Nlp? 
+
+Cheers,
+Gopi
+"
+microg/android_packages_apps_UnifiedNlp,closed,[req] ui for stats,[],"locally or Lan Web interface
+
+spiffy charts and stats
+"
+microg/android_packages_apps_UnifiedNlp,closed,How to get the most out of UnifiedNlp,[],"Hi,
+I have no basic understanding of software developement and computer science but after thorougly reading the README I got the UnifiedNlp to work perfectly on my Fairphone 1U (Fairphone OS 1.8.2 beta).
+I just have a few questions:
+1.) I have the GSM Location Backend, Personal Wifi Backend, GSMNetworkLocationProvider and Ichnea Backend installed for Geolocation. Does it make sense to have that many backends? For example the GSM Location Backend allready uses MLS, so the Ichnea Backend is probably redundant right? (To contribute to MLS I use Mozilla Stumbler)
+
+2.) Other Backends like the AppleWifiNLPBackend have antifeatures on F-Droid. (""This app tracks and reports your activity."" ""This App promotes non-free Network Services."") Does it really send data to Apple?
+
+3.) How does the Nomatim Backend work? 
+
+Greetings,
+Paul
+"
+microg/android_packages_apps_UnifiedNlp,open,provide locations via android mock locations developer API,[],"Thanks for the onderful project! :-)
+
+In android, there is an option in the Developer options to ""enable mock locations"". It would be wonderful to have this implemented, as a straightforward option for providing the Android system with location data.
+
+(see <a href=""http://blog.mapillary.com/technology/2014/10/01/bt-gps.html"">here</a> for example of using this API for injecting location data).
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/8705629-provide-locations-via-android-mock-locations-developer-api?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,f-droid version doesn't work out of the box on CM12,[],"I have no gapps installed and multiple restarts have done nothing. The README also doesn't provide any guidance on correcting this. Since I didn't download the apk directly I don't know 1) where the apk resides to move it to /system/priv-apps and 2) if doing so will continue to allow it to be updated by f-droid.
+
+I'd really like to use f-droid to keep this updated and to also get this working for my friends.
+"
+microg/android_packages_apps_UnifiedNlp,closed,Could UnifiedNlp.apk be also present at F-droid?,[],"i can only use this version because i have google version also present on my sistem. i use an xposed module so that your app could work instead of google's.
+
+thanks!
+"
+microg/android_packages_apps_UnifiedNlp,open,significant battery drain,[],"I'm using a nexus 4 with cyanogenmod 11M12. I looked for something like this for months now and I'm glad I found it! I would like to use it, but it eats up my battery in a short time (Android OS using more than two thirds).
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/8376395-significant-battery-drain?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,Unload the backends when not in use,[],"I'm currently looking at https://github.com/rtreffer/LocalGSMLocationProvider. In onOpen, it registers a GSM event listener, which will cause quite a lot of wakeups, even when nothing is requesting the location data. In fact, this will happen _even if the location services (or just network location services) are turned off_.
+
+Can you modify UnifiedNlp so that it calls onClose on location providers when location services are disabled or unneeded? I especially dislike the former issue.
+"
+microg/android_packages_apps_UnifiedNlp,closed,UnifiedNlp not initializing location backend properly after reboot,[],"I have the following system: Android 4.4.4 - ART - CyanogenMod 11-20150105-nightly-hammerhead with UnifiedNlp 1.1.3 installed from FDroid.
+
+With a cache clear + clean reboot + location set to 'battery saving' mode, GSM location is unavailable until UnifiedNlp app is launched. I have tested this with 2 location providers (LocalGsmNlpBackend 0.5.6 + GSMLocationNlpBackend 0.0.1.4) with the same result. I believe the key to reproduce this is to clear the cache before reboot. More info here: https://github.com/n76/Local-GSM-Backend/issues/4
+
+Here is my logcat filtered by "".nlp.""
+
+01-13 09:20:08.379 I/ActivityManager(608): Start proc com.google.android.gms for service com.google.android.gms/org.microg.nlp.location.LocationServiceV2: pid=1117 uid=10085 gids={50085}
+01-13 09:20:08.829 D/org.microg.nlp.geocode.BackendHelper(1117): Binding to: Intent { act=org.microg.nlp.GEOCODER_BACKEND pkg=org.microg.nlp.backend.nominatim cmp=org.microg.nlp.backend.nominatim/.BackendService }
+01-13 09:20:08.839 I/ActivityManager(608): Start proc org.microg.nlp.backend.nominatim for service org.microg.nlp.backend.nominatim/.BackendService: pid=1279 uid=10099 gids={50099, 3003, 1028, 1015}
+01-13 09:20:08.879 D/ActivityThread(1279): handleBindApplication:org.microg.nlp.backend.nominatim
+01-13 09:20:08.939 D/org.microg.nlp.geocode.BackendHelper(1117): Bound to: ComponentInfo{org.microg.nlp.backend.nominatim/org.microg.nlp.backend.nominatim.BackendService}
+01-13 09:20:19.831 D/org.microg.nlp.geocode.BackendHelper(1117): Unbinding from: Intent { act=org.microg.nlp.GEOCODER_BACKEND pkg=org.microg.nlp.backend.nominatim cmp=org.microg.nlp.backend.nominatim/.BackendService }
+01-13 09:20:19.841 D/org.microg.nlp.geocode.BackendHelper(1117): Binding to: Intent { act=org.microg.nlp.GEOCODER_BACKEND pkg=org.microg.nlp.backend.nominatim cmp=org.microg.nlp.backend.nominatim/.BackendService }
+01-13 09:20:19.851 D/org.microg.nlp.geocode.BackendHelper(1117): Bound to: ComponentInfo{org.microg.nlp.backend.nominatim/org.microg.nlp.backend.nominatim.BackendService}
+01-13 09:20:19.851 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=+24h0m0s0ms] by WorkSource{1000 android}
+01-13 09:20:19.851 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:20:19.851 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=86400000
+01-13 09:20:19.960 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=+24h0m0s0ms] by WorkSource{1000 android}
+01-13 09:20:19.960 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:20:19.960 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=86400000
+01-13 09:22:23.476 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=0] by WorkSource{10100 net.osmand}
+01-13 09:22:23.476 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:22:23.476 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=0 fastest=0]
+01-13 09:22:23.476 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=1500
+01-13 09:22:46.776 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=+24h0m0s0ms] by WorkSource{1000 android}
+01-13 09:22:46.776 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:22:46.776 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=86400000
+01-13 09:23:08.536 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=0] by WorkSource{10100 net.osmand}
+01-13 09:23:08.536 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:23:08.536 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=0 fastest=0]
+01-13 09:23:08.536 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=1500
+01-13 09:23:40.676 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=+24h0m0s0ms] by WorkSource{1000 android}
+01-13 09:23:40.676 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:23:40.676 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=86400000
+01-13 09:23:59.086 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=0] by WorkSource{10100 net.osmand}
+01-13 09:23:59.086 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:23:59.086 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=0 fastest=0]
+01-13 09:23:59.086 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=1500
+01-13 09:24:08.106 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=+24h0m0s0ms] by WorkSource{1000 android}
+01-13 09:24:08.106 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:24:08.106 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=86400000
+01-13 09:24:59.816 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=+24h0m0s0ms] by WorkSource{1000 android}
+01-13 09:24:59.816 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:24:59.816 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=86400000
+01-13 09:25:38.076 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=0] by WorkSource{10100 net.osmand}
+01-13 09:25:38.076 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:25:38.076 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=0 fastest=0]
+01-13 09:25:38.076 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=1500
+01-13 09:25:40.756 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=+24h0m0s0ms] by WorkSource{1000 android}
+01-13 09:25:40.756 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:25:40.766 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=86400000
+01-13 09:28:51.306 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=0] by WorkSource{10100 net.osmand}
+01-13 09:28:51.306 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:28:51.306 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=0 fastest=0]
+01-13 09:28:51.306 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=1500
+01-13 09:29:00.666 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=+24h0m0s0ms] by WorkSource{1000 android}
+01-13 09:29:00.666 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:29:00.666 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=86400000
+01-13 09:29:07.346 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=0] by WorkSource{10100 net.osmand}
+01-13 09:29:07.346 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:29:07.346 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=0 fastest=0]
+01-13 09:29:07.346 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=1500
+01-13 09:29:11.016 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=+24h0m0s0ms] by WorkSource{1000 android}
+01-13 09:29:11.016 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:29:11.016 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=86400000
+
+this is where I opened UnifiedNlp app > configure location backends > click ok
+as soon as I did that OsmAnd got the location
+
+01-13 09:34:51.756 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=0] by WorkSource{10100 net.osmand}
+01-13 09:34:51.756 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:34:51.756 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=0 fastest=0]
+01-13 09:34:51.756 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=1500
+01-13 09:34:55.346 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=+24h0m0s0ms] by WorkSource{1000 android}
+01-13 09:34:55.346 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:34:55.346 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=86400000
+01-13 09:34:58.896 I/ActivityManager(608): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.google.android.gms/org.microg.nlp.ui.SettingsActivity} from pid 1239
+01-13 09:34:59.406 I/ActivityManager(608): Displayed com.google.android.gms/org.microg.nlp.ui.SettingsActivity: +472ms
+01-13 09:34:59.406 I/Timeline(608): Timeline: Activity_windows_visible id: ActivityRecord{6545bc88 u0 com.google.android.gms/org.microg.nlp.ui.SettingsActivity t19} time:911510
+01-13 09:35:22.976 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=0] by WorkSource{10100 net.osmand}
+01-13 09:35:22.976 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:35:22.976 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=0 fastest=0]
+01-13 09:35:22.976 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=1500
+01-13 09:35:31.716 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=+24h0m0s0ms] by WorkSource{1000 android}
+01-13 09:35:31.716 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:35:31.716 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=86400000
+01-13 09:35:44.106 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=0] by WorkSource{10100 net.osmand}
+01-13 09:35:44.106 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:35:44.106 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=0 fastest=0]
+01-13 09:35:44.106 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=1500
+01-13 09:35:53.986 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=+24h0m0s0ms] by WorkSource{1000 android}
+01-13 09:35:53.986 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:35:53.986 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=86400000
+01-13 09:35:56.406 I/Timeline(608): Timeline: Activity_windows_visible id: ActivityRecord{6545bc88 u0 com.google.android.gms/org.microg.nlp.ui.SettingsActivity t19} time:968516
+01-13 09:35:57.936 D/org.microg.nlp.location.BackendHelper(1117): Binding to: Intent { act=org.microg.nlp.LOCATION_BACKEND pkg=org.gfd.gsmlocation cmp=org.gfd.gsmlocation/.GSMService }
+01-13 09:35:57.966 D/org.microg.nlp.location.BackendHelper(1117): Not (yet) bound.
+01-13 09:35:58.036 D/org.microg.nlp.location.BackendHelper(1117): Bound to: ComponentInfo{org.gfd.gsmlocation/org.gfd.gsmlocation.GSMService}
+01-13 09:35:59.066 V/org.microg.nlp.location.BackendFuser(1117): location=Location[network 43.802897,-79.445248 acc=800 et=+16m11s167ms {Bundle[{noGPSLocation=Location[gsm 43.802897,-79.445248 acc=800 et=+16m11s167ms {Bundle[{SERVICE_BACKEND_PROVIDER=gsm, SERVICE_BACKEND_COMPONENT=org.gfd.gsmlocation/.GSMService}]}], SERVICE_BACKEND_PROVIDER=gsm, SERVICE_BACKEND_COMPONENT=org.gfd.gsmlocation/.GSMService}]}]
+01-13 09:36:03.216 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: ProviderRequest[ON interval=0] by WorkSource{10100 net.osmand}
+01-13 09:36:03.216 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+01-13 09:36:03.216 V/org.microg.nlp.location.LocationProviderV2(1117): onSetRequest: request: Request[POWER_LOW network requested=0 fastest=0]
+01-13 09:36:03.216 V/org.microg.nlp.location.LocationProviderV2(1117): using autoUpdate=true autoTime=1500
+01-13 09:36:03.316 V/org.microg.nlp.location.BackendFuser(1117): location=Location[network 43.802897,-79.445248 acc=800 et=+16m15s411ms {Bundle[{noGPSLocation=Location[gsm 43.802897,-79.445248 acc=800 et=+16m15s411ms {Bundle[{SERVICE_BACKEND_PROVIDER=gsm, SERVICE_BACKEND_COMPONENT=org.gfd.gsmlocation/.GSMService}]}], SERVICE_BACKEND_PROVIDER=gsm, SERVICE_BACKEND_COMPONENT=org.gfd.gsmlocation/.GSMService}]}]
+"
+microg/android_packages_apps_UnifiedNlp,closed,GSMLocationBackend high CPU usage when location is OFF,[],"I notice that the GSMLocationBackend process (org.gfd.gsmlocation) is taking up too much CPU time when the Android location setting is turned OFF. On my Nexus 5, OS Monitor indicates CPU usage constantly fluctuating between (0.0 - 0.5%). It should really be sleeping and using 0 CPU when location is turned off. When sorting by CPU time, it's the 6'th highest process.
+"
+microg/android_packages_apps_UnifiedNlp,closed,How do I know it's running,[],"Hello,
+
+I'm sorry, this is probably a noob question, but I would like to make sure unified nlp is doing something. How do I do this? I'm using GSMNetworkLocationProvider as backend on a Fairphone running Android 4.2.2. I have successfully installed the LegacyNetworkLocation.apk and have access to the shell. I can't find a frontend, however, that tells me: ""this is the position we acquired using the Network Location Provider"" and OsmAnd~ definitely isn't getting a fix any faster. I live in Brussels, so there is a fair amount of well known towers around. I'm still running the inviu opencellid to add some more.
+
+Help would be greatly appreciated.
+
+Best,
+
+yep
+"
+microg/android_packages_apps_UnifiedNlp,open,Integration in AOSP<5.0 build broken,[],"Hi,
+
+I had UnifiedNlp integrated into my cm11 build. I synced today and tried to make a new build. I get the following error:
+
+make: **\* No rule to make target `/run/media/xxx/cmod11/android/cm11/out/target/common/obj/JAVA_LIBRARIES/UnifiedNlpApi_intermediates/javalib.jar', needed by`/run/media/xxx/cmod11/android/cm11/out/target/common/obj/APPS/NetworkLocation_intermediates/classes-full-debug.jar'.  Stop.
+make: **\* Waiting for unfinished jobs....
+
+I also tried to build it directly:
+make NetworkLocation
+
+target R.java/Manifest.java: NetworkLocation (/run/media/xxx/cmod11/android/cm11/out/target/common/obj/APPS/NetworkLocation_intermediates/src/R.stamp)
+ERROR: resource directory 'packages/apps/UnifiedNlp/../../../prebuilts/sdk/current/support/v7/appcompat/res' does not exist
+make: **\* [/run/media/xxx/cmod11/android/cm11/out/target/common/obj/APPS/NetworkLocation_intermediates/src/R.stamp] Error 1
+
+Any idea on how I can fix this?
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/7563281-integration-in-aosp-5-0-build-broken?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,[Usability] “geocoder” is geeky jargon,[],"I'd like to propose that the GUI uses a different term than “geocoder”. I don't think a normal user would understand it and – quite frankly – even I as an active OpenStreetMap contributor had to look it up as I just had an somewhat educated guess what it means.
+I think “address lookup” or something like that would be easier to understand.
+
+Alternatively the description text (currently “Enable, disable…”) could explain what it is.
+
+PS: Your project is totally awesome. Keep up the great work.
+"
+microg/android_packages_apps_UnifiedNlp,closed,Can't build NetworkLocation,[],"Hello,
+
+  I was trying to build NetworkLocation for F-Droid project. I was targetting android-19, and I got this error:
+
+```
+res/values/themes.xml:6: error: Error retrieving parent for item: No resource found that matches the given name 'Theme.AppCompat'.
+res/values/themes.xml:8: error: Error: No resource found that matches the given name: attr 'colorPrimary'.
+res/values/themes.xml:9: error: Error: No resource found that matches the given name: attr 'colorPrimaryDark'.
+res/values/themes.xml:11: error: Error: No resource found that matches the given name: attr 'windowActionBar'.
+```
+
+Is there some library I need to add ?
+"
+microg/android_packages_apps_UnifiedNlp,closed,NetworkLocation.apk actually can run as user app !,"[Label(name=""docs"")]","Hello,
+
+  Someone told me about this on #fdroid, and I just tried it out now on my OMNI 4.4.4 with today's NetworkLocation v1.1.2 release. I installed NetworkLocation.apk as a user app. (adb install -r /path/to/downloaded/NetworkLocation.apk)
+
+I tried it with @n76's GSM backend, and it actually worked.
+
+I hope you would add in the README that it can be installed as a user app. in some cases, or correct me if I am wrong.
+
+Thanks for today's release btw ;)
+"
+microg/android_packages_apps_UnifiedNlp,closed,API: Put into standalone repository,"[Label(name=""enhancement"")]","API should be independent from the system part and thus factored out. Also provide releases of the API including prebuilt API jar and putting it in maven repository for easier use with gradle.
+"
+microg/android_packages_apps_UnifiedNlp,closed,API: Add helper classes,"[Label(name=""enhancement"")]","Helpers for WiFi and cell tower retrieval as well as location combination.
+"
+microg/android_packages_apps_UnifiedNlp,closed,Add link to personal WiFi backend.,[],"Signed-off-by: Tod Fitch Tod@FitchDesign.com
+
+Add link to another NLP backend. This one creates an on phone personal WiFi location database when the GPS is on and then uses that database to help determine position when the GPS is off or just starting and not yet gotten its first fix.
+"
+microg/android_packages_apps_UnifiedNlp,closed,Xposed Framework support,[],"is it possible to add UnifiedNlp to your system usign the Xposed Framework?
+If so that would be great.
+#9 wouldn't be an issue anymore as the app could handle conflicts using the xposed framework.
+
+you would be able to add unifiednlp settings to the system settings->location settings page
+
+people would be able to use UnifiedNlp without the risk to ""destroy"" their ROM, because they are able to deactivate it anytime they want
+"
+microg/android_packages_apps_UnifiedNlp,closed,Question: How to install UnifiedNlp on CM11 without gapps,[],"I'm running CM11 galaxysmtd without gapps and can't get NLP to work. I did install the NetworkLocation.apk (V1.0.1) into /system/priv-app and rebooted, cleared the dalvik cache via recovery and rebooted again. I installed GSMLocationBackend V0.0.1.4 via F-Droid. Location service is switched on in system settings and power saving mode is selected. 
+
+Catlog shows a ProviderRequest and then a Request for POWER_LOW from net.osmand.plus traced by org.microg.nlp.location.LocationProviderV2:
+07-06 17:58:47.800: V/org.microg.nlp.location.LocationProviderV2(3465): onSetRequest: ProviderRequest[ON interval=0] by WorkSource{10059 net.osmand.plus}
+07-06 17:58:47.800: V/org.microg.nlp.location.LocationProviderV2(3465): onSetRequest: request: Request[POWER_LOW network requested=+24h0m0s0ms fastest=+24h0m0s0ms]
+07-06 17:58:47.804: V/org.microg.nlp.location.LocationProviderV2(3465): onSetRequest: request: Request[POWER_LOW network requested=0 fastest=0]
+07-06 17:58:47.804: V/org.microg.nlp.location.LocationProviderV2(3465): using autoUpdate=true autoTime=1500
+
+Still osmand reports ""location not yet determined"" (or rather, something similar to that in German). 
+
+Also, NLP Controller shows an empty window.
+
+Any clue what I'm doing wrong?
+
+After all, what I'm trying to achieve _should_ be possible, no? I mean, microg and its NLP are exactly meant to overcome https://jira.cyanogenmod.org/browse/CYAN-2449, am I right?
+
+Kind regards, Sebastian
+"
+microg/android_packages_apps_UnifiedNlp,closed,Do not keep a dead backend open.,[],"Do not try to unbind forever if the backend died (e.g. DeadObjectException).
+
+Currently reinstalling an active backend may result in infinite exception spamming as dead backends are marked ""bound"" and can never unbind (IllegalArgumentException).
+
+Make only one try to unbind.
+"
+microg/android_packages_apps_UnifiedNlp,closed,[Question] How to install whith Gapps already installed?,[],"Hello, I use OmniRom with Gapps installed. Now I try to switch from Google location service to UnifiedNLP.
+I downloaded the NetworkLocation.apk and put it into /system/priv-app/, afterwards I rebooted. Then I downloaded and installed the Apple and GSM plugins form F-Droid and rebooted again. But the NLP backend is not listed among settings->apps. Furthermore, my phone still uses Google's location service. How do I change this and make it work?
+Thanks in advance for your help!
+"
+microg/android_packages_apps_UnifiedNlp,closed,Document network location provider setting,"[Label(name=""docs"")]","Trying out UnifiedNLP, I was wondering why I wasn't getting any location updates – until I tried enabling the network location provider in System Settings.
+
+You might want to document that this setting needs to be enabled – as the description explicitly refers to Google's services, it's not immediately obvious that it applies to UnifiedNLP.
+"
+microg/android_packages_apps_UnifiedNlp,closed,Crash when running Oeffi,"[Label(name=""wontfix"")]","I have the Network Location apk from the releases section and the Apple backend installed. When I run Oeffi, it crashes:
+
+```
+--------- beginning of /dev/log/main
+W/GoogleAnalyticsTracker( 1925): Problem with socket or streams.
+W/GoogleAnalyticsTracker( 1925): java.net.ConnectException: failed to connect to www.google-analytics.com/127.0.0.1 (port 80): connect failed: ECONNREFUSED (Connection refused)
+W/GoogleAnalyticsTracker( 1925):    at libcore.io.IoBridge.connect(IoBridge.java:114)
+W/GoogleAnalyticsTracker( 1925):    at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:192)
+W/GoogleAnalyticsTracker( 1925):    at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:460)
+W/GoogleAnalyticsTracker( 1925):    at java.net.Socket.connect(Socket.java:833)
+W/GoogleAnalyticsTracker( 1925):    at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:119)
+W/GoogleAnalyticsTracker( 1925):    at com.google.android.apps.analytics.PipelinedRequester.maybeOpenConnection(Unknown Source)
+W/GoogleAnalyticsTracker( 1925):    at com.google.android.apps.analytics.PipelinedRequester.addRequest(Unknown Source)
+W/GoogleAnalyticsTracker( 1925):    at com.google.android.apps.analytics.NetworkDispatcher$DispatcherThread$AsyncDispatchTask.dispatchSomePendingHits(Unknown Source)
+W/GoogleAnalyticsTracker( 1925):    at com.google.android.apps.analytics.NetworkDispatcher$DispatcherThread$AsyncDispatchTask.run(Unknown Source)
+W/GoogleAnalyticsTracker( 1925):    at android.os.Handler.handleCallback(Handler.java:733)
+W/GoogleAnalyticsTracker( 1925):    at android.os.Handler.dispatchMessage(Handler.java:95)
+W/GoogleAnalyticsTracker( 1925):    at android.os.Looper.loop(Looper.java:136)
+W/GoogleAnalyticsTracker( 1925):    at android.os.HandlerThread.run(HandlerThread.java:61)
+W/GoogleAnalyticsTracker( 1925): Caused by: libcore.io.ErrnoException: connect failed: ECONNREFUSED (Connection refused)
+W/GoogleAnalyticsTracker( 1925):    at libcore.io.Posix.connect(Native Method)
+W/GoogleAnalyticsTracker( 1925):    at libcore.io.BlockGuardOs.connect(BlockGuardOs.java:85)
+W/GoogleAnalyticsTracker( 1925):    at libcore.io.IoBridge.connectErrno(IoBridge.java:127)
+W/GoogleAnalyticsTracker( 1925):    at libcore.io.IoBridge.connect(IoBridge.java:112)
+W/GoogleAnalyticsTracker( 1925):    ... 12 more
+D/lights  (  423): set_light_buttons: color=0xffffffff, tlc=1.
+W/AudioTrack(  423): AUDIO_OUTPUT_FLAG_FAST denied by client due to mismatching sample rate (48000 vs 44100)
+D/AudioFlinger(  100): start(4101), calling pid 423 session 44
+D/AudioFlinger(  100): ? => ACTIVE (4101) on thread 0x4009f908
+D/AudioHardware(  100): AudioHardware pcm playback is exiting standby.
+D/AudioHardware(  100): openPcmOut_l() mPcmOpenCnt: 0
+I/ActivityManager(  752): Timeline: Activity_launch_request id:de.schildbach.oeffi time:2121741
+--------- beginning of /dev/log/system
+I/ActivityManager(  423): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=de.schildbach.oeffi/.directions.DirectionsActivity} from pid 752
+V/Zygote  ( 2181): Switching descriptor 33 to /dev/null
+V/Zygote  ( 2181): Switching descriptor 9 to /dev/null
+I/ActivityManager(  423): Start proc de.schildbach.oeffi for activity de.schildbach.oeffi/.directions.DirectionsActivity: pid=2181 uid=10088 gids={50088, 3003}
+W/ResourceType( 2181): No package identifier when getting value for resource number 0x00000000
+E/ActivityThread( 2181): Failed to inflate
+E/ActivityThread( 2181): android.view.InflateException: Binary XML file line #21: Error inflating class com.google.android.gms.plus.PlusOneButton
+E/ActivityThread( 2181):    at android.view.LayoutInflater.createView(LayoutInflater.java:620)
+E/ActivityThread( 2181):    at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:696)
+E/ActivityThread( 2181):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:755)
+E/ActivityThread( 2181):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:758)
+E/ActivityThread( 2181):    at android.view.LayoutInflater.parseInclude(LayoutInflater.java:839)
+E/ActivityThread( 2181):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:745)
+E/ActivityThread( 2181):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:758)
+E/ActivityThread( 2181):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:758)
+E/ActivityThread( 2181):    at android.view.LayoutInflater.inflate(LayoutInflater.java:492)
+E/ActivityThread( 2181):    at android.view.LayoutInflater.inflate(LayoutInflater.java:397)
+E/ActivityThread( 2181):    at android.view.LayoutInflater.inflate(LayoutInflater.java:353)
+E/ActivityThread( 2181):    at com.android.internal.policy.impl.PhoneWindow.setContentView(PhoneWindow.java:343)
+E/ActivityThread( 2181):    at android.app.Activity.setContentView(Activity.java:1929)
+E/ActivityThread( 2181):    at de.schildbach.oeffi.directions.DirectionsActivity.onCreate(DirectionsActivity.java:173)
+E/ActivityThread( 2181):    at android.app.Activity.performCreate(Activity.java:5231)
+E/ActivityThread( 2181):    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)
+E/ActivityThread( 2181):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2169)
+E/ActivityThread( 2181):    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2265)
+E/ActivityThread( 2181):    at android.app.ActivityThread.access$800(ActivityThread.java:145)
+E/ActivityThread( 2181):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1206)
+E/ActivityThread( 2181):    at android.os.Handler.dispatchMessage(Handler.java:102)
+E/ActivityThread( 2181):    at android.os.Looper.loop(Looper.java:136)
+E/ActivityThread( 2181):    at android.app.ActivityThread.main(ActivityThread.java:5081)
+E/ActivityThread( 2181):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/ActivityThread( 2181):    at java.lang.reflect.Method.invoke(Method.java:515)
+E/ActivityThread( 2181):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:791)
+E/ActivityThread( 2181):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:607)
+E/ActivityThread( 2181):    at dalvik.system.NativeStart.main(Native Method)
+E/ActivityThread( 2181): Caused by: java.lang.reflect.InvocationTargetException
+E/ActivityThread( 2181):    at java.lang.reflect.Constructor.constructNative(Native Method)
+E/ActivityThread( 2181):    at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+E/ActivityThread( 2181):    at android.view.LayoutInflater.createView(LayoutInflater.java:594)
+E/ActivityThread( 2181):    ... 27 more
+E/ActivityThread( 2181): Caused by: android.content.res.Resources$NotFoundException: Resource ID #0x0
+E/ActivityThread( 2181):    at android.content.res.Resources.getValue(Resources.java:1123)
+E/ActivityThread( 2181):    at android.content.res.Resources.getDrawable(Resources.java:698)
+E/ActivityThread( 2181):    at com.google.android.gms.plus.PlusOneDummyView$b.getDrawable(Unknown Source)
+E/ActivityThread( 2181):    at com.google.android.gms.plus.PlusOneDummyView.<init>(Unknown Source)
+E/ActivityThread( 2181):    at com.google.android.gms.internal.fm.a(Unknown Source)
+E/ActivityThread( 2181):    at com.google.android.gms.plus.PlusOneButton.p(Unknown Source)
+E/ActivityThread( 2181):    at com.google.android.gms.plus.PlusOneButton.<init>(Unknown Source)
+E/ActivityThread( 2181):    ... 30 more
+D/AndroidRuntime( 2181): Shutting down VM
+W/dalvikvm( 2181): threadid=1: thread exiting with uncaught exception (group=0x416a6ce0)
+E/AndroidRuntime( 2181): FATAL EXCEPTION: main
+E/AndroidRuntime( 2181): Process: de.schildbach.oeffi, PID: 2181
+E/AndroidRuntime( 2181): java.lang.RuntimeException: Unable to start activity ComponentInfo{de.schildbach.oeffi/de.schildbach.oeffi.directions.DirectionsActivity}: android.view.InflateException: Binary XML file line #21: Error inflating class com.google.android.gms.plus.PlusOneButton
+E/AndroidRuntime( 2181):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2215)
+E/AndroidRuntime( 2181):    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2265)
+E/AndroidRuntime( 2181):    at android.app.ActivityThread.access$800(ActivityThread.java:145)
+E/AndroidRuntime( 2181):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1206)
+E/AndroidRuntime( 2181):    at android.os.Handler.dispatchMessage(Handler.java:102)
+E/AndroidRuntime( 2181):    at android.os.Looper.loop(Looper.java:136)
+E/AndroidRuntime( 2181):    at android.app.ActivityThread.main(ActivityThread.java:5081)
+E/AndroidRuntime( 2181):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime( 2181):    at java.lang.reflect.Method.invoke(Method.java:515)
+E/AndroidRuntime( 2181):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:791)
+E/AndroidRuntime( 2181):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:607)
+E/AndroidRuntime( 2181):    at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime( 2181): Caused by: android.view.InflateException: Binary XML file line #21: Error inflating class com.google.android.gms.plus.PlusOneButton
+E/AndroidRuntime( 2181):    at android.view.LayoutInflater.createView(LayoutInflater.java:620)
+E/AndroidRuntime( 2181):    at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:696)
+E/AndroidRuntime( 2181):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:755)
+E/AndroidRuntime( 2181):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:758)
+E/AndroidRuntime( 2181):    at android.view.LayoutInflater.parseInclude(LayoutInflater.java:839)
+E/AndroidRuntime( 2181):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:745)
+E/AndroidRuntime( 2181):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:758)
+E/AndroidRuntime( 2181):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:758)
+E/AndroidRuntime( 2181):    at android.view.LayoutInflater.inflate(LayoutInflater.java:492)
+E/AndroidRuntime( 2181):    at android.view.LayoutInflater.inflate(LayoutInflater.java:397)
+E/AndroidRuntime( 2181):    at android.view.LayoutInflater.inflate(LayoutInflater.java:353)
+E/AndroidRuntime( 2181):    at com.android.internal.policy.impl.PhoneWindow.setContentView(PhoneWindow.java:343)
+E/AndroidRuntime( 2181):    at android.app.Activity.setContentView(Activity.java:1929)
+E/AndroidRuntime( 2181):    at de.schildbach.oeffi.directions.DirectionsActivity.onCreate(DirectionsActivity.java:173)
+E/AndroidRuntime( 2181):    at android.app.Activity.performCreate(Activity.java:5231)
+E/AndroidRuntime( 2181):    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)
+E/AndroidRuntime( 2181):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2169)
+E/AndroidRuntime( 2181):    ... 11 more
+E/AndroidRuntime( 2181): Caused by: java.lang.reflect.InvocationTargetException
+E/AndroidRuntime( 2181):    at java.lang.reflect.Constructor.constructNative(Native Method)
+E/AndroidRuntime( 2181):    at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+E/AndroidRuntime( 2181):    at android.view.LayoutInflater.createView(LayoutInflater.java:594)
+E/AndroidRuntime( 2181):    ... 27 more
+E/AndroidRuntime( 2181): Caused by: android.content.res.Resources$NotFoundException: Resource ID #0x0
+E/AndroidRuntime( 2181):    at android.content.res.Resources.getValue(Resources.java:1123)
+E/AndroidRuntime( 2181):    at android.content.res.Resources.getDrawable(Resources.java:698)
+E/AndroidRuntime( 2181):    at com.google.android.gms.plus.PlusOneDummyView$b.getDrawable(Unknown Source)
+E/AndroidRuntime( 2181):    at com.google.android.gms.plus.PlusOneDummyView.<init>(Unknown Source)
+E/AndroidRuntime( 2181):    at com.google.android.gms.internal.fm.a(Unknown Source)
+E/AndroidRuntime( 2181):    at com.google.android.gms.plus.PlusOneButton.p(Unknown Source)
+E/AndroidRuntime( 2181):    at com.google.android.gms.plus.PlusOneButton.<init>(Unknown Source)
+E/AndroidRuntime( 2181):    ... 30 more
+W/ActivityManager(  423):   Force finishing activity de.schildbach.oeffi/.directions.DirectionsActivity
+I/WindowManager(  423): Screenshot max retries 4 of Token{41c78570 ActivityRecord{41d67a60 u0 de.schildbach.oeffi/.directions.DirectionsActivity t13 f}} appWin=Window{41da76c0 u0 Starting de.schildbach.oeffi} drawState=4
+W/WindowManager(  423): Screenshot failure taking screenshot for (480x800) to layer 21030
+W/ActivityManager(  423): Activity pause timeout for ActivityRecord{41d67a60 u0 de.schildbach.oeffi/.directions.DirectionsActivity t13 f}
+I/ActivityManager(  752): Timeline: Activity_idle id: android.os.BinderProxy@41958aa0 time:2124199
+I/ActivityManager(  423): Timeline: Activity_windows_visible id: ActivityRecord{41c84328 u0 com.cyanogenmod.trebuchet/com.android.launcher3.Launcher t1} time:2124567
+D/AudioHardware(  100): AudioHardware pcm playback is going to standby.
+D/AudioHardware(  100): closePcmOut_l() mPcmOpenCnt: 1
+^C
+```
+"
+microg/android_packages_apps_UnifiedNlp,closed,What's UnifiedNlp.apk for ?,[],"Hello,
+
+  There's a UnifiedNlp.apk in the release, what is it for ? I don't see any mention of it in the README except in the Building section.
+"
+microg/android_packages_apps_UnifiedNlp,open,Provider Priority? ,"[Label(name=""enhancement"")]","Hi, 
+I do not know if this is already implemented and it is hard to test, so I just write my suggestion here. Ignore it if you wish. 
+What I would like is to have some less accurate providers still be able to cancel more accurate ones if the data differs. 
+
+I had the problem with the Google provider, that someone in the Netherlands used the same MAC as my router. 
+Google would always place me in the Netherlands when I was at home and had no GPS signal. 
+But I am in Austria and had GSM reception. 
+There just is no way to be connected to an Austrian GPS network and be in the Netherlands. 
+
+So in my opinion, while the exact location of the GSM provider is less accurate, at least the country is more accurate and it would be great to use this to filter wrong results. 
+This wrong data can not only happen with cloned MAC but also when wifi aps are moved which is not uncommon today, 
+## <bountysource-plugin>
+
+Want to back this issue? **[Post a bounty on it!](https://www.bountysource.com/issues/7476589-provider-priority?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github)** We accept bounties via [Bountysource](https://www.bountysource.com/?utm_campaign=plugin&utm_content=tracker%2F934369&utm_medium=issues&utm_source=github).
+</bountysource-plugin>
+"
+microg/android_packages_apps_UnifiedNlp,closed,Set android.library=true in project.properties,[],"That's in api/project.properties
+"
+microg/android_packages_apps_UnifiedNlp,closed,opencellid local loction provider,[],"Hi,
+
+I've finally uploaded the code, https://github.com/rtreffer/LocalGSMLocationProvider
+
+It ships a tower database in assets/towers.bcs.xz - this is a binary format (I'll add the readers / writers + tests as a seperate project). It does not need any network connection and should thus work world-wide, out-of-the-box.
+
+Anything else is rather boring. There is an internal class that handles all the ""subsrcibe to GSM Network events"" voodoo and the interpolation is rather stupid (800m / towers) and most likely to optimistic ATM, but I got locations in the log....
+
+The readme says ""add issues for more implementations"" :-)
+"
+microg/android_packages_apps_UnifiedNlp,closed,Update LocationBackendService.java,[],"DeadObjectException is thrown if the callback is invalid (has died). The callback should thus be set to ""null"" or we'll get an infinite series of exceptions :-)
+"
+microg/android_packages_apps_UnifiedNlp,closed,Standalone API example,[],"I'm currently trying to get a backend registered (and working) with the UnifiedNlp - but I have a hard time getting the samples to work as a stand alone application.
+
+Could you provide an example like the random location provider buildable as a standalone apk?
+"

@@ -1,0 +1,748 @@
+repository,state,title,label,body
+manmal/hn-android,open,Request: left-handed mode,[],Just the hamburger and comment buttons on the left would be nice.
+manmal/hn-android,open,VerifyError: com/manuelmaly/hn/MainActivity,[],"//package name: com.manuelmaly.hn
+//version: 1.9.15
+//target sdk version: android-18
+ java.lang.VerifyError: com/manuelmaly/hn/MainActivity
+ 	at java.lang.Class.newInstanceImpl(Native Method)
+ 	at java.lang.Class.newInstance(Class.java:1130)
+ 	at android.app.Instrumentation.newActivity(Instrumentation.java:1061)
+ 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2128)
+ 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2261)
+ 	at android.app.ActivityThread.access$600(ActivityThread.java:141)
+ 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1256)
+ 	at android.os.Handler.dispatchMessage(Handler.java:99)
+ 	at android.os.Looper.loop(Looper.java:137)
+ 	at android.app.ActivityThread.main(ActivityThread.java:5103)
+ 	at java.lang.reflect.Method.invokeNative(Native Method)
+ 	at java.lang.reflect.Method.invoke(Method.java:525)
+ 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+ 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+ 	at dalvik.system.NativeStart.main(Native Method)"
+manmal/hn-android,open,Fix/unsupported protocol bug,[],"This is a bug fix for the issue below:
+https://github.com/manmal/hn-android/issues/183
+
+Please let me know if you need any changes to this pull request."
+manmal/hn-android,open,Article Not Loading Bug,[],"This bug occurs when opening particular links and it will continue to occur when opening the same link.
+
+For example the link currently on the homepage with the following details:
+
+Title:
+SoundCloud's Collapse
+
+Link:
+https://www.buzzfeed.com/ryanmac/inside-the-storm-at-soundcloud
+
+Screenshot:
+https://imgur.com/gallery/Q9lAU"
+manmal/hn-android,open,dark theme,[],"a dark theme for this app would be great, especially for people with AMOLED screens"
+manmal/hn-android,closed,Feature request; ability to store links posted to HN,[],"In order to save the links i like on hacker news I now share them through Telegram. But that takes around three clicks. Could you create a button with which I can store or favorite links? Preferably also with an export function.
+
+Thanks for your time used in creating this app!
+"
+manmal/hn-android,closed,Comments not appearing,[],"When I switch to the comments section it loads for a second but only shows a blank grey screen.
+
+Galaxy S5 running CM13
+"
+manmal/hn-android,closed,Advertise availability on F-Droid and logos,[],
+manmal/hn-android,closed,177 change span to div,[],"this fixes issue #177 
+
+looks like HN changes the comments to be a **div** instead of a **span**
+"
+manmal/hn-android,closed,Comments are not displayes,[],"While the button to show comments now shows again, a new issue has turned up. Now I don't get any of the comments displayed. The comment page loads for a while but remains empty (same as when looking at comments for an article with zero comments). This broke around yesterday without the App receiving am update, so I assume the problem is due to a change in the data returned by news.ycombinator.com.
+
+P.S: Sorry for the typos and bad formatting, I am currently on mobile.
+"
+manmal/hn-android,closed,Material design,[],"This app uses a very custom design. I think it would be better to use the modern, clean and simple material design ;)
+"
+manmal/hn-android,open,Chrome custom tabs,[],"Open links in [Chrome custom tabs](https://developer.chrome.com/multidevice/android/customtabs) (if available), falling back to webview.
+"
+manmal/hn-android,open,Ethernet support JB 4.3,[],"The app does not seem to refresh articles over Ethernet connection under JB 4.3, only Wi-fi. I haven't tested it yet under Lollipop, where it may work fine. 
+"
+manmal/hn-android,open,Huge battery drains,[],"This app sometimes drains the battery pretty hard, the culprit is probably an article that was not released once the activity has been put in background
+
+Some screenshots for reference: 
+
+![screenshot_20160412-221638](https://cloud.githubusercontent.com/assets/8037169/14474325/b5427300-00fc-11e6-8951-a5f802f6b016.png)
+![screenshot_20160412-221642](https://cloud.githubusercontent.com/assets/8037169/14474326/b5749d80-00fc-11e6-907d-e0f8d378b8e0.png)
+"
+manmal/hn-android,closed,Dismiss longtouch dialog on touch outside,[],"When you touch outside of a context menu displayed by long-touching an article on the main page, the context menu will now be dismissed.
+"
+manmal/hn-android,closed,Unable to vote any post,[],"Since a last few days, I have been noticing that all posts are by default marked as ""upvoted by you"". So I am unable to vote any post. 
+"
+manmal/hn-android,open,Feature Request: Bookmark threads to read/participate later,[],"It'll be nice to have some kind of bookmarking within the app. Like links or threads for reading later. It may be implemented with an internal content provider and a new list view to show all bookmarked items.
+
+I can try to implement that by myself but I haven't read if there is a contributor's guide or something like this.
+"
+manmal/hn-android,open,Busy spinner does not appear when used pulled to refresh,[],"Works if Pull to Refresh is off.
+"
+manmal/hn-android,open,Option to hide title bar when scrolling down,[],"Both in main list and comments views. Gives more space especially on smaller/low-res devices.
+"
+manmal/hn-android,closed,Some intent updates.,[],"Hi,
+
+I was looking at issue #158 and decided to try and fix it. I found out that having an intent-filter exposes an activity externally even with exported=false. Removing them fixes the issue and everything still works as normal.
+
+The second thing in this PR is removing HN from the 'share' menu. I noticed that it didn't work so I was going to try and fix it. However, I realised that it's probably not needed as the user can't actually post using this app (and any links they click on should be picked up by the VIEW intent and sent to the app anyway rather than using the SEND intent).
+
+Update: Also added http links to the intent. Links on the actual website will be https but other links could be http (probably fixes #166).
+
+Update: reverted a commit that introduced a small bug (""not valid"" message shown when loading HN homepage from external link).
+
+Let me know what you think :).
+"
+manmal/hn-android,open,not picking up hacker news urls,[],"when i tap a hacker news url in different app, the list of options do not include this app.
+
+But if i tap one from within this app, it shows up as an option.
+"
+manmal/hn-android,closed,Show the correct comment color,[],"This PR parses the comment class attribute and use the correct color.
+
+The colors are based on https://news.ycombinator.com/news.css.
+
+Here's how it looks:
+
+![device-2015-10-17-200255](https://cloud.githubusercontent.com/assets/1916079/10560400/90911e7c-750a-11e5-9c7a-b92d6b4acfb3.png)
+"
+manmal/hn-android,closed,Pull down to refresh,[],"This is the pull request for the ""pull down to refresh"" feature discussed in #163.
+
+Currently it is not ready for merging. This is just to help keep track of it!
+"
+manmal/hn-android,closed,[Feature] Pull down to refresh,[],"I think it would be nice to be able to pull down on the main page of the app to refresh the posts list, or to pull down on a comments page to refresh that.
+
+If you think it would be a good addition to the app, I am interested in implementing it.
+"
+manmal/hn-android,closed,Remove trailing space in multi-paragraph comments,[],"This change fixes an issue where multi-paragraph comments have some extra space after the comment. This happens because the last paragraph is wrapped in a `<p>` element. You can see this happening in mcv's comment below.
+
+![hn-before](https://cloud.githubusercontent.com/assets/8731922/9787332/c9faeaba-57fc-11e5-8e60-ba936e177d53.png)
+
+This pull request changes the `HNCommentsParser` class so that closing `</p>` tags in the comment HTML are replaced with `<br/><br/>`, and opening `<p>` tags are removed. This way, there is a double space between each of the paragraphs, and no spacing after.
+
+![hn-after](https://cloud.githubusercontent.com/assets/8731922/9787348/f5dc3a58-57fc-11e5-8b79-ff98b67e2520.png)
+"
+manmal/hn-android,closed,Fix/comments,[],
+manmal/hn-android,open,application crash when trying to open news 'greeks reject bailout term',[],
+manmal/hn-android,open,Crashes when trying to view over ~1000 comments,[],
+manmal/hn-android,open,HN-android creates some weird sharing options in Chrome,[],"![screenshot_2015-06-01-09-34-04](https://cloud.githubusercontent.com/assets/7975158/7908078/6acce382-0841-11e5-8aab-8fca5f7a98bb.png)
+"
+manmal/hn-android,open,The [More] button goes away on connection problems,[],"The mobile connection quality of my provider seems to be bad on some places.
+If I use the [More] button:
+![hn01](https://cloud.githubusercontent.com/assets/7300276/6930527/5a066c8e-d804-11e4-9ab1-4a9bfcad3bbd.png)
+and temporarily lose my connection, then I get a message about that:
+![hn02](https://cloud.githubusercontent.com/assets/7300276/6930531/638c7d34-d804-11e4-9af6-d0d3c6132593.png)
+But sadly with this information, the [More] button seems to be gone, too.
+
+(To reproduce this behavior, just put your device into 'flight mode' before using the [More] button).
+
+For example. If you've used the [More] button several times before and the button hides on some point (because of a bad connection), than you have to reload from the beginning and hit the [More] button the number of the {several times} before, to be on the right place in your history again.
+
+Cool would be:
+- not to hide the [More] button after that kind of connection errors,
+- and/or rename the [More] button in [Retry] in that kind of cases, to indicate what happened with the query-request before.
+
+What do you mean?
+"
+manmal/hn-android,open,Crashlytics breaks the build process on F-Droid,[],"How should I say.
+The integration of the (non-free) crashlytics makes it impossible to provide your absolutely great app on free (open source) app-stores like f-droid: https://f-droid.org/wiki/page/com.manuelmaly.hn
+
+I already had that kind of question on another app (Secrecy) already, and here the developer considered to provide a crashlytics free version of his app for f-droid: http://forum.xda-developers.com/showthread.php?p=55391629#post55391629
+
+So I kindly wanted to ask, if you'll see a chance to make your app (crashlytics)-""free"" (and so open source) again?
+And of course I'm very thankful for any other hint to see your wonderful app back on f-droid.
+"
+manmal/hn-android,closed,caching comments for articles where the total count is less than 150,[],"Adding a work around for articles with many comments which cause the app the crash.
+The problem is that the current serialisation method writes the whole objects to a file instead of employing different serialisation strategies.
+
+This causes the ObjectOutputStream.writeObject to throw a StackOverflowError due to the current model of the comments.
+
+I tested a bit and it seems this happens for articles where the total comment count is > 150.
+As most of the articles have less comments anyway, this should be fine for now.
+
+However, we will have to fix this properly in version 2.
+"
+manmal/hn-android,closed,Adding optional anonymous usage statistics and crash reporting,[],"Adding crashlytics and a new Preference (default off), where a user might opt in to share anonymous usage statistics and crash reports.
+"
+manmal/hn-android,closed,refactoring build.gradle,[],"adding release properties (for easier apk creation)
+generating apk with version and build number in name
+updating android annotations version
+some other minor enhancements
+"
+manmal/hn-android,closed,Added menu option to collapse comment thread.,[],"Feature request in #132
+
+I've called it collapse thread because it search for the root node, but It would be very easy to change the label :)
+
+![screenshot_2015-03-21-10-45-42](https://cloud.githubusercontent.com/assets/3216712/6764582/a4dcddd8-cfb7-11e4-8283-e376a188036d.png)
+"
+manmal/hn-android,closed,Now handles external intent of an HN Post. ,[],"Fixes #139
+
+![screenshot_2015-03-21-10-10-36](https://cloud.githubusercontent.com/assets/3216712/6764518/5a36004c-cfb3-11e4-8ded-e48aa80dbb17.png)
+"
+manmal/hn-android,closed,loading more until the end of time,[],"addressing issue #148 #146 
+
+The more button loads until all old articles are shown within the list.
+Note, that the refresh button will reset to the initial state and show only the front page.
+"
+manmal/hn-android,closed,duck taping the comments upvote,[],"addressing the issue outlined in #147 
+fixing upvote
+"
+manmal/hn-android,closed,Unable to load old stories,[],"Scrolling to bottom of the brings up a ""More"" button. Clicking on it loads only a couple of more stories, and the ""More"" button disappears. There is no way for me to load any more stories.
+"
+manmal/hn-android,closed,Comment downvote no longer works,[],"If you have downvote capabilities the menu shows ""Already voted on"" instead of upvote and downvote choices.
+"
+manmal/hn-android,closed,The [More] button doesn't work anymore,[],"I've seen the issue: https://github.com/manmal/hn-android/issues/64 but I thought I'll open a new one, because in my case the [More] button bug was coming up with v1.9.8 of the app, and still exist in v1.9.9.
+
+If I use the [More] button, it seems to load more entries, (and my traffic monitor indicates, that there are real network requests), but it reaches just one more entry, which mostly has no data on upvotes & comments - and nothing more happens.
+
+Example:
+![hn01](https://cloud.githubusercontent.com/assets/7300276/6389193/3ddb3642-bda2-11e4-9c46-d8563ca32cef.png)
+after hitting [More]:
+![hn02](https://cloud.githubusercontent.com/assets/7300276/6389197/4af2935c-bda2-11e4-8136-2a65ff8259db.png)
+
+It would be great, ff this could be fixed in some future versions.
+
+[I'm using AOSP v4.2.2 on a Samsung Galaxy S2 (I9100) device (with 4.3"", 480x800 resolution) if this matters].
+"
+manmal/hn-android,closed,Comments not loading at all / Getting 1.9.9 on F-Droid,[],"Comments are not loading at all for me with version 1.9.6 from F-Droid (CyanogenMod 11-20141115). I noticed you have a 1.9.9 version so you might have fixed this issue already but is it possible to get it through F-Droid?
+"
+manmal/hn-android,closed,fixing login issue,[],"HN enhanced the login and requested the username and password as real
+post data instead of encoded url params.
+"
+manmal/hn-android,open,WebView vulnearbility on Android versions <= 4.3,[],"I'm using AOSP 4.2 and have to stay on that version for an indefinite period of time.
+Now I've read the following:
+https://community.rapid7.com/community/metasploit/blog/2015/01/11/google-no-longer-provides-patches-for-webview-jelly-bean-and-prior
+
+Google said to the app developers: ""[...] consider providing your own renderer on Android 4.3 and earlier [...]"".
+Source: https://plus.google.com/+AdrianLudwig/posts/1md7ruEwBLF
+
+If I select, that I want to view articles within the app, I'm using the vulnerable WebView, right?
+Are there any plans to create some kind of workaround or solution, for example the mentioned one by Google above?
+"
+manmal/hn-android,closed,App stopped showing comments,[]," Some days ago, the app stopped showing comments. The field with the number of comments just is blank now for every entry, and when switching from the article to the comment view it says ""no comments"". 
+
+I am using the latest version from the F-Droid repository, and encountered this bug on two devices running Lollipop.
+"
+manmal/hn-android,closed,Fixing comments and upvote,[],"Due to a small change in the HTML of HN the comments were broken.
+This PR fixes this issue and the upvote issue.
+"
+manmal/hn-android,open,Request: Night Mode,[],"Please add a dark theme, something that is easy on the eyes 
+"
+manmal/hn-android,closed,Intent: Load HN discussion pages from other apps,[],"When we click on a link to an HN post, it should open in this app. Right now if we click on a HN link in any app, this app appears as a choice in the ""Open in app"" menu and clicking to do so only loads the home page, not the linked post. 
+"
+manmal/hn-android,closed,Share the current page when reading an article within WebView,[],"Fixes #137 
+Shares the url being displayed rather than the one from the post
+"
+manmal/hn-android,closed,Share button in webview shares original page rather than current page,[],"If you go to an article and then follow links to browse, the share button in the app continues to be for the original article that you clicked on. Would it be possible to have it share the currently viewed page instead?
+"
+manmal/hn-android,closed,Comment only posts start in comment activity,[],"fixes #117 and #110 
+"
+manmal/hn-android,closed,Comment only posts start in comment activity,[],"solves #117 and #110
+"
+manmal/hn-android,open,Cannot view comments on items I submit.,[],"When logged in I often cannot view comments on items I submit. There isn't an error message rather the 'No comments' notification appears.
+
+Logging out and back in again fixes this for some submissions but not all. 
+"
+manmal/hn-android,open,Feature request: Mark comments as read from home screen,[],"It would be nice if the comments label/link from the home screen could be greyed out if they are read, as the article title is when it's been read. 
+"
+manmal/hn-android,closed,Feature request: Collapse Grandparent comment,[],"It would be good to be able to be reading a deeply nested comment, hold it down, and have the option to collapse it, it's parent(s), and all the way up to the OP. 
+
+I often find I'm deep in a conversation only to realise it's going nowhere, or I actually don't care about that tangent. Rather then scrolling all the way up to the parent to click/collapse it would be a lot easier to be able to do it from within it's children/grandchildren comments.
+
+I would imagine this action would be labeled ""collapse grandparent"" or similar. 
+
+Love the app btw, probably use it ~15h each week and have tried them all. 
+"
+manmal/hn-android,closed,Style fix,[],":)
+"
+manmal/hn-android,open,Adding build tool ,[],"We should build tool like travis-ci or something to do the builds .
+"
+manmal/hn-android,closed,Big number of comments crash,[],"When clicking on a post with big number of comments , app crashes , Android 2.3.3
+"
+manmal/hn-android,open,Favorite articles,[],"It would be nice to have a way of marking/unmarking articles as favorites, and to have a separate view that lists all articles you've marked as favorites.
+"
+manmal/hn-android,closed,Changes required for Android Studio 1.0,[],"Android Studio 1.0 was complaining a lot about gradle. This seems to have quieted it down.
+"
+manmal/hn-android,open,Feature Request: DataTau integration,[],"Happy to take this on myself, but I would like to see which way to proceed:
+I'd like to make a version of hn-android that works with datatau.org.
+Would you like me to fork and make a separate app? or build it within this repo as a build configuration?
+"
+manmal/hn-android,open,Fonts Not Anti-Aliasing on Android 5.0,[],"I upgraded my Nexus 7 to Lolipop and now the fonts in all areas of HN are not anti-aliased.
+
+If it helps I have also noticed that the font in the address bar of Firefox is not anti-aliased either, although the text on web pages is.
+
+In HN at the medium font setting it's bad enough I can't stand using the app. If I turn the font size to large it's bearable but very distracting.
+"
+manmal/hn-android,closed,Opening Comments Thread with Unusually Large Number of Comments Crashes App,[],"Hi,
+
+Opening one of today's front page stories 'Tim Cook Speaks Up' (https://news.ycombinator.com/item?id=8532261) crashes the app. The number of comments was 660 at the time. I don't think I have ever seen a thread with this many comments before, but I have successfully opened threads with 200-300 comments.
+
+On the first attempt the app indicator spins for a few seconds trying to load the comments but then crashes. On further attempts it just crashes immediately without even trying to load the comments.
+
+Tested on a Moto G and Nexus 7.
+"
+manmal/hn-android,closed,Feature Request: Swipe to Upvote/Downvote,[],"Upvote posts/comments by swiping them to the right and downvote by swiping them to the left (similar to RedReader).
+"
+manmal/hn-android,open,Feature Request: Ability to Search,[],"I'd love to have the ability to search old HN threads like you can in the web client.
+
+What do you think?
+
+Thanks
+"
+manmal/hn-android,open,Move the refresh action item to the right,[],"A user reported that after the action bar is in use, the refresh action item is not the last item.
+Investigate if it is possible to change the places of the overflow and the refresh menu items and change them if possible.
+
+Having the refresh at the right corner is much more convenient when holding the device with one hand.
+"
+manmal/hn-android,open,Use the official HN API,[],"Y Combinator launched an official API, so they can change their HTML without breaking clients like this one.
+- http://blog.ycombinator.com/hacker-news-api
+- https://github.com/HackerNews/API
+- https://hacker-news.firebaseio.com/
+"
+manmal/hn-android,closed,Bugfix/login hn change,[],"Fixing #118 (broken login)
+
+Due to HN Login change, it was impossible to login. The login form and endpoint have changed.
+Also adding the ability to logout (clearing the user token)
+Also fixing voting as it was broken as well. The response validator expected an empty response string, but now the response string has the whole page inside and if it failed the login page.
+"
+manmal/hn-android,closed,Can not log in,[],"I can't log in with this app - when I try to do so I get a message stating ""An unknown error occured"".
+
+I have tried older versions via the f-droid app and all have the same result.
+"
+manmal/hn-android,closed,news.ycombinator links shouldn't open in browser,[],"I clicked on a link to news.ycombinator.com/item... and it opened in my browser instead of showing it in the app.
+"
+manmal/hn-android,closed,Gradle update,[],
+manmal/hn-android,closed,Add screenshots,[],"Linked from Google Play. Hope they render once the PR is accepted (they don't render in GitHub but do on SO)
+"
+manmal/hn-android,open,Ability to select text in comments,[],"[Premii's app](https://play.google.com/store/apps/details?id=com.premii.hn) allows for that. Useful to copy to clipboard and save for later/share.
+"
+manmal/hn-android,open,Display other HN sections?,[],"Week's best, Ask HN, Show HN... [Premii's app](https://play.google.com/store/apps/details?id=com.premii.hn) displays those and has an edge, but it's not open source.
+
+UPDATE: [Airlock Software's open source Hacker News app](https://github.com/bishopmatthew/HackerNews) displays these other sections.
+"
+manmal/hn-android,open,ViewText.org and Google for Mobile Devices don't work,[],"Just tried these on today's HN (the Amazon Zocal article and a few others).
+
+Make a bit of a bad impression for new users to see them fail. Maybe just keep Instapaper or add Readability?
+"
+manmal/hn-android,closed,Add some URL to the GitHub Repo URL,[],"E.g. a [link to Google Play](https://play.google.com/store/apps/details?id=com.manuelmaly.hn)
+
+![screenshot](https://cloud.githubusercontent.com/assets/33569/3532709/6aac4a7c-07c1-11e4-8261-efe20dc5196e.png)
+"
+manmal/hn-android,closed,"""comments only"" posts should show directly in the comments view",[],"Posts that only have comments (e.g. https://news.ycombinator.com/item?id=8012668) should open by default in the comments view. Right now they open in the WebView which isn't very readable.
+"
+manmal/hn-android,closed,Fixed comments caching,[],"This solves #99
+
+A boolean parameter was being compared for the incorrect result to determine whether or not we would show comments.  This resulted in us not showing cached comments.
+
+Testing done: 
+Went to a page for the first time with the internet enabled: comments were properly loaded
+Backed out, disabled internet, went back to that same post: cached comments appeared
+Opened a set of comments with no internet: ""no comments"" appeared
+Opened the same set with internet: comments were properly loaded
+"
+manmal/hn-android,closed,big bang gradle fix,[],"A big bang fix to the many gradle problems I found.
+Please note that the structure is not really corresponding an Android Studio project.
+I am also not sure that it will still work in eclipse.
+
+However, I was able to build and run it now.
+
+Biggest changes:
+- split gradle build files as expected by Android Studio
+- removed unnecessary jars and dependencies that are fetched by gradle (appcompat/androidannotations 2.5/3.0, etc.etc.)
+- Updated to android annotation 3.0.1. The old code used `com.googleannotations.androidannotations.*` which was prior v3. We now use `org.androidannotations.*`
+
+If you have any questions, let me know.
+"
+manmal/hn-android,open,Support xxhdpi launcher icon,[],"The launcher icon for this app on my Nexus 5 does not look as sharp as the other icons on my home screen.  The screen on this phone has 445dpi (""xxhdpi"" Android setting) and looking at the source code there is no resources for this screen density.
+
+According to http://developer.android.com/design/style/iconography.html the xxhdpi launcher icon should be 144x144 pixels in size.
+
+BTW - love the app, use it every day.
+"
+manmal/hn-android,open,"Opening ""Ask HN"" links causes a crash",[],"I've got a build off of master and not a marketplace build.  I'm sans laptop until June 2nd, but will investigate after that.
+"
+manmal/hn-android,closed,clicking a link doesn't open web browser,[],"I selected a link in the article and instead of opening in web browser, the app tried to open it as an article but I was just a blank page.
+"
+manmal/hn-android,closed,Fix newline,[],"This is basically the same as #77 except it's now properly rebased on top of master.  I'm not going to merge it until we push out a build with the proper action bar so that release is as clean as possible.
+"
+manmal/hn-android,closed,Add proper action bar,[],"Alright, so I THINK this is production ready, but I want to get a LGTM from you all before merging since it's so big.  Basically this migrates everything into a real action bar.  The exception is SettingsActivity, and that's because there is no PreferenceActivity/PreferenceFragment which exists in the support library.  Once this is merged in I will work to use a 3rd party preference fragment to make that happen.  However, for now I think I'm introducing enough dependencies and code.
+
+One other note is that I pulled in the AppCompat code directly into the project to facilitate the ease of setup.  We may want to make this a submodule instead, but I think the idea is sound (we use a similar strategy at Yelp and have had no problems).
+"
+manmal/hn-android,open,Loading comments sometimes fetches comments from the wrong post,"[Label(name=""bug"")]","I'm impatient, so sometimes I'll start loading one set of comments and then go back and start loading another set.  However, this sometimes results in the comments from the initial post being shown.
+
+I think this issue occurs because we just blindly call showComments() if the task was successful.  There needs to be an additional check to make sure we're showing the right ckmments.
+"
+manmal/hn-android,closed,Adding search,[],"This PR adds 'Search' functionality (#36) to the app and addresses the Load More issue, where the posts cannot be loaded more than once (#64). The second was fixed implicitly, as it was needed by the search implementation.
+
+I'd love some feedback and review and hope you like it.
+I know, that some of the code styles are not in sync with the current style, but I guess this will be fixed, if the other PR gets merged, or if we settle on a style. If it is not ok, please let me know, what I can and should fix.
+
+The Search uses the new API used by HN (https://hn.algolia.io/api).
+"
+manmal/hn-android,open,"""Loading"" shown when page can't be parsed.","[Label(name=""enhancement"")]","This is probably a pretty extreme edge case, but when the page can be downloaded but not parsed just ""Loading"" is shown.  This should probably be something more descriptive.
+"
+manmal/hn-android,closed,Comments not cached anymore?,"[Label(name=""bug"")]","Since (I think) the last update, comments don't seem to be cached anymore. If I open the comments for a submission, hit the back button, turn off wifi then try the comments again for the same submission, I just get a flashed ""We were unable to retrieve the latest comments for this post"".
+
+I mostly use this app offline (e.g. open a bunch of threads in the morning, then read through cached comments on the train where I don't have wifi) so this is a pretty important feature for me. Is this by design?
+"
+manmal/hn-android,closed,mark as read for long press menu list,[],"mark as read for the links opening through long press menu list
+"
+manmal/hn-android,open,Instapaper link is not clickable in long press menu list,[],"After up voting the article the Instapaper Text list item in long press menu list is not clickable.
+"
+manmal/hn-android,closed,adding eclipse code styles,[],"I have added an eclipse formatter and an eclipse cleanup profile and changed the README accordingly, so that people know how to set it up. This will help people maintain the same code style easily.
+
+However, @manmal should go through all the files and apply them (otherwise this PR would have become pretty big).
+
+Feel free to change any rule as you wish and as you feel would be correct.
+
+Is there something similar for Android Studio? If yes, we have to make sure there are no conflicts between the proposed rules :)
+"
+manmal/hn-android,closed,Fix slide menu bug,[],
+manmal/hn-android,open,A feature request,"[Label(name=""enhancement"")]","Love the app! Use it daily.
+
+A feature that I feel would improve experience:
+Ability to share/copy comment thread links
+***Edit, previous content not relevant.. I'm blind or stupid. Maybe both.
+
+Thanks for making this open source.
+"
+manmal/hn-android,open,Automated test suite,"[Label(name=""enhancement"")]","Issue with the NPE that I introduced made me realize that a set of automated tests to run simple flows through the app would be a good idea and hopefully prevent future bugs like that from sneaking in.
+"
+manmal/hn-android,closed,"Add action bar DON'T MERGE INTO MASTER YET, PULL THIS BRANCH",[],"Alright, so I took the liberty of doing most of this over the past couple of days, but finals are coming up, and if I don't submit this now I'll probably fail because I'll do no studying.  I've outlined all the changes below.  Let me know if you want to change any history because there are a lot of commits here.
+
+What's here:
+An integration of ActionBarCompat with all activities using Gradle/Android Studio.  I used ABC because it's finally mature enough to handle all this and it is likely what other apps will start using going forward.  Plus, all the documentation is pretty much identical for both of them.
+Requisite cleanup of all layout files
+Recreation of most of the features that were present on the old Action Bar
+
+What's missing/broken:
+Testing on pre-3.0 builds and real devices
+Styling of the dropdown menus from the overflow menu (this is done by setting `DropDownListViewStyle` in the themes)
+Styling the overflow icons appropriately.  They show up blue when tapped.  I'm not sure how to change this
+Integration with Eclipse builds
+For some reason the comment bubbles got huge with this.  I think it is an issue with scaling, but I really couldn't lock it down.
+
+Stuff that was lost:
+You can no longer tap the action bar to scroll you up to the top of a comments list.  I think this is just theoretically incompatible with the way custom views are added.  I think that implementing one of the suggestions here: http://cyrilmottier.com/2013/01/09/back-to-top-android-vs-ios/ will be a good way to make up for this.
+
+Further thoughts:
+I'm not sure if having just the up arrow is the best way to go about things going forward, as it introduces some buginess with touch targets it seems.  Maybe creating an icon and having a normal up arrow would be the way to go.  As it stands now the app icon does a pretty bad job as a home icon though.
+
+Anyway, I'll be around to support this however possible.
+"
+manmal/hn-android,closed,Hopefully square away issues with android studio,[],"I shamelessly stole some code from StackOverflow to make the gradle build work better.  Everything appears to working swimmingly now.
+"
+manmal/hn-android,closed,App crashes on one particular link,[],"When visiting the comments for https://news.ycombinator.com/item?id=6861533, the app crashes.
+
+Link to the html for future reference: http://pastebin.com/6Kz013Na
+"
+manmal/hn-android,closed,Added files for a migration to gradle,[],"Android Studio is awesome, and people should be able to develop using it.  I just followed the migration guide from Android's website.  I'm not positive which config files we want floating around, so I just followed what the Github Android app did.
+"
+manmal/hn-android,closed,Adding mark as read feature.,[],"Once a post is clicked, it is greyed out to give a visual feedback that it was read.
+In order to have the read posts persisted, they are cached for 2 days within their own SharedPreferences. That should be sufficient time for the post to be removed from the feed. 
+
+The cache is maintained each time the MainActivity is started and shouldn't become too large.
+"
+manmal/hn-android,closed,Logout Option,"[Label(name=""enhancement"")]","There should be a log out option so that the user can easily log out. 
+"
+manmal/hn-android,closed,Select certain portions of the text and copy it to clipboard ?,[],"In my opinion ArticleReader Activity should allow the user to select and copy to clipboard any text that he/she is interested in. 
+This would allow the user to paste only the required text into mails/messages instead of sharing a link to the entire article.
+I think I might be able to implement this feature. 
+I just wanted some feedback from everyone else whether I should work on this or not ?
+"
+manmal/hn-android,closed,Added Screen Transition Animations and Changed Action bar Color to 'Orange' instead of previously used 'Bright' in 'article_activity',[],"in order to maintain UI consistency.
+
+Also removed some unused imports
+"
+manmal/hn-android,closed,Collapse Comment should collapse entire comment thread.,[],"Since tapping on a comment already collapse all children comments, the long press menu > collapse comment is redundant.
+
+Can the behavior be changed to going to root and collapsing the entire comment tree?
+"
+manmal/hn-android,closed,Unable to upvote,[],"Right now the app prevents me from upvoting anything since it incorrectly thinks it's already been upvoted on.
+
+Note the timestamps: ""Already voted on"" is 45 minutes ago, while the last screenshot shows that I haven't voted on the comment from 1hr ago.
+
+![2013-11-25 20 29 29](https://f.cloud.github.com/assets/622170/1616812/68d9c32a-5612-11e3-8290-2fc7e7dec9d7.png)
+![2013-11-25 20 29 38](https://f.cloud.github.com/assets/622170/1616813/68da5092-5612-11e3-95da-8fbdc7eb78fe.png)
+![screenshot from 2013-11-25 14 44 30](https://f.cloud.github.com/assets/622170/1616815/6d89c38e-5612-11e3-842e-7cc3b858d938.png)
+"
+manmal/hn-android,closed,use physical button to open menu,[],
+manmal/hn-android,closed,Added orientation change block option,[],"Sometimes when I read the feed list while laying on the bed on a side, the phone is rotated 90 degrees, and thus the orientation rotates automatically to be landscape; it's useless since I'm already sideways, so I can't read the news. It'd be great to have an option that would prevent the app to do so.
+"
+manmal/hn-android,closed,added ProgressDialog when loading inttermediate feeds from the store,[],"also formatted some code.
+"
+manmal/hn-android,closed,Fix no error messages when there are connectivity problems,[],"This solves #57.
+"
+manmal/hn-android,open,CommentsAdapter should be its own class,"[Label(name=""enhancement"")]","The `CommentsAdapter` class probably shouldn't be living in the `CommentsActivity`, especially as the latter handles more responsibility.  It will be a little bit of a hassle because of the interactions with how the `MenuListAdapter` works.  But it'll be worth the effort in cleanup I think (especially if both of them can go into a new file).
+"
+manmal/hn-android,closed,Fixed up a bug where newlines weren't getting properly inserted into comments,[],"This has been pissing me off for a while, and I finally realized it was because of how Hacker News embeds their HTML.  
+
+Basically, what the structure is that at first there is a `<font>` tag wrapping a bunch of `<p>` tags, and then a set of `<p>` wrapping `<font>` tags.  Since the previous query just grabbed the direct children of the `.comment` element, this caused the latter type of comment to not have it's proper line breaks inserted because of how the `html` method in Jsoup works.  
+
+Anyway, this should fix that problem by just grabbing all the `<font>` tags in the selector and then wrapping all but the first element in `<p>` tags, which is what the HN website basically does.
+"
+manmal/hn-android,closed,Made linkification with GET parameters work properly,[],"I also added a couple of comments so that this reads nicer.  Before and after pictures:
+
+Previous: ![](http://i44.tinypic.com/llhkz.png)
+Current: ![](http://i43.tinypic.com/2w5vkuu.png)
+No GET params: 
+![betterlinkage2](https://f.cloud.github.com/assets/1245354/1492280/81150858-47be-11e3-85c1-7a8bc7e3029c.png)
+"
+manmal/hn-android,closed,Fixed a bug where comments on Poll HN posts wouldn't render properly,[],"This is re: #69.  I couldn't figure out how to do this in the CSS selector (querying for tr:has(table td:eq(2)) instead of tr:has(table) gave me way more results than I wanted) and I don't see anything conceptually wrong with this solution.  I also have a feeling that this break statement is the cause of  #73, but I can't be sure.
+"
+manmal/hn-android,closed,Comments and feed not loading,[],"Much like the title says, neither comments nor the list of articles are reloading.  Interestingly the refresh option is just spinning and is not immediately stopping (the latter would suggest a parse error or something similar). Articles still load fine.
+"
+manmal/hn-android,closed,Comments fail to load for specific article,[],"An old comment shows up and then disappears once auto refreshed. Manual refreshing fails to retrieve comments as well.
+
+Problematic comments:
+
+https://news.ycombinator.com/item?id=6601870
+"
+manmal/hn-android,closed,Add a menu option on long press click on the article list view to share the post url with an external app,[],
+manmal/hn-android,open,Comments with > in front of them aren't rendered properly,"[Label(name=""bug"")]","> If I have a comment like this
+
+And I follow it with some text here.
+
+Then the line break between the careted text and the non-careted text will not show up.  I have a feeling that this might be because `Html.fromHtml` is derping because of the leading caret.  However, I'm not totally sure how to fix it.
+"
+manmal/hn-android,closed,"On Ask HN posts, links with GET parameters are not rendered properly",[],"Only the root url is shown as a link, the GET portion is not linkified.  This is an issue with the Regular expression used to linkify text.  Using Linkify might solve this issue, but it also raises a couple of other ones.  I'll do some googling for the best solution.
+"
+manmal/hn-android,closed,Polls don't show comments,[],"This is probably related to the change I made to show ask-hn text.  Weirdly it doesn't stay in ""loading"" state, which would indicate an error.  Instead it just shows nothing.  I've got midterms and a feature for the Github app that I'm working on right now, but this is next on my list after that.
+"
+manmal/hn-android,closed,Refresh relevant pages when the user logs in with new information. NOTE: I'm not totally sure about the string I added,[],"Per #61, there was some wonky stuff that was happening with respect to logging in and pages being cached.  In order to fix that I tagged comments and feeds with the user that they were acquired for.  If those differ from the current user then that content will be loaded.  This will probably result in slightly slower load times, but I think the gain in consistency is worth it.
+
+Also, I added a string to tell the user he or she has successfully logged in.  I don't love the wording, but it was the best I could think of.  Suggestions are especially welcome there.
+"
+manmal/hn-android,closed,Logging in through the comments activity leads to not being able to upvote articles until refresh,[],"All of the links give an ""upvoted by you"".  This is probably the result of all of the upvote links still being tied to the old, non-logged in user.  I think it would be appropriate to just clear the article cache after logging in. 
+"
+manmal/hn-android,closed,Visiting this link always force closes app,[],"https://news.ycombinator.com/item?id=6467379
+
+It's repeatable and I've sent the stack trace, not sure what else I can add to help.
+"
+manmal/hn-android,closed,"Fixed a parser bug where if there was no relative link the ""more"" option wouldn't work",[],
+manmal/hn-android,closed,"""More"" doesn't actually give you more articles",[],"When clicking ""more"", the app does the whole ""hey I'm loading"" shindig and then just goes away.  I think this because HN changed their first link to just `<a href=""news2"">` and the parser is currently hunting for a leading slash.  I fixed this up in #58, but I'll submit a separate pull request for just that one change to make merging easier.
+"
+manmal/hn-android,closed,Clean up the loading of Article Readers,[],"Just a hold-over for when #62 gets merged in.  In SettingsActivity the list of possible ways to render articles should just be inflated from an array if possible.
+"
+manmal/hn-android,closed,Added Instapaper Text for article viewing,[],"Added Instapaper Text for article viewing since ViewText.org always seems to be down or can't render articles and Google for Mobile Devices uses tiny fonts that hurt my eyes.
+"
+manmal/hn-android,closed,"Warnings make me sad, so I got rid of a bunch of them",[],
+manmal/hn-android,open,Why only load one set of extra articles?,"[Label(name=""enhancement"")]","Why is loading more articles only limited to just one round of articles?  Unless there is a good reason the user should be able to load more articles as long as he/she wants.
+"
+manmal/hn-android,closed,Upgrade Jsoup,[],"Mostly in reference to #35.  This doesn't solve the issue but it will speed up parsing and save some memory.
+"
+manmal/hn-android,closed,Add text for Ask-HN above comments,[],"This is at least part of what is requested in #6.  This PR also adds some nice things like a loading view which can be easily added to any list as an empty view so that ""loading"" is displayed instead of a blank screen.
+
+Screenshots:
+Loading screen on the comments page: http://tinypic.com/r/2hqfog3/5
+Some text with links: http://tinypic.com/r/517gom/5
+Bottom margin: http://tinypic.com/r/2wmhvmv/5
+Comment that doesn't take up the whole screen: http://tinypic.com/r/2ll0o5d/5
+Loading panel on the comments page: http://tinypic.com/r/2hqfog3/5
+Loading panel on the home screen: http://tinypic.com/r/n3uc6e/5
+"
+manmal/hn-android,closed,"When loading comments, there is no indication if the request failed",[],"There should be something like ""Couldn't fetch comments"" or something similar displayed.
+"
+manmal/hn-android,closed,Rotating the screen while looking at comments causes you to scroll to the top of the list,[],"This is really annoying.
+"
+manmal/hn-android,closed,Rendering artefacts,[],"Whenever I view an article within HN, while the page is loading, I see the following artefacts:
+
+![screenshot_2013-09-04-06-10-44](https://f.cloud.github.com/assets/39269/1155554/f180186e-1f71-11e3-98d6-61440e757f45.png)
+
+As soon as the page is finished loading, the artefacts disappear.
+
+I guess both HN and Chrome are using the same rendering engine. However, I do not see the artefacts in Chrome.
+
+Any idea what might be causing this?
+"
+manmal/hn-android,closed,Fixed a comments parsing bug,[],"Before if the word ""reply"" was in a comment then it wouldn't be displayed because of how the query was setup.  This fixes that bug by looking for the <u> tag which wraps around the reply link.
+"
+manmal/hn-android,closed,made deleted comments render properly,[],"For a look at the spiffy new deleted comments see here: http://postimg.org/image/fskc2b0c1/
+"
+manmal/hn-android,closed," android:allowBackup is explicitly set to ""false'' in the Manifest",[],"Is there a particular security reason for this over the convenience of easier transfer from old to new device ? 
+
+Android offers a nifty backup&restore functionality since 4.x with 'adb backup' and Koushik Dutta has made a great frontend app for it called Helium (https://play.google.com/store/apps/details?id=com.koushikdutta.backup).
+
+In the whole list of 150 apps installed on my device the only 2 ones are : 
+- Google Authenticator (reasonable why the adb backup is disabled)
+- HN Android.
+"
+manmal/hn-android,closed,"Refactored login logic out into its own activity so that it can be dropped anywhere.  Also, force users to log in before upvoting comments",[],"The description pretty much sums it up.  The one thing to note which is a little awkward is that we need to reload the comments once the user logs in so that we can get proper upvote urls.  It's a little bit strange, but I couldn't figure out a way to construct upvote URLs on the fly since they require a key.
+"
+manmal/hn-android,closed,Trying to upvote a post when you are not already logged in should prompt the user for login,[],"The solution of just putting a Toast there feels inelegant.  There should be a way to prompt the user for login anywhere through a consistent interface.
+"
+manmal/hn-android,closed,"Preventing Activity restarting on newer Android versions, updating build target and fixing .classpath",[],"1. Fixed issues with .classpath entry orders and missing attributes.
+2. Adjusted build targets, so there should be no problems with code from newer Android API versions.
+3. Added ""screenSize"" to the list of configChanges in AndroidManifest.xml, thus preventing unnessecary activity restarts. See discussion at issue #42
+
+Importing the project from git in eclipse (with current Android SDK and ADT plugin) as an ""existing project"" should now be enough to build it and run it without errors or further configuration. If this is not the case for you, please write a comment here.
+"
+manmal/hn-android,closed,Is comment loading in CommentActivity Racing?,[],"So I'm looking over the code in CommentsActivity while trying to figure out how to fix #46 and I ran across this question.  It looks like retrieving comments is a racing operation because the application makes a call to disk and then attaches itself to any preexisting request for new comments.  Is there any safeguard to protect against the network operation completing before the disk operation, and therefore having the cached comments appear instead of the latest comments?
+"
+manmal/hn-android,closed,Add downvote (fixes #43),[],"This PR has the intention of adding downvoting to the list of options for a user if that user can downvote.  I was not able to fully test this because I don't have downvoting privileges.  However, when using the html provided by @wting in Issue #43 and forcing his username the option did appear.  Before merging this in it would probably be wise for someone who has downvoting privileges to pull my branch and run it to make sure everything is kosher.  
+
+That being said, given that the display shows up properly and the fact that the voting logic is pretty trivial I'm confident that this works.
+"
+manmal/hn-android,open,Upvoting bug,"[Label(name=""bug"")]","I ran into a bug earlier today which doesn't seem to want to reproduce itself.  The steps for it are:
+
+Go to a post, upvote a comment in it
+Back out of the post
+Go back to the post, try to upvote the same comment
+See ""upvote"" instead of ""already upvoted by you""
+
+I've looked a little bit into the code to find this and it looks like it might be an issue with how the comments are cached.  The app might not be caching whether the user has already voted on a comment or not.  I'll investigate further when I get a chance.
+"
+manmal/hn-android,closed,moved around jars in the build path,[],"I ran into some issues when trying to build and start the application in that I was getting NoClassDefFoundError exceptions being thrown whenever the application tried to grab a GA tracker instance.  After looking at [This StackOverflow post](http://stackoverflow.com/questions/8678630/noclassdeffounderror-android) I tried moving around the order in which the jars were being included.  Bumping the external jars above the android libraries did the trick and allowed me to build and run the hn app.
+
+I have a suspicion this might have to do with the ADT version that I'm using, so for reference I'm using ADT 22.
+"
+manmal/hn-android,closed,Restore vertical scrolling position,[],"Hey Manuel,
+
+I'm suggesting a small improvement which is to keep the vertical scrolling position when going back from comments to posts list or from a web view back to posts or comments list. Maybe it's just me, but I like to read HN sequentially and know where I was when I left a screen.
+
+I also made a small optimization where the posts and comments lists are reloaded only if the font sizes have really changed.
+
+Let me know if you have questions on this pull request.
+
+Keep on the good work on your awesome app!
+"
+manmal/hn-android,closed,Downvote support. <eom>,[],
+manmal/hn-android,closed,Orientation changes lead to activity restarting on API 13+,[],"(Assuming this is not intended behavior.) Activities are restarted when changing device orientation on newer Android versions. #27 does not prevent this. It is probably caused by the screenSize configChange, which is also called on rotation.
+
+You could probably fix this by easily adding ""screenSize"" to all the android:configChanges entries in AndroidManifest.xml:
+
+android:configChanges=""keyboardHidden|orientation|screenSize""
+
+See http://stackoverflow.com/a/11631017 for further info.
+
+I could not test this myself with your source because of various unrelated build errors I currently can´t fix, but with other projects, this worked well.
+"
+manmal/hn-android,closed,Feature Request : Prefetch and better cache,[],"This is the best HN Android app there is. It would be awesome if it also prefetched comments and stories so that when you click on something in the app, it is near instantaneous. To get around HN rate limits, perhaps a server can proxy the requests (I'd be happy to donate this server). 
+"
+manmal/hn-android,closed,Help,[],"Hello, i need help with the error. Follow the link.
+http://www1.picturepush.com/photo/a/13170864/img/13170864.png
+R?
+"
+manmal/hn-android,closed,Cannot collapse deleted posts <EOM>,[],
+manmal/hn-android,open,Tell user when login-token has been invalidated,"[Label(name=""enhancement"")]","- Log in via the app
+- Change password via Hacker News website
+- Articles will load in HN, but upvoting etc won't work
+"
+manmal/hn-android,open,Add commenting functionality,"[Label(name=""enhancement"")]",
+manmal/hn-android,closed,Add search functionality,[],
+manmal/hn-android,closed,Crashes when loading many comments,[],"The app seems to crash on posts with a large number of comments. I can't tell if it's the high number of comments causing the crash, or a higher probability of the real cause of the crash in posts with many comments. The latest to crash is from a post with over 300 comments.
+"
+manmal/hn-android,closed,Open in default browser button,[],"I added a little button so that the user can open an article in their default browser. nothing major but I think it can be frustrating not being able to easily access the article in my own browser if I need to for some reason. It's just a little browser icon.
+
+![device-2013-04-06-173742](https://f.cloud.github.com/assets/1024060/347538/6e54797c-9ed8-11e2-9af9-9c4522898b4b.png)
+"
+manmal/hn-android,closed,Refresh button keeps spinning after multiple taps on it,[],"Don't know yet exactly what's going on, but it won't stop currently. State in general is a bit messed up there, I can produce a spinning checkmark by timing the taps differently.
+"
+manmal/hn-android,closed,Crashes when reload button is pressed multiple times,[],"On the main screen or comments screen, repeatedly tap the reload button and Android will report that the app has stopped. This does not effect article screens. Tested on version 1.9 from the F-Droid repository on a Nexus 4 running Android 4.2.2.
+"
+manmal/hn-android,closed,Changed the approach used to destroy the WebView instance for #15 & fixing #32,[],"Reimplementing #15:
+Changed WebView.destroy to loading an empty page due to bugs mentioned here: http://stackoverflow.com/questions/6201615/how-do-i-stop-flash-after-leaving-a-webview?rq=1
+
+Repositioned super.onDestroy to the end of onDestroy
+
+Also fixing issue #32
+"
+manmal/hn-android,closed,Fixing Issue #15,[],"Fixed issue https://github.com/manmal/hn-android/issues/15
+Upon destroying the Article activity, calling the destroy method for the WebView instance will kill any playings running such as YouTube and Soundcloud
+"
+manmal/hn-android,closed,Page Title,[],"From Sam Charrington:
+
+What I'm finding is that when I share an item from the internal browser's share menu, the receiving app isn't properly getting the page title. The specific use case I'm concerned with is sharing via the Buffer app, but the post title doesn't seem to be prepopulated when sharing via Twitter or Facebook either.
+"
+manmal/hn-android,closed,Authentication Issues,[],"Fixes authentication issues I encountered (error_login_failed), which are apparently due to the recent switch to HTTPS.
+"
+manmal/hn-android,closed,Changing orientation reloads article viewer to original link,[],"https://github.com/manmal/hn-android/issues/26
+"
+manmal/hn-android,closed,Changing orientation reloads article viewer to original link,[],"1. Open an article
+2. Navigate within the article viewer
+3. Change screen orientation
+4. Original article URL is loaded and you lose your current state
+"
+manmal/hn-android,closed,Changes to SEND intents,[],"- SEND intents from article and comments activies now both include titles as subject
+- SEND intent from comments activity now shares the post URL on HN
+"
+manmal/hn-android,closed,Unable to login with certain characters in password,[],"At least one of these characters causes ""An unknown error occurred"" that prevents logging in: 
+
+```
+{"".+?)&~
+```
+
+After I made my password alphanumeric, I was able to log in.
+
+Logging in on the HN website was possible with and without these characters.
+"
+manmal/hn-android,closed,Update .factorypath with correct project name,[],"Fixes ""Unable to load annotation processor factory"" issues when first loading in Eclipse.
+"
+manmal/hn-android,closed,article/comment button at the top of the article screen,[],"Patch attached. Thanks
+"
+manmal/hn-android,closed,Clean lint messages,[],
+manmal/hn-android,closed,Close handles in finally() in FileUtil,[],
+manmal/hn-android,closed,Clean unused imports,[],
+manmal/hn-android,closed,article/comment button at the top of the article screen,[],"In many user interfaces, the ""view switching"" buttons indicate the state the UI will be switched into. Currently this seems to be different in hn-android, where the button to switch into Comments is titled Article, and vice versa. Thanks
+"
+manmal/hn-android,closed,remove/filter articles read,[],"Could an option be added to remove/filter articles read? Thanks
+"
+manmal/hn-android,closed,Add external url handling,[],"Hi Manuel,
+
+I've finished the work you started for handling external news.ycombinator.com urls for posts.
+
+The solution isn't super clean, but it would have required a lot of refactoring otherwise which I'm not comfortable with in a codebase that's not mine.
+
+Let me know what you think.
+
+Cheers,
+Pascal
+"
+manmal/hn-android,closed,Issue switching between page and comments. ,[],"If you start playing a YouTube video and switch to comments while it is playing, the playback continues in the background. Audio from the video can be heard to prove this. If you then return to the page, a new instance of it is created and there is no way to stop the video without killing the app.
+"
+manmal/hn-android,closed,should sharing from the comments view send the HN comments page URL?,[],"In other HN readers, I've found it really useful to be able to share either the article URL or the comments URL depending on context. The comments URL is a handy shared item because the HN comments page always links to the article URL. Thus, if the HN comments turn out to be more useful than the article, it's nice to share/bookmark those instead of the article itself.
+"
+manmal/hn-android,closed,"sharing: ""Share Article URL"" is attached to share data as title",[],"Disclaimer: I am not an Android developer, so apologies for any misguided notions about how sharing works.
+
+I'm seeing this issue when sharing from hn-android to pindroid (a free pinboard.in client). When sharing from hn-android - and only hn-android - the ""title"" field in pindroid is populated with ""Share Article URL"". From other apps, pindroid is able to populate the title field with the content of the page's title tag.
+
+I would expect hn-android to either pass the title tag's content or pass nothing (to allow the shared-to app to detect a no-title condition and fetch on its own, if that's how it works).
+"
+manmal/hn-android,closed,Highlight new comments since last visit,[],"It'd be nice if the app kept track of which comments have been seen, and highlighted the new ones when visiting the comments again. An example of this is when using the hckrnews.com Chrome extension plugin:
+
+![screenshot](http://i.imgur.com/TXuz8.png)
+"
+manmal/hn-android,closed,Precompiled APK,[],"I dont use google play. Is there any way I can get a precompiled apk?
+"
+manmal/hn-android,closed,"Share button touching ""Comments"" headline.",[],"You might want to consider the spacing.
+
+From my Galaxy S2 (hdpi):
+
+![screenshot](http://i.imgur.com/EkR7L.jpg)
+"
+manmal/hn-android,closed,"""Endless"" browsing.",[],"It'd be nice if when you hit the bottom of a list, it automatically got the next page of results rather than requiring the user to hit the ""More"" button.
+"
+manmal/hn-android,closed,Visiting link through comments ignores browser settings,[],"Thanks for the latest update to give us an option of different reading settings.
+
+I have it set to use system browser, and it works fine when visiting a link from the list of articles. However going from list -> comments -> article defaults back to using the in app browser.
+
+Could you please update that link to obey browser settings as well? Thanks.
+"
+manmal/hn-android,closed,Associate app with news.ycombinator.com links.,[],"Some apps (e.g. Reddit News) pop up as an option for handling http://reddit.com/ links. Is it possible to modify HN to handle all news.ycombinator.com links?
+"
+manmal/hn-android,closed,"Support for ""Ask HN"", ""Poll HN"", etc.",[],"This is really two parts.
+1. The title isn't repeated on the comments page (which I would like).
+2. (Ask|Poll) HN text bodies are missing.
+"
+manmal/hn-android,closed,"""More"" results in duplicating entries",[],"Screenshot of bug:
+
+![bug](http://i.imgur.com/7e5Pn.png)
+"
+manmal/hn-android,closed,Dark theme?,[],"Is it possible to get a dark theme for those of that prefer it?
+
+Preferably a gradient screen (LCD displays) and a true black screen (AMOLED displays).
+"
+manmal/hn-android,closed,Clicking on a link in a comment both opens the link and collapses the comments below it.,[],"Every time I click on a link on a comment it both opens the link and collapses the comment thread.
+"
+manmal/hn-android,closed,Added 'Open in browser' option.,[],"I've just added 'Open in browser' option in Share button.
+I think it's better than reading an article only from the internal browser.
+"
+manmal/hn-android,closed,update target sdk version to ICS for a cleaner menu bar,[],"Updating the target version to SDK 14 or above (ICS) results in the newer, cleaner menu bar without the deprecated options menu and the compatibility zoom button.
+"

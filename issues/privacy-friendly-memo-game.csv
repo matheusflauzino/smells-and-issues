@@ -1,0 +1,301 @@
+repository,state,title,label,body
+SecUSo/privacy-friendly-memo-game,closed,Translation into Slovak language,[],"Hi, i like this game and the idea of secuso. Can i contribute with translation into slovak lng?"
+SecUSo/privacy-friendly-memo-game,open,Optimize for landscape orientation,"[Label(name=""enhancement"")]","Hi would be nice if the memory tiles wouldn't be so small when playing in landscape.
+
+Thank you, take care."
+SecUSo/privacy-friendly-memo-game,open,Every round is a highscore,"[Label(name=""bug"")]","Even if I had a highscore of e.g. 2500, every time a game ends it shows ""highscore: xxxxx"", even if it's a smaller value than the highscore in the highscore list. 
+
+It would be nice to see the score of the round and the highscore separately."
+SecUSo/privacy-friendly-memo-game,open,Add tutorial,"[Label(name=""bug"")]",Change Welcome Dialog to tutorial
+SecUSo/privacy-friendly-memo-game,open,"When score is below highscore, it is not shown at the end of the game.","[Label(name=""bug"")]","Instead it is shown as ""Highscore: 0"""
+SecUSo/privacy-friendly-memo-game,open,FR: Include metadata for fdroid,[],"When providing metadata via a fastlane directory, fdroid automaticly shows them in the store. You dont need to install fastlane, just create the folder
+
+Example: https://github.com/Freeyourgadget/Gadgetbridge/tree/master/fastlane/metadata/android/en-US
+Info: https://github.com/fastlane/fastlane/blob/2.28.7/supply/README.md#images-and-screenshots"
+SecUSo/privacy-friendly-memo-game,open,FR: Adaptive icon,[],"Api 26 introduced adaptive icons where background and foreground are two different images.
+https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive.html"
+SecUSo/privacy-friendly-memo-game,open,Make colorPrimaryDark darker,[],"The status bar should be darker than the action bar.
+
+Before:
+![screenshot_2017-10-25-15-45-35](https://user-images.githubusercontent.com/22525368/32001915-6f70a35c-b99b-11e7-93bb-9196bbca72b4.png)
+After:
+![screenshot_2017-10-25-15-44-47](https://user-images.githubusercontent.com/22525368/32001914-6f4d701c-b99b-11e7-87d8-f519504c18cf.png)
+"
+SecUSo/privacy-friendly-memo-game,closed,[WIP] Adjust colors of drawer icons.,[],"The icons in the drawer have different colors, some are darker than other. I adjusted the settings icon by removing its alpha value, but I couldn't change the color of the highscore icon.
+With this PR it should be red (just to be sure to see the difference), but it is still grey."
+SecUSo/privacy-friendly-memo-game,closed,Dead link in readme,[],The link https://design.google/icons/index.html is now a 404.
+SecUSo/privacy-friendly-memo-game,open,Added Galician Translation,[],My first pull request
+SecUSo/privacy-friendly-memo-game,open,FR: xkcd deck,[],You could use character picuteres from here: http://www.explainxkcd.com/wiki/index.php/Characters
+SecUSo/privacy-friendly-memo-game,closed,Create strings.xml,[],Here is the French translation :D
+SecUSo/privacy-friendly-memo-game,open,Copyright violation,[],"Hi @SecUSo
+
+I found [this app ](https://play.google.com/store/apps/details?id=com.game.PuzzleMemory) on the Google Play Store. This guys just took the source code, added some ads and put it on the Store...
+
+As you are the owner of the source code, feel free to open a request to google [here](https://support.google.com/legal/contact/lr_dmca?product=googleplay) to remove the false app from the Store, if it's your wish ;)
+
+Don't forget to tell Google that:
+
+* The app is licensed under GNU GPL v3 and this guy is violating it by distributing the app without distributing the source code;
+* He is falsely claiming he made the app;
+* Also tell them that this guy has done the same thing already with other apps. Probably this is worth mentioning. (I watch him)"
+SecUSo/privacy-friendly-memo-game,open,java.lang.SecurityException,"[Label(name=""bug"")]","Reported from Android 6
+
+`java.lang.SecurityException: Permission Denial: opening provider com.android.providers.media.MediaDocumentsProvider from ProcessRecord{174e0e0 20877:org.secuso.privacyfriendlymemory/u0a340} (pid=20877, uid=10340) requires android.permission.MANAGE_DOCUMENTS or android.permission.MANAGE_DOCUMENTS
+	at android.os.Parcel.readException(Parcel.java:1620)
+	at android.os.Parcel.readException(Parcel.java:1573)
+	at android.app.ActivityManagerProxy.getContentProvider(ActivityManagerNative.java:4241)
+	at android.app.ActivityThread.acquireProvider(ActivityThread.java:6394)
+	at android.app.ContextImpl$ApplicationContentResolver.acquireUnstableProvider(ContextImpl.java:2380)
+	at android.content.ContentResolver.acquireUnstableProvider(ContentResolver.java:1521)
+	at android.content.ContentResolver.openTypedAssetFileDescriptor(ContentResolver.java:1139)
+	at android.content.ContentResolver.openAssetFileDescriptor(ContentResolver.java:991)
+	at android.content.ContentResolver.openInputStream(ContentResolver.java:711)
+	at org.secuso.privacyfriendlymemory.ui.MemoImageAdapter.decodeUri(MemoImageAdapter.java:89)
+	at org.secuso.privacyfriendlymemory.ui.MemoImageAdapter.getView(MemoImageAdapter.java:74)
+	at android.widget.AbsListView.obtainView(AbsListView.java:2934)
+	at android.widget.GridView.makeAndAddView(GridView.java:1463)
+	at android.widget.GridView.makeRow(GridView.java:366)
+	at android.widget.GridView.fillDown(GridView.java:307)
+	at android.widget.GridView.fillSpecific(GridView.java:591)
+	at android.widget.GridView.layoutChildren(GridView.java:1302)
+	at android.widget.AbsListView.onLayout(AbsListView.java:2728)
+	at android.view.View.layout(View.java:17972)
+	at android.view.ViewGroup.layout(ViewGroup.java:5814)
+	at android.widget.RelativeLayout.onLayout(RelativeLayout.java:1080)
+	at android.view.View.layout(View.java:17972)
+	at android.view.ViewGroup.layout(ViewGroup.java:5814)
+	at android.support.design.widget.HeaderScrollingViewBehavior.layoutChild(HeaderScrollingViewBehavior.java:131)
+	at android.support.design.widget.ViewOffsetBehavior.onLayoutChild(ViewOffsetBehavior.java:42)
+	at android.support.design.widget.AppBarLayout$ScrollingViewBehavior.onLayoutChild(AppBarLayout.java:1367)
+	at android.support.design.widget.CoordinatorLayout.onLayout(CoordinatorLayout.java:849)
+	at android.view.View.layout(View.java:17972)
+	at android.view.ViewGroup.layout(ViewGroup.java:5814)
+	at android.support.v4.widget.DrawerLayout.onLayout(DrawerLayout.java:1193)
+	at android.view.View.layout(View.java:17972)
+	at android.view.ViewGroup.layout(ViewGroup.java:5814)
+	at android.widget.FrameLayout.layoutChildren(FrameLayout.java:344)
+	at android.widget.FrameLayout.onLayout(FrameLayout.java:281)
+	at android.view.View.layout(View.java:17972)
+	at android.view.ViewGroup.layout(ViewGroup.java:5814)
+	at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1742)
+	at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1585)
+	at android.widget.LinearLayout.onLayout(LinearLayout.java:1494)
+	at android.view.View.layout(View.java:17972)
+	at android.view.ViewGroup.layout(ViewGroup.java:5814)
+	at android.widget.FrameLayout.layoutChildren(FrameLayout.java:344)
+	at android.widget.FrameLayout.onLayout(FrameLayout.java:281)
+	at android.view.View.layout(View.java:17972)
+	at android.view.ViewGroup.layout(ViewGroup.java:5814)
+	at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1742)
+	at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1585)
+	at android.widget.LinearLayout.onLayout(LinearLayout.java:1494)
+	at android.view.View.layout(View.java:17972)
+	at android.view.ViewGroup.layout(ViewGroup.java:5814)
+	at android.widget.FrameLayout.layoutChildren(FrameLayout.java:344)
+	at android.widget.FrameLayout.onLayout(FrameLayout.java:281)
+	at android.view.View.layout(View.java:17972)
+	at android.view.ViewGroup.layout(ViewGroup.java:5814)
+	at android.widget.FrameLayout.layoutChildren(FrameLayout.java:344)
+	at android.widget.FrameLayout.onLayout(FrameLayout.java:281)
+	at com.android.internal.policy.PhoneWindow$DecorView.onLayout(PhoneWindow.java:3129)
+	at android.view.View.layout(View.java:17972)
+	at android.view.ViewGroup.layout(ViewGroup.java:5814)
+	at android.view.ViewRootImpl.performLayout(ViewRootImpl.java:2718)
+	at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:2419)
+	at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1489)
+	at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:7472)
+	at android.view.Choreographer$CallbackRecord.run(Choreographer.java:920)
+	at android.view.Choreographer.doCallbacks(Choreographer.java:695)
+	at android.view.Choreographer.doFrame(Choreographer.java:631)
+	at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:906)
+	at android.os.Handler.handleCallback(Handler.java:739)
+	at android.os.Handler.dispatchMessage(Handler.java:95)
+	at android.os.Looper.loop(Looper.java:158)
+	at android.app.ActivityThread.main(ActivityThread.java:7231)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1230)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1120)`"
+SecUSo/privacy-friendly-memo-game,closed,Two pairs of same image,"[Label(name=""bug"")]","Game in easy mode, had two pairs of monkeys, but only certain two paired together."
+SecUSo/privacy-friendly-memo-game,closed,Android automatic refactor - ObsoleteLayoutParam,[],"Hi,
+
+I am developing a tool to automatically refactor Android applications with the goal of improving energy efficiency.
+This pull request has the changes generated while applying the rule ""ObsoleteLayoutParam"".
+
+While developing your application's views you might be specifying attributes in a view's artefact that are not necessary due to the nature of its parent. In this PR, those attributes were replaced by a comment.
+
+I have made a previous validation of the changes and they seem correct.
+Unfortunately, this tool is not able keep the original whitespace of the files, so comparison without ignoring whitespace might be confusing.
+Please consider the changes and let me know if you agree with them.
+
+Best,
+Luis"
+SecUSo/privacy-friendly-memo-game,closed,Android automatic refactor - ViewHolder,[],"Hi,
+
+I am developing a tool to automatically refactor Android applications with the goal of improving energy efficiency.
+This pull request has the changes generated while applying the rule ""ViewHolder"".
+
+When developing list views, it is very common to repeat work in every item. Something very common is retrieving a field with the API method ```findViewById```. There is a ViewHolder pattern that lets you reuse the work made in the previous computed item.
+
+I have made a previous validation of the changes and they seem correct.
+Please consider them and let me know if you agree with them.
+
+Best,
+Luis"
+SecUSo/privacy-friendly-memo-game,closed,japanese translation,[],Hello!
+SecUSo/privacy-friendly-memo-game,closed,Highscores not showing highscores of custom deck,"[Label(name=""bug"")]","Hi
+When I score a high score in custom deck, it doesn't show on the Highscores!"
+SecUSo/privacy-friendly-memo-game,closed,OutOfMemoryError when playing hard level game,"[Label(name=""help wanted"")]","Samsung Galaxy Note II GT-N7100
+Android 4.4.4 / CyanogenMod-11-20160815-NIGHTLY-n7100
+```
+12-03 12:31:28.480 E/dalvikvm-heap( 4281): Out of memory on a 1048592-byte allocation.
+12-03 12:31:28.485 I/dalvikvm( 4281): ""main"" prio=5 tid=1 RUNNABLE
+12-03 12:31:28.485 I/dalvikvm( 4281):   | group=""main"" sCount=0 dsCount=0 obj=0x41721de0 self=0x400514d0
+12-03 12:31:28.485 I/dalvikvm( 4281):   | sysTid=4281 nice=0 sched=0/0 cgrp=apps handle=1074475348
+12-03 12:31:28.485 I/dalvikvm( 4281):   | state=R schedstat=( 87520701562 13296658371 115844 ) utm=7669 stm=1082 core=3
+12-03 12:31:28.485 I/dalvikvm( 4281):   at android.graphics.BitmapFactory.nativeDecodeAsset(Native Method)
+12-03 12:31:28.500 I/dalvikvm( 4281):   at android.graphics.BitmapFactory.decodeStream(BitmapFactory.java:594)
+12-03 12:31:28.500 I/dalvikvm( 4281):   at android.graphics.BitmapFactory.decodeResourceStream(BitmapFactory.java:429)
+12-03 12:31:28.500 I/dalvikvm( 4281):   at android.graphics.drawable.Drawable.createFromResourceStream(Drawable.java:840)
+12-03 12:31:28.505 I/dalvikvm( 4281):   at android.content.res.Resources.loadDrawable(Resources.java:2249)
+12-03 12:31:28.505 I/dalvikvm( 4281):   at android.content.res.Resources.getDrawable(Resources.java:733)
+12-03 12:31:28.505 I/dalvikvm( 4281):   at android.content.res.Resources.getDrawable(Resources.java:711)
+12-03 12:31:28.505 I/dalvikvm( 4281):   at android.widget.ImageView.resolveUri(ImageView.java:636)
+12-03 12:31:28.505 I/dalvikvm( 4281):   at android.widget.ImageView.setImageResource(ImageView.java:366)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at org.secuso.privacyfriendlymemory.ui.MemoImageAdapter.getView(MemoImageAdapter.java:79)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.AbsListView.obtainView(AbsListView.java:2255)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.GridView.makeAndAddView(GridView.java:1345)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.GridView.makeRow(GridView.java:345)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.GridView.fillDown(GridView.java:287)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.GridView.fillSpecific(GridView.java:566)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.GridView.layoutChildren(GridView.java:1244)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.AbsListView.onLayout(AbsListView.java:2087)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.View.layout(View.java:14841)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.RelativeLayout.onLayout(RelativeLayout.java:1055)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.View.layout(View.java:14841)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.support.design.widget.HeaderScrollingViewBehavior.layoutChild(HeaderScrollingViewBehavior.java:131)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.support.design.widget.ViewOffsetBehavior.onLayoutChild(ViewOffsetBehavior.java:42)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.support.design.widget.AppBarLayout$ScrollingViewBehavior.onLayoutChild(AppBarLayout.java:1367)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.support.design.widget.CoordinatorLayout.onLayout(CoordinatorLayout.java:849)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.View.layout(View.java:14841)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.support.v4.widget.DrawerLayout.onLayout(DrawerLayout.java:1193)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.View.layout(View.java:14841)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.FrameLayout.onLayout(FrameLayout.java:388)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.View.layout(View.java:14841)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1717)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1571)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.LinearLayout.onLayout(LinearLayout.java:1480)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.View.layout(View.java:14841)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.FrameLayout.onLayout(FrameLayout.java:388)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.View.layout(View.java:14841)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1717)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1571)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.LinearLayout.onLayout(LinearLayout.java:1480)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.View.layout(View.java:14841)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.widget.FrameLayout.onLayout(FrameLayout.java:388)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.View.layout(View.java:14841)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.515 I/dalvikvm( 4281):   at android.view.ViewRootImpl.performLayout(ViewRootImpl.java:1986)
+12-03 12:31:28.520 I/dalvikvm( 4281):   at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1743)
+12-03 12:31:28.520 I/dalvikvm( 4281):   at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:996)
+12-03 12:31:28.520 I/dalvikvm( 4281):   at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:5603)
+12-03 12:31:28.520 I/dalvikvm( 4281):   at android.view.Choreographer$CallbackRecord.run(Choreographer.java:761)
+12-03 12:31:28.520 I/dalvikvm( 4281):   at android.view.Choreographer.doCallbacks(Choreographer.java:574)
+12-03 12:31:28.520 I/dalvikvm( 4281):   at android.view.Choreographer.doFrame(Choreographer.java:544)
+12-03 12:31:28.520 I/dalvikvm( 4281):   at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:747)
+12-03 12:31:28.520 I/dalvikvm( 4281):   at android.os.Handler.handleCallback(Handler.java:733)
+12-03 12:31:28.520 I/dalvikvm( 4281):   at android.os.Handler.dispatchMessage(Handler.java:95)
+12-03 12:31:28.520 I/dalvikvm( 4281):   at android.os.Looper.loop(Looper.java:136)
+12-03 12:31:28.520 I/dalvikvm( 4281):   at android.app.ActivityThread.main(ActivityThread.java:5146)
+12-03 12:31:28.520 I/dalvikvm( 4281):   at java.lang.reflect.Method.invokeNative(Native Method)
+12-03 12:31:28.530 I/dalvikvm( 4281):   at java.lang.reflect.Method.invoke(Method.java:515)
+12-03 12:31:28.530 I/dalvikvm( 4281):   at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:732)
+12-03 12:31:28.535 I/dalvikvm( 4281):   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:566)
+12-03 12:31:28.535 I/dalvikvm( 4281):   at dalvik.system.NativeStart.main(Native Method)
+12-03 12:31:28.535 I/dalvikvm( 4281): 
+12-03 12:31:28.535 D/skia    ( 4281): --- allocation failed for scaled bitmap
+12-03 12:31:28.550 D/AndroidRuntime( 4281): Shutting down VM
+12-03 12:31:28.550 W/dalvikvm( 4281): threadid=1: thread exiting with uncaught exception (group=0x41720ce0)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): FATAL EXCEPTION: main
+12-03 12:31:28.575 E/AndroidRuntime( 4281): Process: org.secuso.privacyfriendlymemory, PID: 4281
+12-03 12:31:28.575 E/AndroidRuntime( 4281): java.lang.OutOfMemoryError
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.graphics.BitmapFactory.nativeDecodeAsset(Native Method)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.graphics.BitmapFactory.decodeStream(BitmapFactory.java:594)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.graphics.BitmapFactory.decodeResourceStream(BitmapFactory.java:429)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.graphics.drawable.Drawable.createFromResourceStream(Drawable.java:840)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.content.res.Resources.loadDrawable(Resources.java:2249)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.content.res.Resources.getDrawable(Resources.java:733)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.content.res.Resources.getDrawable(Resources.java:711)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.ImageView.resolveUri(ImageView.java:636)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.ImageView.setImageResource(ImageView.java:366)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at org.secuso.privacyfriendlymemory.ui.MemoImageAdapter.getView(MemoImageAdapter.java:79)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.AbsListView.obtainView(AbsListView.java:2255)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.GridView.makeAndAddView(GridView.java:1345)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.GridView.makeRow(GridView.java:345)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.GridView.fillDown(GridView.java:287)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.GridView.fillSpecific(GridView.java:566)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.GridView.layoutChildren(GridView.java:1244)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.AbsListView.onLayout(AbsListView.java:2087)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.View.layout(View.java:14841)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.RelativeLayout.onLayout(RelativeLayout.java:1055)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.View.layout(View.java:14841)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.support.design.widget.HeaderScrollingViewBehavior.layoutChild(HeaderScrollingViewBehavior.java:131)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.support.design.widget.ViewOffsetBehavior.onLayoutChild(ViewOffsetBehavior.java:42)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.support.design.widget.AppBarLayout$ScrollingViewBehavior.onLayoutChild(AppBarLayout.java:1367)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.support.design.widget.CoordinatorLayout.onLayout(CoordinatorLayout.java:849)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.View.layout(View.java:14841)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.support.v4.widget.DrawerLayout.onLayout(DrawerLayout.java:1193)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.View.layout(View.java:14841)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.FrameLayout.onLayout(FrameLayout.java:388)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.View.layout(View.java:14841)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1717)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1571)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.LinearLayout.onLayout(LinearLayout.java:1480)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.View.layout(View.java:14841)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.FrameLayout.onLayout(FrameLayout.java:388)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.View.layout(View.java:14841)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1717)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1571)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.LinearLayout.onLayout(LinearLayout.java:1480)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.View.layout(View.java:14841)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.widget.FrameLayout.onLayout(FrameLayout.java:388)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.View.layout(View.java:14841)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewGroup.layout(ViewGroup.java:4631)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewRootImpl.performLayout(ViewRootImpl.java:1986)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1743)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:996)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:5603)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.Choreographer$CallbackRecord.run(Choreographer.java:761)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.Choreographer.doCallbacks(Choreographer.java:574)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.Choreographer.doFrame(Choreographer.java:544)
+12-03 12:31:28.575 E/AndroidRuntime( 4281): 	at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreog
+12-03 12:31:28.640 W/ActivityManager( 2299):   Force finishing activity org.secuso.privacyfriendlymemory/.ui.MemoActivity
+12-03 12:31:29.145 W/ActivityManager( 2299): Activity pause timeout for ActivityRecord{41cf7300 u0 org.secuso.privacyfriendlymemory/.ui.MemoActivity t7 f}
+12-03 12:31:30.390 I/Process ( 4281): Sending signal. PID: 4281 SIG: 9
+12-03 12:31:30.515 I/ActivityManager( 2299): Process org.secuso.privacyfriendlymemory (pid 4281) has died.
+```"
+SecUSo/privacy-friendly-memo-game,closed,Renaming,[],
+SecUSo/privacy-friendly-memo-game,open,Add possibility to start new game from win screen,"[Label(name=""enhancement"")]",When a game is finished there is no direct option to start a new game without accessing the main menu first.
+SecUSo/privacy-friendly-memo-game,open,Hide found pairs,"[Label(name=""enhancement"")]",It should be possible to choose in the settings whether found pairs are displayed or not.
+SecUSo/privacy-friendly-memo-game,closed,Dev,[],Ready for first release

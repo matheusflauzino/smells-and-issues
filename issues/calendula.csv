@@ -1,0 +1,745 @@
+repository,state,title,label,body
+citiususc/calendula,open,change a schedule loses the history,[],"If you change the schelude , the previous intakes will be lost.
+
+For example, you are taking a medicine each 4 hours, but you changes it to be each 6 hours, you lost the times of the previous intakes."
+citiususc/calendula,open,Do not unlock again if still in the app,"[Label(name=""enhancement"")]",When configuring a schedule the app should not ask for ask for your passcode again when youre finished
+citiususc/calendula,closed,Crash: When only using the short notification and not the insistent,[],I want to use this app with only a short notification and not a repeating alarm but when I only want to use the short the app chrashes instead of reminding me (technically that is a reminder but not what I was expecting. :D)
+citiususc/calendula,open,Set first reminder to first repeat day when repeat on some days option is used.,"[Label(name=""bug"")]","Creating a schedule right now sets the first reminder (Start Date) on the same day it is created as default even if ""repeat on some days"" are used.
+
+I think the first reminder should be set to the first new day that is a valid repeat day on the ""repeat on some days"" option.
+If I create a schedule on a Saturday that repeats on Mondays and Thursdays, I expect it to remind me about it only on Mondays and Thursdays and not on the Saturday it was created.
+"
+citiususc/calendula,closed,Add Notifications management settings (API 26+),"[Label(name=""enhancement""), Label(name=""under-review"")]",Open system notifications setting of Calendula from Notification settings.
+citiususc/calendula,closed,Open system notifications settings on Android O or above,[],"Add a preference item to notifications settings in order to open device notification settings for Calendula application. Hide this new item only for Android O or above.
+Thanks !"
+citiususc/calendula,closed,Update Kotlin to 1.3.0,[],"Kotlin 1.3 is now stable, so update to that version.
+
+This, however:
+- Needs careful review to verify everything works as expected
+- Needs an upgrade of the AS plugin that isn't offered in the usual way (have to go through Settings).
+
+Release notes: https://blog.jetbrains.com/kotlin/2018/10/kotlin-1-3/
+"
+citiususc/calendula,closed,gitlab-ci: add generated DB file as an artifact,[],"Since we're generating the DB as a test, we may as well make it
+available as an artifact for easier examining."
+citiususc/calendula,closed,Merge PR #147 + changes,[]," * Undid unwanted style changes
+ * Fixed a typo
+ * Added relevant TODOs
+ * Minor improvements
+
+Closes #120 "
+citiususc/calendula,closed,Merge PR #149 + changes,[],"Restored style to Kotlin Style guide
+
+Closes #145 "
+citiususc/calendula,closed,High battery usage,"[Label(name=""under-review"")]","Hi,
+
+Yesterday I setted up new medical plan (2 medicine each 8 hours). And calendula started to drain the battery very fast.
+
+I'm subscribed to beta tester on Google Play.
+
+Screenshot: https://cloud.locolandia.net/s/fC3oreKCxXLRzHb"
+citiususc/calendula,closed,Toggle Secure window without restarting CalendulaActivity,"[Label(name=""enhancement"")]",+ Format the file with Android studio tool.
+citiususc/calendula,closed,Use HH format instead of kk to display time,[],I replaced kk by HH only for display.
+citiususc/calendula,closed,Add notifications vibration settings.,"[Label(name=""enhancement"")]","Hello, i added the support of vibration customization for Android API 25 and below. I'am waiting for your feedback. Thanks"
+citiususc/calendula,closed,Toggle Secure window without restarting CalendulaActivity,[],
+citiususc/calendula,closed,Toggle Secure window without restarting CalendulaActivity,[],
+citiususc/calendula,closed,Use HH format instead of kk to display time,[],"| | | 
+|:-------------------------:|:-------------------------:|
+|<img width=""1604"" alt=""screen shot before"" src=""https://user-images.githubusercontent.com/22281426/47258056-02165100-d496-11e8-985d-72f48806446e.jpg"">|  <img width=""1604"" alt=""screen shot after"" src=""https://user-images.githubusercontent.com/22281426/47258043-e0b56500-d495-11e8-818e-8d3909fa6bea.jpg"">|
+
+
+"
+citiususc/calendula,closed,Hide vibration and sound for notification settings on Android API 26+,[],"Starting in Android 8.0 (API level 26), all notifications must be assigned to a channel. Users can modify the settings for notification channels, including behaviors such as vibration and alert sound.
+
+More informations in the link below:
+https://developer.android.com/training/notify-user/channels"
+citiususc/calendula,closed,Add notifications vibration settings.,[],"Hello, i added the support of vibration customization for Android API 25 and below. I'am waiting for your feedback. Thanks"
+citiususc/calendula,closed,CONTRIBUTING: emphasize that PR's should not be targeted to master,[],
+citiususc/calendula,closed,Features/export db,[],"Fixes #139 by abusing test system.
+The DB is produced in the db folder, and only contains default user."
+citiususc/calendula,closed,Generate an empty SQLite database during build,"[Label(name=""development"")]","THis database could be given as input to [SchemaSpy](https://sourceforge.net/projects/schemaspy/files/schemaspy/SchemaSpy%205.0.0/) in order to obtain a good documentation of calendula DB.
+
+Even better, we could also create database similar to the production one, which makes schema dump way more useful."
+citiususc/calendula,closed,Calendar view shows all hours from 00 to 23,"[Label(name=""question"")]","That's a lot of wasted space and scrolling. May I suggest to collapse empty hours, days, weeks, etc. ?
+
+On a side note, it would be nice to have a summary view in tables, and the option of not taking some meds actively."
+citiususc/calendula,closed,compilation error,"[Label(name=""development"")]","![error](https://user-images.githubusercontent.com/15707285/44857018-4fd9be80-ac88-11e8-92ad-f520c0152138.PNG)
+"
+citiususc/calendula,open,Confirming daily intake via notification after midnight confirms the intake for the next day,"[Label(name=""bug""), Label(name=""under-review"")]","Steps to reproduce:
+1. Schedule a daily intake shortly before midnight.
+2. Wait for midnight to pass.
+3. Click ""Taken"" on the notification.
+
+Result:
+- The notification will reappear (with alert) after 5 Minutes.
+- In the app, the intake hasn't been confirmed yet.
+- Instead, the next occurence of the intake will already be confirmed ~24h ahead of time.
+- The erroneously confirmed intake behaves as expected, i.e. shows no notification on the next day.
+
+Untested:
+- What happens with non-daily schedules?"
+citiususc/calendula,open,"Feature req. :allow custom made interval times, for schedules","[Label(name=""accepted""), Label(name=""enhancement"")]","Currently I am in a bit of a pinch because I take a certain medication; not every 4 OR 6 hours, but need to take or every 5 hours.
+
+My suggestion would be a *custom* button at the bitten of the normally advised medication intervals called custom.
+In which you could have total control in how regularly you have to take something.
+SAY: every 7 hours and 14minutes.
+
+I have to say you do great work. "
+citiususc/calendula,closed,Can't open the add/remove medicine stock dialog,"[Label(name=""bug"")]","# Version
+
+2.5.7 from F-Droid
+
+# Steps to reproduce
+
+1. Edit a medicine
+1. Tap the '+' or '-' button
+
+# Expected outcome
+
+The add/remove dialog gets displayed.
+
+# Actual outcome
+
+I get kicked back to the medicine screen.
+
+## Exception
+
+```
+FATAL EXCEPTION: main
+Process: es.usc.citius.servando.calendula, PID: 6220
+java.lang.IllegalStateException: Fragment b{f3e5022 #0 number_dialog} declared target fragment MedicineCreateOrEditFragment{8239cfe #0 id=0x7f0901de android:switcher:2131296734:0} that does not belong to this FragmentManager!
+	at android.support.v4.app.p.a(Unknown Source:303)
+	at android.support.v4.app.p.e(Unknown Source:38)
+	at android.support.v4.app.p.a(Unknown Source:45)
+	at android.support.v4.app.d.g(Unknown Source:169)
+	at android.support.v4.app.p.b(Unknown Source:38)
+	at android.support.v4.app.p.a(Unknown Source:112)
+	at android.support.v4.app.p.b(Unknown Source:89)
+	at android.support.v4.app.p.f(Unknown Source:21)
+	at android.support.v4.app.p$1.run(Unknown Source:2)
+	at android.os.Handler.handleCallback(Handler.java:808)
+	at android.os.Handler.dispatchMessage(Handler.java:101)
+	at android.os.Looper.loop(Looper.java:166)
+	at android.app.ActivityThread.main(ActivityThread.java:7425)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:245)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:921)
+```
+    "
+citiususc/calendula,open,Create FAQ.md,[],"FAQs for Calendula, from Ayobim account"
+citiususc/calendula,closed,Execution failed for task ':Calendula:validateSigningCiAlpha,"[Label(name=""development"")]","![capture](https://user-images.githubusercontent.com/15707285/44151426-ff0e9188-a0bb-11e8-8e53-37ec235836ba.PNG)
+"
+citiususc/calendula,closed,Full and short description in Italian,[],Added full and short description in Italian.
+citiususc/calendula,closed,context.startService(serviceIntent); is causing daily crashes at 1 am,"[Label(name=""under-review"")]","Hello,
+
+I have noticed that the following code : context.startService(serviceIntent); in  calendula/Calendula/src/main/java/es/usc/citius/servando/calendula/scheduling/AlarmReceiver.java is causing daily crashes when the app tries to create the daily schedules for the pills.
+
+This is the error message:
+java.lang.IllegalStateException: Not allowed to start service Intent
+
+The root cause of this issue is caused by the api 26 and above, here are some details:
+
+https://stackoverflow.com/questions/46445265/android-8-0-java-lang-illegalstateexception-not-allowed-to-start-service-inten
+
+JobScheduler should be used instead.
+
+Regards"
+citiususc/calendula,open,Stock information - show date of running out of stock,"[Label(name=""enhancement"")]","It would be useful, although I can see it could be complicated for some schedules, to show when the stock of some medicine would run out, assuming they are taken on the current schedules.
+i.e. as well as showing the number left show the time, e.g.
+
+76 Capsules remaining, sufficient for 36 days - until 18 Aug 2018
+
+or some such. This would be very handy as a check that the supply will last until, for example the next medical appointment.
+
+Thank you for this really useful app."
+citiususc/calendula,closed,Added Dutch transation,[],:)
+citiususc/calendula,closed,Fix typos in Italian translation,[],Fixing a few typos in the Italian translation.
+citiususc/calendula,open,"Allow fine-grained control of ""repeat alarms"" settings","[Label(name=""enhancement"")]","This is a fairly minor issue, but hopefully it is also fairly easy to fix...
+
+After using Calendula for a while, I thought that having the alarm repeat every 20 minutes would work better for me than every 15, so I opened Settings→Notifications→Repeat every [blah], and... nope! I am presented with a short list of pre-defined options, not an input field where I can specify exactly the delay that I want, and no option for ""other"", ""custom"", ""advanced"", or anything.
+Also, while I don't currently have any need for more control over the maximum time to keep repeating the alarm, the short list of options for that setting also seems quite arbitrary. Why not just let the user set it to whatever value they want?
+
+### Proposed Solution: ###
+Instead of presenting the user with a list of pre-defined options, present either an input field that accepts an integer (with the question phrased as ""how many minutes"") or the Android time picker (with the question phrased as ""how long""). Alternatively, if you think there's some real advantage to the menu of pre-defined time options, add a list entry called ""other"" or ""custom"" that offers the user one of the input fields described above when selected.
+
+As a bonus, it would be nice if the ""dismiss alarms after"" setting offered an ""after x repetitions"" option as an alternative to ""after how long"". Also conspicuously absent is the option for ""never give up, just keep repeating until I address the alarm"" (Although that might want to be refined to ""keep repeating until the next scheduled intake"", to prevent having an indefinite number of active alarms overlapping, while providing an option for relentless stubbornness in which the alarm stays active until either the user acknowledges it or a new alarm takes over.)
+
+Oh, and as a minor wording suggestion, I think something like ""repeat alarm up to"" [x hours | y repetitions | whatever] might be a little clearer and more accurate than ""Dismiss"", especially given that ""dismiss"" has a specific meaning in the context of Android notifications, and the current behaviour of keeping the notification in place and updating its content to reflect a missed dose is not the same as what happens if the user dismisses it."
+citiususc/calendula,open,"Make the ""delay this intake"" dialog more flexible (and open-ended?)","[Label(name=""enhancement"")]","First, a small suggestion of word choice: as a native English speaker, I think that the use of ""delay"" here is not wrong, but ""postpone"" would be more precise. Also, a small UI design detail: the little clock-face-with-arrow icon that is used in the ""delay this intake"" context and also the ""missed dose"" context should be oriented so that the arrow points counter-clockwise for a missed dose (and any context where the thing we're dealing with is in the past) but clockwise for postponing a dose (and any context where the thing we're dealing with is in the future).
+
+Anyway. My real issue is that the time options available are inadequate. Suppose I'm just arriving at a movie theatre when the notification goes. Now, it's probably going to be 3 hours or more before I get home to take my meds. (Taking a medicine several hours late may be fine, depending on the medicine, of course.)  Currently, I can only postpone the reminder by max 1 hour, at which point the movie is less than halfway over and my phone is put away in silent mode. So as it stands, I gain nothing by delaying the notification, because it'll be showing as a missed dose by the time I get to it anyway.
+
+### Proposed solution: ###
+I think that a menu of pre-defined options is a needlessly restrictive tool for this job, and it would be better to use Android's built-in time picker to let the user choose *at what time* the reminder should come up again. (Incidentally, this might also serve to make it more obvious what the difference is between the ""repeat every x min"" option in Settings→Notifications and this interactive ""postpone until"" action.)
+
+If you're concerned about users accidentally postponing a dose way too far, you could define a warn threshold so there will be an ""are you sure?"" dialog if the new time is more than x hours in the future, instead of simply forcing users to choose from a few pre-defined options.
+**Note:** If you are going to have a warn threshold and/or an enforced maximum on how long a reminder can be posponed, those values should be made available for the user to change them in Settings."
+citiususc/calendula,open,Allow user to acknowledge taking an intake ahead of schedule,"[Label(name=""accepted""), Label(name=""enhancement"")]","If a user wants to take their medications *before* the scheduled intake for whatever reason (maybe it's a medicine that has to be taken with food and a meal is ready earlier than usual, or maybe the user is going out somewhere and takes the medicine before leaving rather than having to carry it around...)
+
+Currently, if I scroll ahead in the timeline on the home tab→select an intake→hit the checkmark to acknowledge that I took my meds, the app pops up a dialog telling me that the intake is ""not available"" and that's that. So if I have actually taken the medication early for whatever reason, now I am forced to remember that the upcoming reminder from Calendula is bogus and I should acknowledge it but *not* take my meds.  This is counterproductive, and may lead to accidentally taking the dose twice.
+
+(As a general design principle, I would suggest that you try not to assume that your users are incompetent and need to be restricted to doing things the way you think is right, and put more emphasis on making Calendula flexible so that it can accommodate a wide variety of circumstances.)
+
+Suggested solution:  Similar to what happens when the user hits the ""Take Medicine"" checkmark on a stale notification: pop up a dialog warning the user that this intake is not scheduled to happen for [x hours and y minutes] or some such, and ask whether they really mean to take it now. Have two options to choose from: one for ""No, cancel"" and one for ""Yes, I really am taking this intake now."" Naturally, if the user selects the ""Yes, I really mean it"" option then you need to update the inventory accordingly and also make sure to skip the selected occurrence of that intake reminder when its normally-scheduled time comes."
+citiususc/calendula,closed,"Notification, ""vibrate off"" not possible","[Label(name=""accepted"")]","It is possible to choose Ringtone ""None"", but the phone still vibrates when the notification occurs. I would like to set a notification that is only ""visible"", and makes no sound at all."
+citiususc/calendula,closed,Proposal to enhance the security measures of calendula app,"[Label(name=""accepted""), Label(name=""enhancement"")]","#### Components
+The calendula app is personal medication assistant app that help users keep track and effectively manage their prescriptions and drugs use without going through the mental stress of trying to keep it on mind or setting multiple alarms or reminders so as not to miss medications.
+As good as the application is, I noticed an important feature that is missing in the privacy settings of the app that is responsible for the users privacy protection of information stored in the app.
+
+#### Proposal
+I am proposing that the app request inputting of the current pin in use whenever users are trying to modify/delete or deactivate the pin or fingerprint that is current functioning and being used by the user . And also, the app should request for the pin/fingerprint whenever user is trying to access it even if the app was only minimized after the last use and not totally stopped from running underground as users most times forget to totally shut down an app from running when they are through using it.
+While using the app, I found out one of my friends bring up discussion about my health/medication issue which I have stored up in my calendula app which I believed was really secured because my pin and fingerprint security was setup.  But unknowingly for me, the app does not require a pin or fingerprint authentication before it can be accessed if it was only minimized and never totally closed or shut down. This was how my confidential info got out.
+Unfortunately, It didn’t stop there as I later found out that my login authentications which include my pin and fingerprint previously set up for the app has been successfully deactivated without my input, this really exposed me to a lot of risk which would be discussed further in the benefits section. 
+
+#### Mockups / Examples
+
+This is an image showing how the current security measure can be easily manipulated by modifying and deleting easily without any form of confirming through user:
+This image shows how the modify features currently looks![Screenshot_20180518-130126.png](https://steemitimages.com/DQmUT7DJJzCPwZhd7qXigx3m2Lkvb5uZutbM4hjRtKB4Vzj/Screenshot_20180518-130126.png)
+
+After clicking on modify, you would be taken straight to this page where you are able to enter entirely new pin without having the knowledge of the current one![Screenshot_20180518-140931.png](https://steemitimages.com/DQmSj2eEfQHGE6VeyMBuMBAR4iQ7Pg4QvGTKp9Ps4Pb5cSv/Screenshot_20180518-140931.png)
+
+Here is an image showing how the pin can be deleted easily without any forms of confirmation of being the true user![Screenshot_20180518-130139.png](https://steemitimages.com/DQmPc98Skr7yq7F23xjufZUTCb9X68sUwcexTMhi2UJAxaP/Screenshot_20180518-130139.png)
+
+Here is how the the security measure can be improved which will ensure only authorized users can make security modifications. when the modify button or delete button is clicked, this window will pop up to ensure the user is the authorized to do such by demanding for the current pin![PicsArt_05-18-02.18.50.png](https://steemitimages.com/DQmQhHCVKT3Cbu2CnaUCwBrnVADuDPp21i97kw2JxnCTHV8/PicsArt_05-18-02.18.50.png)
+ If the pin is entered coreectly, here is how the app will look like when the pin is deactivated or pin was deleted![Screenshot_20180518-130150.png](https://steemitimages.com/DQmZiHHZ5nVwzFrX5N5qB9PNgou8HmF88TcxjVc4qV6Sg2z/Screenshot_20180518-130150.png)
+
+If the pin is entered correctly, then this window will pop up to change to new pin![Screenshot_20180518-140931.png](https://steemitimages.com/DQmSj2eEfQHGE6VeyMBuMBAR4iQ7Pg4QvGTKp9Ps4Pb5cSv/Screenshot_20180518-140931.png)
+#### Benefits
+Security is of great importance whose importance can never be overemphasized , so if this proposals is implemented the benefits are much part of which are listed below:
+-If authentication is requested for everytime users are trying to access the app (even if the app was only minimized after the last use), this will prevent unauthorized people from getting access to the app and information contained in the app. For instance, currently anybody can access the app if the authorized user only minimized after the last use and didn’t properly close the app.
+-If the app request for pin before the current security measures (pin and fingerprint) already set up by the authorized users are modified/deactivated, this will be of great benefits as apart from confidential medical info getting leaked, it will prevent a total hijacking of the authorized user account. How you may ask, the original authorized user can lose access over the control of the log in if the intruder decide to delete the original user security authentications  and set up his/her pin instead and there is no other way to recover such password.
+
+Medical information are really confidential and its even a crime in most nations if it was disclosed to unauthorized people by medical practioners , so I believe this proposal should be implemented as soon as possible.
+Thanks."
+citiususc/calendula,closed,Calendula app crashes when accessing notification settings,"[Label(name=""bug"")]","#### Expected behavior
+The app should remain stable and should not crash when notifications sound is changed. 
+
+
+#### Actual behavior
+
+The app crashes when a new notification sound is selected and continues subsequent crashes that ensures users can no  longer  notification settings.
+
+
+
+#### How to reproduce
+
+Download and install latest app version
+
+Click on settings (This can be accessed by clicking on the 3 lines in the top left corner of the app)
+ 
+Rotate phone to landscape mode
+
+Click on notifications 
+
+Change notification sound  to an mp3 song preferably
+
+
+The app crashes and notification sound  cannot be accessed again until it is re-installed
+
+
+
+
+* Browser/App version: Calendula app version 2.5.5
+*Operating system: Android 6.0
+
+
+#### Recording Of The Bug
+This is the recording showing the crash when trying to set the notifications settings
+https://youtu.be/Mq7dT0daAIA
+
+This is the recording showing subsequent crashes
+https://youtu.be/RPYrDiEuX4U
+"
+citiususc/calendula,closed,Calendula app gets crashed.,"[Label(name=""bug"")]","### Actual behavior
+When I opened the calendula opensource android app. And after that I clicked on the options present on the top left corner of the page. And then I clicked on settings option. After that I clicked on medicine database. And then I selected a database. After that I clicked on check for updates. Then I pressed back button twice. Suddenly the app crashed.
+
+### How to reproduce
+
+* First you need to download the app from fdroid and then install it, after that open the app.
+
+* Click on the options present on the top left corner of the page.
+
+* And then click on settings option.
+
+* After that click on medicine database.
+
+* Then select a database and click on check for updates. After that press get back to mainscreen of the app. Suddenly the app will get crashed.
+
+https://youtu.be/eZrmNr00tCY 
+
+* Browser: Calendula
+
+* Version: 2.5.5
+
+* Operating system:7.1.2
+
+* Device model: Redmi 4"
+citiususc/calendula,open,Group schedules by med in the schedules list view,"[Label(name=""accepted""), Label(name=""enhancement"")]","As described in #112 and #115, when a user has multiple schedules for the same med, it is not easy to distinguish things in the schedule list view.
+
+An enhancement for that would be grouping the schedules by med."
+citiususc/calendula,open,Cannot select more than one medication when setting up a schedule,"[Label(name=""enhancement"")]","Suppose I'm a new user who has just installed Calendula from the Play store. Also suppose I take a handful of vitamins and supplements that all follow the exact same schedule, eg a dose at breakfast and a dose at supper every day.
+
+I add listings for all the medications, which proves to be unexpectedly tedious because for every entry, I'm forced to scroll through all the ""near-match"" database suggestions before I can add the medication exactly as entered, as described in issue #113 . After a detour to the settings menu to disable the database, (see issue #114 ), it gets much easier to add the rest of my medications.
+
+I add routines for breakfast and supper, which proves complicated and frustrating as described in issue #112 , but okay. I work around that and get my routines added.
+
+Then I start to create my first schedule, thinking that I will select the five relevant items from my list of medications and then the app will present me with a dialog where I can give the Schedule a name and enter all five dosages and then hit Save, but no! What should be one entry process resulting in one Schedule item for ""all the pills I take with breakfast and supper every day"" must instead be painfully entered as five individual-but-identical schedules, going through the exact same steps five times. (Ten times when you factor in the ""weekday breakfast"" and ""weekend breakfast"" workaround per issue #112 ).  Once I get through that process, there seems to be no way to consolidate, group, rename, or sort the 10 or 15 resulting entries in the Schedules list, which is such an unreadable mess of nearly-identical entries that I'm not likely to spot an error except by setting alarms to remind me to check whether my Calendula alerts are coming up when they're supposed to.
+
+This is a major frustration, and given that the user is presented with a checklist of medications that totally *looks* like you can select as many as you want--but the app unexpectedly leaps into a screen forcing you to specify the dosage and Routine for only one medication at a time as soon as you tap one, and bizarrely limits you to only one medication in any given Schedule... I think this should be considered a bug."
+citiususc/calendula,closed,"When enabling AEMPS database, warn user that it's country-specific to Spain","[Label(name=""accepted""), Label(name=""enhancement"")]","When I installed Calendula, I had never heard of AEMPS, so I assumed it was some sort of international open-med-database, like an OpenStreetMaps project for medications. Presumably most users who don't live in Spain a) won't have heard of AEMPS and b) will find it utterly useless, especially if they are not in a Spanish-speaking locale.
+
+Solution: On initial setup, if the user enables the AEMPS Database, pop up a dialog to specifically warn the user that it's a Spanish-language database and all the information it contains is specific to Spain's pharmacy system."
+citiususc/calendula,open,Option to accept medication as entered is buried at the end of Database suggestions list,"[Label(name=""accepted""), Label(name=""enhancement"")]","When the AEMPS database is enabled, if the user enters a medicine name that is a ""near match"" for a bunch of entries in the database but none of them are the correct thing, the user should be presented with an option for ""add [exactly what I typed] to the med kit"" without being forced to scroll through the whole list of increasingly-implausible suggestions (along with possible dynamic-loading delays?). 
+
+Solution: either put the ""add item-as-entered to med kit"" button *before* all the database suggestions, or (better?) make it a floating element that stays in place on-screen while scrolling through the list."
+citiususc/calendula,open,"Allow time offset for routines, eg later breakfast on the weekend","[Label(name=""enhancement"")]","If I take some medications that are not very time-sensitive (eg a multivitamin) every day with breakfast, I should be able to set up one routine which repeats every single day to remind me to take them. So far so good, but! On the weekend, I have breakfast much later than I do on work-days. I do not want my medication alarm going off at 06:30 on weekend mornings when I'm still asleep, reminding me to take medications that are perfectly fine to take at 09:30.
+
+The solution: allow the user to apply a time offset to any given routine on certain days of the week, so when we create a routine such as ""breakfast"" and its associated time of day, such as 06:30, we could then check a ticky-box for ""apply time offset some days of the week?""... The app would then prompt for which days of the week (default Sat & Sun selected, presumably) and duration for the offset (+3 hours in my example). Maybe throw a warning if the offset pushes the routine up to or past a routine that already exists on those days.
+
+Right now, I'm using a crude workaround where medications that I take with breakfast every day are listed in a Mon-Fri schedule with a ""weekday breakfast"" routine and then listed again in a Sat-Sun schedule with ""weekend breakfast"" routine (but then if it's a twice-a-day med, supper time is the same all seven days, so do I need to have two identical routines for weekday supper and weekend supper at the same time of day to avoid getting duplicate entries in the supper routine from my twice-a-day meds that reference ""weekday breakfast"" and ""supper"" in one schedule and then reference ""weekend breakfast"" and ""supper"" in a second schedule?) Either way, this workaround is ugly and results in having two or three entries per medication in the list of schedules, thus making the schedule view essentially useless--especially if the issue affects several medications a user is taking."
+citiususc/calendula,closed,All medicine barcodes scanned say medicine does not exist.,"[Label(name=""question"")]","@ontherunvaro all the medicine barcodes i try to scan to add the medicine say medicine does not exist even those that appear when i search using their name.Can you help me by sending pictures of working medicine barcodes that will be picked if i search using a barcode for testing purposes.
+
+can you email them to me at csachinda@gmail.com
+
+Thank you."
+citiususc/calendula,closed,signing config,"[Label(name=""question"")]",please how do i create a signing config to be able to run this app. am getting a signing config when i try running this app
+citiususc/calendula,closed,Oreo icon shape,"[Label(name=""accepted""), Label(name=""enhancement"")]","Please add support for icon shape
+https://material.io/guidelines/style/icons.html"
+citiususc/calendula,open,track medicines,"[Label(name=""enhancement"")]","Add a time tracking/log of the times when the pacient take the medicines.
+It could be directly from the notification.
+Recommend to allow people changing the times on the logs. So if I forgot to accept it I can amend the time on the log."
+citiususc/calendula,closed,path may not be null or empty string. path='null' Open File,"[Label(name=""question"")]",getting this error when i try to build the project.
+citiususc/calendula,closed,bug found in calendula when try to check for update,[],"
+#### Expected behavior
+this application should allow users to check for updates if available with check update feature that has been provided
+#### Actual behavior
+but when i try to use that feature this app get crashed and stoping itself
+
+#### How to reproduce
+- download the app
+- launc the app
+- select the option in the third line on the left sides
+- go to setting
+- chose option medicine database 
+- and click ""check for upddate ""option and note the bug
+
+* Browser: calendula v 2.5.3
+* Operating system: android lolipop 5.1 idos
+
+#### Recording Of The Bug
+https://youtu.be/2lLd67gxvDM
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@muhammadarif/bug-found-in-calendula-when-try-to-check-for-update"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+citiususc/calendula,closed,Italian translation,"[Label(name=""translations""), Label(name=""under-review"")]",Italian translation for Calendula
+citiususc/calendula,closed,Incompatible SDK API use which may cause crash to your APP,[],"Hi Calendula Developers,
+I develop a tool to detect incompatible SDK API use in android application. Today I use my tool to check Calendula downloaded from F-Droid. My tool report many bugs. Although I believe most of them are real bugs, I cannot be 100% sure because I am not very familiar with Android developing. So
+please help to check it, it must be very helpful to your APP.
+
+The attachment below is the bug report that my tool give. please help to double check!
+I also really hope to get your feedback.
+thank you!
+
+**[Supplementary explanation]**
+There are totally two type of bug in the report. The first one is like this: ""API called in method not in [list]"", the list here are sdk levels, it means your app run under these SDK version can not call API because no such API in these sdk levels.
+Type two is like ""API called in method no living level"", it means your application can never reach this API
+use, so if these API uses are not in external library, you can remove it from your own code.
+
+APIs or methods in our report are given in signature format like ""<declaringType: returnType methodName(paramTypeList)>"".
+
+And finally, the reachable path is actually one possible call stack. it is always start from dummyMainMethod which is created by our tool. So you should read it from bottom to top.
+
+Yes, many of these bugs seem to be in third-library codes. But it do cause problems in your app. Some third-library API say that they can only be run at specific SDK Level by using ""@targetapi(Build.VERSION_CODES.N)"", however, Application codes tend to ignore this warning.
+
+
+Donejie He
+hedongjie@ict.ac.cn
+
+[es.usc.citius.servando.calendula_34.apk.report.txt](https://github.com/citiususc/calendula/files/1834318/es.usc.citius.servando.calendula_34.apk.report.txt)
+"
+citiususc/calendula,open,database ,"[Label(name=""enhancement"")]","The only database available and in Spanish
+how to do and or find an english or french database?
+This can be impossible I don't know I ask in case or
+
+You do a good job for the well-being of the sick."
+citiususc/calendula,open,backup,"[Label(name=""enhancement"")]","It would be nice to be able to make a backup (when you have several people and a big processing) export and import
+
+I am French and have trouble writing English"
+citiususc/calendula,closed,Take vs Taken,"[Label(name=""enhancement"")]","Hi, I like the app in general, but the phrasing of ""Take"" on the notification confuses me. 
+It's a small thing but nonetheless it irks me every time I see it.
+It seems like you hit that button only _after_ you've taken the med so it should be ""Taken""
+Is this something that's been discussed before?"
+citiususc/calendula,closed,bug in calendula add medicine option,"[Label(name=""bug"")]","
+#### Expected behavior
+I expect that once I click on medicine, then click on the + sign to add medicine, I should be able to type a medicine name and add to Med kit, then a new page that will enable me enter other Info/data of the medicine.
+
+#### Actual behavior
+When I Clicked on the medicine then the + sign to add medicine, after typing the medicine, I clicked add to the Med kit, the app returned me to the point where I typed the medicine. When I clicked on the return key to return to the previous page, I did not return
+
+#### How to reproduce
+Download Calendula Version 2.5.3(34) from Google play store. Install then launch, click on the menu key by the top left hand side, select medicines, click on the + sign to add medicine, then type the medicine name (say xyz) click on add ‘xyz ‘to Med kit, then click on the return key by the top left hand side of the app.
+
+* Browser: Calendula Version 2.5.3(34)
+* Operating system: Android 5.1.1 Lollipop. Infinix hot 3 LTE
+
+#### Recording Of The Bug
+https://youtu.be/WMHQAcdaUTE
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@javalord/bug-in-calendula-add-medicine-option"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+citiususc/calendula,closed,Cannot add the project to android studio and make it editable.,[],Please can someone help and take me through the steps i am using android studio version 3.0.1
+citiususc/calendula,closed,New medice type: powder,"[Label(name=""accepted""), Label(name=""enhancement"")]",Support new medicine type: power. Stock configuration should be in grams.
+citiususc/calendula,closed,Incorrect default clock format in routine creation,"[Label(name=""accepted""), Label(name=""enhancement"")]",When you create a routine at 00:XX the default clock shows 24:XX instead of 00:XX.
+citiususc/calendula,closed,bug on calendula privacy button,"[Label(name=""bug"")]","
+#### Expected behavior
+Clicking on Privacy, i should  be able to access and set my privacy
+
+#### Actual behavior
+When i clicked on privacy `Unfortunately, Calendula has stopped` came up
+
+#### How to reproduce
+
+Download [Calendula](https://play.google.com/store/apps/details?id=es.usc.citius.servando.calendula)
+
+Launch and click on the 3 horizontal line that serve as menu on the upper left of the screen
+
+Click on settings 
+
+Then click on privacy  
+
+* Device used: Tecno droid-pad 8ll  
+* Operating system: 5.1
+
+App version : 2.5.2 
+
+#### Recording Of The Bug
+https://www.youtube.com/watch?v=L6u1rHR6BKU
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@tykee/bug-on-calendula-privacy-button"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+citiususc/calendula,closed,Welcome screen in Spanish minor text fixes proposed,"[Label(name=""accepted""), Label(name=""translations"")]","Literally reads as ""Taking your medication properly is not meant to be easy, but now at least it won't be so difficult!"" (""Tomar correctamente tu medicación no tiene por qué ser fácil, pero ahora al menos no será tan difícil"")
+
+Proposed text: ""Tomar correctamente tu medicación no es fácil, pero ahora al menos no será tan difícil"""
+citiususc/calendula,closed,added German metadata (play store description),[],"This PR adds German metadata files for the play store description. I tried to stay with the meaning of the English reference metadata but adapted the phrasing to sound reasonable in my language.
+
+related #91 "
+citiususc/calendula,closed,Database Download,"[Label(name=""bug"")]",On Tecno Camon C8  there is always an error when downloading and setting up the AEMP database and also a few range of devices expirience the same error
+citiususc/calendula,closed,App crashes when editing duration of schedule on Galaxy Note 4,"[Label(name=""bug"")]","Hi,
+
+Thanks for your efforts. On Samsung Galaxy Note 4 with Android 5.0, when editing duration of schedules, the app crashes.
+It should be an issue caused by buggy built-in DatePicker on such Samsung Lollipop devices. I found the following Stack Overflow posts discussing this issue:
+https://stackoverflow.com/questions/28618405/datepicker-crashes-on-my-device-when-clicked-with-personal-app/31855744
+https://stackoverflow.com/questions/28345413/datepicker-crash-in-samsung-with-android-5-0
+
+One possible workaround is to set special theme for the DatePicker. That would make the picker looks different on such devices but may avoid the crashes."
+citiususc/calendula,closed,Translatable play store descriptions,"[Label(name=""enhancement""), Label(name=""translations"")]","After translating this app to German, I'm glad to see the first release with 100% German translation coverage out now. :)
+
+But I noticed the play store description is mostly in Spanish, yet. The strings do not seem to be part of this repository at the moment. It would be great to have them also translated in order to get more people adopt this app. Currently non-Spanish speakers see the app (if they find it at all) and have no clue why this is a good app and why they should use this one instead of the other closed source apps.
+
+I'm not familiar with the process of publishing apps to the play store, but after searching for it, it seems there are several possibilities to achieve localized descriptions. One of the possibilities seems to be whatever this (unrelated) app is doing (probably using fastlane for this?! don't know): https://github.com/westnordost/StreetComplete/tree/master/metadata"
+citiususc/calendula,closed,Some calculation or display is wrong on remaining medicines,[],"In the medicine screen the duration of the stock is wrong with 103 pills taken 2 times a day ""7 months and 2 days"" is displayed, I think it have to be ""7 weeks and 2 days"".
+
+Calendula version 2.5.1 (32)
+running on Andorind 5.1.1 (Samsung Galaxy j3 2016)
+
+Regards
+
+Carlo D."
+citiususc/calendula,closed,Target views for Home screen and few small issues,[],"Tap target view could be used in the Home for target icons of routines, medicines and schedules respectively. There are few libraries available on github for that like Taptargetview etc.
+Few small issues I faced 
+1 .Trying to add the patient the contact icon is not fully visible. 
+2. While we go to Patients from side navigation menu, there is an unwanted Settings option in action bar which neither works. 
+3. The app is also not supporting landscape orientation in any case. May be it is done intentionally. "
+citiususc/calendula,closed,Upgrade resets all settings,"[Label(name=""wontfix"")]","Hello,
+
+After upgrading from 2.3.3 to 2.4.1 (both from F-Droid) all settings are reset to default, all routines, medicines, and schedules are gone.
+
+Cheers,
+
+Jan"
+citiususc/calendula,closed,Untranslated text remains in 2.4.1,"[Label(name=""bug"")]","I am using an Xperia M running Lineage 14.1 (Android 7.1.1), and am on Calendula 2.4.1 (F-Droid). My system language is _English_.
+
+* On the home tab, it says ""tomate tus medicinas ahora"" (??you have taken your medicine already??).
+* The titles of the other three tabs are ""Routines de Usuario"", ""Medicines de Usuario"", and ""Schedules de Usuario"".
+* In the second tab it says ""Sin  pautas asociadas"" (including the double space).
+* In the Menu, when i choose ""Patients"", i come to a page titled ""Pacientes"", and a user image subtitled ""Usuario"". When I create a new user, it gives me the option ""Crear rutinas por defecto""
+
+possibly related to issue #72 (which i then might have closed prematurely)"
+citiususc/calendula,closed,Cannot change time of routines on Android 4.2.2,"[Label(name=""bug"")]","I have installed Calendula 2.4.1 (30) from the f-droid repository. On Android 4.2.2, I can't change the time connected to a routine. I only get a dialog to select a time, without a way to set it (see screenshot). On Android 7.1.2 I get a different, functioning, dialog.
+
+![screenshot_2017-08-09-14-06-26](https://user-images.githubusercontent.com/4056484/29120804-41370128-7d0c-11e7-8612-94395ceaf7bc.png)
+"
+citiususc/calendula,open,Persistent notification,"[Label(name=""accepted""), Label(name=""enhancement"")]","As a user, I would like to have the option of making the notification persistent, so that I can't dismiss it by accident. It would force me to explicitly press the notification or one of its buttons."
+citiususc/calendula,closed,"""Taken"" button in notification","[Label(name=""accepted""), Label(name=""enhancement"")]","As a user, I would like to have a ""Taken"" button in the notification, so that I don't have to go in the app."
+citiususc/calendula,closed,Sound when the phone is mute,[],"Hello,
+
+First, thanks a lot for your apps ! I'm not selling my personnal information with your free app. And it's working good ;)
+It will be great if the phone can ring when i must take my medics, even if the phone is in silent mode..
+Some apps do that, and i think it would be usefull for me, and some other people.
+
+Do you think it is possible ?
+
+Best regard."
+citiususc/calendula,closed,Alternative Download location,"[Label(name=""accepted"")]","With the app being open source, would you mind having it brought to F-Droid – or at least attach an `.apk` file to its `releases/`?"
+citiususc/calendula,closed,Why pharmacies and plan trip is disabled,[],"Why pharmacies and plan trip is disabled, please tell how to enable them"
+citiususc/calendula,closed,Create CODE_OF_CONDUCT.md,[],
+citiususc/calendula,closed,Want some help please reply,"[Label(name=""invalid"")]","Hi I really liked your work
+Since I was new to programming,
+I want some help to reimplement the patients detail activity as profile user activity
+Things I need are:
+First I need profile image click listener so that when user clicks on image it opens a profile activity.
+Since I implemented fire base authentication it should show default user name email and icon
+Before login and after login the authenticated email used for authentication
+And changeable name and avatar and avatar BG color like you implemented in patients detail activity
+Since it has server back end all saved instances like chosen avatar and avatar BG color and name to server
+If you want to help me please reply I can send my source code please remember that I is a non profit project I don't earn any penny unless it is for server maintenance through advertisements if you think it is for profit, remember that I don't have any income source as I was student who is passionate to learn coding even though my subjects entirely different from computer science please reply fast
+
+_Edit by repo owners: Removed personal information_"
+citiususc/calendula,open,Use of deprecated android.text.format.Time,[],"Hi,
+
+I noticed that class android.text.format.Time has been used in multiple places, such as:
+[Line 1371 in ScheduleImportantFragment.java](https://github.com/citiususc/calendula/blob/master/Calendula/src/main/java/es/usc/citius/servando/calendula/fragments/ScheduleImportFragment.java#L1373)
+[Line 276 and 280 in Schedule.java](https://github.com/citiususc/calendula/blob/master/Calendula/src/main/java/es/usc/citius/servando/calendula/persistence/Schedule.java#L276)
+
+
+This class has been deprecated in API 22 due to multiple problems (see https://developer.android.com/reference/android/text/format/Time.html)
+
+Although it may not cause problems for now, I think it may be better to use other alternatives to avoid future bugs.
+
+Thanks!"
+citiususc/calendula,closed,"Problems with timezone, I think.","[Label(name=""bug"")]","Look to screenshot in attachment. Time is 14:37 GMT+3, default routine ""Dinner"" is used. It set to 21:00. Looks like more than 5 hours till intake, but app shows ""5 hours"".
+![2017-04-23 02 41 03](https://cloud.githubusercontent.com/assets/3948027/25313200/e79b5458-2832-11e7-90a7-3096932b6834.jpg)
+"
+citiususc/calendula,closed,readme.md screenshots are broken,[],"In https://github.com/citiususc/calendula/blob/master/README.md there is a section ""How does it look?"" with screenshots. The images seem to have been deleted."
+citiususc/calendula,closed,Notifications for different schedules conflict,[],"These two are closely related, so it may be a single bug. If not, feel free to split it into two issues.
+
+Sometimes notifications for two different medicines conflict with each other. The current behaviour of Calendula makes it easy to forget taking one of the medicines.
+
+##(1) Only one notification is shown##
+
+**(1) Steps to reproduce**
+1. Create ""Med1"" and ""Med2""
+2. Create hourly schedule for Med1 with 13:15 as the start date.
+3. Create hourly schedule for Med2 with 13:15 as the start date.
+4. Wait until 13:16.
+
+**(1) Expected Behaviour**
+Two notifications should appear on the lock screen, one for Med1, the other for Med2.
+
+**(1) Actual Behaviour**
+The notification for Med1 is shown. There is no notification for Med2.
+
+##END (1)##
+
+
+
+##(2) Both notifications are shown, but the second one is automatically dismissed.##
+
+**(2) Steps to reproduce**
+Create ""Med1"" and ""Med2""
+Create hourly schedule for Med1 with 13:15 as the start date.
+Create routine schedule for Med2 with 13:15 as one of the dates.
+Wait until 13:16, when two notifications appear.
+Tap on the notification for Med1.
+In Calendula, tap the checkmark indicating you have taken Med1.
+Press either the arrow in the upper left, or the Android back button.
+
+**(2) Expected Behaviour**
+You should now be presented with the second Calendula screen for Med2, in order to tap the checkmark, indicating you have taken Med2. The notification for Med2 should still be there. 
+
+**(2) Actual Behaviour**
+You are immediately taken to the Calendula home screen. The notification for Med2 is gone."
+citiususc/calendula,open,more options for routine schedules ,"[Label(name=""enhancement"")]","For some reasons, when I create a routine schedule, I only have the option to schedule once, twice, thrice, or four times each day. 
+For my specific use case (every 2hrs between 9:00 and 23:00), I need _seven_ times a day, and I can easily imagine cases with other numbers.
+Suggestion: Instead of a dropdown with 4 options, give a field where one can enter any number. Thank you.
+
+For now I solve this with 2 schedules for the same medicine, but this is obviously clunky."
+citiususc/calendula,closed,[LowPrio] Notifications could be more informative,"[Label(name=""enhancement"")]","this is really low-priority, but it would be nice to add the actual medicine to take to the lockscreen notification. as you can see the ""Remember to take your Meds"" line is duplicated. Only by expanding the ntotification can I see which medicine I am supposed to take. And showing the icon associated with the medicine type would be just the icing on the cake.
+
+![screenshot_calendula](https://cloud.githubusercontent.com/assets/16333258/24828671/667e72fa-1c62-11e7-9b68-03e8613635a4.png)
+screenshot taken from LineageOS 14.1 (Nougat 7.1)
+
+again, this is really low-priority, but i wanted to add this."
+citiususc/calendula,closed,Options arising from (+) button are not translated,"[Label(name=""bug"")]","Even with my language in english, the menu items for adding a new schedule are still in spanish.
+
+""Vinculada a rutinas"" - Routine schedule
+""Intervalo horario"" - Hourly intervals
+""Periodo + descanso"" - Period + rest
+
+Very strange, as these actually are translated in line 352 and following in
+https://github.com/citiususc/calendula/blob/master/Calendula/src/main/res/values/strings.xml#L352"
+citiususc/calendula,closed,"""Final intake"" field for hourly interval schedules",[],"When I create a new ""hourly interval"", I can choose ""Take X every Y hours"", and am then asked for the first intake. I am not asked for the final intake. Is it possible to add such a field (perhaps make it optional), so I am not woken up at night by unnecessary reminders? Thank you."
+citiususc/calendula,closed,F-droid version,[],Hi. I guess the version we have at F-droid repository is an old one. Need an update there.
+citiususc/calendula,closed,"German translation: Orthographically fixed some lines, stylistically improved (IMHO) some others and added missing translations",[],"As the title says, I've tried to improve the German translation of Calendula.
+
+I'm not used to the GitHub workflow, so hopefully I haven't done anything horribly wrong with this pull request."
+citiususc/calendula,closed,UX improvements to Home tab.,"[Label(name=""accepted""), Label(name=""enhancement"")]","By @rrodrigueznt  in #67 
+> - If I select ""quick overview"" mode at Home tab, I would like to stick to this state when navigation out to any  other tab and back to it.
+>
+> - When in ""agenda view"", present time will appear vertically centered in the available view area. I'll scroll up to find yesterday schedules and down to find tomorrow's ones. Now, I've to scroll down both to find yesterday and tomorrow's schedules."
+citiususc/calendula,closed,Showing only time slots for scheduled dosis at Home tab,"[Label(name=""accepted"")]","Hi! When at Home tab, time is shown in hourly slots. Those slots are occupied when a dose is due at any of them, but free slots are also shown. Even though this could be useful as a measurement of time until the next dose, when you have several patients with several intake times each day, you much scroll longer to reach a given point, frequently through empty areas of the timeline.
+
+Please, what do you think? Thanks!"
+citiususc/calendula,closed,Collapse/expand behaviour and color of top section at Home tab,[],"Hi! I would like to avoid background color of top section at Home tab. When collapsed, it is backgrounded with the color of the current patient while schedules for all patients are shown. That's is confusing me! Also, I would like to respect the collapsed status once selected even though I'll move to other tabs: for instance, if I navigate to Medicines and go back to Home, I would like to get the top section collapsed when I collapsed it before going to Medicines.
+
+Thanks!"
+citiususc/calendula,closed,I would prefer no to see @ at patients name,"[Label(name=""accepted""), Label(name=""enhancement"")]","Hi! From a regular user perspective, I think that we could avoid the @Calendula part or patient's names. Also, patient@Calendula is useless under patient's name in the upper area of the left drawer.
+
+Please, WDYT? Thanks!"
+citiususc/calendula,closed,Move Medicines tab leftwards ,"[Label(name=""accepted""), Label(name=""enhancement"")]","Hi! Following the logic of a prescription, I think that the Medicines tab will be better located between Home and Routines tabs. WDYT?"
+citiususc/calendula,closed,Remove med db file after install,"[Label(name=""enhancement"")]","Once medicine db is installed, the database file can be removed as it is no longer necessary."
+citiususc/calendula,closed,Insistent alarms are difficult to silence,"[Label(name=""enhancement"")]","When the insistent mode is enabled and an alarm sounds, it doesn't stop until the notifications panel is opened, even if the user opens the app. This is not a common problem, but it has occurred in several devices so far."
+citiususc/calendula,closed,Notification does not go away when intakes are confirmed in the application,"[Label(name=""bug"")]","If there is an intake notification, and the intakes are confirmed without accessing the confirmation screen through the notification the notification does not go away. This can happen if the notification appears while the app is open, or if the app is opened from the launcher instead of the notification."
+citiususc/calendula,closed,User name does not update in left drawer when changed,"[Label(name=""bug"")]","When user name is changed in patient's screen, the user name in the left drawer displays the old value until the application is restarted"
+citiususc/calendula,closed,Stock of Medicines ( Features ),"[Label(name=""accepted"")]","Would You Please add this Feature to Calendula...."" Stock or Amount of Medicines Available "" when User try to add the new med...then she/he needs to add stock of meds....also capabilities to reduce the amount of stock after user take their meds....i Believe with this feature calendula will be the most excelent meds reminder ever exist....keep the good jobs...thanks alot"
+citiususc/calendula,closed,WIP - Feature: leaflet webview w/ database html cache,[],This replaces the broken leaflet download functionality with a cacheable webview displaying HTML leaflets.
+citiususc/calendula,open,reminder after smartphone shut-down,[],"If the phone is getting shut down (due to empty battery or switch off for flights etc.) and a reminder is set on this time interval, it won't show up when the phone is switched on again. 
+Maybe there can be a pop-up after boot-up that some reminders have not been showed or not been wiped away after showing?
+thanks!
+"
+citiususc/calendula,closed,Fix spanish typos described in #55,[],
+citiususc/calendula,closed,Minor typos in spanish,[],"Opening exclamation marks (¡) are missing in the spanish version of calendula. 
+
+There exist some other minor typos. For example:
+- A period mark is missing in the first screen of the tutorial.
+- In the third screen of the tutorial (Botiquín), ""Mantén"" should be used.
+"
+citiususc/calendula,closed,"new medicine type ""cream""","[Label(name=""accepted""), Label(name=""enhancement"")]","Please add a new medicine type ""cream"".  Or change the name (in English) of pomade to cream.  Thanks!
+"
+citiususc/calendula,closed,WIP: Use exact alarm scheduling for API versions >= 19,[],"Fixes #52 
+
+Tested for two days on my device (CM13, Android 6.0.1), alarm times are exact with these changes. No errors were observed, but I could not yet test on older devices. Also, no significant battery usage increase happened.
+Looking forward to your testing and feedback.
+"
+citiususc/calendula,closed,Alarm time is inexact for API versions => 19,[],"> Note: Beginning with API 19 (KITKAT) alarm delivery is inexact: the OS will shift alarms in order to minimize wakeups and battery use. There are new APIs to support applications which need strict delivery guarantees; see setWindow(int, long, long, PendingIntent) and setExact(int, long, PendingIntent). Applications whose targetSdkVersion is earlier than API 19 will continue to see the previous behavior in which all alarms are delivered exactly when requested. 
+
+([Source](https://developer.android.com/reference/android/app/AlarmManager.html))
+
+For my device (running CM13, Android 6.0.1) the alarm times are very unreliable - sometimes more than an hour off. Since this application is supposed to help with medication intake times, I think reliable alarm times should be a critical priority in regards to battery usage - at least as important as your daily wake-up alarm. There are certain medications where even half an hour makes a large difference for the affected patients condition.
+
+Since `setExact` only exists on API versions >= 19, conditional branching based on `Build.VERSION.SDK_INT` could be needed if support for older API versions must not be dropped.
+"
+citiususc/calendula,closed,Update and minor revision of German translation.,[],"Update and minor revision of German translation.
+"
+citiususc/calendula,closed,Update english translation,[],"Some Spanish sentences still were in the English version of the application.
+"
+citiususc/calendula,closed,Schedule start day seems to be ignored,"[Label(name=""bug""), Label(name=""severe"")]","Setting a start day for a new schedule seems to have no effect on the alarms. However, the calendar shown in the schedule summary tab displays the correct days, starting from the specified start date.
+"
+citiususc/calendula,closed,Letters not completely displayed   Contrast could be higher,[],"Letters are not completely displayed (see screenshot)
+![screenshot_2015-09-13-09-22-11](https://cloud.githubusercontent.com/assets/4852079/9835744/628716b0-59fa-11e5-8d52-9cab2ccc77aa.png)
+
+Even contrast for some text cold be higher (instead of light grey on white it should be a darker grey, same for light (or pale) blue, this would enhance readability (especially on smaller displays.
+"
+citiususc/calendula,closed,Update strings.xml,[],"some typos corrected, one missing string translated.     paulle(orjchris)
+"
+citiususc/calendula,closed,"App crashes once you try to access to ""settings""",[],"The app crashes once you tap on the ""settings"" item on the menu (""ajustes"" since we are using the spanish version) 
+the affected version is 2.3.3 running on Android 5.0
+"
+citiususc/calendula,open,Alarm Sound Options,"[Label(name=""accepted"")]","This is a great app.  The only complaint I have is in relation to notifications.  Per medicine or schedule alarms would be very helpful.  For example, I don't need a sound in the morning, just the notification.  However, the medication I take at night does need a sound.  Thanks for any consideration. 
+"
+citiususc/calendula,closed,rfc2445.jar,[],"In build.gradle, you use the jar file over the one in central. Is there a reason? Is it just build from the last commit of https://code.google.com/p/google-rfc-2445/source/list ?
+
+```
+//compile 'org.scala-saddle:google-rfc-2445:20110304'
+compile files('libs/rfc2445.jar')
+```
+"
+citiususc/calendula,closed,Some forms seem to be not scrollable,"[Label(name=""enhancement"")]","Forms to add/edit routines and medicaments seem not to have scrollables. They are small forms with only 2 controls, and should fit in almost every screen, but I expect the form to be scrollable when the keyboard is revealed to be able to navigate through the form by myself, without needing to hide the keyboard.
+"
+citiususc/calendula,closed,Errors in forms are not visible when keyboard is present,"[Label(name=""bug"")]","Whenever I try to add a new medicine by only putting the name, I am also required to choose an icon, and I am told so with what seems to a be a custom toast of some kind (didn't check it in the code, sorry). But if you are editing the name, that message is not visible at all (it seems to be behind the keyboard).
+"
+citiususc/calendula,closed,Help text when a list is empty,"[Label(name=""enhancement"")]","When any list is empty, nothing is displayed. A grayed short help text explaining the current tab would be very helpful.
+"
+citiususc/calendula,closed,Add birth control lady pills schedules,[],"It would be great if you could also birth control lady pills and corresponding schedules.
+So that you can add cycle times like the following commons:
+Days to consume + break
+21 + 7
+22 + 6
+23 + 5
+24 + 4
+26 + 2
+28 + 0
+35 + 7
+42 + 7
+63 + 7
+84 + 7
+"
+citiususc/calendula,closed,App translations (FR/EN),[],"Hi,
+
+In the 1.2.1 (no 1.2.2) in F-DROID there is some non-english labels.
+I would love to have this app in French too.
+Is there any plans for more traductions ? I would like to help to translate too if you want.
+
+Thanks.
+"
+citiususc/calendula,closed,Snooze alarm function does not work,"[Label(name=""bug"")]","It seems that the snooze function of the last version of Calendula does not work properly. I've tried to postpone the intake for 60 min but Calendula didn't remember to inform it after the 60 min have been elapsed.
+"
+citiususc/calendula,closed,"Poor scroll performance in the ""medical kit"" view with many meds","[Label(name=""enhancement"")]",
+citiususc/calendula,closed,1 hour alarm delay does not work properly,"[Label(name=""bug"")]","After delaying the alarm for 1 hour, Calendula does not remember to notify the event.
+"
+citiususc/calendula,closed,"Medicine search dialog does not update results with information introduced in the ""name"" textbox","[Label(name=""bug"")]","If you introduce the name of a medicine and then press the search button, the list of results appears as if you have not written anything, and you need to modify the string by removing or adding characters to update the results. It seems that the query is not executed until the input string is modified.
+"
+citiususc/calendula,closed,"Medicines selected from the database are not added to the ""my meds"" list","[Label(name=""bug"")]","If you use the medicine search utility and select a particular drug, after confirming the name and the presentation the pop-up message, the list is not updated with a new entry.
+"
+citiususc/calendula,closed,Why don' t move to the screen where all actions are shown when one of them is marked as done?,"[Label(name=""accepted""), Label(name=""enhancement"")]","When an alarm sounds, a user's action is required to mark it as done of delay it. I do think it would be clear of any of those actions closes the action's screen and go back to the general presentation of all medications to be taken during the day. Currently, the user must hit the arrow in the upper-left corner of the screen or the generic Android back bottom.
+"
+citiususc/calendula,closed,Calendula splash screen appears two shortly when accessing the application upon an alarm,[],"When an alarm trigger a user's action, Calendula splash screen displays for less than a second. Users are able to see but not to read the sentence below the logo. I do think this time must be enough for users realize that now error or warning message have been shown!
+"
+citiususc/calendula,closed,Autocompletion support for meds based on the data from aemps.gob.es,"[Label(name=""accepted""), Label(name=""enhancement"")]","It would be cool to have an autocomplete system for retrieving meds from aemps.gob.es. Actually, it seems that there is a REST API for querying: http://www.aemps.gob.es/cima/rest/maestras?maestra=15&nombre=
+
+The aemps also provides links to prospects and information about drugs: http://www.aemps.gob.es/cima/fichasTecnicas.do?metodo=detalleForm
+"
+citiususc/calendula,closed,Reminder view is still shown again and again even after checking meds,"[Label(name=""bug"")]",
+citiususc/calendula,closed,Cancel alarm from notification not working,"[Label(name=""bug"")]",
+citiususc/calendula,closed,Allow ringtone selection for insistent notifications,"[Label(name=""enhancement"")]",
+citiususc/calendula,closed,Show a tutorial or showcase on first launch,"[Label(name=""enhancement"")]",
+citiususc/calendula,closed,Create schedule activity menu is useless,"[Label(name=""bug"")]",
+citiususc/calendula,closed,App icon does not look good depending on the background color,"[Label(name=""enhancement"")]",
+citiususc/calendula,closed,App translation is incomplete,"[Label(name=""enhancement"")]","Items to translate:
+- Toasts
+"
+citiususc/calendula,open,App should not allow the creation of two exactly alike schedules,"[Label(name=""enhancement"")]","This situation does not make sense, and if it occurs, it is probably a user error.
+"
+citiususc/calendula,closed,"After modify the time of a routine, alarms and intake information are not reset",[],"Maybe this is the correct behavior, since in other case the same intake could be applied twice, but this response confuses the user.
+"
+citiususc/calendula,closed,I cannot understand the difference between alarm repetition and repetition period,"[Label(name=""question"")]",
+citiususc/calendula,closed,The way to select only 1/2 or 1/4 pill is very counterintuitive,"[Label(name=""enhancement"")]","Fractions should appear also on the left part of the selector, and when saving dose redundant cases could be merged, such as 1/2+1/2 = 1, etc.
+"
+citiususc/calendula,closed,Home screen info is not always updated when editing a schedule or a medication name,"[Label(name=""bug"")]",
+citiususc/calendula,closed,Day selection does not work properly when editing an existing schedule,"[Label(name=""bug"")]","If you create a new schedule for every day, and then you modify it, for example to include only monday, tuesday, wednesday and saturday, some times saturday is deleted, and sometimes sunday is included instead of saturday.
+"
+citiususc/calendula,closed,App crashes when editing a schedule if the number of repetitions is greater than the number of routines,"[Label(name=""bug""), Label(name=""severe"")]",
+citiususc/calendula,closed,App crashes when editing schedule,"[Label(name=""bug""), Label(name=""severe"")]","According to an ANR report on google play, app crashes when editing a schedule. 
+Apparently, a valid schedule ID is provided in the edit intent, but when trying to recover the schedule, it seems not to exist (Schedule.findById(ID) is null).
+
+Probably the schedule was deleted but the list was not updated, and this caused the problem
+
+https://github.com/citiususc/calendula/blob/master/Calendula/src/main/java/es/usc/citius/servando/calendula/activities/ScheduleCreationActivity.java#L106  (L107 throws nullpointerexception)
+"
+citiususc/calendula,closed,Session.getUser() returns null on start,"[Label(name=""bug""), Label(name=""severe"")]","According to an ANR report in google play, Session.getUser() returns a null object when starting HomeActivity.
+"
+citiususc/calendula,closed,Feature request: Spray icon,"[Label(name=""accepted""), Label(name=""enhancement"")]","Having a spray icon for meds would be cool
+"
+citiususc/calendula,closed,Cannot modify an existing med,"[Label(name=""bug"")]","After editing an existing med, it is still listed with the old information under the medical kit tab.
+"
+citiususc/calendula,closed,Routine creation dialog from schedule creation activity can not be used,"[Label(name=""bug"")]","""Done button"" is not visible, so dialog becomes unusable
+"
+citiususc/calendula,closed,Routine time labels are misplaced in schedule creation activity (hdpi resolution),"[Label(name=""bug"")]","We need to provide dimension resources to hdpi and lower resolutions. 
+"
+citiususc/calendula,closed,Application suddenly closes when deleting medicines or schedules,"[Label(name=""bug""), Label(name=""severe"")]","Probably caused by conflicts between old app database versions. Full app uninstall (or data remove) should fix this problem.
+"
+citiususc/calendula,closed,"""Done button"" from time selector on routine creation dialog is not visible on some screens","[Label(name=""bug"")]","Confirmed in:
+- Samsung Galaxy Core 2 - 4,5"" (480x800)
+"
+citiususc/calendula,closed,Current date does not change on the home screen,"[Label(name=""bug"")]",
+citiususc/calendula,closed,Alarms should be automatically rescheduled after reboot,"[Label(name=""enhancement"")]","Android cancel alarms on shutdown, so we have to implement a BroadcastReceiver to listen RECEIVE_BOOT_COMPLETED event and perform a rescheduling
+"
+citiususc/calendula,closed,Materialize,[],
+citiususc/calendula,closed,Introducida comprobación al crear o modificar el nombre de una medicina,[],"Cambio pequeño a modo de tutorial para seguir introduciendo cambios
+"
+citiususc/calendula,closed,Implement medicine management views,[],
+citiususc/calendula,closed,Implement routine management views,[],"Implement an activity to manage (add, edit, delete) routines
+"
+citiususc/calendula,closed,Daily agenda view,[],"Implementation of the daily agenda view showing the pending med intakes throughout the day. 
+"
+citiususc/calendula,closed,Home view layout,[],"Implementation of the home view layout and the corresponding fragment. 
+"

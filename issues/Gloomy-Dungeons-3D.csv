@@ -1,0 +1,58 @@
+repository,state,title,label,body
+restorer/Gloomy-Dungeons-3D,closed,Cannot save ,[],Shows no save slots looks squished and when I hit save it gives me (can't copy state) 
+restorer/Gloomy-Dungeons-3D,closed,Doom RPG  elements,[],"It'd be good to add dialogs and friendly characters
+"
+restorer/Gloomy-Dungeons-3D,closed,Crash after starting game,[],"I just tested the new version that F-Droid has published . I don't know why they published since it uses the very same commit as the original version. It crashes on my Android 4.2 phone (p990) after tapping Continue when starting a New game:
+`V/NvAudioALSAPolicyManager(  103): getDeviceForStrategy() from cache strategy 0, device 2
+E/AudioPolicyManagerBase(  103): getNewDevice() selected device 2
+E/AudioPolicyManagerBase(  103): setOutputDevice() output 3 device 2 delayMs 0
+E/AudioPolicyManagerBase(  103): setOutputDevice() setting same device 2 or null device for output 3 prevDevice=2
+E/AudioPolicyManagerBase(  103): 
+E/AudioPolicyManagerBase(  103): ************************* Check And Set Volume Start ***************************
+E/NvAudioALSAPolicyManager(  103): [NVALSA] Current Device[0x2] -> Device Selected[0x1]
+E/NvAudioALSAPolicyManager(  103): [NVALSA] Volume From Table [3][1][13]=[0.501187]
+E/NvAudioALSAPolicyManager(  103): [NVALSA] ComputeVolume() -> Stream[3], Index[13], Output[3], Device[0x00000002], PureVol[0.501187]->Vol[0.501187]
+E/AudioPolicyManagerBase(  103): ********************************************************************************
+V/NvAudioALSAPolicyManager(  103): releaseOutput() 3
+V/NvAudioALSADevice(  103): [NVALSA] setParameters[Capabilities=0]
+W/dalvikvm( 8065): Exception Ljava/lang/UnsatisfiedLinkError; thrown while initializing Lzame/GloomyDungeons/opensource/game/ZameJniRenderer;
+W/dalvikvm( 8065): threadid=17: thread exiting with uncaught exception (group=0x41e61930)
+E/AndroidRuntime( 8065): FATAL EXCEPTION: GLThread 773
+E/AndroidRuntime( 8065): java.lang.UnsatisfiedLinkError: Couldn't load zameJniRenderer from loader dalvik.system.PathClassLoader[dexPath=/data/app/zame.GloomyDungeons.opensource.game-2.apk,libraryPath=/data/app-lib/zame.GloomyDungeons.opensource.game-2]: findLibrary returned null
+E/AndroidRuntime( 8065):    at java.lang.Runtime.loadLibrary(Runtime.java:365)
+E/AndroidRuntime( 8065):    at java.lang.System.loadLibrary(System.java:521)
+E/AndroidRuntime( 8065):    at zame.GloomyDungeons.opensource.game.ZameJniRenderer.<clinit>(ZameJniRenderer.java:6)
+E/AndroidRuntime( 8065):    at zame.GloomyDungeons.opensource.game.Renderer.flush(Renderer.java:76)
+E/AndroidRuntime( 8065):    at zame.GloomyDungeons.opensource.game.Renderer.flush(Renderer.java:55)
+E/AndroidRuntime( 8065):    at zame.GloomyDungeons.opensource.game.LevelRenderer.renderFloor(LevelRenderer.java:669)
+E/AndroidRuntime( 8065):    at zame.GloomyDungeons.opensource.game.LevelRenderer.render(LevelRenderer.java:756)
+E/AndroidRuntime( 8065):    at zame.GloomyDungeons.opensource.game.Game.render(Game.java:1281)
+E/AndroidRuntime( 8065):    at zame.GloomyDungeons.opensource.game.ZameGame.onDrawFrame(ZameGame.java:196)
+E/AndroidRuntime( 8065):    at android.opengl.GLSurfaceView$GLThread.guardedRun(GLSurfaceView.java:1518)`
+
+I tried  building their recipe myself and got this:
+    Build for app zame.GloomyDungeons.opensource.game failed:
+    'Error running init command for zame.GloomyDungeons.opensource.game:2013.03.07.0416' 
+    ==== stderr begin ====
+    + cd ..
+    + sed -i 54,57d source/AndroidManifest.xml
+    + sed -i 's@\$NDKBUILDTOOL@/home/gerry/android-ndk-r9/ndk-build@g' tools/builder/build-fdroid.sh
+    + rm source/libs/libGoogleAnalytics.jar
+    + ./f-build opensource
+    ruby: error while loading shared libraries: libruby.so.1.8: cannot open shared object file: No such file or     directory
+    ==== stderr end ====
+    Finished.
+   1 builds failed
+
+Indeed their apk is missing lib/armeabi/libzameJniRenderer.so. I can only guess why it built for them and not for me. 
+
+I'm the one that introduced the app in the first place, but I don't work on the main repo any more so I suggest you contact them yourself if you wish to rectify the situation.
+"
+restorer/Gloomy-Dungeons-3D,closed,Control scheme bug,[],"Left pad is positioned like the right pad, and when choosing the Right pad in Options the game crashes
+"
+restorer/Gloomy-Dungeons-3D,closed,Fails to launch,[],"Just installed from F-Droid, will not launch new game.  TF-101 cyanogenmod < 1 month old.
+"
+restorer/Gloomy-Dungeons-3D,closed,English fixes levels (1 to 8),[],"Some little english fixes in the intro description text of the first few ""training"" levels (1 to 8) 
+"
+restorer/Gloomy-Dungeons-3D,closed,Suitablitlity for F-Droid,[],"I contribute to the f-droid.org repository for libre Android apps. We don't mind some non-free resources, for example Andor's Trail uses some all-rights reserved resources and others use CC NC. I'm not sure how to build this as the source/jni is almost empty. And I'm not sure about that the jars; it would be helpful if you referenced where they were obtained. And the AndroidManifest.xml should have zame.GloomyDungeons.full.game as the package ID?
+"

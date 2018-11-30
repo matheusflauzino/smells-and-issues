@@ -1,0 +1,376 @@
+repository,state,title,label,body
+marunjar/anewjkuapp,open,Support Moodle calendar,[],"What do you think of the idea of adding support for the moodle calendar?
+Since the DSGVO somehow enforces the professors to use moodle instead of the institute's own solution, its calendar contains a quite useful list of assignment deadlines.
+I already managed to get the ical from moodle without any user interaction, but I have no idea how to include it into this app...
+
+[MoodleCalendar.java](https://github.com/fsteff/anewjkuapp/blob/56e0f90faabe0ac89cef38e4dda3cc5f6d728a84/aNewJKUApp/src/main/java/org/voidsink/anewjkuapp/moodle/MoodleCalendar.java)"
+marunjar/anewjkuapp,closed,Dev,[],"- fix calendar permissions
+- fix loading from kusss
+- new map"
+marunjar/anewjkuapp,closed,Login is not stored on phone,[],"Login with wrong student number/password returns an error as expected.
+When I enter the correct data, I come to the normal screen. But it's not possible to view any data at all. Furthermore the header says: ""please login"", like no login was added.
+
+With ```adb logcat *:D``` I found some interesting line:
+
+```
+03-01 17:11:02.631 21829 21829 I KusssAuthenticatorActivity: finish login to 15*****
+03-01 17:11:02.637  2264  3165 W AccountManagerService: insertAccountIntoDatabase: Account {name=15*****, type=org.voidsink.anewjkuapp.account}, skipping since the account already exists
+```
+
+But when I looked into the account section of the Settings, ```JKU App``` does not show any accounts added for this app. And the app itself also does not find any accounts to use because the login window is showed at the start.
+
+### System informations
+
+Device: Xperia Z
+Android-Version: 7.1.2
+LineageOS-Version: 14.1-20190224-NIGHTLY-yuga
+LineageOS API-Level: Guava (7)
+Current Status of security updates: 5. February 2018
+Kernel Version: 3.4.113
+SELinux: Strict
+Encryption: Yes
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"fix event loading
+get missing lvas from assessments"
+marunjar/anewjkuapp,closed,fix event import,[],import events only for current term
+marunjar/anewjkuapp,closed,merge dev branch,[],"improved calendar event handling
+new campus map
+updated mensa parser, should work again for some time
+add button to refresh menu
+add link to menu on mensa homepage"
+marunjar/anewjkuapp,closed,merge dev branch,[],"ready for Android O
+new campus map
+lots of small fixes
+"
+marunjar/anewjkuapp,open,0.45.4 tag doesn't include version bump,[],"This means that f-droid can't automatically pick up the upgrade. See https://gitlab.com/fdroid/fdroiddata/issues/912
+
+Can you change the tag to point to https://github.com/marunjar/anewjkuapp/commit/ba10951656262a590a543796558927c35298b0fb intead?"
+marunjar/anewjkuapp,closed,merge Dev,[],"improved networking
+improved error handling
+updated campus map"
+marunjar/anewjkuapp,closed,Dev,[],"merge dev branch
+
+updated map
+updated libraries
+fixed lint warnings/errors
+cleanup"
+marunjar/anewjkuapp,closed,Timetable is deleted on refresh,[],"Every time the app is closed and re-opened or the timetable is being refreshed otherwise, the whole thing (including the calendar) gets deleted. 
+If the app is closed while re-loading (which sometimes takes up to a few minutes) the data from kusss, the calendar stays empty. 
+This problem exists since the update in january (i think). 
+
+Also, if one double-tabs the refresh button, two entries per lva/lessonappear. 
+
+Better: incremental update or replace when loading is finished
+
+Edit: It appears this problem exists only on some devices - mine is a Huawei P9lite, running Android 6.0.1"
+marunjar/anewjkuapp,closed,Dev,[],"updated libraries
+fix menu layout"
+marunjar/anewjkuapp,closed,merge Dev,[],"update libraries
+fix calendar and event handling"
+marunjar/anewjkuapp,open,Outlook Exchange and JKU Calender goes wrong,[],"The synchronisation between different schedules goes wrong. Schedules from my office which are new are deleted if the app is started. This is a bad bug, because also customers and suppliers are of course informed about the cancled schedule. 
+Best regards"
+marunjar/anewjkuapp,closed,merge dev branch,[],
+marunjar/anewjkuapp,closed,merge Dev,[],"new map data from openstreetmap
+save detailled location for events"
+marunjar/anewjkuapp,open,"Grades for courses, that were repeated in other semesters, count twice for statistics",[],"When failing a course in e.g. summer semester 2015 and then selecting the course again in summer semester 2016 but it has a slightly different name, and passing, the new grade is counted twice (once for each course) in the statistics. (Example: Algorithmen und Datenstrukturen 1 & Algorithmen und Datenstrukturen 1 (für InformatikerInnen)
+"
+marunjar/anewjkuapp,closed,merge Dev branch,[],"updated tools
+updated AndroidWeekView
+fixed use of VectorDrawables
+disabled oeh news
+"
+marunjar/anewjkuapp,closed,merge Dev Branch,[],"updated libraries
+fixed some exceptions
+checking for network before update
+"
+marunjar/anewjkuapp,closed,merge dev,[],"update libraries
+update api version
+fix notifications
+new map file
+"
+marunjar/anewjkuapp,closed,Dev,[],"merge dev branch
+"
+marunjar/anewjkuapp,closed,missing rooms,[],"Some rooms are missing on the map:
+- KHG I
+- KHG II
+- KEP 1
+- KEP 3
+
+(probably more http://www.jku.at/content/e213/e161/e6998)
+"
+marunjar/anewjkuapp,open,Delete old Exams,[],"Old exams should be deleted from the exams menue, or displayed inside an extra tab.
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"fix elliplsize bug with event titles
+fix khg menu
+update libs + tools
+"
+marunjar/anewjkuapp,open,3 ETCS missing,[],"Hi,
+
+I just realized that 3ETCS are missing in your app (and in the excel calculation I made)
+
+The mistake I made was to convert 4,5 ETCS to 4. Could you please check, that you did indexof '/' and not indexof ',' which was causing the mistake in Excel.
+
+Thank you :)
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"fix ical loading ... again
+update design support library
+fix sync errors
+"
+marunjar/anewjkuapp,closed,merge dev,[],"improve calendar view
+fix possible npe
+update libs
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"check runtime permissions
+fix ical parsing
+enable calendar view
+random calendar colours
+"
+marunjar/anewjkuapp,closed,app is crash when trying to show statistics,[],"I'm a new student, so I have no grades yet. If I try to open the point statistics, the app is crashing, and I cannot open it again (because it try to load my statistics after startup).
+
+The issue is only appearing when activating the option diagramms in the preferences
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"launch screen
+fix ical parsing
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],
+marunjar/anewjkuapp,closed,use new design support library,[],
+marunjar/anewjkuapp,closed,Cleanups in KusssHandler,[],"Some cleanups in KusssHandler
+"
+marunjar/anewjkuapp,closed,update MPAndroidChart,[],
+marunjar/anewjkuapp,closed,merge dev branch,[],"fix searching for rooms with slash in name
+new map theme
+updated libraries
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"fix loading courses
+materialized drawer
+"
+marunjar/anewjkuapp,closed,Dev,[],
+marunjar/anewjkuapp,closed,merge Kussslib,[],
+marunjar/anewjkuapp,closed,prepare for using kussslib,[],
+marunjar/anewjkuapp,closed,prepare for using kussslib,[],
+marunjar/anewjkuapp,closed,add LICENSE,[],
+marunjar/anewjkuapp,closed,fix studies header,[],
+marunjar/anewjkuapp,closed,merge dev branch,[],"updated libraries
+fix typos
+new icon
+fix loading exams
+fix loading lvas
+small layout changes
+"
+marunjar/anewjkuapp,closed,License,[],"What is the license for the source?
+"
+marunjar/anewjkuapp,closed,don't show lvas without grades,[],"new option for app:
+don't show lva's without grade, sometimes there are courses you have never finished and not really interesting any more.
+"
+marunjar/anewjkuapp,closed,update MPAndroidChart,[],"update MPAndroidChart to 2.0.7
+"
+marunjar/anewjkuapp,closed,update Mpandroidchart,[],"update MPAndroidChart to v2.0.7
+"
+marunjar/anewjkuapp,closed,migrate to recycler view,[],
+marunjar/anewjkuapp,closed,migrate to recycler view,[],"migrate all views to recycler view
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"new app icon
+layout changes
+theme changes
+fix loading exams
+fix loading menus
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"layout changes
+improve loading of lvas
+minor fixes
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],
+marunjar/anewjkuapp,closed,merge dev branch,[],"merge fixes
+"
+marunjar/anewjkuapp,closed,merge fixes,[],
+marunjar/anewjkuapp,closed,Dev,[],"some design changes
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"some proguard changes
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],
+marunjar/anewjkuapp,closed,bump version,[],"bump version to 0.29
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],
+marunjar/anewjkuapp,closed,improve showing events on map,[],
+marunjar/anewjkuapp,closed,merge dev branch,[],
+marunjar/anewjkuapp,closed,merge dev branch,[],
+marunjar/anewjkuapp,closed,merge dev branch,[],"layout fixes
+color fixes
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"prepearation for API10 compatibility
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"last changes for release of material style
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"full material design with native cards
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],
+marunjar/anewjkuapp,closed,merge dev branch,[],
+marunjar/anewjkuapp,closed,fix stat card expand,[],
+marunjar/anewjkuapp,closed,extend grade parsing,[],"add grades:
+""mit Erfolg teilgenommen""
+""bestanden""
+""mit Auszeichnung bestanden""
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],
+marunjar/anewjkuapp,closed,disable calendar sync,"[Label(name=""enhancement"")]","add option to disable calendar sync, existing calendars for import should be removed if disabled
+"
+marunjar/anewjkuapp,closed,timetable: add week view,"[Label(name=""Idea""), Label(name=""enhancement"")]","at the moment dates in timetable are only shown as simple list
+so add the option to show the timetable in a week view like in kusss (https://www.kusss.jku.at/kusss/timetable-current-week.action)
+"
+marunjar/anewjkuapp,closed,Dev,[],"some minor ux improvements
+"
+marunjar/anewjkuapp,closed,improve loading tasks,[],"hide progress after updating data
+change some fields to locale variables
+create objects before running background task
+"
+marunjar/anewjkuapp,closed,Dev,[],"fix some possible exceptions
+optimize loading ical
+"
+marunjar/anewjkuapp,closed,add app to f-droid,[],"https://f-droid.org/ 
+https://f-droid.org/forums/topic/read-this-before-posting/
+
+needs a little work before publishing the app via f-droid
+
+need licence files in repo (now missing)
+need a file header in source files (now missing)
+"
+marunjar/anewjkuapp,closed,fix animation while scrolling tabs,[],
+marunjar/anewjkuapp,closed,update icons,[],"thx to @rnbdsh
+
+removed blur from KUSSS logo
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],"improved mensa parser
+small cosmetic changes
+small fixes
+"
+marunjar/anewjkuapp,closed,Add normalize,[],"add and call normalize
+"
+marunjar/anewjkuapp,closed,center selected tab,[],"show selected tab in center of screen and not on the left side
+"
+marunjar/anewjkuapp,closed,preparation for cardslib v2,[],
+marunjar/anewjkuapp,closed,add option to show password,[],
+marunjar/anewjkuapp,closed,use own calendar,"[Label(name=""enhancement"")]","add option to choose existing calendar for import of course dates and exams
+
+depends on #29
+"
+marunjar/anewjkuapp,closed,merge en translation,[],
+marunjar/anewjkuapp,closed,load studies and terms from kusss,"[Label(name=""Idea""), Label(name=""enhancement"")]","load studies from https://www.kusss.jku.at/kusss/studentsettings.action from my curricula list
+there is also begin and end available and these can be used to calculate semester to be shown in app 
+
+it can also be used to reduce data loaded by term.
+"
+marunjar/anewjkuapp,closed,replace marker icon,[],"also use new icon for location/positon marker on map
+"
+marunjar/anewjkuapp,closed,merge dev branch,[],
+marunjar/anewjkuapp,closed,New ui,[],
+marunjar/anewjkuapp,open,wizard,"[Label(name=""Idea"")]","use a wizard for setup on first use or even every time the user logs in to his account
+
+screen: description
+1. login: login and add some info how to and what user to use
+(2. calendar: lets choose the calender where exams and lvas got impoted. local app calendar or others)
+3. setup sync: setup sync interval, describe benefits of short/long intervals
+(4. setup notification)
+5. setup design: light/dark with preview, diagram type, grouping of menus with preview 
+"
+marunjar/anewjkuapp,closed,stretch tabs if necessary,"[Label(name=""Idea"")]","stretch tabs if they use not the full width of layout
+e.g. menus per day: if only (Thursday and) Friday is shown, the tab wont use full with, so stretch tabs to fill width
+"
+marunjar/anewjkuapp,open,implement rss service for app,"[Label(name=""Idea"")]","implement service for app to provide users of the app with important news.
+
+e.g. breaking changes in kusss so app has to be updated
+"
+marunjar/anewjkuapp,open,remember tab on refresh,"[Label(name=""bug - low"")]",
+marunjar/anewjkuapp,open,change history/notification center,"[Label(name=""Idea"")]","just an idea for logging changes and improve/reduce shown notifications
+
+at the moment there are only lot of notifications for exams, events, grades and if on of them is clicked it starts the app and goes to the specific page without showing what has changed.
+
+so what about a notification ceter where all changes (since last visit) are shown.
+this will include deletions of events, new exams, registration for exams, new grades, ... and there will also be a marker that shows ""unread"" changes.
+
+It will also be possible to link from this entries to the specific pages
+
+There will onyl be one simple notification that shows a number of changes and starts the app on the notification center
+
+notification center itself won't be accessible from menu, just from notification.
+
+what do you think about this idea?
+"
+marunjar/anewjkuapp,closed,add option to show password,"[Label(name=""enhancement"")]","add option to show password on login screen
+"
+marunjar/anewjkuapp,closed,use alternative sync mechanism if sync is disabled,"[Label(name=""enhancement"")]","The update mechanism needs active sync and if it's disabled the whole app won't work properly.
+"
+marunjar/anewjkuapp,closed,bring back dark desig,"[Label(name=""enhancement"")]","needs a lot of desig changes, especially for cards
+"
+marunjar/anewjkuapp,closed,save event uid in field that is synced and not modified by google,"[Label(name=""enhancement"")]","save event uid in field that is syncable and not modified by google while syncing.
+
+necessary for using and syncing with kusss and own (google-)calendars
+"
+marunjar/anewjkuapp,closed,Dev,[],"pull latest changes to master
+"
+marunjar/anewjkuapp,closed,Dev,[],"pull 
+"
+marunjar/anewjkuapp,closed,group menu by day,"[Label(name=""enhancement"")]","group menus in mensa fragment by day
+"
+marunjar/anewjkuapp,closed,Add high res launcher icon,"[Label(name=""enhancement"")]",
+marunjar/anewjkuapp,closed,fix npe,[],
+marunjar/anewjkuapp,closed,merge cardslib,[],
+marunjar/anewjkuapp,closed,change revision,[],
+marunjar/anewjkuapp,open,create library for KUSSS access,"[Label(name=""enhancement""), Label(name=""refactor"")]",
+marunjar/anewjkuapp,open,think about creation of fragments,"[Label(name=""enhancement"")]","implementation creation and of fragments and attaching them to activity is a little bit crappy. Think about it and refactor it.
+"
+marunjar/anewjkuapp,closed,remove double grades,[],"if there are more than one grade for one lva all of them are shown and used for average grade.
+
+only use the last one (filter by lvanr, term)
+"
+marunjar/anewjkuapp,closed,get calendar ids by name,"[Label(name=""bug - high"")]","At the moment calendar ids are saved in preferences.
+No need for if calendars can be identified by their names (#17)
+"
+marunjar/anewjkuapp,closed,set calendar name properly,"[Label(name=""bug - low"")]","set calendar name to constant for identifying and use display name for localization.
+
+may require recreation of calendars on app update.
+"
+marunjar/anewjkuapp,closed,add missing locations,"[Label(name=""enhancement"")]","add missing locations to campus plan
+all rooms from here (http://www.jku.at/content/e213/e152/e136/e14198/e14197) should be available
+"
+marunjar/anewjkuapp,closed,add filter to mensa dashclock extension ,"[Label(name=""new"")]","filter menus by properties (with oeh-bonus, brainfood, vegetarian, ...) 
+
+(and maybe by regex?)
+"
+marunjar/anewjkuapp,open,show special menu properties,"[Label(name=""enhancement"")]","load an show special properties for mensa menus:
+- Brainfood
+- vegetarian
+- fish
+- MSC (certified seafood)
+"
+marunjar/anewjkuapp,open,add link to oeh courier,"[Label(name=""new"")]","add link to download and show oeh courier directly
+"
+marunjar/anewjkuapp,closed,new icon for own location,"[Label(name=""enhancement"")]","draw a new/better icon for own location (at the moment it's only a big blue circle)
+"
+marunjar/anewjkuapp,closed,translate to en,[],"translate all strings to en
+"
+marunjar/anewjkuapp,closed,replace hardcoded strings,[],"replace all hardcoded strings and load from resources
+"
+marunjar/anewjkuapp,open,refactor mensa parser,"[Label(name=""bug - low""), Label(name=""enhancement"")]","- refactor interfaces
+- rewrite parser (randomly not working at the moment)
+"
+marunjar/anewjkuapp,closed,add oeh news,"[Label(name=""new"")]","add general oeh news: oeh.jku.at/news/
+add specific news for TNF, SOWI, REWI
+"
+marunjar/anewjkuapp,open,add tablet layout,"[Label(name=""new"")]","on tablets the app should use a different layout
+"
+marunjar/anewjkuapp,open,refactor loading of list content,"[Label(name=""bug - moderate"")]","at the moment screen rotation will crash the app while loading content (rotation temporary disabled)
+"
+marunjar/anewjkuapp,closed,link event location to campusplan,"[Label(name=""new"")]","if the location of an event is known it should be possible to show the location in campus plan
+"
+marunjar/anewjkuapp,closed,add menu to list items,"[Label(name=""new"")]","add a menu to list items to add any actions that process the given entry.
+
+e.g. for linking new exams to registration in KUSSS or showing locations in campus plan
+"
+marunjar/anewjkuapp,closed,current registrations for exams aren't loaded,"[Label(name=""bug - low"")]","current registrations for exams aren't loaded and shown on exam page
+"
+marunjar/anewjkuapp,closed,only one contributor in about section,[],"at the moment there is only one contributor listed.
+instead fill a list from a simple xml file, so anybody who commit something can add his name (and maybe mail) there
+"
+marunjar/anewjkuapp,closed,show notification if sync is disabled,"[Label(name=""enhancement"")]","Show notification if sync is globally disabled or also if just for account sync is disabled.
+The update mechanism needs active sync and if it's disabled the whole app won't work properly.
+"

@@ -1,0 +1,1158 @@
+repository,state,title,label,body
+y20k/transistor,closed,Save multiple streams as a single station,"[Label(name=""enhancement""), Label(name=""help wanted"")]","Some stations publish lists of their streams as M3U playlists. Oftentimes streams on the lists have the same content at different bitrate. Sometimes URLs on the lists change in time and/or ""space"". For example to connect users to the closest transmitting server. This is how things might work
+
+1. A user inputs playlist URL when adding a station.
+1. Transistor downloads the playlist, saves a list of stream URL-s **and** the playlist URL as a single station.
+1. The user chooses a stream to play.
+1. The stream is marked as default.
+1. Next time user tunes in the station, the default stream is played.
+1. The user can choose to play a different stream from the list.
+1. The user can reload the playlist to get an up to date list of streams. If the default stream is not present on the new list, the user is required to choose a stream again.
+
+Having the same station at different bitrates for different situations (e.g. mobile connectivity vs wifi) as a single item on the list of stations seems more convenient than having two separate stations."
+y20k/transistor,open,Offer Transistor as a music playing application when headphones are plugged in,"[Label(name=""enhancement"")]","Android offers users a choice of application to start when headphones are plugged in. AFAIK no code is required, just proper [configuration](https://github.com/vanilla-music/vanilla/issues/325). Please configure Transistor to appear on the list.
+
+BTW. This is a fine app. Thank you."
+y20k/transistor,closed,Change station icon = crash,"[Label(name=""bug"")]","Even though I have granted the storage permission, selecting the change icon menu item it crashes the app - v3.1.0 from fdroid on Oreo 8.0"
+y20k/transistor,open,Feature Request: Add total playtime to notification?,"[Label(name=""enhancement"")]","Not sure if you are familiar with other apps, but most radios have a total playtime counter to see how long you've been listening. Any chance of that little feature making it into Transistor? "
+y20k/transistor,open,"Dialog to reorder station list, station names now contain hidden list index value",[],Demonstration: https://www.youtube.com/watch?v=r4xsxcBw7fc
+y20k/transistor,closed,Fixed a link in AUTHORS.md,[],
+y20k/transistor,closed,Oreo adaptive icon shape,"[Label(name=""enhancement"")]","Please add support for icon shape
+https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive.html
+https://material.io/guidelines/style/icons.html"
+y20k/transistor,closed,Crash,"[Label(name=""bug"")]","Hi there,
+
+On my phone (Moto G6/Android 8.0) Transistor crashes sometimes when I press the play button. Not everytime but usualy in the morning. It workes on the second try.
+
+Best Regards"
+y20k/transistor,closed,feat: add a scrollable list/index of scraped m3u playlist sources,"[Label(name=""enhancement""), Label(name=""wontfix"")]","Or we can recommend something in the app for a directory of m3u streams?
+
+Or perhaps a popular/favorite list sourced from Reddit?"
+y20k/transistor,closed,[Request][Contribution] - New Logo/Icon ,[],Can I contribute to Transistor by designing a new logo and icons for it?
+y20k/transistor,closed,Page header with swipe,"[Label(name=""enhancement""), Label(name=""wontfix"")]","Only a suggestion or a request really. Adopt multiple swipe able pages with editable page headers to group genres.
+Thanks I think the app is cool."
+y20k/transistor,closed, fixed metadata for fdroid via fastlane ,[],
+y20k/transistor,closed,Balance size of icon at top of screen,"[Label(name=""enhancement"")]","Please, balance size of icon at top of screen. Tune it be in better relation to other icons there.
+
+See screenshot for proposal.
+
+![screenshot_20181002-091710](https://user-images.githubusercontent.com/198964/47224799-b8a60300-d3bc-11e8-86e3-ae2c43522314.jpg)
+"
+y20k/transistor,closed,added feature graphic and screenshots,[],These images will be shown on the website and in the F-Droid app
+y20k/transistor,closed,Android Pie: Unable to listen to http streams,"[Label(name=""bug"")]",On Android Transistor refuses to start http streams.
+y20k/transistor,open,"Ukrainian (cyrillic) characters shown in metadata as ""ÐÐ¾Ð²Ð...""",[],"On ""PROMIN"" radio some messages in metadata sting shown like on screenshot:
+
+![screenshot](https://i.imgur.com/lKkEIiR.png)
+
+Here is example of one of such metadata:
+
+```
+Новини Спорт Погода -
+``` 
+
+Stream URL:
+
+- http://91.218.213.49:8000/ur2-aacp-ulow
+
+In most cases, it should be Ukrainian letters."
+y20k/transistor,closed,Add accessibility descriptions to entries in list of stations,"[Label(name=""enhancement"")]",This issue came in via email: Add accessibility descriptions to entries in list of stations so that screenreaders can process them.
+y20k/transistor,open,Audio is not routed through AudioFX on LOS 15.1,"[Label(name=""enhancement""), Label(name=""help wanted"")]","On my Samsung A320FL (inofficial) LOS 15.1, audio seems not to be routed through AudioFX equalizer.
+"
+y20k/transistor,closed,Accented characters in title/artists show as �,[],"Accented characters (eg. á, ç) in titles and artist names are showing up as � (U+FFFD) in the display.
+
+I'm using Icecast2 2.4.3 fed by liquidsoap 1.1.1. They are being sent UTF-8 encoded metadata strings.
+
+Other players (eg. XiaaLive, deadbeef) show the accented characters in the title/artist correctly.
+
+VLC just ignores any metadata that's not plain ASCII.
+
+The mojibake we'd get from a UTF-8 string being interpreted as ISO-8859-1 would start with ""Â"", so this doesn't look as if it's the problem."
+y20k/transistor,open,Show last played station when opening Transistor on Android Auto,"[Label(name=""enhancement"")]","When opening Transistor in Android Auto, we get the screen that says, ""To play something, open the menu at the top left."" Instead, how about showing the last played station, with the play button ready to press? This would be consistent with the standalone app UI and other music apps in Android Auto. I think this would be the final polish needed for the Android Auto experience."
+y20k/transistor,closed,Expose skip to previous/next to playback state,[],"Hi! My apologies, #184 was missing the changes to actually expose the skip to previous/next commands.  This change implements them, as well as supporting previous/next from a stopped state.
+
+Thanks for merging the previous PR quickly :)"
+y20k/transistor,closed,Implement MediaBrowserServiceCompat.onSkipTo<Previous|Next>,[],"This implements the skip to previous / skip to next behaviour for the media browser service; this is useful for interacting with hardware forward/back buttons (e.g. for Android Auto).
+
+I'm afraid that I don't really know what I'm doing / my way around Java, so there's probably dumb things that needs to be looked at.  For example, I'm switching to a `TreeMap` instead of a `LinkedHashMap` so I can actually iterate from one element to the next; but that changes the sort order so it's no longer the order they were created in.
+
+To test: install [android-media-controller](https://github.com/googlesamples/android-media-controller) and use that to control transistor.  While there _is_ a [desktop head unit](https://developer.android.com/training/auto/testing/) for Android Auto, I couldn't figure out how to make that emulate previous/next buttons.
+
+Thanks for writing transistor, and hopefully we can evolve this into something mergable!
+
+Fixes #89"
+y20k/transistor,closed,Could it be possible to automatically play a radio when Transistor starts ?,[],"I would like to have a default radio that automatically plays when the application is started. So I can ask my phone to start Transistor using Google Assistant or similar.
+
+Is it something possible or does Android have a limitation against that ? I tried a few Radio apps and I didn't find any doing that except the Radio France apps such as France Inter (but these apps display ads at startup sometimes, requiring an action…)."
+y20k/transistor,closed,"Writing to external storage seems to fail, app handles this poorly","[Label(name=""bug"")]","Underlying issue:
+- The app has storage permissions enabled.
+- /sdcard1/Android/org.y20k.transistor/files/Collection/ is created. 
+- Adding a new station works, either by opening the stream file from a file browser, by opening it from the browser, or by manually inputting the url. That is, a stream is added to the list and can be played. However, no file is created under the /files/Collection/ directory.
+
+I believe this is due to a bug in my device: https://github.com/sonyxperiadev/bug_tracker/issues/125 and that's obviously not Transistor's fault. However I'm opening this bug report due to Transistor's handling of this error:
+
+1. Adding a new stream works. As mentioned, no file is created on the sdcard. The user is not informed that a file was not created.
+2. Attempting to change a stream's icon launches the gallery. However, after an image is chosen it is not updated and user is not informed that an error occurred. 
+3. Exiting the app via back button, or changing to a different app via multitasking, will result in it launching next time with an empty stream list. User is not warned before app is closed.
+4. Refreshing the stream lists via pull-to-refresh will cause the entire stream list to be deleted. User is not informed why streams were deleted. I would argue that even if the refresh finds that some stream files have been removed from the SD card, the user should be warned that they'll be removed from the list.
+
+
+As an aside, the app's minimal interface makes these issues especially frustrating, as there is no way to understand what's going on and why data keeps getting deleted. I thought the app hasn't even implemented saving the state of the stream library until I read the github page.
+
+Thanks for reading."
+y20k/transistor,closed,I think you made a misprint))),"[Label(name=""bug"")]","Hi there!)
+
+See the https://github.com/y20k/transistor/releases
+ -> transistor-app-release-3.0.5.apk instead of transistor-app-release-3.0.6.apk 
+
+Good luck!"
+y20k/transistor,closed,M3U with 4 addresses are ignored since 3.0.5,[],"In previous Versions the station was shown and played correctly. 
+Now the station isn't shown in the list any more.
+
+The m3u file:
+
+http://89.39.189.52:8000/
+http://gherlafm.ro:80/eurostil.m3u
+http://81.196.122.19:8008/
+http://83.170.76.46:8090/
+http://83.170.76.46:8092/
+"
+y20k/transistor,closed,App crash when adding a station,"[Label(name=""bug"")]","Hi,
+
+i'm trying to add a station :
+http://stream.srg-ssr.ch/couleur3/mp3_128.m3u
+
+Every time the app crashes.
+Version used : 3.0.5"
+y20k/transistor,closed,add .pls - error,[],"Hi!
+
+I try to add this link
+https://centova1.cheapshoutcast.com:2199/tunein/baroque.pls
+But I see this message: 
+Transistor tried hard but could not make sense of the link.
+Hmm, what does it mean? I mean it is a .pls fault or it is a Transistor bug?
+Update: Hmm .. It is interesting! I opened the link with the VLC then I copied the location of the stream to the Transistor and it works but very unstable - I mean it often stops playing! 
+
+Thanks and Good Luck!
+"
+y20k/transistor,closed,F-Droid doesn't have v3.0.4,[],"Hi!
+
+I read the previous issues and I found this link:
+https://gitlab.com/fdroid/fdroiddata/commits/master/metadata/org.y20k.transistor.txt
+I'm sorry but I don't understand what does ""Transistor: disable 3.0.4 (54)"" mean? 
+It means an error?
+
+Thanks, and Good Luck!"
+y20k/transistor,closed,Sleep timer notification moves unnecessarily when adding time,"[Label(name=""enhancement"")]","This one came in via email: When a user taps a second or third time on the sleep timer icon to increase the duration, the sleep timer notification bar is cancelled and shown again which in turn pushes the player up and down. Too much and unnecessary ui movement."
+y20k/transistor,closed,When playlist has several streams show selection dialog to the user,[],"Almost all radio stations have several streams in the playlist, usually mirrors, but sometimes with different bitrate or codec. The worst abuser is this station, which has separate stream with different music in the same playlist: https://dnbradio.com/hi.pls
+This patch will show a simple popup dialog with all stations from the playlist, and user can select one.
+
+One bug that I've noticed is adding two streams from the same playlist makes Transistor save them into the same file on disk, so the next time it starts, it loses one stream from the station list. But this can be reproduced even without the patch, if two different radio stations have a playlist file named 'listen.pls' for example, it will be overwritten if you add both."
+y20k/transistor,closed,"Added application/pls+xml media type, used by melodicradio.eu",[],This fixed an error when trying to open https://melodicradio.eu/listen.pls
+y20k/transistor,closed,Timer [bug],"[Label(name=""bug"")]","Hi!
+I found an interesting bug!
+1) Start playback
+2) Minimize the app // now I can open the app with different ways
+3) Open the app with the notification area (I mean below the status bar) and press timer button. 
+You will see the message: Please start playback first. // BUG!
+BUT, if you will do this thing: 
+Open the app with the icon on the home screen and press timer button. // OK, it works!
+(However, if you opened the app with the notification area first then it won't work)  
+P\S The second step is optional!!!!!!
+Good Luck!"
+y20k/transistor,closed,Dark Theme [Request],"[Label(name=""enhancement"")]","Hi!
+I really like your app but I think the dark theme (like details info in the app) will be much better because the white is really ugly especially the status bar. It's sad. (((
+Please, make it or add the simple feature: change theme. 
+Update: I mean the app background color = grey dark ; the status bar background color = red dark. I think it's the ""true night mode"" ;))))
+Good Luck!"
+y20k/transistor,closed,"""Channel count"" text squished",[],"""Channel count"" text squished in fragment_main_player_sheet.xml:
+
+```
+<TextView
+        android:id=""@+id/player_sheet_h2_channels""
+        android:layout_width=""wrap_content""
+        android:layout_height=""15dp""
+        android:layout_marginEnd=""@dimen/activity_horizontal_margin""
+        android:layout_marginTop=""16dp""
+        android:text=""@string/player_sheet_h2_station_channel_count""
+        android:textAppearance=""@style/TextAppearance.AppCompat.Small""
+        android:textColor=""@color/player_sheet_text_details""
+        app:layout_constraintEnd_toEndOf=""parent""
+        app:layout_constraintTop_toBottomOf=""@+id/player_sheet_p_stream_url"" />
+```
+
+should be:
+
+```
+<TextView
+        android:id=""@+id/player_sheet_h2_channels""
+        android:layout_width=""wrap_content""
+        android:layout_height=""wrap_content""
+        android:layout_marginEnd=""@dimen/activity_horizontal_margin""
+        android:layout_marginTop=""16dp""
+        android:text=""@string/player_sheet_h2_station_channel_count""
+        android:textAppearance=""@style/TextAppearance.AppCompat.Small""
+        android:textColor=""@color/player_sheet_text_details""
+        app:layout_constraintEnd_toEndOf=""parent""
+        app:layout_constraintTop_toBottomOf=""@+id/player_sheet_p_stream_url"" />
+```
+
+""wrap_content"" instead of ""15dp"" That fixed it for me. Matches the other player_sheet_h2... codes now
+
+By the way how come no bitrate text? I see that commented out.
+"
+y20k/transistor,open,Restart necessary when adding stations through pls download,"[Label(name=""bug"")]","Go to https://somafm.com/listen/ in Android browser. 
+
+Select a stream link that downloads pls. Example: 64k ACC on Space Station Soma.
+
+Set Transistor to open the download automatically when prompted.
+
+If you try again on another stream it will not import the next station. You need to close Transistor and have the download happen again.
+
+"
+y20k/transistor,closed,Night Mode not Remembered,[],Night Mode not remembered on restart on 3.0.4
+y20k/transistor,closed,Cannot close player in notification drawer when stopped,"[Label(name=""bug"")]","How to reproduce:
+1. Start station.
+2. Stop station in notification drawer (or lock screen).
+3. Click on X in notification drawer to close app.
+
+App is not closing after pressing the X, but when station not stopped (i.e. playing) then X works as expected an app is closing.
+
+OS: Android 4.4.4
+(I check old issues, but this here seems like a bug because the X works when a station is playing. So it's not the same as in https://github.com/y20k/transistor/issues/159.)"
+y20k/transistor,closed,198.105.244.228:80,[],"Hi
+
+Is there any reason why this app constantly trying to send packets to this ip address? It even tries to connect to this when I am playing a stream from 127.0.0.1 (local music server).
+
+
+This is not a disclosed behavior and  there is no way to disable whatever that is. Thankfully my firewall blocks all such requests by default.
+
+You are also sending packets over http.
+
+thanks"
+y20k/transistor,closed,[issue] station currently playing,"[Label(name=""bug"")]","There's an issue with the green light, indicating the radio stream currently playing. 
+When I start Transistor (3.0.2), the app still indicates with a green dot the radio stream that I used last time. 
+When I chose another stream for listening, I have 2 green dots at the same time."
+y20k/transistor,closed,[REQUEST] design mod (transistor v3),"[Label(name=""enhancement"")]","I really like the new simplified design (transistor v3), I have just one suggestion:
+Especially when you have many radio stations in your list it would be helpful if the radio station that you (pre)select, is underlaid with a color, as the green dot only indicates the station that is currently playing but not indicates the station that is (pre)selected.
+Example:
+https://www.dropbox.com/s/opvbw8bwfq4626h/screenshotTRANSISTOR.jpg?dl=0
+
+"
+y20k/transistor,open,Adding / renaming stations during playback,"[Label(name=""bug"")]","Thanks for all the work on transistor. I really enjoy it. Just one thing: 
+I came across an issue with v3.0.0 when entering new radio stations.
+Example: When you enter 2 stations (named ""radio1"" and ""radio2""). Once you rename ""radio2"" with a name that it appears in the list above ""radio1"" (for instance ""alpha"") and click on it. The radio player shows in the bottom line that you clicked on ""radio1"".  Once you close the app the bug is gone.
+I hope was clear. 
+Have a nice weekend, Ralph  "
+y20k/transistor,open,"A couple of streams that work fine, but produce errors",[],"The first one produces the error: ""Unsupported audio format detected."", but plays fine nonetheless:
+http://drradio1-lh.akamaihd.net/i/p1_9@143503/master.m3u8
+
+The second is a pls file, that is not recognized at all:
+http://www.kanalplus.fm/rockkanalen/kp96.pls
+But the stream inside (http://stream.kanalplus.fm/kp96) works fine."
+y20k/transistor,closed,Implement track skipping,[],It would be great if you could implement the native track skipping methods to skip the stations in their order with either a bluetooth headset or (via third party apps like Button Mapper) long pressing the volume keys.
+y20k/transistor,closed,fix link in Readme,[],
+y20k/transistor,closed,[ Request ] Add an option for Search.....,"[Label(name=""enhancement""), Label(name=""wontfix"")]","I have 60+ radio channel in Transistor.
+It's very annoying to find specific Radio."
+y20k/transistor,closed,Transistor keeps running in the background even when not in use,[],"Hi there, just noticed something in the 3.0.0.4 test apk. 
+
+The playerservice keeps running in the background even when I'm not using the app and even when its not in my recents list. I was just looking at my currently running applications and it has been running for 77 hours straight. 
+
+It would be great if Transistor would automatically close itself out completely when the window is not in use or the notification has been cleared away after like 30 min or so. I have 3GB of RAM and a good CPU on my phone but this could be useful for people with budget or older phones, even if Transistor doesn't use up that many resources to begin with. "
+y20k/transistor,open,"Certain OPUS streams do not show ""artist - title"" and stop playing on song change","[Label(name=""bug"")]","This is with the latest test .03 beta from https://github.com/y20k/transistor/issues/136
+
+http://stream.xrm.fm/xrm-ele.opus is the problematic link.
+
+The artist -title details load just fine on other players like Foobar2000 and music continues on a song  change. 
+
+However, on Transistor, this link never shows the ""artist - title"" info and just shows ""loading stream"". Even worse, when the song is finished, the audio stops playing but Transistor looks like its still playing the stream. 
+
+This is on my Moto X Pure Edition with 7.1.2. It might just be my device so if somebody else can confirm, that would be great. "
+y20k/transistor,open,Feature request: Show more app shortcuts,"[Label(name=""enhancement"")]","Regarding app shortcuts on Android O:
+I would love to see not only the option to resume the last station I have played but also other stations I have added previously.
+
+"
+y20k/transistor,closed,[request] option for Download/record,"[Label(name=""enhancement""), Label(name=""wontfix"")]","It is known, transistor app is a useful app.
+
+But I think, it will be more productive if it has a Download/Recording option.
+
+Thanks for creating this app. I wish, you will consider this request."
+y20k/transistor,closed,Add an option for Backup,"[Label(name=""enhancement"")]","After collecting some good stream url,I am disappointed. There is no backup option.What happened if something goes wrong. Should I again add  stream url one by one and rename it..
+
+thanks for creating such a useful app. but add a backup option so that we can recover all url with edited name.
+Thanks again......"
+y20k/transistor,closed,Add support for NextCloud Radio plugin,[],Info here: https://git.project-insanity.org/onny/nextcloud-app-radio
+y20k/transistor,closed,"Translating the phrase ""URL"" - suggestions wanted","[Label(name=""help wanted"")]","Please, Can you change the tecnical name ""URL"" for ""link"" or similar? (more understandable)
+
+Thanks."
+y20k/transistor,closed,"Small fixes, M3U, permissions, spelling",[],
+y20k/transistor,closed,issue with the following streams,[],"I can't add the 2 following streams  :
+aspen : http://playerservices.streamtheworld.com/api/livestream-redirect/ASPENAAC
+rock & pop : http://blaster.cdn.sion.com:1935/rockandpop/audioweb/playlist.m3u8
+
+Is it something that can be easily fixed?
+
+Thank you for the great app"
+y20k/transistor,closed,big volume knob (request),[],"___
+
+(you can skip this part)
+
+Some brainstorming on the subject.
+
+Let's say I am listening to radio,  with Transistor on the background, and then choose to  play a video on the Youtube. Transistor will stop, the video will be playing, and the first thing I will have to do is adjust the volume on my phone.
+
+Then, if I want to stop the video and wish to go back to listening to the radio, with Transistor, again, I will have to adjust the volume on my phone.
+
+Possibly, the same might need to be done when switching between radio stations.
+
+We could say that the ""volume problem"" is a common issue on the web media.
+
+Therefore, Transistor should have a volume adjustment (for itself, not for the system).
+
+How would that adjustment look like?
+From a practical point of view, it should be  a slider.
+But, since this is Transistor, a retro reference might be preferred:
+a big volume knob.
+
+----
+
+
+How big would that knob be?
+Simply, while holding your phone with your hands, try to draw a curve or a circle, on the screen, using your thumb, as if you were turning the imaginary knob.
+
+There you have the outline of the ""big volume knob""."
+y20k/transistor,closed,Crash on fast multiple clicks on Play/Stop button,"[Label(name=""bug"")]","Steps to reproduce:
+
+1. Open App.
+2. Add URL with stream.
+3. Open station.
+4. Do multiple **fast** clicks on Play/Stop button.
+
+Tested on 3 real devices (Android 7, Android 7.1.1, Android 6) and official Android Emulator virtual device with Andorid 7.1.1. Tested on compiled latest source and at least 5 previous commits (plus Google Play version).
+
+![device-2017-08-30-141904](https://user-images.githubusercontent.com/2325646/29870285-6de3be4e-8d8f-11e7-8b72-c4cbf36d5baf.gif)
+
+Some logs:
+`08-30 14:19:38.709 25337-25337/org.y20k.transistor E/AndroidRuntime: FATAL EXCEPTION: main
+                                                                     Process: org.y20k.transistor, PID: 25337
+                                                                     java.lang.NullPointerException: Attempt to invoke virtual method 'void com.google.android.exoplayer2.SimpleExoPlayer.prepare(com.google.android.exoplayer2.source.MediaSource)' on a null object reference
+                                                                         at org.y20k.transistor.PlayerService.preparePLayer(PlayerService.java:692)
+                                                                         at org.y20k.transistor.PlayerService.access$900(PlayerService.java:105)
+                                                                         at org.y20k.transistor.PlayerService$InitializePlayerHelper.onPostExecute(PlayerService.java:952)
+                                                                         at org.y20k.transistor.PlayerService$InitializePlayerHelper.onPostExecute(PlayerService.java:908)
+                                                                         at android.os.AsyncTask.finish(AsyncTask.java)
+                                                                         at android.os.AsyncTask.access$500(AsyncTask.java)
+                                                                         at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java)
+                                                                         at android.os.Handler.dispatchMessage(Handler.java)
+                                                                         at android.os.Looper.loop(Looper.java)
+                                                                         at android.app.ActivityThread.main(ActivityThread.java)
+                                                                         at java.lang.reflect.Method.invoke(Native Method)
+                                                                         at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java)
+                                                                         at com.android.internal.os.ZygoteInit.main(ZygoteInit.java)
+`
+
+Sorry for my english."
+y20k/transistor,closed,Testers for Android Auto support wanted,"[Label(name=""enhancement"")]","One of the upcoming releases of Transistor will feature basic support for [Android Auto](https://www.android.com/auto/). 
+
+My problem is: I do not have a car. So if **anyone with an actual Android Auto equipped car** wants to test the new feature... here is an APK:
+
+## Download
+
+* [transistor-app-test-2.3.4-01.apk](https://www.dropbox.com/s/tqemseij9b9k3kt/transistor-app-test-2.3.4-01.apk?dl=0) (based on this [commit](https://github.com/y20k/transistor/tree/192501e89763db1296fc3661420f6c22f90d22c5))
+
+
+## Test using your phone
+If you want to test Auto support on your phone you need to enable **Developer Mode** and **Unknown Sources**
+
+* see: [Testing apps for phone screen](https://developer.android.com/training/auto/testing/index.html#phone) 
+
+## Test using your car
+Sorry. I am not sure how to test this in an actual car. You probably need to activate **Unknown Sources** somehow. Because by default Android Auto only runs / displays Apps from the Play Store.
+
+## Screenshots Android Auto
+![2017-08-30 14 30 55](https://user-images.githubusercontent.com/9103935/29872883-aeb3f518-8d91-11e7-9331-a1c6649ec73d.png) ![2017-08-30 14 28 25](https://user-images.githubusercontent.com/9103935/29872875-a6e4d7bc-8d91-11e7-94f2-c34bdda7f3c7.png) ![2017-08-30 14 29 19](https://user-images.githubusercontent.com/9103935/29872895-b8d1d114-8d91-11e7-865b-0207b9fa68e2.png) ![2017-08-30 14 28 45](https://user-images.githubusercontent.com/9103935/29872911-cbabaed6-8d91-11e7-9f9a-a45eed3625b1.png)
+
+## Screenshots Android Wear
+
+![screenshot_1504095986b](https://user-images.githubusercontent.com/9103935/29872845-80c71bee-8d91-11e7-8cef-12f6f86d5b49.png) ![screenshot_1504095956b](https://user-images.githubusercontent.com/9103935/29872843-80c38b28-8d91-11e7-9339-b833ae30fcb2.png) ![screenshot_1504095930b](https://user-images.githubusercontent.com/9103935/29872844-80c40c7e-8d91-11e7-9e2f-1335e3d368db.png)
+
+"
+y20k/transistor,closed,Kooks/2.3.x on F-Droid,[],"It doesn't look like the latest releases haven't been flagged for F-Droid.
+https://f-droid.org/wiki/page/org.y20k.transistor
+
+Would like to see the latest releases on F-Droid again."
+y20k/transistor,closed,Opus issue.,[],"Opus streams won't load on Android 4.4.4. When I press play the status goes to yellow and it says loading stream to no avail. Pasting the same station link in VLC however does play, and aac streams do play so I guess it's the way Opus is implemented."
+y20k/transistor,closed,Option to remove the station image (was: Add option to disable lockscreen cover),"[Label(name=""enhancement""), Label(name=""help wanted"")]",Being able to disable the lockscreen cover would be nice since the images aren't that great anyway. 
+y20k/transistor,closed,Add more sleeptimer options,[],Would be awesome to be able to select the amount of minutes in the sleeptimer.
+y20k/transistor,closed,"Stream changes, when transistor comes up from recently used apps","[Label(name=""bug"")]","Maybe, somebody knows how to avoid? Thanks.
+1) Open transistor app via shortcut for a stream (lets give it the name ""stream1"").
+2) After some time, stream2 is chosen/started manually in main window of transistor app.
+3) Press home-button on tablet to get to home screen, in order to use any app.
+4) After finishing these actions, transistor is reactivated from recently used apps.
+5) Transistor automatically starts streaming first stream in list/stream1, and doesnot go on with stream2
+Regards
+Axel"
+y20k/transistor,closed,Hard coded stations?,[],"I want to hardcode 2 stations, however i am not able to do that. Could you please help me about this? 
+
+What is the best and easiest way to do that.
+
+Thanks for your time.
+
+Have a good one."
+y20k/transistor,closed,"Small interuptions (not an ""issue"" really)",[],"Hope my English is understandable ......
+What I see, are small interuptions of my stream, when I get transistor from minimalized status on my samsung tablet. It stops for a second, and goes on streaming.
+Not something, I could not live with, in order to have a minimalistic app. Just an information, about an ""issue"" I run into."
+y20k/transistor,closed,"Error, please delete",[],"
+"
+y20k/transistor,closed,GUI shows multiple active livestreams,"[Label(name=""bug"")]","- start a fresh instance of Transistor
+- select the first item (livestream) to play and press the play button on the next screen
+- go back to the main screen
+- select the second item (livestream) to show the next screen: you will see a play button
+- go back to the main screen
+- select again the second item (livestream) again to show the next screen: you will see a **stop** button!
+- press the Android-Home-Button to show the Android-Home-Screen
+- open the Android-Notification-Center und touch the Transistor-Notification to open the Application
+- press the Back-Button to see the Transistor-Main-Screen
+- you will see two active Live-Streams
+
+This behavior is 100% reproducible
+ "
+y20k/transistor,closed,Station SWR3 and SWR1 not playing,[],"The german radio stations ""swr1"" and ""swr3"" are not playing. The provide aus ""m3u"" for web Radio, IT seems as if transistor hast a problem with this. 
+
+Example:
+http://mp3-live.swr.de/swr3_m.m3u
+
+Adresses are gathered from the official page:
+http://www.swr.de/empfang/webradio-hoeren-alle-streams/-/id=3786/did=13840718/nid=3786/1pclwly/index.html
+
+Greets, 
+Doggy77 "
+y20k/transistor,closed,"Update in-app documentation to show that Exoplayer makes it possible to play Opus, AAC and AAC+ formats","[Label(name=""enhancement"")]","I just tested Opus, AAC, and AAC+ streams and they all play just fine thanks to the new Exoplayer. 
+
+Can we make it so the app explicitly says it can play these streams and does not show a popup calling them an unsupported format?
+
+This radio player can definitely play all the existing streaming formats so it should tout itself as such. Yes, this is supposed to be a simple player but limiting it to OGG and mp3 was never a good long term solution as OGG is slowly being replaced by Opus and AAC streams are just as common as mp3 streams these days. "
+y20k/transistor,closed,"Make ""Now Playing"" screen more modern and info-focused","[Label(name=""enhancement"")]","Right now, the ""Now Playing"" screen is just a large play/stop button with a small info listing above it. 
+
+I think the player should be structured more like the following
+######################
+(Centered Icon)
+
+[Title]
+Marquee Scroll
+Codec, Bitrate, channels, khz
+
+[Smaller Play/Stop button.>
+
+Timer#########Extended info button
+#####################
+In other words, more like a modern audio player. Any chance of this happening? 
+
+I know Transistor is supposed to be simple, but by simply re-arranging the existing info into a more modern, audio player UI, it will be much more interesting to look at than a big play button. "
+y20k/transistor,closed,m3u → .m3u,[],I missed one.
+y20k/transistor,closed,small spelling fixes,[],"As per https://en.wikipedia.org/wiki/PLS_(file_format)
+Shortening ""dialog_add_station_input_hint"" makes it fit for other languages."
+y20k/transistor,closed,m3u → M3U,[],As per https://en.wikipedia.org/wiki/M3U
+y20k/transistor,closed,Playback doesn't resume after being interrupted by alarm clock,"[Label(name=""bug""), Label(name=""enhancement"")]","Hi, within the latest few versions of your wonderful Transistor app I've noticed the following behaviour:
+
+1) I start playback manually (and doze away again)
+2) At a given time my wake-up alarm rings and Transistor playback stops 
+3) I tell my nasty alarm to shut the f*** up
+4) Transistor's playback does not resume automatically. It's notification still shows the ""stop"" action button, as if it was stil playing. Tapping the ""stop"" button once changes it to the ""start"" button again. Tapping the notification's ""start"" button resumes playback correctly.
+
+Is this intended behaviour? Somehow I feel that in previous versions, playback would resume automatically after I stopped the alarm. 
+
+I'm running Transistor v2.2 on a Fairphone 2 with FP Open OS 17.04 (Android 5.1)."
+y20k/transistor,closed,Slide to delete,"[Label(name=""enhancement"")]","Hi
+
+Most apps with item list display support slide to delete an item from the list. It is a standard behavior in Android. It would be nice if this app follows such interaction too.
+
+thanks.
+"
+y20k/transistor,closed,Add all stations in a playlist,[],"Hi
+
+Transistor only adds a single station from a playlist with bunch of stations. It would be nice if one could actually import bunch of stations from a playlist, otherwise it is a bit tedious of work to bring those all in.
+
+One might argue well this is a minimalist app and such, it defeats the purpose of  being a simple radio app, but then as a user I would counter argue that it makes it useless for my purposes because then I will need to use another app to manage all those stations and occasionally give this app another try to see  what is going on with it. 
+
+Here is an m3u
+http://www.radio-browser.info/webservice/m3u/stations/bytagexact/jazz
+
+
+I can see it being useful for clicking some single radio link on the web, but how many times a day do we do that? "
+y20k/transistor,closed,Direct play,[],"Hi
+
+It would be nice if a url is shared from another app to Transistor, it starts playi it right away instead of just adding to the list. When I add share a radio from Radiodroid, it only adds to the list but in reality I would like it to play automatically after adding.
+
+thanks
+
+
+"
+y20k/transistor,closed,Why isn't the newest version on F-Droid?,"[Label(name=""wontfix"")]","F-Droid has 2.2.3, Google Play 2.2.4. How come? (I'm just curious.)"
+y20k/transistor,closed,Transistor shows wrong metadata (StreamUrl instead of StreamTitle),"[Label(name=""bug"")]","This bug report came in via email: For certain streams Transistor displays the wrong part of the embedded metadata. In the case of http://144.217.203.226:8042 the app tries to display `StreamUrl` (instead of `StreamTitle`).
+ "
+y20k/transistor,closed,[Feature Request] Import and export of station list / URLs etc,"[Label(name=""enhancement""), Label(name=""help wanted"")]",Would this be possible? I dread having to search and reenter them all when I switch phones at some point and I Titanium Backup / oandbackup have let me down with their data backups in the past so being able to export / and reimport the streams would be amazing. Thanks!
+y20k/transistor,closed,Volume very low on all streams since 2.2.2 update,[],"I really love this app but since the 2.2.2 update (via F-Droid) all the streams are so low in volume that I can almost not here them (other media players are fine). I'm on Wileyfox Swift, running LineageOS 14.1 / Android 7.1.2
+
+I'd be happy to supply more info if told how to do so ^___^
+
+Thanks again for the great app!"
+y20k/transistor,closed,Support the .pls playlist format (audio/x-scpls),"[Label(name=""enhancement"")]","Hi,
+
+This is a feature request to improve the (already great) transistor android app
+
+Please consider adding support for the .pls playlist format https://en.wikipedia.org/wiki/PLS_%28file_format%29
+
+Example of pls files for various webradios: 
+* SomaFM https://somafm.com/ https://somafm.com/groovesalad256.pls https://somafm.com/sonicuniverse192.pls
+* Radio Valencia  http://radiovalencia.fm/radiovalencia3.pls"
+y20k/transistor,closed,Enhancements,[],"This is some enhancements, you can take it all or just take some of new features, if applicable.
+This is first time I do enhancements on Github project, I don't expect to be easy to accept that pull request, but please let me know.
+Below list of changes /enhancements  summary :
+-Use DB with SQLITE as main storage of the application. this will reduce the dependancy of files, and increase the number of features that we have with SQLITE that we can add it to the application later easily, like Sorting/Filer/Grouping/relation with other tables like categories and rating, add more station metadata, and many more.
+	-adding more metadata to stations (currently no way to change all metadata throw UI, we can only import xml with all metadata of channel, we may add editing later in next versions).
+	-new station rating modules (currently it's local rating only, not sync to central rating, may be later in next versions)
+	-Using Facebook fresco image viewer (SimpleDraweeView) with it's great loading features
+	-Apply Material design components and transitions
+	-Integrate with Firebase compoenents 
+			-Authentication
+			-Analytics
+	-Add login by Google account function (currently nothing happend after login, but in the next versions we can connect user by ID and save his data to cloud for example, and many more.)
+	
+Thank you,"
+y20k/transistor,closed,"Player screen says ""Loading stream"", when it is actually not","[Label(name=""bug"")]","Reproducible behavior. Start stream in player screen. Wait until playback starts. Tap home icon to get to the home screen. Tap on Transistor's app icon to bring it in the foreground: Player screen says ""Loading stream"", when it is actually still playing back the selected station.
+
+Probable cause: State of player is not correctly saved to shared preferences."
+y20k/transistor,open,Bit Rate In The Info Screen,"[Label(name=""enhancement""), Label(name=""help wanted"")]","Hi, what do you think of adding information about the [bit rate](https://en.wikipedia.org/wiki/Bit_rate) in the info screen?
+![bitrate](https://cloud.githubusercontent.com/assets/22400585/25180054/c31bb506-250c-11e7-9d06-69ee2af20a2f.jpg)
+"
+y20k/transistor,closed,Switch to ExoPlayer - Beta Testers wanted,"[Label(name=""enhancement""), Label(name=""help wanted""), Label(name=""question"")]","Hi there,
+
+Transistor traditionally has used [MediaPlayer](https://developer.android.com/guide/topics/media/mediaplayer.html) as its back-end. MedaPlayer for the most part has worked great for me. But there are some issues with AAC and newer adaptive streaming technologies, as well as sometimes a slow start-up time.
+
+In the past I was very hesitant regarding any experiments with the back-end, since the existing one worked most of the time just fine. I argued that Transistor is basically a one-man-part-time-show, and that I needed to keep development sustainable. Therefore I did (and do) not want to experiment with any third-party media libraries.
+
+Enter [ExoPlayer](https://developer.android.com/guide/topics/media/exoplayer.html). ExoPlayer is an open source media library developed by Google. It is used as the back-end of their YouTube app. ExoPlayer promises better codec compatibility. It is probably pretty future proof, since Google uses it in their own apps. 
+
+So after some thinking/considering I decided to give it a try. The results are pretty good so far. It seems that streams start faster than in the past and Transistor still plays back all of my (23) stations.
+
+Switching the back-end is a pretty big thing. So before I roll out the next version of Transistor, **I need YOU to test the playback functionality** of the app. I need to decide if I should continue to pursue the ExoPlayer route, of if I should go back to MediaPlayer.
+
+So if anyone here has time to spare: Please check out the latest beta release.
+
+**Latest beta release (signed)**
+* v2.2.1-04: [transistor-app-test-2.2.1-04.apk](https://www.dropbox.com/s/05ej2irmb0g7kax/transistor-app-test-2.2.1-04.apk?dl=0) based on this [code](https://github.com/y20k/transistor/blob/c3b50684800b28f72a3492cce1e67eab94983660/app/src/main/java/org/y20k/transistor/PlayerService.java).
+
+
+* ~~v2.2.1-03: [transistor-app-test-2.2.1-03.apk](https://www.dropbox.com/s/07bnw8cnvg6dc89/transistor-app-test-2.2.1-03.apk?dl=0) based on this [code](https://github.com/y20k/transistor/blob/76551666e3921f108b13125e9d94790929435ea7/app/src/main/java/org/y20k/transistor/PlayerService.java).~~
+
+* ~~v2.2.1-02: [transistor-app-test-2.2.1-02.apk](https://www.dropbox.com/s/vnclitzexlokast/transistor-app-test-2.2.1-02.apk?dl=0) based on this [code](https://github.com/y20k/transistor/blob/3766c3d14d33c7655c9b0d537061e397b0034506/app/src/main/java/org/y20k/transistor/PlayerService.java).~~
+
+* ~~v2.2.1-01: [transistor-app-test-2.2.1-01.apk](https://www.dropbox.com/s/5rk3zv22mdvpubz/transistor-app-test-2.2.1-01.apk?dl=0) based on this [code](https://github.com/y20k/transistor/blob/10e0a5716cea8a0acdca40f05eb9d019a5c627c4/app/src/main/java/org/y20k/transistor/PlayerService.java).~~
+
+
+**Known issues**
+* ~~120a: No attempt to reconnect after loss of network connection~~
+* ~~120b: Now playing (metadata display) is not working~~
+* 120c: Playback sometimes just stops (**more info needed**)
+* ~~120d: Buffer is not emptied -> When starting playback for a second station the buffer from the first one is still audible~~
+"
+y20k/transistor,closed,Multiple streams playing simultaneously ,"[Label(name=""bug"")]"," In #117 @oattoreto wrote
+
+> I have new issue about PlayerService, It play multi stream in same time how I fix it?"
+y20k/transistor,closed,Feature request: set as alarm,"[Label(name=""enhancement""), Label(name=""wontfix"")]",Can you possibly add the ability to start at a specific time so that it can be used as an alarm or when a particular show starts?
+y20k/transistor,closed,file .pls is very slow can you help me?,[],"My stream radio is very slow, I don't know why.
+When I play radio with .m3u, it is fast and look so good but when I play with .pls is very very slow.(about 20 sec.) Can you help me about this? 
+Thank You.
+
+Ps. This is my url : http://111.223.51.7:8005/listen.pls"
+y20k/transistor,closed,Takes more time to load radio stations,[],Everything is this project is good but I find the radio streaming takes longer than any radio players in the play store. Is there any solution?
+y20k/transistor,closed,Google Cast support,"[Label(name=""enhancement""), Label(name=""wontfix"")]",
+y20k/transistor,closed,Auto-add radio icons,"[Label(name=""enhancement"")]","Auto-add radio icons by having like a database filled with icons which searches for icons within it depending on the radio streaming link entered within the app
+
+for example, for BBC Radio 1 (http://www.listenlive.eu/bbcradio1.m3u), when that link is entered in-app, the app searches through a cloud-based database for the icon associated with that station."
+y20k/transistor,closed,stream resumes a few seconds and starts buffering after connection loss,[],"It's a bit hard to describe the issue, but I'll give it a shot.
+During my commute I pass two, or three, spots where I have nearly no reception for a few seconds.
+
+Transistor pauses playback for a few seconds when the reception/connection is lost, resumes when the connection returns and stops playing after another few seconds.
+Then it starts buffering again and starts playback as normal.
+
+I have the feeling that MediaPlayer pauses and resumes the remaining buffered data when it detects a network failure and then starts to buffer again when the (too small) buffer has been depleted. (Wild guess :-))
+
+I have not looked at this in detail, but ExoPlayer could provide access to more fine grained tuning of networking/buffering stuff - https://google.github.io/ExoPlayer/
+
+Have you ever considered implementing the ExoPlayer API as a replacement for MediaPlayer?"
+y20k/transistor,closed,Android Auto support,"[Label(name=""enhancement"")]","Now that Android Auto is available for any phone, it would be great if Transistor was compatible with the music function in the app. In case you are not familiar, Android Auto has a music tab that can be used by any supported music app. [Here are the apps that are currently supported](https://play.google.com/store/apps/collection/promotion_3001303_android_auto_all?hl=en). I would love to be able to easily control station switching in Transistor through the driver friendly interface in Android Auto."
+y20k/transistor,closed,is it not possible to OPEN a m3u file in this app??,"[Label(name=""enhancement"")]","im pretty much summing it up in the title. I want to just simply open up a m3u file from a dir, within the m3u file there are various radio stations.  Can you add this feature to simply work with files and not to sit and type the full URL everytime I want a new URL?"
+y20k/transistor,closed,Copy directory from Assets to local directory,[],"im new in android dev world i want to use your source code to create a personal radio app ,  i add colection folder with pre-build stations in  assets folder but i dont know how to move the  directory from assets to ../android/data/org.y20k..../files/ second issues is force closer under android 7.1 causing by storage permission ,its disebled sorry form my bad english"
+y20k/transistor,closed,Change icon crashes the app,[],"Echa time I try to change the icon of a radio the app crashes, so I am not able to use this function
+"
+y20k/transistor,closed,M3U8 Read error,"[Label(name=""enhancement"")]","Read error
+
+Hello, very nice application.
+but http://trtcanlifm-lh.akamaihd.net/i/RADYO1_1@182345/master.m3u8 gives extension file read errors. can you help me.
+"
+y20k/transistor,closed,Back button doesn't work after tapping on Transistor notification,"[Label(name=""bug"")]","Straightforward to reproduce:
+1) Start playing so there is a Transistor notification.
+2) Tap on the notification.
+3) Press the back button (the phone's back button).
+4) It should take me back to the list of stations, but nothing happens.
+
+The only way to return to the station list after tapping on the Transistor notification is to press the upper left back arrow.
+
+Device: Nexus 5X, Android 7.0, Transistor 2.1.
+"
+y20k/transistor,closed,Playback stops and restarts periodically,"[Label(name=""bug""), Label(name=""help wanted"")]","I'm on stock Android Nougat on a Nexus 6P, but had this problem with Marshmallow as well. I think it's related to doze, but I might be wrong.
+
+The audio playback will stop after a period of about 10 minutes up to an hour, I think. After a period of several minutes (something like 5-30 minutes) playback will often resume. Sometimes this doesn't happen though (or maybe I didn't wait long enough). If it resumes it will keep playing for a period of a few seconds up to 15 minutes, maybe. After this point, I might as well stop Transistor, because playback has become so unstable.
+
+Playback is extremely stable and never stops, when the phone is connected to power. Also the playback is stable and never stops, when I'm actually using the phone (screen on). So the problem only occurs when the phone is lying flat on its back and running on battery. These are the reasons why I think it's related to doze.
+
+I've tried disabling Androids built-in battery optimization for Transistor, but this makes no difference. I read somewhere that you're using Androids audio playback for the stream, so maybe that's why disabling battery optimization for Transistor has no effect.
+"
+y20k/transistor,closed,Marquee in the player view,[],"Another solution for long metadata - single line of scrolling text.
+I still think that multiline metadata is better, but there's nothing bad in doing some experiments.
+"
+y20k/transistor,closed,Multiline station metadata in the player view,[],"Station metadata can become rather long during live shows, that's the screenshot from Nexus 7.
+
+Unfortunately I did not manage to make multiline MediaStyle notification, and I don't want to create a lame marquee effect by updating notification from the code once per second.
+
+![screenshot_2016-09-23-22-04-16](https://cloud.githubusercontent.com/assets/155328/18800032/857927be-81e3-11e6-91ae-160c721fa86d.png)
+"
+y20k/transistor,closed,Do not kill notification if network is disconnected or playback error occurred,[],
+y20k/transistor,closed,Quit-Button,"[Label(name=""enhancement""), Label(name=""wontfix"")]","I propose a quit-button, because transistor stays in the list of active apps and a message stays in the message-list.
+
+Spielmops
+"
+y20k/transistor,closed,PLS link Illegible,[],"Thought I could give VLC a break and run this Instead. Tried to listen to KCRW 89.9 FM using the only live link I can find, ""http://legacy.kcrw.com/pls/kcrwsimulcast.pls"", and it doesn't have a clue. Nice ap though, even one link that vlc can decode that this can't makes it redundant.
+"
+y20k/transistor,closed,MPD stream?,"[Label(name=""bug"")]","Hi there!
+Thank you for your app! 
+Could you please help me to get a MPD stream link wirking (or just check that it's not possible). Here it is: http://cloud.speran.info:8000 It's the MP3 stream, I've tried to add /mpd.mp3 at the end but Transistor fails to
+ add it then.
+"
+y20k/transistor,closed,Notification to restart the playback when it's stopped,"[Label(name=""enhancement"")]","I would like Transistor to show a normal, deletable, non-persistent notification when you stop the playback for any reason, so you can restart the music easily from notification. This notification could disappear in one minute, or it may not disappear at all, it's easy to swipe it away.
+
+The main offender here is Youtube - if I click some Youtube link by mistake, Youtube app will stop Transistor, and there is no way to quickly start it again.
+Also few games are grabbing audio focus for no reason when starting  (Pokemon Go, Oddworld), this stops playback, but when you start it again from Transistor's main window, the game will not do this anymore.
+Built-in music player on Samsung phones has such notification when stopped, and I think Google Play Music works in the same way.
+"
+y20k/transistor,closed,After one start of stream app doesn't allow to change stream -> disconnect,"[Label(name=""bug""), Label(name=""wontfix"")]","For switching streams I have to kill the process and restart it as nothing happens when I change the station. Every time the app tries to connect for < 1sec and then the connection is canceled. It's a Samsung with Android 5.1.1. Newest Update doesn't change this.
+"
+y20k/transistor,closed,Support AAC audio format,[],"MP3 and OGG is not enough. There's many more AAC streams than there are OGG streams, and often, an AAC stream is the only option on some independent stations.
+
+Will we be getting support for it?
+"
+y20k/transistor,closed,Bluetooth receiver metadata does not update after directly switching stations,"[Label(name=""bug"")]","Steps to reproduce:
+1) Start playing music from a radio station
+2) From the list of radio stations, long press on a different station to begin playing it
+
+Expected behavior: 
+Bluetooth receiver's metadata display updates to reflect what is playing on the new station.
+
+Observed behavior:
+Bluetooth receiver's metadata display is stuck showing the last information sent by the old station, and never refreshing to show metadata from the new station. The only way to update it is to manually press stop/play. This can also be avoided by stopping the current station before playing a different one.
+
+Despite this, the Transistor notification on the phone always shows the correct, current metadata.
+"
+y20k/transistor,closed,Duplicate data storage in Collection.java and CollectionAdapter.java,"[Label(name=""enhancement"")]","[Collection.java](https://github.com/y20k/transistor/blob/95dc718ce9d7fef7ef565ce93adc3086b4b30493/app/src/main/java/org/y20k/transistor/core/Collection.java) is a legacy from the early prototyping days of Transistor. It holds a list of radio stations. [CollectionAdapter.java](https://github.com/y20k/transistor/blob/95dc718ce9d7fef7ef565ce93adc3086b4b30493/app/src/main/java/org/y20k/transistor/helpers/CollectionAdapter.java) also holds information about stations. That complicates the dataflow quite a bit. 
+
+The functionality of [Collection.java](https://github.com/y20k/transistor/blob/95dc718ce9d7fef7ef565ce93adc3086b4b30493/app/src/main/java/org/y20k/transistor/core/Collection.java) should be integrated into [CollectionAdapter.java](https://github.com/y20k/transistor/blob/95dc718ce9d7fef7ef565ce93adc3086b4b30493/app/src/main/java/org/y20k/transistor/helpers/CollectionAdapter.java). Collection.java should be subsequently deleted.
+"
+y20k/transistor,closed,work together?,"[Label(name=""enhancement""), Label(name=""wontfix"")]","hi,
+
+i really like the style you choose for your app!
+i am working for quite some time on the following projects:
+http://www.radio-browser.info
+https://github.com/segler-alex/RadioDroid
+are you interested in work together, to combine our efforts?
+i thought i will come only that far alone, so i am searching for people/programmers who also want a free radio app to happen.
+it would be nice to hear from you
+
+greetings from vienna
+alex
+"
+y20k/transistor,closed,Indicate that stream is being prepared,"[Label(name=""enhancement"")]","Some streams start playing audio only after a considerable amount of time - especially AAC and OGG streams. Transistor should indicate that is preparing a stream in the UI.
+
+Using a [ProgressDialog](https://developer.android.com/reference/android/app/ProgressDialog.html) is a bad option because it blocks the UI.
+### # Suggested implementation:
+
+![2016-06-09 19 58 01](https://cloud.githubusercontent.com/assets/9103935/15944444/e6d27bd6-2e8d-11e6-804a-ba05438e812a.png)
+![2016-06-09 19 58 08](https://cloud.githubusercontent.com/assets/9103935/15944445/e6f5882e-2e8d-11e6-8aa7-5696f51e0633.png)
+### This is what a ProgressDialog would look like:
+
+![2016-06-09 11 48 59](https://cloud.githubusercontent.com/assets/9103935/15944601/a1839000-2e8e-11e6-888f-ecb76e90ab55.png)
+"
+y20k/transistor,closed,[Feature request] Add proxy server support,"[Label(name=""enhancement""), Label(name=""wontfix"")]","It would be nice to be able to use a proxy server for the audio streaming.
+"
+y20k/transistor,closed,Can't add streaming URL of Energy FM,"[Label(name=""duplicate""), Label(name=""enhancement"")]","Hello there! I have a problem with transistor. I could add several stations without problems, but it won't add Energy FM for me. The streaming URL is as follows:
+
+http://adwzg2.tdf-cdn.com/7649/nrj_125741.mp3
+
+The error is a follows: ""Transistor tried hard but could not make sense of the given link.""
+
+On my desktop PC this URL works without problems. But I noticed that it always plays an advertisment before starting the actual stream. Probably this is a problem for transistor.
+"
+y20k/transistor,closed,Transistor can't play this pls station on Cyanogenmod 13,[],"Hi, I can play this pls station in VLC but not Transistor.
+
+http://playerservices.streamtheworld.com/pls/CBC_R1_OTT_H.pls
+
+Phone is Moto G 2014 running CM13 (Android 6.0.1)
+
+Screenshot of error https://my.mixtape.moe/eiadpv.png
+
+What could be the issue? I saw a closed issue that was similar but the person was running kitkat
+"
+y20k/transistor,closed,Allow changing stations with Next/Previous media buttons,"[Label(name=""enhancement""), Label(name=""help wanted"")]","I would like for an easy way to change stations while minimizing the interactions with my actual device, much like a physical AM/FM radio with pre-programmed stations. It would be nice to have an option to enable switching through stations by pressing the Next/Previous media buttons on a BT receiver or headphones with play/pause/next/previous media controls.
+"
+y20k/transistor,closed,App loses bluetooth connection,[],"I use a bluetooth speaker to listen to the streams via Transistor. Always after about 30 minutes the app stops to play the stream so I've to restart. 
+
+Android 6.01
+iTeufel Air Blue
+"
+y20k/transistor,closed,Notification UI issue,[],"Hi, just updated to the version 2.0.2 and I get a weird UI on notification.
+OnePlus X - Android LP 5.1.1
+
+V2.0.1 with a right notification (icon size, color, button position and with text)
+![screenshot_2016-05-31-21-10-57](https://cloud.githubusercontent.com/assets/6850125/15687551/a54bf076-2775-11e6-8add-b94edb270782.png)
+
+V2.0.2 with a weird notification (icon size, color, button position and without text)
+![screenshot_2016-05-31-21-20-24](https://cloud.githubusercontent.com/assets/6850125/15687577/cedc77e4-2775-11e6-9e7e-93d6c85c36bd.png)
+"
+y20k/transistor,closed,Radio stations not playing anymore (regression),[],"First of all, many thanks for this great app!
+
+I've updated from version 2.0.0 to version 2.0.1, and some radio stations won't play anymore (BBC and ERT streams, mainly).
+I'm on Cyanogenmod 13.
+
+Two examples:
+
+BBC Radio 1
+http://as-hds-ww-live.edgesuite.net/pool_7/live/bbc_radio_one/bbc_radio_one.isml/bbc_radio_one-audio=96000.m3u8
+
+ERT Proto Programma (Greek Radio)
+http://ep.ert.gr:1935/LiveRadioAthens/_definst_/proto/playlist.m3u8
+"
+y20k/transistor,closed,Use Service.startForeground() to create notification to make the service unkillable,[],"You can reproduce this bug by starting Transistor and then opening Chrome, Firefox and Google Play at the same time on my Note 3.
+Creating notification with Service.startForeground() makes it less likely to die.
+"
+y20k/transistor,closed,Fix for another station not playing: http://www.radioroks.ua/RadioROKS_Concert.m3u,[],"That playlist has two streams, and only the first one is .mp3
+"
+y20k/transistor,closed,Battery usage,[],"Bonjour, greetings. I really love and appreciate your transistor application, thanks for the job you done to it. I want to signal to you a problem appears since the last update, when now we have the name of the track and artist when transistor is playing. With nexus 5 under the last marshmallow update, one hour of playing with transistor and 15/25% of m'y battery used by the application. 2 hours, more of 40%. Then i stoped to use your application since the last update when i cannot charge m'y smartphone. 
+Thanks for reading Christian.
+"
+y20k/transistor,closed,Problem with a pls station,"[Label(name=""bug""), Label(name=""wontfix"")]","This station is not working: 
+http://mp3stream1.apasf.apa.at:8000/listen.pls
+
+Here are some i fos about the radio station http://fm4.orf.at/stream
+
+Tested with play Store Version 2.0
+"
+y20k/transistor,closed,Missing resource,[],"```
+:app:compileReleaseJavaWithJavac/home/krt/src/fdroiddata/build/org.y20k.transistor/app/src/main/java/org/y20k/transistor/helpers/NotificationHelper.java:104: error: cannot find symbol
+        builder.addAction (R.drawable.ic_stop_black_36dp, context.getString(R.string.notification_stop), stopActionPendingIntent);
+                                     ^
+  symbol:   variable ic_stop_black_36dp
+  location: class drawable
+1 error
+ FAILED
+```
+"
+y20k/transistor,closed,"Metadata can be """"",[],"I am not sure if this is a bug, or not. 
+
+`shoutcastProxyReaderLoop` (in [MetadataHelper.java](https://github.com/y20k/transistor/blob/master/app/src/main/java/org/y20k/transistor/helpers/MetadataHelper.java)) sometimes sends a zero character string to `handleMetadataString`. 
+
+For example when handling BBC Radio 1 (http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p).
+"
+y20k/transistor,closed,"Custom notification, just a preview, no need to merge it",[],"Prev/Next buttons are not working yet.
+"
+y20k/transistor,closed,DF streams are not working,[],"Today I tried to stream DeutschlandFunk over Transistor, both the MP3 and OGG Streams are not working for me, the MP3 one shows an error after downloading, the ogg one can be added to Transistor and also starts playing but I won't hear any sound. A test with the FM4 Stream worked as expected.
+
+Stream URLs:
+http://www.deutschlandradio.de/streaming/dlf_hq_ogg.m3u
+http://www.deutschlandradio.de/streaming/dlf.m3u
+
+Thank you for your otherwise great little tool, it really fills a niche for me as an open source Android webradio player.
+"
+y20k/transistor,closed,This should fix incorrect StationID in notification,[],
+y20k/transistor,closed,Shoutcast song title support,[],"It's a bit hacky, because standard Android media player does not support Shoutcast metadata, so you have to filter it out from the stream.
+
+Long song titles won't scroll, I'll probably make a custom notification layout, because I want that marquee effect.
+"
+y20k/transistor,closed,I can't add URL begin with MMS://,"[Label(name=""enhancement"")]","Most of my radio station's URL is started with MMS://, it can be played by MX player. But I can't add it to this app.... Is there a roadmap to support this kind of URL? Thanks
+"
+y20k/transistor,closed,Integrate with Data Saver,"[Label(name=""enhancement"")]","Transistor should ask the user if it can continue to use mobile networks to stream audio if the user did turn on Data Saver (see [http://developer.android.com/preview/features/data-saver.html](http://developer.android.com/preview/features/data-saver.html))
+"
+y20k/transistor,closed,Resume playing on quick headphone reconnect,"[Label(name=""enhancement""), Label(name=""wontfix"")]","It would be awesome if disconnecting the headphones triggered a short timer (60 seconds?), and if the user reconnects the headphones before the timer fires, the audio resumes playing.
+
+This would help with snagged cables, as well as ""loose"" headphone ports.
+"
+y20k/transistor,closed,Update russian,[],
+y20k/transistor,closed,Option (or redesign) to start playing station on short tap instead of long press,"[Label(name=""enhancement""), Label(name=""wontfix"")]","I don't see the utility in a short tap revealing a screen with only one possible subsequent option: pressing the Play button. Why would anyone tap on a station other than to start playing it? I think what would make the most sense is to just play the station on short tap. 
+
+This would address another issue I believe the app has, which is the current inconvenience of changing stations. It requires too many taps: pressing the back button to return to the list of stations, tapping on another station, then finally pressing the play button. Going through these many button presses and screen changes is pretty difficult to do while driving.
+
+I realize this implementation would raise other questions, such as how to otherwise get to a ""now playing"" UI with stop/resume controls, where to show the metadata etc. My only thought is to otherwise make it like Google Play Music where this information and these controls show in a bottom control bar. But I believe the current behavior is just a bit flawed.
+"
+y20k/transistor,closed,Implement MediaSession,"[Label(name=""enhancement"")]","Transistor should implement [MediaSession](http://developer.android.com/reference/android/media/session/MediaSession.html). 
+1. That would enable the app to listen to the headphone button
+2. It also would enable it to send station (meta)data to connected devices (eg. Bluetooth car audio)
+
+Code examples:
+- [Use Hardware Playback Control Keys to Control Your App’s Audio Playback](https://developer.android.com/training/managing-audio/volume-playback.html#PlaybackControls)
+- [davidalbers/TextOverAVRCP.java](https://gist.github.com/davidalbers/953eb949314fd6607616)
+"
+y20k/transistor,closed,HTML translations,"[Label(name=""enhancement"")]","Please, Is it possible separate the text from the HTML?
+Because the translator can add a bug, for example changing HTML's tags.
+Also it's a bit difficult translate the text mixed with HTML and so big.
+"
+y20k/transistor,closed,Pre-built some Radio Station with transistor,"[Label(name=""enhancement""), Label(name=""wontfix"")]","Add some built-in Radio Station.
+
+and If possible add [BASS](http://www.un4seen.com/) Library.
+
+[BASS](http://www.un4seen.com/) is an audio library for use in software on several platforms. Its purpose is to provide developers with powerful and efficient sample, stream (MP3, MP2, MP1, OGG, WAV, AIFF, custom generated, and more via OS codecs and add-ons), MOD music (XM, IT, S3M, MOD, MTM, UMX), MO3 music (MP3/OGG compressed MODs), and recording functions. All in a compact DLL that won't bloat your distribution.
+
+**BASS** is available for many different platforms
+"
+y20k/transistor,closed,Image Assets,[],"This is just a pseudo-issue that I use to upload images. 
+![2016-03-07 08 07 58](https://cloud.githubusercontent.com/assets/9103935/13563781/f9a4f47a-e444-11e5-9639-eae64cf763d4.png)
+![screenshot from 2016-03-09 15-00-20](https://cloud.githubusercontent.com/assets/9103935/13637542/2c98df44-e608-11e5-96f3-6474476d1cc3.png)
+![screenshot from 2016-03-21 21-48-22](https://cloud.githubusercontent.com/assets/9103935/13933731/fca7d1a4-efae-11e5-9872-46fe88eb9ba5.png)
+![f-droid_en_badge](https://cloud.githubusercontent.com/assets/9103935/14701970/49decb6a-07a8-11e6-94a8-c67a6b0777cb.png)
+![f-droid_en_badge](https://cloud.githubusercontent.com/assets/9103935/14702535/45f6326a-07ab-11e6-9256-469c1dd51c22.png)
+
+[FM4.m3u.zip](https://github.com/y20k/transistor/files/248548/FM4.m3u.zip)
+"
+y20k/transistor,closed,Renaming a station may overwrite another station,"[Label(name=""bug"")]","1. Create a station named A
+2. Create a station named B
+3. Rename A to B
+4. Without a warning B is deleted and replaced by A
+
+if B had an image but A did not, old-A-new-B now has the image of old-B
+"
+y20k/transistor,closed,Reconnect to the stream...,[],"Hi!
+
+Transistor is a great little app. I like it a lot!
+
+I have a small issue though, which I think would be easy to remedy. 
+
+I tend to listen to Transistor while travelling, and the stream often disconnects at some point in my journey. It would be nice if Transistor automatically tried to reconnect when this happens.
+
+The most annoying instance of this occurs every time I leave my house with Transistor playing. When I get about 50 feet from my house, the wifi signal drops out, and the phone switches to 3G mode. Since the IP address has changed, the stream disconnects. Since it's freezing cold outside, it's pretty irritating to have to take off my gloves, take out my phone, and, with frozen fingers, unlock it, open the app, and press the big play button.
+
+Every... single... time....
+
+:)
+
+I'd love if it either could detect when the network went up/down, or if it just kept trying to reconnect every 5 seconds or something. (Ideally both!)
+"
+y20k/transistor,closed,Determine the content-type and charset using a regular expression,[],"The content-type and the charset of an URL is now determined using a regular expression.
+I just send the `Content-type` header returned by an HTTP server into the RegEx and assign the capture groups to a container object.
+
+The actual detection of playlist/audio-file was not changed.
+
+The charset is currently not used but maybe be taken in account in the future.
+
+There also was a bug in the `contentType.substring()` method call, which led to an `IndexOutOfBoundsException` in some cases. That should be fixed, too.
+
+I hope the pattern is hard enough to persist exotic headers :)
+"
+y20k/transistor,closed,Crash when adding empty link,"[Label(name=""bug"")]","Steps to reproduce:
+Open app -> tap to + button -> write ""abcde"" or leave a blank line -> tap to add button -> crash
+"
+y20k/transistor,closed,fix russian,[],
+y20k/transistor,closed,can't add channels on Android 6,"[Label(name=""enhancement"")]","I recently upgraded to Android 6 (omnirom), and ever since, I can't add stations. Transistor gives the ""tried hard, but can't make sense"" error message. These are links that I had in Transistor on Android 5, and I've tried .mp3 and .ogg versions. No go.
+Ideas? How should I proceed to trace the bug?
+"
+y20k/transistor,closed,Bare bones tablet support,"[Label(name=""enhancement"")]","I somehow have the feeling that Google is not yet ready to give up tablets. My bet is that next I/O they will introduce better tablet support. Transistor should get a decent two-pane layout for bigger resolutions.
+"
+y20k/transistor,closed,Resume play on audio jack plug-in ,"[Label(name=""enhancement""), Label(name=""wontfix"")]","A feature request:
+
+If i plug out my headphone, the playing stops.
+This is fine (did you implemented it or is this the default behavior?).
+
+It would be nice, if the playing of the same station just continues when i plug it in again. :headphones:
+"
+y20k/transistor,closed,Better notification,"[Label(name=""enhancement"")]","The notification could see a few improvements. I'll fork your code and try to fix some of these myself next week.
+1. Notification has 'content hidden' while in the lockscreen. This is fixed with VISIBILITY_PUBLIC flag.
+2. 'Swipe to stop' will kill your app on some devices at random (some Sony and HTC phones aggressively kill all background tasks), and also when user taps 'Clear all' button. What you need is 'Tap to stop', or even better full controls with prev/next/close buttons. And you need to create this notification by creating a Service and calling startForeground() on it. I've got a similar patch for KDE Connect lying around, I'll adapt it for Transistor (and those lazy bums won't merge my patch after 4 months, and also KDEConnect on PC messes up all windows at random, so I'm back to using MPD, why all reliable music stuff on Debian must come in a console-only form?).
+3. Artist and song names from a stream ID3 tags or Shoutcast metadata, displayed in a nice marquee. I can submit a patch for marquee :)
+"
+y20k/transistor,closed,Play Store description does not contain a link to Github page,[],"Yeah it may be trivial to find, but still if you're writing that the app is open-source, you usually provide the link.
+"
+y20k/transistor,closed,Some links are not recognized,[],"When opening .m3u link in a web browser from http://www.slayradio.org/ Transistor is not in the 'Open with' list. It also won't open the link if I copy-paste it into the app manually.
+
+Full link: http://www.slayradio.org/tune_in.php/128kbps/slayradio.128.m3u
+
+VLC opens and plays it fine. The server probably sends incorrect HTTP mime-type.
+"
+y20k/transistor,closed,Transistor does not add certain m3u links,"[Label(name=""bug""), Label(name=""help wanted"")]","Here's an example: http://www.listenlive.eu/rte1.m3u
+
+When adding the aforementioned link to Transistor, it will simply say ""download started"" but nothing will actually play or get added to the list of stations.
+
+Meanwhile, when I add the link to VLC for Android, it adds the link to the streaming playlist and will play it immediately upon tapping it. 
+
+Transistor should be able to play any link ending with .m3u. What's going on here?
+"
+y20k/transistor,closed,Translations: Chinese ~~and Spanish~~ anyone?,"[Label(name=""enhancement""), Label(name=""help wanted"")]","If there is anyone out there speaking Chinese ~~or Spanish~~, translations in those two languages would be the bomb! I think that could broaden the appeal of Transistor a lot. Since I do not see a feature in [Weblate](https://hosted.weblate.org/projects/transistor/strings/) to articulate that, I chose to open an issue here.
+"
+y20k/transistor,closed,Station shortcut on desktop,"[Label(name=""enhancement""), Label(name=""help wanted"")]","Hi, thank you for your nice app.
+It would be great to be able to put shortcuts for stations on the homescreen. When you tap the shortcut, the station would start playing directly.
+I'm not talking about a widget but simply a shortcut.
+"
+y20k/transistor,closed,additive playlist (recently played stations),"[Label(name=""enhancement""), Label(name=""wontfix"")]","Hi
+
+It would be great if the app keeps the previously listened stations, the ones coming from other apps.
+
+Open your browser. open shoutcast site, find a channel. Click in m3u to listened in the app. Stream a abit, stop it. Open shoutcast page again and stream another link. there is only one link in the app. You loose the previous link in this scenario.
+"
+y20k/transistor,closed,Shoutcast and Xiph search,"[Label(name=""enhancement""), Label(name=""wontfix"")]","Hi
+
+It will be great if we can search those online stations and add to the playlust and stream from.
+"
+y20k/transistor,closed,show url,"[Label(name=""enhancement"")]","HI
+
+It is impossible to see or edit the url once it is added. I thimk that it would be nice if one could at least copy the url to use in other apps.
+"
+y20k/transistor,closed,load playlis files,"[Label(name=""enhancement"")]","Hi
+
+It would be great if one could load playlist files as a file.
+"
+y20k/transistor,open,⚠️🚧 Previous discussions and feature requests #readmefirst,"[Label(name=""wontfix"")]","Here is a list of closed issues and feature requests that were **not implemented**. I compiled the list, because I think some of the issues and discussions are still of interest for some people. 
+
+### Issues tagged with `enhancement`, `help wanted`
+
+Those issues were closed because I wasn't able to figure out how to implement them or because it would cost me too much time/effort to implement them. Feel free to comment or reopen, if you have a suggestion.
+
+- [Save multiple streams as a single station](https://github.com/y20k/transistor/issues/206) (opened 2018-11-23)
+- [Import and export of station list / URLs etc](https://github.com/y20k/transistor/issues/126) (opened 2017-05-17)
+- [Bit Rate In The Info Screen ](https://github.com/y20k/transistor/issues/121) (opened 2017-04-19)
+- [Integrate radio-browser.info (work together?)](https://github.com/y20k/transistor/issues/94) (opened 2016-06-11)
+- [Allow changing stations with Next/Previous media buttons](https://github.com/y20k/transistor/issues/89) (opened 2016-06-06)
+- [A very long pause before playback starts on VPN](https://github.com/y20k/transistor/issues/37)  (opened 2016-02-04)
+
+### Issues tagged with `enhancement`, `wontfix`
+
+Those issues were closed because they would have added unnecessary complexity to the app. 
+- [Page header with swipe (genre switcher)](https://github.com/y20k/transistor/issues/196) (opened 2018-10-20)
+- [Add an option for Search](https://github.com/y20k/transistor/issues/160) (opened 2018-01-10)
+- [Option for download/record](https://github.com/y20k/transistor/issues/156) (opened 2017-11-21)
+- [Set as alarm](https://github.com/y20k/transistor/issues/118) (opened 2017-02-03)
+- [Google Cast support](https://github.com/y20k/transistor/issues/115) (opened 2016-12-17)
+- [Quit-Button](https://github.com/y20k/transistor/issues/102) (opened 2016-09-16)
+- [Add proxy server support](https://github.com/y20k/transistor/issues/92) (opened 2016-06-09)
+- [Option (or redesign) to start playing station on short tap [...]  _(MiniPlayer)_](https://github.com/y20k/transistor/issues/71) (opened 2016-03-27)
+- [Pre-built some Radio Station with transistor](https://github.com/y20k/transistor/issues/68) (opened 2016-03-22)
+- [Resume play on audio jack plug-in](https://github.com/y20k/transistor/issues/59) (opened 2016-02-21)
+- [additive playlist (recently played stations)](https://github.com/y20k/transistor/issues//52) (opened 2016-02-09) 
+- [Shoutcast and Xiph search](https://github.com/y20k/transistor/issues//51) (opened 2016-02-09)
+- [extend notification](https://github.com/y20k/transistor/pull/46) (opened 2016-02-08)
+- [Manual sorting of station entries](https://github.com/y20k/transistor/issues/45) (opened 2016-02-07)
+- [Support Android Jelly Bean (4.1 / 4.2 / 4.3)](https://github.com/y20k/transistor/issues/38) (opened 2016-02-04)
+
+### Other issues of interest
+- [Dark Theme](https://github.com/y20k/transistor/issues/172) (opened 2018-02-24)
+- [Why isn't the newest version on F-Droid?](https://github.com/y20k/transistor/issues/128) (opened 2017-05-27)"
+y20k/transistor,closed,Chromecast support,"[Label(name=""enhancement""), Label(name=""help wanted"")]","In some comments it was mentioned that some people miss this feature. I think it is not a top priority but with Chromecast Audio it would make sense to have a basic support for it in the app.
+"
+y20k/transistor,closed,extend notification,"[Label(name=""enhancement""), Label(name=""wontfix"")]","Hello,
+today i have noticed that, if I click the ""clear all notification"" button that transistor app / notification closes also. I think this behaviour is not so good. I really like this app. I have deleted TuneIn Radio for your app, because all I need is streaming a radio channel. no more no less. :-) I hope you like my changes. :-)
+
+I change the following:
+- notification: add buttons to play, pause and stop stream
+- notification: open the app on stream name click
+- implement pause functionality
+- add new drawables for play, pause and stop
+- show some toast to inform the user
+- simplify returns in Station.java and StationDownloader.java
+- screenshot:
+  ![screenshot](https://cloud.githubusercontent.com/assets/6609359/12897626/bf5c3d8e-cea8-11e5-8a64-468eea5951f8.PNG)
+"
+y20k/transistor,closed,Manual sorting of station entries,"[Label(name=""enhancement""), Label(name=""wontfix"")]","Feature request:
+
+Allow manual sorting of station entries.
+This could possibly be done when longtapping and dragging the icon.
+Every filename could be prepended with an index number on the filesystem to easily sort them when populating the list.
+"
+y20k/transistor,closed,Wrong entry is marked as playing when order changes,"[Label(name=""bug"")]","I spotted a little bug:
+When playing a stream and then renaming a station entry, so that the order of station changes, the wrong entry is marked as _playing_.
+
+Steps to reproduce:
+- Create a station and rename to _ABC_
+- Create a station and rename to _DEF_
+- Start playing Station _ABC_
+- While playing, rename Station _DEF_ to _AAA_
+
+Then the wrong station is marked as _playing_.
+"
+y20k/transistor,closed,Sleep timer button in Playback screen,"[Label(name=""enhancement"")]","(Note to my future self:) I got this suggestion via mail. I think adding a sleep button in the playback screen (ActionBar) seems to be a nice feature that does not add clutter or complexity. Not a feature for the next release but definitely worth considering.
+"
+y20k/transistor,closed,fix russian,[],"Weblate added problems.
+"
+y20k/transistor,closed,m3u URL not working,[],"Hey, first things first. Great app, really like the material interface. I was trying to add the following stream: http://www.sputnik.de/m3u/live.hi.m3u 
+but the app keeps prompting that it can't find a stream. Opening the url in VLC works without any problems.
+"
+y20k/transistor,closed,Renaming Station Fails,"[Label(name=""bug"")]","I'm trying to rename a station from _Deutschlandradio_ to _Deutschlandradio Kultur_ but after _Deutschlandradio_ nothing happens. It just stops, I can still type though.
+"
+y20k/transistor,closed,We have such a nice onCompletion listener :),[],"Note: untested, I don't have a build environment set up
+"
+y20k/transistor,closed,Support Android Jelly Bean (4.1 / 4.2 / 4.3),"[Label(name=""enhancement""), Label(name=""wontfix"")]","Can you please add support for Android Jelly Bean (4.1 / 4.2 / 4.3)? Or at least Android 4.3?
+
+Thanks!
+"
+y20k/transistor,closed,A very long pause before playback starts on VPN,"[Label(name=""enhancement""), Label(name=""help wanted"")]","I love your app for it's simplicity and an open source code!! Bravo! I've waited for this for years.
+
+However,  I have one problem: I always connect to the internet through VPN. And if pressing on playback button when on VPN, I have to wait more then a minute for the playback to start.
+
+It is happening only with Transistor. With ""Radio FM"" or ""TuneIn"" there are no such delays. Is there something you could do about it?
+
+Thanks!
+"
+y20k/transistor,closed,Add support for .m3u8 type playlists.,"[Label(name=""enhancement""), Label(name=""help wanted"")]","Please add support for the .m3u8 playlist format, which open source players have more recently migrated to.
+
+Here are some example station listings using the format.
+
+http://mathewpeet.org/lists/BBC_radio_audio_streams/
+
+Thank you.
+"
+y20k/transistor,closed,Support of plain mpeg and ogg audio files,[],"I added support for adding plain mpeg and ogg audio files by examine the `Content-type`-header of the resource.
+
+I also added a `.gitignore` file like it would be created by Android Studio, so build and IDE directories will not be synced.
+"
+y20k/transistor,closed,Back button does not work properly when choosing new icon,"[Label(name=""bug""), Label(name=""help wanted"")]","@btimofeev described this bug as follows in a comment on issue #21:
+
+> open Transistor -> tap to change icon -> press back -> press back -> open Transistor -> tap to change icon -> press back -> press back
+> The app is not closed, and opens a window for selecting images.
+
+I probably need to fiddle with the back stack.
+"
+y20k/transistor,closed,Track artist/title info,"[Label(name=""enhancement""), Label(name=""help wanted"")]","... would be amazing :)
+"
+y20k/transistor,closed,Doesn't reconnect if stream fails,"[Label(name=""bug"")]","I listen to streams over Tor (Orbot), and sometimes its circuits fail. Or the Wi-Fi goes down and comes right up again. It would be nice if Transistor tried to reconnect aggressively (like once per second?) until the user stops the stream.
+"
+y20k/transistor,closed,Simultaneous playback of several radiostations,"[Label(name=""bug"")]","Bug: sometimes two radio stations start playing simultaneously.
+
+How to reproduce bug: long tap to station, then quickly long tap on another station, then on another station, etc.
+"
+y20k/transistor,closed,update russian translation,[],
+y20k/transistor,closed,Fix lint error before releases,[],"A clean checkout of 1.1.6 gives me a lint error:
+
+```
+:app:lintVitalRelease/home/krt/src/fdroiddata/build/org.y20k.transistor/app/src/main/res/values-sr/strings.xml:4: Error: The resource string ""app_name"" has been marked as translatable=""false"" [ExtraTranslation]
+    <string name=""app_name"">Транзистор</string>
+            ~~~~~~~~~~~~~~~
+
+   Explanation for issues of type ""ExtraTranslation"":
+   If a string appears in a specific language translation file, but there is
+   no corresponding string in the default locale, then this string is probably
+   unused. (It's technically possible that your application is only intended
+   to run in a specific locale, but it's still a good idea to provide a
+   fallback.).
+
+   Note that these strings can lead to crashes if the string is looked up on
+   any locale not providing a translation, so it's important to clean them
+   up.
+
+1 errors, 0 warnings
+```
+
+while I can (and did) forcefully ignore them in gradle's `android` section with
+
+```
+lintOptions {
+   abortOnError false
+}
+```
+
+This is a hack. A release should build with out modification. Either fix those issues on your side or (just in case) apply the workaround in your build.gradle :)
+"
+y20k/transistor,closed,Add Serbian language,[],"References #23 
+"
+y20k/transistor,closed,Update,[],
+y20k/transistor,closed,updated french translation,[],
+y20k/transistor,closed,fix string builder,[],
+y20k/transistor,closed,updated russian,[],
+y20k/transistor,closed,Translation Updates,"[Label(name=""help wanted"")]","This is an internal thread where I would like to announce changes and additions to the text strings used in transistor: [strings.xml](https://github.com/y20k/transistor/blob/master/app/src/main/res/values/strings.xml)
+
+Translators can subscribe to this issue to stay up-to-date.
+"
+y20k/transistor,closed,Does not support audio URLs,"[Label(name=""enhancement"")]","Such as...
+http://streams.kqed.org/kqedradio
+or...
+http://broadcast.infomaniak.ch/radionova-high.mp3
+
+Can the URL parsing be made a bit more resilient?
+"
+y20k/transistor,closed,IllegalStateException when you try to change the icon,"[Label(name=""bug"")]","**How to reproduce the error:**
+open Transistor -> shut down by pressing the back -> open again -> try to change the icon of any station. 
+
+```
+01-21 00:37:46.789 31054-31054/org.y20k.transistor E/AndroidRuntime: FATAL EXCEPTION: main
+                                                                     Process: org.y20k.transistor, PID: 31054
+                                                                     java.lang.IllegalStateException: Fragment MainActivityFragment{e7db358} not attached to Activity
+                                                                         at android.support.v4.app.Fragment.startActivityForResult(Fragment.java:925)
+                                                                         at org.y20k.transistor.MainActivityFragment.selectFromImagePicker(MainActivityFragment.java:482)
+                                                                         at org.y20k.transistor.MainActivityFragment.access$500(MainActivityFragment.java:58)
+                                                                         at org.y20k.transistor.MainActivityFragment$6.onReceive(MainActivityFragment.java:415)
+                                                                         at android.support.v4.content.LocalBroadcastManager.executePendingBroadcasts(LocalBroadcastManager.java:297)
+                                                                         at android.support.v4.content.LocalBroadcastManager.access$000(LocalBroadcastManager.java:46)
+                                                                         at android.support.v4.content.LocalBroadcastManager$1.handleMessage(LocalBroadcastManager.java:116)
+                                                                         at android.os.Handler.dispatchMessage(Handler.java:102)
+                                                                         at android.os.Looper.loop(Looper.java:148)
+                                                                         at android.app.ActivityThread.main(ActivityThread.java:5417)
+                                                                         at java.lang.reflect.Method.invoke(Native Method)
+                                                                         at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+                                                                         at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+```
+"
+y20k/transistor,closed,added missing angle bracket,[],
+y20k/transistor,closed,AAC doesn't play,"[Label(name=""enhancement""), Label(name=""help wanted"")]","I can't play AAC streams like http://www.rockantenne.de/webradio/channels/classic-perlen.aac.pls
+The mp3/m3u stream from the same source works fine. System is CM12.1.
+"
+y20k/transistor,closed,Translation,[],"How I can translate this app? I can translate to catalan and spanish.
+"
+y20k/transistor,closed,Fix russian,[],
+y20k/transistor,closed,fix build,[],"Sorry, last commit broke compilation.
+"
+y20k/transistor,closed,Russian translation,[],
+y20k/transistor,closed,Add Ukrainian language,[],"Please, add Ukrainian language.
+"
+y20k/transistor,closed,updated README.md,[],"Add download badges
+"
+y20k/transistor,closed,fixed french translation,[],"fix apostrophes unescaped and improvements
+"
+y20k/transistor,closed,add a link to the app in F-Droid in the readme,[],
+y20k/transistor,closed,French translation,[],"I translated the HTML Strings and fixed some french expressions.
+"
+y20k/transistor,closed,Unable to add somafm,"[Label(name=""bug"")]","Sample URLs listed at http://somafm.com/groovesalad/directstreamlinks.html
+
+For example, if I try to add ""http://somafm.com/groovesalad.pls"" I get a ""Download started"" popup, but no further response from transistor.
+"
+y20k/transistor,closed,Improve the German translation,[],"fix some spelling mistakes and commas
+"
+y20k/transistor,closed,mms or rtsp support?,"[Label(name=""enhancement"")]","Most of my stations are `mms://` based. Currently we cannot input mms url to transistor. I hope you can add support to mms. Thanks!
+"
+y20k/transistor,closed,Dowload issue,[],"Hello,
+
+I got a similiar error like issue #5 with this address:
+http://internetradio.salue.de:8000/classicrock.mp3 
+(from here: http://www.classicrock-radio.de/musik/webradio.phtml, it's the same with the aac stream)
+
+Thank you for your app!
+"
+y20k/transistor,closed,File does not contain a valid streaming url,"[Label(name=""enhancement"")]","Hello
+
+Thanks for making this app.
+
+I tried it and run into problems. Transistor seems to fail to play some streams. 
+At least it failed playing this one:
+http://www.dradio.de/streaming/dlf_hq_ogg.m3u
+
+Hope you can fix it.
+"
+y20k/transistor,closed,updated french translation,[],
+y20k/transistor,closed,xml files improvements,[],
+y20k/transistor,closed,added french translation,[],
+y20k/transistor,closed,Missing gradle files,[],"Gradle build files are required for building this app. While you might just use ""common"" build files by now, when you add more libraries etc. the gradle files are really needed.
+
+Ref: https://f-droid.org/forums/topic/transistor-radio-app/
+"

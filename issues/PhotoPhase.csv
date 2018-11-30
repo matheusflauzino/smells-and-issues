@@ -1,0 +1,239 @@
+repository,state,title,label,body
+jruesga/PhotoPhase,open,PhotoPhase v 2.7.0 crashes when screen orientation in Android 7.0,"[Label(name=""bug"")]","
+# Expected behavior
+After disabling the Sepia, Sobel, and Swirl features in Types settings or in the Effects menu section. The ability to switch to landscape display mode should be possible.
+
+
+# Actual behavior
+After disabling the Sepia, Sobel, and Swirl features in Types settings or in the Effects menu section. I accidentally switched to landscape view mode, suddenly the app stopped.
+
+
+# How to reproduce
+* Launch app. 
+* Go to the General settings, then select and open the Types feature under the Effects menu.
+* Enable features Sepia, Sobel, and Swirl. Then click Ok to save it.
+* Go back to the Types feature, then disable the Sepia, Sobel, and Swirl features. Next you have to switch to landscape display mode. *Then you will find the problem as I have explained.*
+
+<center>Browser: Samsung Galaxy S6 edge
+Operating system: Nougat 7.0
+App version: 2.7.0</center>
+
+
+# Recording Of The Bug
+https://youtu.be/sqW0GA-mxGk
+
+# Logcat
+<code>--------- beginning of crash
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: FATAL EXCEPTION: main
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: Process: com.ruesga.android.wallpapers.photophase, PID: 16295
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: java.lang.NullPointerException: Attempt to invoke virtual method 'android.content.res.Resources android.content.Context.getResources()' on a null object reference
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at com.ruesga.android.wallpapers.photophase.preferences.c$a$b$d.b(SourceFile:261)
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at com.ruesga.android.wallpapers.photophase.preferences.GeneralPreferenceFragment$1.onPreferenceChange(SourceFile:104)
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at android.preference.Preference.callChangeListener(Preference.java:1128)
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at android.preference.MultiSelectListPreference.onDialogClosed(MultiSelectListPreference.java:213)
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at com.ruesga.android.wallpapers.photophase.preferences.MultiSelectListPreferenceCompat.onDialogClosed(SourceFile:114)
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at android.preference.DialogPreference.onDismiss(DialogPreference.java:400)
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at android.app.Dialog$ListenersHandler.handleMessage(Dialog.java:1632)
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:154)
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:6682)
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1520)
+05-28 21:43:34.104 16295 16295 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1410)
+05-28 21:43:34.109  4675  4675 V StatusBar.BrightnessController: updateMode  autobrightness is  false
+05-28 21:43:34.110  4675  4675 V StatusBar.BrightnessController: updateSlider = 64
+05-28 21:43:34.111  4675  4675 D ToggleSlider: setOutdoorMode false
+05-28 21:43:34.111  4675  4675 D QSBrightnessView: QSBrightnessView
+05-28 21:43:34.117  3710  6252 D Debug   : !@DumpState : SHIP
+05-28 21:43:34.118  3710  6252 D Debug   : !@DumpState : debug level:0x4f4c
+05-28 21:43:34.118  3710  6252 D Debug   : !@Dumpstate : Finally, system will skip dumpstate
+05-28 21:43:34.121  3710  6252 W ActivityManager:   Force finishing activity </code>"
+jruesga/PhotoPhase,open,Refresh Now doesn't work in PhotoPhase.,"[Label(name=""bug"")]","
+#### Expected behavior
+
++ The app should be able to refresh Manually the picture database. 
+
+#### Actual behavior
+
++ The app is not able to Manually refresh the picture database because Refresh now feature does not work in PhotoPhase. 
+
+#### How to reproduce
+
++ Launch the App. 
+
++ Click on media. 
+
++ Click on refresh Now, it doesn't work and you are not able to Manually refresh the picture database. 
+
+* Browser: PhotoPhase
+* Operating system:Android Nought (7.0)
+
+#### Recording Of The Bug
+
+https://youtu.be/QzuK6lZfs9E
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@wanizubair/refresh-now-doesn-t-work-in-photophase"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+jruesga/PhotoPhase,closed,The app disappears completely when you want to hide the icon.,"[Label(name=""wontfix"")]","
+#### Expected behavior
+The icon is expected to be hidden from the device, but the application can still be used.
+
+#### Actual behavior
+The application disappears completely from the device when you want to hide it from the launcher.
+
+#### How to reproduce
+1. Download the application. 
+2. Install. 
+3. Try to hide the launcher icon. 
+4. Try to find the application move mind on the device. 
+5. The application has completely disappeared and needs to be reinstalled to reuse.
+
+* Browser: photophase V 2.7.0
+* Operating system: Android 5.1.1
+
+#### Recording Of The Bug
+https://youtu.be/DrFsaHSleEo
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@shirou-jeff/the-app-disappears-completely-when-you-want-to-hide-the-icon"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+jruesga/PhotoPhase,closed,Bug found while trying to move photos from photophase into Vault in PhotoPhase Application:,"[Label(name=""wontfix"")]","
+#### Expected behavior
+
+The app should be able to move photos from photophase into Vault just like we move photos from gallery into Vault.
+
+#### Actual behavior
+
+Whenever we try to move photos from photophase into Vault. It just lights up and goes back to the place where we started and is unable to move photos from photophase into Vault. 
+
+#### How to reproduce
+
+Launch the app. 
+
+Press on Media option. 
+
+Select Albums from the Pictures. 
+
+Select any image from the pictures. 
+
+Now click on the Share icon. 
+
+Select ""Move into Vault"" option. 
+
+It just lights up and stops working. 
+
+* Application: PhotoPhase 2.7.0(Apache-2.0)
+Version: 2.7.0
+* Operating system: Android Naugat. 
+Redmi 5a
+
+#### Recording Of The Bug
+
+https://youtu.be/dvxnaL3jn58
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@huwaid/bug-found-while-trying-to-move-photos-from-photophase-into-vault-in-photophase-application"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+jruesga/PhotoPhase,closed,Feature: double-tap to get image info,"[Label(name=""enhancement"")]","Hi again,
+
+Would it be possible to add a new possibility when double-taping on a photo, which is to get a popup with info on the photo (date, name, path, and possibly gps location if available, or other exif data)?
+
+Thanks again for your time and effort on this app!
+Regards"
+jruesga/PhotoPhase,closed,Preserve filename when resizing,[],"Hi,
+
+I've been using your app for years, and I've only one word: thank you!
+
+I've a very simple suggestion: when creating a resized image, could the app name it using the original image (plus a suffix, if you need uniqueness)? 
+
+Currently, when an image is resized, the resized image displayed is always named ""VT-Compress (tm) Xing Technology [...]"", which is quite a pitty. I so loose the possibility to double-tap and open the image in order to get its name (name of the painting, date of the photo, etc.).
+
+Would it be possible?"
+jruesga/PhotoPhase,closed,Crash when opening album list,"[Label(name=""bug"")]","After the app has finished scanning my device for albums, it crashed (possibly due to large number of images in one folder) 
+
+Stack trace:
+java.lang.RuntimeException: An error occurred while executing doInBackground()
+	at android.os.AsyncTask$3.done(AsyncTask.java:309)
+	at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:354)
+	at java.util.concurrent.FutureTask.setException(FutureTask.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:242)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)
+	at java.lang.Thread.run(Thread.java:818)
+Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'int android.graphics.Bitmap.getWidth()' on a null object reference
+	at com.ruesga.android.wallpapers.photophase.e.a.a(SourceFile:216)
+	at com.ruesga.android.wallpapers.photophase.e.a.b(SourceFile:157)
+	at com.ruesga.android.wallpapers.photophase.d.a.a(SourceFile:122)
+	at com.ruesga.android.wallpapers.photophase.d.a.doInBackground(SourceFile:34)
+	at android.os.AsyncTask$2.call(AsyncTask.java:295)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+	... 3 more
+"
+jruesga/PhotoPhase,closed,Android unsets app as wallpaper,[],"No clue why, but on my Android 7 device, sometimes PhotoPhase randomly disappears as wallpaper and I suddenly have the default factory wallpaper again. This happens once or twice a day so is rather annoying. Any way I could help debug this? 
+
+I'm running the F-Droid build."
+jruesga/PhotoPhase,closed,Provide pure floss build flavor,[],"Since 2.2.1 PhotoPhase requires non-free dependencies (Google's play-services) to build. Most likely this comes from supporting chromecasting, so I wont argue if this is necessary. Anyway: Is there a possibility to add a free-only build flavor that doesnt require play-services (by not supporting casting)?"
+jruesga/PhotoPhase,closed,Update strings.xml,[],"Fixed typo ;)
+"
+jruesga/PhotoPhase,closed,Use hardware acceleration to crop image (fix aspect ratio),"[Label(name=""enhancement""), Label(name=""medium"")]",
+jruesga/PhotoPhase,closed,Photophase effects doesn't work on tablets,"[Label(name=""bug""), Label(name=""high"")]",
+jruesga/PhotoPhase,closed,Memory leaks,"[Label(name=""bug""), Label(name=""high"")]","Bitmaps?
+"
+jruesga/PhotoPhase,closed,Reset of Media doesn't work,"[Label(name=""wontfix"")]",
+jruesga/PhotoPhase,closed,Disposition FC,"[Label(name=""bug""), Label(name=""high"")]","Delete upper right frame. Move upper left. FC AIOOB.
+"
+jruesga/PhotoPhase,closed,With the API 15 the seekbar layouts are broken,"[Label(name=""bug""), Label(name=""high"")]",
+jruesga/PhotoPhase,closed,Advise the user about no media,"[Label(name=""enhancement""), Label(name=""medium"")]",
+jruesga/PhotoPhase,closed,Use absolute path in last seen albums,"[Label(name=""bug""), Label(name=""high"")]",
+jruesga/PhotoPhase,closed,Cancel media discovery on texture recycle,"[Label(name=""bug""), Label(name=""high"")]","If media discovery is running and texture manager was recycled mBackgroundThread could be null. 
+
+java.lang.NullPointerException
+    at org.cyanogenmod.wallpapers.photophase.TextureManager.onMediaDiscovered(TextureManager.java:291)
+    at org.cyanogenmod.wallpapers.photophase.MediaPictureDiscoverer$AsyncDiscoverTask.onCancelled(MediaPictureDiscoverer.java:148)
+    at org.cyanogenmod.wallpapers.photophase.MediaPictureDiscoverer$AsyncDiscoverTask.onCancelled(MediaPictureDiscoverer.java:1)
+    at android.os.AsyncTask.finish(AsyncTask.java:629)
+
+Avoid to send callbacks notifications it texture manager is recycled
+"
+jruesga/PhotoPhase,closed,Card effects is not shown when albums have a lot of pictures (+1000) exists,"[Label(name=""bug""), Label(name=""high"")]",
+jruesga/PhotoPhase,closed,The + sign is alway shown when more than 99 pictures exists in the album,"[Label(name=""bug""), Label(name=""high"")]","99+ is only for selected pictures, not for current items
+"
+jruesga/PhotoPhase,closed,Displacement with expanded desktop activated,"[Label(name=""bug""), Label(name=""high"")]",
+jruesga/PhotoPhase,closed,FC in landscape disposition on SGS2,"[Label(name=""bug""), Label(name=""high"")]","In devices with a small disposition view on lanscape, toMatrix method crashes when try to split the right bottom disposition
+
+java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+    at org.cyanogenmod.wallpapers.photophase.utils.DispositionUtil.toMatrix(DispositionUtil.java:95)
+    at org.cyanogenmod.wallpapers.photophase.widgets.DispositionView.computeNewDispositions(DispositionView.java:605)
+    at org.cyanogenmod.wallpapers.photophase.widgets.DispositionView.onEndResize(DispositionView.java:473)
+    at org.cyanogenmod.wallpapers.photophase.widgets.ResizeFrame.onTouchEvent(ResizeFrame.java:253)
+"
+jruesga/PhotoPhase,closed,Show toast on Refresh now,"[Label(name=""bug""), Label(name=""medium"")]",
+jruesga/PhotoPhase,closed,Fix aspect ratio,"[Label(name=""enhancement""), Label(name=""medium"")]",
+jruesga/PhotoPhase,closed,Multiple effect selection,"[Label(name=""enhancement"")]","Multicheck rather than radio buttons
+"
+jruesga/PhotoPhase,closed,Option: Select new media pictures automatically,"[Label(name=""enhancement""), Label(name=""high"")]",
+jruesga/PhotoPhase,closed,Fix transitions,"[Label(name=""bug"")]","Transitions are broken after new effects feature
+"
+jruesga/PhotoPhase,closed,Update Icons,"[Label(name=""enhancement"")]",
+jruesga/PhotoPhase,closed,Move branch to cm-10.2,"[Label(name=""bug"")]",
+jruesga/PhotoPhase,closed,Tablet layout,"[Label(name=""enhancement"")]","Create a tablet layout (especially for preferences like media selector)
+"
+jruesga/PhotoPhase,closed,Flush all images on emptyTextureBuffer,"[Label(name=""bug"")]","The pictures are not removed from the sRecycledBitmaps of TextureManager on EXTRA_FLAG_EMPTY_TEXTURE_QUEUE event  (xe changing effect type).
+
+Note: check this last assertion
+"
+jruesga/PhotoPhase,closed,Pictures duplicates in wallpaper,"[Label(name=""enhancement""), Label(name=""low"")]","Sometimes when reloading the picture buffer some of the pictures are duplicates in the wallpaper. Improve the random buffer to use pictures that are not in the screen (if possible).
+"
+jruesga/PhotoPhase,closed,Touch on image,"[Label(name=""enhancement"")]","Implements on image touch action (open gallery?)
+"
+jruesga/PhotoPhase,open,Social conectors,"[Label(name=""enhancement""), Label(name=""low"")]","Implements loading pictures from social connectors
+- Flicker
+- Facebook
+- ...
+"
+jruesga/PhotoPhase,closed,New transitions,"[Label(name=""enhancement""), Label(name=""low"")]","Create new frame transitions:
+- Rotate/Flip (DONE)
+- Window (DONE)
+- ...
+"
+jruesga/PhotoPhase,closed,Hardware Bitmap Effects,"[Label(name=""enhancement"")]","Use OpenGLES Effects instead of Java ones (android.media.effect).
+"
+jruesga/PhotoPhase,closed,Disposition Layout,"[Label(name=""enhancement"")]","Create a new preference to configure disposition layout (portrait and landscape)
+"

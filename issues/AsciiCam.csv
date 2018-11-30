@@ -1,0 +1,134 @@
+repository,state,title,label,body
+dozingcat/AsciiCam,open,Bug in Ascii cam when share text by using copy to clipboard. ,[],"
+#### Expected behavior 
+The app should be able to share text by using copy to clipboard 
+
+#### Actual behavior
+The app is not able to share text by using copy to clipboard, when we click on copy to clipboard it shows drive has stopped unexpectedly. 
+
+#### How to reproduce
+
++ Launch the app. 
+
++ Choose any photo from gallery. 
+
++ Click on share picture you see three options there. 
+
++ Click on share text,You see different options there to share. 
+
++ Click on Copy to Clipboard, it shows drive has stopped unexpectedly and you would not be able to share. 
+
+
+
+* Application : Asciicam. Version : 1.1.6
+
+* Operating system:Android Nougat 7.0
+
+#### Recording Of The Bug
+https://youtu.be/CpgG_sGAlxU    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@wanizubair/bug-in-ascii-cam-when-share-text-by-using-copy-to-clipboard"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+dozingcat/AsciiCam,closed,Bump to version 1.2.4 and update README.,[],
+dozingcat/AsciiCam,closed,Add null check for imageProcessor when receiving camera frame.,[],
+dozingcat/AsciiCam,closed,Fix bugs with listing and deleting images in library view.,[],Fixes https://github.com/dozingcat/AsciiCam/issues/17 and https://github.com/dozingcat/AsciiCam/issues/18.
+dozingcat/AsciiCam,open,Bug found in Ascii cam when image icon is clicked ,[],"
+#### Expected behavior
+The app should go to gallery or display no pictures found when the image icon is clicked. 
+
+#### Actual behavior
+The application crashes and closes when the icon is clicked.
+
+#### How to reproduce
+1. Download ascii Cam app
+2. Launch the app
+3. Click on the image icon (4th icon) 
+
+
+* Browser: Ascii cam version 1.2.3
+* Operating system:Android 6.0
+
+#### Recording Of The Bug
+https://youtu.be/vE0ccurUVdw
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@jubreal/bug-found-in-ascii-cam-when-image-icon-is-clicked"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+dozingcat/AsciiCam,closed,"java.lang.IndexOutOfBoundsException: Invalid index 0, size is 0",[],"Reproduce:
+
+1. Take a photo and return
+2. Click the duplicate icon and select the top-leftmost picture. **Make sure there is only one picture available.**
+3. Rotate your phone. (Set your phone to auto-rotate)
+4. Click `DELETE PICTURE`.
+
+A more detailed bug report is available at <https://ape-report.github.io/report/report-com.dozingcatsoftware.asciicam/com.dozingcatsoftware.asciicam-214/>.
+To reproduce, please follow instructions from CLICK@211 to CLICK@214.
+
+
+
+```
+// java.lang.RuntimeException: Unable to resume activity {com.dozingcatsoftware.asciicam/com.dozingcatsoftware.asciicam.LibraryActivity}: java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=0, result=1, data=null} to activity {com.dozingcatsoftware.asciicam/com.dozingcatsoftware.asciicam.LibraryActivity}: java.lang.IndexOutOfBoundsException: Invalid index 0, size is 0
+//  at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3103)
+//  at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3134)
+//  at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2481)
+//  at android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:4077)
+//  at android.app.ActivityThread.-wrap15(ActivityThread.java)
+//  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1350)
+//  at android.os.Handler.dispatchMessage(Handler.java:102)
+//  at android.os.Looper.loop(Looper.java:148)
+//  at android.app.ActivityThread.main(ActivityThread.java:5417)
+//  at java.lang.reflect.Method.invoke(Native Method)
+//  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+//  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+// Caused by: java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=0, result=1, data=null} to activity {com.dozingcatsoftware.asciicam/com.dozingcatsoftware.asciicam.LibraryActivity}: java.lang.IndexOutOfBoundsException: Invalid index 0, size is 0
+//  at android.app.ActivityThread.deliverResults(ActivityThread.java:3699)
+//  at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3089)
+//  ... 11 more
+// Caused by: java.lang.IndexOutOfBoundsException: Invalid index 0, size is 0
+//  at java.util.ArrayList.throwIndexOutOfBoundsException(ArrayList.java:255)
+//  at java.util.ArrayList.get(ArrayList.java:308)
+//  at com.dozingcatsoftware.asciicam.LibraryActivity.onActivityResult(LibraryActivity.java:124)
+//  at android.app.Activity.dispatchActivityResult(Activity.java:6456)
+//  at android.app.ActivityThread.deliverResults(ActivityThread.java:3695)
+//  ... 12 more
+```"
+dozingcat/AsciiCam,closed,"Remove empty class, bump to version 1.2.3.",[],
+dozingcat/AsciiCam,closed,Convert from Eclipse to Android Studio.,[],
+dozingcat/AsciiCam,closed,Filesharing provider,[],"Sorry for the giant pull request.  In order to update, I had to import to Android Studio.  That's the first commit.  
+
+The second commit adds a new ShareFileProvider class and necessary entries in AndroidManifest.xml (with a resource, provider_paths.xml).  I then switched from using the raw Uri in ViewImageActivity to a content Uri using the FileProvider.  This prevents the FileUriExposedException thrown in API 24 or later."
+dozingcat/AsciiCam,open,Current version not available in play store,[],"Dear team,
+
+when I take  look in the playstore, the app's current version is v1.2.2, in F-Droid the version is v1.1.6.
+
+What's the reason for this difference? Is there a flaw/bug in the build process?
+
+Kind Regards, 
+
+Krawei"
+dozingcat/AsciiCam,open,Need help from author,[],"Hello, I'm a student of the technological institute of Costa Rica, and I have a homework that consists in transforming a Bitmap into ASCII code in Android studio. Can you explain my how the process works and how I can manage to do this?Can someone tell me how to contact the author of this project?  Thank you."
+dozingcat/AsciiCam,closed,NewPictureJob to handle automatically converting camera pictures in Android N+,[],Also update to runtime permissions for M or later.
+dozingcat/AsciiCam,closed,"every new photo appears in a new folder, not convenient",[],
+dozingcat/AsciiCam,closed,Notify the media scanner service after saving a picture.,[],
+dozingcat/AsciiCam,closed,Bump version to 1.2.0,[],
+dozingcat/AsciiCam,closed,"Add option for black text on white background, stop making nested directories for each saved image.",[],
+dozingcat/AsciiCam,open,Improve the README file with buttons,[],
+dozingcat/AsciiCam,open,resolution options,[],I couldn't find a text editor on my phone that allowed for a small enough font to view the image. It should be possible to downsample to half resolution at least.
+dozingcat/AsciiCam,open,Migrate Project to Android Studio (add Gradle build files),[],"I have problems with build the application. Can you maybe migrate the project to android studio?
+"
+dozingcat/AsciiCam,closed,Shutter button position makes fingers cover cameras,[],"Front camera covered by thumb, rear camera by index.
+"
+dozingcat/AsciiCam,closed,Enable x86 ABI for NDK code,[],
+dozingcat/AsciiCam,closed,html export needs a tiny fix,[],"Brian,
+
+The current exported HTML sets the background to black but doesn't set the font to white which leads completely black HTML file.
+
+Here's a given HTML file output:
+<html><head></title>Ascii Picture 2013-09-21-11-54-34</title></head><body><div style=""background: black; letter-spacing: 3px;"">
+
+However simply adding the color and setting it to white fixes the html:
+
+<html><head></title>Ascii Picture 2013-09-21-11-54-34</title></head><body><div style=""background: black; letter-spacing: 3px; color: white"">
+
+Might be useful for some folks.
+
+Also, can I file a request for enhancement? Would really love if there was a way to rotate the image while exporting a HTML.
+"

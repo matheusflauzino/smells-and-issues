@@ -1,0 +1,672 @@
+repository,state,title,label,body
+Mobiperf/MobiPerf,closed,Update Config.java,[],
+Mobiperf/MobiPerf,open,change MAX_BURSTCOUNT and MAX_INTERVAL of udp burst task,[],"Increase the limit on UDP burst task.
+The binaries are already pushed on MLab nodes. This is to update the repository to keep consistency.
+"
+Mobiperf/MobiPerf,closed,Overhaul of start.sh script to be a bit more robust,[],"The rewritten script gives each java application a bit more time to launch before giving up and exiting, and also implements a slightly better check (netcat) as to whether the application is actually accepting connections on the expected port.
+"
+Mobiperf/MobiPerf,closed,"Hongyi: merge UDP server code into tcp server folder, rename this folder...",[],"... to measurement_server
+"
+Mobiperf/MobiPerf,closed,Add UDP measurement into MobiPerf,[],"Updated existing code and implemented some new features. 
+
+MobiPerf app: add a new measurement type named UDP Burst
+UDP server: remove previous code written in C. Re-implement it using JAVA. 
+GAE: update corresponding structure to receive measurement result of UDP Burst test.
+"
+Mobiperf/MobiPerf,closed,Log Mobiperf startup scripts to /var/log,[],"Add an exec line to each of initialize.sh, start.sh, and stop.sh to send stdout and stderr to /var/log/mobiperf. It's been difficult to troubleshoot init problems, failures happen silently.
+"
+Mobiperf/MobiPerf,closed,Add properly IO handling on close.,[],"On the M-Lab platform, we are seeing fairly chronic errors. I cleaned up the IO handling, especially to move close attempts to a finally block to ensure they are always attempted and hence underlying OS resources less likely to be left in inconsistent states.
+"
+Mobiperf/MobiPerf,closed,Rrc inference with scheduling,[],"Added in data consumption aware scheduling, as well as updated the scheduler to support long-running tasks properly.
+
+This has been reviewed and approved at http://speedometer-reviews.appspot.com/153001/.
+"
+Mobiperf/MobiPerf,closed,Rrc inference,[],"Added functionality to infer RRC states and measure their effects on performance.
+
+This has been reviewed and approved at http://speedometer-reviews.appspot.com/123001/.
+"
+Mobiperf/MobiPerf,open,TCP Speedtest needs a larger target file,[],"On an LTE connection I get:
+
+""""""
+No results available.
+- Task finishes earlier due to
+  exceeding maximum number of received
+  bytes
+  """"""
+
+Probably makes sense to add an option to select a 'large' target for high bandwidth connections.
+"
+Mobiperf/MobiPerf,closed,Throughput measurement support,[],"See http://speedometer-reviews.appspot.com/49001/
+"
+Mobiperf/MobiPerf,open,Checkins fail with 'Network paused for RRC test' dialog,[],"I frequently see manual checkins fail with a dialog that says 'Network paused for RRC test'
+
+The dialog is confusing as a user would have no idea what a RRC test is or why the network is paused for it. At a minimum the dialog should be more clear, but it would be great to eliminate the issue altogether.
+
+Also, what is throwing that dialog? I did not find any mentions of RRC in the source, but it may be returned by the server? Then again there have been multiple Android client updates recently, but no commits, are some changes made in local release clients not ending up in the public repo?
+"
+Mobiperf/MobiPerf,closed,TCP server side script update for M-Lab migration,[],"TCP server side script changes:
+- add initialize.sh to install Java JDK on the server
+- rename end.sh to stop.sh
+"
+Mobiperf/MobiPerf,closed,Version 2.1 release,[],"Delta from previous pull request:
+1. Resolve traceroute hanging in the middle problem
+2. Fix inaccurate timer for traceroute
+3. Fix Ping HTTP method crash over IPv6
+"
+Mobiperf/MobiPerf,closed,Version 2.1 Release ,[],"Changes from the beta v2.1:
+1. Enable scheduled task over Wifi
+2. Ipv6 aware ping program selection
+3. Ignore ip_address field before submission to GAE
+4. Check available measurement types during checkin
+5. Fix TCP Throughput result JSON conversion problem
+"
+Mobiperf/MobiPerf,open,IPv6 breaks some tests,[],"I configured a device on T-mobile using their IPv6 APN and some of the ping / traceroute tests stopped working (using baseband, not Wi-Fi). The exact failure reason is not clear as ping / traceroute fail to www.google.com and some of the mlab targets, but they work fine for others. It is not something simple like lack of a AAAA. I'll poke at it a bit more and try to sort out what the real issue is.
+"
+Mobiperf/MobiPerf,open,Bad contact info on the website,[],"The contact page lists 'mobiperf@googlegroups.com' as the contact address, but it bounces. 
+
+""We're writing to let you know that the group you tried to contact (mobiperf) may not exist, or you may not have permission to post messages to the group.""
+
+The checkin server also seems to be having problems.
+"
+Mobiperf/MobiPerf,closed,Updated pull request for TCP Throughput test,[],"Please ignore previous pull request. This now pull request won't cause any conflict with the current master branch.
+
+Also we have finished the code review with Dominic for this update.
+"
+Mobiperf/MobiPerf,closed,Merge TCP Speed Task,[],"I include the new TCP Speed Task (measuring TCP Throughput) in the MobiPerf, and it runs against the nearest M-Lab slices. Uplink and downlink task are measuring the network throughput status in both directions. To reduce the memory requirement, we reduce the size of the splashscreen image to limit the occurance of out-of-memory failure.
+
+Detail of the throughput task is shared through Google Docs with title ""MobiPerf Throughput Test Summary"".
+"
+Mobiperf/MobiPerf,open,MobiPerf should respect airplane mode,[],"MobiPerf does not pause when the device it is running on is in airplane mode. Tests obviously will not work in airplane mode, so the program should pause like in the low battery condition.
+"
+Mobiperf/MobiPerf,open,Feature Request: AppEngine console tweaks,[],"At the moment, the UX for the console (http://openmobiledata.appspot.com) is a bit odd. Most people who visit are probably interested in location and test details, but those elements are not emphasized.
+- The 'Measurement schedule' table takes up a lot of space and most people probably will not care. Consider putting the info on its own page and linking to it instead of in-lining it?
+- Test results should probably be presented in reverse chronological order (most recent first)
+- Providing some aggregate details and stats would be really nice.  Doing this dynamically on AppEngine would probably chew a lot of quota, but a once a day background update would be nice and help keep users engaged.
+- Device properties history has timestamp and IP address fields that are never populated
+- the Timeseries graph has labels that cannot be read as the 'blue' one is under the time params (it also seems to lack data most of the time)
+- the current formatting for 'Measurement results' is not very user friendly, please consider having a verbose mode that is similar to the current setup and defaulting to a summary mode that only has ID, Device, Task ID, Timestamp (UTC),   Type and a summarized result that is human readable e.g. ""Success: www.google.com resolved in 82ms"" 
+"
+Mobiperf/MobiPerf,open,Feature Request: Add a high level dashboard with overall test volume and basic stats,[],"To build a solid community around MobiPerf and encourage people to continually run the app, it would be good to provide a high level dashboard with some aggregate details such as:
+- total number of tests run (cumulative graph)
+- breakdown of success / failure by test or in aggregate
+- breakdown of which countries the the app has been run in w/ avg. daily volume (top 20?)
+- avg + st. deviation for the tests that have a single numeric result (ping, HTTP throughput, resolution time)
+- ...
+"
+Mobiperf/MobiPerf,open,Change the www.youtube.com HTTP test to use m.youtube.com as the host,[],"Most mobile user agents will get a 302 to m.youtube.com if you try to fetch www.youtube.com, so the current test fails really often as it is not expecting a 302 response.
+"
+Mobiperf/MobiPerf,closed,Udp mlab,[],"http://speedometer-reviews.appspot.com/44001/
+"
+Mobiperf/MobiPerf,closed,Set link color of terms to match about,[],
+Mobiperf/MobiPerf,closed,Web site issues - typos and awkward grammar on the new home page,[],"The new home page could use a quick trip through a spell checker and a review of grammar, as there are a number of awkward sentences and a few typos.
+
+http://www.mobiperf.com/home
+"
+Mobiperf/MobiPerf,closed,Get ready for release,[],"Code reviewed http://speedometer-reviews.appspot.com/43001/
+"
+Mobiperf/MobiPerf,open,Feature Request: Check for NXDOMAIN hijacking,[],"It would be good to check that known bad FQDNs return an NXDOMAIN response as expected and are not  hijacked.
+"
+Mobiperf/MobiPerf,open,Feature Request: Report on resolver latency and comparison to public servers,[],"It would be good to report on resolver latency and compare it to the resolver latency using a few well known servers, such as Google Public DNS and Open DNS.
+"
+Mobiperf/MobiPerf,open,Feature Request: Change the throughput test to use NDT,[],"http://code.google.com/p/ndt/
+"
+Mobiperf/MobiPerf,open,Feature Request: Add a reachability test for RTSP,[],"It would be good to test reachability for realtime streaming protocol (TCP 554).
+"
+Mobiperf/MobiPerf,open,Feature Request: Include more Wi-Fi details,[],"Wi-Fi is affected by the number of other people using the same channel, it would be good to collect details about the number of other in-range access points, namely the rssi and channel(s) used by other APs
+"
+Mobiperf/MobiPerf,open,Change PhoneUtils.intToIp so that it can handle IPv6,[],"The current approach assumes a 32 bit int. It would require a bit of reordering, but the easiest fix is probably checking the size of InetAddress.getByAddress(bytes) initially and handling it as v4 if it is 4 bytes and v6 if it is 16 bytes.
+"
+Mobiperf/MobiPerf,closed,Add link to privacy doc,[],"http://speedometer-reviews.appspot.com/42001/
+"
+Mobiperf/MobiPerf,closed,Fixed issue 124,[],"the code review is here speedometer-reviews.appspot.com/41001/
+"
+Mobiperf/MobiPerf,open,Collect data when on WiFi,[],
+Mobiperf/MobiPerf,open,Remove v from version sent to GAE,[],
+Mobiperf/MobiPerf,closed,Privacy statement,[],"http://speedometer-reviews.appspot.com/39001/
+"
+Mobiperf/MobiPerf,closed,Remove notification icon when service is stopped,[],"http://speedometer-reviews.appspot.com/38001/
+"
+Mobiperf/MobiPerf,closed,Change server selection for scheduled tests,[],"Google domains
+m-lab servers
+UMich servers
+UW servers
+"
+Mobiperf/MobiPerf,closed,Check version is being sent to GAE,[],
+Mobiperf/MobiPerf,closed,Anonymous selection doesn't work for the boot up time,[],"I found a bug when you install a fresh MobiPerf, then the program let you select whether you want anonymous account. I actually clicked on the button, and the background information pumped as ""You have selected anonymous account"". However, if I went back to check the settings, the anonymous option is not selected.
+
+Best,
+Haokun
+(Since this is the first time I report a issue, I am a graduate student at University of Michigan working for Morley)
+"
+Mobiperf/MobiPerf,closed,Removing UDP test,[],"http://speedometer-reviews.appspot.com/36001/
+"
+Mobiperf/MobiPerf,closed,UDP test always fails - add m-lab support,[],"UDP test requires the mobiperf backend to be listening. This is running on m-lab so hard-coding the target to use mlab-ns for a server is a good start.
+
+theoretically there could be a number of servers available, each of which supports the test, but m-lab is a good first step.
+"
+Mobiperf/MobiPerf,closed,UDP test always fails - remove it.,[],"Well, not always, but it fails when the server doesn't have a server that speaks UDP test.
+
+Removing the test for this release. m-lab support is needed to bring it back for the next point release.
+"
+Mobiperf/MobiPerf,closed,Update anonymous URL,[],"http://speedometer-reviews.appspot.com/35001/
+"
+Mobiperf/MobiPerf,closed,Menubar notification does not go away when app is quit,[],"The menubar notification should disappear when we quit the app.
+
+To reproduce:
+- Run Mobiperf
+- Menubar icon should appear
+- Go to settings > quit
+- App seems to quit but menu bar icon still there - is the service still running?
+"
+Mobiperf/MobiPerf,open,Splash screen size not matching,[],"Current splash screen is a little ""short"" and there are some white boundaries.
+Maybe in the future we can first detect the screen size and make the splash screen stretch a little bit to fit into the whole screen?
+"
+Mobiperf/MobiPerf,open,Traceroute problem,[],"When I use MobiPerf to traceroute to www.ebay.com, it says failure.
+
+However, when I traceroute in my computer, I can see that the reason is that from hop 11, there are all timeouts. So I think the timeout/error handling of the existing traceroute test module can be improved
+
+traceroute www.ebay.com
+traceroute: Warning: www.ebay.com has multiple addresses; using 66.211.181.161
+traceroute to www.ebay.com (66.211.181.161), 64 hops max, 52 byte packets
+ 1  141.212.110.1 (141.212.110.1)  0.834 ms  0.581 ms  0.586 ms
+ 2  vss-cse.engin.umich.edu (141.213.127.134)  1.282 ms  0.519 ms  0.360 ms
+ 3  l3-caen-bin-arb.r-bin-arbl.umnet.umich.edu (192.12.80.177)  0.397 ms  0.389 ms  0.418 ms
+ 4  l3-barb-bseb-2.r-bin-seb.umnet.umich.edu (192.12.80.11)  0.683 ms  0.688 ms  0.603 ms
+ 5  v-bin-seb-inet-aa2.aa2.mich.net (192.12.80.37)  0.777 ms  0.637 ms  0.620 ms
+ 6  xe-5-1-0x76.eq-chi2.mich.net (198.108.23.12)  6.512 ms  6.540 ms  6.512 ms
+ 7  12.250.16.17 (12.250.16.17)  15.162 ms  32.018 ms  49.174 ms
+ 8  cr1.cgcil.ip.att.net (12.122.133.122)  32.422 ms  31.161 ms  31.920 ms
+ 9  cr2.dvmco.ip.att.net (12.122.31.85)  30.657 ms  29.535 ms  32.959 ms
+10  12.123.38.141 (12.123.38.141)  27.730 ms  27.804 ms  27.773 ms
+11  \* \* *
+12  \* \* *
+13  \* \* *
+14  \* \* *
+"
+Mobiperf/MobiPerf,closed,Fix some ownership issues,[],"http://speedometer-reviews.appspot.com/32001/
+"
+Mobiperf/MobiPerf,closed,Unit tests,[],"http://speedometer-reviews.appspot.com/34001/
+"
+Mobiperf/MobiPerf,closed,Unit tests,[],"Unit tests need to be updated so they can run.
+"
+Mobiperf/MobiPerf,closed,Removing unused resources to trim apk size,[],"http://speedometer-reviews.appspot.com/33001/
+"
+Mobiperf/MobiPerf,closed,Simplify adapter use for results console,[],"http://speedometer-reviews.appspot.com/30002/
+"
+Mobiperf/MobiPerf,closed,Fix apilevel,[],"API level (minSDKversion) should be 9 as the code references constants and methods that are only in API level 9. Prior to this change, the apk could be install on API level 8 devices but then would encounter runtime errors.
+"
+Mobiperf/MobiPerf,closed,Fix account crash,[],
+Mobiperf/MobiPerf,closed,Crash on startup in emulator,[],"I set up an emulator on android-8 (level 12) to test the min supported version and I have a 100% crash on startup:
+
+09-24 15:28:46.561 I/am_crash(   65): [318,com.mobiperf.speedometer,48710,java.lang.NullPointerException,Unable to start activity ComponentInfo{com.mobiperf.speedometer/com.mobiperf.speedometer.SpeedometerApp}: java.lang.NullPointerException,AccountSelector.java,118]
+"
+Mobiperf/MobiPerf,closed,Better alignment of results,[],"http://speedometer-reviews.appspot.com/30001/
+"
+Mobiperf/MobiPerf,closed,Setting account doesn't store auth cookie,[],"I noticed the scheduled tests were failing when anonymous so I set an account. This worked until i restarted, now i have no auth cookie again and tests are failing. Settings do show that an account is selected.
+"
+Mobiperf/MobiPerf,closed,Getting results whenever the scheduler is reconnected after destruction,[],
+Mobiperf/MobiPerf,closed,Ensure SDK versions match within build,[],"target was set to 10, but minSDK is set to 8. This brings everything in line without increasing the minSDK.
+"
+Mobiperf/MobiPerf,closed,Create notification without putting the app in the foreground,[],"http://speedometer-reviews.appspot.com/28001/
+"
+Mobiperf/MobiPerf,closed,Fix remove quotes,[],"Issue #100
+"
+Mobiperf/MobiPerf,closed,App crash,[],"Bug found.
+
+I've run MobiPerf this morning. I'm running it with Android 2.3.3, with WiFi access.
+
+Attached is the debug.txt (output of adb logcat *:s 'Mobiperf') and bugreport.txt (output of adb bugreport).
+
+What I've done is, first run an UDP down experiment (the result says PRR 0.0, so not sucessful?), then run an UDP up experiment (the results says experiment has failed, I'm not sure why). Then I go to results tab and also looked at the system logs. Then the app crashes.
+
+I'm not exactly sure the cause of the crash, but I think it is NOT caused by this exception ""java.lang.RuntimeException: No google account found"" since I've observed the app working fine while producing it.
+
+The file attachments are in the email. Search for ""debug.txt"" or ""bugreport.txt"" in your emails.
+"
+Mobiperf/MobiPerf,closed,"Results temporarily disappear in the ""Results"" => ""Manual"" tab",[],"To reproduce this bug, first run any test so that in the ""Manual"" tab, there is some results to show.
+
+Then go to ""Results"" => ""Manual"", there should be some results.
+
+Then rotate the screen so that the app adjusts itself to the new orientation.
+
+Then all results in the ""Manual"" tab is gone. But if you click ""Scheduled"" and then click ""Manual"" tab again, the results will reappear.
+
+Instead, we should show the results immediately after the screen is rotated, otherwise, the user might get confused. This is a minor bug of course. I didn't check whether this bug also exists in the ""Scheduled"" tab, but it's quite possible.
+"
+Mobiperf/MobiPerf,closed,Traceroute result presentation error,[],"One problem I found is about the traceroute measurement.
+
+The result shown in the Results tab => Manual has some problems.
+
+For the first hop:
+""1 192.168.1. 37.3ms"" it should be => ""1 192.168.1.110 37.3ms""
+Among the 15 hops in my case, 3 hops have this problem, that the last number of the IP address is missing.
+But the other 12 hops are fine.
+One suggestion I have is, to align the RTT numbers, e.g., 37.3ms in the example, to the right, while align the IP to the left.
+"
+Mobiperf/MobiPerf,closed,Accountmerge,[],"git checkout HEAD~7 android/libs/myjson-1.7.1.jar
+"
+Mobiperf/MobiPerf,closed,Accountmerge,[],"Added back libs/myjson and made the one final change suggested.
+
+https://speedometer-reviews.appspot.com/25001
+"
+Mobiperf/MobiPerf,closed,Fix NPE bug in updating measurement list.,[],"ListActivity race condition.
+
+Based on code review at http://speedometer-reviews.appspot.com/26001/
+"
+Mobiperf/MobiPerf,closed,Data validation helper code,[],"Per-measurement-object helpers for validating and printing data.
+Unit tests for these objects.
+
+See http://speedometer-reviews.appspot.com/15001 for the reviews.
+
+(Again, rebase/merge was fubar'ed due to previous merge of different master's history. Patch was the only way I could untangle this in a reasonable amount of time. Let's never again make this mistake with changing upstreams with branches under review.)
+"
+Mobiperf/MobiPerf,closed,fixed missing leading slash for anonymous data reporting,[],
+Mobiperf/MobiPerf,closed,Resubmission of anonymization code after master switching.,[],"I had to use a patch, so I lost the commit history but the review history is still here:
+
+speedometer-reviews.appspot.com/9001/
+
+(Note: I did run the unit tests and confirmed that a test deployment was working before issuing this pull request.)
+"
+Mobiperf/MobiPerf,closed,Bringing over README and code review docs from umich branch.,[],
+Mobiperf/MobiPerf,closed,Merge umich appengine code,[],
+Mobiperf/MobiPerf,closed,Data anonymization code,[],"LGTM from http://speedometer-reviews.appspot.com/9001/.
+"
+Mobiperf/MobiPerf,closed,Data validation helpers,[],"See http://speedometer-reviews.appspot.com/15001/
+"
+Mobiperf/MobiPerf,closed,Command line build,[],"CL: http://speedometer-reviews.appspot.com/23001/
+"
+Mobiperf/MobiPerf,closed,Fix compile warning,[],"CL: http://speedometer-reviews.appspot.com/21002/
+"
+Mobiperf/MobiPerf,closed,Android support for anonymous data collection,[],"We had this in the previous Mobiperf codebase (before reverting back to Speedometer) and it was addressed in this pull request:
+
+https://github.com/Mobiperf/MobiPerf/pull/74
+
+We should make the same change in the newest version of the code.
+"
+Mobiperf/MobiPerf,closed,Measurement results not persisted across scheduler restarts,[],"Measurement results are not persisted across scheduler restarts, meaning that measurements can be taken but lost (due to OOM eviction) before they are uploaded.
+"
+Mobiperf/MobiPerf,closed,Sproadic crashes at start,[],"The app still occasionally crashes at startup, as well as when viewing the console screen. Likely due to how we are sharing data between the MeasurementScheduler and UI tasks.
+
+adb  bugreport shows:
+
+8-30 11:32:54.294 25342 25342 E AndroidRuntime: FATAL EXCEPTION: main
+08-30 11:32:54.294 25342 25342 E AndroidRuntime: java.lang.IllegalStateException: The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. [in ListView(2131361792, class android.widget.ListView) with Adapter(class android.widget.ArrayAdapter)]
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at android.widget.ListView.layoutChildren(ListView.java:1538)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at android.widget.AbsListView$CheckForTap.run(AbsListView.java:3069)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at android.os.Handler.handleCallback(Handler.java:615)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at android.os.Handler.dispatchMessage(Handler.java:92)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at android.os.Looper.loop(Looper.java:137)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at android.app.ActivityThread.main(ActivityThread.java:4745)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at java.lang.reflect.Method.invokeNative(Native Method)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at java.lang.reflect.Method.invoke(Method.java:511)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at dalvik.system.NativeStart.main(Native Method)
+08-30 11:32:54.309   291  2088 W ActivityManager:   Force finishing activity com.mobiperf.speedometer/.SystemConsoleActivity
+"
+Mobiperf/MobiPerf,closed,Sporadic crashes at start,[],"There still seems to be a race condition when the app starts which causes an app crash.
+
+I also noticed that the app would hang when sitting on the System Console screen possibly while the console was updating - likely race condition there. There are probably related to how we are sharing state between the MeasurementScheduler and UI activities.
+
+adb bugreport shows:
+
+8-30 11:32:54.294 25342 25342 E AndroidRuntime: FATAL EXCEPTION: main
+08-30 11:32:54.294 25342 25342 E AndroidRuntime: java.lang.IllegalStateException: The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. [in ListView(2131361792, class android.widget.ListView) with Adapter(class android.widget.ArrayAdapter)]
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at android.widget.ListView.layoutChildren(ListView.java:1538)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at android.widget.AbsListView$CheckForTap.run(AbsListView.java:3069)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at android.os.Handler.handleCallback(Handler.java:615)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at android.os.Handler.dispatchMessage(Handler.java:92)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at android.os.Looper.loop(Looper.java:137)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at android.app.ActivityThread.main(ActivityThread.java:4745)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at java.lang.reflect.Method.invokeNative(Native Method)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at java.lang.reflect.Method.invoke(Method.java:511)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+08-30 11:32:54.294 25342 25342 E AndroidRuntime:        at dalvik.system.NativeStart.main(Native Method)
+08-30 11:32:54.309   291  2088 W ActivityManager:   Force finishing activity com.mobiperf.speedometer/.SystemConsoleActivity
+"
+Mobiperf/MobiPerf,closed,"renamed packages to com.mobiperf.*, did not bump version",[],"Review 21001
+"
+Mobiperf/MobiPerf,closed,Mergefix,[],"Code as is from review 18002.  
+"
+Mobiperf/MobiPerf,closed,Speedometer,[],"This pull request just has the newest updates from the speedometer repo.  It includes the 3 changes to dialog that were made and the most recent persistence fix.  
+"
+Mobiperf/MobiPerf,closed,Speedometer,[],"The 3 changes that Matt recently made.
+"
+Mobiperf/MobiPerf,closed,Currentbuild,[],"This is the mobiperf/mobiperf master branch merged with issue68.  There was a conflict and was not merged automatically back when I made my pull request.  The version number in this was incremented to 0.3.
+"
+Mobiperf/MobiPerf,open,Need an in-app bug reporting mechanism,[],"For dogfood/beta release, simply having a clear email  link in the app to report a bug (e.g., to mobiperf@googlegroups.com) is fine.
+
+Longer term, we should consider embedding a bug reporting library, e.g.,
+
+http://www.hockeyapp.net/
+http://code.google.com/p/acra/
+"
+Mobiperf/MobiPerf,closed,Mobiperf debug,[],"A pull request after merging
+"
+Mobiperf/MobiPerf,closed,Mobiperf debug,[],"New pull request
+"
+Mobiperf/MobiPerf,closed,Mobiperf debug,[],"A bug fix reviewed here
+
+http://speedometer-reviews.appspot.com/12001/
+
+The review feedback of 12001 are fixed in later commits.
+There are some conflict and mistake made in the middle, but I fixed it in the end.
+"
+Mobiperf/MobiPerf,closed,Anoncheck,[],"http://speedometer-reviews.appspot.com/11001/
+
+Will keep in mind to update the comments on speedometer-review as well.
+"
+Mobiperf/MobiPerf,closed,Issue68,[],"http://speedometer-reviews.appspot.com/16001/
+
+I have also increased the versionCode.  So from now on will versionCode always just be versionName*10?
+"
+Mobiperf/MobiPerf,closed,"issue 48, aboutus text change",[],"http://speedometer-reviews.appspot.com/14002/
+"
+Mobiperf/MobiPerf,closed,Measurement scheduler UI,[],"See http://speedometer-reviews.appspot.com/14001/
+"
+Mobiperf/MobiPerf,open,Options to clear all displayed results/server collected results,[],"Give users the options to clear all displayed results, including manual, automatic results and system logs.
+
+(optional) give users the option to clear all server collected results from GAE.
+"
+Mobiperf/MobiPerf,closed,Crashing bug for MobiPerf,[],"When you first open MobiPerf, then go to System's settings => applications => MobiPerf, force stop => reopen MobiPerf, mobiperf will crash.
+
+The reason is because PhoneUtils's setGlobalContext is not called before the getPhoneUtils in a rare case.
+"
+Mobiperf/MobiPerf,closed,Version numbering needs to be cleaned up,[],"Version numbers are a mess. The app splash screen and ""About"" page say 1.0. The Android Settings > Apps page for Mobiperf says 0.2. There needs to be a consistent version numbering scheme and this needs to be very clear to the user.
+"
+Mobiperf/MobiPerf,closed,Show steps of how to upload MobiPerf server from windows PC,[],
+Mobiperf/MobiPerf,closed,Improved security for device ID,[],"Change IMEI to contain the TAC + a hashed/salted version of the rest of the IMEI
+"
+Mobiperf/MobiPerf,closed,Make MobiPerf automatically starts when reboot,[],"Check whether MobiPerf automatically starts when reboot, if not, implement it
+"
+Mobiperf/MobiPerf,closed,Add status notification in the Android system notification area at top,[],"Add status notification in the Android system notification area at top.
+When the app is started when the phone reboots
+When the app is running in the background
+"
+Mobiperf/MobiPerf,closed,"System log shows measurement ""running"" when in fact phone is on WiFi",[],"Should not say ""Running"" in the system log when the measurement is being skipped due to WiFi or battery threshold.
+"
+Mobiperf/MobiPerf,closed,"reformat all files with 2 spaces instead of tab indent, 100 columns code...",[],
+Mobiperf/MobiPerf,closed,Status notifications on main activity,[],"http://speedometer-reviews.appspot.com/7001/
+
+I made one final style change that was listed.  Also, I had a little problem pushing to my repository so I will wait for your merge in case something went wrong.
+"
+Mobiperf/MobiPerf,open,Add a Google map with aggregate statistics on data that has been collected,[],
+Mobiperf/MobiPerf,closed,"Change ""about"" link on openmobiledata to point to mobiperf.com",[],
+Mobiperf/MobiPerf,closed,Need to finalize anonymization pipeline,[],
+Mobiperf/MobiPerf,closed,Need to finalize anonymization pipeline,[],
+Mobiperf/MobiPerf,closed,"Added version number to splash screen and about, review issue 6001",[],"http://speedometer-reviews.appspot.com/6001/
+"
+Mobiperf/MobiPerf,closed,"Add about text, add contact links/emails which are clickable",[],"This pull request is reviewed in http://speedometer-reviews.appspot.com/5001/
+"
+Mobiperf/MobiPerf,closed,bug fixes,[],"Will have indentation correct for future once I see what changes are made.  Will have some of the other issues in the milestone taken care of soon.
+
+http://speedometer-reviews.appspot.com/3001/
+
+GPS set to true from false
+Battery threshold to 75 from 80
+Background Tests to Background Measurements
+Background Measurements default value from false to true
+No more double ""your results will appear"" but still need to remove upon a
+measurement taking place (is this necessary?)
+
+Already fixed:
+Preferences are persistent
+Results are persistent
+"
+Mobiperf/MobiPerf,closed,Report GPS location before and after each measurement,[],"Will be useful for estimating whether the device was in motion during the measurement.
+Would require changes to protocol and measurement schema to record > 1 location per measurement.
+"
+Mobiperf/MobiPerf,closed,"Couple of simple fixes including multiple ""your results will display here""",[],"In this pull request, we first add some new feature: MLab/Uplink and then we exclude them since we decide to postpond adding them.
+
+Shuheng also made some fixes based on Matt's suggestions, following is Shuheng's commit notes:
+GPS set to true from false
+Battery threshold to 75 from 80
+Background Tests to Background Measurements
+Background Measurements default value from false to true
+No more double ""your results will appear"" but still need to remove upon a measurement taking place (is this necessary?)
+
+Already fixed:
+Preferences are persistent
+Results are persistent
+"
+Mobiperf/MobiPerf,closed,Adding documentation on the code review process.,[],"Review at http://speedometer-reviews.appspot.com/1001/
+"
+Mobiperf/MobiPerf,closed,Version number needs to be meaningful,[],"The OLD (and very broken) APK I have on my phone reports itself as being ""v1.0"". This is not v1.0, far from it. Please revert the version number to something meaningful so we can talk about which version we are on. I propose 0.2 since what I am running now is more like 0.1.
+"
+Mobiperf/MobiPerf,closed,Feature: App needs to display version information,[],"version info needs to be on the splash page and on the ""About Us"" page.
+"
+Mobiperf/MobiPerf,closed,"Feature: ""About Us"" page needs to be filled in",[],"The ""About Us"" Page in the app needs real content.
+"
+Mobiperf/MobiPerf,closed,Feature: Battery threshold should be 75% by default,[],"Current default is 90% which is too high to collect much data. Set to 75% by default.
+"
+Mobiperf/MobiPerf,closed,Feature: Rename periodic to background,[],"""Periodic running"" should be renamed to ""Background measurements"".
+
+This should be ON by default.
+"
+Mobiperf/MobiPerf,closed,UI feature: Need status page in app,[],"The app needs a clear status page (or a panel on the main page) with basic information on the app's status:
+
+How long it has been running
+Whether background measurements are enabled
+How many measurements have been taken
+How many measurements have been uploaded (or alternately how many pending to be uploaded)
+Last checkin time
+Whether background tasks are disabled due to battery status
+etc.
+
+At present it is next to impossible to tell what state the app is in. The Speedometer app does all of this, and unless we get these things fixed soon I propose we revert back to Speedometer (renamed to ""Mobiperf"") for the beta release, since we seem to have had a lot of regression in functionality and stability since then.
+"
+Mobiperf/MobiPerf,closed,Bug: System log empty,[],"The system log needs to show which actions the app took, which we can use for debugging. This needs to persist across app invocations. When I start up the app the system log is empty.
+"
+Mobiperf/MobiPerf,closed,Bug: Results tabs have two lines that say results will appear,[],"Both the manual and scheduled results tabs have TWO lines that say results will appear there. Initially there should be only one, and it should go away once results have been posted.
+"
+Mobiperf/MobiPerf,closed,Bug: Scheduled results not persisting across runs,[],"I have been running the MobiPerf app and much of the time, when I start it up the ""Scheduled measurements"" tab under ""Results"" is empty (well, it contains TWO lines that say that the measurements will appear there). Whatever logic is supposed to be persisting the results across app activations is not working.
+"
+Mobiperf/MobiPerf,closed,gpsEnabled is set to false by default.,[],"It should be true.
+Also, even after setting through preferences it's reset after rebooting (or process killed and rerun) as the value is not loaded from preferences.
+"
+Mobiperf/MobiPerf,closed,Config for enabling (and securing) data validation.,[],
+Mobiperf/MobiPerf,closed,Logic and template for displaying the validation dashboard.,[],
+Mobiperf/MobiPerf,closed,Logic and template for displaying a timeseries of validation data,[],"Logic and template for displaying a timeseries of validation data on the dashboard. Note the dashboard is in a separate pull request.
+"
+Mobiperf/MobiPerf,closed,Validation logic and datastore entities,[],"Controller for validating measurement data, and the new datastore entities to store the results.
+"
+Mobiperf/MobiPerf,closed,Data validation,[],"This changelist includes all the code for validating data, writing results to the datastore and visualizing the results. Test example is here: http://dashboard-test.openmobiledata.appspot.com/validation/dashboard
+
+Note that performance is sub-optimal, but this is not a public dashboard. Sorry for the relatively large pull request, the feature was difficult for me to break into smaller independent pieces.
+"
+Mobiperf/MobiPerf,closed,Archive dev3 - Adding request handlers for data archival process.,[],"Here are the handlers to make use of the utility functions that were added late last week.  There are no unit tests on these handlers as it would only be testing things like the datastore and APIs that should be tested internally.  To try this out please use the instance at http://20120429-172305-gavaletz-94a9133.openmobiledata.appspot.com/.
+
+I am waiting on an update from Dave on a group bucket to use.  Once that is sorted out there will be some decisions to be made on ACLs.  Since the amount of data in the datastore is pretty limited at this point, these requests are returning fine from our frontend instances, but we will want to configure these requests as backend jobs in the near future.  Another thing that we can do to reduce the load (noted as a TODO in the code) is to create an entity with the archive parameters so that when similar requests are made we can simply return the link to the pre-made file in Google Storage and not repeat our work.  Once we start keeping track of these it will be important to have the hashes for these files as well.
+"
+Mobiperf/MobiPerf,closed,Adding utility functions for data archival process.,[],"These files will be used to serialize and compress entities from the
+datastore on GAE into a zip file.  Handlers for triggering these
+functions will be in the next CL.
+
+server/gspeedometer/helpers/archive_util.py - see file commentary for
+details on what functions have been added.
+
+server/gspeedometer/helpers/util.py - added a couple comments about
+issues that need to be addressed.  Issues will be added in the github
+issue tracker.  One problem is that it is possible to have dangling
+references when some data is removed and ConvertToDict will throw a
+ReferencePropertyResolveError.  The other problem is that
+ConvertFromDict does not seem to be able to deal with unconverting
+output from ConvertToDict in some cases.
+
+server/gspeedometer/model.py - added a function that will take a string
+and return the class that is represented by that string.  This avoids
+evaluation of the string and the possible security issues that brings.
+"
+Mobiperf/MobiPerf,closed,measurement scheduler interface upgrade,[],"Redesigned measurement scheduler interface to facilitate adding new measurements and new parameters. Also changed the refresh interval on the page to 10 minutes instead of 1 minute, since the latter was causing input data to be lost before submission. Currently deployed at http://schedule-test.openmobiledata.appspot.com/schedule/add
+"
+Mobiperf/MobiPerf,closed,Archive dev2,[],"Trying a rebase instead of a pull to see if it generates a cleaner pull request.  
+
+The work flow for this is to work locally, commit changes, rebase on top of mobiperf/master, push changes to github.  The main difference here is that we are using rebase instead of a pull from the master repo (http://book.git-scm.com/4_rebasing.html).  
+"
+Mobiperf/MobiPerf,closed,Archive dev,[],"This adds two new scripts for getting data from GAE onto your local machine and into the dev_appserver, one script that has settings that are common for some of the other scripts, and a re-factoring change.  **To be crystal clear**, _this is a development tool, and should not be used as part of the production environment._
+
+To use these you will need to be on the right ACL within GAE (data cannot be downloaded by anyone with this script).
+"
+Mobiperf/MobiPerf,closed,Update readme for new tests (TP/RTT),[],"Update readme for new tests (TP/RTT) including the detailed protocol used, parameters.
+Also update the privacy doc in Google Doc about these new tests.
+"
+Mobiperf/MobiPerf,closed,Remove all PII from RTT and Throughput test and add to current MobiPerf,[],"Remove all PII from RTT and Throughput test and add to current MobiPerf.
+
+Replace IMEI with a 128-bit UUID (generated for each test, not for each device), which could be used to link Android data with MLab tcpdumps.
+
+Send the UUID to MLab and GAE using JSON protocol.
+"
+Mobiperf/MobiPerf,closed,Put old MLab server code into /mlab,[],"Put old MLab server code into /mlab
+Start working on MLab server codes
+"
+Mobiperf/MobiPerf,closed,Add opt-out option for location sharing,[],"Add opt-out option for location sharing.
+Add a check box in the settings page.
+If user specifies not to share their location, a mock location is used.
+"
+Mobiperf/MobiPerf,closed,[[MobiPerf V0.2]] Add GPS opt-out option,[],"- Add a checkbox for users to enable/disable sharing GPS information
+- A few coding format fixes
+- Fix a bug in preference, previous preference does not sent the intent
+  of preference change.
+
+Tested working fine on my device.
+"
+Mobiperf/MobiPerf,open,URLs for site creating stack traces,[],"This is something that is unlikely to happen from average users, but IMO it poses two issues when it does happen:
+
+1) You are exposing implementation (not a huge thing since MobiPerf is open source).
+2) It looks sloppy and does not help the user do the right thing.
+
+If I were to enter a URL such as http://openmobiledata.appspot.com/checkin
+
+It should do something other than dump a stack trace to my browser.  In most cases it should redirect to a help or FAQ instructing them about how to use the site.
+
+In my case I was looking for JSON serialized data with the link '/timeseries/data'.   Note that I am not saying that for development we shouldn't display the stack trace, but we should have a plan to do something more friendly for users.
+"
+Mobiperf/MobiPerf,closed,Rudimentary unit test framework for the MobiPerf server.,[],"At this point this only contains basic unit tests for the 'model.py'
+module. It should be straightforward to add unit tests for other
+modules by creating a corresponding <module>_test.py file and using a
+similar structure to that in model_test.py.
+"
+Mobiperf/MobiPerf,closed,Pull request for MobiPerf v0.1 Beta,[],"This pull request includes all previous commits.
+Appears a little messy here. Will make modularized pull requests from now.
+"
+Mobiperf/MobiPerf,closed,Adding README from Speedometer project,[],
+Mobiperf/MobiPerf,closed,README is lacking,[],"I had no idea that there was documentation.  My understanding is that functionally very little has changed from the speedometer code.  With that in mind can we update the MobiPerf README with the stuff from here (with changes as needed of course).
+
+https://github.com/Mobiperf/MobiPerf/blob/master/README
+"
+Mobiperf/MobiPerf,closed,rebranding and cosmetic server changes,[],"These have been deployed for a while, just syncing with the master.
+"
+Mobiperf/MobiPerf,closed,Having used GAE internally at Google and on the outside I thought I would jump on some of this.  These should make working with the testing and deployment a little easier.,[],"server/run_server_locally.sh - Changed some of the settings to make it
+work a little nicer with the external version of GAE.  Using the
+defaults for --auth_domain (since most don't have user@google addresses)
+and --address (since most prefer localhost).  There is also a more
+involved way to run the development server if you need to ensure
+presistant data in the development datastore.  Documented why one may
+want to use the -c (clean) option.
+
+server/set_version.sh - chmod 755
+
+server/update_dev_server.sh - Changed some of the internal Google
+settings to be more exteranly friendly.  Since this is open source the
+app ID may change and was factored out.  The user email shouldn't
+necesarily be the local user name and in many cases will not be a
+user@google address.  Since most will use their gmail/google email address
+with their git config most of the time it is safe to pull from there.
+Also the domain (for now) should be appspot.com instead of
+google.com.
+
+There is more localization issues that need to be fixed in the base.html
+template to remove Moma ""goto"" links and Bazaar references.
+"
+Mobiperf/MobiPerf,closed,Boot Receiver bug,[],"The manifest file has the wrong package name specified for the boot receiver:
+
+com.mobiperf.mobiperf.WatchdogBootReceiver
+
+should be 
+
+com.speedometer.speed.WatchdogBootReceiver
+
+... or you can move the class to the package specified in the manifest. 
+
+H/t to Seungyeop for finding the root cause.
+"
+Mobiperf/MobiPerf,closed,Pull requests with 3 new commits for MobiPerf v0.1 Beta,[],"Includes three new commits fixing all comments from @mdwelsh
+"
+Mobiperf/MobiPerf,closed,AppEngine support for anonymous data collection,[],"Allow data to be collected even if user is not logged in.
+"
+Mobiperf/MobiPerf,open,Add MobiPerfUmich tests to MobiPerf,[],"Add uplink/downlink, RTT/RTT variation tests into the new MobiPerf.
+"
+Mobiperf/MobiPerf,closed,Settings to select account again/ sign out,[],"Add settings to allow the user to change their authentication account anytime (not just the first time they run the app) and allow them to sign out.
+
+Whether to allow them to sign out is to be discussed.
+If we do, do we allow anonymous experiments?
+If not, we can't allow them to sign out.
+"
+Mobiperf/MobiPerf,closed,MobiPerf V0.1 Beta testing version,[],"This is the version for milestone 1 and aimed for beta testing.
+
+It includes all 4 tests from speedometer but no tests from MobiPerf.
+"
+Mobiperf/MobiPerf,closed,Notification at the top indicating whether MobiPerf is running in the background,[],"Add notification at the top indicating whether MobiPerf is running in the background, i.e., whether periodic setting is enabled or not in the preference page
+"
+Mobiperf/MobiPerf,closed,How to implement agreement and selected account?,[],"Currently, when MobiPerf is first run, user will see an agreement asking to agree or just quit.
+If user clicks agree, the current MobiPerf would write something into a file in MobiPerf's sandbox.
+Next time, just check this file. This method works for the entire life time of an app, even when the device is rebooted, users don't need to click agree again.
+
+Another way to implement, is to use a static variable and change the values of it.
+This way, when the app is killed/forced stopeed or the device is rebooted, users will see the agreement window again.
+
+Which of the above two ways is better for our app?
+
+Similar problem exists for selecting account for checkin, i.e., where the selected account should be stored? File or static variable?
+"
+Mobiperf/MobiPerf,closed,Device ID selection issue,[],"Take a look at http://stackoverflow.com/questions/2785485/is-there-a-unique-android-device-id
+
+What device ID to use?
+
+Android ID has some problem, some devices have duplicated Android IDs?
+
+TelephonyManager.getDeviceID()? sometimes not available
+
+Get a unique ID from server? can't correlate the same user.
+
+Need to discuss later
+"
+Mobiperf/MobiPerf,closed,An intermediate update,[],"This update includes the code changes from @huangshu91 and some minor naming/layout changes.
+
+The changes from @huangshu91 is described by him as follows:
+
+""Changes I made are I added an additional option under periodic testing which allows the user to select the test to run. The test to run is included in the bundle for the pending intent and broadcasted to PeriodicTest within the package com.mobiperf.speedometer.speed.  I tested and everything so far is working however I did not add any actual logic for adding the test to the measurementscheduler.  I realized that one problem with this is that there is no fields for the user to select url or options that are included in the normal measurement selection.  I was unsure of what to do in this situation so I left the logic after receiving the broadcast blank.  However this can be easily fixed by just copy pasting the code from the MeasurementScheduleConsoleActivity.  If this fix is used it is a very simple cut and paste while setting the url to be a hardcoded url and should take no more than a few minutes.""
+"
+Mobiperf/MobiPerf,closed,support new/bad measurement schedule items,[],"This prevents an uncaught NPE that would be thrown by a checkin. The NPE occurs when we add a new measurement type to the schedule that is not supported by an old version of the app. 
+
+I thought about using different versions of the GAE instance to support this case instead, but it doesn't work easily because the measurement schedule data (i.e., the datastore) is shared across all versions of the server. In the future, we could return measurement types according to the version number reported by the app that is checking in. 
+
+The above approach can be painful to maintain, so to avoid that complexity and to ensure that we don't bring down all measurements with bugs on the server side, I sugest we handle unexpected cases in the app logic.
+"
+Mobiperf/MobiPerf,closed,directory reorg,[],"This is the android directory reorg I suggested. As mentioned in the comments, there were slight changes to the .project and .classpath files, likely due to different android SDKs. Not sure what to do about that.
+
+Otherwise, I changed the server code to add another admin user.
+"
+Mobiperf/MobiPerf,closed,directory structure,[],"Maybe this is just me, but I'm using Eclipse to manage both the server code and the app code, and Eclipse doesn't like it when one project directory contains another project. What do you think about moving all the MobiPerf app code into an 'android' directory similar to the Speedometer repository? 
+"
+Mobiperf/MobiPerf,closed,"Mobiperf-Speedometer, fourth try",[],"Based on your comments I added simple javadoc comments for most of the Mobiperf classes.
+Cleaned up some dead code.
+Changed Mobiperf to University of Michigan in licenses
+Removed Speedometer preferences and merged them into Mobiperf preferences.
+"
+Mobiperf/MobiPerf,closed,"Mobiperf-Speedometer, third try",[],"Some of the speedometer components are reused but modified.
+Got rid of some strings and changed some.  Need to double check if they are still used.
+Headers are all Apache 2.0 license.
+The CubicChart is used.
+Merged Definition and Config.
+Main package changed.
+Passed on javadoc issue.
+Passed on comments issue.
+"
+Mobiperf/MobiPerf,closed,mobiperf server code,[],"Seems as good a time as any to submit the first pull request for this. As of now, the only changes are to support the current GAE instance that I set up. I also had to generate a new Google Maps API key and add it to the config file.
+"
+Mobiperf/MobiPerf,closed,"Mobiperf-Speedometer, second try",[],"I removed the bin files and references to speedometer.  The jar for chartengine is from http://code.google.com/p/achartengine/  and uses the Apache License 2.0.  
+"
+Mobiperf/MobiPerf,closed,Mobiperf-Speedometer,[],"SpeedometerApp removed and replaced with MobiperfActivity.  Some of the unused speedometer classes such as preferences, check-in are kept because they have yet to be integrated.
+"

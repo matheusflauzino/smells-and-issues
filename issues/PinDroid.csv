@@ -1,0 +1,371 @@
+repository,state,title,label,body
+maxpower47/PinDroid,open,Suggestion: filtering on more than one tag,[],"Perhaps I missed something but it does not seem feasible.
+An idea: long press on a tag in the menu would add that 'filter' to the current one."
+maxpower47/PinDroid,open,Crash...and possible cause ?,[],"I had Pindroid crashing when using the 'Pinboard - read later' sharing option.  
+Then I realised that on that tablet, Pindroid had 2 accounts, pointing to the same Pinboard account, one all lowercase, and one with mixed case (First.Last). I suppressed the all lower case Pinboard account, and it seemed to solve the problem. 
+Perhaps there should be some control at login, to prevent 2 identical accounts being registered ?"
+maxpower47/PinDroid,open,Feature Request: Open Dyslexic as Font for Read View,[],"Thank you for creating and open sourcing PinDroid.
+Please consider adding Opendyslexic as an additional Font for the Font for read View. 
+
+Full details here but a quick overview is below https://www.opendyslexic.org
+""OpenDyslexic is a typeface designed against some common symptoms of dyslexia. 
+OpenDyslexic is free to use, uses the SIL-OFL license, giving you freedom to use it for personal use, business use, education, commercial, books, ebook readers, applications, websites, and any other project or purpose you need.""
+Thank You."
+maxpower47/PinDroid,open,Search text cursor is invisible,[],"I noticed that the text cursor in the search field is **not visible**. This is somewhat irritating when using the search.
+
+I tried to debug the issue but could **not** resolve it. I however found out that the cursor color seems to match the back background color of the toolbar. One can see this when tapping into the field: the lower part of the text cursor appears as shown in the screenshot.
+
+![pindroid-search](https://user-images.githubusercontent.com/144518/41374742-53c8a48c-6f54-11e8-89b1-bfc7af0cd8ee.png)
+
+If you temporarily change the `actionbar_background` color to _red_ then the text cursor becomes visible as shown in this screenshot.
+
+![pindroid-search-red](https://user-images.githubusercontent.com/144518/41375152-7a0aaa2c-6f55-11e8-8aad-5ad21ad0ff46.png)
+
+
+Here are a fews links which I tried (without success):
+- [Changing the cursor color in SearchView without ActionBarSherlock](https://stackoverflow.com/questions/18705185/changing-the-cursor-color-in-searchview-without-actionbarsherlock/19796417)
+- [How to style the cursor color of SearchView under AppCompat](https://stackoverflow.com/questions/27730253/how-to-style-the-cursor-color-of-searchview-under-appcompat)"
+maxpower47/PinDroid,open,Improve German translation.,[],
+maxpower47/PinDroid,open,Title parsing broken,[],"Page title parsing sometimes generates garbage or  it fails to populate any title. Examples:
+
+1. Attempting to bookmark https://mobile.nytimes.com/2018/04/17/business/economy/california-housing.html results in the following title in PinDroid: 
+```
+YPE html> window.NYT_ENVIRONMENT = 'prd'; window.NYT_RELEASE = 'c210a96f06f7549ffa92934d5d2e2f5e5bddea9a'; window.JKIDD_PATH = 'https://a.nytimes.com/svc/nyt/data-layer'; window.WEDDINGS_PATH = 'https://content.api.nytimes.com'; window.SENTRY_SAMPLE_RATE = 10; if (document.location.search.indexOf('nytapp=true') > -1) document.documentElement.classList.add('NYTApp'); 100*Math.random()<=window.SENTRY_SAMPLE_RATE?(window.INSTALL_RAVEN=!0,window.nyt_errors={ravenInstalled:!1,list:[],tags:[]},window.onerror=function(r,n,o,w,t){var t=new Error(r,n,o,w,t);if(!window.nyt_errors.ravenInstalled){const d={err:t,data:{}};window.nyt_errors.list.push(d)}}):window.INSTALL_RAVEN=!1; California Lawmakers Kill Housing Bill After Fierce Debate - The New York Times
+```
+2. Bookmarking https://howlongtobeat.com/ results in an empty title because parsing fails. 
+
+Empty titles [2] are a lot more widespread than garbled titles [1]."
+maxpower47/PinDroid,closed,Syncing doesn't work,[],"As mentioned in #59 and elsewhere syncing with Pinboard doesn't work.
+
+When I tried checking my Pinboard account via the app, it said the last sync date was some time in September, which matches up with the timeline of #59. 
+
+Any idea what might cause this? If not, is there any way to dump the bookmarks on my phone to json or something? If I could just get at the data I can manually migrate it to the web..."
+maxpower47/PinDroid,closed,Default reading font doesn't work,[],"Steps to reproduce:
+Settings - reading options - font
+
+Setting the font to Lyons or Georgia does nothing
+
+Expected behavior:
+Setting it to Georgia should show Georgia font in reading view"
+maxpower47/PinDroid,open,Keep screen on while displaying bookmark,[],Add flags to prevent screen from turning off while reading a bookmark in the ViewBookmarkFragment
+maxpower47/PinDroid,open,Small feature request,[],"Would it be possible to populate the ""Description"" field in pinboard automatically with any text selected on the page which is being pinned? Perhaps wrapped in blockquote tags? "
+maxpower47/PinDroid,open,IMproving suggested tags,[],"I see from (closed) issue #75 that the suggested tags come from a pinboard api call. It does work horrendously badly. I have never once had a remotely helpful result from this feature. 
+
+Would it be possibly to replace or supplement that with a feature like that in the particular-pinboard.js chrome extension, where there is essentially a list of keywords from the selected text which, if present, will automatically populate the tag field with user-chosen keywords. This allows for really useful customising on an individual basis -- eg, I might want all references to YouTube automatically tagged ""adtech"" but another user might want them tagged ""video"" instead. 
+
+I know I should offer to have a go myself, but I have really minimal programming skills and no idea where to start here. "
+maxpower47/PinDroid,open,PinDroid crashes when I try to sign in,[],"After a system update of my Android device, PinDroid crashes when I try to sign in. When I open PinDroid and am asked to sign in to my account, I can enter my user name and password. When I press the Sign In button, I briefly see the ""Authenticating"" message box and then PinDroid crashes.
+
+I tried to following workarounds but not of them worked:
+- moved PinDroid to the internal storage
+- cleared the data and the cache
+- reinstalled
+
+If I try to sign in with an incorrect user name or password, I get the expected message that one of them is not valid and to try again. So that scenario is handled properly.
+
+The device is a Moto Z Play running Android 7.1.1."
+maxpower47/PinDroid,open,Searching for multiple tags at a time,[],"A major advantage of Pinboard over simple synched browser bookmarks is multitagging. PinDroid supports this when adding a link (multiple tags can be assigned to one link), but (afaik) not in search: I can only enter *one* tag in the search edit or choose *one* from the list, but I can't search for links with a specific combination of tags. This makes searching in larger link collections like mine a bit tedious.
+
+The best solution in my point of view would be to mimic the behavior of the Pinboard website, where you can select a tag and then it stays active and limits your link list until you unselect it, plus a list of suggested tags you can select to further limit your search.
+
+An ad-hoc solution and probably easier to implement would be to allow entering multiple tags in the search edit field."
+maxpower47/PinDroid,closed,Swedish translation,[],"This is a complete Swedish translation for Pindroid. I've never done this before so I hope it's done correctly. :-)
+"
+maxpower47/PinDroid,closed,Suggested Tags Always Suggest the same Useless Tags,[],"I've been using PinDroid for a couple years, and not once has the 'suggested-tags' field successfully suggested a tag. Instead it displays the same weird set of tags that have nothing to do with the content of the page:
+
+ifttt twitter facebook WSH
+objective-C twitterlink 1960s
+@codepo8 Aiviq art
+
+Is there a solution for this?
+When i used to use Delicious, the suggested tags feature was pretty great, and saved me a lot of time, plus suggested tags that I wouldn't have thought of using."
+maxpower47/PinDroid,closed,Can't login,[],"I'm simply unable to login. I've even tried using my API key, no luck.
+
+I'm using a very long password and full of `#^&`, etc. generated by LastPass.
+
+"
+maxpower47/PinDroid,open,fixing accessibility problems,[],"Hi. I've been doing research on accessibility properties for mobile applications and I have developed an accessibility testing tool. I've found some accessibility issues in your app and I have fixed some of them as you can see in my commits. The main problems are related to:
+- small touchable area: clickable elements dimension should have at least 48dp x 48dp
+- Label, or speakable text: clickable images should have a content description so screen readers can inform users what is the action related to that image or image button. 
+- contrast: contrast ratio between foreground and background should be at least 3 (I haven't fixed any contrast related issue).
+
+If you are interested in using my tool to find all accessibility issues to fix them and make your app more accessible for people with disability, please let me know.
+
+Marcelo Eler"
+maxpower47/PinDroid,open,Bookmark notes not visible when searching,[],A bookmark's notes/comments are visible when viewing its details from the main bookmark lists. They're not visible when looking at a bookmark coming from the Search->Bookmark Results option even when I select Details. Is there a setting that I need to enable? Thank you. 
+maxpower47/PinDroid,open,Dark theme request,[],Would it be possible to have a dark theme for the app in addition to the current theme?  I often use the app at night and the brightness of the white theme can be jarring.
+maxpower47/PinDroid,open,Display newlines properly,[],"Compare the [web version](https://pinboard.in/u:dandv/b:26b5503abdce),
+
+![image](https://cloud.githubusercontent.com/assets/33569/23098287/f7c41c68-f5fe-11e6-9413-3e7e77651dec.png)
+
+with the Pindroid display:
+
+![screenshot_20170218-172024](https://cloud.githubusercontent.com/assets/33569/23098291/2a50965c-f5ff-11e6-8bc0-597a8818ad41.png)
+"
+maxpower47/PinDroid,closed,Add buttons to get the app ;),[],
+maxpower47/PinDroid,open,Text wrapping issue with over a hundred bookmarks,[],"Custom DPI:
+![screenshot_20170211-134043](https://cloud.githubusercontent.com/assets/5561396/22853869/1f397fb6-f061-11e6-9025-315b587c2c81.png)
+
+Default DPI:
+![screenshot_20170211-134015](https://cloud.githubusercontent.com/assets/5561396/22853846/8b191dc8-f060-11e6-8ee0-18bd83a1b7e2.png)
+
+Device: OnePlus 3
+Android version: 7.0"
+maxpower47/PinDroid,open,Syncing doesn't also sync timestamps,[],"Hey Max,
+
+Good to see you back improving PinDroid! Any chance to fix the following issue, since you've added pull-to-sync in the latest version?
+
+When I pulled-to-sync, the sync was performed, but the timestamps of all bookmarks was wrong. At pinboard.in, everything appears bookmarked as ""yesterday"", when in fact I had bookmarked those pages 1 to 3 weeks ago. I did have auto-sync off at times in order to save battery (though not for the duration of the entire 3 weeks), but PinDroid should store internally when the bookmark was pinned, too, and sync that. Assuming, of course, the API allows pushing timestamps."
+maxpower47/PinDroid,closed,Edit notes,[],"Currently, notes can only be viewed but edited via the notes View.
+I could edit the note by editing the according bookmark, but this seems rather tiresome.
+
+I would propose a simple rich text editor inside the notes view."
+maxpower47/PinDroid,closed,Cannot login ,[],"I cannot login to the app, getting the message ""the username or password isn't valid"". I tried multiple times, and even changed my password, but that didn't help. I can successfully login to pinboard.in.  "
+maxpower47/PinDroid,closed,Fix Travis CI; update config compile sdk and build tools,[],"Was broken since someone forgot to update Travis config after build.gradle update. Should be OK now.
+
+P. S. didn't update target SDK in config to version 25 since there is only Intel emulator for sdk 25, whereas Travis needs ARM."
+maxpower47/PinDroid,closed,Can't log in?,[],"Hi there,
+
+Pindroid seems to not let me log in on my new phone. Running Android 7.1 on pixel.
+"
+maxpower47/PinDroid,closed,Android n layout fix,[],"I would like to resolve #53 by disabling 2 tabbed interface on -large screens vertical orientation, since the available space doesn't justify it.
+the first commit updates the whole project to the latest (24) sdk
+"
+maxpower47/PinDroid,closed,adding german translations,[],"... especially around the settings menu
+improving some existing german translations
+"
+maxpower47/PinDroid,closed,Show exact number of bookmarks in drawer and toolbar,[],"As an end-user, I would really like to see exact number of bookmarks so I implemented this.
+Basically this PR does:
+- Change **99+** to the exact number of bookmarks when it's greater than 100
+- Show number of bookmarks on toolbar
+
+![device-2016-09-19-012824](https://cloud.githubusercontent.com/assets/991367/18617349/8349a8d0-7e08-11e6-9f6f-f9b33ff1aa1d.png)
+![device-2016-09-19-012850](https://cloud.githubusercontent.com/assets/991367/18617350/85bb76b6-7e08-11e6-978b-24d0f8a6617d.png)
+"
+maxpower47/PinDroid,open,Does not sync back to pinboard.in,[],"I can read my bookmarks which I added to pinboard.in in Pindroid very well but it does not sync back to the platform at all.
+I use latest snapshot of CyanogenMod with Google Apps installed.
+"
+maxpower47/PinDroid,closed,"Update ""about"" and ""help"" (manual/wiki) links",[],"Fixes #47.
+"
+maxpower47/PinDroid,closed,Support for pull to refresh in bookmarks list,[],"fixes https://github.com/maxpower47/PinDroid/issues/45 
+
+Tested it and it works :cat: Please let me know if I missed anything.
+"
+maxpower47/PinDroid,closed,Add credential submit on IME_ACTION_DONE,[],"Current behavior is to just dismiss the keyboard when the ""done"" button is pressed on the keyboard, when on the password field. This fixes that to submit the credentials automatically.
+"
+maxpower47/PinDroid,closed,Make bookmark fields selectable,[],"Otherwise, copy/paste is broken, which makes it frustrating to draft
+messages with multiple bookmark URLs.
+"
+maxpower47/PinDroid,closed,Different icon for Read later,[],"Hi, I often switch between bookmarking a page and marking it to Read later. Unfortunately the icons are just the same, and Android shows both as recently used, making it difficult to use them properly. Could you differentiate the icons to make them unambiguous? Thanks in advance
+"
+maxpower47/PinDroid,closed,Tablet mode on Android N,[],"When I set the display size in Android N DP4 to small it goes to tablet mode. Likely wrong DPI setup.
+Thank you for the awesome Pinboard client and keep up the good work!
+"
+maxpower47/PinDroid,closed,Added few Robolectric tests and updated instrumented tests,[],
+maxpower47/PinDroid,open,Excessive whitespace on tablets obscures bookmarks,[],"On the Nexus 9 tablet, bookmarks are squeezed into a tiny portion of the screen, obscuring text and wasting most of the available space.
+
+Portrait and landscape screenshots attached.
+
+![screenshot_20160428-220612](https://cloud.githubusercontent.com/assets/19149667/14954357/a9c05ac0-1069-11e6-9055-fbf8b0c382e3.png)
+![screenshot_20160502-125602](https://cloud.githubusercontent.com/assets/19149667/14954358/a9c0d626-1069-11e6-8187-39883b03a88f.png)
+"
+maxpower47/PinDroid,closed,Support for Travis continuous integration,[],"In case you don't know what continuous integration is, I'll just explain briefly: it will make sure the project is kept stable, and you won't even have to run the tests locally. (btw, they don't even compile currently :) ). Travis will run it against multiple android versions in parallel on emulator and report the failures if any.
+
+To enable it, if you merge this, you are gonna need steps 2 and 3 from [this guide](https://docs.travis-ci.com/user/for-beginners).
+
+After that, you are gonna have pretty checks for all pull requests, so you can figure out if it is safe to merge them. Even though coverage is low currently and one has to run the app to test it, you could at least know if the PR to your project even compiles before checking it out and building. (I also could help with actual test coverage later)
+
+You've probably saw these checks on github, but in case you haven't, check [Robolectric](https://github.com/robolectric/robolectric/pulls) as an example: PRs which passed the tests have this green tick, ones which failed are marked with red crosses, pending ones are marked with yellow dot.
+
+I've also added [this fancy status image](https://docs.travis-ci.com/user/status-images/) to readme.md, so everyone will see that the app is passing the tests and in healthy state. I've substituted your username in it, so currently it doesn't work since Travis is not set up for you, but should start if you set it up and merge the PR :)
+
+I've tested this configuration on my fork and it works fine: https://travis-ci.org/karlicoss/PinDroid/builds/126757721
+
+Hope you'll like it!
+
+P. S. choice of APIs is kinda arbitrary, I just picked the minimum one available on emulator, the target API, and other more or less at random. Anyway, it's free to run against multiple, they are being run on parallel.
+"
+maxpower47/PinDroid,closed,Implemented untagged bookmarks menu item,[],"Fixes https://github.com/maxpower47/PinDroid/issues/48
+"
+maxpower47/PinDroid,closed,Ability to view untagged,[],"Seems like there's no way to see untagged? Kinda strange since that is one of the most used filters for Pinboard for many, to look for untagged.
+"
+maxpower47/PinDroid,closed,Help menu item links to Google Code,[],"The settings help menu item links through Google code. It should link to GitHub instead.
+"
+maxpower47/PinDroid,open,Repeated tag suggestion,[],"When editing this bookmark, the ""secure"" tag appears three times: 
+
+![screenshot_20160406-072752](https://cloud.githubusercontent.com/assets/33569/14320336/88149c9c-fbc9-11e5-8401-9fdd8e2e3613.png)
+"
+maxpower47/PinDroid,closed,Sync by pulling the the list,[],"It would be nice to be able to start syncing the bookmarks by _pulling down_ the screen (like in Gmail). 
+My PinDroid is sometimes out of date (I set automatic as the sync frequency), and I find it quite long to go to settings and scroll until I find the Sync Now option.
+"
+maxpower47/PinDroid,open,Changing URL of a bookmark not possible,[],"When changing the URL of a bookmark is not reflected when saving.
+
+Sidenote: I don't remember if we talked about this before - maybe it's an API limitation. If it is I would propose to make the URL field read only.
+"
+maxpower47/PinDroid,open,Question: Sign in with API token?,[],"Hi, not an issue so much but - is it possible to log into PinDroid using the API token rather than actual password? If it's not, is that a future plan? I thought the API tokens were developed specifically so that passwords wouldn't need to be provided to third-party programs. Thanks.
+"
+maxpower47/PinDroid,closed,Fearure request:offline support,[],"The ability to save and load bookmarks to the internal memory or sd card would be fantastic.
+Then regardless if the cloud is writing you slats have access to your info
+"
+maxpower47/PinDroid,closed,Share to Read Later asks for account every time on Marshmallow,[],"Not sure if this is related to #34 or not, but with Marshmallow on a Nexus5, every time I share to Read Later it asks me to choose an account even though I only have one account configured. The dialog that pops up has ""[my account]"" and ""Add New Account"" options. Is this the expected behavior?
+"
+maxpower47/PinDroid,closed,Marshmallow Sharing ,[],"Since moving to Marshmallow, every time I share to Pindroid it is asking me to select an account. 
+"
+maxpower47/PinDroid,open,sort search results,[],"To reproduce: press magnifying glass at top to begin search, enter terms, execute search. Press 'bookmark results' to view bookmarks. List is unsorted. Press menu button in upper right and choose 'sort bookmarks'. Choose any sort order. Order of list does not change.
+"
+maxpower47/PinDroid,open,Android:  Pinboard Notes not Appearing,[],"Pindroid has my bookmarks on a Samsung Galaxy but the ""Notes"" section comes up blank.  I don't have that many notes and I have waited for the sync to come through but no luck.  Thanks for any help with this.
+"
+maxpower47/PinDroid,closed,Add swipe to delete and mark as read/unread to bookmark list.,[],"Add ability to swipe in the bookmark list to delete and mark as read or unread.
+"
+maxpower47/PinDroid,open,Test account for contributions?,[],"Is there a test account that can be used for testing to contribute to this project?
+"
+maxpower47/PinDroid,closed,Undo delete,[],"Allow a user to undo a delete using the snackbar pattern.
+"
+maxpower47/PinDroid,closed,Account selection on share bookmark,[],"Sharing a bookmark to the standard target doesn't ask you which account you want to use if you have multiple.  Read later target does.
+"
+maxpower47/PinDroid,open,Tag deletion issue,[],"What steps will reproduce the problem?
+1. Delete all bookmarks with a certain tag
+2. Tag remains in list and auto complete
+
+Should probably grab a new tag list on upload syncs also.
+"
+maxpower47/PinDroid,open,Add support for renaming/deleting tags,[],"Add support for renaming/deleting tags
+"
+maxpower47/PinDroid,open,Sync on Wifi only,[],"In the interest of mobile data conservation, add an option to sync when connected to wi-fi only.
+"
+maxpower47/PinDroid,closed,Add version number to settings,[],"android app-settings are showing that the version i have installed is 2.0.2 which i installed from the market.
+while testing the tablet beta i noticed that the version i had installed was reported as being 1.something in the android app settings when it really was a 2.b version.
+but the only way to find out the version was by looking at the android settings.
+
+it would be nice to have the version number also listed in the app itself.
+if it's already there i apologize for not looking close enough ;) 
+"
+maxpower47/PinDroid,closed,Pull to refresh,[],"Implement a ""pull to refresh"" style feature on bookmark lists to start a sync.
+"
+maxpower47/PinDroid,closed,"Share from Dolphin browser only allows Read Later, not normal bookmark",[],"What steps will reproduce the problem?
+1. Share a page in Dolphin. Notice no option for normal bookmarking. 
+2.
+3.
+
+What is the expected output? What do you see instead?
+Both a read later and normal bookmark option. 
+
+What version of the product are you using? On what operating system? What
+device model?
+Nexus 7. Android 4.3. Dolphin Version 11.3.8. PinDroid latest as of today. 
+
+Please provide any additional information below.
+This is a recent change. Not sure how recent, but it was working within the last month and maybe even within the last two weeks. 
+"
+maxpower47/PinDroid,closed,Return to origin after sharing with Pindroid,[],"After using the share intent to store an URL in Pindroid it should return to the origin of the intent instead of opening the Pindroid main screen.
+"
+maxpower47/PinDroid,closed,"s3, joyent, or cloud agnostic",[],"please consider an option to push to a cloud account
+"
+maxpower47/PinDroid,closed,locally encrypt prior to upload,[],"Allowing only user to know the encryption key, and salt
+"
+maxpower47/PinDroid,closed,offline mode,[],"will there be an option to store offline? 
+"
+maxpower47/PinDroid,closed,Bookmark and Read Later icons are the same,[],"Mobile Firefox keeps the two most recently-used share targets [at the top of the context menu](https://mozorg.cdn.mozilla.net/media/img/l10n/en-US/firefox/android/customize/desktop-sharing.acb8d45259db.jpg).  However, if you're like me, those two are always both PinDroid: the normal bookmark saving and the read-later functionality.  The problem is that those two use the same icon, which makes it impossible to tell which one you're clicking - you've just got to guess and find out if you're lucky. :)
+"
+maxpower47/PinDroid,open,Pindroid stopped syncing after system update,[],"I have been using Pindroid (latest version from the Play Store) on my Samsung Galaxy S3 running Samsung's Android 4.3 for about a year without any problems. Recently I updated to Cyanogenmod's Android 4.4 version (CM11), and since that update, Pindroid doesn't sync any more automatically. Syncing itself still works fine when I launch it manually from Settings.
+
+Everything else on auto-sync (contacts and calendars via DavDroid) works like before, so the problem seems specific to Pindroid.
+
+Initially I suspected Cyanogenmod's privacy features, but switching them off for Pindroid makes no difference.
+"
+maxpower47/PinDroid,open,Selected view lost on rotation,[],"Steps to reproduce:
+1. Open the app in either portrait or landscape
+2. Select ""Unread"" (or any tag) from the menu
+3. Rotate your device
+4. Notice ""Bookmarks"" is selected instead of your previously chosen view
+
+(Android 5.0)
+"
+maxpower47/PinDroid,closed,Fix save to Read Later,[],"It all started with save to Read Later throwing exception with following message: ""You need to use a Theme.AppCompat theme (or descendant) with this activity"".
+It appears that you can't use `android:style/Theme.NoDisplay` on Activities extending android.support.v7.app.ActionBarActivity.
+So I have started doing some refactoring and came to conclusion that `SaveReadLaterBookmark` does not need to extend `FragmentBaseActivity`.
+"
+maxpower47/PinDroid,open,CRLF line ending in codebase on drawer branch,[],"It seems that you have committed (692040d) every file with CRLF windows line ending.
+"
+maxpower47/PinDroid,closed,Gradle cleanup,[],"I have updated plugin and dependencies versions and done some cleanup in gradle config.
+"
+maxpower47/PinDroid,open,edits lost after switching to another app,[],"What steps will reproduce the problem?
+1. Edit description or other editable field
+2. Switch to another app
+3. Edits are lost, fields are reverted to last saved values without warning
+
+What is the expected output? What do you see instead?
+
+Edits should be preserved on return or there should be a warning before switching about the possibility of losing the edits before a user switches to other apps
+
+What version of the product are you using? On what operating system? What
+device model?
+
+Android 4.4.3, Nexus 5
+"
+maxpower47/PinDroid,closed,Feature request: Tasker/Locale pluging for sync,[],"Background: I use Tasker for energy management on my phone. One important element is keeping data connections (GSM and Wifi) off most of the time. It's enabled once per hour for a few minutes, to fetch mail, sync data, etc.
+
+This doesn't work with PinDroid because I can't when a sync is started. I end up having to sync manually.
+
+The best solution would be a plugin for Tasker (and API-compatible apps, such as Locale), which lets me launch a sync as part of my once-per-hour network session.
+"
+maxpower47/PinDroid,closed,Use back key to return to the main interface from search results,[],"Now, it can only achieve this by press the PinDroid icon on the upper left corner and the back key would cause exiting of the program.
+"
+maxpower47/PinDroid,closed,Could not view notes in search results,[],"Bookmark details open from search results do not contain the Notes field.
+"
+maxpower47/PinDroid,closed,Password box max length is too short,[],"I can't actually log into my pinboard account because the password box isn't large enough to handle the size of my password. (I use passphrase style passwords, http://xkcd.com/936/)
+
+Could this be increased to allow the max size of pinboard password?
+"
+maxpower47/PinDroid,closed,data usage and syncing,[],"Does PinDroid do a full sync of all bookmarks regardless of if they've been modified on either Pinboard servers or the phone?
+
+With about 1700 bookmarks and a 12hr sync interval, Pinboard has used about [43 MB of data](https://dl.dropboxusercontent.com/u/675947/Misc/Pindroid_Data_Usage.png) in less than a week!
+is this normal?
+"
+maxpower47/PinDroid,closed,Sign-in (re-authentication) confusion,[],"I recently did some pinboard API usage by hand, then decided to reset my auth token.
+
+Next day there was a notification on my phone about PinDroid failing to sign in.
+
+Seemed reasonable, since I reset my auth token...
+Except that the app wouldn't authenticate with my new auth token.
+
+Does the app work with username/token?
+Or is username/password required?
+Or does the app log out after a long period of time?
+
+If it failed to authenticate because I changed my token, I would think it would have worked with my new token.
+
+If it originally required my password, then I don't understand why it got logged out.
+"
+maxpower47/PinDroid,closed,Major battery drain when re-authentication is required,[],"I usually go about 3 days without needing to recharge my phone.
+Went to bed last night with 80% charge.
+Woke up with 3% charge.
+
+There was a notification about failure to authenticate with pinboard.
+
+The battery continued to drain quickly (and recharge slowly) until I successfully reauthenticated.
+
+It's possible that there was another reason the battery was draining, but this seemed to be the only unusual thing happening on the phone at the time.
+"
+maxpower47/PinDroid,closed,update .project file,[],
+maxpower47/PinDroid,closed,Feature request: one click 'To Read' item in Send To menu,[],"It would be really cool if an additional 'Send To' option could be added that, instead of opening up the normal form, just saved the item and marked it To Read automatically. 100% of my usage of the Pindroid Send To menu is to save items to my To Read list, so this would save me a lot of time.
+"
+maxpower47/PinDroid,open,Support Semantic Scuttle,[],"May I suggest supporting Semantic Scuttle, a delicio.us GPL'd clone? The API apparently is the same.
+
+See http://sourceforge.net/projects/semanticscuttle/
+"
+maxpower47/PinDroid,open,Redirect-happy URLs render app unusable on tablet,[],"With the tablet view, clicking a bookmark that immediately triggers a redirect on load (ex: mobile version) bounces to the browser; then clicking back reloads the redirecting URL, bouncing to browser again.
+
+Have a fix in progress, but it's kind of hackish (involves a fair amount of overriding in WebView). Can make a PR if that's acceptable.
+"
+maxpower47/PinDroid,closed,Changed .classpath file to use relative path for library JAR instead of absolute path,[],
+maxpower47/PinDroid,closed,main search,[],"searching from mainactivity doesnt work.
+"
+maxpower47/PinDroid,closed,getBookmarkSearchSuggestions,[],"getBookmarkSearchSuggestions: pull settings retrieval out of loop.
+"
+maxpower47/PinDroid,closed,fixed German translation,[],"Hi,
+just fixed an expression in the German translation.
+"
+maxpower47/PinDroid,closed,German translation,[],"Hi,
+just completed and tested my translation into German. So if you still need it ... ;).
+"

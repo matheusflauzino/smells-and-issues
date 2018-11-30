@@ -1,0 +1,58 @@
+repository,state,title,label,body
+jatwigg/cmus-android-remote,open,Publish to F-Droid,[],"F-Droid is an app ""store"" or repository, that only serves free/libre/open-source apps. We received a packaging request at https://gitlab.com/fdroid/rfp/issues/195 and will continued with it. If you object the inclusion, please let us know."
+jatwigg/cmus-android-remote,open,Add license information,[],"I cannot find any license information. Since this is a fork of https://github.com/seriousben/cmus-droid-remote, I would assume that the license is GPL2 as well. Could you add that to the README or provide a separate LICENSE/COPYING file?"
+jatwigg/cmus-android-remote,open,Lock screen and tray support?,[],"It would be so great if this app control is visible in the lock screen and in the android tray icon area.
+
+thanks "
+jatwigg/cmus-android-remote,open,Update project's android studio and gradle version,[],"```
+    The new version of Android Studio and Gradle does some different
+    things when it comes to where it puts build files, their format,
+    etc. This commit updates these files so that the project can be
+    opened in android studio, and the app built.
+
+    This commit also removes a large number of files that should not
+    be tracked, most notably, the app/build/* files/folder.
+
+    * Include .gitignore to omit
+            app/build/*
+            .idea/<personal settings>
+            local.properties
+    * Delete .gitignore tracked filed in repo
+    * Update app/app.iml
+             app/build.gradle
+             build.gradle
+```
+
+---
+
+This Pull Request need not be merged into `master`, or at all, but any work that I will do will depend on this new version of Android Studio, Gradle, etc...
+"
+jatwigg/cmus-android-remote,open,Refactor Main Shuffle/Repeat/Volume Buttons,[],"[Enhancement]
+
+The current shuffle/repeat/mute buttons rely on `Toast`s to indicate their current value.
+
+These buttons could be refactored to use an image-toggle type of button.
+Additionally, a button could be added to switch from `play_library` to `play_playlist` mode.
+
+These options are currently read by the `CmusStatus` class, but nothing is done with them.
+- [ ] Update Mute, Shuffle, Repeat, RepeatAll buttons to show current selection
+- [ ] Include PlayLibrary toggle button
+"
+jatwigg/cmus-android-remote,open,Volumn Step Setting,[],"[Enhancement]
+
+Add a setting for the volume up / down step. Currently, this uses the default `10%`, however that can be a bit much.
+- [ ] update `activity_host_manager.xls` to include buttons / selectors
+  - \- [ ] update `ActivityHostManager` to input numbers and whatnot
+- [ ] update `Settings` to support volume step value
+- [ ] update `CmusCommand` to respect volume step setting
+"
+jatwigg/cmus-android-remote,closed,Nexus 5 Can't Open Settings,[],"I open the app, press the settings button and nothing happens.
+"
+jatwigg/cmus-android-remote,open,Empty password supported?,[],"Hey, 
+
+Trying to connect to cmus running on osx. 
+Is it possible to connect without specifing a password?
+
+thanks
+K
+"

@@ -1,0 +1,199 @@
+repository,state,title,label,body
+onyxbits/remotekeyboard,closed,Setup as Android Studio/Gradle project,[],
+onyxbits/remotekeyboard,open,Source code fix on mapping PAGE_UP,[],"I know it isn't used in the app, but worth reporting in case anyone else uses the source code
+
+Decoder.java line number 71  - you will see that it maps PAGE_UP twice and never maps PAGE_DOWN. 
+
+https://github.com/onyxbits/remotekeyboard/blob/master/src/de/onyxbits/remotekeyboard/Decoder.java#L71
+
+Thank you for the great software."
+onyxbits/remotekeyboard,open,Option to transfer all keystrokes,[],"This is a feature request to support the transfer of all keystrokes (including Ctrl + A,X,V,C, etc) to the android keyboard. This is useful when using ssh client on the android tablet.
+"
+onyxbits/remotekeyboard,closed,Cannot switch from one Startscreen to another,[],"I can navigate from one startscreen panel to the other one. I can navigate from one startscreen icon to another one, but it always stops at the end of the screen.
+
+With a hardware keyboard I can do this, so this seems to be possible. 
+
+CM 13
+"
+onyxbits/remotekeyboard,closed,Use on lockscreen,[],"I noticed I cannot use RK to wake up my device from standby and I also cannot use it from the lock screen to enter PIN/Password.
+
+Although I - for security reason - think that the latter is okay, the former would be a useful feature, but if it might have a bad effect on the battery, it should be optional.
+And even the PIN input could be implemented. I mean it is the user's responsibility to only use this is a secure WLAN.
+"
+onyxbits/remotekeyboard,closed,Local echo of only last few char(s),[],"I read https://github.com/onyxbits/remotekeyboard/issues/2, but what about this idea:
+Only show the last char or let's say 3-5 chars entered, also show backspace as `⬸` (or similar - if you cannot see it I mean :arrow_left:) e.g.
+
+This would avoid all problems mentioned in #2  and at least provide some feedback on PC.
+Passwords are also no problem to show as 1) users should be aware that telnet is insecure anyway, so they should not enter any passwords in the first place, 2) also Android has an option to show the last character of an entered password, so this would behave very similar.
+"
+onyxbits/remotekeyboard,closed,Easily close connection,[],"It would be nice if the notification of the RK app would include a button ""Close connection"" or better ""Stop Remote Keyboard"", which would then disable the keyboard and choose another one.
+
+This would make it more convenient to use. :smiley: 
+"
+onyxbits/remotekeyboard,open,Settings screen protection insufficient,[],"In case I am righht with https://github.com/onyxbits/remotekeyboard/issues/19 and the settings screen should be protected against remote input, here is a way to work around it:
+1. Disable RK. (choose another keyboard)
+2. Go into the settings.
+3. Switch to another app with text input.
+4. Activate RK there and connect to it.
+5. Switch back to the RK app.
+
+Now you can easily enter a new password there. I think this is not wanted.
+"
+onyxbits/remotekeyboard,open,Settings screen: UX,[],"When showing the RK screen when using RK currently there is a loading bar at the top.
+I assume this is a security feature to prevent keyboard users from changing the password e.g.
+
+However there should be a little more user feedback as no one knows what to do when this loading bar appears and one might just wait, because it is well... loading.
+
+So a simple text there stating this would be sufficient: ""You must close your RK connection before you can access this settings. Waiting for close...""
+"
+onyxbits/remotekeyboard,open,Other port,[],"It would be nice to be able to change the port RK uses. This would at least prevent some very simple attacks.
+"
+onyxbits/remotekeyboard,open,No connection after password failure possible,[],"STR:
+1. Connect to RK.
+2. Enter wrong password.
+- Connection closes - so far so okay -
+- Connect again.
+
+What happens: All messages including the escape character are shown, but nothing happens afterwards. No password prompt is shown.
+
+What should happen: Basically I appreciate that I cannot enter the password straight after I entered a wrong one. (This prevents brute-force attacks) But after waiting some time (which might be shown with a countdown) I should be able to use another try.
+
+``` console
+$ telnet 192.168.x.y 2323
+Trying 192.168.x.y...
+Connected to 192.168..x.y.
+Escape character is '^]'.
+Passwort:
+Connection closed by foreign host.
+$ telnet 192.168.x.y 2323
+Trying 192.168.x.y...
+Connected to 192.168.x.y.
+Escape character is '^]'.
+```
+"
+onyxbits/remotekeyboard,closed,Custom text for keyboard/ASCII art,[],"It would be nice if one can set some custom text in the app to show in the telnet session.
+Also ASCII art would be possible. (maybe let teh user choose from some templates here too)
+"
+onyxbits/remotekeyboard,open,Speecial values for F keys,[],"It would be nice to be able to assign other (special) values for F keys...
+
+E.g.:
+- Show home sceen
+- Show app switcher
+- Show menu (the one which used to be assigned to the menu hardware button of older devices)
+- return hardware key (I know there ois already Ctrl+Q but maybe one likes one single key better
+- search key
+- seek forward and
+- seek backward
+- pause/play
+- volume off
+- decrease volume
+- increase volume
+- open web browser (don't know if it is possible, but would be nice)
+- create screenshot
+- forward delete
+
+I know this is all possible, because I know a hardware keyboard, which has this special keys.
+
+OGJ: Guvf ncc vf njrfbzr! :Q
+"
+onyxbits/remotekeyboard,closed,no 2323 port listening,[],"i have installed and enabled it in setting keyboard.
+
+then i use following to connect to app, got refused error
+$ telnet  10.1.1.111 2323
+Trying 10.1.1.111...
+telnet: connect to address 10.1.1.111: Connection refused
+
+$ adb shell ""netstat |grep 2323""
+$
+(got nothing)
+
+my host is: gentoo linux
+my telnet version is:
+[I] net-misc/telnet-bsd
+     Available versions:  1.2-r1 {nls xinetd}
+     Installed versions:  1.2-r1(01:12:13 AM 05/17/2015)(nls -xinetd)
+     Homepage:            ftp://ftp.suse.com/pub/people/kukuk/ipv6/
+     Description:         Telnet and telnetd ported from OpenBSD with IPv6 support
+my devices is: android 4.4 device
+    without root 
+"
+onyxbits/remotekeyboard,open,option to use only on Wifi,[],"Please add an option to only ""Use on Wifi"". Various apps support such an option, like F-Droid or Linphone, and having such an option on RK would come in handy to avoid RK being available on 3G networks...
+"
+onyxbits/remotekeyboard,closed,Fix for https://github.com/onyxbits/remotekeyboard/issues/5,[],
+onyxbits/remotekeyboard,open,add example of telnet call,[],"In the app you indicate: 
+
+> To actually type, connect to your device with a telnet client from your desktop computer. 
+
+Unfortunately not all of us are familiar with how telnet clients work, and how exactly they should be invoked in RK's case. So I would suggest adding in-app and in the FAQ something to the tune of: 
+
+> For example, on Linux you can do this by executing from a terminal `telnet localhost 2323`
+
+Personally, after I figured out how to connect to the device using `adb`, as per the FAQ, I was lost as to how exactly to initiate the typing.
+"
+onyxbits/remotekeyboard,closed,Keyboard layout,[],"Hi, thanks for this amazing app!
+
+There is a way to change the keyboard layout? My notebook is ABNT2 (with ç) and when I type any accents, like [ áéíóú ] the character is not send correctly.
+"
+onyxbits/remotekeyboard,closed,Removed unneeded Java import statements,[],"Minor code cleanup
+"
+onyxbits/remotekeyboard,open,notification icon,[],"the keyboard seems to stop listening to the port when you select a different keyboard, but the notification sticks around. you have to force close to get rid of it.  is this intentional or should it be cleared in shutdown? 
+"
+onyxbits/remotekeyboard,open,Can't type ESC,[],"I've gotten normal keypresses working, but ESC doesn't seem to do anything.  I'm intending to use it with Vim Touch.  Using ESC in the Hacker's Keyboard and hardware keyboards work just fine.
+
+I'm using Android 4.3 on a Nexus 7, if it's relevant.
+
+Thanks for maintaining Remote Keyboard!
+
+Ben
+"
+onyxbits/remotekeyboard,closed,IP addresses && scrollable main activity,[],"I've been hacking RemoteKeyboard code. I've implemented two things:
+1. Showing all IP addresses at the main activity.
+2. Showing one IPv4 address at the notification area.
+3. Making the main activity layout scrollable.
+
+Since when I started hacking the code, I see you have already implemented the second item from this list. Well, you may want to look at my changes anyway. Bear with me, as I have almost zero Android and Java experience.
+"
+onyxbits/remotekeyboard,open,Line breaks get messed up after pasting multiple lines onto telnet client,[],"How to reproduce:
+1. Start Remote Keyboard, focus any multi-line text field (such as List My Apps template editor, or Gmail compose window).
+2. Connect to Remote Keyboard using Linux telnet client. Should probably be reproducible if connecting from Android (using ConnectBot as a telnet client) or connecting from Mac or Windows.
+3. Select some multi-line text on your client.
+4. Paste the multi-line text onto the telnet client. (e.g. by middle-clicking)
+
+What happens:
+At the Android side, all lines are concatenated together. Followed by all newlines at the end.
+
+So, when pasting:
+
+```
+foo
+bar
+dummy
+text
+```
+
+It gets written in the Android device as:
+
+```
+foobardummytext
+<blank>
+<blank>
+<blank>
+```
+
+As a (boring and time-consuming) workaround, I can paste each line separately, manually. The issue only happens when pasting multiple lines at once.
+"
+onyxbits/remotekeyboard,closed,security issues wrt telnet?,[],"I'm no security expert, but I vaguely remember reading that installing a telnet client on a Linux system represents a serious security issue. Are there potential security issues when installing remotekeyboard on Android? 
+
+Thanks!
+"
+onyxbits/remotekeyboard,open,IP Address on Keyboard Mini-bar,[],"Hi, great app! Thanks!
+
+I have some suggestion, could this app show the current IP Address of the device somewhere in the mini keyboard bar so user could connect to the device without going to device main screen? Thanks!
+"
+onyxbits/remotekeyboard,closed,Local echo,[],"would it be possible to enable local echo on the local terminal?
+great app, thank you!
+"
+onyxbits/remotekeyboard,closed,Would like a 1x1 widget.,[],"Very nice app. Thank you. I installed v1.1 via F-Droid.
+
+The widget uses 2x2 squares on my home screen (4"" hdpi; 4x4 squares per page for widgets and shortcuts).  It  would be nice to have a 1x1 widget.
+"

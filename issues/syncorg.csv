@@ -1,0 +1,360 @@
+repository,state,title,label,body
+wizmer/syncorg,open,insecure gradlew,[],"in case this project is still maintained: a minor fix would be required to increase build security. F-Droid lint complains:
+
+```
+Found plain HTTP URL for gradle repository:
+build/com.coste.syncorg/SyncOrg/build.gradle
+repositories {
+    maven { url 'http://guardian.github.com/maven/repo-releases' }
+gradle build uses plain HTTP URLs for repositories!  This is insecure!
+https://max.computer/blog/how-to-take-over-the-computer-of-any-java-or-clojure-or-scala-developer/
+```
+
+Simply make that an `https` URL, the target supports that. Thanks!"
+wizmer/syncorg,open,"Make URL ""clickable""?",[],"AFAICT, when I have a URL in the Org buffer, it's treated like any other chunk of text rather than turning it into a hyperlink.  Am I missing something?
+
+Also, I can't see a way to copy some text (to paste it elsewhere, e.g. in a browser when that text is a URL).  So I guess these are either two feature requests, or two cases of me being a bit dense."
+wizmer/syncorg,open,"Update gradle, Add JUnit",[],"Simple pull to get me started
+
+Update gradle to 2.3.3 and add JUnit 4.11 testCompile dependancy"
+wizmer/syncorg,open,Wiki updates,[],"Hi,
+I did a fair work on the wiki before i realised that i couldn't create a pull request.
+I converted it to .org files, made most of the links local and copied all the content from HACKING.md into 
+contributing.org.
+
+@wizmer have a look and see what you think: [wiki](https://github.com/D-sha/syncorg/wiki) "
+wizmer/syncorg,open,Question: is development still proceeding?,[],"Just found SyncOrg recently and still struggling with setup and usage.  Has errors creating folder but worked around that with help from others in issue #31 but then ran into problem with subfolders (I have a dozen or so subfolders in a tree and it ended up recursing during setup and creating 2000+ folders and 20,000+ files which I'm now trying to remove).   So I'll just test this without folders and wait for it to be improved, but I see there hasn't been any checkins for half a year and no releases in almost a year.
+Is development still happening, wizmer?   "
+wizmer/syncorg,open,Creating/editing files/nodes,[],"Hey,
+so I got syncorg working with #28 (syncing didn't work before, had to run the wizard everytime and choose a different parent folder). Awesome work, thanks a lot!
+
+A question: I'm able to add a new file, name it, and add one node to it. However, I'm not able to add more nodes to that file or edit any nodes. All i can do is change TODO state.
+Is this intended behaviour?
+
+Second question: I created repos like in the tutorial, however git pull does not suffice to update. I have to go to the bare repo, do git fet origin master:master there, and then pull in my unbare repo. Is this normal or did I setup something incorrectly?"
+wizmer/syncorg,closed,Custom #+TODO states deleted after syncing changes from phone,[],"The custom TODO states are still available on the phone, but on a computer, after restart or  'refresh local setup', they don't work anymore.
+
+"
+wizmer/syncorg,open,Custom #+TODO states deleted after syncing changes from phone,[],"The custom TODO states are still available on the phone, but on a computer, after restart or  'refresh local setup', they don't work anymore.
+
+"
+wizmer/syncorg,closed,Get the Multidex stuff,[],Syncing back my master branch
+wizmer/syncorg,closed,Fixed timestamp import off by one for month field.,[],"IDK whether I am the only one experiencing this problem, but whenever I import scheduled items from my desktop, the seem to be off by one month. I wrote a test that shows the issue for me and changed the import to add one to the month field."
+wizmer/syncorg,open,SSH crashes,[],"Hi,
+whenever the app tries to connect to SSH it crashes at the very beginning. Namely I'm getting:
+`java.lang.NoClassDefFoundError: Failed resolution of: Lorg/ietf/jgss/Oid`
+It clearly can't find a class that was present at the compile time. I've tried to decompile the corresponding dex file, but I couldn't find anything. So it might  be a problem with paths. I'm running Lineage OS 7.1.1, can anyone confirm/disprove that this is happening on stock Android 7.1.1, on older Lineage OS...?"
+wizmer/syncorg,open,SSHSynchronizer now returns absolute paths in syncresult.,[],After the latest changes for the external synchronize on master the app kept throwing an error (at least for me) after every git pull. This fixes that problem for me by adding the absolute path to all file paths returned by the git wrapper.
+wizmer/syncorg,closed,The number of method references in a .dex file cannot exceed 64K,[],"Hi,
+
+the source code reached the famous problem of insufficiently big dex file and therefore it can't be build.
+As I see it, there are the following possibilities:
+
+* drop support for older Android (the oldest supported version would be 5 (API 21)
+* use proGuard and hope it will shrink the code enough; that also mean update the build API from 24 to 25. It is probably just a temporary solution
+* use multiindex which results in longer starting time
+* clean up the code from unneeded methods
+
+None of this is ideal. For me personally the easiest way would be just drop the support for older Android, but I believe there are still many users with Android below 21.
+
+What should we do about it?"
+wizmer/syncorg,closed,japanese translation,[],Hello!
+wizmer/syncorg,open,All content indentation lost on write,"[Label(name=""bug"")]","When a change is made, indentation is lost for the whole file. This is particularly disruptive for `SRC` and `EXAMPLE` blocks.
+
+For example, when starting with:
+```
+* Top
+** First
+Content unindented
+  Indented 2
+    Indented 4
+** Second
+   Content indented
+     Indented 2 more
+       Indented 4 more
+** Third
+#+BEGIN_EXAMPLE
+=============================
+Example unindented
+  Indented 2
+    Indented 4
+=============================
+#+END_EXAMPLE
+** Fourth
+  #+BEGIN_EXAMPLE
+  =============================
+  Example indented
+    Indented 2 more
+      Indented 4 more
+  =============================
+  #+END_EXAMPLE
+```
+Adding a new child under `Top` updates the file to:
+```
+* Top
+** New child of Top
+** First
+   Content unindented
+   Indented 2
+   Indented 4
+** Second
+   Content indented
+   Indented 2 more
+   Indented 4 more
+** Third
+   #+BEGIN_EXAMPLE
+   =============================
+   Example unindented
+   Indented 2
+   Indented 4
+   =============================
+   #+END_EXAMPLE
+** Fourth
+   #+BEGIN_EXAMPLE
+   =============================
+   Example indented
+   Indented 2 more
+   Indented 4 more
+   =============================
+   #+END_EXAMPLE
+```"
+wizmer/syncorg,open,Error message for authentication,"[Label(name=""bug"")]","Would be nice if the error message in SSH wizard were more specific, like:
+* server not found
+* authentication failed
+
+Even if I put wrong password, it still says something like: GIT error: probably wrong path."
+wizmer/syncorg,open,App crashes whenever it tries to access the fs,"[Label(name=""bug"")]","I'm using the 2.0.5.3 version of SyncOrg on Android 4.3.1 (CM 10.2.1). 
+
+When I press ""Parent Folder"" in SSH setup or ""ORG FILES DIRECTORY"" in External/no sync setup, the app crashes. "
+wizmer/syncorg,closed,Pictures points to syncorg repository (not mobileorg-android),[],"Is there any reason not to do this?
+Also, https://github.com/wizmer/syncorg/wiki/Contributing link HACKING points to a different repository."
+wizmer/syncorg,open,Program crashes at start,"[Label(name=""bug"")]",The program crashes when I open it. 
+wizmer/syncorg,open,A basic git question,"[Label(name=""question"")]","Hope this question is okay here. I am woefully ignorant of git.  I have looked at various git intros and have not found a solution to this problem, but admit that I might not recognize the answer if I saw it.   Maybe this question can pass  as a ""documentation issue""? Eventually people as ignorant as I am will want to use SyncOrg. Well, I guess that's already happened.
+
+So far, in my org directory on the server on my LAN I have done
+
+git init
+
+git add *.org
+
+git commit *.org
+
+After the first sync by SyncOrg all the org files appeared on my phone. That was good!
+
+After making changes on the phone and syncing again, though, the org files on the server did not change.
+
+SyncOrg seems to be doing its part, though. Each time I modify and sync, I get three new subdirectories in  .git/objects. 
+
+Using 
+
+git cat-file -p <hash>
+
+I do see the changes I made on the phone. So the information is making it to the server. This is also good!
+
+So I must be missing something. A command I should issue on the server to combine the modifications in .git/objects with the main files, maybe? Hoping it's that simple. 
+
+Thanks in advance. Alternatively sorry in advance for posting this in an inappropriate place.
+
+FH"
+wizmer/syncorg,closed,Query about Android SDK version,[],"https://github.com/wizmer/syncorg/wiki/Contributing says ""Install Android 6 API 24 if you haven't already: Go to File -> Settings and search for ""Android SDK"", check ""Android6.0 (Marshmallow)"" and click apply.""
+
+But my Android SDK install says that
+- API 24 is Android 7.0 (Nougat)
+- API 23 is Android 6.0 (Marshmallow)
+
+Can you check which is the correct version for SyncOrg?"
+wizmer/syncorg,closed,"Is sync with a Git repo implemented yet?  If so, how do I configure that?","[Label(name=""question"")]","I keep my org files in a private repo on bitbucket, so it would be wonderful I could configure SyncOrg to use that.  But it's not clear to me if this is implemented yet, or if so how to configure it."
+wizmer/syncorg,closed,Add .dir-locals.el so that Java code looks right in Emacs,[],
+wizmer/syncorg,open,Expose intent to create node,"[Label(name=""enhancement"")]","It would be useful if one could share, say, a webpage from the web browser to syncorg, and easily create a node out of the URL and title."
+wizmer/syncorg,open,Org files in subdirectories are not being detected.,"[Label(name=""bug"")]",Only files at the top level are being detected.
+wizmer/syncorg,open,App crashes after bad sync,"[Label(name=""bug"")]","Tried to setup a sync with our gitlab server. Couldn't get it to work, it crashed. Now I cannot open the app, as it crashes immediately. Cannot change the sync settings to try again as it crashes before it can really open. I tried to clean the cache, but that does not help, I tried re-installation, but that also doesn't help. So I'm stuck now with an unusable SyncOrg app. I have no idea how to get it working again, so I can check the sync settings and maybe adjust."
+wizmer/syncorg,open,Editing of SCHEDULED field ignored by the Agenda view,"[Label(name=""bug"")]","With latest 2.5.0.3: create new node, set SCHEDULED date for it, save it.
+Then check it shows up OK in app Agenda view.
+Then right from Agenda view initiate editing of the SCHEDULED date in this node, save and observe this change to be ignored by the Agenda view.
+
+The new date is in the node OK, but Agenda view will still show the node scheduled to old date.
+Even app restart does not seem to help - the item is still shown as scheduled at initial SCHEDULED date.
+
+=======================
+
+Second thing is that after app restart I could not see my new node in the org file in the app. The node shows up in Agenda view (with wrong old date attached to it) but now the item is missing from the org file when opened."
+wizmer/syncorg,open,Agenda Widget,"[Label(name=""enhancement"")]",It would be very useful to have an agenda widget in the homescreen. Any plans for it?
+wizmer/syncorg,closed,Fixed URL for the MobileOrg project,[],
+wizmer/syncorg,open,Still unclear how to use a non-git remote,"[Label(name=""question"")]","With a remote directory that works with MobileOrg via ssh, SyncOrg emits ""Path does not exist or is not a valid repository"""
+wizmer/syncorg,open,Sync org crashes on folder selection,"[Label(name=""bug"")]","Hello. The latest version of the app (2.0.5.2) crashed on Replicate Android ROM (based on Android 4.2).
+
+Crash always happens when you click ""select directory"". On another device with Android 4.4 ROM ""select directory"" does not lead to any problems, but with Replicant/Android 4.2 it is always app crash.
+
+Hope it helps."
+wizmer/syncorg,closed,Check if file to parse is actually a directory,[],"I have a directory inside my directory with all my org files, the software stops parsing the files due to erroneously trying to parse a directory."
+wizmer/syncorg,open,support stronger ssh key exchange algorithm,"[Label(name=""enhancement"")]","I guess that this is an issue not with SyncOrg itself, but with whatever library it uses for ssh, but I'll report it here as a starting point:
+
+My server had
+
+    KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+
+in `/etc/ssh/sshd_config` on account of [this advice](https://presentations.nordisch.org/olddognewtricks/#/14), but that prevents SyncOrg from connecting, resulting in messages like:
+
+    sshd[1216]: fatal: Unable to negotiate with [IP address] port 43420: no matching key exchange method found. Their offer: diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1 [preauth] 
+
+It would be nice if it could support at least one of the two recommended algorithms above."
+wizmer/syncorg,open,SyncOrg for older Android (4.1)?,"[Label(name=""enhancement"")]",Is there any chance of getting SyncOrg to work on older Android versions? I run a Jolla phone and the Android emulation layer is only compatible with Android up to 4.1 (if memory serves me). Is there something major that prevents SyncOrg from being built to work on slightly older Android?
+wizmer/syncorg,open,Local filesystem sync: Can't select directory,"[Label(name=""bug"")]","I have an Org folder in /storage/0/ that I'd like to use for storage (sync'd using Syncthing).
+
+When I select local sync in the setup wizard, I see an empty dir, with no obvious way to select a different directory:
+![screenshot_20161220-184813](https://cloud.githubusercontent.com/assets/14615/21375949/1ab9f1ea-c6e6-11e6-90da-00806bb35f9b.png)
+ 
+I'm not sure if this is something peculiar to my device, which is
+Android 6.0.1, with an SD card ""adopted"" as device storage.
+
+Follow-up to #23."
+wizmer/syncorg,closed,New and edited entries end up double in Todos and Agenda view,[],"
+I'm using version 2.0.5 from F-Droid, starting without sync and an empty folder. When I add a new entry, it ends up twice in the Todos list
+![258573587](https://cloud.githubusercontent.com/assets/15071778/21285221/283c4278-c3f8-11e6-844b-35fb330cfd53.jpg)
+![1758107630](https://cloud.githubusercontent.com/assets/15071778/21285234/5cc93c26-c3f8-11e6-8307-aadfd9a1b058.jpg)
+When I edit the entry, the old entry stays in the Todos list, and two new entries are added.
+![2134569680](https://cloud.githubusercontent.com/assets/15071778/21285247/ead6bb74-c3f8-11e6-9c36-a9958001fa01.jpg)
+![1275408914](https://cloud.githubusercontent.com/assets/15071778/21285250/f2c9fd8c-c3f8-11e6-992f-556ffc5f3b9e.jpg)
+Something similar happens to the Agenda view, this is how the agenda view looks like with the same one entry in my test.org file after adding, removing and editing some entries.
+![2134569680](https://cloud.githubusercontent.com/assets/15071778/21285280/a02012f0-c3f9-11e6-8e84-b6902932b7ca.jpg)
+
+![421245686](https://cloud.githubusercontent.com/assets/15071778/21285275/8cf493ae-c3f9-11e6-9f1e-ca98ad7cc4b8.jpg)
+![817361721](https://cloud.githubusercontent.com/assets/15071778/21285276/910190f0-c3f9-11e6-922f-ffe317dbcc70.jpg)
+![2095662738](https://cloud.githubusercontent.com/assets/15071778/21285279/94edf1b8-c3f9-11e6-86df-73a9a76de0a6.jpg)
+"
+wizmer/syncorg,closed,Ignore missing or extra translations on build.,[],"Hi, installing android-studio and building a release for nougat raise many build issues about translations.
+This commit let the build run."
+wizmer/syncorg,closed,Don't commit when no files have changed,[],"This change stops empty commits being made as highlighted in https://github.com/wizmer/syncorg/issues/16
+
+Maybe the issue could be looked into more so that synchronizing isn't attempted unless nodes have been modified or files changed."
+wizmer/syncorg,closed,Local filesystem sync,[],"Not sure which repo I should be reporting issues to. I have Syncthing syncing my Documents to android, so I'd like to have SyncOrg sync with a specified folder on the SD Card.
+
+https://github.com/matburt/mobileorg-android/issues/494"
+wizmer/syncorg,open, Support alarm clock function?,"[Label(name=""enhancement"")]","When the time is coming,can wake mobilephone screen?
+Thanks for your work!
+"
+wizmer/syncorg,open,Level 4+ headings displayed as plain text,"[Label(name=""bug"")]","… with a bunch of asterisks prepending them.
+"
+wizmer/syncorg,open,Crash with files with lots of headings,"[Label(name=""bug"")]","I have a file with lots (<100) headings, most of them marked as TODO/DONE. When I open it, SyncOrg crashes.
+"
+wizmer/syncorg,closed,ownCloud/nextCloud support,"[Label(name=""enhancement"")]","Please add a way to sync org files vias ownCloud or nextCloud.
+"
+wizmer/syncorg,closed,Open local .org files.,[],"SyncOrg should be set to open local .org files. It is now nearly impossible to open my org files of I dont use Git or SSH.
+"
+wizmer/syncorg,closed,Is git required for syncorg?,[],"Apologies if this is obvious -- but is git required for syncorg?
+
+I am getting ""Path does not exist or is not a valid repository."" when trying to log in via SSH.
+
+Thanks!
+David
+"
+wizmer/syncorg,closed,SyncOrg does empty commits when I open it,[],"I have the same as the guy in this picture
+
+![Commit changes to all files](http://i.imgur.com/cfMJNG5.png)
+"
+wizmer/syncorg,closed,org.eclipse.jgit.api.errors.TransportException ECONNREFUSED with wrong port reported,[],"I'm trying to setup an ssh connection as suggested when the app is launched for the first time.
+Even though the setup parameters seem correct, I get the error in the title, with port 22 reported in the error message. It looks like the number I wrote under ""Port"" was not taken into consideration. Are non-standard ssh port numbers working? 
+
+Thanks,
+
+Giacomo
+"
+wizmer/syncorg,closed,Help menu links to broken link,[],"If you try to access ""help"" using the application menu, it leads to a 404 github page.
+"
+wizmer/syncorg,closed,"should we add ""Github"" ""gitlib"" and some other ssh sync method?",[],
+wizmer/syncorg,closed,Blank search window when no item is found?,[],"Suggest add ""Sorry. no items are found.""
+"
+wizmer/syncorg,closed,"Add examples to ""Absolute Path""",[],"Add some examples to ""Absolute Path"" in ssh setting, so user can reference it or just copy it as a templete, instead of insert a long ssh path
+"
+wizmer/syncorg,closed,An f-droid release? :),[],"Hi! I'd like to check out the app, but I don't have Google Play Services. Could you provide the built `.apk` as a part of the GitHub ""release"" or (better yet) publish the app on [F-Droid](https://f-droid.org/)? :)
+"
+wizmer/syncorg,closed,example git config for emacs,[],"Hi there,
+
+Could you provide (maybe in the readme file) an example how to use syncorg with git within emacs.
+
+Thanks,
+Martin
+"
+wizmer/syncorg,closed,Add TransportException-specific handling,[],"Patch discussed here [https://github.com/wizmer/syncorg/issues/7](url). I looked at the sources for jgit and it looks like `TransportExceptions` mostly get thrown when there is something keeping git from working properly (or when git is missing all together :) Based on this, I chose the wording in `strings.xml`. I also added the German counterpart. I'm not a native speaker, but I've been living here for 7 years, so it should be mostly correct.
+"
+wizmer/syncorg,closed,cannot execute: git-upload-pack,[],"Hi! I'm getting a TransportException with the message ""cannot execute: git-upload-pack"". I get this right at the very beginning while trying to set up ssh access to my server. Here's the stacktrace:
+
+```
+09-24 11:07:18.082 21626 22624 W System.err: org.eclipse.jgit.api.errors.TransportException: ssh://myuser@myserver.example.com/home/chris/org/: cannot execute: git-upload-pack '/home/chris/org/'
+09-24 11:07:18.083 21626 22624 W System.err:    at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:137)
+09-24 11:07:18.083 21626 22624 W System.err:    at org.eclipse.jgit.api.CloneCommand.fetch(CloneCommand.java:178)
+09-24 11:07:18.083 21626 22624 W System.err:    at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:125)
+09-24 11:07:18.083 21626 22624 W System.err:    at com.coste.syncorg.synchronizers.JGitWrapper$CloneGitRepoTask.doInBackground(JGitWrapper.java:310)
+09-24 11:07:18.083 21626 22624 W System.err:    at com.coste.syncorg.synchronizers.JGitWrapper$CloneGitRepoTask.doInBackground(JGitWrapper.java:276)
+09-24 11:07:18.083 21626 22624 W System.err:    at android.os.AsyncTask$2.call(AsyncTask.java:295)
+09-24 11:07:18.083 21626 22624 W System.err:    at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+09-24 11:07:18.086 21626 22624 W System.err:    at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:234)
+09-24 11:07:18.086 21626 22624 W System.err:    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)
+09-24 11:07:18.086 21626 22624 W System.err:    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)
+09-24 11:07:18.086 21626 22624 W System.err:    at java.lang.Thread.run(Thread.java:818)
+09-24 11:07:18.086 21626 22624 W System.err: Caused by: org.eclipse.jgit.errors.TransportException: ssh://chris@flooose.ddns.net/home/chris/org/: cannot execute: git-upload-pack '/home/chris/org/'
+09-24 11:07:18.087 21626 22624 W System.err:    at org.eclipse.jgit.transport.TransportGitSsh.checkExecFailure(TransportGitSsh.java:173)
+09-24 11:07:18.087 21626 22624 W System.err:    at org.eclipse.jgit.transport.TransportGitSsh$SshFetchConnection.<init>(TransportGitSsh.java:272)
+09-24 11:07:18.087 21626 22624 W System.err:    at org.eclipse.jgit.transport.TransportGitSsh.openFetch(TransportGitSsh.java:147)
+09-24 11:07:18.087 21626 22624 W System.err:    at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:136)
+09-24 11:07:18.087 21626 22624 W System.err:    at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:122)
+09-24 11:07:18.087 21626 22624 W System.err:    at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1104)
+09-24 11:07:18.087 21626 22624 W System.err:    at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:128)
+09-24 11:07:18.087 21626 22624 W System.err:    ... 10 more
+09-24 11:07:18.087 21626 22624 W System.err: Caused by: java.io.IOException: bash: git-upload-pack: command not found
+09-24 11:07:18.088 21626 22624 W System.err:    at org.eclipse.jgit.transport.TransportGitSsh.checkExecFailure(TransportGitSsh.java:172)
+09-24 11:07:18.088 21626 22624 W System.err:    ... 16 more
+09-24 11:07:18.140 21626 21626 W System.err: org.eclipse.jgit.api.errors.TransportException: ssh://chris@flooose.ddns.net/home/chris/org/: cannot execute: git-upload-pack '/home/chris/org/'
+09-24 11:07:18.140 21626 21626 W System.err:    at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:137)
+09-24 11:07:18.140 21626 21626 W System.err:    at org.eclipse.jgit.api.CloneCommand.fetch(CloneCommand.java:178)
+09-24 11:07:18.140 21626 21626 W System.err:    at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:125)
+09-24 11:07:18.140 21626 21626 W System.err:    at com.coste.syncorg.synchronizers.JGitWrapper$CloneGitRepoTask.doInBackground(JGitWrapper.java:310)
+09-24 11:07:18.140 21626 21626 W System.err:    at com.coste.syncorg.synchronizers.JGitWrapper$CloneGitRepoTask.doInBackground(JGitWrapper.java:276)
+09-24 11:07:18.140 21626 21626 W System.err:    at android.os.AsyncTask$2.call(AsyncTask.java:295)
+09-24 11:07:18.141 21626 21626 W System.err:    at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+09-24 11:07:18.141 21626 21626 W System.err:    at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:234)
+09-24 11:07:18.141 21626 21626 W System.err:    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)
+09-24 11:07:18.141 21626 21626 W System.err:    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)
+09-24 11:07:18.141 21626 21626 W System.err:    at java.lang.Thread.run(Thread.java:818)
+09-24 11:07:18.141 21626 21626 W System.err: Caused by: org.eclipse.jgit.errors.TransportException: ssh://chris@flooose.ddns.net/home/chris/org/: cannot execute: git-upload-pack '/home/chris/org/'
+09-24 11:07:18.141 21626 21626 W System.err:    at org.eclipse.jgit.transport.TransportGitSsh.checkExecFailure(TransportGitSsh.java:173)
+09-24 11:07:18.141 21626 21626 W System.err:    at org.eclipse.jgit.transport.TransportGitSsh$SshFetchConnection.<init>(TransportGitSsh.java:272)
+09-24 11:07:18.141 21626 21626 W System.err:    at org.eclipse.jgit.transport.TransportGitSsh.openFetch(TransportGitSsh.java:147)
+09-24 11:07:18.141 21626 21626 W System.err:    at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:136)
+09-24 11:07:18.141 21626 21626 W System.err:    at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:122)
+09-24 11:07:18.141 21626 21626 W System.err:    at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1104)
+09-24 11:07:18.141 21626 21626 W System.err:    at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:128)
+09-24 11:07:18.141 21626 21626 W System.err:    ... 10 more
+09-24 11:07:18.141 21626 21626 W System.err: Caused by: java.io.IOException: bash: git-upload-pack: command not found
+09-24 11:07:18.142 21626 21626 W System.err:    at org.eclipse.jgit.transport.TransportGitSsh.checkExecFailure(TransportGitSsh.java:172)
+09-24 11:07:18.142 21626 21626 W System.err:    ... 16 more
+0
+```
+
+I've cloned the project and verified that this error is happening on the master branch as well. Let me know how I can help get this fixed.
+"
+wizmer/syncorg,open,git-remote-gcrypt support?,"[Label(name=""enhancement"")]","I'm very interested in using this, but I use Dropbox for syncing my Org files, so I can't use it with this yet.
+
+I've also been thinking about using Git to sync my Org files, but the issue there is that I don't want to upload my Org files to remote, untrusted servers unencrypted.  However, I've been testing `git-remote-gcrypt`, and it seems to work well.
+
+So, any chance of `git-remote-gcrypt` support?  It uses `gpg` for crypto, but once configured, it's all automatic.
+
+Thanks very much for your work on bringing MobileOrg into the future!
+"
+wizmer/syncorg,closed,Timestamps are not exported,[],"When synchronizing scheduled nodes, they are exported without the timestamp added in the app.
+"
+wizmer/syncorg,open,Support custom TODO states,"[Label(name=""enhancement"")]","Emacs uses `org-todo-keywords` to allow for custom TODO states. Perhaps I am mistaken, but from what I can tell, syncorg does not currently support this.
+"
+wizmer/syncorg,open,Exclude completed entries in from agenda,"[Label(name=""enhancement"")]","This brings up the question of how what a completed state IS is determined (Filed #4).
+
+Emacs uses `org-todo-keywords` to determine this. I think its great that syncorg has removed mobileorgs tight coupling with emacs, but it seems like some mechanism to incorperate user specific settings is needed. Perhaps a small melpa package that can output a configuration file that is parsable by mobileorg would be a solution?
+"
+wizmer/syncorg,open,"Ignore archive files in agenda, or otherwise offer some mechanism to explicitly specify org-agenda files, as in emacs","[Label(name=""enhancement"")]","My agenda is currently flooded with items that are in archive files in my org repo!
+
+I'm going to take a look at trying to fix this, but I'd like your input on which approach you'd like to take.
+
+I think that having the ability to explicitly specify which files should be part of the agenda view would be a good idea.
+
+Actually, it might be cool to support multiple named agendas. What do you think?
+"
+wizmer/syncorg,closed,Use an existing resource for the save button.,[],

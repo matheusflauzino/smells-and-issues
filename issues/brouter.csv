@@ -1,0 +1,770 @@
+repository,state,title,label,body
+abrensch/brouter,open,Few fixes to travel time computation,[],"Hi,
+
+Here are a few improvements for travel time computation:
+
+* Takes `costfactor` into account for switching to walking mode.
+* Better energy computation in hiking mode.
+* Reword the `bikerMass` to make it clearer for different modes.
+
+Thanks!"
+abrensch/brouter,closed,Fix travel time computation,[],"Hi Arndt,
+
+Thanks for the merge! I saw you pushed an extra commit (https://github.com/abrensch/brouter/commit/6e6c4a18b21db90e9106bafe0be03fcb9b51d4fc), which is totally fine for me. There is just one slight issue, which is fixed in this PR, in that the `computeKinematic` method was not called :/
+
+Best,"
+abrensch/brouter,closed,Travel time computation for bikes and foot,[],"Hi,
+
+Here is a first implementation of the basic model (Tobler's hiking function for foot, constant power for bike) from #6.
+
+This is still a WIP:
+* It does not work yet at the moment, not exactly sure why.
+* The code could probably be improved and constants moved to the profiles.
+
+Best,"
+abrensch/brouter,closed,Isochrone,[],"Add Isochrones to BRouter. Obtains areas of reachability from given locations.
+
+How it works: https://maps.openrouteservice.org/
+Git: https://github.com/GIScience/openrouteservice"
+abrensch/brouter,open,Improve the trekking profile,[],"Hi,
+
+Here is an attempt to improve the trekking profile while modifying it as less as possible. The idea was to really keep the way it is working at the moment but slightly improve some routes using all the available tags. This profile requires #122 first to work fully.
+
+I'll comment in the diff to better explain what the differences are and why I introduced these.
+
+I tried to find minimal tests cases for the features I wanted to improve, a bit like what was thought of in #116. My tests are written in a iPython notebook available [in this repo](https://github.com/Phyks/BrouterTesting) (please feel free to reuse / merge / write PR on this one if you think that's something worth it).
+
+A static copy of my tests cases with detailed descriptions of the expected behaviors is available at https://pub.phyks.me/tmp/BrouterTesting.html (blue is my profile, grey is the original trekking profile, green is what I am likely to do as a human). The tests are, of course, biased towards the areas I am familiar with, but cover a bit of cities / cycleroutes / countries.
+
+Best,
+
+EDIT: The logic described in this profile is probably a bit lengthy and could likely be written in a shorter way, but I think it was easier to read this way, at least for a first review."
+abrensch/brouter,closed,Update `lookups.dat`,[],"Hi,
+
+Here is a PR to update the `lookups.dat` with some extra values.
+
+* Add information about the `busway` in opposite direction (see #119). This is required to properly handle [this kind of ways](https://www.openstreetmap.org/way/27773625) for instance (and there is an issue as well for this specific way, but I cannot find it back).
+* Add cycleway:left/right:oneway (see #98)
+* Add zone:maxspeed tags for traffic calming, the goal here is to penalize the ways without cycling infrastructure based on the average speed (typically, in a city, you'd rather take the slow traffic side ways rather than the large streets with a lot of traffic).
+
+It works for me, hope everything is fine for it to be usable by everyone. Let me know if something is wrong.
+
+Thanks!"
+abrensch/brouter,closed,Better process_pbf_planet.sh script,[],"Hi again,
+
+Thanks for merging https://github.com/abrensch/brouter/pull/120! I think I got the issue and the `jar` command to build the `pbfparser.jar` was not working actually I think. That's why it was not working with pbf files I think.
+
+I updated the scripts a bit to ease building segments:
+
+* I defined variables in the script to help change the locations more easily for users.
+* I added a doc about the SRTM data sources and which files to use.
+* I fixed a few typos (STRM vs SRTM).
+
+The script should be working the same way, assuming it is running from the `misc/scripts/mapcreation` folder.
+
+I tested it on a pbf geographical extract from Geofabrik and it works very well except for a few questions I have left:
+
+1. I don't get the `car-traffic_analysis.brf` lines. What are they for (are they actually generating some output or just here for debugging)? It's using coordinates which are outside my geographical extract, so it's failing at the moment :)
+
+2. Why is the `-DuseDenseMaps=true btools.mapcreator.WayLinker unodes55 waytiles55 bordernodes.dat restrictions.dat ../lookups.dat ../all.brf segments rd5` duplicated, once before the car traffic analysis and once after? (is it expected or is it a bad copy/paste or some other error)
+
+Thanks!"
+abrensch/brouter,closed,Complete doc for map creation,[],"Hi,
+
+I was having a look at map creation and the best way to create segments on one's own and felt like this part could use a bit more documentation (especially the `pbfparser` building process which took me some time to figure out).
+
+I reworked a bit the `pbfparser` README with a bit more detailed instructions.
+
+Also, there seems to be a missing argument to `OsmCutter` in the `process_pbf_planet.sh` script.
+
+That being said, the `OsmCutter` line in this script works perfectly fine for me with `bzip -dc *.osm.b2 | java …` but it does not extract any ways (nor gives any error) when I provide it with a pbf extract from https://download.geofabrik.de/. Am I missing something in the `pbfparser` build process?
+
+Best,"
+abrensch/brouter,closed,lookups.dat request: busway tag,[],"Hi,
+
+It seems that BRouter is not currently considering `busway` tag in OSM data. Then, a route such as http://www.brouter.de/brouter-web/#map=18/48.82360/2.32775/OpenStreetMap&lonlats=2.32672,48.82308|2.327599,48.823999 is highly penalized.
+
+The configuration on the ground is a shared busway but the busway is contraflow (`busway=opposite_lane`). As BRouter does not consider `busway` tag, it is not possible to edit the `onewaypenalty` to account for this case.
+
+What about adding `busway=opposite_lane` to the `lookups.dat`?
+
+Thanks!"
+abrensch/brouter,closed,cycleway:left|right=none leads to a ParseException,[],"Hi,
+
+I'm having a `ParseException` when using `cycleway:left=none` (or `cycleway:right=none` in a profile):
+
+> RouteServer got exception (will continue): java.lang.IllegalArgumentException: ParseException at line 107: unknown lookup value: none
+java.lang.IllegalArgumentException: ParseException at line 107: unknown lookup value: none
+
+I might be missing something but it seems this is indeed included in the [lookups.dat](https://github.com/abrensch/brouter/blob/master/misc/profiles2/lookups.dat#L320) file.
+
+Thanks!"
+abrensch/brouter,open,WIP - Allow custom nogo weights,[],"Hi,
+
+This PR should allow user to specify custom weights/penalty for each nogo circle. The motivation behind this is that so far the nogos are an all or nothing feature whereas they could potentially offer more control to the user by slightly biasing some areas.
+
+Typically, in France, a lot of cities provide OpenData about road works (a full list of the files I found so far is available at https://framagit.org/phyks/cyclassist/blob/34e0fec0165d3633e1d254f360fcd8c2cdfac78c/scripts/opendata/works.py#L304-389). Some road works might be a complete road closure (nogo as currently implemented) while other might just mean having to deal with some extra pain (only some lanes closed, traffic jam expected etc). The latter ones should be avoided if possible, but not at all cost.
+
+I tried to take care of making it retro-compatible. Please note however that this is my first contact with BRouter code (and Java!) so it might be far from being perfect. If you think this is worth a merge, I'll gladly take any review and fix it to make it mergeable!
+
+The code was tested with a modified version of brouter-web, so it should be working fine.
+
+Thanks!"
+abrensch/brouter,open,Thoughts on profile development and testing,[],"I find it quite frustrating that #58 is not merged, but I understand the underlying issue: as a maintainer, how can you be confident that changes to your profiles will not badly screw up the results in some cases?
+
+So, do we need a sort of test-driven profile development? Has this been done anywhere else? Here a few random thoughts of how this could work.
+
+A test case could be an origin, destination and one or more test point(s) through which the computed route would need to pass to validate/fail the test. To ease maintenance, test cases could come with a short description of why the route is expected to pass there rather than elsewhere. Each profile would have its own test suite, but ideally it should be possible for these test suites to share common tests.
+
+Should the tests be run against a frozen state of OSM? That would have the advantage of making the testing process more reliable and would lower the maintenance costs for the test suite. Or should they be run continuously as the map evolves? That would have the advantage of matching the real state of the map better, and potentially notifying the maintainer of any important tagging changes.
+
+If we had a nice test suite for a few profiles, we could even try to derive profile weights from test cases themselves! Convert all the test cases to a big bunch of linear inequations, and let the solver come up with something.
+
+I'm sure plenty of people have done similar things before (I am not familiar with the field at all) so it would be important to research what is already out there before."
+abrensch/brouter,closed,Map key for cycling and hiking?,[],"Can you please add a map key for cycling and hiking routes?
+
+ I did search in the main map website, but I couldn't find one, too. Maybe you know better."
+abrensch/brouter,closed,Why does BRouter still draw routes across a bridge which is totally blocked because of construction work?,[],"Hi,
+
+OSM map has been updated as to this issue on August 31st but BRouter doesn't seem to have noticed it. How long will it take until bikers won't being misguided any more?
+Best regards
+
+tracker51"
+abrensch/brouter,closed,oneway=yes routing reverse direction?,[],"Hi, i search a solution for routing a oneway=yes in reverse direction."
+abrensch/brouter,open,Target new Android API,[],"Just a reminder that you need to push an update right now if you want to, or you will only be able to do so once you target a new Android API  
+https://www.androidpolice.com/2017/12/19/play-store-require-new-updated-apps-target-recent-api-levels-distribute-native-apps-64-bit-support/"
+abrensch/brouter,open,elevation display problem by round trip,[],"The elevation box has a problem to display the elevation and different two lines, when the lines are to nearby on bigger streets, or is overlapped, by routing at a round trip on the same street.
+OK, the elevation box is only a module, but i don't remember the name to write the issue to the right place. sorry."
+abrensch/brouter,open,Can a profile specify different costs for left and right turns?,[],"This would probably be useful for routing in urban areas, where turning right is oftentimes much easier/quicker than turning left (the other way around for left-hand traffic).
+Maybe some users would want to configure turning right at traffic lights to be as cheap as there would be no traffic light at all. :)"
+abrensch/brouter,open,Release hotfix with new version,[],"Please give your “hotfix” release from 2018-04-12 a new version number to distinguish it from the former version. This one was uploaded to [f-droid](https://f-droid.org/de/packages/btools.routingapp/). The package gets no update now, because the source code version did not increase.
+
+Can you add git tags to the repository, too?"
+abrensch/brouter,open,routing across areas,[],In particular natural=beach for the trekking profile. Routing around the edge of the way is acceptable.
+abrensch/brouter,open,Fix typo,[],"this doesn't really matter, but I just stumbled upon this one so I thought I can as well propose a fix…"
+abrensch/brouter,open,Routing over highway=construction,[],"Brouter is routing over highway=construction Ways. This can't be correct.
+
+Example: The Donau-Radweg in Austria, which is closed down due to workings on the dyke until 2020: https://www.openstreetmap.org/way/505769307
+
+Even if there are cycle-routes on this way, Brouter shouldn't even consider to unse such ways!
+
+Regards"
+abrensch/brouter,open,More details about elevation costs?,[],"Hi!
+I am curious about the algorithm to evaluate elevation cost. I tried searching around but could not find how it works exactly. Could you indicate me where to look?
+
+I have just been on a ride and ended up climbing an insanely steep road (more than 20% at some places), to the point that I had to walk. 
+I am therefore wondering if I could build my own profile where very steep roads would be penalized.
+I have read https://github.com/abrensch/brouter/blob/448bb11ad4f852c3b75da91c91ead9a13d672916/misc/readmes/profile_developers_guide.txt but could not understand the meaning of the elevation-related parameters.
+
+If you are curious about which route, here is the example: http://brouter.de/brouter-web/#zoom=15&lat=43.23943&lon=-3.28908&layer=OpenStreetMap&lonlats=-3.269849,43.230602|-3.294439,43.241701&nogos=&profile=fastbike&alternativeidx=0&format=geojson"
+abrensch/brouter,open,lookup.dat request: agricultural=no,[],"In The Netherlands most traffic is segregated into separate lanes by speed. As a result many highways are prohibited to be used by bicycles (and tagged so). However bicycles wider then 75 centimeters are allowed to used most of these ""prohibited"" tagged lanes.
+
+For velomobiles (and other wide bikes) one does wish to ignore the bicycle access prohibited tag in routing (in The Netherlands at least).
+
+When ignoring `bicycle=no` there are still some primary highways that are not allowed for agricultural 25 km/hour traffic: `agricultural=no`; [way count 22.318](https://taginfo.openstreetmap.org/tags/agricultural=no). These are the roads a wide bicycle does not wish to ignore the access restriction `bicycle=no` (in The Netherlands), [combined count = 11.864](https://taginfo.openstreetmap.org/tags/agricultural=no#combinations).
+
+For this reason `lookup.dat` needs an update.
+"
+abrensch/brouter,open,Create vm-forum-velomobil-schnell.brf,[],version 2018.01.07
+abrensch/brouter,open,unclassified surface gravel,[],"Hallo,
+
+nachdem ich Sonntag da grob mit dem Rennrad reingeraten bin: überörtliche Straßen sind in OSM als unclassified zu taggen, können aber durchaus sehr schlechte Oberflächen haben. (Beispiel: https://www.openstreetmap.org/#map=17/47.84584/12.28566) Das Tagging der Straße ist korrekt, auch die Angabe der smoothness ist da.
+
+Ich würde mir wünschen, dass brouter solche Oberflächengüten (gravel, smoothness=bad) in den Einstellungen fastbike* berücksichtigt. Vielen Dank!
+
+Wolfgang"
+abrensch/brouter,closed,Create vm-forum-liegerad-schnell.brf,[],"From forum
+Version 2018.01.07"
+abrensch/brouter,closed,I love this router!,[],"Hi - there does not seem to be any designated way to communicate enthusiasm about this tool. I don't have any particular issue to report, I just want to say that it's a fantastic service that I have used for thousands of kilometers and it just works great. I mostly use it in the UK on a recumbent with the fastbike profile and it's marvelous. I compute the routes via brouter-web and upload them to my Garmin unit.
+
+Keep up the awesome work!
+
+(feel free to close this issue of course, as it is not actually an issue!)"
+abrensch/brouter,closed,Propose new logo,[],"Hi, I've seen your app and I think it's a lot of benefits, especially for the traveler. And here I would like to propose new logo for your app to have a good brand and become more interesting.
+
+If you are interested and allowed me, I will make it for you, because I have an idea for this. ;)"
+abrensch/brouter,closed,lookup.dat request: cycleway:left/right:oneway,[],"Hi Arndt,  
+could you please consider adding cycleway:left/right:oneway to the lookup.dat?
+Combined they are used nearly 8000 times on the planet.
+Thanks for consideration
+"
+abrensch/brouter,closed,Nogo polygons / polylines,[],"This pull-request adds support for nogo-polygons and polylines. A nogo-polygon is being used as a nogo-area being defined by an (arbitrary shaped) polygon. A nogo-polyline is simmilar to this with the difference that the polygon is not taken as closed, so it defines a border that is not to be crossed when routing.
+I currently can be utilized via the standalone server (new query-parameters 'polygons' and 'polylines') and on Android from OsmAnd (by saving tracks with the filename beginning with 'nogo').
+(The web-frontend does not yet support this, but QMapshack already has full support for this feature)."
+abrensch/brouter,closed,Include recumbent and velomobile profiles,[],"The web interface <http://brouter.de/brouter-web/#> shows more profiles then the Android app.
+
+Wish they were identical.
+
+Missing are: ""recumbent"" and ""velomobile"" at least: `vm-forum-*`"
+abrensch/brouter,closed,typos in readme fixed,[],appended a reference to project's github issues page
+abrensch/brouter,open,building a better profile for mopeds requires moped tags ,[],"First of all, thank you and great work! As far as I can tel there really is no alternative when it comes to routing.
+
+The moped profile available does not use all available cycle paths and it allows access to ways where mopeds are not allowed on here in Belgium. The profile I am working on is based on a cycle profile but i need the Moped way tag especially in urban areas where mopeds are often not permitted from accessing cycle paths as they are shared with foot traffic. 
+
+from another [post ](https://groups.google.com/forum/#!topic/osm-android-bikerouting/x1WOMBqk0FI) I learn that I can add the moped tag to the lookup.dat file so i replaced two of the dummy lines with:
+moped;0000090000 no
+moped;0000090001 yes
+
+But how do I generate routing data files (rd5) that include these extra moped tags?
+
+
+
+"
+abrensch/brouter,closed,add optional parameter bindaddress for standalone mode,[],"when running brouter in standalone mode it binds to all ip-addresses. This is fine for a real server on the internet, but for local use this is a security-issue. A software never should open ports reachable by the outside world if not explicitly required for this task.
+
+This pull-requests adds an optional 'bindadress'-parameter. Usage see new startupscript local.sh"
+abrensch/brouter,closed,decode query-string by standard URLDecoder,[],"standalone mode fails if nogos are send with ""|"" being encoded as %7C resulting in java.lang.NumberFormatException: For input string: ""300%7C12.0093"".
+%7C is standard url-encoding for ""|"" (as being defined in RFC-3986 https://tools.ietf.org/html/rfc3986#section-2.3).
+This fix applies standard-based URLDecoding to the whole query-string before it is being parsed and removes the now obsolete explicit handing of %7C and %2C."
+abrensch/brouter,open,Store waypoints in GPX with <wpt />,[],"I am currently working on a drag&drop support feature for brouter-web. 
+It'd like to be able to drop a gpx over brouter-web and that it computes the route between waypoints. It seems to me that the most logical/standard way of doing it would be by writing these waypoints as `<wpt lon=.. lat=.. />` in the GPX file generated by brouter.
+Obviously some features like nogo areas won't be present in the GPX, but we can either they write then via some XML extension or ignore them since they won't be standard anyway.
+
+"
+abrensch/brouter,open,Allow custom name instead of brouter_profile_alternativeidx when writting GPX,[],"Currently brouter [automatically writes](https://github.com/abrensch/brouter/blob/c517ccc2dffc1ae345e4b93b1f3b00bfabbfe4de/brouter-core/src/main/java/btools/router/RoutingEngine.java#L170) `<name>brouter_{profile}_{alternative_idx}</name>` in the output gpx file. 
+
+Since some GPS devices (garmin) displays that name in the list of available traces, it would be great if we could choose the name, for instance via an extra parameter, for instance:
+
+```
+0.0.0.0:17777/?lonlats=4.588401,44.821284|4.591126,44.820797&profile=trekking&alternativeidx=0&format=gpx&name=""Paris - Lisbone (4303km)""'
+```
+"
+abrensch/brouter,open,confused by readme,[],"https://github.com/abrensch/brouter/blob/448bb11ad4f852c3b75da91c91ead9a13d672916/misc/readmes/readme.txt
+
+> However, on Android >= 4.4, write access to the external card
+is restricted, and usually you will not get a proposal to use
+the external card. Here you should accept to go with the
+internal card - later on you can setup a ""secondary"" data
+directory on the external card where you can move the datafiles
+to.
+
+I have Android 6.1 and as mentioned external card failed to appear in a list of available options (BTW, Maps.me, Magic Earth, Osmand, Locus had no problem with offering external card as an option).
+
+I accepted internal card, as the next step I got map with grid for downloading, with no oprion to create secondary directory.
+
+After download I get option to download more areas or ""Brouter App"" option, leading to ""Select a routing profile"".
+
+How I am supposed to set secondary data directory? Is it the method described in
+
+> If you have a non-standard maptool location, that is not
+> detected by the default logic, you can configure an ""additional maptool directory""
+
+In that case it would be better to select one term from ""additional maptool directory"" and  ""secondary"" data directory and use it twice (if that guess is correct I can make a PR unifying terminology)."
+abrensch/brouter,closed,ignore Intellij project files,[],"makes
+
+git status
+
+easier to use"
+abrensch/brouter,open,More detailed download map,[],"Could we have a more detailed download map?
+
+![](https://user-images.githubusercontent.com/982338/31314087-816b1fb4-abcd-11e7-87b9-b7823f2b4e7a.png)
+
+It could include at least the states/provinces/regions, if possible (we could use the administrative relations with `admin_level=4` from OpenStreetMap)
+
+This should help people to better locate the areas they need to download, specially on larger countries (like Brazil, Russia, etc)
+
+I can give a try to create such map if you say the dimensions and file format that you need."
+abrensch/brouter,closed,Added flag avoid_tolls = true,[],"I have created the new profile **car-tollfree**, based on your car-fast profile. It may not be so compelling in DE, but for many drivers/countries is option to avoid toll roads important.
+
+Global context : Added flag avoid_tolls = true
+Way context_Sets CF to 10000 if toll=yes
+Node context: Sets initialcost to 1000000 if barrier=toll_booth"
+abrensch/brouter,closed,"Mofa, possible in brouter",[],"Is it possible to make mofa routing?
+
+In the Netherlands we have many cycleway which we can ride with a mofa but not with a moped.
+
+There is not a good mofa routing, which can make a .gpx."
+abrensch/brouter,closed,"Value ""official"" is not recognised",[],"There is an [official](https://wiki.openstreetmap.org/wiki/Tag:access%3Dofficial) value that can be used for access tagging.  Brouter does not recognise this value in the profile. It gives an error: ""Profile error: ParseException at line 10: unknown lookup value: official"" with this profile:
+---context:global   # following code refers to global config
+assign   consider_elevation  0
+
+---context:way   # following code refers to way-tags
+assign turncost 0
+assign initialcost 0
+
+assign costfactor
+
+   switch bicycle=official 1.0
+   10.0
+
+---context:node  # following code refers to node tags
+assign initialcost 0"
+abrensch/brouter,closed,Update README.md,[],"This small and useless PR adds two buttons to get the app on F-Droid and Google Play Store
+
+Thanks for this app :)"
+abrensch/brouter,open,Deprecated old-style multipolygons in OSM data,[],"I wanted to inform you about some changes in OSM data recently that might or might not be relevant for you.
+
+OpenStreetMap has finally gotten rid of ""old-style multipolygon relations"". Those are relations of `type=multipolygon` where the tags are on the (outer) ways and not on the relation. For a long time this type of tagging and the more modern one of tagging the relation only have lived side-by-side, but now old-style multipolygons are deprecated and none are left in the data.
+
+If your routing engine/data converter does support routing over areas you might want to change your data import functions to remove handling of old-style multipolygons simplifying the code greatly.
+
+If you do not support routing over areas you might still be affected: Say you have a city square modelled as a relation tagged with `highway=pedestrian`. In modern multipolygon tagging those tags are on the relation only and the ways have no tags at all. If you don't read relations and match them to their member tags, you will not see those ways as routable. So even routing along the edges of the city square will not work. Details depend on the e
+xact tagging of course, in many cases the ways will probably also be tagged with a `highway` tag. You have to decide yourself whether this warrants any changes in your program.
+
+Our Github issue for this is https://github.com/osmlab/fixing-polygons-in-osm/issues/33 where you can find some additional information.
+
+More background on multipolygon relations and the effort to fix them at http://area.jochentopf.com/ ."
+abrensch/brouter,open,brouter not interfacing with OSMAnd ver. 1.8 on Android 2.3,[],"BRouter supports Android 2.3 (thankfully).  The latest OSMAnd that works on 2.3 is 1.8.  So naturally there is an expectation that Brouter work with OSMAnd 1.8.
+
+The problem: although both BRouter 1.4.8 and OSMAnd 1.8 install and download maps correctly, they do not interface.  BRouter does not find OSMAnd so a scan (from the ""help"" feature) is necessary.  The scan does not find anything.  OSMAnd also does not see BRouter, as the ""Navigation Service"" config does not offer a brouter choice."
+abrensch/brouter,open,Overnight Stays on Multi-Day Trips,[],"I've used BRouter to plan a trip from Munich to Berlin, which took five minutes to route, but gave a really excellent route in the end.
+
+Along the route I was delighted to find camping sites near the route approximately every 100 km, which made this an excellent 7 day trip, but it was some effort to manually search around the route and add waypoints, so it would be great if that could be automated.
+
+Algorithm I used:
+
+1. Route without intermediate waypoints
+2. Go to a point on the route that is 100 km from the start point
+3. Look for a campsite nearby
+4. Add a waypoint at the campsite
+5. Check whether the first segment is shorter than 110 km
+6. If yes, repeat from step 2 for remaining route. If no, erase waypoint, go back 10km on the original route, try to find a campsite again.
+7. Finally, sanity check that the last segment is longer than 10 km, otherwise erase last waypoint.
+
+Obviously all of these parameters (type of accomodation, maximum segment length, minimum length for last segment, ...) need to be somewhat tunable, and there needs to be a way to blacklist campsites as they might be closed or full -- in which case a different site needs to be selected."
+abrensch/brouter,open,Applying way tag bicycle=use_sidepath,[],"Th way tagvalue bicycle=use_sidepath has very minor usage, near 0.04%  in Germany, according to lookup.dat.  But its wide world usage is cca 1.2% according to [OSM bicycle=* taginfo](https://taginfo.openstreetmap.org/keys/bicycle#values)
+
+IMHO, standard bicycle profiles should give a penalty for roads with bicycle=use_sidepath to push the routing on the sidepath."
+abrensch/brouter,open,Downloads failing inside brouter android app,[],"A week or two ago I have had in-app downloads of N10_N45.rd5 (and others) failing at around 33% completion due to timeout.
+
+Using BRouter 1.4 from F-Droid on Android 4.4.4 with OsmAnd.
+
+
+I was still able to download them manually from elsewhere and then adb pushing."
+abrensch/brouter,open,Addressing negative turncost,[],"I was experimenting in past with negative turncost, initially on a user demand to promote winding to straight roads. It does the effect, but sometime brings problems.
+
+I got occationally at Brouter-web   ""Error: error re-tracking track"". It looked mysteriously until I realized at Data tab some very winding way segments got significant negative Turncost comparable with the way cost.
+It could lead to the final cost < segment length, or perhaps even final cost < 0, what is forbidden.
+
+Ensuring turncost >=0 for the same profile and route avoided the above error.
+
+I have already previously [posted it on Google group,](https://groups.google.com/forum/#!topic/osm-android-bikerouting/1UCxMVUW6zI) but I put it here to keep track, as I got no response.
+
+I suppose this should be addressed.
+
+Either not to allow negative turncost,
+Either (preferred) by internal clipping for total segment cost >=segment length. 
+
+The latter would still allow to have the winding preference, but would avoid routing error.
+"
+abrensch/brouter,closed,Added restrictions.dat,[],
+abrensch/brouter,closed,NegativeArraySizeException during map creation,[],"I do not thing this is cure, but during map creation I got
+
+  Exception in thread ""main"" java.lang.NegativeArraySizeException
+        at btools.mapcreator.NodeData.<init>(NodeData.java:32)
+
+which is strange, because array length (description.length) cannot be negative. So either description length was > 127 or ... ?
+
+This pull request contains sanity check during serialization so description lengt cannot be bigger than 1 byte.
+Also changes data format. Patch changes signed description lenght to unsigned byte. This change MAY be backward compatitble, but I did not bothered to check. I appologize for that."
+abrensch/brouter,closed,add 4wd_only tag to lookups.dat,[],"Hi team,
+
+Brouter is awesome :-)
+
+I'm using the web version of Brouter for offroad 4wd track routing, and unlike most other modes of transport we active seek out poor quality roads.
+
+I see you expose tracktype, smoothness and surface via lookups.dat - but would it be possible to also add the 4wd_only tag?
+
+This tag is used quite a lot, particularly in Australia where it is used as a standalone (tracktype, smoothness and surface not set)
+http://wiki.openstreetmap.org/wiki/Tag:4wd_only%3Dyes
+http://taginfo.openstreetmap.org/tags/4wd_only=yes#map
+
+Thanks in advance..."
+abrensch/brouter,open,Add more maxspeed tags,[],"Could you please consider adding more maxspeed values:
+
+maxspeed:conditional
+maxspeed:forward
+maxspeed:backward
+maxspeed:motorcar
+
+It would be really useful to have the maximum between all these and the normal maxspeed tag merged to the single maxspeed in the lookups.dat
+
+Thanks"
+abrensch/brouter,closed,handling url encoded parameters,[],
+abrensch/brouter,closed,little bug in hight model at waypoints,[],"If a waypoint is set behind a OSM node with a following long segment of incline without a OSM node in the route, the hight model will show a peek. Example:
+http://brouter.de/brouter-web/#zoom=16&lat=50.97287&lon=7.19881&layer=OpenStreetMap&lonlats=7.207654,50.972292|7.201576,50.972663|7.196796,50.974305&nogos=&profile=trekking&alternativeidx=0&format=geojson
+
+If than the annoying waypoint is deleted, you can see the incline without the peek."
+abrensch/brouter,open,bug in hight model at bridges,[],"If a waypoint is set on a bridge, the height model of the complete route shows an error. Example:
+http://brouter.de/brouter-web/#zoom=17&lat=50.936377&lon=6.96419&layer=OpenStreetMap&lonlats=6.961185,50.935677|6.965976,50.936269|6.970396,50.936397&nogos=&profile=trekking&alternativeidx=0&format=geojson
+If the bridge-waypoint is deleted, the height model mostly went to ok."
+abrensch/brouter,closed,Fix profile path splitting on Windows,[],"When used as standalone server on Windows, getting the profile name for custom profiles didn't work, and the remaining unescaped backslashes in the response lead to an JSON parsing error. See nrenner/brouter-web#53.
+"
+abrensch/brouter,closed,"include ""informal"" tags in datafiles",[],"What about including ""informal"" tag ([http://wiki.openstreetmap.org/wiki/Key:informal](http://wiki.openstreetmap.org/wiki/Key:informal)) in the way context into the routingfiles? This way routing over inofficial paths could be penalized, as they are not guaranteed to be maintained or save.
+"
+abrensch/brouter,closed,Confusing U-turn instruction,[],"I was asked to forward the U turn  versus Left U-turn + Right U-turn issue ( action 12 vs 13+14 ), related to  
+ [confusing-u-turn-instruction](http://help.locusmap.eu/topic/confusing-u-turn-instruction#comment-33745l)   thread at Locus Helpdesk.  
+Locus users and the author have the opinion you may want to  implement Left/Right U-turn actions, eventually review the sharp turn versus U-turn evaluation.
+
+My understanding is sharp turn  = 135 +- 22.5 degress, U-turn is  157.5..180 degress.
+Perhaps such a U-turn versus Turn Around are to be distinguished, if possible.
+"
+abrensch/brouter,closed,Don't make a turn instruction when way is almost straight and other way is minor,[],"In this example brouter issues a keep left instruction at lon=""9.182407"" lat=""48.829950""
+![brouterkeepleft](https://cloud.githubusercontent.com/assets/5933280/19399751/58d165c0-9253-11e6-9bcb-8109a1d2f308.png)
+The road is almost straight and the crossing way is a footway. An instruction like this is unnecessary and should not be created to reduce noise/confusion.
+"
+abrensch/brouter,closed,World Map and Readme file,[],
+abrensch/brouter,closed,Conditional evaluation of user  profiles variables,[],"BRouter evaluates terms of logical expressions conditionally , as well as the branches of if/switch commands.  
+
+OTOH, if I got it correctly when we talked about it in past, user defined variables are always evaluated, even if they occur only in expression branches unused for current way/node.
+
+If not addressed yet, would be possible to implement conditional evaluation of variables as well ? As they are very useful to keep simplicity of code, but may cause profile performance decrease.
+
+What about switching the paradigm from the variable based imperative one to macro based declarative one ? Assign would not be taken as assignment executive command for a variable, but as a declaration of macro expression. 
+
+Variable=Macro would be evaluated only when called for its value the first time. Then it would get expanded to  `( macro expression code )` and its value would be stored for the eventual reuse for multiple occurences.
+
+In such case, user variables would be evaluated only if used, what can increase performance of profile processing.
+"
+abrensch/brouter,open,Listed but ignored tag cycleway:right=* ,[],"It seems the BRouter standard TRekking profile ( and my profiles as well ) ignore cycleways in costfactor context, if they are marked as an additional tag for highway=""mainroad""  cycleway=_, resp cycleway:_=*.
+
+These tags are listed in lookups.dat and BRouter-web data tab, e.g. cycleway:right=track, 
+but the tags seem to be ignored by the Trekking profile ( and by mine as well until now. )
+
+It is a pity, as all data providing bike friendly hints are important.
+
+The above may lead to improper full penalization of highway=primary with costfactor 3.0, while there should be probably 1.0 because of integrated cycleway.  ( Inspired by a recent post to Brouter group )
+"
+abrensch/brouter,open,Avoid highway=construction,[],"highway=construction is already in your lookup file, but the trekking profile does not check for it
+Please add it, it is really unpleasant to end up on such way
+Thank you
+"
+abrensch/brouter,closed,separate concrete and concrete:plates / concrete:lanes,[],"Hi,
+
+The lookup seems to mash concrete, concrete:plates and concrete:lanes into one single thing
+`surface;0000212587 concrete concrete:plates concrete:lanes
+`
+It would be nice to have these separated, because concrete is pretty smooth and nice to bike on, while the plates and lanes are a major pain and slow down roadbikes significantly
+
+Thanks for consideration
+"
+abrensch/brouter,open,Don't require server.sh to be launched from standalone directory,[],"Instead of doing `cd standalone/ && sh server.sh`, one can directly do `sh standalone/server.sh`.
+"
+abrensch/brouter,closed,"""indoor"" to lookups.dat",[],"Please, add ""indoor"" key to lookups.dat (and to data :)
+https://wiki.openstreetmap.org/wiki/Key:indoor
+
+Reason: ability to don't use ""highway=footway indoor=yes"" for bicycle routes.
+"
+abrensch/brouter,open,Seriously consider surface and smoothness data,[],"This code takes _surface=_ and _smoothness=_ information under consideration, adding penalty for surfaces unsuitable for racing bike (cobblestone, gravels, etc.) and those marked as being of low quality. It also promotes roads of asphalt/concrete surface in good and excellent condition.
+
+I tested it on several routes in Poland. Although the map lacks a lot of information, the profile seems to work well. The default behavior on roads without any surface information is to assume they are of the same quality as if they were _surface=asphalt_ + _smoothness=intermediate_,
+"
+abrensch/brouter,open,Don't hide status bar,[],"The warning about big amounts of data being downloaded is great. It usually makes me check my data connection.
+Not easy when the status bar is not visible ...
+
+--> don't hide status bar
+"
+abrensch/brouter,open,more detailed height model,[],"ClusterGIS has released a 15m/px global height model under CCBY
+http://www.theearthsrelief.com/
+
+Maybe its worth thinking about using it.
+"
+abrensch/brouter,open,Include street names in rd5 files to make voice guidance better in OsmAnd ,[],"Hello, 
+wonderful piece of software! So far I seem to have found a way to actually use a software for road bike routing! 
+
+Back to topic. I use OsmAnd and use it for voice guidance most of the time. This would be so much better, if the street names were also spoken. I read that this is due to missing road names in the rd5 database. 
+Is there any chance that we might have a db that includes those,  preferably as 2nd choice so that everyone who does not need them can save the space? 
+Best regards and greetings from Düsseldorf! 
+Rodja A. 
+"
+abrensch/brouter,closed,segments4 references update,[],"Hi Arndt,
+
+could you please update some references to segments4 with the following steps:
+- update server.cmd, see #53
+- update the standalone server scripts in your release zip template/preparation and check if the server.sh script then still has Unix line endings
+- update brouter-web index.html (link in ""about""), see nrenner/brouter-web@f49178d7aeb7da8111e63691f28384d339e1b51d
+"
+abrensch/brouter,closed,update standalone server.cmd to segments4,[],"As a follow-up to #52, also updates the server.cmd script.
+"
+abrensch/brouter,closed,segments4 for standalone server,[],"Use segments4 for standalone server, uses version four of the map data files.
+"
+abrensch/brouter,closed,oneway:bicycle,[],"Bicycle ways having a `oneway:bicycle` and a missing `oneway` are not treated as oneways.
+
+For example here the direct route against the oneway:bicycle should not be taken, it would be better to route on the opposite cycle path:
+http://brouter.de/brouter-web/#zoom=16&lat=50.93419&lon=6.97131&layer=OpenStreetMap&lonlats=6.971506,50.936621|6.971871,50.931478&nogos=&alternativeidx=0&format=geojson&profile=trekking
+
+This assign statement should correct that.
+
+```
+assign oneway =
+       if oneway=yes|true|1 then true
+       else if oneway:bicycle=yes then true
+       else if oneway= then junction=roundabout else false
+```
+"
+abrensch/brouter,open,Custom/Alias navigation modes,[],"It may be useful for future hosting applications to consider implementation of alias or  custom modes for Brouter mode-profile mapping.
+
+Partially for bicycle and definitely for foot routing, the current schema car/bicycle/foot fast/short  is confusing and misleading, if Brouter is used as the 3rd party local routing engine. 
+
+As talked with the LocusMap author, the direct consequence is the application uses just one Brouter foot mode - the shorrt one AFAIK.
+
+Users of eventual future alias/custom mode aware applications would be able to select from a bunch of self-explaining modes ( if profiles abstraction layer is to be kept ).
+
+Applications not alias/custom mode aware would use standard modes as usually.
+Applications alias/custom mode aware could use the exposed alias/custom names as well.
+
+Predefined names could be prepared in cooperation with hosting application developers.
+
+My idea is to implement one of or both partially independent ideas.
+##### ALIAS modes, mapped to current modes, like
+
+```
+ ALIAS mode  --> Brouter navigation mode --> Brouter profile 
+
+* Trekking Good Weather --> Bicycle short --> Trekking Dry.brf
+* Trekking Bad Weather --> Bicycle fast --> Trekking Wet.brf
+* Walking --> Foot fast --> Walking.brf
+* Hiking --> Foot short --> Hiking.brf
+```
+
+The ALIASes could be either predefined, either custom ( Advanced used could edit the config file ).
+##### CUSTOM modes, mapped directly to profiles  aside of standard modes., like
+
+```
+ CUSTOM mode --> Brouter profile 
+
+* Trekking Fast --> Trekking Fast.brf
+* Trekking MTB --> Trekking MTB Light.brf
+* Walking --> Walking.brf
+* Hiking --> Hiking.brf
+* Mountain Hiking --> Demanding Mountain Hiking.brf
+```
+"
+abrensch/brouter,closed,new data files?,[],"Currently the [data files](http://brouter.de/brouter/segments3/) are showing the 30th of October. Wasn't there a weekly update?
+"
+abrensch/brouter,closed,update all Maven poms to 1.3.2,[],"Sorry, forgot 4 occurences
+"
+abrensch/brouter,closed,update Maven poms to 1.3.2,[],
+abrensch/brouter,closed,Access to angle information?,[],"If I understand it correctly, it is possible to define a ""turncost"" variable in the routing profile, which in turn is used to calculate the cost of turns depending on the turn angle.
+
+However, in city traffic, the angle itself is much more important, as it can be used to determine left turns and right turns which should be treated differently. Can I directly access this angle? In general, is there an exhaustive documentation of the routing profile?
+"
+abrensch/brouter,open,highway=path nicht indiziert ?,[],"I discovered a short [path](http://www.openstreetmap.org/way/48047868), which seems not be routeable. Look this [query](http://brouter.de/brouter-web/#zoom=19&lat=50.906547&lon=7.014947&layer=OpenStreetMap&lonlats=7.014998,50.906326|7.015108,50.906373&nogos=&alternativeidx=0&format=geojson&profile=hiking-beta).
+
+Is something wrong?
+"
+abrensch/brouter,closed,brouter can't traverse a bridge,[],"I've run into a way that brouter should traverse, but won't, with the `fast-bike` profile while trying to find a cycling route from Portland, Oregon to a trailhead in Washington State (just trying out brouter). It's causing an epic reroute through different counties.
+
+I'm assuming it's either
+- an error in the OSM data,
+- or some complication in the OSM data which is confusing brouter.
+
+Here is a simple test case with the start and end on either side of [the problem way (OSM)](https://www.openstreetmap.org/#map=19/45.64118/-121.92823), with `car-test` profile:
+
+<img width=""292"" alt=""screen shot 2015-08-26 at 2 58 41 pm"" src=""https://cloud.githubusercontent.com/assets/14615/9507459/41fd3e10-4c03-11e5-9061-8419ece2ff33.png"">
+
+and with `bike-fast` profile:
+
+<img width=""282"" alt=""screen shot 2015-08-26 at 2 59 03 pm"" src=""https://cloud.githubusercontent.com/assets/14615/9507462/46e04ecc-4c03-11e5-89d2-c0b2c386c346.png"">
+
+The bridge is one-way for car traffic and has a bike lane going the other way. Bikes going with the direction of car traffic are supposed to ride in the lane.
+"
+abrensch/brouter,open,Status file (timestamp) for data files,[],"Questions about the age of the data files like nrenner/brouter-web#25 probably will arise frequently.
+
+A suggestion would be to create a [status.txt](http://planet.openstreetmap.org/replication/day/state.txt) file similar to replication files that contains the timestamp from the header of the planet file used.
+"
+abrensch/brouter,open,invalid response,[],"Hi,
+First of all great project!
+When running the following request the response returns with only one value in coordinates:
+http://h2096617.stratoserver.net:443/brouter?nogos=&alternativeidx=0&format=geojson&profile=trekking&lonlats=34.7094,30.5926|34.7107,30.5928
+is it working as designed or a bug?
+
+Thanks,
+Harel M.
+"
+abrensch/brouter,closed,Update kitkat_survival_readme.txt,[],"Added description to clarify parts not immediately clear to me, when installing OsmAnd on SD card,
+"
+abrensch/brouter,open,Add mtb:scale:uphill,[],"http://wiki.openstreetmap.org/wiki/Key:mtb:scale#mtb:scale:uphill.3D0-5
+This will be useful to calculate uphillCostFactor
+"
+abrensch/brouter,closed,Street names in navigation (OsmAnd),[],"Using BRouter as a service in OsmAnd 1.9.5 gives me excellent directions, but no street names. Do you happen to know in which software that limitation occurs (BRouter or OsmAnd)? Using the default router in OsmAnd gives me street names while navigating.
+"
+abrensch/brouter,closed,set default timeout in standalone scripts,[],"I guess it makes sense to set a longer timeout (5 min) for the standalone server, a default entry also makes it easier to customize.
+
+Could you please update the scripts in your release process, so they get included the next time.
+
+In addition, the shell script in the release zips has Windows line breaks, not sure where this happens, but could you please convert these to Unix line endings (e.g. in an editor) after copying?
+
+Not sure if it would make sense to automate this, e.g. using Ant.
+"
+abrensch/brouter,closed,handle CORS preflight request for profile upload (Safari),[],"Fixes nrenner/brouter-web#12
+
+Before a profile upload, Safari seems to send a CORS (Cross-Origin Resource Sharing) preflight (`OPTIONS`) request to get permission for a `POST` request with a `Content-Type` header.
+
+This handles the `OPTIONS` request and responds with the appropriate headers.
+
+No dependencies on brouter-web.
+"
+abrensch/brouter,closed,fix typo in README,[],
+abrensch/brouter,closed, linknodecost never set to message?,[],"It seems like [linknodecost](https://github.com/abrensch/brouter/blob/master/brouter-core/src/main/java/btools/router/OsmPath.java#L359) (NodeCost) is never written to [lastMessage](https://github.com/abrensch/brouter/blob/master/brouter-core/src/main/java/btools/router/OsmPath.java#L293), because it is set outside the for loop, after lastMessage is set?
+
+[Example](http://brouter.de/brouter-web/index.html#zoom=19&lat=47.668612&lon=9.331917&layer=OpenStreetMap&lonlats=9.331877,47.668592|9.331732,47.66866&nogos=&profile=trekking&alternativeidx=0&format=geojson)
+"
+abrensch/brouter,closed,Add messages to GeoJSON,[],"Always include messages (csv data) in GeoJSON format. Used by new data tab in brouter-web.
+
+brouter-web master would be ready for deployment, but can wait, planning to add some requested features.
+"
+abrensch/brouter,closed,http://brouter.de/ is empty,[],"Forwarding these requests:
+
+nrenner/brouter-web#14
+
+> It would be better to redirect it to some useful page
+
+nrenner/brouter-web#7
+
+> [...] I guess the main domain URL should lead to something useful. =} The online demo and mobile download should be very visible there. 
+"
+abrensch/brouter,closed,Add class:bicycle,[],"Please add the class:bicycle family http://wiki.openstreetmap.org/wiki/Class:bicycle to lookups.dat. I need at least class:bicycle and class:bicycle:mtb.
+"
+abrensch/brouter,closed,"remove junit where there are no tests, put junit into test scope to avoi...",[],"...d using it in production code
+"
+abrensch/brouter,closed,update version in poms to 1.0.4,[],
+abrensch/brouter,closed,Export way ID's,[],"It'd be great if there was a way to export way ID's of a route.
+I'm writing my own mapping application, and using these ID's, I could draw ways that are part of a route differently, instead of drawing the route on top of it.
+"
+abrensch/brouter,closed,Initial cost: introduce explicit classifier as trigger,[],"the trigger for adding initial costs to a way section is a change in costfactor. This is why ferry distance cost is 5.67, not 5, just to make it a unique identifier.
+
+That concept should be made explicit by introducing a classifier separated from the costfactor, to describe e.g. any non-paved way, a ferry, or steps.
+"
+abrensch/brouter,open,More reference-track invalidation issues,[],"Bug if 2 nogo-areas exist for same location (with different radius):
+- if one is not veto'ed to create a reference-track, the other still cretes a veto for both, so at the time of a timeout-free recalc, a nogo is missing that was effective when creating the reference track. That also leads to invalidation of the refernce track.
+- if a profile is changed, reference tracks using this profile are not invalidated.
+
+So there should be the nogo-name part of the key for the veto list, and  checksum of the profile part of the reference track. 
+"
+abrensch/brouter,closed,Tag traffic_calming,[],"Is it possible to add tag traffic_calming to supported tags for nodes?
+"
+abrensch/brouter,closed,Tag smoothness,[],"Is it possible to add tag smoothness to supported tags for ways?
+"
+abrensch/brouter,closed,message for last node missing?,[],"It seems like the last segment is missing from the result of [OsmTrack.writeMessages](https://github.com/abrensch/brouter/blob/master/brouter-core/src/main/java/btools/router/OsmTrack.java#L348-L366).
+
+Example: [brouter-web](http://brouter.de/brouter-web/#lonlats=9.407102,47.722971|9.407505,47.723112&nogos=&profile=trekking&alternativeidx=0&format=geojson&layer=OpenStreetMap&zoom=19&lat=47.722958&lon=9.406881), [old demo CSV](http://h2096617.stratoserver.net/cgi-bin/broutercsv.sh?coords=9.407102_47.722971_9.407505_47.723112_trekking_0)
+Only one row returned, the track segment is missing in the CSV data.
+"
+abrensch/brouter,closed,add GeoJSON track format,[],"Switching to GeoJSON as response format for brouter-web allows native parsing and to get rid of the GPX plugin as GeoJSON is the standard Leaflet format. BRouter calculated track stats are passed and displayed.
+
+This is part of an alpha3 release that is available in brouter-web master and ready for deployment. Depending on when you choose to deploy, I might continue adding stuff that has no depencencies, for which it doesn't matter if gets included or not.
+"
+abrensch/brouter,closed,incline dependency of cost-functions,"[Label(name=""enhancement"")]","There's frequent demand on having profile scripts with different preferences for uphill-, downhill- and flat sections. Part of that is driven by the problem of really steep sections that just can't be managed with a bike. This problem is adressed in 1.0.1 to a certain extend by including the ""incline"" tag in the lookup table.
+
+But some people wish to select fast surfaces for going dowhill, but prefer forest-tracks for going uphill. There's not yet a solution for that.
+
+Solution would be to expose a new variable for the incline estimated from the SRTM data. However, there are some conceptual problems here, partly due to SRTM-Noise, but also due to the fact that adding more context to the profile-scripts reduces the cache-hit rate for the hash-cache that reduces the number of profile-evaluations.
+
+However, just adding a 3-state variable (down/flat/up) to the context should be o.k. in terms of the cache-hit-rate. The challange here is to define a filter to calculate a meaningful value for that variable.
+"
+abrensch/brouter,closed,improve downloading GPX+KML,[],"- `Content-Disposition: attachment` header with `filename`
+- specific mime-types
+
+See nrenner/brouter-web#6
+"
+abrensch/brouter,closed,Online servers not running?,[],"For both brouter.de/brouter-web and brouter-web-preview I get an net::ERR_CONNECTION_REFUSED with Chrome.
+"
+abrensch/brouter,open,Next alternative button on route summary screen,"[Label(name=""enhancement"")]","Using the Android-App, alterative routes are calculated by running the calculation with the same parameters once more. This is time consuming for both entering the parameters and (for long distances) for the routing itself, since teh previous alternatives are calculated over and over again.
+
+A ""next alternative"" button on the route summary page would help.
+"
+abrensch/brouter,closed,Break up long way sections by intermediate points,"[Label(name=""bug"")]","The waypoint matching first searches for nodes in a given area ( +- 1/8 degree= ca 10 km  at max) around the waypoint and then searches for way sections starting at these nodes that come close to the wayoint to be matched.
+
+This can fail if the way-segements (=connecting links between ""non-trivial"" nodes) are too long. This is not an issue for streets in urban areas, but for rivers, railways, motorways or hiking trails off the beaten track.
+
+Solution will be to limit the lengh of these segments by changing some intermediate transfer nodes to network nodes.
+"
+abrensch/brouter,closed,brouter-web configuration,[],"Hi Arndt,
+
+there is a new [config.js](https://github.com/nrenner/brouter-web/blob/master/config.js) in brouter-web that chooses the appropriate configuration for online or desktop at load time. The idea is that no customization is needed after updating (assuming the config file is kept up-to-date in the repo).
+
+Have you made any other changes beside URL and profile list for the online service?
+Should the new all.brf and softaccess.brf be included? The softaccess.brf gives me ""does not contain expressions for context node"".
+
+Norbert
+"
+abrensch/brouter,closed,validate profile on upload,[],"Closes #14
+"
+abrensch/brouter,closed,CSV download,[],"Download messages CSV with URL parameter `format=csv`
+"
+abrensch/brouter,closed,Validate custom profile on upload and send error to client,[],"Currently, profile parsing is done in the RoutingEngine constructor (?). Errors are thrown as RuntimeException (IllegalArgumentException) and are not reported back to the client (catch Throwable in RouteServer.run).
+
+I would like to parse a custom profile for validation right on profile upload and send an error message (if any) with the response.
+1. What would I need to do profile validation?
+   Initialize a RoutingEngine? Are there any validations/checks afterwards? 
+   Can I call `BExpressionContext.parse` once or do I need to parse with different contexts as in RoutingEngine?
+2. Some exception messages might not be suitable for the client, e.g. `readMetaData` includes an `getAbsolutePath()`. Should we distinguish client and server error messages and e.g. have a custom ParseException with line and path members and custom getMessage/getClientMessage methods?
+"
+abrensch/brouter,closed,Profile upload,[],"This is a first implementation for uploading custom profiles with the standalone server, similar to what CgiUpload does. The idea is to publish this in an alpha2 release and to expand on this in future versions (e.g. client-side loading/saving from PC into textarea; loading the selected profile / linked custom profile from the server as a template).
+
+Some notes:
+- new argument: custom profile directory
+- profile text length is limited to 100000 characters (~100kb)
+- file is reused (overwritten) within a browser editing session to avoid creating too many files
+
+For testing, clone brouter-web master or download master (source) zip, will update hosted gh-pages after new release with the required server-side implementation.
+
+I'm not sure about storing custom profiles on the server, fearing these might get too many and that users rely on them being hosted which brings some responsibility. What do you think? Do you see uploading custom profiles rather as temporary or as a permanent store where users can bookmark and share Permalinks to?
+"
+abrensch/brouter,closed,"follow Maven conventions: development is done on SNAPSHOT, release have ...",[],"...a version number without
+"
+abrensch/brouter,closed,add scripts to run standalone server to release zip,[],"Proposing to add these scripts e.g. in a `bin` directory to the release zip, in order to run the standalone server (brouter.jar) for desktop applications. Additionally adding an empty `segments2` directory for storing the data files. 
+
+I couldn't find a build script for the release, just put the scripts under `misc/scripts/standalone`. Use case is to provide the server part for [brouter-web](https://github.com/nrenner/brouter-web) - that would be hosted online - with the normal BRouter revisions (unlike my first idea to provide a separate all-in-one download).
+
+The installation procedure would then be:
+Install
+1. download latest BRouter revision - as an example [a modified version ](http://www.norbertrenner.de/share/brouter_0_9_8.zip) with bin and segments2 dirs
+2. download a [data file](http://h2096617.stratoserver.net/brouter/segments2/) and save into segments2 dir
+
+Run
+1. start server in the bin directory with `server.sh` or `server.cmd` (Windows)
+2. open http://nrenner.github.io/brouter-web/
+
+What do you think?
+"
+abrensch/brouter,closed,timeout-free recalculation after nogo-changes ,"[Label(name=""bug"")]","After changing the nogo-logic in the service-interface for immediate effect of changes in the coordinate source, the invalidation logic for the template track is wrong: it should be invalidated if a nogo-change is detected.
+"
+abrensch/brouter,closed,fool proof installation,"[Label(name=""enhancement"")]","Installing BRouter is still complicated and people are asking for a click&pray installation from Google's play store.
+
+Such an installation would require to obtain an installation of BRouter's service-mode to be, with datafiles for the relevant region downloaded and with a default routing-mode->routing-profile mapping in effect.
+
+So it would be a modified APK with additional permissions for internet- and location-access doing all the downloads and installing all config files as well as the ""traditional"" APK without the extended permissions.
+"
+abrensch/brouter,closed,data file checksums,"[Label(name=""enhancement"")]","Currently no cross-checking is done on the integrity of the rd5 data files, so it's difficult to answer support questions for problems that could possible be caused by corrupted downloads or broken sd-cards.
+
+Therefore at least some checksum stuff is neccessary to distinguish real bugs from bad data. Unfortunatly, the rd5-data-file format is not well designed and does not offser much space for downward-compatibel enhancements, but there's one place where data can be added without breaking old versions of brouter:
+
+When initializing the data for a micro-cache, extra data can be added to what's delivered by OsmFile.getDataInputForSubIdx without breaking the node's decoding. Here, a checksum for that micro-cache's data can be placed.
+"
+abrensch/brouter,closed,need to access OsmPathElement when iterating over result set,[],"with that change, my experimental RouteConverter runs on HEAD
+"
+abrensch/brouter,closed,travel time calculation,"[Label(name=""enhancement"")]","BRouter does not (yet) calculate travel times.
+
+When used with OsmAnd, OsmAnds implicit ""20km/h"" for bikes is fine for me, but for car-routes, the implicit 60km/h is just a course guess and hust wrong for motorway trips.
+
+Since BRouter's cost funtion is not based on speed, travel time calculations would require to create twins for the relevant terms in the routing profiles (costfactor, initialcost, turncost, ...) that deliver the estimated contribution to the travel time.
+
+Simplest way to achieve that is to use separate files that are referenced from the profile-files that are processed by the same engine but deliver times in seconds instaed of costs and speeds instaed of costfactors.
+"
+abrensch/brouter,open,add a warning feature (e.g. ferries),"[Label(name=""enhancement"")]","When planning a route, there may be sections in the routing result that require attention (e.g. a ferry).
+
+A new expression for the profile parser:
+
+  warn <message> <wrapped expression>
+
+with <message> being displayed in the calculation summary if that expression contributed to the final routing result would by a generic way to achieve that
+"
+abrensch/brouter,closed,bike routes: evaluate network tag,"[Label(name=""bug"")]","The Map.Creator evaluates bike relations by just looking for route=bicycle ( see OsmCutter.nextRelation() )
+
+Though these are mostly the national and regional cycle networks (e.g. network = ncn ), there exists other networks ( e.g. network=radweit ) that have a different characteristic but also lead to tagging the way as a long-distance-cycle-way.
+
+Todo here is at least to filter the cycle-routes for the relevant networks
+"
+abrensch/brouter,open,cleanup distance calculation,"[Label(name=""bug"")]","3 issues with distance calculation in BRouter:
+- duplicate code ( 3 implemantions of public in calcDistance )
+- significant distance mismatch compared to other tools evaluating the tracks (earth radius?)
+- fails at lon = 180 degree 
+
+However, as distance calucation is called frequently within brouter, any cleanup also must obey the performance constraints
+"
+abrensch/brouter,closed,remove reference to routeconverter,[],"it's better like that
+"
+abrensch/brouter,closed,updated Android plugin and API version,[],"this worked for me
+"

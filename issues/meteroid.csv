@@ -1,0 +1,325 @@
+repository,state,title,label,body
+chaosdorf/meteroid,open,Entering https:// causes a fatal exception,[],"
+#### Expected behaviour
+When a user enters a URL which the application deems to be invalid the user should be presented with a prompt which informs them that the URL is not valid. 
+
+#### Actual behavior
+When a user enters a URL which is invalid the application crashes. 
+
+#### How to reproduce
+1. Download the application from [here](https://f-droid.org/packages/de.chaosdorf.meteroid/)
+2. Install & Launch
+3. When you launch the application you will be taken to a page where you enter a host name. This input field on this page will have a pre-populated URL.
+4. Remove the prepopulated URL and add in https://
+5. Click save using the icon on the top right. 
+6. The application will stop
+
+#### Environment 
+- Application Version: 2.4.0
+- Operating system: Android 5.0.2
+- Device: Samsung Galaxy Alpha
+- Model Number: SM-G850
+
+#### Recording Of The Bug
+An image which shows the bug can be seen below:
+
+![ezgif-1-f41f5e7e94.gif](https://gateway.ipfs.io/ipfs/QmSqcThKPtG98WXYwmMLKwBH7PyjVd9r4AEUCewfbfnfUp)
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@tobias-g/entering-https-causes-a-fatal-exception"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+chaosdorf/meteroid,open,App crashes after inputting user in Meteroid ,[],"
+#### Expected behavior
+Wanted to create user so I can start depositing,  I expected after creating user it will be saved then I will start.
+
+#### Actual behavior
+After clicking the save button, App crashes.
+
+#### How to reproduce
+- download Meteroid app [from here](https://f-droid.org/repository/browse/?fdid=de.chaosdorf.meteroid)
+- fill host name and save 
+- click on the adding user by using the plus sign below
+- fill the spaces provided 
+- click the save button at the top right corner 
+App crashes 
+
+* Mobile: Infinix note 4
+* Operating system: android 7.0
+* version: 2.4.0
+
+#### Recording Of The Bug
+https://youtu.be/voqGexfCpGA
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@onos/app-crashes-after-inputting-user-in-meteroid"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+chaosdorf/meteroid,open,Buying a drink may succeed even if the user gets an error message displayed.,"[Label(name=""bug""), Label(name=""enhancement"")]",This is not ideal.
+chaosdorf/meteroid,closed,Support buying drinks by scanning their barcode,"[Label(name=""enhancement"")]","It would be great to have https://github.com/chaosdorf/mete/issues/33 implemented here, too."
+chaosdorf/meteroid,closed,Negative user balances should be more visible.,"[Label(name=""enhancement"")]",It would be nice if a negative balance could be in bright red. And blink.
+chaosdorf/meteroid,closed,Account balance is sometimes not being displayed correctly,"[Label(name=""bug"")]","Under some circumstances (eg. a small profile image) the account balance is missing.
+
+@KAMiKAZOW noticed this."
+chaosdorf/meteroid,open,Display audits,"[Label(name=""enhancement"")]","It should be possible to view the audits (for a given time frame and / or for a given user).
+"
+chaosdorf/meteroid,open,Glitches in SetHostname,"[Label(name=""bug"")]","If you open the screen for setting the hostname repeatedly, there will be a few graphics glitches.
+
+They've been there already for a few years and I've got no idea why or what to do about them.
+"
+chaosdorf/meteroid,closed,Why does this app need access to the external storage?,"[Label(name=""question"")]","I think that the image cache could be in `/data` (or even better in `/cache`).
+"
+chaosdorf/meteroid,closed,Build fails for Marshmallow.,[],"This is the error log:
+
+```
+:meteroid:preBuild UP-TO-DATE
+:meteroid:preDebugBuild UP-TO-DATE
+:meteroid:prepareDebugDependencies
+:meteroid:compileDebugAidl
+:meteroid:compileDebugRenderscript
+:meteroid:generateDebugBuildConfig
+:meteroid:mergeDebugAssets
+:meteroid:mergeDebugResources
+/home/niklas/dev/meteroid/meteroid/src/main/res/drawable-hdpi/button_reload.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+/home/niklas/dev/meteroid/meteroid/src/main/res/drawable-xhdpi/button_reload.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+/home/niklas/dev/meteroid/meteroid/src/main/res/drawable-mdpi/button_reload.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+/home/niklas/dev/meteroid/meteroid/src/main/res/drawable/button_reload.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+:meteroid:processDebugManifest
+:meteroid:processDebugResources
+:meteroid:generateDebugSources
+:meteroid:compileDebug
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/controller/UserController.java:27: error: package org.apache.http.message does not exist
+import org.apache.http.message.BasicNameValuePair;
+                              ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/controller/UserController.java:93: error: cannot find symbol
+        public static List<BasicNameValuePair> userToPostParams(final User user)
+                           ^
+  symbol:   class BasicNameValuePair
+  location: class UserController
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:29: error: package org.apache.http does not exist
+import org.apache.http.HttpEntity;
+                      ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:30: error: package org.apache.http does not exist
+import org.apache.http.HttpResponse;
+                      ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:31: error: package org.apache.http.client does not exist
+import org.apache.http.client.HttpClient;
+                             ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:32: error: package org.apache.http.client.methods does not exist
+import org.apache.http.client.methods.HttpGet;
+                                     ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:33: error: package org.apache.http.impl.client does not exist
+import org.apache.http.impl.client.DefaultHttpClient;
+                                  ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:34: error: package org.apache.http.protocol does not exist
+import org.apache.http.protocol.BasicHttpContext;
+                               ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:35: error: package org.apache.http.protocol does not exist
+import org.apache.http.protocol.HTTP;
+                               ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:36: error: package org.apache.http.protocol does not exist
+import org.apache.http.protocol.HttpContext;
+                               ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:37: error: package org.apache.http.util does not exist
+import org.apache.http.util.EntityUtils;
+                           ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:29: error: package org.apache.http does not exist
+import org.apache.http.HttpEntity;
+                      ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:30: error: package org.apache.http does not exist
+import org.apache.http.HttpResponse;
+                      ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:31: error: package org.apache.http.client does not exist
+import org.apache.http.client.HttpClient;
+                             ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:32: error: package org.apache.http.client.entity does not exist
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+                                    ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:33: error: package org.apache.http.client.methods does not exist
+import org.apache.http.client.methods.HttpPost;
+                                     ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:34: error: package org.apache.http.impl.client does not exist
+import org.apache.http.impl.client.DefaultHttpClient;
+                                  ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:35: error: package org.apache.http.message does not exist
+import org.apache.http.message.BasicNameValuePair;
+                              ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:36: error: package org.apache.http.protocol does not exist
+import org.apache.http.protocol.BasicHttpContext;
+                               ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:37: error: package org.apache.http.protocol does not exist
+import org.apache.http.protocol.HTTP;
+                               ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:38: error: package org.apache.http.protocol does not exist
+import org.apache.http.protocol.HttpContext;
+                               ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:39: error: package org.apache.http.util does not exist
+import org.apache.http.util.EntityUtils;
+                           ^
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:49: error: cannot find symbol
+        private final List<BasicNameValuePair> postData;
+                           ^
+  symbol:   class BasicNameValuePair
+  location: class LongRunningIOPost
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:51: error: cannot find symbol
+        public LongRunningIOPost(final LongRunningIOCallback callback, final LongRunningIOTask id, final String url, final List<BasicNameValuePair> postData)
+                                                                                                                                ^
+  symbol:   class BasicNameValuePair
+  location: class LongRunningIOPost
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/controller/UserController.java:95: error: cannot find symbol
+                final List<BasicNameValuePair> pairs = new ArrayList<BasicNameValuePair>();
+                           ^
+  symbol:   class BasicNameValuePair
+  location: class UserController
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/controller/UserController.java:95: error: cannot find symbol
+                final List<BasicNameValuePair> pairs = new ArrayList<BasicNameValuePair>();
+                                                                     ^
+  symbol:   class BasicNameValuePair
+  location: class UserController
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/controller/UserController.java:96: error: cannot find symbol
+                pairs.add(new BasicNameValuePair(""user[name]"", user.getName()));
+                              ^
+  symbol:   class BasicNameValuePair
+  location: class UserController
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/controller/UserController.java:97: error: cannot find symbol
+                pairs.add(new BasicNameValuePair(""user[email]"", user.getEmail()));
+                              ^
+  symbol:   class BasicNameValuePair
+  location: class UserController
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/controller/UserController.java:98: error: cannot find symbol
+                pairs.add(new BasicNameValuePair(""user[balance]"", String.valueOf(user.getBalance())));
+                              ^
+  symbol:   class BasicNameValuePair
+  location: class UserController
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:55: error: cannot find symbol
+                HttpClient httpClient = new DefaultHttpClient();
+                ^
+  symbol:   class HttpClient
+  location: class LongRunningIOGet
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:55: error: cannot find symbol
+                HttpClient httpClient = new DefaultHttpClient();
+                                            ^
+  symbol:   class DefaultHttpClient
+  location: class LongRunningIOGet
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:56: error: cannot find symbol
+                HttpContext localContext = new BasicHttpContext();
+                ^
+  symbol:   class HttpContext
+  location: class LongRunningIOGet
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:56: error: cannot find symbol
+                HttpContext localContext = new BasicHttpContext();
+                                               ^
+  symbol:   class BasicHttpContext
+  location: class LongRunningIOGet
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:57: error: cannot find symbol
+                HttpGet httpGet = new HttpGet(url);
+                ^
+  symbol:   class HttpGet
+  location: class LongRunningIOGet
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:57: error: cannot find symbol
+                HttpGet httpGet = new HttpGet(url);
+                                      ^
+  symbol:   class HttpGet
+  location: class LongRunningIOGet
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:60: error: cannot find symbol
+                        HttpResponse response = httpClient.execute(httpGet, localContext);
+                        ^
+  symbol:   class HttpResponse
+  location: class LongRunningIOGet
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:67: error: cannot find symbol
+                        HttpEntity entity = response.getEntity();
+                        ^
+  symbol:   class HttpEntity
+  location: class LongRunningIOGet
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:68: error: cannot find symbol
+                        return EntityUtils.toString(entity, HTTP.UTF_8);
+                                                            ^
+  symbol:   variable HTTP
+  location: class LongRunningIOGet
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOGet.java:68: error: cannot find symbol
+                        return EntityUtils.toString(entity, HTTP.UTF_8);
+                               ^
+  symbol:   variable EntityUtils
+  location: class LongRunningIOGet
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:62: error: cannot find symbol
+                HttpClient httpClient = new DefaultHttpClient();
+                ^
+  symbol:   class HttpClient
+  location: class LongRunningIOPost
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:62: error: cannot find symbol
+                HttpClient httpClient = new DefaultHttpClient();
+                                            ^
+  symbol:   class DefaultHttpClient
+  location: class LongRunningIOPost
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:63: error: cannot find symbol
+                HttpContext localContext = new BasicHttpContext();
+                ^
+  symbol:   class HttpContext
+  location: class LongRunningIOPost
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:63: error: cannot find symbol
+                HttpContext localContext = new BasicHttpContext();
+                                               ^
+  symbol:   class BasicHttpContext
+  location: class LongRunningIOPost
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:64: error: cannot find symbol
+                HttpPost httpPost = new HttpPost(url);
+                ^
+  symbol:   class HttpPost
+  location: class LongRunningIOPost
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:64: error: cannot find symbol
+                HttpPost httpPost = new HttpPost(url);
+                                        ^
+  symbol:   class HttpPost
+  location: class LongRunningIOPost
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:67: error: cannot find symbol
+                        httpPost.setEntity(new UrlEncodedFormEntity(postData));
+                                               ^
+  symbol:   class UrlEncodedFormEntity
+  location: class LongRunningIOPost
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:76: error: cannot find symbol
+                        HttpResponse response = httpClient.execute(httpPost, localContext);
+                        ^
+  symbol:   class HttpResponse
+  location: class LongRunningIOPost
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:83: error: cannot find symbol
+                        HttpEntity entity = response.getEntity();
+                        ^
+  symbol:   class HttpEntity
+  location: class LongRunningIOPost
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:84: error: cannot find symbol
+                        return EntityUtils.toString(entity, HTTP.UTF_8);
+                                                            ^
+  symbol:   variable HTTP
+  location: class LongRunningIOPost
+/home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/longrunningio/LongRunningIOPost.java:84: error: cannot find symbol
+                        return EntityUtils.toString(entity, HTTP.UTF_8);
+                               ^
+  symbol:   variable EntityUtils
+  location: class LongRunningIOPost
+Note: /home/niklas/dev/meteroid/meteroid/src/main/java/de/chaosdorf/meteroid/PickUsername.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+50 errors
+:meteroid:compileDebug FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':meteroid:compileDebug'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 9.155 secs
+```
+"
+chaosdorf/meteroid,closed,Benutzer können nicht in-app angelegt werden,"[Label(name=""enhancement"")]","[Zumindest in der Version auf'm dorftablet]
+"
+chaosdorf/meteroid,closed,Optionale Vollbild-Uhr,"[Label(name=""wontfix"")]","Wenn das Mete-Pad im Multiuser-Modus an der Wand hängt, könnte nach einigen Minuten eine Uhr angezeigt werden – sinnvoll, wenn man in der Küche keine Uhr hängen hat.
+"
+chaosdorf/meteroid,open,Nicht alle Logos werden angezeigt ,"[Label(name=""bug"")]","Getränke-Logos von Flora und Ice Tea werden nicht angezeigt. Stattdessen kommt der Platzhalter. 
+"
+chaosdorf/meteroid,closed,Kein Farbverlauf,"[Label(name=""enhancement""), Label(name=""wontfix"")]","Bei einer vollen Liste hält sich der visuelle Gewinn durch den Farbverlauf im Hintergrund in Grenzen. 
+Bei AMOLED-Screens (zB bei Galaxys) ist Schwarz=aus -- ganz schwarze Flächen sparen also Strom. 
+"
+chaosdorf/meteroid,closed,Hardware Back-Button,"[Label(name=""enhancement"")]","Es wäre super, wenn man nicht nur über das 'zurück'-Icon in der App, sondern auch mit den Hardware-/Soft-Buttons auf die Übersicht zurück kommen könnte.
+atm wird beim Betätigen des Hardware-/Soft-Buttons die App beendet.
+"
+chaosdorf/meteroid,closed,Update README.md,[],"Keine Artikel vor Namen
+"

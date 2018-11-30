@@ -1,0 +1,478 @@
+repository,state,title,label,body
+thuryn/your-local-weather,open,Widget not auto updating,[],"Version 4.4.6
+Android 8.1
+
+Everything seems to be working fine other than the widget not updating automatically. The notification updates just fine. The notification Refresh Interval & the Update Period for Weather are each set to 30 minutes. I would assume that when the weather updates that both the notification and the widget would display the new values. Instead the widget just remains the same along with the last manually updated time."
+thuryn/your-local-weather,open,Add map view,[],Would be convenient to see the rain map of the area (since it is available) for the forecast.
+thuryn/your-local-weather,open,Combine charts,[],"It might be more convenient to have one chart canvas on which the graph lines would be drawn for selected indicator values (i.e. just temperature and rain, etc.)."
+thuryn/your-local-weather,open,Crash on fresh installation for 4.4.9 (97),"[Label(name=""bug"")]","After fresh installation (or wiping data), Your local weather crashes immediately. Here's a [logcat](https://gist.github.com/sm4rk0/7f203f3f6776ba392a57724ccf5076f3)."
+thuryn/your-local-weather,closed,Weblate source strings are in Norwegian,[],See [here](https://hosted.weblate.org/translate/your-local-weather/strings/sr/?type=todo&offset=3).
+thuryn/your-local-weather,closed,Cannot add more than one location.,[],
+thuryn/your-local-weather,closed,Map cannot be displayed,"[Label(name=""In progress""), Label(name=""bug"")]","When I add a location,  the map cannot be displayed. But I can still click to get a location."
+thuryn/your-local-weather,open,Widget with next hours forecast,[],"from email:
+Would be great to have the possibility to have the big widget display shorter term information rather than days. For example at intervals of 3 hours, so looking at it would show me the weather after 3, 6, 9 hours etc. instead of tomorrow, day after etc."
+thuryn/your-local-weather,open,Persistent status bar notification,[],"from email:
+A persistent status bar notification would be great, maybe showing a small icon and the temperature, with more information on swiping downwards. Right now I have to unlock my phone to get any information. 
+"
+thuryn/your-local-weather,closed,App crashing everytime after opening it,[],"After the newest update, the app started crashing everytime when I open it. Tried clearing cache and data but that didn't work either. 
+
+Oneplus 6, android 9."
+thuryn/your-local-weather,closed,No temperature on widget,"[Label(name=""bug"")]","The widget can't show temperature.
+I resize it , and remove and create it. This doesn't work. 
+
+![screenshot_20181109-124756](https://user-images.githubusercontent.com/36977733/48244036-6cc80600-e41e-11e8-8a7f-6d21cb446605.png)
+[log-yourlocalweather.txt](https://github.com/thuryn/your-local-weather/files/2564644/log-yourlocalweather.txt)
+"
+thuryn/your-local-weather,closed,Delete values-sr-rCyrl,[],"Because it causes Travis CI to fail with
+com.android.build.gradle.tasks.ResourceException: /home/travis/build/thuryn/your-local-weather/app/src/main/res/values-sr-rCyrl: Error: Invalid resource directory name
+Please delete it from Weblate, too - if possible.
+Serbian language (without 'Cyrillic' in its name) is added to Weblate with the same translations."
+thuryn/your-local-weather,closed,Some strings are not in strings.xml,"[Label(name=""In progress""), Label(name=""bug"")]","Such as ""Log to file""."
+thuryn/your-local-weather,closed,Add Swedish language to the translations,[],I will contribute to the Swedish translation when it is added.
+thuryn/your-local-weather,open,Lead to fatal crash on LineageOS 15.1 without GApps,"[Label(name=""bug"")]","After installing and setting up this app, my phone began to freeze:
+```
+--------- beginning of crash
+10-23 20:28:00.170  4592  4592 E AndroidRuntime: FATAL EXCEPTION: main
+10-23 20:28:00.170  4592  4592 E AndroidRuntime: Process: org.thosp.yourlocalweather, PID: 4592
+10-23 20:28:00.170  4592  4592 E AndroidRuntime: DeadSystemException: The system died; earlier logs will point to the root cause
+```
+Nothing serious in the lines above. The phone reboots shortly after this. Wiping caches didn't help. After every reboot the phone began to freeze when starting to navigate in the OS. I did even try to flash a newer Lineage build without success.
+
+After quickly removing this app, my problem disappeared. 
+
+I don't know the real root cause. Let me know if my full logcat would be helpful.
+
+- LineageOS 1.51-20181022-nightly
+- OnePlus 5T
+- App version 4.3.1 via f-droid (just saw [4.3.2](https://github.com/thuryn/your-local-weather/releases/tag/v4.3.2), maybe this helps? Scared to try.)
+
+"
+thuryn/your-local-weather,closed,upgrade error,[],"after last upgrade through F-Droid YLW constantly crashing on startup:
+```
+10-23 11:25:11.812  5632  5707 I ActivityManager: Displayed org.thosp.yourlocalweather/.MainActivity: +512ms
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: FATAL EXCEPTION: main
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: Process: org.thosp.yourlocalweather, PID: 2975
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: java.lang.RuntimeException: java.lang.NumberFormatException: For input string: ""OFF""
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at android.app.job.JobService$JobHandler.handleMessage(JobService.java:147)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:154)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:6186)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:889)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:779)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:107)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: Caused by: java.lang.NumberFormatException: For input string: ""OFF""
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at java.lang.Integer.parseInt(Integer.java:521)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at java.lang.Integer.parseInt(Integer.java:556)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at org.thosp.yourlocalweather.utils.Utils.intervalMillisForAlarm(Utils.java:492)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at org.thosp.yourlocalweather.service.AbstractAppJob.reScheduleNextAlarm(AbstractAppJob.java:44)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at org.thosp.yourlocalweather.service.StartAppAlarmJob.onStartJob(StartAppAlarmJob.java:24)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	at android.app.job.JobService$JobHandler.handleMessage(JobService.java:143)
+10-23 11:25:12.666  2975  2975 E AndroidRuntime: 	... 7 more
+10-23 11:25:12.671  5632  9993 W ActivityManager:   Force finishing activity org.thosp.yourlocalweather/.MainActivity
+```"
+thuryn/your-local-weather,closed,The wind direction is still wrong,[],"The wind direction is where the wind comes form. Now some arrows are correct, but others are still wrong. 
+```
+    <string name=""wind_direction_north"" tools:ignore=""MissingTranslation"">N↓</string>
+    <string name=""wind_direction_north_east"" tools:ignore=""MissingTranslation"">NE↘</string>
+    <string name=""wind_direction_east"" tools:ignore=""MissingTranslation"">E←</string>
+    <string name=""wind_direction_south_east"" tools:ignore=""MissingTranslation"">SE↖</string>
+    <string name=""wind_direction_south"" tools:ignore=""MissingTranslation"">S↑</string>
+    <string name=""wind_direction_south_west"" tools:ignore=""MissingTranslation"">SW↘</string>
+    <string name=""wind_direction_west"" tools:ignore=""MissingTranslation"">W→</string>
+<string name=""wind_direction_north_west"" tools:ignore=""MissingTranslation"">NW↗</string>
+```
+"
+thuryn/your-local-weather,open,Daily and graphs view should indicate the location,[],"Currently, one always has to switch to the 'current' view to see (and switch) the location.
+"
+thuryn/your-local-weather,closed,Widget update error,[],"When I update the weather in the main app, the widget shows Location not found. It will not show the correct location and weather until I click the update button on the widget.
+
+ROM: PixelExperience Android 9"
+thuryn/your-local-weather,closed,Time format doesn't respect locale in widget,[],"The times in the bars at the tops of the home screen widgets do not respect the system locale. I expect 24-hour time (en-GB), but it appears as 12-hour time.
+
+An option to override locale for time format would be nice, too! I used to use en-US with 24-hour time manually turned on, as well."
+thuryn/your-local-weather,closed,Replace a cryptic W character in the current weather page,[],"The current weather page says:
+> Zuletzt aktualisiert: 17:11 W
+
+What does this letter W mean?"
+thuryn/your-local-weather,closed,Please update the CHANGELOG file regularily,[],It is linked from the app's F-Droid page and only lists version 1.0.
+thuryn/your-local-weather,open,highlight highest and lowest,"[Label(name=""Accepted feature request"")]",Please highlight the highest and lowest temperatures in the daily forecasts. Some weather websites do this. I think it looks nice and it's quicker if you're looking for the highest and lowest temperatures. ;-D
+thuryn/your-local-weather,closed,Add inches unit for rain and snow,[],
+thuryn/your-local-weather,closed,No data refresh until updating once manually,[],"App starts at boot but it doesn't update data. Have to refresh data in main menu once. Afterwards app fetches new data and widget works too.
+
+Maybe there is a timeout at boot and no further try happens. 
+
+Los 15.1 (8.1)
+Always on vpn"
+thuryn/your-local-weather,closed,Any chance of getting air pressure in Inches Hg and millibars?,"[Label(name=""Accepted feature request"")]",
+thuryn/your-local-weather,closed,please update on f-droid,[],"please update the (V 4.1.4) on f-droid,  the corrent version is old and don't work (version 4.1.2) or put a link of update apk.  some peaple don't use playstore for update but f-droid
+
+tanks
+
+sorry for my bad english"
+thuryn/your-local-weather,open,Daily forecasts in main screen/daily forecast page improvement,[],"90% of the time, I don't need sunrise and sunset, but I need tomorrow's temperatures!
+The current lower half  of the screen can be comfortably placed under the Now temperature.
+
+I suggest an option to replace the lower half of the screen with a daily forecast consisting of: high and low temperatures and weather condition icon.
+
+Example:
+![a](https://user-images.githubusercontent.com/38409206/44203479-5c6dfb00-a14f-11e8-8712-dd26bea5c526.png)
+
+Also, I think daily forecast needs an option to show fewer temperatures (just high and low). Too much info can be confusing. This is an another example of just the right amount in my opinion:
+
+![b](https://user-images.githubusercontent.com/38409206/44203480-5c6dfb00-a14f-11e8-8690-1d4a58ff5bfd.png)
+
+
+
+
+**Thank you**"
+thuryn/your-local-weather,closed,Include daily forecast when updating,[],This is very helpful when there is no network connection. At least I can get a rough idea about current weather from the last forecast.
+thuryn/your-local-weather,open, Add vertical lines in the diagrams to know when a day starts,[],
+thuryn/your-local-weather,closed,Feature request: add widget transparency,[],"Hi, it would be nice if the widget had an option to adjust transparency, would look more modern.
+Thanks"
+thuryn/your-local-weather,open,[FR] Temperature graph : display time of day,[],"Hi,
+
+As of v3.2.3, on the temperature graph, there's no **precise** way to tell the time on the X axis.
+
+For instance, I'd like to tell when a day start/ends, or when will the temperature be at its highest/lowest. At the moment, I can guesstimate, but that's it.
+
+I know I can  check the daily forecast for that, but it'd be more explicit on the graph.
+
+Adding vertical dotted line (like it's done for the Y axis) for 0h, 6h, 12h, and 18h each day would be a good start."
+thuryn/your-local-weather,closed,Add option to switch units of rainfall in inches,[],
+thuryn/your-local-weather,closed,YLW updates only the last location,"[Label(name=""bug"")]","Hi
+
+Thanks for a great piece of software; I'm really enjoying it -- especially love the transparent widget.
+
+The problem I have is that if I add any other Locations beyond ""Location 0"", updates only happen for the last one (i.e., if I added two more, only Location 2 gets updated every 15 minutes).
+
+I've now removed the 2 other cities I wanted to track, retaining only ""Location 0"" (the automatically discovered one), so it works OK, but I'd really like to have those cities back!
+
+-   YLW 3.2.3, installed from F-Droid
+-   all update periods and notification refresh set to 15 minutes for now
+-   location and address source: ""Local MLS and Nominatim (recommended)""
+-   wake-up strategy: no wake up
+
+Let me know if you need any more details, or a debug log.
+
+Thanks."
+thuryn/your-local-weather,closed,YLW doesn't update,"[Label(name=""bug"")]","with my settings, see screenshots.
+
+[log-yourlocalweather.txt](https://github.com/thuryn/your-local-weather/files/2135630/log-yourlocalweather.txt)
+![screenshot_2018-06-26-06-36-18](https://user-images.githubusercontent.com/517752/41890103-d0394cd0-792f-11e8-9a44-4b4b72ffc1f6.png)
+![screenshot_2018-06-26-06-36-34](https://user-images.githubusercontent.com/517752/41890105-d226c9fa-792f-11e8-8b28-ebc2bdacf7aa.png)
+"
+thuryn/your-local-weather,closed,light writing on light background,[],"Since the last update, the dark theme under Day Prediction is light writing on light background. Deleting data/reinstalling the app is not successful
+![screenshot_your_local_weather_20180620-140243 1](https://user-images.githubusercontent.com/10061349/41657341-64ef512c-7493-11e8-9594-2931ae117f71.png)
+"
+thuryn/your-local-weather,open,Feature request: 1x5 widget with 6 days forecast ,"[Label(name=""Accepted feature request"")]","Hi, I have a feature request! :)
+Actually I am using this app https://play.google.com/store/apps/details?id=com.devexpert.weather
+the only reason is that it has a 1x5 widget with 6 days forecast (current day + 5).
+What about implementing this widget on your app?
+Thanks!
+"
+thuryn/your-local-weather,open,"Move ""About"" field.",[],"I would expect to find it at the bottom of the side menu, not in settings.
+
+![sidemenu](https://user-images.githubusercontent.com/13802408/41609322-cd36facc-73ea-11e8-91c2-9567209171a2.png)
+
+About (om) is now at the bottom of settings (innstillinger)
+
+![screenshot_20180619-180214](https://user-images.githubusercontent.com/13802408/41609430-03a8510a-73eb-11e8-99c9-ca43709b117d.png)
+"
+thuryn/your-local-weather,open,Clicking (License) crashes app,[],"![licenses](https://user-images.githubusercontent.com/13802408/41609268-b13b686c-73ea-11e8-8fd1-3d1a81e573da.png)
+"
+thuryn/your-local-weather,closed,"""Broken clouds"" untranslatable",[],"![landing](https://user-images.githubusercontent.com/13802408/41609233-989b5e66-73ea-11e8-93fe-4c5e48aad767.png)
+
+For the fully translated nb_NO"
+thuryn/your-local-weather,closed,Application failed to vibrate after updating the weather,"[Label(name=""Fixed/waiting for release""), Label(name=""bug"")]","Project Information
+.Repository
+https://github.com/thuryn/your-local-weather
+
+Project Name :Your local weather
+
+Expected Behaviour
+There should vibration when weather is been updated when vibration feature is switch on
+
+Actual Behaviour
+There is no vibration when weather is been updated when vibration feature is on
+
+How to reproduce
+Download the app from fdroid
+Install and run the app
+Allow the app to get your location
+Click the 3 lines on the top left
+Select settings
+Then choose General setting
+Enable Notification and Vibrate
+Go and update or refresh the weather condition
+
+.Browser: Your local weather v 3.1.7
+.Operating System: Android 5.1
+
+"
+thuryn/your-local-weather,closed,Update gradle-wrapper.properties,[],"Hi,
+
+This small PR adds the `distributionSha256Sum` property to `gradle-wrapper.properties`. It allows for verification of the downloaded Gradle distribution via SHA-256 hash sum comparison.
+
+You can find some documentation about this security improvement [here](https://docs.gradle.org/current/userguide/gradle_wrapper.html#sec:verification), and the sums for each version of gradle [here](https://services.gradle.org/distributions/).
+
+Note that you need to update this property every time you change your version of gradle."
+thuryn/your-local-weather,closed,Create FAQ.md,[],"I have created a FAQ for this lovely project, kindly check and merge."
+thuryn/your-local-weather,closed,Language cant change with chinese ( chinese ),"[Label(name=""Fixed/waiting for release""), Label(name=""bug"")]","#### Project Information
+> Repository:  https://github.com/thuryn/your-local-weather
+
+#### Expected behavior
+it expected that when i select language in Chinese ( Chinese ) it able to change in Chinese language . 
+
+#### Actual behavior
+when i select Chinese language and restart the app nothing to change in Chinese . 
+
+#### How to reproduce
+* download the app
+* open it
+* go to settings and change language and select Chinese 
+* restart the app
+* note the bug
+
+> Browser :  YourLocalWeather ( v3.1.6 )
+Operating system: android 5.1
+
+#### Recording Of The Bug
+https://www.youtube.com/watch?v=mLP19JG5jMM
+
+#### Proof of Work Done
+> check my profile in- [GITHUB](https://github.com/kr-nahid)
+Submitted Issue: https://github.com/thuryn/your-local-weather/issues/55
+"
+thuryn/your-local-weather,closed,"Cannot install ""different signature to installed version""",[],"I'm trying to install this application via F-Droid on my Nexus 5X with LineageOS 15.1, but F-droid gives me this message:
+
+> Different signature to installed version
+
+What's up with that?"
+thuryn/your-local-weather,open,FAQ,[],"Greetings, I'm creating a FAQ for this cool project, will be ready in a day or two, I hope you're cool with it?"
+thuryn/your-local-weather,open,FAQ and about us,[],"Greetings, I am mayowa , a github promoter, saw your project and wish to write for you on FAQ and About us in github for more clarity and simplicity in understanding of your local weather."
+thuryn/your-local-weather,open,LOGO ,[],"Hello ,@thuryn I want contribute to your-local-weathe r so i designed a new logo for your-local-weather and it's free.
+
+I hope you like it. If you like it, I will send you pull request, editable files/original source and .png format files. If there's something you want to change, I'll do it.
+
+if you want i will send you my designed"
+thuryn/your-local-weather,closed,Manual update of current weather is very slow in 3.0.16,[],"There seems to have been a regression of sorts that appeared in release 3.0.16.
+
+I have YLW configured on my tablet for manual location and manual update of the weather (as it is rarely more than a few feet/meters from my easy chair).  Ever since release 3.0.16, manual update of the weather by swiping down is _very, very, very slow_! It used to take maybe a couple seconds, now the ""busy"" indicator (the spinning wheel) goes for several minutes or more.
+
+Without digging into the code, my guess is something is perhaps amiss with synchronization of the ""busy"" indicator with the actual update, download status.
+
+A work around I discovered is to start the current weather update by swiping down, then go into the menu and switch to either ""daily forecast"" or ""graphs"" which update quickly, then go back to ""current weather"". The spinning wheel is gone, and the updated current weather info is there. That fact in itself might help debug the issue...
+
+Release 3.0.15 worked fine, the problem appeared in 3.0.16.
+"
+thuryn/your-local-weather,closed,widget stays blank,"[Label(name=""In progress""), Label(name=""bug"")]","I was using the widget for a few days and it worked fine. After I changed the 'Widget theme' in the settings the widget started misbehaving. At first it turned back to the dark theme (only temporarly issue). Then it didn't open the app when clicking on the widget anymore (only temporarly issue). 
+Finally the widget stay blanks - no conent at all besides the update arrow.
+
+I've cleared the cache of the application without any luck."
+thuryn/your-local-weather,open,Oreo icon shape,[],"Please add support for icon shape
+https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive.html
+https://material.io/guidelines/style/icons.html"
+thuryn/your-local-weather,open,Users should also be able to share weather forecast,[],"
+#### Components
+Your-local-weather is a great application that makes getting weather reports and weather forecasts very easy, simple and fast. 
+
+I have some suggestions that can make this application more useful to its users. 
+
+#### Proposal
+It is of great benefit to me, and some other users out there that the application provides a means where i can easily share the weather report of my location to any body that i wish to share it with. ![reports](https://i.imgur.com/PRz4x1z.jpg)
+
+But unfortunately, this application doesn't provide a means where i can share the weather forecast of my location, and its not really pleasing to know. ![forecast](https://i.imgur.com/hNjhY6K.jpg) 
+
+Therefore, i am proposing that this application creates/provides a means where users can share the weather forecast to people that people that they wish to share it with. 
+
+#### Mockups / Examples
+The developer can add a share button for forecasts reports to the application like this:
+![example](https://i.imgur.com/U3EOsYa.jpg) 
+
+
+#### Benefits
+Including this feature to this application will avail the users with the opportunity to share the weather forecast of their location. 
+    
+
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@zinonweke/users-should-also-be-able-to-share-weather-forecast"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+thuryn/your-local-weather,open,[FR] intercept OWM URLs,[],"As YLW shows the same weather info that's on OWM site I think it's worth adding intent for URLs like https://openweathermap.org/?q=Almaty%2C+KZ
+Thanks!"
+thuryn/your-local-weather,closed,Add an option to set 12 hour time format ,"[Label(name=""Accepted feature request"")]",
+thuryn/your-local-weather,open,Make direction of the wind visible,"[Label(name=""Accepted feature request"")]","From email:
+The direction of wind is also important .No option for this.Thank you for the app.Is realy good.
+
+
+"
+thuryn/your-local-weather,closed,[Feature request] add more than 3 locations,"[Label(name=""Feasibility check"")]","Hi,
+Currently YLW allows to cycle through 3 preset locations.
+Could you please consider to increase the amount of locations?
+Thank you."
+thuryn/your-local-weather,open,"[Feature request] To show location choice for ""Daily Forecast"" and ""Graphs"" menus.","[Label(name=""Accepted feature request"")]","Hi!
+Please consider to add location choice for the ""Daily Forecast"" and ""Graphs"" menus.
+As of now, it is hard to say what location is used in these menus.
+Thank you."
+thuryn/your-local-weather,closed,Make it lineageOS weather provider.,"[Label(name=""Feasibility check"")]","Really I'm not fully know what I'm talking about.
+
+In the LinegeOS it's possible to select default weather app (at same place where other defaults like a browser lives). But it doesn't allow to select your local weather as default weather app and provides search request ""lineageosweatherprovider"" in available markets."
+thuryn/your-local-weather,closed,Custom API key for OWM support,"[Label(name=""Accepted feature request"")]","Hi,
+Please consider to add an option to add custom API key for OpenWeatherMap queries.
+Thank you!"
+thuryn/your-local-weather,closed,Graphs window does not respect dark theme.,"[Label(name=""Fixed/waiting for release""), Label(name=""bug"")]","Hi all,
+First of all thanks for the app! I really like it.
+So, in the following screenshot you can see Graphs window with light theme, but the Dark theme is enabled in the settings:
+![screenshot_20180327-165759](https://user-images.githubusercontent.com/10903432/37949490-9f9a8af8-31e0-11e8-8d27-a61a8e5b59d2.png)
+Thanks."
+thuryn/your-local-weather,closed,Weather icon does not respect day time (sunrise and sunset),"[Label(name=""Fixed/waiting for release""), Label(name=""bug"")]","Hi all,
+I've noticed that weather icon shows moon when it's already day:
+![weather](https://user-images.githubusercontent.com/10903432/37949192-4f14f9ca-31df-11e8-98a8-6f2f6aad0254.png)
+
+In the screenshot above the time is 10.17am (sunrise time is 7.02am), but the icon still has moon instead of sun.
+Other apps show icon correctly.
+Thanks."
+thuryn/your-local-weather,closed,Default language not selected by default.,"[Label(name=""Fixed/waiting for release""), Label(name=""bug"")]","Fresh install from F-droid. On Norwegian Bokmål locale, (and i suspect others) one has to click default, and then restart for the system language to be utilized.
+"
+thuryn/your-local-weather,closed,Update by accelerometer wise default?,[],"I have no concrete proof, but I suspect that the update by accelerometer method is a huge battery drain.
+
+Strangely, Android doesn't seem to record any useful data in the battery section of settings, but I have observed a rapid decrease in battery life when Your Local Weather updated to use accel by default.
+
+Switch back to my preferred setting, ""update every hour"", and my battery life improves greatly. 
+
+Maybe accel update shouldn't be the default?"
+thuryn/your-local-weather,open,"Bug Found in ""Your Local Weather"" App (Location finder button are not working properly) ",[],"
+#### Expected behavior
+I Expected that when i opened ""your local weather"" app and active GPS location to search current city automatically and show its whether as you click on find your location whether button.
+
+#### Actual behavior
+When I opened ""your local weather"" app and active my phone GPS that will help the application to access location and when i click on search wheather with GPS button automatically He has searched  my current location but nothing was found then i cancel searching and again click on search wheather button and this time the button will not work.
+
+#### How to reproduce
+1. Download ""Your Local Weather"" App from the play store
+
+2. Lunched the app and Run it
+
+3. Access your GPS Location
+
+4. Now open app and click on find current location wait for a while and cancel it
+
+5. Again click on find current location 
+
+6. Note the bug 
++ Your local weather Version 3.0.8
+* Browser: HUAWEI Mate 10 lite
+* Operating system: Android version 7.0 
+
+#### Recording Of The Bug
+<iframe width=""854"" height=""480"" src=""https://www.youtube.com/embed/Ibm7lEeNElQ?ecver=1"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@rizwankhan/bug-found-in-your-local-weather-app-location-finder-button-are-not-working-properly"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+thuryn/your-local-weather,closed,Spelling: language rework,[],
+thuryn/your-local-weather,closed,Temperature in the main app does not show correctly,"[Label(name=""bug"")]","(from email:)
+Why does current weather say 4F and the daily forecast say 34F? Going by how it feels the daily forecast is more correct.
+But... the weather app that came on the phone (uses accuweather) says 25F and that feels the most correct..going by how long I can stand outside."
+thuryn/your-local-weather,open,browse different views accessible via swiping horizontally,[],"please make it possible to quickly change the views (current, daily, graphs) by swiping left/right from view to view like browsing tabs.
+not sure, if this conflicts with material design, though."
+thuryn/your-local-weather,closed,never update feature,"[Label(name=""Accepted feature request""), Label(name=""Fixed/waiting for release"")]","Is there a way to never update the weather infos (except if I manually press refresh)?
+I couldn't find the option
+
+thanks!"
+thuryn/your-local-weather,closed,"Text wrapping in time of day column, field of Forecast page","[Label(name=""Fixed/waiting for release""), Label(name=""bug"")]","Everything looks fine on my two stupid phones, but on my (relatively larger screen) Nexus 7 tablet (size similar to the mini PearPad), the column, field that shows the time of day on the forecast page is not quite wide enough, and the text wraps when clearly there is plenty of unused room that could be allocated.
+
+Screenshot shown below;
+
+![screenshot_2018-02-28-23-14-56](https://user-images.githubusercontent.com/16908384/36940560-1d234536-1efa-11e8-994c-b2ae74febcd4.png)
+"
+thuryn/your-local-weather,open,add setting: default view,"[Label(name=""Accepted feature request"")]","it would be helpful to have a setting that defines a default view when launching the app (current, daily, graphs).
+
+if you could distinguish if it was initiated by menu or widget, that's even better."
+thuryn/your-local-weather,closed,Quit nagging me to enable GPS,"[Label(name=""Accepted feature request""), Label(name=""Fixed/waiting for release""), Label(name=""bug"")]","This might be semi-related to #21.
+
+I run LineageOS and only turn on features like bluetooth and GPS when I want them, so my GPS is disabled most of the time. 
+
+When I have my GPS disabled and I open the app, it nags me to go into phone settings and re-enable GPS. It's easy enough to get around this by just tapping somewhere not on the nag dialog, but it's annoying. When I want to update the location, I'll turn on GPS and press the 'detect location' button.
+
+I tried telling it not to update the location, but in that mode the 'detect location' button disappears and it resets the location to london.
+
+I can see how prompting the user to turn on GPS might be useful, but I'd like a setting to turn off that nag screen so that I can just update my location manually and not be bugged to enable GPS every time I want to see a forecast.
+
+Thanks for your time :)
+"
+thuryn/your-local-weather,closed,How to help with translations + tutorial text?,[],"Hey, happy user of the app here! 
+
+The widget works perfectly fine so I almost never open the app ""properly"". I just did for the first time in ages, and being greeted by a detailed tutorial was a pleasant surprise! A few settings that I was not aware of were explained, and the app is now better tweaked to what I want it to do. Love it :)
+
+There were a few spelling errors, for example: _""**cashing** found locations""_ instead of _""**caching** found locations""_. Also a few quirky idioms.
+
+I figured *""Hey, I can help there! I'll just look up the text files in the source, edit them and send a pull request!""* (mind you, I'm not an Android dev - building this from scratch would be too much hassle. But editing some writing in plain text should be easy). However, I can't find the text source with a quick browse, where should I look?
+
+Also, if you need translations, I can help with Dutch :)"
+thuryn/your-local-weather,open,Temperature notification ,"[Label(name=""Accepted feature request"")]",Would love a simple feature that only shows the temperature in the notification bar. The notification right now shows a weather icon and needs to be expanded. Temperature is especially nice with always on displays since you can just glance at the display and see the temperature without even touching the phone. 
+thuryn/your-local-weather,closed,Spelling: Language rework,[],Are the log files overwritten or replaced?
+thuryn/your-local-weather,closed,Show notification immediately,[],"I like your app very much, especially with the constant notification showing the weather. However, it looks like the notification doesn't appear until the update time chosen. So, if I adjust the settings or update the app, the notification doesn't appear until an hour after I start it. My update period is an hour.
+"
+thuryn/your-local-weather,closed,More information is needed when searching for location,"[Label(name=""Accepted feature request""), Label(name=""Fixed/waiting for release"")]","I live in Vienna, which is a very popular name for a town. When I search for it, I get many results for ""Vienna US"". Please add more information to the search results, such as geo coordinates, so I can determine which of the many ""Vienna US"" results is where I actually am. There's no indication which one I chose.
+
+Fortunately, there is a town very close to me with a unique name."
+thuryn/your-local-weather,closed,"""True"" Imperial units","[Label(name=""Accepted feature request""), Label(name=""Fixed/waiting for release"")]",Please include miles/hour when selecting Fahrenheit. Inches of mercury would also be nice for the barometric pressure. Us USA-based users will appreciate this. :-)
+thuryn/your-local-weather,closed,Cancel finding location,"[Label(name=""Accepted feature request""), Label(name=""Fixed/waiting for release""), Label(name=""bug"")]","Please add a cancel button so I can tell the app to stop trying to find the current location. It just runs and runs for me, so I basically have to kill the app. However, when I restart it, the current location is there. It seems to work in the end, but never finishes by itself.
+
+I'm running Resurrection Remix 5.8.5, which is based on LineageOS 14. I do not have any GApps installed."
+thuryn/your-local-weather,closed,System Location permission requested with Local MLS set,"[Label(name=""Fixed/waiting for release""), Label(name=""bug"")]",I accidentally have system location services unfunctional. Set Local MLS but the app keeps asking System Location permission and fails to determine the location.
+thuryn/your-local-weather,open,UV Index,"[Label(name=""Accepted feature request"")]","Can you please add UV index data to the app?
+
+https://openweathermap.org/api/uvi"
+thuryn/your-local-weather,open,Add more various/configurable widgets,[],
+thuryn/your-local-weather,closed,Not complete view with bigger font in vertical view,"[Label(name=""Fixed/waiting for release""), Label(name=""bug"")]","Not complete view with bigger font in vertical view (in German version), maybe there shoud be a line wrap. See screen shot.
+![screenshot_20180125-175736](https://user-images.githubusercontent.com/4852079/35766763-21940e0c-08de-11e8-827d-80e81be02bbc.png)
+![screenshot_20180125-175747](https://user-images.githubusercontent.com/4852079/35766764-21b1ff34-08de-11e8-9eb5-801037256401.png)
+"
+thuryn/your-local-weather,open,Create bar graph instead of line one as an option,"[Label(name=""Accepted feature request"")]",
+thuryn/your-local-weather,closed,Create a graph for the progress of pressure,"[Label(name=""Accepted feature request""), Label(name=""Fixed/waiting for release"")]",
+thuryn/your-local-weather,closed,Application throws exception when connection is poor,"[Label(name=""Fixed/waiting for release""), Label(name=""bug"")]",
+thuryn/your-local-weather,closed,Application permissions and location settings are not always clear to users,"[Label(name=""Fixed/waiting for release""), Label(name=""bug"")]",
+thuryn/your-local-weather,closed,Make an option to specify several locations to see in the main app and widgets,"[Label(name=""Accepted feature request""), Label(name=""Fixed/waiting for release"")]",
+thuryn/your-local-weather,closed,Modify the forecast activity to show detailed information for a whole day,"[Label(name=""Accepted feature request""), Label(name=""Fixed/waiting for release"")]","Request from email
+
+Would it be possible to have a detail of the weather evolution during the day?
+You show morning/afternoon/evening but it could be good to see every 2/3 hours what will be the temperature AND the sky (rainy/cloudy/sunny).
+It's good to see in the morning when during the day we can expect rain, for example.
+This kind of detailed evolution is visible on Google and Duckduckgo weather tools on web browsers, but also for example on the Android open-source app Forecastie."
+thuryn/your-local-weather,closed,Add option to show real feel temperature,"[Label(name=""Feasibility check""), Label(name=""In progress"")]",
+thuryn/your-local-weather,closed,wind speed please add unit km/h,"[Label(name=""Accepted feature request""), Label(name=""Fixed/waiting for release"")]",Please add unit km/h for wind speed.
+thuryn/your-local-weather,closed,minSdkVersion raise,[],"Good-Weather's value is 14, yours is 19 from the initial commit. So I can't figure out what commit did it and why.
+I wonder if it was necessary and will it be possible to use on my JB tablet?"
+thuryn/your-local-weather,closed,Widget breaks,[],"Same issue as https://github.com/qqq3/good-weather/issues/31
+
+This didn't happen while I had the widget updating every 15 minutes using ""wake display"". Now that I've switched to update every hour and ""no wake up strategy"", tapping my widget no longer opens ylw, and the widget theme is not what I have it set to. Nor has it updated for many hours."
+thuryn/your-local-weather,closed,"""ylw has stopped"" during phone call",[],"Could be a coincidence, but just in case it's not:
+
+I have the widget set to ""wake up with display"" every 15min. I wonder if the routine meant to wake up the display conflicted with a phone call on top of the lock screen?
+
+Android 8.1 / pixel 2 xl"
+thuryn/your-local-weather,closed,[FR] Switch info pages with swipe,"[Label(name=""Accepted feature request""), Label(name=""Fixed/waiting for release"")]","As in Forecastie: swipe to the left/right gets you to graphs and forecast.
+Really feel miss the quick access to forecast"
+thuryn/your-local-weather,closed,Explanation of settings and features,"[Label(name=""Accepted feature request""), Label(name=""Fixed/waiting for release"")]","Hello!
+
+I'm not sure what several of the functions in this app do. I think it would be beneficial if you described what each option does somewhere, if only in there README.md on this GitHub page.
+
+To start, why does this app need to ""make and manage phone calls""?
+
+What does the address cache do?
+
+What do each of the widget ""wake up strategies"" do?
+
+What do each of the `location and address source` options do? What is the significance of these options?
+
+Thanks!"
+thuryn/your-local-weather,closed,"Crashing after toggle setting ""hide description""",[],"I checked ""hide weather description"" to see what it does, then unchecked it. Now the app crashes and can't be used.
+
+I was able to replicate this after clearing data and repeating the following steps:
+
+1. Go to settings, toggle setting
+2. Back to main page, refresh data
+
+Repeat above until app crashes upon start and can't be used."
+thuryn/your-local-weather,closed,[Crash] Widgets crash the app,[],Just creating any widget crashes the app
+thuryn/your-local-weather,closed,Switch OpenWeatherMap API URLs to HTTPS,[],See http://openweathermap.org/news/post/ssl-free-and-startup-accounts

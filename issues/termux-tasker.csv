@@ -1,0 +1,222 @@
+repository,state,title,label,body
+termux/termux-tasker,open,Help ,[],"Hi can someone please help me, i had used termux boot to setup a script to run at boot
+
+python sstvProxy.py -hl
+
+hower, it is causing conflicts on my setup as the script is starting before other apps, can someone explain how i could use termux task to start the script a few mins after boot"
+termux/termux-tasker,open,Any way to output variables?,[],"Only one way communication here?
+stdout/err?"
+termux/termux-tasker,open,Termux:Task action executed asynchronously (i.e. doesn't make Tasker wait for it to finish),[],"I created a shell script in Termux that has the command ""sleep 10"" inside, and placed this in the ~/.termux/tasker directory. In Tasker, I created a Task with 2 actions. The first one is Termux:Task that executes the shell script. The second is a Flash action that simply pops up a window with an ""Awake"" message.
+
+When I run the task, the second action immediately gets executed, without waiting for the first to finish.
+
+I'm not sure if Termux:Task is meant to execute asynchronously or synchronously, i.e. whether this is a feature or a bug. I saw this [Tasker guide](https://tasker.joaoapps.com/plugins.html) on how to create plugins, and tried to read the source code to find out whether the synchronous settings are there or not. Unfortunately, things went way over my head very quickly, so I decided to open this issue instead. 
+
+I currently have a way around this asynchronous behaviour. In Tasker, I add an action right after the Termux:Task action that will make Tasker wait until a Tasker variable is set, before proceeding to the next action. Then on the Termux script level, I add a line at the end of my script which sets this Tasker variable using the technique I learned from [glow's blog](https://glow.li/technology/2016/4/03/pass-variables-from-termux-to-tasker/). It's a bit kludgy though, and I would rather do things natively in Termux, if I could only make Termux behave synchronously.
+
+For all I know, asynchronicity is what other users want. I myself can imagine scenarios where that could be handy. Perhaps it would be nice to have a way, for example via a termux.properties global setting or a checkbox within the Termux:Task action, where the user can set whether Termux:Task should make Tasker wait for it to finish or not?"
+termux/termux-tasker,closed,"updated gradles, dependencies, and some code",[],"gradles to 28, compatibility with java 1.8 (and some code changes to go with it), etc"
+termux/termux-tasker,open,Run scripts in sdcard,[],Could you please add support to run scripts in sdcard? It is much easier to edit and backup scripts in sdcard. Thanks!
+termux/termux-tasker,closed,Scripts launched from Macrodroid,[],"Hi,  
+I'm a new user of Termux (and Termux Tasker) and I'd like to copy files from /sdcard to /data/user/0/ using [Macrodroid](https://play.google.com/store/apps/details?id=com.arlosoft.macrodroid).  
+
+Macrodroid tells me that I need to create this directory:
+> No ~/.termux/tasker/ directory
+> You need to create a ~/.termux/tasker/ directory containing scripts to be executed.
+
+AFAIK `/home` of Termux is `/data/data/com.termux/files/home/` so I tried to create it using `mkdir ~/.termux/tasker`. [Result](https://framapic.org/M5p04mdBvMnj/CrHwrpAvSxGG.png)  
+So I've created it [manually](https://framapic.org/2f5BSnMzhckZ/61N9Ku6gObkd.png).  
+
+I still have this same message on Macrodroid.  
+I installed Termux app and this one (installed from F-Droid). I own a OnePlus 3T running an Oreo 8.1 AOSP based ROM.  
+
+Thank you for your help.  
+
+PS: the script I created is very and I think it should work:  
+`#!/data/data/com.termux/files/usr/bin/sh` 
+`cp /sdcard/Download/test.xml /data/data/user/0/...../test.xml`
+"
+termux/termux-tasker,closed,Script called from Tasker doesn't work correctly.,[],"Hello,
+
+first please bare with my low skills I am rather a user than developer.. 
+
+In Tasker I have a task that creates a playlist with few videos from my subs. 
+
+In termux I wrote a small script that downloads that playlist and converts to mp3 with youtube-dl.
+(the sh script for reference: https://pastebin.com/Wsqnvx1B , I use the files in the /variables dir as variables from tasker) 
+
+
+The script works flawlessly launched from within Termux with ""./"" but from Tasker it won't recognize the URL. When launching the script with terminal window I get this result: 
+
+----------------------------------------------------
+
+ERROR: '' is not a valid URL. Set --default-search ""ytsearch"" (or run  youtube-dl ""ytsearch:"" ) to search YouTube
+
+[Process completed (code 1) - press Enter]
+
+-----------------------------------------------------
+
+It looks like the script won't read the file with the link when launched from Tasker.. 
+
+
+Logcat: https://pastebin.com/guHXqMTx
+
+I noticed ""12.47.08#ActionArgBundle: error: Termux: replace specified for null or non-string extra: com.termux.tasker.extra.TERMINAL"" in the first line but unfortunately I don't know what that means.
+
+Any help would be much appreciated and I'm willing to provide any info. Thanks in advance. 
+
+Regards,
+
+ionlyaskforeden "
+termux/termux-tasker,closed,Not able to run scripts from termux tasker plugin,[],"I created the /data/data/com.termux/files/home/.termux/tasker folder and placed a shell script in it
+I can run scripts same from directory  but not from my termux tasker  plugin
+
+from termux app
+
+$ sh /data/data/com.termux/files/home/.termux/tasker/script1.sh
+
+$ sh ./data/data/com.termux/files/home/.termux/tasker/script1.sh
+
+sh: 0: Can't open ./data/data/com.termux/files/home/.termux/tasker/script1.sh
+
+$ bash /data/data/com.termux/files/home/.termux/tasker/script1.sh
+
+$ bash ./data/data/com.termux/files/home/.termux/tasker/script1.sh
+
+bash: ./data/data/com.termux/files/home/.termux/tasker/script1.sh: No such file or directory
+
+$ cd /data/data/com.termux/files/home/.termux/tasker
+
+$ ls
+
+num.py script.sh script1.sh
+
+$ sh script1.sh
+
+num.py script.sh script1.sh
+from termux-tasker plugin
+
+exec(""/data/data/com.termux/files/home/.termux/tasker/script1.sh""): No such file or directory"
+termux/termux-tasker,open,Tasker variables in the arguments field?,[],"Is it possible to put Tasker variables into the arguments field?
+
+It would cut out so many steps; To get around it, I first write the variables to a file, then have a script parse the data from said file and then finally run the intended script with the actual arguments I needed.
+
+Just plopping a buncha %VARs into the Termux:Task argument field would make life somuch easier."
+termux/termux-tasker,open,Last update borked,[],"After last play store update of this app, none of the tasker tasks containing the termux plugin works until you reenter the script files name. And the scripts seems to run start slower too"
+termux/termux-tasker,closed,Added the ability to use Tasker variables as arguments for scripts.,[],"I added the ability to use Tasker variables as parameters for Termux scripts. From my point of view, everything works as expected. The arguments are stored as a simple string and converted to a String Array when the plugin receives a fire intent. Quoted strings are kept together, while the arguments are splitted on spaces. This way you can just write the commands as you would in a shell.
+Using Tasker variables works, though one has to type them manually in the configuration dialog.
+It would be great if this could be part of the official app, since using an own build will interfere with the main apps package signature and thus would require to also build Termux. This way you can't benefit from PlayStore updates to the official main app."
+termux/termux-tasker,closed,Passing arguments to tasker,[],Is it possible to run sctipt with arguments? For example `--tasker`. It can be a default argument for all scripts
+termux/termux-tasker,open,Does this open up an Intent API so other applications can send Termux commands?,[],We have an app we would like to be able to send commands to termux. Is there an Intent API for this?
+termux/termux-tasker,closed,Commands that function when manually entered and not when executed in script,[],"The following functions perfectly when manually entered into a Termux session:
+
+`rsync -avz -e ssh XX@XXX.XXX.XXX:/home/XXX/Pictures/Snapshots /data/data/com.termux/files/home/downloads/Snapshots`
+
+The same command has been copied into an executable (chmod +x) script, but when I attempt to execute via the command line (./SyncSnapshots) or via the Tasker plugin, the following is returned:
+
+via command line: `bash: ./SyncSnapshots: Permission Denied`
+
+via Tasker plugin: `exec(""data/data.com.termux/files/home/.termux/tasker/SyncSnapshots""): Permission Denied`"
+termux/termux-tasker,closed,No directory of ~/.termux/tasker,[],"when go to `tasker>plugin>configuration`
+it show message of `No directory ~/.termux/tasker`
+I have try to add in various place still the same
+PS: the app i download from **F-droid** for testing purpose, is it that only the **play store** version will work?"
+termux/termux-tasker,open,Tasker:Task crashes when choosing the plugin from within Tasker,[],"I created the /data/data/com.termux/files/home/.termux/tasker folder and placed a shell script in it. The crash happens whether there is anything in that folder or not.
+
+Nexus 5X
+Android 7.1.1
+
+Logcat:
+```
+---- Feb 12, 2017 11:20:17 AM ----
+
+02-12 11:15:48.823  2234 28829 I ActivityManager: START u0 {act=com.twofortyfouram.locale.intent.action.EDIT_SETTING cmp=com.termux.tasker/.EditConfigurationActivity (has extras)} from uid 10130 on display 0
+
+02-12 11:15:48.929  2234  2253 I ActivityManager: Start proc 1062:com.termux.tasker/u0a239 for activity com.termux.tasker/.EditConfigurationActivity
+
+02-12 11:15:49.180  1062  1062 E AndroidRuntime: Process: com.termux.tasker, PID: 1062
+
+02-12 11:15:49.180  1062  1062 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.termux.tasker/com.termux.tasker.EditConfigurationActivity}: java.lang.NullPointerException: Attempt to get length of null array
+
+02-12 11:15:49.180  1062  1062 E AndroidRuntime: 	at com.termux.tasker.EditConfigurationActivity.onCreate(Unknown Source)
+
+02-12 11:15:49.183  2234  9747 W ActivityManager:   Force finishing activity com.termux.tasker/.EditConfigurationActivity
+
+02-12 11:15:49.696  2234  2266 W ActivityManager: Activity pause timeout for ActivityRecord{fb4f60e u0 com.termux.tasker/.EditConfigurationActivity t2776 f}
+
+02-12 11:15:50.195  2234  5122 I ActivityManager: Process com.termux.tasker (pid 1062) has died
+
+02-12 11:15:50.198  2234  9747 W ActivityManager: Ignoring remove of inactive process: ProcessRecord{762dfc4 0:com.termux.tasker/u0a239}
+
+02-12 11:16:06.399  2234  6107 I ActivityManager: START u0 {act=com.twofortyfouram.locale.intent.action.EDIT_SETTING cmp=com.termux.tasker/.EditConfigurationActivity (has extras)} from uid 10130 on display 0
+
+02-12 11:16:06.420  2234 25764 I ActivityManager: Start proc 1511:com.termux.tasker/u0a239 for activity com.termux.tasker/.EditConfigurationActivity
+
+02-12 11:16:06.625  1511  1511 E AndroidRuntime: Process: com.termux.tasker, PID: 1511
+
+02-12 11:16:06.625  1511  1511 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.termux.tasker/com.termux.tasker.EditConfigurationActivity}: java.lang.NullPointerException: Attempt to get length of null array
+
+02-12 11:16:06.625  1511  1511 E AndroidRuntime: 	at com.termux.tasker.EditConfigurationActivity.onCreate(Unknown Source)
+
+02-12 11:16:06.630  2234  2252 W ActivityManager:   Force finishing activity com.termux.tasker/.EditConfigurationActivity
+
+02-12 11:16:07.135  2234  2266 W ActivityManager: Activity pause timeout for ActivityRecord{5f84d0c u0 com.termux.tasker/.EditConfigurationActivity t2776 f}
+
+02-12 11:16:07.594  2234 22499 I ActivityManager: Process com.termux.tasker (pid 1511) has died
+
+02-12 11:16:07.598  2234  2252 W ActivityManager: Ignoring remove of inactive process: ProcessRecord{bb7711b 0:com.termux.tasker/u0a239}
+
+02-12 11:16:19.717  2234  6111 I ActivityManager: START u0 {act=com.twofortyfouram.locale.intent.action.EDIT_SETTING cmp=com.termux.tasker/.EditConfigurationActivity (has extras)} from uid 10130 on display 0
+
+02-12 11:16:19.753  2234 28829 I ActivityManager: Start proc 1742:com.termux.tasker/u0a239 for activity com.termux.tasker/.EditConfigurationActivity
+
+02-12 11:16:19.916  1742  1742 E AndroidRuntime: Process: com.termux.tasker, PID: 1742
+
+02-12 11:16:19.916  1742  1742 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.termux.tasker/com.termux.tasker.EditConfigurationActivity}: java.lang.NullPointerException: Attempt to get length of null array
+
+02-12 11:16:19.916  1742  1742 E AndroidRuntime: 	at com.termux.tasker.EditConfigurationActivity.onCreate(Unknown Source)
+
+02-12 11:16:19.918  2234  5122 W ActivityManager:   Force finishing activity com.termux.tasker/.EditConfigurationActivity
+
+02-12 11:16:20.426  2234  2266 W ActivityManager: Activity pause timeout for ActivityRecord{a012eaf u0 com.termux.tasker/.EditConfigurationActivity t2776 f}
+
+02-12 11:16:20.723  2234  9749 I ActivityManager: Process com.termux.tasker (pid 1742) has died
+
+02-12 11:18:27.966  2234  4662 I ActivityManager: START u0 {act=com.twofortyfouram.locale.intent.action.EDIT_SETTING cmp=com.termux.tasker/.EditConfigurationActivity (has extras)} from uid 10130 on display 0
+
+02-12 11:18:28.074  2234 25765 I ActivityManager: Start proc 5345:com.termux.tasker/u0a239 for activity com.termux.tasker/.EditConfigurationActivity
+
+02-12 11:18:28.159  5345  5345 W System  : ClassLoader referenced unknown path: /data/app/com.termux.tasker-1/lib/arm64
+
+02-12 11:18:28.342  5345  5345 E AndroidRuntime: Process: com.termux.tasker, PID: 5345
+
+02-12 11:18:28.342  5345  5345 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.termux.tasker/com.termux.tasker.EditConfigurationActivity}: java.lang.NullPointerException: Attempt to get length of null array
+
+02-12 11:18:28.342  5345  5345 E AndroidRuntime: 	at com.termux.tasker.EditConfigurationActivity.onCreate(Unknown Source)
+
+02-12 11:18:28.344  2234  2253 W ActivityManager:   Force finishing activity com.termux.tasker/.EditConfigurationActivity
+
+02-12 11:18:28.852  2234  2266 W ActivityManager: Activity pause timeout for ActivityRecord{dfe94 u0 com.termux.tasker/.EditConfigurationActivity t2776 f}
+
+02-12 11:18:32.027  2234 28830 I ActivityManager: Process com.termux.tasker (pid 5345) has died
+
+02-12 11:18:32.031  2234  2253 W ActivityManager: Ignoring remove of inactive process: ProcessRecord{2126603 0:com.termux.tasker/u0a239}
+
+---- Feb 12, 2017 11:20:17 AM ----
+```"
+termux/termux-tasker,closed,Termux Task not working,[],"Termux:Task isn't working for me for some reason...the task gets executed but script never runs
+the script is in ""~/.termux/tasker"" folder, I have tried with both ""Execute in a terminal session"" checked and unchecked and simply nothing happens, it doesn't even show a blank terminal window
+Tasker Run log here http://paste.ubuntu.com/23863288/
+I have installed Termux and all it's plugin's from f-droid
+Termux version : 0.46
+Termux:Task version : 0.1
+Android version : 5.1.1 lollipop
+Device : VivoV3Max
+ty"
+termux/termux-tasker,closed,Make it possible to access Tasker variables from scripts,[],"From https://www.reddit.com/r/tasker/comments/5mq7rc/psa_you_can_install_and_automate_things_like_curl/:
+
+> OK, so I'll just go with my own use-case as an example. I'm using Tasker to automatically write metadata to pictures as soon as I've taken them and exited the camera app. I do this by calling a Termux script from my Tasker task that runs perl exiftool [commands] /path/to/file.
+In order for this to work, I obviously have to get the image file paths first of all. This is done by having Tasker read the camera folder and checking to see if there are image files that have been created since I last opened the camera app. The paths to these files are then stored in a local Tasker variable—let's say %paths.
+Now I would like to pass this variable to the Termux script that I call at the end of my task in order to do something like perl exiftool [commands] $paths. What I have to do instead is write a text file in Tasker with the %paths variable and then have my Termux script read the information in that file to its own variable, which works but is kind of clunky.
+I know I could rework my script to get the file paths directly in Termux, but it would be a lot more simple and versatile for a whole bunch of other use cases if it were possible to pass variables directly from Tasker.
+"

@@ -1,0 +1,158 @@
+repository,state,title,label,body
+niteshpatel/ministocks,closed,Widget size shrunk due to default widget margin changes in API 14+,"[Label(name=""bug"")]",
+niteshpatel/ministocks,closed,Brazilian Portuguese APK version,[],"Brazilian Portuguese APK version: 
+https://chasqueweb.ufrgs.br/~slomp/edu01027/traducoes/mini-stocks-pt_BR.apk"
+niteshpatel/ministocks,closed,Google quotes not working,"[Label(name=""bug"")]",Quotes sourced from Google such as .DJI and .IXIC are not working.  These quotes should not be sourced from Google for the time being.
+niteshpatel/ministocks,closed,Brazilian Portuguese translation,[],Brazilian Portuguese translation
+niteshpatel/ministocks,closed,Application force closing on widget add,[],"This is very useful widget and I like it. Yesterday I tried to install the widget from Google Play on new Samsung Galaxy Note 8 and it failed. The same error happened on emulator. Locale on device is English-UK. After investigation, I found that crash is in class WidgetView.java, method getTimeStamp().
+
+Fatal error: java.lang.ArrayIndexOutOfBoundsException: length=1; index=1 
+The crash happens in line:
+`String fullDate = parts[0] + "" "" + parts[1];`
+
+I commented out entire ""if"" block and the error disappeared. 
+"
+niteshpatel/ministocks,closed,Reformatted code,[],The code was reformatted so that we have consistency throughout.
+niteshpatel/ministocks,closed,#39 UI Automator,[],Automated tests using UI Automator
+niteshpatel/ministocks,closed,Global variable sync,[],
+niteshpatel/ministocks,closed,Code Clean Up,[],"Renaming of vague variables to something more relevant.
+Addition of comments to provide context / flag code for feature implementation
+WIP for #31, can will be continued throughout project to maintain readability. "
+niteshpatel/ministocks,closed,Classes and mockup,[],Added final documents required for Sprint 1
+niteshpatel/ministocks,closed,Pr chris,[],downgrade to 3.0.1
+niteshpatel/ministocks,closed,Fake Pull Request,[],Fake Pull Request
+niteshpatel/ministocks,closed,Jeff pr,[],"Demonstrating ability to create a branch, push to it and create a pull request."
+niteshpatel/ministocks,closed,Component diagram,[],"Addition of Component diagram, and showing the ability to make a pull request."
+niteshpatel/ministocks,open,Portfolio Settings,[],"i can not set the quantity of my shares between 0 and 1. Example:0,5
+you need this for bitcoin or similar share, when you get 1/20 or 0,3 of value."
+niteshpatel/ministocks,closed,misalignment between quotes fetched and symbols suggested,[],"The last update of ministock (build 71) solves the 90% of my problems, but it is worth stressing that other quotes like stock on european markets and currency exchange rates are not available from the new source. 
+However the app continues to suggest these symbols using a yahoo api and this seems misleading"
+niteshpatel/ministocks,closed,ministocks stoped updating stocks,[],"checked on top one-plus 2
+with stocks from Nasdaq / NYSE"
+niteshpatel/ministocks,closed,Update README.md,[],"This small and useless PR adds two buttons to get your app on F-Droid and Play Store ;)
+
+Thanks for this app"
+niteshpatel/ministocks,closed,Only allowing 4 stocks in 2x2 widget,[],"Latest update removed ability to select 10 stocks. Tried installing previous versions, but still only displaying 4 stocks slots. Using One Plus One, Android version 6.0.1"
+niteshpatel/ministocks,closed,Samsung Galaxy S8+ Widget not auto-updating,[],"I love this app when it was on my Note 4, but since I update to the Galaxy S8+ the widget will not automatically update. I have checked the update options in the app. I have also turned off ""Optimize battery usage"" for the app  and the ""App power monitor"". If you could please advise. Thanks"
+niteshpatel/ministocks,closed,Data retrieval for IXIC and DJI no longer working,"[Label(name=""bug"")]",The Google Finance API used to retrieve data for DJI and IXIC are no longer working
+niteshpatel/ministocks,closed,Ministock does not work on Note8,[],"Been using the app for years. Just installed on my Note8 and what was working on every phone, including my S7 Edge now aborts every time I try to add the widget to a screen ""Ministock has Stopped""."
+niteshpatel/ministocks,closed,Use https in QuoteRepositories and helps,[],"There are some http URLs that already redirect to https. To avoid these unnecessary redirects, use https directly."
+niteshpatel/ministocks,open,Option to show two decimal places for percentage change,[],Requested by a user stating that other financial sites provide this level of precision.
+niteshpatel/ministocks,open,Support resizing widgets,"[Label(name=""enhancement"")]","Some people have non-standard resolutions and the resize option would allow them to take up less space on their screens and still show all the detail on the widget.
+
+Simply offering a small widget size is not a good idea, as this would cause option bloat, and this is a non-standard request that resizing would cater for the whole class thereof.
+"
+niteshpatel/ministocks,closed,^DWCPF returns no data from the Yahoo data source so get it from Google instead,"[Label(name=""enhancement"")]","Add ^DWCPF to the list of quotes we get from Google instead of Yahoo.
+"
+niteshpatel/ministocks,closed,Storing the buy price in the portfolio with 4dp only retains up to the 3rd dp,"[Label(name=""bug"")]",
+niteshpatel/ministocks,closed,Stocks with a value under 10 can show too many decimal places after reboot,"[Label(name=""bug"")]","When a quote has a value less than ten, e.g. 1.34 it can show extra decimal places after boot, for example 1.3400 instead of 1.34 even if the incoming source data only has 2 decimal places.
+
+We should not use more decimal places than supplied in the source data.
+"
+niteshpatel/ministocks,closed,Decimal points and commas are not appearing for some users on portfolio input fields,"[Label(name=""bug"")]","This seems to have changed after the last release when I changed the way the input mask is determined by using a key listening instead of input type.
+
+The reason for the change was that the options you can provide when using an input type allow you to include a 'dot' as a key, but not a locale determined decimal separator (which is bizarre).  
+
+Basically the aim is to get only numerals, plus the sign operator where relevant, and the dot or comma as per locale.  Having both dot and comma is acceptable (the edit control will parse the number correctly).
+"
+niteshpatel/ministocks,closed,Calculation of holding in portfolio is incorrect in some locales,"[Label(name=""bug"")]","The holding calculation needs to take into account the locale so the locale specific decimal separator is handled correctly.
+"
+niteshpatel/ministocks,closed,Run tests as part of CI build,"[Label(name=""enhancement"")]",
+niteshpatel/ministocks,closed,Portfolio is not showing stock description,"[Label(name=""bug"")]","On the portfolio screen ""No description"" is shown for stocks, even when the stock description is shown on the wide widgets - in other words data is there but not being used.
+"
+niteshpatel/ministocks,open,Refactor  - store incoming prices as BigDecimals ,"[Label(name=""enhancement"")]","Prices should be stored as BigDecimals. The formatting of numbers to strings should be done elsewhere (currently in StockQuote)
+1. Add StockQuote.rawPrice : BigDecimal. This has the value of the raw data from source.
+2. Move formatting code to StockQuote.getPrice() - make it use priceBigDecimal.
+3. Remove StockQuote.price
+4. Move formatting code to another class
+
+. 
+"
+niteshpatel/ministocks,closed,"Advise users of widget size when restoring backups, and prevent restoring to the wrong size","[Label(name=""enhancement"")]",
+niteshpatel/ministocks,closed,Use custom names for the narrow widget,"[Label(name=""enhancement"")]","As a user, I want to use my custom names even when I use the narrow widget, as sometimes the symbol is not what I want
+"
+niteshpatel/ministocks,closed,Restrict price and change precision for SAO exchange to 2dp,"[Label(name=""enhancement"")]",
+niteshpatel/ministocks,closed,Add an option for opening price as a widget view,"[Label(name=""wontfix"")]","Requested by a user
+"
+niteshpatel/ministocks,closed,Decimal separator in portfolios price fields,[],"Hi,
+the decimal separator of the current language setting is not accepted in the portfolios price fields.
+
+In my language the decimal separator is a comma. But I can only input the prices using a dot.
+
+A comma is used corectly to show prices on all places in the app.
+
+Regards Nick
+"
+niteshpatel/ministocks,open,Add notifications for when high/low alerts are hit,"[Label(name=""enhancement"")]",
+niteshpatel/ministocks,closed,Add an option to export portfolio and widget lists,"[Label(name=""enhancement"")]","Possibly integrated with a backup feature.
+"
+niteshpatel/ministocks,open,Provide an option for automatic widget update after unlock,"[Label(name=""enhancement"")]",
+niteshpatel/ministocks,closed,Comment removed,[],
+niteshpatel/ministocks,closed,Use colours for prices (as well as price changes),"[Label(name=""enhancement""), Label(name=""wontfix"")]","Currently you can switch whether you see the red/green colours on prices or changes, but this feature is about turning them both on/off independently.
+"
+niteshpatel/ministocks,closed,Use stock symbols for the wide widgets,"[Label(name=""enhancement"")]","As a user, I want the option to use stock symbols for the wide widgets instead of the stock name, so that I do not have to rely on incorrect inappropriate stock names.
+"
+niteshpatel/ministocks,open,Investigate option to change colour of stocks when index is open/closed,"[Label(name=""enhancement"")]",
+niteshpatel/ministocks,open,Option to restrict updates to Wi-Fi only,"[Label(name=""enhancement"")]","And potentially different update rates for Wi-Fi vs. cellular
+"
+niteshpatel/ministocks,closed,"Try to get stock name from suggestions when it comes back ""N/A""",[],"I've had a couple of stocks show up on the widget with ""N/A"" as the name (ITEK is an example), but I noticed that it showed up in suggestions and the preferences page correctly.  I made this update to attempt to get the stock name from suggestions if it comes back ""N/A"" from the quotes api.
+"
+niteshpatel/ministocks,closed,"As a user, I want updates every minute, so that the displayed value is more reflective of the current stock price.","[Label(name=""enhancement""), Label(name=""wontfix"")]",
+niteshpatel/ministocks,closed,"As a user, I would like to see percentage change to 2 decimal places, to more accurately report changes.","[Label(name=""enhancement"")]",
+niteshpatel/ministocks,open,"As a user, I would like to import my stock symbols from a text file or a web address, to make it easier to add stocks.","[Label(name=""enhancement"")]",
+niteshpatel/ministocks,closed,No option to add stocks.,[],"I switched to OnePlus One phone. Installed Ministocks which worked well, but for only one day. I uninstalled and re-installed. Every time I install Ministocks, it opens showing the Dow Jones Industrial Average, but there is no option to add stocks to the portfolio. There is no ""Settings"" icon or menu item. 
+"
+niteshpatel/ministocks,closed,The number of decimal places should never be higher than that of the incoming data,"[Label(name=""enhancement"")]",
+niteshpatel/ministocks,open,Investigate a full screen widget,"[Label(name=""enhancement"")]","Some users have requested a 5x5 widget too.
+"
+niteshpatel/ministocks,open,Update needs to be done via service to prevent premature process kills,"[Label(name=""bug"")]",
+niteshpatel/ministocks,closed,Entering values in the portfolio fails on particular languages settings,"[Label(name=""bug"")]","This is likely due to the separator character not being handled correctly.
+"
+niteshpatel/ministocks,open,Ensure all help is in-app and remove on-line FAQs,"[Label(name=""enhancement"")]","This should answer common questions like:
+1) How to add more than 4 stocks
+2) Multiple widgets can be added
+3) Common exchanges that are not supported
+4) How to determine if a stock is spelt correctly
+5) How to determine if the data feed supports a stock
+and so on.
+"
+niteshpatel/ministocks,open,Ability to modify font-size for widget,"[Label(name=""enhancement"")]",
+niteshpatel/ministocks,open,Allow selection of currency and automatically translate stock value into this currency,"[Label(name=""enhancement"")]","Example:
+stock value in EUR = stock value in USD \* currency exchange rate for EUR/USD
+"
+niteshpatel/ministocks,open,Option for different font color,"[Label(name=""enhancement"")]","As a user, I want to have an option for a different font colour, so that I can view the widget text when using a transparent widget with a white background.
+"
+niteshpatel/ministocks,closed,Display stock name instead of code/shortname (enhancement),"[Label(name=""enhancement""), Label(name=""invalid"")]","For many stocks (french at least), you cannot see the name of the stock but only the code (or the short name).
+
+Seeing the actual stock name would be much better !
+
+Thanks
+"
+niteshpatel/ministocks,closed,Look into alternative source for popular symbols,"[Label(name=""enhancement"")]","^DWCPF does not work.
+"
+niteshpatel/ministocks,open,Add a taller full-width widget size,"[Label(name=""enhancement"")]","Add a new widget size - full width but taller.
+"
+niteshpatel/ministocks,open,Add ability to Backup and Restore,"[Label(name=""enhancement"")]","Add the ability to backup and restore portfolio data and widget configurations.
+"
+niteshpatel/ministocks,open,Add single stock widget,"[Label(name=""enhancement"")]","Add a widget that that can show a single stock, perhaps a 1x1 size too.
+"
+niteshpatel/ministocks,closed,index's show no data,"[Label(name=""invalid"")]","Index funds, such as ^dwcpf, show no data in the widget, but show a price on Yahoo's web page. The index was found and added without problem using the widget.
+"
+niteshpatel/ministocks,closed,Add ability to import portfolio from Google Finance,"[Label(name=""wontfix"")]","Import from Google Finance portfolio would be nice. Syncing with it would be even better (could even be manual sync, with the push of button), so that if you make changes to your portfolio, it would be reflected in the widget.
+"
+niteshpatel/ministocks,closed,Update StockQuotes.java,[],"FX_URL: http -> https
+"
+niteshpatel/ministocks,open,Support multiple holdings per stock,"[Label(name=""enhancement"")]","It should be possible to add multiple holdings per stock item.  These would appear as separate entries in the portfolio.
+
+When in widget view, the total value would be shown.
+"
+niteshpatel/ministocks,open,Add total for portfolio on a widget view,"[Label(name=""enhancement"")]","Many users have asked for an option for their total portfolio balance to be displayed on the widget.  There doesn't seem to be any obvious place to put this, so it needs thinking about.
+
+One suggestion by a user was to have a special stock code for portfolio total.  Users rock :)
+"
+niteshpatel/ministocks,open,Add links to charts on portfolio screen,"[Label(name=""enhancement"")]","Add link to each further information for each stock on the portfolio screen - a page on the internet that should include charts.
+"
+niteshpatel/ministocks,closed,Refresh button on widget,"[Label(name=""enhancement"")]","Add a refresh button on the widget.  Currently space is restricted, so this needs to be thought about a little.  May need to overload the existing view change behaviour or something similar.
+"
+niteshpatel/ministocks,open,Reorder stocks per widget,"[Label(name=""enhancement"")]","The ability to re-order stocks for a widget using drag and drop.  This will only work if the preference view is replaced by a list view, so a bit of rework involved.
+"

@@ -1,0 +1,204 @@
+repository,state,title,label,body
+jecelyin/920-Text-Editor,open,使用键盘过程中的问题,[],"Hello:
+
+再次过来打扰一下：
+
+在使用外接键盘进行输入，出现漏字的问题，不知道作者有没有遇见过？？
+
+
+Thanks."
+jecelyin/920-Text-Editor,open,Full german translation,[],"Here's a <a href=""https://gist.github.com/42eb5b65a910fa211a930e3002d619b4"">full german translation</a> I've made via <a href=""https://github.com/LonamiWebs/Stringlate"">Stringlate</a>."
+jecelyin/920-Text-Editor,closed,Pr/14,[],"Add french translation improvement
+"
+jecelyin/920-Text-Editor,open,Crash on Nexus 10 on start up,[],"The application crashes on launch when launched on a Nexus 10 running CyanogenMod 11 (Android 4.4.4). Reproduction steps are as follows:
+1. Launch app.
+2. Wait for application crash.
+
+I have the stack trace below:
+
+```
+09-06 17:11:56.628: D/ActivityThread(4555): handleBindApplication:com.jecelyin.editor
+09-06 17:11:56.628: D/ActivityThread(4555): setTargetHeapUtilization:0.75
+09-06 17:11:56.633: D/ActivityThread(4555): setTargetHeapMinFree:524288
+09-06 17:11:56.943: D/dalvikvm(4555): Trying to load lib /data/app-lib/com.jecelyin.editor-1/libhighlight.so 0x421f4188
+09-06 17:11:56.943: D/dalvikvm(4555): Added shared lib /data/app-lib/com.jecelyin.editor-1/libhighlight.so 0x421f4188
+09-06 17:11:56.943: D/dalvikvm(4555): No JNI_OnLoad found in /data/app-lib/com.jecelyin.editor-1/libhighlight.so 0x421f4188, skipping init
+09-06 17:11:57.013: D/AndroidRuntime(4555): Shutting down VM
+09-06 17:11:57.013: W/dalvikvm(4555): threadid=1: thread exiting with uncaught exception (group=0x41d62ce0)
+09-06 17:11:57.018: E/AndroidRuntime(4555): FATAL EXCEPTION: main
+09-06 17:11:57.018: E/AndroidRuntime(4555): Process: com.jecelyin.editor, PID: 4555
+09-06 17:11:57.018: E/AndroidRuntime(4555): java.lang.RuntimeException: Unable to start activity ComponentInfo{com.jecelyin.editor/com.jecelyin.editor.JecEditor}: java.lang.NullPointerException
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2212)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2271)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at android.app.ActivityThread.access$800(ActivityThread.java:144)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1205)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at android.os.Handler.dispatchMessage(Handler.java:102)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at android.os.Looper.loop(Looper.java:136)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at android.app.ActivityThread.main(ActivityThread.java:5146)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at java.lang.reflect.Method.invokeNative(Native Method)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at java.lang.reflect.Method.invoke(Method.java:515)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:732)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:566)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at dalvik.system.NativeStart.main(Native Method)
+09-06 17:11:57.018: E/AndroidRuntime(4555): Caused by: java.lang.NullPointerException
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at com.jecelyin.editor.JecEditor.bindEvent(JecEditor.java:860)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at com.jecelyin.editor.JecEditor.onCreate(JecEditor.java:341)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at android.app.Activity.performCreate(Activity.java:5231)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2169)
+09-06 17:11:57.018: E/AndroidRuntime(4555):     ... 11 more
+```
+"
+jecelyin/920-Text-Editor,open,Feature Request: Use custom font from ttf file,[],"Although default Monospace font looks nice, I would like to use custom font like Consolas to view code. Some option to browse ttf file. My phone is not rooted, so I can't overwrite system fonts. Please implement this feature.
+"
+jecelyin/920-Text-Editor,open,920 text editor gone from Google Play? ,[],"Hi, 
+
+I've had this editor installed on my devices for some time now and used it with great success. 
+I just received a new smartphone and tried to install it, but could not find it on the Play store anymore. 
+"
+jecelyin/920-Text-Editor,closed,"from terminal, how to launch to edit file?",[],"This may not be the right place to ask this, but I've been stumped for days and am in desperate need of help with this issue.
+
+I would like to know how to launch the editor from terminal emulator (I need this for a script that I'm working on).
+
+As an example, how would I open /storage/emulated/0/Download/test.txt for editing?
+
+When I try this: 
+am start -a android.intent.action.EDIT -n com.jecelyin.editor/.JecEditor -d /storage/emulated/0/Download/test.txt
+
+I get an error that includes ""Permission Denial: startActivity asks to run as user -2 but is calling from user 0; this requires android.permission.INTERACT_ACROSS_USERS_FULL""
+
+I'm not sure exactly what that's about, so I try to work around it with this: 
+am start --user 0 -a android.intent.action.EDIT -n com.jecelyin.editor/.JecEditor -d /storage/emulated/0/Download/test.txt
+
+Now the editor starts, but it opens a new file and not the specified file. I've also tried different test files to exclude the possibility that test.txt is corrupt.
+
+I'm stuck. Please help!
+
+---
+
+OS: CM11
+Device: Moto G
+Relevant apps: Terminal Emulator (jackpal.androidterm 1.0.65), 920 Text Editor (com.jecelyin.editor 12.11.23) 
+"
+jecelyin/920-Text-Editor,open,How to compile this project,[],"When I import this project, I found that it used the Api which is invisible,so...,how to compile this object?
+"
+jecelyin/920-Text-Editor,open,Force-Closing at Launch on several builds of LolliPop (CM.12) on LG-(G3)-D850 AT&T.Lte,[],"I will try to remember to grab some logs, and more details of the system soon.  
+
+NOTES:  
+I really like this app, and it has been my 'go-to' text app on Android for several years now.
+
+I am willing to try to repair the problem, but I am new to both Java and to native Android apps.  I have experience debugging C#, HTML5, and other typical web languages.
+
+It would be helpful if someone is willing to give me some hints.  I'll do all the work, gather detailed info along the way, post it, but would likely need frequent tips/guidance.  If that is acceptable, please let me know via email: Paul@PaulJRichardson.com or sms/text: 909-486-3463
+
+As a last resort?, the only remaining option I can think of would be for me to try and start a 'bounty' pool of funds for some dev-for-hire who will help out, perhaps at XDA or some other social-funding site?
+
+Regards,
+Paul
+"
+jecelyin/920-Text-Editor,closed,updated target SDK version to KitKat,[],
+jecelyin/920-Text-Editor,open,default charset for txt-files,[],"When opening a UTF-8 txt-file through a file-browser app like owncloud, the charset defaults to EUC/JP. Setting the project-ddefault in settings does not help.
+
+Please make the charset-detection better or give the option to a really used default.
+"
+jecelyin/920-Text-Editor,closed,Added operators like not in and',[],
+jecelyin/920-Text-Editor,closed,Enhancing the syntax configuration files,[],"Where in this repo can I find the syntax config files? the Mysql conf file misses few very basic operators of mysql
+"
+jecelyin/920-Text-Editor,open,f-droid version does not register as editor properly,[],"The version offered via F-Droid does not register as an Text-Editor, therefore it is not on the list and cant be choosen when opening arbitrary Textfiles.
+After backing up the version from Play and installing it (I am on a Google-free Cyanogenmod) it worked properly.
+Did not try the download-version yet.
+"
+jecelyin/920-Text-Editor,open,Feature Request: Support Ctrl-<key> combos on external keyboards,[],"I use a Logitech Portable USB keyboard with my tablet when doing text editing.  920 Text Editor recognizes the keyboard, and I can enter edit/text, but cursor movement that work in other editors don't work in 920.
+
+In particular, I'd love to see
+Ctrl-Left Arrow - previous word 
+Ctrl-Right Arrow -  next word
+Ctrl-Home - beginning of line
+Ctrl-End - end of line
+Ctrl-PgUp - top of screen
+Ctrl-PgDn - end of screen
+
+Thanks in advance,
+"
+jecelyin/920-Text-Editor,open,Improper syntax highlighting for JS,[],"Code samples like the following are incorrectly highlighted:
+
+   function isPositiveZero(x) {
+     return 1 / x === 1 / 0;
+   }
+
+The return statement is usually highlighted as a RegExp literal, with the triple equals highlighted, instead of two division statements. Similar highlighting issues are apparent with statements like these:
+
+```
+// both zeros are highlighted, neither should be
+1 / 0;
+0 / 1;
+
+// highlights the x's and colon
+a = x > 5 ? 5 / x : x / 5
+
+// highlights all the way to the end of the file or until another '/' is found
+a /= 5;
+```
+
+Android versions: 4.1.2 (stock phone), 4.4.2 (stock phone and CM11 nightly on tablet)
+
+Tested on latest Google Play release.
+"
+jecelyin/920-Text-Editor,open,Add syntax highlighting support for variables,[],"This would be a tremendous bonus for me and many others. It may require a more complicated parser.
+"
+jecelyin/920-Text-Editor,closed,Some improvements in french translation,[],
+jecelyin/920-Text-Editor,open,class not found exception when unmarshalling...,[],"Sometime when starting 920 editor, after it loads my previous files I get an error :
+
+""class not found exception when unmarshalling...."" in a black frame.
+
+Then it disappears.
+"
+jecelyin/920-Text-Editor,open,text scroll problem,[],"Sometimes, the text doesn't scroll as expected: when the keyboard is on, and when entering a new line, instead of scrolling the previous lines up so we can still read what we type, then the text we're typing goes under the virtual keyboard and we can't read it any longer.
+
+I can't find reasons when it occurs or when it doesn't, it seems to be random.
+"
+jecelyin/920-Text-Editor,open,当从一个已经被销毁的activity中恢复时，会报“Class Not Found”错误，并且之前所有打开的文件都丢失,[],"RT，这个问题非常令人困扰，每次编辑中打开UC或者QQ看看，等切回来时，就报一个非常长的Class Not Found错误，并且所有已经打开的文件都不在了。
+重现BUG的方法：后台920编辑器，打开很多其他应用直到内存接近用完（此时后台的920编辑器Activity已经释放）。然后切换回920，此时一个大大的Class Not Found就弹出，并且吞噬一切～～～～
+"
+jecelyin/920-Text-Editor,open,Add x86 support,[],
+jecelyin/920-Text-Editor,open,change config dir path to /sdcard/Android/data/920texteditor,[],"Can you change the path of config directory. I think it currently is set to .hidden folder on root of sdcard. 
+
+Can it be changed to /sdcard/Android/data/ ??
+"
+jecelyin/920-Text-Editor,open,Can't save after reloading some files,[],"If we have more than one opened tab, when we close 920 text-editor, and re-open it after, the tabs reopen correctly if we checked the option to.
+
+But when we edit the files, the title tab won't highlight in red and if we hit the save button it won't save anything.
+
+If we switch to another tab and then switch back to the original tab, then the tabs of the edited files will turn in red, but it won't be possible again to save (if we exit the editor it won't save anything either, nor warn about possible data loss).
+
+The current workaround is to either reload the files, or simply hit the ""load"" button, then exit the select file dialog: the expected behavior will come back and it will be possible to save the files again.
+
+I experienced this bug on a nexus 4 running cyanogen mod (android 4.2.2), and a nexus 7 running vanilla google android (4.2.2 as well)
+
+(using version 13.7.18, latest on the play store)
+"
+jecelyin/920-Text-Editor,open,bug - when one of last opened files deleted - the apps crashed.,[],"Bug - when check box in ""Remember last opened"" checked and than one of last opened files deleted - the apps crashed and not opens. 
+Tried on two devices - motorola defy+ with android 2.3 and on Nook with android 2.1.
+If I manually edit last_files.xml file and delete that string with names so the app open right.
+I will happy to help with testing to this project of the best text edit  app !
+
+Alexander
+"
+jecelyin/920-Text-Editor,open,Character set detection,[],"Thank you for this work. I will be following and using it. 
+
+I see you use the C++ character set detector. There is a Java port of that library here: http://jchardet.sourceforge.net/
+
+Frank
+"
+jecelyin/920-Text-Editor,open,auto completion,[],"can you add auto completion? for example the local vars, methods, keywords and maybe some commonly used blocks (such as the while loop).
+thank you
+"
+jecelyin/920-Text-Editor,open,Update res/values/strings.xml,[],"Part 1 of 2 to use more descriptive intent.
+"
+jecelyin/920-Text-Editor,closed,Update AndroidManifest.xml,[],"Fixed issue with 920 being overzealous with its intents.
+"
+jecelyin/920-Text-Editor,open,Too many intents,[],"I saw that this is quite widely reported on the play store page. Can we limit the intents or provide a tick list?
+"
+jecelyin/920-Text-Editor,open,Insert Tab don't work,[],"I tried to insert tab keys but it dosen't work as expected. Instead it seems to switch trough the buttons.
+I used Hacekrs Keyboard
+"

@@ -1,0 +1,264 @@
+repository,state,title,label,body
+vishesh/sealnote,open,Updated string file,[],
+vishesh/sealnote,open,Feature Request: disappearing note,[],"I think It may be a good idea to introduce an option that allows the automatic deletion of some notes after a specified interval of time (for exemple 1 h, 6 h, 12 h, 1 d, 1 w etc.), in order to keep the database clean and add an additional security feature. Thanks for keep this app the best of its kind!
+"
+vishesh/sealnote,open,Bug: Backup crashes app on Android 8.0.0,[],"Settings -> Backup -> START BACKUP
+
+gives message “SealNote has stopped” and no backup file was written.
+
+SealNote Version: 0.8.7 (#27)"
+vishesh/sealnote,closed,Russian translation of strings.xml,[],"Self-explanatory. I'm not sure if I put it where it should be, but the translation itself should be fine."
+vishesh/sealnote,closed,Merge develop to master,[],
+vishesh/sealnote,closed,Update README.md,[],"Solution for this old PR that I totally forgot #53 
+
+@vishesh Is that what you wanted?"
+vishesh/sealnote,closed,This app is DEAD!!!,[],
+vishesh/sealnote,open,Washed Out Colors,[],"Tagged color always appears washed out when a note is opened. But it looks fine in the main menu. No, there's no issue with my phone's screen.
+
+Do check.
+
+Thanks."
+vishesh/sealnote,open,Tags sorting in drawer,[],"It would be nice to be able to sort tags in the drawer, at least alphabetically"
+vishesh/sealnote,closed,Added translation files and made changes for better translatability,[],"-Added Italian translation for strings.xml and array.xml
+-Added German translation for array.xml (may need corrections)
+-PasswordInput.java: moved the array with the values for password strength to array.xml, so those values can be translated, too
+-SealnoteFragment.java: changed the hardcoded string at line 182, now it's read from strings.xml (and added the translation for the string to strings-de.xml); there is still a problem since this approach doesn't allow to correctly translate the sentence to languages where Archive and Trash require being preceded by different articles depending on the word (like Italian) or where Archive and Trash are of different genders and require the adjective for ""empty"" to be concordant with the gender. I thought of two possible ways to solve this, but implemented neither since you might want to decide your preferred approach:
+--use a different string for each folder; this would require some change in the code in order to retrieve the correct string at runtime; I can do this if you're ok with it
+--use only the word ""empty"" without naming the folder"
+vishesh/sealnote,closed,Hardcoded string makes sentence untranslatable,[],"There is a hardcoded string in file SealnoteFragment.java, method onAdapterDataSetChanged(). This makes it impossible to translate the string without touching the code. The line I'm talking about is:
+`mEmptyGeneric.setText(getActivity().getActionBar().getTitle() + "" is empty!"");`
+https://github.com/vishesh/sealnote/blob/master/Sealnote/src/main/java/com/twistedplane/sealnote/fragment/SealnoteFragment.java#L182
+
+I also noticed that, for dialogues where a ""Cancel"" button is present, the string for ""Cancel"" is not read from strings.xml but uses the OS default for the selected language"
+vishesh/sealnote,closed,already done,[],already done
+vishesh/sealnote,open,Backup wizard stucks at end,[],"v0.8.7 #27
+When I presses 'Backup' button from settings, system asks me what to do with backup file. But previously (before March update) I had an option to save .db file to local storage disk with my file explorer as file saver. It easily saves backup. But after update, system is giving only 'gmail' and other options for saving .db files without any file manager option. Even if I selects any option, only rotating indicator shows. Nothing happens. 
+Help."
+vishesh/sealnote,open,Import Notes from Google Keep,[],"Hi there,
+
+It would be very convenient to add an option to import notes from Google Keep, or at least an html file.
+
+Indeed I am currently trying to migrate from Keep to SealNotes, and copying all the notes by hand is quite painful.
+
+Cheers !"
+vishesh/sealnote,open,Add option to share any content from any other application to SealNote,[],"Hi there,
+
+First of all great job for the app. Is is nice to have an opensource, ad-free, and secure app for notes on Android.
+
+I am missing a big feature though, that is adding SealNotes in the Share/Send window.
+
+_For example :_
+I want to save a URL, or copy an image from firefox. I click on the Share button, I see many options (e.g. Keep, Whatsapp, Email ...), but not SealNotes.
+
+This would be a very convenient way of adding new notes as well as migrating from Keep to SealNotes."
+vishesh/sealnote,closed,Add buttons to get the app,[],"This PR adds two buttons to get the app easily on F-Droid and Google Play Store
+
+Thanks for this app"
+vishesh/sealnote,open,german translation,[],"
+[string-de-sealnote-german.txt](https://github.com/vishesh/sealnote/files/854883/string-de-sealnote-german.txt)
+
+@vishesh I did a translation into German from sealnote (see attachment). As I can't code I send you the translation this way and you can merge it if you like,"
+vishesh/sealnote,open,Contacts notes?,[],"In addition to login information, you could add contacts notes? Es ""simple"": name, phone, email; ""complex"": address, picture, etc..??"
+vishesh/sealnote,open,Sketch notes?,[],Hi! Is possible add an ability to create a sketch notes??
+vishesh/sealnote,open,Checklist notes?,[],Hi! Is possible add an ability to create a checklist notes??
+vishesh/sealnote,open,Audio notes?,[],Hi! Is possible add an ability to create an audio notes?
+vishesh/sealnote,open,AMOLED black theme,[],"Hi, please add a black theme ""AMOLED"" for save the battery"
+vishesh/sealnote,closed,Update strings.xml,[],fixed typo
+vishesh/sealnote,closed,japanese translation,[],Hello!
+vishesh/sealnote,open,In-app 2 factor authentication,"[Label(name=""enhancement"")]","For example, if a person was to store their Google account login details on SealNote, why not implement an extra field for those using 2FA for their account? It would allow people to delete the old, obsolete and insecure Google authenticator app (for those who still use that), plus it shouldn't be too hard to implement as there is plenty of freely available code regarding 2FA out there. As for the barcode scanner, those who use 2FA have a barcode scanner installed already.
+
+The SafeInCloud app has a working solution which is simple and effective. 
+Since the app is paid only, I took a video of the layout and process: https://www.youtube.com/watch?v=8jlOipv7ayk
+Please ignore the washing machine sound in the background."
+vishesh/sealnote,open,Feature ideas. ,[],"1- Hide password fields and make password fields read only (to avoid accidental edit or removal). The password can be revealed via a touch. 
+
+2- The tag system is great but I suggest using something else than a space as a delimiter, as some people may need multiple word tags.
+
+3- Fingerprint unlock (without losing two factor auth). Two issues may be brought up with this idea (older phones and security). The fingerprint could be used to store only the last 3 characters of the password, where the rest of the password could be stored in the keychain, which does keep a 2FA system in place. As for the older phone argument, let's be real for a second, how many non tech savy people will look for a secure open source note app? Most tech savy people have newer phones in this economy 😉. The feature should be optional anyway. 
+
+4- Search feature. If SealNote is to be used heavily (as a password manager for example), it can quickly become cluttered. A search feature would fix this issue. 
+
+5- In-app 2 factor authentication system. For example, if a person was to store their Google account login details on SealNote, why not implement an extra field for those using 2FA for their account? It would allow people to delete the old,  obsolete and insecure Google authenticator app (for those who still use that), plus it shouldn't be too hard to implement as there is plenty of freely available code regarding 2FA out there. As for the barcode scanner, those who use 2FA have a barcode scanner installed already. 
+
+6- A separate and insecure database to provide a replacement for Google Keep. People could then use SealNote via a Google Keep like widget for daily tasks like shopping lists and todo lists, etc... The issue here would obviously be the confusion factor of secure and insecure features within the same app, but a warning pop-up when an insecure note is created should fix that. 
+
+Those are just some ideas to make the app a true ""go to"" app for everyone looking for secure, open source note and password storage. Please tell me what you guys think about it. "
+vishesh/sealnote,open,Some Questions,[],"Hi,
+I like this app in compariosn of other apps I explored in play store. I have few questions if you can plz answer;
+
+1. Can I take the bkp of storage file to google drive/dropbox or somewhere?
+2. Is there any desktop client available (like electron app, chrome app or web version) which can help me to read storage file?
+3. Since it is encrypted using 256-bit AES algorithms, can I decrypt it and read without your app directly in case I need?
+
+"
+vishesh/sealnote,closed,Feature request: search within the note!,[],"Hi guys! Love the app, the only feature I and sure many others really need is a search function within the note to quickly locate stuff by the key word. Then I would never switch to any other app, this one would be all time best!"
+vishesh/sealnote,closed,Github releases for stable versions,[],"Hello once more! It looks like SealNote has been accepted into the F-Droid repo, but they were curious about the [addition of stable version tags](https://gitlab.com/fdroid/rfp/issues/59#note_25059320).
+
+It's an argument of ease for the maintainers, as it appears that someone will have to push new versions of the app to F-Droid manually if tagged releases are not present. Would you be interested in releasing in such a fashion?
+
+Once more, thank you for your quick and kindly replies to these matters!"
+vishesh/sealnote,closed,"Removed jar files, added as dependencies in gradle file.",[],"Following up on the issue of the jars [here](https://github.com/vishesh/sealnote/issues/34). I've removed the jar files and have added them as dependencies in the build.gradle file.
+
+Results of the ./gradlew assembleDebug:
+> BUILD SUCCESSFUL
+> 
+> Total time: 58.057 secs
+> 
+
+They're being pulled from the Maven repo (see [here](https://mvnrepository.com/artifact/com.google.guava/guava/r09) and [here](https://mvnrepository.com/artifact/commons-codec/commons-codec/1.10)). Feel free to suggest or advise accordingly!"
+vishesh/sealnote,closed,Archive after editing doesn't save the note #11,[],"- Fix #11 
+- Merge master to develop
+- Fix author name"
+vishesh/sealnote,open,Material Design UI,[],Using Material design UI components. 
+vishesh/sealnote,closed,Feature request: import/export,[],"I am keeping several long-term notes that I carry across generations of devices and operating systems. For that it would be a prerequisite to have an import/export function to/from a simple and open file format, such as plaintext.
+"
+vishesh/sealnote,closed,"Issue #31: Update gradle to latest version, Runtime permissions added for Marshm…",[],"Update gradle to latest version, Runtime permissions added for Marshmallow, sqlcipher library updated"
+vishesh/sealnote,closed,Binary libraries are preventing implementing SealNote into F-Droid's repo,[],"For reference: https://f-droid.org/forums/topic/sealnote/
+
+I was looking into apps that are stuck in the F-Droid submission queue, and wish to see where I could assist to push these processes forward. 
+
+It seems that the binary libraries [here](https://github.com/vishesh/sealnote/tree/master/Sealnote/libs/armeabi-v7a) are the issue in this case, as they are precompiled items that could pose a potential security threat in the eyes of those that appreciate full transparency. I do not know how to proceed, however, so I was hoping you may have insight!"
+vishesh/sealnote,closed,[Bug][Issue #14] : Disable note saved message for empty notes,[],[Issue #31] : Upgrade gradle version to Android Studio 2.2.3 recommended version
+vishesh/sealnote,open,Feature Request: Fingerprint Unlock,"[Label(name=""enhancement"")]","I know that the fingerprint scanner isn't the most secure method of authentication, but I think it would make this app significantly better. Having to type your password in all the time, make this app painful to use. To increase security, you could require that the user enter their password, every time the phone is restarted. "
+vishesh/sealnote,closed,Update gradle version,"[Label(name=""beginner"")]",Current gradle version is 0.12.2 which is 2 years old. Android studio complains for the gradle version and recommends 2.2.3.
+vishesh/sealnote,closed,Contribution Guidelines,[],Fixes issue #24 
+vishesh/sealnote,closed,FIX: App crashes when password is null or tags are retrieved from parcel FIXES #25,[],"- Check for null password and navigate to PasswordActivity if true. When app permissions are
+revoked manually, the password in the memory is lost and the app crashes.
+
+- Pass note to NoteContent.FromString. Tags are passed to NoteContent instead of note that cause
+the tags to be null when read from parcel."
+vishesh/sealnote,closed,FIX: App crashes when password is null or tags are retrieved from parcel FIXES #25,[],"- Check for null password and navigate to PasswordActivity if true. When app permissions are revoked manually, the password in the memory is lost and the app crashes.
+
+- Pass note to NoteContent.FromString. Tags are passed to NoteContent instead of note that cause the tags to be null when read from parcel."
+vishesh/sealnote,closed,"Issue #25 Fix: Bunch of reports with this stacktrace. Might be happening because we don't persist password, and during wakeup its gone from memory.",[],"Issue #25 Fix: Bunch of reports with this stacktrace. Might be happening because we don't persist password, and during wakeup its gone from memory.
+
+Replicating: Manually revoke permissions while in the Application. "
+vishesh/sealnote,closed,Develop,[],
+vishesh/sealnote,closed,Crashes at wakeup,"[Label(name=""bug""), Label(name=""urgent"")]","Bunch of reports with this stacktrace. Might be happening because we don't persist password, and during wakeup its gone from memory.
+
+```
+java.lang.RuntimeException: Unable to start activity ComponentInfo{com.twistedplane.sealnote/com.twistedplane.sealnote.NoteActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String[] java.lang.String.split(java.lang.String)' on a null object reference
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3319)
+	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3415)
+	at android.app.ActivityThread.access$1100(ActivityThread.java:229)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1821)
+	at android.os.Handler.dispatchMessage(Handler.java:102)
+	at android.os.Looper.loop(Looper.java:148)
+	at android.app.ActivityThread.main(ActivityThread.java:7325)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1230)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1120)
+Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String[] java.lang.String.split(java.lang.String)' on a null object reference
+	at com.twistedplane.sealnote.data.Note.convertToTagSet(Note.java:118)
+	at com.twistedplane.sealnote.data.Note.readFromParcel(Note.java:97)
+	at com.twistedplane.sealnote.data.Note.<init>(Note.java:76)
+	at com.twistedplane.sealnote.data.Note$1.createFromParcel(Note.java:250)
+	at com.twistedplane.sealnote.data.Note$1.createFromParcel(Note.java:248)
+	at android.os.Parcel.readParcelable(Parcel.java:2367)
+	at android.os.Parcel.readValue(Parcel.java:2264)
+	at android.os.Parcel.readArrayMapInternal(Parcel.java:2614)
+	at android.os.BaseBundle.unparcel(BaseBundle.java:221)
+	at android.os.BaseBundle.getBoolean(BaseBundle.java:659)
+	at android.app.Activity.restoreHasCurrentPermissionRequest(Activity.java:7153)
+	at android.app.Activity.performCreate(Activity.java:6903)
+	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1136)
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3266)
+	... 9 more
+```
+
+
+```
+java.lang.RuntimeException: An error occured while executing doInBackground()
+	at android.os.AsyncTask$3.done(AsyncTask.java:304)
+	at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:355)
+	at java.util.concurrent.FutureTask.setException(FutureTask.java:222)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:242)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)
+	at java.lang.Thread.run(Thread.java:818)
+Caused by: java.lang.IllegalArgumentException: Password null or not acceptable
+	at com.twistedplane.sealnote.data.DatabaseHandler.update(DatabaseHandler.java:84)
+	at com.twistedplane.sealnote.data.DatabaseHandler.getWritableDatabase(DatabaseHandler.java:110)
+	at com.twistedplane.sealnote.data.DatabaseHandler.getReadableDatabase(DatabaseHandler.java:115)
+	at com.twistedplane.sealnote.data.DatabaseHandler.getNotesCursor(DatabaseHandler.java:558)
+	at com.twistedplane.sealnote.data.AdapterLoader.loadInBackground(AdapterLoader.java:30)
+	at com.twistedplane.sealnote.data.AdapterLoader.loadInBackground(AdapterLoader.java:13)
+	at android.content.AsyncTaskLoader.onLoadInBackground(AsyncTaskLoader.java:312)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:69)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:57)
+	at android.os.AsyncTask$2.call(AsyncTask.java:292)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+	... 3 more
+```"
+vishesh/sealnote,closed,Add Contribution guidelines,[],
+vishesh/sealnote,open,CI Integration,[],Integrate Travis or any other CI.
+vishesh/sealnote,closed,Fix build failure permanently.,"[Label(name=""help wanted"")]","Currently, build fails in Android Studio with message : 
+`Neither path nor baseDir may be null or empty string. path='null' basedir='Sealnote'`
+
+Updating storeFile path to `file(String.valueOf(System.getenv(""SEALNOTE_KEYSTORE"")))` fixes the issue as per SO post : http://stackoverflow.com/a/34640602
+
+Going forward, we need to know the exact cause and solution of the fix."
+vishesh/sealnote,open,Add tests,"[Label(name=""beginner"")]",Should add some tests.
+vishesh/sealnote,closed,Fix build failure due to non-defined system variable,[],
+vishesh/sealnote,open,Use standard cardview component,"[Label(name=""enhancement"")]","Now that Android has Card component we can use that by sacrificing minimum supported android.
+"
+vishesh/sealnote,open,Staggered Grid layout rewrite,"[Label(name=""enhancement"")]","It seems to be slow for users keeping many notes. There is a standard implementation by Google now that we can use.
+"
+vishesh/sealnote,open,Tags component buggy,"[Label(name=""help wanted""), Label(name=""question"")]","Not sure exactly what, but there are complaints regarding this. Probably need more manual testing on more devices to find out.
+"
+vishesh/sealnote,open,Reset data from app start screen,"[Label(name=""bug"")]","So that user doesn't have to goto applications settings. Not sure if its good idea, but people complain.
+"
+vishesh/sealnote,open,Restore crashes on some phones because of missing content selector ,"[Label(name=""bug"")]","Users affected can for now install a file manager (or Dropbox/GDrive) to get around this problem. Need a custom file selector view.
+"
+vishesh/sealnote,closed,Message of Note Saved even after note is empty,"[Label(name=""bug"")]","After i trying to save an empty note it showed me the message ""No point of saving empty Note"" in plain  text note and immediately it showed me the Note saved.
+I am attaching one zip in which i have attached one video.
+[Seal Note Error.zip](https://github.com/vishesh/sealnote/files/117183/Seal.Note.Error.zip)
+
+.
+"
+vishesh/sealnote,open,Sorting of notes,"[Label(name=""enhancement"")]","By date/color/title?
+"
+vishesh/sealnote,open,Keep password in byte[] than Strings,"[Label(name=""bug"")]","Eg. https://github.com/vishesh/sealnote/blob/master/Sealnote/src/main/java/com/twistedplane/sealnote/data/DatabaseHandler.java#L53
+"
+vishesh/sealnote,closed,Archive after editing doesn't save the note,"[Label(name=""bug"")]",
+vishesh/sealnote,open,Confirm password when entering for first time,"[Label(name=""enhancement"")]","On first start app asks for password just once.
+"
+vishesh/sealnote,open,Immediate password timeout,"[Label(name=""enhancement"")]","Minimum timeout is 10 seconds. Add immediate timeout option.
+"
+vishesh/sealnote,open,Tagedit View repeats characters on its own,[],"Hello Vishesh - looking for a open-source notepad (as starting point for Java with Android) I found your ""Sealnote"". Following issue though: When adding tags, on some devices the Textview starts typing its own characters, i.e. repeating characters. Example typing ""abcde"":
+
+Typing <-> on screen
+a => a (ok)
+b => ab (ok)
+c => ababc (ab wrongly repeated)
+d => ababcd (ok)
+e => ababcdabcde (abcd wrongly repeated)
+
+I think something with TagTextWatcher->beforeTextChanged. The ""mShouldMove"" is set to true although not needed (at least for the first tag), and setting it to false allows proper (sequential) entering of tags. Strangely, only happening on some devices (Galaxy Tab S, but not on virtual devices). Maybe for consideration with the next version.
+
+Otherwise, very nice program (especially the UI!). Thank you for making it available here!
+"
+vishesh/sealnote,closed,Don't show actual screenshot on recent apps view,[],"Sealnote provides password protection and this works as expected inside the app. BUT, if I leave the app (e.g. with the back or home button), the last view is shown in the android recent apps list. This allows to see quite a big part of the encrypted information, without ever typing any password.
+
+It would be nice if the app could immediately lock before going to the background, or always show a static image at recent apps view.
+
+I have observed the same problem also in other ""password-protected"" apps, like dropbox. 
+"
+vishesh/sealnote,open,Card number length - current one is not universal,"[Label(name=""enhancement"")]","1. Recognize 18-digit card numbers, which are used on debit cards;
+2. Recognize other (Chinese) credit card organization like Unipay;
+
+Reported by Yifeng Mu
+"
+vishesh/sealnote,open,Merge database with backup file,"[Label(name=""enhancement"")]","Add option to merge with given backup file than just overwrite it.
+"
+vishesh/sealnote,open,Show warning that password can't be recovered,"[Label(name=""enhancement"")]",
+vishesh/sealnote,open,Search within notes,"[Label(name=""enhancement"")]",
+vishesh/sealnote,closed,Add `disable animations' options if it works slow for some people,"[Label(name=""enhancement"")]",
+vishesh/sealnote,open,cursor goes under toolbar,"[Label(name=""bug"")]","Consider the following scenario:
+1. open any note: cursor is positioned at the first symbol of the title, title is some way below the toolbar and is clearly visible - all is fine
+2. tap the first line of the note: cursor moves to the first line of note text, the note is scrolled up so that the first line is positioned at the very top of the screen and is covered by the toolbar. The toolbar is semi-transparent but it has opaque icons so it makes the first 1-2 lines of the note very difficult to read and edit.
+
+In my opinion cursor should never go under the toolbar - transparent or not, note should be scrolled in such a way that cursor is positioned in the clear part of the screen. Samsung Galaxy S5, Lollipop. Otherwise great program, like it.
+
+Filed by Leonid Mironov
+"

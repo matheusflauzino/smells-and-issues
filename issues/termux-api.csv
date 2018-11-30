@@ -1,0 +1,1696 @@
+repository,state,title,label,body
+termux/termux-api,open, Add JobSchedulerAPI,[],"I started making a termux-api class for JobScheduler, to provide a battery-friendly cron replacement.  Is this useful for others?
+
+It doesn't have a termux-api-package script yet so I call it directly like this:
+`/data/data/com.termux/files/usr/libexec/termux-api JobScheduler --ei job_id 1 --ei period_ms 900000 --ez charging true -es script $HOME/test.sh`
+
+I also haven't enabled persistence, thinking this could be done just as easily with termux-boot.
+"
+termux/termux-api,open,add brightness mode,[],"I found that the brightness API does not work when my phone was set in auto brightness mode.
+
+I added an intent extra in order to set the brightness to auto or manual."
+termux/termux-api,open,Change app to use sockets with json instead of Intents [WIP],[],"This PR replaces the Broadcast Reciever with a service listening on a socket resulting in a much faster response (miliseconds instead of seconds).
+JSON is sent over the `termux-input` socket and the results get returned on `termux-output`
+
+This is more of a proof of concept for the time being a lot is not working/not yet implemented, I'm open to any feedback on how to improve this.
+
+A test suite would be nice for testing all the APIs, any suggestions for how to implement that would be nice.
+
+# Tested APIs
+- [x] WifiAPI.java
+- [x] AudioAPI.java
+- [x] TorchAPI.java
+- [x] ToastAPI.java
+- [x] BatteryStatusAPI.java
+- [x] CallLogAPI.java
+- [x] BrightnessAPI.java - 
+- [x] VolumeAPI.java
+- [x] CameraInfoAPI.java
+- [x] ContactListAPI.java    
+- [x] NotificationListAPI.java
+- [x] NotificationAPI.java      
+- [x] SmsInboxAPI.java
+- [x] VibrateAPI.java
+- [ ] FingerprintAPI.java 
+- [ ] PhotoAPI.java
+- [ ] TextToSpeechAPI.java
+- [ ] InfraredAPI.java - Can't test (no IR on my phone)
+- [ ] SensorAPI.java
+- [ ] KeystoreAPI.java
+- [ ] ShareAPI.java
+- [ ] LocationAPI.java
+- [ ] MediaPlayerAPI.java
+- [ ] SmsSendAPI.java
+- [ ] MediaScannerAPI.java
+- [ ] SpeechToTextAPI.java
+- [ ] WallpaperAPI.java
+- [ ] ClipboardAPI.java - Crashes
+- [ ] MicRecorderAPI.java
+- [ ] StorageGetAPI.java      
+- [ ] TelephonyAPI.java
+- [ ] DialogActivity.java    
+- [ ] DownloadAPI.java
+
+# Bugs/Issues:
+~~Out of memory exception happens with dialogs, current work around is android:largeHeap=""true"" but this is obviosuly not a permanent fix.~~ fixed
+
+# Usage Examples: 
+This PR Requires the modified termux-api binary from here https://github.com/Epictek/termux-api-package/blob/master/termux-api.c PR incoming for that soon once I figure out how to handle rewriting all the scripts.
+```
+# Start the service (This will be implemented in to termux-api.c later)
+am broadcast --user 0 -n com.termux.api/.TermuxApiReceiver
+# Call logs
+echo ""{'api_method':'CallLog'}"" | ./termux-api
+# Date input
+echo ""{'api_method':'Dialog','input_method':'date'}"" | ./termux-api
+```"
+termux/termux-api,open,Add support for modifying time settings,[],I would like to programmatically set the time on an android device via the termux command line.  Who ever does this might as well implement the rest of the public methods too.  The relevant docs are [here](https://developer.android.com/reference/com/google/android/things/device/TimeManager).
+termux/termux-api,open,camera-video-start  and camera-video-stop,[],there is camera api for photos but no api for videos.
+termux/termux-api,open,gpg-agent via OpenKeychain,[],"It will be cool to have gnupg agent that will use OpenKeychain.
+(or ssh agent, but gnupg agent can emulate ssh agent so gnupg agent is better)
+
+Like [termbot](https://github.com/open-keychain/termbot) does. "
+termux/termux-api,open,termux-toast does not show,[],"All termux-api commands are working for me – but not `termux-toast`.
+Executing `termux-toast ""some text""` runs and gives exit code 0, but **no toast message appears**.
+```
+$ termux-toast ""hello world!""`
+$ echo $?
+0
+```
+
+I modified source, so an error message is logged, when the toast panel should appear:
+
+`# logcat -d > `[logcat_toast.log](https://github.com/termux/termux-api/files/2531083/logcat_toast.log) – watch for ""toast"" tag – nothing seems to relate to the toast… (besides the manualy added log of cource).
+
+My device is a huawei honor 6x (BLN-L21) – android 7.0 nougat.
+Same issue when I install termux and termux-api from play store or fdroid.
+`termux-api` package is installed, all kinds of permissions granted…
+"
+termux/termux-api,open,`termux-dialog` not working on Android 9,[],"I'm facing this issue on my oneplus 6.
+
+I've already checked all the Termux:API permissions and all other commands I've tested are pretty much working properly expect the `termux-dialog` where it only locks down.
+
+
+```
+$ termux-info
+Updatable packages:
+All packages up to date
+System information:
+Linux localhost 4.9.106-perf+ #1 SMP PREEMPT Sat Sep 15 01:11:54 CST 2018 aarch64 Android
+Termux-packages arch:
+aarch64
+Android version:
+9
+Device manufacturer:
+OnePlus
+Device model:
+ONEPLUS A6003
+```
+Battery status working:
+```
+$ termux-battery-status
+{
+  ""health"": ""GOOD"",
+  ""percentage"": 89,
+  ""plugged"": ""PLUGGED_USB"",
+  ""status"": ""CHARGING"",
+  ""temperature"": 29.200000762939453
+}
+```
+
+```
+$ termux-dialog
+^C
+```
+Logcat output:
+```
+$ logcat -s termux:* termux-api:*
+--------- beginning of crash
+--------- beginning of main
+```
+
+I've tried to debug this with Android Studio but the issue I'm facing after compiling the Termux APK and Termux:API apk, is that my debugger doesn't know how to start the  Termux:API application as it is missing the main Activity.
+
+Any help here would be appreciated in order to resolve it.
+"
+termux/termux-api,open,Termux-dialog stopped working after version 0.25,[],"Any termux-dialog invocation leads to ""unfortunately termux:api has stopped""
+
+Downgrading to 0.25 fixes that. 
+
+Android 5.1
+"
+termux/termux-api,open,Termux-location not working via bash,[],"Using termux-location at the command line (interactively) works fine. But when I put commands into a bash file, I get no output or null.
+
+For example, bash code in a file like this -
+
+x=$(termux-location -p network)
+x=$(echo $x | jq .text)
+echo $x
+
+Works correctly interactively, but does not work when running in bash file with proper shebang. Any ideas?
+"
+termux/termux-api,closed,termux-api not working on OnePlus 6/Android 9,[],"Since updating my OnePlus 6 to Android 9 none of the termux-api-commands are working anymore. After typing ""termux-wifi-connectioninfo"" for example nothing happens, I can just cancel it with ctrl-c."
+termux/termux-api,closed,Add KeystoreAPI,[],"Requires [termux-api-package #33](https://github.com/termux/termux-api-package/pull/33).
+
+This patch adds an interface for [Android keystore](https://developer.android.com/training/articles/keystore). You can read all the features on that page, but I believe the main benefit of using it is [extraction prevention](https://developer.android.com/training/articles/keystore#ExtractionPrevention).
+
+In short, Android keystore allows the storage of cryptographic keys inside a secure hardware. The key is generated inside the chip, and it never leaves the hardware - actually the chip does not even have a function to export the secret key.
+
+Even with root privileges, it is not possible to extract these keys.
+
+Instead, the applications ask the chip to sign/verify/encrypt/decrypt a particular piece of data in behalf of them, and the hardware does this inside itself and outputs the result. Again, the secret key always stays inside the chip.
+
+This script provides 5 commands:
+* list: List all the keys stored inside the keystore.
+* generate: Generate a key securely inside the chip.
+* sign: Create a signature for given data.
+* verify: Verify if some signature is valid for given data.
+* delete: Delete the key from the keystore.
+
+(Note that the *verify* action is for convenience only, due to the way asymmetric encryption works anyone can do the verification given the public key.)
+
+Example commands to test:
+1. `termux-keystore generate myAlias -a RSA -s 2048`
+2. `termux-keystore list`
+3. `echo ""test file"" >> testfile`
+4. `termux-keystore sign myAlias SHA512withRSA < testfile > signature`
+5. `termux-keystore verify myAlias SHA512withRSA signature < testfile # should return true`
+6. `echo ""different file"" >> differentfile`
+7. `termux-keystore verify myAlias SHA512withRSA signature < differentfile # should return false`
+
+Although by itself this is a complete tool, the API becomes much more useful when combined with a middleware that I have created: [tergent](https://github.com/aeolwyr/tergent) (short for termux-ssh-agent). This small application is a ssh-agent implementation that uses this backend to store the keys inside the chip. This provides the security of hardware-based tokens without the inconvenience of carrying a separate device - the chip acts as the secure component.
+
+Thanks for reading, and looking forward to any comments."
+termux/termux-api,open,"updated gradles, dependency, and code",[],"- updated gradles to support 28
+- java 1.8 compatibility
+- corrected some potential permission rejections (couldn't fix all of them, ones that need correcting are in corresponding commit)
+- other miscellaneous things"
+termux/termux-api,closed,Mobile Data On/Off,[],"Hi,
+Anyone can append this feature.
+Like this: [WifiAPI.java](https://github.com/termux/termux-api/blob/master/app/src/main/java/com/termux/api/WifiAPI.java)
+I cant use `svc data enable` & `svc data disable` without root. 
+Thanks"
+termux/termux-api,open,Record Phone Call,[],"Is it possible to record phone call using termux api?
+
+thanks"
+termux/termux-api,open,cannot locate symbol,[],"When running `termux-sms-list` or other termux-api commands the following error is thrown.
+
+```
+$ termux-sms-list
+CANNOT LINK EXECUTABLE ""/system/bin/app_process"": cannot locate symbol ""__xlog_buf_printf"" referenced by ""/system/lib64/libdpframework.so""...
+```
+
+This happens on a Le1S phone with ARM64 architecture."
+termux/termux-api,open,Termux-api restart,[],Is it possible to restart termux-api if was crashed an no longer listen sockets?
+termux/termux-api,open,"termux-notification led not activated (Android 8.1.0, Termux suite from FDroid)",[],"Using LineageOS 15.1 (Android 8.1.0), Termux suite from FDroid.
+
+    termux-notification ---led-color FF8800 --led-on 300 --led-off 700 --title Coucou --content ""C'est nous !""
+
+Gives me no led blinks at all.
+
+Android 8.1.0 allow to setup colors and blink schemes from Android settings, on a per application basis. Unfortunately, the notifications are coming from Termux:API with is not in the list of configurable applications for this usage (while Termux, and Termux:Boot are…).
+
+_I made a small python script to check periodically if the phone gets GSM signal or not, setting a notification if there is no signal, and I wish to have a blinking notification led for that. The whole system is pointed out by Android as consuming too much battery, while my script is mainly a while loop with a sleep(60) in it, and no wake-lock willingly acquired_
+
+_In the same area, I did set a 0,0,0 vibrate scheme, and still the notification is augmented by Android with a vibration ; one may know that LineageOS used to vibrate when the phone looses signal, and it's exactly the contrary that I try to configure._"
+termux/termux-api,closed,Missing class file (incorrect name?),[],"Android 5.1.1
+Rooted, Xposed, Custom ROM (obsolete)
+
+Worked fine before a certain update. I tried both setups (pure Google Play and pure F-Droid) and both yield the same result.
+
+```
+java.lang.ClassNotFoundException: Didn't find class ""com.example.termuxam.Am"" on path: DexPathList[[zip file ""/data/data/com.termux/files/usr/libexec/termux-am/am.apk""],nativeLibraryDirectories=[/vendor/lib, /system/lib]]
+        at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:56)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:511)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:469)
+        Suppressed: java.io.IOException: Failed to open oat file from dex location '/data/data/com.termux/files/usr/libexec/termux-am/am.apk'
+                at dalvik.system.DexFile.openDexFileNative(Native Method)
+                at dalvik.system.DexFile.openDexFile(DexFile.java:295)
+                at dalvik.system.DexFile.<init>(DexFile.java:80)
+                at dalvik.system.DexFile.<init>(DexFile.java:59)
+                at dalvik.system.DexPathList.loadDexFile(DexPathList.java:262)
+                at dalvik.system.DexPathList.makeDexElements(DexPathList.java:231)
+                at dalvik.system.DexPathList.<init>(DexPathList.java:109)
+                at dalvik.system.BaseDexClassLoader.<init>(BaseDexClassLoader.java:48)
+                at dalvik.system.PathClassLoader.<init>(PathClassLoader.java:38)
+                at java.lang.ClassLoader.createSystemClassLoader(ClassLoader.java:128)
+                at java.lang.ClassLoader.access$000(ClassLoader.java:65)
+                at java.lang.ClassLoader$SystemClassLoader.<clinit>(ClassLoader.java:81)
+                at java.lang.ClassLoader.getSystemClassLoader(ClassLoader.java:137)
+        Caused by: java.io.IOException: Failed to open oat file from /data/data/com.termux/files/usr/libexec/termux-am/arm/am.odex (error Failed to open oat filename for reading: No such file or directory) (no dalvik_cache availible) and relocation failed.
+                ... 13 more
+        Caused by: java.io.IOException:
+                ... 13 more
+        Caused by: java.io.IOException: Failed to remove obsolete file from /data/dalvik-cache/arm/data@data@com.termux@files@usr@libexec@termux-am@am.apk@classes.dex when searching for dex file /data/data/com.termux/files/usr/libexec/termux-am/am.apk: Permission denied
+                ... 13 more
+        Suppressed: java.lang.ClassNotFoundException: com.example.termuxam.Am
+                at java.lang.Class.classForName(Native Method)
+                at java.lang.BootClassLoader.findClass(ClassLoader.java:781)
+                at java.lang.BootClassLoader.loadClass(ClassLoader.java:841)
+                at java.lang.ClassLoader.loadClass(ClassLoader.java:504)
+                ... 1 more
+        Caused by: java.lang.NoClassDefFoundError: Class not found using the boot class loader; no stack available
+```"
+termux/termux-api,open,can you add an api ?,[],to turn on/off flight mode.3ku.
+termux/termux-api,closed,Set clipboard contents without trimming whitespace,[],Duplicates a large chunk of WithStringInput to avoid the trim. You may wish to refactor.
+termux/termux-api,closed,Changed provider to scope to all messages. ,[],Addresses #71 and changes the scope to return all SMS no matter if it is Sent or Received. This could easily be adapted to be a flag on sms-inbox or a new api. Opening this PR for discussion but also as a placeholder solution for those building themselves and wanting this capability.
+termux/termux-api,closed,Print clipboard text without appending a newline,[],Pasting in vim/neovim is busted when termux-clipboard-get appends a newline to the clipboard text.
+termux/termux-api,closed,Value Array and Indexed result,[],"Currently, the output of the checkbox dialogue is useless when trying to parse with any JSON parser as you can't loop over the array of strings with something such as JQ as it's not valid json. Checkbox dialog now returns a values array with objects containing the index and value of the selected item. The index is useful for keeping track of values.
+
+```
+{ ""code"": -1,
+  ""text"": ""[test1, test2]"",
+  ""values"": [
+    {
+      ""index"": 0,
+      ""text"": ""test1""
+    },
+    {
+      ""index"": 1,
+      ""text"": ""test2""
+    }
+  ]
+}
+```
+For other dialogs which only return a single value but you are able to choose from a list I added an index to the result. 
+```
+{ ""code"": 0,
+  ""text"": ""test2"",
+  ""index"": 1
+}
+```"
+termux/termux-api,closed,Add permission WRITE_SECURE_SETTINGS and READ_LOGS,[],"They are needed to use `settings` command and `logcat` command in Termux, respectively.
+With `settings` command, we can change many settings without root.
+
+For example, turn on location service by
+```settings put secure location_providers_allowed +network,gps```
+and turn it off by
+```settings put secure location_providers_allowed -network,gps```
+
+And it would be nice if we can read logcat in Termux.
+
+Note that these permissions doesn't work by just adding to AndroidManifest.xml.
+We also need to grant them using adb only once.
+```
+adb shell pm grant com.termux.api android.permission.WRITE_SECURE_SETTINGS
+adb shell pm grant com.termux.api android.permission.READ_LOGS
+```
+Then we will be able to use `settings` and `logcat` in Termux."
+termux/termux-api,closed,NotificationList API,[],https://github.com/termux/termux-api/issues/110
+termux/termux-api,closed,Notification Improvements,[],"* Added `ongoing` bool extra to implement https://github.com/termux/termux-api/issues/62 
+* Added the `alert-once` bool extra to avoid having alerts when editing a notification.
+* Added `group` extra to allow grouping select notifications.
+
+* Added `image-path` which requires an absolute path to the image, This half implements https://github.com/termux/termux-api/issues/60, to actually display on the lockscreen we need to create a media-session and I haven't figured out the best way to handle this yet. 
+* Added media style layout specifiable using `type` extra of value `""media""`, this requires the extras `media-previous`, `media-pause`, `media-play` and `media-next` to be specified with actions. 
+* To make adding additional actions easier the pendingIntent code was turned in to a function to remove a lot of duplicate code,"
+termux/termux-api,closed,Cleanup old issues,[],"I'm wanting to help implement some of the backlogs of feature requests but there is a bit of a clutter of old issues that probably need closing, thought I'd make someone's job easier and list all the ones that should probably be closed.
+
+- [x] https://github.com/termux/termux-api/issues/17 Accessible via `termux-sensor -s GYROSCOPE`
+- [x] https://github.com/termux/termux-api/issues/111 https://github.com/termux/termux-api/issues/42 https://github.com/termux/termux-api/issues/23 https://github.com/termux/termux-api/issues/77 Fixed in https://github.com/termux/termux-api/pull/172
+- [x] https://github.com/termux/termux-api/issues/74 implemented in https://github.com/termux/termux-api/pull/158
+- [x] https://github.com/termux/termux-api/issues/99 Is now implemented via `termux-wifi-connectioninfo`, `termux-wifi-enable` & `termux-wifi-scaninfo`
+- [x] https://github.com/termux/termux-api/issues/131 implemented in https://github.com/termux/termux-api/pull/170
+- [x] https://github.com/termux/termux-api/issues/117 Implemented in https://github.com/termux/termux-api/pull/147
+- [x] https://github.com/termux/termux-api/issues/85 not relevant to termux-api?
+- [x] https://github.com/termux/termux-api/issues/151 not an issue?"
+termux/termux-api,open,Termux:API crashes on certain commands (Samsung Galaxy S5 mini with Android 6.0.1),[],"When using certain commands, the Termux\:API app crashes and any further termux-api command calls will do nothing, not returning to shell input until I press CTRL-C. I tried force stopping Termux and Termux\:API, cleared cache, and even rebooted phone. Nothing worked. This happened to me on the following occasions:
+
+
+- `termux-brightness 25` - Error message saying that Termux\:API needs permission to write phone settings, which I can't provide as my device is not rooted. Maybe making it request device administrator permissions can help here?
+- `termux-dialog` with no apparent error message
+- `termux-fingerprint` also with no error message
+
+
+ "
+termux/termux-api,closed,Add checkbox values result,[],"Currently, the output of the checkbox dialogue is useless when trying to parse with any JSON parser as you can't loop over the array of strings.
+
+This PR turns this:
+```
+{
+""code"": -1,
+""text"": ""[topkek, memes]""
+}
+```
+to this:
+```
+{
+""code"": -1,
+""text"": ""[topkek, memes]"",
+""values"": [""topkek"", ""memes""]
+}
+```
+
+I kept text output the same for backwards compatibility just in case."
+termux/termux-api,open,tts-speak crashes when interrupted by another sound,[],"For example, when I take a screenshot (which plays a screenshot sound effect), it crashes, or when google maps gives directions, it crashes.
+
+The worst part is that I have to restart my android phone to get it to work again. (and the android tts still works fine in other apps, such as osmand, but termux-tts-speak calls don't work)."
+termux/termux-api,open,"termux-location times out, returns nothing",[],"If I run `termux-location` two times in a row, the first one will work and give me a json object and the second time it will time out after roughly thirty seconds and return an empty string. This happens for both gps and network providers. I haven't tried the third. I am running Termux on a Samsung S8+.
+
+I am going to cache the response and use a timestamp to give the response of termux-location if it is going to be called more than once in fifteen minutes, but is that a safe enough pause? Can I go lower?
+
+As for a more permanent fix, could we please have some more information as to how and when to use this? There wasn't a man page for it, and that seemed pretty odd."
+termux/termux-api,closed,Add date format option,[],Allow formatting of the date widget output.
+termux/termux-api,open,Fix inadvertent torch state toggling on some devices,[],Fixes #201 
+termux/termux-api,open,Running `termux-torch on` twice causes LED to turn off,"[Label(name=""bug report"")]","Running `termux-torch on` twice causes LED to turn off. It will also ""lock"" the LED. So no matter how many times you run `termux-torch on` it won't turn on again. To unlock it you have to run `termux-torch off`
+I think running `termux-torch on` multiple times should just leave the LED on."
+termux/termux-api,closed,Fix scenarios causing termux-dialog to hang,[],"If termux-dialog is called while Termux already has a dialog open, the new dialog fails to open and the command will hang until it is manually terminated. This fix allows multiple dialogs to be open at once and ensures that termux-dialog will not hang.
+
+This also fixes #193."
+termux/termux-api,open,termux-storage-get should have the options to run synchronously and retain original filename.,[],"This command would be much easier to use in many cases if it had the option to block execution until a file has been selected and loaded. That way, if a script needs to perform on the file, it will know exactly when it's able to do so.
+
+It would also be helpful to be able to retain the file's name. It could work like `cp`, `mv`, etc: if you provide the path to a directory, it will place the file in that directory with its original name. If you provide the path to a file, it would create or overwrite that file.
+
+I have a rough version of this working. If anyone's interested I can clean up the code and publish it."
+termux/termux-api,closed,Fix scenarios causing termux-dialog to hang,[],"If termux-dialog is called while Termux already has a dialog open, the new dialog fails to open and the command will hang until it is manually terminated. This fix allows multiple dialogs to be open at once and ensures that termux-dialog will not hang.
+
+This also fixes #193."
+termux/termux-api,closed,SMS in JSON,[],"The project main page says ""Grep through your SMS inbox"". Really? How you suggest me grep by prettified json? :DD
+This is bash, not JavaScript! What about output sms in plain format like a this:
+```
+2018-07-25 12:43:01 1 ""sender name"" ""phone number"" ""message body""
+```
+or in csv
+```
+2018-07-25 12:43:01; 1; sender name; phone number; message body
+```
+then it really grepable!))"
+termux/termux-api,open,"Feature request: bluetooth turn on and enable ""use for internet access""",[],"Not sure if there's a permission for this (allowing termux-api to do it).
+
+But scripting setup is so much easier than doing it manually each time.
+
+Similarly: enable bluetooth tethering (i.e. a bluetooth hotspot)."
+termux/termux-api,closed,Clipboard API incorrectly trims and appends whitespace,[],"On termux-clipboard-set, the clipboard contents get trimmed: 
+https://sourcegraph.com/github.com/termux/termux-api@fbf628fefded3d5f21f4532961d732d892ddd629/-/blob/app/src/main/java/com/termux/api/util/ResultReturner.java#L60
+
+On termux-clipboard-get a newline is added to the end of the clipboard contents here:
+https://sourcegraph.com/github.com/termux/termux-api@fbf628fefded3d5f21f4532961d732d892ddd629/-/blob/app/src/main/java/com/termux/api/ClipboardAPI.java#L43:1
+
+This results in the inability to copy whitespace: https://github.com/termux/termux-api/issues/112
+as well as completely nonsensical behavior if using the termux clipboard as the default clipboard in vim/nvim.
+
+If copying and pasting from vim using this clipboard API, the selection gets trimmed and newlines get insert into it when pasting. That means that if you try to copy and paste anything within the same line, it will break your line into multiple lines when you paste.
+
+I hope that these issue can be trivially fixed by updating the two lines of code I pointed out. I'm not sufficiently familiar with the android toolchain and the termux build system to fix it myself, but if I don't see a response for a while, I might give it a shot because I'd really like to be able to share the clipboard with vim on my chromebook."
+termux/termux-api,open,How to merge Termux-app and Termux-api in a single project,[],"Hello, I'm trying to generate a single project from those both projects so the output will be a single apk file.
+To do this i googled about 'how to merge two android-studio projects in a single project' and i found out that the best way is using libraries, I mean making one a library and adding to the other one using it as a module dependency, it seems to work with any other add-on of termux-app (for example it worked with termux-boot and termux-float) but when i tried to do it with termux-api i found out that there were some 'old way to use' the xml resources files, but it seems to respect all the suggestions [here](https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration)  even though after adding it as a module dependency (and after fixing the manifest file following the suggestions of AS 3.1) i got the error below:
+![screenshot_37](https://user-images.githubusercontent.com/22026947/42419148-42313374-82af-11e8-878f-798ad502ea6f.png)
+![screenshot_30](https://user-images.githubusercontent.com/22026947/42419149-424e752e-82af-11e8-92b8-e90a6b1e912f.png)
+In the last week, I have googled a lot about it and i had no success, I tried some possible answers like:
+
+- adding implementation ""com.android.support:appcompat-v7:27.0.+"" in the build.gradle file
+- disabling instant run
+- merging them through git
+- moving to AS 3.0
+
+but without success, I was wondering if there is any guide about how to merge them in the right way or if it is already the 'right' way if there is someone that already figured out the solution.
+
+The steps that i did to make termux-app and termux-boot/float work are these:
+
+1. Download both projects.
+2. Modify the build.gradle of termux-boot and made it a library deleting the ApplicationID, shrinkResources line and changing 'com.android.application' to 'com.android.library'.
+3. Rebuild to generate the aar file in order to add it to termux-app project
+4. From termux-app project click on menu 'File/New/New Module' added the file aar.
+5. Added the dependecy by clicking on 'File/Project Structure/', click on 'app', click on 'dependencies' and on '+' in order to add the dependecy.
+6. Android studio will show a problem with the manifest merged, open the manifest file and clicked on all the 'suggestions' of android-studio to solve the merge problem.
+
+"
+termux/termux-api,closed,termux-dialog hangs if dialog loses focus.,[],"Since the update of the DialogAPI, it is now possible for termux-dialog to hang if the dialog box loses focus.
+For example: I use the Password Store app, which can prompt to autofill passwords. If my GPG passphrase is not in memory, it needs to prompt me for that in turn. So, if I have a termux-dialog asking for a password, and I ask Password Store to autofill it, and it asks me for my GPG passphrase, then the original termux-dialog loses focus and disappears. With the old DialogAPI this caused termux-dialog to exit, but now it just hangs, and I need to terminate it manually."
+termux/termux-api,closed,Fix intermittent scroll not working in BottomSheet,[],
+termux/termux-api,closed,termux-sms-send does not work. How to troubleshoot?,[],"termux-sms-send does not send any message.
+
+How to debug? Are there logs to look at?"
+termux/termux-api,closed,Add limit option for SensorAPI,[],Implements feature request per @Auxilus in the gitter chat to allow the amount of sensor readouts to be specified
+termux/termux-api,closed,Add legacy support to TorchAPI for Pre-Marshmallow devices / fix crash,[],Fix for #188 
+termux/termux-api,closed,termux-torch crashes Termux:API on Android 5.0.1,[],"logcat shows the error `java.lang.NoSuchMethodError: No virtual method setTorchMode`.  The method was added in API level 23, which I don't have.
+
+There are more compatible ways of enabling torch mode.  I currently use the [Torch](https://github.com/MrDoomy/Torch) app, which uses the deprecated `Camera.Parameters` API, which maybe Termux:API could use as a fallback."
+termux/termux-api,closed,Fix bottom sheet not scrolling for large value list,[],Fix scrolling for the new BottomSheetInputMethod that was added #172.
+termux/termux-api,closed,Allow toast color / gravity to be changed,[],
+termux/termux-api,open,Update / Install reminder dialogs for users of TermuxAPI,[],"<img src=""https://user-images.githubusercontent.com/6166095/41556687-bddbd9fa-72f8-11e8-9ced-9cb341b4429a.png"" width=""250""/> <img src=""https://user-images.githubusercontent.com/6166095/41556715-ce523ff4-72f8-11e8-8cd7-e11e4b78bb65.png"" width=""250""/>
+
+Some users forget to install and/or update the command line tools, thus unable use full functionality. So this PR ensures they won't miss out. Users can tap on the command to execute it directly.
+
+It also has a link to the termux wiki so they can learn more as well.
+
+** https://github.com/termux/termux-app/pull/726 is required for this to work **
+"
+termux/termux-api,closed,AudioAPI: a few updates,[],
+termux/termux-api,closed,Add missing 'break' in TermuxApiReceiver,[],
+termux/termux-api,closed,Add FingerprintAPI,[],FingerprintAPI functionality for devices running Marshmallow and later
+termux/termux-api,closed,Add VolumeAPI,[],
+termux/termux-api,closed,Add BrightnessAPI,[],Implements feature request #179 
+termux/termux-api,open,could add some commands darkening screen for power saving?,[],"actually, after termux-wake-lock, need a pair commands like termux-darken-screen and termux-lighten-screen. Searched, no result for that.
+:)"
+termux/termux-api,closed,Sound Fix..Help,[],"I am a novice in Linux system and do not know how to launch a sound system I've installed the following commands only 
+
+#@#@#@#@#@#@#@#@#@#@#@#@
+............................Termux ...................................................................................................
+termux-setup-storage
+apt update
+apt upgrade -y
+apt install git wget proot -y
+git clone https://github.com/Bhai4You/Termux-Os
+cd Termux-Os
+chmod +x Termux-Os.sh requirement.sh
+./requirement.sh
+./Termux-Os.sh
+
+............................Fedora.....................................................................................................
+
+startfedora
+dnf update -y
+dnf upgrade
+dnf install tigervnc-server -y
+dnf install xterm -y
+dnf group install lxde-desktop -y
+dnf install java-1.8.0-openjdk-headless -y && dnf install java-1.8.0-openjdk -y && dnf install java-1.8.0-openjdk-devel -y
+
+................................End................................
+الكاتب ماهر
+اوامر تثبيت Fedora و lxde و java-jdk
+netbeans IDE 8.0
+......................................................................
+&$&$&$&$&$&$&$&$&$&$&$&$&$&$&$&
+
+My problem is I do not know how to launch system sounds and I do not have a Wine application on fedora arm64 and do not work lxqt or cinnamon on fedora after downloading them in termux only lxde works and i also have problem in netbeans in javafx libraries and audio also i mean the problem of configuring a new file at Using vncserver where I am making a new server and not using the same previous name has solved my problems
+I miss the pulseaudio"
+termux/termux-api,closed,Wifi API additions,[],* Added termux-wifi-enable for toggling wifi on/off
+termux/termux-api,closed,termux-notification -h TYPO,[],"There is a Typo in the Help-Message:
+$ termux-notification -h
+...
+--content content      cotnet to show ...
+...
+$"
+termux/termux-api,closed,Added 'data_enabled' and 'sim_subscriber_id' fields to 'termux-telephony-deviceinfo',[],"Fixes issue #169 
+Requires ACCESS_NETWORK_STATE permission."
+termux/termux-api,closed,How can this be built on device?,[],How can this be built on device?
+termux/termux-api,closed,Fixed notifications not displaying on Oreo,[],Fixes issue #133  
+termux/termux-api,closed,DialogAPI Improvements / Enhancements,[],"    * New Widgets: Date, Time, Spinner, Text-To-Speech, Confirmation, BottomSheet, Radio, Counter, CheckBox
+    * Results are returned as JSON including code of button pressed"
+termux/termux-api,closed,Fix possible crash in SensorAPI due to null command,[],
+termux/termux-api,closed,Add CallLogAPI,[],Implements feature request #131 
+termux/termux-api,closed,adding IMSI to Termux-API,[],"I would like to have the subscriber Id from the Device Information.
+
+Please add within app/src/main/java/com/termux/api/TelephonyAPI.java
+
+line 256: out.name(""sim_subscriber_id"").value(manager.getSubscriberId());
+
+Thank you"
+termux/termux-api,open,Termux-api on Huawei phone - not working,[],"I have done everything according to Wiki and still cannot get termux-api working on my phone.  Every API just returns me nothing, and I have to ctrl-c.
+
+This is the output of termux-info on my phone:
+**$ termux-info
+Updatable packages:
+All packages up to date
+System information:
+Linux localhost 4.1.18-g725239a #1 SMP PREEMPT Wed Jan 17 03:18:54 CST 2018 aarch64 Android
+Termux-packages arch:
+aarch64
+Android version:
+7.0
+Device manufacturer:
+HUAWEI
+Device model:
+EDI-AL10
+Terminated**
+$
+
+And this is what I have installed:
+**$ apt list term*
+Listing... Done
+termux-am/stable,now 0.2 all [installed]
+termux-api/stable,now 0.28 aarch64 [installed]
+termux-apt-repo/stable 0.2 all
+termux-create-package/stable 0.4 all
+termux-elf-cleaner/stable 1.2 aarch64
+termux-exec/stable,now 0.3 aarch64 [installed]
+termux-tools/stable,now 0.53 all [installed]**
+
+I have used two termux sessions and use logcat to capture the output from ""termu-camera-info"".
+
+Please kindly help.
+
+Thanks
+Brian
+
+~~~~ Logcat output ~~~~~~~
+$ logcat
+int logctl_get(): open '/dev/hwlog_switch' fail -1, 13. Permission denied
+
+Note: log switch off, only log_main and log_events will have logs!
+--------- beginning of system
+05-01 13:29:58.126 30387 30387 I ActivityManager_activity: Resuming ActivityRecord{5fd7dba token=android.os.BinderProxy@7c26f57 {com.termux/com.termux.app.TermuxActivity}} with isForward=true,forwardBitChanged=true onlyLocalRequest=false
+05-01 13:29:58.200 30387 30387 I ActivityManager_activity: Reporting idle of ActivityRecord{5fd7dba token=android.os.BinderProxy@7c26f57 {com.termux/com.termux.app.TermuxActivity}} finished=false
+05-01 14:50:21.540 30387 30387 I ActivityManager_activity: Resuming ActivityRecord{5fd7dba token=android.os.BinderProxy@7c26f57 {com.termux/com.termux.app.TermuxActivity}} with isForward=true,forwardBitChanged=true onlyLocalRequest=false
+05-01 14:50:21.605 30387 30387 I ActivityManager_activity: Reporting idle of ActivityRecord{5fd7dba token=android.os.BinderProxy@7c26f57 {com.termux/com.termux.app.TermuxActivity}} finished=false
+05-01 18:04:40.543 30387 30387 I ActivityManager_activity: Resuming ActivityRecord{5fd7dba token=android.os.BinderProxy@7c26f57 {com.termux/com.termux.app.TermuxActivity}} with isForward=true,forwardBitChanged=true onlyLocalRequest=false
+05-01 18:04:40.639 30387 30387 I ActivityManager_activity: Reporting idle of ActivityRecord{5fd7dba token=android.os.BinderProxy@7c26f57 {com.termux/com.termux.app.TermuxActivity}} finished=false
+05-01 18:05:35.933 30387 30387 I ActivityManager_activity: Resuming ActivityRecord{5fd7dba token=android.os.BinderProxy@7c26f57 {com.termux/com.termux.app.TermuxActivity}} with isForward=true,forwardBitChanged=true onlyLocalRequest=false
+05-01 18:05:36.000 30387 30387 I ActivityManager_activity: Reporting idle of ActivityRecord{5fd7dba token=android.os.BinderProxy@7c26f57 {com.termux/com.termux.app.TermuxActivity}} finished=false
+05-01 18:05:43.781 30387 30387 D ActivityThread: Remove activity client record, r= ActivityRecord{5fd7dba token=android.os.BinderProxy@7c26f57 {com.termux/com.termux.app.TermuxActivity}} token= android.os.BinderProxy@7c26f57
+05-01 18:05:45.325 30387 30387 V ActivityThread: ActivityThread,callActivityOnCreate
+05-01 18:05:45.346 30387 30387 D ActivityThread: add activity client record, r= ActivityRecord{878f28e token=android.os.BinderProxy@2f6e5d5 {com.termux/com.termux.app.TermuxActivity}} token= android.os.BinderProxy@2f6e5d5
+05-01 18:05:45.353 30387 30387 I ActivityManager_activity: Resuming ActivityRecord{878f28e token=android.os.BinderProxy@2f6e5d5 {com.termux/com.termux.app.TermuxActivity}} with isForward=true,forwardBitChanged=false onlyLocalRequest=false
+05-01 18:05:45.509 30387 30387 I ActivityManager_activity: Reporting idle of ActivityRecord{878f28e token=android.os.BinderProxy@2f6e5d5 {com.termux/com.termux.app.TermuxActivity}} finished=false
+05-01 18:11:39.077 30387 30387 I ActivityManager_activity: Resuming ActivityRecord{878f28e token=android.os.BinderProxy@2f6e5d5 {com.termux/com.termux.app.TermuxActivity}} with isForward=false,forwardBitChanged=false onlyLocalRequest=false
+--------- beginning of main
+05-01 18:11:39.087 30387 30410 D mali_winsys: EGLint new_window_surface(egl_winsys_display*, void*, EGLSurface, EGLConfig, egl_winsys_surface**, egl_color_buffer_format*, EGLBoolean) returns 0x3000
+05-01 18:11:39.185 30387 30387 I ActivityManager_activity: Reporting idle of ActivityRecord{878f28e token=android.os.BinderProxy@2f6e5d5 {com.termux/com.termux.app.TermuxActivity}} finished=false
+05-01 18:11:57.987 30387 30387 V AudioManager: playSoundEffect   effectType: 0
+05-01 18:11:57.987 30387 30387 V AudioManager: querySoundEffectsEnabled...
+05-01 18:11:58.048 30387 30387 D HwRTBlurUtils: check blur style for HwToast-Toast, themeResId : 0x7f0c0006, context : com.termux.app.TermuxActivity@bcbd990, Nhwext : 5, get Blur : disable with , null
+05-01 18:11:58.139 30387 30410 D mali_winsys: EGLint new_window_surface(egl_winsys_display*, void*, EGLSurface, EGLConfig, egl_winsys_surface**, egl_color_buffer_format*, EGLBoolean) returns 0x3000
+05-01 18:12:06.757 30387 30387 V AudioManager: playSoundEffect   effectType: 0
+05-01 18:12:06.757 30387 30387 V AudioManager: querySoundEffectsEnabled...
+05-01 18:12:06.760 30387 30387 D HwRTBlurUtils: check blur style for HwToast-Toast, themeResId : 0x7f0c0006, context : com.termux.app.TermuxActivity@bcbd990, Nhwext : 5, get Blur : disable with , null
+05-01 18:12:06.840 30387 30410 D mali_winsys: EGLint new_window_surface(egl_winsys_display*, void*, EGLSurface, EGLConfig, egl_winsys_surface**, egl_color_buffer_format*, EGLBoolean) returns 0x3000
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:resource user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:group user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:id user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:id user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:name user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:name user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:define user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:define user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:description user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:description user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:group user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:group user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:id user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:id user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:name user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:name user:455708712
+05-01 18:12:23.345 31758 31758 E XmlParser: startElement mResult:1024
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:define user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:description user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:description user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:group user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:group user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:id user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:id user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:name user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:name user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:define user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:define user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:description user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:description user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:group user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:resource user:455708712
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:resource user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:group user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:id user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:id user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:name user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:name user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:define user:0
+05-01 18:12:23.345 31758 31758 E XmlParser: startElement mResult:2097152
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:define user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:description user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:description user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:group user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:group user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:id user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:id user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:name user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:name user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:define user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:define user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:description user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:description user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:group user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:group user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:id user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:id user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:name user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:name user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:define user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:define user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: startElement itemName:description user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:description user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:group user:0
+05-01 18:12:23.345 31758 31758 I XmlParser: endElement itemName:resource user:0
+05-01 18:12:23.345 31758 31758 I libEGL  : egl_cache_t() maxKeySize:1024  maxTotalSize:2097152
+05-01 18:12:23.345 31758 31758 D libfingersense_wrapper: Initializing libfingersense_wrapper...
+05-01 18:12:23.356 31758 31758 D libfingersense_wrapper: libfingersense_wrapper initialized
+05-01 18:12:23.415 31758 31758 I appproc : CLASSPATH=/data/data/com.termux/files/usr/libexec/termux-am/am.apk
+05-01 18:12:23.415 31758 31758 I appproc : Command=/system/bin/app_process / com.example.termuxam.Am broadcast --user 0 -n com.termux.api/.TermuxApiReceiver --es socket_input 8e46ba0be9c492e2-7c0d-44a0-a1fe-b835d805a3b2e963bde47dc9 --es socket_output d5ba696ca52bed63-7c0d-498a-bbc2-c270bb2c105e8b9d36457300 --es api_method CameraInfo
+05-01 18:12:23.415 31758 31758 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 10478 <<<<<<
+05-01 18:12:23.428 31758 31758 D AndroidRuntime: CheckJNI is OFF
+05-01 18:12:23.429 31758 31758 I AndroidRuntime: readDownloadBoosterConfig: 'false'
+05-01 18:12:23.722 31758 31758 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+05-01 18:12:23.766 31758 31758 I art     : Reinit property: dalvik.vm.checkjni= false
+05-01 18:12:23.783 31758 31758 V HwFrameworkFactory: : successes to get AllImpl object and return....
+05-01 18:12:23.811 31758 31758 I HWSERVICES: hwnative_get_component_register:libdrmbitmap,JNI
+05-01 18:12:23.828 31758 31758 I Radio-JNI: register_android_hardware_Radio DONE
+05-01 18:12:23.842 31758 31758 I android_hardware_fm.cpp: register_android_hardware_fm_fmradio
+05-01 18:12:23.842 31758 31758 I android_hardware_fm.cpp: ========64bit long size = 8
+05-01 18:12:23.842 31758 31758 I android_hardware_fm.cpp: FM: get chip type = bcm43xx
+05-01 18:12:23.847 31758 31758 E fm_if.c : find the id:fm and begins to open the devices
+05-01 18:12:23.847 31758 31758 D fm_if.c : device open sucess, func:fm_device_open,line:1949,ret:0
+05-01 18:12:23.850 31758 31758 I android_hardware_fm.cpp: register_android_hardware_fm_fmradio, ret is 0
+05-01 18:12:23.922 31758 31758 D AndroidRuntime: Calling main entry com.example.termuxam.Am
+05-01 18:12:23.924 31758 31765 E SchedPolicy: open of dev/cpuctl/limit_fg/tasks failed: No such file or directory
+05-01 18:12:23.924 31758 31765 E SchedPolicy: open of dev/cpuctl/bg_non_interactive/limit_bg/tasks failed: No such file or directory
+05-01 18:12:24.013 31758 31758 D AndroidRuntime: Shutting down VM
+05-01 18:12:25.193 30387 30387 V AudioManager: playSoundEffect   effectType: 0
+05-01 18:12:25.193 30387 30387 V AudioManager: querySoundEffectsEnabled...
+05-01 18:12:25.195 30387 30387 D HwRTBlurUtils: check blur style for HwToast-Toast, themeResId : 0x7f0c0006, context : com.termux.app.TermuxActivity@bcbd990, Nhwext : 5, get Blur : disable with , null
+05-01 18:12:25.287 30387 30410 D mali_winsys: EGLint new_window_surface(egl_winsys_display*, void*, EGLSurface, EGLConfig, egl_winsys_surface**, egl_color_buffer_format*, EGLBoolean) returns 0x3000
+05-01 18:13:46.920 30387 30387 E ViewDragHelper: Ignoring pointerId=0 because ACTION_DOWN was not received for this pointer before ACTION_MOVE. It likely happened because  ViewDragHelper did not receive all the events in the event stream.
+05-01 18:13:46.920 30387 30387 E ViewDragHelper: Ignoring pointerId=0 because ACTION_DOWN was not received for this pointer before ACTION_MOVE. It likely happened because  ViewDragHelper did not receive all the events in the event stream.
+05-01 18:13:46.920 30387 30387 E ViewDragHelper: Ignoring pointerId=0 because ACTION_DOWN was not received for this pointer before ACTION_MOVE. It likely happened because  ViewDragHelper did not receive all the events in the event stream.
+05-01 18:13:46.920 30387 30387 E ViewDragHelper: Ignoring pointerId=0 because ACTION_DOWN was not received for this pointer before ACTION_MOVE. It likely happened because  ViewDragHelper did not receive all the events in the event stream.
+05-01 18:13:46.920 30387 30387 I Choreographer: Skipped 37 frames!  The application may be doing too much work on its main thread.
+05-01 18:13:47.072 30387 30410 D mali_winsys: EGLint new_window_surface(egl_winsys_display*, void*, EGLSurface, EGLConfig, egl_winsys_surface**, egl_color_buffer_format*, EGLBoolean) returns 0x3000
+05-01 18:13:48.440 30387 30410 D mali_winsys: EGLint new_window_surface(egl_winsys_display*, void*, EGLSurface, EGLConfig, egl_winsys_surface**, egl_color_buffer_format*, EGLBoolean) returns 0x3000
+05-01 18:13:48.574 30387 30410 D mali_winsys: EGLint new_window_surface(egl_winsys_display*, void*, EGLSurface, EGLConfig, egl_winsys_surface**, egl_color_buffer_format*, EGLBoolean) returns 0x3000
+05-01 18:13:48.892 30387 30410 D mali_winsys: EGLint new_window_surface(egl_winsys_display*, void*, EGLSurface, EGLConfig, egl_winsys_surface**, egl_color_buffer_format*, EGLBoolean) returns 0x3000
+05-01 18:13:49.026 30387 30410 D mali_winsys: EGLint new_window_surface(egl_winsys_display*, void*, EGLSurface, EGLConfig, egl_winsys_surface**, egl_color_buffer_format*, EGLBoolean) returns 0x3000
+05-01 18:13:50.564 30387 30387 V AudioManager: playSoundEffect   effectType: 0
+05-01 18:13:50.564 30387 30387 V AudioManager: querySoundEffectsEnabled...
+05-01 18:13:50.704 30387 30410 D OpenGLRenderer: endAllActiveAnimators on 0x7e70f2c180 (RippleDrawable) with handle 0x7e70f12ec0
+05-01 18:13:52.375 30387 30387 W IInputConnectionWrapper: finishComposingText on inactive InputConnection
+05-01 18:13:52.390 30387 30387 W IInputConnectionWrapper: finishComposingText on inactive InputConnection
+05-01 18:13:52.390 30387 30387 W IInputConnectionWrapper: reportFullscreenMode on inexistent InputConnection
+05-01 18:13:52.390 30387 30387 W IInputConnectionWrapper: finishComposingText on inactive InputConnection
+read: unexpected EOF!
+$
+
+"
+termux/termux-api,closed,Where can i get sign key?,[],"Hi,
+
+Readme says: ""note that this app needs to be signed with the same key as the main Termux app for permissions to work"".
+Where can i get this sign key? I successfully build the app on ubuntu but i don't know how to sign unsigned apk...
+Please help"
+termux/termux-api,closed,F-Driod website and mobile app ~missing~ package name,[],"## I would suggest you rename _ALL_ of the modules by adding a plus sign to them
+
+>  **Termux+: <_module?_>**
+so that they will group properly see 2nd image below
+
+
+see **\~missing\~** on webpage
+https://f-droid.org/en/packages/com.termux.api/
+
+![screenshot](https://user-images.githubusercontent.com/20070053/38801940-bde75000-419d-11e8-9192-c3b048176a31.png)
+
+![termux01](https://user-images.githubusercontent.com/20070053/38802766-f07b1856-419f-11e8-9b74-d7f348fd9968.png)
+
+"
+termux/termux-api,closed,Wrong version of Termux API on F-Droid,[],"Hello,
+
+The version of [Termux API on F-Droid](https://f-droid.org/packages/com.termux.api/) does not match the version on the Google Play Store, and it is displayed under the name `Unknown` ...
+
+Do you know who manages the publication of the app?
+
+Thank you in advance,"
+termux/termux-api,closed,Fix possible crash in NotificationAPI from invalid LED color value,[],
+termux/termux-api,closed,Remove implemented features from ideas in readme / fix typo,[],
+termux/termux-api,closed,add song name to termux-media-player info,[],
+termux/termux-api,closed,newly added apis not working ,[],"termux-media-player and termux-torch are not working.
+
+aarch64 "
+termux/termux-api,closed,MediaPlayerAPI: some more minor improvements,[],
+termux/termux-api,closed,Add WallpaperAPI,[],"Adds implementation for requested feature #106 
+See https://github.com/termux/termux-api-package/pull/14 for script to call API"
+termux/termux-api,closed,Add MicRecorderAPI,[],"Adds implementation for requested feature #74  
+Please see https://github.com/termux/termux-api-package/pull/12 for the accompanying script to call API"
+termux/termux-api,closed,Fix incorrect error message display / crash when playing subsequent track,[],
+termux/termux-api,closed,MediaPlayerApi playHandler: don't always print failure,[],"the `player.isPlaying()` call was completing before the `player.prepareAsync()` call, returning `""Failed to play: ""` despite playing the file, so i changed it to just `player.prepare()`"
+termux/termux-api,closed,AudioAPI: updates for AudioTrack methods,[],"There are several changes in the commit:
+
+1. Use instance methods to get sample rate and buffer size info
+on Android N or above only instead of Android M, since both
+AudioAttributes.FLAG_LOW_LATENCY (256) and the implicitly used
+AudioFormat.SAMPLE_RATE_UNSPECIFIED (0) are available only since
+API 24 (N).
+
+2. Use setPerformanceMode() on Android O, as FLAG_LOW_LATENCY is
+deprecated since API 26 (O).
+
+3. Create AudioTrack instance of both the fast (LOW_LATENCY) and
+deep buffer (POWER_SAVING) mixer path. The two paths can be using
+different subdevices on different rate and buffer size (or same
+subdevice on same rate but different buffer size). For example on
+my phone:
+
+AUDIOTRACK_SAMPLE_RATE: 192000
+AUDIOTRACK_BUFFER_SIZE_IN_FRAMES: 23046
+AUDIOTRACK_SAMPLE_RATE_LOW_LATENCY: 48000
+AUDIOTRACK_BUFFER_SIZE_IN_FRAMES_LOW_LATENCY: 192
+
+4. Get info on sample rate with the getNativeOutputSampleRate()
+static method (static in Java's sense; the value is still sink-
+based) on builds older than N only. The rate appears to be of the
+fast (LOW_LATENCY) mixer path if it is available.
+
+5. A note on the static method getMinBufferSize(). The reason it
+is not used even for older devices is, it returns buffer size info
+of the deep buffer (POWER_SAVING) mixer path, while NOSR is the
+rate of the fast (LOW_LATENCY) mixer path, so the value we can get
+with it is not always sensical."
+termux/termux-api,closed,MediaPlayerAPI: calling it without any argument could crash the API app,[],"i.e. `$PREFIX/libexec/termux-api MediaPlayer`
+
+The API would crash because:
+```
+java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String java.lang.String.toUpperCase()' on a null object reference
+```
+
+Note that it would probably crash even if `command` is `switch`ed without `toUpperCase`.
+
+Btw, what's the point of the `toUpperCase` anyway?
+
+@dkramer95 "
+termux/termux-api,closed,MediaPlayerAPI: remove extension pattern check,[],There are way more possibilities and extension doesn't guarantee anything about the file.
+termux/termux-api,closed,FIX playing media files w/ spaces in name,[],
+termux/termux-api,closed,turmyx: a python-based launcher for termux-url-opener and termux-file-editor ,[],"FYI. I'v been working on that idea for a couple of days: https://github.com/isman7/turmyx
+
+I plan to introduce termux-api some how trying to automate the parser.
+
+Ismael"
+termux/termux-api,closed,termux-api error,[],"$ pkg install termux-api
+Ign:1 https://hax4us.github.io/termux-tools termux InRelease
+Hit:2 https://termux.net stable InRelease
+Hit:3 https://hax4us.github.io/termux-tools termux Release
+Ign:4 https://hax4us.github.io/termux-tools termux Release.gpg
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+All packages are up to date.
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+E: Unable to locate package termux-api
+
+
+Help me please"
+termux/termux-api,closed,termux-media-player doesn't allow file paths with spaces,[],
+termux/termux-api,open,Sending too many sms messages...,[],It would be nice if it was possible to ask for permission (to send lots of sms) before the sms is sent. I tried to do it just now and had a pop up that had to be allowed explicitly after the script had started. 
+termux/termux-api,closed,Add SensorAPI,[],"Attached is the accompanying script to call the SensorAPI along with the manifest to create a termux-api package.
+
+[termux-sensor.zip](https://github.com/termux/termux-api/files/1866600/termux-sensor.zip)
+"
+termux/termux-api,closed,Add MediaPlayerAPI,[],"Attached is the accompanying script to call the MediaPlayerAPI along with manifest to create termux-api package.
+
+[termux_media_player.zip](https://github.com/termux/termux-api/files/1844929/termux_media_player.zip)
+"
+termux/termux-api,closed,AudioAPI: fix build-time error,[],"at:
+
+out.name(""AUDIOTRACK_BUFFER_SIZE_IN_FRAMES"").value(bs);
+
+Not sure if it's the best way but it should work for now"
+termux/termux-api,open,termux-tts-speak heard by other party during phone call,[],"On two phones, both running android 6.x, this behavior is different.
+
+On phone 1, if termux-tts-speak overlaps with a call, I hear it locally but the remote party doesn't hear it. This behavior is desirable for my purpose.
+
+On phone 2, under the same scenario, remote party gets to hear whatever I hear from tts locally, which is undesirable for my purpose.
+
+Speech engine in use is Google TTS.
+
+I tried using all -s options of termux-tts-speak on phone 2 which did not help. Either the behavior doesn't change or the sound doesn't play at all.
+
+Would appreciate help with any workaround at either android settings or tts engine or at termux api level."
+termux/termux-api,open,termux-storage-get: output to stdout,[],"i tried running `termux-storage-get - | xxd` to get a hexdump of a file on an external flash drive, and nothing was written to stdout or a file named ""-"" (hopefully it wasn't written anywhere else), but no error was returned"
+termux/termux-api,open,termux-sms-send doesn't work with third party app,[],"A peculiar setup forces me to use an app provider by cellular provider (app Jio4gVoice by provider Jio, India). The SIM card is placed in a mifi router via which only the provider's app can send SMSes. I have to use this arrangement as my phone is not VoLTE compatible.
+
+I think, in theory termux-sms-send should be able to talk with any default SMS app. But that's not happening with above app. Are there any things / work arounds that I can try?
+
+E.g I tried switching the SMS app to stock default app - though it can't actually send SMS, it might at least save it as a draft and then I can switch the app again to above one to send the draft. But termux-sms-send does not seem to work that way (i.e. save a draft if it could not send)."
+termux/termux-api,closed,Add support for using termux-api from chroot environment,[],I tried mounting $PREFIX/usr to my chroot environment and then running termux-share . But it failed. Can termux-api features be used inside chroot environment?
+termux/termux-api,closed,Termux not install,[],how to solve the termok stuck in install
+termux/termux-api,closed,Airplane mode ,[],Is there any chance Termux api is able to control phone’s airplane mode turn on/off.
+termux/termux-api,closed,Adds TorchAPI implementation,[],"Per one of the ideas listed, this is adds an implementation for toggling the LED flash on a device. I have also implemented the package script needed to call the API, which I've attached here. Or if you'd rather, I can submit a PR to the termux-api-package repo as well.
+[termux-torch.zip](https://github.com/termux/termux-api/files/1734406/termux-torch.zip)
+"
+termux/termux-api,closed,Suddenly unable to 'su' ,[],"On LineageOS 13, HTC One M9, I'm suddenly not able to su anymore. It used to work though...
+
+```
+u0_a159@localhost ~ % which su
+/data/data/com.termux/files/usr/bin/su
+u0_a159@localhost ~ % su
+CANNOT LINK EXECUTABLE: ""/data/data/com.termux/files/usr/lib/libtermux-exec.so"" is 32-bit instead of 64-bit
+page record for 0x7f9b746010 was not found (block_size=64)
+u0_a159@localhost ~ % /system/xbin/su
+CANNOT LINK EXECUTABLE: ""/data/data/com.termux/files/usr/lib/libtermux-exec.so"" is 32-bit instead of 64-bit
+page record for 0x7f8a34e050 was not found (block_size=64)
+u0_a159@localhost ~ %
+```"
+termux/termux-api,closed,Add more ideas,[],
+termux/termux-api,closed,AudioAPI: avoid redundant code,[],
+termux/termux-api,closed,termux-notification not doing anything,[],"Hi
+after upgrading oreo termux-api didn't working for me. but after updating termux-am its working. but still termux-notification not working.
+
+![image](https://transfer.sh/gWj1Y/termux-notification.gif)
+
+kindly help me plz"
+termux/termux-api,closed,API command request: launch-activity,[],Launching external activities would be a huge boost to device-automation capatibilities of termux-api.
+termux/termux-api,closed,Feature request: Call log API,[],Can someone implement the API to access the call log as `termux-sms-inbox` did for SMS records? I need this because I want to host a Pushbullet-like server myself to synchronize all my SMS and call log with simple python script. I have no android development experience or I will do that myself. Thanks in advance.
+termux/termux-api,closed,termux-notification - missing executable error,[],"I noticed with the latest update that I don't seem to be able to send notifications anymore, it gives the below error:
+
+```
+execv(""/data/data/com.termux/files/usr/bin/am""): No such file or directory
+
+```
+
+I have a bash script I run that calls both `termux-notification` and `termux-toast`, and both are giving me that error message. Running LineageOS 14.1-20180205-NIGHTLY for Nexus 5x.
+
+Cheers"
+termux/termux-api,closed,Audiotrack,[],adds bluetooth and headset info and other stuff... 
+termux/termux-api,open,Can the hotspot option be controlled with Termux?,[],"The hotspot option is an awesome option in modern day smartphones.  It's functionality is limited in  Android.  For example, a data connection is required to activate it.  Can Termux overcome this Android limitation?  What are the methods to accomplish wifi-hotspot control in Termux?  "
+termux/termux-api,closed,Almost always ~1 second delay before doing anything,[],"For multiple commands.
+
+```
+bash-4.4$ time termux-vibrate -d100
+
+real	0m1.024s
+user	0m0.037s
+sys	0m0.003s
+bash-4.4$ time termux-vibrate -d2500
+
+real	0m1.032s
+user	0m0.040s
+sys	0m0.000s
+bash-4.4$ time termux-battery-status
+{
+  ""health"": ""GOOD"",
+  ""percentage"": 100,
+  ""plugged"": ""PLUGGED_AC"",
+  ""status"": ""FULL"",
+  ""temperature"": 21.700000762939453
+}
+
+real	0m1.131s
+user	0m0.017s
+sys	0m0.023s
+bash-4.4$ time termux-tts-engines
+[
+  {
+    ""name"": ""com.svox.pico"",
+    ""label"": ""Pico TTS"",
+    ""default"": true
+  }
+]
+real	0m1.054s
+user	0m0.027s
+sys	0m0.013s
+```
+
+Because it is so close to 1 second for all of them, I'm thinking there must be some 1 second delay somewhere in between Termux and Termux API."
+termux/termux-api,closed,gets info for fast_mixer,[],This allows pulseadio and probably other sound apps to use the defined sample rate to get fast mixer working. Which is lower latency and other benefits.   
+termux/termux-api,closed,termux-camera-photo: honor 4c dark photos ,[],"Using the latest termux and termux:api versions termux-camera-photo outputs very dark photos:
+
+<img src=""https://user-images.githubusercontent.com/18601048/35077016-ec6ab44c-fc1c-11e7-8ae0-950b706f333d.png"" width=""240px"">
+
+Actually if you up the contrast and brightness you can see a bit of it
+
+<img src=""https://user-images.githubusercontent.com/18601048/35077027-fa83660a-fc1c-11e7-81a1-7bcfca3f6e0f.png"" width=""240px"">
+"
+termux/termux-api,open,termux-camera-photo: empty file,[],"Hi.
+Straight to the problem: I have a script, that takes photo using both main and selfie camera. Selfie camera gives me output every time, but the main one almost never. When I execute `termux-camera-photo x.jpg` manually, I get desired JPEG - this does not happen when I run it via script. That way it only creates 0-byte file.
+
+Android 7.0 aarch64, DOOGEE MIX, bash 4.4.12, termux 0.59
+
+As you can see, there can be nothing wrong with the script:
+```
+cd $HOME/storage/dcim
+termux-camera-photo 0.jpg
+termux-camera-photo -c 1 1.jpg
+```"
+termux/termux-api,closed,Add MediaScannerAPI,[],"As I commented in https://github.com/termux/termux-api/issues/70#issuecomment-353309222, this PR implements a interface to the [media scanner service](https://developer.android.com/reference/android/media/MediaScannerConnection.html).
+
+A `termux-media-scan` script is available for testing in [this gist](https://gist.github.com/brunelli/74dff084356c0852685dea6284111ea1), and I plan to open a PR in [termux/termux-api-package](https://github.com/termux/termux-api-package) if okayed.
+
+```
+Usage: termux-media-scan [-v] [-r] file [file...]
+Scan the specified file(s) and add it to the media content provider.""
+  -r  scan directories recursively""
+  -v  verbose mode
+```
+
+Fixes #70."
+termux/termux-api,open,Add permission android.permission.INSTALL_PACKAGES,[],This requires for pm install <apk_file>
+termux/termux-api,open,termux-storage-get does nothing,[],"I am using a Google Pixelbook and have installed Termux.  I have also invoked termux-setup-storage and I have installed the termux-api.  
+
+My goal is to use termux-storage-get
+
+However, when I invoke termux-storage-get temp.txt  nothing happens.  I just see an empty line, and I have to enter ctrl-Z to get back to the command prompt.
+
+I have posted a question on the forum requesting assistance, and the most recent recommendation was to post an issue here.  See details of that thread at https://plus.google.com/u/0/106844796122727433808/posts/PV4mvAR2iSb?cfem=1
+
+So please try to successfully invoke termux-storage-get on a Pixelbook or Chromebook that has Termux installed and that has the termux-api installed,
+
+If there is a flaw in the implementation of termux-storage-get please fix it.
+
+Also, it would be helpful to have some detailed examples of how to properly use termux-storage-get
+
+
+"
+termux/termux-api,closed,termux-notification --content '*' does globbing ,[],"I just got an E-Mail from Imgur with the title ""** NOTICE OF DATA BREACH **"", but the notification that it showed on my device was just a list of my files. `termux-notification --content '*'` shouldn't be doing that since the `*`s are inside single quotes. "
+termux/termux-api,open,Node.js wrapper,[],I've coded a node.js pratical wrapper around the termux-api: https://github.com/roccomuso/termux
+termux/termux-api,open,Add alternate termux-sms-send method?  Feature Request.,[],"I'm new to termux and find it amazingly useful.  One problem I'm having is that super low cost carriers that try to  do as much as possible with voip (Freedompop for example) instead of using the cell networks seem to run their messanging apps in ""parallel"" to the default Android Messenger and thus termux-sms-send messages end up in Android Messenger instead of the app that would actually send them.  I see them in the conversation ""history"" but they never get sent, despite the proprietary messaging being set as the default. 
+
+Would it be possible to add an alternate termux method, say something like termux-sms-sendx , or a command line option switch to use Implicit Intents as an alternative to using the SMS Manager API?  
+
+I found this code snippet for using implicit intends:
+```
+String phoneNumber = ""9999999999"";
+String smsBody = ""This is an SMS!"";
+
+// Add the phone number in the data
+Uri uri = Uri.parse(""smsto:"" + phoneNumber);
+// Create intent with the action and data
+Intent smsIntent = new Intent(Intent.ACTION_SENDTO, uri);
+// smsIntent.setData(uri); // We just set the data in the constructor above
+// Set the message
+smsIntent.putExtra(""sms_body"", smsBody);
+
+startActivity(smsIntent);
+```
+
+I don't know how you'd specify the alternate app.  
+
+I've never done any real Android programming although years ago at the Android 2.4 level, I did write a java method to talk to a proprietary device over Bluetooth to stream the data to Android, a real Android programmer used it -- he didn't understand the external device, I didn't understand Android, it was an efficient solution to the task.
+"
+termux/termux-api,closed,No Gyro,[],"
+thanks for the project ! 
+In the readme here accelerometer is already mentioned. Any idea when it is there ?
+I would contribute but sorry I am far to bad for that.."
+termux/termux-api,closed,Create ProximityAPI.java,[],
+termux/termux-api,closed,Fix termux-api.c link,[],
+termux/termux-api,closed,Update WiFiAPI to check if geolocate is enabled,[],Fix for https://github.com/termux/termux-packages/issues/1694
+termux/termux-api,closed,update permissions,[],https://github.com/termux/termux-api/pull/109
+termux/termux-api,open,Cannot copy text consisting only of whitespace,[],"## Abstract
+Strings consisting only of whitespace are not copied to the clipboard, and instead the clipboard is cleared.
+
+### Steps to reproduce
+
+```
+$ termux-clipboard-set TEST
+$ termux-clipboard get
+TEST
+$ printf '\r\n\r\t\n \r' | termux-clipboard set
+$ termux-clipboard-get
+```
+
+### Expected output
+A string identical to that passed to printf
+
+### Actual output
+A single newline"
+termux/termux-api,closed,termux-dialog: simple confirmation mode,[],A simple confirmation-like mode of termux-dialog would come in handy which does _not_ contain a text field. Together with #77 this could be used to query user confirmation.
+termux/termux-api,open,termux-notification: Get current notifications,[],"Would it be possible to query for currently displayed notifications?
+
+It could work as follows:
+
+```
+termux-notification-get --json
+```
+
+Result:
+
+```
+{
+{""appid"":""com.facebook.mlite"",""title"":""John Doe"",""content"":""Some content of the notification""},
+{""appid"":""com.maxmpz.audioplayer"",""title"":""After the Storm"",""content"":""Name of a song fex.""}
+}
+```
+"
+termux/termux-api,closed,Update TermuxApiPermissionActivity.java,[],Make permission request more friendlier
+termux/termux-api,open,Feature request: termux-sms-delete,[],"`deleteSMS(MainActivity.this, cid);`"
+termux/termux-api,closed,Installing or Uninstalling: Setting in Start via TCSAFLUSH for stdin failed,[],"When attempting to install or uninstall any package:
+$ pkg uninstall termux-api
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following packages will be REMOVED:
+  termux-api
+0 upgraded, 0 newly installed, 1 to remove and 0 not upgraded.
+After this operation, 152 kB disk space will be freed.
+Do you want to continue? [Y/n] y
+**E: Setting in Start via TCSAFLUSH for stdin failed! - tcsetattr (13: Permission denied)**
+(Reading database ... 1854 files and directories currently installed.)
+Removing termux-api (0.24) ...
+
+the install/uninstall appears to complete, but always with the above error.
+
+Google Pixel, 8.0.0"
+termux/termux-api,closed,"""termux-api"" feature request: change android wallpaper from Termux",[],"_From @OpnSrcConstruction on August 13, 2017 13:6_
+
+in a recent post on G+ Termux community, a community member asked if it was possible to change the Android background from Termux; and I though the Termux-api package might be a great way to implement that feature. This could lend itself to really cool Termux scripts to change the Android backgrounds. I was just looking at a package for Linux recently, that changes the wallpaper based on the weather; and if this feature were to be implemented it could make things like that and so much more possible from Termux.
+
+_Copied from original issue: termux/termux-packages#1263_"
+termux/termux-api,closed,Termux API doesn't work on Android O,"[Label(name=""bug report"")]","I get 
+`cmd: Can't find service: acitivity`
+for the following commands:
+`termux-battery-status`
+`termux-clipboard-get`
+`termux-clipboard-set`
+`termux-camera-info`
+`termux-contact-list`
+
+I have installed Termux API and I am running Android 8.0.0 Build number OPP4.170623.014 on Google Pixel C."
+termux/termux-api,closed,Setting and getting of volume for various streams,"[Label(name=""API command request"")]","It would be cool if we coul set the volume with the termux-api.
+Something like this:
+`termux-volume-set -s MEDIA 6`
+`termux-volume-get -s MEDIA`
+
+I think with that I could create a really neat graphical volume mixer (like alsamixer). 
+"
+termux/termux-api,closed,Fix link to termux-api-package,[],"Links to [termux/termux-api-package](https://github.com/termux/termux-api-package), instead of `termux-api` in [termux/termux-packages](https://github.com/termux/termux-packages/tree/master/packages/termux-api), as the current one doesn't contain the mentioned client scripts."
+termux/termux-api,open,Feature request : termux-sms-all,[],"Ik we have termux-sms-inbox, but it only cats out messages in inbox section, I was wondering if we can have outbox messages also to be cat out. Or at least create a file out of it, also itd nice if we could get feature to choose sim while using `termux-sms-send`"
+termux/termux-api,closed,Implemented Sensor API,[],"Now you can execute ``` ./../usr/libexec/termux-api SensorProximity``` in ```~``` to get the proximity sensor's data.
+If you have accepted my coding format, I can implement more sensors.
+
+Sensors available:
+* Accelerometer
+* Ambient Temperature
+* Light
+* Releative Humidity
+* Pressure
+* Proximity
+
+#58 #59 & README Todo list"
+termux/termux-api,open,How to use Speech to text receiver?,[],"how to use this ?
+https://github.com/termux/termux-api/blob/master/app/src/main/java/com/termux/api/SpeechToTextAPI.java"
+termux/termux-api,closed,Adding Wifi Network Support,[],"Looking to submit a pull request within the next day or two with added support for the WifiManager API.
+
+What [APIs](https://developer.android.com/reference/android/net/wifi/WifiManager.html) should it expose? There's quite a few, though I have no problem adding as many as possible. 
+"
+termux/termux-api,open,termux-location timeout?,[],"termux-location take a wile but I doesn't get a result or error...
+ I tried [-p provider] [-r request], too..."
+termux/termux-api,open,termux-location: Locks up when location is turned off,[],"Hi, thanks for making this amazing software.
+
+When running `termux-location` with location turned off (and the termux-api location permission turned on), the process locks up for several seconds. I would have expected it to fail.
+
+I'm using Android 7.1.2.
+
+EDIT: Running `termux-location -r last` yields the expected result (failing). Is the difference between the arguments to this option documented somewhere?"
+termux/termux-api,open,termux-sms-send : add an option for choosing SIM card,[],"On dual SIM phones, termux-sms-send can only send SMS with default SIM. Could be possible to add an option to use another SIM ?
+
+Example:
+
+```
+termux-sms-send -n 1234567890 ""text on SIM 1""
+termux-sms-send -s 2 -n 1234567890 ""text on SIM 2""
+```
+"
+termux/termux-api,closed,Wait for focus before taking photo,[],Would it be possible to wait for focus (or add an option to set it) while taking photo with termux-camera-photo?
+termux/termux-api,closed,GDB / TSU,[],"Hey,
+
+I try to run gdb on Termux with TSU to fix the Path.
+
+However I always get:
+
+data/data/com.termux/files/usr/bin/gdb: Permission denied.
+
+Any Solution? "
+termux/termux-api,closed,"termux-get-wakelock, or maybe fix shell/sleep?",[],"I have a script which is supposed to fetch an url every 10 minutes and uses sleep. Unless I acquire a wakelock for termux it won't work as expected but randomly sleep much longer. Getting the wakelock  manually is a hassle and easily forgotten..
+
+BTW I found that having a wakelock isn't a noticeable problem for battery life."
+termux/termux-api,open,termux-notification: allow action buttons work from lockscreen,[],"could it be doen? Perhaps this post is helpful:
+
+http://stackoverflow.com/questions/33724567/how-to-perform-notification-action-click-on-lock-screen"
+termux/termux-api,open,termux-open does nothing,[],"`termux-open-url` works fine, but `termux-open` does nothing. No output and the $status is `0`.
+
+There is a small delay though. I tried a png, a jpg and a txt, in `~/` and in `/`. 
+
+I'm not sure what additional diagnostic to provide. 
+
+    Termux version:
+    <=0.48
+    Installed Termux apps:
+    Updatable packages:
+    All packages up to date
+    System information:
+    Linux localhost 3.18.14-10780217 #1 SMP PREEMPT Fri Feb 24 13:45:03 KST 2017 aarch64 Android
+    Termux-packages arch:
+    aarch64
+    Android version:
+    7.0
+    Device manufacturer:
+    samsung
+    Device model:
+    SM-G935W8
+
+Also, running termux-info also printed:
+
+    android.os.DeadObjectException: Transaction failed on small parcel; remote process probably died
+        at android.os.BinderProxy.transactNative(Native Method)
+        at android.os.BinderProxy.transact(Binder.java:628)
+        at android.os.BinderProxy.shellCommand(Binder.java:675)
+        at com.android.commands.pm.Pm.runShellCommand(Pm.java:295)
+        at com.android.commands.pm.Pm.runList(Pm.java:644)
+        at com.android.commands.pm.Pm.run(Pm.java:130)
+        at com.android.commands.pm.Pm.main(Pm.java:99)
+        at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+        at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:301)"
+termux/termux-api,open,Protection information in termux-wifi-scaninfo,[],Would be great to know more information about hotspot like protection  method and range.
+termux/termux-api,closed,Termux-api doesn't work when running it under `termux-chroot`,"[Label(name=""bug report"")]","It just hangs forever like it does when the Termux:API package isn't installed
+
+```
+$ time termux-vibrate
+
+real    0m0.922s
+user    0m0.040s
+sys     0m0.000s
+$ termux-chroot
+$ time termux-vibrate
+^C
+
+real    0m10.236s
+user    0m0.000s
+sys     0m0.020s
+$
+```
+
+What is the reason for this and is there any way to make it work?"
+termux/termux-api,open,Bluetooth?,[],It would be nice if we can connect to bluetooth devices and send command via RFCOMM to the connected device. This makes it possible to connect to custom arduino hardware with bluetooth module. The possibility is endless! :D
+termux/termux-api,open,termux-tts-speak crashes when multiple instances are executed,[],"I have made a script that reads messages in a groupchat with different voices for different persons using termux, termux-tts-speak, acapela voices, ii, hangups, pickups inotifywait and a bash script of my own.
+
+It works okay, but if two people say something too soon after eachother, then two instances of termux-tts-speak will be executed at the same time and it seems to crash the whole voice synth thing.
+
+Is this a limitation of android? or is there some sort of bug in termux? If it is as i suspect a limitation of android, would it be possible to make termux-tts-speak check if another instance of itself is running before starting and if so it will wait a few seconds and try again until no other instances are running.
+
+Would be great because its annoying when it crashes if the script runs too soon or fast."
+termux/termux-api,open,NFC?,[],"Hi,
+
+I was wondering if it is possible to support the NFC features of Android in Termux. (https://developer.android.com/guide/topics/connectivity/nfc/index.html)
+It would be really nice to be able to read and emulate RFID chips :)"
+termux/termux-api,closed,No such file or directory,[],"I am trying to connect my android phone to a bluetooth module and find out which serial port is being assigned. However if I try:
+`ls /dev/tty*`
+I get ""No such file or directory. If I do:
+`ls /dev/tty`
+I get 
+
+> /dev/tty
+
+If I do 
+`ls /dev/tt*`
+I get ""No such file or directory"" again.
+
+How I can I find the port assigned?"
+termux/termux-api,open,termux-notification: More action buttons,"[Label(name=""enhancement"")]","Are 3 action buttons a hard-limit? I would like to use a few more. Since all my buttons are text-icons like `▶▶` I have more than enough space for at least a few more.
+![screenshot_20170410-090135](https://cloud.githubusercontent.com/assets/7983745/24849566/b1726f76-1dcc-11e7-804c-ac8092c968c0.png)
+Maybe this can be made dynamic? Otherwise I think I could use at least 10 (in Landscape mode). I would like to use this to emulate [Power toggles](https://play.google.com/store/apps/details?id=com.painless.pc) with Termux-API. I'd also like at least 2 more buttons for [Termux-Mpv](https://github.com/Neo-Oli/Termux-Mpv/)"
+termux/termux-api,closed,termux-notification: Error when --on-delete isn't specified,"[Label(name=""bug report"")]","There seems to be a problem with termux-notification after the last update. If the new `--on-delete` (which is great by the way) isn't specified there is an error. 
+```
+$ termux-notification -c ""test""
+/data/data/com.termux/files/usr/bin/termux-notification: line 98: OPT_ON_DELETE_ACTION: unbound variable
+$ termux-notification -c ""test"" --on-delete ""ls""
+```"
+termux/termux-api,open,Termux:API getting detected as malware [Trojan] by Avast,[],"[image](https://cloud.githubusercontent.com/assets/16361449/24846773/160d6540-1dbd-11e7-9d9b-ba58e09d9c30.png)
+Now I know this is probably a false positive, but this might scare off new users."
+termux/termux-api,closed,termux-notification: Action for dismissal of notification,"[Label(name=""enhancement"")]","I would like to be able to define an action for the dismissal of a notification. https://github.com/Neo-Oli/Termux-Mpv/issues/6 needs this. 
+I'm not sure this is even possible, I can't recall any app that does something when a notification is dismissed. "
+termux/termux-api,open,Feature request alarms to wake up the device,"[Label(name=""enhancement"")]","It would be nice to have the ability to set android alarms.
+I already tried rude ways of waking up the phone by writing directly to rtc device, but unfortunately it often does not work (as expected, because the rtc device is used by android itself, hence the conflict)."
+termux/termux-api,open,Feature request: simulate typing,"[Label(name=""API command request"")]","_From @helloworldsg on March 20, 2017 3:21_
+
+Understand there is a clipboard feature although copy-pasting would take a few steps.
+Is it technically possible to simulate on-screen typing via the termux-api ?
+
+_Copied from original issue: termux/termux-app#283_"
+termux/termux-api,closed,termux-dialog doesn't exit when back key is pressed. ,"[Label(name=""bug report"")]","When a termux-dialog box is open and you either press the back key or tap on the darked out area, it closes the dialog box but the process doesn't exit. It should probably be treated the same way as cancel (related #77). I want to use the dialog box from termux-notification actions, which leads to stuck background tasks. "
+termux/termux-api,closed,termux-dialog: Exit code when cancel is pressed,"[Label(name=""enhancement"")]","It would be nice if termux-dialog could have an exit code if ""cancel"" was pressed instead of ""ok"". It would be much easier to differentiate between empty input and canceling. "
+termux/termux-api,closed,Added Slovak translation,[],
+termux/termux-api,closed,Cell Data,"[Label(name=""enhancement"")]","Show GSM Tower data, SIM Card Data and anything else related to the Cell Modem"
+termux/termux-api,closed,Make it possible to record audio from the microphone to a file,"[Label(name=""API command request"")]",Perhaps something like `termux-microphone-record audio-file`?
+termux/termux-api,open,termux-contact-list: return all phone numbers,"[Label(name=""enhancement"")]","_From @rqcy on November 12, 2016 21:15_
+
+Hi, it would be cool, if termux-contact-list could return all phone numbers instead of just a single phone number per contact.
+
+_Copied from original issue: termux/termux-packages#553_"
+termux/termux-api,open,termux-sms-send - messages sent via Termux don't appear in standard SMS apps,"[Label(name=""enhancement"")]","I'm not an Android app developer, so I don't understand exactly how it all works, but it is to my understanding that there is an SMS database that standard SMS applications hook into.  I was wondering if there was any way that Termux could append sent SMS messages to this database so that the messages will appear in standard SMS applications."
+termux/termux-api,open,termux-sms-inbox - display sent SMS along with the received SMS,"[Label(name=""enhancement"")]",I guess this would be more of a feature request than a bug - I was wondering if there was any way that the inbox could show both sent and received messages?  I don't believe the functionality is currently built into the API to display sent messages.
+termux/termux-api,closed,termux-api-media-scan,"[Label(name=""API command request"")]","I have several scripts which manipulate picture galleries and need a way to initiate a media scan once the images are modified.
+
+When using am to send ACTION_MEDIA_MOUNTED or ACTION_MEDIA_SCANNER_SCAN_FILE I get a permission problem:
+`Broadcasting: Intent { act=android.intent.action.MEDIA_MOUNTED dat=file:///sdcard }
+java.lang.SecurityException: Permission Denial: broadcast asks to run as user -2 but is calling from user 0; this
+requires android.permission.INTERACT_ACROSS_USERS_FULL or android.permission.INTERACT_ACROSS_USERS`
+
+Either this permission should be added or some dedicated primitive to termux-api, see also http://droidyue.com/blog/2014/01/19/scan-media-files-in-android/ for some info."
+termux/termux-api,open,Preserve filename when using termux-storage-getfile,"[Label(name=""enhancement"")]","_From @omilu on February 19, 2017 16:27_
+
+The `termux-storage-getfile` mechanism gives no way to preserve the original filename.
+
+Is it possible to implement something to preserve the filename?? 
+
+For example, calling `termux-storage-getfile` without a destination filename, causes the script to create a file with the same name of the file that is selected in the popup and copies into it.
+
+Even better if `termux-storage-getfile` is enhanced so it can select multiple files at once, instead of one at a time.
+
+_Copied from original issue: termux/termux-app#257_"
+termux/termux-api,open,termux-storage-getfile returns immediately,"[Label(name=""bug report"")]","_From @omilu on February 19, 2017 17:5_
+
+`termux-storage-getfile` returns immediately.  This makes it hard to use in a script because the script continues before the user has selected a file from the dialog.  `termux-storage-getfile` should only return after the user has selected a file, and should have return value to indicate if user cancelled operation or not.
+
+_Copied from original issue: termux/termux-app#258_"
+termux/termux-api,closed,termux-tts-speak: Use STREAM_MUSIC as default stream,[],This fixes #66.
+termux/termux-api,closed,termux-tts-speak: default stream is silent when ring volume set to minimum (or vibrate): please use default TTS stream as in AOSP,[],"When I have my phone's ringtone volume dialled all the way down (vibrate only) and try to speak something with `termux-tts-speak` without specifying a stream, I get no sound.
+Luckily, I discovered I could get audible speech when I up the ringtone volume a bit.
+
+When I searched around, I found this SO question: [What is the default audio stream of TTS?](http://stackoverflow.com/questions/6877272/what-is-the-default-audio-stream-of-tts)
+The accepted answer states that the default stream for speech in Android is `MUSIC`, while `termux-tts-speak` uses `NOTIFICATION`. I later found confirmation in AOSP source code, please see [TextToSpeech.java#283 in AOSP master](https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/speech/tts/TextToSpeech.java#283)
+
+Please consider making `MUSIC` the default stream for speech, Thanks in advance!"
+termux/termux-api,closed,Add android.permission.CALL_PHONE,[],I am trying to start a phone call like `/system/bin/service call phone 2 s16 1-808-456-XXXX` and get an error saying I need this permission. Could it be added? Would it work at all?
+termux/termux-api,closed,Clipboard commands freeze,[],"I'm having this same issue  https://github.com/termux/termux-api/issues/39, but I have installed the api app, apt updated and upgraded, apt installed termux-api 0.22, and restarted termux, to no avail. Moreover, this happens for all api commands, not just clipboard ones."
+termux/termux-api,open,termux-api is slow. ,"[Label(name=""bug report"")]","The termux-api commands are rather slow. 
+```
+$ time termux-notification --content ""test""
+termux-notification --content ""test""  0.08s user 0.01s system 9% cpu 0.992 total
+```
+Is there anything that can be done to speed things up?
+It is most noticable when updating notifications with rapidly changing content or for programs that interface with the clipboard a lot. 
+
+"
+termux/termux-api,open,Termux-notification: Make notification permanent,"[Label(name=""enhancement"")]",It woule be great if there could be a switch for `termux-notification` to have the notification pinned. Only to be removed with `termux-notification-remove`. It could be used to indicate running processes. Like backup scripts or media playback (https://github.com/Neo-Oli/Termux-Mpv)
+termux/termux-api,open,Media Button Receiver,"[Label(name=""API command request"")]","We talked about this on the IRC before. 
+A command that would register itself as Media Key Receiver, so that the Play/Pause, Next and Back could be captured. It would probably make sense if it would just print something like ""KEY_NEXT"" (but as close to the Android API as possible) to stdout. 
+"
+termux/termux-api,open,Termux-notification: Add image.,"[Label(name=""enhancement"")]","Certain apps, mostly audio players, have pictures in the notifications. These pictures are then set as lock screen wallpapers.
+Example: Pocket casts
+![screenshot_20170130-185604](https://cloud.githubusercontent.com/assets/7983745/22434883/35326b3a-e71e-11e6-9268-e4e6d6b59753.png)
+
+I'd like for this to be added to the termux-notification api.
+Specifically I would use this in [Termux-Mpv](https://github.com/Neo-Oli/Termux-Mpv) to display album-art"
+termux/termux-api,closed,Update for AccelerometerAPI.java,[],Reject this change if AccelerometerAPI.java is rejected.
+termux/termux-api,closed,Create AccelerometerAPI.java,[],My Java scripting is extremely bad. There might be a lot of bugs in this file. Please carefully check it before merging. Thanks.
+termux/termux-api,closed,Correct Typo,[],"""Overhead"" changed to ""Overheat"""
+termux/termux-api,closed,API Command Request: Intents,"[Label(name=""API command request"")]",
+termux/termux-api,open,API Command Request: Audio stream,"[Label(name=""API command request"")]",
+termux/termux-api,open,API Command Request: Video stream,"[Label(name=""API command request"")]",
+termux/termux-api,closed,Can't install Termux:Api from google play on Nougat. ,[],"I've tried to install **Termux:Api** on a rooted Nexus 6P running Nougat (`7.1.1 Build NMF26F`). 
+I've tried rebooting and clearing google play cache. To no avail. 
+Google Play issues the following errorcode `-505`, which to my understanding is a catch-all for various errors. 
+The device has sufficient storage memory.
+The same happens when trying to install **Termux:Task** on that device. 
+"
+termux/termux-api,open,"termux-camera-photo: black picture output (oneplus 3T, android 6.0.1)","[Label(name=""bug report"")]","termux-camera-photo pruduces black picture output (jpeg file size ~250-300 kb).
+The issue only happens with termux-api v0.11 and v0.10.
+Version 0.9 works fine and produces good photo."
+termux/termux-api,open,API request for screenshots,"[Label(name=""API command request"")]","Is there any plan to add a screenshot API,  which I think will be really useful. I know there's an screencap command but that requires root privilege. 
+Cheers!"
+termux/termux-api,closed,Control notification led,"[Label(name=""API command request"")]","I would like to have a command to control the notification led. I would want to be able to toggle it, set it to blink and choose color. 
+There is an interface in /sys/class/leds but it requires root. "
+termux/termux-api,open,Idea/Question: REST-API,"[Label(name=""enhancement"")]","I like to make/have termux-api available via REST, for example:
+
+Android: 
+```
+% termux-rest &
+```
+PC:
+```
+% curl 'http://192.168.2.100:8091/camera-photo?c=1'
+```
+retrieves JPEG direct
+
+```
+% curl http://192.168.2.100:8091/camera-info
+```
+retrieves JSON
+
+etc. essentially  `http://x.x.x.x:port/(\w+)?(.+)` -> `termux-$1 $2` (with some proper argument parsing)
+
+**Question**: what would be the easiest way (programming framework) to implement this lightweight http server providing the functionality?
+
+I quickly coded (2hr) perl script which implements basic web-server which calls termux-* (with simple argument parsing) and takes output to return to http GET request, yet, it might be more suitable to use termux-api.c direct and put a small web-server into it, which connects to the internal API instead via termux-* -> termux-api -> am -> tcp.
+
+I like to probe multiple android phones for battery info (actually the battery temperature is what I care about) and take photos via REST, turning Android smartphones into IoT devices.
+
+My quick hack does this, accessing http://192.168.2.100:8091/ gives an overview of the services:
+```
+termux-rest (0.0.2) services:
+   battery-status
+   camera-info
+   camera-photo: c=<...>
+   location
+   telephony-cellinfo
+   telephony-deviceinfo
+   tts-engines
+   tts-speak: speak=<...>
+   vibrate
+```
+with `Content-Type: text/html`, each service listed is a link.
+
+and http://192.168.2.100:8091/battery-status:
+```
+{
+  ""health"": ""GOOD"",
+  ""percentage"": 97,
+  ""plugged"": ""UNPLUGGED"",
+  ""status"": ""DISCHARGING"",
+  ""temperature"": 23.600000381469727
+}
+```
+with `Content-Type: application/json` and CORS set so XHR JavaScript requests can be made.
+"
+termux/termux-api,closed,termux-camera-info raises error message on kindle fireos,"[Label(name=""bug report""), Label(name=""help wanted"")]","Calling termux-camera-info in my kindle 8"" fireos raises the following error message:
+
+`CANNOT LINK EXECUTABLE DEPENDENCIES: ""libandroid_runtime.so"" is 64-bit instead of 32-bit.` 
+
+Suggestions?"
+termux/termux-api,open,"termux-share shares the file as ""datastream""","[Label(name=""enhancement"")]","I thought of `termux-share` as `kde-open` or `gnome-open` or `cygstart`. However, its behavior is different. When I open a text file using `termux-share` (as in example below), my editor ([QuickEdit Pro](https://play.google.com/store/apps/details?id=com.rhmsoft.edit.pro&hl=en)) receives a file with url 
+content://com.termux.sharedfiles//storage/emulated/0/x.txt, which the editor app cannot save.
+However, when I locate the file in a file manager and then open it, the url is correct
+/storage/emulated/0/x.txt, and the editor app can save my changes.
+How can `termux-share` open files in other apps just like my file manager does.
+
+```
+$ ls
+x.txt
+$termux-share x.txt
+```
+"
+termux/termux-api,open,termux-camera-photo : wrong focusing & exposure mode resulting miserable picture quality?,"[Label(name=""enhancement"")]","Noticed that many pictures are with completely wrong focus and exposure.
+
+Is it possible that the first termux-camera-photo call sets focus & exposure and subsequent calls don't refocus?
+
+It might be an idea to create
+   termux-camera-focusmode mode [time]
+     mode: continous, infinity
+which would set the camera to the given mode for the given timespan.
+"
+termux/termux-api,closed,now able to send message longer than the maximum size,[],"When using this awesome app, I found that message length is limited, so I managed to find out this solution.
+Since I don't have any Java programming experience, it must be somewhat imperfect. Just improve it, plz :)
+"
+termux/termux-api,closed,I can't install termux-api,[],"When I install by executing ""apt install termux-ap"" it say ""Unable to locate package termux-api"".
+I install termux-api from Google Play.
+"
+termux/termux-api,closed,Added optional region and variant params to TTS intent,[],"Currently I can only specify the language in termux-tts-speak. Appending the region (e.g. en_GB) doesn't work because new Locale(String language) constructor is used.
+So actually one can only use american female voice and no other male or female english voices at the same time.
+See http://stackoverflow.com/questions/36681232/android-tts-male-voices for more information.
+This patch adds 2 optional parameters to intent for region and variant.
+"
+termux/termux-api,closed,request: termux-select for selecting from a list of entries,"[Label(name=""API command request"")]","Like `termux-dialog` but with a selection-box.
+"
+termux/termux-api,open,tts-speak: implement embedded speech commands,"[Label(name=""enhancement"")]","Apple tts has a nice sugarcandy which would be incredibly useful in shell scripts - the possibility to embed commands into the text such as [[emph +]],  [[slnc 6000]],  [[volm +0.4]]. Could also use [[beep duration pitch]] or [[play file.ogg]] which apple does not seem to have. 
+
+https://developer.apple.com/library/mac/documentation/UserExperience/Conceptual/SpeechSynthesisProgrammingGuide/FineTuning/FineTuning.html
+
+I found the Android Pico TTS supports it (Chapter 7 of its documentation) and a few related stackoverflow posts: 
+http://stackoverflow.com/questions/3495301/best-practice-for-specifying-pronunciation-for-android-tts-engine
+http://stackoverflow.com/questions/3495301/best-practice-for-specifying-pronunciation-for-android-tts-engine
+
+Not sure if it can work without speacial help of  termux-api?
+"
+termux/termux-api,closed,Feature request: remove item from clipboard,"[Label(name=""enhancement"")]","I would like to see an option on `termux-clipboard-set` or a new command that allows you to remove items from the clipboard. For example, when copying a password from pass, I want the password to be deleted from the clipboard after a certain amount of time.
+"
+termux/termux-api,closed,Clipboard commands hang,[],"When I pipe text into `termux-clipboard-set` or run `termux-clipboard-get`,  the command just hangs. To get my prompt back, I have to use ctrl-c. 
+"
+termux/termux-api,closed,Set Wake or Wifi lock from an API command,"[Label(name=""API command request"")]","This would be great for not having to take you phone out when connecting via SSH.
+"
+termux/termux-api,open,Rudimentary tools to write to the external sd card,"[Label(name=""API command request"")]","Hi, last year we talked about rudimentary tools to write to the external sd card using the API here: https://plus.google.com/u/0/112187690141583660341/posts/a7vMDeZUENs
+I am just opening this here to track it and so it doesn't get forgotten. 
+
+Something like `termux-cp`, `termux-mv` and `termux-rm` could be implemented into the API and the Java app can then do the proper calls to Android API and copy, move or delete the files. 
+"
+termux/termux-api,closed,Fixed unended JSON object for TelephonyDeviceInfo,[],"When writing the JSON object for TelephonyDeviceInfo there`s no end }.
+"
+termux/termux-api,open,termux-notification -u : set mime type,"[Label(name=""enhancement"")]","noticed that it won't set any mime type, this works for urls starting as ""http://"" but fails with ""file://"" . Setting mime to text/html makes that work.
+
+Perhaps an option to specify the mime type explicitly would good?
+"
+termux/termux-api,open,termux-fix-shebang : fails when incompatible cr/lf,"[Label(name=""bug report"")]","happened to share a script by email (k9mail) and the attachment was mangled to contain ""\r"" at line ends.
+
+termux-fix-shebang fixed the path but not the ""\r"", resulting in a rather ""mysterious"" error message.
+
+dos2unix fixed it.
+
+Btw.. isn't there some way to workaround to avoid needing to fix shebang paths at least for the primary shell?
+"
+termux/termux-api,open,receive arbitrary broadcasts?,"[Label(name=""API command request""), Label(name=""question"")]","would it be possible?
+"
+termux/termux-api,closed,termux-notification - multiline text content,"[Label(name=""question"")]","Tried the obvious, ""\n""  but doesn't work?
+"
+termux/termux-api,closed,termux-notification - call arbitrary termux commands?,"[Label(name=""enhancement""), Label(name=""question"")]","is there any way to execute commands when tapping a selection?
+"
+termux/termux-api,closed,/system/bin/sh: Permission denied,"[Label(name=""bug report"")]","I am using s5 version 5.0 , i am using rooted cell .when i try to execute make . Its saying permission denied.
+make: execvp: /system/bin/sh: Permission denied
+"
+termux/termux-api,closed,termux commands not responding,"[Label(name=""duplicate"")]","Hello
+
+I installed the termux application, installed the API from the app store, updated the app on the phone, installed the termux api inside the termux app. I cannot get any of the functions to run except for the -help function. When I try running the application I have the application that just sits there and does nothing.
+
+Android version: 5.0
+Phone: asus zenfone 2
+
+What should I try doing to get the functions to work.
+"
+termux/termux-api,closed,Failed  to update due to package writing more data than expected,"[Label(name=""bug report"")]","The issue being that I'm trying to update and will not go all the way through due to an error ""http://termux.net stable/main i686 Packages Writing more data than expected (186946 > 186906)"". I have tried to uninstall and reinstall, but no luck. Any help would helpful :).
+![screenshot_2016-07-21-08-57-59 1](https://cloud.githubusercontent.com/assets/20580172/17025442/8309467a-4f21-11e6-9353-8facb4086723.jpg)
+"
+termux/termux-api,open,Feature request: Hide / Show Keyboard,"[Label(name=""API command request"")]","Hi
+A command that would allow us to hide and show the software keyboard. 
+`termux-keyboard-show` / `termux-keyboard-hide` 
+
+This would allow for scripts that automatically go into 'fullscreen' at the start and show the keyboard again when it is done. 
+
+Additionally something like `termux-keyboard-visible` would also be very usefull, to check whether the keyboard is present to begin with.
+Example:
+
+```
+isKeyboardVisible=$(termux-keyboard-visible)
+termux-keyboard-hide
+./presentation.sh
+if [ $isKeyboardVisible ]; then
+  termux-keyboard-show
+endif
+```
+"
+termux/termux-api,closed,/system/bin/am: Permission denied,"[Label(name=""bug report"")]","Hi,
+
+I am using an lg g3 and not any custom rom and i did not rooted my device.
+I installed termux-api app and updated and upgraded my apt too. 
+However when i want to call any termux api command in the termux terminal, i see this error message:
+/data/data/com.termux/files/usr/bin/am: 3: exec: /system/bin/am: Permission denied
+"
+termux/termux-api,closed,Suggestion -  Tasker ,"[Label(name=""enhancement"")]","Using termux as a Tasker like apps plugin
+"
+termux/termux-api,closed,"termux-tts-speak has long delay, can we use a tts server instead?","[Label(name=""enhancement"")]","If we can start tts server beforehand, the delay could be minimized.
+"
+termux/termux-api,closed,"Feature Request: termux-dialog more dialogs / widgets / controls please! :) like list, multiselect list, etc","[Label(name=""enhancement"")]","Here is feature request for more widgets / controls / dialogs for `termux-dialog` . Like `dialog` unix ncourses equivalent offer multiple more options including: radio lists, multiple choice lists, ""menu"", progressbar, timebox, calendar (with --date-format option), etc... 
+
+I would appreciate arguments compatibility so script could easily switch between `dialog` and `termux-dialog` depending on tool availability.
+
+I am glad I can still use standard `dialog` unix tool and interact via touch on Android device, but how nice would it be to interact with potential user via native Android UI?
+
+Thankd a lot for whole work - so far enjoying `dialog` on Android :)
+"
+termux/termux-api,closed,Listen to incoming SMS?,[],"Hello! I would like to implement the following:
+When SMS arrives, my computer shows me a notification with it's text and sender.
+That's how I see the implementation: using termux, somehow listen to incoming sms, and if sms comes, parse termux-sms-inbox output and pipe it to netcat, on desktop listen to netcat and handle incoming info. Could you please give me a piece of advice on how to listen to incoming sms? Of course, I can run termux-sms-inbox regularly and compare output, but it doesn't seem to be an effective way of doing it. Thanks in advance.
+"
+termux/termux-api,closed,No response on Asus devices,"[Label(name=""bug report"")]","I have installed the App and the package, but when I run any command of the API it just blocks until I cancel it with CTRL-C.
+Displaying the help (-h) works though.
+"
+termux/termux-api,closed,"Various commands cut off after the first word. (termux-notification, termux-dialog)",[],"After update && upgrade, I found this behaviour:
+
+`termux-dialog -t ""Foo Bar""`
+->empty mask
+
+`termux-notification -c ""hello world"" -t ""foo bar""`
+->
+->hello world
+"
+termux/termux-api,closed,Need to check for and request runtime permissions on Android 6.0+,[],"Currently the api calls fails silently if a runtime permission is not granted. We need to change this to check for and if necessary request the permission at runtime.
+"
+termux/termux-api,closed,"Various commands cut off after the first word. (termux-clipboard-set, termux-notification, termux-dialog)",[],"Hi. I've noticed this today:
+
+```
+$ echo ""Hello World"" | termux-clipboard-set
+$ termux-clipboard-get
+Hello
+$ termux-clipboard-set ""Foo Bar""
+$ termux-clipboard-get
+Foo
+```
+"
+termux/termux-api,closed,access to gyroscope data via shell script,"[Label(name=""API command request"")]","_From @koppi on April 6, 2016 18:11_
+
+Is it possible to access the gyroscope data of the device via shell script?
+
+_Copied from original issue: termux/termux-packages#204_
+"
+termux/termux-api,closed,FYI: termux-api in Go!,[],"Hey folks,
+
+Thought you'd find this interesting; I rewrote in Go the C tool and scripts from the `termux-api` tools normally installed through apt to use this App. In theory, this means you can compile Go apps that make calls to `termux-api` to use the APIs from Go.
+
+Lots of it is completely untested, including things like ""sending Stdin down a Unix pipe"". Only some tools have been tested at all.
+
+Also, the struct values for SMS messages from SmsInbox and from TTS engines are currently unknown because I get no results for these on my phone (SMSsecure protects sms, and no TTS engines).
+
+Thanks for a great app, I'm looking forward to playing with pure-Go pseudo-apps thanks to Termux. :)
+"
+termux/termux-api,closed,termux-camera-photo produces empty file,[],"_From @destiny07 on March 27, 2016 8:31_
+
+`termux-camera-photo -c 0 pic1.jpg` produces a file of size 0B. When opened with gallery, it say's thumbnail cannot be retrieved. 
+
+_Copied from original issue: termux/termux-packages#185_
+"
+termux/termux-api,closed,termux-sms-send has no command-line option to feed a string to send as sms.,[],"Any possibility of adding a command line argument to take a string an send it to the recipient? Without this, the interface is unusable from any other program.
+"
+termux/termux-api,closed,termux-tts-speak volume cannot be adjusted,[],"The stream, AudioManager.STREAM_SYSTEM is not adjustable on my Android 5.0 Asus Fonepad through the volume control app. I tried adjusting the STREAM_SYSTEM volume manually through a Rhino JS tool (Scriptit), but although I can adjust the STREAM_MUSIC that way, STREAM_SYSTEM stays at full volume. 
+
+Other tts systems seem to use either STREAM_DEFAULT or STREAM_MUSIC. Are there constraints which cause termux to use STREAM_SYSTEM? 
+"
+termux/termux-api,closed,termux-api depends on /system/bin,[],"Hi. 
+The latest update of the main app broke the api. For example  `termux-battery-status`yields:
+""/system/bin/am[8]: app_process: not found""
+After adding `/system/bin` back to the $PATH will make it work again. 
+"
+termux/termux-api,closed,termux-camera-photo: back facing camera does not work,[],"Backwards facing camera, id 0,  produces empty file:
+
+`$ termux-camera-photo -c 0 camera0.jpg`
+`$ ls -l`
+`total 0`
+`-rw-------    1 u0_a260  u0_a260          0 Mar 21 15:32 camera0.jpg`
+
+Frontfacing camera, id 1, works just fine:
+
+`$ termux-camera-photo -c 1 camera1.jpg`
+`$ ls -l`
+`total 244`
+`-rw-------    1 u0_a260  u0_a260          0 Mar 21 15:32 camera0.jpg`
+`-rw-------    1 u0_a260  u0_a260     247734 Mar 21 15:33 camera1.jpg`
+
+Device: Samsung Galaxy S4 Active
+Model number: GT-I9295
+Android version: 5.0.1
+
+$ termux-camera-info 
+[
+  {
+    ""id"": ""0"",
+    ""facing"": ""back"",
+    ""jpeg_output_sizes"": [
+      {
+        ""width"": 3264,
+        ""height"": 2448
+      },
+      {
+        ""width"": 3264,
+        ""height"": 1836
+      },
+      {
+        ""width"": 2048,
+        ""height"": 1536
+      },
+      {
+        ""width"": 2048,
+        ""height"": 1152
+      },
+      {
+        ""width"": 1920,
+        ""height"": 1080
+      },
+      {
+        ""width"": 1280,
+        ""height"": 720
+      },
+      {
+        ""width"": 640,
+        ""height"": 480
+      }
+    ],
+    ""focal_lengths"": [
+      3.700000047683716
+    ],
+    ""auto_exposure_modes"": [
+      ""CONTROL_AE_MODE_ON"",
+      ""CONTROL_AE_MODE_ON_AUTO_FLASH"",
+      ""CONTROL_AE_MODE_ON_ALWAYS_FLASH""
+    ],
+    ""physical_size"": {
+      ""width"": 3.8357956409454346,
+      ""height"": 2.8777027130126953
+    },
+    ""capabilities"": [
+      ""backward_compatible""
+    ]
+  },
+  {
+    ""id"": ""1"",
+    ""facing"": ""front"",
+    ""jpeg_output_sizes"": [
+      {
+        ""width"": 1920,
+        ""height"": 1080
+      },
+      {
+        ""width"": 1440,
+        ""height"": 1080
+      },
+      {
+        ""width"": 1392,
+        ""height"": 1392
+      },
+      {
+        ""width"": 1280,
+        ""height"": 720
+      },
+      {
+        ""width"": 960,
+        ""height"": 720
+      },
+      {
+        ""width"": 640,
+        ""height"": 480
+      }
+    ],
+    ""focal_lengths"": [
+      1.850000023841858
+    ],
+    ""auto_exposure_modes"": [
+      ""CONTROL_AE_MODE_ON""
+    ],
+    ""physical_size"": {
+      ""width"": 0.03228941187262535,
+      ""height"": 0.03228941187262535
+    },
+    ""capabilities"": [
+      ""backward_compatible""
+    ]
+  }
+]
+"
+termux/termux-api,closed,README.md typofix: may -> made,[],
+termux/termux-api,closed,termux-location: empty output,"[Label(name=""question"")]","Already mentioned in g+:
+$ termux-location
+yields empty output
+$ termux-location -r last
+{
+""API_ERROR"": ""Failed to get location""
+}﻿
+
+Have same behaviour on two different devices both running CM12
+// don't have environment for debugging yet
+"
+termux/termux-api,closed,termux-clipboard-set doesn't work,[],"Hi,
+""termux-clipboard-set"" doesn't exit on my device. It seems to be stuck in a loop. It used to work before. 
+I've recorded it here: https://asciinema.org/a/esqy5c1yyxk6vv2nf7xl48ugk 
+"
+termux/termux-api,closed,PhotoAPI: Take sensor orientation into account.,[],"On a Nexus 5X, the old code would take pictures that were upside-down.
+Apparently, the Android device standards require that the long edge of the
+sensor must align with the long edge of the device, but doesn't say which of the
+two ways to satisfy this manufacturers should pick. This change makes PhotoAPI
+generate right-side-up pictures in both conditions.
+
+Tested on a Nexus 7 (second-gen) and a Nexus 5X.
+"
+termux/termux-api,closed,[question] Must be signed by same key as termux itself?,[],"I get an installation error about shared resources when installing. I suspect the app needs to be signed by the same key as termux itself?
+"
+termux/termux-api,closed,Wish: Command to play alert/notification sound,[],"I tried to find a existing global Android intend for this purpose but didn't discovered one. `termux-play` is already listed in the idea section and would be very appreciated. 
+"
+termux/termux-api,closed,Add license information,[],"I suspect it's GPLv3, but it would be nice to have that stated in the readme or a special license file.
+"
+termux/termux-api,closed,Not working on android 6.0,[],"All commands hang and never return on android6.0
+"
+termux/termux-api,closed,ctrl+shit++ key not increasing text size,[],"Not sure where else to post this. I don't have a G+ account (and never will).
+
+The sequence <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>+</kbd> is not working on my k810 bluetooth keyboard (tenkey less). I think since the <kbd>+</kbd> requires <kbd>shift</kbd> to register and <kbd>shift</kbd> is already being used for the sequence the text size increment is not registering.
+"
+termux/termux-api,closed,Shortcut to Open URLs,[],"Is it possible to map a keyboard shortcut to bring up the list of urls available to open? Alternatively, can we make termux work with this https://github.com/tmux-plugins/tmux-open ?
+"

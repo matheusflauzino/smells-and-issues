@@ -1,0 +1,1954 @@
+repository,state,title,label,body
+sozialhelden/wheelmap-android,open,Usage of outdated location,[],"This is a follow-up of [sozialhelden/wheelmap/#648](https://github.com/sozialhelden/wheelmap/issues/648) and following threads in the German OSM Forum:
+
+* [Immer wieder falsch positionierte Wheelmap - Eintragungen](https://forum.openstreetmap.org/viewtopic.php?id=59490)
+* [Warum wheelmap.org in München einfach so sauviel ""Spaß"" macht!](https://forum.openstreetmap.org/viewtopic.php?id=60363)
+* [Wieder mal falsch plazierte Wheelmap-POIs; diesmal: Halle (Saale)](https://forum.openstreetmap.org/viewtopic.php?id=61068)
+
+The OpenStreetMap community still observes new POIs being added at wrong locations and is going to lose patience.
+
+I assume that the bug is located in [`org.wheelmap.android.manager.MyLocationManager.calcBestLastKnownLocation()`](https://github.com/sozialhelden/wheelmap-android/blob/master/app/src/main/java/org/wheelmap/android/manager/MyLocationManager.java#L219). This method is called by the constructor of the `MyLocationManager` class.
+
+```java
+    private Location calcBestLastKnownLocation() {
+        Location networkLocation = mLocationManager
+                .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        Location gpsLocation = mLocationManager
+                .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+        long now = System.currentTimeMillis();
+        if (gpsLocation == null && networkLocation == null) {
+            return null;
+        } else if (gpsLocation == null) {
+            return networkLocation;
+        } else if (networkLocation == null) {
+            return gpsLocation;
+        } else if (now - gpsLocation.getTime() < TIME_DISTANCE_LIMIT) {
+            return gpsLocation;
+        } else if (gpsLocation.getTime() < networkLocation.getTime()) {
+            return gpsLocation;
+        } else {
+            return networkLocation;
+        }
+    }
+```
+
+As a first step, the code retrieves the last known location from the network and GPS provider using the Android system library. If both fails, the method returns `null`. The constructor is already able to handle `null` properly.
+
+If one of the two retrieved locations is null, the other one is returned even if it is old. That's one reason of the bug. If both locations are not null, the age of the GPS location is checked. If it is less than 5 minutes old, it will be returned.
+
+The [next line](https://github.com/sozialhelden/wheelmap-android/blob/master/app/src/main/java/org/wheelmap/android/manager/MyLocationManager.java#L234) contains the second part of the bug. It returns `true` if the GPS location is older than the network location. The comparison operator is `<` but it should be `>=` or `>` because Location.getTime() returns the time in seconds since 1970-01-01.
+
+## How to fix?
+
+There are two possible fixes: A simple hack and a better solution.
+
+The simple hack would only use the GPS as source of location and harm user experience where GPS is difficult to use (cities with high buildings, indoor etc.). The method would look like this:
+
+```java
+    private Location calcBestLastKnownLocation() {
+        Location gpsLocation = mLocationManager
+                .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+        long now = System.currentTimeMillis();
+        if (gpsLocation == null) {
+            return null;
+        } else if (now - gpsLocation.getTime() < TIME_DISTANCE_LIMIT) {
+            return gpsLocation;
+        }
+        return null;
+    }
+```
+
+The second solution would require to check the status of the location everywhere in the app where the location is used for anything else than just centering the map view. Following changes are necessary:
+
+1. Apply following patch:
+
+```
+diff --git a/app/src/main/java/org/wheelmap/android/manager/MyLocationManager.java b/app/src/main/java/org/wheelmap/android/manager/MyLocationManager.java
+index f8e4947..bfbcad7 100644
+--- a/app/src/main/java/org/wheelmap/android/manager/MyLocationManager.java
++++ b/app/src/main/java/org/wheelmap/android/manager/MyLocationManager.java
+@@ -75,6 +75,8 @@ public class MyLocationManager {
+ 
+     private Handler mHandler = new Handler();
+ 
++    private boolean isLocationValid = false;
++
+     public static class LocationEvent {
+ 
+         public final Location location;
+@@ -124,16 +126,15 @@ public class MyLocationManager {
+         mNetworkLocationListener = new MyNetworkLocationListener();
+ 
+         mCurrentBestLocation = calcBestLastKnownLocation();
+-        boolean isValid = true;
+         if (mCurrentBestLocation == null) {
+-            isValid = false;
++            isLocationValid = false;
+             mCurrentBestLocation = new Location(
+                     LocationManager.NETWORK_PROVIDER);
+             mCurrentBestLocation.setLongitude(DEFAULT_LONGITUDE);
+             mCurrentBestLocation.setLatitude(DEFAULT_LATITUDE);
+             mCurrentBestLocation.setAccuracy(1000 * 1000);
+         }
+-        mBus.postSticky(new LocationEvent(mCurrentBestLocation, isValid));
++        mBus.postSticky(new LocationEvent(mCurrentBestLocation, isLocationValid));
+         wasBestLastKnownLocation = true;
+ 
+     }
+@@ -226,14 +227,16 @@ public class MyLocationManager {
+         if (gpsLocation == null && networkLocation == null) {
+             return null;
+         } else if (gpsLocation == null) {
++            isLocationValid = false;
+             return networkLocation;
+-        } else if (networkLocation == null) {
+-            return gpsLocation;
+         } else if (now - gpsLocation.getTime() < TIME_DISTANCE_LIMIT) {
++            isLocationValid = true;
+             return gpsLocation;
+-        } else if (gpsLocation.getTime() < networkLocation.getTime()) {
++        } else if (networkLocation == null || gpsLocation.getTime() < networkLocation.getTime()) {
++            isLocationValid = false;
+             return gpsLocation;
+         } else {
++            isLocationValid = false;
+             return networkLocation;
+         }
+     }
+```
+
+2. Check the validity of the location everywhere where it is necessary."
+sozialhelden/wheelmap-android,open,Scrollable View changes position on Device Rotation,[],"When I perform this sequence of events, the scrollable view on screen goes back to the top:
+
+Sequence 1:
+1. Click on Search icon
+2. Click on Pick a subcategory
+3. Scroll Down
+4. Orientation change
+
+Sequence 2:
+1. Click on Search icon
+2. Click on Distance in km
+3. Scroll Up
+4. Orientation change
+
+Sequence 3:
+1. Click on Info icon
+2. Click on Legal Notice
+3. Scroll Down
+4. Orientation Change"
+sozialhelden/wheelmap-android,open,Dialogs disappear on device rotation,[],"When I perform these sequences of events, the dialog on screen disappears:
+
+1. Network issue dialog appears due to unstable network
+2. Orientation Change"
+sozialhelden/wheelmap-android,closed,Fix minor typos.,[],
+sozialhelden/wheelmap-android,open,App does not handle TLS properly,[],"The app fails when redirects to https are enabled.
+
+see sozialhelden/wheelmap#410 
+"
+sozialhelden/wheelmap-android,open,No locations loaded when GPS disabled,[],"When I have GPS disabled on my Android phone, no locations are loaded on the ""staging app"" 3.0.1. (Build 487).
+"
+sozialhelden/wheelmap-android,open,"java.lang.OutOfMemoryError: bitmap size exceeds VM budget(Heap Size=13959KB, Allocated=8975KB, Bitmap Size=7381KB)","[Label(name=""Android""), Label(name=""App versions: 2.0.3 - 2.0.4""), Label(name=""SplunkMINT"")]","``` bash
+java.lang.OutOfMemoryError: bitmap size exceeds VM budget(Heap Size=13959KB, Allocated=8975KB, Bitmap Size=7381KB)
+at android.graphics.BitmapFactory.nativeDecodeStream(Native Method)
+at android.graphics.BitmapFactory.decodeStream(BitmapFactory.java:690)
+at org.osmdroid.DefaultResourceProxyImpl.getBitmap(DefaultResourceProxyImpl.java:124)
+at org.osmdroid.DefaultResourceProxyImpl.getDrawable(DefaultResourceProxyImpl.java:163)
+at org.osmdroid.views.overlay.ItemizedIconOverlay.<init>(ItemizedIconOverlay.java:41)
+at org.wheelmap.android.fragment.POIDetailFragment.createPOIForDetailMap(POIDetailFragment.java:885)
+at org.wheelmap.android.fragment.POIDetailFragment.onLoadFinished(POIDetailFragment.java:847)
+at org.wheelmap.android.fragment.POIDetailFragment.onLoadFinished(POIDetailFragment.java:139)
+at android.support.v4.app.LoaderManagerImpl$LoaderInfo.callOnLoadFinished(LoaderManager.java:427)
+at android.support.v4.app.LoaderManagerImpl$LoaderInfo.onLoadComplete(LoaderManager.java:395)
+at android.support.v4.content.Loader.deliverResult(Loader.java:103)
+at android.support.v4.content.CursorLoader.deliverResult(CursorLoader.java:81)
+at android.support.v4.content.CursorLoader.deliverResult(CursorLoader.java:35)
+at android.support.v4.content.AsyncTaskLoader.dispatchOnLoadComplete(AsyncTaskLoader.java:221)
+at android.support.v4.content.AsyncTaskLoader$LoadTask.onPostExecute(AsyncTaskLoader.java:61)
+at android.support.v4.content.ModernAsyncTask.finish(ModernAsyncTask.java:461)
+at android.support.v4.content.ModernAsyncTask.access$500(ModernAsyncTask.java:47)
+at android.support.v4.content.ModernAsyncTask$InternalHandler.handleMessage(ModernAsyncTask.java:474)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:143)
+at android.app.ActivityThread.main(ActivityThread.java:4277)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:507)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:839)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:597)
+at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+sozialhelden/wheelmap-android,open,Release in f-droid app store,[],"There is a very old version of android release in this independent android app store. Please consider to release the current version too, so people without an google account can install wheelmap too.
+
+https://f-droid.org/repository/browse/?fdfilter=wheelmap&fdid=org.wheelmap.android.online
+"
+sozialhelden/wheelmap-android,open,java.lang.NullPointerException,"[Label(name=""Android""), Label(name=""App versions: 2.0.1""), Label(name=""SplunkMINT"")]","``` bash
+java.lang.NullPointerException
+at org.wheelmap.android.fragment.POIDetailFragment.load(POIDetailFragment.java:921)
+at org.wheelmap.android.async.UploadPhotoTask.onPostExecute(UploadPhotoTask.java:97)
+at org.wheelmap.android.async.UploadPhotoTask.onPostExecute(UploadPhotoTask.java:29)
+at android.os.AsyncTask.finish(AsyncTask.java:632)
+at android.os.AsyncTask.access$600(AsyncTask.java:177)
+at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:645)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:157)
+at android.app.ActivityThread.main(ActivityThread.java:5356)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:515)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1265)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1081)
+at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.RuntimeException: Parcel android.os.Parcel@22aea07b: Unmarshalling unknown type code 5177420 at offset 12,"[Label(name=""Android""), Label(name=""App versions: 2.0.1""), Label(name=""SplunkMINT"")]","``` bash
+java.lang.RuntimeException: Unable to start activity ComponentInfo{org.wheelmap.android.online/org.wheelmap.android.activity.MainSinglePaneActivity}: java.lang.RuntimeException: Parcel android.os.Parcel@22aea07b: Unmarshalling unknown type code 5177420 at offset 12
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2314)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2388)
+at android.app.ActivityThread.access$800(ActivityThread.java:148)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1292)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:135)
+at android.app.ActivityThread.main(ActivityThread.java:5312)
+at java.lang.reflect.Method.invoke(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:372)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:901)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:696)
+Caused by: java.lang.RuntimeException: Parcel android.os.Parcel@22aea07b: Unmarshalling unknown type code 5177420 at offset 12
+at android.os.Parcel.readValue(Parcel.java:2222)
+at android.os.Parcel.readArrayMapInternal(Parcel.java:2479)
+at android.os.BaseBundle.unparcel(BaseBundle.java:221)
+at android.os.BaseBundle.isEmpty(BaseBundle.java:249)
+at org.wheelmap.android.modules.BundlePreferences.retrieve(BundlePreferences.java:63)
+at org.wheelmap.android.activity.MapActivity.loadPreferences(MapActivity.java:181)
+at org.wheelmap.android.fragment.POIsOsmdroidFragment.executeConfig(POIsOsmdroidFragment.java:371)
+at org.wheelmap.android.fragment.POIsOsmdroidFragment.onActivityCreated(POIsOsmdroidFragment.java:287)
+at android.support.v4.app.Fragment.performActivityCreated(Fragment.java:1468)
+at android.support.v4.app._HoloFragment.performActivityCreated(_HoloFragment.java:251)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:931)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1088)
+at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:682)
+at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1444)
+at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:551)
+at org.holoeverywhere.app.Activity.onStart(Activity.java:459)
+at org.wheelmap.android.activity.MainSinglePaneActivity.onStart(MainSinglePaneActivity.java)
+at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1243)
+at android.app.Activity.performStart(Activity.java:5969)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2277)
+... 10 more
+
+```
+"
+sozialhelden/wheelmap-android,closed,Android Studio - Not a Gradle based Project,[],"Having issues importing into Android Studio. Says not a gradle based project also the following error:
+
+Error:Android Source Generator: [wheelmap-android] AndroidManifest.xml file not found
+"
+sozialhelden/wheelmap-android,open,java.lang.OutOfMemoryError,"[Label(name=""Android""), Label(name=""App versions: 2.0.1 - 2.0.3 - 2.0.4""), Label(name=""SplunkMINT"")]","``` bash
+java.lang.OutOfMemoryError
+at android.graphics.Bitmap.nativeCreate(Native Method)
+at android.graphics.Bitmap.createBitmap(Bitmap.java:605)
+at android.graphics.Bitmap.createBitmap(Bitmap.java:551)
+at android.graphics.Bitmap.createScaledBitmap(Bitmap.java:437)
+at android.graphics.BitmapFactory.finishDecode(BitmapFactory.java:543)
+at android.graphics.BitmapFactory.decodeStream(BitmapFactory.java:518)
+at org.osmdroid.DefaultResourceProxyImpl.getBitmap(DefaultResourceProxyImpl.java:124)
+at org.wheelmap.android.osmdroid.MyLocationNewOverlayFixed.<init>(MyLocationNewOverlayFixed.java:126)
+at org.wheelmap.android.osmdroid.MyLocationNewOverlayFixed.<init>(MyLocationNewOverlayFixed.java:113)
+at org.wheelmap.android.fragment.POIDetailFragment.onCreateView(POIDetailFragment.java:551)
+at android.support.v4.app._HoloFragment.onCreateView(_HoloFragment.java:173)
+at android.support.v4.app.Fragment.performCreateView(Fragment.java:1460)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:911)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1088)
+at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:682)
+at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1444)
+at android.support.v4.app.FragmentActivity.onPostResume(FragmentActivity.java:445)
+at org.holoeverywhere.app.Activity.onPostResume(Activity.java:372)
+at android.app.Activity.performResume(Activity.java:4566)
+at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2581)
+at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:2623)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2109)
+at android.app.ActivityThread.access$600(ActivityThread.java:134)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1247)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:154)
+at android.app.ActivityThread.main(ActivityThread.java:4624)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:809)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:576)
+at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+sozialhelden/wheelmap-android,open,UnknownHostException,[],"[ERROR] [main 10:54:35](RestClientController.java:getTarget:87) org.springframework.web.client.ResourceAccessException: I/O error: barclaysbankplc.tt.omtrdc.net; nested exception is java.net.UnknownHostException: barclaysbankplc.tt.omtrdc.net
+
+I am using Rest Template for Rest Based web service and getting the below error:
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders requestHeaders = new HttpHeaders();
+        // Prepare acceptable media type
+        List<MediaType> acceptableMediaTypes = new ArrayList<MediaType>();
+        acceptableMediaTypes.add(MediaType.APPLICATION_XML);
+        requestHeaders.setAccept(acceptableMediaTypes);
+        HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
+        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+        ResponseEntity<String> response = restTemplate.exchange(""http://barclaysbankplc.tt.omtrdc.net/m2/barclaysbankplc/profile/update?mbox3rdPartyId=201055487916&profile.promptid1=1234"", HttpMethod.GET, requestEntity, String.class);
+        System.out.println(response);
+"
+sozialhelden/wheelmap-android,open,java.lang.IllegalArgumentException: the bind value at index 21 is null,"[Label(name=""Android""), Label(name=""App versions: 2.0.4""), Label(name=""SplunkMINT"")]","``` bash
+java.lang.IllegalArgumentException: the bind value at index 21 is null
+at android.database.sqlite.SQLiteProgram.bindString(SQLiteProgram.java:237)
+at android.database.sqlite.SQLiteDatabase.updateWithOnConflict(SQLiteDatabase.java:1862)
+at android.database.sqlite.SQLiteDatabase.update(SQLiteDatabase.java:1797)
+at org.wheelmap.android.model.POIsProvider.update(POIsProvider.java:211)
+at android.content.ContentProvider$Transport.update(ContentProvider.java:240)
+at android.content.ContentResolver.update(ContentResolver.java:724)
+at org.wheelmap.android.model.PrepareDatabaseHelper.replayChangedCopies(PrepareDatabaseHelper.java:181)
+at org.wheelmap.android.net.NodeUpdateOrNewExecutor.prepareDatabase(NodeUpdateOrNewExecutor.java:144)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:109)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:59)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:130)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.IllegalStateException: Fragment CombinedWorkerFragment{431a1930} not attached to Activity,"[Label(name=""Android""), Label(name=""App versions: 2.0.3 - 2.0.4""), Label(name=""SplunkMINT"")]","``` bash
+java.lang.IllegalStateException: Fragment CombinedWorkerFragment{431a1930} not attached to Activity
+at android.support.v4.app.Fragment.getResources(Fragment.java:571)
+at android.support.v4.app.Fragment.getString(Fragment.java:593)
+at org.wheelmap.android.fragment.CombinedWorkerFragment.onReceiveResult(CombinedWorkerFragment.java:402)
+at org.wheelmap.android.utils.DetachableResultReceiver.onReceiveResult(DetachableResultReceiver.java:74)
+at android.os.ResultReceiver$MyRunnable.run(ResultReceiver.java:43)
+at android.os.Handler.handleCallback(Handler.java:730)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:5419)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:525)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.NullPointerException,"[Label(name=""Android""), Label(name=""App versions: 2.0.4""), Label(name=""SplunkMINT"")]","``` bash
+java.lang.NullPointerException
+at org.wheelmap.android.fragment.POIDetailEditableFragment.onClick(POIDetailEditableFragment.java:383)
+at android.view.View.performClick(View.java:4211)
+at android.view.View$PerformClick.run(View.java:17267)
+at android.os.Handler.handleCallback(Handler.java:615)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:4898)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1006)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:773)
+at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.OutOfMemoryError,"[Label(name=""Android""), Label(name=""App versions: 2.0.1 - 2.0.3 - 2.0.4""), Label(name=""SplunkMINT"")]","``` bash
+java.lang.RuntimeException: Unable to start activity ComponentInfo{org.wheelmap.android.online/org.wheelmap.android.activity.StartupActivity}: android.view.InflateException: Binary XML file line #8: Error inflating class <unknown>
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2067)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2092)
+at android.app.ActivityThread.access$600(ActivityThread.java:133)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1203)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:4794)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:789)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:556)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: android.view.InflateException: Binary XML file line #8: Error inflating class <unknown>
+at org.holoeverywhere.LayoutInflater._createView(LayoutInflater.java:376)
+at org.holoeverywhere.LayoutInflater.onCreateView(LayoutInflater.java:588)
+at org.holoeverywhere.LayoutInflater.createViewFromTag(LayoutInflater.java:438)
+at org.holoeverywhere.LayoutInflater.rInflate(LayoutInflater.java:725)
+at org.holoeverywhere.LayoutInflater.inflate(LayoutInflater.java:532)
+at org.holoeverywhere.LayoutInflater.inflate(LayoutInflater.java:482)
+at android.support.v4.app._HoloActivity.requestDecorView(_HoloActivity.java:568)
+at android.support.v4.app._HoloActivity.setContentView(_HoloActivity.java:594)
+at org.wheelmap.android.activity.StartupActivity.onCreate(StartupActivity.java:81)
+at android.app.Activity.performCreate(Activity.java:5008)
+at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1079)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2031)
+... 11 more
+Caused by: java.lang.reflect.InvocationTargetException
+at java.lang.reflect.Constructor.constructNative(Native Method)
+at java.lang.reflect.Constructor.newInstance(Constructor.java:417)
+at org.holoeverywhere.LayoutInflater._createView(LayoutInflater.java:352)
+... 22 more
+Caused by: java.lang.OutOfMemoryError
+at android.graphics.BitmapFactory.nativeDecodeAsset(Native Method)
+at android.graphics.BitmapFactory.decodeStream(BitmapFactory.java:500)
+at android.graphics.BitmapFactory.decodeResourceStream(BitmapFactory.java:353)
+at android.graphics.drawable.Drawable.createFromResourceStream(Drawable.java:781)
+at android.content.res.Resources.loadDrawable(Resources.java:2007)
+at android.content.res.TypedArray.getDrawable(TypedArray.java:601)
+at android.widget.ImageView.<init>(ImageView.java:120)
+at android.widget.ImageView.<init>(ImageView.java:110)
+... 25 more
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.NullPointerException,"[Label(name=""Android""), Label(name=""App versions: 2.0.3 - 2.0.4""), Label(name=""SplunkMINT"")]","``` bash
+java.lang.RuntimeException: Unable to start activity ComponentInfo{org.wheelmap.android.online/org.wheelmap.android.activity.MainMultiPaneActivity}: java.lang.NullPointerException
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2237)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2286)
+at android.app.ActivityThread.access$800(ActivityThread.java:144)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1246)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:212)
+at android.app.ActivityThread.main(ActivityThread.java:5135)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:515)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:877)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:693)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.NullPointerException
+at org.wheelmap.android.fragment.POIsOsmdroidFragment.onZoom(POIsOsmdroidFragment.java:605)
+at org.osmdroid.views.MapView.setZoomLevel(MapView.java:373)
+at org.osmdroid.views.MapController.setZoom(MapController.java:182)
+at org.wheelmap.android.activity.MapActivity.loadPreferences(MapActivity.java:200)
+at org.wheelmap.android.fragment.POIsOsmdroidFragment.executeConfig(POIsOsmdroidFragment.java:396)
+at org.wheelmap.android.fragment.POIsOsmdroidFragment.onActivityCreated(POIsOsmdroidFragment.java:312)
+at android.support.v4.app.Fragment.performActivityCreated(Fragment.java:1468)
+at android.support.v4.app._HoloFragment.performActivityCreated(_HoloFragment.java:251)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:931)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1088)
+at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:682)
+at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1444)
+at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:551)
+at org.holoeverywhere.app.Activity.onStart(Activity.java:459)
+at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1171)
+at android.app.Activity.performStart(Activity.java:5241)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2210)
+... 11 more
+
+```
+"
+sozialhelden/wheelmap-android,closed,Problem while executing,[],"i have a issue while load lustview with Locations:
+
+ org.wheelmap.android.service.SyncServiceException: org.springframework.web.client.ResourceAccessException: I/O error: Unrecognized field ""wheelchair_toilet"" (Class wheelmap.org.domain.node.Node), not marked as ignorable
+            at [Source: org.apache.http.conn.EofSensorInputStream@b2504328; line: 1, column: 280](through reference chain: wheelmap.org.domain.node.Nodes[""nodes""]->wheelmap.org.domain.node.Node[""wheelchair_toilet""]); nested exception is org.codehaus.jackson.map.exc.UnrecognizedPropertyException: Unrecognized field ""wheelchair_toilet"" (Class wheelmap.org.domain.node.Node), not marked as ignorable
+            at [Source: org.apache.http.conn.EofSensorInputStream@b2504328; line: 1, column: 280](through reference chain: wheelmap.org.domain.node.Nodes[""nodes""]->wheelmap.org.domain.node.Node[""wheelchair_toilet""])
+            at org.wheelmap.android.net.BaseRetrieveExecutor.retrieveNumberOfHits(BaseRetrieveExecutor.java:134)
+            at org.wheelmap.android.net.BaseRetrieveExecutor.executeSingleRequest(BaseRetrieveExecutor.java:94)
+            at org.wheelmap.android.net.BaseRetrieveExecutor.retrieveMaxNPages(BaseRetrieveExecutor.java:73)
+            at org.wheelmap.android.net.NodesExecutor.execute(NodesExecutor.java:122)
+            at org.wheelmap.android.service.SyncService.onHandleIntent(SyncService.java:127)
+            at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:136)
+            at android.os.HandlerThread.run(HandlerThread.java:61)
+     Caused by: org.springframework.web.client.ResourceAccessException: I/O error: Unrecognized field ""wheelchair_toilet"" (Class wheelmap.org.domain.node.Node), not marked as ignorable
+            at [Source: org.apache.http.conn.EofSensorInputStream@b2504328; line: 1, column: 280](through reference chain: wheelmap.org.domain.node.Nodes[""nodes""]->wheelmap.org.domain.node.Node[""wheelchair_toilet""]); nested exception is org.codehaus.jackson.map.exc.UnrecognizedPropertyException: Unrecognized field ""wheelchair_toilet"" (Class wheelmap.org.domain.node.Node), not marked as ignorable
+            at [Source: org.apache.http.conn.EofSensorInputStream@b2504328; line: 1, column: 280](through reference chain: wheelmap.org.domain.node.Nodes[""nodes""]->wheelmap.org.domain.node.Node[""wheelchair_toilet""])
+            at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:466)
+            at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:428)
+            at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:226)
+            at wheelmap.org.request.RequestProcessor.get(RequestProcessor.java:45)
+            at org.wheelmap.android.net.BaseRetrieveExecutor.retrieveNumberOfHits(BaseRetrieveExecutor.java:119)
+            at org.wheelmap.android.net.BaseRetrieveExecutor.executeSingleRequest(BaseRetrieveExecutor.java:94)
+            at org.wheelmap.android.net.BaseRetrieveExecutor.retrieveMaxNPages(BaseRetrieveExecutor.java:73)
+            at org.wheelmap.android.net.NodesExecutor.execute(NodesExecutor.java:122)
+            at org.wheelmap.android.service.SyncService.onHandleIntent(SyncService.java:127)
+            at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+            at android.os.Handler.dispatchMessage(Handler.java:102)
+            at android.os.Looper.loop(Looper.java:136)
+            at android.os.HandlerThread.run(HandlerThread.java:61)
+     Caused by: org.codehaus.jackson.map.exc.UnrecognizedPropertyException: Unrecognized field ""wheelchair_toilet"" (Class wheelmap.org.domain.node.Node), not marked as ignorable
+            at [Source: org.apache.http.conn.EofSensorInputStream@b2504328; line: 1, column: 280](through reference chain: wheelmap.org.domain.node.Nodes[""nodes""]->wheelmap.org.domain.node.Node[""wheelchair_toilet""])
+            at org.codehaus.jackson.map.deser.StdDeserializationContext.unknownFieldException(StdDeserializationContext.java:246)
+            at org.codehaus.jackson.map.deser.StdDeserializer.reportUnknownProperty(StdDeserializer.java:604)
+            at org.codehaus.jackson.map.deser.StdDeserializer.handleUnknownProperty(StdDeserializer.java:590)
+            at org.codehaus.jackson.map.deser.BeanDeserializer.handleUnknownProperty(BeanDeserializer.java:689)
+            at org.codehaus.jackson.map.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:514)
+            at org.codehaus.jackson.map.deser.BeanDeserializer.deserialize(BeanDeserializer.java:350)
+            at org.codehaus.jackson.map.deser.CollectionDeserializer.deserialize(CollectionDeserializer.java:120)
+            at org.codehaus.jackson.map.deser.CollectionDeserializer.deserialize(CollectionDeserializer.java:97)
+            at org.codehaus.jackson.map.deser.CollectionDeserializer.deserialize(CollectionDeserializer.java:26)
+            at org.codehaus.jackson.
+"
+sozialhelden/wheelmap-android,open,Don't allow photo upload for anonymous users,"[Label(name=""Android""), Label(name=""App versions: 2.0.4"")]","Rightnow it is possible to upload photos for a POI, even if the user was not logged in. In the end, the photo belongs to the user 3349 (android_app). As we do not want user upload inappropriate content, we need to disallow this.
+
+http://wheelmap.org/nodes/3218109061
+"
+sozialhelden/wheelmap-android,open,java.net.SocketTimeoutException,"[Label(name=""Android""), Label(name=""App versions: 2.0.1""), Label(name=""SplunkMINT"")]","``` bash
+org.springframework.web.client.ResourceAccessException: I/O error: null; nested exception is java.net.SocketTimeoutException
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:491)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.SinglePageExecutor.retrieveSinglePage(SinglePageExecutor.java:60)
+at org.wheelmap.android.net.NodeTypesExecutor.execute(NodeTypesExecutor.java:76)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:59)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:130)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+Caused by: java.net.SocketTimeoutException
+at org.apache.harmony.luni.net.PlainSocketImpl.read(PlainSocketImpl.java:461)
+at org.apache.harmony.luni.net.SocketInputStream.read(SocketInputStream.java:85)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:103)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:191)
+at org.apache.http.impl.conn.DefaultResponseParser.parseHead(DefaultResponseParser.java:82)
+at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:174)
+at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:179)
+at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:235)
+at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:259)
+at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:279)
+at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:121)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:421)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:555)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:487)
+at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:83)
+at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:46)
+at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:63)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:476)
+... 13 more
+org.springframework.web.client.ResourceAccessException: I/O error: null; nested exception is java.net.SocketTimeoutException
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:491)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.SinglePageExecutor.retrieveSinglePage(SinglePageExecutor.java:60)
+at org.wheelmap.android.net.NodeTypesExecutor.execute(NodeTypesExecutor.java:76)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:59)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:130)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+Caused by: java.net.SocketTimeoutException
+at org.apache.harmony.luni.net.PlainSocketImpl.read(PlainSocketImpl.java:461)
+at org.apache.harmony.luni.net.SocketInputStream.read(SocketInputStream.java:85)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:103)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:191)
+at org.apache.http.impl.conn.DefaultResponseParser.parseHead(DefaultResponseParser.java:82)
+at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:174)
+at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:179)
+at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:235)
+at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:259)
+at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:279)
+at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:121)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:421)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:555)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:487)
+at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:83)
+at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:46)
+at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:63)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:476)
+... 13 more
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.NullPointerException,"[Label(name=""Android""), Label(name=""App versions: 2.0.3 - 2.0.4""), Label(name=""SplunkMINT"")]","``` bash
+java.lang.NullPointerException
+at org.wheelmap.android.fragment.CombinedWorkerFragment.requestUpdate(CombinedWorkerFragment.java:186)
+at org.wheelmap.android.fragment.POIsOsmdroidFragment.requestUpdate(POIsOsmdroidFragment.java:632)
+at org.wheelmap.android.fragment.POIsOsmdroidFragment$2.run(POIsOsmdroidFragment.java:258)
+at android.os.Handler.handleCallback(Handler.java:725)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:5279)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1102)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:869)
+at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+sozialhelden/wheelmap-android,closed,android.content.res.Resources$NotFoundException: Resource ID #0x10102eb,[],"..
+"
+sozialhelden/wheelmap-android,open,android.database.StaleDataException: Attempting to access a closed CursorWindow.Most probable cause: cursor is deactivated prior to calling this method.,"[Label(name=""Android""), Label(name=""App versions: 2.0.3 - 2.0.4""), Label(name=""SplunkMINT"")]","``` bash
+android.database.StaleDataException: Attempting to access a closed CursorWindow.Most probable cause: cursor is deactivated prior to calling this method.
+at android.database.AbstractWindowedCursor.checkPosition(AbstractWindowedCursor.java)
+at android.database.AbstractWindowedCursor.getLong(AbstractWindowedCursor.java)
+at android.database.CursorWrapper.getLong(CursorWrapper.java)
+at org.wheelmap.android.model.POIHelper.getId(POIHelper.java:121)
+at org.wheelmap.android.fragment.POIDetailFragment.load(POIDetailFragment.java:968)
+at org.wheelmap.android.async.UploadPhotoTask.onPostExecute(UploadPhotoTask.java:98)
+at org.wheelmap.android.async.UploadPhotoTask.onPostExecute(UploadPhotoTask.java:29)
+at android.os.AsyncTask.finish(AsyncTask.java)
+at android.os.AsyncTask.access$600(AsyncTask.java)
+at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java)
+at android.os.Handler.dispatchMessage(Handler.java)
+at android.os.Looper.loop(Looper.java)
+at android.app.ActivityThread.main(ActivityThread.java)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java)
+at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.IllegalArgumentException: the bind value at index 21 is null,"[Label(name=""Android""), Label(name=""App versions: 2.0.4""), Label(name=""SplunkMINT"")]","``` bash
+java.lang.IllegalArgumentException: the bind value at index 21 is null
+at android.database.sqlite.SQLiteProgram.bindString(SQLiteProgram.java:237)
+at android.database.sqlite.SQLiteDatabase.updateWithOnConflict(SQLiteDatabase.java:1862)
+at android.database.sqlite.SQLiteDatabase.update(SQLiteDatabase.java:1797)
+at org.wheelmap.android.model.POIsProvider.update(POIsProvider.java:211)
+at android.content.ContentProvider$Transport.update(ContentProvider.java:240)
+at android.content.ContentResolver.update(ContentResolver.java:724)
+at org.wheelmap.android.model.PrepareDatabaseHelper.replayChangedCopies(PrepareDatabaseHelper.java:181)
+at org.wheelmap.android.net.NodesExecutor.prepareDatabase(NodesExecutor.java:142)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:109)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:59)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:130)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.RuntimeException: Parcel android.os.Parcel@21cd98f8: Unmarshalling unknown type code 5177434 at offset 12,"[Label(name=""Android""), Label(name=""App versions: 2.0.4""), Label(name=""SplunkMINT"")]","``` bash
+java.lang.RuntimeException: Unable to start activity ComponentInfo{org.wheelmap.android.online/org.wheelmap.android.activity.MainMultiPaneActivity}: java.lang.RuntimeException: Parcel android.os.Parcel@21cd98f8: Unmarshalling unknown type code 5177434 at offset 12
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2318)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2396)
+at android.app.ActivityThread.access$800(ActivityThread.java:139)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1293)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:149)
+at android.app.ActivityThread.main(ActivityThread.java:5257)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:515)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:609)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.RuntimeException: Parcel android.os.Parcel@21cd98f8: Unmarshalling unknown type code 5177434 at offset 12
+at android.os.Parcel.readValue(Parcel.java:2087)
+at android.os.Parcel.readArrayMapInternal(Parcel.java:2321)
+at android.os.Bundle.unparcel(Bundle.java:249)
+at android.os.Bundle.isEmpty(Bundle.java:277)
+at org.wheelmap.android.modules.BundlePreferences.retrieve(BundlePreferences.java:63)
+at org.wheelmap.android.activity.MapActivity.loadPreferences(MapActivity.java:181)
+at org.wheelmap.android.fragment.POIsOsmdroidFragment.executeConfig(POIsOsmdroidFragment.java:396)
+at org.wheelmap.android.fragment.POIsOsmdroidFragment.onActivityCreated(POIsOsmdroidFragment.java:312)
+at android.support.v4.app.Fragment.performActivityCreated(Fragment.java:1468)
+at android.support.v4.app._HoloFragment.performActivityCreated(_HoloFragment.java:251)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:931)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1088)
+at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:682)
+at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1444)
+at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:551)
+at org.holoeverywhere.app.Activity.onStart(Activity.java:459)
+at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1171)
+at android.app.Activity.performStart(Activity.java:5421)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2279)
+... 11 more
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.NullPointerException,"[Label(name=""Android""), Label(name=""App versions: 2.0.3""), Label(name=""BugSense"")]","``` bash
+java.lang.NullPointerException
+at org.wheelmap.android.fragment.POIDetailEditableFragment.save(POIDetailEditableFragment.java:410)
+at org.wheelmap.android.fragment.POIDetailEditableFragment$1.onClick(POIDetailEditableFragment.java:244)
+at android.view.View.performClick(View.java:4232)
+at android.view.View$PerformClick.run(View.java:17298)
+at android.os.Handler.handleCallback(Handler.java:615)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:4921)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1027)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:794)
+at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.NullPointerException,"[Label(name=""Android""), Label(name=""App versions: 2.0.1""), Label(name=""BugSense"")]","``` bash
+java.lang.RuntimeException: Unable to start activity ComponentInfo{org.wheelmap.android.online/org.wheelmap.android.activity.MainMultiPaneActivity}: java.lang.NullPointerException
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2035)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2060)
+at android.app.ActivityThread.access$600(ActivityThread.java:127)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1181)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:4558)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.NullPointerException
+at org.wheelmap.android.utils.PressSelector.setAlphaForView(PressSelector.java:25)
+at org.wheelmap.android.fragment.POIsOsmdroidFragment.onCreateView(POIsOsmdroidFragment.java:213)
+at android.support.v4.app._HoloFragment.onCreateView(_HoloFragment.java:173)
+at android.support.v4.app.Fragment.performCreateView(Fragment.java:1460)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:911)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1088)
+at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:682)
+at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1444)
+at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:551)
+at org.holoeverywhere.app.Activity.onStart(Activity.java:459)
+at org.wheelmap.android.activity.MainMultiPaneActivity.onStart(MainMultiPaneActivity.java)
+at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1133)
+at android.app.Activity.performStart(Activity.java:4646)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2008)
+... 11 more
+
+```
+"
+sozialhelden/wheelmap-android,open,java.net.SocketTimeoutException,"[Label(name=""Android""), Label(name=""App versions: 2.0.1""), Label(name=""BugSense"")]","``` bash
+org.springframework.web.client.ResourceAccessException: I/O error: null; nested exception is java.net.SocketTimeoutException
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:491)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.MultiPageExecutor.executeSingleRequest(MultiPageExecutor.java:44)
+at org.wheelmap.android.net.MultiPageExecutor.retrieveMaxNPages(MultiPageExecutor.java:70)
+at org.wheelmap.android.net.NodesExecutor.execute(NodesExecutor.java:132)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+Caused by: java.net.SocketTimeoutException
+at java.net.PlainSocketImpl.read(PlainSocketImpl.java:491)
+at java.net.PlainSocketImpl.access$000(PlainSocketImpl.java:46)
+at java.net.PlainSocketImpl$PlainSocketInputStream.read(PlainSocketImpl.java:240)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:103)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:191)
+at org.apache.http.impl.conn.DefaultResponseParser.parseHead(DefaultResponseParser.java:82)
+at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:174)
+at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:180)
+at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:235)
+at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:259)
+at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:279)
+at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:121)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:428)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:555)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:487)
+at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:83)
+at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:46)
+at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:63)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:476)
+... 14 more
+org.springframework.web.client.ResourceAccessException: I/O error: null; nested exception is java.net.SocketTimeoutException
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:491)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.MultiPageExecutor.executeSingleRequest(MultiPageExecutor.java:44)
+at org.wheelmap.android.net.MultiPageExecutor.retrieveMaxNPages(MultiPageExecutor.java:70)
+at org.wheelmap.android.net.NodesExecutor.execute(NodesExecutor.java:132)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+Caused by: java.net.SocketTimeoutException
+at java.net.PlainSocketImpl.read(PlainSocketImpl.java:491)
+at java.net.PlainSocketImpl.access$000(PlainSocketImpl.java:46)
+at java.net.PlainSocketImpl$PlainSocketInputStream.read(PlainSocketImpl.java:240)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:103)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:191)
+at org.apache.http.impl.conn.DefaultResponseParser.parseHead(DefaultResponseParser.java:82)
+at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:174)
+at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:180)
+at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:235)
+at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:259)
+at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:279)
+at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:121)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:428)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:555)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:487)
+at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:83)
+at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:46)
+at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:63)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:476)
+... 14 more
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.OutOfMemoryError,"[Label(name=""Android""), Label(name=""App versions: 2.0 - 2.0.1 - 2.0.3""), Label(name=""BugSense"")]","``` bash
+java.lang.RuntimeException: Unable to resume activity {org.wheelmap.android.online/org.wheelmap.android.activity.POIDetailActivity}: android.view.InflateException: Binary XML file line #306: Error inflating class <unknown>
+at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2919)
+at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:2948)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2354)
+at android.app.ActivityThread.access$700(ActivityThread.java:159)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1316)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:176)
+at android.app.ActivityThread.main(ActivityThread.java:5419)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:525)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1046)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:862)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: android.view.InflateException: Binary XML file line #306: Error inflating class <unknown>
+at org.holoeverywhere.LayoutInflater._createView(LayoutInflater.java:376)
+at org.holoeverywhere.LayoutInflater.onCreateView(LayoutInflater.java:588)
+at org.holoeverywhere.LayoutInflater.createViewFromTag(LayoutInflater.java:438)
+at org.holoeverywhere.LayoutInflater.rInflate(LayoutInflater.java:725)
+at org.holoeverywhere.LayoutInflater.rInflate(LayoutInflater.java:728)
+at org.holoeverywhere.LayoutInflater.rInflate(LayoutInflater.java:728)
+at org.holoeverywhere.LayoutInflater.inflate(LayoutInflater.java:532)
+at org.holoeverywhere.LayoutInflater.inflate(LayoutInflater.java:482)
+at org.wheelmap.android.fragment.POIDetailFragment.onCreateView(POIDetailFragment.java:434)
+at android.support.v4.app._HoloFragment.onCreateView(_HoloFragment.java:173)
+at android.support.v4.app.Fragment.performCreateView(Fragment.java:1460)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:911)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1088)
+at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:682)
+at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1444)
+at android.support.v4.app.FragmentActivity.onPostResume(FragmentActivity.java:445)
+at org.holoeverywhere.app.Activity.onPostResume(Activity.java:372)
+at android.app.Activity.performResume(Activity.java:5463)
+at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2909)
+... 12 more
+Caused by: java.lang.reflect.InvocationTargetException
+at java.lang.reflect.Constructor.constructNative(Native Method)
+at java.lang.reflect.Constructor.newInstance(Constructor.java:417)
+at org.holoeverywhere.LayoutInflater._createView(LayoutInflater.java:352)
+... 30 more
+Caused by: java.lang.OutOfMemoryError
+at android.graphics.BitmapFactory.nativeDecodeAsset(Native Method)
+at android.graphics.BitmapFactory.decodeStream(BitmapFactory.java:596)
+at android.graphics.BitmapFactory.decodeResourceStream(BitmapFactory.java:444)
+at android.graphics.drawable.Drawable.createFromResourceStream(Drawable.java:832)
+at android.content.res.Resources.loadDrawable(Resources.java:2988)
+at android.content.res.TypedArray.getDrawable(TypedArray.java:602)
+at android.widget.ImageView.<init>(ImageView.java:131)
+at android.widget.ImageButton.<init>(ImageButton.java:88)
+at android.widget.ImageButton.<init>(ImageButton.java:84)
+... 33 more
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState,"[Label(name=""Android""), Label(name=""App versions: 2.0 - 2.0.1 - 2.0.3""), Label(name=""BugSense"")]","``` bash
+java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState
+at android.support.v4.app.FragmentManagerImpl.checkStateLoss(FragmentManager.java:1327)
+at android.support.v4.app.FragmentManagerImpl.enqueueAction(FragmentManager.java:1338)
+at android.support.v4.app.BackStackRecord.commitInternal(BackStackRecord.java:595)
+at android.support.v4.app.BackStackRecord.commit(BackStackRecord.java:574)
+at org.holoeverywhere.app.DialogFragment.show(DialogFragment.java:404)
+at org.holoeverywhere.app.DialogFragment.show(DialogFragment.java:382)
+at org.wheelmap.android.fragment.LoginFragment.onReceiveResult(LoginFragment.java:219)
+at org.wheelmap.android.utils.DetachableResultReceiver.onReceiveResult(DetachableResultReceiver.java:74)
+at android.os.ResultReceiver$MyRunnable.run(ResultReceiver.java:43)
+at android.os.Handler.handleCallback(Handler.java:730)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:5419)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:525)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1187)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1003)
+at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.OutOfMemoryError,"[Label(name=""Android""), Label(name=""App versions: 2.0.1 - 2.0.3""), Label(name=""BugSense"")]","``` bash
+java.lang.OutOfMemoryError
+at android.graphics.BitmapFactory.nativeDecodeStream(Native Method)
+at android.graphics.BitmapFactory.decodeStream(BitmapFactory.java:623)
+at org.osmdroid.DefaultResourceProxyImpl.getBitmap(DefaultResourceProxyImpl.java:124)
+at org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay.<init>(MyLocationNewOverlay.java:111)
+at org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay.<init>(MyLocationNewOverlay.java:99)
+at org.wheelmap.android.fragment.POIDetailFragment.onCreateView(POIDetailFragment.java:545)
+at android.support.v4.app._HoloFragment.onCreateView(_HoloFragment.java:173)
+at android.support.v4.app.Fragment.performCreateView(Fragment.java:1460)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:911)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1088)
+at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:682)
+at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1444)
+at android.support.v4.app.FragmentActivity.onPostResume(FragmentActivity.java:445)
+at org.holoeverywhere.app.Activity.onPostResume(Activity.java:372)
+at android.app.Activity.performResume(Activity.java:5463)
+at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2909)
+at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:2948)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2354)
+at android.app.ActivityThread.access$700(ActivityThread.java:159)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1316)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:5419)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:525)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.IllegalArgumentException: the bind value at index 21 is null,"[Label(name=""Android""), Label(name=""App versions: 2.0.3""), Label(name=""BugSense"")]","``` bash
+java.lang.IllegalArgumentException: the bind value at index 21 is null
+at android.database.sqlite.SQLiteProgram.bindString(SQLiteProgram.java:237)
+at android.database.sqlite.SQLiteDatabase.updateWithOnConflict(SQLiteDatabase.java:1723)
+at android.database.sqlite.SQLiteDatabase.update(SQLiteDatabase.java:1658)
+at org.wheelmap.android.model.POIsProvider.update(POIsProvider.java:211)
+at android.content.ContentProvider$Transport.update(ContentProvider.java:245)
+at android.content.ContentResolver.update(ContentResolver.java:724)
+at org.wheelmap.android.model.PrepareDatabaseHelper.replayChangedCopies(PrepareDatabaseHelper.java:181)
+at org.wheelmap.android.net.NodesExecutor.prepareDatabase(NodesExecutor.java:142)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:106)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:59)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:130)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+
+```
+"
+sozialhelden/wheelmap-android,open,org.springframework.web.client.HttpClientErrorException: 404 Not Found,"[Label(name=""Android""), Label(name=""App versions: 2.0.1""), Label(name=""BugSense"")]","``` bash
+org.springframework.web.client.HttpClientErrorException: 404 Not Found
+at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:76)
+at org.springframework.web.client.RestTemplate.handleResponseError(RestTemplate.java:524)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:481)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.NodeExecutor.execute(NodeExecutor.java:59)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java)
+at android.os.Handler.dispatchMessage(Handler.java)
+at android.os.Looper.loop(Looper.java)
+at android.os.HandlerThread.run(HandlerThread.java)
+org.springframework.web.client.HttpClientErrorException: 404 Not Found
+at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:76)
+at org.springframework.web.client.RestTemplate.handleResponseError(RestTemplate.java:524)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:481)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.NodeExecutor.execute(NodeExecutor.java:59)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java)
+at android.os.Handler.dispatchMessage(Handler.java)
+at android.os.Looper.loop(Looper.java)
+at android.os.HandlerThread.run(HandlerThread.java)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.OutOfMemoryError,"[Label(name=""Android""), Label(name=""App versions: 2.0 - 2.0.1""), Label(name=""BugSense"")]","``` bash
+java.lang.RuntimeException: Unable to start activity ComponentInfo{org.wheelmap.android.online/org.wheelmap.android.activity.WheelchairStateActivity}: android.view.InflateException: Binary XML file line #162: Error inflating class <unknown>
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2295)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2349)
+at android.app.ActivityThread.access$700(ActivityThread.java:159)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1316)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:176)
+at android.app.ActivityThread.main(ActivityThread.java:5419)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:525)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1046)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:862)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: android.view.InflateException: Binary XML file line #162: Error inflating class <unknown>
+at org.holoeverywhere.LayoutInflater._createView(LayoutInflater.java:376)
+at org.holoeverywhere.LayoutInflater.onCreateView(LayoutInflater.java:588)
+at org.holoeverywhere.LayoutInflater.createViewFromTag(LayoutInflater.java:438)
+at org.holoeverywhere.LayoutInflater.rInflate(LayoutInflater.java:725)
+at org.holoeverywhere.LayoutInflater.rInflate(LayoutInflater.java:728)
+at org.holoeverywhere.LayoutInflater.rInflate(LayoutInflater.java:728)
+at org.holoeverywhere.LayoutInflater.rInflate(LayoutInflater.java:728)
+at org.holoeverywhere.LayoutInflater.inflate(LayoutInflater.java:532)
+at org.holoeverywhere.LayoutInflater.inflate(LayoutInflater.java:482)
+at org.wheelmap.android.fragment.WheelchairStateFragment.onCreateView(WheelchairStateFragment.java:80)
+at android.support.v4.app._HoloFragment.onCreateView(_HoloFragment.java:173)
+at android.support.v4.app.Fragment.performCreateView(Fragment.java:1460)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:911)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1088)
+at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:682)
+at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1444)
+at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:551)
+at org.holoeverywhere.app.Activity.onStart(Activity.java:459)
+at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1188)
+at android.app.Activity.performStart(Activity.java:5382)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2266)
+... 11 more
+Caused by: java.lang.reflect.InvocationTargetException
+at java.lang.reflect.Constructor.constructNative(Native Method)
+at java.lang.reflect.Constructor.newInstance(Constructor.java:417)
+at org.holoeverywhere.LayoutInflater._createView(LayoutInflater.java:352)
+... 31 more
+Caused by: java.lang.OutOfMemoryError
+at android.graphics.BitmapFactory.nativeDecodeAsset(Native Method)
+at android.graphics.BitmapFactory.decodeStream(BitmapFactory.java:596)
+at android.graphics.BitmapFactory.decodeResourceStream(BitmapFactory.java:444)
+at android.graphics.drawable.Drawable.createFromResourceStream(Drawable.java:832)
+at android.content.res.Resources.loadDrawable(Resources.java:2988)
+at android.content.res.TypedArray.getDrawable(TypedArray.java:602)
+at android.view.View.<init>(View.java:3563)
+at android.widget.TextView.<init>(TextView.java:881)
+at android.widget.Button.<init>(Button.java:108)
+at org.holoeverywhere.widget.Button.<init>(Button.java:26)
+at org.holoeverywhere.widget.Button.<init>(Button.java:22)
+... 34 more
+
+```
+"
+sozialhelden/wheelmap-android,open,org.springframework.web.client.HttpClientErrorException: 400 Bad Request,"[Label(name=""Android""), Label(name=""App versions: 2.0-SNAPSHOT-PRODUCTION - 2.0.1""), Label(name=""BugSense"")]","``` bash
+org.springframework.web.client.HttpClientErrorException: 400 Bad Request
+at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:76)
+at org.springframework.web.client.RestTemplate.handleResponseError(RestTemplate.java:524)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:481)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.postForObject(RestTemplate.java:332)
+at org.wheelmap.android.net.request.RequestProcessor.post(RequestProcessor.java:90)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:235)
+at org.wheelmap.android.net.NodeUpdateOrNewExecutor.execute(NodeUpdateOrNewExecutor.java:103)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+org.springframework.web.client.HttpClientErrorException: 400 Bad Request
+at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:76)
+at org.springframework.web.client.RestTemplate.handleResponseError(RestTemplate.java:524)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:481)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.postForObject(RestTemplate.java:332)
+at org.wheelmap.android.net.request.RequestProcessor.post(RequestProcessor.java:90)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:235)
+at org.wheelmap.android.net.NodeUpdateOrNewExecutor.execute(NodeUpdateOrNewExecutor.java:103)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.io.NotSerializableException: java.nio.charset.CharsetICU,"[Label(name=""Android""), Label(name=""App versions: 2.0 - 2.0.1""), Label(name=""BugSense"")]","``` bash
+java.lang.RuntimeException: Parcelable encountered IOException writing serializable object (name = org.springframework.web.client.HttpClientErrorException)
+at android.os.Parcel.writeSerializable(Parcel.java:1279)
+at org.wheelmap.android.service.RestServiceException.writeToParcel(RestServiceException.java:103)
+at android.os.Parcel.writeParcelable(Parcel.java:1254)
+at android.os.Parcel.writeValue(Parcel.java:1173)
+at android.os.Parcel.writeMapInternal(Parcel.java:591)
+at android.os.Bundle.writeToParcel(Bundle.java:1627)
+at android.os.Parcel.writeBundle(Parcel.java:605)
+at android.support.v4.app.FragmentState.writeToParcel(Fragment.java:132)
+at android.os.Parcel.writeTypedArray(Parcel.java:1102)
+at android.support.v4.app.FragmentManagerState.writeToParcel(FragmentManager.java:357)
+at android.os.Parcel.writeParcelable(Parcel.java:1254)
+at android.os.Parcel.writeValue(Parcel.java:1173)
+at android.os.Parcel.writeMapInternal(Parcel.java:591)
+at android.os.Bundle.writeToParcel(Bundle.java:1627)
+at android.os.Parcel.writeBundle(Parcel.java:605)
+at android.app.ActivityManagerProxy.activityStopped(ActivityManagerNative.java:2437)
+at android.app.ActivityThread$StopInfo.run(ActivityThread.java:3538)
+at android.os.Handler.handleCallback(Handler.java:725)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+at android.os.Looper.loop(Looper.java:158)
+at android.app.ActivityThread.main(ActivityThread.java:5751)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1083)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:850)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.io.NotSerializableException: java.nio.charset.CharsetICU
+at java.io.ObjectOutputStream.writeNewObject(ObjectOutputStream.java:1364)
+at java.io.ObjectOutputStream.writeObjectInternal(ObjectOutputStream.java:1671)
+at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:1517)
+at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:1481)
+at java.io.ObjectOutputStream.writeFieldValues(ObjectOutputStream.java:979)
+at java.io.ObjectOutputStream.defaultWriteObject(ObjectOutputStream.java:368)
+at java.io.ObjectOutputStream.writeHierarchy(ObjectOutputStream.java:1074)
+at java.io.ObjectOutputStream.writeNewObject(ObjectOutputStream.java:1404)
+at java.io.ObjectOutputStream.writeObjectInternal(ObjectOutputStream.java:1671)
+at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:1517)
+at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:1481)
+at android.os.Parcel.writeSerializable(Parcel.java:1274)
+... 25 more
+
+```
+"
+sozialhelden/wheelmap-android,open,java.lang.NullPointerException,"[Label(name=""Android""), Label(name=""App versions: 2.0.1""), Label(name=""BugSense"")]","``` bash
+java.lang.RuntimeException: Unable to start activity ComponentInfo{org.wheelmap.android.online/org.wheelmap.android.activity.MainMultiPaneActivity}: java.lang.NullPointerException
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1751)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:1767)
+at android.app.ActivityThread.access$1500(ActivityThread.java:122)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1005)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:132)
+at android.app.ActivityThread.main(ActivityThread.java:4028)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:491)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:844)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:602)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.NullPointerException
+at org.wheelmap.android.utils.PressSelector.setAlphaForView(PressSelector.java:25)
+at org.wheelmap.android.fragment.POIsOsmdroidFragment.onCreateView(POIsOsmdroidFragment.java:213)
+at android.support.v4.app._HoloFragment.onCreateView(_HoloFragment.java:173)
+at android.support.v4.app.Fragment.performCreateView(Fragment.java:1460)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:911)
+at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1088)
+at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:682)
+at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1444)
+at android.support.v4.app.FragmentActivity.onStart(FragmentActivity.java:551)
+at org.holoeverywhere.app.Activity.onStart(Activity.java:459)
+at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1132)
+at android.app.Activity.performStart(Activity.java:4371)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:1724)
+... 11 more
+
+```
+"
+sozialhelden/wheelmap-android,closed,Problem understanding distance query Sqlite,[],"Hi,
+
+Can you please help i cant' understand this query
+
+```
+SELECT ""location"",
+(sin_lat_rad * ""sin_lat_rad"" + cos_lat_rad * ""cos_lat_rad"" *
+ (sin_lon_rad * ""sin_lon_rad"" + cos_lon_rad * ""cos_lon_rad"")) AS ""distance_acos""
+FROM ""locations""
+ORDER BY ""distance_acos"" DESC
+LIMIT 10;
+```
+
+Where is the desired distance needs to be passed? i mean if i want to search the latitude and longitude with some radius?
+
+Regards
+Muhammad Babar
+"
+sozialhelden/wheelmap-android,open,org.springframework.web.client.RestClientException: Could not extract response: no suitable HttpMessageConverter found for response type [org.wheelmap.android.mapping.locale.Locales] and content type [text/html;charset=utf-8],"[Label(name=""Android""), Label(name=""App versions: 2.0 - 2.0.1""), Label(name=""BugSense"")]","``` bash
+org.springframework.web.client.RestClientException: Could not extract response: no suitable HttpMessageConverter found for response type [org.wheelmap.android.mapping.locale.Locales] and content type [text/html;charset=utf-8]
+at org.springframework.web.client.HttpMessageConverterExtractor.extractData(HttpMessageConverterExtractor.java:79)
+at org.wheelmap.android.net.request.RestTemplateExt$ResponseExtractorDecorator.extractData(RestTemplateExt.java:80)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:484)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.SinglePageExecutor.retrieveSinglePage(SinglePageExecutor.java:60)
+at org.wheelmap.android.net.LocalesExecutor.execute(LocalesExecutor.java:62)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+org.springframework.web.client.RestClientException: Could not extract response: no suitable HttpMessageConverter found for response type [org.wheelmap.android.mapping.locale.Locales] and content type [text/html;charset=utf-8]
+at org.springframework.web.client.HttpMessageConverterExtractor.extractData(HttpMessageConverterExtractor.java:79)
+at org.wheelmap.android.net.request.RestTemplateExt$ResponseExtractorDecorator.extractData(RestTemplateExt.java:80)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:484)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.SinglePageExecutor.retrieveSinglePage(SinglePageExecutor.java:60)
+at org.wheelmap.android.net.LocalesExecutor.execute(LocalesExecutor.java:62)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.net.SocketTimeoutException,"[Label(name=""Android""), Label(name=""App versions: 2.0 - 2.0.1""), Label(name=""BugSense"")]","``` bash
+org.springframework.http.converter.HttpMessageNotReadableException: Could not read JSON: null; nested exception is java.net.SocketTimeoutException
+at org.springframework.http.converter.json.MappingJacksonHttpMessageConverter.readInternal(MappingJacksonHttpMessageConverter.java:125)
+at org.springframework.http.converter.AbstractHttpMessageConverter.read(AbstractHttpMessageConverter.java:147)
+at org.springframework.web.client.HttpMessageConverterExtractor.extractData(HttpMessageConverterExtractor.java:76)
+at org.wheelmap.android.net.request.RestTemplateExt$ResponseExtractorDecorator.extractData(RestTemplateExt.java:80)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:484)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.MultiPageExecutor.executeSingleRequest(MultiPageExecutor.java:44)
+at org.wheelmap.android.net.MultiPageExecutor.retrieveMaxNPages(MultiPageExecutor.java:70)
+at org.wheelmap.android.net.NodesExecutor.execute(NodesExecutor.java:132)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:176)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+Caused by: java.net.SocketTimeoutException
+at java.net.PlainSocketImpl.read(PlainSocketImpl.java:491)
+at java.net.PlainSocketImpl.access$000(PlainSocketImpl.java:46)
+at java.net.PlainSocketImpl$PlainSocketInputStream.read(PlainSocketImpl.java:240)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:103)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.read(AbstractSessionInputBuffer.java:134)
+at org.apache.http.impl.io.ChunkedInputStream.read(ChunkedInputStream.java:161)
+at org.apache.http.conn.EofSensorInputStream.read(EofSensorInputStream.java:159)
+at org.codehaus.jackson.impl.Utf8StreamParser.loadMore(Utf8StreamParser.java:172)
+at org.codehaus.jackson.impl.Utf8StreamParser._matchToken(Utf8StreamParser.java:2227)
+at org.codehaus.jackson.impl.Utf8StreamParser.nextToken(Utf8StreamParser.java:533)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:690)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserialize(BeanDeserializer.java:580)
+at org.codehaus.jackson.map.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:217)
+at org.codehaus.jackson.map.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:194)
+at org.codehaus.jackson.map.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:30)
+at org.codehaus.jackson.map.deser.SettableBeanProperty.deserialize(SettableBeanProperty.java:299)
+at org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty.deserializeAndSet(SettableBeanProperty.java:414)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:697)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserialize(BeanDeserializer.java:580)
+at org.codehaus.jackson.map.ObjectMapper._readMapAndClose(ObjectMapper.java:2732)
+at org.codehaus.jackson.map.ObjectMapper.readValue(ObjectMapper.java:1923)
+at org.springframework.http.converter.json.MappingJacksonHttpMessageConverter.readInternal(MappingJacksonHttpMessageConverter.java:122)
+... 18 more
+org.springframework.http.converter.HttpMessageNotReadableException: Could not read JSON: null; nested exception is java.net.SocketTimeoutException
+at org.springframework.http.converter.json.MappingJacksonHttpMessageConverter.readInternal(MappingJacksonHttpMessageConverter.java:125)
+at org.springframework.http.converter.AbstractHttpMessageConverter.read(AbstractHttpMessageConverter.java:147)
+at org.springframework.web.client.HttpMessageConverterExtractor.extractData(HttpMessageConverterExtractor.java:76)
+at org.wheelmap.android.net.request.RestTemplateExt$ResponseExtractorDecorator.extractData(RestTemplateExt.java:80)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:484)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.MultiPageExecutor.executeSingleRequest(MultiPageExecutor.java:44)
+at org.wheelmap.android.net.MultiPageExecutor.retrieveMaxNPages(MultiPageExecutor.java:70)
+at org.wheelmap.android.net.NodesExecutor.execute(NodesExecutor.java:132)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:176)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+Caused by: java.net.SocketTimeoutException
+at java.net.PlainSocketImpl.read(PlainSocketImpl.java:491)
+at java.net.PlainSocketImpl.access$000(PlainSocketImpl.java:46)
+at java.net.PlainSocketImpl$PlainSocketInputStream.read(PlainSocketImpl.java:240)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:103)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.read(AbstractSessionInputBuffer.java:134)
+at org.apache.http.impl.io.ChunkedInputStream.read(ChunkedInputStream.java:161)
+at org.apache.http.conn.EofSensorInputStream.read(EofSensorInputStream.java:159)
+at org.codehaus.jackson.impl.Utf8StreamParser.loadMore(Utf8StreamParser.java:172)
+at org.codehaus.jackson.impl.Utf8StreamParser._matchToken(Utf8StreamParser.java:2227)
+at org.codehaus.jackson.impl.Utf8StreamParser.nextToken(Utf8StreamParser.java:533)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:690)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserialize(BeanDeserializer.java:580)
+at org.codehaus.jackson.map.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:217)
+at org.codehaus.jackson.map.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:194)
+at org.codehaus.jackson.map.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:30)
+at org.codehaus.jackson.map.deser.SettableBeanProperty.deserialize(SettableBeanProperty.java:299)
+at org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty.deserializeAndSet(SettableBeanProperty.java:414)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:697)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserialize(BeanDeserializer.java:580)
+at org.codehaus.jackson.map.ObjectMapper._readMapAndClose(ObjectMapper.java:2732)
+at org.codehaus.jackson.map.ObjectMapper.readValue(ObjectMapper.java:1923)
+at org.springframework.http.converter.json.MappingJacksonHttpMessageConverter.readInternal(MappingJacksonHttpMessageConverter.java:122)
+... 18 more
+
+```
+"
+sozialhelden/wheelmap-android,open,android.content.res.Resources$NotFoundException: String resource ID #0x7f0c0081,"[Label(name=""Android""), Label(name=""App versions: 2.0.1""), Label(name=""BugSense"")]","``` bash
+android.content.res.Resources$NotFoundException: String resource ID #0x7f0c0081
+at android.content.res.Resources.getText(Resources.java:1057)
+at android.content.Context.getText(Context.java:322)
+at android.app.AlertDialog$Builder.setMessage(AlertDialog.java:434)
+at org.wheelmap.android.activity.StartupActivity.showErrorDialog(StartupActivity.java:294)
+at org.wheelmap.android.activity.StartupActivity.onReceiveResult(StartupActivity.java:250)
+at org.wheelmap.android.utils.DetachableResultReceiver.onReceiveResult(DetachableResultReceiver.java:74)
+at android.os.ResultReceiver$MyRunnable.run(ResultReceiver.java:43)
+at android.os.Handler.handleCallback(Handler.java:725)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:5306)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:511)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1102)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:869)
+at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+sozialhelden/wheelmap-android,open,libcore.io.ErrnoException: isConnected failed: ECONNREFUSED (Connection refused),"[Label(name=""Android""), Label(name=""App versions: 2.0 - 2.0.1""), Label(name=""BugSense"")]","``` bash
+org.springframework.web.client.ResourceAccessException: I/O error: Connection to http://127.0.0.1:3128 refused; nested exception is org.apache.http.conn.HttpHostConnectException: Connection to http://127.0.0.1:3128 refused
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:491)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.SinglePageExecutor.retrieveSinglePage(SinglePageExecutor.java:60)
+at org.wheelmap.android.net.CategoriesExecutor.execute(CategoriesExecutor.java:74)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:176)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connection to http://127.0.0.1:3128 refused
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:183)
+at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:164)
+at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:119)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:360)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:670)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:509)
+at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:83)
+at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:46)
+at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:63)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:476)
+... 13 more
+Caused by: java.net.ConnectException: failed to connect to /127.0.0.1 (port 3128) after 5000ms: isConnected failed: ECONNREFUSED (Connection refused)
+at libcore.io.IoBridge.isConnected(IoBridge.java:223)
+at libcore.io.IoBridge.connectErrno(IoBridge.java:161)
+at libcore.io.IoBridge.connect(IoBridge.java:112)
+at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:192)
+at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:459)
+at java.net.Socket.connect(Socket.java:842)
+at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:119)
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:144)
+... 22 more
+Caused by: libcore.io.ErrnoException: isConnected failed: ECONNREFUSED (Connection refused)
+at libcore.io.IoBridge.isConnected(IoBridge.java:208)
+... 29 more
+org.springframework.web.client.ResourceAccessException: I/O error: Connection to http://127.0.0.1:3128 refused; nested exception is org.apache.http.conn.HttpHostConnectException: Connection to http://127.0.0.1:3128 refused
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:491)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.SinglePageExecutor.retrieveSinglePage(SinglePageExecutor.java:60)
+at org.wheelmap.android.net.CategoriesExecutor.execute(CategoriesExecutor.java:74)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:176)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connection to http://127.0.0.1:3128 refused
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:183)
+at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:164)
+at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:119)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:360)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:670)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:509)
+at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:83)
+at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:46)
+at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:63)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:476)
+... 13 more
+Caused by: java.net.ConnectException: failed to connect to /127.0.0.1 (port 3128) after 5000ms: isConnected failed: ECONNREFUSED (Connection refused)
+at libcore.io.IoBridge.isConnected(IoBridge.java:223)
+at libcore.io.IoBridge.connectErrno(IoBridge.java:161)
+at libcore.io.IoBridge.connect(IoBridge.java:112)
+at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:192)
+at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:459)
+at java.net.Socket.connect(Socket.java:842)
+at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:119)
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:144)
+... 22 more
+Caused by: libcore.io.ErrnoException: isConnected failed: ECONNREFUSED (Connection refused)
+at libcore.io.IoBridge.isConnected(IoBridge.java:208)
+... 29 more
+
+```
+"
+sozialhelden/wheelmap-android,open,android.content.res.Resources$NotFoundException: String resource ID #0x7f0c0081,"[Label(name=""Android""), Label(name=""App versions: 2.0.1""), Label(name=""BugSense"")]","``` bash
+android.content.res.Resources$NotFoundException: String resource ID #0x7f0c0081
+at android.content.res.Resources.getText(Resources.java:1096)
+at android.content.res.Resources.getString(Resources.java:1190)
+at android.content.Context.getString(Context.java:350)
+at de.keyboardsurfer.android.widget.crouton.Crouton.makeText(Crouton.java:249)
+at org.wheelmap.android.activity.MainSinglePaneActivity.onError(MainSinglePaneActivity.java:435)
+at org.wheelmap.android.fragment.CombinedWorkerFragment.onReceiveResult(CombinedWorkerFragment.java:447)
+at org.wheelmap.android.utils.DetachableResultReceiver.onReceiveResult(DetachableResultReceiver.java:74)
+at android.os.ResultReceiver$MyRunnable.run(ResultReceiver.java:43)
+at android.os.Handler.handleCallback(Handler.java:733)
+at android.os.Handler.dispatchMessage(Handler.java:95)
+at android.os.Looper.loop(Looper.java:157)
+at android.app.ActivityThread.main(ActivityThread.java:5293)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:515)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1265)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1081)
+at dalvik.system.NativeStart.main(Native Method)
+
+```
+"
+sozialhelden/wheelmap-android,open,android.accounts.NetworkErrorException,"[Label(name=""Android""), Label(name=""App versions: 2.0.1""), Label(name=""BugSense"")]","``` bash
+android.accounts.NetworkErrorException
+at org.wheelmap.android.net.TotalNodeCountExecutor.execute(TotalNodeCountExecutor.java:71)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+android.accounts.NetworkErrorException
+at org.wheelmap.android.net.TotalNodeCountExecutor.execute(TotalNodeCountExecutor.java:71)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+
+```
+"
+sozialhelden/wheelmap-android,closed,How to build project as a developer,[],"Hello, 
+
+First , I'm sorry for my english if it doesn't seem fluent and clear.
+I'm a total beginner at android application programming, and I tried to build your application in order to try to add a feature.
+
+I've got build problems when I launch mvn package
+
+ Failed to execute goal on project wheelmap: Could not resolve dependencies for project org.wheelmap.android:wheelmap:apk:2.0.1: Failed to collect dependencies for [android:android:jar:[4.4,) (provided)
+
+What's missing ?
+
+I'm on Ubuntu 12.04 and I've got 
+
+java version ""1.7.0_55""
+Java(TM) SE Runtime Environment (build 1.7.0_55-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 24.55-b03, mixed mode)
+
+and the latest version of android studio.
+
+Thanks
+"
+sozialhelden/wheelmap-android,open,android.accounts.NetworkErrorException,"[Label(name=""Android""), Label(name=""App versions: 2.0 - 2.0.1""), Label(name=""BugSense"")]","``` bash
+android.accounts.NetworkErrorException
+at org.wheelmap.android.net.MarkerIconExecutor.execute(MarkerIconExecutor.java:81)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+android.accounts.NetworkErrorException
+at org.wheelmap.android.net.MarkerIconExecutor.execute(MarkerIconExecutor.java:81)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+
+```
+"
+sozialhelden/wheelmap-android,open,java.net.SocketTimeoutException,"[Label(name=""Android""), Label(name=""App versions: 2.0-SNAPSHOT-PRODUCTION - 2.0 - 2.0.1""), Label(name=""BugSense"")]","``` bash
+org.springframework.http.converter.HttpMessageNotReadableException: Could not read JSON: null; nested exception is java.net.SocketTimeoutException
+at org.springframework.http.converter.json.MappingJacksonHttpMessageConverter.readInternal(MappingJacksonHttpMessageConverter.java:125)
+at org.springframework.http.converter.AbstractHttpMessageConverter.read(AbstractHttpMessageConverter.java:147)
+at org.springframework.web.client.HttpMessageConverterExtractor.extractData(HttpMessageConverterExtractor.java:76)
+at org.wheelmap.android.net.request.RestTemplateExt$ResponseExtractorDecorator.extractData(RestTemplateExt.java:80)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:484)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.MultiPageExecutor.executeSingleRequest(MultiPageExecutor.java:44)
+at org.wheelmap.android.net.MultiPageExecutor.retrieveMaxNPages(MultiPageExecutor.java:61)
+at org.wheelmap.android.net.NodesExecutor.execute(NodesExecutor.java:132)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+Caused by: java.net.SocketTimeoutException
+at java.net.PlainSocketImpl.read(PlainSocketImpl.java:492)
+at java.net.PlainSocketImpl.access$000(PlainSocketImpl.java:46)
+at java.net.PlainSocketImpl$PlainSocketInputStream.read(PlainSocketImpl.java:241)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:103)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.read(AbstractSessionInputBuffer.java:134)
+at org.apache.http.impl.io.ChunkedInputStream.read(ChunkedInputStream.java:161)
+at org.apache.http.conn.EofSensorInputStream.read(EofSensorInputStream.java:159)
+at org.codehaus.jackson.impl.Utf8StreamParser.loadMore(Utf8StreamParser.java:172)
+at org.codehaus.jackson.impl.Utf8StreamParser._matchToken(Utf8StreamParser.java:2239)
+at org.codehaus.jackson.impl.Utf8StreamParser.nextToken(Utf8StreamParser.java:533)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:690)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserialize(BeanDeserializer.java:580)
+at org.codehaus.jackson.map.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:217)
+at org.codehaus.jackson.map.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:194)
+at org.codehaus.jackson.map.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:30)
+at org.codehaus.jackson.map.deser.SettableBeanProperty.deserialize(SettableBeanProperty.java:299)
+at org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty.deserializeAndSet(SettableBeanProperty.java:414)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:697)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserialize(BeanDeserializer.java:580)
+at org.codehaus.jackson.map.ObjectMapper._readMapAndClose(ObjectMapper.java:2732)
+at org.codehaus.jackson.map.ObjectMapper.readValue(ObjectMapper.java:1923)
+at org.springframework.http.converter.json.MappingJacksonHttpMessageConverter.readInternal(MappingJacksonHttpMessageConverter.java:122)
+... 18 more
+org.springframework.http.converter.HttpMessageNotReadableException: Could not read JSON: null; nested exception is java.net.SocketTimeoutException
+at org.springframework.http.converter.json.MappingJacksonHttpMessageConverter.readInternal(MappingJacksonHttpMessageConverter.java:125)
+at org.springframework.http.converter.AbstractHttpMessageConverter.read(AbstractHttpMessageConverter.java:147)
+at org.springframework.web.client.HttpMessageConverterExtractor.extractData(HttpMessageConverterExtractor.java:76)
+at org.wheelmap.android.net.request.RestTemplateExt$ResponseExtractorDecorator.extractData(RestTemplateExt.java:80)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:484)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.MultiPageExecutor.executeSingleRequest(MultiPageExecutor.java:44)
+at org.wheelmap.android.net.MultiPageExecutor.retrieveMaxNPages(MultiPageExecutor.java:61)
+at org.wheelmap.android.net.NodesExecutor.execute(NodesExecutor.java:132)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+Caused by: java.net.SocketTimeoutException
+at java.net.PlainSocketImpl.read(PlainSocketImpl.java:492)
+at java.net.PlainSocketImpl.access$000(PlainSocketImpl.java:46)
+at java.net.PlainSocketImpl$PlainSocketInputStream.read(PlainSocketImpl.java:241)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:103)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.read(AbstractSessionInputBuffer.java:134)
+at org.apache.http.impl.io.ChunkedInputStream.read(ChunkedInputStream.java:161)
+at org.apache.http.conn.EofSensorInputStream.read(EofSensorInputStream.java:159)
+at org.codehaus.jackson.impl.Utf8StreamParser.loadMore(Utf8StreamParser.java:172)
+at org.codehaus.jackson.impl.Utf8StreamParser._matchToken(Utf8StreamParser.java:2239)
+at org.codehaus.jackson.impl.Utf8StreamParser.nextToken(Utf8StreamParser.java:533)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:690)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserialize(BeanDeserializer.java:580)
+at org.codehaus.jackson.map.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:217)
+at org.codehaus.jackson.map.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:194)
+at org.codehaus.jackson.map.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:30)
+at org.codehaus.jackson.map.deser.SettableBeanProperty.deserialize(SettableBeanProperty.java:299)
+at org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty.deserializeAndSet(SettableBeanProperty.java:414)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:697)
+at org.codehaus.jackson.map.deser.BeanDeserializer.deserialize(BeanDeserializer.java:580)
+at org.codehaus.jackson.map.ObjectMapper._readMapAndClose(ObjectMapper.java:2732)
+at org.codehaus.jackson.map.ObjectMapper.readValue(ObjectMapper.java:1923)
+at org.springframework.http.converter.json.MappingJacksonHttpMessageConverter.readInternal(MappingJacksonHttpMessageConverter.java:122)
+... 18 more
+
+```
+"
+sozialhelden/wheelmap-android,open,android.accounts.NetworkErrorException,"[Label(name=""Android""), Label(name=""App versions: 2.0.1""), Label(name=""BugSense"")]","``` bash
+android.accounts.NetworkErrorException
+at org.wheelmap.android.net.TotalNodeCountExecutor.execute(TotalNodeCountExecutor.java:71)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+android.accounts.NetworkErrorException
+at org.wheelmap.android.net.TotalNodeCountExecutor.execute(TotalNodeCountExecutor.java:71)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:60)
+
+```
+"
+sozialhelden/wheelmap-android,open,libcore.io.ErrnoException: isConnected failed: ECONNREFUSED (Connection refused),"[Label(name=""Android""), Label(name=""App versions: 2.0 - 2.0.1""), Label(name=""BugSense"")]","``` bash
+org.springframework.web.client.ResourceAccessException: I/O error: Connection to http://127.0.0.1:3128 refused; nested exception is org.apache.http.conn.HttpHostConnectException: Connection to http://127.0.0.1:3128 refused
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:491)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.SinglePageExecutor.retrieveSinglePage(SinglePageExecutor.java:60)
+at org.wheelmap.android.net.LocalesExecutor.execute(LocalesExecutor.java:62)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:176)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connection to http://127.0.0.1:3128 refused
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:183)
+at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:164)
+at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:119)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:360)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:670)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:509)
+at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:83)
+at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:46)
+at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:63)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:476)
+... 13 more
+Caused by: java.net.ConnectException: failed to connect to /127.0.0.1 (port 3128) after 5000ms: isConnected failed: ECONNREFUSED (Connection refused)
+at libcore.io.IoBridge.isConnected(IoBridge.java:223)
+at libcore.io.IoBridge.connectErrno(IoBridge.java:161)
+at libcore.io.IoBridge.connect(IoBridge.java:112)
+at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:192)
+at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:459)
+at java.net.Socket.connect(Socket.java:842)
+at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:119)
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:144)
+... 22 more
+Caused by: libcore.io.ErrnoException: isConnected failed: ECONNREFUSED (Connection refused)
+at libcore.io.IoBridge.isConnected(IoBridge.java:208)
+... 29 more
+org.springframework.web.client.ResourceAccessException: I/O error: Connection to http://127.0.0.1:3128 refused; nested exception is org.apache.http.conn.HttpHostConnectException: Connection to http://127.0.0.1:3128 refused
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:491)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.SinglePageExecutor.retrieveSinglePage(SinglePageExecutor.java:60)
+at org.wheelmap.android.net.LocalesExecutor.execute(LocalesExecutor.java:62)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:176)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connection to http://127.0.0.1:3128 refused
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:183)
+at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:164)
+at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:119)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:360)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:670)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:509)
+at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:83)
+at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:46)
+at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:63)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:476)
+... 13 more
+Caused by: java.net.ConnectException: failed to connect to /127.0.0.1 (port 3128) after 5000ms: isConnected failed: ECONNREFUSED (Connection refused)
+at libcore.io.IoBridge.isConnected(IoBridge.java:223)
+at libcore.io.IoBridge.connectErrno(IoBridge.java:161)
+at libcore.io.IoBridge.connect(IoBridge.java:112)
+at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:192)
+at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:459)
+at java.net.Socket.connect(Socket.java:842)
+at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:119)
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:144)
+... 22 more
+Caused by: libcore.io.ErrnoException: isConnected failed: ECONNREFUSED (Connection refused)
+at libcore.io.IoBridge.isConnected(IoBridge.java:208)
+... 29 more
+
+```
+"
+sozialhelden/wheelmap-android,open,org.springframework.web.client.HttpClientErrorException: 400 Bad Request,"[Label(name=""Android""), Label(name=""App versions: 2.0""), Label(name=""BugSense"")]","``` bash
+org.springframework.web.client.HttpClientErrorException: 400 Bad Request
+at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:76)
+at org.springframework.web.client.RestTemplate.handleResponseError(RestTemplate.java:524)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:481)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.put(RestTemplate.java:375)
+at org.wheelmap.android.net.request.RequestProcessor.put(RequestProcessor.java:96)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:248)
+at org.wheelmap.android.net.NodeUpdateOrNewExecutor.execute(NodeUpdateOrNewExecutor.java:103)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:157)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+org.springframework.web.client.HttpClientErrorException: 400 Bad Request
+at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:76)
+at org.springframework.web.client.RestTemplate.handleResponseError(RestTemplate.java:524)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:481)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.put(RestTemplate.java:375)
+at org.wheelmap.android.net.request.RequestProcessor.put(RequestProcessor.java:96)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:248)
+at org.wheelmap.android.net.NodeUpdateOrNewExecutor.execute(NodeUpdateOrNewExecutor.java:103)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:157)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+
+```
+"
+sozialhelden/wheelmap-android,open,"java.net.UnknownHostException: Unable to resolve host ""wheelmap.org"": No address associated with hostname","[Label(name=""Android""), Label(name=""App versions: 2.0""), Label(name=""BugSense"")]","``` bash
+org.springframework.web.client.ResourceAccessException: I/O error: Unable to resolve host ""wheelmap.org"": No address associated with hostname; nested exception is java.net.UnknownHostException: Unable to resolve host ""wheelmap.org"": No address associated with hostname
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:491)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.MultiPageExecutor.executeSingleRequest(MultiPageExecutor.java:44)
+at org.wheelmap.android.net.MultiPageExecutor.retrieveMaxNPages(MultiPageExecutor.java:61)
+at org.wheelmap.android.net.PhotosExecutor.execute(PhotosExecutor.java:70)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:136)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+Caused by: java.net.UnknownHostException: Unable to resolve host ""wheelmap.org"": No address associated with hostname
+at java.net.InetAddress.lookupHostByName(InetAddress.java:394)
+at java.net.InetAddress.getAllByNameImpl(InetAddress.java:236)
+at java.net.InetAddress.getAllByName(InetAddress.java:214)
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:137)
+at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:164)
+at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:119)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:360)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:555)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:487)
+at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:83)
+at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:46)
+at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:63)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:476)
+... 14 more
+org.springframework.web.client.ResourceAccessException: I/O error: Unable to resolve host ""wheelmap.org"": No address associated with hostname; nested exception is java.net.UnknownHostException: Unable to resolve host ""wheelmap.org"": No address associated with hostname
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:491)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.SinglePageExecutor.executeSingleRequest(SinglePageExecutor.java:68)
+at org.wheelmap.android.net.MultiPageExecutor.executeSingleRequest(MultiPageExecutor.java:44)
+at org.wheelmap.android.net.MultiPageExecutor.retrieveMaxNPages(MultiPageExecutor.java:61)
+at org.wheelmap.android.net.PhotosExecutor.execute(PhotosExecutor.java:70)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:136)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+Caused by: java.net.UnknownHostException: Unable to resolve host ""wheelmap.org"": No address associated with hostname
+at java.net.InetAddress.lookupHostByName(InetAddress.java:394)
+at java.net.InetAddress.getAllByNameImpl(InetAddress.java:236)
+at java.net.InetAddress.getAllByName(InetAddress.java:214)
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:137)
+at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:164)
+at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:119)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:360)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:555)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:487)
+at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:83)
+at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:46)
+at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:63)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:476)
+... 14 more
+
+```
+"
+sozialhelden/wheelmap-android,open,java.net.SocketTimeoutException,"[Label(name=""Android""), Label(name=""App versions: 2.0""), Label(name=""BugSense"")]","``` bash
+org.springframework.web.client.ResourceAccessException: I/O error: null; nested exception is java.net.SocketTimeoutException
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:491)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.ApiKeyExecutor.execute(ApiKeyExecutor.java:74)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+Caused by: java.net.SocketTimeoutException
+at java.net.PlainSocketImpl.read(PlainSocketImpl.java:492)
+at java.net.PlainSocketImpl.access$000(PlainSocketImpl.java:46)
+at java.net.PlainSocketImpl$PlainSocketInputStream.read(PlainSocketImpl.java:241)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:103)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:191)
+at org.apache.http.impl.conn.DefaultResponseParser.parseHead(DefaultResponseParser.java:82)
+at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:174)
+at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:180)
+at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:235)
+at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:259)
+at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:279)
+at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:121)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:428)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:555)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:487)
+at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:83)
+at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:46)
+at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:63)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:476)
+... 11 more
+org.springframework.web.client.ResourceAccessException: I/O error: null; nested exception is java.net.SocketTimeoutException
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:491)
+at org.wheelmap.android.net.request.RestTemplateExt.doExecute(RestTemplateExt.java:43)
+at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:453)
+at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:251)
+at org.wheelmap.android.net.request.RequestProcessor.get(RequestProcessor.java:84)
+at org.wheelmap.android.net.AbstractExecutor.executeRequest(AbstractExecutor.java:232)
+at org.wheelmap.android.net.ApiKeyExecutor.execute(ApiKeyExecutor.java:74)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:137)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+Caused by: java.net.SocketTimeoutException
+at java.net.PlainSocketImpl.read(PlainSocketImpl.java:492)
+at java.net.PlainSocketImpl.access$000(PlainSocketImpl.java:46)
+at java.net.PlainSocketImpl$PlainSocketInputStream.read(PlainSocketImpl.java:241)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:103)
+at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:191)
+at org.apache.http.impl.conn.DefaultResponseParser.parseHead(DefaultResponseParser.java:82)
+at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:174)
+at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:180)
+at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:235)
+at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:259)
+at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:279)
+at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:121)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:428)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:555)
+at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:487)
+at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:83)
+at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:46)
+at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:63)
+at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:476)
+... 11 more
+
+```
+"
+sozialhelden/wheelmap-android,open,android.accounts.NetworkErrorException,"[Label(name=""Android""), Label(name=""App versions: 2.0""), Label(name=""BugSense"")]","``` bash
+android.accounts.NetworkErrorException
+at org.wheelmap.android.net.MarkerIconExecutor.execute(MarkerIconExecutor.java:97)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:176)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+android.accounts.NetworkErrorException
+at org.wheelmap.android.net.MarkerIconExecutor.execute(MarkerIconExecutor.java:97)
+at org.wheelmap.android.service.RestService.onHandleIntent(RestService.java:105)
+at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:65)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:176)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+
+```
+"
+sozialhelden/wheelmap-android,closed,Build problem at 0.8.3,[],"Compiling 102 source files to /home/gerry/build/org.wheelmap.android.online/Wheelmap/bin/classes
+    [javac] /home/gerry/build/org.wheelmap.android.online/Wheelmap/src/org/wheelmap/android/ui/POIsListActivity.java:64: org.wheelmap.android.ui.POIsListActivity is not abstract and does not override abstract method onRefresh(com.handmark.pulltorefresh.library.PullToRefreshBase) in com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener
+    [javac] public class POIsListActivity extends ListActivity implements
+
+I tried PulltoRefresh at 1.4 ad 2.1.
+"
+sozialhelden/wheelmap-android,open,Why libGoogleAnalytics.jar?,[],"Hey there!
+I was just trying to package wheelmap for the fdroid (free software) repository. But actually, you are using the above mentioned propietary spyware... Now, I would like to convince you to get rid it. :) I think it would be such a benefit to have your software in a free repo! Please consider this - would be great!
+"
+sozialhelden/wheelmap-android,open,Exception by onResume POIDeteialActivity,[],"see ARCA from 06/04/2012 18:18:49 (Lifepad)
+
+ava.lang.RuntimeException: Unable to resume activity {org.wheelmap.android.online/org.wheelmap.android.ui.POIDetailActivity}: java.lang.IllegalStateException: trying to requery an already closed cursor  android.content.ContentResolver$CursorWrapperInner@40e78db8
+        at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2288)
+        at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:2316)
+        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1050)
+        at android.os.Handler.dispatchMessage(Handler.java:99)
+        at android.os.Looper.loop(Looper.java:132)
+        at android.app.ActivityThread.main(ActivityThread.java:4123)
+        at java.lang.reflect.Method.invokeNative(Native Method)
+        at java.lang.reflect.Method.invoke(Method.java:491)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:841)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:599)
+        at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.IllegalStateException: trying to requery an already closed cursor  android.content.ContentResolver$CursorWrapperInner@40e78db8
+        at android.app.Activity.performRestart(Activity.java:4445)
+        at android.app.Activity.performResume(Activity.java:4467)
+        at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2278)
+        ... 10 more
+java.lang.IllegalStateException: trying to requery an already closed cursor  android.content.ContentResolver$CursorWrapperInner@40e78db8
+        at android.app.Activity.performRestart(Activity.java:4445)
+        at android.app.Activity.performResume(Activity.java:4467)
+        at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2278)
+        at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:2316)
+        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1050)
+        at android.os.Handler.dispatchMessage(Handler.java:99)
+        at android.os.Looper.loop(Looper.java:132)
+        at android.app.ActivityThread.main(ActivityThread.java:4123)
+        at java.lang.reflect.Method.invokeNative(Native Method)
+        at java.lang.reflect.Method.invoke(Method.java:491)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:841)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:599)
+        at dalvik.system.NativeStart.main(Native Method)
+"
+sozialhelden/wheelmap-android,closed,nn and nb translations,[],"Hi, here's my nn and nb translations
+
+nn: Norwegian Nynorsk : Norsk (nynorsk)
+nb: Norwegian Bokmål : Norsk (bokmål)
+
+I started working on it before I got access to translate at MyGengo, but will continue there once you have pulled in my originals (didn't find anywhere to import in myGengo).
+"
+sozialhelden/wheelmap-android,open,"POIDetailActivity, POIDetailActivity-separator as widget",[],"For separating of edits widgets are used following construction:
+
+``` xml
+<LinearLayout android:background=""#FFC6C6C6""
+   android:layout_width=""fill_parent"" android:layout_height=""1dp"" />
+<LinearLayout android:background=""#FFE6E6E6""
+  android:layout_width=""fill_parent"" android:layout_height=""1dp"" />
+```
+
+this repeats many times in layouts. its not DRY. To refactor as own widget.
+"
+sozialhelden/wheelmap-android,closed,"category unknown, type unknown in POI detail view",[],"- I got to a detail view of a POI (example: ""Tresor Club"") and look at the rows ""category"" and ""type""
+- I expect to see a category name (""leisure"") and type name (""nightclub"")
+- Instead, I see ""Category Unknown"" and ""Type Unknown"" although this information is available on wheelmap.org ( http://wheelmap.org/nodes/612418460 )
+
+This seems to be the case for all POIs.
+"
+sozialhelden/wheelmap-android,open,"MapActivity, google version, clean sources",[],"The first versions of the app were running with google maps. We are using Mapsforge now, but still there are files related with google maps stored in project's sources (layout, java ...).
+
+to be removed.
+"
+sozialhelden/wheelmap-android,closed,Search,[],"We wont support the search in the first version.
+Just remove icons and calls from the UI.
+
+This has to be discussed who the search can work, on the server, locally ... ?
+"
+sozialhelden/wheelmap-android,open,POIDetailActivity,[],"A lot of POIs have incomplete data sets (missing address, phones, websites, etc.)
+Its better to show just defined fields( hide empty).
+
+In the POIDetailActivityEditable of course all has to be visible
+"
+sozialhelden/wheelmap-android,open,POIDetailActivityEditable form,[],"Now we have 2 edit fields for Category and Category-Type (as combox). The iOS app has one List where type entries are grouped together for every category. It makes the user input easier.
+
+To implement this way also in android client.
+"
+sozialhelden/wheelmap-android,closed,"Category Icons, ListActivity",[],"Icons are 16x16 pixel big, better to say 16x16 pixels small for the ListActivityView. 
+We need bigger icons for ListActivity. 
+
+There are more ways how to do that:
+- just store bigger asset and downscale it in runtime
+- assets for every screen resolution
+
+Has to be discussed.
+"
+sozialhelden/wheelmap-android,open,"Category Icons, MapActivity",[],"The server delivers through the API icons for categories. Icons don't change too much in the time, so maybe its better to have them as assets already delivered with the app, to save the startup up time.
+"
+sozialhelden/wheelmap-android,open,"ListActivity, options menu",[],"Depending on a selected item in the ListActivity should actions possible (edit, delete, ...)
+
+To be  implemented in **onPrepareOptionsMenu**
+"
+sozialhelden/wheelmap-android,open,Online map render as fallback for MapActivity,[],"I case the App has been installed on the phone and started for the first times, there are no offline maps. They have to be downloaded and the curent map has to be selected. This is not the best user experience, so an fallback to the online maps is good solution.
+MapForge enables this, we should it test if it works, so a user can work seamlessly without offline maps. 
+After user enters MapActivity, we can suggest to the user to download offline maps and navigate him directly to the MapDownloadActivity. This suggestion Dialog/Activity should have checkbox for do not show again, to not disturbe users they want to use online maps.
+"
+sozialhelden/wheelmap-android,open,ListActivity as default,[],"The ListActivity is the default view. After the App starts, the ListActivity is the default Activity.
+"
+sozialhelden/wheelmap-android,closed,ApiKeyManager,[],"- default developer API_KEY if not logged in, no editing, only wheelchair state
+- User+password request for getting API:KEY form server
+- store user API:KEY in references
+- isLoggedIn() 
+- every action which requier to be logged chcecks th estate and if th euser is not logged in, comms LoginActivity
+"
+sozialhelden/wheelmap-android,closed,Edit location on MapActivity,[],"There in the iOS App can a user change the location of the POI by moving it with finger on the map. We have to check, if it is possible also with MapForge.
+"
+sozialhelden/wheelmap-android,closed,"Preferencies settings, wheelchair",[],"Settings for wheelchair state is now as RadioBox. Normally we can display more or all types. So we need to change radiobox into checkbox.
+"
+sozialhelden/wheelmap-android,closed,Offline Map Download Section (perhaps) needs a way to cancel download,[],"This is something for feature paradize. Likely needs a rewrite of MapFileService. Task-Management and interruption of tasks needs to be improved.
+"
+sozialhelden/wheelmap-android,closed,commited missing and changed files,[],
+sozialhelden/wheelmap-android,closed,Rev mh 1,[],"pulling experimental branch into master
+"

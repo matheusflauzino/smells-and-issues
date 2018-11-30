@@ -1,0 +1,55 @@
+repository,state,title,label,body
+onyxbits/Drudgery,closed,Improvement in instructions,[],"I'm a fan of text adventures so I tried out the game. I found it hard to understand based on the instructions given so I tried to improve them. I've concentrated on being accurate rather than witty. I hope I've got it right Maybe there could be an option to randomize the widget's choice of direction... 
+
+```
+Drudge Quest is a simple memory game the objective of which is to
+to get through the day while trying to avoid running into your boss as you 
+move from room to room along the 'Escher Hallway' of your company's office 
+building.
+
+How to play:
+
+Your working day is divided up into rounds of five minutes each. 
+Sometime during each round, you must decide which room to move to for the next
+round so as best to avoid your boss.
+By setting the widget you will either cross the hallway or move to the next room on the same side 
+further down the hallway.
+
+Your boss is a dreadful person, who loves to ambush you in order to give you
+tedious tasks. If you sneak into a new room, only to find him (or her) waiting, 
+you'll be given a tedious task and the boss will move to the next room on the 
+same side of the hallway. 
+If your boss is absent, you look around, breathe a sigh of relief and 
+plan your next move; the boss will have seen you though and will move to the
+next room on the same side as you. 
+
+Therefore you must remember which side of the hallway you are on and set the widget
+to move to the next room on the opposite side of the hallway when the next round begins.
+But beware, the 'Escher Hallway' is named like this for a reason: if you lose 
+your bearings, there is no way to tell which side of the hallway you are on! 
+However you'll find out soon enough in the next round based on whether you run 
+into the boss or not!
+
+Every round you earn experience points. You gain one point for running into
+your boss, three points for not running in your boss and four points on
+every fifth round you manage to avoiding 'boss encounters'.
+```
+
+BTW, I've written an fdroid recipe too (for my own use):
+
+```
+ //de.onyxbits.drudgery
+//website and donations at onyxbits.de
+Repo Type:git
+Repo:https://github.com/onyxbits/Drudgery.git
+
+Build:1.1,2
+commit=v1.1
+    extlibs=android/android-support-v4r13.jar
+    srclibs=DashClock@ecb5a191880
+    prebuild=\
+      rm custom_rules.xml && \
+      echo 'source.dir=src;$$DashClock$$/api/src/main/java;\
+      $$DashClock$$/api/src/main/aidl' >> project.properties
+```
+"

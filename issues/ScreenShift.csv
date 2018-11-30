@@ -1,0 +1,116 @@
+repository,state,title,label,body
+aravindsagar/ScreenShift,open,Delete current saved profiles,[],I didn't see any way I can delete profiles.
+aravindsagar/ScreenShift,open,Update README.md,[],"Hi,
+
+This small and useless PR adds a button to get your app on F-droid and cleans the README :)"
+aravindsagar/ScreenShift,open,Does not start on LineageOS,[],"App closes immediately (LineageOS, 2/14/17, ASUS Nexus 7, nogapps):
+
+02-26 22:32:31.086   634  1021 I ActivityManager: Start proc 16632:com.sagar.screenshift2/u0a21 for activity com.sagar.screenshift2/.MainActivity
+02-26 22:32:31.179 16632 16632 I art     : Starting a blocking GC AddRemoveAppImageSpace
+02-26 22:32:31.181 16632 16632 W System  : ClassLoader referenced unknown path: /data/app/com.sagar.screenshift2-1/lib/arm
+02-26 22:32:31.240   634  1572 I ActivityManager: START u0 {cmp=com.sagar.screenshift2/.ProductTourActivity} from uid 10021 on display 0
+02-26 22:32:31.355 16632 16632 D setupFAB: savedInstanceState null
+02-26 22:32:31.369 16632 16632 D masterSwitchOn: false
+02-26 22:32:31.372 16632 16632 D ScreenShift: Problem setting up In-app Billing: IabResult: Billing service unavailable on device. (response: 3:Billing Unavailable)
+02-26 22:32:31.388 16632 16632 D AppChangeDetectionService: Starting app detection
+02-26 22:32:31.389 16632 16654 W System.err: java.lang.InterruptedException
+02-26 22:32:31.389 16632 16654 W System.err: 	at java.lang.Thread.sleep(Native Method)
+02-26 22:32:31.389 16632 16654 W System.err: 	at java.lang.Thread.sleep(Thread.java:371)
+02-26 22:32:31.389 16632 16654 W System.err: 	at java.lang.Thread.sleep(Thread.java:313)
+02-26 22:32:31.389 16632 16654 W System.err: 	at com.sagar.screenshift2.AppChangeDetectionService$AppLockThread.run(AppChangeDetectionService.java:105)
+02-26 22:32:31.408 16662 16662 D su      : su invoked.
+02-26 22:32:31.408 16662 16662 D su      : starting daemon client 10021 10021
+02-26 22:32:31.411 16664 16664 D su      : remote pid: 16662
+02-26 22:32:31.411 16664 16664 D su      : remote pts_slave: 
+02-26 22:32:31.411 16664 16664 D su      : waiting for child exit
+02-26 22:32:31.412 16666 16666 D su      : su invoked.
+02-26 22:32:31.413 16666 16666 E su      : SU from: u0_a21
+02-26 22:32:31.413 16666 16666 D su      : Checking whether app [uid:10021, pkgName: com.sagar.screenshift2] is allowed to be root
+02-26 22:32:31.415 16666 16666 D su      : Privilege elevation allowed by appops
+02-26 22:32:31.415 16666 16666 D su      : Allowing via appops.
+02-26 22:32:31.415 16666 16666 D su      : 10021 /system/bin/app_process32 executing 0 /system/bin/sh using binary /system/bin/sh : sh
+02-26 22:32:31.416   840   840 I SuControllerImpl: Got change
+02-26 22:32:31.417 16666 16666 D su      : Waiting for pid 16667.
+02-26 22:32:31.547 16632 16669 I Adreno-EGL: <qeglDrvAPI_eglInitialize:379>: QUALCOMM Build: 10/21/15, 369a2ea, I96aee987eb
+02-26 22:32:31.552 16632 16669 I OpenGLRenderer: Initialized EGL, version 1.4
+02-26 22:32:31.552 16632 16669 D OpenGLRenderer: Swap behavior 1
+02-26 22:32:31.559 16632 16669 W Adreno-ES20: <get_gpu_clk:229>: open failed: errno 13
+02-26 22:32:31.546 16669 16669 W RenderThread: type=1400 audit(0.0:84): avc: denied { read } for name=""gpuclk"" dev=""sysfs"" ino=10122 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=file permissive=0
+02-26 22:32:32.135   634   674 I ActivityManager: Displayed com.sagar.screenshift2/.ProductTourActivity: +760ms (total +1s63ms)
+02-26 22:32:32.158 16632 16632 D AndroidRuntime: Shutting down VM
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: FATAL EXCEPTION: main
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: Process: com.sagar.screenshift2, PID: 16632
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: java.lang.RuntimeException: Unable to destroy activity {com.sagar.screenshift2/com.sagar.screenshift2.MainActivity}: java.lang.IllegalArgumentException: Service not registered: com.sagar.screenshift2.util.IabHelper$1@5635c89
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.app.ActivityThread.performDestroyActivity(ActivityThread.java:4203)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.app.ActivityThread.handleDestroyActivity(ActivityThread.java:4221)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.app.ActivityThread.-wrap6(ActivityThread.java)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1538)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:154)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:6126)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:886)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:776)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: Caused by: java.lang.IllegalArgumentException: Service not registered: com.sagar.screenshift2.util.IabHelper$1@5635c89
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.app.LoadedApk.forgetServiceDispatcher(LoadedApk.java:1289)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.app.ContextImpl.unbindService(ContextImpl.java:1483)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.content.ContextWrapper.unbindService(ContextWrapper.java:648)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at com.sagar.screenshift2.util.IabHelper.dispose(IabHelper.java:292)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at com.sagar.screenshift2.MainActivity.onDestroy(MainActivity.java:996)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.app.Activity.performDestroy(Activity.java:6881)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.app.Instrumentation.callActivityOnDestroy(Instrumentation.java:1154)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	at android.app.ActivityThread.performDestroyActivity(ActivityThread.java:4190)
+02-26 22:32:32.159 16632 16632 E AndroidRuntime: 	... 9 more
+02-26 22:32:32.164   634  1572 W ActivityManager:   Force finishing activity com.sagar.screenshift2/.ProductTourActivity
+02-26 22:32:32.184 16632 16632 I Process : Sending signal. PID: 16632 SIG: 9
+02-26 22:32:32.202   215   215 E lowmemorykiller: Error writing /proc/16632/oom_score_adj; errno=22
+02-26 22:32:32.203   634  1573 W ActivityManager: Failed setting process group of 16632 to 1
+02-26 22:32:32.203   634  1573 W System.err: java.lang.IllegalArgumentException: Given thread 16669 does not exist
+02-26 22:32:32.203   634  1573 W System.err: 	at android.os.Process.setThreadPriority(Native Method)
+02-26 22:32:32.203   634  1573 W System.err: 	at com.android.server.am.ActivityManagerService.applyOomAdjLocked(ActivityManagerService.java:20698)
+02-26 22:32:32.203   634  1573 W System.err: 	at com.android.server.am.ActivityManagerService.updateOomAdjLocked(ActivityManagerService.java:21228)
+02-26 22:32:32.203   634  1573 W System.err: 	at com.android.server.am.ActivityManagerService.trimApplications(ActivityManagerService.java:21612)
+02-26 22:32:32.203   634  1573 W System.err: 	at com.android.server.am.ActivityManagerService.activityStopped(ActivityManagerService.java:7131)
+02-26 22:32:32.204   634  1573 W System.err: 	at android.app.ActivityManagerNative.onTransact(ActivityManagerNative.java:582)
+02-26 22:32:32.204   634  1573 W System.err: 	at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2968)
+02-26 22:32:32.205   634  1573 W System.err: 	at android.os.Binder.execTransact(Binder.java:565)
+02-26 22:32:32.221   634  1021 I WindowManager: WIN DEATH: Window{17d3293 u0 com.sagar.screenshift2/com.sagar.screenshift2.ProductTourActivity}
+02-26 22:32:32.221   634  1575 D GraphicsStats: Buffer count: 9
+02-26 22:32:32.221   634  1025 I ActivityManager: Process com.sagar.screenshift2 (pid 16632) has died
+02-26 22:32:32.222   634  1025 D ActivityManager: cleanUpApplicationRecord -- 16632
+02-26 22:32:32.222   634  1025 W ActivityManager: Scheduling restart of crashed service com.sagar.screenshift2/.AppChangeDetectionService in 1000ms
+02-26 22:32:32.222   634  1025 W ActivityManager: Scheduling restart of crashed service com.sagar.screenshift2/.ScreenShiftService in 11000ms
+02-26 22:32:32.223   634   658 I libprocessgroup: Killing pid 16657 in uid 10021 as part of process group 16632
+02-26 22:32:32.224   634   658 I libprocessgroup: Killing pid 16662 in uid 10021 as part of process group 16632
+02-26 22:32:32.226   634   759 W InputDispatcher: chann"
+aravindsagar/ScreenShift,open,Physical buttons are unusable when changing resolution,[],"When I change the resolution and turn on the service the resolution changes correctly but the physical buttons of the phone do not respond to any press nor light up. When I turn off the service the buttons work again.
+
+My device:
+-Huawei Ascend G6-U10
+-Android 4.4.2 (EMUI 3.0)"
+aravindsagar/ScreenShift,open,good idea but inst working here,[],"good idea, i would like to try it but it only crashes, here are some logcat
+
+regards
+
+[170118grep_logcat.utf8.txt](https://github.com/aravindsagar/ScreenShift/files/714248/170118grep_logcat.utf8.txt)
+"
+aravindsagar/ScreenShift,open,"Add ""requires root"" in the description",[],
+aravindsagar/ScreenShift,closed,F-Droid,[],Are you able to host this app on F-Droid please?
+aravindsagar/ScreenShift,open,Lack of permissions,[],The app does not ask for permissions to read or write files so crashes when trying to load or save profiles.
+aravindsagar/ScreenShift,open,Detect current values,[],Would like to see the determination of current resolution and density so that those values can be used as a starting point for new profiles.
+aravindsagar/ScreenShift,open,Pull nineoldandroids jar file from jcenter/mavenCentral,[],
+aravindsagar/ScreenShift,open,FC when opening the app,[],"Hi,
+I've just installed ScreenShift and I have a FC when opening the app for the first. I can't use it at all.
+Here is a log. Thanks.
+[logcat_and_device_info.zip](https://github.com/aravindsagar/ScreenShift/files/173590/logcat_and_device_info.zip)
+"
+aravindsagar/ScreenShift,closed,App crashing starting first Activity,[],"App is always crashing on my Galaxy S6. I would give some feedback from the emulator or device if debug was activated on the app.
+
+Is there anything else I can do in my report?
+
+Thanks, and very useful by the way!!
+"
+aravindsagar/ScreenShift,closed,A 'default' profile,[],
+aravindsagar/ScreenShift,closed,Per-app profiles,[],
+aravindsagar/ScreenShift,closed,"Add button to open app, in the notification",[],
+aravindsagar/ScreenShift,open,Add russian and german translations,[],

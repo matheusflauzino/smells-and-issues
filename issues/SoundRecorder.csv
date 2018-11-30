@@ -1,0 +1,325 @@
+repository,state,title,label,body
+dkim0419/SoundRecorder,open,please add the APK in the repo,[],
+dkim0419/SoundRecorder,open,Added a pause button,[],
+dkim0419/SoundRecorder,open,Added milliseconds to record description and play dialog.,[],Made SeekBar more smooth.
+dkim0419/SoundRecorder,open,Павел М,[],
+dkim0419/SoundRecorder,open,Target sdk 28,[],
+dkim0419/SoundRecorder,open,Hoping to be a contributor,[],"Hi everyone, i'm interested to contribute in this project with regards to the audio portion of the project. Let me know if i can help with anything.
+
+"
+dkim0419/SoundRecorder,open,Offer To Copywrite,[],"Hello,
+I notice some document such as FAQs, About Us and Privacy Policy is missing. I would love to contribute them to your project.
+Please let me know if you want me to do so."
+dkim0419/SoundRecorder,open,Add Copywrite and FAQ's,[],"Some document such as FAQs, About Us and Privacy Policy is missing.
+Please let me know if you want me to do so."
+dkim0419/SoundRecorder,open,problem with permission with targetSdkVersion 27  ,[],"I did change with targestSdkVersion 27 and some other changes. 
+After that while, I m click on record button application gets crashed.
+
+**Error Log**
+   
+  --------- beginning of crash
+08-13 16:24:26.409 15009-15009/com.topgamesandapps.audiorecorder E/AndroidRuntime: FATAL EXCEPTION: main
+    Process: com.topgamesandapps.audiorecorder, PID: 15009
+    java.lang.RuntimeException: Unable to start service com.topgamesandapps.audiorecorder.RecordingService@1cedefa with Intent { cmp=com.topgamesandapps.audiorecorder/.RecordingService }: java.lang.RuntimeException: setAudioSource failed.
+        at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:3491)
+        at android.app.ActivityThread.-wrap20(Unknown Source:0)
+        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1692)
+        at android.os.Handler.dispatchMessage(Handler.java:106)
+        at android.os.Looper.loop(Looper.java:164)
+        at android.app.ActivityThread.main(ActivityThread.java:6494)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:438)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:807)
+     Caused by: java.lang.RuntimeException: setAudioSource failed.
+        at android.media.MediaRecorder.setAudioSource(Native Method)
+        **at com.topgamesandapps.audiorecorder.RecordingService.startRecording(RecordingService.java:93)
+        at com.topgamesandapps.audiorecorder.RecordingService.onStartCommand(RecordingService.java:77)**
+        at android.app.ActivityThread.handleServiceArgs(ActivityThread.java:3474)
+        at android.app.ActivityThread.-wrap20(Unknown Source:0) 
+        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1692) 
+        at android.os.Handler.dispatchMessage(Handler.java:106) 
+        at android.os.Looper.loop(Looper.java:164) 
+        at android.app.ActivityThread.main(ActivityThread.java:6494) 
+        at java.lang.reflect.Method.invoke(Native Method) 
+        at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:438) 
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:807) 
+
+**RecordingService.java**
+line no.
+
+75               @Override
+76             public int onStartCommand(Intent intent, int flags, int startId) {
+77                      startRecording();
+78                     return START_STICKY;
+79              }
+.
+.
+.
+.
+92                mRecorder = new MediaRecorder();
+93                mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+94                mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+.
+
+
+
+"
+dkim0419/SoundRecorder,open,Tapping the record button crashes the app,[],"![screenshot_2018-06-29-09-58-41-209_com miui bugreport](https://user-images.githubusercontent.com/37975199/42073332-a2dfe798-7b83-11e8-9088-fdcb1d901caa.png)
+
+Please see the screenshot.
+
+Edited:
+After checking the phone permission I noticed that the app is not enabling the Microphone and Storage permission automatically or asking for permission to enable the permissions."
+dkim0419/SoundRecorder,open,Imports are unused error.,[],"I cloned the project and after Gradle finished syncing, some parts of the code were red. These were from classes that were from unused import statements. I want to know what may cause such an error?
+
+https://stackoverflow.com/questions/21100688/android-studio-suddenly-cannot-resolve-symbols
+File menu, then Invalidate Caches/Restart... then Invalidate and Restart solved the problem. 
+However I am still curious why imported statements gave error which said that they were unused. "
+dkim0419/SoundRecorder,open,Create FAQs,[],This is a document that contains all possible questions a user might have about the project. Please review and merge. thank you
+dkim0419/SoundRecorder,open,Create FAQs,[],"This is the document for ""FAQs"". Please review and merge. thank you"
+dkim0419/SoundRecorder,open,fixed issue 17,[],implement pause/resume feature in recording
+dkim0419/SoundRecorder,open,"error while importing project for Android studio , help help",[],"- **_error while importing project for Android studio, ""Configuration 'compile' is obsolete and has been replaced with 'implementation' and 'api'.""_** help help"
+dkim0419/SoundRecorder,open,Update strings.xml,[],
+dkim0419/SoundRecorder,closed,Borked,[],
+dkim0419/SoundRecorder,closed,Twiddle,[],
+dkim0419/SoundRecorder,open,Android Oreo USB Audio issue,[],"Hello, since Oreo update is not able to record audio from USB external audio source, is there any possible fix?"
+dkim0419/SoundRecorder,open,Deleting multiple recordings at a time,[],"In the Saved Recordings fragment:
+
+**On long press**
+1. The selected recording's background should turn grey and a delete icon should appear next to the three dots (Settings icon) at the top
+2. You can now tap on multiple recordings and Delete them
+
+**On single tap**
+1. The recording opens up for playing
+2. The recording name gets a pencil icon next to it, allowing you to rename it on the spot
+3. A share icon also shows up at the top right of the dialog box"
+dkim0419/SoundRecorder,open,Updated spanish translation,[],
+dkim0419/SoundRecorder,open,Update FR strings.xml,[],"Not sure if the below strings have to be translated:
+pref_high_quality_key
+pref_about_key
+pref_about_desc"
+dkim0419/SoundRecorder,open,Updated de (German) translation,[],Commit made via Stringlate
+dkim0419/SoundRecorder,open,Update Google Play & F-Droid Badges,[],
+dkim0419/SoundRecorder,open,Scheduled recorder,[],"Scheduled recordings implemented (program recordings at specific times).
+![scheduled_recorder](https://user-images.githubusercontent.com/8618582/34005197-6d51f9f0-e0fa-11e7-9cf1-e71aaa19553e.png)
+
+
+"
+dkim0419/SoundRecorder,open,add Exit to toolbar menu,[],"add exit to toolbar menu to quit the app 
+add Exit translation to all xml string file
+
+Signed-off-by: Maher Zaidoune <maherzaidoune@gmail.com>"
+dkim0419/SoundRecorder,open,Fixed issue #80,[],#83 double tapping was causing runtime exception at stop()
+dkim0419/SoundRecorder,open,Fix visibilty of pause button,[],just added a simple code to fix visibility of pause button
+dkim0419/SoundRecorder,closed,Scheduled recorder,[],"I implemented a scheduled recordings feature to your app.
+I added a third Fragment where you can program recordings for a specified time in the future, and the recording start automatically.
+To do this I added some more classes to the project: a bootup Broadcast Receiver, a Service for scheduling future recordings, etc.
+I also changed the RecordingService class making it an hybrid Service (both bound and started) with an interface to communicate information to the connected Activity.
+
+Check and test the scheduled-recorder branch and tell me what you think...
+
+![device-2017-11-05-164437](https://user-images.githubusercontent.com/8618582/32416401-bd94f834-c248-11e7-8c06-885ec0422bbc.png)
+"
+dkim0419/SoundRecorder,open,Double tapping on record button crashes the app,[],When you double tap the record button it attempts to stop recording even before it the recording service is started.
+dkim0419/SoundRecorder,closed,Changed the filename to include timestamp instead of default name,[],Changed the name of the file to include the timestamp in the local time zone and have removed references to default filename.
+dkim0419/SoundRecorder,closed,Add an appdata file,[],For reference: https://www.freedesktop.org/software/appstream/docs/chap-Quickstart.html#sect-Quickstart-DesktopApps
+dkim0419/SoundRecorder,open,Can I write a blog about it?,[],Hi，your app is very nice. Can I write a blog about it?
+dkim0419/SoundRecorder,closed,Copyright violation,[],"Hi @dkim0419 
+
+I found [this app ](https://play.google.com/store/apps/details?id=com.appwala.soundrecorder) on the Google Play Store. This guys just took the source code, added some ads and put it on the Google Play Store...
+
+As you are the owner of the source code, feel free to open a request to google [here](https://support.google.com/legal/contact/lr_dmca?product=googleplay), if it's your wish ;)
+
+Don't forget to tell Google that:
+
+* The app is licensed under GPL3 and this guy is violating it by distributing the app without the source code;
+* He is falsely claiming he made the app;
+* Also tell them that this guy has done the same thing already with other apps. Probably this is worth mentioning. (I watch him)"
+dkim0419/SoundRecorder,closed,No pause button,[],I have added the button. I have used this library- https://github.com/sannies/mp4parser.
+dkim0419/SoundRecorder,open,Pause button added,[],I used this library  [https://github.com/sannies/mp4parser](url) for adding the functionality of pause. I also made a second table to store the files created in when you want to use pause button and then taking the absolute path of those files from the second table and using this library to merge those audio file and create a new file and then storing that new file in table one. Then i delete all the files from table 2. 
+dkim0419/SoundRecorder,open,Add Travis Support,[],Added Travis Support for Build
+dkim0419/SoundRecorder,open,Add Opus support,[],Hi. Opus is the best lossy codec available. Its quality is better than AAC and other lossy codecs. It's also a replacement for Speex.
+dkim0419/SoundRecorder,open,Travis CI integration,[],It would be great if you configured Travis CI to build SoundRecorder.
+dkim0419/SoundRecorder,closed,Remove action_high_quality from German strings,[],"Addresses warning:
+
+```
+warning: string 'action_high_quality' has no default translation.
+```"
+dkim0419/SoundRecorder,closed,add menu item for high quality recording,[],"The default recording quality on my smartphone is 8KHz @ 12 kbit/s which really does limit the usefulness of the app. I tried to keep it simple in the spirit of the app and added only a single checkbox for high quality that stores one boolean in the DefaultSharedPreferences.
+
+Sorry for sneaking in the removal of the `#` in the filename. It caused issues with the filename that kdeconnect receives when shared. Probably a bug in kdeconnect, but using less special characters in filenames is often a good thing."
+dkim0419/SoundRecorder,closed,Update license to GPLv3,[],"SoundRecorder originates from Android-SoundRecorder[1], licensed under
+the GPLv3 license.  We must use its license since this is a derivative
+work.  References #67.
+
+[1] https://github.com/MohammadAG/Android-SoundRecorder"
+dkim0419/SoundRecorder,closed,Clone found,[],"Just in case you're not aware of, please take a look [here](https://github.com/DsignConcept/Recorder/blob/master/app/src/main/AndroidManifest.xml). Especially at the line stating the package name. Looks like it's a clone of your project, no credits given in its description. The clone is even available [at the playstore](https://play.google.com/store/apps/details?id=realrec.design.concept) – no credits there either."
+dkim0419/SoundRecorder,closed,copycat app with monetization,[],"This one: https://play.google.com/store/apps/details?id=com.ssaurel.audiorecorder&hl=en
+
+I don't know the internal workings with the MIT License, but this guy has copied several apps, just added advertisements and posted it to the play store. "
+dkim0419/SoundRecorder,open,opus support,[],could you add support for the opus file format to support grate quality bundled with grate compression? thanks
+dkim0419/SoundRecorder,open,add settings,[],"settings would be grate, where to save, what format to record in, what quality of this format, and maybe a setting which would include timestamp of recording in the filename
+
+thanks"
+dkim0419/SoundRecorder,open,background recording support,[],please add recordibg support if the app is not opened (with notifications and all)
+dkim0419/SoundRecorder,closed,Gradle is not syncing!,[],"I'm not able to sync Gradle. The error is Unknown host 'downloads.gradle.org' You may need to adjust proxy settings in Gradle. I'm not using any proxies. I've tried changing proxy settings to auto detect still, it didn't help."
+dkim0419/SoundRecorder,closed,Pause button is not working,[],Is pause button not worked?
+dkim0419/SoundRecorder,closed,Change the font,[],"Where is the font stored in the app? It looks like comic sans. 
+It would be nice to just use the system default. 
+"
+dkim0419/SoundRecorder,open,Store recording metadata on the filesystem,[],"This removes use of the database and allows media management via USB
+MTP.  Originally written by @stsydow and sourced from
+https://github.com/stsydow/SoundRecorder/commit/2b4c02e3d21964063df2bbc96a31ebfc971186ac .
+Modified by @andrewgaul to remove extraneous changes and rebase onto
+master.  Fixes #47.
+"
+dkim0419/SoundRecorder,closed,add settings or not?,[],"Hey @dkim0419,
+
+thanks for the current update of SoundRecorder. I highly appreciate this!
+
+There's a number of open PR that request for new features (#35, #3, #57 ) that call for adding corresponding settings (which is even requested in #8). I'm wondering what the future direction of the app would be. Would you aim for adding settings or would you prefer that there is only one standard setting. In #37 you pointed out you would rather keep it single. If that's the case, wouldn't it make sense to document this plan, e.g. in the README.md and to close the related issues?
+"
+dkim0419/SoundRecorder,open,OGG Vorbis support,[],"Inspired by [Reddit discussion](https://www.reddit.com/r/fossdroid/comments/570uuq/are_there_any_voiceaudio_recorders_that_will_save/).  Related to #3.
+"
+dkim0419/SoundRecorder,open,Warn when file operations fail,[],
+dkim0419/SoundRecorder,open,Address FindBugs violations,[],
+dkim0419/SoundRecorder,closed,Demote lint errors to warnings,[],"Works around an issue with F-Droid failing builds.
+"
+dkim0419/SoundRecorder,closed,Version ,[],"Needed for F-Droid metadata.
+"
+dkim0419/SoundRecorder,closed,Tag 1.2.5 release,[],"Needed so that F-Droid can package it.
+"
+dkim0419/SoundRecorder,closed,Update,[],"It has been almost two years since the last update, and there's no moving here since January (you have a life, I'm not criticising it, quite the opposite, the app is great) but I think an update with what's already done would be nice.
+"
+dkim0419/SoundRecorder,open,Files are not shown in MTP unless I restart the device,[],"Hello. First of all, thanks for the project! <3
+
+I've recorded some audios but couldn't access them via MTP when plugged using USB to my computer until I reboot the phone.
+
+There is a [known Android bug](https://code.google.com/p/android/issues/detail?id=38282) related to exposing some files to MTP: depending on the way the app creates the file, it will appear via MTP only when the device is restarted (there are also other tricks you can do to solve the problem, [check this thread](http://android.stackexchange.com/questions/46315/not-all-files-are-visible-over-mtp)).
+
+It seems the bug was not fixed but there is a comment on the Android bug on Google Code saying that you can add the following code to fix the problem:
+
+``` java
+MediaScannerConnection.scanFile(this, new String[] { file.getAbsolutePath() }, null, null);
+```
+"
+dkim0419/SoundRecorder,open,[FR] lower Android API requirement,[],"to Android 4.0 please. If there's nothing specific used which is bound to JB, of course
+"
+dkim0419/SoundRecorder,open,Simplify record and playback panels,[],"SoundRecorder does not need two panels for record and playback; instead it should show only the saved recordings and have a single record button in the bottom right.  Pressing this button would launch a model dialog with the stop button and timer.  This change would make SoundRecorder more consistent with other Material interfaces and fix the UI nit where you can playback and record at the same time.
+"
+dkim0419/SoundRecorder,open,Database vs Filesystem,[],"Currently SoundRecorder uses a SQlite database to track the recordings. If I remove or rename recordings from the SoundRecorder directory manually, e.g. with a file manager, the list of recordings is not updated but the old names are shown.
+@stsydow appoaches this in https://github.com/stsydow/SoundRecorder/commit/2b4c02e3d21964063df2bbc96a31ebfc971186ac by just using file system and metadata to track the recordings.
+
+Shouldn't that be the preferred approach? What's the benefit of using a database?
+"
+dkim0419/SoundRecorder,closed,Rename file while renaming recording,[],"Fixes #21.
+"
+dkim0419/SoundRecorder,open,Overflow menu should include About dialog,[],"This should include the version number, link to the home page, and license.
+"
+dkim0419/SoundRecorder,open,Reword recording long press from Options to Actions,[],"Should probably reword ""Delete File"" to ""Delete Recording"" or just ""Delete"" as well.
+"
+dkim0419/SoundRecorder,closed,Name recordings with timestamp,[],"This has more meaning than a serial number and matches the pattern for
+photos and videos.
+"
+dkim0419/SoundRecorder,closed,Add sharing intent,[],"Fixes #34.
+"
+dkim0419/SoundRecorder,closed,Update build tools to latest subversion,[],
+dkim0419/SoundRecorder,closed,Permission to use the firmware,[],"Can I use your app as the default recorder in our firmware Nitrogen OS?
+"
+dkim0419/SoundRecorder,open,SoundRecorder license,[],"There are two licenses of
+- Floating Action Button
+- PagerSlidingTabStrip
+
+SoundRecorder is missing from Open Source Licenses popup, and should be first on that list, in my opinion.
+"
+dkim0419/SoundRecorder,closed,Lithuanian translation,[],"Lithuanian strings.xml file
+"
+dkim0419/SoundRecorder,closed,Future direction of the app,[],"Hi @dkim0419,
+As there is a number of open Issues I was wondering what your future plans with the app are. Are you planning to develop it further? Are you interested in incorporating the suggested features or should this app remain simple without any settings? Do you see this app more as a Voice recorder (=focus on recording low quality, low size audio files) or as a Music recorder (=focus on recording high quality, bigger size files) or generic (=can do both things, settings needed).
+
+I use it to record music in high quality using an external microphone. However, I needed to tweak it a little to fit to [my needs](https://github.com/fabianrost84/SoundRecorder). For me it's currently the best open source app available. I used to like Rehearsal Assistant, but that seems not to be developed any further. 
+"
+dkim0419/SoundRecorder,closed,Make sure recording is done in mono.,[],"address #22 by explicitly setting the number of recorded channels to 1 (mono)
+"
+dkim0419/SoundRecorder,closed,Audio Sample rate,[],"On my Motorola Moto E the app records with a sample rate of 8000 Hz which is too low quality for me. @dkim0419 what do you think of increasing the standard quality to 44100 Hz (CD quality). This will of course create bigger files. Maybe, it could become a setting?
+"
+dkim0419/SoundRecorder,closed,Allow Recordings to be Shared to another app,[],"I love the design of this recorder. However, it's hard to do things with the audio files once I've recorded then because there seems not to be a way to share them to an external app.
+
+I'd expect this option to apear when long-pressing a recording. 
+"
+dkim0419/SoundRecorder,closed,"Revert ""tweaked icon""",[],"Reverts dkim0419/SoundRecorder#30
+(svg is only supported for Android 5.0 +)
+"
+dkim0419/SoundRecorder,open,add manual gain control,[],"Can you add a manual gain control?
+Anyway, thanks for this open source software!
+"
+dkim0419/SoundRecorder,closed,Select storage path,[],"What keeps me from using this app is that it safes recordings to the internal memory of my Motorola Moto E. The reason seems to be that `Environment.getExternalStorageDirectory()` points to the internal memory instead of the SD card for the Moto E. My internal memory is too small to store all my recordings. 
+
+It seems to me that the only general solution to my problem to make the storate path selectable by the user. Is it planned to implement this? 
+
+It also seems to be similar to the way the ownCloud Android app handles the storage of files (see https://github.com/owncloud/android/issues/10). There they state the beta version of ownCloud now offers an option to select the storage path. Maybe one could learn from there.
+
+I'm willing to help on this, but I'm not much of an Android developer, unfortunately.
+"
+dkim0419/SoundRecorder,closed,tweaked icon,[],"-now includes drop shadows and tinted edges
+
+I hope you like it. If you need any additional graphics feel free to ask.
+"
+dkim0419/SoundRecorder,closed,Create strings.xml,[],"Add Esperanto localization. Please ping me if new keys are added
+"
+dkim0419/SoundRecorder,closed,Create strings.xml,[],"Add Italian translation. Please ping me if new keys are added
+"
+dkim0419/SoundRecorder,closed,created values-es,[],
+dkim0419/SoundRecorder,closed,Added escape character before apostrophe in french strings,[],
+dkim0419/SoundRecorder,closed,Add F-Droid button,[],"Graphics from https://ind.ie/about/blog/f-droid-button/
+"
+dkim0419/SoundRecorder,closed,Translation,[],"Hi, I'd like to translate your app into Italian and Esperanto but I don't know how to do that. 
+Could someone explain it in a ""How to contribute"" section of [README.md](https://github.com/dkim0419/SoundRecorder/blob/master/README.md)? Thank you very much!
+"
+dkim0419/SoundRecorder,open,problems when closing activity,[],"While the registration is running, if I press back, the app closes. On reopening app, the app crashes, probably because the registration service didn't stop correctly.
+"
+dkim0419/SoundRecorder,closed,output is stereo while the mic is mono,[],"I think this is trivial to fix: the output is stereo with right channel mute. Should be mono as the input.
+Thanks!
+"
+dkim0419/SoundRecorder,closed,"When file renamed, file not playing",[],"I have not been able to track down the source of the problem yet, but when I rename a file to ""boo"" or whatever, it will then not play the file. Then when I hit pause and it is at the end, and hit play again, it will crash.
+"
+dkim0419/SoundRecorder,closed,Russian Translation,[],"My bear is not very good know English. 
+It was necessary to translate.
+"
+dkim0419/SoundRecorder,closed,Add Hebrew translation,[],
+dkim0419/SoundRecorder,closed,Add Finnish (fi) internationalization,[],"Hi @dkim0419, thank you for the very useful app. :-) Please review the attached pull request, which adds internationalization support for the [Finnish language](https://en.wikipedia.org/wiki/Finnish_language). Thank you!
+"
+dkim0419/SoundRecorder,open,Pause button missing,[],"I like this app, but I really miss a pause/resume button while a recording is running.
+"
+dkim0419/SoundRecorder,open,tag recordings,[],"Tags for recordings would be nice.
+So you would be able to filter f.ex. between private- and business-recordings.
+"
+dkim0419/SoundRecorder,closed,Fix german translation & Play Store Button,[],"Fixed a misspelling. & Play Button for the read me.
+"
+dkim0419/SoundRecorder,closed,Add french translation,[],
+dkim0419/SoundRecorder,closed,Tag new releases,[],"Please remember to bump the versionCode and versionName when releasing a new version. This helps projects like [F-Droid](https://f-droid.org) catch them. Thanks!
+"
+dkim0419/SoundRecorder,closed,Added Czech translation,[],
+dkim0419/SoundRecorder,open,silence skipping,[],"Silence skipping is needed.
+"
+dkim0419/SoundRecorder,open,black skin,[],"Black skin for amoled screens is needed.
+"
+dkim0419/SoundRecorder,open,agc,[],"Automatic gain control is needed.
+"
+dkim0419/SoundRecorder,open,settings,[],"How about settings?
+"
+dkim0419/SoundRecorder,closed,Internationalization,[],"There are currently two things, which do not match the recommendations regarding internationalization:
+1. Several strings are hardcode (e.g. [`FileViewerAdapter.java`](https://github.com/dkim0419/SoundRecorder/blob/1ffa89add928cb6100f1a89fde36d20ed57da381/app/src/main/java/com/danielkim/soundrecorder/adapters/FileViewerAdapter.java#L92)) and [do not use placeholders](https://github.com/dkim0419/SoundRecorder/blob/1ffa89add928cb6100f1a89fde36d20ed57da381/app/src/main/java/com/danielkim/soundrecorder/adapters/FileViewerAdapter.java#L201), which impedes the translation into different languages.
+2. The [timestamp, associated with a recording](https://github.com/dkim0419/SoundRecorder/blob/master/app/src/main/java/com/danielkim/soundrecorder/adapters/FileViewerAdapter.java#L40) does not matches the users locale ([developer reference](http://developer.android.com/reference/android/text/format/DateUtils.html#formatDateRange%28android.content.Context,%20java.util.Formatter,%20long,%20long,%20int,%20java.lang.String%29)).
+"
+dkim0419/SoundRecorder,closed,Internationalization and German Translation,[],"This pull request adds translations for all strings in German and contains fixes for all problems mentioned in issue #7.
+"
+dkim0419/SoundRecorder,closed,Update record progress bars,[],"For better retro compatibility, i'm trying to to set it's min version to 14 and this was need to show the timer correctly on that version.
+"
+dkim0419/SoundRecorder,open,small target,[],"Any way the target button can be bigger? I see a huge black circle that does nothing and a tiny dot that starts recording. Would be nice if the huge circle did the start/stop instead. Otherwise looks great.
+"
+dkim0419/SoundRecorder,open,FLAC,[],"It is possible to integrate FLAC?
+"
+dkim0419/SoundRecorder,closed," Hello friend, Good night! this occurring the following error here in my design!",[],"then friend, are showing the following errors:
+http://i.imgur.com/ibFaBrc.png
+"

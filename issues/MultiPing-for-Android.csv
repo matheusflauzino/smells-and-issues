@@ -1,0 +1,63 @@
+repository,state,title,label,body
+softgearko/MultiPing-for-Android,open,crash when delete a destination address,[],"When I want to delete a destination address of ping, I can click the item twice if I click quickly enough (double hit). And there will be two Dialog (""delete"" or ""cancle""). If I select ""delete"" for both Dialog, MultiPing will crash.
+"
+softgearko/MultiPing-for-Android,open,Update README.md,[],"Add F-Droid badge
+"
+softgearko/MultiPing-for-Android,closed,add .gitignore,[],
+softgearko/MultiPing-for-Android,closed,README add screenshots,[],
+softgearko/MultiPing-for-Android,open,[feature request] please show current Network name to the right of local IP,[],"please show current Network name to the right of local IP,
+
+e.g. `local IP 10.0.0.3 NETGEAR25`
+"
+softgearko/MultiPing-for-Android,open,Should not add ::1 if it is already in the list,[],"When EditBox is empty the Add button adds ::1  
+But it should not add ::1 if it is already in the list 
+
+I got ::1  several time while the app is on for longer time
+"
+softgearko/MultiPing-for-Android,open,Update README.md,[],
+softgearko/MultiPing-for-Android,closed,Update README and convert it to markdown,[],
+softgearko/MultiPing-for-Android,open,vives always timeout,[],"Even the DNS is resolved and the ip is up... Thanks
+"
+softgearko/MultiPing-for-Android,closed,Doesn't build,[],"[javac] Compiling 4 source files to /home/gerry/daithib8s-fdroiddata/build/kr.softgear.multiping/bin/classes
+[javac] /home/gerry/daithib8s-fdroiddata/build/kr.softgear.multiping/src/kr/softgear/multiping/MultiPing.java:517: onBackPressed() in kr.softgear.multiping.MultiPing cannot override onBackPressed() in android.app.Activity; attempting to use incompatible return type
+[javac] found : boolean
+[javac] required: void
+[javac] public boolean onBackPressed()
+"
+softgearko/MultiPing-for-Android,closed,BUG getLocalIpAddress(),[],"getLocalIpAddress() could not get IP address sometimes.
+We will update getLocalIpAddress() method as following.
+
+```
+public String getLocalIpAddress() {
+    String sLocalIpAddress="""";
+    try {
+        for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+            NetworkInterface intf = en.nextElement();
+            for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                InetAddress inetAddress = enumIpAddr.nextElement();
+                if (!inetAddress.isLoopbackAddress()) {
+                    sLocalIpAddress = sLocalIpAddress + "" "" + inetAddress.getHostAddress().toString();
+                }
+            }
+        }
+        return sLocalIpAddress; 
+    } catch (SocketException ex) {
+        Log.e(LOG_TAG, ex.toString());
+    }
+    return sLocalIpAddress ;
+}
+```
+"
+softgearko/MultiPing-for-Android,closed,BUG saved hostnames are disappeared sometimes,[],"Currently, We save hostname list at onStop().  This may loss data.
+I will move save routine whenever a user add new hostname.
+"
+softgearko/MultiPing-for-Android,closed,Add clear DNS resolved IP address to option menu,[],"Request from Jim Tonti.
+
+Thanks for a great program! I use it daily to check connectivity at different locations and when changing between Wi-Fi and 3G.
+
+Perhaps consider adding an option to flush the DNS cache.  E.g. Adding google.com to the list works as long as the DNS lookup returns the same, working IP address. But sometimes they change the address, and MultiPing doesn't know about it, so it keeps hammering an old, non-working address, and reporting timeout.  (At least I think that is what is happening.)
+
+Let me know if I can get you more info in case you haven't seen this.
+
+Rooted Droid Bionic, HC 2.3.4.
+"

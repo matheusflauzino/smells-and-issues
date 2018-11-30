@@ -1,0 +1,276 @@
+repository,state,title,label,body
+dsoulayrol/android-sholi,open,Feature request: list synchronisation/sharing,[],"Hi,
+I realise this feature request might be at odds with ShoLi's stated minimal featureset goal, however it could be very useful so I thought it worth suggesting.
+
+ShoLi does an excellent job at providing a simple, useable shopping list and I've used it for several years as my main shopping list. However, it provides no way of being used efficiently for a shared shopping list, used by more than one person.
+
+Providing a way to save the list to a shared folder (say, a nextcloud or syncthing folder) or another sync mechanism would make it possible for two people to share the list, find items added by the other person and by them, or conversely avoid buying items that the other person has already bought.
+
+In my opinion, this would be a very useful feature.
+
+There is currently another FOSS Android app aiming to provide a simple, text-based shopping list that is syncable, [ShoppingList](https://woefe.github.io/ShoppingList/), but it is missing several useful features (deduplication, for instance) and syncing is currently far too hard to set up. Maybe some collaboration would be possible.
+
+Thanks in any case for considering this idea :)"
+dsoulayrol/android-sholi,open,Crash on import,[],"First: Thanks for the nice app.
+
+I had some trouble importing, and the issue is caused by having an item in the list twice, that is not yet in the shopping list.
+
+Trying to import e.g.
+```
+-abc
+-abc
+```
+fails if `abc` is not yet in the list."
+dsoulayrol/android-sholi,open,IllegalStateException: Fragment EditFragment{ad22ff80} not attached to Activity,[],"//package name: name.soulayrol.rhaa.sholi
+//version: 1.3
+ java.lang.IllegalStateException: Fragment EditFragment{ad22ff80} not attached to Activity
+ 	at android.app.Fragment.getLoaderManager(Fragment.java:1018)
+ 	at name.soulayrol.rhaa.sholi.EditFragment$1.afterTextChanged(EditFragment.java:75)
+ 	at android.widget.TextView.sendAfterTextChanged(TextView.java:7334)
+ 	at android.widget.TextView$ChangeWatcher.afterTextChanged(TextView.java:9087)
+ 	at android.text.SpannableStringBuilder.sendAfterTextChanged(SpannableStringBuilder.java:970)
+ 	at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:497)
+ 	at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:435)
+ 	at android.text.SpannableStringBuilder.replace(SpannableStringBuilder.java:30)
+ 	at android.view.inputmethod.BaseInputConnection.replaceText(BaseInputConnection.java:673)
+ 	at android.view.inputmethod.BaseInputConnection.setComposingText(BaseInputConnection.java:436)
+ 	at com.android.internal.view.IInputConnectionWrapper.executeMessage(IInputConnectionWrapper.java:333)
+ 	at com.android.internal.view.IInputConnectionWrapper$MyHandler.handleMessage(IInputConnectionWrapper.java:77)
+ 	at android.os.Handler.dispatchMessage(Handler.java:99)
+ 	at android.os.Looper.loop(Looper.java:137)
+ 	at android.app.ActivityThread.main(ActivityThread.java:5103)
+ 	at java.lang.reflect.Method.invokeNative(Native Method)
+ 	at java.lang.reflect.Method.invoke(Method.java:525)
+ 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+ 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+ 	at dalvik.system.NativeStart.main(Native Method)"
+dsoulayrol/android-sholi,open,"Add an ""import from clipboard"" functionality",[],"This patch adds a menu item, which imports sholi items from the clipboard. That is especially useful for sharing shopping lists through messenger apps like Telegram.. .
+"
+dsoulayrol/android-sholi,closed,Add import capabilities,[],"Sending a shopping list to someone is currently supported and results in the other party getting a text-formatted list as a result. It would be useful for the other party to be able to _import_ the text-formatted list into the local database, ideally skipping duplicates (with some fuzzyness)
+"
+dsoulayrol/android-sholi,open,Ordering the items to buy?,"[Label(name=""enhancement"")]","There are some really large shops that I visit frequently, and it helps a lot if the items to buy are already ordered ""along an efficient walk path"" through the shop, so you don't have to walk back and forth long distances.
+
+Would it be possible to present the items (in both views) in a certain order (that is changeable by the user)?
+
+Or did I just miss to recognize an already existing possibility to move items up or down the list?
+"
+dsoulayrol/android-sholi,closed,Crossing / removing items does not mark them on server,[],"Hi,
+
+Whenever I click on an item, it gets crossed in the app, but no query is sent to the server. When I close the app and come back nothing gets crossed / deleted. Is it normal ?
+
+I'm using the app from F-Droid v1.3 (4) with the backend on my server (master branch).
+
+Thank you for the app :-)
+Regards
+"
+dsoulayrol/android-sholi,closed,Customize Import Filter,"[Label(name=""enhancement"")]","Hi,
+
+I using heavily the import function to get the shopping lists from other applications (or manually created ones) into the application. However: manual lists and lists created from other applications do not necessarily use the same list syntax as sholi, which requires search/replace steps to import the lists.
+A dialog to set or specify the list separator (e.g. '*', '-', '+' etc.) would be helpful.
+I could change it in the code and re-compile (I guess), but a) the separator changes from list to list and this might be actually useful for other people using this nice app as well.
+Thanks.
+"
+dsoulayrol/android-sholi,open,Being able to add quantity,"[Label(name=""enhancement"")]","It could be nice to be able to add the quantity of item needed. Maybe having it on the right of the screen.
+As long as the item name isn't too long or screen too small, it shouldn't be a trouble
+"
+dsoulayrol/android-sholi,closed,"After an item is removed, the top text field overlaps the list","[Label(name=""bug"")]",
+dsoulayrol/android-sholi,closed,App crash when deleting item,"[Label(name=""bug"")]","When there is only one item and you're deleting it, the app crash every time.
+It happens too when there is multiple items but not all the time.
+
+version1.4.2 on a wiko cink peax with android 4.1.2
+"
+dsoulayrol/android-sholi,closed,Next,[],"These are the changes from my i18n-fr branch, with correction.
+"
+dsoulayrol/android-sholi,closed,French translation: typo,[],"Minor changes:
+- missing space,
+- ""item"" => ""article""
+
+Thanks for your app.
+"
+dsoulayrol/android-sholi,closed,F-Droid compilation fails since 1.4.0,"[Label(name=""bug"")]","My fault. DAO sources are generated since this version, and the generator is not called automatically yet.
+"
+dsoulayrol/android-sholi,closed,No can build,"[Label(name=""duplicate"")]","Build for FDroid repo is failing (see below), what can be done ? Thx 
+
+es not exist
+        builder.orderAsc(ItemDao.Properties.Name);
+                                ^
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/CheckingFragment.java:131: error: strings in switch are not supported in -source 1.6
+        switch (item.getStatus()) {
+                              ^
+  (use -source 7 or higher to enable strings in switch)
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/ImportFragment.java:173: error: cannot find symbol
+            final DaoSession session = Operations.openSession(getActivity());
+                  ^
+  symbol:   class DaoSession
+  location: class ImportFragment.ImportTask
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/ImportFragment.java:174: error: cannot find symbol
+            final List<Item> items = Operations.deserialize(_data);
+                       ^
+  symbol:   class Item
+  location: class ImportFragment.ImportTask
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/ImportFragment.java:175: error: cannot find symbol
+            final List<Item> dbItems = session.getItemDao().loadAll();
+                       ^
+  symbol:   class Item
+  location: class ImportFragment.ImportTask
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/ImportFragment.java:182: error: cannot find symbol
+                    for (Item item: items) {
+                         ^
+  symbol: class Item
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/ImportFragment.java:231: error: cannot find symbol
+            for (Item i: items)
+                 ^
+  symbol:   class Item
+  location: class ImportFragment.ImportTask
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/EditFragment.java:107: error: cannot find symbol
+        LazyList<Item> list;
+                 ^
+  symbol:   class Item
+  location: class EditFragment
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/EditFragment.java:113: error: package ItemDao.Properties does not exist
+                builder.where(ItemDao.Properties.Name.like('%' + constraint + '%'));
+                                                ^
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/EditFragment.java:115: error: package ItemDao does not exist
+        list = builder.orderAsc(ItemDao.Properties.Name).listLazy();
+                                       ^
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/EditFragment.java:125: error: package ItemDao.Properties does not exist
+                doShow = builder.where(ItemDao.Properties.Name.eq(constraint))
+                                                         ^
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/EditFragment.java:143: error: strings in switch are not supported in -source 1.6
+        switch (item.getStatus()) {
+                              ^
+  (use -source 7 or higher to enable strings in switch)
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/EditFragment.java:158: error: cannot find symbol
+        return getSession().getItemDao().insert(new Item(null, name, Checkable.UNCHECKED));
+                                                    ^
+  symbol:   class Item
+  location: class EditFragment
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/DataOverviewFragment.java:67: error: cannot find symbol
+                LazyList<Item> items = _session.getItemDao().queryBuilder().listLazy();
+                         ^
+  symbol: class Item
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/DataOverviewFragment.java:91: error: cannot find symbol
+                                        _session.deleteAll(Item.class);
+                                                           ^
+  symbol: class Item
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/data/ItemLazyListAdapter.java:50: error: strings in switch are not supported in -source 1.6
+        switch (item.getStatus()) {
+                              ^
+  (use -source 7 or higher to enable strings in switch)
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/data/Operations.java:49: error: package DaoMaster does not exist
+            DaoMaster.OpenHelper helper = new RegularOpenHelper(context);
+                     ^
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/data/Operations.java:52: error: cannot find symbol
+        DaoMaster daoMaster = new DaoMaster(_database);
+        ^
+  symbol:   class DaoMaster
+  location: class Operations
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/data/Operations.java:52: error: cannot find symbol
+        DaoMaster daoMaster = new DaoMaster(_database);
+                                  ^
+  symbol:   class DaoMaster
+  location: class Operations
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/data/Operations.java:57: error: cannot find symbol
+        for (Item item: items) {
+             ^
+  symbol:   class Item
+  location: class Operations
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/data/Operations.java:58: error: strings in switch are not supported in -source 1.6
+            switch (item.getStatus()) {
+                                  ^
+  (use -source 7 or higher to enable strings in switch)
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/data/Operations.java:74: error: cannot find symbol
+        List<Item> items = new ArrayList<Item>();
+             ^
+  symbol:   class Item
+  location: class Operations
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/data/Operations.java:74: error: cannot find symbol
+        List<Item> items = new ArrayList<Item>();
+                                         ^
+  symbol:   class Item
+  location: class Operations
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/data/Operations.java:81: error: cannot find symbol
+                    items.add(new Item(null, line.substring(1).trim(), Checkable.CHECKED));
+                                  ^
+  symbol:   class Item
+  location: class Operations
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/data/Operations.java:83: error: cannot find symbol
+                    items.add(new Item(null, line.substring(1).trim(), Checkable.UNCHECKED));
+                                  ^
+  symbol:   class Item
+  location: class Operations
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/data/Operations.java:85: error: cannot find symbol
+                    items.add(new Item(null, line.substring(1).trim(), Checkable.OFF_LIST));
+                                  ^
+  symbol:   class Item
+  location: class Operations
+/home/vagrant/build/name.soulayrol.rhaa.sholi/sholi/src/main/java/name/soulayrol/rhaa/sholi/data/Operations.java:97: error: method does not override or implement a method from a supertype
+        @Override
+        ^
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+70 errors
+ FAILED
+
+FAILURE: Build failed with an exception.
+- What went wrong:
+  Execution failed for task ':sholi:compileDefaultFlavorReleaseJava'.
+  
+  > Compilation failed; see the compiler error output for details.
+- Try:
+  Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 24.162 secs
+==== detail end ====
+"
+dsoulayrol/android-sholi,closed,Crash when setting a new gesture,"[Label(name=""bug"")]","Sometimes, the application crashes in the Settings activity when a new action is selected for swipe to left or to right. The top of backtrace follows. This is a programming error due to a wrong call to `getResources`.
+
+```
+E/AndroidRuntime(13962): FATAL EXCEPTION: main
+E/AndroidRuntime(13962): java.lang.IllegalStateException: Fragment CheckingFragment{4108e6b8} not attached to Activity
+E/AndroidRuntime(13962):    at android.app.Fragment.getResources(Fragment.java:762)
+E/AndroidRuntime(13962):    at name.soulayrol.rhaa.sholi.CheckingFragment.configureGesture(CheckingFragment.java:183)
+E/AndroidRuntime(13962):    at name.soulayrol.rhaa.sholi.CheckingFragment.onSharedPreferenceChanged(CheckingFragment.java:169)
+```
+"
+dsoulayrol/android-sholi,closed,Crash while starting after update to 1.4,[],"The app crashes while starting after update to version 1.4
+"
+dsoulayrol/android-sholi,closed,Force close on startup with 1.4,"[Label(name=""bug"")]","I just installed version 1.4 through Google Play, since it isn't available yet on F-Droid, and it force-closes immediately upon launching. I tried uninstalling and reinstalling, to no avail. I'm on an HTC One M7 running Android 4.4.4 with CyanogenMod 11 (M9 snapshot). Full logcat is [here](https://gist.github.com/Phanx/19f536063e533adafcf5) and device info is [here](https://gist.github.com/Phanx/a3ba185977f7abf0d546), but I'm pretty sure this is the important part:
+
+```
+E/AndroidRuntime(28307): FATAL EXCEPTION: main
+E/AndroidRuntime(28307): Process: name.soulayrol.rhaa.sholi, PID: 28307
+E/AndroidRuntime(28307): java.lang.RuntimeException: Unable to start activity ComponentInfo{name.soulayrol.rhaa.sholi/name.soulayrol.rhaa.sholi.MainActivity}: de.greenrobot.dao.DaoException: Could not init DAOConfig
+```
+
+Let me know if there's any other info I can provide!
+"
+dsoulayrol/android-sholi,closed,Add links to the Play Store and F-Droid,[],
+dsoulayrol/android-sholi,closed,"Move or add confirmation to ""Remove All Items""","[Label(name=""enhancement"")]","As a frequent (weekly) user of ShoLi, a couple of times my finger has slipped to ""Remove All Items"" instead of touching ""Remove Checked Items"" while trying to clean a long list, and it's a fatal mistake because you lose all items without any possibility to recover. I'd like to suggest a confirmation dialog to that action, or moving it away from ""Remove Checked Items"".
+"
+dsoulayrol/android-sholi,open,"Rename ""remove checked items"" to ""hide crossed-out items""","[Label(name=""enhancement"")]","As a new user, I hesitate to use the ""remove"" command because I'm unsure if it will permanently delete them.  ""Hide"" would be more informative and allow me to use the app without trepidation.
+
+There are no checked items, but there are crossed-out items  :-)
+"
+dsoulayrol/android-sholi,closed,Can't edit existing items,[],"Perhaps I'm not seeing how to do this, but I cannot edit an existing item.
+"
+dsoulayrol/android-sholi,closed,Make ShoLi available on the Play Store,"[Label(name=""question"")]","First off, thank you for your work on ShoLi. I use it every week. Now, to the point.
+
+I know this can be a polemic topic. I'd like to politely request that this app is made available officially from the Play Store. The reasons for this request are better explained by Moxie Marlinspike (author of TextSecure) in the following comment:
+
+https://github.com/WhisperSystems/TextSecure/issues/53#issuecomment-7982944
+
+Naturally, as a FOSS author and backer I'm very glad ShoLi is available under the GPLv3 and to be able to build it, and I'd like it to continue to be available on F-Droid for interested users, but the Play Store is my preferred distribution channel for the reasons stated above (tl;dr: not having to compromise the security of my mobile phone to install the software I want).
+"
+dsoulayrol/android-sholi,closed,Can't add items,"[Label(name=""bug"")]","If you enter, e.g., ""Cheese Crackers"" you can't add, e.g., ""Cheese""
+"
+dsoulayrol/android-sholi,open,Multiple lists,"[Label(name=""enhancement"")]","Please make it possible to use multiple shopping lists. Thanks
+"
+dsoulayrol/android-sholi,closed,Status precedence on import,"[Label(name=""enhancement"")]","Add a setting option to choose whether the status of an item is updated on import, or if the database one is preferred.
+"
+dsoulayrol/android-sholi,closed,Text size option,"[Label(name=""enhancement"")]","Please add a way to increase the text size for list items. I've been looking for a simpler replacement for ColorNote, since I only use it for a grocery checklist, and this seems perfect, except that the text is uncomfortably small with my terrible eyesight. Running on an HTC One M7 if that's relevant. Thanks for your consideration! 
+"
+dsoulayrol/android-sholi,closed,Multi selection in editing view is broken,"[Label(name=""bug"")]","When long pressing an item while editing the list, the multi selection mode is correctly started, but the whole list vanishes.
+"

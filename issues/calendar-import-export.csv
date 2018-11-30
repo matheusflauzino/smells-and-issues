@@ -1,0 +1,757 @@
+repository,state,title,label,body
+SufficientlySecure/calendar-import-export,open,Newly generated UIDs on export are made persistent,[],"I am using calendar-import-export to have a purely local calendar solution over MTP only, with 3-way-merge of diverging calendars on my desktop and on my smartphone.
+
+An issue in Android is that newly created calendar entries carry no UID for ical by default (I am using Etar on top of Offline Calendar). As I found it, calendar-import-export creates those ad-hoc: they are in the exported ical but with no backlink to the local calendar, which means that you can never re-import those in a valid way since they will always emerge as duplicates.
+
+One solution is in this pull request: if UIDs have to be created, store them in the originating calendar entries.
+
+The pull request is intended as a base for discussion and surely can be improved. One e. g. could argue that changing entries by just exporting them is not what a user expects; hence you could think about a setting which allows you to turn on and off that behaviour. Or to choose between not exporting entries with no UID at all or adding them on-the-fly.
+
+I am  looking forward to your feedback."
+SufficientlySecure/calendar-import-export,open,Triggering sync with adb shell command,[],"Hello!
+
+I am trying to script the adb push of my ics file to Android device and then trigger from Linux Bash script / ADB the upload of the ICS file to Android calendar .
+
+So far I tried ICSDroid and failed. ICSDroid does not seem to support any intent I can send to it over ADB to trigger sync: https://forums.bitfire.at/topic/1875/triggering-sync-with-adb-shell-command
+
+Can this be done with ""calendar-import-export""?
+Manifest file does seem to mention Load Calendar intent: https://github.com/PrivacyApps/calendar-import-export/blob/185af643e2c4c73bca56c6183382ed3f54cb3b72/CalendarImportExport/src/main/AndroidManifest.xml
+
+Is this the case? How could one trigger ICS file sync from ADB using ""calendar-import-export""?
+
+Thank you!
+"
+SufficientlySecure/calendar-import-export,open,Updated de (German) translation,[],Commit made via [Stringlate](https://lonamiwebs.github.io/stringlate/)
+SufficientlySecure/calendar-import-export,open,"Version 2.6 on Android 2.3.6: ""No calendars found.""",[],"I just installed this app from F-Droid, version 2.6, onto a **Motorola XT320** running **Android 2.3.6 / Gingerbread**. The phone contains **one local calendar**, operated by what appears to be Android's **stock calendar app** of that era. My objective is to extract the (significant amount of) data from this calendar onto a computer. The phone is not connected to a Google account (and never has been). The calendar has never been synced with any other device or service. The device has not been rooted.
+
+Expected behavior: Launching `Calendar Import-Export` should allow me to export my local calendar's data.
+
+Actual behavior: When launching `Calendar Import-Export`, I am immediately confronted with a message stating `No calendars found.` (followed by some advise on how to create one). I can only confirm with `OK`. The app exits.
+
+What's happening here? How I can possibly work around this issue?
+
+---
+
+I posted a longer question detailing my quest and attempts based on other approaches on [StackExchange / Android Enthusiasts](https://android.stackexchange.com/q/203280/278060)."
+SufficientlySecure/calendar-import-export,open,"2.5/Android 4.4,2: Crash at Start, no Fürther message",[],"Hi,
+
+
+first of all: thank you very much for this cool and very useful app!!!
+
+With 2.5 from F-Droid I was able to import my ICS files for a while. Since the last import - whyever - calendar-import crashes directly after app start. Unfortunately no message, only a dialogue ""calender-import has been terminated"".
+
+Any chance to workaround this crash?
+
+
+Thanks, Michael "
+SufficientlySecure/calendar-import-export,open,Silent import failure,[],"Hi, I have two droids with offlincalendars and this app, trying to exchange calendar events between them by exporting, sending by email and importing on the other device.
+
+Everything works flawlessly, the import file is selected, 105 events processed and afterwards 105 events are shown for the offline calendar.
+
+However those 105 events never land in the offline calendar. They are not displayed in the calendar app and if I invoke calendar-import-export again it shows 0 entries for the local calendar.
+
+Looking at adb logcat didn't show anything obvious either. The only thing remotely related that I noticed was 
+
+I/ActivityManager( 2148): Start proc 26904:com.plusonelabs.calendar/u0a27 for broadcast com.plusonelabs.calendar/.EventAppWidgetProvider
+D/droidparts-battery-widget( 2330): widgets updated
+V/AlarmManager( 2148): done {29818533, *alarm*:android.intent.action.TIME_TICK} [187ms]
+I/CastDatabase(25368): Saving the database
+I/SQLiteCastStore(25368): Saving 0 CastNetworkInfo instances, 0 CastDeviceInfo instances, 0 paired guest mode devices.
+E/SQLiteCastStore(25368): End saving paired guest mode devices
+E/loadInstances(26904): widgetId:24
+E/loadInstances(26904): java.io.FileNotFoundException: /data/data/com.plusonelabs.calendar/shared_prefs/instanceSettings24.json: open failed: ENOENT (No such file or directory)
+E/loadInstances(26904):         at libcore.io.IoBridge.open(IoBridge.java:456)
+E/loadInstances(26904):         at java.io.FileInputStream.<init>(FileInputStream.java:76)
+E/loadInstances(26904):         at com.plusonelabs.calendar.prefs.SettingsStorage.getBytes(SettingsStorage.java:99)
+E/loadInstances(26904):         at com.plusonelabs.calendar.prefs.SettingsStorage.utf8File2String(SettingsStorage.java:91)
+E/loadInstances(26904):         at com.plusonelabs.calendar.prefs.SettingsStorage.getJSONObject(SettingsStorage.java:79)
+E/loadInstances(26904):         at com.plusonelabs.calendar.prefs.SettingsStorage.loadJson(SettingsStorage.java:42)
+E/loadInstances(26904):         at com.plusonelabs.calendar.prefs.InstanceSettings.ensureInstancesAreLoaded(InstanceSettings.java:103)
+E/loadInstances(26904):         at com.plusonelabs.calendar.prefs.InstanceSettings.fromId(InstanceSettings.java:74)
+E/loadInstances(26904):         at com.plusonelabs.calendar.EventAppWidgetProvider.onUpdate(EventAppWidgetProvider.java:51)
+E/loadInstances(26904):         at android.appwidget.AppWidgetProvider.onReceive(AppWidgetProvider.java:66)
+E/loadInstances(26904):         at android.app.ActivityThread.handleReceiver(ActivityThread.java:2639)
+E/loadInstances(26904):         at android.app.ActivityThread.access$1700(ActivityThread.java:155)
+E/loadInstances(26904):         at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1394)
+
+
+I use that widget https://f-droid.org/packages/com.plusonelabs.calendar/ but this error occured before the import processing was started and might be completely unrelated.
+"
+SufficientlySecure/calendar-import-export,open,v2.5 ics import error,[],"Application v2.5 shows notification with error while imporing some (not all) files that were exported by it just a few seconds before.  Message has two strings:
+
+Error:
+For input string: ""T0""
+
+Downgrade to version 2.4 make problem vanish, then it's possible to import exactly the same files, that caused errors in version 2.5."
+SufficientlySecure/calendar-import-export,closed,Fix export of all day events without an end date.,[],"I don't know why this would happen, but a user managed to encounter an
+issue related to this.
+
+This fix assumes that if there's no end date, we should assume it's one
+day long.
+
+This should fix #66. Requires the user to confirm it indeed fixes it before merging."
+SufficientlySecure/calendar-import-export,closed,Proposal Calender Backend instead of import/export.,[],"Hi i wonder if it would be possible to have an .isc calender Backend. Currently there is a local calender backend and this google data kraken online backend, but if we had an .ics backend the calender events would be automatically stored to and loaded from .ics files and no manual import/export would be needed?!"
+SufficientlySecure/calendar-import-export,closed,"Import problems in V 2.5: 1. import stops with error message, 2. full-day events > 1 day are shrunk to a 1 full-day event",[],"Dear developers,
+
+I've successfully used this excellent app in the past and also recommended it to a number of people.
+
+Unfortunately, I recently stumbled upon a strange problem in the latest version:
+I had exported an Offline Calendar with ""Calendar Import-Export V2.5"" on an Android 6.0.1 (CM13) phone. The export ran fine without any errors.
+
+Then I tried to import that exported file on an Android 7.1 (LineageOS 14.1) phone with the same ""Calendar Import-Export V2.5"".
+
+The file contains 720 entries in total and after 557 entries the import process stops and an error message pops up:
+
+        ERROR
+        Error:
+        For input string: ""T0""
+
+When I downgrade to V2.4 on the target phone, the error does not occur and the import finishes smoothly.
+
+I tried various parameters in the settings to no avail.
+
+However, I noticed another critical issue with both versions:
+Full day events that spread across 2 or more days are only shown as a 1-day event after import. That is critical in my opinion.
+Was that actually meant to be fixed in V2.5 (that's how I understood the changelog on Github)?
+The issue was reported closed in #50
+
+Thanks for a short feedback & maybe a fix :-)
+
+Floyd"
+SufficientlySecure/calendar-import-export,open,File selection for import is awkward,[],"This is what happens when I try to select a file to import.
+
+There's no way to scroll to the end of the each list path, so I don't know what file I'm selecting.
+
+I'm sure there are native file selectors that would be much more effective.
+
+![screenshot_20170401-183947](https://cloud.githubusercontent.com/assets/7035647/24576658/991d854a-170b-11e7-8420-dd029290f28c.png)
+"
+SufficientlySecure/calendar-import-export,closed,Fix all day events,[],"There were issues with both all day event export and import.
+These two patches solve both issues and all day events now work for me as expected.
+
+This fixes #50"
+SufficientlySecure/calendar-import-export,open,Importing ics from thunderbird,[],"Could not import all information from an ics file created by thunderbird lightning. Events were there but not the tasks. 
+It is ignoring the VTODO blocks.
+(also the DUE instruction)"
+SufficientlySecure/calendar-import-export,open,please add change log to fdroid repo,[],thanks
+SufficientlySecure/calendar-import-export,open,Do not scan FS!,[],It takes too long. Better I provide the path manually.
+SufficientlySecure/calendar-import-export,closed,Deduplication of Birthdays ,[],Would it be possible to deduplicate multiple entries for the same contact when multiple sources are activated? 
+SufficientlySecure/calendar-import-export,open,Allow VCS extension,[],"From mailinglist:
+
+Please accept  a 'VCS' extension too for your import files. In order for me to use your app, I have to change 'VCS' to 'ICS' in order for your app to function."
+SufficientlySecure/calendar-import-export,open,Application opens only once,[],"The application can only be started once. If you open this a second time, you only briefly see the start screen, and is immediately closed again.
+
+If you delete the data in the app settings, the application runs again exactly once. 
+
+[apphwid.txt](https://github.com/SufficientlySecure/calendar-import-export/files/614559/apphwid.txt)
+[log.txt](https://github.com/SufficientlySecure/calendar-import-export/files/614560/log.txt)
+"
+SufficientlySecure/calendar-import-export,open,add change log to fdroid,[],"hi,
+
+please add a link to the changelog to the froid repository. thanks"
+SufficientlySecure/calendar-import-export,open,No warning before files get overwritten,[],"I you previously have exported a calendar to destination filename ""Jobs"", and later do it again, you won't get warned if such file already exist: A warning message should be displayed."
+SufficientlySecure/calendar-import-export,open,Export: Default destination filename,[],"Export bring up the ""Enter Destination Filename"" text field. The default destination filename is set to what the user previously typed. So if you exported say your ""Jobs"" calendar and typed ""Jobs"" as the destination filename, then ""Jobs"" will show up even when you later export say your ""Routines"" calendar. You probably want ""Routines to pop up instead to save you from write over the existing file.
+
+The default destination filename should be the name of the calendar."
+SufficientlySecure/calendar-import-export,open,Multiple export,[],"I think it would be convenient with a button to export selected calendars.
+
+Suggested UI structure:
+
+<pre>
+[Export]
+[Export multiple calendars]
+  [ ] Select all
+  [ ] Jobs
+  [ ] Meetings
+  [ ] Routines
+[Import File]
+[Import URL]
+</pre>"
+SufficientlySecure/calendar-import-export,open,NPE in MainActivity,[],"from Google Play dev console
+
+app version: 55
+3
+Android 5.0	2	66,7 %
+Android 5.1	1	33,3 %
+ 
+HTC One (m7wls)	2
+Galaxy Note3 Neo (hllte)	1
+
+```
+java.lang.NullPointerException: Attempt to invoke virtual method 'boolean java.lang.String.contentEquals(java.lang.CharSequence)' on a null object reference
+	at org.sufficientlysecure.ical.ui.MainActivity.initialiseCalendars(Unknown Source)
+	at org.sufficientlysecure.ical.ui.MainActivity.access$1500(Unknown Source)
+	at org.sufficientlysecure.ical.ui.MainActivity$9.run(Unknown Source)
+	at java.lang.Thread.run(Thread.java:818)
+```"
+SufficientlySecure/calendar-import-export,closed,new post-2.3 release?,[],"Could we get a new release? Or at least a new v2.4RC1 tag or similar so that we could test over F-Droid (IIUC how F-Droid works)?
+(I am mostly interested in the fix for #43, I have not been able to start the app yet.)
+
+Many thanks in advance!
+"
+SufficientlySecure/calendar-import-export,closed,URL problem ?,[],"Hello,
+I would like to use your app to import my Google Calendar with the ""import URL"" button. I try many URL (like https://calendar.google.com/calendar) but I always get this pop-up after using the ""load"" button : 
+Error: Error at line 1 : Expected [-3] read [10]
+I'm not sure which URL is the right one, and I can't find any forum or wiki to solve this problem...
+
+Could you help me ?
+
+Thanks.
+"
+SufficientlySecure/calendar-import-export,closed,[bug] Appointments over multiple day shrink to one day,[],"This is the problem:
+I exported an calendar with appointments that span over multiple days. Some of them have date+time for beginning and end. Others are define to be on from day x to y (complete day).
+While the appointments with date+time stay spanned over multiple days, the other ones that are defined for the complete days are shrunk down to the first day.
+
+Example:
+LAN-Party
+from 15.07.2016 10:00
+to 17.07.2016 18:00
+
+becomes:
+BEGIN:VEVENT
+...
+SUMMARY:LAN-Party
+ORGANIZER:mailto:me@owncloud.local
+LOCATION:Somewhere
+STATUS:CONFIRMED
+DTSTART;TZID=Europe/Berlin:20160114T100000
+DTEND:20160717T180000Z
+END:VEVENT
+
+4 days of Filming
+from 25.07.2016
+to 28.07.2016
+
+becomes:
+BEGIN:VEVENT
+...
+SUMMARY:4 days of Filming
+ORGANIZER:mailto:me@owncloud.local
+LOCATION:Somewhere
+STATUS:CONFIRMED
+DTSTART;VALUE=DATE:20160725
+DTEND;VALUE=DATE:20160726
+END:VEVENT
+
+Version is 2.3
+on Android 4.4.3
+"
+SufficientlySecure/calendar-import-export,open,Calendar Import-Export freezes when pushing triangle on screen navigation bar,[],"When I use software navigation buttons (not hardware), Calendar Import-Export tries to write calendar to file and freezes when pushing triangle.
+https://www.youtube.com/watch?v=odRUkKJMtsk
+Phone: Samsung Galaxy S3 Duos
+OS: Android 5.1.1 (Cyanogenmod 12.1.1)
+"
+SufficientlySecure/calendar-import-export,open,"For export, add option to exclude birthdays",[],"The calendars use data from contacts to show birthdays automatically. The problem is that Calendar Import-Export want to export this the birthdays to the default calendar (""My calendar"").
+"
+SufficientlySecure/calendar-import-export,open,Update calendar details when modified by external app,"[Label(name=""enhancement"")]","This is instead of a refresh button as suggested by @Gitoffthelawn. Also noticed by @mzagol during offline testing of another issue.
+
+There are two parts here, 1) reload the calendar details when the app is resumed, and 2) Register for updates from the O/S when any calendars change while running.
+
+Note that the count may still be wrong until a workaround for issue #44 is found.
+"
+SufficientlySecure/calendar-import-export,closed,Request: Add option to not export events with UUID's,"[Label(name=""enhancement"")]","It appears there are some serious issues in Android with getting it to actually delete events for local calendars.
+
+I have yet to find a single Android app that uses local calendars that can successfully delete events.  Yes, it appears the events are deleted, but they never actually get deleted.  When this app is used, all the supposedly deleted events get exported alongside the actual events.
+
+If you know of a calendar app that uses local calendars, and can _actually_ delete events, please post it here!
+
+In order to work around this issue, some popular apps remove the UUID's of events that the user wants to delete.  Even though those events don't actually get deleted in the database, the apps know not to show those events in the calendar.
+
+Can an option be added to this app to _not_ export events that don't have UUID's?
+"
+SufficientlySecure/calendar-import-export,closed,Hang when trying to back out of Export filename dialog,"[Label(name=""bug"")]","When the user is about to export a calendar, this app asks for a filename.  If the user presses the _Back_ button at that time, this app hangs indefinitely.
+"
+SufficientlySecure/calendar-import-export,open,Calendar Provider sometimes returns deleted items (possibly related to Google sync),[],"Try these steps:
+1. In Business Calendar 2 (BC2), create a local calendar.
+2. In BC2, create a few events.
+3. In BC2, delete one of those events.
+4. Using Calendar Import / Export (the app in this repo), export the calendar.
+
+**If you don't have BC2, you can try whatever calendar app you normally use.**
+
+When I try this on Android KitKat, deleted events are exported(!). :-(
+
+I tried using the integrated import / export functionality in BC2 and it had the same problem.  When I used their app to import an exported calendar back in (both functions performed within BC2), all the deleted events reappeared.  Major QC fail.  Huge privacy issue and potentially a security issue.
+
+Where is the problem?  Is it an Android issue?  A BC2 issue?  A bug in this app?
+
+Can this app somehow to be a solution to this serious issue?
+"
+SufficientlySecure/calendar-import-export,closed,no such column: deleted on Android 2.2/2.3,"[Label(name=""bug"")]","From automatic stacktraces from Google Play:
+only on Android 2.2 /2.3
+
+```
+android.database.sqlite.SQLiteException: no such column: deleted: , while compiling: SELECT _id, deleted, name, displayName, _sync_account, _sync_account_type, ownerAccount, selected, timezone FROM Calendars WHERE (1)
+    at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:158)
+    at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:114)
+    at android.content.ContentProviderProxy.bulkQueryInternal(ContentProviderNative.java:330)
+    at android.content.ContentProviderProxy.query(ContentProviderNative.java:366)
+    at android.content.ContentResolver.query(ContentResolver.java:245)
+    at org.sufficientlysecure.ical.AndroidCalendar.loadAll(Unknown Source)
+    at org.sufficientlysecure.ical.ui.MainActivity.init(Unknown Source)
+    at org.sufficientlysecure.ical.ui.MainActivity.access$900(Unknown Source)
+    at org.sufficientlysecure.ical.ui.MainActivity$3.run(Unknown Source)
+    at java.lang.Thread.run(Thread.java:1096)
+```
+"
+SufficientlySecure/calendar-import-export,closed,NullPointerException from getDateTime during export,"[Label(name=""bug"")]","Captured logcat output as requested.  The XDA forum post was very helpful (thanks @jgriffiths), and I ended up doing the following:
+- Enabled 'Developer mode' and 'Debug logging' under Settings (in Calendar Import/Export).
+- Started recording the logcat on my (Linux) laptop with `adb logcat -v long > phone.log`
+- Used the application as described in the tests below.
+- Ran `sed -n '/ICS_/,/^\r$/p' < phone.log > bugtest.log` to extract requested sections.  (Needed the `\r` to match ""empty"" lines, since logcat outputs DOS line endings.)
+
+**Test 1:** Successfully export a local calendar (id 7, with 30 items):
+
+```
+[ 05-19 20:56:28.939  4563:14208 I/ICS_SaveCalendar ]
+Save id 7 to file /storage/emulated/0/bugtest.ics
+
+[ 05-19 20:56:28.955  4563:14208 E/ICS_SaveCalendar ]
+Failed to create mailTo for organizer mailto:Local Calendar
+
+{...then just 29 more copies of this mailTo error...}
+```
+
+**Test 2:** Trigger bug when exporting a local calendar (id 6):
+
+```
+[ 05-19 20:56:54.025  4563:14223 I/ICS_SaveCalendar ]
+Save id 6 to file /storage/emulated/0/bugtest.ics
+
+[ 05-19 20:56:54.041  4563:14223 E/ICS_SaveCalendar ]
+Failed to create mailTo for organizer mailto:Local Calendar
+
+[ 05-19 20:56:54.142  4563:14223 E/ICS_SaveCalendar ]
+Failed to create mailTo for organizer mailto:Local Calendar
+
+[ 05-19 20:56:54.142  4563:14223 E/ICS_RunnableWithProgress ]
+An exception occurred
+java.lang.NullPointerException
+        at org.sufficientlysecure.ical.SaveCalendar.getDateTime(Unknown Source)
+        at org.sufficientlysecure.ical.SaveCalendar.convertFromDb(Unknown Source)
+        at org.sufficientlysecure.ical.SaveCalendar.run(Unknown Source)
+        at org.sufficientlysecure.ical.ui.dialogs.RunnableWithProgress$1.run(Unknown Source)
+        at java.lang.Thread.run(Thread.java:856)
+```
+
+**Test 3:** Trigger same bug when exporting a Google calendar (id 1):
+
+```
+[ 05-19 20:57:13.275  4563:14513 I/ICS_SaveCalendar ]
+Save id 1 to file /storage/emulated/0/bugtest.ics
+
+[ 05-19 20:57:16.439  4563:14513 E/ICS_RunnableWithProgress ]
+An exception occurred
+java.lang.NullPointerException
+        at org.sufficientlysecure.ical.SaveCalendar.getDateTime(Unknown Source)
+        at org.sufficientlysecure.ical.SaveCalendar.convertFromDb(Unknown Source)
+        at org.sufficientlysecure.ical.SaveCalendar.run(Unknown Source)
+        at org.sufficientlysecure.ical.ui.dialogs.RunnableWithProgress$1.run(Unknown Source)
+        at java.lang.Thread.run(Thread.java:856)
+```
+## 
+
+I also captured some verbose logcat output with `adb logcat -v long '*:v' > phone.log`, but this included masses of data, including a dump of each entry read and written, so I've not included it here.  I can generate (and sanitize) more of that if it would help.
+"
+SufficientlySecure/calendar-import-export,closed,Handle attachments from emails by using the URI data provided.,[],"This is still slightly counter-intuitive interface-wise, but it allows an important use case and fixes #8.
+
+@dschuermann : I've raised this as a PR for you to merge when you are happy. It has passed my manual testing.
+
+@freddupont : I made a couple of minor changes from your version, many thanks for the patch and apologies for the delay in applying it.
+"
+SufficientlySecure/calendar-import-export,closed,[bug?] Export files contain extraneous data,[],"The beginning of export files contain scores of `RDATE` lines as well as multiple `DTSTART` sections.
+
+I think some of this data (most likely the multiple `DTSTART` sections) is due to every time in history DST has been modified.  But the weird thing is that there are separate RDATE lines for scores of years, beginning roughly 100 years ago.  DST changes are much less frequent than that.
+
+I'm not sure if this is a bug, but it's definitely odd.
+"
+SufficientlySecure/calendar-import-export,open,"[bug] When recurring events have individual event occurrences deleted, the exports do not reflect this",[],"To recreate the bug:
+1. Create a recurring event in a local calendar
+2. Delete the third occurrence of that event (but not the entire event)
+3. Export the calendar
+
+Bug: There is no indication in the exported file that one of the occurrences of the event has been deleted.
+
+Tested with v2.2
+"
+SufficientlySecure/calendar-import-export,closed,Create default file names from the calendar name,"[Label(name=""enhancement"")]","Create default file names from the calendar name.
+
+For example, when backing up a calendar named 'Domonik's Calendar', use a default file name of `Domonik's Calendar'.
+
+As an option, the file name can be appended with the current date/time.  But this should be an option, because it will prevent the previous backups from being overwritten, which will result in many files.  A ""keep x backups for each calendar"" option could be ideal.
+"
+SufficientlySecure/calendar-import-export,closed,New icon update,[],"I'm using a F-Droid version of this app and the icon of this app is still a legacy one. This app already has a Material Design interface, so I'd like to see a new icon too.
+"
+SufficientlySecure/calendar-import-export,closed,Lastcalendar,[],
+SufficientlySecure/calendar-import-export,closed,Change the way of working with intent. ,[],"the work with url does not work for oppenning attached file from gmail on my smartphone.
+
+I work with the URI given by the itent and in order to preserve the URL functionality I make the calendarsource return an Inputstream
+"
+SufficientlySecure/calendar-import-export,closed,Minor bug correction,[],"Hi, Ok it's my first time pulling a request, however I think this could help your project.
+
+I'am from france and my objective is to make a soft able to import from ICS file in my calandar on daily bases from mail while removing all previous entry.
+
+I found your open source soft and it do almost the job, great job by the way and thanks for sharing
+
+I made the following change in this commit
+store PREF_CALENDAR in setting so that you dont have to choose it every time
+add a buttong clear, which erase all event
+change the intent VIEW management on ICS file, by storing the Uri (storing URL string does not work on my phone).
+Set all button to visible (for debug maybe you should not accept this)
+
+tomorow I plan to change the UI in order to display more information on the ICS file
+and add a clear_reminder button
+
+Frederic
+"
+SufficientlySecure/calendar-import-export,closed,NullPointerException when writing data to file,"[Label(name=""bug"")]","# Summary
+
+App has null pointer exception when exporting a calendar to file.
+# Steps to reproduce:
+- Install OfflineCalendar
+- Create offline calendar in that app
+- Add an event in google calendar
+- Launch CalendarImportExport
+- Select the offline calendar
+- Push //Export// button
+- Enter file name
+- A popup opens with the text **Error** //Error: null//.
+# System:
+- Sony Ericson Xperia Pro
+- Cyanogenmod 10 (Android 4.1.2, Kernel 2.6.32)
+- No google apps (gapps) installed
+# Logcat output (caputred via usb)
+
+```
+E/DatabaseUtils(32704): Writing exception to parcel
+E/DatabaseUtils(32704): java.lang.NullPointerException
+E/DatabaseUtils(32704):         at android.database.sqlite.SQLiteQueryBuilder.computeProjection(SQLiteQueryBuilder.java:625)
+E/DatabaseUtils(32704):         at android.database.sqlite.SQLiteQueryBuilder.buildQuery(SQLiteQueryBuilder.java:447)
+E/DatabaseUtils(32704):         at android.database.sqlite.SQLiteQueryBuilder.query(SQLiteQueryBuilder.java:393)
+E/DatabaseUtils(32704):         at android.database.sqlite.SQLiteQueryBuilder.query(SQLiteQueryBuilder.java:333)
+E/DatabaseUtils(32704):         at com.android.providers.calendar.CalendarProvider2.query(CalendarProvider2.java:1029)
+E/DatabaseUtils(32704):         at com.android.providers.calendar.CalendarProvider2.query(CalendarProvider2.java:1000)
+E/DatabaseUtils(32704):         at android.content.ContentProvider.query(ContentProvider.java:652)
+E/DatabaseUtils(32704):         at android.content.ContentProvider$Transport.query(ContentProvider.java:189)
+E/DatabaseUtils(32704):         at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:113)
+E/DatabaseUtils(32704):         at android.os.Binder.execTransact(Binder.java:367)
+E/DatabaseUtils(32704):         at dalvik.system.NativeStart.run(Native Method)
+E/ICS_RunnableWithProgress( 2690): An exception occurred
+E/ICS_RunnableWithProgress( 2690): java.lang.NullPointerException
+E/ICS_RunnableWithProgress( 2690):      at android.os.Parcel.readException(Parcel.java:1431)
+E/ICS_RunnableWithProgress( 2690):      at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:188)
+E/ICS_RunnableWithProgress( 2690):      at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:140)
+E/ICS_RunnableWithProgress( 2690):      at android.content.ContentProviderProxy.query(ContentProviderNative.java:366)
+E/ICS_RunnableWithProgress( 2690):      at android.content.ContentResolver.query(ContentResolver.java:370)
+E/ICS_RunnableWithProgress( 2690):      at android.content.ContentResolver.query(ContentResolver.java:313)
+E/ICS_RunnableWithProgress( 2690):      at org.sufficientlysecure.ical.SaveCalendar.run(Unknown Source)
+E/ICS_RunnableWithProgress( 2690):      at org.sufficientlysecure.ical.ui.dialogs.RunnableWithProgress$1.run(Unknown Source)
+E/ICS_RunnableWithProgress( 2690):      at java.lang.Thread.run(Thread.java:856)
+```
+"
+SufficientlySecure/calendar-import-export,open,Allow better/precise specification of the file/save directory,"[Label(name=""enhancement"")]","Currently the user has to guess where the file will end up.
+"
+SufficientlySecure/calendar-import-export,closed,New icon ,[],"![iconie](https://cloud.githubusercontent.com/assets/12594372/10501364/a27e9a56-731b-11e5-9124-633e58152df4.png)
+
+_Download ![iconIE.svg.png](https://cloud.githubusercontent.com/assets/12594372/10501370/b0abb4e2-731b-11e5-9997-a6712fdc6088.png) and change '.png' extension into '.svg' to get an original SVG file._
+
+**Released under CC BY-NC-SA**
+"
+SufficientlySecure/calendar-import-export,open,Automated import/export,"[Label(name=""enhancement"")]","Would it be possible to periodically synchronize a calendar with an .ics file in a given location? I would find this very helpful in order to synchronize calendars between devices via dropbox/syncthing/btsync (without the need of google or a central server).
+"
+SufficientlySecure/calendar-import-export,closed,"Organizer not handled correctly, only able to *read and delete*",[],"from mailinglist:
+
+> I have a question regarding /Calendar Import/Export/ app : I am only able to _read and delete_ the imported events, is it intended ?
+"
+SufficientlySecure/calendar-import-export,closed,Remove slash in app name,[],"From mailinglist:
+
+>  Hi!
+> Please remove the slash from the name of the application. The current name
+> is insurmountable for many applications that perform the backup.
+> In the case of Total Commander truncate the name.
+> File Expert 4.0.7 does not perform any backup of any applications.
+> Thanks
+"
+SufficientlySecure/calendar-import-export,closed,"Mailinglist: Question about ""Calendar Import/Export"": Import does not work",[],"For reference:
+
+https://lists.riseup.net/www/arc/sufficientlysecure/2015-09/msg00005.html
+"
+SufficientlySecure/calendar-import-export,closed,Share code with ICSDroid?,"[Label(name=""discussion"")]","ICSDroid allows to subscribe to ics calendars online:
+https://f-droid.org/repository/browse/?fdfilter=ics&fdid=at.bitfire.icsdroid&fdpage=2
+
+They developed there own android wrapper with ical4j at
+https://gitlab.com/bitfireAT/ical4android/tree/master
+
+Maybe we could use ical4android , but I am not sure about this.
+"
+SufficientlySecure/calendar-import-export,closed,Fix translation config,[],"@dschuermann 
+
+ICSImportExport/src/main/res/values/strings.xml is marked as needing translation. In addition, ICSImportExport/src/main/res/values/settings.xml also needs to be added.
+"
+SufficientlySecure/calendar-import-export,closed,Rename app,"[Label(name=""discussion"")]","I would propose renaming the app to ""ICS Import/Export""  to prevent name conflict with the original (now closed source) version of this app on Google Play.
+"
+SufficientlySecure/calendar-import-export,closed,Import replaced same events from other calender,[],"Duplicates should only be replaced when they are in the same calender
+"
+SufficientlySecure/calendar-import-export,closed,Parameter [TZID] is not applicable,[],"```
+  2038           SaveCalendar  E  SaveCalendar
+  2038           SaveCalendar  E  net.fortuna.ical4j.model.ValidationException: Parameter [TZID] is not applicable
+  2038           SaveCalendar  E  at net.fortuna.ical4j.util.ParameterValidator.assertNone(ParameterValidator.java:109)
+  2038           SaveCalendar  E  at net.fortuna.ical4j.model.property.DateProperty.validate(DateProperty.java:234)
+  2038           SaveCalendar  E  at net.fortuna.ical4j.model.property.DtStart.validate(DtStart.java:194)
+  2038           SaveCalendar  E  at net.fortuna.ical4j.model.Component.validateProperties(Component.java:219)
+  2038           SaveCalendar  E  at net.fortuna.ical4j.model.component.VEvent.validate(VEvent.java:472)
+  2038           SaveCalendar  E  at net.fortuna.ical4j.model.Component.validate(Component.java:201)
+  2038           SaveCalendar  E  at net.fortuna.ical4j.model.Calendar.validateComponents(Calendar.java:500)
+  2038           SaveCalendar  E  at net.fortuna.ical4j.model.Calendar.validate(Calendar.java:478)
+  2038           SaveCalendar  E  at net.fortuna.ical4j.model.Calendar.validate(Calendar.java:257)
+  2038           SaveCalendar  E  at net.fortuna.ical4j.data.CalendarOutputter.output(CalendarOutputter.java:96)
+  2038           SaveCalendar  E  at net.fortuna.ical4j.data.CalendarOutputter.output(CalendarOutputter.java:83)
+  2038           SaveCalendar  E  at org.sufficientlysecure.ical.SaveCalendar.run(SaveCalendar.java:188)
+  2038           SaveCalendar  E  at org.sufficientlysecure.ical.ui.dialogs.RunnableWithProgress$1.run(RunnableWithProgress.java:49)
+  2038           SaveCalendar  E  at java.lang.Thread.run(Thread.java:818)
+  755           WindowManager  V  not Base app: Adding window Window{513f02c u0 org.sufficientlysecure.ical/org.sufficientlysecure.ical.ui.MainActivity} at 17 of 22
+```
+"
+SufficientlySecure/calendar-import-export,closed,Release status,"[Label(name=""discussion"")]","Hey @jgriffiths
+I prepared everything for a Google Play and F-Droid release. I also re-designed Offline Calender and tested the interoperability via the Intent and fixed it. I think everything is already good enough (tm) for a release. Many people have asked for a backup/restore feature for Offline Calender, so I would like to release ASAP.
+We can rework the design of the UI in a later release.
+Please also contact me via email, I can give you access to the Google Play dev console for this app.
+Are you okay with this?
+"
+SufficientlySecure/calendar-import-export,open,Add ability to import files containing events from multiple calendars into separate calendars,"[Label(name=""enhancement"")]","Apps like _Business Calendar_ and _Business Calendar 2_ allow exporting multiple calendars to a single .ics (ical) file.  Actually, due to a misleading UI, they encourage it!
+
+If _ical-import-export_ could process such files and import the data into multiple calendars, that would be an incredible feature.
+
+Those popular apps seem to primarily use `ORGANIZER:CN=[calendar name]` to differentiate which event goes with which calendar.
+"
+SufficientlySecure/calendar-import-export,closed,Library situation,"[Label(name=""discussion"")]","a) Instead of having ""android-support-v4.jar"" inside the libs folder, we should use the one provided by the Android SDK using a proper dependency definition with a version code.
+
+b) I am not sure how to handle the other libs correctly. I think it's good enough for now to include the precompiled jars, but it would be much nicer to rely on libs from JCenter or including them with git submodules. At least we should document how they were build inside the README (I saw your specific instructions in https://github.com/dschuermann/ical-import-export/commit/f50ec5724d6722f0824d59150831a08a9b33547d and https://github.com/dschuermann/ical-import-export/commit/3e36642a15c5195f3372e93d9ca3677a75591a58 )
+
+@jgriffiths 
+"
+SufficientlySecure/calendar-import-export,closed,Major refactoring and fixes,[],"Hi Dominik,
+
+This pull request is a large set of changes.  It fixes issues #1, #2, #3, #7, #11, #13, #14, #15, #16 and #17 plus a number of bugs without issues, adds a number of new features  and simplifies both the UI and the source code. The app is for me now very usable/useful.
+
+I am intending to make further changes in the future but I thought I would get your comments on the changes so far. If you are happy to pull then I will update the issues on your branch so they can be closed, before starting on the next set of changes.
+
+Please let me know what you think.
+
+Regards
+Jon
+"
+SufficientlySecure/calendar-import-export,closed,"dialog: ""is CM privacy guard enabled?"" on empty calendar list",[],"see offline calendar code
+"
+SufficientlySecure/calendar-import-export,closed,Timezone conversion makes problems,[],"Tests and fixes needed!
+"
+SufficientlySecure/calendar-import-export,closed,ORGANIZER,[],"organizer currently disabled. When enabled, the events are not editable!
+
+can we use http://developer.android.com/reference/android/provider/CalendarContract.EventsColumns.html#IS_ORGANIZER ?
+
+Makes it sense to import/export organizer?
+"
+SufficientlySecure/calendar-import-export,closed,Exception DTEND and DURATION cannot both be null for an event.,[],"```
+ 20907          VEventWrapper  D  VEvent ready to insert into db
+ 20907          InsertVEvents  D  values: calendar_id=12 dtstart=1295892000000 title=test! rrule=FREQ=YEARLY eventTimezone=Europe/London
+ 21825      CalendarProvider2  I  dtStart:       1295892000000
+ 21825      CalendarProvider2  I  dtEnd:         null
+ 21825      CalendarProvider2  I  all_day:       null
+ 21825      CalendarProvider2  I  tz:            Europe/London
+ 21825      CalendarProvider2  I  dur:           null
+ 21825      CalendarProvider2  I  rrule:         FREQ=YEARLY
+ 21825      CalendarProvider2  I  rdate:         null
+ 21825      CalendarProvider2  I  last_date:     null
+ 21825      CalendarProvider2  I  id:            null
+ 21825      CalendarProvider2  I  sync_id:       null
+ 21825      CalendarProvider2  I  ori_id:        null
+ 21825      CalendarProvider2  I  ori_sync_id:   null
+ 21825      CalendarProvider2  I  ori_inst_time: null
+ 21825      CalendarProvider2  I  ori_all_day:   null
+ 21825          DatabaseUtils  E  Writing exception to parcel
+ 21825          DatabaseUtils  E  java.lang.IllegalArgumentException: DTEND and DURATION cannot both be null for an event.
+ 21825          DatabaseUtils  E  at com.android.providers.calendar.CalendarProvider2.validateEventData(CalendarProvider2.java:2554)
+ 21825          DatabaseUtils  E  at com.android.providers.calendar.CalendarProvider2.insertInTransaction(CalendarProvider2.java:2111)
+ 21825          DatabaseUtils  E  at com.android.providers.calendar.SQLiteContentProvider.insert(SQLiteContentProvider.java:96)
+ 21825          DatabaseUtils  E  at android.content.ContentProvider$Transport.insert(ContentProvider.java:201)
+ 21825          DatabaseUtils  E  at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:148)
+ 21825          DatabaseUtils  E  at android.os.Binder.execTransact(Binder.java:351)
+ 21825          DatabaseUtils  E  at dalvik.system.NativeStart.run(Native Method)
+ 20907          InsertVEvents  E  InsertVEvents
+ 20907          InsertVEvents  E  java.lang.IllegalArgumentException: DTEND and DURATION cannot both be null for an event.
+ 20907          InsertVEvents  E  at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:167)
+ 20907          InsertVEvents  E  at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:137)
+ 20907          InsertVEvents  E  at android.content.ContentProviderProxy.insert(ContentProviderNative.java:420)
+ 20907          InsertVEvents  E  at android.content.ContentResolver.insert(ContentResolver.java:866)
+ 20907          InsertVEvents  E  at org.sufficientlysecure.ical.InsertVEvents.run(InsertVEvents.java:101)
+ 20907          InsertVEvents  E  at org.sufficientlysecure.ical.ui.dialogs.DialogTools$2.run(DialogTools.java:85)
+ 20907          InsertVEvents  E  at java.lang.Thread.run(Thread.java:856)
+ 21825      CalendarProvider2  I  Sending notification intent: Intent { act
+```
+"
+SufficientlySecure/calendar-import-export,closed,Export allDay events properly,[],"export allDay events
+"
+SufficientlySecure/calendar-import-export,closed,Add timezone to calendar,[],"See TODO in SaveCalendar.java
+"
+SufficientlySecure/calendar-import-export,closed,TimeZoneRegistryImpl NullPointerException,"[Label(name=""bug""), Label(name=""ical4j upstream"")]","```
+AndroidRuntime  E  FATAL EXCEPTION: Thread-10413
+  9706         AndroidRuntime  E  java.lang.NullPointerException
+  9706         AndroidRuntime  E  at edu.emory.mathcs.backport.java.util.concurrent.ConcurrentHashMap.get(ConcurrentHashMap.java:769)
+  9706         AndroidRuntime  E  at net.fortuna.ical4j.model.TimeZoneRegistryImpl.getTimeZone(TimeZoneRegistryImpl.java:136)
+  9706         AndroidRuntime  E  at org.sufficientlysecure.ical.SaveCalendar.run(SaveCalendar.java:85)
+  9706         AndroidRuntime  E  at org.sufficientlysecure.ical.ui.dialogs.DialogTools$2.run(DialogTools.java:85)
+  9706         AndroidRuntime  E  at java.lang.Thread.run(Thread.java:856)
+```
+
+http://sourceforge.net/p/ical4j/discussion/368291/thread/24a3bcf8/
+"
+SufficientlySecure/calendar-import-export,closed,Remove Test.class in tools src,[],
+SufficientlySecure/calendar-import-export,closed,IllegalArgumentException: Event values must include an eventTimezone,[],"System: latest freexperia CM9.1 (android 4.0.4). No google account.
+On import I get an Exception (from the logfile):
+
+java.lang.IllegalArgumentException: Event values must include an eventTimezone
+        at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:166)
+        at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:136)
+        at android.content.ContentProviderProxy.insert(ContentProviderNative.java:415)
+        at android.content.ContentResolver.insert(ContentResolver.java:735)
+        at org.sufficientlysecure.ical.InsertVEvents.run(InsertVEvents.java:95)
+        at org.sufficientlysecure.ical.tools.dialogs.DialogTools$2.run(DialogTools.java:82)
+        at java.lang.Thread.run(Thread.java:856)
+"
+SufficientlySecure/calendar-import-export,closed,Ics from email,"[Label(name=""enhancement"")]","Open stream directly
+"
+SufficientlySecure/calendar-import-export,closed,Always use new CalendarContract,[],"Eventually remove some constant classes and use CalendarContract directly!
+"
+SufficientlySecure/calendar-import-export,closed,Remove unused classes,[],"some classes from package tools are unused or should be replaced with something better.
+"
+SufficientlySecure/calendar-import-export,closed,timezone conversion,[],"```
+29707    GoogleVEventWrapper  D  VEvent: SUMMARY GoogleEvent: title Value: Opa: Geburtstag (84)
+ 29707    GoogleVEventWrapper  D  VEvent: DTSTART GoogleEvent: dtstart Value: 20100303T010000
+ 29707    GoogleVEventWrapper  D  VEvent: DTEND GoogleEvent: dtend Value: 20100304T010000
+ 29707          VEventWrapper  D  VEvent ready to insert into db
+ 27191          DatabaseUtils  E  Writing exception to parcel
+ 27191          DatabaseUtils  E  java.lang.IllegalArgumentException: Event values must include an eventTimezone
+ 27191          DatabaseUtils  E  at com.android.providers.calendar.CalendarProvider2.validateEventData(CalendarProvider2.java:2533)
+ 27191          DatabaseUtils  E  at com.android.providers.calendar.CalendarProvider2.insertInTransaction(CalendarProvider2.java:2111)
+ 27191          DatabaseUtils  E  at com.android.providers.calendar.SQLiteContentProvider.insert(SQLiteContentProvider.java:96)
+ 27191          DatabaseUtils  E  at android.content.ContentProvider$Transport.insert(ContentProvider.java:201)
+ 27191          DatabaseUtils  E  at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:148)
+ 27191          DatabaseUtils  E  at android.os.Binder.execTransact(Binder.java:351)
+ 27191          DatabaseUtils  E  at dalvik.system.NativeStart.run(Native Method)
+```
+"
+SufficientlySecure/calendar-import-export,closed,Imported bug: Umlauts are shown as �,"[Label(name=""bug"")]","What steps will reproduce the problem?
+1. Import of calendar entries with umlauts.
+
+What is the expected output? What do you see instead?
+The expected output is: Märchenerzähler.
+The word is shown as: M�rchenerz�hler
+
+What version of the product are you using? On what operating system?
+iCal 1.5, Android 2.3.3
+"
+SufficientlySecure/calendar-import-export,closed,Imported bug: Import reoccuring events,[],"ics rule
+RRULE:FREQ=DAILY;BYDAY=MO,TU,WE,TH,FR;COUNT=3
+for exemple does not work
+"
+SufficientlySecure/calendar-import-export,closed,Imported bug:  Import of multi-line description fields ,[],"What steps will reproduce the problem?
+1. Attempt to import an ICS with a multi-line description field
+
+What is the expected output? What do you see instead?
+
+Multi-line description fields have a space in the first position of the second and subsequent lines. For example:
+
+DESCRIPTION:Trip:\nJUL 16-DESTINATION\nDeparts Jul 16\, 20
+ 11 8:25am Arrives Jul 16\, 2011 12:55pm
+
+The second line starts with a space and should be recognized as a continuation of the DESCRIPTION field. The resulting description should read:
+
+Trip:
+JUL 16-DESTINATION
+Departs Jul 16, 2011 8:25am Arrives Jul 16, 2011 12:55pm
+
+Instead, the following error message is printed:
+
+Error
+iCal file could not be parsed
+Error at line xx: illegal property [ 11 6]
+
+This seems to indicate that the importer is treating the continuation line as a new field.
+
+What version of the product are you using? On what operating system?
+Version 1.5 on Android 2.3
+
+Please provide any additional information below.
+
+---
+
+Found this:
+http://sourceforge.net/tracker/index.php?func=detail&aid=1755577&group_id=107024&atid=646395
+
+I verified that the ICS file from which I pulled an excerpt above uses LF solely, not CRLF as specified in RFC 2445. So shame on them.
+
+The above iCal4j bug was closed as 'rejected' but it also references a RELAXED_UNFOLDING compatibility hint that will accept LF-only line breaks. Is it possible to get that implemented, either as the default or as an option?
+
+http://m2.modularity.net.au/projects/ical4j/apidocs/net/fortuna/ical4j/util/CompatibilityHints.html
+"
+SufficientlySecure/calendar-import-export,closed,Imported bug: Full day event import issue / invalid iCal-file,[],"What steps will reproduce the problem?
+1. Start app
+2. Select URL for import (http://localhost/test.ics
+3. load iCal file
+
+What is the expected output? What do you see instead?
+Refuses all full-day events.
+Refuses import file/URL with
+Error at line6:[DTSTART]
+Unparseable date: ""20110624""
+
+What version of the product are you using? On what operating system?
+1.5 on Android 2.3.3 Samsung Galaxy S2
+
+Please provide any additional information below.
+
+I write some own PHP code, so I can influence the generated ICS-code.
+What I would like it to accept (and most other progs/Google does) is a file like
+
+BEGIN:VCALENDAR
+
+VERSION:2.0
+
+PRODID:-//Custom written JD//NL
+
+BEGIN:VEVENT
+
+TZNAME:CET
+
+DTSTART:20110624
+
+DTEND:20110625
+
+SUMMARY:Example event
+
+END:VEVENT
+
+END:VCALENDAR
+
+This is valid code for a single day full day event. So untimed DTSTART, DTEND.
+
+I can see the progs accepts:
+
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Custom written JD//NL
+BEGIN:VEVENT
+TZNAME:CET
+DTSTART:20110624T000000
+DTEND:20110625T235959
+SUMMARY:Example event
+END:VEVENT
+END:VCALENDAR
+
+But this gives an event between the times mentioned. Which is ugly and gives all sort of problems. For instance when changing to daylight-saving-time, which shifts the event one hour into the next day.
+
+I'm totally new to Android, but would like to load stuff like this in my calendar. 
+Found your app, and it looks very nice.
+
+Any resolvement of the issue would be appreciated.
+"

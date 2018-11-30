@@ -1,0 +1,1299 @@
+repository,state,title,label,body
+ikarus23/MifareClassicTool,open,Treat backward compatible desfire cards as mifare classic,[],"According to Mifare DESFire documentation, there is a backward compatibility mode with Mifare classic cards, I believe I have one of these cards, Is it possible to treat these cards as Mifare classic in the app?"
+ikarus23/MifareClassicTool,open,Some newly tested devices,[],
+ikarus23/MifareClassicTool,open,Update README.md,[],"Hi,
+
+This small PR updates the link to F-Droid in the README 👍 "
+ikarus23/MifareClassicTool,closed,Added and grouped keys from various cards,[],"Added keys from:
+
+* Strelka card extension
+* Moscow public toilets
+* Iron Logic object card
+
+All keys grouped in one place and duplicates removed from other sources. "
+ikarus23/MifareClassicTool,open,Allow option to disable the app automatically starting when an nfc tag approaches,[],"I'm currently using an android cover with a slot for an nfc card. However whenever I open this cover, the nfc card touches the backside of my phone and the Mifare Classic App opens.
+
+Is this something we can make configurable?
+
+![20181026_112335](https://user-images.githubusercontent.com/2350015/47558133-b25edc00-d912-11e8-8eb3-81abd8d76d42.jpg)"
+ikarus23/MifareClassicTool,open,4k -> 1K - Trimmed clone question,[],"Hello there! greetings from Colombia.
+
+**Here's my situation** (I'm by no means a programmer, more like a scrip kiddie)
+
+1. I'm able to perform a full dump (known keys) of a 4k mifare card but using my phone (with this app) and my linux machine (libnfc)
+2. Using the app, I'm able to write the dump into a 1k card (trimming sectors 16-39).
+3. The 1k cloned card works.
+4. When I compare the dumps (original 4k vs trimmed 1K) sector 0 and sector 15 differ slightly.
+5. When I try to clone the cloned 1k card with the Linux machine (miLazyCracker) if dumps successfully, but when trying to write into another 1k tag, I get an error regarding SAK code.
+
+**So here are my questions:**
+1. Is there a better way to trim clone a 4k tag dump into a 1k tag? (when the remaining sectors are not used).
+2. How could the APP dump txt files be converted into a LIBNFC compatible MFD dump file?.
+3. How could the APP ingest/import LIBNFC mfd dump files?.
+4. Wishful thining: Could miLazyCracker libraries be included on this app? it's performance is greater than MFOC and MCFUK and could actually be practical.
+
+Thank you!
+
+
+"
+ikarus23/MifareClassicTool,closed,After successful dump it's possible to emulate the card in the phone,[],Hi first of all thanks for your great work and releasing as open source. My question is if after a successful dump it's possible to emulate the card in the phone?
+ikarus23/MifareClassicTool,open,MIUI could read a card but LineageOS didn't,[],"Hi ikarus,
+I am using Xiaomi 5(gemini),When I use MIUI 10, use MCT to read or write a JCOP card have no problem, just sometimes MCT Notice it's not Mifare Classic Tags, But sometimes it works.
+
+But I flashed LineageOS 15.1, no matter what i do, MCT said ""Not Mifare Classic Tags"",I don't know why.
+
+Thanks."
+ikarus23/MifareClassicTool,closed,Add full key set of Russian Troika card and group it,[],Some of this keys randomly appeared in other groups. I've added a full set and grouped it in one place.
+ikarus23/MifareClassicTool,open,"UI freeze while mapping/reading [Google Pixel, Android 9]",[],"A lot of users complaining that MCT freezes on Googles Pixel with Android 9. This is the stacktrace:
+```
+
+""main"" tid=1 Native
+""main"" prio=5 tid=1 Native
+  | group=""main"" sCount=1 dsCount=0 flags=1 obj=0x74eeca78 self=0x720c614c00
+  | sysTid=26192 nice=-10 cgrp=default sched=0/0 handle=0x729202f548
+  | state=S schedstat=( 9638645976 816419133 23733 ) utm=749 stm=214 core=3 HZ=100
+  | stack=0x7ff9657000-0x7ff9659000 stackSize=8MB
+  | held mutexes=
+  #00  pc 0000000000070d7c  /system/lib64/libc.so (__ioctl+4)
+  #01  pc 00000000000292dc  /system/lib64/libc.so (ioctl+144)
+  #02  pc 000000000005a740  /system/lib64/libbinder.so (android::IPCThreadState::talkWithDriver(bool)+260)
+  #03  pc 000000000005b4e0  /system/lib64/libbinder.so (android::IPCThreadState::waitForResponse(android::Parcel*, int*)+60)
+  #04  pc 000000000005b32c  /system/lib64/libbinder.so (android::IPCThreadState::transact(int, unsigned int, android::Parcel const&, android::Parcel*, unsigned int)+176)
+  #05  pc 000000000005130c  /system/lib64/libbinder.so (android::BpBinder::transact(unsigned int, android::Parcel const&, android::Parcel*, unsigned int)+72) 
+  #06  pc 000000000012fe70  /system/lib64/libandroid_runtime.so (android_os_BinderProxy_transact(_JNIEnv*, _jobject*, int, _jobject*, _jobject*, int)+152)
+  at android.os.BinderProxy.transactNative (Native method)
+  at android.os.BinderProxy.transact (Binder.java:1127)
+  at android.nfc.INfcTag$Stub$Proxy.reconnect (INfcTag.java:307)
+  at android.nfc.tech.BasicTagTechnology.close (BasicTagTechnology.java:123)
+  at android.nfc.tech.MifareClassic.close (MifareClassic.java:73)
+  at de.syss.MifareClassicTool.MCReader.close (MCReader.java:1068)
+  at de.syss.MifareClassicTool.Common.checkForTagAndCreateReader (Common.java:844)
+  at de.syss.MifareClassicTool.Activities.KeyMapCreator.onCreateKeyMap (KeyMapCreator.java:388)
+  at java.lang.reflect.Method.invoke (Native method)
+  at android.view.View$DeclaredOnClickListener.onClick (View.java:5629)
+  at android.view.View.performClick (View.java:6597)
+  at android.view.View.performClickInternal (View.java:6574)
+  at android.view.View.access$3100 (View.java:778)
+  at android.view.View$PerformClick.run (View.java:25885)
+  at android.os.Handler.handleCallback (Handler.java:873)
+  at android.os.Handler.dispatchMessage (Handler.java:99)
+  at android.os.Looper.loop (Looper.java:193)
+  at android.app.ActivityThread.main (ActivityThread.java:6669)
+  at java.lang.reflect.Method.invoke (Native method)
+  at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run (RuntimeInit.java:493)
+  at com.android.internal.os.ZygoteInit.main (ZygoteInit.java:858)
+```
+At the moment, I'm not sure what exactly is causing this issue."
+ikarus23/MifareClassicTool,open,Moto G5s Plus,[],"Hi, I'm a big fan of your work.
+
+Thank you for your commitment to improving the application.
+
+I have a question about how to use the application on Motorola Moto G5s Plus.
+
+Apparently the Moto G5s Plus uses the same NFC chip as the Moto G5 plus (I read that it works), but when trying to read a tag, even if all the passwords are the same, some passwords (when reading the tag) appear blank as if had not been found.
+Sometimes it returns as if it did not find industry passwords and was not displayed.
+
+I think it's a mistake, because if I read it again, it reads the password it did not read and stops reading another password.
+
+I apologize for English if there is an error and, from now on, thank you very much."
+ikarus23/MifareClassicTool,open,Can't read the tag (Have the keys),[],"I tried to read the card after getting the keys with proxmark3 but it shows this
+![nfc-bilhet](https://user-images.githubusercontent.com/39327656/46898771-7e8bad00-ce62-11e8-8d08-ccacea835133.png)
+
+This are the keys, i think, that i got from the card. I've added them to MCT
+![bilhun-keys](https://user-images.githubusercontent.com/39327656/46898778-98c58b00-ce62-11e8-9f07-2f9ae9b6ab8d.png)
+
+I added this two: de1fcbec764b and 400bc9be8976
+So what is the problem ?
+
+[edit]
+I've added all the keys in the KEYS file, now im able to read the rest.
+
+"
+ikarus23/MifareClassicTool,closed,Application is stopping on Amazfit SmartWatch,[],"Log:
+```
+D/AndroidRuntime( 1675): Shutting down VM
+--------- beginning of crash
+E/AndroidRuntime( 1675): FATAL EXCEPTION: main
+E/AndroidRuntime( 1675): Process: de.syss.MifareClassicTool, PID: 1675
+E/AndroidRuntime( 1675): java.lang.RuntimeException: Unable to start activity ComponentInfo{de.syss.MifareClassicTool/de.syss.MifareClassicTool.Activities.MainMenu}: android.util.AndroidRuntimeException: You cannot combine swipe dismissal and the action bar.
+E/AndroidRuntime( 1675):        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2325)
+E/AndroidRuntime( 1675):        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2387)
+E/AndroidRuntime( 1675):        at android.app.ActivityThread.access$800(ActivityThread.java:151)
+E/AndroidRuntime( 1675):        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1303)
+E/AndroidRuntime( 1675):        at android.os.Handler.dispatchMessage(Handler.java:102)
+E/AndroidRuntime( 1675):        at android.os.Looper.loop(Looper.java:135)
+E/AndroidRuntime( 1675):        at android.app.ActivityThread.main(ActivityThread.java:5254)
+E/AndroidRuntime( 1675):        at java.lang.reflect.Method.invoke(Native Method)
+E/AndroidRuntime( 1675):        at java.lang.reflect.Method.invoke(Method.java:372)
+E/AndroidRuntime( 1675):        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:903)
+E/AndroidRuntime( 1675):        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:698)
+E/AndroidRuntime( 1675): Caused by: android.util.AndroidRuntimeException: You cannot combine swipe dismissal and the action bar.
+E/AndroidRuntime( 1675):        at com.android.internal.policy.impl.PhoneWindow.requestFeature(PhoneWindow.java:333)
+E/AndroidRuntime( 1675):        at com.android.internal.policy.impl.PhoneWindow.generateLayout(PhoneWindow.java:3410)
+E/AndroidRuntime( 1675):        at com.android.internal.policy.impl.PhoneWindow.installDecor(PhoneWindow.java:3725)
+E/AndroidRuntime( 1675):        at com.android.internal.policy.impl.PhoneWindow.setContentView(PhoneWindow.java:401)
+E/AndroidRuntime( 1675):        at android.app.Activity.setContentView(Activity.java:2145)
+E/AndroidRuntime( 1675):        at de.syss.MifareClassicTool.Activities.MainMenu.onCreate(MainMenu.java:109)
+E/AndroidRuntime( 1675):        at android.app.Activity.performCreate(Activity.java:5990)
+E/AndroidRuntime( 1675):        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1106)
+E/AndroidRuntime( 1675):        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2278)
+E/AndroidRuntime( 1675):        ... 10 more
+W/ActivityManager(  384):   Force finishing activity 1 de.syss.MifareClassicTool/.Activities.MainMenu
+W/InputMethodManagerService(  384): Window already focused, ignoring focus gain of: com.android.internal.view.IInputMethodClient$Stub$Proxy@7cb78df attribute=null, token = android.os.BinderProxy@10aaf618
+D/PowerManager(  384): HM_acquireLocked pkg: android tag: WakeLock (ActivityManager-Launch)
+W/ActivityManager(  384): Activity pause timeout for ActivityRecord{16bbe783 u0 de.syss.MifareClassicTool/.Activities.MainMenu t181 f}
+```
+After I reverted this https://github.com/ikarus23/MifareClassicTool/commit/02d85daa8c93140802d545b97567f7c47f91e80c
+it works fine..."
+ikarus23/MifareClassicTool,closed,Xiaomi MI 8 compatibility on MUIU 10.0.2.0,[],"I've just installed Mifare Classic Tool in this mobile.
+I can read the tags with no problem, but when trying to clone from a dump, I get this error:
+""Error. Some error ocurred while writing. This could be really bad""
+I've tried cloning two different source tags to several different target tags (clonable tags).
+
+If I disable ""Enable writing to manufacturer block"" it works.
+I'm also able to properly do a ""Factory Format"", which finishes just fine.
+
+These (https://aliexpress.com/item/5pcs-UID-IC-card-Changeable-Smart-Keyfobs-Key-Tags-Card-for-1K-S50-MF1-libnfc-RFID/32788592746.html) are the tags I bought, which state that are compatible with MCT.
+Any idea or help?
+
+"
+ikarus23/MifareClassicTool,closed,Use Java 8 featues,[],
+ikarus23/MifareClassicTool,closed,no valid key found in chosen key file,[],"no valid key found in chosen key file
+what does it mean ?
+I use a samsung s9+
+"
+ikarus23/MifareClassicTool,closed,[Android 9] Black text on dark grey menu,[],"As title, each menu of the app on Android P (on Oneplus 6) has black text on dark grey background. This unfortunately makes using the app very difficult, especially in daylight situations.
+
+Screenshot:
+
+![photo_2018-09-24_21-01-11](https://user-images.githubusercontent.com/5445545/45973202-0f2e5480-c03e-11e8-9046-46e18d90bd66.jpg)
+"
+ikarus23/MifareClassicTool,open,Command-line API / Intent interface for writing,"[Label(name=""feature"")]","I need some automation of some functionalities of this app, especially writing.
+
+I would appreciate if there's a command-line API to call this app to write a card. I can provide the key file and the dump file to write via command line arguments, or with `am`, the data sent to an intent.
+
+Either form (directly call binary or call the app with `am broadcast`) would be OK!
+
+Thanks in advance!"
+ikarus23/MifareClassicTool,open,Request: documentation how to use external NFC reader (writer?) via USB-OTG capable phones,[],"As I understand, MifareClassicTool already supports https://play.google.com/store/apps/details?id=eu.dedb.nfc.service which in turn supports:
+ - MFRC522 via USB-UART adapters.
+    - Probably $1.50 for the MFRC522 + $5 for a USB-OTG compatible UART?
+ - ACR122
+    - around $25 from China/HongKong. But there seems to be several versions of ACR122, some even with bluetooth. Which ACR122 models have been tested and working?"
+ikarus23/MifareClassicTool,open,"Support for app ""External NFC Reader Service"" by Thomas Rorvik Skjolberg","[Label(name=""feature"")]","This app https://play.google.com/store/apps/details?id=com.skjolberg.nfc.external
+supports more chipsets than the already supported app https://play.google.com/store/apps/details?id=eu.dedb.nfc.service
+
+Skolberg's app claims it is easy to use. Check out the public API at https://github.com/skjolber/external-nfc-api"
+ikarus23/MifareClassicTool,closed,Making a Clone card successful (0~15dump same) but  Elevator is not responding,[],"hello 
+
+sorry for my english...
+
+i used mifare classic tool 
+
+so successful to make clone card. 
+
+it same uid and same Sector 0~15.
+
+card type is mifare classic 1k card. so i use cuid and scuid 
+
+it works for door! but not responding elevator.. 
+
+touch the card to the elevator leader them my floor light on.
+
+but my clone cuid and scuid key is not responding for elevator
+
+someone know how to fix the problem?
+"
+ikarus23/MifareClassicTool,closed,Making a Clone card successful,[],
+ikarus23/MifareClassicTool,closed,Added an option to auto copy UID to clipboard.,[],"This fork adds a preference (disabled by default) allowing MCT to automatically copy the UID to clipboard as a decimal value each time a tag is scanned. In that case, the text of the toaster message will change to notify the user the value was copied to clipboard.
+
+I needed this feature to replace an application called ""Mifare ID Reader"" by Nellon which would simply display the UID of a scanned tag in decimal format (I believe it was read as little endian). The application also had this little ""Share"" Floating Action Button. With that I could copy/paste the UID into a web app to look up the associated tag. Mifare ID Reader was not actively maintained and had some minor issues. About a month ago the app vanished from Google Play. I tried to contact the author to adopt the project, but got no response (it was not open source). For me, it's better to have just one tool that does everything I need. I wont be offended though if you consider this unnecessary bloat."
+ikarus23/MifareClassicTool,closed,Update COMPATIBLE_DEVICES.md,[],"Added the Moto G5 Plus to working devices.
+Tested today with Lineage OS ROM"
+ikarus23/MifareClassicTool,closed,[Question]Read wiegand data (Facility code and card number) from Mifare cards?,[],"Hello,
+I could be very wrong here. When Mifare Classic/DESFire cards used in physical control systems e.g. doors, I'm assuming the system still uses wiegand data to authenticate the card? If so is it possible to read this data from a smartphone?
+
+Thank you."
+ikarus23/MifareClassicTool,closed,Unable to clone,[],"Hey, I'm unable to clone my Tallinn's Transport card again, I got it working finnally on 1 card, but now with same specced keyfobs I am unable to clone again, when comparing original and cloned key, the last block on each sector (so the last line) on cloned is FFFFFFFFFFFFFF078069FFFFFFFFFFFF (so it's the default) and on original sector 0 is A0A1A2A3A4A50F078FC1------------ and up to the 6th D3F7D3F7D3F70F078F41------------ (others are all zeroes).
+I understand, that dashes mean unreadable/ununderstandable to the app, but I had the same results when I cloned the cloned card  and got it working (think so at least). Some Chinese things arrive 2-3 months from ordering. i needed to reinstall the app, since I factory erased my phone. The original card I read is the same, but it may not be the same dump generated with the cloned card. Also I lost the cloned card and my OnePlus 5t has had OTA updates.
+Thanks for an awesome app anyways!"
+ikarus23/MifareClassicTool,closed,No keys found (or dead sector) android 8.0 + MI6,[],"Hello, previously i have a one plus one, he just finish he's life :'( RIP him,
+So i'm now on a Xiaomi MI6 (global 6Go version) and MCT seems to have some trouble with it.
+I'm actually on Miui 10 Global android 8.0.0 and i have this error(same trouble on miui 9):
+using a mifare classic 1K and only on sector 14 - 15
+No keys found (or dead sector) 
+
+
+the keys are currently 000000000000 and FFFFFFFFFFFF on these sectors and mct can't read it, other app like MFClassic arrived with the same keys...
+![screenshot_2018-07-10-10-41-15-961_de syss mifareclassictool 1](https://user-images.githubusercontent.com/12032349/42498920-cae8a024-842d-11e8-8f45-6d54848f0599.png)
+![screenshot_2018-07-10-10-37-26-295_de syss mifareclassictool 1](https://user-images.githubusercontent.com/12032349/42499013-002779ea-842e-11e8-9ff9-175de160a2e0.png)
+![screenshot_2018-07-10-10-39-55-820_com touf mfclassic 1](https://user-images.githubusercontent.com/12032349/42498963-e0722730-842d-11e8-9cdf-01a36ebed251.png)
+
+
+thank's for reading me :) sorry for my poor english
+Nice work on mct btw, awesome tool!
+
+
+"
+ikarus23/MifareClassicTool,closed,No keys found or dead sector,[],"I have used the app to read my card but when it finish only the sector 0 is visible... it have 5 sectores (0 to 4) but the sector 1, 2, 3 and 4 says ""No keys found (or dead sector)""... what that means?"
+ikarus23/MifareClassicTool,closed,Update COMPATIBLE_DEVICES.md,[],
+ikarus23/MifareClassicTool,closed,gradle modify,[],
+ikarus23/MifareClassicTool,closed,Mifare Classic 4k,[],Does it support Mifare Classic 4k?
+ikarus23/MifareClassicTool,closed,Sector 0 - Corruption,[],"After editing sector 0 and writing the dump.
+
+Card now reports: No Keys Found (or dead sector)
+
+Is this reversable?
+
+"
+ikarus23/MifareClassicTool,open,Display a warning before writing irreversible access conditions,"[Label(name=""enhancement"")]","As mentioned by an user in the Google Play Store, it would be nice to have a warning
+before writing irreversible access conditions to a sector trailer.
+
+(Would be best to have this for all write features, but at least for the ""Write Block"" function.)"
+ikarus23/MifareClassicTool,closed,compatible devices - nokia 8,[],"Just tested with nokia 8.
+
+Read/write capabilities works correctly!
+
+Please note that the NFC antenna onboard is not so sensitive so you can get some difficult to read your tags"
+ikarus23/MifareClassicTool,closed,Mifare Incre./Decr. Value block,"[Label(name=""question"")]","@ikarus23 
+
+Dear ,
+
+Good afternoon, I would like to ask for your help regarding the option Incr./Decr. Value Block, when trying to write a value in block 8 does it without problems but
+when consulting the process done, the option to read label shows me that the result in the blocks is different.
+Could you please guide me? attached image capture
+![647e46d8-af8f-4edc-beed-2310778da235](https://user-images.githubusercontent.com/38865946/39444763-322ec456-4c8f-11e8-928f-e48f3882d373.jpg)
+"
+ikarus23/MifareClassicTool,open,Won't Read/Write After Android Oreo Update [Galaxy Note 8],[],"I use a Samsung Galaxy Note 8 i had Android 7 & everything worked great.
+
+Now i updated to Android 8 (Oreo) & ever since I can't download the app from the play store. I'm getting a message ""Your device isn't compatible with this version"".
+
+After downloading it from github it wouldn't read/write tags it just keep on loading as if it's reading/writing but never finishes. "
+ikarus23/MifareClassicTool,open,How come I can read whole sector but key is empty?,[],"Hello. 
+I have a seemingly blank mifare classic card that I am trying to read.
+I have read the whole card except the key for sector 0. The default ACs say that only keyA can be used to read the sector (data blocks as well as ACs and keyB are read), so it obviously was used to read the sector (and most probably it is FFFFFF as the card seems to be blank). However the app shows that it has no keyA information. Why is this?
+
+What's more interesting, in other sectors keyA field is populated correctly. Why are keyA fields in sector 0 and others different? 
+
+Is it a bug or am I missing something? 
+
+My device is Sony Xperia Z3 Compact (Android 6.0.1).
+
+<img src=""https://user-images.githubusercontent.com/2095278/38779217-9505fffa-40ef-11e8-92c5-1d8d502274c0.jpg"" width=""300px""/>
+"
+ikarus23/MifareClassicTool,closed,Error when enable writing to manufacturer block.,[],"Hi, thank you for this great tool! But I have ran into a problem when using it.
+
+When I enabled the option ""enable writing to manufacturer block"", there would appear a message saying ""Error: Some error occurred while writing. This could be really bad."" And the dump is not written into the card.
+
+![Error_message](https://user-images.githubusercontent.com/21360506/38590468-ea6ea6c0-3d63-11e8-8372-1065afb0b062.png)
+
+
+But if I canceled this option, the dump can be written correctly. 
+
+I am a primary user of MCT, and I am not very good at speaking English. I hope I have describe the problem clearly and you can understand what I am saying. If so, would you please tell me how to solve it?"
+ikarus23/MifareClassicTool,closed,‘BCC’ not 'BBC',[],‘BCC’ not 'BBC'
+ikarus23/MifareClassicTool,closed,How get ATR on card ?,[],"Hi, @ikarus23, can you say me how get ATR of card in android ?
+And can or not change ATR value in magic card ?"
+ikarus23/MifareClassicTool,closed,Priority support analog card,[],"When an analog card is exposed to NFC, it is possible to give priority to the analog card SAK28, not the CPU card SAK20."
+ikarus23/MifareClassicTool,closed,Testing new hardware [Galaxy Note 8],[],"I have the Samsung Galaxy Note 8 from AT&T SM-N950U. The app on Google Play says my phone is not compatible, but when I went through this for him I did not see my phone listed for functioning or non-functioning. Is there a location I can go to see if my phone has the correct Hardware or software so I can run this application? Of course I downloaded the APK and it appears to read correctly but I don't know if it can write."
+ikarus23/MifareClassicTool,closed,Update COMPATIBLE_DEVICES.md [Galaxy S8],[],Works after update to Android 8.0
+ikarus23/MifareClassicTool,closed,How to read NTag in this example?,[],"Hello,
+
+I tried NFC ntag type using this example.
+But can't read it.
+
+Please can you give me any suggestion/help?
+
+Thanks.  "
+ikarus23/MifareClassicTool,closed,Update INCOMPATIBLE_DEVICES.md  [Galaxy S8],[],"It's interesting, but after update to Android Oreo Mifare Classic begins to work on S8 :)"
+ikarus23/MifareClassicTool,closed,How collect Nt on android ?,"[Label(name=""question"")]","Hi, @ikarus23 .
+I want collect Nt on android.
+Do you know how collect Nt on android ? I want do crypto1-bs tools on android."
+ikarus23/MifareClassicTool,closed,not work after update [Xperia xz],[],"after update do not work with xperia xz android 8.0! 
+shows uid but constantly loses connection"
+ikarus23/MifareClassicTool,closed,Diff dump not working on new releases,"[Label(name=""can't reproduce"")]","Hi there, I just updated to the new release, from an old one of months ago (maybe 2.something?).
+I noticed that the hex editor doesn't work properly anymore when comparing two dumps.
+
+If you open a dump and then you choose to compare it with another, just won't do it, asking you to choose a file in a endless loop.
+If you go to tools and then to compare option, you can't fill both the file selection. Choosing A will delete B and so on.
+
+Sorry for my bad english, anyway if this problem is not happening just on my phone, you should see it and understand of what I am talking in seconds."
+ikarus23/MifareClassicTool,closed,Fix missing google() maven repo in build.gradle,[],"Android Studio inserts it automatically but when using command line gradle it has to be added to the build.gradle file.
+
+[F-Droid builds are failing because of this](https://gitlab.com/fdroid/fdroiddata/issues/1099)."
+ikarus23/MifareClassicTool,open,Auto reconnect feature is not woking,"[Label(name=""bug"")]","I noticed that the auto reconnect feature is not working poperly on my Nexus 5X with Android 8.1.However, it works on my Nexus 7 (2012) with Android 4.4 (most of the time).
+"
+ikarus23/MifareClassicTool,open,CRC calculator tool,"[Label(name=""feature"")]","Do you have the idea to choose to add a CRC check？Think of the software BBC calculator（I am not very good at English
+）"
+ikarus23/MifareClassicTool,closed,Sharing dumps/keys on Android 7+,"[Label(name=""bug""), Label(name=""high priority"")]","Sharing dump or key files will result in a crash on devices with Android 7+
+Instead of directly sharing a URI, a content provider should be used."
+ikarus23/MifareClassicTool,closed,Update COMPATIBLE_DEVICES.md,[],
+ikarus23/MifareClassicTool,closed,Mifare Classic Mini key/read issues,[],Could you add support for mifare mini? Can not copy the dump. The program does not see one of the keys in the sector. 
+ikarus23/MifareClassicTool,closed,invalid acces conditions or dead sector,[],"Hello, I have a zx-08cd device that can copy tags and write them. 
+
+I have a mifare classic card with changable UID, With the program i need to decode the card and sadly it didnt work, but i went ahead and wrote what was left on the empty card .. Now when i try to read it with the MCT it shows that from sector 0 to 11 it has no data nor accessbit or key B .. but it shows key A which is valid.
+
+normally my card as default is FFFFFFFFFFF FF078069 FFFFFFFFFFF 
+
+and 000000.. as data.
+
+Is there a way to restore it to that state with MCT ?"
+ikarus23/MifareClassicTool,closed,Download/Apk,"[Label(name=""question"")]","How i download and tranfer this in to apk , i have android studio , and git."
+ikarus23/MifareClassicTool,closed,Add note about OnePlus One in INCOMPATIBLE_DEVICES,[],
+ikarus23/MifareClassicTool,closed,Add OnePlus 5/5T to compatibles devices,[],And compress a bit by grouping siblings OnePlus devices.
+ikarus23/MifareClassicTool,closed,Tag lost (Huawei Mate 10 Pro),[],"Hello, My friend just bought a huawei mate 10 pro, and when we tried this app, It reads the tags partially. 
+
+and when we try to write info to a tag, It says ""Error: Tag lost while checking for keys with write privileges""
+
+Is there any fix for this ? 
+![e958b38a-eb7c-40f6-8144-3617f3ab1850](https://user-images.githubusercontent.com/22993951/34346397-6bfd4f7c-e9f7-11e7-9cb8-5d721c819dc7.jpg)
+
+"
+ikarus23/MifareClassicTool,closed,Suddenly not working...,[],"Hello, I have been using this for the past few days now, and suddenly it's saying my device is incompatible. Why would that happen?"
+ikarus23/MifareClassicTool,closed,Emulate Mifare card,"[Label(name=""question"")]","There is NFC Card Emulator app, which is able to emulate NFC cards on Android. For Mifare cards it emulates card id. Is it possible to add the same feature to your app?
+Can android phone emulate card data in addition to card id?"
+ikarus23/MifareClassicTool,closed,Update COMPATIBLE_DEVICES.md,[],Added Google Pixel 2 to the compatible List.
+ikarus23/MifareClassicTool,closed,MCT don't work with emulator 1k.,[],"@ikarus23 , hi.
+I'm testing the development of the mifare classic emulator. The proxmark is successful do auth and read block in my emulator, but MCT does not work at  authorization in the sector. I get the error ""No valid keys found"".
+I do snoop between my emulator and MCT with proxmark.
+1208812 |    1213516 | Rdr | 60  01  7c  6a                                                  |  ok | AUTH-A(1)      
+    1214768 |    1219440 | Tag | 00  00  00  00                                                  |     |
+    1223564 |    1232876 | Rdr | c1 81!  1a  f0 4c! 72!  6f 4c!                                  | !crc| DEC(129)       
+    1242752 |    1247488 | Tag | 96  5c  30  2f                                                  |     |
+    1374908 |    1379676 | Rdr | 50  00  57  cd
+
+I calculate timing At: (1242752 - 1232876) / 13560000 * 10^6 microsec= 728 microsec < 1 ms.
+Why android send me HALT if my timing correct according to datasheet ?"
+ikarus23/MifareClassicTool,closed,Is it  possable to Using cell phone as MifareClass Card?,[],HCE is possable to MifareClass Card?
+ikarus23/MifareClassicTool,closed,"Lenovo P2 is working (after disabling ""bcm2079x-i2c"" check in code)","[Label(name=""enhancement"")]","Hi,
+
+Using a Lenovo P2 mobile phone (Android 7), the latest release version (2.1.0) claims that this device does not support Miface Classic. However, using another NFC tool (MFC Classic), I am able to read and write Mifare Classic Tags withous issues.
+
+So I set-up an android build environment and re-built the master branch of MifareClassicTool myself with the goal to disable the ""compatibility check"" in the app to check if it really doesn't work. As it turns out, MifareClassicTool *does* *work* on a Lenovo P2 (P2a42, Android 7, stock ROM build P2a42_S244_170725_ROW).
+
+I did just disable the ""bcm2079x-i2c"" check:
+```
+--- a/Mifare Classic Tool/app/src/main/java/de/syss/MifareClassicTool/Common.java       
++++ b/Mifare Classic Tool/app/src/main/java/de/syss/MifareClassicTool/Common.java       
+@@ -597,10 +597,11 @@ public class Common extends Application {
+         // This could fail because on a lot of devices apps don't have
+         // the sufficient permissions.
+         File device = new File(""/dev/bcm2079x-i2c"");
+-        if (device.exists()) {
+-            mHasMifareClassicSupport = -1;
+-            return false;
+-        }
++//&&&
++//        if (device.exists()) {
++//            mHasMifareClassicSupport = -1;
++//            return false;
++//        }
+ 
+         // Check if there is the NFC device ""pn544"".
+         // The PN544 NFC chip is manufactured by NXP.
+```
+
+
+Would be nice to get supoprt for Lenovo P2  into a next release.
+
+Best regards,
+/Thomas
+"
+ikarus23/MifareClassicTool,closed,"Mifare, Write to specific sector and block, nfc-mfclassic, mfcuk, mfoc","[Label(name=""question"")]","Hi!
+
+I'm cooking a little with MiFare cards, I have been able to retreive the A and B keys with MCFUK, and with MFOC I've created a dump with all the sectors containing the data.
+
+I have been able to figure out which sector and block that contains the valueblock and I am able to change it with the android app Mifare Classic Tool, however I cant find out how to do it within linux or other software, when I'm using NFC-MFClassic it wants to overwrite the whole card, which would be fine but I'm having trouble with it saying the UID does not match from the dump and the actual card.
+
+Any ides? thanks for helping!"
+ikarus23/MifareClassicTool,closed,second block onward getting ALL 0's as a Value,[],"I'm trying to scan Mifare Classic tag.
+I'm getting data for First Sector **0** But second sector onward getting **ALL 0's** for all sectors.
+```
+private SpannableString colorDataBlock(String data, boolean hasUID) {
+        SpannableString ret;
+        if (hasUID) {
+            // First block (UID, manuf. data).
+            ret = new SpannableString(TextUtils.concat(
+                    Common.colorString(data,
+                            getResources().getColor(R.color.purple))));
+        } else {
+            if (Common.isValueBlock(data)) {
+                // Value block.
+                ret = Common.colorString(data,
+                        getResources().getColor(R.color.yellow));
+            } else {
+                // Just data.
+                ret = new SpannableString(data);
+            }
+        }
+        return ret;
+    }
+```
+That's why  `(byte)(b[0]^0xFF) == b[4]) ` condition is returning false.
+
+
+```
+public static boolean isValueBlock(String hexString) {
+    byte[] b = Common.hexStringToByteArray(hexString);
+    if (b.length == 16) {
+        // Google some NXP info PDFs about MIFARE Classic to see how
+        // Value Blocks are formatted.
+        // For better reading (~ = invert operator):
+        // if (b0=b8 and b0=~b4) and (b1=b9 and b9=~b5) ...
+        // ... and (b12=b14 and b13=b15 and b12=~b13) then
+        if (    (b[0] == b[8] && (byte)(b[0]^0xFF) == b[4]) &&
+                (b[1] == b[9] && (byte)(b[1]^0xFF) == b[5]) &&
+                (b[2] == b[10] && (byte)(b[2]^0xFF) == b[6]) &&
+                (b[3] == b[11] && (byte)(b[3]^0xFF) == b[7]) &&
+                (b[12] == b[14] && b[13] == b[15] &&
+                (byte)(b[12]^0xFF) == b[13])) {
+            return true;
+        }
+    }
+    return false;
+}
+```
+Does that mean My card doesn't have data?
+Also tell us How Values are retrieved. 
+**Device**: Samsung J3
+**OS**: Android 5.1.1
+
+Additionally check SO I posted: [Stackoverflow](https://stackoverflow.com/questions/46582680/ndef-gettag-returns-null-mifare-support-in-android)"
+ikarus23/MifareClassicTool,closed,HELP: Writing a full size (TagMaxSize) byte[],[],"Hello,
+
+I have been looking for a solution on the internet for quite sometime now and haven't been able to figure out a proper way. 
+Need to write some text data (i.e. a user input - 15characters, UserID, IMEI, key) most of it converted to ASCII and a XOR applied. So far, I have been able to write a plain String in the form of NdefMessage and need a way to write the desired text using custom memory mapping (i.e. each desired byte in a specific memory block/page). Moreover, also need to know should I proceed with Ndef or MifareClassic for my purpose.
+```
+for (int i = 14; i < 233; i++) {
+  mifare.writePage(i, ""    "".getBytes(Charset.forName(""US-ASCII"")));
+  Log.e(""pages: "" + i, """" + Arrays.toString(mifare.readPages(i)));
+  Thread.sleep(100);
+}
+```
+In this code snippet, I'm trying to ""clear"" pages in loop. However, the loops stops with an error ""java.io.IOException: Transceive failed"" first on page 5 of the TAG, than on page 13, than again on 96)
+
+I'm new to this and a little help will be greatly appreciated. I have already posted on stackoverflow and haven't been able to get any replies."
+ikarus23/MifareClassicTool,closed,MCT problem read emulated mifare classic - proxmark3.,[],"I try to emulate the mifare classic and read through my smartphone with android MCT apk.
+proxmark3> hf mf sim n 0
+mf 1k sim uid: N/A, numreads:0, flags:0 (0x00)
+#db# 7B UID: 04 53 5d 42 a7 49 80
+#db# Reader tried to operate (0x30) on out of range block: 222 (0xde), nacking
+#db# Emulator stopped. Tracing: 1 trace length: 27908
+
+proxmark3> hf list 14a
+.......
+188213078 | 188215446 | Tag | 44 00 | |
+188224958 | 188235486 | Rdr | 93 70 88 04 53 5d 82 17 d3 | ok | SELECT_UID
+188236978 | 188240498 | Tag | 04 da 17 | |
+188243234 | 188245698 | Rdr | 95 20 | | ANTICOLL-2
+188247382 | 188253270 | Tag | 42 a7 49 80 2c | |
+188257314 | 188267842 | Rdr | 95 70 42 a7 49 80 2c 2d 5e | ok | ANTICOLL-2
+188269398 | 188272918 | Tag | 08 b6 dd | |
+188503146 | 188507914 | Rdr | 61 00 2d 62 | ok | AUTH-B(0)
+188512414 | 188517150 | Tag | 01 02 03 04 | |
+188521244 | 188530620 | Rdr |95! cb! 40 8c 0f! 84 ec 75 | !crc| ANTICOLL-2
+188539152 | 188543824 | Tag | e7 86 42 2d | |
+188614336 | 188619104 | Rdr | 30 de 37 97 | !crc| READBLOCK(222)
+188622644 | 188623284 | Tag | 07 | |
+188826048 | 188827040 | Rdr | 52 | | WUPA
+188828596 | 188830964 | Tag | 44 00 | |
+188839586 | 188850114 | Rdr | 93 70 88 04 53 5d 82 17 d3 | ok | SELECT_UID
+188851670 | 188855190 | Tag | 04 da 17 | |
+188857926 | 188860390 | Rdr | 95 20 | | ANTICOLL-2
+188862074 | 188867962 | Tag | 42 a7 49 80 2c | |
+188872006 | 188882534 | Rdr | 95 70 42 a7 49 80 2c 2d 5e | ok | ANTICOLL-2
+188884090 | 188887610 | Tag | 08 b6 dd | |
+188977072 | 188981840 | Rdr | 50 00 57 cd | ok | HALT
+................
+
+I try decrypt this with mfkey32
+C:\prox\ProxSpace\pm3\tools\mfkey>mfkey64 42a74980 01020304 95cb408c 0f84ec75 e786422d 30de3797
+MIFARE Classic key recovery - based on 64 bits of keystream
+Recover key from only one complete authentication!
+
+Recovering key for:
+uid: 42a74980
+nt: 01020304
+{nr}: 95cb408c
+{ar}: 0f84ec75
+{at}: e786422d
+{enc0}: 30de3797
+
+LFSR successors of the tag challenge:
+nt' : 20f8ed56
+nt'': 3c2bcdad
+Time spent in lfsr_recovery64(): 0.14 seconds
+
+Keystream used to generate {ar} and {at}:
+ks2: 2f7c0123
+ks3: dbad8f80
+
+Decrypted communication:
+{dec0}: 500057cd
+
+Found Key: [a0a1a2a3a4a5]
+
+I found bug in this command. Why proxmark think that 30 de 37 97 this is decrypt communication ? After authorization, all communication is encrypted. And this is actually the halt command 50 00 57 cd.
+
+And 2 problem with MCT: Error: None of the keys were valid for reading.
+The MCT often returns an error when authorizing, when I attach a proxmark simulating a classic card to the phone. I tried it on acr122, everything works well there."
+ikarus23/MifareClassicTool,closed,Samsung not working with update? [S7 Edge],[],"I was wondering if my device could work with this app since it says that my device isn't compatible with the update. I have a Samsung Galaxy S7 Edge, if that helps?"
+ikarus23/MifareClassicTool,closed,Update INCOMPATIBLE_DEVICES.md,[],Added a couple of tested devices
+ikarus23/MifareClassicTool,closed,Nothing to correct,[],"The App also work on LG G6 H870!
+
+
+_Sent from my Lge LG-H870 using [FastHub](https://play.google.com/store/apps/details?id=com.fastaccess.github)_"
+ikarus23/MifareClassicTool,closed,Unable to read content consistently,[],"When I try to read a mifare card with known keys, 9 times out of 10 it will fail (estimation). I also tried advanced Auto reconnect option but it does not make a difference. I am using Huawei P10."
+ikarus23/MifareClassicTool,closed,Format Access Conditions MCT,[],"Hi Ikarus
+help me please
+I'm trying to format some 1k s50 cards and I'm having problems.
+When formatted by the computer through the LIBNFC ​​I can completely erase the card, including the Access Conditions, but by the MCT is not working.
+What do I do to format the MCT Access Conditions?"
+ikarus23/MifareClassicTool,closed,"Can't write to ""protocol command"" version mifare zero ""magic"" cards",[],"The MCT on my Moto X 1st gen works great to read cards but when I try to write it errors. I'm wondering if MCT can support the type of sector 0 writable cards which require a special protocol command to unlock the ""backdoor""? 
+
+Here is a run-down of the protocol interaction; http://amal.net/caps/2017-08-16_11-57-40.png"
+ikarus23/MifareClassicTool,closed,More supported models,[],UPD INCOMPATIBLE_DEVICES.md: MCT works fine on Google Pixel and on Sony Z5 Compact E5823
+ikarus23/MifareClassicTool,closed,Lenovo p2 unsupported,[],"I have tested the app on Lenovo p2 and it is incompatible. If you want, you can add it to the unsupported devices list"
+ikarus23/MifareClassicTool,closed,clone card,[],"Sorry for what is probably a noob question: I'm trying to clone a Mifare Classic 1k Card, writing only block 0 to a special tag. Most of the dump is being written successfully, but the keys (A & B) from the dump aren't written to the new tag. Shouldn't they be written as well when cloning a tag?"
+ikarus23/MifareClassicTool,closed,Moto X 2nd Gen - App does not open,[],"I have the following phone:
+http://www.gsmarena.com/motorola_moto_x_(2nd_gen)-6649.php
+Android 6.0
+
+I installed the app using the PlayStore.
+When I try to open the app I get a pop up with the error message ""Unfotunately, Mifare Classic Tool has stopped working"""
+ikarus23/MifareClassicTool,open,Bluetooth Support,"[Label(name=""feature"")]","Add Bluetooth Support for ACR1255U-J1
+
+As Samsung phones lack support for Mifare Classic ( NFC Cards ) samsung users may want to add support for it via external readers like ACR1255U-J1."
+ikarus23/MifareClassicTool,closed,[Feature] Mifare emulation and key recovery,[],"Dear author,
+Is it possible to add the below features?
+1. Key recovery like mfoc and mfcuk (without using external USB readers)? 
+2. Is emulation possible? I know that UID will be randomly generated each time it's read due to Android limitation. But what about other sectors? "
+ikarus23/MifareClassicTool,closed,No valid key found in choosen key file [2],[],"Hello friend, please help me
+I'm cloning a Mifare card, I've used LibNfc and found all the keys. I added them in the MCT Apk and I was able to read the card completely, but at the time of cloning the sectors this error appears .. sectors 1 to 15 were identical, but in sector 0 the KEY B is thus ""------ ------ ""and with that, Block 0 of this sector is also dashed, I can not clone these sectors 
+Please help me
+My phone is a Motorola Razr D3
+I await an answer"
+ikarus23/MifareClassicTool,closed,Problem with write sector magic 7 byte card.,"[Label(name=""bug"")]","I try write sector in magic 7 byte card, but if i write with option write block this good, but if i want write all sector i get error ""Error: Tag lost while checking for keys with write privileges"" and if i write only one sector i get error ""Error: Some error occurred while writing.This could be really bad.""
+
+I think magic card want after each write block do or connect or authentificate in sector with key.
+Please, can fix problem."
+ikarus23/MifareClassicTool,closed,Why i can't?,[],I found key but i no know key what key worked
+ikarus23/MifareClassicTool,closed,MCT why can not edit mfoc the dump file?,[],Or a conversion tool?
+ikarus23/MifareClassicTool,closed,issues of checkMifareClassicSupport  ,"[Label(name=""bug""), Label(name=""enhancement""), Label(name=""help wanted"")]","checkMifareClassicSupport  method has two issues(as far as i can tell)
+
+1. the logic in checkMifareClassicSupport doesnot seem right.
+please double check the code around nfca.getAtqa.
+
+2. full value of SAK
+> SAK is a bit mapping and is recommended to use the bit to check the MIFARE
+> type, **the full value of SAK shall not be used to detect a MIFARE type**. For detail check in
+> the application note AN10834 - MIFARE ISO/IEC 14443 PICC Selection.
+
+
+"
+ikarus23/MifareClassicTool,closed,cant write  UID ?,[],"Thank you guys  for sharing this app , and its really nice ,but i met some problems when i use write block0 to change M1 card's UID, iam pretty sure the card i use is the special one which allow me to change uid ,in using this it says success,but actually it didnt the uid is not change any more ...and my device is MI Note 2 and lenove A5500,"
+ikarus23/MifareClassicTool,closed,No valid key found in chosen key file,[],"The app works fine at first, I can read/write data on d card. Then all of a sudden when I tried to increment sector 1 block 0, a toast appear saying No valid key found in chosen key file'. I'm sure I have the right keys. From then on I can't access the card anymore. It keeps showing 'No valid key found in chosen key file'."
+ikarus23/MifareClassicTool,closed,Minor typo/grammar fix in README,[],
+ikarus23/MifareClassicTool,closed,One Plus One compatibility,[],"Hi there,
+
+Thanks for this very great tool! I was surprised to see it supposed not to be working one the OnePlus One, because it works on mine (but doesn’t work on a friend one though).
+
+Could that be OS dependent? I’m running CyanogenMod 13.0 currently (but might switch to LineageOS or OmniROM at some point), while my friend is running CyanogenOS 12.1 I think.
+
+I’m happy to provide any useful info if that could make it work for other OPO users!"
+ikarus23/MifareClassicTool,closed,Removed duplicate keys,[],No need to keep duplicate keys.
+ikarus23/MifareClassicTool,closed,Samsung Galaxy S7 Edge compatible. Android 7.0,[],"Although listed as incompatible and not able to install from Play store I installed the APK and the MCT works perfectly.
+Maybe the model could be delisted.
+
+Thanks!"
+ikarus23/MifareClassicTool,closed,Update INCOMPATIBLE_DEVICES.md,[],"Added Xiaomi Mi 5 on which I tested app and works, correctly reading Mifare 1K cards."
+ikarus23/MifareClassicTool,closed,Use of MCT together with app External NFC,"[Label(name=""enhancement"")]","When using the MCT together with Eхternal NFC application, the Read and Write Tags buttons are not available. Can this be fixed? Thank you!"
+ikarus23/MifareClassicTool,open,Write manufactor block after writing dump,"[Label(name=""bug""), Label(name=""enhancement"")]",I choose write Manufactor block and write dump. After writing 0 block of 0 sector cards are disconnected. I think that good idea write manufacture block after writing remaining sectors.
+ikarus23/MifareClassicTool,closed,Random UID,[],"I want to edit code in apk. I want that apk write random uid. Please, say me name of function which write manufactor block 0 in mifare classic ?"
+ikarus23/MifareClassicTool,closed,NXP controller ,[],"Compatibility with NXP PN547, NXP PN65N, NXP PN544 ?"
+ikarus23/MifareClassicTool,closed,Facing Issue while building the app in Eclipse,[],"Hi I am getting the following error
+
+Description	Resource	Path	Location	Type
+error: No resource identifier found for attribute 'showAsAction' in package 'android'	dump_editor_functions.xml	/MainMenu/res/menu	line 23	Android AAPT Problem
+
+Description	Resource	Path	Location	Type
+error: No resource identifier found for attribute 'showAsAction' in package 'android'	general_options.xml	/MainMenu/res/menu	line 24	Android AAPT Problem
+
+
+Description	Resource	Path	Location	Type
+AndroidManifest.xml file missing!	MainMenu		Unknown	Android Packaging Problem
+
+
+kindly let me know how to resolve this"
+ikarus23/MifareClassicTool,closed,Cant read tag,[],"Hello,
+I can´t map keys to sectors. It tells me that ""no valid key was found in chosen key file"", but i know for fact that the card uses default key (FFFFFFFFFFFF). I tested the card(s) with PN532 reader under linux and it works fine.
+I have Jiayu S3+ with Android 5.1.1, kernel 3.10.65+."
+ikarus23/MifareClassicTool,closed,Feature reguest Automatic Read and dumb ,[],"Hi, i attempted to add a feature that allows the app to wait until a tag is present and then read and dumb it to a file, however i got stuck in how to actually make it wait for tag without causing a ANR.
+can someone either help me making this feature or can someone make this?
+"
+ikarus23/MifareClassicTool,closed,MCT equivalent for Windows/Linux ?,"[Label(name=""question"")]","Hello everyone,
+
+I'm using the [Adafruit PN532 breakout](https://www.adafruit.com/product/364) together with a [USB/Serial converter](https://www.sparkfun.com/products/11812) for interfacing with my MIFARE Classic 1k and getting the keys. Unfortunately, my Nexus 5 doesn't support the PN532 chip and I can't use MCT.
+
+Is there a similar project to Mifare Classic Tool but for Windows or Linux? I've spent my last couple of days rummaging everywhere but I haven't found anything so far. 
+
+Thanks!"
+ikarus23/MifareClassicTool,closed,unreadable mifare classic,"[Label(name=""question"")]","Hi,
+I hope I am in the right place. I don't think it's a bug. It's more a support request...
+I am using a nexus 7 (2012 model).
+To access my building, I have a mifare classic pass. I tried reading this pass with MCT but it just says ""no valid key found in chosen key file"" (I selected both std.keys and extended-std.keys files).
+
+Then I tried to read it with taginfo and mifarecard nfc read write applications from play store.
+both can get the uid of the pass but none can read the content.
+
+My understanding is that uid is stored on sector 0 but it seems empty...
+
+I attached screenshots. Am I missing something?
+
+![mct_novalidkeyfoundinchosenkeyfile](https://cloud.githubusercontent.com/assets/24525962/23218324/479628b0-f91c-11e6-95e6-98cce331a8ce.png)
+
+![screen_nxptaginfo1](https://cloud.githubusercontent.com/assets/24525962/23218332/49b53636-f91c-11e6-90c9-62ad92fb6d4d.png)
+
+![screen_mifarecardnfcreadwrite](https://cloud.githubusercontent.com/assets/24525962/23218336/4cb6767e-f91c-11e6-952a-a0f7f8e4ac79.png)
+"
+ikarus23/MifareClassicTool,closed,Send nfca commands,[],"Hello @ikarus23,
+
+Is there any reasons you didn't merged this feature?
+"
+ikarus23/MifareClassicTool,closed,Update INCOMPATIBLE_DEVICES.md,[],
+ikarus23/MifareClassicTool,closed,Pasword Protected MIFARE Classic 1K Card Memory,"[Label(name=""question"")]","Can We Write Protected MIFARE Classic 1K Card Memory ??
+MIFARE Classic 1K Card Memory can be readable and writable only by me.Is it possible to Protected by password ??"
+ikarus23/MifareClassicTool,closed,Question: looking for a new compatible phone from 2016,"[Label(name=""question"")]","Hey guys, I screwed my HTC One M7 when trying to replace the internal battery. Opening the phone was easy, I didn't even damage the screen, which everyone claimed that could be easily broken during opening. However, i pulled a flex cable too strong and ended breaking a motherboard connector. 
+
+So, I think it's the time to buy a new phone, but I'd like to get a modern one, from 2016, that is compatible with MCT. I've read the INCOMPATIBLE_DEVICES.md file and it seem that the list of compatible phones is very reduced and they're all quite old. 
+
+Is there any new model that is known to work? I'm thinking about Xiaomi Mi 5s or Huawei P9. I'm also thinking about newer HTC models, but I had too many problems with my old M7 (pink camera, loose USB dock, wifi disconnection, internal battery...)
+
+Thank you in advance."
+ikarus23/MifareClassicTool,closed,Update Chinese Translation.,[],
+ikarus23/MifareClassicTool,closed,Update INCOMPATIBLE_DEVICES.md,[],"I know this file is about incompatible devices, but having it explicit for ones device is good for confirmation. "
+ikarus23/MifareClassicTool,closed,MIFARE Classic Tool is working on OnePlus 3T,[],I testes the app on my OnePlus 3T. It's working as expected.
+ikarus23/MifareClassicTool,closed,samsung s6 edge g925f not supported,[],"with latest updates samsung has removed again the compatibility with MIFARE Classic tags?
+"
+ikarus23/MifareClassicTool,open,Strange Bug on Nexus 5X,"[Label(name=""help wanted"")]","Hi MCT users,
+
+I recently bought a Nexus 5X to continue the MCT development on a newer platform (my Nexus 7 2012 has Android 5.1.1 and there will be no updates). However, I experience a really strange behavior and was not able to figure out what is causing it.
+
+* I have clean, factory formatted tag (all key are FFFFFFFFFFFF).
+* If I read it with my Nexus 7 2012, everything is just fine.
+* If I read it with my Nexus 5X, some sectors appear to be not readable.
+* If I read it with my Nexus 5X again, some different sectors appear to be not readable. The readable sectors vary from read to read.
+
+As far as I have looked into it, the two reasons for a sector to appear unreadable.
+* Sometimes the sector is not readable  because no key was found (the authentication fails even with the correct key).
+* Sometimes it is not possible to read the sector (even though the key is correct).
+
+**To all Nexus 5X users:**
+Do you experience the same issue? (unreliable read results) I have them regardless of what app I'm using (MCT, NFC TagInfo, NXP's Taginfo, etc.)"
+ikarus23/MifareClassicTool,closed,Samsung Galaxy S4 mini also doesn't work,[],
+ikarus23/MifareClassicTool,closed,Add working with Mifare Plus 2K,[],"When I try to read mifare plus 2k card using MifareClassicTool app reads only 16 sectors (64 blocks), but the card consist of 128 blocks (32 sectors)
+This card Mifare Plus 2K
+
+Reading on pc:
+$ nfc-mfclassic r a dump.bin keys.bin
+NFC reader: ACS / ACR122U PICC Interface opened
+Found MIFARE Classic card:
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  44  
+       UID (NFCID1): 04  05  40  0a  be  4c  80  
+      SAK (SEL_RES): 08  
+Guessing size: seems to be a 2048-byte card
+Reading out 128 blocks |................................................................................................................................|
+Done, 128 of 128 blocks read.
+Writing data to file: dump.bin ...Done.
+
+MIFARE Type Identification Procedure
+[http://cache.nxp.com/documents/application_note/AN10833.pdf](url)
+"
+ikarus23/MifareClassicTool,closed,App data storage,"[Label(name=""feature"")]","Dear Ikarus,
+
+First of all thank you for such high quality development!
+
+A quick question\feature request:
+Is it feasible to store the app data in the /data partition (or add an option to store the info there) as this is the only place which is being encrypted on the encryption-enabled smartphone. The aim is to be on the safe side having custom dictionary keys and dumps and prevent unauthorized access to the information.
+
+Thank you.
+"
+ikarus23/MifareClassicTool,closed,csetuid Chinese UID0 writable,[],"Hi there,
+just wondering if there is anyway to set UID with MCT for Chinese Block0 writable mifare cards?
+
+Is there anyway in general to do it on android without Proxmark3 (like mf csetuid command)
+"
+ikarus23/MifareClassicTool,closed,Save Key Map,[],"I know that this issue was discussed in issue #43, but it was closed last year. 
+
+Is there a plan to implement a method to save key maps so that MIFARE cards can be read more quickly and efficiently? I scan the same card quite often and having to wait for it to create the key map each time I want to read the card seems like there should be a better way.
+
+Thanks!
+"
+ikarus23/MifareClassicTool,closed,"A very strange coffee dump, hexa encrypted I am in the blur","[Label(name=""question"")]","hi everyone its all in the tittle i not understated what its going on whit the dump  for my coffee machine.
+in my original card i have 11.45€ but inside the dump nothing no result of course for hex a 479
+its intriguing i want to know what the problem or i need to buy another eyes _._
+the dump is here if you are curious and god help you friend
+[coffee11.45.txt](https://github.com/ikarus23/MifareClassicTool/files/517351/coffee11.45.txt)
+"
+ikarus23/MifareClassicTool,closed,Zenphone 2 z00a,"[Label(name=""question"")]","Hi your APP read tag information, but show this message tour device (due to hardware) dowles not support Mifare classic. How to fix it ? Thank you very much
+"
+ikarus23/MifareClassicTool,closed,"HTC 10 , Android 6.0.1",[],"Hello,  mifare classic tool doesn't work on Android 6.0.1 , what do you think please ?
+"
+ikarus23/MifareClassicTool,closed,add disable autostart option when card detected,[],"hi,
+could you please add an option to disable autostart when a card is detected? 
+
+thanks
+"
+ikarus23/MifareClassicTool,closed,Where the data are saved,[],"Hi,
+
+Where the data are saved on an android system?
+-keys file
+-dumps
+
+Thanks!
+"
+ikarus23/MifareClassicTool,closed,2K card support,[],"Hi!
+I've seen it in your TODO list.
+Could you add this feature?
+May be start just with checkbox in settings, that allows trying to read sectors up to 32?
+"
+ikarus23/MifareClassicTool,closed,Thank you for the excellent library!,[],"Hi, I am very grateful to you for this library. It is the only one that knows how to work with the NFС MifareClassik tags. I want to add it to my app, and I will be grateful if you could tell exactly which piece of code is responsible for reading and writing tags
+"
+ikarus23/MifareClassicTool,closed,TODO fixed,[],"I have checked on small sample file with missed sectors
+"
+ikarus23/MifareClassicTool,closed,Works well in OnePlus3! The new mobilephone 2016,[],"Hi,ikarus23:
+I just to report that MCT works well in OnePlus3! The new mobilephone 2016.
+
+Happy as I?
+
+HAHA, except...the ""special commands"" for the changeable UID card from China...still...un~~
+
+Bytheway, for a long time I would like to know:""Do you know exectlly what does the `special commands` look like? And the 'simple write command'?"" T____T    Hunger to know.
+"
+ikarus23/MifareClassicTool,closed,How to encrypt one sector ?,[],"What's the way to encrypt one sector (15 for example) with only KeyA on a fully formated mifare 4K ?
+For testing purpose
+"
+ikarus23/MifareClassicTool,closed,[FR] add support of MIFARE Ultralight,[],"The [MIFARE Ultralight](https://en.m.wikipedia.org/wiki/MIFARE#MIFARE_Ultralight_and_MIFARE_Ultralight_EV1) tags are very cheap and widespread. So maybe its support would be reasonable. Also the encryption there is used less.
+Actually I don't know would that be useful or useless, please hint.
+Thanks for the joy playing with NFC tags!
+"
+ikarus23/MifareClassicTool,closed,htc one m8 don't read mifare mini tags after uodate to 5.0.1 lolipop,[],"htc one m8 don't read mifare mini tags after update to 5.0.1 lolipop... before that android version works fine.
+
+best regards
+"
+ikarus23/MifareClassicTool,closed,Samsung S5 now compatible with mifare classic,[],"Hello,
+
+Just to tell that my samsung S5 (SM-G900F) is now able to read mifare classic tags.
+There must have been a recent update in the firmware. It was not compatible a few months ago.
+MifareClassicTool works perfectly on it.
+
+Regards.
+"
+ikarus23/MifareClassicTool,closed,Developer needs help: Samsungs Galaxy S6 and S6 Edge,[],"Hi everyone,
+
+could those of you with a Samsung Galaxy S6 or a Galaxy S6 Edge do me a favor?
+Could you install the latest version of MCT from [here](http://publications.icaria.de/mct/releases/2.0/) and tell me if you are able
+to read and write tags? I'm still not sure if those devices are capable of reading/writing
+Mifare Classic tags.
+
+Thanks!
+
+Cheers
+  ikarus
+"
+ikarus23/MifareClassicTool,closed,read block0,"[Label(name=""can't reproduce"")]","some times i read block0  
+
+The same label read out the data is not the same
+amsung J5 mobile phone
+
+I am from Chinese, a little English
+"
+ikarus23/MifareClassicTool,closed,I write wrong BCC byte,[],"I write in classic 1k with direct uid changable BCC byte incorrect.
+Help me, please, how restore this card ?
+With an invalid BCC byte this card does not see my phone with nfc and acr122u.
+How restore, please.
+"
+ikarus23/MifareClassicTool,closed,Increase Chinese Translation.,[],"Added chinese translation.
+"
+ikarus23/MifareClassicTool,closed,support for emulated cards SAK (0x28),[],
+ikarus23/MifareClassicTool,closed,Dont write 0 sector on China card,[],"I try to change 0 sector in China card with changable uid. But get error. But other sectors soft write sucessfull.
+
+My scrennshot:
+http://hostingkartinok.com/show-image.php?id=eac3be3a6b216afaa137a4a20ce3a247
+
+Please, help me. How write mifare classic changable card uid in 0 sector ?
+
+My device: Sony Xperia M Dual C2005
+Android 4.2.2
+"
+ikarus23/MifareClassicTool,closed,Check BCC before writing block 0,"[Label(name=""enhancement"")]","_maniac98066_ wrote:
+
+> Please add BCC check before the manufacturer's block write. I bricked two UID writeable cards before I realized that BCC was incorrect.
+"
+ikarus23/MifareClassicTool,closed,Fixed crash for Android Marshmallow,[],"The application was crashing on start after the update to Android 6 happened.
+
+I added the new Marshmallow permission checks because the application wasn't able to write to external storeage, resulting in a NullPointerException.
+
+When the application doesn't have write access all the buttons which are working with storage are muted until the user gives permission.
+
+The code was tested on my HTC One M8.
+"
+ikarus23/MifareClassicTool,open,Changes:,[],"1. Add a switch in layout ""KeyMapCreator"" for enable nfc reader mode.
+2. Add switch name at line 189 in strings.xml.
+3. Add codes from line 197 to line 220 in KeyMapCreator.java.
+4. Add users-sdk minSdkVersion 19.
+   Reasons:
+   Some phones (such as Huawei Honor 7 or Huawei Honor 4C) disable nfc intent through changed the mask in file /system/etc/libnfc-brcm_PLK.conf. So that application cannot receive any nfc intent from system. But if enable nfc reader mode, everything will be fine!
+
+Hope author update this application to Google Play soon!
+"
+ikarus23/MifareClassicTool,closed,Marshmallow permissions (with suggestion),[],"It will probably need something like this in MainMenu.java
+
+```
+private static final int REQUEST_WRITE_STORAGE = 112;
+
+@Override
+public void onRequestPermissionsResult( int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    if (requestCode == REQUEST_WRITE_STORAGE) {
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            //permission granted  start reading
+        } else {
+            Toast.makeText(this, ""No permission to read external storage."", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
+
+    if (ActivityCompat.checkSelfPermission(MainMenu.this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
+            PackageManager.PERMISSION_GRANTED) {
+        ActivityCompat.requestPermissions(MainMenu.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},REQUEST_WRITE_STORAGE);
+        return;
+    }
+```
+
+See
+http://stackoverflow.com/questions/33139754/android-6-0-marshmallow-cannot-write-to-sd-card
+
+I got MFCT to start on MM after compiling the above additions in, although it crashed once around:
+
+mEnableNfc.hide();
+"
+ikarus23/MifareClassicTool,closed,Latest build crashes on open CM13 Nexus 5X,[],"Will update issue with relevant logs tomorrow afternoon. Th previous release works fine, the latest one force closes as soon as the app is open
+"
+ikarus23/MifareClassicTool,closed,Importing mfoc dump,[],"trying to open dump from mfoc resulting in this error:
+
+""Some sectors don't have 4 or 16 blocks (lines)""
+
+Is MCT dump format documented anywhere?
+"
+ikarus23/MifareClassicTool,closed,Write Tag (Write Block) problems,"[Label(name=""can't reproduce"")]","This App is cool, I can use it to read some Mifare 1K tags I have here.
+I'm using a new Huawei P8 Lite mobile phone, works fine...except:
+- I can read all data from Tags, fast and precise
+- I can write data to a Tag via Write Dump (Clone), by selecting 1 Sector a time
+- but I can't write data using Write Tag -> Write Block:
+- \* when using Write Block the App says: ""Data Succesfully Written"" ..but nothing
+- \* when I read back the Tag no data has changed
+- \* the Tags are empty (from manufacturer, all keys are FFFF...)
+- \* as said before, via Write Dump the data does change on the Tags!!!
+
+What am I doing wrong?
+Kim
+"
+ikarus23/MifareClassicTool,closed,Error: Loosing connection to card before read,[],"HTC M8 Android 5.0.1.  Can not read card.  Software looses connection to card during mapping process.  
+"
+ikarus23/MifareClassicTool,closed,ChameleonMini card emulator doesn't play nice with MCT,[],"Not sure what's going on, but when I try to read the ChameleonMini with a large key file, MCT often loses connection. With a minimal key file (containing only 1 key of FFFFFFFFFFFF), it succeeds but seems to only read every second sector.
+
+NFC WAR works fine and reads all the data, so I'm guessing MCT is not patient enough when trying to brute force the ChameleonMini.
+"
+ikarus23/MifareClassicTool,closed,Issues with Xperia Z after updating to Android 5.+,[],"Taken from http://www.proxmark.org/forum/viewtopic.php?pid=18146#p18146:
+
+> I used your great tool many times on my Sony Xperia Z but, after the lollipop upgrade,  the mct mifare classic tool doesn't work with Mifare Mini ATQA 00 04 SAK 9
+> 
+> i would like inform you that it worked properly on Android 4.4.4 KitKat.
+> I used your sw to program the TAG on the screenshot.
+> How can be fixed the issue on new lollipop Android version 5.1.1?
+"
+ikarus23/MifareClassicTool,closed,"Make ""auto launch"" an option","[Label(name=""enhancement"")]","MCT tells Android it is able of dealing with NfcA compliant tags. Because of this, Android launches MCT whenever such a tag is detected. Some user like it this way, other don't. Therefore this should be an option.
+"
+ikarus23/MifareClassicTool,closed,the nfc tag being repeatedly read notification,"[Label(name=""can't reproduce"")]","Hello,
+
+Im 100% Sure my LG G3 can read the tag, But when i want to make the Key Mapping it keeps saying after like 10~20 seconds: The nfc tag being repeatedly read. Reading it repeatedly may consume battery more quickly, and then it loses connection to the NFC Tag
+"
+ikarus23/MifareClassicTool,closed,ShareDump FileName Format,[],
+ikarus23/MifareClassicTool,closed,SaveDump with bad characters,[],"stackoverflow.com/questions/20310904/filename-chars-cause-opening-failed-einval-invalid-argument
+
+Please refer to this page, you will find the full list.
+
+http://en.wikipedia.org/wiki/Comparison_of_file_systems
+
+Although that your sdcard might be internal and mount as FUSE, it might be still FAT32 filesystem. The valid characters for FAT32 are (according to the page):
+
+Any byte except for values 0-31, 127 (DEL) and: "" \* / : < > ? \ | + , . ; = [](lowcase a-z are stored as A-Z). With VFAT LFN any Unicode except NUL[14][15
+"
+ikarus23/MifareClassicTool,open,Key extraction from chinese sniffer cards,"[Label(name=""feature"")]","There is a chinese sniffer card available (see http://www.proxmark.org/forum/viewtopic.php?id=1649 ) that logs the tag nonce and reader response, which can then be extracted and used for key recovery. Instead of the windows application tied to a specific NFC reader, it would be easier to use an app for key recovery instead.
+
+I found that it's possible to use NfcA API to extract the needed information from the card by sending the raw commands, i.e.:
+
+```
+NfcA n = NfcA.get(tagFromIntent);
+n.connect();
+byte[] rats={(byte) 0xe0, 0x50}; // no checksum, (byte) 0xbc, (byte) 0xa5};
+n.transceive(rats);
+byte[] a={ 0x0a,  0x00,  0x00, (byte) 0xa6, (byte) 0xb0,  0x00,  0x10};
+byte[] ar = n.transceive(a);
+byte[] b={ 0x0b,  0x00,  0x00, (byte) 0xa6, (byte) 0xb0,  0x01,  0x10};
+byte[] br  = n.transceive(b);
+```
+
+After DES-decrypting ar and br, getting the tag nonces and reader responses, key recovery can then be performed with the mfkey32 tool, or a java reimplementation.
+
+Would this be an interesting/possible addition to MCT, or do you think it would be better as a separate app?
+"
+ikarus23/MifareClassicTool,open,Key 000000000000,"[Label(name=""can't reproduce"")]","There's something strange with key 000000000000, probably in relation to specific phone models (I'm using a Z3 Compact, which works fine otherwise with regards to mifare operations).
+
+I have a factory new, standard mifare 1k tag, with default access conditions (all F's.).
+It can be read with a keyfile consisting of two keys:
+FFFFFFFFFFFF
+000000000000
+
+However if I reverse the keys:
+000000000000
+FFFFFFFFFFFF
+
+then MCT now reports the key as being 0s, not Fs.
+If swap the last digit from a 0 to a 1, then the F key is found correctly.
+
+Even more strange:
+
+I saved a dump of a reading with 0 keys, and write it back to the card, i.e., access key is 000000000000 for A and B for all sectors. Now I cannot read it back (no valid keys found). So I try changing the order in the keyfile (first F, then 0), some other variants, no luck, card cannot be read.
+
+Using another phone, same MCT version, the card can be read using key 0, then reprogrammed using key F, and then read by the first phone again.
+
+MCT version 2.0.4, first phone is Xperia Z3 Compact, Android 5.0.2 (21.1.A.1.28) which had problems.
+
+Working phone was MCT 2.0.4, Samsung Galaxy S3 (i9300), Android 4.4.4 (CM11-M12) which worked OK.
+
+It would be interesting to hear if other Z3/Z3C users experience the same. Simple test is to just use a keyfile with 0's, and try reading a card programmed with F-keys.
+"
+ikarus23/MifareClassicTool,closed,Cannot use in Jiayu S3,[],"Hi I own a Chinese brand phone Jiayu S3 NFC version. Tech detail here
+http://forum.xda-developers.com/android/general/jiayu-s3-5-5-inch-1080p-hd-4g-lte-t3015809
+
+and when i was reading my tag with 100% correct keys, i got 'no valid key found in chosen key file' and i cannot continuing reading my card. Is MCT not yet supported on MTK phones?
+Looking for solution, thank you very much.
+
+BTW my os is Android 5.1 with latest MCT
+"
+ikarus23/MifareClassicTool,closed,MCT and Sony Z3,[],"moscowneversleeping said:
+
+> Hi. New version don't works with some type of Classic Tags. SONY Z3. Android 5.0.2.
+> I see debug information today, and write here crashing logs.
+"
+ikarus23/MifareClassicTool,closed,huawei mate 7 test well,[],"I install mct on huawei mate7  everything is well, read and write can be pass. 
+"
+ikarus23/MifareClassicTool,closed,Create key file from the currently viewed dump using the Editor,"[Label(name=""enhancement""), Label(name=""feature"")]","Add the ability to save the keys of the currently viewed dump into a new key file.
+
+If you got a huge key file with lots and lots of keys, the mapping will take really long. With this feature you could map once with the large file (slow) --> save the actual keys of the tag into a new file --> the next time mapping will be much faster for this tag (if you use the new key file of course).
+"
+ikarus23/MifareClassicTool,closed,Enable support for Xperia Z2 (D6543),[],"Currently, it is not possible to install MCT from Play Store due to compatibility issues, but Xperia Z2 is able to read Mifare Classic tags and, therefore, is fully compatible with this application.
+
+I installed the APK on my Xperia Z2 (D6543) and it is working perfectly. So I think it should be enabled in the Play Store.
+"
+ikarus23/MifareClassicTool,open,Read KeyB if it's redable,"[Label(name=""enhancement"")]","During the key mapping process:
+If KeyB is readable there is no need to search for it. Just read it! This might speed up the mapping process. However, for every successful authentication of KeyA the sector trailer must be read.
+
+If KeyB is readable, it will be displayed anyways, even if it was not in the key file.
+"
+ikarus23/MifareClassicTool,closed,Detect Infineon Mifare Classic 1k (SAK = 0x88),[],
+ikarus23/MifareClassicTool,closed,。,[],"First of all, thank you for the software maker. I am a Chinese middle school students. I M8 have the same problem. Please forgive my English is not very good. From the translation of
+"
+ikarus23/MifareClassicTool,closed,Improve increment/decrement feature,"[Label(name=""enhancement"")]","- Make ""transfer"" optional
+- Add a possibility to ""transfer""
+- Add a possibility to ""restore""
+"
+ikarus23/MifareClassicTool,closed,Add support for other Tags / Phones,[],"It would be great to implement support for other Tags like e.g. Mifare Ultralight or Topas 512. 
+
+And because of this MCT would be able to work on phones that support tags except the Mifare Classic ones, like Nexus 4 or 5 .....
+"
+ikarus23/MifareClassicTool,closed,Increment and decrement value blocks error,"[Label(name=""bug""), Label(name=""can't reproduce"")]","Peter reported via email:
+
+> However, there is a small error if the AC does not allow for Increment, and I do Increment the program shows that it worked (succes) and in fact, nothing has changed, because the AC does not offer such possibilities.
+
+I will try to reproduce this bug and fix it within the next release.
+"
+ikarus23/MifareClassicTool,closed,Last version 2.0.0 overwrites Dumps and Key File,"[Label(name=""can't reproduce"")]","I updated to the last version.
+It has erased my dumps and all my key files.
+
+Android 4.4.4
+"
+ikarus23/MifareClassicTool,closed,s5 on lolipop showing dashes ,"[Label(name=""bug""), Label(name=""high priority"")]","When ever i try and read a mifare card key a is visible but everything else has dashes 
+"
+ikarus23/MifareClassicTool,closed,MCT crashes on HTC One (m7/m8) after updating to Lollipop,"[Label(name=""bug""), Label(name=""high priority"")]","MCT has always been working flawless on my HTC M8 pre-lollipop. This weekend I updated the device to 5.0,  since then MCT crashes immediately when reading or writing to a tag. 
+"
+ikarus23/MifareClassicTool,closed,"About galaxy s5 support for mifare (900p model, sprint)",[],"Galaxy s5 900P says it is not compatble with mifare classic. If it won't be just add to the documentation.
+
+It did show some strings with generic info and card uid.
+"
+ikarus23/MifareClassicTool,closed,Launch app even without NFC,"[Label(name=""enhancement"")]","I've tried to launch the app on my phone which does not NFC. 
+Would love to use the features and tools such as the ACL converter since some people are doing projects which are not on the phone. (Arduino, Raspberry Pi etc. )
+"
+ikarus23/MifareClassicTool,closed,v1.8.2 'unsaved changes' warning applies even to unchanged dumps opened from file,"[Label(name=""bug""), Label(name=""high priority"")]","The warning should check a memory flag which is marked 'dirty' if any changes have actually occurred to the opened dump. At least for file based dumps. The flag should always be dirty for dumps read from a card (i.e. not yet saved to file).
+
+Otherwise, the user is constantly reminded of changes when viewing file based dumps.
+"
+ikarus23/MifareClassicTool,closed,"""Save before quitting"" dialog for editor and key editor","[Label(name=""enhancement""), Label(name=""high priority"")]","hexadec wrote:
+
+> And it's very annoying, that the back button exit immediately (in the key editor too), and there is no question if I really wanted to do that, or a button to go back and save.
+"
+ikarus23/MifareClassicTool,open,ASCII text to hex converter,"[Label(name=""feature"")]","Could you add a menu in the dump editor, which can convert ASCII text to hexadecimal format?
+(Eg. A dialog with an edittext, and it copies the converted text to the clipboard, the user needs to paste it only.)
+And it's very annoying, that the back button exit immediately (in the key editor too), and there is no question if I really wanted to do that, or a button to go back and save.
+
+(Sorry for my bad English, I hope you can understand it :-) )
+"
+ikarus23/MifareClassicTool,closed,Remember the choice to use MCT in edtior only mode,"[Label(name=""enhancement"")]","A user with disabled NFC can use MCT in editor only mode. This choice is not remembered. This leads to the annoying situation that the dialog pops up every time checkNfc() is called.
+"
+ikarus23/MifareClassicTool,closed,Improve Mifare Classic support check algorithm,"[Label(name=""enhancement"")]","domints said:
+
+> But I've found simple way to check which controller is used by phone - just run command
+> `adb shell ls /system/lib/libnfc*`
+> And if there's file with bcm or brcm in name it uses Broadcomm chip. For NXP's (compatible) chip I think there should be file with ""pn"" in name.
+
+domints also said:
+
+> I think you could look for file /system/lib/libnfc-nxp.so , but I'm not sure.
+> I'm sure, that for broadcomm chip in /dev folder there's file called bcm2079x, and for NXP's pn544 (I think the most popular if not the only used in android NXP's chip) there's file called pn544
+"
+ikarus23/MifareClassicTool,closed,"""Not a MF Classic"" message, but in tag type shows ""Classic 1K, NXP""","[Label(name=""bug""), Label(name=""high priority"")]","I have small problem with MifareClassicTool, that whatever tag I put to my phone, LG F60, it says that's not an Mifare Classic Tag, but lower, under ""Tag Type and Manufacturer"" it shows ""MIFARE Classic 1K, NXP"", and so on with all 3 of my MIFARE 1K cards, all of them from different sources - One tag is genuine NXP tag, got as Krakow Transportation Card, one is chinese card bougt at eBay, and last one is from chained shops as point-gathering card.
+When I put my MasterCard PayPass cards towards my phone, for older one I get JCOP41, IBM type, and for second I get ""Mifare Classic 4k - emulated (6212 Classic), Nokia"", but still got ""Not a Mifare Classic tag!"".
+It's quite weird, because atqa/sak says all these three 1K cards have correct values, but app doesn't allow me even to read any of the tags :(
+
+Screenshot below is when that chinese tag was near phone, but data (of course not the UID ;) ) is the same for all of three tags.
+
+![screenshot_2014-12-20-14-10-38 1](https://cloud.githubusercontent.com/assets/1096161/5514941/9b2c3834-8853-11e4-9f36-cae28d8e6411.png)
+"
+ikarus23/MifareClassicTool,open,Quick dump,"[Label(name=""enhancement""), Label(name=""feature"")]","Read and dump tags as fast as possible. Some things needed for this feature will be:
+- Key files that contain mapping information
+- A faster read behavior that makes use of the extended key files
+- A possibility to directly dump the tag data after reading
+
+""systemcrash"" had some ideas about the new key file format:
+
+> I wanted to add something to this idea: namely, the ability to use key-files that can specify which sectors they apply to, which should accelerate, or obviate key-mapping. The idea is to specify which key-files to use for reading/writing dumps. If using specified Keys on targeted sectors does not work, the default behaviour should be to fall back to building key-maps as it does today, on a per key/sector basis. e.g. say the user specifies targeted keys for 0A, 0B and 1B, but needs to read 0A, 0B 1A, 1B, 2A 2B. Those keys could be tried for the other sectors as necessary, especially if there are no other keys in the file.
+> 
+> Today it goes something like
+> \# this is a comment
+> 
+> FFFFFFFFFFFF
+> 
+> It could be extended to something like one of the following - whichever best suits the internal workings:
+> \# this is a comment
+> \# keys start without a # comment, and end with optional colon then number to specify
+> \# at which sectors they should be used and optionally Key A/B in brackets ( )
+> 
+> FFFFFFFFFFFF:0-1(A,B)
+> 
+> Or
+> \# this is a comment
+> \# keys start without a # comment
+> 
+> FFFFFFFFFFFF:0A,0B,1A,1B,7A,7B
+> 
+> or
+> \# this is a comment
+> \# keys start without a # comment
+> 
+> FFFFFFFFFFFF;A:1,2,3,4,5,6,7;B1,2,3,4,5,6,7
+> 
+> or
+> \# this is a comment
+> \# keys start without a # comment
+> 
+> FFFFFFFFFFFF;A:1-7,8,9;B1-7,10,12
+"
+ikarus23/MifareClassicTool,closed,update the devices it works with,[],"fix some text and comments
+shorten some if conditions
+"
+ikarus23/MifareClassicTool,closed,explicitly state which hardware is known to work,[],
+ikarus23/MifareClassicTool,closed,Hint or suggest a filename when saving a tag-read,"[Label(name=""enhancement""), Label(name=""high priority"")]","(this could be configurable based on a number of things)
+
+After read tag, you're left with a dump in the editor. Save, and you need to provide a filename. 
+
+Perhaps suggest a hinted filename of e.g.
+
+{Mifare Card ID}_{current_date}_{current_time}
+
+48642B3B_20150115_234215.txt
+
+Suggest .txt extension, since the dumps are text based. 
+"
+ikarus23/MifareClassicTool,closed,"reduce screens or presses, for some actions","[Label(name=""enhancement""), Label(name=""high priority"")]","Number of 'clicks' can/should be reduced for specific actions:
+
+when comparing dumps from within the dump editor, you land at the ""diff tool, choose a dump..."" screen, with the first already chosen. The only choice left being, ""choose a dump"" (or of course, back action). This second ""choose a dump"" should automatically be invoked. 
+
+Selecting ""Write dump"" from within dump editor. The only choice being ""write..."". This should automatically be invoked, and take the user to the select sector popup.
+"
+ikarus23/MifareClassicTool,closed,Increment and decrement value blocks,"[Label(name=""feature""), Label(name=""high priority"")]","Until now you can't increment or decrement a value block. Sure if you got the write privilege you can increment/decrement by rewriting the value bock. But if you only have increment/decrement and no write privilege there is no way to manipulate the value with MCT. This has to change!
+"
+ikarus23/MifareClassicTool,closed,Force a custom tag size,"[Label(name=""enhancement""), Label(name=""feature"")]","For some rare cases Android returns the wrong tag size (e.g. 1K instead of 4K).
+Therefore an option where the user can force MCT to use a custom tag size is needed.
+"
+ikarus23/MifareClassicTool,open,"Make the ""Write Dump"" layout tab based","[Label(name=""enhancement"")]","Replace the ""ugly"" radio button based layout with tabs.
+"
+ikarus23/MifareClassicTool,open,Add comments to the data transported via intents,"[Label(name=""enhancement"")]","... Just to make the code more readable.
+"
+ikarus23/MifareClassicTool,open,Setup a crowd based translation system,"[Label(name=""enhancement"")]","e.g. http://www.lokaligo.com/ or http://weblate.org/en/ 
+"
+ikarus23/MifareClassicTool,closed,Replace long strings data of intents with string arrays,"[Label(name=""enhancement""), Label(name=""high priority"")]","In some intents there are string extras that are just long string separated by ""\n"".
+This strings should be replaced by string array extras. See:
+https://developer.android.com/reference/android/content/Intent.html#putStringArrayListExtra%28java.lang.String,%20java.util.ArrayList%3Cjava.lang.String%3E%29
+"
+ikarus23/MifareClassicTool,closed,Export dumps as .eml or .mdf,"[Label(name=""feature"")]","Maybe not via app but via an extra tool (script). But first I have to look
+at the formats of .eml or .mdf files...
+"
+ikarus23/MifareClassicTool,open,Replace integer return codes with more meaningfull enums. or consts.,"[Label(name=""enhancement"")]","... Just to make the code more readable.
+"
+ikarus23/MifareClassicTool,open,Decode the Mifare Application Directory (MAD) of a tag,"[Label(name=""feature"")]",
+ikarus23/MifareClassicTool,closed,Quick read (and dump) tags,"[Label(name=""feature"")]","Choose key files -> Map keys to sectors of the first tag
+-> Remember this key map for the next tags to read them
+as quick as possible -> dump the tags with time stamp.
+"
+ikarus23/MifareClassicTool,open,Create key map for a list of sectors,"[Label(name=""enhancement"")]","Until now it is only possible to create the key map for a range of sectors.
+
+This is also needed to be more efficient. If the user chooses to write only the first and the last sector of an dump with e.g. 16 sectors, the key map for all 16 sectors will be created. That's baaad...
+"
+ikarus23/MifareClassicTool,closed,Add a new tag to the tag identification list,"[Label(name=""enhancement"")]","iceman wrote:
+
+> you can also add
+> 
+>    ATQA : 01 0f
+>    SAK : 01 [2]
+>    TYPE : NXP TNP3xxx  Game item
+>    size: 1K
+> 
+> to your tag identification list.
+"
+ikarus23/MifareClassicTool,closed,Add default keys of the proxmark lualib,"[Label(name=""enhancement"")]","Iceman wrote:
+
+> Ikarus,  some hints,
+> if you look into the lualibs  there is some more default keys.
+"
+ikarus23/MifareClassicTool,closed,Add all Todos to the Todo Milestone,[],"I will try to manage the Todos with github
+"
+ikarus23/MifareClassicTool,closed,Write block 0,[],"I changed the block 0 in order to change the card uid, It look's it has changed but when I read the card It says ""Tag found: ..."" and shows always the same id
+"
+ikarus23/MifareClassicTool,closed,Android kitkat on play store,[],"Hey,
+I wanted to download your app through the play store with a Nexus 5 running android 4.4.4 but is written as not compatible with my android version
+Can't this app work on android 4.4.x?
+"
+ikarus23/MifareClassicTool,closed,ACR122 Support,[],"have you considered adding support for the  ACR 122 ??
+it would be amazing for my s4 and other devices!! 
+"
+ikarus23/MifareClassicTool,closed,Spanish translation,[],"As I comment in Proxmark forum, I've translated App to Spanish.
+And here is!
+"
+ikarus23/MifareClassicTool,closed,Please add a list of devices that works with MCT,"[Label(name=""question"")]","Known a list of devices that does not work. How about add a list that name a few devices that work perfectly with MCT?
+"
+ikarus23/MifareClassicTool,closed,Write from dump editor,[],"Write tag from dump editor.
+
+New option in dump editor menu.
+"
+ikarus23/MifareClassicTool,closed,Write card from dump editor,[],"Hi!
+
+I've modified a little code to add a new option on dump's editor menu. Now I can write card directly from dump editor. 
+Is really anoying save dump before write when I'm making debug.
+
+If you want i can commit it to the project.
+"
+ikarus23/MifareClassicTool,closed,MCT crashes on Galaxy S5,[],"MCT crashes if a sector has the default Access Conditions.
+"
+ikarus23/MifareClassicTool,closed,Samsung Galaxy S3 Mini - wrong keys!,[],"Hey there,
+I'm using Samsung Galaxy S3 Mini with your newest MCT app - v 1.7.4. It always says that it can't find any working keys in my *.keys files. I'm sure they are right, because i'm also using it with ma USB Mifare NFC Tag. 
+
+Error looks like: ""No valid key found in chosen key file""…
+Can you help me? :)
+"
+ikarus23/MifareClassicTool,closed,S3 & S4 - work different,"[Label(name=""question"")]","I own an S3 and an S4, but they read the same card differently. On the S3 it is recognized, and on the S4 not. The S4 shows the same ATAQA, SAK and RF Technology as the S3. I guess tha ataq[1] may not be 0 on the s4?
+"
+ikarus23/MifareClassicTool,closed,spell fixes for new reconnect option,[],
+ikarus23/MifareClassicTool,closed,connect external reader,"[Label(name=""feature"")]","Hi,
+
+I have Samsung Galaxy SII (without NFC module)
+I have external card reader (ACR122U) connected via USB. Reader in represented in system on /dev/bus/usb/002/002 and working fine in other aplications.
+I would like to use MifareClassicTool because I heared that this is the best app for reading/writing data.
+
+Can I bypass error message when MCT starts? I use MCT in newest  version (1.7.2). Maybe some older version haven't that message? 
+
+Maybe can you add a feature, that supports external devices?
+
+Please help me. 
+Best regards,
+Kris
+
+ACR122U Drivers for android:
+http://www.acs.com.hk/en/driver/3/acr122u-usb-nfc-reader/
+"
+ikarus23/MifareClassicTool,closed,Add date of manufacture into Tag Info,[],"according to this post: http://www.proxmark.org/forum/viewtopic.php?pid=6849#p6849
+
+> last 2 bytes of sector0-block0 identify for sure tag production's week and year and this can be a quite good method to identify counterfait cards (this information is not present in any mifare document) so you can find clones which have random bytes in that position while penultimate byte must be >0 and <52 (max weeks in 1 year - obviously no HEX numbers allowed) and last byte can be from 00 to 13 (2000-2013); I checked many cards (NXP and Gemplus MPCOS)  and ONLY mifare clones (ex. chinese cards) did not meet that WW/YY ""rule"" (they have numbers greater than 52 or 13 or hexadecimal values);
+
+i've checked it on sample of 85 production transportation cards and it seem to be true :+1: 
+"
+ikarus23/MifareClassicTool,closed,starting the key mapper...,[],"when  read  nxp smartMX card P5CT072 (  MIFARE classic emulation  )  key mapping cannot continue！
+MifareClassicTool 1.7.1  android 4.1.2  
+"
+ikarus23/MifareClassicTool,closed,Access conditions clarifications,[],"Changed from “none” to more relevant “Never”
+Specified bit patterns for identical trailers 3 and 7.
+"
+ikarus23/MifareClassicTool,closed,Compare feature,[],"Hi, made my first ever public code with this compare feature. It is quick and not to pretty yet, and it still lacks support for openintents, but it does the basic job so far. Any input would be great as this is my first work. Happy holidays. 
+"
+ikarus23/MifareClassicTool,closed,Brute force authentication,"[Label(name=""question"")]","I want to check if it is feasible to brute force the key in a reasonable timeframe. Is the bottleneck the card or the CPU? I believe that mfcuk currently uses this method to obtain keys but is available only on x86 platform. 
+
+If it is feasible, I could contribute to the development of the feature, it is quite simple to implement, cycling all possible combinations through the existing authenticate() function in MCReader and recording those that return true.
+
+Thanks.
+"
+ikarus23/MifareClassicTool,closed,Spelling fixes for help and strings.,"[Label(name=""enhancement"")]","Cleaned up some small spelling mistakes.
+"
+ikarus23/MifareClassicTool,closed,Can't write Sector 0 Block 0 for chinese special UID changeable card,"[Label(name=""question"")]","The special card can be write by the acr122u,but can't be write by the MCT.
+"
+ikarus23/MifareClassicTool,closed,"""No valid key found in chosen key file"" with any keys file","[Label(name=""question"")]","I tried to scan some encrypted sectors, providing in a file the corresponding keys but it never worked.
+
+When I choose the standard ""std.keys"" and tip ""Start Mapping and Read Tag"", the tag would be correctly read.
+But when I choose any other keys file I created, tag would not be read and I get a ""No valid key found in chosen key file"" Toast.
+
+For instance I created a sample test.keys file with just one key ""000000000000"" and I got the same issue.
+I checked the character encoding of my test files and they are encoded in UTF8 like the sample ""std.keys"" file.
+
+Does anyone have an idea what I am doing wrong?
+"
+ikarus23/MifareClassicTool,closed,Improving the key mapping speed + write mfid,"[Label(name=""enhancement"")]","With many keys, mapping can take a long time if the successful key is at the end of the keylist.
+
+This patch uses an arraylist to put successful keys at the start of the list, which then have a high probability of being correct for the following sectors.
+The hashmap is still used to weed out unique keys.
+
+Regarding the manufacturer block, it is writable on some tags, for example see http://www.aliexpress.com/wholesale?SearchText=changeable+mifare
+
+BR,
+ Stefan
+"
+ikarus23/MifareClassicTool,closed,HTC One X load issue,"[Label(name=""bug"")]","I get the ""No Mifare Support"" message on my HTC One X
+
+This phone should have support as it can correctly read and write data to Mifare1k cards as shown here
+(wrote a URL then erased it). I normally use 'NFC TagInfo' and 'TagstandWriter' to read and write tags respectively
+
+Phone is running android version 4.1.1 
+
+Any ideas?
+
+![eFsL0Tf](https://f.cloud.github.com/assets/1754337/327847/9f3d5376-9b84-11e2-9e35-2ca6c1aad67f.png)
+![mozvY1K](https://f.cloud.github.com/assets/1754337/327848/9f496bb6-9b84-11e2-95db-d1876d784776.png)
+![t7d9852](https://f.cloud.github.com/assets/1754337/327849/9f6d08be-9b84-11e2-94f4-b14424cdda04.png)
+"
+ikarus23/MifareClassicTool,closed,write whole card at once,"[Label(name=""enhancement"")]","it would be nice to write whole card from dump/hex/xml with given key b.
+i could throw away my usb reader then :-)
+atm, it's only possible to write empty card.
+"
+ikarus23/MifareClassicTool,closed,Nexus 4 issue,"[Label(name=""question"")]","The NFC hardware is working normal on my Nexus 4, But it pops up a dialog saying No Mifare Support onCreate.
+I cloned this project and I'll check that out.
+"

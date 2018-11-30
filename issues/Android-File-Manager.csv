@@ -1,0 +1,96 @@
+repository,state,title,label,body
+nexes/Android-File-Manager,open,Root access?,[],"Is it possible to grant root access for AFM? 
+"
+nexes/Android-File-Manager,open,How to change path to start direcctory,[],Your code is opening sdcard bydefault. I want to chnage it to sdcard/myphotos. Where to make changes in the code? also thumbnail is crashing on clicking folder with pics.
+nexes/Android-File-Manager,open,Folder icon disappears after two device rotations,[],"I am reporting this bug as a part of a research project at the University of Texas at Austin. Please accept the bug if it is valid.
+
+If there is an empty folder which has no permission (read, write, etc.) the folder icon beside it disappears if you rotate the device twice.
+
+Version 2.1.8
+Phone model? Android emulator, with CPU Intel Atom (x86)
+Android Version?  Android 4.3 API level 18
+ROM?  512 MB of SD card
+"
+nexes/Android-File-Manager,open,NullPointerException at com.nexes.manager.EventHandler$TableRow.getView,[],"OpenManager opens normally, when when I scroll down it crashes.
+It was working fine before.
+Here is the logcat:
+
+```
+E/AndroidRuntime(11677): FATAL EXCEPTION: main
+E/AndroidRuntime(11677): java.lang.NullPointerException
+E/AndroidRuntime(11677):    at com.nexes.manager.EventHandler$TableRow.getView(EventHandler.java:742)
+E/AndroidRuntime(11677):    at android.widget.AbsListView.obtainView(AbsListView.java:2255)
+E/AndroidRuntime(11677):    at android.widget.ListView.makeAndAddView(ListView.java:1769)
+E/AndroidRuntime(11677):    at android.widget.ListView.fillDown(ListView.java:672)
+E/AndroidRuntime(11677):    at android.widget.ListView.fillGap(ListView.java:636)
+E/AndroidRuntime(11677):    at android.widget.AbsListView.trackMotionScroll(AbsListView.java:5047)
+E/AndroidRuntime(11677):    at android.widget.AbsListView$FlingRunnable.run(AbsListView.java:4204)
+E/AndroidRuntime(11677):    at android.view.Choreographer$CallbackRecord.run(Choreographer.java:725)
+E/AndroidRuntime(11677):    at android.view.Choreographer.doCallbacks(Choreographer.java:555)
+E/AndroidRuntime(11677):    at android.view.Choreographer.doFrame(Choreographer.java:524)
+E/AndroidRuntime(11677):    at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:711)
+E/AndroidRuntime(11677):    at android.os.Handler.handleCallback(Handler.java:615)
+E/AndroidRuntime(11677):    at android.os.Handler.dispatchMessage(Handler.java:92)
+E/AndroidRuntime(11677):    at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime(11677):    at android.app.ActivityThread.main(ActivityThread.java:4784)
+E/AndroidRuntime(11677):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(11677):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime(11677):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:776)
+E/AndroidRuntime(11677):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:543)
+E/AndroidRuntime(11677):    at dalvik.system.NativeStart.main(Native Method)
+W/ActivityManager(  348):   Force finishing activity com.nexes.manager/.Main
+```
+"
+nexes/Android-File-Manager,open,"Use Android's ""sendto"" dialog instead of ""e-mail to""",[],"I was looking for a simple free file manager that can also send files via Bluetooth. It took me three tries to find one (Open Explorer and Open Manager failed the test, OI Explorer does it). Maybe you can add this functionality to your otherwise nice and lean file manager?
+"
+nexes/Android-File-Manager,open,Home screen shortcuts for files,[],"It is convenient to put frequently accessed files (for instance subway map image) on the home screen.
+
+1) Long-touch the home screen
+2) Select ""Shortcuts""
+3) Astro is available but not Open Manager
+4) Shortcut is created
+
+Maybe it is not Open Manager's role to do this, it can be done by a separate app like ""AnyCut"" too. I let you decide.
+
+Thanks a lot!
+"
+nexes/Android-File-Manager,open,"plz, provide a direct link for .apk",[],"plz, provide a direct link for .apk
+"
+nexes/Android-File-Manager,closed,Fix counting size of directories counting symlinks,[],"Hi,
+
+This commit fixes counting size of directories counting symlinks.
+
+Thanks,
+
+Miklos
+"
+nexes/Android-File-Manager,closed,Suggestion - swipe,[],"Just a simple UI suggestion for the tablet one, I believe it would be smoother to let you swipe to go back.
+
+For example
+
+in sdcard/downloads
+
+swipe------------------->
+
+go back to sdcard.
+"
+nexes/Android-File-Manager,closed,"A simple sugestion, back key",[],"I have this simple suggestion on multi-select + back key:
+Around line #821 in ""/src/com/nexes/manager/Main.java"", in ""onKeyDown"" method.
+
+...
+        } else if(keycode == KeyEvent.KEYCODE_BACK && mUseBackKey && !current.equals(""/"")) {
+            if(mHandler.isMultiSelected()) {
+                mTable.killMultiSelect(true);
+                Toast.makeText(Main.this, ""Multi-select is now off"", Toast.LENGTH_SHORT).show();
+// HERE THE SINGLE ELSE CHANGE
+            } else {
+                mHandler.updateDirectory(mFileMag.getPreviousDir());
+                mPathLabel.setText(mFileMag.getCurrentDir());
+            }
+....
+
+It will turn off the multi-select on root directory ""/"" with back key and 
+will turn off the multi-select before go back 1 directory on another directories.
+
+Isaac Mitsuaki Saito.
+"

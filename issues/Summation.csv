@@ -1,0 +1,139 @@
+repository,state,title,label,body
+pejic/Summation,closed,Translation to Brazilian Portuguese,[],Translation to Brazilian Portuguese
+pejic/Summation,open,Adding values without a sheet.,[],"When you add a value without a sheet, the value is not saved anywhere."
+pejic/Summation,closed,No ' - ' sign / negative values accepted,[],I'd like to be able to add negtive Values to the List...
+pejic/Summation,open,SQLiteException when you try to add a Item without you insert the values,"[Label(name=""bug"")]","Application does not crash, but there is a SQLiteException with the following stack trace when the next sequence of events is fired:
+starting by main activity
+click on ActionBarItem [the image on the right, the addition symbol (+)]
+press the back button or click on ActionBarHome (App's logo) 
+
+E/SQLiteLog(  697): (1) near ""null"": syntax error
+E/SQLiteDatabase(  697): Error inserting 
+E/SQLiteDatabase(  697): android.database.sqlite.SQLiteException: near ""null"": syntax error (code 1): , while compiling: INSERT INTO sheet_0(null) VALUES (NULL)
+E/SQLiteDatabase(  697):    at android.database.sqlite.SQLiteConnection.nativePrepareStatement(Native Method)
+E/SQLiteDatabase(  697):    at android.database.sqlite.SQLiteConnection.acquirePreparedStatement(SQLiteConnection.java:882)
+E/SQLiteDatabase(  697):    at android.database.sqlite.SQLiteConnection.prepare(SQLiteConnection.java:493)
+E/SQLiteDatabase(  697):    at android.database.sqlite.SQLiteSession.prepare(SQLiteSession.java:588)
+E/SQLiteDatabase(  697):    at android.database.sqlite.SQLiteProgram.<init>(SQLiteProgram.java:58)
+E/SQLiteDatabase(  697):    at android.database.sqlite.SQLiteStatement.<init>(SQLiteStatement.java:31)
+E/SQLiteDatabase(  697):    at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1467)
+E/SQLiteDatabase(  697):    at android.database.sqlite.SQLiteDatabase.insert(SQLiteDatabase.java:1339)
+E/SQLiteDatabase(  697):    at net.pejici.summation.model.Model.addItem(Model.java:86)
+E/SQLiteDatabase(  697):    at net.pejici.summation.ItemActivity.onPause(ItemActivity.java:148)
+E/SQLiteDatabase(  697):    at android.app.Activity.performPause(Activity.java:5106)
+E/SQLiteDatabase(  697):    at android.app.Instrumentation.callActivityOnPause(Instrumentation.java:1225)
+E/SQLiteDatabase(  697):    at android.app.ActivityThread.performPauseActivity(ActivityThread.java:2825)
+E/SQLiteDatabase(  697):    at android.app.ActivityThread.performPauseActivity(ActivityThread.java:2794)
+E/SQLiteDatabase(  697):    at android.app.ActivityThread.handlePauseActivity(ActivityThread.java:2772)
+E/SQLiteDatabase(  697):    at android.app.ActivityThread.access$800(ActivityThread.java:130)
+E/SQLiteDatabase(  697):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1212)
+E/SQLiteDatabase(  697):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/SQLiteDatabase(  697):    at android.os.Looper.loop(Looper.java:137)
+E/SQLiteDatabase(  697):    at android.app.ActivityThread.main(ActivityThread.java:4745)
+E/SQLiteDatabase(  697):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/SQLiteDatabase(  697):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/SQLiteDatabase(  697):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786)
+E/SQLiteDatabase(  697):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+E/SQLiteDatabase(  697):    at dalvik.system.NativeStart.main(Native Method)
+"
+pejic/Summation,open,Summation crashs when you try to add a Sheet without you insert the Sheet Name,"[Label(name=""bug"")]","Application crashes with the following stack trace when the next sequence of events is fired:
+starting by main activity
+press the menu button, 
+click on ""Add Sheet""
+press the back button 
+or click on ActionBarHome (App's logo) 
+or click on ActionBarItem   (the image on the right)
+
+E/SQLiteDatabase(  670): Error inserting name=null
+E/SQLiteDatabase(  670): android.database.sqlite.SQLiteConstraintException: sheet.name may not be NULL (code 19)
+E/SQLiteDatabase(  670):    at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)
+E/SQLiteDatabase(  670):    at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:775)
+E/SQLiteDatabase(  670):    at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:788)
+E/SQLiteDatabase(  670):    at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:86)
+E/SQLiteDatabase(  670):    at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1469)
+E/SQLiteDatabase(  670):    at android.database.sqlite.SQLiteDatabase.insert(SQLiteDatabase.java:1339)
+E/SQLiteDatabase(  670):    at net.pejici.summation.model.Model.addSheet(Model.java:54)
+E/SQLiteDatabase(  670):    at net.pejici.summation.SheetActivity.onPause(SheetActivity.java:122)
+E/SQLiteDatabase(  670):    at android.app.Activity.performPause(Activity.java:5106)
+E/SQLiteDatabase(  670):    at android.app.Instrumentation.callActivityOnPause(Instrumentation.java:1225)
+E/SQLiteDatabase(  670):    at android.app.ActivityThread.performPauseActivity(ActivityThread.java:2825)
+E/SQLiteDatabase(  670):    at android.app.ActivityThread.performPauseActivity(ActivityThread.java:2794)
+E/SQLiteDatabase(  670):    at android.app.ActivityThread.handlePauseActivity(ActivityThread.java:2772)
+E/SQLiteDatabase(  670):    at android.app.ActivityThread.access$800(ActivityThread.java:130)
+E/SQLiteDatabase(  670):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1212)
+E/SQLiteDatabase(  670):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/SQLiteDatabase(  670):    at android.os.Looper.loop(Looper.java:137)
+E/SQLiteDatabase(  670):    at android.app.ActivityThread.main(ActivityThread.java:4745)
+E/SQLiteDatabase(  670):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/SQLiteDatabase(  670):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/SQLiteDatabase(  670):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786)
+E/SQLiteDatabase(  670):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+E/SQLiteDatabase(  670):    at dalvik.system.NativeStart.main(Native Method)
+E/SQLiteLog(  670): (1) near ""-"": syntax error
+D/AndroidRuntime(  670): Shutting down VM
+W/dalvikvm(  670): threadid=1: thread exiting with uncaught exception (group=0x40a13300)
+E/AndroidRuntime(  670): FATAL EXCEPTION: main
+E/AndroidRuntime(  670): java.lang.RuntimeException: Unable to pause activity {net.pejici.summation/net.pejici.summation.SheetActivity}: android.database.sqlite.SQLiteException: near ""-"": syntax error (code 1): , while compiling: CREATE TABLE sheet_-1 (pk INTEGER PRIMARY KEY, date DATETIME DEFAULT NOW, label TEXT DEFAULT NULL, value DOUBLE DEFAULT NULL);
+E/AndroidRuntime(  670):    at android.app.ActivityThread.performPauseActivity(ActivityThread.java:2838)
+E/AndroidRuntime(  670):    at android.app.ActivityThread.performPauseActivity(ActivityThread.java:2794)
+E/AndroidRuntime(  670):    at android.app.ActivityThread.handlePauseActivity(ActivityThread.java:2772)
+E/AndroidRuntime(  670):    at android.app.ActivityThread.access$800(ActivityThread.java:130)
+E/AndroidRuntime(  670):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1212)
+E/AndroidRuntime(  670):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime(  670):    at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime(  670):    at android.app.ActivityThread.main(ActivityThread.java:4745)
+E/AndroidRuntime(  670):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(  670):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime(  670):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786)
+E/AndroidRuntime(  670):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+E/AndroidRuntime(  670):    at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime(  670): Caused by: android.database.sqlite.SQLiteException: near ""-"": syntax error (code 1): , while compiling: CREATE TABLE sheet_-1 (pk INTEGER PRIMARY KEY, date DATETIME DEFAULT NOW, label TEXT DEFAULT NULL, value DOUBLE DEFAULT NULL);
+E/AndroidRuntime(  670):    at android.database.sqlite.SQLiteConnection.nativePrepareStatement(Native Method)
+E/AndroidRuntime(  670):    at android.database.sqlite.SQLiteConnection.acquirePreparedStatement(SQLiteConnection.java:882)
+E/AndroidRuntime(  670):    at android.database.sqlite.SQLiteConnection.prepare(SQLiteConnection.java:493)
+E/AndroidRuntime(  670):    at android.database.sqlite.SQLiteSession.prepare(SQLiteSession.java:588)
+E/AndroidRuntime(  670):    at android.database.sqlite.SQLiteProgram.<init>(SQLiteProgram.java:58)
+E/AndroidRuntime(  670):    at android.database.sqlite.SQLiteStatement.<init>(SQLiteStatement.java:31)
+E/AndroidRuntime(  670):    at android.database.sqlite.SQLiteDatabase.executeSql(SQLiteDatabase.java:1663)
+E/AndroidRuntime(  670):    at android.database.sqlite.SQLiteDatabase.execSQL(SQLiteDatabase.java:1594)
+E/AndroidRuntime(  670):    at net.pejici.summation.model.Model.addSheet(Model.java:55)
+E/AndroidRuntime(  670):    at net.pejici.summation.SheetActivity.onPause(SheetActivity.java:122)
+E/AndroidRuntime(  670):    at android.app.Activity.performPause(Activity.java:5106)
+E/AndroidRuntime(  670):    at android.app.Instrumentation.callActivityOnPause(Instrumentation.java:1225)
+E/AndroidRuntime(  670):    at android.app.ActivityThread.performPauseActivity(ActivityThread.java:2825)
+E/AndroidRuntime(  670):    ... 12 more
+W/ActivityManager(  156): Activity pause timeout for ActivityRecord{411b1068 net.pejici.summation/.SheetActivity}
+"
+pejic/Summation,open,Summation crashs when you try to edit a sheet after you deleted all sheets.,"[Label(name=""bug"")]","Application crashes with the following stack trace when the next sequence of events is fired:
+starting by main activity
+press the menu button, 
+click on ""Delete Sheet""
+press the menu button, 
+click on ""Edit Sheet""
+
+E/AndroidRuntime(  604): FATAL EXCEPTION: main
+E/AndroidRuntime(  604): java.lang.RuntimeException: Unable to start activity ComponentInfo{net.pejici.summation/net.pejici.summation.SheetActivity}: java.lang.NullPointerException
+E/AndroidRuntime(  604):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2059)
+E/AndroidRuntime(  604):    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2084)
+E/AndroidRuntime(  604):    at android.app.ActivityThread.access$600(ActivityThread.java:130)
+E/AndroidRuntime(  604):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1195)
+E/AndroidRuntime(  604):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime(  604):    at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime(  604):    at android.app.ActivityThread.main(ActivityThread.java:4745)
+E/AndroidRuntime(  604):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(  604):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime(  604):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786)
+E/AndroidRuntime(  604):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+E/AndroidRuntime(  604):    at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime(  604): Caused by: java.lang.NullPointerException
+E/AndroidRuntime(  604):    at android.content.ContentValues.<init>(ContentValues.java:62)
+E/AndroidRuntime(  604):    at net.pejici.summation.SheetActivity.onCreate(SheetActivity.java:72)
+E/AndroidRuntime(  604):    at android.app.Activity.performCreate(Activity.java:5008)
+E/AndroidRuntime(  604):    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1079)
+E/AndroidRuntime(  604):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2023)
+E/AndroidRuntime(  604):    ... 11 more
+W/ActivityManager(  156):   Force finishing activity net.pejici.summation/.SheetActivity
+W/ActivityManager(  156):   Force finishing activity net.pejici.summation/.SummationList
+I/Choreographer(  156): Skipped 215 frames!  The application may be doing too much work on its main thread.
+W/ActivityManager(  156): Activity pause timeout for ActivityRecord{411c29a0 net.pejici.summation/.SheetActivity}
+"

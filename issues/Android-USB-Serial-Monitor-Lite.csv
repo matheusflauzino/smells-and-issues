@@ -1,0 +1,122 @@
+repository,state,title,label,body
+ksksue/Android-USB-Serial-Monitor-Lite,open,Has it been removed from f-droid?,[],"Hi,
+I just wanted to recommended this nice tool to a friend, but it cannot be found in f-droid anymore.
+Is that on purpose or a mistake?
+Thanks a lot, Dieter"
+ksksue/Android-USB-Serial-Monitor-Lite,open,Project should be migrated to Gradle,[],Project can not be imported to Android Studio in its current state.
+ksksue/Android-USB-Serial-Monitor-Lite,open,USB-to-Serial CH340G support,[],"Hi there, could you please add CH340G support to PhysicaloidLibrary, so that I can use your PhysicaloidWriter app with Arduino-clones?
+
+Here's a reference on how to implement CH340G driver in Java: [/usbserial/driver/Ch34xSerialDriver.java](https://github.com/mik3y/usb-serial-for-android/blob/master/usbSerialForAndroid/src/main/java/com/hoho/android/usbserial/driver/Ch34xSerialDriver.java)"
+ksksue/Android-USB-Serial-Monitor-Lite,open,Problem to Receive data slowly after some second,[],"Problem to Receive data slowly after some second and data came slower than later and some time some character removed automatically ...
+may you help and show me what is my problem ?  
+[usbtest2.zip](https://github.com/ksksue/Android-USB-Serial-Monitor-Lite/files/644317/usbtest2.zip)
+[13950921.txt](https://github.com/ksksue/Android-USB-Serial-Monitor-Lite/files/644316/13950921.txt)
+
+"
+ksksue/Android-USB-Serial-Monitor-Lite,open,can not connect to device,[],"hi,
+if i build your project from source i can not access to the usb serial connection. but if i install it from playstore everything is fine. can you please give me an hint what is wrong on default configuration. i import the project into android-studio.
+"
+ksksue/Android-USB-Serial-Monitor-Lite,closed,cannot open de vice building with AIDE,[],"Hello, the googleplay android USB serial monitor lite works fine in muy tablet, but when i build without the project in AIDE it dotes open the device using the menu it says:  cannot open.
+I downloaded a zip versión called android-usb-serial-monitor-lite-master.
+The only difference i saw is that the googleplay does not say \u0000 and the kbytes app are 136 for google and 436 in the AIDE builded versión.
+Thanks forma allí, bits a very usefull application forma constructing a Arduino Uno tablet interface
+"
+ksksue/Android-USB-Serial-Monitor-Lite,open,APK and Project Build not sync,[],"When I copy APK to device and installed, app running well with Apk Size 118K, But when I build the project, can't connect (cannot open) with my Arduino Mega Hardware with Apk Size 126K. 
+Please respond..
+"
+ksksue/Android-USB-Serial-Monitor-Lite,open,Tab characters are incorrectly rendered,[],"Tab characters are incorrectly rendered when received from the connected device - see below:
+
+(image)
+http://dangerousprototypes.com/forum/download/file.php?id=9489&mode=view
+There should be 2 aligned columns, but instead we see the tab characters incorrectly rendered.
+
+The correct output looks like this:
+http://i.imgur.com/4ULJ1DQ.png
+"
+ksksue/Android-USB-Serial-Monitor-Lite,closed,Can't receive data,[],"Hi there,
+     I used Android-USB-Serial-Monitor-Lite.apk to connect with arduino UNO and succeed to send and receive data from UNO. When  I import Android-USB-Serial-Monitor-Lite and PhysicaloidLibrary source code to create a new apk, then only succeed to send data,  but receive nothing(the UNO upload code is when UNO receive ""d"", the 13 pin LED will light and return ""hello"".).
+
+```
+Is there any possible problem? In eclipse only show 8 warning (dead code), but it still can build an apk file.
+```
+"
+ksksue/Android-USB-Serial-Monitor-Lite,open,"Size is only 83K by rebuild it, not same as original 118K, How to correctly build it?",[],"The original apk can support any VID/PID. But after rebuild it, the size of apk only 83K and only VID/PID in the table can be supported.
+"
+ksksue/Android-USB-Serial-Monitor-Lite,open,Warning-DeadCode with physicaloid ,[],"Hello,
+
+I am trying to build the project Android-USB-Serial-Monitor-Lite by using the source code from here https://github.com/ksksue/Android-USB-Serial-Monitor-Lite.
+
+Added the physicoloid library as mentioned here https://github.com/ksksue/PhysicaloidLibrary
+
+But,I am getting Warnings(9) as Dead code as shown in the attached image.Every Warnign is related to the BuildConfig.DEBUG.
+
+Can someone help me fixing this Dead Code warning. 
+![deadcode_with_builconfig debug](https://cloud.githubusercontent.com/assets/8653844/4147257/e5bffe86-3415-11e4-9b69-2dfa422e3297.JPG)
+
+Thanks.
+"
+ksksue/Android-USB-Serial-Monitor-Lite,closed,CDC-ACM driver not supported?,[],"My old CDC-ACM adapter works with USB Serial Monitor Lite app from google play but crashes this project...  Can you please update it to support the CDC-ACM protocol just like you did in your app?
+Thank you for sharing!
+"
+ksksue/Android-USB-Serial-Monitor-Lite,closed,FTDriver cannot be resolved to a type!!,[],"hi . 
+i am download your code and import to eclipse but i give this error 
+""FTDriver cannot be resolved to a type""
+how solve this problem ?
+"
+ksksue/Android-USB-Serial-Monitor-Lite,closed,preferences (settings) not visible,[],"Tried on mk808 and also nexus7 tablet.
+"
+ksksue/Android-USB-Serial-Monitor-Lite,closed,Actually not an issue,[],"Hi!
+
+I tryied to communicate with bus pirate from mk808 android device, but couldn't communicate to ""bus pirate"".
+
+I used following code:
+        // Get UsbManager from Android.
+        UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
+
+```
+    // Find the first available driver.
+    UsbSerialDriver driver = UsbSerialProber.acquire(manager);
+
+    if (driver != null) {
+        try {
+            driver.open();
+            driver.setParameters(115200, UsbSerialDriver.DATABITS_8, UsbSerialDriver.STOPBITS_1,  UsbSerialDriver.PARITY_NONE);
+            byte buffer[] = new byte[16];
+            driver.write((""m"" + ""\r"").getBytes(), 1000);
+            int numBytesRead = driver.read(buffer, 1000);
+            Log.d(this.getClass().getSimpleName(), ""Read "" + numBytesRead + "" bytes: "" + new String(buffer).toString());
+        } catch (IOException e) {
+            Log.d(this.getClass().getSimpleName(), e.getMessage());
+        } finally {
+            try {
+                driver.close();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+```
+
+From log I get strange characters back ( I am expecting to get something like bus pirate returns) - see below:
+02-25 02:34:37.828: D/MainActivity(4888): device: /dev/bus/usb/001/007 Product id:24577 vendor id:1027
+02-25 02:34:38.138: D/dalvikvm(4888): threadid=1: still suspended after undo (sc=1 dc=1)
+02-25 02:34:41.708: D/FtdiSerialDriver(4888): claimInterface 0 SUCCESS
+02-25 02:34:45.098: D/FtdiSerialDriver(4888): Wrote amtWritten=3 attempted=3
+02-25 02:34:52.048: D/MainActivity(4888): Read 3 bytes: `??????????????????????????????
+
+Actually I read something from bus pirate but it's not what I expected. I see from code of
+AndroidUSBSerialMonitorLite.java
+That you initialized the usb for ftdi FT232RL somehow different.
+Is there some simple code (like I tried it above) to send something to bus pirate?
+
+Thank you very much for any suggestion or code maybe.
+"
+ksksue/Android-USB-Serial-Monitor-Lite,closed,Update AndroidUSBSerialMonitorLite/src/jp/ksksue/app/terminal/AndroidUSB...,[],"...SerialMonitorLite.java
+
+Dear Ksksue-san
+Added closeUsbSerial() function to close the usb serial device when ever user wants. Please review and give your feedback for the same.
+
+Arigato
+Arun
+"

@@ -1,0 +1,66 @@
+repository,state,title,label,body
+ge0rg/yaxim,open,Completes the brazilian portuguese translation,[],Fix the brazilian-portuguese translation so it shows less messages in english.
+ge0rg/yaxim,closed,"Changed the Spanish translation for ""Advanced...""",[],"""Delantero"" isn't as commonly used as ""Avanzada"" in other applications and caused
+confusion with a new Yaxim user.
+"
+ge0rg/yaxim,closed,Only alert once on status notifications,[],"(Because my previous pull request was really dumb.)
+
+This helps quite a bit - I still don't really want to see these on my watch, but it prevents them from spamming it and pushing the notifications I really care about out of the queue. I haven't yet found a better way to do this.
+
+As these notifications aren't meant to alert anyway, it doesn't seem like this has any effect on non-smartwatch users. Any objections?
+"
+ge0rg/yaxim,closed,Set minimum priority for service notifications,[],"This prevents them from spamming my smartwatch with notifications whenever yaxim loses connectivity. As these are not presented to the user anywhere but in the persistent notification, I don't think this should be a problem?
+"
+ge0rg/yaxim,closed,Only use username part of JID on login(),[],"Use only the username part of a JID on Connection.login(), or else some
+servers (e.g. openfire) will throw a ""SASL authentication failed using
+mechanism DIGEST-MD5"" exception on login.
+"
+ge0rg/yaxim,closed,For upstream,[],"Various small cleanups and a new context menu item to resend messages that didn't make it to the receiver.
+
+I'm a bit confused why the first issue only showed up as build error in eclipse, but the service is clearly Android 3.0+.
+"
+ge0rg/yaxim,closed,[RFC] Prevent notifications for open chats with user activity,[],"When a message arrives for an open chat, do not immediately deliver it
+but defer it by 10 s. If the user interacts with the chat in that
+period, it is safe to assume it also recognized the message. In that
+case we can cancel the notification, otherwise we deliver it as usual
+once the timer fires.
+"
+ge0rg/yaxim,closed,"Reworked disconnected-mode fix, rebased layout patches",[],"We now also stop reconnecting if all networks are disabled individually. Reconnect seems to works without delays anymore.
+
+Please review/merge.
+
+Jan
+"
+ge0rg/yaxim,closed,"Fixes and cleanups, mostly around roster tables",[],"This is my previous pull request focuses on the avatar feature, but now without avatars :) (will follow later after some rework). Major differences are the dropping of the groups table, the patch to hide empty groups, and some reordering/rebasing.
+
+Please review/merge.
+
+Jan
+"
+ge0rg/yaxim,closed,Cleanups and support for displaying vCard-based avatar image,[],"Please review/merge once time permits.
+
+Jan
+"
+ge0rg/yaxim,closed,Clear notifications from user when entering ChatWindow,[],"So, nachdem das mit den remote branches usw. in git für mich Neuland war, habe ich mal mit was harmlosen angefangen. 
+
+So, habe alles komplett.
+
+Was ich noch gerne hätte, weiß aber nicht, wann ich dazu komme ist:
+- Light Theme
+"
+ge0rg/yaxim,closed,Layout finetuning,[],"Hallo Georg,
+
+ich habe mal etwas am Layout vom yaxim gefeilt, weil ich mit den Abständen und der fiesen (sorry) pseudo-italic Schriftart im Roster nicht zufrieden war. Ich habe mich bemüht, das Layout grundsätzlich so zu lassen, nur eben hübscher zu machen.
+Dabei habe ich auch m. W. ungeeignete Einheiten wie ""px"" und ""sp"" für das Padding im Layout korrigiert und auf Basis der vorhanenden Icons ein paar neue auf Vektorbasis erstellt und davon auch ein HDPI Set ins Projekt getan, damit Nutzer von HDPI Displays nicht mehr länger aus skalierte Icons gucken müssen.
+
+Die Anpassungen in den strings.xml habe ich nur gemacht, weil ich es sonst nicht bauen konnte, aber nach meinem Verständnis sind die Änderungen dort sinnvoll und notwendig, falls man in einer Sprache die zwei %s Parameter in einer anderen Reihenfolge hat als in einer anderen Sprache.
+
+So. Ich hoffe, Dir gefallen die Änderungen und sie fließen in yaxim ein.
+
+Btw. Ich hab aus Versehen das Issue hier geschlossen gehabt:
+https://github.com/pfleidi/yaxim/issues/44
+Als github Neuling weiß ich nicht, ob Du die Kommentare danach deshalb noch gesehen hast.
+
+Gruß
+Daniel
+"

@@ -1,0 +1,96 @@
+repository,state,title,label,body
+phw/Android-PwdHash,closed,Passwords should be invisible to the accessibility services,[],"Due to recent attacks, malicious apps that are using the accessibility service can capture all user inputs. In this case, the passwords should be ignored for the accessibility service, so such attacks cannot happen. This is done by our research project in CISPA, Saarland University, Germany."
+phw/Android-PwdHash,closed,Add added security for password field,[],"By adding the following flag, keyboards are told to not learn what is typed. Most keyboards should already have this set to TRUE by the fact that it is a password field, but this seems like an easy win for possibly extra protection.
+
+For example, Google Keyboard becomes anonymous when on this field, as can be seen in this pic (look at the faded keyboard background): https://ibb.co/kdM9H7
+
+Additionally, since this is a new flag I've updated the platform tooling and target version to the latest stable. The Intrumentation Tests still pass as expected :)
+
+"
+phw/Android-PwdHash,closed,Add PwdHash to F-Droid,[],"As your app is BSD licensed and thus Open Source it would be great if it could also be published to F-Droid.
+
+(Thanks for your work btw!)"
+phw/Android-PwdHash,open,Implement pwdhash as a keyboard,"[Label(name=""feature""), Label(name=""help-wanted"")]","I've seen that keepass4android implements an android keyboard probably so it can input the data directly. That would be very nice also for pwdhash. I have at least one app where it is impossible to paste input into and using pwdhash as a keyboard would likely resolve this issue for me.
+"
+phw/Android-PwdHash,open,Feature Request: Password options,"[Label(name=""feature""), Label(name=""wontfix"")]","It would be great to have options to modify the resulting password. Because some pages do not accept special character or accept digits only or only a certain length. Please take a look at the screenshot. I think many users would be happy to have such features. Thanks.
+
+![options](https://cloud.githubusercontent.com/assets/3104188/17546487/a7e352b2-5ee2-11e6-8edd-a71135633908.png)
+"
+phw/Android-PwdHash,open,Add an initial seed,"[Label(name=""feature""), Label(name=""wontfix"")]","I have not had a great play with this but is seems to me it lacks an initial seed value.  
+For example if I want both my and my wife's phone to both give back the same hash for say ""amazon.com/password"" and for no-one else to be able to generate same hash I would need to enter a common seed on both installations that would participate in the hash.
+"
+phw/Android-PwdHash,open,App adds an additional character at the end of the hash,"[Label(name=""bug"")]","Hi,
+
+Thanks again for the app. Been using it for some time!
+
+I had an issue crop up today that I haven't seen before. I just created an account on my PC, and went to log in on my phone, but couldn't because the passwords didn't match. I compared the output, and the app is giving me a hash 1 character longer than the browser extension I use and the pwdhash website. The app added a trailing character (not NULL or space), the hash is otherwise identical.
+
+Unfortunately, some attempts are re-creating the issue have failed. I probed similar length URL + user password combos, and similar patters of characters/special characters, but the only case the issue shows up is with the URL and password I need to use.
+
+Obviously I want to avoid giving up the URL and my user password, and I'm also pretty sure that this is not enough information for you to do any serious troubleshooting. En lieu of other ideas, as a start I was hoping that you could show me how you resolved the previous issue I submitted, regarding trailing NULL characters being appended. Somehow you were able to determine that the ""official"" pwdhash also had the trailing NULL characters, though it isn't evident from the browser. Just hoping that seeing what the raw output of the official algorithm is may give some clue.
+
+Thanks again!
+"
+phw/Android-PwdHash,closed,Fixed possible null pointer exception,[],"The returned string from `intent.getAction()` could be null in some cases.
+"
+phw/Android-PwdHash,closed,Crashes when opened from Appsi (apps plugin),"[Label(name=""bug"")]","When opened from the Appsi sidebar, PwdHash immediately crashes with ""Unfortunately, Password Hash has stopped"". No problem to open it from the drawer, moreover other apps work with Appsi.
+(Nexus 4, Stock-Android 4.3)
+"
+phw/Android-PwdHash,closed,Ocassional crash on copy to clipboard on Android 4.3,"[Label(name=""bug"")]","There are occasional crashes on Android 4.3 when copying the password to the clipboard. Seems to be related to this bug:
+
+https://code.google.com/p/android/issues/detail?id=58043
+
+It is an Android bug, but I'll implement a workaround.
+
+Stacktrace:
+
+```
+java.lang.IllegalStateException: beginBroadcast() called while already in a broadcast
+at android.os.Parcel.readException(Parcel.java:1439)
+at android.os.Parcel.readException(Parcel.java:1385)
+at android.content.IClipboard$Stub$Proxy.setPrimaryClip(IClipboard.java:171)
+at android.content.ClipboardManager.setPrimaryClip(ClipboardManager.java:125)
+at android.content.ClipboardManager.setText(ClipboardManager.java:208)
+at com.uploadedlobster.PwdHash.activities.PwdHashApp.copyToClipboard(PwdHashApp.java:261)
+at com.uploadedlobster.PwdHash.activities.PwdHashApp$4.onClick(PwdHashApp.java:218)
+at android.view.View.performClick(View.java:4240)
+at android.view.View$PerformClick.run(View.java:17721)
+at android.os.Handler.handleCallback(Handler.java:730)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+at android.os.Looper.loop(Looper.java:137)
+at android.app.ActivityThread.main(ActivityThread.java:5103)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:525)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+at dalvik.system.NativeStart.main(Native Method)
+```
+"
+phw/Android-PwdHash,open,Support Android data backup API,"[Label(name=""feature"")]","This would backup the list of website URLs.
+
+See http://developer.android.com/guide/topics/data/backup.html
+
+This would be useful for manual backup via ADB as Helium Backup [1] does. I think for this to work it is not necessary to register the App for the Android Backup Service [2](which would cause a cloud backup of eventually sensitive data).
+
+[1] https://play.google.com/store/apps/details?id=com.koushikdutta.backup&hl=de
+[2] http://developer.android.com/guide/topics/data/backup.html#BackupKey
+"
+phw/Android-PwdHash,closed,Auto-correct messes the hash,[],"The android keyboards tend to correct to uppercase the first letter, this appears to break the hash. It would be better if the app lowercased the site name and maybe also hint the entry box to not uppercase the first letter somehow.
+"
+phw/Android-PwdHash,closed,"I've not an idea about the feasability of this, but adding sha1 hmac would be nice",[],"As stated above, adding an option, in the menu for example, to do sha-1 based hmac hashing of the password would be really nice. It doesn't have to be default, the only reason I bring this up is because there are numerous flaws in md5 and thus anything that uses it to generate pseudo-random passwords is doomed to passwords that are the same for different inputs. Whereas sha-1 doesn't have this flaw(yet). 
+
+So anyway, as I've stated I'd _love_ to have the option of choosing between md5 and sha-1 based hashing via a menu option inside of the application. If no one here picks this up, I may delve into it later on my own and try to figure out some way to do it. But I think it would be a really nice option to have. The options could be as follows;
+
+PWD-hash compliant(standard)
+Sha-1 non-compliant(stronger)
+
+Since not only does sha-1 result in more possible values, it also gives you more characters with which to make the password so that it's always unique. It's certainty not as fast as md5, but considering how fast android phones are these days it should work very well, as I was able to do it via javascript at a thousand hashes a second on an old vzw droid.
+"
+phw/Android-PwdHash,closed,Copy button appends spaces to long hashes,[],"Hi, 
+
+First, thanks for the hash app. Seems to work well, just one issue. I use a long password, which often results in a 20+ character hash. When generating hashes this long, the app seems to append 4 trailing spaces, which obviously cause logins to fail if not removed.
+
+The hash itself is correct. I do believe it has to do with the length of the generated hash, as trying it with a shorter password does not produce the trailing spaces.
+
+Thanks!
+"

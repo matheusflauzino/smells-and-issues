@@ -1,0 +1,101 @@
+repository,state,title,label,body
+jpeddicord/speedofsound,open,Problem with notification and stop,[],"I set auto-toggle on Bluetooth, only my car Bluetooth.
+Today, I stopped the car, so the Bluetooth.
+And speedofsound did not stop automatically, or at least the notification was still there.
+Clicking stop in notification did nothing.
+In app the tick was not checked.
+I had to tick then untick to make the notification disappear.
+Let me know if I can help you by sending a log or testing something.
+It is a random issue, I don't remember having encountered this before."
+jpeddicord/speedofsound,closed,Add adaptive icon,[],"I think it would be good to follow the trend and implement this, for material design purposes.
+[Here](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive.html) a short explanation on how to do this.
+If you don't have Android 8 hardware, you can install a modded pixel launcher like [Rootless pixel launcher](https://github.com/amirzaidi/launcher3/releases) or [Lawnchair](https://play.google.com/store/apps/details?id=ch.deletescape.lawnchair.plah&hl=fr), which backport this feature."
+jpeddicord/speedofsound,closed,Translations suggestions for english,[],"Edits mentionned in #28.
+Added a few more, mostly to clarify and homogenize maximum and minimum volume adjustments sections.
+I removed the word Optional from one of the latest strings. I felt it was the more complicated option in term of formulation, and that it was enough obvious this option is optional."
+jpeddicord/speedofsound,closed,French translation,[],"Hello,
+I requested the addition of french language on Transifex some times ago.
+Would you mind to accept the language on Transifex, so I can make the translation ?
+Regards."
+jpeddicord/speedofsound,closed,Volume increment/decrement,"[Label(name=""enhancement"")]","This is sort of a problem, sort of a feature request.
+
+My primary use case is riding a bike, but this would apply just as much to other modes of transport.
+
+Use case: I'm riding along with a friend at 20kph (in which case the app would set my volume to about 50%), and I have the volume manually turned down (to about 25%) from the automated settings so we can talk. If we slow down, the volume could actually increase abruptly; the opposite of what I want. OTOH, I'm riding at 20kph (again, the app would set my volume to about 50%) along a particularly loud road, in which case I might have the volume turned up (to about 75%) from the automated settings; when I speed up, the volume could actually decrease abruptly; again, the opposite of what I want.
+
+The way to solve this: Instead of just converting speed into a percentage of full volume and making changes to the absolute volume level, the app should (ideally, perhaps as an optional mode) adjust the volume by incrementing and decrementing the volume. eg applying volume adjustments of ""+1"" or ""-1"", rather than setting volume level eg ""25% of maximum"" or ""50% of maximum"".
+
+This would allow sensible volume adjustments in the two scenarios above, increasing the volume when I go faster and decreasing the volume when I go slower (ideally with configurable upper and lower ""bounds"" or ""limits""; ie I don't want to mute the sound when I come to a stop, nor do I want to blow out my headphones/speakers/ears while going fast) while still allowing sensible use of manual volume adjustment."
+jpeddicord/speedofsound,closed,"Bluetooth devices and ""music enabled"" Bluetooth devices","[Label(name=""bug"")]","(1) I can't select my ""UE BOOM 2"" as a ""music enabled"" Bluetooth device. But I don't even want to; (2) I want to select my ""Edge 1000"" (bike computer) as a Bluetooth device so the app will switch itself on/off depending on whether or not I'm on the bike (with the Edge-1000 turned on).
+
+Making the app respond to *any* Bluetooth device will solve both of those problems.
+
+Thanks..."
+jpeddicord/speedofsound,closed,switch on Bluetooth automatically when driving by car (by GPS or GSM [prefered] speed),[],"Most of the day I do not need bluetooth and therefore bluetooth is switched off.
+When I drive by car I have to enable bluetooth manually and somethimes I forget it to enable.
+
+**Would it be possible to switch on bluetooth at a defined driving speed for example 30km/h or faster?
+And switching it off again if speed is lower then for example 25km/h after a delay of 15minutes?**
+
+My GPS is normally disabled, too and as an alternative I use the less precise GSM location by cell id ( https://github.com/n76/Local-GSM-Backend/blob/HEAD/README.md ).
+
+Theroretically the speed calculation should work with GSM-cell-id-locations in the same way as with GPS, but I suppose that the speed calculation can only give you a decent speed result after a few kilometers.
+
+But switching on bluetooth automatically after a few kilometers would be much better for me then forgetting it completely.
+"
+jpeddicord/speedofsound,closed,Split Google Play DEX up and use only Maps,"[Label(name=""cleanup"")]","http://android-developers.blogspot.com/2014/12/google-play-services-and-dex-method.html
+
+Should save a not-insignificant amount of space in the APK.
+"
+jpeddicord/speedofsound,closed,Support OBD-II scanners as a speed source,"[Label(name=""enhancement"")]","Some OBD2 tools support Bluetooth natively, and are rather cheap. SoS could optionally connect with these and use them as a speed source instead of GPS, which would greatly improve battery life.
+"
+jpeddicord/speedofsound,closed,SpeedSliderPreference should update converted value on save,"[Label(name=""cleanup"")]","This should happen in the preference class, instead of happening via listener. Removes a silly layer of indirection.
+"
+jpeddicord/speedofsound,closed,SongTracker should update exclusively through broadcasts,"[Label(name=""cleanup"")]","This avoids the somewhat shaky callbacks in place now.
+"
+jpeddicord/speedofsound,closed,Google Backup Transport,"[Label(name=""enhancement"")]","Enable GBT/ABS for preferences. Super simple. Srsly.
+"
+jpeddicord/speedofsound,closed,Unit tests,"[Label(name=""cleanup"")]","There aren't any tests for anything at the moment. Yikes.
+"
+jpeddicord/speedofsound,closed,Clean up binding in SpeedActivity,"[Label(name=""cleanup"")]","I think there might be a startup race condition here. Maybe not.
+"
+jpeddicord/speedofsound,closed,VolumeThread is a little complicated,"[Label(name=""cleanup"")]","Some of this logic could be cleaned up. The ""gentle approach"" bit is a little janky, for starters.
+"
+jpeddicord/speedofsound,closed,SpeedConversions cleanup,"[Label(name=""cleanup"")]","This should use enums and fixed conversion factors.
+"
+jpeddicord/speedofsound,closed,Remove deprecated dialog code,"[Label(name=""cleanup"")]","SpeedActivity should be using DialogFragment instead.
+"
+jpeddicord/speedofsound,closed,Android 5 update,"[Label(name=""enhancement"")]","Theming, animations, yada-yada.
+"
+jpeddicord/speedofsound,closed,Tasker/Locale support,"[Label(name=""enhancement"")]","Add support for controlling SoS from Tasker.
+"
+jpeddicord/speedofsound,closed,Selective Bluetooth activation,"[Label(name=""enhancement"")]","Someone requested via email to have a list of Bluetooth devices that sound tracking will activate on, but not others, perhaps by a listing inside application settings.
+"
+jpeddicord/speedofsound,closed,Speed ranges for km/h aren't all that great.,"[Label(name=""bug"")]","Need to either tweak the max range for km/h units (preferably) or just up the max range in general (easier).
+"
+jpeddicord/speedofsound,closed,Settings profiles,"[Label(name=""enhancement"")]","Want to add the ability to create, save, and load multiple setting profiles such as for city or highway driving.  Currently undecided as to how we want to save these profiles.
+"
+jpeddicord/speedofsound,closed,Speed values lose precision when switching between units,"[Label(name=""bug"")]","Set speeds, then switch to m/s and back to mph or another unit. The stored values will be slightly off. Need to store the exact values as floats in prefs.
+"
+jpeddicord/speedofsound,closed,i18n,"[Label(name=""i18n"")]","Need to set up translations. Should be pretty easy, but some strings are missing from strings.xml.
+"
+jpeddicord/speedofsound,closed,Headphone/bluetooth activation collision,"[Label(name=""bug"")]","If both headphone and bluetooth preferences are enabled, they will collide with one another. Example: if headphones are plugged in and you're connected to an A2DP sink (no idea why you'd do that) and you disconnect either, the service will shut off even though it should stay running. Other edge cases may be present.
+"
+jpeddicord/speedofsound,closed,Music control gestures,"[Label(name=""enhancement"")]","Sent in via email:
+
+""It'd be really great if you were able to add music control gestures. For example, the app would force the screen to stay on (maybe at an adjustable brightness) and the user would be able to tap the screen to pause and swipe to go forward/backwards. If it had this, I'd be able to control my music without having to look for the buttons in the screen while driving.""
+
+We can probably do gestures within the app; not sure if it's possible to do it globally (though might be able to on the lockscreen). 99% certain we need the screen on for this, so a wakelock will be needed. Going to have to look into expanding music player support, because the intents for changing songs are different for each music player.
+"
+jpeddicord/speedofsound,closed,Bluetooth activation,"[Label(name=""enhancement"")]","Would be nice to have auto-activation when connected to a bluetooth headset or car audio system.
+"
+jpeddicord/speedofsound,closed,Superflous previousTime in SoundService,"[Label(name=""bug"")]","This can be extracted from previousLocation instead.
+"
+jpeddicord/speedofsound,closed,Support more media players for mapped routes,"[Label(name=""enhancement"")]","We support changing the overall volume, but it would be great to be able to receive intents from other media players so that we know about their song changes.
+"
+jpeddicord/speedofsound,closed,Multiple mapped routes,"[Label(name=""enhancement"")]","We need to have the ability to store and show more than one route. This also includes discarding empty routes. The database layout will need a bit of reworking for this.
+"
+jpeddicord/speedofsound,closed,Speed prediction with accelerometer,"[Label(name=""enhancement"")]","Filing this as an issue for later. Want to see if we're able to adjust the volume a little bit before we get GPS updates for an even smoother volume curve. Not sure how possible it is, but I'd like to think there's a way.
+
+This issue is free for the taking if some brave soul wants to give it a try.
+"

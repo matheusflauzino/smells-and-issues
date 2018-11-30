@@ -1,0 +1,77 @@
+repository,state,title,label,body
+aragaer/jtt_android,closed,Character error,[],I don't know japanese but a friend told me that this is the character for horse: 馬 . 牛 means cow.
+aragaer/jtt_android,open,Updated fr (French) translation,[],Commit made via [Stringlate](https://lonamiwebs.github.io/stringlate/)
+aragaer/jtt_android,closed,Update README.md,[],"Hi,
+
+This small and useless PR adds two buttons to get your app on F-Droid and Google Play 👍 "
+aragaer/jtt_android,closed,German Translation & Emoji mode for clock widget,[],Also added a fix to display notification on lock screen even if private content is hidden.
+aragaer/jtt_android,closed,Symbolic hours (unicode emojis),"[Label(name=""Features"")]","Hey @aragaer ,
+please consider implementing the option to display unicode emojis instead of text like so:
+
+![emoji](https://user-images.githubusercontent.com/13608545/27236374-11b71e2c-52c5-11e7-95f0-d0bfb838a157.png)
+(It actually works, I added a fake translation containing the symbols (e.g. `<item>🐒</item>`).
+
+Here is a list of emojis you could use:
+
+```
+rooster \u1F413   🐓
+dog     \u1F415   🐕
+pig     \u1F416   🐖
+rat     \u1F400   🐀
+ox      \u1F402   🐂
+tiger   \u1F405   🐅
+rabbit  \u1F407   🐇
+dragon  \u1F409   🐉
+snake   \u1F40D   🐍
+horse   \u1F40E   🐏
+ram     \u1F40F   🐎
+monkey  \u1F412   🐒
+```
+---
+**Update:** I sent you a patch that implements this feature."
+aragaer/jtt_android,open,Option to add arrow to wadokei widget,"[Label(name=""Enhancement"")]",There is a little arrow in the application that shows the current time. It would be nice to have an option to have the same arrow in widget.
+aragaer/jtt_android,open,Play sound on hour change,"[Label(name=""Enhancement""), Label(name=""Features"")]","Or actually play sound in the middle of the hour.
+Add an option to not play sounds at certain times - for example at night."
+aragaer/jtt_android,closed,The application crushing always on Android 7.1.2,[],"I updated my Nexus 6p, Android 7.1.2, then jtt is not working.
+Uninstallation and reinstallation did not solve this problem."
+aragaer/jtt_android,closed,Crashes when location doesn't match timezone,[],"When location set in the application doesn't match the actual timezone and the difference is big enough, it is possible that sunrise or sunset time for that location in current timezone is either before or after the local midnight. In this case the sunrise-sunset library will add or subtract 24 hours which would result in sunset for the day being earlier than sunrise. This in turn fails the assertion check when constructing the daylight interval object.
+
+The solution that does work (it allows to start the application to actually set the correct location at least) is to do all the calculations in the timezone that is closest to the current location."
+aragaer/jtt_android,closed,Fails to update time,[],I notice that JTT doesn't correspond to the current time. Sometimes it will if I swipe to a different view. Using stock LG G4 with Android 6.
+aragaer/jtt_android,closed,Service isn't stopped when asked to do so,[],"I've tried 1.4.4.1 and 1.4.4.2, each on a different gadget and both times when I asked to stop the service via the app, it's still visible in Settings/Apps/Running Services.
+"
+aragaer/jtt_android,closed,License?,[],"Would you care to publish the code under a free licence such as those found at http://choosealicense.com?
+"
+aragaer/jtt_android,open,Integration of planner,"[Label(name=""Features"")]","Display planner events in the Today list
+
+This requires some UI changes. Might work on tablets, not sure how to fit it all into phone screen.
+"
+aragaer/jtt_android,closed,Wrong hour intervals,[],"While hours themself are calculated correctly, hour intervals should not start with those hours, but instead surround them.
+
+Reason is that ""Hour of "" could refer to exact point of time (which is correct now) or it could denote a whole interval around it. While intervals between hours split days (and nights) into equal parts, intervals surrounding those hour points do not have to be equal. For hours of the Hare and the Cock the ""point"" is not even in the middle of the interval.
+
+This requires certain changes in calculation and representation.
+"
+aragaer/jtt_android,closed,App locale ,[],"Changed locale to Russian, ""Today"" still shows english version
+![Today](https://dl.dropbox.com/u/59293229/Picz/2012-10-24%2012.05.09.jpg)
+"
+aragaer/jtt_android,closed,Touchwiz launcher doesn't invoke ENABLED event,"[Label(name=""Bug"")]","The problem leads to widgets not being drawn until next ""real"" tick depending on their granularity.
+"
+aragaer/jtt_android,closed,Service gets unloaded/stopped sometimes,"[Label(name=""Bug""), Label(name=""Critical/Crash"")]","Investigate the case. Add more logging for understanding the problem and/or add more stuff to keep service alive.
+"
+aragaer/jtt_android,open,Automatic location tracking,"[Label(name=""Enhancement"")]","Add an option to automatically update user location
+"
+aragaer/jtt_android,open,Dynasty/era calendar,"[Label(name=""Features"")]","Add dynasty/era calendar to the application
+"
+aragaer/jtt_android,open,Moon calendar,"[Label(name=""Features"")]","Add traditional moon calendar to the application
+"
+aragaer/jtt_android,closed,Starting animation,"[Label(name=""Bells and whistles"")]","Add animation when launching application from widget
+"
+aragaer/jtt_android,closed,Smooth scroll,"[Label(name=""Bells and whistles"")]","Add smooth scrolling/flinging in main app interface
+"
+aragaer/jtt_android,open,Alarm,"[Label(name=""Features"")]","Allow user to set alarm to specific time - either common or traditional
+"
+aragaer/jtt_android,closed,Widget: custom text/icon color and border color,"[Label(name=""Enhancement"")]",
+aragaer/jtt_android,closed,Allowing app language change,"[Label(name=""Enhancement"")]",
+aragaer/jtt_android,closed,Widgets not drawn when added,"[Label(name=""Bug"")]","When new widget is added it is not always drawn and remains invisible until next tick.
+"

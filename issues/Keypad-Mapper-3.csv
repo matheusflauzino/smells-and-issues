@@ -1,0 +1,107 @@
+repository,state,title,label,body
+msemm/Keypad-Mapper-3,open,Fix: Write all bytes of UTF-8 String,[],"According to JavaDoc `RandomAccessFile.writeBytes()` writes each character in the string by discarding its high eight bits. This is ok for latin charactes, but it corruptes non-latin charactes. For example: russian charactes.
+
+That's why I used `RandomAccessFile.write()` and `String.getBytes(""UTF-8""))` to write all bytes of charactes
+
+This PR fixes these issues:
+https://github.com/msemm/Keypad-Mapper-3/issues/1
+https://github.com/msemm/Keypad-Mapper-3/issues/4"
+msemm/Keypad-Mapper-3,open,opencellid is never uploaded,[],"Hi,
+I'm mapping in wifi-only mode. The manual says the app should upload opencellids as soon as I reconnect to the internet. However, that never happens: in the database EGT.db3, the observed cells are marked as upload=0, and days later on the website, a query for the observed cells returns no new data.
+
+Logcat shows this error repeatedly:
+
+02-22 22:28:30.257 E/ResourcesInitializerService(17263): java.lang.IllegalArgumentException: Illegal character in query at index 139: http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=de_DE http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=en_GB http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=es_ES http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=fr_FR http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=el_GR http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=it_IT http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=nl_NL http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=pl_PL http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=ru_RU
+02-22 22:28:49.203 E/ResourcesInitializerService(17263): Illegal character in query at index 139: http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=de_DE http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=en_GB http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=es_ES http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=fr_FR http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=el_GR http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=it_IT http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=nl_NL http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=pl_PL http://liferay.enaikoon.de:8080/10-resourceeditor-services/zip/resources?applicationCode=keypadmapper&domainName=general&languageCode=ru_RU
+
+Android 6.0.1 slimrom, latest keypadmapper from fdroid."
+msemm/Keypad-Mapper-3,open,Store direction in taken photos,[],"Hi,
+
+First, thanks for this great app, I contributed >1000 house numbers to OSM using this one. :-)
+
+One problem I saw with it is that the taken photos have GPS location stored, but not the compass direction. Storing that can be very useful if you want to  contribute your photos later to e.g. Mapillary, so other OSM contributors can easily access your photos.
+
+From an exif point of view, the two new tags would be Exif.GPSInfo.GPSImgDirectionRef and Exif.GPSInfo.GPSImgDirection. The opencamera project from sourceforge has this feature, but other than this particular detail, your app is much better for mapping house numbers. ;-)
+
+Could you please consider adding this feature to the app?
+
+Thanks,
+
+Miklos"
+msemm/Keypad-Mapper-3,open,Not a issue from Keypad-Mapper - import cells http://www.gyokovsolutions.com/,[],"Wrong import from cells at http://www.gyokovsolutions.com/
+The cells with radio LTE imports OCID as UMTS!!
+The cellid must be convert to the LCID.
+"
+msemm/Keypad-Mapper-3,open,Opencellid - wrong import LTE cells,[],"The cells with radio LTE imports Keypad-Mapper as UMTS.
+Keypad-Mapper collects no LTE cells!
+"
+msemm/Keypad-Mapper-3,open,Added taginfo.json,[],"This is the first step to resolving #7
+
+Once this is merged, I'll create a pull request to add this to https://github.com/joto/taginfo/blob/master/sources/projects/project_list.txt
+"
+msemm/Keypad-Mapper-3,open,Add Keypad mapper to taginfo,[],"There's a new feature on taginfo where you can see which projects are using which tags. Example: http://taginfo.openstreetmap.org/projects
+
+The way to integrate your project is by creating a json file with the details of what tags keypad mapper is using and then add it to a txt file. Details about this can be found on the wiki page: http://wiki.openstreetmap.org/wiki/Taginfo/Projects
+
+I think for keypad mapper, the only tags used are addr:housenumber and survey:date, so I might take a stab at this and submit a pull request
+"
+msemm/Keypad-Mapper-3,open,GPS necessary to export collected data,[],"Why forces Kepad-Mapper-3 the user to switch on GPS on start if he only wants to export the collected data. This is really annoying.
+"
+msemm/Keypad-Mapper-3,open,[Proposal] Faster GUI for Most Common Use Cases,[],"Hi there. After reading reviews on Google Play and using KPM myself, it struck me how entering all the numbers should be able to be much faster. Currently to enter house numbers from 2500 to 2599 requires typing in ""25"" at the start of every. single. number (ie all 100 times ). I thought about how we could streamline this while still being easy to use on a phone interface, and came up with the mockup below based on two kinetically scrolling ""dials"" showing last selected house numbers (one dial for each side of the road). It is _not_ designed to replace the current interface 100% of the time, but I suspect it could 95% of the time, while being much faster (often requiring 75% less clicks). For the other 5% of the time, it would be possible to toggle to the current interface with a single click.
+
+Take a look:
+![keypad-mapper-gui-v1](https://f.cloud.github.com/assets/401733/2455595/420e2620-af02-11e3-98f8-9ee62ecdcc10.png)
+
+Features / Functioning:
+- Entering 4 digit house numbers are reduced from 4 clicks to 1 (a 75% reduction or fourfold increase in speed).
+- The twin columns of dials allow for when numbers on each side of the road vary significantly, avoiding going back and forth on the dialer^. This avoids the problems seen by just having +1,-1 buttons.
+-  On choosing a number in one of the dials, it would immediately be centered in the dial (eg in this example, if 2708 was tapped in the left column, the dial would scroll so tht 2708 is where 2706 is in this image)
+-  The last selected number is hilighted, so that where unit numbers are the only varying part, people only need to click the new letter and the direction.
+-  There is no need for delete / backspace keys, as alterations are made just by clicking on the correct number / letter.
+- Does not do away with the traditional number pad for more unusual / complex entries. The classic number entry is accessed with the keyboard button (bottom right corner)
+  -  This mockup shows blank space at the bottom. In reality we can extend the number of house numbers shown on the dials, and letters available, or show last entered house numbers.
+-  When a new house number is tapped, the dialer scrolls to put it in the center, so incrementing by the same amount^ can be achieved simply by clicking in the same place on screen.
+-  For initial position of number dials, either estimate nearest housenumber if a number range for this street exists, with even on left and odd (even +1) on right. Dials with kinetic scrolling make it very quick to move between a large number of house numbers. If no nearby housenumbers are found, start on classic number pad, and switch when the first number is entered, with a pop up note on how to switch back (keyboard button).
+-  Reduces phone keyboard typing to almost nothing, replacing it with a more mobile style kinetic interface.
+-  You could also allow users to double tap a number to have it entered instantly without any letters / unit numbers, or to double tap a letter to enter it instantly using the last selected number. This way they don't even need to tap the arrow buttons above. Left or right would come from which dial column was just used.
+
+^ Solution to a problem mentioned in Play Store reviews 
+"
+msemm/Keypad-Mapper-3,open,None-ASCII characters replaced with U+FFFD (Unicode REPLACEMENT CHARACTER) in .osm export,[],"(Filing here on Github, as it's unclear where the definitive KP3 bug-tracker is).
+
+Non-ASCII characters (eg. ä.ö/ü/ß) entered as values in KP3 are converted to the Unicode replacement character U+FFFD prior to UTF-8 export to output .osm.  To reproduce:
+1. Install KP3 version 3.1.00
+2. Enter a foreign-looking address, (eg. addr:street=""Äußerer Tränkeweg"", addr:city=""Würzburg"")
+3. Export data over Bluetooth to an Ubuntu 12.04 LTS machine.
+
+What happens:
+1. The file contains ""�u�erer Tr�nkeweg,W�rzburg""
+
+What should happen:
+1. The file should contain ""Äußerer Tränkeweg, Würzburg""
+
+Note that the U+FFFD ('�') is being correctly UTF-8 encoded, and so is stored in the .osm file as 0xEF 0xBF 0xBD (""\xef\xbf\xbd"").  At all times the name appears correctly inside the KP3 user interface.  This issue appears to have been noticed by other people aswell:
+
+  http://forum.openstreetmap.org/viewtopic.php?id=22702 (from 2013-09-25)
+
+Please let me know if I can provide any additional information to aid debugging.
+"
+msemm/Keypad-Mapper-3,open,Cannot quit if GPS is off,[],"I started the application, it says ""GPS is diabled, enable GPS to use this application"".
+
+When I press ""quit"", KeyPad mapper stays active in the system with an icon ""Data recording is active"". 
+
+When I go back to this, I am faced again with the same dialog box, to go settings and quit (that does not quit). 
+
+When I enable the GPS finally, I can get a rid of that dialog box and the program starts.
+
+(And there is no way in the program either to quit. So now I reboot the phone. So this is a second bug.)
+
+Using Android 2.3.3 on Xperia X10. 
+
+Thanks in advance!
+"
+msemm/Keypad-Mapper-3,open,Option to disable survey:date,[],"I would like to have the option of disabling survey:date
+"
+msemm/Keypad-Mapper-3,open,Russian language - saved .osm is bad,[],"Instead of '56а' have '561'.
+Instead of 'м' have '<'.
+"

@@ -1,0 +1,1417 @@
+repository,state,title,label,body
+qii/weiciyuan,closed,编译出现error,[],"出现错误：
+`Error:Could not determine the dependencies of task ':crashlyticsStoreDeobsDebug'.
+> Task with path 'dexDebug' not found in root project 'weiciyuan-0.50'.`
+有谁知道怎么解决的吗？google过了也没成功。
+"
+qii/weiciyuan,open,app不能用了,[],
+qii/weiciyuan,open,无法打开,[],安装绿色守护后打不开
+qii/weiciyuan,closed,我的关注模块有问题,[],"查看我关注的用户时列表是无限循环的，不会到头。
+"
+qii/weiciyuan,open,"[DONT MERGE]more emotions support, like [doge]",[],"这个现在需要优化第一次打开的速度。
+"
+qii/weiciyuan,open,无法编译,[],"导入studio之后报错：Error:Could not download artifact 'com.crashlytics.tools.gradle:crashlytics-gradle:1.14.4:crashlytics-gradle.jar': No cached version available for offline mode
+
+另外，这个项目还在维护吗
+"
+qii/weiciyuan,open,关于gif的so库源码,[],"哥们能给下gif的so库源码吗，不胜感激
+"
+qii/weiciyuan,open,导入了android studio，但是无法编译,[],"Error:Execution failed for task ':crashlyticsGenerateResourcesDebug'.
+
+> Crashlytics Developer Tools error.
+"
+qii/weiciyuan,open,"这个怎么导入到studio中,有相关教程吗?",[],"哪位兄台导入过,可否请教一下
+"
+qii/weiciyuan,open,MXnote  左侧菜单不显示？,[],"首先允许我表达一下我对您的感谢和敬佩之情。您的项目是我研究的第一个项目  
+然后问题： 跑起来的时候左侧怎么显示成这样啊？
+![s60516-222805](https://cloud.githubusercontent.com/assets/9511448/15292497/efcad318-1bb5-11e6-8d20-e6ea0c7e20aa.jpg)
+"
+qii/weiciyuan,open,support higher sdk and gradle version,[],"采用最新的gradle编译，优化了.gitignore文件
+"
+qii/weiciyuan,open,微博正文网页链接,[],"可以仿造微博把链接缩短成 ""网页链接“ 的样式吗(不把真实链接暴露出来)
+"
+qii/weiciyuan,open,Nexus 6 android 6.0.1 crash,[],"![1 pic](https://cloud.githubusercontent.com/assets/382763/12164376/0621d688-b550-11e5-8078-b25dae817a84.jpg)
+"
+qii/weiciyuan,closed,兼容api23,[],"Api23下，[ParcelableSpan](http://developer.android.com/reference/android/text/ParcelableSpan.html)多了两个@hide的方法：
+
+``` java
+    int getSpanTypeIdInternal();
+    void writeToParcelInternal(Parcel dest, int flags);
+```
+
+导致，parcel MyUrlSpan时报错。
+"
+qii/weiciyuan,open,Fix issue #270: Cannot invoke method minus() on null object,[],"fix compiling error in Android Studio
+"
+qii/weiciyuan,open,AbstractAppFragment里面的getCurrentState函数逻辑是不是有点问题,[],"在包org.qii.weiciyuan.ui.interfaces中的AbstractAppFragment类里面有一个getCurrentState函数，这个函数的逻辑是不是写的有点问题？函数代码如下
+
+```
+protected int getCurrentState(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            isFirstTimeStartFlag = false;
+            return ACTIVITY_DESTROY_AND_CREATE;
+        }
+
+        if (!isFirstTimeStartFlag) {
+            return SCREEN_ROTATE;
+        }
+
+        isFirstTimeStartFlag = false;
+        return FIRST_TIME_START;
+    }
+```
+
+savedInstanceState不为空就直接断定为ACTIVITY_DESTROY_AND_CREATE，感觉不对啊！
+"
+qii/weiciyuan,open,Cannot invoke method minus() on null object,[],"按照StackOverflow http://stackoverflow.com/questions/19487576/gradle-build-null-console-object上的某个答案：
+For some reason, running gradle in daemon mode causes a null console object. If you specify the appropriate command line flag,
+
+./gradlew assembleRelease --no-daemon
+
+it'll work.
+
+但是还是build failed。
+
+错误是
+Error:(36, 0) Cannot invoke method minus() on null object
+
+代码行数是：
+  35      targetSdkVersion 21
+  36      versionCode -1
+  37      versionName null
+"
+qii/weiciyuan,closed,"导入android studio的时候Error:(33, 0) Cannot invoke method minus() on null object",[],"如题：
+用的是1.2.1.1版本
+
+---
+
+我擦，我找到解决方法了
+http://stackoverflow.com/questions/19487576/gradle-build-null-console-object
+第二个答案：
+For some reason, running gradle in daemon mode causes a null console object. If you specify the appropriate command line flag,
+
+./gradlew assembleRelease --no-daemon
+
+it'll work.
+"
+qii/weiciyuan,open,Gradle BUILD FAILED   ,[],"org.gradle.api.GradleScriptException: A problem occurred evaluating root project 'weiciyuan'.
+        at org.gradle.groovy.scripts.internal.DefaultScriptRunnerFactory$ScriptRunnerImpl.run(DefaultScriptRunnerFactory.java:54)
+        at org.gradle.configuration.DefaultScriptPluginFactory$ScriptPluginImpl.apply(DefaultScriptPluginFactory.java:148)
+        at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:39)
+        at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:26)
+        at org.gradle.configuration.project.ConfigureActionsProjectEvaluator.evaluate(ConfigureActionsProjectEvaluator.java:34)
+        at org.gradle.configuration.project.LifecycleProjectEvaluator.evaluate(LifecycleProjectEvaluator.java:59)
+        at org.gradle.api.internal.project.AbstractProject.evaluate(AbstractProject.java:504)
+        at org.gradle.api.internal.project.AbstractProject.evaluate(AbstractProject.java:83)
+        at org.gradle.execution.TaskPathProjectEvaluator.configureHierarchy(TaskPathProjectEvaluator.java:42)
+        at org.gradle.configuration.DefaultBuildConfigurer.configure(DefaultBuildConfigurer.java:35)
+        at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:129)
+        at org.gradle.initialization.DefaultGradleLauncher.doBuild(DefaultGradleLauncher.java:106)
+        at org.gradle.initialization.DefaultGradleLauncher.run(DefaultGradleLauncher.java:86)
+        at org.gradle.launcher.exec.InProcessBuildActionExecuter$DefaultBuildController.run(InProcessBuildActionExecuter.java:80)
+        at org.gradle.launcher.cli.ExecuteBuildAction.run(ExecuteBuildAction.java:33)
+        at org.gradle.launcher.cli.ExecuteBuildAction.run(ExecuteBuildAction.java:24)
+        at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:36)
+        at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:26)
+        at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:47)
+        at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:34)
+        at org.gradle.launcher.daemon.server.exec.DaemonCommandExecution.proceed(DaemonCommandExecution.java:119)
+        at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:35)
+        at org.gradle.launcher.daemon.server.exec.DaemonCommandExecution.proceed(DaemonCommandExecution.java:119)
+        at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:24)
+        at org.gradle.launcher.daemon.server.exec.DaemonCommandExecution.proceed(DaemonCommandExecution.java:119)
+        at org.gradle.launcher.daemon.server.exec.StartStopIfBuildAndStop.execute(StartStopIfBuildAndStop.java:33)
+        at org.gradle.launcher.daemon.server.exec.DaemonCommandExecution.proceed(DaemonCommandExecution.java:119)
+        at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:71)
+        at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:69)
+        at org.gradle.util.Swapper.swap(Swapper.java:38)
+        at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:69)
+        at org.gradle.launcher.daemon.server.exec.DaemonCommandExecution.proceed(DaemonCommandExecution.java:119)
+        at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:60)
+        at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:34)
+        at org.gradle.launcher.daemon.server.exec.DaemonCommandExecution.proceed(DaemonCommandExecution.java:119)
+        at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:70)
+        at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:34)
+        at org.gradle.launcher.daemon.server.exec.DaemonCommandExecution.proceed(DaemonCommandExecution.java:119)
+        at org.gradle.launcher.daemon.server.exec.DaemonHygieneAction.execute(DaemonHygieneAction.java:39)
+        at org.gradle.launcher.daemon.server.exec.DaemonCommandExecution.proceed(DaemonCommandExecution.java:119)
+        at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:46)
+        at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:246)
+        at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:64)
+Caused by: java.lang.NullPointerException: Cannot invoke method minus() on null object
+        at build_t2psnaeeoa9v9x0t5cz4h1pl$_run_closure2_closure7.doCall(E:\githubresource\weiciyuan\build.gradle:36)
+        at org.gradle.api.internal.ClosureBackedAction.execute(ClosureBackedAction.java:63)
+        at org.gradle.api.Action$execute.call(Unknown Source)
+        at com.android.build.gradle.BaseExtension.defaultConfig(BaseExtension.groovy:347)
+        at com.android.build.gradle.AppExtension_Decorated.defaultConfig(Unknown Source)
+        at build_t2psnaeeoa9v9x0t5cz4h1pl$_run_closure2.doCall(E:\githubresource\weiciyuan\build.gradle:32)
+        at org.gradle.api.internal.ClosureBackedAction.execute(ClosureBackedAction.java:63)
+        at org.gradle.api.internal.plugins.ExtensionsStorage$ExtensionHolder.configure(ExtensionsStorage.java:145)
+        at org.gradle.api.internal.plugins.ExtensionsStorage.configureExtension(ExtensionsStorage.java:69)
+        at org.gradle.api.internal.plugins.DefaultConvention$ExtensionsDynamicObject.invokeMethod(DefaultConvention.java:207)
+        at org.gradle.api.internal.CompositeDynamicObject.invokeMethod(CompositeDynamicObject.java:147)
+        at org.gradle.groovy.scripts.BasicScript.methodMissing(BasicScript.java:79)
+        at build_t2psnaeeoa9v9x0t5cz4h1pl.run(E:\githubresource\weiciyuan\build.gradle:22)
+        at org.gradle.groovy.scripts.internal.DefaultScriptRunnerFactory$ScriptRunnerImpl.run(DefaultScriptRunnerFactory.java:52)
+        ... 42 more         
+
+BUILD FAILED                
+"
+qii/weiciyuan,open,貌似bm grant_type pw取消了,[],"最近BM授权会返回21323，应该是取消了wc等的grant_type=password，并且secret也变了
+手动改oauth网页授权，试了一下可以
+211160679,1e6e33db08f9192306c4afa0a61ad56c
+来源：https://github.com/PaperAirplane-Dev-Team/BlackLight/commit/bf89a2dff30a563ab36a92e7c698f78e351844b2
+"
+qii/weiciyuan,open,get new,[],"get new
+"
+qii/weiciyuan,open,【请教】请问这个查看长图的功能具体是怎么弄的？我跑不起来代码。。。,[],
+qii/weiciyuan,open,横竖屏切换之后无法记住scroll的位置,[],"timeline滚到很下面，点击某条微博看评论，这个时候横屏，再竖屏切换一下，back键退出这条微博，发现timeline直接回到了最上面的第一条。还要重新滚下来。
+"
+qii/weiciyuan,closed,依赖google service framework？,[],"[F-droid wiki](https://f-droid.org/wiki/page/org.qii.weiciyuan):
+
+> We can't build this version: beta and play-services
+
+这个信息有错误吗？这样的话很多没有安装Google Play的系统就不能运行四次元了。
+"
+qii/weiciyuan,closed,Merge pull request #1 from qii/0.50,[],"pull request
+"
+qii/weiciyuan,open,使用android studio 构建项目,[],"BuildConfig.APPLICATION_ID 无法找到
+"
+qii/weiciyuan,open,test,[],"test
+"
+qii/weiciyuan,closed,Merge pull request #1 from qii/0.50,[],"pull request
+"
+qii/weiciyuan,closed,Gradle 构建失败和Elipse直接导入有问题,[],"（1）提示 “Could not find com.android.support:support-v4:21.0.0” ，我在SDK里面拷贝了一个support-4过来，还是会有这个错。
+（2）Elipse导入后，pre的xml里面有一些applicationId没有赋值，好像是在Gradle配置里面有给赋值，但是直接导入的没有赋值。
+"
+qii/weiciyuan,closed,用java 8 编译不过。,[],"类似这样的错误：
+/Users/brianjcj/git-android/weiciyuan/src/org/qii/weiciyuan/ui/dm/DMUserListFragment.java:148: 错误: 对putExtra的引用不明确
+        intent.putExtra(""user"", data.getParcelableExtra(""user""));
+              ^
+  Intent 中的方法 putExtra(String,Serializable) 和 Intent 中的方法 putExtra(String,Bundle) 都匹配
+"
+qii/weiciyuan,open,内置浏览器打开新浪博客时，点击打开博客评论无法加载,[],"内置浏览器打开新浪博客时，点击打开博客评论无法加载
+
+希望修复~
+"
+qii/weiciyuan,closed,几天看到了一个跟四次元相似的App,[],"https://github.com/Moandor-y/U2-Weibo-Client
+大大 今天在google商店看到了一个跟四次元很类似的软件,
+UI几乎一样不知道是不是大大的另一新作
+这个软件中有私信功能,不知道大大能不能把这个功能也加到四次元中
+四次元是我用过最好用的微博客户端
+之前也提到过私信是sina封掉了端口,不再开放给免费用户
+不知道这个App里面的代码能否帮到四次元做出提升
+纯属建议
+"
+qii/weiciyuan,closed,使用gradle 1.12编译报错,[],"错误栈是
+
+com.android.dex.DexException: Multiple dex files define Landroid/support/v4/accessibilityservice/AccessibilityServiceInfoCompat$AccessibilityServiceInfoVersionImpl
+
+不支持用gradle 1.12编译吗？
+"
+qii/weiciyuan,closed,导入 IDEA 12.1.4 在 Project 边栏死活看不到包结构,[],"难道是我的 IDEA 设置问题？
+"
+qii/weiciyuan,open,评论和圈没有通知了,[],"大概两个多星期 收不到评论和圈的通知 已确认通知设置开启。gcm推送正常(g+ gmail正常)
+"
+qii/weiciyuan,open,发微博时无法添加多张照片,[],"点击相机按钮只能选中一个照片
+"
+qii/weiciyuan,open,打开自动刷新模式，退出一段时间后再次打开一直崩溃,[],"打开自动刷新模式，退出一段时间后再次打开一直崩溃。
+
+应该是打开自动刷新模式才是twitter的tl向上阅读模式。看完之后退出。隔一长段时间，例如睡一觉起来，再开客户端就一直显示崩溃崩溃崩溃 。还不能点报告两个字，一点也说google商店关闭。
+"
+qii/weiciyuan,open,图片下载阻塞,[],"图片下载阻塞
+"
+qii/weiciyuan,open,在个人主页查看微博一段时间后会停止响应，已遇到多次，望周知。,[],"RT
+"
+qii/weiciyuan,closed,"help,please! Gradle build error",[],"Error:The project is using an unsupported version of Gradle. Please use version 1.10.
+Please point to a supported Gradle version in the project's Gradle settings or in the project's Gradle wrapper (if applicable.)
+<a href=""openGradleSettings"">Gradle settings</a>
+"
+qii/weiciyuan,open,android L上面播放Gif出现问题,[],"一打开Gif图片就FC，还有在个人资料页面退出，在打开，偶尔出现一段白条
+"
+qii/weiciyuan,open,使用一段时间就会不停地FC，根本进不去app,[],"机型是htc one sense6.0 4.4.2
+"
+qii/weiciyuan,open,源码下载运行,[],"这个源码怎么下载导入到eclipe无法运行？？？
+0.5版本的
+新手求指教
+"
+qii/weiciyuan,closed,sync,[],"sync
+"
+qii/weiciyuan,closed,sync,[],"sync
+"
+qii/weiciyuan,open,捐赠入口崩了,[],"_(:3」∠)_
+"
+qii/weiciyuan,open,GIF 开始播放的问题,[],"对于含有多张 gif 图片的微博，点击打开其中一张 gif 图片会开始播放。但似乎与此同时同一条微博中的其他 gif 图片也会开始播放，导致滑动切换到其他图片时，那张图片已经播放了一半。
+"
+qii/weiciyuan,closed,这里必须再new一个ArrayList<GroupBean>()?,[],"in GroupListBean.java
+
+``` java
+public class GroupListBean implements Parcelable {
+    private List<GroupBean> lists = new ArrayList<GroupBean>();
+    private String total_number = ""0"";
+```
+
+``` java
+public static final Parcelable.Creator<GroupListBean> CREATOR =
+            new Parcelable.Creator<GroupListBean>() {
+                public GroupListBean createFromParcel(Parcel in) {
+                    GroupListBean groupListBean = new GroupListBean();
+
+                    groupListBean.total_number = in.readString();
+
+                    groupListBean.lists = new ArrayList<GroupBean>();
+                    in.readTypedList(groupListBean.lists, GroupBean.CREATOR);
+
+                    return groupListBean;
+                }
+
+                public GroupListBean[] newArray(int size) {
+                    return new GroupListBean[size];
+                }
+            };
+```
+
+发现private跟parcel这里new重复了，不知是不是个问题？
+"
+qii/weiciyuan,open,查看用户界面崩溃,[],"查看用户时将头像移到action bar 下面一点再点开头像就会崩溃
+Package: org.qii.weiciyuan
+Version: 40
+Android: 4.4.2
+Manufacturer: LGE
+Model: Nexus 4
+Date: Sat May 24 14:06:04 GMT+08:00 2014
+
+java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState
+    at android.support.v4.app.FragmentManagerImpl.checkStateLoss(FragmentManager.java:1343)
+    at android.support.v4.app.FragmentManagerImpl.enqueueAction(FragmentManager.java:1361)
+    at android.support.v4.app.BackStackRecord.commitInternal(BackStackRecord.java:595)
+    at android.support.v4.app.BackStackRecord.commit(BackStackRecord.java:574)
+    at android.support.v4.app.DialogFragment.dismissInternal(DialogFragment.java:189)
+    at android.support.v4.app.DialogFragment.dismiss(DialogFragment.java:155)
+    at org.qii.weiciyuan.ui.userinfo.UserInfoActivity$2$1.run(UserInfoActivity.java:618)
+    at android.os.Handler.handleCallback(Handler.java:733)
+    at android.os.Handler.dispatchMessage(Handler.java:95)
+    at android.os.Looper.loop(Looper.java:136)
+    at android.app.ActivityThread.main(ActivityThread.java:5050)
+    at java.lang.reflect.Method.invokeNative(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:515)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:789)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:605)
+    at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:132)
+    at dalvik.system.NativeStart.main(Native Method)
+"
+qii/weiciyuan,open,从0.5beta4开始不再支持Moto razr i？,[],"是不支持Intel CPU还是不再支持安卓4.1了呢？beta3之前都支持的…
+"
+qii/weiciyuan,open,test,[],"test
+"
+qii/weiciyuan,closed,在任意分组下退出app后，再次打开显示的是“提及”栏,[],"在任意分组下退出app后，再次打开显示的是“提及”栏
+
+所有条目不可用，所以用分组显示，出现上面的bug
+"
+qii/weiciyuan,open,第三方应用访问api接口权限受到限制,[],"hi:前几天可以用 今天打开首页 没有数据 提示 第三方应用访问api接口权限受到限制 这个是怎么回事
+"
+qii/weiciyuan,open,历史条目不能载入,[],"当前刷新看完后，直接是连接上次刷新(比如3小时前的)的时间线，间隔之间的博文没有了，也没有按钮要我载入。0.491版本
+"
+qii/weiciyuan,closed,fix database,[],"去除提及列表中的重复用户
+"
+qii/weiciyuan,closed,修正提及列表,[],"防止提及列表出现重复
+"
+qii/weiciyuan,open,阻止前后台同时刷新,"[Label(name=""bug"")]","在@提及和评论面板经常因为刷新时后台也在进行而导致消息重复
+"
+qii/weiciyuan,open,关注人时会出现is not trust user,[],"不知道是不是只有我一个人有这问题
+"
+qii/weiciyuan,closed,能支持4.0不？,[],"希望支持4.0
+"
+qii/weiciyuan,closed,很多TypedArray都没有recycle,[],"rt
+"
+qii/weiciyuan,closed,Fdroid,[],"The Fdroid version is not up to date with the playstore version.
+"
+qii/weiciyuan,open,分组下，一次只能加载五十条微博，五十条后不再出现加载更多的黑色按钮,"[Label(name=""bug"")]",
+qii/weiciyuan,closed,Fix issue #187: Bad image on mobile network.,[],"有时候移动网络出现图片下载完成但是无法显示的问题，经过分析下载的文件后发现下载的图片是gzip压缩后的数据，因此下载前加入gzip判断
+"
+qii/weiciyuan,open,BuildConfig.Debug感觉有时候不可靠，即使Release版下仍然为True!,[],"官方Issue地址：
+https://code.google.com/p/android/issues/detail?id=27940
+"
+qii/weiciyuan,closed,左侧滑动菜单缺少几个菜单项,[],"系统：galaxy nexus 4.3
+用trunk下的源码，自己编译安装的apk
+运行无问题，就是左侧滑动菜单缺少私信和搜索这两项。
+![wifi0s0-415023528screenshot_2014-02-25-18-08-35](https://f.cloud.github.com/assets/6781070/2256312/337a250e-9e05-11e3-98c1-8f8178e71a20.png)
+"
+qii/weiciyuan,open,【小问题】Now Playing在4.4上有问题,[],"下拉刷新的时候有Should have subtitle controller already set的warning
+写微博的时候就算没有播音乐也有Now Playing可以点
+"
+qii/weiciyuan,open,长按操作有误判,[],"有时候只是在上下滚动，但是会被误认为是长按
+"
+qii/weiciyuan,open,新浪微博和twitter两种数据刷新方式无故交叉出现,[],"设置为新浪微博方式若干次加载新消息后有时跳到这一次加载的消息最后一条，而设置为twitter后出现相反的情况。
+"
+qii/weiciyuan,closed,进入应用时，有机会发生缓存的微博中最新一条不显示，在刷新后方才显示的状况,[],"机型：Meizu MX II
+Android 版本： 4.2.2
+基于最新四次元代码 Gradle 构建，未对代码做任何改动
+"
+qii/weiciyuan,open,0.5.0beta4 点击载入中间数据导致崩溃,[],
+qii/weiciyuan,closed,进入应用时偶尔白屏,[],"偶尔进入的时候会这样白屏，退出重开就正常。
+从首页切换到其他提及其他界面有事也有白屏或者卡顿。
+
+设备Nexus 5 4.4.2
+版本0.5.0beta3
+![screenshot_2014-02-09-14-10-32](https://f.cloud.github.com/assets/2347318/2119550/7852785e-9174-11e3-8127-e63853483463.png)
+"
+qii/weiciyuan,open,微博刷新消息不完全,[],"如题，隔的时间长了之后，每次刷新微博只有45+，并且中间没有“点击获取更多消息”，很偶尔情况下能正常一次。。这现象持续有一个多月了，看到有人说是渣浪的问题，但不知如何提交问题，只能上这儿问一下了
+
+设置里已设定可一次性加载344条数据，每次获取条数为自动，两部手机不同版本（最新版和某个老版本）皆此现象
+"
+qii/weiciyuan,open,能不能过滤掉推广微博？,[],
+qii/weiciyuan,open,主页微博太多,[],"以前好像有后台清理功能的，怎么现在不清理了，刷久了微博太多
+"
+qii/weiciyuan,closed,保存的图片在图库里不显示,[],"保存图片到pictures文件夹下图，库不会自动扫描到。Android 4.4.2
+"
+qii/weiciyuan,open,内置浏览器复制文本问题,[],"内置浏览器选择文字后，上方没有复制粘贴按钮。在输入框长按 光标边上也没有 粘贴按钮。
+"
+qii/weiciyuan,closed,"新浪客户端SSO登录时,报SSO包不存在.认证失败",[],"官方客户端授权 -> 认证 -> ""sso package or sign error""
+"
+qii/weiciyuan,closed,Merge pull request #1 from qii/0.50,[],"合并更新
+"
+qii/weiciyuan,open,切换网络无法发送微博，无法选择微博文字,[],"nexus5，原生4.4，没root，play下载最新版的四次元
+问题1：从4G LTE切换到wifi后，微博只能刷新、看但发送全部失败，提示网络连接问题，需要在后台退出再打开才能发送。
+问题2：在timeline可以复制整条微博，但点到单条微博中，无法复制其中的部分文字。长按时，复制选项会一闪而过，但一放开就会消失。
+"
+qii/weiciyuan,closed,保持默认设置，网络环境切换后打开应用FC,[],"四次元基于最新版本 Gradle 构建。在从 3G 环境转换至家中的 Wi-Fi 环境后，打开四次元永远 FC。但是切换至 3G 环境，软件可以正常打开。
+
+机型：Meizu MX II（Genymotion 不支持 3G 模拟，所以无法用它重现问题，很抱歉）
+
+StackTrace 如下： 
+
+java.lang.NullPointerException
+    at org.qii.weiciyuan.ui.adapter.AbstractAppListAdapter.buildHolder(AbstractAppListAdapter.java:397)
+    at org.qii.weiciyuan.ui.adapter.AbstractAppListAdapter.getView(AbstractAppListAdapter.java:312)
+    at android.widget.HeaderViewListAdapter.getView(HeaderViewListAdapter.java:220)
+    at android.widget.AbsListView.obtainView(AbsListView.java:2314)
+    at android.widget.ListView.makeAndAddView(ListView.java:1969)
+    at android.widget.ListView.fillSpecific(ListView.java:1400)
+    at android.widget.ListView.layoutChildren(ListView.java:1738)
+    at org.qii.weiciyuan.support.lib.AutoScrollListView.layoutChildren(AutoScrollListView.java:51)
+    at android.widget.AbsListView.onLayout(AbsListView.java:2096)
+    at android.view.View.layout(View.java:14150)
+    at android.view.ViewGroup.layout(ViewGroup.java:4402)
+    at android.widget.FrameLayout.onLayout(FrameLayout.java:448)
+    at android.view.View.layout(View.java:14150)
+    at android.view.ViewGroup.layout(ViewGroup.java:4402)
+    at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1663)
+    at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1521)
+    at android.widget.LinearLayout.onLayout(LinearLayout.java:1434)
+    at android.view.View.layout(View.java:14150)
+    at android.view.ViewGroup.layout(ViewGroup.java:4402)
+    at android.widget.FrameLayout.onLayout(FrameLayout.java:448)
+    at android.view.View.layout(View.java:14150)
+    at android.view.ViewGroup.layout(ViewGroup.java:4402)
+    at android.widget.FrameLayout.onLayout(FrameLayout.java:448)
+    at android.view.View.layout(View.java:14150)
+    at android.view.ViewGroup.layout(ViewGroup.java:4402)
+    at android.widget.FrameLayout.onLayout(FrameLayout.java:448)
+    at android.view.View.layout(View.java:14150)
+    at android.view.ViewGroup.layout(ViewGroup.java:4402)
+    at android.widget.FrameLayout.onLayout(FrameLayout.java:448)
+    at android.view.View.layout(View.java:14150)
+    at android.view.ViewGroup.layout(ViewGroup.java:4402)
+    at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1663)
+    at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1521)
+    at android.widget.LinearLayout.onLayout(LinearLayout.java:1434)
+    at android.view.View.layout(View.java:14150)
+    at android.view.ViewGroup.layout(ViewGroup.java:4402)
+    at com.slidingmenu.lib.CustomViewAbove.onLayout(CustomViewAbove.java:477)
+    at android.view.View.layout(View.java:14150)
+    at android.view.ViewGroup.layout(ViewGroup.java:4402)
+    at android.widget.RelativeLayout.onLayout(RelativeLayout.java:985)
+    at android.view.View.layout(View.java:14150)
+    at android.view.ViewGroup.layout(ViewGroup.java:4402)
+    at android.widget.FrameLayout.onLayout(FrameLayout.java:448)
+    at android.view.View.layout(View.java:14150)
+    at android.view.ViewGroup.layout(ViewGroup.java:4402)
+    at android.view.ViewRootImpl.performLayout(ViewRootImpl.java:1946)
+    at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1765)
+    at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:999)
+    at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:4470)
+    at android.view.Choreographer$CallbackRecord.run(Choreographer.java:749)
+    at android.view.Choreographer.doCallbacks(Choreographer.java:562)
+    at android.view.Choreographer.doFrame(Choreographer.java:532)
+    at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:735)
+    at android.os.Handler.handleCallback(Handler.java:725)
+    at android.os.Handler.dispatchMessage(Handler.java:92)
+    at android.os.Looper.loop(Looper.java:137)
+    at android.app.ActivityThread.main(ActivityThread.java:5068)
+    at java.lang.reflect.Method.invokeNative(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:511)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)
+    at dalvik.system.NativeStart.main(Native Method)
+"
+qii/weiciyuan,closed,连接家里的wifi总是“网络有问题连不上”,[],"Nexus5 + Android 4.2.2 (cm-hammerhead)
+
+公司wifi或者3g网络则无此问题
+其他软件在家里的wifi也都能正确访问网络
+不知道什么原因
+
+然后log是空的，我啥也看不到：
+root@hammerhead:/sdcard/android/data/org.qii.weiciyuan/cache/log # ls -l
+ls -l
+ls -l
+root@hammerhead:/sdcard/android/data/org.qii.weiciyuan/cache/log #
+
+adb logcat里也看不到程序的log
+"
+qii/weiciyuan,closed,无法关注用户,[],"自己编译的版本，点了关注后显示toast is not trust user
+"
+qii/weiciyuan,closed,显示通知栏通知时区分“转发了你的微博”和“提到了你”,[],"如题，之前的版本不管是被转发还是被提及都是显示“转发了你的微博”
+"
+qii/weiciyuan,closed,Gradle build 失败,[],"commit [0372598]
+gradle.build里面缺少对crashlytics.jar的依赖引用，加上就可以build通过了
+
+dependencies {
+    compile files('libs/gson-2.2.2.jar')
+    compile files('libs/crashlytics.jar')
+    compile project(':libs:slidingmenulibrary')
+    compile 'com.google.android.gms:play-services:4.0.30+'
+}
+"
+qii/weiciyuan,closed,AsyncTask的cancel(true)问题,[],"请问一下，你在异步doInBackground中try。。。catch()中调用cancel(true);，没报 java.lang.InterruptedException异常？
+"
+qii/weiciyuan,closed,打开带有地理位置的微博闪退,[],"新版的google play service 需要在AndroidManifest的<application里面加上这段，否则闪退
+
+<meta-data
+                android:name=""com.google.android.gms.version""
+                android:value=""@integer/google_play_services_version"" />
+"
+qii/weiciyuan,closed,内存占用不少,[],"100M左右，图片～～
+"
+qii/weiciyuan,closed,想请教下在ListView中使用SpannableString的问题,[],"请教下SpannableString在listView中的使用，会致使item的点击事件不能响应，我在overflow上找到一个解决方案，但是不是很完美，只好问下四次元是怎么处理的？能否发我一封邮件贴一下关键代码，感谢
+cveranm@gmail.com
+"
+qii/weiciyuan,open,图标,[],"Nexus5 的图标不太清晰 可能分辨率的问题吧
+"
+qii/weiciyuan,closed,主界面ListView中点击图片进入图片大图查看时FC,[],"机型：Meizu MXII
+系统版本：Android 4.1.1
+基于最新版本的Gradle构建
+
+问题应该是魅族自己引起的，经过Genymotion测试没有这个问题出现…
+
+StackTrace:
+
+java.lang.RuntimeException: Unable to start activity ComponentInfo{org.qii.weiciyuan/org.qii.weiciyuan.support.gallery.GalleryActivity}: android.view.InflateException: Binary XML file line #24: Error inflating class <unknown>
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2110)
+    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2135)
+    at android.app.ActivityThread.access$700(ActivityThread.java:131)
+    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1228)
+    at android.os.Handler.dispatchMessage(Handler.java:99)
+    at android.os.Looper.loop(Looper.java:137)
+    at android.app.ActivityThread.main(ActivityThread.java:4866)
+    at java.lang.reflect.Method.invokeNative(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:511)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:786)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+    at dalvik.system.NativeStart.main(Native Method)
+Caused by: android.view.InflateException: Binary XML file line #24: Error inflating class <unknown>
+    at android.view.LayoutInflater.createView(LayoutInflater.java:613)
+    at com.android.internal.policy.impl.PhoneLayoutInflater.onCreateView(PhoneLayoutInflater.java:56)
+    at android.view.LayoutInflater.onCreateView(LayoutInflater.java:660)
+    at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:685)
+    at android.view.LayoutInflater.inflate(LayoutInflater.java:466)
+    at android.view.LayoutInflater.inflate(LayoutInflater.java:396)
+    at android.view.LayoutInflater.inflate(LayoutInflater.java:352)
+    at com.android.internal.policy.impl.PhoneWindow.generateLayout(PhoneWindow.java:2985)
+    at com.android.internal.policy.impl.PhoneWindow.installDecor(PhoneWindow.java:3045)
+    at com.android.internal.policy.impl.PhoneWindow.setContentView(PhoneWindow.java:268)
+    at android.app.Activity.setContentView(Activity.java:1980)
+    at org.qii.weiciyuan.support.gallery.GalleryActivity.onCreate(GalleryActivity.java:79)
+    at android.app.Activity.performCreate(Activity.java:5143)
+    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1079)
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2074)
+    ... 11 more
+Caused by: java.lang.reflect.InvocationTargetException
+    at java.lang.reflect.Constructor.constructNative(Native Method)
+    at java.lang.reflect.Constructor.newInstance(Constructor.java:417)
+    at android.view.LayoutInflater.createView(LayoutInflater.java:587)
+    ... 25 more
+Caused by: java.lang.UnsupportedOperationException: Can't convert to dimension: type=0x12
+    at android.content.res.TypedArray.getDimensionPixelSize(TypedArray.java:463)
+    at android.view.View.<init>(View.java:3357)
+    at android.view.ViewGroup.<init>(ViewGroup.java:427)
+    at android.widget.LinearLayout.<init>(LinearLayout.java:176)
+    at android.widget.LinearLayout.<init>(LinearLayout.java:172
+"
+qii/weiciyuan,open,分组切换的问题,[],"启动后，第一次切换分组无效，表现为分组标题变了，但是微博内容还是“所有人”分组的。需要在默认分组等一会儿（等待自动加载或者反复来回切换分组）才能正确显示目标分组的微博内容
+"
+qii/weiciyuan,open,地图,[]," 希望使用google的静态地图，新浪的那个太丑
+"
+qii/weiciyuan,closed,Add option to browse pictures with other apps.,[],"看到快图浏览的作者的微博： http://www.weibo.com/1489508705/AhDhmu9ot?mod=weibotime 
+于是尝试添加使用其他图片浏览器浏览图片的选项。
+另外感觉menu键比长按要更方便一些。。。。
+"
+qii/weiciyuan,closed,[建议]能不能增加退出按钮啊？,[],"建议放在个人页的下边栏菜单，或者个人资料页里。
+建议在注销的后面增加一个“退出”的选项，如下图所示：
+退出系统后台，不在接收新的消息即可。
+![siciyuan](https://f.cloud.github.com/assets/5916232/1519347/6851be52-4b5a-11e3-9f87-e6f67dbad212.png)
+
+现在不太清楚这个直接按返回键是不是就是退出了，还是后台一直在挂载状态。
+"
+qii/weiciyuan,closed,fix issues/190,[],"当用户未登陆时候点击分享功能跳转到分享Activity.
+判断是否有账户登陆过，如果没有帐号登陆。
+则跳转到登陆页面并提示用户登陆.
+"
+qii/weiciyuan,open,导入eclipse 资源文件里面有很多重复 报错,[],"导入eclipse 资源文件里面有很多重复 报错
+"
+qii/weiciyuan,closed,从其他应用通过四次元分享时四次元崩溃,[],"全新安装四次元，未设置任何帐号。这时候在其他应用里点击分享，选择四次元就会崩掉。进入四次元设置一个账号后，这个问题就不再出现。
+
+希望这种情况下能有一个帐号检测并进行相应的处理，辛苦辛苦。
+"
+qii/weiciyuan,closed,转发贴无法点击进入没有正文的原贴,"[Label(name=""bug"")]","这个问题比较妖怪，如果一个转发贴的原贴没有正文（全部正文文字是一个话题标签），那么在查看这个转发贴的时候，无法点击进入原贴，查看原贴的评论。
+
+例子是此帖：http://weibo.com/1771140437/AgIoEmSa8
+点击原贴要么查看图片，要么搜索话题，要么就进入发贴者的首页，反正不能看到原贴本身。
+"
+qii/weiciyuan,closed,较高的Gif图看不全，无法缩放,[],"这个
+http://weibo.com/1630887317/AdGgjm1lC#_rnd1383208601998
+
+那一条微博也@四次元App 了
+"
+qii/weiciyuan,open,下载完成，但是无法读取图片,[],"版本：ver  0.49 （从google play安装的）
+手机：Nubia z5 mini
+OS：Android4.2.2
+问题描述：使用电信的3G时，timeline所有图片都无法显示，空白图片点进去之后，显示“下载完成，但是无法读取图片”的toast。切换到wifi之后无此问题。
+"
+qii/weiciyuan,closed,麻烦在play商店解封小米手机,[],"小米系列并非只可以用MIUI，有很多第三方ROM，这些ROM保留了holo风格，四次元是完全正常的，况且现在MIUI上四次元一样可以正常运行，请作者不要以偏概全！请解封！
+"
+qii/weiciyuan,closed,fix issue #60,[],"fix #60
+修复了一些图片在图片浏览时方向正常，上传后图片旋转的问题，具体为
+- 手机相册中JPEG文件会有一个[ExifInterface](http://developer.android.com/reference/android/media/ExifInterface.html)信息,我们在展示本地相片时应考虑JPEG图片的[方向值](http://developer.android.com/reference/android/media/ExifInterface.html#TAG_ORIENTATION)。可[参考](https://github.com/square/picasso/blob/master/picasso/src/main/java/com/squareup/picasso/FileBitmapHunter.java)
+- 上传图片时
+  - 上传原图，微博服务器**貌似**会自动处理EXIF信息
+  - 上传压缩图片，我们需要自己处理图片的EXIF信息，代码中我是做了图片旋转处理，不过我认为应当把原始图片的EXIF信息写入压缩的图片中
+
+TODO
+- [ ] 本地图片浏览功能
+"
+qii/weiciyuan,closed,好友分组没了,[],"这个是我赖以生存的功能，根据分组了filter微博，谢谢
+"
+qii/weiciyuan,closed,发图片微博逻辑,[],"1. 编写新微博
+2. 添加图片
+3. 点击查看添加的图片
+4. 点击左上角的“查看图片”返回
+
+expected: 回到编写新微博界面，类似按硬件返回键
+real: 回到微博主界面
+"
+qii/weiciyuan,closed,主Acitivity被调用finish方法后无法再启动应用,[],"在我的开源系统里面，有一个滑动返回手势功能，该功能使用的方法是调用Activity.finish()来结束被用户滑动返回的Activity，该功能如果在四次元主Activity上开启，则四次元在被滑动关闭后不能再次打开，只有使用强制结束。。
+我的开源系统地址：github.com/LOSP
+"
+qii/weiciyuan,closed,0.50,[],
+qii/weiciyuan,closed,编译代码时提示错误,[],"1 使用Google Map的declared-styleable时 res-auto不起作用
+   两个错误在map.xml browserweibomsgfragment_viewstub_mapview.xml文件中均提示styleable map找不到属性，xmlns:map=""http://schemas.android.com/apk/res-auto"" 手动添加google map的包名xmlns:map=""http://schemas.android.com/apk/com.google.android.gms""
+
+2 使用FragmentManager.getFragments()报错
+   类FixedOnActivityResultBugFragment67行中List<Fragment> fragments = getChildFragmentManager().getFragments();提示getFragments函数不存在，我查看support-v4包的源代码时，发现并未存在此函数。
+
+编译IDE为Intellij IDEA12，Android SDK为4.1.2，Java SDK为1.6
+"
+qii/weiciyuan,closed,Merge pull request #1 from qii/slidingmenu,[],"与原作者同步
+"
+qii/weiciyuan,closed,点击评论、提及FC,[],"E/AndroidRuntime( 7449): FATAL EXCEPTION: main
+E/AndroidRuntime( 7449): java.lang.NullPointerException
+E/AndroidRuntime( 7449):    at com.android.internal.widget.ScrollingTabContainerView.setIndicatorLayout(ScrollingTabContainerView.java:346)
+E/AndroidRuntime( 7449):    at com.android.internal.widget.ScrollingTabContainerView.setTabSelected(ScrollingTabContainerView.java:416)
+E/AndroidRuntime( 7449):    at com.android.internal.app.ActionBarImpl.selectTab(ActionBarImpl.java:616)
+E/AndroidRuntime( 7449):    at com.android.internal.app.ActionBarImpl.addTab(ActionBarImpl.java:551)
+E/AndroidRuntime( 7449):    at com.android.internal.app.ActionBarImpl.addTab(ActionBarImpl.java:537)
+E/AndroidRuntime( 7449):    at org.qii.weiciyuan.ui.main.MentionsTimeLine.buildActionBarAndViewPagerTitles(MentionsTimeLine.java:141)
+E/AndroidRuntime( 7449):    at org.qii.weiciyuan.ui.main.LeftMenuFragment.showMentionPageImp(LeftMenuFragment.java:293)
+E/AndroidRuntime( 7449):    at org.qii.weiciyuan.ui.main.LeftMenuFragment.access$200(LeftMenuFragment.java:48)
+E/AndroidRuntime( 7449):    at org.qii.weiciyuan.ui.main.LeftMenuFragment$2.onReceive(LeftMenuFragment.java:258)
+E/AndroidRuntime( 7449):    at android.support.v4.content.LocalBroadcastManager.executePendingBroadcasts(LocalBroadcastManager.java:297)
+E/AndroidRuntime( 7449):    at android.support.v4.content.LocalBroadcastManager.access$000(LocalBroadcastManager.java:46)
+E/AndroidRuntime( 7449):    at android.support.v4.content.LocalBroadcastManager$1.handleMessage(LocalBroadcastManager.java:116)
+E/AndroidRuntime( 7449):    at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime( 7449):    at android.os.Looper.loop(Looper.java:153)
+E/AndroidRuntime( 7449):    at android.app.ActivityThread.main(ActivityThread.java:5508)
+E/AndroidRuntime( 7449):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime( 7449):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime( 7449):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:835)
+E/AndroidRuntime( 7449):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:602)
+E/AndroidRuntime( 7449):    at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:115)
+E/AndroidRuntime( 7449):    at dalvik.system.NativeStart.main(Native Method)
+E/AppErrorDialog(  503): Failed to get ILowStorageHandle instance
+"
+qii/weiciyuan,closed,Update README.md,[],
+qii/weiciyuan,closed,微博链接支持问题,[],"当点击了单条微博的页面的链接（http://weibo.com/{user_id}/{weibo_id} ）时候出现这样的提示
+![screenshot_2013-10-17-00-49-20](https://f.cloud.github.com/assets/4883681/1344624/625df038-3683-11e3-9466-1be69a6d653e.png)
+貌似是判断成用户的页面了
+"
+qii/weiciyuan,closed,create新浪,[],
+qii/weiciyuan,closed,个人资料页面添加滑动关闭手势，将设置页面加入slidingmenu中的rightFragments,[],"![device-2013-10-14-125810](https://f.cloud.github.com/assets/434984/1323645/3e139aea-348d-11e3-8425-f468251ce1fe.png)
+![device-2013-10-14-125239](https://f.cloud.github.com/assets/434984/1323646/44539cac-348d-11e3-940c-883e8231dc19.png)
+"
+qii/weiciyuan,open,多图浏览经常出现无法解析和加载的问题,[],"救命哇，很喜欢四次元卡片浏览
+but
+图片经常无法加载，多图经常出现无法解析，最近最最抓狂的一个issue
+感激！
+"
+qii/weiciyuan,closed,"暗色主题下,转发和评论数颜色问题,以及评论/转发列表头像显示问题",[],"随便开一个微博
+点一下""X转发"",就会发现""X评论""变黑了,原来是白色的,就看不清了,如图
+![screenshot_2013-10-11-10-44-45](https://f.cloud.github.com/assets/2126873/1311919/41ab63f0-3220-11e3-9ca9-1e0ecb2f86e1.png)
+
+在流量控制中设置评论/转发列表的头像为自动, 那么应该在3G下会自动不显示头像对吧?
+但在我的机子上有时正常(不显示头像),有时不正常(显示头像吃流量)
+是不是和电信3G的判断有关?
+"
+qii/weiciyuan,closed,内置浏览器的Bug,[],"看到一个链接，比如知乎的，不想使用内置浏览器阅读，这时点击“用外部应用打开”按钮，打开知乎客户端，浏览一段时间，返回四次元会报异常
+"
+qii/weiciyuan,closed,希望在「个人资料」页面加上下拉刷新功能,[],"希望在「个人资料」页面加上下拉刷新功能……
+"
+qii/weiciyuan,closed,转发微博超过字数限制时，想删掉前面的人的字删了几行一定会卡死,[],"转发微博的时候前面已经很多人转了，到我超过字数限制了，想删掉点前面的·可是删着删着就卡死了，然后停止运行，要不就一直卡在那里只能强制清除后台，这个bug屡试不爽，出现率100%
+"
+qii/weiciyuan,closed,可能由于官方推广微博而导致漏消息bug,[],"手机型号：索尼lt26i，Android 4.1.2
+客户端版本：4.83或4.9
+
+自从发现新浪有推广微博之后，每次客户端刷新首页微博（默认设置50条），会多刷新1条微博（显示刷新了51条），然后处于旧消息和新消息之间的显示更多的按钮就木有了，导致无法获取新旧消息之间的微博
+
+如果将每次更新条数设置为25，则会刷新26条，依旧没有显示更多的按钮
+
+希望能够改进~
+"
+qii/weiciyuan,closed,已经看过的评论还会重复提醒,[],"如题 
+"
+qii/weiciyuan,closed,新版首页如何快速刷新？,[],"试用了一下新版，发现好像只能一点一点翻回页首，然后通过下拉刷新。如果是这样，太不方便了。老版的首页提供的刷新按钮比较好用。
+"
+qii/weiciyuan,closed,长按微薄有时会导致首页和评论界面混杂,[],"在首页长按某条微博，又是会导致界面弹出评论也才有的tab，但是显示的又是首页的内容，如图所示：
+
+![weiciy](https://f.cloud.github.com/assets/3538768/1223581/a9efe1f6-2722-11e3-9da1-18bf416c7898.png)
+"
+qii/weiciyuan,closed,"高度较高(但不是超大图)的图片,希望能适应宽度放大",[],"目前超过屏幕长度的图片能自动适应宽度放大
+但一些不是超大的图片,打开时还是高度适应
+
+比如这张吧
+http://ww2.sinaimg.cn/bmiddle/6b52d97fjw1e8zpj8anuvj20hs1dl410.jpg
+440px × 1227px
+在GS3 720 x 1280的屏幕上,打开后,能显示全图,字看上去就很小
+希望能按宽度放大到填满
+"
+qii/weiciyuan,closed,长微博名认不全,[],"![screenshot_2013-09-24-00-14-40](https://f.cloud.github.com/assets/4883681/1192991/85f30486-246b-11e3-96ee-bbce6af02a3a.png)
+"
+qii/weiciyuan,closed,删除微博评论导致程序异常退出,[],"在首页点进任何详细微博中发表一个评论，然后选择并点击删除会导致程序异常退出；但是在评论栏里面删除自己发出的评论没有问题。
+
+手机：Galaxy Nexus
+系统版本：4.3
+软件版本：0.49 snapshot bin
+"
+qii/weiciyuan,closed,支持多图发送么？…,[],"很高兴啊最近一版支持多图查看了，而且换夜间模式方便了。下载的是bin文件夹里的版本，大问题都没有，只是不支持多图发送…
+"
+qii/weiciyuan,closed,加入SwipeBackLayout,[],
+qii/weiciyuan,closed,Action Bar 样式,[],"现在的 action bar 只有在 tl 会显示新微博和 overflow, 其他界面下是空白的. 理论上来说应该都有 overflow, 并且把设置丢进去. 
+"
+qii/weiciyuan,open,用了几天提几个新版的Bug,"[Label(name=""bug"")]","1.“加载更多”的时候很容易FC
+2.经常“图像解析失败”
+3.新提及和评论看过以后，在官方web上还是处于未读状态
+4.如下图，有时候图片和正文之间有不正常的空白
+
+![screenshot_2013-09-17-14-58-59](https://f.cloud.github.com/assets/3538768/1162800/96848942-2028-11e3-8bb1-efab60c5686f.png)
+"
+qii/weiciyuan,closed,最新代码查看个人资料的Bug,[],"点击随意一个其他人的号,查看信息,再用侧边栏返回自己的个人资料,发现还显示的是其它人的信息
+
+应该是这两处修改造成的  
+src\org\qii\weiciyuan\support\database\AccountDBTask.java   
+
+src\org\qii\weiciyuan\ui\userinfo\NewUserInfoFragment.java
+"
+qii/weiciyuan,closed,自己编译的apk，不会自动通知新内容,[],"Eclipse编译的
+已经在设置中开了通知功能，后台进程有在跑，但没有服务
+有新微博也没提示，要手工刷新
+是Bug么，还没试过作者编译的bin
+"
+qii/weiciyuan,closed,"用了 Twitter 显示方法之后""加载更多微博""出现在上面合适吗？",[],"如果""从中间加载的微博""出现在按钮上面的话，从下往上看完这新加载的后，不是还要再往下翻到""加载更多""按钮吗？
+从中间加载的出现在""加载更多""按钮下面的话，会不会更符合阅读习惯呢？
+"
+qii/weiciyuan,closed,过滤新浪广告导致自己的微博看不到,[],"RT，貌似把自己也给过滤掉了
+"
+qii/weiciyuan,closed,bug反馈,[],"![screenshot_2013-09-14-10-34-14](https://f.cloud.github.com/assets/5456150/1142707/ff8019be-1ce7-11e3-9e00-3e4729a9ef68.png)
+没收藏也提示取消收藏？？？？
+"
+qii/weiciyuan,closed,Remove duplicate image.,[],
+qii/weiciyuan,closed,左滑手势的定义,[],"在首页左滑的话，可以到菜单，右滑回去。
+
+在搜索，提及，评论，私信都不能左滑到菜单。
+"
+qii/weiciyuan,closed,“收到的评论”中选中一条微博后顶栏的“分享”颜色与底色相同,"[Label(name=""bug"")]","RT
+"
+qii/weiciyuan,closed,好像对长微博支持不太好,[],"很长的微博放大了也看不清 然后上下滚动时图片会闪退
+"
+qii/weiciyuan,closed,打开长条形图片的时候按屏幕宽度显示比较合理,"[Label(name=""bug"")]","现在是按屏幕高度显示，长微博什么的，就会比较麻烦。
+
+另外那个滚动条太容易点到了啊。
+
+还有发微博的时候，附加了图片的话，点开此图片有个看图的界面，但是又都不能点，和时间线里的看图貌似不是一个模块，未完成？
+
+BTW，已经非常满意了
+"
+qii/weiciyuan,closed,顶栏增加了一个铅笔后没有地方点击回到最上了,"[Label(name=""bug"")]","微博名比较长，加入写微博图标后顶栏没有空余的地方来点击了，为什么不滑动写微博呢？
+"
+qii/weiciyuan,closed,希望恢复战场原大人的订书机(´；ω；`),[],"现在的“4”真的无法接受真的太突兀的感觉了……原本的订书机特喜欢没有好桑心……请问能恢复吗？QuQ
+"
+qii/weiciyuan,closed,Huge amount of cached data,[],"What steps will reproduce the problem?
+1. Check the cached data of this app
+2. See huge amount of that, I had 6 Gigabyte of that
+
+What is the expected output? What do you see instead?
+I just feel that you are treating the cached data in a wrong way.
+
+What version of the product are you using? On what operating system?
+Version 0.483 on Android 4.2.2, SONY C6603 with a ROM from SONY Mobile, 10.3.1.A.0.244
+"
+qii/weiciyuan,closed,0.49不支持4.0了吗？,[],"0.49不支持4.0了吗？
+"
+qii/weiciyuan,closed,修改包名,[],
+qii/weiciyuan,closed,新版不错，可我最喜爱的纯黑背景没了啊,[],"四次元大大，肿么把黑色背景替换成暗色了……
+"
+qii/weiciyuan,closed,merge,[],
+qii/weiciyuan,closed,slidingmenu分支编译的apk 点@自己帐号 的时候FC,[],"某好友@我,然后我点他的微博上的@我的帐号 出现FC
+"
+qii/weiciyuan,closed,Remove duplicate image.,[],
+qii/weiciyuan,closed,有考虑过用Fuubo的滑动返回库吗,[],"四次元现在这个滑动返回误判比较高灵敏度也比较低，不如用他们的库，twidere作者也开始用了
+https://github.com/Issacw0ng/SwipeBackLayout
+"
+qii/weiciyuan,closed,求私信通知,[],"既然黑魔法有私信，就请再加上私信的通知吧
+"
+qii/weiciyuan,closed,这个APP不更新了吗？,[],"这个APP不更新了吗？QAT
+"
+qii/weiciyuan,closed,没有sdcard情况下，图片不能显示,[],
+qii/weiciyuan,closed,为什么google play显示和我的所有设备都不兼容？,[],"我的两部手机都是4.1.2，是不是缺少文件？望解答
+"
+qii/weiciyuan,closed,希望支持腾讯微博还有饭否,[],"rt
+"
+qii/weiciyuan,closed,globalization: english,[],"Cannot confirm as buildable. Cannot build your original code either.
+"
+qii/weiciyuan,closed,无图模式的建议,[],"选择“流量控制-禁止下载图片（改进的无图模式）”后，原来图片的地方留下一大片空白。
+能否对含有图片的微博进行标注，点进该微博后才显示图片。
+"
+qii/weiciyuan,closed,微博详情向右拖动返回崩溃,[],"点击微博详情后，向右拖动未松手，然后向左拖动，松手后崩溃
+07-13 14:38:57.214: E/AndroidRuntime(13223): java.lang.NoSuchMethodError: android.view.ViewPropertyAnimator.withLayer
+07-13 14:38:57.214: E/AndroidRuntime(13223): at org.qii.weiciyuan.support.lib.MyViewPager.onTouchEvent(MyViewPager.java:79)
+07-13 14:38:57.214: E/AndroidRuntime(13223): at android.view.View.dispatchTouchEvent(View.java:5549)
+07-13 14:38:57.214: E/AndroidRuntime(13223): at android.view.ViewGroup.dispatchTransformedTouchEvent(ViewGroup.java:1951)
+07-13 14:38:57.214: E/AndroidRuntime(13223): at android.view.ViewGroup.dispatchTouchEvent(ViewGroup.java:1712)
+07-13 14:38:57.214: E/AndroidRuntime(13223): at org.qii.weiciyuan.support.lib.MyViewPager.dispatchTouchEvent(MyViewPager.java:120)
+"
+qii/weiciyuan,closed,expired token,[],"用了一段时间后就会有expired token！的错误，接着就无法刷新微博，重启也没有，只有删了重装，所有设置要从头来过。
+"
+qii/weiciyuan,closed,最新版不够0.483流畅,[],"安装了bin里的那个版本，页面拖动略卡，0.483超级流畅的
+"
+qii/weiciyuan,open,希望支持长微博,[],"感谢@qii 的四次元客户端，这是我用过的最好用的新浪微博客户端。
+虽然 `长微博` 不是新浪微博的功能，但随着微博的使用越来越频繁，希望可以增加对`长微博`的支持。
+"
+qii/weiciyuan,open,已删除的帖子仍然显示,"[Label(name=""bug"")]","在个人页面已删除的帖子仍然会显示出来。再次删除则提示帖子不存在。
+"
+qii/weiciyuan,closed,update qii,[],
+qii/weiciyuan,closed,没用过Intellij，求指导,[],"导入Intellij，编译报错：Android Dex: [weiciyuan-slidingmenu] java.lang.IllegalArgumentException: already added: Lcom/slidingmenu/lib/CanvasTransformerBuilder$1; 移除这个lib没搞定。
+"
+qii/weiciyuan,closed,打开用户主页是fc,"[Label(name=""bug"")]","最新的sliding编译后，点开微博好友的用户信息都会fc
+"
+qii/weiciyuan,closed,CM10.1 的bug,[],"机器是LG SU640， 刷的是CM10.1 2013年5月28日的ROM，在浏览的时候闪退
+"
+qii/weiciyuan,closed,0.49的两个Bugs,[],"一个是搜索出来的条目时间永远是1970-1-1
+另一个是网址识别有问题
+
+具体见图
+
+![screenshot_2013-05-01-11-02-30](https://f.cloud.github.com/assets/3538768/522640/2114c270-c057-11e2-811a-8f14a403bcb0.png)
+![screenshot_2013-05-19-01-20-49](https://f.cloud.github.com/assets/3538768/522641/216483c8-c057-11e2-9efc-12733f548a45.png)
+"
+qii/weiciyuan,closed,Galaxy Nexus于4.2.2 AOSP下遇到的几个BUG,[],"1、有时App会出现无法打开的状况，即点击图标后毫无反应，而进程列表中（Recent Apps）却有App的运行纪录；重启后正常，有时可以使用图库中的照片分享功能强制打开四次元的消息编写框，然后可以通过返回继续使用。
+
+2、有时会在使用中出现应用无响应的警告，但在无视后可以继续使用
+
+3、在设置中打开硬件加速时会使得页面文字显示不正常或直接被识别为墓碑符（Q.E.D）
+
+以上问题希望开发者大大能够注意一下
+"
+qii/weiciyuan,closed,add out bin gen .idea folder to .gitignore file,[],"add out bin gen .idea folder to .gitignore file
+"
+qii/weiciyuan,closed,三个月没更新了啊，求出个apk吧,[],"把更新了的代码都弄上去吧
+
+不会编译的门外汉敬上
+"
+qii/weiciyuan,closed,自定义配色,[],"希望增加自定义配色, 系统的部分主题在使用标准App配色时将导致使用困难
+"
+qii/weiciyuan,closed,發送微博時，圖片方向可否調節,[],"平日橫、豎照的照片，沒辦法調節方向。發出去的圖都是橫着的了。
+"
+qii/weiciyuan,closed,一些建议,[],"1、图片显示希望能增加个固定宽度选项，类似于“快阅微博”，有些情况下会方便很多
+2、希望能增加“赞”的功能（不知道这个有没有接口？），另外把“收藏”移到更方便的位置，以及浏览收藏的微博有更方便的入口。
+"
+qii/weiciyuan,closed,望增加多图浏览支持,"[Label(name=""enhancement"")]","现在新浪微博支持上传多张图片了，四次元只能看到第一张，希望下一版能看多张
+"
+qii/weiciyuan,closed,为什么是只支持4.1以上？,[],"我抓了slidemenu分支的代码，配好编译环境后，修改了下`android:minSdkVersion=""15""`，编译出来的apk，在4.0.4上也可以很正常的使用，没有任何FC或其它问题。
+看了看，好像主要是xml中用到了API level 16的几个属性以及rich notification。
+考虑下把要求降下来？
+"
+qii/weiciyuan,closed,项目导入到Eclipse中的时候报错：存在两个android-support-v4.jar包,[],"报错的日志如下，现在的版本中应该用哪个目录下的android-support-v4.jar包呢？
+Found 2 versions of android-support-v4.jar in the dependency list,
+but not all the versions are identical (check is based on SHA-1 only at this time).
+All versions of the libraries must be the same at this time.
+Versions found are:
+Path: /opt/WorkSpaces/Woxingtianxia/DummyActivity/libs/android-support-v4.jar
+Length: 393154
+SHA-1: 307c1cc532eabbf1d135b43e5c983c9da700449d
+Path: /opt/WorkSpaces/Woxingtianxia/slidingmenulibrary/libs/android-support-v4.jar
+    Length: 385685
+    SHA-1: 48c94ae70fa65718b382098237806a5909bb096e
+ Jar mismatch! Fix your dependencies
+"
+qii/weiciyuan,closed,建议增加开关允许查看图片时不点击原图直接载入,[],"手速慢的话有时候来不及点击原图按钮,
+对于想直接查看原始图片的用户造成不必要的流量增加
+"
+qii/weiciyuan,closed,发送时在弹出框未消失时改变屏幕旋转状态会导致OS提示程序异常终止,[],"编写完成后点按发送将会弹出正在发送的提示框,
+在此时切换横屏/竖屏会导致OS提示四次元已停止工作.
+
+已知该问题可能导致数据发送失败,
+虽然不是很严重的问题 ( //w\)
+"
+qii/weiciyuan,closed,关于版本问题,[],"qii， 是否考虑过在4.0以下版本系统上实现holo风格呢？是否可以考虑以下holoeverywhere？这样会更广泛一点。
+"
+qii/weiciyuan,closed,可否添加定时微博？,[],"定位围脖和转发有时还是蛮必要的，不知可否添加？
+"
+qii/weiciyuan,closed,点击后退 直接退出应用,[],"在nexus7上，查看图片、点击查看微博等离开主菜单后，点击后退，直接退出应用，而非回到主菜单。
+感觉就只是主菜单这个activity的后退动作有bug。
+
+但是在手机上没这个bug
+"
+qii/weiciyuan,closed,报两个bug,"[Label(name=""bug"")]","我先报两个bug吧：
+04-15 20:41:59.172: E/AndroidRuntime(4392): FATAL EXCEPTION: main
+04-15 20:41:59.172: E/AndroidRuntime(4392): java.lang.NullPointerException
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at org.qii.weiciyuan.ui.nearby.NearbyTimeLineActivity$FetchWeiboMsg.onPreExecute(NearbyTimeLineActivity.java:260)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at org.qii.weiciyuan.support.lib.MyAsyncTask.executeOnExecutor(MyAsyncTask.java:409)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at org.qii.weiciyuan.ui.nearby.NearbyTimeLineActivity.updateWithNewLocation(NearbyTimeLineActivity.java:226)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at org.qii.weiciyuan.ui.nearby.NearbyTimeLineActivity.access$0(NearbyTimeLineActivity.java:213)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at org.qii.weiciyuan.ui.nearby.NearbyTimeLineActivity$1.onLocationChanged(NearbyTimeLineActivity.java:237)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at android.location.LocationManager$ListenerTransport._handleMessage(LocationManager.java:255)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at android.location.LocationManager$ListenerTransport.access$000(LocationManager.java:184)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at android.location.LocationManager$ListenerTransport$1.handleMessage(LocationManager.java:200)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at android.os.Handler.dispatchMessage(Handler.java:99)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at android.os.Looper.loop(Looper.java:137)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at android.app.ActivityThread.main(ActivityThread.java:5041)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at java.lang.reflect.Method.invokeNative(Native Method)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at java.lang.reflect.Method.invoke(Method.java:511)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)
+04-15 20:41:59.172: E/AndroidRuntime(4392):     at dalvik.system.NativeStart.main(Native Method)
+
+第一个是点周边之后crash，显示nullpointexception。
+
+04-15 20:42:05.489: E/Google Maps Android API(4392): Failed to load map.  Could not contact Google servers.
+
+第二个是地图的问题，而且这个错误弹得非常多。
+"
+qii/weiciyuan,closed,发送图片时，进度条走到94%后失败,[],
+qii/weiciyuan,closed,能不能问一下什么时候更新啊,[],"能不能问一下什么时候更新啊 最近挺不稳定的
+"
+qii/weiciyuan,closed,编译出错,[],"使用Intellij编译apk时，提示：
+
+`android-apt-compiler: [weiciyuan-slidingmenu] /Users/*****/Development/IdeaProjects/weiciyuan-slidingmenu/res/layout/browserweibomsgfragment_viewstub_mapview.xml:4: error: No resource identifier found for attribute 'cameraZoom' in package 'org.qii.weiciyuan'`
+
+只是想用黑魔法，所以只修改了appkey和secret，其他代码没改动。
+"
+qii/weiciyuan,closed,关于项目的导入,[],"前提：我是新手，想研究一下这个源码，以前只弄eclipse的android项目，现在intelli
+J不会导入啊，有几个问题：
+1.Intelli J版本有影响吗
+2.android sdk引用源有问题
+3.项目里的lib文件夹内的东西要导入吗，怎么弄
+
+能否给个详细步骤，以及配置的更改，不甚感激~~
+"
+qii/weiciyuan,closed,大图显示问题,[],"您好，我想问一下，您客户端里的大图显示是如何实现的（就是微博有些图很长），问题描述如下。http://stackoverflow.com/questions/7428996/hw-accelerated-activity-how-to-get-opengl-texture-size-limit  请问您如何解决，谢谢！！
+"
+qii/weiciyuan,closed,在别人的主贴里，回复我的评论中的url要太多步骤才能打开。,[],"如题，收到一条评论带URL的话不能直接点开，需要以下步骤：
+点击弹出，查看评论，左划到评论，上下划找到该条评论，点击弹出，查看评论，再点击才能打开。
+
+尤其是上下划那一步，如果是个热门帖评论很多的话，很容易就淹没了
+"
+qii/weiciyuan,closed,与SONY LT25i设备不兼容,[],"Play Store提示说和我的手机不兼容，但是自己下载0.483的apk, 然后adb install安装能够成功，用起来也没发现什么问题。手机是4.1.2的系统。 不知道Play Store是通过什么机制判断的？
+"
+qii/weiciyuan,closed,能否添加清除缓存的设置项？,[],"扫sd卡发现四次元下有7000+文件夹和3000+文件（安装半个月余），不知道长期使用会不会产生更多缓存导致其他软件运行缓慢啊？希望能添加清除缓存的选项或改进缓存机制。谢谢
+"
+qii/weiciyuan,closed,string，定义重复了。,[],"android-apt-compiler: [weiciyuan] /Users/weiciyuan/res/values-zh/errors.xml:14: error: Resource entry code20003 is already defined.
+
+android-apt-compiler: [weiciyuan] /Users/weiciyuan/res/values/strings.xml:320: error: Resource entry close is already defined.
+
+android-apt-compiler: [weiciyuan] /Users/weiciyuan/res/layout/map.xml:1: error: No resource identifier found for attribute 'mapType' in package 'org.qii.weiciyuan'
+"
+qii/weiciyuan,closed,评论列表条目错乱,[],"看到之前有人提到评论列表头像错乱的问题。
+我最近经常遇到的是切换到评价我的条目里，往下拉一下再回到顶部，就看到评论的内容和原微博错乱了，牛头不对马嘴。
+不知是什么原因。
+"
+qii/weiciyuan,closed,联通3G网络有问题，连不上,[],"9250，4.2.2，未root，四次元0.483，杭州联通3G
+wifi下一切正常，使用3G网络刷新就会出现“网络有问题，连不上”的提示
+"
+qii/weiciyuan,closed,master分支和0.49分支运行就崩溃,[],"请问这两个分支的版本为什么运行就崩溃了，我是创建的虚拟机是Android4.1.2。是为啥呀。
+"
+qii/weiciyuan,closed,微博登录界面填入用户名密码后，点登录没反应。,[],"如题。
+而且以前在Nexus 7上也有这样的问题。
+
+设备:Nexus 4
+系统:android 4.2.2 (CyanogenMod 10.1 M2)
+"
+qii/weiciyuan,closed,图片下载从单色到图片,[],"不管是头像还是微博配图都是从纯红到纯蓝到完整的图片，这是我编译的问题么？还是目前play的版本就是这样的？
+"
+qii/weiciyuan,closed,无法使用,[],"今天突然 刷不出数据，所有的数据都不行，貌似是接口挂了。。。。
+"
+qii/weiciyuan,closed,Nexus10不能安装,[],"nexus10在play中不能安装，提示说不支持此设备。
+"
+qii/weiciyuan,closed,察看微薄正文横竖屏切换，显示数据会丢失,[],"最近在看这个项目。发现个bug
+察看微薄正文横竖屏切换，显示数据会丢失。
+
+the code version is in branch slidingmenu
+
+I'll fix it after I read over the code.
+
+thx for author.
+"
+qii/weiciyuan,closed,魅族MX2的 smartbar适配的问题,[],"smartbar适配后，发微博的按钮会错位，导致无效，像下图一样。
+![](http://ww4.sinaimg.cn/large/a74ecc4cjw1e24pm4601rj.jpg)
+
+有考虑适配mx2吗？或者是可能造成的这样的问题是什么，有什么解决方法？
+
+（还有我想smartbar没有这么弱爆吧？？可以适配但是错位了。）
+"
+qii/weiciyuan,closed,已經無法安裝了?,[],"目前的手機因為被Sony拋棄了,所以沒有4.1...
+
+本來想取得更新發現無法安裝...
+
+看來我只能放棄四次元的更新了...
+
+PLAY上說系統要求4.1......
+"
+qii/weiciyuan,closed,@好友时希望弹出好友列表供选择 ,"[Label(name=""enhancement"")]","因为有些好友名字一时想不起 痛苦
+"
+qii/weiciyuan,closed,关于自己的头像,"[Label(name=""bug"")]","如题，前阵子换了头像，结果发现‘个人’tab页里的小头像还是以前的，但是点开单微博或者个人资料，头像都是新的；开始以为是缓存的问题，把cache全部删除后还是如此，不知道是什么问题，或者是新浪API的问题？
+"
+qii/weiciyuan,closed,只能收藏，但是不能取消收藏,[],"如题
+"
+qii/weiciyuan,closed,写不了微博,[],"0.483 Nexus 4. Android4.21. 
+clone了master的版本编译安装，点击写微博，输入不了任何东西app就直接崩溃了。
+"
+qii/weiciyuan,closed,希望加载新微博时不用自动跳到最上,"[Label(name=""enhancement"")]","点击右下角的刷新按钮时会自动跳到最上，希望这个动作不会跳到最上，而只是刷新，用户需要的时候自己会手动向上。理由：首先希望能正在看微博时同时刷新，并且不影响我阅读；其次又到最上又刷新和下面的动作重复。
+
+双击“首页”时自动跳到最上并开始刷新，这个不用改。
+"
+qii/weiciyuan,closed,评论同时转发和转发同时评论藏得太深了,[],"不方便选取，最好在表情符号边上给个勾选框这样比较方便。另外快速评论那里似乎不能转发。
+"
+qii/weiciyuan,closed,发消息卡在后台,[],"发送带图片消息时卡在后台，草稿箱里是空的，强制关闭App也不行，通知栏里一直显示“后台发送中”。
+
+卸载App后重新安装，发送同样消息再次卡住。
+
+同样的文字和图片单独发时可以发送成功。
+
+如图：
+
+![2013-02-08 10 17 43](https://f.cloud.github.com/assets/3507394/138268/bf39d48c-7196-11e2-83fd-8e98feacee1d.png)
+"
+qii/weiciyuan,closed,新手，带一种代码语法有点疑问,[],"比如这个项目下layout/pull_to_refresh_header.xml里的第26行
+ android:background=""?listview_item_refresh_animation""
+请问这个问号是什么意思呢？同时我也找不到listview_item_refresh_animation这个资源文件，一般我们使用的时候不都是用@的么，比如android:background=""@anim/cycle_7""
+"
+qii/weiciyuan,closed,“加载更多微博”能不能换个颜色？,[],"使用底色的话，加载在微博中间
+下拉的时候基本上就错过了
+很不方便
+
+还有刷新的时候，已经有的微博似乎不会刷新评论和转发数？
+"
+qii/weiciyuan,closed,建议在Wifi下自动加载图片，3G或2G网络下不加载。,[],"建议在Wifi下自动加载图片，3G或2G网络下不加载。
+"
+qii/weiciyuan,closed,slidingmenu 版本问题,[],"1. 设置首页自动刷新后，刷新的时候crash
+2. 主题设置成夜间后，slidingmenu还是背景还是白色的，导致文字同背景一个颜色，看不清楚。
+"
+qii/weiciyuan,closed,转发别人的转发时，输入法没有在最前（百度，戳爆输入法均如此）,[],"1、转发别人的转发时，输入法没有在最前（百度，戳爆输入法均如此）
+2、有时打开白屏没内容，在打开就可以了
+"
+qii/weiciyuan,closed,内存、切换问题及私信问题,[],"我用的手机是MOTO me865 感觉内存占用其实还挺大的，需要用到44mb~当然其实还在可以接受的范围内，但是不知道为什么，一旦切换出去界面后使用其他程序在一开始的一段时间内会卡卡的，过了之后正常，其他app不会有这样的情况或情况较弱~
+我看了4次元的微博知道不会开发私信功能，感觉挺可惜的，感觉有了私信功能才算完满啊！我想说能否得知一下开通私信接口的价钱，发起募捐不知可否~
+本人非常喜欢作者的作品，看到之前作者有说界面要大改，不知下个版本什么时候出呢？非常期待的说~ 支持你！
+"
+qii/weiciyuan,closed,Bug again,[],"＊Sony Ericsson Xperia Arc S （LT18i）
+＊Android 4.0.4
+＊Ver 0.482
+＊移動2G／WiFi
+![Screenshot_2013-01-24-15-22-22](https://f.cloud.github.com/assets/3202087/92820/570c7edc-65f7-11e2-933f-35f82912354d.png)
+
+這次是時間顯示問題.。
+經常在各個地方都發現時間只能顯示13:0或13:1，13;2這樣.。
+
+這應該是Bug吧？
+"
+qii/weiciyuan,closed,标签指示器问题,[],"有的时候从通知栏进入四次元, 列表显示的是 @ 列表, 但是活跃提示的指示器却在回复上. 
+"
+qii/weiciyuan,closed,经常出现“网络有问题，连不上”,[],"自从更新之后(换图标那次)无论是刷新首页数据还是评论等等消息总会出现“网络有问题，连不上”的问题，第二次刷新才会成功。而且刷新速度比以前的版本慢多了。
+
+我是在nexus 7上用此客户端的。
+"
+qii/weiciyuan,closed,最近带图片的微博貌似很容易发不出去,[],"![Screenshot_2013-01-16-11-08-20](https://f.cloud.github.com/assets/3230600/81100/6ff0a698-62f6-11e2-8f9d-a5b655999dad.png)
+1.RT貌似无论在WIFI还是行动网络的情况下
+带图片的微博很容易卡后台,有时会很久才能发出去
+不知是什么问题
+![Screenshot_2013-01-20-11-21-33](https://f.cloud.github.com/assets/3230600/81102/41bcc0c6-62f7-11e2-913c-fb229469934f.png)
+![Screenshot_2013-01-20-17-26-20](https://f.cloud.github.com/assets/3230600/81107/6e14f1b6-62f7-11e2-8aae-f054a31af25d.png)
+2.RT貌似在设置中开了4.1黄油[?]之后文字会自动加码
+![Screenshot_2013-01-08-22-32-40](https://f.cloud.github.com/assets/3230600/81108/76cf97b6-62f7-11e2-9651-ea5efaa12431.png)
+3.RT最后这个提示的图标是只有我这里这么奇怪= =还是真的是这个样子
+"
+qii/weiciyuan,closed,关于自编译的私信和搜索权限,[],"我注意到https://github.com/qii/weiciyuan/wiki/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E6%8E%88%E6%9D%83
+提供了自编译可以开放私信和搜索功能的可能。
+我也检查了blackmagic在bool.xml为true，但是自编译之后的结果使用私信功能时提示
+
+```
+ Insufficient app permissions!
+```
+
+logcat提示
+
+```
+ 01-19 16:28:16.398: E/weiciyuan(10903):     org.qii.weiciyuan.support.http.JavaHttpUtility.handleError(): error={""error"":""Insufficient app      permissions!"",""error_code"":10014,""request"":""/2/direct_messages/user_list.json""}
+```
+
+这是什么原因呢？是blackmagic.xml提供的一组key失效了吗？
+谢谢！
+"
+qii/weiciyuan,closed,@ 的问题,[],"在发微博/回复/转发的界面, 点 @ 会自动隐藏虚拟键盘, 需要重新调出. 不知能否解决. 
+"
+qii/weiciyuan,closed,从通知栏进入“提及”或“评论”标签页时没有自动加载最新的信息,[],"- Galaxy Nexus
+- Android 4.2.1
+- Baseband I9250XXLH1
+- ROM JOP40D
+- 四次元 0.482
+- Wi-Fi + PEAP + http proxy
+- 设置页中“通知栏扩展样式”选“最新的一条”
+
+重现：
+1. 当有新“提及”（或“评论”）的通知时，展开通知栏消息抽屉，按一下4D的通知
+2. 4D 的“提及”（或“评论”）标签页打开
+
+预期：
+打开的标签页中显示最新的“提及”信息（或评论)，或者可以看到正在刷新
+
+实际：
+既没有看到最新的信息，也没有看到正在刷新
+"
+qii/weiciyuan,closed,FC 现象,[],"  Nexus 4
+  Android 4.2.1 JOP40D
+  T-Mobile 3G
+  无后台服务, 无 root, 无 tweek
+
+使用手势从微博详细返回上一级时偶尔出现 FC. 之后会重新载入应用回到列表顶端. 
+"
+qii/weiciyuan,closed,误报“原微博已经被删除”,[],"- Galaxy Nexus
+- Android 4.2.1
+- Baseband I9250XXLH1
+- ROM JOP40D
+- 四次元 0.482
+- Wi-Fi + PEAP + http proxy
+
+这个要重现可难啦，应该是网络有问题才会触发。
+具体情况就是，我试图打开我转发过的一条微博时，显示“原微博已经被删除，看不懂中文吗？”的提示。
+然后我按“...”里的“刷新”，再试，就成功了。
+![Screenshot_2013-01-16-11-18-09](https://f.cloud.github.com/assets/504435/70238/6c30c5a0-5f8c-11e2-989a-15f9995b36a8.png)
+"
+qii/weiciyuan,closed,“添加好友”关键字输入框默认不获得输入焦点,[],"- Galaxy Nexus
+- Android 4.2.1
+- Baseband I9250XXLH1
+- ROM JOP40D
+- 四次元 0.482
+- Wi-Fi + PEAP + http proxy
+
+重现：
+1. 打开 4D，按铅笔按钮编辑微博
+2. 在编辑微博界面按“@”按钮添加好友
+
+预期：
+软件盘打开，可以直接开始输入关键字搜索好友
+
+实际：
+关键字输入框没获取输入焦点，软件盘不打开。需要先按一下输入框才能开始搜索。
+"
+qii/weiciyuan,closed,几点建议,"[Label(name=""enhancement"")]","1. 微博得文字右边的空白总是比左边多，但是显示转发的微博文字的时候，左右正好，建议对于不同的屏幕一行能够显示的文字作初步计算，然后把左右留得空白基本上一样，这样比较美观一点。
+2. 显示了时间，建议后面加上Source，例如""今天09:04 来自:新浪微博""
+3. 图片的加载有个时间，建议没有出来之前用一个缺省图片。
+4. ""设置""功能有点隐蔽，能否在主页上显示?
+"
+qii/weiciyuan,closed,国外手机网络无法更新微博，只能用wifi (已解决),[],"这个问题也许跟四次元app没有关系，但是我只想请人给我一个比较确切的答案好让我死心。我已经试过很多新浪微博的app了，包括Yibo，Weico跟四次元，每次都是一样，只能开WIFI之后才可以更新timeline，一换成手机网络就不能更新了。
+
+今天再次尝试了在手机网络下使用四次元app，出现了偶尔可以更新偶尔又不行的现象，app里提示我说是“新浪微博的某些网络节点又出问题了，请换个网络试试”，然后多刷新几次timeline又偶尔刷出来了。
+
+我不理解这到底是谁的问题？是因为GFW？还是因为新浪在阻止境外某些IP的访问？还是由于新浪的实名制政策？还是说所有新浪微博的app都有一个共同缺陷？
+
+我已经不指望在手机上用新浪微博了，大不了放弃，但是我想要一个解释，求高人解答。
+
+update: 问题已解决，是APN设置问题，修改APN后app更新正常了 （至少目前为止是这样……）
+"
+qii/weiciyuan,closed,“查看原图”时旋转屏幕会回到标准清晰度预览图。,[],"- Galaxy Nexus
+- Android 4.2.1
+- Baseband I9250XXLH1
+- ROM JOP40D
+- 四次元 0.482
+- Wi-Fi + PEAP + http proxy
+
+重现：
+1. 竖屏情况下，找一条附图的微博，按预览图查看标准清晰度预览图
+2. 按“原图”按钮查看原图
+3. 把手机旋转九十度，屏幕转变为横屏
+
+预期：
+原图以横屏方式展示，右上角“原图”按钮仍然隐藏
+
+实际：
+显示的是标准清晰度预览图，右上角“原图”按钮再次出现
+"
+qii/weiciyuan,open,建议增加旋转图片功能,[],"发微博添加图片后无法旋转。
+
+很多时候照相机拍出来的照片方向都是不正确的。
+"
+qii/weiciyuan,closed,建議加入搜索功能,[],"差這步我就能把我手機裡其他所有的客戶端給移除了
+"
+qii/weiciyuan,closed,[建议] 草稿箱的入口不应该在设置页面,[],"建议放在个人页的下边栏菜单，或者个人资料页里。
+"
+qii/weiciyuan,closed,表情图标一点就崩溃的问题,[],"我有时候点表情会崩溃掉...有时候不会...手机Sony Ericsson Xperia Arc S(LT18i)，系统4.1.2(CM10 FXP152)……
+"
+qii/weiciyuan,closed,圖片進度問題,"[Label(name=""bug"")]","＊Sony Ericsson Xperia Arc S （LT18i）
+＊Android 4.0.4
+＊Ver 0.482
+＊移動2G／WiFi
+
+又是我......嗯......
+這次是不管WiFi還是2G都會在開始傳送圖片的時候，直接飆到94......
+WiFi問題倒不大，但是2G狀態就不能很準確的知道進度到多少，以前也沒這問題......
+"
+qii/weiciyuan,closed,在评论中被提及的情况处理不完善,[],"在评论中被提及的时候，会在评论标签上显示未读计数。
+但是那条评论却不会出现在评论标签下的列表中，也就没法消除那条未读计数。
+- Galaxy Nexus
+- Android 4.2.1
+- Baseband I9250XXLH1
+- ROM JOP40D
+- 四次元 0.483
+- Wi-Fi + PEAP + http proxy
+"
+qii/weiciyuan,closed,请教问题 。。。,[],"我发现微博首页的时间还在变化 ？ 这个是怎么弄的呢？
+还有就是微博Item 的布局如果换大字体 ，内容会和时间重叠 。建议调整下布局。
+"
+qii/weiciyuan,closed,索爱St18i，ICS4.0.4错误消息提示,"[Label(name=""enhancement"")]","持续性错误提示收到at，打开软件之后“评论”栏显示（1），事实上都没有
+"
+qii/weiciyuan,closed,android 4.21 GPRS 下显示无法连接网络,[],"求修正，机器是galaxy nexus，杭州移动
+"
+qii/weiciyuan,closed,MX2上竖屏的问题,[],"在MX2横屏上使用相当完美!但是竖屏的时候,编写的那个笔的图标跟微博的名字重叠在一起!会点不到编写的图标!这里能发图片吗?好像发不了...
+"
+qii/weiciyuan,closed,最新版本的微博显示有些问题,[],"1. 有时候只显示图片，其他文字空白
+   2, 有时候显示的都是黑方框，这个好像同性能选项里的“启用硬件加速”有关系
+"
+qii/weiciyuan,closed,test,[],"test
+"
+qii/weiciyuan,closed,發送圖片問題,[],"＊Sony Ericsson Xperia Arc S （LT18i）
+＊Android 4.0.4
+＊Ver 0.482
+＊移動2G／WiFi
+
+更新至新版本後，最近發送圖片時，一旦上方的狀態條出現「發送圖片」之後會LAG在那裡不動約十幾二十秒。普遍在用WiFi發圖才有。以前的版本從來沒這問題。
+
+然後移動2G下轉發或評論最近要發多幾次的惡夢又回來了...本來0.481也沒這情況出現......
+
+所以會是我的問題嗎OTL
+"
+qii/weiciyuan,open,私信功能,[],"新浪微博的私信使用的是XMPP协议。已经有人写过一个客户端了，作者可以参考。
+
+https://github.com/duanhong169/weibo.xmpp.client
+"
+qii/weiciyuan,closed,R.java中常量的问题,[],"你好，因为你这次加入了Google play service lib 库项目，所以R.java中生成的变量会如下：
+  public static int alphain=0x7f040001;
+
+相比之前没有了 final关键字，导致switch语句报错。
+网上有人说按Ctrl+1 eclipse会提示用户把switch语句转换成if。但是我的eclipse里面没有此选项。请问你是怎么处理这个问题的呢？
+"
+qii/weiciyuan,closed,在有代理的 Wi-Fi 时 FC,[],"- Galaxy Nexus
+- Android 4.2.1
+- Baseband I9250XXLH1
+- ROM JOP40D
+- 四次元 0.482
+- Wi-Fi + PEAP + http proxy
+
+不知道用什么关键字过滤有用的 logcat，需要提供 logcat 的话请给点帮助。
+"
+qii/weiciyuan,closed,编译不能通过,[],"有两个layout ：map.xml 和 browserweibomsgactivity_layout.xml
+eclipse提示的错误是一样的，如图：
+![1](https://f.cloud.github.com/assets/2979066/44916/503cff56-571e-11e2-93b3-c42d6e81c63e.jpg)
+
+不支持自定义标签？
+
+我尝试将所有map:标签去掉，layout不会报错
+
+但是类里面AppMapActivity.java 跟BrowserWeiboMsgFragment.java报错，如图：
+![2](https://f.cloud.github.com/assets/2979066/44917/f1f14474-571e-11e2-82df-70cd64b8187d.jpg)
+
+找不到类？
+
+发现project.properties类里面这行：
+android.library.reference.1=../../../android-sdk-windows/extras/google/google_play_services/libproject/google-play-services_lib - Copy
+
+跟这个有关吗？
+
+新手请指教，不胜感激！
+"
+qii/weiciyuan,closed,头像乱了有时候 ,[],"![1357278705](https://f.cloud.github.com/assets/1483883/42563/05e0ab88-5633-11e2-8c38-44334174c60a.jpg)
+
+版本号  0.481  
+"
+qii/weiciyuan,open,压缩25% 文转图问题,"[Label(name=""bug"")]","上传图片压缩为25%的时候,文转图后,那些文字看不清的.太小扭曲了..
+"
+qii/weiciyuan,closed,收藏的微博点开来变成另一条微博,[],"如题
+"
+qii/weiciyuan,closed,wifi下发图片存在问题,"[Label(name=""bug"")]","wifi环境下发送图片，通知栏进度条走完后，没反应，要等好久才提示失败
+"
+qii/weiciyuan,closed,报bug：内存问题,"[Label(name=""bug"")]","有两三次，我使用四次元，然后手机反应变得巨慢无比。很像是手机内存被吃完时的症状。有一次正好电脑在旁边，就连adb看了进程，有几十个四次元的进程在跑。看来应该是app crash了然后不停重启，每次重启又都要占用内存的样子。可惜没有保留下log下来。
+手机：galaxy nexus，系统4.2
+"
+qii/weiciyuan,closed,为什么会用到 47M 的空间啊,[],"我是小白啦，只是看到 47M 的时候吓到了……希望可以帮忙解释解释~？
+我用的是 Sony Xperia arc S LT18i Android 4.0.4
+"
+qii/weiciyuan,closed,URL mixed with plain text,"[Label(name=""bug"")]","as shown below
+![Image150903477](https://f.cloud.github.com/assets/3175696/40114/d6d244ba-5582-11e2-868a-40bede31dfdf.png)
+"
+qii/weiciyuan,closed,建议：记住上次阅读的位置,"[Label(name=""enhancement"")]",
+qii/weiciyuan,closed,发微博时gps 有问题哦,"[Label(name=""bug"")]","点地图的图标在谷歌地图里会搜索""null""
+"
+qii/weiciyuan,closed,其他应用分享图片的时候的问题,"[Label(name=""enhancement"")]","其他应用share图片过来的时候，intent里面传过来的文字信息没有显示，最好显示出来，不要就显示个“图片分享”；另外，分享图片的时候，应该在发送之前能看到图片才对。谢谢
+"
+qii/weiciyuan,closed,建议：单击直接弹出评论的界面,[],"评论列表里，单击现在是给出个菜单选择【查看微博】或者【回复评论】，能不能直接是回复评论的界面？看评论后主要以回复为主，这样设计能少点击一次。
+
+还有之前做了个图标如何。。
+
+![icon_big](https://f.cloud.github.com/assets/3151930/35709/4a79c4a0-5255-11e2-968b-69972b146f21.png)
+"
+qii/weiciyuan,closed,Nexus10上横/竖屏切换时会crash,[],"机型：Nexus10
+Android版本：4.2.1
+四次元版本：0.482
+症状：如果从竖屏状态启动，然后切到横屏，再切回竖屏，会Crash。而如果从横屏状态启动，则之后怎么切都不会出现问题。
+题外话：今天才发现了这个应用，真是个惊喜，即便没有对Nexus10这种高分辨率做HD版，UI自适应后也相当舒服。相比之下，官方的HD版微博完全处于不可用状态。qii加油，为了这个我都有心学android开发了。
+"
+qii/weiciyuan,closed,Option to choose the quality of pictures to download with,[],"在使用WiFi连接或流量充足时，强迫症导致每次打开图片都要再点击一次“原图”来看原图，就蛋疼地改了一下。。。
+
+添加了原图、压缩图、自动和禁止四个选项，去除了原来的“禁止下载图片”选项。
+"
+qii/weiciyuan,closed,微博内容中转发的信息显示 冒号 乱码,[],"![576548D9-99EB-4A7A-B36B-3CC7C869B333](https://f.cloud.github.com/assets/1483883/23674/65659986-4a5a-11e2-87bf-df964dd09328.png)
+"
+qii/weiciyuan,closed,建议更新行距,"[Label(name=""enhancement"")]","现在微博文字行间距有点小，1.5倍比较合适
+"
+qii/weiciyuan,closed,刷新出来的微博重复,"[Label(name=""bug"")]","在时间轴里有时候会出现的同一条重复出现的bug，我猜是和wifi下自动刷新有关
+"
+qii/weiciyuan,closed,“提及” 里的 “所有人” 分组只显示最新的一条,[],"“关注的人” 和 “原创” 分组里是正常的
+"
+qii/weiciyuan,closed,我按这个编译后，不能标记未读消息，@和评论一直通知。。。,[],"我按这个编译后，不能标记未读消息，@和评论一直通知。。。
+"
+qii/weiciyuan,closed,建议：某条微博长按之后左右滑动可以用来做过滤功能,[],"建议：某条微博长按之后左右滑动可以用来做过滤功能。
+比如从列表里过滤所有同作者的，耳根清净。
+目前我手头的版本，看到长按之后左右滑是到另一个tab下面的内容去。这应该是默认的吧。改一改应该可以多做很多事。
+一条建议，仅供参考。
+"
+qii/weiciyuan,closed,建议：不同好友分组的微博列表里各自保存“上次看到哪“的位置,"[Label(name=""enhancement"")]","场景：
+1. 在好友分组A里看了50条微博
+2. 切换到好友分组B里，看了x条。
+3. 切换回好友分组A，希望UI自动留在上次第50条附近，我可以接着往下看。
+
+对于我这种多分组的，这个比较有用。
+我目前手头的版本似乎没有这个功能。
+"
+qii/weiciyuan,closed,建议：从某条微博正文往左划回到微博列表时，加入animation,[],"相比较官方微博客户端，4次元我比较喜欢的一点：某条微博正文的界面里可以用左右滑动来看“微博”/“评论”/“转发”，且手感一流。也可以在“微博”一栏里往左划回到微博列表。然而这个动作没有animation，而且有点卡顿感。如果加入activitiy切换的fadein/fadeout 的animation或者是zoomIn/zoomOut 的animation，可能可以更好的保持整个操作手感的流畅性。
+一点建议，仅供参考。
+"
+qii/weiciyuan,closed,评论列表头像错乱,[],"犯罪现场：
+
+![](http://ww2.sinaimg.cn/large/6df5c0b0jw1dzr60u7dcdj.jpg)
+
+过了一会头像载入完毕：
+
+![](http://ww2.sinaimg.cn/large/a74eed94jw1dzr7ml20s3j.jpg)
+
+头像和对应的名字错乱了。
+"
+qii/weiciyuan,closed,"增加""点击载入中间数据""区域背景颜色",[],"""点击载入中间数据""区域的背景颜色现在和主timeline的颜色是一样的，在浏览的时候让人很不容易发现。
+建议使用蓝/灰背景色，提示用户
+
+使用中已经很多次没注意到这个区域了。
+"
+qii/weiciyuan,closed,回复评论不方便,[],"评论列表里点了一个评论之后，直接到了原微博。这样要回复这条评论就还要再转到那个微博的评论tab，甚至要找到之前的评论再回复。官方客户端点击评论列表给菜单选择直接回复还是去看原微博，还是不错的。或者有其他更好的办法么？
+"
+qii/weiciyuan,closed,Suitability for app store,[],"F-Droid.org is an app store for free/libre/open-source software on Android. Since it is a popular app we would like to include it. We build apps from source and sometimes keys are missing from the source. Is it OK to publish the app as built from the exact source in this repository?
+"
+qii/weiciyuan,closed,[ICS]循环重启,"[Label(name=""wontfix"")]","0.481，ICS系统，有时候打开apk反应很慢，然后进去之后开始自动退出，可以锁定屏幕但解锁后一直反复重启，只能关闭系统或重启系统。
+
+这里能上传logcat么？
+"
+qii/weiciyuan,closed,设备设置为静音时仍会发出声音,[],"SettingUtility的getEnableSound方法，是否应该也检查一下系统的铃声设置？
+
+我的环境下编译运行这个程序好像还有点小问题，不多在这个函数加入以下两行是可以工作的：
+        AudioManager manager = (AudioManager)getContext().getSystemService(Context.AUDIO_SERVICE);
+        if (manager.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) return false;
+
+感觉应该不需要检查媒体音量设置了？
+"
+qii/weiciyuan,closed,wifi代理问题,[],"当系统wifi设置代理后，四次元能不能走系统的代理呢？
+很多时候wifi本身不能直接访问网络，但是wifi挂代理后就可以了，这个时候四次元不会使用这个代理。
+官方微博、微信等很多程序对于Android 2.2/4.0+的wifi代理都会自动使用的。
+"
+qii/weiciyuan,closed,MX上发微博无法加图片，图库无响应,[],"我用的是魅族MX，用四次元只能发文字微博，加图片的时候会显示图库无响应
+
+http://ww1.sinaimg.cn/large/afba20ebgw1dze38eztqjj.jpg
+"
+qii/weiciyuan,closed,主时间线上的表情显示出来特别小。。。,[],"貌似是原像素直接显示的，木有scale-up。。。
+但是点进一条微博之后看到的表情大小就是正常的。。。
+"
+qii/weiciyuan,closed,url识别有问题,[],"http://www.imgur.com/BSKQp.png
+具体如图，这个bug已经好久了……
+"
+qii/weiciyuan,closed,粉丝列表只刷到200个左右,[],"总共380个粉丝，向下拉屏拉到183/380就停了；关注列表则能拉到底（347个）；
+"
+qii/weiciyuan,closed,返回键与屏幕左上角的返回箭头效果不一样,[],"物理返回键返回上一层，但是屏幕左上角那个返回是直接返回到timeline，很容易混淆，例如在timeline点进正文，再看评论人的资料，此时按物理返回键是返回上一层(正文的评论)，按左上角的那个返回就直接跳回timeline了，google+的话两个返回是等效的
+"
+qii/weiciyuan,closed,建议使用ActionBarSherlock实现向后兼容,[],"非常喜欢Android 4.0之后的HOLO风格。
+可以考虑使用ActionBarSherlock https://github.com/JakeWharton/ActionBarSherlock 来实现向后兼容，使之前的版本也能有这样的体验。
+"
+qii/weiciyuan,closed,关于图片浏览和其他的琐碎问题,[],"1.最好能在gif图片的预览图里面加一个标示来提醒用户图片是gif 
+2.如果是gif图那么进入查看图片的这个界面就把gif全部加载了吧，现在看gif要点原图才能看到所有的帧。。。
+3.在查看图片时如果双指缩放会有很多马赛克（很难描述，和图片质量无关，但是就是和android自带图库的浏览感觉不一样）
+4.写微博的界面里最好把定位这个图标放到菜单里吧。。。空出来的位置留给表情和选择好友。。我觉得表情和@ 好友的使用频率比定位高。。
+5.关于通知栏提醒，当有一个新评论或者@ 出现后我把它从通知栏中横向滑动清除，过了3分钟，又有同一条提醒出现在通知栏，必须点进去才能彻底消除，有点麻烦，能不能在提醒了一次后把未读消息清零（新浪貌似有这个接口）
+6.向右滑动返回上一层这个手势控制很舒服，但是太灵敏，希望能够给用户自己设置灵敏度
+7.发微薄的界面中，我注意到如果在微博中插入图片或地理位置，在菜单旁会出现图片的图标，希望能将图标改为要发的图片的预览图
+
+我第一次用github，不知道这么多条要不要分开来发= =
+"
+qii/weiciyuan,closed,横屏问题,[],"机型：HTC Chacha
+问题：landscape模式无效
+描述：开启系统landscape，App里不生效，如果可能，请加入横评横屏支持。
+- 已使用Orientation_Control解决。
+"
+qii/weiciyuan,closed,程序逻辑大bug一个,[],"滑动到""个人""tab, 点 用户 按钮，见到用户列表之后点back会回到手机主屏。
+貌似是某backstack之类点问题。
+"
+qii/weiciyuan,closed,流量问题,[],"好像现在默认是下载全尺寸大图？
+能不能列表模式下下载缩略图？然后下载大图？
+在WIFI和2g3g下可以有不同的设置
+或者还有别的原因导致四次元流量明显高于其他微博客户端？
+"
+qii/weiciyuan,closed,icon in notification,[],"用的是个微次元的W而不是四次元的4。…
+"
+qii/weiciyuan,closed,列表,[],"列表没做完？无custom lists可选。
+"
+qii/weiciyuan,closed,反馈,[],"增加app内反馈按钮。
+"
+qii/weiciyuan,closed,转发数,[],"微博界面应增加转发数和评论数的显示。
+"
+qii/weiciyuan,closed,从其他 App 分享图片到微次元后发生异常退出,[],"我用这个 App: https://play.google.com/store/apps/details?id=sg.ruqqq.Nine 分享图片到微次元的后微次元发生异常并退出
+
+![](http://i.imgur.com/GQ8PD.png)
+Share as: Image
+
+![](http://i.imgur.com/FsACj.png)
+
+我测试了一下 Gallery 和 Twitter 这两个 App，没有这个现象。
+"

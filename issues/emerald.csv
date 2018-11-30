@@ -1,0 +1,308 @@
+repository,state,title,label,body
+HenriDellal/emerald,closed,Spanish translation,[],"Hi @HenriDellal,
+First of all, thank you to you and to all the contributors of Emeral for this awesome, easy to use and minimalistic launcher. Well, I wanted to contribute to this project with a new translation to Spanish.
+
+I translated all the files I understand they are translatable, because there are another files without text to translate. The files translated are:
+
+- `arrays.xml`
+- `cwac_colormixer_strings.xml`
+- `strings.xml`
+
+I have one suggestion too: why the last string in `strings.xml` is untranslatable? It is easy to translate and if we translate it we could make easier to share with everyone the contributions of each one and  to encourage users to ""Want to help? Report bugs and submit suggestions via..."". What do you think about it?"
+HenriDellal/emerald,open,"[Suggestion] Hide ""All Apps"" category",[],"Thanks to Emerald's category management, I find that I don't need the ""All Apps"" view anymore.
+
+Could this become a hide-able option much like Unclassified and History? I only use them during bulk-categorizing. "
+HenriDellal/emerald,closed,A bugfix and some minor things,[],
+HenriDellal/emerald,closed,Some icons disappear for unknown reason,"[Label(name=""bug"")]",
+HenriDellal/emerald,open,[Bug] Icons for uninstalled apps never disappear,[],"The icons for uninstalled apps stay forever, even after a full scan or restarting the launcher. I'm using Android 8.1. This bug might be linked to #90 as it never occured in versions prior to 0.6.0."
+HenriDellal/emerald,closed,[Bug] Emerald Launcher crashes on change icon,[],Every time I select change icon emeral crashes. I'm using LineageOS 15.1 (Android 8.1) and never experienced this behaviour on versions below 0.6.0.
+HenriDellal/emerald,open,[Suggestion] 'Home button behaviour' options,[],"Currently, Emerald has two options: 
+1. Home and All apps;
+2. Home and History.
+
+If possible, please add another option: 
+3. Home and Unclassified.
+
+Thank you. "
+HenriDellal/emerald,closed,Use Storage Access Framework for backup/restore and update german translation,[],This fixes #26 on newer Android versions.
+HenriDellal/emerald,closed,Fix issues after migration to AS,[],Re-tag after merge
+HenriDellal/emerald,closed,Migrate launcher's data to SQLiteDatabase,[],"﻿The introducing of shortcuts has required the change of the data storing method. Starting from 0.6.0, the launcher will store some data in tables (apps, shortcuts and categories) of the database. There is the only thing left to do before 0.6.0: convert all data from previous versions of the launcher to the newest.
+
+Old structure:
+- All apps are stored in .MyCache.
+- Every custom category has its *.cat file with the list of apps' activities(just like in .MyCache)
+- There is categories.props file to store the list of hidden categories.
+
+New structure:
+- Apps are in ""apps"" table, their categories are listed in ""categories"" field of the app entry.
+- List of custom categories is stored in ""categories"" table.
+
+The suggested algorithm is:
+[ ] Get all category names from filenames and store them in categories table.
+[x] Convert .MyCache data to apps table.
+[x] Delete .MyCache file.
+[ ] For each category file (*.cat): open file, go through it and if application from this file exists, add category to this application entry in apps table, then close and delete the file.
+[x] Get hidden categories from categories.props, store them in preferences, then delete the file."
+HenriDellal/emerald,closed,Updated fr (French) translation,[],Commit made via [Stringlate](https://lonamiwebs.github.io/stringlate/)
+HenriDellal/emerald,open,Settings shortcut,"[Label(name=""enhancement"")]",Settings shortcut should appear in the app list if main bar is disabled.
+HenriDellal/emerald,closed,Add option to switch categories using volume buttons,[],"I found this to be useful. The default value of the preference still has to be decided on, since it could confuse users that actually want to change their volume.
+
+Edit: the default is now false"
+HenriDellal/emerald,closed,Migrate to Android Studio,[],"This is the import summary, build-emerald.sh probably needs to be updated:
+
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitignore
+* LICENSE
+* README.md
+* build-emerald.sh
+* icon.svg
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
+"
+HenriDellal/emerald,closed,Migrate to Android Studio?,[],"Currently, I first have to import the project into Android Studio. You can read more here: https://android-developers.googleblog.com/2015/06/an-update-on-eclipse-android-developer.html"
+HenriDellal/emerald,closed,Fix reset of app's category data after update,[],
+HenriDellal/emerald,open,Can't access popup menu or settings when main bar set to hidden,[],"So I might be overlooking something, but I can't figure out how to access the popup menu (with the items 'launcher settings', 'access hidden apps', 'change wallpaper' and 'full scan') or the settings screen after turning on launcher settings > appearance preferences > hide main bar.
+
+After the Emerald settings disappears from the Android recents screen, there's no way to get to the settings anymore.
+
+Proposed solution: add a menu button (three dots vertical) to the Android navigation bar. As this would not work on devices with hardware buttons, also or instead add the option to open the popup menu by long pressing the home or back button, or long-pressing on empty space in between icons.
+
+Great launcher by the way, only one that I could find that just shows all installed apps on the home screen and can be configured the way I want it--just rows of icons without text, so I can open any app from my home screen with minimal effort. Thanks!"
+HenriDellal/emerald,closed,Fix #54,[],"I was also affected by #54, and this fix works for me.
+
+Oh and btw, why was #69 ""unmerged""?"
+HenriDellal/emerald,closed,[Q] widgets,[],Widgets are immaculate for many launchers. Whether widgets will be supported or not it should be written​ in Readme IMHO. Thanks
+HenriDellal/emerald,closed,"""Always show keyboard"" option",[],
+HenriDellal/emerald,closed,Update strings.xml for Indonesian translate,[],
+HenriDellal/emerald,closed,Readme Update,[],"I made a readme file with updates to the previous one which includes
+
+Adding the app's icon
+Adding more of the app's features
+Link to License etc
+"
+HenriDellal/emerald,open,Improve Home button behaviour option,[],"So the button can switch between Home and any custom category. If this custom category is deleted later then reset setting to ""Don't switch"""
+HenriDellal/emerald,closed,Request to do copywriting.,[],"I'll love to do copywriting on your project which includes reordering your readme file, about us, FAQs and privacy policy. These will give more insight of your project to other people.I anticipate your response."
+HenriDellal/emerald,closed,Frequently Asked Question (FAQ) Proposal ,[],"Hello there, I'd like to contribute to your awesome project by writing a Frequent Asked Questions for users self-service. Would love to hear from you, thanks."
+HenriDellal/emerald,closed,App becomes unresponsive after renaming a category,[],"I was using a custom category named 'Favorite' as the Home. After a couple of weeks I had changed its name to 'Favorite apps'. After that app became unresponsive. Default launcher setting popped up. But, even after setting Emerald as default, app was still unresponsive. I had to clear the data to use it again. 
+
+Phone: Xiaomi Mi Max 2
+Android: 7.1.1
+Version: 0.5.6.1
+Reproducibility: Every time. Tried 3 times. "
+HenriDellal/emerald,closed,Let category swipes be smaller,[],"Currently, I have to swipe over about 80% of my (xhdpi) screen, which is inconvenient."
+HenriDellal/emerald,closed,App icons are not available after applying an icon pack,[],"
+#### Expected behavior
+I expected that since the launcher supports icon packs after applying a new icon pack it'll affect all the available icons of apps on my phone
+
+#### Actual behavior
+After applying an icon pack, some icons of apps don't show. Android bot icon shows instead
+
+#### How to reproduce
+- download app from fdroid
+- launch app
+- access launcher settings 
+- select appearance settings
+- select icon pack available on your phone
+
+
+
+* Device: Infinix NOTE 4
+* Operating system: Android 7.0
+- Software version: 0.5.6.1
+
+#### Recording Of The Bug
+https://youtu.be/WJAdVM_et2s
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@kodeblacc/app-icons-are-not-available-after-applying-an-icon-pack"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+HenriDellal/emerald,closed,font style not working for all applications,[],"
+#### Expected behavior
+I was expecting all my application names to be bold and also be in italic 
+
+#### Actual behavior
+After selecting my font style to be bold and italic some of the application font style didnt change.
+
+#### How to reproduce
+* Download emerald launcher
+* click the three vertical dot button 
+* Select Launcher settings
+* Click appearance preferences 
+* Scroll down and select font style
+* choose bold and italic 
+<p>
+
+* App Version: 0.5.6.1
+* Operating system: Android 7.0
+* Device Used: Infinix Hot 5
+#### Recording Of The Bug
+
+https://s31.postimg.org/wmt98vr0r/emerald.png
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@lordrayden/font-style-not-working-for-all-applications"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+HenriDellal/emerald,closed,"""Quit hidden apps"" button doesn't hide on return","[Label(name=""bug""), Label(name=""priority/low"")]","#### How to reproduce
+Open an app from hidden category and press Home button after that. The launcher will show category that is not hidden with the quit button."
+HenriDellal/emerald,closed,Propose new logo,[],"Hi, I would like to propose new logo for you app to have a good brand and become more interesting.
+
+If you are interested and allowed me, I will make it for you, because I have an idea for this. ;)"
+HenriDellal/emerald,closed,Hidden Apps loophole,[],The Back button can easily switch from All Apps to the Hidden Apps category without having to enter the password again. Re-entering the Hidden Apps view should always require the password.
+HenriDellal/emerald,closed,Crash when tapping main bar category name,[],"Instant crash when tapping the category name (e.g. ""All Apps""). The search button and the menu button (three dots) still work fine. This is new for me in v0.5.6.
+
+Motorola G5 Plus
+Android 7.0
+"
+HenriDellal/emerald,closed,CategoryManager's list doesn't update properly,"[Label(name=""bug"")]","When list of categories is changed (e.g. category was deleted), visually the list is the same, even though its items may refer to different categories that may lead to crash."
+HenriDellal/emerald,closed,No more fast scrolling in 0.5.6,[],"Hi there! Was it removed intentionally or it's regress?
+Bigger category name looks much better BTW!
+Thank you for efforts to make this great app!"
+HenriDellal/emerald,closed,Apps list to scroll horizontally,[],"Hello, 
+
+Great app! I was wondering if there is an option to scroll the App list horizontally or if there should be? I didn't find it on the settings."
+HenriDellal/emerald,open,Pressing the menu icon does nothing on some devices,[],"> On my Galaxy Tab S2, I cannot access the Settings - pressing the menu icon (3 vertical dots) does nothing. To be clear, this is using the tablet's touchscreen, not a keyboard.
+
+From #57 "
+HenriDellal/emerald,closed,Emerald Launcher does not respect device orientation,[],"With default settings, the Launcher starts in Portrait mode, even when the device is in Landscape orientation.  This is sub-optimal on a phone/tablet, but is much more problematic on an Android TV box.
+
+Emerald Launcher v0.5.4 from F-Droid on Samsung Galaxy Tab S2"
+HenriDellal/emerald,open,Enter key does not launch application,[],"When using a physical keyboard, I can navigate with the arrow keys to an app icon.  However, when I press ENTER, the icon ""blinks"" but the app doesn't launch.
+
+Emerald Launcher v0.5.4 from F-Droid on Samsung Galaxy Tab S2"
+HenriDellal/emerald,closed,Indonesian translate,[],"I've fixed some mistakes, please check.."
+HenriDellal/emerald,closed,Main bar hidden under home touch buttons,"[Label(name=""bug"")]","I've only seen this on a phone, which happens to be Android 5.1.1.
+
+When the ""main bar"" is at the bottom, touching the ""main bar"" menu causes the ""main bar"" to drop below the ""home touch"" buttons so that the menu button of 3 dots, nor the categories bar can be pressed.  Restarting emerald fixes the problem until the ""main bar"" menu button is touched (something else may trigger this problem also I believe, though I'm not sure of the exact circumstances).  Normally the ""main bar"" sits above the ""home touch"" bar until this bug is triggered.
+
+This behavior also occurs when the main bar is at top, but is less noticeable as it only can be seen if there are enough icons to fill the screen, or if icons are positioned starting from the bottom (by the option ""Stick category content to the bottom"").  When triggered, icons will be hidden behind the ""home touch"" bar (scrolling all the way up leaves a row of icons behind the ""home touch"" bar)."
+HenriDellal/emerald,closed,Simplified Chinese translation,[],This is Simplified Chinese translation for Emerald Launcher. 
+HenriDellal/emerald,closed,Make scroll bar/fast scroll optional via settings,[],"Maybe I'm just clumsy, but when I try to access apps on the right column I tend to miss the app and fast scroll somewhere else."
+HenriDellal/emerald,open,Backup Categories,"[Label(name=""enhancement"")]","When backing up the preferences, the categories and app mappings are not stored. It would be nice they could be stored with the preferences or in a separate file."
+HenriDellal/emerald,closed,Duplicate Categories after Reboot,"[Label(name=""bug"")]","When I reboot my phone, all phone, all categories are shown twice both in settings and the selector. They are not actually duplicated (entries are identical, deleting a category deletes the duplicate as well) , they just seem to be added to the list twice. Restarting the launcher solves the issue."
+HenriDellal/emerald,open,Performance issues with fast scroll,"[Label(name=""bug"")]",Dragging the scroll box anywhere causes lags and the amount of time required to make a frame increases drastically (almost twice).
+HenriDellal/emerald,open,Fast scroll box runs out of screen on scroll,"[Label(name=""bug""), Label(name=""priority/low"")]","It happens on scrolling down the list of apps somewhere near the end of list. When you scroll to the end of it, scroll box shows again."
+HenriDellal/emerald,closed,Can't make wallpapers to work in pre-Holo themes,"[Label(name=""help wanted"")]",
+HenriDellal/emerald,closed,Theme selection can't reset to original look,[],"The Theme selection with a new install has no radial button selected. Selecting one will change the theme but there is no way to get back to the ""Original"" theme without reseting the apps data."
+HenriDellal/emerald,closed,"Build script, Dutch translation and other changes",[],
+HenriDellal/emerald,closed,Enable fast scroll / scroll bar,[],"Be able to drag your finger along the right side of the screen to quickly scroll through the list.
+![kmh1q](https://user-images.githubusercontent.com/32423251/35077415-d8547844-fbc2-11e7-8e83-02d07d7be3b7.png)
+"
+HenriDellal/emerald,closed,Swipe to navigate between categories,[],"Realy not important, but should be great..."
+HenriDellal/emerald,closed,Protect apps unstallations,[],"Hello.
+
+Possibility to add a password to protect apps removing. There's already apps to protect apps access. For example if i protect app store and parameters access against uninstaller access, then it doesn't make sence if i'm able to do it without restriction from the launcher.
+
+Thanks ;)"
+HenriDellal/emerald,closed,Launcher crash on Storage permission question,[],"When selecting either ""Backup Preferences"" or ""Restore Preferences"" for the first time, launcher crashes and a permission request is displayed, followed by a crash notification on top.
+
+Can be recreated by denying Storage permission and selecting either Backup or Restore Preferences.
+
+![screenshot_20180113-094632_package installer](https://user-images.githubusercontent.com/12774050/34904963-30e167fe-f850-11e7-8a69-d40d4e84d34f.jpg)
+![screenshot_20180113-095056_package installer](https://user-images.githubusercontent.com/12774050/34904964-31078ed4-f850-11e7-8f1b-3027c0681146.jpg)
+"
+HenriDellal/emerald,closed,Change icon pack reloading,"[Label(name=""bug"")]","For now, when the icon pack and drawable transforming preferences are being changed at almost the same time, the icon pack loads twice with missing icons. So, it has to be scheduled on restart."
+HenriDellal/emerald,open,Disabling an app doesn't lead to removing from menu,"[Label(name=""bug"")]",
+HenriDellal/emerald,open,App label editor,"[Label(name=""enhancement"")]","It will be able to edit app icons and names.
+App icons should be taken from:
+- icon packs;
+- file system;
+- another app icon.
+Please share your opinions and suggestions. Thanks."
+HenriDellal/emerald,closed,Icon hiding issue.,[],On version 0.5.2.4 app icons could not be hidden from home screen.
+HenriDellal/emerald,closed,Cannot add apps to categories from last update,[],"From long press menu, I tried to move all my app away from unfinished to appropriate categories.
+
+From the last update, it just stop working. :(
+
+Advan i5E. FDroid"
+HenriDellal/emerald,closed,"""All"" and ""Unclassified"" categories are confused",[],"I have classified a number of apps into various user-created categories and set the Unclassified category as home. With previous versions of Emerald as well as 0.5.2.4, sometimes when pressing the home button from inside an app, the All category will be shown with the Unclassified label. I will not be able to see only Unclassified apps until I switch to another category besides Unclassified or All then back. This persists through the setting Home Button Behavior > Don't Switch.
+(Samsung T399 w/ CyanogenMod 12-20150319, Android 5.0.2)"
+HenriDellal/emerald,closed,Home button behaviour option,"[Label(name=""enhancement"")]","Related to #28, #32.
+
+It should be a preference that consists of following options:
+- Switch Home and All apps categories;
+- Switch Home and History categories;
+- Open Home category.
+
+If home was clicked on another app, then it should always open Home category first."
+HenriDellal/emerald,closed,Option to disable cyclic switching between Home and All categories.,[],"Right now the home button switches between the Home category and All apps. In my case, it's always goes first to All and only after second push of home button to Home. It would be nice, if there was an option, which disable this cyclic switching between two categories and let home button just go to Home category.
+
+Similar as #28, perhaps this could be merged into single option..."
+HenriDellal/emerald,closed,Improve web search preference,[],Provide the abilities to add and remove search providers and to switch them.
+HenriDellal/emerald,closed,Move all color preferences into one,[],"Create a preference that will replace dock, app and bar background color preferences and add the ability to change status/navigation bar colors and to preview the changes."
+HenriDellal/emerald,closed,Menu option for changing wallpaper,"[Label(name=""enhancement"")]","Right now there's no easy way to change the wallpaper. Having an item in the system menu for doing this would good,"
+HenriDellal/emerald,closed,Option for home button to switch between Home and History,"[Label(name=""enhancement"")]",Right now the home button switches between the Home category and All apps. It would be nice if there was an option to make it switch between home and history instead.
+HenriDellal/emerald,open,Update apps list with JobIntentService subclass or any alternative,"[Label(name=""targeting/oreo"")]",
+HenriDellal/emerald,closed,Text field for preferences backup naming,"[Label(name=""enhancement""), Label(name=""good first issue"")]",
+HenriDellal/emerald,closed,Provide gesture for notifications,"[Label(name=""enhancement"")]",
+HenriDellal/emerald,open,Camera icon is wrong.,[],"I'd like to use the launcher on my Meizu mx3 running Flyme 3, but I've found that a camera app uses the same icon as a gallery app for some reason. In other launchers I don't see such a behaviour. Seems like the camera app is built in the gallery app, if I tap About from the app menu it's Gallery app being opened.  Other launchers are able to distinguish them though."
+HenriDellal/emerald,closed,"Preferences ""wizard""","[Label(name=""enhancement"")]","This is needed to apply correct settings on the first launch. Some phones have RAM shortage, so the app may crash due to this. Can be merged in a single activity with #1."
+HenriDellal/emerald,open,Shortcuts,"[Label(name=""enhancement""), Label(name=""priority/high"")]",
+HenriDellal/emerald,closed,"category meny on Samsung J5, white on white",[],https://boltimg.com/images/sN7IM.png
+HenriDellal/emerald,closed,Polish translation,[],"Polish translation for Emerald Launcher. Checked everything and it should be okay - I have this application on my phone. I hope you will like it 😊.
+
+The best wishes, Daria!"
+HenriDellal/emerald,closed,Add options to set background colors using color codes such #f00 for red.,"[Label(name=""enhancement"")]",
+HenriDellal/emerald,closed,Change stackOnBottom attribute programmatically,"[Label(name=""enhancement""), Label(name=""priority/low"")]","It improves one-hand experience by changing the starting position of grid to the bottom. For now, the GridView is used to show apps list/grid. It has stackOnBottom attribute, which can be changed only through xml. So, the idea is to write a child class of GridView that will implement it."
+HenriDellal/emerald,open,Custom sorting for categories,"[Label(name=""enhancement"")]","It was requested before, so this issue is to write down the ideas on implementation.
+It should be an activity or preference dialog with a list of apps these belong to category. The behaviour is simple: 
+- choose an app to be moved;
+- declare a new place in category;
+- if an app is moved at the top, then all apps from [newPosition, prevPosition-1] are being moved by 1 index to the bottom(and vice versa).
+No drag-n-drop and animations planned, so we have to find the way to make it as intuitive as possible without these features."
+HenriDellal/emerald,closed,App is not updated on F-Droid,[],It is currently two versions behind :(
+HenriDellal/emerald,closed,Icons in dock don't update after the icon pack change,"[Label(name=""bug"")]",Self-descriptive.
+HenriDellal/emerald,closed,unclassified apps unlisted after first launch,[],Launching an app from the 'unclassified' category gives them the 'history' category and removes them from the 'unclassified' category. 
+HenriDellal/emerald,closed,'add category' button vanishes,[],"After adding a certain number of categories, the 'add category' button shrinks, then disappeares. The whole screen has to be filled up by category entries for this to happen. "
+HenriDellal/emerald,open,Unlimited number of apps in dock(not scrollable),"[Label(name=""enhancement""), Label(name=""priority/low"")]","Self-descriptive, refer to issue #3."
+HenriDellal/emerald,closed,Handle runtime permissions for Android 6.0+,"[Label(name=""bug"")]","For now, the application may crash and throw SecurityException if there are no permissions granted. It is reported to happen in Apps.launch method."
+HenriDellal/emerald,open,Reduce view initialization time,"[Label(name=""bug""), Label(name=""priority/high"")]","The launcher window is being opened slow, so sometimes it is being replaced with some other launcher(if there is any). I suppose some data must be saved before the onDestroy call to make loading times shorter."
+HenriDellal/emerald,closed,Resize window when the keyboard is opened/closed,"[Label(name=""enhancement""), Label(name=""help wanted"")]","Self-descriptive, required for issues #3 and #8."
+HenriDellal/emerald,closed,Custom position for launcher bar(top or bottom),"[Label(name=""enhancement"")]","Self-descriptive, required for issue #3."
+HenriDellal/emerald,open,some icons can't be loaded,"[Label(name=""bug""), Label(name=""priority/high"")]","Some applications do not have a proper icon, like on this screenshot:
+![screenshot_emerald-20171011-124707](https://user-images.githubusercontent.com/1547617/31437355-abc7edd8-ae8d-11e7-9bdd-417fe6c24787.png)
+
+On my device, the following apps have icon missing: AnySoftKeyboard, Contacts, Firefox Klar, PDF Viewer, Settings. All other apps are drawn correctly. Anything specific about these apps?
+
+P.S. Thank you for your work! I've already replaced ""Hayai"" launcher with Emerald, which seems to be an improvement.:)"
+HenriDellal/emerald,closed,"Simply 8-bit icon pack doesn't work with ""Transform icons"" option","[Label(name=""bug"")]","The launcher replaces missing icons with androids. Probably, it's an IconPackManager issue."
+HenriDellal/emerald,closed,Navigation bar gap doesn't appear properly on some devices,"[Label(name=""bug"")]","This screenshot was taken on some Meizu. Just writing this for myself to not forget.
+![tmp-cam--245922525](https://user-images.githubusercontent.com/29340702/31000771-d2d19e5c-a4e6-11e7-923d-24a7d52a310d.jpg)
+"
+HenriDellal/emerald,closed,F-Droid permission,[],"By writing this issue, I agree to have this app added to F-Droid listing."
+HenriDellal/emerald,closed,Dock bar or favourite apps,"[Label(name=""enhancement""), Label(name=""question"")]","I don't know which features it should have. I'd say the most needed are:
+
+- Background color preference;
+- Support unlimited number of apps in dock and make it scrollable if they don't fit the width;
+- Hide dock when searching.
+
+The other option is to show the favourite apps after pressing the menu button(both on-screen and device), that is similar to KISS Launcher circle behaviour."
+HenriDellal/emerald,closed,Localized names for default categories,"[Label(name=""enhancement"")]",-
+HenriDellal/emerald,open,Tutorial activity,"[Label(name=""enhancement"")]","The launcher has some specific features like switching categories by swipe on the spinner. That's why it needs an explanation on how to use it. The question is how to make the explanation understandable, nice-looking and lightweight."

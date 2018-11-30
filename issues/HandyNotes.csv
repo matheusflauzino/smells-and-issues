@@ -1,0 +1,103 @@
+repository,state,title,label,body
+atd/HandyNotes,closed,Please add <supports-screens> to the manifest,[],"Hi, this app would be perfect for me if the UI wasn't scaled so badly. This should be an easy fix though. 
+
+```diff
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index b02fb9a..701cfd0 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -85,5 +85,6 @@
+                </receiver>
+     </application>
+     <uses-sdk android:minSdkVersion=""4"" android:targetSdkVersion=""4"" />
++    <supports-screens android:xlargeScreens=""true"" />
+ 
+ </manifest> 
+```
+
+(please also add a new tag, so f-droid picks it up)"
+atd/HandyNotes,open,Can't reopen note for editing,[],"I created a new handynote-widget on my homescreen and took some notes in it and closed it by adding it.
+Many times I reopened and updated that note. Then the widget freezes and I can't reopen it. Only thing ti do is deleting the widget from homescreen and create a new widget. // Nokia 3, Android 7.0"
+atd/HandyNotes,open,Where do data are stored ?,[],"Hi,
+I have a problem with handynotes (it's blank and I can't open it anymore), and before re-installing it I would like to know where the data are stored? I want to try to find the text that where in it if it's not already deleted...
+Thanks!"
+atd/HandyNotes,closed,Fix widget sizes,[],"Fixes issue 9 (https://github.com/atd/HandyNotes/issues/9).
+
+The calculation is apparently 70 x cells - 30.
+"
+atd/HandyNotes,closed,please add 2x1 widget,[],"or resizable widget? 1x1 is too short horizontally for most words,  2x2 takes too big of a bite off (my) start page :P
+
+br, 
+g.
+"
+atd/HandyNotes,closed,Grid size for each size is one size larger then intended,[],"HandyNotes version 1.5.
+
+The 1x1 size'd note widget is showing up as 2x2
+the 2x2 is showing up as 3x3, all the sizes
+are showing up as the next grid size up,
+there is no 1x1 note widget showing up.
+
+Running on a Moto E 4G LTE (XT1527) with CyanogenMOD 12.1.
+"
+atd/HandyNotes,closed,Pull Request as suggested on issue #7,[],
+atd/HandyNotes,closed,Possible NullpointerException on NotesDbAdapter.java,[],"There's a possible NullpointerException on class src/net/tapi/handynotes/NotesDbAdapter.java lines 78-97.
+
+Maybe you could use an implementation like this:
+
+``` java
+public String showNoteText(int wId) throws SQLException {
+    String result = """";
+
+    Cursor mCursor =
+          mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID, KEY_BODY}, KEY_ROWID + ""="" + wId, null,
+                    null, null, null, null);
+
+    if (mCursor != null) {
+        mCursor.moveToFirst();
+
+        if (mCursor.getCount() > 0) {
+            result = mCursor.getString(mCursor.getColumnIndex(KEY_BODY));
+        }
+        mCursor.close();
+    }
+
+    return result;
+
+    }
+```
+"
+atd/HandyNotes,closed,"Should not request permission to ""read phone status and identity""",[],"HandyNotes should not request permission to ""read phone status and identity"".
+"
+atd/HandyNotes,open,"allow to use HandyNotes as an app, not only as a widget",[],"Please allow to use HandyNotes as an app, not only as a widget. 
+
+Currently HandyNotes can only be used as a widget: You add a widget on screen, enter some text and have it displayed there. This will of course work for many people, but not for all. As far as I'm concerned I don't need/want to have my notes so visible on the phone desktop. And they take a lot of space: 
+- If you want to have one note per widget, you will end up with a nr of widgets cluttering the desktop; 
+- If you want to put all your notes in one single note and keep the widget small, you might as well use a simple text editor for that; 
+- If you want to put all your notes in one single note and use a big widget, then it would take too much space. 
+
+I would suggest that you add an 'app mode' to HandyNotes. It could work as follows: 
+- The app can be run as any Android app, via desktop shortcut or Quickdroid
+- Loading the app will present the user with an 'add note' button and a list of notes
+- Hitting the button will create a note and bring up the current 'edit note' mode
+- Hitting any item in the list will pop up the same 'edit note' mode
+- Long-pressing any item will bring up a context-menu with the Edit and Delete options
+
+The interface would be very simple, similar to AK Notepad or (the incomplete) Tomdroid, but the usability would be greatly enhanced. 
+"
+atd/HandyNotes,closed,Note wont update,[],"With the new version i cant see changes i make on the widget after editing. I can edit and save text, but I can see the changes only in editing mode. Using Cyanogenmod 7.
+"
+atd/HandyNotes,closed,"plz, provide a direct link for .apk for those, that do not have android market",[],"plz, provide a direct link for .apk for those, that do not have android market
+"
+atd/HandyNotes,closed,Notes become unresponsive after some time,[],"Hi !
+
+I really like your app but after some time, the notes can't be edited anymore (but can be moved around, deleted). Some can be added too.
+I'm using it on cyanogenmod 7.
+
+Hope it can be fixed,
+
+Regards,
+
+Jerome
+"
+atd/HandyNotes,closed,Bring back 4x1 note size,[],"It's great to have multiple note sizes, but why remove the original 4x1 size? I liked that one. :)
+"

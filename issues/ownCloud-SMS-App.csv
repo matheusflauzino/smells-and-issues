@@ -1,0 +1,3323 @@
+repository,state,title,label,body
+nerzhul/ownCloud-SMS-App,open,"after sync, no data in DB",[],"Hi, I install ocsms in nextcloud, and this this API in my android 4.x phone
+I create successfully an account for my nextcloud account.
+When I synchronize my phone SMS, no data are put in nextcloud DB (ocsms are problem just for return a good html page, error notification: ""connection to serve lost"" and nothing appears in html page)
+I test this URL https://XXX/index.php/apps/ocsms/get/apiversion?format=json:x509:
+and I get a good return in JSON format : {""version"":1}
+
+### Steps to reproduce
+1. install ocsms 1.13.1 in nextcloud 14.0.3 on debian 9
+2. install ownCloud-SMS-App 2.0.4 in android 4.x
+3. create an account successfully
+4. launch a synchronization with successfull end
+5. nothing in DB
+
+### Expected behaviour
+data in nextcloud DB, in tables ocsms_*
+
+### Actual behaviour
+but NO data in nextcloud DB in tables ocsms_* ??
+
+### Server configuration
+
+**Nextcloud version: 14.0.3** 
+
+**PHP version: 7.0.x**
+
+**Webserver: apache 2.4.25**
+
+**HTTPS: letsencrypt**
+
+### Client configuration
+
+**Android version: 4.4.2 kernel 3.10.17**
+
+**Phone: wiko kite**
+
+**Nextcloud SMS app version:**
+
+### Logs
+
+```
+no error log
+```
+"
+nerzhul/ownCloud-SMS-App,open,SMS from Google voice,[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Setup nextcloud account
+2. Sync SMS
+3. Only carrier numbers are synced 
+
+### Expected behaviour
+Google voice is setup on my phone as the main SMS and call number. I rarely give out my carrier number or receive texts that way. The app would be much more useful if Google voice SMS through the phone was also sync'd. 
+
+### Actual behaviour
+SMS via Google voice number is ignored. 
+
+### Server configuration
+
+**Nextcloud version:**  13.0.5
+
+**PHP version:** 7.2.7
+
+**Webserver:** Apache httpd
+
+**HTTPS:** Let's Encrypt
+
+### Client configuration
+
+**Android version:** 8.0.0
+
+**Phone:** Samsung Galaxy S9+
+
+**Nextcloud SMS app version:** 2.0.4
+"
+nerzhul/ownCloud-SMS-App,open,[Restore all messages] doesn't work on Android 8 (Maybe also doesn't work on 7.1.2),[],"Hello. Here is the story:
+(If you think the story is too long, just read the Steps part)
+I bought a new phone. Sony XZ1, the system is Android 8.0.
+I synced my SMS from my old phone, and checked on the nextcloud web page. It was successful done.
+Then I tried to restore them to my new phone.
+But when I check my new phone, nothing is in the sms list. While I clicked the button [Restore my SMS], a text show up and disappeared very fast: 'SMS restoration is now finished'. It was too fast that I'm not sure.
+
+I checked the traffic by dump the network package using tcpdump and it looked alright (I can post it if you need it).
+After that, I used my new phone to send some SMS and tried to sync to nextcloud, and it worked. Then I deleted the SMS on the phone and tried to use [Restore my SMS], it didn't work.
+
+I think the server-side is working, something is wrong with the client-side. I granted the permission but the App didn't write anything to the phone's sms-storage.
+
+I found a Pad with Android 7.1.2, and it has the exactly same problem.
+
+All I know is, this app works fine on Android 4.2, 4,4 and 5,1,1. It works fine with my others old phones.
+
+Are there any APIs changed in the new version ?
+
+------
+### Steps to reproduce
+1. On the old phone, sync SMS to nextcloud server.
+2. On the new phone (Android 7.1.2 or Android 8), try [Restore all messages]
+3. Check SMS list.
+
+### Expected behaviour
+Old messages are on new phone.
+
+### Actual behaviour
+Nothing restored on new phone.
+
+### Server configuration
+
+**Nextcloud version:** 
+Nextcloud 12.0.4
+
+**PHP version:**
+PHP 7.0.30
+
+**Webserver:**
+Apache/2.4.18 (Ubuntu)
+
+**HTTPS:**
+No
+
+### Client configuration
+
+**Android version:**
+Android 8.0.0(Sony XZ1)
+Android 7.1.2(MiPad with LineageOS-14.1)
+
+**Phone:**
+Sony XZ1
+MIPAD(LineageOS-14.1)
+
+**Nextcloud SMS app version:**
+2.0.4
+
+### Logs
+
+I don't know how to get the log of this app.
+
+## Screenshots
+
+Only the network-package dumpfile avaliable now.
+
+![snap1523](https://user-images.githubusercontent.com/10594035/42239071-60c7e904-7f35-11e8-8b52-5e7b1e7a0800.png)
+
+Tell me if you need more info."
+nerzhul/ownCloud-SMS-App,closed,Can't restore SMS on a new phone,[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Have an existing Nextcloud account with SMS on the server
+2. Add account in App
+3. Give permissions and click on Restore my SMS in the app
+
+### Expected behaviour
+SMS should be restored from server
+
+### Actual behaviour
+Nothing happen
+
+### Server configuration
+
+**Nextcloud version:** 13.0
+
+**PHP version:** 7.2.2
+
+**Webserver:** apache 2.4.33
+
+**HTTPS:** yes, certbot
+
+### Client configuration
+
+**Android version:** 8.1
+
+**Phone:** OnePlus 5T (dual SIM)
+
+**Nextcloud SMS app version:** 2.0.4
+
+### Logs
+Android :
+```
+04-18 00:30:40.531 18134 18134 I RestoreMessagesActivity: Launching restore asynchronously
+04-18 00:30:40.541 18134 23713 I ASyncSMSRecovery: Starting background recovery
+04-18 00:30:41.039 18134 23713 I GoLog   : DoGetMessagesCall: Unable to decode JSON response from server. Error was: json: cannot unmarshal string into Go struct field SmsMessage.mailbox of type int
+04-18 00:30:41.039 18134 23713 E OCSMSOwnCloudClient: Invalid response received from server, either messages or last_id field is missing.
+04-18 00:30:41.039 18134 23713 I ASyncSMSRecovery: Retrieved returns failure
+```
+Apache :
+```
+[18/Apr/2018:00:30:40 +0200] ""GET /index.php/apps/ocsms/api/v2/messages/0/500?format=json HTTP/1.1"" 200 88629 ""-"" ""nextcloud-phonesync-go (2.0.4)""
+```
+"
+nerzhul/ownCloud-SMS-App,open,Play Store entry,[],"Some recommendations (you do not have to follow of course, like always):
+
+1. Use new [ic_launcher-web.png](https://github.com/nerzhul/ownCloud-SMS-App/blob/master/src/main/ic_launcher-web.png) to align with the other apps.
+2. The ""c"" in Next**c**loud is lower case, you should change it to ""Nextcloud""
+3. (Just a maybe:) You are calling the app ""Phone Sync"" - Why is it still ""SMS"" on Play Store?
+4. You should update the screenshots as well, i made some for you:
+
+![device-2018-04-14-213456](https://user-images.githubusercontent.com/4741199/38771907-ccd81d7e-402b-11e8-9e32-0d83b0aff3c2.png)
+![device-2018-04-14-213425](https://user-images.githubusercontent.com/4741199/38771909-cd19b9e6-402b-11e8-8263-cedb111e2e0d.png)
+![device-2018-04-14-213521](https://user-images.githubusercontent.com/4741199/38771908-ccf915a6-402b-11e8-8ed5-a47dce95c804.png)"
+nerzhul/ownCloud-SMS-App,closed,Fix adaptive icons (does NOT include any splashscreen stuff),[],"This PR does **not include** the splashscreen from #189.
+It **only contains** some fixes for the adaptive icons, therefore it does not break anything and is fully backward compativle."
+nerzhul/ownCloud-SMS-App,open,Design Review,[],"Dear @nerzhul,
+
+i would like to do a little design review of the android app, because i think there are some points that could be improved in the user interface.
+
+I will use this issue to track the different issues i will find, so we have a quick overview. Of course not everything has to be implemented, this is just my humble opinion :yum: 
+
+- [ ] #190 simplify settings
+- [ ] #191 remove drawer
+- [ ] #192 my accounts
+- [ ] #193 account actions
+- [ ] #194 add account"
+nerzhul/ownCloud-SMS-App,open,[design] add account,[],"Can one directly select the Nextcloud SMS account type? Honestly, i clicked like 5 times ""Nextcloud"" because this is what i wanted - and i was confused every time when it said ""There IS already this nextcloud account on your phone"" - until i noticed i had to choose ""Nextcloud SMS""......
+
+Maybe you can even reuse the new Login-Flow from the files app, we will try to adapt it to the Notes android app as well."
+nerzhul/ownCloud-SMS-App,open,[design] account actions,[],"Use icons next to the actions that are available. These could be
+
+- [ ] ""Restore all messages""
+
+![grafik](https://user-images.githubusercontent.com/4741199/38729478-68f0859e-3f13-11e8-8991-fb9e8eb9a52d.png)
+
+- [ ] ""reinitialize synchronisationcursor""
+
+![grafik](https://user-images.githubusercontent.com/4741199/38729507-7b9f616a-3f13-11e8-80e9-d8322d7bafea.png)
+
+- [ ] find better wording for ""reinitialize synchroinisationcursor"" - it is very technically, noone will understand it. something like ""Reset synchronisation"" or even ""Restart synchronisation"""
+nerzhul/ownCloud-SMS-App,open,[design] my accounts,[],"- [ ] simply rename it to ""Accounts"" because ""MyAccounts"" sounds like Stackoverflow :yum: 
+- [ ] remove the `>` character after the account name
+- [ ] display username in first line and the nextcloud instance on second line
+- [ ] display people icon on the left side of each account
+
+![grafik](https://user-images.githubusercontent.com/4741199/38729359-04726772-3f13-11e8-998a-778c92fd0eca.png)
+
+![img_20180413_120611](https://user-images.githubusercontent.com/4741199/38729423-3dfd2d6a-3f13-11e8-85c4-10e643b1a3a3.jpg)
+"
+nerzhul/ownCloud-SMS-App,open,[design] remove drawer,[],"- [ ] the main activity should display the content of ""My Accounts""
+- [ ] The content of the main activity should be in a swipe to refresh layout, which replaces the ""Sync Now"" entry of the drawer
+- [ ] The ""add account"" entry of the drawer should be moved into a floating action button displayed at the main activity because it is the most important interaction a user will have with the app
+- [ ] The ""settings"" should move as an icon to the top right of the bar - use this icon from Material:
+
+![grafik](https://user-images.githubusercontent.com/4741199/38729073-0841c812-3f12-11e8-9642-279e0767cd87.png)
+
+- [ ] ""App infos and permissions"" - two options (i prefer the second): Move the entry into the settings OR get rid of it completely, since it is android default and accessible from outside of the app.
+- [ ] ""Rate us!"" - Move it to the top right, next to settings with an star as icon OR (preferred:) move it into the settings, that's where users will look for it usually
+- [ ] Remove the drawer"
+nerzhul/ownCloud-SMS-App,open,[design] simplify settings,[],"The settings are currently way too complicated for people who just want to sync their stuff from phone to their cloud instance.
+
+- [ ] Merge all ""Sync via W-LAN / LTE / UMTS / GSM / GPRS"" into one switch (not checkbox) ""Sync only via W-LAN"", because what is the purpose of a sync app, if it does not sync? Sync should always be performed when on W-LAN and just check optionally if user wants to sync on mobile data, too (does not matter wheter LTE or GPRS is used)
+- [ ] Use a switch instead of a checkbox for ""Forware SMS on receive""
+- [ ] ""Minimum Phone Number length"" - I really can not imagine a usecase except you do not want to sync automatically sent sms from some technic service. Can we make some kind of slider which chooses between minimum 3, 5 and 8 numbers? I do not think the entries 0 - 3 do really make sense.
+
+![grafik](https://user-images.githubusercontent.com/4741199/38728674-ce2b6d64-3f10-11e8-969f-822f5bdf970a.png)
+
+"
+nerzhul/ownCloud-SMS-App,open,Splashscreen implemented,[],"I implemented a splashscreen like in Notes, News and (soon) Files app.
+
+~~**Attention:** This will remove the launcher icon from home screens when the user updates the app (basically the activity changes).~~ With the last commit i managed to keep the old launcher - for the user nothing will change :)
+
+~~I think it might be possible to keep the launchers on the homescreen, if we keep the names, but it will be weird in your code when your `MainActivity` launches the `SplashscreenActivity` and the `RealMainActivity` launches the `MainActivity` - that's why i implemented it clean ;-)~~ Got some better inspiration by https://github.com/nextcloud/android/pull/2448/files
+
+![screenshot_1523429831](https://user-images.githubusercontent.com/4741199/38601064-b0a992a8-3d66-11e8-89a2-7f2ede2b5830.png)
+"
+nerzhul/ownCloud-SMS-App,closed,Adaptive icons and drawer adjustments,[],"Hi @nerzhul,
+
+i added adaptive icons to your app similar to Notes, News and Files android clients. Also i adjusted the drawer a bit, so it looks like the one from the notes app. (If you want, i can strip the drawer-part out)
+
+![screenshot_1523389782](https://user-images.githubusercontent.com/4741199/38580006-1714f02c-3d09-11e8-82c7-a01bf4d629dc.png)
+
+![screenshot_1523389841](https://user-images.githubusercontent.com/4741199/38580053-38c55522-3d09-11e8-90f3-a2343112b251.png)
+
+Regards"
+nerzhul/ownCloud-SMS-App,open,[Wiki Info Request],[],"Hi, this review was me:
+[https://play.google.com/store/apps/details?id=fr.unix_experience.owncloud_sms&reviewId=Z3A6QU9xcFRPR0YtdXpGZFVDcXdob3FYMUluRndrQVdTb0VDLTVadUxWSklLS2MweVIwb2tfT2RWaHZsTmcxeGV0ZlFmcWNBR3FwdGl3OWEwV3d1b3BpTHJv](https://play.google.com/store/apps/details?id=fr.unix_experience.owncloud_sms&reviewId=Z3A6QU9xcFRPR0YtdXpGZFVDcXdob3FYMUluRndrQVdTb0VDLTVadUxWSklLS2MweVIwb2tfT2RWaHZsTmcxeGV0ZlFmcWNBR3FwdGl3OWEwV3d1b3BpTHJv)
+
+Since I have my Google Hangouts SMS and Hangouts _TM_ messages both cloud stored in my Gmail account as conversations, could their be a procedure I could do to export them from the Google's and into my NextCloud? When they merged the two formats I jumped on the bandwagon. Most of my messages I'd like to keep right now are SMS type and I just used the Hangouts app to keep life simple due to friends using both formats. Typically I don't have a hangout worth saving, but I have SMS threads I don't delete."
+nerzhul/ownCloud-SMS-App,closed,Can not synchronize sms over https,[],"### Steps to reproduce
+1. Switch nextcloud server to https
+2. try to set new account in ownCloud-SMS-App using https://nextcloud.example.com url
+3. syncronize SMS
+
+### Expected behaviour
+The synchronization should work (as it worked before switch to https)
+
+### Actual behaviour
+Error is returned, dee the debug.txt info 
+
+### Server configuration
+
+**Nextcloud version:** 13.0.0
+
+**PHP version:** 5.6.33-0+deb8u1
+
+**Webserver:** apache
+
+**HTTPS:** yes 
+
+### Client configuration
+
+**Android version:** 7.0 - G935FXXU2DRA9 - kernel 3.18.14
+
+**Phone:** Samsung 7 edge
+
+**Nextcloud SMS app version:**  1.10.1.1-ose (205) from 13. 2. 2018
+
+### Logs
+
+```
+--- BEGIN DEBUG INFO ---
+
+LOGS:
+2018-03-12 14:49:54 22354 [ui.setup.DavResourceFinder] Finding initial carddav service configuration
+2018-03-12 14:49:54 22354 [ui.setup.DavResourceFinder] Checking user-given URL: https://nextcloud.example.com/
+2018-03-12 14:49:54 22354 [HttpClient] --> PROPFIND https://nextcloud.example.com/
+2018-03-12 14:49:54 22354 [HttpClient] Content-Type: application/xml; charset=utf-8
+2018-03-12 14:49:54 22354 [HttpClient] Content-Length: 290
+2018-03-12 14:49:54 22354 [HttpClient] Depth: 0
+2018-03-12 14:49:54 22354 [HttpClient] 
+2018-03-12 14:49:54 22354 [HttpClient] <?xml version='1.0' encoding='UTF-8' ?><propfind xmlns=""DAV:"" xmlns:CAL=""urn:ietf:params:xml:ns:caldav"" xmlns:CARD=""urn:ietf:params:xml:ns:carddav""><prop><resourcetype /><displayname /><CARD:addressbook-description /><CARD:addressbook-home-set /><current-user-principal /></prop></propfind>
+2018-03-12 14:49:54 22354 [HttpClient] --> END PROPFIND (290-byte body)
+2018-03-12 14:49:55 22354 [HttpClient] <-- 405 Method Not Allowed https://nextcloud.example.com/ (812ms)
+2018-03-12 14:49:55 22354 [HttpClient] Server: nginx
+2018-03-12 14:49:55 22354 [HttpClient] Date: Mon, 12 Mar 2018 13:49:56 GMT
+2018-03-12 14:49:55 22354 [HttpClient] Content-Type: text/html; charset=UTF-8
+2018-03-12 14:49:55 22354 [HttpClient] Content-Length: 0
+2018-03-12 14:49:55 22354 [HttpClient] Connection: keep-alive
+2018-03-12 14:49:55 22354 [HttpClient] X-Powered-By: PHP/5.6.33-0+deb8u1
+2018-03-12 14:49:55 22354 [HttpClient] Set-Cookie: ococts0qpza1=e14237ce07f546908a79b158fdc6f5b4; path=/; secure; HttpOnly
+2018-03-12 14:49:55 22354 [HttpClient] Expires: Thu, 19 Nov 1981 08:52:00 GMT
+2018-03-12 14:49:55 22354 [HttpClient] Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+2018-03-12 14:49:55 22354 [HttpClient] Pragma: no-cache
+2018-03-12 14:49:55 22354 [HttpClient] Set-Cookie: oc_sessionPassphrase=DPPHeRAfSmn2JPcMmEN2uJGdXnXuPfu7wq5Fpyaw0g9VEnW0BGVib1cQaJfG7vHIh1pItXWqf9V0Bm%2Fv5NEHI0ODchL1ZfqGjDBrmSWLqLqO3i1n189kvTruZYZZBC4B; path=/; secure; httponly
+2018-03-12 14:49:55 22354 [HttpClient] Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval' 'nonce-d1VadkQwaGZ6Vm41RFdqOTlsL0FrTzhJR2pwRDJ6VVRicE50SU9kUkc4cz06a3dndVhURVB2anZQU3hySWpoS0Uzb3RwTVJFMzZWZHdOL3NqYzR3a1didz0='; style-src 'self' 'unsafe-inline'; frame-src *; img-src * data: blob:; font-src 'self' data:; media-src *; connect-src *; object-src 'none'; base-uri 'self';
+2018-03-12 14:49:55 22354 [HttpClient] X-Frame-Options: SAMEORIGIN
+2018-03-12 14:49:55 22354 [HttpClient] Set-Cookie: __Host-nc_sameSiteCookielax=true; path=/; httponly;secure; expires=Fri, 31-Dec-2100 23:59:59 GMT; SameSite=lax
+2018-03-12 14:49:55 22354 [HttpClient] Set-Cookie: __Host-nc_sameSiteCookiestrict=true; path=/; httponly;secure; expires=Fri, 31-Dec-2100 23:59:59 GMT; SameSite=strict
+2018-03-12 14:49:55 22354 [HttpClient] Set-Cookie: ococts0qpza1=e4f50be09ce67a315e1713036e4b60ea; path=/; secure; HttpOnly
+2018-03-12 14:49:55 22354 [HttpClient] Set-Cookie: cookie_test=test; expires=Mon, 12-Mar-2018 14:49:56 GMT; Max-Age=3600
+2018-03-12 14:49:55 22354 [HttpClient] Status: 405 Method Not Allowed
+2018-03-12 14:49:55 22354 [HttpClient] X-Content-Type-Options: nosniff
+2018-03-12 14:49:55 22354 [HttpClient] X-XSS-Protection: 1; mode=block
+2018-03-12 14:49:55 22354 [HttpClient] X-Robots-Tag: none
+2018-03-12 14:49:55 22354 [HttpClient] X-Download-Options: noopen
+2018-03-12 14:49:55 22354 [HttpClient] X-Permitted-Cross-Domain-Policies: none
+2018-03-12 14:49:55 22354 [HttpClient] Strict-Transport-Security: max-age=60; includeSubDomains
+2018-03-12 14:49:55 22354 [HttpClient] <-- END HTTP (0-byte body)
+2018-03-12 14:49:55 22354 [ui.setup.DavResourceFinder] PROPFIND/OPTIONS on user-given URL failed
+EXCEPTION at.bitfire.dav4android.exception.HttpException: 405 Method Not Allowed
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:343)
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:307)
+	at at.bitfire.dav4android.DavResource.propfind(DavResource.kt:283)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.checkUserGivenURL(DavResourceFinder.kt:167)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:102)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:74)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:131)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:112)
+	at android.content.AsyncTaskLoader.onLoadInBackground(AsyncTaskLoader.java:312)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:69)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:66)
+	at android.os.AsyncTask$2.call(AsyncTask.java:304)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1133)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:607)
+	at java.lang.Thread.run(Thread.java:762)
+
+2018-03-12 14:49:55 22354 [HttpClient] --> PROPFIND https://nextcloud.example.com/.well-known/carddav
+2018-03-12 14:49:55 22354 [HttpClient] Content-Type: application/xml; charset=utf-8
+2018-03-12 14:49:55 22354 [HttpClient] Content-Length: 198
+2018-03-12 14:49:55 22354 [HttpClient] Depth: 0
+2018-03-12 14:49:55 22354 [HttpClient] 
+2018-03-12 14:49:55 22354 [HttpClient] <?xml version='1.0' encoding='UTF-8' ?><propfind xmlns=""DAV:"" xmlns:CAL=""urn:ietf:params:xml:ns:caldav"" xmlns:CARD=""urn:ietf:params:xml:ns:carddav""><prop><current-user-principal /></prop></propfind>
+2018-03-12 14:49:55 22354 [HttpClient] --> END PROPFIND (198-byte body)
+2018-03-12 14:49:55 22354 [HttpClient] <-- 405 Not Allowed https://nextcloud.example.com/.well-known/carddav (392ms)
+2018-03-12 14:49:55 22354 [HttpClient] Server: nginx
+2018-03-12 14:49:55 22354 [HttpClient] Date: Mon, 12 Mar 2018 13:49:57 GMT
+2018-03-12 14:49:55 22354 [HttpClient] Content-Type: text/html
+2018-03-12 14:49:55 22354 [HttpClient] Content-Length: 166
+2018-03-12 14:49:55 22354 [HttpClient] Connection: keep-alive
+2018-03-12 14:49:55 22354 [HttpClient] Strict-Transport-Security: max-age=60; includeSubDomains
+2018-03-12 14:49:55 22354 [HttpClient] 
+2018-03-12 14:49:55 22354 [HttpClient] <html>
+<head><title>405 Not Allowed</title></head>
+<body bgcolor=""white"">
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+2018-03-12 14:49:55 22354 [HttpClient] <-- END HTTP (166-byte body)
+2018-03-12 14:49:55 22354 [ui.setup.DavResourceFinder] Well-known URL detection failed
+EXCEPTION at.bitfire.dav4android.exception.HttpException: 405 Not Allowed
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:343)
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:307)
+	at at.bitfire.dav4android.DavResource.propfind(DavResource.kt:283)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.getCurrentUserPrincipal(DavResourceFinder.kt:351)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:106)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:74)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:131)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:112)
+	at android.content.AsyncTaskLoader.onLoadInBackground(AsyncTaskLoader.java:312)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:69)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:66)
+	at android.os.AsyncTask$2.call(AsyncTask.java:304)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1133)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:607)
+	at java.lang.Thread.run(Thread.java:762)
+
+2018-03-12 14:49:55 22354 [ui.setup.DavResourceFinder] No principal found at user-given URL, trying to discover
+2018-03-12 14:49:55 22354 [ui.setup.DavResourceFinder] Looking up SRV records for _carddavs._tcp.nextcloud.example.com
+2018-03-12 14:49:55 22354 [ui.setup.DavResourceFinder] Didn't find carddav service, trying at https://nextcloud.example.com:443
+2018-03-12 14:49:55 22354 [ui.setup.DavResourceFinder] Trying to determine principal from initial context path=https://nextcloud.example.com/.well-known/carddav
+2018-03-12 14:49:55 22354 [HttpClient] --> PROPFIND https://nextcloud.example.com/.well-known/carddav
+2018-03-12 14:49:55 22354 [HttpClient] Content-Type: application/xml; charset=utf-8
+2018-03-12 14:49:55 22354 [HttpClient] Content-Length: 198
+2018-03-12 14:49:55 22354 [HttpClient] Depth: 0
+2018-03-12 14:49:55 22354 [HttpClient] 
+2018-03-12 14:49:55 22354 [HttpClient] <?xml version='1.0' encoding='UTF-8' ?><propfind xmlns=""DAV:"" xmlns:CAL=""urn:ietf:params:xml:ns:caldav"" xmlns:CARD=""urn:ietf:params:xml:ns:carddav""><prop><current-user-principal /></prop></propfind>
+2018-03-12 14:49:55 22354 [HttpClient] --> END PROPFIND (198-byte body)
+2018-03-12 14:49:56 22354 [HttpClient] <-- 405 Not Allowed https://nextcloud.example.com/.well-known/carddav (257ms)
+2018-03-12 14:49:56 22354 [HttpClient] Server: nginx
+2018-03-12 14:49:56 22354 [HttpClient] Date: Mon, 12 Mar 2018 13:49:57 GMT
+2018-03-12 14:49:56 22354 [HttpClient] Content-Type: text/html
+2018-03-12 14:49:56 22354 [HttpClient] Content-Length: 166
+2018-03-12 14:49:56 22354 [HttpClient] Connection: keep-alive
+2018-03-12 14:49:56 22354 [HttpClient] Strict-Transport-Security: max-age=60; includeSubDomains
+2018-03-12 14:49:56 22354 [HttpClient] 
+2018-03-12 14:49:56 22354 [HttpClient] <html>
+<head><title>405 Not Allowed</title></head>
+<body bgcolor=""white"">
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+2018-03-12 14:49:56 22354 [HttpClient] <-- END HTTP (166-byte body)
+2018-03-12 14:49:56 22354 [ui.setup.DavResourceFinder] No resource found
+EXCEPTION at.bitfire.dav4android.exception.HttpException: 405 Not Allowed
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:343)
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:307)
+	at at.bitfire.dav4android.DavResource.propfind(DavResource.kt:283)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.getCurrentUserPrincipal(DavResourceFinder.kt:351)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.discoverPrincipalUrl(DavResourceFinder.kt:333)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:124)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:74)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:131)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:112)
+	at android.content.AsyncTaskLoader.onLoadInBackground(AsyncTaskLoader.java:312)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:69)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:66)
+	at android.os.AsyncTask$2.call(AsyncTask.java:304)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1133)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:607)
+	at java.lang.Thread.run(Thread.java:762)
+
+2018-03-12 14:49:56 22354 [ui.setup.DavResourceFinder] Trying to determine principal from initial context path=https://nextcloud.example.com/
+2018-03-12 14:49:56 22354 [HttpClient] --> PROPFIND https://nextcloud.example.com/
+2018-03-12 14:49:56 22354 [HttpClient] Content-Type: application/xml; charset=utf-8
+2018-03-12 14:49:56 22354 [HttpClient] Content-Length: 198
+2018-03-12 14:49:56 22354 [HttpClient] Depth: 0
+2018-03-12 14:49:56 22354 [HttpClient] 
+2018-03-12 14:49:56 22354 [HttpClient] <?xml version='1.0' encoding='UTF-8' ?><propfind xmlns=""DAV:"" xmlns:CAL=""urn:ietf:params:xml:ns:caldav"" xmlns:CARD=""urn:ietf:params:xml:ns:carddav""><prop><current-user-principal /></prop></propfind>
+2018-03-12 14:49:56 22354 [HttpClient] --> END PROPFIND (198-byte body)
+2018-03-12 14:49:56 22354 [HttpClient] <-- 405 Method Not Allowed https://nextcloud.example.com/ (378ms)
+2018-03-12 14:49:56 22354 [HttpClient] Server: nginx
+2018-03-12 14:49:56 22354 [HttpClient] Date: Mon, 12 Mar 2018 13:49:58 GMT
+2018-03-12 14:49:56 22354 [HttpClient] Content-Type: text/html; charset=UTF-8
+2018-03-12 14:49:56 22354 [HttpClient] Content-Length: 0
+2018-03-12 14:49:56 22354 [HttpClient] Connection: keep-alive
+2018-03-12 14:49:56 22354 [HttpClient] X-Powered-By: PHP/5.6.33-0+deb8u1
+2018-03-12 14:49:56 22354 [HttpClient] Expires: Thu, 19 Nov 1981 08:52:00 GMT
+2018-03-12 14:49:56 22354 [HttpClient] Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+2018-03-12 14:49:56 22354 [HttpClient] Pragma: no-cache
+2018-03-12 14:49:56 22354 [HttpClient] Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval' 'nonce-NENOMlRtWmZ4QjBrbEJnZklRNnhoUHNQeXBkc3MvV0o2RE1BOTRCU2RUcz06c20wM0hCOFB0MzhTMG1vcVdVUDF5cDl1NGJ3WWdaZnFzVnRPcE9zbk4wdz0='; style-src 'self' 'unsafe-inline'; frame-src *; img-src * data: blob:; font-src 'self' data:; media-src *; connect-src *; object-src 'none'; base-uri 'self';
+2018-03-12 14:49:56 22354 [HttpClient] X-Frame-Options: SAMEORIGIN
+2018-03-12 14:49:56 22354 [HttpClient] Set-Cookie: nc_username=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; secure; httponly
+2018-03-12 14:49:56 22354 [HttpClient] Set-Cookie: nc_token=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; secure; httponly
+2018-03-12 14:49:56 22354 [HttpClient] Set-Cookie: nc_session_id=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; secure; httponly
+2018-03-12 14:49:56 22354 [HttpClient] Set-Cookie: nc_username=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=/; secure; httponly
+2018-03-12 14:49:56 22354 [HttpClient] Set-Cookie: nc_token=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=/; secure; httponly
+2018-03-12 14:49:56 22354 [HttpClient] Set-Cookie: nc_session_id=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=/; secure; httponly
+2018-03-12 14:49:56 22354 [HttpClient] Set-Cookie: ococts0qpza1=b50e5a14dab1a9a6aa42b00bdaca8ea2; path=/; secure; HttpOnly
+2018-03-12 14:49:56 22354 [HttpClient] Set-Cookie: ococts0qpza1=d94338acf62b49e2da26aeb2d3c704b4; path=/; secure; HttpOnly
+2018-03-12 14:49:56 22354 [HttpClient] Status: 405 Method Not Allowed
+2018-03-12 14:49:56 22354 [HttpClient] X-Content-Type-Options: nosniff
+2018-03-12 14:49:56 22354 [HttpClient] X-XSS-Protection: 1; mode=block
+2018-03-12 14:49:56 22354 [HttpClient] X-Robots-Tag: none
+2018-03-12 14:49:56 22354 [HttpClient] X-Download-Options: noopen
+2018-03-12 14:49:56 22354 [HttpClient] X-Permitted-Cross-Domain-Policies: none
+2018-03-12 14:49:56 22354 [HttpClient] Strict-Transport-Security: max-age=60; includeSubDomains
+2018-03-12 14:49:56 22354 [HttpClient] <-- END HTTP (0-byte body)
+2018-03-12 14:49:56 22354 [ui.setup.DavResourceFinder] No resource found
+EXCEPTION at.bitfire.dav4android.exception.HttpException: 405 Method Not Allowed
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:343)
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:307)
+	at at.bitfire.dav4android.DavResource.propfind(DavResource.kt:283)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.getCurrentUserPrincipal(DavResourceFinder.kt:351)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.discoverPrincipalUrl(DavResourceFinder.kt:333)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:124)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:74)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:131)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:112)
+	at android.content.AsyncTaskLoader.onLoadInBackground(AsyncTaskLoader.java:312)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:69)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:66)
+	at android.os.AsyncTask$2.call(AsyncTask.java:304)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1133)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:607)
+	at java.lang.Thread.run(Thread.java:762)
+
+2018-03-12 14:49:56 22354 [ui.setup.DavResourceFinder] Finding initial caldav service configuration
+2018-03-12 14:49:56 22354 [ui.setup.DavResourceFinder] Checking user-given URL: https://nextcloud.example.com/
+2018-03-12 14:49:56 22354 [HttpClient] --> PROPFIND https://nextcloud.example.com/
+2018-03-12 14:49:56 22354 [HttpClient] Content-Type: application/xml; charset=utf-8
+2018-03-12 14:49:56 22354 [HttpClient] Content-Length: 435
+2018-03-12 14:49:56 22354 [HttpClient] Depth: 0
+2018-03-12 14:49:56 22354 [HttpClient] 
+2018-03-12 14:49:56 22354 [HttpClient] <?xml version='1.0' encoding='UTF-8' ?><propfind xmlns=""DAV:"" xmlns:CAL=""urn:ietf:params:xml:ns:caldav"" xmlns:CARD=""urn:ietf:params:xml:ns:carddav""><prop><resourcetype /><displayname /><n0:calendar-color xmlns:n0=""http://apple.com/ns/ical/"" /><CAL:calendar-description /><CAL:calendar-timezone /><current-user-privilege-set /><CAL:supported-calendar-component-set /><CAL:calendar-home-set /><current-user-principal /></prop></propfind>
+2018-03-12 14:49:56 22354 [HttpClient] --> END PROPFIND (435-byte body)
+2018-03-12 14:49:57 22354 [HttpClient] <-- 405 Method Not Allowed https://nextcloud.example.com/ (674ms)
+2018-03-12 14:49:57 22354 [HttpClient] Server: nginx
+2018-03-12 14:49:57 22354 [HttpClient] Date: Mon, 12 Mar 2018 13:49:58 GMT
+2018-03-12 14:49:57 22354 [HttpClient] Content-Type: text/html; charset=UTF-8
+2018-03-12 14:49:57 22354 [HttpClient] Content-Length: 0
+2018-03-12 14:49:57 22354 [HttpClient] Connection: keep-alive
+2018-03-12 14:49:57 22354 [HttpClient] X-Powered-By: PHP/5.6.33-0+deb8u1
+2018-03-12 14:49:57 22354 [HttpClient] Expires: Thu, 19 Nov 1981 08:52:00 GMT
+2018-03-12 14:49:57 22354 [HttpClient] Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+2018-03-12 14:49:57 22354 [HttpClient] Pragma: no-cache
+2018-03-12 14:49:57 22354 [HttpClient] Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval' 'nonce-L1pFMjF1YVlnaHg1QmgzNmhoRkJMVjJWTnA2UTB5QTFCUHk3cncwbUs5az06cjk5M2hKL0k4WDVQUUcvUC9sd0ZZem4wSGJYazRVSldYWlQxL0daVGFhND0='; style-src 'self' 'unsafe-inline'; frame-src *; img-src * data: blob:; font-src 'self' data:; media-src *; connect-src *; object-src 'none'; base-uri 'self';
+2018-03-12 14:49:57 22354 [HttpClient] X-Frame-Options: SAMEORIGIN
+2018-03-12 14:49:57 22354 [HttpClient] Status: 405 Method Not Allowed
+2018-03-12 14:49:57 22354 [HttpClient] X-Content-Type-Options: nosniff
+2018-03-12 14:49:57 22354 [HttpClient] X-XSS-Protection: 1; mode=block
+2018-03-12 14:49:57 22354 [HttpClient] X-Robots-Tag: none
+2018-03-12 14:49:57 22354 [HttpClient] X-Download-Options: noopen
+2018-03-12 14:49:57 22354 [HttpClient] X-Permitted-Cross-Domain-Policies: none
+2018-03-12 14:49:57 22354 [HttpClient] Strict-Transport-Security: max-age=60; includeSubDomains
+2018-03-12 14:49:57 22354 [HttpClient] <-- END HTTP (0-byte body)
+2018-03-12 14:49:57 22354 [ui.setup.DavResourceFinder] PROPFIND/OPTIONS on user-given URL failed
+EXCEPTION at.bitfire.dav4android.exception.HttpException: 405 Method Not Allowed
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:343)
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:307)
+	at at.bitfire.dav4android.DavResource.propfind(DavResource.kt:283)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.checkUserGivenURL(DavResourceFinder.kt:175)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:102)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:75)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:131)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:112)
+	at android.content.AsyncTaskLoader.onLoadInBackground(AsyncTaskLoader.java:312)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:69)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:66)
+	at android.os.AsyncTask$2.call(AsyncTask.java:304)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1133)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:607)
+	at java.lang.Thread.run(Thread.java:762)
+
+2018-03-12 14:49:57 22354 [HttpClient] --> PROPFIND https://nextcloud.example.com/.well-known/caldav
+2018-03-12 14:49:57 22354 [HttpClient] Content-Type: application/xml; charset=utf-8
+2018-03-12 14:49:57 22354 [HttpClient] Content-Length: 198
+2018-03-12 14:49:57 22354 [HttpClient] Depth: 0
+2018-03-12 14:49:57 22354 [HttpClient] 
+2018-03-12 14:49:57 22354 [HttpClient] <?xml version='1.0' encoding='UTF-8' ?><propfind xmlns=""DAV:"" xmlns:CAL=""urn:ietf:params:xml:ns:caldav"" xmlns:CARD=""urn:ietf:params:xml:ns:carddav""><prop><current-user-principal /></prop></propfind>
+2018-03-12 14:49:57 22354 [HttpClient] --> END PROPFIND (198-byte body)
+2018-03-12 14:49:58 22354 [HttpClient] <-- 405 Not Allowed https://nextcloud.example.com/.well-known/caldav (1305ms)
+2018-03-12 14:49:58 22354 [HttpClient] Server: nginx
+2018-03-12 14:49:58 22354 [HttpClient] Date: Mon, 12 Mar 2018 13:49:59 GMT
+2018-03-12 14:49:58 22354 [HttpClient] Content-Type: text/html
+2018-03-12 14:49:58 22354 [HttpClient] Content-Length: 166
+2018-03-12 14:49:58 22354 [HttpClient] Connection: keep-alive
+2018-03-12 14:49:58 22354 [HttpClient] Strict-Transport-Security: max-age=60; includeSubDomains
+2018-03-12 14:49:58 22354 [HttpClient] 
+2018-03-12 14:49:58 22354 [HttpClient] <html>
+<head><title>405 Not Allowed</title></head>
+<body bgcolor=""white"">
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+2018-03-12 14:49:58 22354 [HttpClient] <-- END HTTP (166-byte body)
+2018-03-12 14:49:58 22354 [ui.setup.DavResourceFinder] Well-known URL detection failed
+EXCEPTION at.bitfire.dav4android.exception.HttpException: 405 Not Allowed
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:343)
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:307)
+	at at.bitfire.dav4android.DavResource.propfind(DavResource.kt:283)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.getCurrentUserPrincipal(DavResourceFinder.kt:351)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:106)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:75)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:131)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:112)
+	at android.content.AsyncTaskLoader.onLoadInBackground(AsyncTaskLoader.java:312)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:69)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:66)
+	at android.os.AsyncTask$2.call(AsyncTask.java:304)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1133)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:607)
+	at java.lang.Thread.run(Thread.java:762)
+
+2018-03-12 14:49:58 22354 [ui.setup.DavResourceFinder] No principal found at user-given URL, trying to discover
+2018-03-12 14:49:58 22354 [ui.setup.DavResourceFinder] Looking up SRV records for _caldavs._tcp.nextcloud.example.com
+2018-03-12 14:50:04 22354 [ui.setup.DavResourceFinder] Didn't find caldav service, trying at https://nextcloud.example.com:443
+2018-03-12 14:50:04 22354 [ui.setup.DavResourceFinder] Trying to determine principal from initial context path=https://nextcloud.example.com/.well-known/caldav
+2018-03-12 14:50:04 22354 [HttpClient] --> PROPFIND https://nextcloud.example.com/.well-known/caldav
+2018-03-12 14:50:04 22354 [HttpClient] Content-Type: application/xml; charset=utf-8
+2018-03-12 14:50:04 22354 [HttpClient] Content-Length: 198
+2018-03-12 14:50:04 22354 [HttpClient] Depth: 0
+2018-03-12 14:50:04 22354 [HttpClient] 
+2018-03-12 14:50:04 22354 [HttpClient] <?xml version='1.0' encoding='UTF-8' ?><propfind xmlns=""DAV:"" xmlns:CAL=""urn:ietf:params:xml:ns:caldav"" xmlns:CARD=""urn:ietf:params:xml:ns:carddav""><prop><current-user-principal /></prop></propfind>
+2018-03-12 14:50:04 22354 [HttpClient] --> END PROPFIND (198-byte body)
+2018-03-12 14:50:04 22354 [HttpClient] <-- 405 Not Allowed https://nextcloud.example.com/.well-known/caldav (303ms)
+2018-03-12 14:50:04 22354 [HttpClient] Server: nginx
+2018-03-12 14:50:04 22354 [HttpClient] Date: Mon, 12 Mar 2018 13:50:05 GMT
+2018-03-12 14:50:04 22354 [HttpClient] Content-Type: text/html
+2018-03-12 14:50:04 22354 [HttpClient] Content-Length: 166
+2018-03-12 14:50:04 22354 [HttpClient] Connection: keep-alive
+2018-03-12 14:50:04 22354 [HttpClient] Strict-Transport-Security: max-age=60; includeSubDomains
+2018-03-12 14:50:04 22354 [HttpClient] 
+2018-03-12 14:50:04 22354 [HttpClient] <html>
+<head><title>405 Not Allowed</title></head>
+<body bgcolor=""white"">
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+2018-03-12 14:50:04 22354 [HttpClient] <-- END HTTP (166-byte body)
+2018-03-12 14:50:04 22354 [ui.setup.DavResourceFinder] No resource found
+EXCEPTION at.bitfire.dav4android.exception.HttpException: 405 Not Allowed
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:343)
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:307)
+	at at.bitfire.dav4android.DavResource.propfind(DavResource.kt:283)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.getCurrentUserPrincipal(DavResourceFinder.kt:351)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.discoverPrincipalUrl(DavResourceFinder.kt:333)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:124)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:75)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:131)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:112)
+	at android.content.AsyncTaskLoader.onLoadInBackground(AsyncTaskLoader.java:312)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:69)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:66)
+	at android.os.AsyncTask$2.call(AsyncTask.java:304)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1133)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:607)
+	at java.lang.Thread.run(Thread.java:762)
+
+2018-03-12 14:50:04 22354 [ui.setup.DavResourceFinder] Trying to determine principal from initial context path=https://nextcloud.example.com/
+2018-03-12 14:50:04 22354 [HttpClient] --> PROPFIND https://nextcloud.example.com/
+2018-03-12 14:50:04 22354 [HttpClient] Content-Type: application/xml; charset=utf-8
+2018-03-12 14:50:04 22354 [HttpClient] Content-Length: 198
+2018-03-12 14:50:04 22354 [HttpClient] Depth: 0
+2018-03-12 14:50:04 22354 [HttpClient] 
+2018-03-12 14:50:04 22354 [HttpClient] <?xml version='1.0' encoding='UTF-8' ?><propfind xmlns=""DAV:"" xmlns:CAL=""urn:ietf:params:xml:ns:caldav"" xmlns:CARD=""urn:ietf:params:xml:ns:carddav""><prop><current-user-principal /></prop></propfind>
+2018-03-12 14:50:04 22354 [HttpClient] --> END PROPFIND (198-byte body)
+2018-03-12 14:50:04 22354 [HttpClient] <-- 405 Method Not Allowed https://nextcloud.example.com/ (160ms)
+2018-03-12 14:50:04 22354 [HttpClient] Server: nginx
+2018-03-12 14:50:04 22354 [HttpClient] Date: Mon, 12 Mar 2018 13:50:06 GMT
+2018-03-12 14:50:04 22354 [HttpClient] Content-Type: text/html; charset=UTF-8
+2018-03-12 14:50:04 22354 [HttpClient] Content-Length: 0
+2018-03-12 14:50:04 22354 [HttpClient] Connection: keep-alive
+2018-03-12 14:50:04 22354 [HttpClient] X-Powered-By: PHP/5.6.33-0+deb8u1
+2018-03-12 14:50:04 22354 [HttpClient] Expires: Thu, 19 Nov 1981 08:52:00 GMT
+2018-03-12 14:50:04 22354 [HttpClient] Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+2018-03-12 14:50:04 22354 [HttpClient] Pragma: no-cache
+2018-03-12 14:50:04 22354 [HttpClient] Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval' 'nonce-MWF4dnR6ODNtazY2Z2U5WEh2TEJJSFJuaHR1TUNxbXdQN0d6SmZHUkxtVT06aCtJdTVVWm42U3lNeDUxaVpyK0ZiaEFHcmZENE9NdlRadG45ZHBya2JCST0='; style-src 'self' 'unsafe-inline'; frame-src *; img-src * data: blob:; font-src 'self' data:; media-src *; connect-src *; object-src 'none'; base-uri 'self';
+2018-03-12 14:50:04 22354 [HttpClient] X-Frame-Options: SAMEORIGIN
+2018-03-12 14:50:04 22354 [HttpClient] Status: 405 Method Not Allowed
+2018-03-12 14:50:04 22354 [HttpClient] X-Content-Type-Options: nosniff
+2018-03-12 14:50:04 22354 [HttpClient] X-XSS-Protection: 1; mode=block
+2018-03-12 14:50:04 22354 [HttpClient] X-Robots-Tag: none
+2018-03-12 14:50:04 22354 [HttpClient] X-Download-Options: noopen
+2018-03-12 14:50:04 22354 [HttpClient] X-Permitted-Cross-Domain-Policies: none
+2018-03-12 14:50:04 22354 [HttpClient] Strict-Transport-Security: max-age=60; includeSubDomains
+2018-03-12 14:50:04 22354 [HttpClient] <-- END HTTP (0-byte body)
+2018-03-12 14:50:04 22354 [ui.setup.DavResourceFinder] No resource found
+EXCEPTION at.bitfire.dav4android.exception.HttpException: 405 Method Not Allowed
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:343)
+	at at.bitfire.dav4android.DavResource.checkStatus(DavResource.kt:307)
+	at at.bitfire.dav4android.DavResource.propfind(DavResource.kt:283)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.getCurrentUserPrincipal(DavResourceFinder.kt:351)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.discoverPrincipalUrl(DavResourceFinder.kt:333)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:124)
+	at at.bitfire.davdroid.ui.setup.DavResourceFinder.findInitialConfiguration(DavResourceFinder.kt:75)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:131)
+	at at.bitfire.davdroid.ui.setup.DetectConfigurationFragment$ServerConfigurationLoader.loadInBackground(DetectConfigurationFragment.kt:112)
+	at android.content.AsyncTaskLoader.onLoadInBackground(AsyncTaskLoader.java:312)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:69)
+	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:66)
+	at android.os.AsyncTask$2.call(AsyncTask.java:304)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1133)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:607)
+	at java.lang.Thread.run(Thread.java:762)
+
+
+
+SOFTWARE INFORMATION
+Package: at.bitfire.davdroid
+Version: 1.10.1.1-ose (205) from 13. 2. 2018
+Installed from: com.google.android.packageinstaller
+JB Workaround installed: no
+
+CONNECTIVITY (at the moment)
+Active connection: WiFi, CONNECTED
+
+CONFIGURATION
+Power saving disabled: yes
+android.permission.READ_CONTACTS permission: granted
+android.permission.WRITE_CONTACTS permission: granted
+android.permission.READ_CALENDAR permission: granted
+android.permission.WRITE_CALENDAR permission: granted
+org.dmfs.permission.READ_TASKS permission: granted
+org.dmfs.permission.WRITE_TASKS permission: granted
+System-wide synchronization: automatically
+Account: ja@kub.cz
+  Address book sync. interval: 240 min
+  Calendar     sync. interval: 240 min
+  OpenTasks    sync. interval: 240 min
+  WiFi only: false
+  [CardDAV] Contact group method: GROUP_VCARDS
+  [CalDAV] Time range (past days): 90
+           Manage calendar colors: true
+Address book account: Kontakty (ja@kub.cz 0Q)
+  Main account: Account {name=ja@kub.cz, type=bitfire.at.davdroid}
+  URL: http://nextcloud.example.com/remote.php/dav/addressbooks/users/user/contacts/
+  Sync automatically: true
+
+SQLITE DUMP
+android_metadata
+	|  locale |
+	|  cs_CZ |
+----------
+services
+	|  _id | accountName | service | principal |
+	|  9 | ja@kub.cz | carddav | http://nextcloud.example.com/remote.php/dav/principals/users/user/ |
+	|  10 | ja@kub.cz | caldav | http://nextcloud.example.com/remote.php/dav/principals/users/user/ |
+----------
+sqlite_sequence
+	|  name | seq |
+	|  services | 12 |
+	|  homesets | 15 |
+	|  collections | 23 |
+----------
+homesets
+	|  _id | serviceID | url |
+	|  10 | 9 | http://nextcloud.example.com/remote.php/dav/addressbooks/users/user/ |
+	|  15 | 10 | http://nextcloud.example.com/remote.php/dav/calendars/user/ |
+----------
+collections
+	|  _id | serviceID | type | url | readOnly | forceReadOnly | displayName | description | color | timezone | supportsVEVENT | supportsVTODO | source | sync |
+	|  11 | 9 | ADDRESS_BOOK | http://nextcloud.example.com/remote.php/dav/addressbooks/users/user/contacts/ | 0 | 0 | Kontakty | <null> | <null> | <null> | 0 | 0 | <null> | 1 |
+	|  21 | 10 | CALENDAR | http://nextcloud.example.com/remote.php/dav/calendars/user/contact_birthdays/ | 1 | 0 | Narozeniny kontaktů | <null> | -54 | <null> | 1 | 0 | <null> | 0 |
+	|  22 | 10 | CALENDAR | http://nextcloud.example.com/remote.php/dav/calendars/user/kancelar/ | 0 | 0 | kanceal | <null> | -9122585 | <null> | 1 | 1 | <null> | 1 |
+	|  23 | 10 | CALENDAR | http://nextcloud.example.com/remote.php/dav/calendars/user/personal/ | 0 | 0 | osobni | <null> | -11772054 | <null> | 1 | 1 | <null> | 1 |
+----------
+
+SYSTEM INFORMATION
+Android version: 7.0 (NRD90M.G935FXXS2DRA9)
+Device: samsung SM-G935F (hero2lte)
+
+--- END DEBUG INFO ---
+```
+
+"
+nerzhul/ownCloud-SMS-App,closed,"App does not sync new SMS, synchronization cursor has to be reinitialized every time ",[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Set up Nextcloud SMS app with an account
+2. Recieve SMS
+
+### Expected behaviour
+SMS should be synced to Nextcloud and show up in the Nextcloud SMS app.
+
+### Actual behaviour
+SMS aren't synced (saying ""Nothing to sync""), synchronization cursor has to be reinitialized, then a sync works. See issue https://github.com/nextcloud/ocsms/issues/215. Tested with two different phones (BQ X5 Plus/Samsung Galaxy S3).
+
+### Server configuration
+
+**Nextcloud version:** 12.0.5
+
+**PHP version:** 7.0
+
+**Webserver:** Apache 2.4
+
+**HTTPS:** Yes, with official cert from a trusted CA
+
+### Client configuration
+
+**Android version:** 7.1.1/7.1.2
+
+**Phone:** BQ X5 Plus/Samsung Galaxy S3
+
+**Nextcloud SMS app version:** 2.0.2
+
+### Logs
+
+```
+{""reqId"":""WprpKH8AAQEAAD0iMv0AAAAA"",""level"":1,""time"":""2018-03-03T19:27:52+01:00"",""remoteAddr"":""1.1.1.1"",""user"":""--"",""app"":""admin_audit"",""method"":""GET"",""url"":""\/cloud\/index.php\/apps\/ocsms\/get\/smsidlist?format=json"",""message"":""Login attempt: \""user\"""",""userAgent"":""nextcloud-phonesync-go (2.0.2)"",""version"":""12.0.5.3""}
+```
+
+## Screenshots
+<!--
+Upload your screenshots here if any
+--> 
+"
+nerzhul/ownCloud-SMS-App,open,Certificate signed by unknow authority,[],"On the login screen Low level error is shown (see screenshot)
+
+I have the authority certificate for this server loaded into the phone nextcloud app and various sync apps are working without any issue.
+
+### Server configuration
+
+**Nextcloud version:** 
+13
+
+**Android version:**
+6
+
+**Phone:**
+Samsung
+**Nextcloud SMS app version:**
+Latest from F-Droid
+![screenshot_20180228-134548](https://user-images.githubusercontent.com/4058815/36791307-5aef870c-1c8f-11e8-8a8f-4d9f8f96aaad.png)
+"
+nerzhul/ownCloud-SMS-App,closed,Can't restore messages from server to a new phone.,"[Label(name=""bug"")]","### Steps to reproduce
+1. add account in App
+2. select restore all messages
+
+### Expected behaviour
+All messages should be downloaded from server.
+
+### Actual behaviour
+Just fast message in green about success.
+
+### Server configuration
+
+**Nextcloud version: 13.0.0** 
+
+**PHP version: 7.0**
+
+**Webserver: apache-2.4.6**
+
+**HTTPS:certbot**
+
+### Client configuration
+
+**Android version: 7.1.2**
+
+**Phone:Asus Zenfone 2**
+
+**Nextcloud SMS app version: 1.12.2**
+
+### Logs
+
+```
+02-24 11:49:48.552  5501  7781 E OCSMSOwnCloudClient: Invalid response received from server, either messages or last_id field is missing.
+02-24 11:49:48.552  5501  7781 I ASyncSMSRecovery: Retrieved returns failure
+```
+
+"
+nerzhul/ownCloud-SMS-App,closed,Error while doing full sync,"[Label(name=""bug"")]","<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Reinit synchronisation cursor on account
+2. Start a synchronisation
+
+### Expected behaviour
+SMS messages should be synchronised to the owncloud instance
+
+### Actual behaviour
+* No synchronisation is occuring.
+* Application is showing a synchronisation popup every 5 seconds.
+
+### Server configuration
+
+**Nextcloud version:** Nextcloud 12.0.3
+**OCsms version:** 1.21.2
+
+**PHP version:** PHP 5.6.30
+
+**Webserver:** Nginx
+
+**HTTPS:** Yes with lets encrypt certificate
+
+### Client configuration
+
+**Android version:** 7.1.2 / LineageOS 14.1-20180207
+
+**Phone:** Samsung galaxy S2 / i9100
+
+**Nextcloud SMS app version:** 2.0.1 from f-droid
+
+### Logs
+
+```
+02-15 08:58:02.123  3919  3919 W View    : requestLayout() improperly called by com.android.systemui.statusbar.NotificationOverflowIconsView{2f738b4 V.E...... ......ID 90,33-450,33 #7f12027a app:id/overflow_icons_view} during layout: running second layout pass
+02-15 08:58:02.124  3919  3919 W View    : requestLayout() improperly called by StatusBarIconView(slot= icon=StatusBarIcon(icon=Icon(typ=RESOURCE pkg=android id=0x010806e9) visible user=-1 ) notification=Notification(pri=-1 contentView=null vibrate=null sound=null tick defaults=0x0 flags=0x2 color=0xff607d8b vis=PUBLIC)) during layout: running second layout pass
+02-15 08:58:02.124  3919  3919 W View    : requestLayout() improperly called by com.android.systemui.statusbar.NotificationOverflowContainer{944e37f VFE...C.. ......ID 0,0-480,66} during layout: running second layout pass
+02-15 08:58:03.685  5740  7881 I ASyncSMSSync: Server API version: 1
+02-15 08:58:03.981  5740  7881 I OCSMSOwnCloudClient: SMS Push request said: status true - OK
+02-15 08:58:03.987  5740  7881 I OCSMSOwnCloudClient: LastMessageDate set to: 0
+02-15 08:58:04.030  5740  7881 I AndroidSmsFetcher: bufferMessagesSinceDate for INBOX sinceDate 0
+02-15 08:58:04.122  5740  7881 I AndroidSmsFetcher: Retrieved 13 messages.
+02-15 08:58:04.150  5740  7881 I AndroidSmsFetcher: 13 messages read from content://sms/inbox
+02-15 08:58:04.166  5740  7881 I AndroidSmsFetcher: bufferMessagesSinceDate for SENT sinceDate 0
+02-15 08:58:04.207  5740  7881 I AndroidSmsFetcher: Retrieved 18 messages.
+02-15 08:58:04.244  5740  7881 I AndroidSmsFetcher: 18 messages read from content://sms/sent
+02-15 08:58:04.260  5740  7881 I AndroidSmsFetcher: bufferMessagesSinceDate for DRAFTS sinceDate 0
+02-15 08:58:04.288  4146  4158 E SmsProvider: Invalid request: content://sms/drafts
+02-15 08:58:04.299  5740  7881 I AndroidSmsFetcher: No message retrieved.
+02-15 08:58:04.760  3919  3919 W View    : requestLayout() improperly called by com.android.systemui.statusbar.NotificationOverflowIconsView{2f738b4 V.E...... ......ID 90,33-450,33 #7f12027a app:id/overflow_icons_view} during layout: running second layout pass
+02-15 08:58:04.761  3919  3919 W View    : requestLayout() improperly called by StatusBarIconView(slot= icon=StatusBarIcon(icon=Icon(typ=RESOURCE pkg=android id=0x010806e9) visible user=-1 ) notification=Notification(pri=-1 contentView=null vibrate=null sound=null tick defaults=0x0 flags=0x2 color=0xff607d8b vis=PUBLIC)) during layout: running second layout pass
+02-15 08:58:04.761  3919  3919 W View    : requestLayout() improperly called by com.android.systemui.statusbar.NotificationOverflowContainer{944e37f VFE...C.. ......ID 0,0-480,66} during layout: running second layout pass
+02-15 08:58:06.890  5740  7881 I ASyncSMSSync: Server API version: 1
+02-15 08:58:07.178  5740  7881 I OCSMSOwnCloudClient: SMS Push request said: status true - OK
+02-15 08:58:07.185  5740  7881 I OCSMSOwnCloudClient: LastMessageDate set to: 0
+02-15 08:58:07.241  5740  7881 I AndroidSmsFetcher: bufferMessagesSinceDate for INBOX sinceDate 0
+02-15 08:58:07.396  5740  7881 I AndroidSmsFetcher: Retrieved 13 messages.
+02-15 08:58:07.440  5740  7881 I AndroidSmsFetcher: 13 messages read from content://sms/inbox
+02-15 08:58:07.460  5740  7881 I AndroidSmsFetcher: bufferMessagesSinceDate for SENT sinceDate 0
+02-15 08:58:07.513  5740  7881 I AndroidSmsFetcher: Retrieved 18 messages.
+02-15 08:58:07.572  5740  7881 I AndroidSmsFetcher: 18 messages read from content://sms/sent
+02-15 08:58:07.591  5740  7881 I AndroidSmsFetcher: bufferMessagesSinceDate for DRAFTS sinceDate 0
+02-15 08:58:07.628  4146  5460 E SmsProvider: Invalid request: content://sms/drafts
+02-15 08:58:07.642  5740  7881 I AndroidSmsFetcher: No message retrieved.
+```
+"
+nerzhul/ownCloud-SMS-App,open,"Error ""UNK"" whan adding an account",[],"### Steps to reproduce
+1.write URL / Login / Password
+2.click Sign in
+3.error ""UNK""
+
+### Expected behaviour
+I can't connect the 2.0.1 with my nextcoud 
+Nextcloud SMS 1.2.4 work fine
+
+### Actual behaviour
+I have the message error ""UNK"" when i try to add an account
+
+### Server configuration
+
+**Nextcloud version:** 11.0.6
+
+**PHP version:** 5.6.33
+
+**Webserver:** apache2
+
+**HTTPS:** 2.4.10
+
+### Client configuration
+
+**Android version:** 8.0.0 or 6.0 or 7.1.2
+
+**Phone:** XZ1 compact / emulated / Moto G 4G peregrine
+
+**Nextcloud SMS app version:** 2.0.1
+
+### Logs
+E/Surface: getSlotFromBufferLocked: unknown buffer: 0xae477d00
+E/Surface: getSlotFromBufferLocked: unknown buffer: 0xae477f80
+I/fr.unix_experience.owncloud_sms.activities.LoginActivity.UserLoginTask: _serverURL = https://192.168.1.253:4433
+I/GoLog: Get https://192.168.1.253:4433/index.php/apps/ocsms/get/apiversion?format=json: x509: cannot validate certificate for 192.168.1.253 because it doesn't contain any IP SANs
+D/EGL_emulation: eglMakeCurrent: 0xaa9efe40: ver 2 0 (tinfo 0xafead090)
+D/EGL_emulation: eglMakeCurrent: 0xaa9efe40: ver 2 0 (tinfo 0xafead090)
+D/EGL_emulation: eglMakeCurrent: 0xaa9efe40: ver 2 0 (tinfo 0xafead090)
+D/EGL_emulation: eglMakeCurrent: 0xaa9efe40: ver 2 0 (tinfo 0xafead090)
+D/EGL_emulation: eglMakeCurrent: 0xaa9efe40: ver 2 0 (tinfo 0xafead090)
+D/EGL_emulation: eglMakeCurrent: 0xaa9efe40: ver 2 0 (tinfo 0xafead090)
+D/EGL_emulation: eglMakeCurrent: 0xaa9efe40: ver 2 0 (tinfo 0xafead090)
+E/Surface: getSlotFromBufferLocked: unknown buffer: 0xae476e00
+E/Surface: getSlotFromBufferLocked: unknown buffer: 0xae477d00
+![capture](https://user-images.githubusercontent.com/13288010/36111322-080ffdf2-1026-11e8-8508-70684c4fdc08.png)
+"
+nerzhul/ownCloud-SMS-App,closed,SMS restore now used GoLang HTTP client.,"[Label(name=""enhancement"")]",This permits to remove the whole android HTTP client from source
+nerzhul/ownCloud-SMS-App,closed,Drop C++ cmake part in favour of GoLang gomobile,"[Label(name=""design"")]",
+nerzhul/ownCloud-SMS-App,open,Password change for configured account?,"[Label(name=""bug"")]","### Steps to reproduce
+1. Change password for account in NextCloud instance
+2. Search for a way to change password in App
+3. ...
+4. No profit.
+
+### Expected behaviour
+Changed password to configured account, so NC will not kick in brute-force blocking
+
+### Actual behaviour
+No way to change password in application, app uses old password, brute-force protection of NC kicks in and blocks reverse proxy IP, everyone suffer.
+
+### Server configuration
+
+**Nextcloud version:** 
+12.0.5
+
+**Webserver:**
+Apache
+
+**HTTPS:**
+On reverse proxy only
+
+### Client configuration
+
+**Android version:**
+1.3.3, 1.3.4
+
+**Phone:**
+Moto RAZR XT910, Android 4.2
+
+**Nextcloud SMS app version:**
+1.12.2
+
+ ### Notes
+Also, there was no indication of wrong credentials, notification bar had only ''failed to sync'' message, and pop-up (toast?) notification showed ''synced successfully'' when I tried manual sync.
+ 
+"
+nerzhul/ownCloud-SMS-App,open,Feature Request: Send SMS,[],"Does anyone have an idea regarding the scope and requirements of implementing SMS sending within this app? I think this would be a great platform to develop this on. But a lot of experience would be required implementing SIP/sms gateways. I would like to contribute, but I don't really know where to start."
+nerzhul/ownCloud-SMS-App,open,Problem creating an account nextcloud sms,[],"Hi 
+
+I need help on how to setup an account. I have nextcloud on my raspberry pi only available locally
+when logging into nextcloud i usually type in ip address 192.XXX.X.XXX. im able to synch this with davdroid and nextcloud app fine but not sure why nextcloud sms app is having trouble.
+
+i have both nextcloud sms on the nextcloud and the app android phone
+
+### Steps to reproduce
+1. open nextcloud sms
+2. click on add an account
+3. choose nextcloud sms
+4. type in 192.XXX.X.XXX/ (using https option but i didnt write https in the field)
+5. enter admin
+6. enter password for admin
+7. click sign in
+
+### Expected behaviour
+Nextcloud admin account will be added
+
+### Actual behaviour
+error in the server address field. 
+Unable to perform a http connection. please ensure there is a web server
+
+### Server configuration
+
+**Nextcloud version:** 
+12
+**PHP version:**
+
+**Webserver:**
+
+**HTTPS:**
+
+### Client configuration
+
+**Android version:**
+6.0.1
+**Phone:**
+Galaxy J7 Prime
+**Nextcloud SMS app version:**
+1.3.4
+### Logs
+
+```
+Insert your log here
+```
+
+## Screenshots
+<!--
+Upload your screenshots here if any
+--> 
+"
+nerzhul/ownCloud-SMS-App,open,Don't show notification on failed sync,[],"For me it happens regularly that a sync fails because of bad network connection. In this case I always get a notification on my phone. This information is useless and disturbing, I can' t do anything, but only hope that the next time the app tries to sync the connection is better and it will work. Therefore I think it would be good if the app wouldn't show any notification but just try again.
+
+The only situation it might be useful is for debugging purpose. So maybe a config switch to enable notification on sync errors might make sense, disabled by default."
+nerzhul/ownCloud-SMS-App,open,Language rework,[],"As per https://en.wiktionary.org/wiki/SMSes
+The ""could not read your SMSes"" should possibly be a singular (?)"
+nerzhul/ownCloud-SMS-App,closed,Fix transifex,[],"Transifex is using values-es_419 for spanish ""latin america"", but this is not supported on android. This changes ""values-es_419"" to ""values-es-rUS"", which works."
+nerzhul/ownCloud-SMS-App,open,Enable acceptance of specific self-signed certificates,"[Label(name=""feature request"")]",It would be nice to if I'd be prompted to accept a self-signed certificate by fingerprint instead of giving a generic error message that the connection was not possible.
+nerzhul/ownCloud-SMS-App,open,Enable whitelist for networks to sync in.,"[Label(name=""feature request"")]","This app should allow to only attempt to sync when inside a given list of networks. This would be very useful when the configured Nextcloud instance is not reachable from the public internet but only within  a given network.
+### Steps to reproduce
+1. Configure app to sync to an account whose server is only reachable from a specific network
+2. Attempt to sync outside of said network
+3. Repeated error message that server is not found.
+
+### Expected behaviour
+A configuration dialog should enable restrict syncing to a number of SSIDs.
+After that, while not inside on of those networks no sync should occur and thus no error messages on missing servers should show up.
+
+### Actual behaviour
+s.o."
+nerzhul/ownCloud-SMS-App,open,App will not connect to server when adding account,[],"i have some issues with nextcloud sms, after trying the function reset pointer in the app, sync started to have issues with connecting to my server. i then tried to remove the account on my app and readd it, this is where the problem is, when readding the account i get a error message that the http:// server address is not reachable, i noticed that the error message says http:// is used eventhoug the app settings is set to https://
+My server is not possible to reach with http at all, and if the app is ignoring the https:// ofcourse it would have issues connecting. 
+
+Would have been nice if you could fix this behavior"
+nerzhul/ownCloud-SMS-App,closed,Unable to login when using tls 1.1+,[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Use docker container
+2. Use Nginx as a proxy
+3. Setup TLS and only allow 1.1 and 1.2
+
+### Expected behaviour
+I should be able to create a sync account
+
+### Actual behaviour
+Unable to preform a HTTP connection
+{lease ensure there is a web server
+
+### Server configuration
+
+**Nextcloud version:** 
+
+**PHP version:**
+7.1.12
+**Webserver:**
+12.0.3
+**HTTPS:**
+Yes
+
+Nginx
+```shell
+server {
+    listen 443 ssl;
+    server_name domain.tld;
+
+    ssl_protocols       TLSv1.1 TLSv1.2;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
+    ssl_certificate     /etc/letsencrypt/live/domain.tld/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/domain.tld/privkey.pem;
+
+    location / {
+        proxy_pass_header Authorization;
+        proxy_pass http://10.0.1.30:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP  $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_http_version 1.1;
+        proxy_set_header Connection """";
+        proxy_buffering off;
+        proxy_request_buffering off;
+        client_max_body_size 0;
+        proxy_read_timeout  36000s;
+        proxy_redirect off;
+        proxy_ssl_session_reuse off;
+    }
+}
+```
+
+### Client configuration
+
+**Android version:**
+7.1.2
+**Phone:**
+Moto G Play
+**Nextcloud SMS app version:**
+1.3.1 F-Droid
+### Logs
+
+```
+10.0.1.100 - username[28/Nov/2017:20:02:03 -0500] ""POST /index.php/apps/ocsms/get/apiversion?format=json HTTP/1.1"" 405 0 ""-"" ""nextcloud-phonesync (1.3.1)"" ""-""
+10.0.1.30 - - [28/Nov/2017:20:02:03 -0500] ""GET /ocs/v2.php/apps/notifications/api/v2/notifications HTTP/1.1"" 200 74 ""-"" ""Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:57.0) Gecko/20100101 Firefox/57.0"" ""-""
+10.0.1.102 - - [28/Nov/2017:20:02:08 -0500] ""GET /ocs/v2.php/apps/notifications/api/v2/notifications HTTP/1.1"" 200 74 ""-"" ""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"" ""-""
+10.0.1.102 - - [28/Nov/2017:20:02:14 -0500] ""GET /ocs/v2.php/apps/notifications/api/v2/notifications HTTP/1.1"" 200 74 ""-"" ""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"" ""-""
+```
+
+logcat
+```
+11-28 19:34:52.659: I/fr.unix_experience.owncloud_sms.activities.LoginActivity.UserLoginTask(28851): _serverURL = https://domain.tld
+11-28 19:34:52.664: I/fr.unix_experience.owncloud_sms.engine.OCHttpClient(28851): Perform GET https://domain.tld/index.php/apps/ocsms/get/apiversion?format=json
+11-28 19:34:52.994: W/fr.unix_experience.owncloud_sms.activities.LoginActivity.UserLoginTask(28851): Failed to login, OCSyncException occured: null
+```
+
+curl
+```shell
+curl -u usename:password https://domain.tld/index.php/apps/ocsms/get/apiversion?format=json
+{""version"":1}
+```
+
+## Screenshots
+<!--
+Upload your screenshots here if any
+--> 
+"
+nerzhul/ownCloud-SMS-App,closed,Nextcloud SMS 1.3.0+ breaks login / sync sms to nextcloud,[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Upgrade nextcloud SMs to 1.3.0 / 1.3.1
+2. Try to sync sms, or
+3. Try to create new account for nextcloud SMS (if there was none or it's been removed)
+
+### Expected behaviour
+Sync SMS / create an account and sync
+
+### Actual behaviour
+When trying to sync sms when account was present in app before upgrade to 1.3.0, app throws error '# 13 authorization error' or something similiar - sorry that I can't provide exact error, but I've downgraded app to 1.2.5 already. 
+Once you'll remove account (or if it wasn't present prior to installing app in v 1.3.0+) and try to create new one, app will throw error ""Can't initialize http connection. Please check that web server is running"". 
+Very similar issue was raised on https://help.nextcloud.com/t/phonesync-app-ocsms-no-sync-then-no-connection-http-405/23301, but creator doesn't (and doesn't want to) have github account to open issue. 
+The only difference is, that I don't have problem with ""Invalid argument supplied for foreach()"".
+
+On server side everything is running and working as expected, all other apps from phone are working perfectly fine. 
+
+### Server configuration
+
+**Nextcloud version:** 
+12.0.3.3
+**PHP version:** 
+7.1
+**Webserver:**
+lighttpd
+**HTTPS:**
+yes
+### Client configuration
+
+**Android version:**
+6
+**Phone:**
+n/a
+**Nextcloud SMS app version:**
+1.3.0 and 1.3.1
+### Logs
+From nextcloud.log:
+```
+{""reqId"":""1T4E2pnBJktiDwsBirFe"",""level"":1,""time"":""2017-11-21T10:36:34+00:00"",""remoteAddr"":""$myip"",""user"":""--"",""app"":""admin_audit"",""method"":""POST"",""url"":""\/index.php\/apps\/ocsms\/get\/apiversion?format=json"",""message"":""Login attempt: \""$myuser\"""",""userAgent"":""nextcloud-phonesync (1.3.1)"",""version"":""12.0.3.3""}
+
+```
+From web server log:
+```
+$myip $myaddress - [21/Nov/2017:10:37:41 +0100] ""POST /index.php/apps/ocsms/get/apiversion?format=json HTTP/1.1"" 405 20 ""-"" ""nextcloud-phonesync (1.3.1)""
+
+```
+One thing I've noted here is, that 1.3.0 and above are using POST method (which seem to be causing 405 - method not allowed), while for 1.2.5 I can see in logs mostly only GET method - and in this case all is working as expected.
+"
+nerzhul/ownCloud-SMS-App,closed,Update version label,[],To help f-droid to trigger a new build
+nerzhul/ownCloud-SMS-App,open,Ignoring sync interfaces settings,[],"### Steps to reproduce
+1. Install Nextcloud SMS
+2. Set only Wi-Fi sync
+3. Turn Wi-fi off
+
+### Expected behaviour
+Expected that app would sync only over Wi-Fi.
+
+### Actual behaviour
+Nextcloud SMS ignores settings, try to sync over 4G, cannot find server (my server is local only) and displays error about it.
+
+### Server configuration
+
+**Nextcloud version:** 12.0.3
+
+**PHP version:** 5.6.30+dfsg-0+deb8u1
+
+**Webserver:** nginx 1.6.2-5+deb8u5
+
+**HTTPS:** no
+
+### Client configuration
+
+**Android version:** 7.1.2 (LineageOS 14.1)
+
+**Phone:** Xiaomi Redmi Note 3 Pro (replicates on every phone I test)
+
+**Nextcloud SMS app version:** 1.3.1 (error appears in previous versions too)"
+nerzhul/ownCloud-SMS-App,closed,Unable to restore SMS,[],"### Steps to reproduce
+1. Install 1.3.x branch
+2. Try to restore messages
+
+### Expected behaviour
+Restored messages.
+
+### Actual behaviour
+Nextcloud SMS asks permissions, display button ""Restore SMS"", and after I press on it nothing happens.
+There is no such error in Nextcloud SMS 1.2.5
+
+### Server configuration
+
+**Nextcloud version:** 12.0.3
+
+**PHP version:** 5.6.30+dfsg-0+deb8u1
+
+**Webserver:** nginx 1.6.2-5+deb8u5
+
+**HTTPS:** no
+
+### Client configuration
+
+**Android version:** 7.1.2 (LineageOS 14.1)
+
+**Phone:** Xiaomi Redmi Note 3 Pro (replicates on every phone I test)
+
+**Nextcloud SMS app version:** 1.3.0 and 1.3.1"
+nerzhul/ownCloud-SMS-App,closed,Unable to add account throught IP without domain name,[],"### Steps to reproduce
+1. Install 1.3.x branch
+2. Try to add acount throught IP without domain name
+
+### Expected behaviour
+Added account.
+
+### Actual behaviour
+Nextcloud SMS returns an error telling that it cannot establish HTTP connection.
+There is no such error in Nextcloud SMS 1.2.5
+
+### Server configuration
+
+**Nextcloud version:** 12.0.3
+
+**PHP version:** 5.6.30+dfsg-0+deb8u1
+
+**Webserver:** nginx 1.6.2-5+deb8u5
+
+**HTTPS:** no
+
+### Client configuration
+
+**Android version:** 7.1.2 (LineageOS 14.1)
+
+**Phone:** Xiaomi Redmi Note 3 Pro (replicates on every phone I test)
+
+**Nextcloud SMS app version:** 1.3.0 and 1.3.1"
+nerzhul/ownCloud-SMS-App,closed,"couldn't establish http connection, make sure http server is there",[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Add account and log in into nextcloud server
+
+### Expected behaviour
+Logging in should succed
+
+### Actual behaviour
+logging in ends with error ""couldn't establish http connection, make sure http server is there"". This error occurs both for HTTP and HTTPS
+
+### Server configuration
+
+**Nextcloud version:**
+12.0.3
+
+**PHP version:**
+7.0.25
+
+**Webserver:**
+nginx 1.12.1
+
+**HTTPS:**
+self-signed certificate
+
+### Client configuration
+
+**Android version:**
+7.1 (paranoid android 7.3.1)
+
+**Phone:**
+Nexus 5x
+
+**Nextcloud SMS app version:**
+1.3.0 (from f-droid)
+
+### Logs
+
+```
+11-12 05:52:38.942 12420 12420 I fr.unix_experience.owncloud_sms.activities.LoginActivity.UserLoginTask: _serverURL = http://next-cloud.server
+11-12 05:52:38.945 12420 12592 I fr.unix_experience.owncloud_sms.engine.OCHttpClient: Perform GET http://next-cloud.server/index.php/apps/ocsms/get/apiversion?format=json
+
+11-12 05:53:09.789 12420 12592 W fr.unix_experience.owncloud_sms.activities.LoginActivity.UserLoginTask: Failed to login, OCSyncException occured: null
+```
+
+Logs from nginx access while logging in
+
+```
+10.1.1.82 - lm- [12/Nov/2017:05:52:12 +0100] ""POST /index.php/apps/ocsms/get/apiversion?format=json HTTP/1.1"" 405 5 ""-"" ""nextcloud-phonesync (1.3.0)""
+```
+
+There is no GET operation in nginx access log. For comparision, version 1.2.5 that works sends
+
+```
+10.1.1.82 - lm- [12/Nov/2017:05:58:12 +0100] ""GET /index.php/apps/ocsms/get/apiversion?format=json HTTP/1.1"" 200 13 ""-"" ""nextcloud-phonesync (1.2.5)""
+```
+
+### Workaround
+Install version 1.2.5 <- works well, exports smses
+
+## Screenshots
+<!--
+Upload your screenshots here if any
+--> 
+"
+nerzhul/ownCloud-SMS-App,closed,Since version 1.3.0 from FDROID the app cannot connect to the server.,[],"Since version 1.3.0 from FDROID the app cannot connect to the server.
+Tried removing, reinstalling the app. Version 1.2.5 works fine.
+
+When i insert the connection data, the client gives an error about not being able to perform a HTTP connection and on the server i have these in the logs:
+
+Exception: The requested uri(/nextcloud/index.php/apps/ocsms/get/apiversion) cannot be processed by the script '/nextcloud//index.php')
+    /var/www/nextcloud/lib/base.php - line 956: OC\AppFramework\Http\Request->getRawPathInfo()
+    /var/www/nextcloud/index.php - line 48: OC handleRequest()
+    {main}
+
+My connection URL is https://my.domain:444/nextcloud. The same connection URI and user/password works on version 1.2.5.
+
+### Steps to reproduce
+1. Install Nextcloud SMS app 1.3.0 from FDROID
+2. Insert connection details
+3. Try to authenticate
+
+### Expected behaviour
+The app should connect to the server
+
+### Actual behaviour
+Client gives an error about not being able to perform a HTTP request.
+
+### Server configuration
+
+**Nextcloud version:** 
+12.0.3
+**PHP version:**
+7.0
+**Webserver:**
+Apache 2.4.25
+**HTTPS:**
+Yes?
+### Client configuration
+
+**Android version:**
+5.0.2
+**Phone:**
+Alcatel Idol 3 4.7""
+**Nextcloud SMS app version:**
+1.3.0
+### Logs
+
+```
+Exception: The requested uri(/nextcloud/index.php/apps/ocsms/get/apiversion) cannot be processed by the script '/nextcloud//index.php')
+
+    /var/www/nextcloud/lib/base.php - line 956: OC\AppFramework\Http\Request->getRawPathInfo()
+    /var/www/nextcloud/index.php - line 48: OC handleRequest()
+    {main}
+```
+
+## Screenshots
+<!--
+Upload your screenshots here if any
+--> 
+"
+nerzhul/ownCloud-SMS-App,closed,“Error #16: No data connection available” notification when data connection of the wrong type available,"[Label(name=""bug"")]","When a data connection that has not been chosen in the General settings is present, a notification stating “Error #16: No data connection available” keeps being posted. This is noisy and incorrect, as a data connection is available, but not of a desired type, which is therefore ignored. The notification is not posted when no data connection (at all) is available.
+
+It would make more sense to simply do nothing, and not post the notification
+
+### Steps to reproduce
+1. Select “Synchronise in Wi-Fi” only in the General settings
+2. Turn on 3/4g, move outside of Wi-Fi range (alternatively, disable Wi-Fi)
+3. Wait for the next sync (alternatively force it with “Synchronise now”, which will show a toast with the same message; it might be argued that manually using “Synchronise now” should actually ignore the network requirement)
+
+### Expected behaviour
+* Nothing gets synced until Wi-Fi is available
+* No notification is shown
+
+### Actual behaviour
+* Nothing gets synced until Wi-Fi is available (/)
+* A notification is virtually persistently shown (x)"
+nerzhul/ownCloud-SMS-App,closed,Fix launcher icon,[],"Hi @nerzhul,
+
+unfortunately I can't get the app to compile in my current setup but found a mistake I made formerly when I did the UI theming stuff for your app, that is the launcher icon. While I created all assets in the mipmap folders where they should be I forgot to remove the one in the drawable folder and also link to the mipmap version in the AndroidManifest.
+
+This PR fixes this issue but I couldn't test it, so it is a blind PR. I am sorry for that. If you find the time to give it a try you should see a crisp launcher icon instead of an slightly blurry one which is to to the drawable image which gets resized...
+
+Sorry for any trouble due to me not able to run the app.. :("
+nerzhul/ownCloud-SMS-App,open,Crash when trying to synchronize,[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Clic on ""Synchroniser maintenant""
+2
+3.
+
+### Expected behaviour
+Tell us what should happen
+Synchronization should goes on !
+### Actual behaviour
+Tell us what happens instead
+Pop  up : ""Nextcloud SMS s'est arrếté"". nothing else.
+I just got a few discussions synchronized, once after reseting the index and make a restaure option. I tryied to change the parameters whithout positive effects.
+
+### Server configuration
+Nextcloud 
+**Nextcloud version:** 
+Nextcloud 12.0.2 on YunoHost 2.7.2.
+**PHP version:**
+php 5
+**Webserver:**
+
+**HTTPS:**
+
+### Client configuration
+
+**Android version:**
+6.0.1
+**Phone:**
+Samsung S5
+**Nextcloud SMS app version:**
+Nextcloud SMS 1.2.4 just installed from FDroid
+### Logs
+
+```
+Insert your log here
+```
+On nextcloud Admin : 
+- Error	PHP	call_user_func() expects parameter 1 to be a valid callback, class 'OCA\OcSms\Db\Config' not found at /var/www/nextcloud/lib/public/AppFramework/Db/Mapper.php#318
+- Error	PHP	ldap_search(): Partial search results returned: Sizelimit exceeded at /var/www/nextcloud/apps/user_ldap/lib/LDAP.php#293
+## Screenshots
+<!--
+Upload your screenshots here if any
+--> 
+
+"
+nerzhul/ownCloud-SMS-App,open,Support for dual-SIM phones (selecting SIM),"[Label(name=""feature request"")]","I would ask for a function to select which SIM card to be synchronized SMS on dual-SIM phones.
+
+This would be useful if we have a private and business number and we want to synchronize only the messages sent or received on the business number."
+nerzhul/ownCloud-SMS-App,closed,Start to use JNI to improve application synchronization performance,"[Label(name=""enhancement"")]",
+nerzhul/ownCloud-SMS-App,closed,[Wishlist] Request the compatibility with Owncloud 10,"[Label(name=""invalid"")]","After installing in /apps, Owncloud says that the 9.2 release or lower of owcloud is required and that, dependences are missing.
+
+Please migrate ocsms to owncloud 10 with a valid signature of the code for this release of owncloud.
+
+Regards.
+
+"
+nerzhul/ownCloud-SMS-App,closed,Spelling: Description update,"[Label(name=""Translation"")]",
+nerzhul/ownCloud-SMS-App,closed,Spelling: Various language fixes,"[Label(name=""Translation"")]","I'm not 100% sure the ""we"" strings weren't in error."
+nerzhul/ownCloud-SMS-App,closed,Does not synchronize,[],"### Steps to reproduce
+1. Try to synchronize or wait for synchronization
+2.
+3.
+### Notice
+I have a LOT of SMSes
+
+
+### Expected behaviour
+All SMSes are synchronized and visible to webapp
+
+### Actual behaviour
+Not all SMSes are present on the web app
+
+### Server configuration
+
+**Nextcloud version: 12
+
+**PHP version:7.0 (7.0.20-2~ubuntu14.04.1+deb.sury.org+1)
+
+**Webserver: (Apache 2.4.7-1ubuntu4.16)
+
+**HTTPS: yes (letsencrypt)
+
+### Client configuration
+
+**Android version: 6.0.1
+
+**Phone: ZTE Axon 7 (A2017G)
+
+**Nextcloud SMS app version: 1.1.0
+
+### Logs
+
+```
+{""reqId"":""5JNJMZ3Y6TRSsOBjiF6p"",""level"":3,""time"":""2017-06-28T07:04:23+00:00"",""remoteAddr"":""77.136.14.98"",""user"":""freeflyer"",""app"":""PHP"",""method"":""POST"",""url"":""\/index.php\/apps\/ocsms\/push?format=json"",""message"":""Invalid argument
+ supplied for foreach() at \/var\/[...]\/apps\/ocsms\/db\/smsmapper.php#264"",""userAgent"":""nextcloud-phonesync (1.1.0)"",""version"":""12.0.0.29""}
+```
+
+## Screenshots
+
+none.. 
+"
+nerzhul/ownCloud-SMS-App,closed,Don't sync one-time password SMS (e.g. from Google),[],"The security model behind sending one-time passwords as SMS (""something that you have"") assumes, that - once received on a phone - the SMS will **never** leave your phone again (or, at least, not before the OTP gets invalid). 
+This is not the case, however, with this app...
+Hacking into your Nextcloud instance is definitely possible, so hackers could read your OTPs there and gain more access. 
+
+Telling people (that use SMS-based OTPs) **not** to use your app **at all**, is probably no good idea. For these people, you could maybe implement some **heuristic**, that detects if a message contains an OTP. If yes, the message should not get synced at all. 
+
+If you don't agree with me, please tell! 
+Especially if you think the security model behind SMS-based OTPs is ""broken by design"" and should not be treated separately from this app. In that case, please close this issue. "
+nerzhul/ownCloud-SMS-App,closed,SSL protocol issues requires TLSv1,[],"<!--
+Thanks for reporting issues back to us!
+
+To make it possible for us to help you please fill out below information carefully.
+-->
+
+### Steps to reproduce
+1.Turn off TLSv1 on nginx settings
+2.Watch nginx error log - set to debug
+3. Error 13 occurs, turn TLSv1 back on, connection works again.
+
+### Expected behaviour
+TLSv1.1 and 1.2 is considered to be safe, should not be forced to use TLSv1 or older protocols?
+
+### Actual behaviour
+SSL handshake refuses to connect
+
+### Server configuration
+
+**NextCloud/ownCloud version:**
+8.2
+
+**PHP version:**
+5.7
+
+**HTTPd server:**
+nginx 1.6.2
+
+**Database engine & version:** <!-- MySQL 5.6.14 / PostgreSQL 9.6.1 ... -->
+mysql 5.6
+
+### Client configuration
+
+**Android version:**
+4.4
+
+**Phone:**
+
+**NextCloud SMS app version:**
+latest
+
+### Logs
+
+```
+ [info] 31963#31963: *11 SSL_do_handshake() failed (SSL: error:140760FC:SSL routines:SSL23_GET_CLIENT_HELLO:unknown protocol) while SSL handshaking, client: x.x.x.xx.x, server: x.x.x.x.x:443
+```
+
+
+This error is a bit of a red herring as showing SSLv3, but same issue for TLSv1
+"
+nerzhul/ownCloud-SMS-App,closed,Don't show sync notification,"[Label(name=""feature request"")]","I'm using version 1.0.1 from f-droid. First let me say that the app works really great! I have just one small feature request:
+
+It would be great if the user could disable the sync notification. The Notification is great for debugging or maybe for a first run to see that something happens. But in daily use it is really disturbing that this icons appears regularly in the notification area."
+nerzhul/ownCloud-SMS-App,closed,Force close android app,"[Label(name=""bug"")]","The app force closes on login using application password.
+  
+### Steps to reproduce
+1. In nextcloud: Application password > Create a new application password
+2. On device: Launch app
+3. Add an account. List of account types appears (why?)
+4. Select Nextcloud SMS
+5. Enter server URL, user and password (as generated in step 1).
+6. Click Connect.
+
+### Expected behaviour
+App should connect to the server. Account should be created.
+
+### Actual behaviour
+App returns to Welcome screen
+""Nextcloud SMS has stopped"" message
+Account is not created.
+
+### Server configuration
+
+Nextcloud: 11.0.3 (stable)
+Phone Sync 1.11.5
+Two Factor TOTP Provider 1.1.0
+
+OpenMediaVault 3.xx (Linux Debian Jessie)
+nginx version 1.6.2
+HTTPS SSL certificate: Let's Encrypt
+
+### Client configuration
+
+Android: 6.0.1 (latest update)
+Device: Samsung A5 (2017) SM-A520F
+App version: Nextcloud SMS (fr.unix_experience.owncloud_sms) 1.0.0
+
+### Logs
+
+Report and logs submitted through Google Play Store
+
+"
+nerzhul/ownCloud-SMS-App,closed,#16 when AFWall allows connection only on Wifi,"[Label(name=""invalid"")]","I permanently getting error #16, when application is set to synchronize only over WiFi and AFWall is configured to allow only WiFi connections.
+
+LineageOS 14.1 (Android 7.1.1)"
+nerzhul/ownCloud-SMS-App,closed,Error #15 can't synchronize,[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. 
+2.
+3.
+
+### Expected behaviour
+Tell us what should happen
+Trying to synchronize an android phone for the first time with Nextcloud on a local server (Yunohost 2.5.6 - Debian 8.7 32bit (Linux 3.16.0-4-armmp) 
+
+### Actual behaviour
+Tell us what happens instead
+Error#15
+### Server configuration
+
+**Nextcloud version:** Nextcloud 11.0.2
+
+**PHP version:**5.6.30
+
+**Webserver:**
+
+**HTTPS:**
+
+### Client configuration
+
+**Android version:** 4.1.2
+
+**Phone:**Samsung GT-S6310N
+
+**Nextcloud SMS app version:**0.24.1
+
+### Logs
+
+```
+Insert your log here
+```
+
+## Screenshots
+<!--
+Upload your screenshots here if any
+--> 
+"
+nerzhul/ownCloud-SMS-App,open,Big traffic applications when synchronizing,[],"Applications in realtime synchronization transmission. Consumes one month in heavy traffic - can transmit Over 3 GB of data!
+
+It's somehow optimize? It does not affect me Big sms. For me, there's too much reading mode around."
+nerzhul/ownCloud-SMS-App,closed,"Drawer, Toolbar and minor UI optimizations","[Label(name=""design"")]","This PR changes quite some areas around the app, but I tested it to my knowledge.
+
+Here is the list of changes done + screenshots:
+* using a Toolbar for the main screen including overlaying the system bar when the drawer opens
+* changed the drawer header layout accordingly including different screen sizes
+* moved the launcher icon to the mipmap folder structure so devices that use higher resolution launcher icons than their standard dpi level can do that
+* added back navigation via the action bar in some places where it made sense to me 
+* painted the login screen in blue
+* fixed the accent color so UI elements like check boxes, etc. will now be blue too instead of green-ish
+* added xxxhdpi launcher icon
+* consolidated styles files, since min version is 16 styles and styles-v14 have been merged
+fixed the notification icon since that needs to be white on transparent, front facing
+* fixed used notification large icon to use proper launcher icon (sharp, crisp icon, not blurred due to resizing)
+* removed the ```large icon``` from the notification since usually only the ```small icon``` is used (that is 3.0 legacy which is not 4.x+ styling), see screenshots.
+
+screenshots:
+![main](https://cloud.githubusercontent.com/assets/1315170/23437351/188d7cca-fe0e-11e6-9d3c-69976065e32b.png)
+![settings](https://cloud.githubusercontent.com/assets/1315170/23437352/18ae9f68-fe0e-11e6-8bdb-cafb8dbb48bb.png)
+![drawer](https://cloud.githubusercontent.com/assets/1315170/23437355/18b08a44-fe0e-11e6-9857-baebc76a422c.png)
+![device-2017-03-07-140008](https://cloud.githubusercontent.com/assets/1315170/23657492/aab4d9e2-033e-11e7-9fe7-0ba70dc9f80f.png)
+![device-2017-03-07-140440](https://cloud.githubusercontent.com/assets/1315170/23657842/5270c05a-0340-11e7-82cf-37a60ca5bd9b.png)
+
+Android 4.1
+![screenshot_1488922950](https://cloud.githubusercontent.com/assets/1315170/23679810/585ccea2-0389-11e7-801b-7ed04c16b7ee.png)
+
+Android 5
+![android5](https://cloud.githubusercontent.com/assets/1315170/23663392/bd55f310-0352-11e7-80df-b0f36e80465f.png)
+
+Android 6
+![android6](https://cloud.githubusercontent.com/assets/1315170/23663405/c5f2eee2-0352-11e7-915c-9d40e929ab31.png)
+
+Android 7
+![android7](https://cloud.githubusercontent.com/assets/1315170/23663421/cb3a3e5a-0352-11e7-925e-cdd7fe85bad6.png)
+
+
+If you need me to change anything or revert some changes just let me know, other than that you also have write access to my fork.
+
+cc @enoch85 since you seem to be also quite active around here :)"
+nerzhul/ownCloud-SMS-App,closed,Translation fixes,"[Label(name=""Translation"")]","* Make some translations at not translatable
+* Remove them from all translation files
+
+This fixes #143"
+nerzhul/ownCloud-SMS-App,closed,Move strings,"[Label(name=""Translation"")]","This is an issue for you @AndyScherzinger ;)
+
+https://github.com/nerzhul/ownCloud-SMS-App/issues/139#issuecomment-279258149"
+nerzhul/ownCloud-SMS-App,closed,Update issue_template.md,[],@nerzhul 
+nerzhul/ownCloud-SMS-App,closed,SMS doesn't get synced on Android 7.1.1,"[Label(name=""bug"")]","<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Activate Nextcloud SMS on Nextcloud App store
+2. Download ownCloud SMS from Plat store
+3. Configure the apps
+4. Sync
+
+### Expected behaviour
+SMS should show up in the App on Nextcloud
+
+### Actual behaviour
+The Android client syncs without any issues, but no messages show up in the Nextcloud App. Permissions error in Android 7.1.1? I allowed it to access both SMS and Contacts:
+![screenshot_20170203-204704](https://cloud.githubusercontent.com/assets/4511254/22605873/12fcf7ec-ea52-11e6-84af-10185cb45004.png)
+
+
+### Server configuration
+**Nextcloud version:** 
+11.0.1
+**PHP version:**
+7.0
+**HTTPd server:**
+Apache 2.4
+**HTTPS:**
+Yes
+### Client configuration
+**Android version:**
+7.1.1
+**Phone:**
+LG Google Nexus 5x
+**Nextcloud SMS app version:**
+0.24.3
+### Logs
+
+```
+No logs
+```
+"
+nerzhul/ownCloud-SMS-App,closed,add transifex config,"[Label(name=""Translation"")]",needed for https://github.com/nerzhul/ownCloud-SMS-App/issues/139
+nerzhul/ownCloud-SMS-App,closed,Activate translations on Transifex,[],"Now when https://github.com/nextcloud/ocsms/issues/166 is merged, we should activate this on the client side as well. 
+
+@MorrisJobke Here is the ticket. ;) Does @nerzhul need to do anything? There are already manual translations here: https://github.com/nerzhul/ownCloud-SMS-App/tree/master/src/main/res "
+nerzhul/ownCloud-SMS-App,closed,"Translation too long, and get's cut off","[Label(name=""Translation"")]","A possible solution for cut off text. But, would be better to fix in the code somehow.
+
+Right now it only shows ""Appinformation och"" not the whole text. @nerzhul "
+nerzhul/ownCloud-SMS-App,closed,Small fix,[],"Same as https://github.com/AndyScherzinger/ownCloud-SMS-App/blob/7fd6e874ebf330c046f4d4050243461f143e5a34/src/main/res/values/strings.xml
+
+@AndyScherzinger @nerzhul "
+nerzhul/ownCloud-SMS-App,closed,Update Swedish strings,[],cc @nerzhul 
+nerzhul/ownCloud-SMS-App,closed,Unable to sync messages if emoji/emoticons in them,[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Send or receive a sms with some emoji/emoticons in them.
+2. After some tries Nextcloud SMS client will report: Nextcloud SMS: Fatal error! Error #9: Server set unhandled HTTP return code
+3. The thread with the emoji symbols will not sync.
+4. Delete the sms with the emoji in it and Nextcloud SMS client will sync fine again.
+
+### Expected behaviour
+Nextcloud SMS should sync SMSs with or without emoji / emoticons in them just fine. Perhaps it should replace the symbols, place a token character in them, or use an external linked library with the same/similar graphical symbols.
+
+### Actual behaviour
+Nextcloud SMS fails to sync threads with SMSs with emoji symbols in them.
+
+### Server configuration
+
+**ownCloud version:** Nextcloud 11.0.1 (stable) / Owncloud 9.1
+
+**PHP version:** 7.0.13
+
+**HTTPd server:** Apache 2.4.18-2ubuntu3.1
+
+**HTTPS:** Apache 2.4.18-2ubuntu3.1 + self signed certificate
+
+### Client configuration
+
+**Android version:** 4.4.2
+
+**Phone:** Huawei Hol-U19
+
+**ownCloud SMS app version:** 0.24.1
+
+### Logs
+
+```
+Doctrine\DBAL\Exception\DriverException: An exception occurred while executing 'INSERT INTO oc_ocsms_smsdatas (user_id, added, lastmodified, sms_flags, sms_date, sms_id,sms_address, sms_msg, sms_mailbox, sms_type) VALUES (?,?,?,?,?,?,?,?,?,?)' with params [""user"", ""2017-01-23 21:22:03"", ""2017-01-23 21:22:03"", ""11"", ""1485124282764"", 910, ""+5352427295"", ""\ud83c\udf0b\ud83c\udf7b\ud83c\udf7b\ud83c\udf7b\ud83c\udf7b\ud83c\udf77\ud83c\udf77\ud83c\udf77"", 0, 1]: SQLSTATE[HY000]: General error: 1366 Incorrect string value: '\xF0\x9F\x8C\x8B\xF0\x9F...' for column 'sms_msg' at row 1
+```"
+nerzhul/ownCloud-SMS-App,closed,Update to Nextcloud,"[Label(name=""Translation"")]",@nerzhul 
+nerzhul/ownCloud-SMS-App,closed,set new drawer menu icons and also ship them,[],"Hi @nerzhul,
+
+I did this change without raising an issue beforehand but I hope you still like it (more PRs to come 😄)
+
+I added standard material design icons and thus also removed the then not needed drawables.xml file. This way the menu will look the same on all Android installation.
+
+Before it looks like this (on a Nexus5X running Android 7.1.1):
+![device-2017-01-23-175946](https://cloud.githubusercontent.com/assets/1315170/22214302/6f2df6d8-e197-11e6-83c8-85186d0071f4.png)
+
+With this PR it will look like this:
+![device-2017-01-23-180558](https://cloud.githubusercontent.com/assets/1315170/22214323/7fe2a258-e197-11e6-9d38-947f27802ac0.png)
+
+If you are fine with it, I would also like to create further PRs (UI wise) which would move on to Toolbar, show a drawer Menu icon as well as back navigation arrow in the toolbar and further fine tune the theme :) - basically things the Nextcloud (file) client does :D
+
+Hope you like it 😸 "
+nerzhul/ownCloud-SMS-App,open,Move this repo to Nextcloud as well,"[Label(name=""feature request"")]",As the subject says. 
+nerzhul/ownCloud-SMS-App,closed,Sync old messages,"[Label(name=""feature request"")]","<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+Would love to be able to sync my old messages as a backup - perhaps it wouldn't be too hard for the app to slowly go through and back up/sync my old messages over time?
+
+I'm running Nextcloud 11, Ubuntu, Nextcloud SMS 1.11.4
+
+Have been asked to reopen issue in this repo
+https://github.com/nextcloud/ocsms/issues/156
+
+Thanks in advance and if there's anything else I can help with, please let me know.
+
+
+
+### Steps to reproduce
+1.
+2.
+3.
+
+### Expected behaviour
+Tell us what should happen
+
+### Actual behaviour
+Tell us what happens instead
+
+### Server configuration
+
+**ownCloud version:** 
+
+**PHP version:**
+
+**HTTPd server:**
+
+**HTTPS:**
+
+### Client configuration
+
+**Android version:**
+
+**Phone:**
+
+**ownCloud SMS app version:**
+
+### Logs
+
+```
+Insert your log here
+```
+"
+nerzhul/ownCloud-SMS-App,closed,Travis support,[],
+nerzhul/ownCloud-SMS-App,closed,"""Unable to perform a HTTP connection"" when connecting to https server with Let's Encrypt certificate on Android 4.4",[],"### Steps to reproduce
+1. Have ownCloud installation on a server with a Let's Encrypt certificate
+2. Install app on Android KitKat (CM11 in my case)
+3. Try to create an account in App via https
+4. ""Unable to perform a HTTP connection""
+
+### Expected behaviour
+App connects and creates an android account
+
+### Actual behaviour
+""Unable to perform a HTTP connection""
+
+### Server configuration
+
+**ownCloud version: 8.2** 
+
+**PHP version: 5.6**
+
+**HTTPd server: Apache 2.4**
+
+**HTTPS: Yes, using valid Let's Encrypt cert**
+
+### Client configuration
+
+**Android version: 4.4 (CyanogenMod 11)**
+
+**Phone: Motorola Defy+ (but this is irrelevant)**
+
+**ownCloud SMS app version: 0.23.2 from F-Droid**
+
+### Logs
+
+No logs obtained.
+
+### Additional info
+The problem is most likely related to the SSL/TLS part as if I choose plain http, app connects without any problems. This works on Android 6."
+nerzhul/ownCloud-SMS-App,closed,HTTP Error 400 Results in Error #9,"[Label(name=""bug"")]","Hi,
+im getting Error #9 on a regular basis. The server access log says:
+`XXX.XXX.XXX.XXX - user [12/Jan/2017:05:16:49 -0600] ""GET /index.php/apps/ocsms/get/smsidlist?format=json HTTP/1.1"" 400 166 ""-"" ""Jakarta Commons-HttpClient/3.1""`
+
+but there are no other entries in any other log file.
+
+### Server configuration
+
+**ownCloud version:** 
+`Nextcloud 11.0.0 `
+
+**PHP version:**
+`PHP 5.6.29-0+deb8u1 (cli) (built: Dec 13 2016 16:02:08)`
+
+**HTTPd server:**
+`nginx version: nginx/1.6.2`
+
+### Client configuration
+
+**Android version:**
+`Android 6.0.1 Cyanogen Mod 13.0`
+
+**Phone:**
+`Samsung Galaxy S5 SM-G900F`
+
+**ownCloud SMS app version:**
+`0.23.2`"
+nerzhul/ownCloud-SMS-App,closed,Circular redirect on latest Android version,"[Label(name=""bug""), Label(name=""duplicate"")]","### Steps to reproduce
+1. Add your Nextcloud instance
+2. Synchronise
+3. Get the error in notification center
+
+### Expected behaviour
+We should synchronise successfully without the ""error #9: server set unhandled http return""
+
+### Actual behaviour
+The synchronisation leads to ""error #9: server set unhandled http return"" in the notification bar
+
+### Server configuration
+
+**Nextcloud version:** 
+11.0.0
+
+**PHP version:**
+5.6.29
+
+**HTTPd server:**
+Nginx 1.6.2
+
+**HTTPS:**
+Yes
+
+### Client configuration
+
+**Android version:**
+7.1.1
+
+**Phone:**
+Nexus 5X
+
+**ownCloud SMS app version:**
+Latest Play Store 0.23.2
+
+### Logs
+
+```
+12-25 16:54:47.646 28450 28464 I fr.unix_experience.owncloud_sms.engine.OCHttpClient: Create GET https://xxx/index.php/apps/ocsms/get/apiversion?format=json
+12-25 16:54:49.414 28450 28464 I OCSMSOwnCloudClient: HTTP Request done at try 1
+12-25 16:54:49.416 28450 28464 I SmsSyncAdapter: Server API version: 1
+12-25 16:54:49.416 28450 28464 I fr.unix_experience.owncloud_sms.engine.OCHttpClient: Create GET https://xxx/index.php/apps/ocsms/get/smsidlist?format=json
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: Unable to perform a connection to ownCloud instance
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: org.apache.commons.httpclient.CircularRedirectException: Circular redirect to 'https://xxx:443/index.php/apps/ocsms/get/smsidlist'
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: 	at org.apache.commons.httpclient.HttpMethodDirector.processRedirectResponse(HttpMethodDirector.java:638)
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: 	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:179)
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: 	at fr.unix_experience.owncloud_sms.engine.OCHttpClient.execute(OCHttpClient.java:98)
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: 	at fr.unix_experience.owncloud_sms.engine.OCSMSOwnCloudClient.doHttpRequest(OCSMSOwnCloudClient.java:290)
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: 	at fr.unix_experience.owncloud_sms.engine.OCSMSOwnCloudClient.doHttpRequest(OCSMSOwnCloudClient.java:267)
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: 	at fr.unix_experience.owncloud_sms.engine.OCSMSOwnCloudClient.doPushRequestV1(OCSMSOwnCloudClient.java:111)
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: 	at fr.unix_experience.owncloud_sms.engine.OCSMSOwnCloudClient.doPushRequest(OCSMSOwnCloudClient.java:102)
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: 	at fr.unix_experience.owncloud_sms.sync_adapters.SmsSyncAdapter.onPerformSync(SmsSyncAdapter.java:54)
+12-25 16:54:49.616 28450 28464 E OCSMSOwnCloudClient: 	at android.content.AbstractThreadedSyncAdapter$SyncThread.run(AbstractThreadedSyncAdapter.java:272)
+12-25 16:54:49.818 28450 28464 I OCSMSOwnCloudClient: HTTP Request done at try 2
+12-25 16:54:49.820 28450 28464 E OCSMSOwnCloudClient: Server set unhandled HTTP return code 400
+12-25 16:54:49.820 28450 28464 E OCSMSOwnCloudClient: Status code: 400. Response message: <html>
+12-25 16:54:49.820 28450 28464 E OCSMSOwnCloudClient: <head><title>400 Bad Request</title></head>
+12-25 16:54:49.820 28450 28464 E OCSMSOwnCloudClient: <body bgcolor=""white"">
+12-25 16:54:49.820 28450 28464 E OCSMSOwnCloudClient: <center><h1>400 Bad Request</h1></center>
+12-25 16:54:49.820 28450 28464 E OCSMSOwnCloudClient: <hr><center>nginx/1.6.2</center>
+12-25 16:54:49.820 28450 28464 E OCSMSOwnCloudClient: </body>
+12-25 16:54:49.820 28450 28464 E OCSMSOwnCloudClient: </html>
+12-25 16:54:49.836 28450 28464 W SmsSyncAdapter: onPerformSync: unhandled response
+```
+"
+nerzhul/ownCloud-SMS-App,closed,Add travis build support,"[Label(name=""build"")]",
+nerzhul/ownCloud-SMS-App,closed,Add travis build support,[],
+nerzhul/ownCloud-SMS-App,closed,Update README.md,"[Label(name=""documentation"")]","- Restructured
+- Emojis
+- ownCloud -> Nextcloud
+- Typos"
+nerzhul/ownCloud-SMS-App,closed,Updated Readme.md,"[Label(name=""enhancement"")]","- Restructured
+- Emojis
+- ownCloud -> Nextcloud
+- Typos"
+nerzhul/ownCloud-SMS-App,closed,Can't login with Android 7.1.1,"[Label(name=""bug"")]","<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Download the Nextcloud server app
+2. Download the phone app in Play Store
+3. Try to login with correct credentials
+
+### Expected behaviour
+I should be able to login
+
+### Actual behaviour
+It says that I have the wrong password or username
+
+### Server configuration
+
+**Nextcloud version:** 
+11
+**PHP version:**
+7.0
+**HTTPd server:**
+Apache 2.4
+**HTTPS:**
+Yes
+### Client configuration
+0.23.0
+**Android version:**
+7.1.1
+**Phone:**
+Nexus 5x
+**Nextcloud SMS app version:**
+1.9.0
+
+"
+nerzhul/ownCloud-SMS-App,closed,Update Swedish translations,"[Label(name=""Translation"")]","Do not merge until we have decided on the new name of the app.
+
+@nerzhul "
+nerzhul/ownCloud-SMS-App,closed,unable to connect to local OwnCloud instance,"[Label(name=""bug"")]","<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Add new account
+2. get failure to connect message
+
+### Expected behaviour
+Tell us what should happen
+
+Connects and syncs
+### Actual behaviour
+Tell us what happens instead
+Fails to connect
+### Server configuration
+
+**ownCloud version:** 
+9.1.3
+**PHP version:**
+7.0.8
+**HTTPd server:**
+Apache2.4.18
+**HTTPS:**
+yes
+### Client configuration
+
+**Android version:**
+7.1.1
+**Phone:**
+Nexus 6P
+**ownCloud SMS app version:**
+0.23.0
+
+
+### Logs
+
+```
+Insert your log here
+```
+![screenshot_20161215-014549](https://cloud.githubusercontent.com/assets/11836893/21217210/4c5dda54-c268-11e6-84e1-c0a4a20f2a5a.png)
+
+![screenshot_20161215-014800](https://cloud.githubusercontent.com/assets/11836893/21217289/afd9dcc2-c268-11e6-8c0e-739669dc025a.png)
+"
+nerzhul/ownCloud-SMS-App,closed,error #9: server set unhandled http ret,[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1.
+2.
+3.
+
+### Expected behaviour
+Tell us what should happen
+sync sms
+### Actual behaviour
+Tell us what happens instead
+sms not syncing
+### Server configuration
+
+**ownCloud version:** 
+10.0.1
+**PHP version:**
+ 7.0.8
+**HTTPd server:**
+apache
+**HTTPS:**
+yes
+### Client configuration
+
+**Android version:**
+6
+**Phone:**
+
+**ownCloud SMS app version:**
+
+### Logs
+
+```
+Insert your log here
+```
+Exception: {""Exception"":""Doctrine\DBAL\Exception\DriverException"",""Message"":""An exception occurred while executing 'INSERT INTO oc_ocsms_smsdatas (user_id, added, lastmodified, sms_flags, sms_date, sms_id,sms_address, sms_msg, sms_mailbox, sms_type) VALUES (?,?,?,?,?,?,?,?,?,?)' with params [""myusername"", ""2016-12-13 18:35:23"", ""2016-12-13 18:35:23"", ""11"", ""1481560356410"", 611, ""+47xxxxxxxx"", ""Great, I will be back from work about five tomorrow. \nHave a Nice evening\ud83d\ude0a"", 0, 1]:\n\nSQLSTATE[HY000]: General error: 1366 Incorrect string value: '\xF0\x9F\x98\x8A' for column 'sms_msg' at row 1"",""Code"":0,""Trace"":""#0 /var/www/nextcloud/html/3rdparty/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(116): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))\n#1 /var/www/nextcloud/html/3rdparty/doctrine/dbal/lib/Doctrine/DBAL/Statement.php(174): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException), 'INSERT INTO oc_...', Array)\n#2 /var/www/nextcloud/html/lib/private/legacy/db/statementwrapper.php(74): Doctrine\DBAL\Statement->execute(Array)\n#3 /var/www/nextcloud/html/apps/ocsms/db/smsmapper.php(289): OC_DB_StatementWrapper->execute(Array)\n#4 /var/www/nextcloud/html/apps/ocsms/controller/apicontroller.php(82): OCA\OcSms\Db\SmsMapper->writeToDB('myusername', Array)\n#5 [internal function]: OCA\OcSms\Controller\ApiController->push(543, Array)\n#6 /var/www/nextcloud/html/lib/private/AppFramework/Http/Dispatcher.php(160): call_user_func_array(Array, Array)\n#7 /var/www/nextcloud/html/lib/private/AppFramework/Http/Dispatcher.php(90): OC\AppFramework\Http\Dispatcher->executeController(Object(OCA\OcSms\Controller\ApiController), 'push')\n#8 /var/www/nextcloud/html/lib/private/AppFramework/App.php(111): OC\AppFramework\Http\Dispatcher->dispatch(Object(OCA\OcSms\Controller\ApiController), 'push')\n#9 /var/www/nextcloud/html/lib/private/AppFramework/Routing/RouteActionHandler.php(47): OC\AppFramework\App::main('ApiController', 'push', Object(OC\AppFramework\DependencyInjection\DIContainer), Array)\n#10 [internal function]: OC\AppFramework\Routing\RouteActionHandler->__invoke(Array)\n#11 /var/www/nextcloud/html/lib/private/Route/Router.php(293): call_user_func(Object(OC\AppFramework\Routing\RouteActionHandler), Array)\n#12 /var/www/nextcloud/html/lib/base.php(983): OC\Route\Router->match('/apps/ocsms/pus...')\n#13 /var/www/nextcloud/html/index.php(48): OC::handleRequest()\n#14 {main}"",""File"":""/var/www/nextcloud/html/3rdparty/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php"",""Line"":116}"
+nerzhul/ownCloud-SMS-App,closed,Move to Nextcloud,"[Label(name=""Translation""), Label(name=""design"")]","Fix #116
+
+- [x] Adjust strings and translations
+- [x] Change theme color
+- [x] Adjust icon color"
+nerzhul/ownCloud-SMS-App,closed,error #9: server set unhandled http ret,[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1.
+2.
+3.
+
+### Expected behaviour
+Tell us what should happen
+sync sms
+### Actual behaviour
+Tell us what happens instead
+sms not syncing
+error #9: server set unhandled http ret
+### Server configuration
+
+**ownCloud version:** 
+10.0.1
+**PHP version:**
+7.0.8
+**HTTPd server:**
+apache
+**HTTPS:**
+yes
+### Client configuration
+
+**Android version:**
+6
+**Phone:**
+huawei p8lite
+**ownCloud SMS app version:**
+
+### Logs
+
+```
+Insert your log here
+```
+error #9: server set unhandled http ret"
+nerzhul/ownCloud-SMS-App,closed,Move to Nextcloud,[],"Since all major apps (mail, contacts, notes, news) moved to Nextcloud: Do you have any plans to move to Nextcloud as primary platform?
+If yes: I would be able to provide a pull request with new theme-colors and icons if you wish."
+nerzhul/ownCloud-SMS-App,closed,Fix classpath dependencies,[],"com.android.tools.build:gradle:2.2.2 is not in mavenCentral, but only in jcenter."
+nerzhul/ownCloud-SMS-App,closed,Sent and Recieved Appear in Different Converstions/Threads,[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+
+### Steps to reproduce
+1. Installed OwnCloud Server with Contacts App
+2. Set contact phone numbers. Phone numbers are input including country code +18085551234
+3. Sync phone numbers via CardDav and sync SMS via app
+
+### Expected behaviour
+SMS messages appear  in threads according to contact settings. Sent messages, and messages received should appear in the same thread.
+
+### Actual behaviour
+SMS messages sent to me appear in a thread with my contact's name, with their number below it, including the country code +18085551234. SMS messages that I send to the same contact appear in a separate thread with their phone number, excluding the country code 8085551234. I've tried adding and removing the country code from my contact, and doing this inverts the behaviour I've described above, and then sent messages have my contacts name, and messages received display in a separate thread with their phone number.
+
+How can I combine these threads into one conversation? 
+
+### Server configuration
+
+**ownCloud version:** 
+9.1.1
+
+**PHP version:**
+7.0
+
+**HTTPd server:**
+apache
+
+**HTTPS:**
+LetsEncrypt
+
+### Client configuration
+
+**Android version:**
+CyanogenMod 13
+
+**Phone:**
+Nexus 5
+
+**ownCloud SMS app version:**
+0.22.2
+
+
+"
+nerzhul/ownCloud-SMS-App,closed,App crashes on incoming SMS,"[Label(name=""bug"")]","### Steps to reproduce
+Not sure about it. Probably: receive a new SMS when there are no messages.
+
+### Expected behaviour
+The app should not crash.
+
+### Actual behaviour
+The app crashes.
+
+### Client configuration
+
+**Android version:** 4.4.4 (CM11)
+
+**ownCloud SMS app version:** 0.22.1 (from F-Droid)
+
+### Logs
+
+```
+11-02 02:00:04.086 25816-25816/? E/AndroidRuntime: FATAL EXCEPTION: main
+                                                   Process: fr.unix_experience.owncloud_sms, PID: 25816
+                                                   android.database.CursorIndexOutOfBoundsException: Index 0 requested, with a size of 0
+                                                       at android.database.AbstractCursor.checkPosition(AbstractCursor.java:426)
+                                                       at android.database.AbstractWindowedCursor.checkPosition(AbstractWindowedCursor.java:136)
+                                                       at android.database.AbstractWindowedCursor.getInt(AbstractWindowedCursor.java:68)
+                                                       at android.database.CursorWrapper.getInt(CursorWrapper.java:102)
+                                                       at fr.unix_experience.owncloud_sms.engine.SmsFetcher.handleProviderColumn(SmsFetcher.java:202)
+                                                       at fr.unix_experience.owncloud_sms.engine.SmsFetcher.getLastMessage(SmsFetcher.java:112)
+                                                       at fr.unix_experience.owncloud_sms.observers.SmsObserver.onChange(SmsObserver.java:63)
+                                                       at android.database.ContentObserver.onChange(ContentObserver.java:129)
+                                                       at android.database.ContentObserver$NotificationRunnable.run(ContentObserver.java:180)
+                                                       at android.os.Handler.handleCallback(Handler.java:733)
+                                                       at android.os.Handler.dispatchMessage(Handler.java:95)
+                                                       at android.os.Looper.loop(Looper.java:136)
+                                                       at android.app.ActivityThread.main(ActivityThread.java:5146)
+                                                       at java.lang.reflect.Method.invokeNative(Native Method)
+                                                       at java.lang.reflect.Method.invoke(Method.java:515)
+                                                       at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:732)
+                                                       at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:566)
+                                                       at dalvik.system.NativeStart.main(Native Method)
+```
+
+I skipped some details from the issue template that seemed to be unrelated. I can provide this info if it really matters."
+nerzhul/ownCloud-SMS-App,closed,Honoring different SMS apps like Silence,"[Label(name=""duplicate"")]","Hi,
+
+I just bought the app for over 1 Euro and unfortunately must see that the app is not honoring the standard sms app which is configured on my smartphone but takes only the sms app which comes preinstalled and which I don't use.
+Please see into it, that other standard sms apps like e.g. Silence also synchronize with {Own|Next}cloud.
+
+Thanks in advance.
+Best regards, ajna"
+nerzhul/ownCloud-SMS-App,closed,Update Russian localization,[],
+nerzhul/ownCloud-SMS-App,closed,sms longer than 2048 characters can not be stored to postgresql Typ character varying(2048),"[Label(name=""bug"")]","### Steps to reproduce
+1. Send a message with more than 2048 characters
+2. Have a look at the owncloud.log where you can see the occured exception with the error message from postgresql
+   3.
+### Expected behaviour
+
+The SMS stored to oc_ocsms_smsdatas
+### Actual behaviour
+
+The SMS will not store into oc_ocsms_smsdatas
+### Server configuration
+
+**ownCloud version:** 
+9.1.0.15
+
+**PHP version:**
+7.0.11
+
+**HTTPd server:**
+Apache 2.4.18
+
+**HTTPS:**
+Yes
+### Client configuration
+
+**Android version:**
+6.0.1
+**Phone:**
+
+**ownCloud SMS app version:**
+1.7.0
+### Logs
+
+```
+    Doctrine\DBAL\Exception\DriverException: An exception occurred while executing 'INSERT INTO oc_ocsms_smsdatas (user_id, added, lastmodified, sms_flags, sms_date, sms_id,sms_address, sms_msg, sms_mailbox, sms_type) VALUES (?,?,?,?,?,?,?,?,?,?)' with params [""user1"", ""2016-09-17 16:44:58"", ""2016-09-17 16:44:58"", ""11"", ""1469546104682"", 271, """"***REMOVED SENSITIVE VALUE***"", """"***REMOVED SENSITIVE LONG TEXT WITH MORE THAT 2048 CHARACTERS***"", 0, 1]: SQLSTATE[22001]: String data, right truncated: 7 FEHLER: Wert zu lang für Typ character varying(2048)
+
+    /home/www/cloud.mrmobo.de/htdocs/owncloud/3rdparty/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php - line 116: Doctrine\DBAL\Driver\AbstractPostgreSQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+    /home/www/cloud.mrmobo.de/htdocs/owncloud/3rdparty/doctrine/dbal/lib/Doctrine/DBAL/Statement.php - line 174: Doctrine\DBAL\DBALException driverExceptionDuringQuery(Object(Doctrine\DBAL\Driver\PDOPgSql\Driver), Object(Doctrine\DBAL\Driver\PDOException), 'INSERT INTO oc_...', Array)
+    /home/www/cloud.mrmobo.de/htdocs/owncloud/lib/private/legacy/db/statementwrapper.php - line 73: Doctrine\DBAL\Statement->execute(Array)
+    /home/www/cloud.mrmobo.de/htdocs/owncloud/apps/ocsms/db/smsmapper.php - line 300: OC_DB_StatementWrapper->execute(Array)
+    /home/www/cloud.mrmobo.de/htdocs/owncloud/apps/ocsms/controller/apicontroller.php - line 82: OCA\OcSms\Db\SmsMapper->writeToDB('frochi', Array)
+    [internal function] OCA\OcSms\Controller\ApiController->push(377, Array)
+    /home/www/cloud.mrmobo.de/htdocs/owncloud/lib/private/AppFramework/Http/Dispatcher.php - line 159: call_user_func_array(Array, Array)
+    /home/www/cloud.mrmobo.de/htdocs/owncloud/lib/private/AppFramework/Http/Dispatcher.php - line 89: OC\AppFramework\Http\Dispatcher->executeController(Object(OCA\OcSms\Controller\ApiController), 'push')
+    /home/www/cloud.mrmobo.de/htdocs/owncloud/lib/private/AppFramework/App.php - line 110: OC\AppFramework\Http\Dispatcher->dispatch(Object(OCA\OcSms\Controller\ApiController), 'push')
+    /home/www/cloud.mrmobo.de/htdocs/owncloud/lib/private/AppFramework/Routing/RouteActionHandler.php - line 46: OC\AppFramework\App main('ApiController', 'push', Object(OC\AppFramework\DependencyInjection\DIContainer), Array)
+    [internal function] OC\AppFramework\Routing\RouteActionHandler->__invoke(Array)
+    /home/www/cloud.mrmobo.de/htdocs/owncloud/lib/private/Route/Router.php - line 280: call_user_func(Object(OC\AppFramework\Routing\RouteActionHandler), Array)
+    /home/www/cloud.mrmobo.de/htdocs/owncloud/lib/base.php - line 891: OC\Route\Router->match('/apps/ocsms/pus...')
+    /home/www/cloud.mrmobo.de/htdocs/owncloud/index.php - line 39: OC handleRequest()
+    {main}
+```
+"
+nerzhul/ownCloud-SMS-App,open,RFE: also save the call log to owncloud/nextcloud,"[Label(name=""feature request"")]","I use backupsms+ now that saves the call log and sms's to an IMAP server.
+
+But this one makes more sense.
+"
+nerzhul/ownCloud-SMS-App,closed,Sync is not working,[],"<!--
+Thanks for reporting issues back to us! 
+
+To make it possible for us to help you please fill out below information carefully.
+--> 
+### Steps to reproduce
+1. Upgrade cloud to 9.0.4
+2. Upgrade ocsm on cloud 1.4.1 - 1.7.0
+3. Should be enough
+### Expected behaviour
+
+Sms are synced up
+### Actual behaviour
+
+Can not sync sms. I bought new S6 phone. Installed Owncloud-SMS and sms are not being synced although my sms from telephone were synced to cloud. But from cloud - phone not.
+There is some other strange behaviour. 
+1. After I marked some message as read after I access the sms page again all messages apperead as unreaded 
+2. Some conversation are listen twice, as numner and as contact name. When I click on number after a while it will load the contact properly (with name and all sms) but after f5-ing remain the same
+3. In app My Accounts -> {account} -> I got error
+   - Contact list:
+     ""Server doesn't support this feature. Ensure sever is running at least version 1.6""
+   - Contact information:
+     ""contact phones""
+
+But the main issue is: Sms are not synced from cloud -> phone
+### Server configuration
+
+**ownCloud version:** 
+9.0.4
+
+**PHP version:**
+php5
+
+**HTTPd server:**
+apache2
+**HTTPS:**
+YES
+### Client configuration
+
+**Android version:**
+6.0.1 - permission given to the app
+
+**Phone:**
+Galaxy S6
+
+**ownCloud SMS app version:**
+0.21.2
+### Logs
+
+Eventhough I have set up logleve = 0, there is no relevent log :( in owncloud.log
+
+```
+[31/Aug/2016:21:36:54 +0200] ""GET /cloud/index.php/apps/ocsms/get/apiversion?format=json HTTP/1.1"" 200 5444 ""-"" ""Jakarta Commons-HttpClient/3.1"" => return {""version"" : 1 }
+
+[31/Aug/2016:21:36:54 +0200] ""GET /cloud/index.php/apps/ocsms/get/smsidlist?format=json HTTP/1.1"" 200 1060 ""-"" ""Jakarta Commons-HttpClient/3.1"" => return {""smslist"":[]}
+[31/Aug/2016:21:36:55 +0200] ""POST /cloud/index.php/apps/ocsms/push?format=json HTTP/1.1"" 200 1072 ""-"" ""Jakarta Commons-HttpClient/3.1""
+
+```
+"
+nerzhul/ownCloud-SMS-App,open,Support for Silence,[],"### Steps to reproduce
+1. Install and setup [Silence](https://github.com/SilenceIM/Silence) for messaging
+2. Send/receive SMSs
+3. Wait for sync to happen or force it
+### Expected behaviour
+
+Sent and recived messages are synced with the server and visible via ownCloud
+### Actual behaviour
+
+No message gets synced.
+### Server configuration
+
+**ownCloud version:** 9.1.0 (stable)
+
+**PHP version:** 7.0.x
+
+**HTTPd server:** NGINX
+
+**HTTPS:** yes
+### Client configuration
+
+**Android version:** 5.1.1
+
+**Phone:** Samsung Galaxy J5
+
+**ownCloud SMS app version:** 0.21.2
+### Logs
+
+```
+n/a
+```
+
+[**Relevent link**](https://github.com/nerzhul/ocsms/issues/115)
+"
+nerzhul/ownCloud-SMS-App,closed,no connect to server,"[Label(name=""bug"")]","- hoster-server.com/cloud  (ssl signed) not work
+- cloud.domain.com (selfsigned) not work
+- cloud.domain.com/ over http instead https work.
+### Server configuration
+
+**ownCloud version:**  8.2.7
+
+**PHP version:** 5.6
+### Client configuration
+
+**Android version:** 5.1
+
+**Phone:** Fairphone
+
+**ownCloud SMS app version:** 0.21.2
+"
+nerzhul/ownCloud-SMS-App,closed,czech translation update,[],"for owncloud sms app
+"
+nerzhul/ownCloud-SMS-App,closed,Add zh-rCN translation,"[Label(name=""Translation"")]","Add new zh-rCN translation.
+
+I never did Android app development, so I'm not sure whether these two new files is enough for the Chinese (Simplified) support.
+"
+nerzhul/ownCloud-SMS-App,closed,update RU strings.xml,[],
+nerzhul/ownCloud-SMS-App,closed,Missing includes,[],"Building from the last commit (675940918859ac4c89a1dc3aa4bd7b292713fc57) breaks because of missing includes, e.g.
+
+```
+:compileReleaseJavaWithJavac/home/krt/src/fdroiddata/build/fr.unix_experience.owncloud_sms/src/main/java/fr/unix_experience/owncloud_sms/observers/SmsObserver.java:36: error: cannot find symbol
+import fr.unix_experience.owncloud_sms.enums.PermissionID;
+                                            ^
+  symbol:   class PermissionID
+  location: package fr.unix_experience.owncloud_sms.enums
+```
+"
+nerzhul/ownCloud-SMS-App,closed,Make an SDK,[],"Hello,
+
+I need to ask, i think it can be better to do an SDK and make this app depend on the sdk.
+This sdk could be integrate in other open source app. App with more functionality.
+
+Are you agree?
+Regards
+"
+nerzhul/ownCloud-SMS-App,closed,"Fix gradle build, remove unused library",[],"Fix gradle build (and build using jitpack), and also remove unused library.
+"
+nerzhul/ownCloud-SMS-App,closed,typo,[],"@nerzhul 
+"
+nerzhul/ownCloud-SMS-App,closed,jitpack,[],"F-droid only allows whitelisted maven repos. `oss.sonatype.org` is not one of those AFAIK. Currently the reason for the f-droid build to not update to the most recent version is this issue (and #97).
+
+Jitpack is a whitelisted repo. It provides a guide how to set up `build.gradle` with the needed libraries:
+- https://jitpack.io/#owncloud/android-library/oc-android-library-0.9.10
+- https://jitpack.io/#nerzhul/nrz-androidlib/42a36f7c97
+
+I can try to make a patch if desired :)
+"
+nerzhul/ownCloud-SMS-App,closed,Linter fails,[],"I'm trying to build the 0.20.0 version for f-droid, but it gives me a linter error:
+
+```
+fr.unix_experience.owncloud_sms/src/main/java/fr/nrz/androidlib/activities/NrzSettingsActivity.java:151: Error: This fragment inner class should be static (fr.nrz.androidlib.activities.NrzSettingsActivity.DataSyncPreferenceFragment) [ValidFragment]
+23:45:12.706 [ERROR] [system.err]  public class DataSyncPreferenceFragment extends PreferenceFragment {
+23:45:12.709 [ERROR] [system.err]               ~~~~~~~~~~~~~~~~~~~~~~~~~~
+23:45:12.709 [ERROR] [system.err] 
+23:45:12.710 [ERROR] [system.err]    Explanation for issues of type ""ValidFragment"":
+23:45:12.710 [ERROR] [system.err]    From the Fragment documentation:
+23:45:12.711 [ERROR] [system.err]    Every fragment must have an empty constructor, so it can be instantiated
+23:45:12.712 [ERROR] [system.err]    when restoring its activity's state. It is strongly recommended that
+23:45:12.712 [ERROR] [system.err]    subclasses do not have other constructors with parameters, since these
+23:45:12.713 [ERROR] [system.err]    constructors will not be called when the fragment is re-instantiated;
+23:45:12.724 [ERROR] [system.err]    instead, arguments can be supplied by the caller with setArguments(Bundle)
+23:45:12.728 [ERROR] [system.err]    and later retrieved by the Fragment with getArguments().
+23:45:12.729 [ERROR] [system.err] 
+23:45:12.729 [ERROR] [system.err]    http://developer.android.com/reference/android/app/Fragment.html#Fragment()
+23:45:12.729 [ERROR] [system.err] 
+23:45:12.729 [ERROR] [system.err] 1 errors, 0 warnings
+23:45:12.866 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Finished executing task ':lintVitalRelease'
+23:45:12.867 [LIFECYCLE] [class org.gradle.TaskExecutionLogger] :lintVitalRelease FAILED
+```
+"
+nerzhul/ownCloud-SMS-App,closed,no need for issue template,[],"as it's automatically generated
+
+@nerzhul 
+"
+nerzhul/ownCloud-SMS-App,closed,Create issue_template.md,[],"cc @nerzhul 
+"
+nerzhul/ownCloud-SMS-App,closed,Add issue_template.md,[],
+nerzhul/ownCloud-SMS-App,closed,Patch 4,[],"translation update - RU
+"
+nerzhul/ownCloud-SMS-App,closed,Rename src/main/values-ru/google_playstore_strings.xml to src/main/re…,[],"…s/values-ru/google_playstore_strings.xml
+"
+nerzhul/ownCloud-SMS-App,closed,Rename src/main/values-ru/strings.xml to src/main/res/values-ru/strin…,[],"…gs.xml
+"
+nerzhul/ownCloud-SMS-App,closed,Patch 1,[],"Russian localization
+"
+nerzhul/ownCloud-SMS-App,closed,does not create an account after compilation,"[Label(name=""invalid"")]","0.20.0 - does not create an account after compilation. Drop from a mistake.
+
+Android 5.1.1 (Xperia Z1 Compact)
+CyanogenMod 12.1
+"
+nerzhul/ownCloud-SMS-App,closed,Error #13,[],"Server
+
+```
+ownCloud version: ownCloud 8.2.2
+PHP version: 5.5.9
+HTTPd server: Apache
+HTTPS: don't use it (at this momnet)
+```
+
+Client
+
+```
+Android version: 5.0.1
+Phone: Huawei P8
+ownCloud SMS app version: 0.20.0
+```
+
+Content of /owncloud/data/owncloud.log
+
+reqId"":""WNezTNHiZm1VnVehdSC7"",""remoteAddr"":"""",""app"":""mysql.setup"",""message"":""Specific user creation failed: An exception occurred while executing 'SELECT user FROM m$
+{""reqId"":""WNezTNHiZm1VnVehdSC7"",""remoteAddr"":"""",""app"":""mysql.setup"",""message"":""Database creation failed: An exception occurred while executing 'GRANT ALL PRIVILEGES ON$
+{""reqId"":""WNezTNHiZm1VnVehdSC7"",""remoteAddr"":"""",""app"":""PHP"",""message"":""Undefined offset: 0 at \/var\/www\/owncloud\/lib\/private\/setup\/mysql.php#45"",""level"":3,""time""$
+{""reqId"":""WNezTNHiZm1VnVehdSC7"",""remoteAddr"":"""",""app"":""PHP"",""message"":""fopen(\/var\/www\/owncloud\/config\/config.php): failed to open stream: No such file or director$
+{""reqId"":""1v7T\/pjGtKOyrkz6ehTk"",""remoteAddr"":""94.110.157.29"",""app"":""core"",""message"":""Login failed: 'admin' (Remote IP: '94.110.157.29')"",""level"":2,""time"":""2016-02-20T$
+{""reqId"":""\/YloX8FA\/P7inTieh0YM"",""remoteAddr"":""94.110.157.29"",""app"":""core"",""message"":""Login failed: 'admin' (Remote IP: '94.110.157.29')"",""level"":2,""time"":""2016-02-20$
+{""reqId"":""6QG3uczZfSZWIFIHYbRD"",""remoteAddr"":""94.110.157.29"",""app"":""core"",""message"":""Login failed: 'admin' (Remote IP: '94.110.157.29')"",""level"":2,""time"":""2016-02-20T1$
+{""reqId"":""SyfiRYTZZ\/kvi\/1Mp+wS"",""remoteAddr"":""94.110.157.29"",""app"":""core"",""message"":""Login failed: 'admin' (Remote IP: '94.110.157.29')"",""level"":2,""time"":""2016-02-20$
+{""reqId"":""xiwoQrkNYHsftqMDD6T5"",""remoteAddr"":""94.110.157.29"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/var$
+{""reqId"":""8Y0jiWhCMAFBa5AuJAwH"",""remoteAddr"":""178.50.74.90"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/var\$
+{""reqId"":""abGgWF8IEVUlFJnt00Gk"",""remoteAddr"":""178.50.74.90"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/var\$
+{""reqId"":""YKyJThcmwUwKQRKlZTwv"",""remoteAddr"":""94.110.157.29"",""app"":""core"",""message"":""Login failed: 'admin' (Remote IP: '94.110.157.29')"",""level"":2,""time"":""2016-02-20T1$
+{""reqId"":""CdHRBG9jMTJoK9czQOcg"",""remoteAddr"":""94.110.157.29"",""app"":""core"",""message"":""Login failed: 'admin' (Remote IP: '94.110.157.29')"",""level"":2,""time"":""2016-02-20T1$
+{""reqId"":""4IFo0OJZ7\/PJhFHEVLCN"",""remoteAddr"":""178.50.74.90"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/var$
+{""reqId"":""tBlZEcrXLVRywduDD\/XY"",""remoteAddr"":""178.50.74.90"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/var$
+{""reqId"":""SpKsPJCx+lt8Pw0frVrL"",""remoteAddr"":""178.50.74.90"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/var\$
+{""reqId"":""YbW6PHVIlQhoHhVSMx1W"",""remoteAddr"":""94.110.157.29"",""app"":""PHP"",""message"":""call_user_func() expects parameter 1 to be a valid callback, class 'OCA\OcSms\Db\$
+{""reqId"":""yJWZFbdP5b3s5ZuiDSFx"",""remoteAddr"":""94.110.157.29"",""app"":""index"",""message"":""Exception: {\""Exception\"":\""Doctrine\\DBAL\\Exception\\DriverException\"",\""$
+{""reqId"":""rY5FxLvCWITEzECVpmGz"",""remoteAddr"":""94.110.157.29"",""app"":""index"",""message"":""Exception: {\""Exception\"":\""Doctrine\\DBAL\\Exception\\DriverException\"",\""$
+{""reqId"":""Mn9iq5cZf4jhbG3hiv+7"",""remoteAddr"":""213.118.187.202"",""app"":""core"",""message"":""Login failed: 'krisken' (Remote IP: '213.118.187.202')"",""level"":2,""time"":""2016-0$
+{""reqId"":""Mn9iq5cZf4jhbG3hiv+7"",""remoteAddr"":""213.118.187.202"",""app"":""core"",""message"":""Login failed: 'krisken' (Remote IP: '213.118.187.202')"",""level"":2,""time"":""2016-0$
+{""reqId"":""lXUzG4\/FaewBvVtYD1de"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/$
+{""reqId"":""7X\/5cRBbh9eRlLd2XIcs"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/$
+{""reqId"":""F2eqB1ttANJE5qZCY+Te"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/v$
+{""reqId"":""QFmabOWi3TxA9ZFvPgNi"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/v$
+{""reqId"":""72lgqG0OJhT08qeHJM3w"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/v$
+{""reqId"":""yQVgV9TC6skixn5TWSfs"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/v$
+{""reqId"":""MRk61KsNOiKjWc6lkVzT"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/v$
+{""reqId"":""PilQxTfBa0zrBvJIJsKT"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/v$
+{""reqId"":""IkhtF7zUiwyGuP9gliuH"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/v$
+{""reqId"":""4nz8ROaaJWaaDqZK0Oy3"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/v$
+{""reqId"":""zWv+K4T7bAN\/bFEIMMxz"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/$
+{""reqId"":""73JRBb61STWWXKeXE\/n8"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/$
+{""reqId"":""cAQIOYPfKK6Rcfqe3UHx"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/v$
+{""reqId"":""\/hyBOp34\/vjt6xwEjCbX"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \$
+{""reqId"":""15hszTx+J2ZFDwhQsX\/i"",""remoteAddr"":""213.118.187.202"",""app"":""PHP"",""message"":""Cannot modify header information - headers already sent by (output started at \/$
+
+I installed OwnCloud SMS app on my Huawei P8 cell phone and i always get a error 13.  I get a notification ""sync process - sync in process"" and after a few minutes later i get the error ""Error #13"".
+At this moment I also use the android app and the windows app of owncloud and this work fine, so i suppose there are no troubles with my server?
+
+Does Owncloud SMS create a map on the Owncloud server?  If so : what is the name of that map?  If it isn't : is it possible to choose a map?
+
+Best regards
+Kris
+"
+nerzhul/ownCloud-SMS-App,closed,Missing root project,[],"The `buildscript` portion of the gradle setup is missing. It looks like this is a multiproject setup, so you should have a `../settings.gradle` and `../build.gradle` while the code you posted most likely belongs in a subfolder like `../app/`.
+"
+nerzhul/ownCloud-SMS-App,closed,Provide new version for F-Droid,[],"The current version is outdated (0.18.x)
+
+> We don't have the current version of this app. (Check mode: Tags) (Auto-update mode: None)
+> The current (recommended) version is 0.20.0 (version code 33). 
+"
+nerzhul/ownCloud-SMS-App,closed,Add App-Store buttons and fix some typos,[],
+nerzhul/ownCloud-SMS-App,closed,New icon for android client app,[],"See nerzhul/ownCloud-SMS-App#83
+"
+nerzhul/ownCloud-SMS-App,closed,New ic_launcher,[],"Hi,
+
+i created a new ic_launcher-icon based on the [server app icon](https://github.com/nerzhul/ocsms/blob/master/img/app.svg).
+
+It is similar to [ownCloud Notes](https://play.google.com/store/apps/details?id=it.niedermann.owncloud.notes) and ownCloud News-icon.
+
+What do you think?
+
+![ic_launcher](https://cloud.githubusercontent.com/assets/4741199/12825080/c9faac1c-cb74-11e5-8e6d-f4edfa09159e.png)
+![web_hi_res_512](https://cloud.githubusercontent.com/assets/4741199/12825081/c9fca4f4-cb74-11e5-8128-9fc44929676b.png)
+![ic_launcher-web](https://cloud.githubusercontent.com/assets/4741199/12825082/ca0354ca-cb74-11e5-9737-2888fde19a76.png)
+"
+nerzhul/ownCloud-SMS-App,closed,Provide build.gradle,[],"Hi,
+
+seems you have moved to Android Studio but the build.gradle to build the app via gradle is missing. Any chances that you could provide this so i can build the new version for f-droid.
+"
+nerzhul/ownCloud-SMS-App,closed,Update of the app ib f droid store,[],"as for now the app in the f-droid store does not support marchmellow ( android 6.0) May you update it ? 
+
+Thx a lot. 
+"
+nerzhul/ownCloud-SMS-App,closed,change domain name,[],
+nerzhul/ownCloud-SMS-App,closed,change domain name,[],
+nerzhul/ownCloud-SMS-App,closed,Marshmallow Support,[],"Would this application be able to support marshmallow by just incrementing the max sdk version? Or does it currently have incompatibilities with libraries or something?
+"
+nerzhul/ownCloud-SMS-App,closed,Option to Limit SMS shown per page,[],"Hi,
+
+first of all, thank you very much for this app.
+Unfortunately, I cannot use it at the moment as it always crashes my firefox.
+I suspect this is due to the amount of SMS per conversation I have.
+Most of my conversations work fine in ownCloud-SMS-App (meaning i can sync and view them in ownCoud) but by longer conversations (>3000 SMS) can only be synced and not viewed without firefox freezing and, if I do not stop the scripts running, crashing.
+
+Could the please have an options to like display the last x SMS in the conversation? Let x=500 as the default and if someone needs older SMS he can just click ""next page"" or scroll up and the next messages can be loaded in the background ore something.
+
+With best regards, 
+
+p91
+"
+nerzhul/ownCloud-SMS-App,closed,"contact list, ""Server doesn't support this feature.""",[],"Owncloud 8.2 from owncloud Open Build Service
+ownCloud SMS web app 1.5.0 from owncloud app store
+ownCloud SMS 0.19.2 from google play store
+
+Choose Account and under Contact list and Contact informations it says ""Server doesn't support this feature"".
+
+I have CardDAV-Sync installed and have all contacts on my owncloud instance.  Am I doing something wrong or missing some dependency?
+"
+nerzhul/ownCloud-SMS-App,closed,fatal error #13 on automatic sync,[],"Hi,
+
+I keep getting 'fatal error #13' every time I switch on my wifi/data connection.
+However, when I sync manually, everything works fine.
+What could be the reason for this?
+
+Here my environment:
+Gentoo Linux/Owncloud 8.2.1
+Android 4.2/owncloud-sms 0.18.5 from f-droid
+"
+nerzhul/ownCloud-SMS-App,closed,Czech translation update,[],
+nerzhul/ownCloud-SMS-App,closed,0.19 Costantly crashes on Android 5.0.1,"[Label(name=""bug"")]","Hi, the app was great with 0.18.5.
+Now with 0.19 I receive ""owncloud sms has stopped working"" when loading the SMS app.
+When forcing syncing, it hangs on ""sync in progress"".
+I push 1000 sms per sync.
+No messages on OC server.
+
+Thank you
+"
+nerzhul/ownCloud-SMS-App,closed,Sync error message although sync interval is disabled,[],"My current use case is to sync with my owncloud server on my pc. Because this pc is not always turned on (and I am not always in my home network) I set sync interval of owncloud-SMS-App disabled (""Nie"" (=never) in my German version). Until version f-droid 0.18.2 this approach worked well (on my CM11 and my wife's Android 5), but current version 0.18.5 produces server connect error messages.
+I understand that ownCloud-SMS tries to sync receiving a message and therefore an error message is reasonable when the server is turned off. But I would appreciate if there was an operating mode for those who do not operate a permanent available server and do not want to have error messages.
+
+Possible solutions:
+- error messages only on connect errors during recurring syncs (as in vsn. 0.18.2)
+- better: connect error messages can be suppressed
+- much better: only permanently recurring occurrences of errors (for a configurable time span, e.g. one week or zero (for a behaviour like now)) will be reported (""no successful sync for xyz days"")
+
+I hope one of the listed possible solutions is feasible. Last but not least thanks for this app.
+"
+nerzhul/ownCloud-SMS-App,closed,Phone Number / Name assignment with country codes,[],"Hi,
+
+I'm using your app since today and the sync worked perfectly. But now I have the problem that the Webfrontend does not recognize the contact if as country code was given for the phone number (XOR, either in the sms oder in the contact - if both have it is of course linked).
+
+Example:
+Contact: Mr. Phone: 0199 99999
+SMS: +49 199 999999
+
+It looks like you are doing a simple comparison, whether the numbers are identical. If they are not, a new entry with just the number is created. 
+
+Solution:
+It should be quite easy to link the two - as soon as there is an ""+"" in the phone number, ignore the first two digits of the SMS number and ignore the first digit of the contact number to find a match.
+
+Thanks in advance!
+"
+nerzhul/ownCloud-SMS-App,closed,Can't use self signed certificate,"[Label(name=""bug"")]","Hi, my owncloud installation is set on a custom port with ssl and a self-signed cert.
+I can't login properly with all thos settings defined.
+
+If I set my port like user@host:port, I always get an error.
+Thanks for your promising app, it looks pretty awesome!
+"
+nerzhul/ownCloud-SMS-App,closed,Czech translation update,[],"for owncloud-sms-app
+"
+nerzhul/ownCloud-SMS-App,closed,Feature Request - Add SMSSecure support,[],"Is there a plan to support also massages from SMSSecure?
+"
+nerzhul/ownCloud-SMS-App,closed,Multiple Android device sync,[],"Trying to sync my SMS from phone to owncloud then to tablet
+ownCloud SMS installed on my phone and tablet, sync is ok
+ownCloud server show my SMS from my phone => ok
+tablet with SMS AOSP app doesn't show any SMS, I tried also with Google Messenger but no luck
+
+Should multiple Android device sync work ?
+"
+nerzhul/ownCloud-SMS-App,closed,Heavy data usage?,"[Label(name=""question"")]","I installed ocsms 0.18.5 from fdroid and using it with an ownCloud 8.1 instance with latest ocsms app (from git, pulled early August 2015).  I'm seeing a lot of data usage from the app.  It seems to use around 20MB per day.  Is this to be expected?  Is it sending all of SMSs over and over?  I can imagine the initial push to consume some bandwidth, but after that it seems bandwidth usage should be limited to handshake noise and sending new SMSs.
+"
+nerzhul/ownCloud-SMS-App,open,Feature request - use existing oC account instead of creating new one,"[Label(name=""enhancement"")]","If user already has oC account on a device it should be used instead of asking to create another one.
+"
+nerzhul/ownCloud-SMS-App,closed,Application stopped working when receiving message without registered account,"[Label(name=""bug"")]","1. install owncould-sms-app
+2. ignore registration
+3. receive sms
+4. application crashes
+"
+nerzhul/ownCloud-SMS-App,closed,Provide infos about used versions of nrz-androidlib and Owncloud-Android-Library,"[Label(name=""question"")]","Hi,
+
+i'm currently updating the app on f-droid and stumbled over the problem that you don't specify which versions of the nrz-androidlib and Owncloud-Android-Library you're using / testing against. Could you add this infos to the readme or some other files? Thanks
+"
+nerzhul/ownCloud-SMS-App,closed,App crashes on synchronizing,"[Label(name=""invalid"")]","Hi,
+
+your app crashes everytime I try to sync. The Android-debug-console says:
+Could not find method android.app.Notification$Builder.build, referenced from method fr.nrz.androidlib.notifications.NrzNotification.createNotify
+
+Here the full error-message:
+07-15 15:56:41.554  17513-17513/? D/dalvikvm? Late-enabling CheckJNI
+07-15 15:56:41.804  17513-17529/fr.unix_experience.owncloud_sms:sync I/dalvikvm? Could not find method android.app.Notification$Builder.build, referenced from method fr.nrz.androidlib.notifications.NrzNotification.createNotify
+07-15 15:56:41.804  17513-17529/fr.unix_experience.owncloud_sms:sync W/dalvikvm? VFY: unable to resolve virtual method 139: Landroid/app/Notification$Builder;.build ()Landroid/app/Notification;
+07-15 15:56:41.804  17513-17529/fr.unix_experience.owncloud_sms:sync D/dalvikvm? VFY: replacing opcode 0x6e at 0x0025
+07-15 15:56:41.814  17513-17529/fr.unix_experience.owncloud_sms:sync W/dalvikvm? threadid=11: thread exiting with uncaught exception (group=0x40ad8228)
+07-15 15:56:41.814  17513-17529/fr.unix_experience.owncloud_sms:sync E/AndroidRuntime? FATAL EXCEPTION: SyncAdapterThread-1
+    java.lang.NoSuchMethodError: android.app.Notification$Builder.build
+            at fr.nrz.androidlib.notifications.NrzNotification.createNotify(NrzNotification.java:56)
+            at fr.unix_experience.owncloud_sms.notifications.OCSMSNotificationManager.createNotificationIfPossible(OCSMSNotificationManager.java:61)
+            at fr.unix_experience.owncloud_sms.notifications.OCSMSNotificationManager.setSyncProcessMsg(OCSMSNotificationManager.java:33)
+            at fr.unix_experience.owncloud_sms.sync_adapters.SmsSyncAdapter.onPerformSync(SmsSyncAdapter.java:56)
+            at android.content.AbstractThreadedSyncAdapter$SyncThread.run(AbstractThreadedSyncAdapter.java:247)
+
+If I compile the app without the NrzNotification-code it synchronizes the sms with owncloud without a problem. I'm using Android 4.0.3 with three devices. On all the error appears.
+
+kind regards,
+Chris
+"
+nerzhul/ownCloud-SMS-App,closed,app doesn't work with oc 8.1.0.3,[],"since i upgrade to oc 8.1 the apps doesn't sync anymore: Fehler #9: Unbekannter HTTP-Antwortcode vom Server, on oc 8.0 everything was fine
+
+i'm using oc 8.1.0.3 / oc sms 1.5.0
+latest app version on android
+"
+nerzhul/ownCloud-SMS-App,closed,"After sync, i have null messages",[],"Hi,
+
+ocsms web work, applics for android have succeful sync my data but in owncloud i have nobody message in http://<my_cloud>/index.php/apps/ocsms/
+
+I use :
+owncloud-sms 0.18.2
+owncloud 8.4
+android 5.0
+sansumg S5
+"
+nerzhul/ownCloud-SMS-App,closed,Sync error Error #9 Server set unhandled h... ,[],"Hi I am running the latest Android app.
+Phone: Huawei P7-L10
+Androi: 4.4.2
+
+Owncloud server hosted on Ubuntu server with ssl.
+ownCloud 8.0.2 (stable).
+
+Is there anyway i can extract logs from the app or server to see what's going wrong?
+I get Error #9 Server set unhandled h... (I can't see the rest of the message)
+
+This might be due to the large amount of sms i am trying to sync? about 10k+
+
+I have tried syncing over Wifi/4G both end up with errors. I have seen a couple of different error codes, nut never wrote them down. Will do from now on.
+"
+nerzhul/ownCloud-SMS-App,closed,Do not sends SMS :(,[],"1. How to send SMS from web-interface?
+   For example, https://mightytext.net/ allow to do it...
+2. Not all my contacts are synchronised... a can see correct names only in ownclouds contacts :(
+"
+nerzhul/ownCloud-SMS-App,closed,crash on sync,"[Label(name=""bug"")]","The app/service crashes on sync when using a design with app icons.
+
+You could try for example with ""Onze"".
+
+I think the most relevant part of the log is:
+
+```
+W/StatusBarIconView( 1192): No icon for slot fr.unix_experience.owncloud_sms/0x0
+```
+
+The full log:
+
+```
+E/AccessibilityNodeInfoCache( 1693): Node from: 201 not from:190 android.view.accessibility.AccessibilityNodeInfo@1780e; boundsInParent: Rect(0, 0 - 446, 73); boundsInScreen: Rect(72, 542 - 518, 615); packageName: fr.unix_experience.owncloud_sms; className: android.widget.TextView; text: Allg. Einstellungen; contentDescription: null; viewIdResName: android:id/title; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; enabled: true; password: false; scrollable: false; [ACTION_SELECT, ACTION_CLEAR_SELECTION, ACTION_ACCESSIBILITY_FOCUS, ACTION_NEXT_AT_MOVEMENT_GRANULARITY, ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY, ACTION_SET_SELECTION]
+E/AccessibilityNodeInfoCache( 1693): Node from: 201 not from:190 android.view.accessibility.AccessibilityNodeInfo@17bcf; boundsInParent: Rect(0, 0 - 358, 57); boundsInScreen: Rect(72, 615 - 430, 672); packageName: fr.unix_experience.owncloud_sms; className: android.widget.TextView; text: Sync-Einstellungen; contentDescription: null; viewIdResName: android:id/summary; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; enabled: true; password: false; scrollable: false; [ACTION_SELECT, ACTION_CLEAR_SELECTION, ACTION_ACCESSIBILITY_FOCUS, ACTION_NEXT_AT_MOVEMENT_GRANULARITY, ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY, ACTION_SET_SELECTION]
+E/AccessibilityNodeInfoCache( 1693): Node from: 201 not from:190 android.view.accessibility.AccessibilityNodeInfo@1b41e; boundsInParent: Rect(0, 0 - 984, 192); boundsInScreen: Rect(48, 511 - 1032, 703); packageName: fr.unix_experience.owncloud_sms; className: android.widget.LinearLayout; text: null; contentDescription: null; viewIdResName: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: true; longClickable: false; enabled: true; password: false; scrollable: false; [ACTION_SELECT, ACTION_CLEAR_SELECTION, ACTION_CLICK, ACTION_ACCESSIBILITY_FOCUS]
+I/ActivityManager(  755): Start proc fr.unix_experience.owncloud_sms:sync for service fr.unix_experience.owncloud_sms/.sync_adapters.SmsSyncService: pid=4277 uid=10505 gids={50505, 3003}
+D/ActivityThread( 4277): handleBindApplication:fr.unix_experience.owncloud_sms:sync
+W/StatusBarIconView( 1192): No icon for slot fr.unix_experience.owncloud_sms/0x0
+D/NotificationService(  755): onNotification error pkg=fr.unix_experience.owncloud_sms tag=null id=0; will crashApplication(uid=10505, pid=4277)
+E/AndroidRuntime( 4277): Process: fr.unix_experience.owncloud_sms:sync, PID: 4277
+E/AndroidRuntime( 4277): android.app.RemoteServiceException: Bad notification posted from package fr.unix_experience.owncloud_sms: Couldn't create icon: StatusBarIcon(pkg=fr.unix_experience.owncloud_smsuser=0 id=0x7f020057 level=0 visible=true num=0 )
+D/NetworkUtils( 4277): Searching known-servers store at /data/data/fr.unix_experience.owncloud_sms/files/knownServers.bks
+I/ActivityManager(  755): Process fr.unix_experience.owncloud_sms:sync (pid 4277) has died.
+W/ActivityManager(  755): Scheduling restart of crashed service fr.unix_experience.owncloud_sms/.sync_adapters.SmsSyncService in 1000ms
+```
+"
+nerzhul/ownCloud-SMS-App,closed,"""Sync all messages"" issue","[Label(name=""bug"")]","I've got problems syncing my messages from my android messages.
+Well. I've played a little with the tool before having synchronization partially working, then failed...
+### Explanations
+- OC Sv7
+  - sync fails reported by Android app (timeout) (server-side's logs : getCrypto undefined method)
+- OC Sv8 migration completed
+  - (_after migration_) no sync (server-side's logs : SQL error)
+
+```
+{""reqId"":""8a0463b8744XXXXXXXX8c0314a4383af"",""remoteAddr"":""192.168.1.254"",""app"":""index"",""message"":""Exception: {
+    ""Message"":""An exception occurred while executing 'SELECT sms_address,count(sms_date) as ct FROM oc_ocsms_smsdatas WHERE user_id = ? AND sms_mailbox IN (?,?) AND sms_date > ? GROUP BY sms_address' with params ['<USER>', 0, 1, '']:
+        SQLSTATE[22P02]: Invalid text representation: 7 ERROR: invalid input syntax for integer: ''"",
+    ""Code"":0,""Trace"":""
+            #0 /volume1/web/owncloud_8.0.2/3rdparty/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(116): Doctrine\\DBAL\\Driver\\AbstractPostgreSQLDriver->convertException('An exception oc...', Object(Doctrine\\DBAL\\Driver\\PDOException))
+            #1 /volume1/web/owncloud_8.0.2/3rdparty/doctrine/dbal/lib/Doctrine/DBAL/Statement.php(172): Doctrine\\DBAL\\DBALException::driverExceptionDuringQuery(Object(Doctrine\\DBAL\\Driver\\PDOPgSql\\Driver), Object(Doctrine\\DBAL\\Driver\\PDOException), 'SELECT sms_addr...', Array)
+            #2 /volume1/web/owncloud_8.0.2/lib/private/db/statementwrapper.php(63): Doctrine\\DBAL\\Statement->execute(Array)
+            #3 /volume1/web/owncloud_8.0.2/apps/ocsms/db/smsmapper.php(204): OC_DB_StatementWrapper->execute(Array)
+            #4 /volume1/web/owncloud_8.0.2/apps/ocsms/controller/smscontroller.php(164): OCA\\OcSms\\Db\\SmsMapper->getNewMessagesCountForAllPhonesNumbers('bertrand', '')
+            #5 [internal function]: OCA\\OcSms\\Controller\\SmsController->checkNewMessages('')
+            #6 /volume1/web/owncloud_8.0.2/lib/private/appframework/http/dispatcher.php(158): call_user_func_array(Array, Array)
+            #7 /volume1/web/owncloud_8.0.2/lib/private/appframework/http/dispatcher.php(86): OC\\AppFramework\\Http\\Dispatcher->executeController(Object(OCA\\OcSms\\Controller\\SmsController), 'checkNewMessage...')
+            #8 /volume1/web/owncloud_8.0.2/lib/private/appframework/app.php(97): OC\\AppFramework\\Http\\Dispatcher->dispatch(Object(OCA\\OcSms\\Controller\\SmsController), 'checkNewMessage...')
+            #9 /volume1/web/owncloud_8.0.2/lib/private/appframework/routing/routeactionhandler.php(44): OC\\AppFramework\\App::main('SmsController', 'checkNewMessage...', Object(OC\\AppFramework\\DependencyInjection\\DIContainer), Array)
+            #10 [internal function]: OC\\AppFramework\\routing\\RouteActionHandler->__invoke(Array)
+            #11 /volume1/web/owncloud_8.0.2/lib/private/route/router.php(250): call_user_func(Object(OC\\AppFramework\\routing\\RouteActionHandler), Array)
+            #12 /volume1/web/owncloud_8.0.2/lib/base.php(767): OC\\Route\\Router->match('/apps/ocsms/get...')
+            #13 /volume1/web/owncloud_8.0.2/index.php(36): OC::handleRequest()
+            #14 {main}"",
+    ""File"":""/volume1/web/owncloud_8.0.2/3rdparty/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractPostgreSQLDriver.php"",""Line"":91}"",
+""level"":4,""time"":""2015-04-12T20:21:13+00:00""}
+```
+-  (_server-side deletion of oc_ocsms_ tables + oc_appconfig ""ocsms"" entries + app files + new app install_) sync of today's messages
+- (_account deletion on android app + account re creation_) nothing more, only today's messages remains having been synced previously
+- (_another deletion of everything server-side + account deletion terminal-side + reinstallation of everything + ""auto-sync"" disabled terminal-side_) nothing is synced. SMS panel into web interface is empty. ""smsdatas"" table too. **Same SQL message**
+
+Something else I should try ?
+"
+nerzhul/ownCloud-SMS-App,closed,Wrong VC/VN for 0.18.2 tag,"[Label(name=""enhancement"")]","Hi,
+
+just tried to build the current version 0.18.2 on f-droid but failed because the 0.18.2 tag still contains the VC 24 and VN 0.18.1:
+
+https://github.com/nerzhul/ownCloud-SMS-App/blob/0.18.2/AndroidManifest.xml#L4-L5
+"
+nerzhul/ownCloud-SMS-App,closed,Update Serbian,[],
+nerzhul/ownCloud-SMS-App,closed,Don't repeat synchronization after fail,"[Label(name=""enhancement"")]","Main reason I set update interval to `Never` and therefore experienced #31 is because my ownCloud server is on my own computer, which isn't always on, and ownCloud-SMS keeps trying to connect to it indefinitely. So it makes sense to introduce a mechanism of silent fail: when the server can't be reached (or otherwise synchronization fails for some other reason) app will not trying to connect again until next scheduled sync.
+"
+nerzhul/ownCloud-SMS-App,closed,Better wording,[],"Use better words in translation and also change some minor things to fit with the app
+"
+nerzhul/ownCloud-SMS-App,closed,Better wording,[],"Better translation of words, and also made some shorter to fit the screen.
+"
+nerzhul/ownCloud-SMS-App,closed,Updated translations with new strings,[],"Also corrected some typos I noticed after the update of the app.
+
+@nerzhul 
+"
+nerzhul/ownCloud-SMS-App,closed,Make translations trough Transifex,[],"To make it easier to keep the translations up-to-date, we should use Transifex instead.
+
+https://www.transifex.com/
+
+https://www.youtube.com/watch?v=UFT3pF5rr14
+"
+nerzhul/ownCloud-SMS-App,closed,Change version number + typo,[],"Change version number + typo
+"
+nerzhul/ownCloud-SMS-App,closed,Correcting typos,[],"Some typos and smaller errors
+"
+nerzhul/ownCloud-SMS-App,closed,Swedish Translation,"[Label(name=""Translation"")]","Translation into Swedish of the ownCloud SMS app.
+"
+nerzhul/ownCloud-SMS-App,closed,Translation to Swedish,"[Label(name=""Translation"")]","Translation of the ownCloud SMS app into Swedish
+"
+nerzhul/ownCloud-SMS-App,closed,Create sv_google_playstore_strings.xml,[],
+nerzhul/ownCloud-SMS-App,closed,Added Copyright,[],
+nerzhul/ownCloud-SMS-App,closed,Translation to Swedish,[],"Translattion to Swedish for the ownCloud SMS app.
+"
+nerzhul/ownCloud-SMS-App,closed,Translation to Swedish,[],"Translation to Swedish of the ownCloud SMS app.
+"
+nerzhul/ownCloud-SMS-App,closed,Serbian language,[],
+nerzhul/ownCloud-SMS-App,closed,"more info on ""connection failed, ensure this is a right server""","[Label(name=""bug"")]","I keep getting this error when creating an account. I'm positive all information entered is correct. Same information works with official ownCloud sync app. I'd appreciate more information in the error message. I suspect a certificate problem but cannot tell for sure. 
+
+App version: 0.17.0 (F-Droid)
+Android: 4.4.4 (CM11)
+Phone: Xperia ZR
+
+Also, if this turns out to be a certificate problem (be it self-signed, unknown CA or expired), there should be an override option since the connection still gets encrypted and trustworthiness of a certificate should ultimately be decided by the user - provided detailed info on the certificate is displayed to the user prior its acceptance.
+"
+nerzhul/ownCloud-SMS-App,closed,Jenkins test4,[],
+nerzhul/ownCloud-SMS-App,closed,Jenkins test3,[],
+nerzhul/ownCloud-SMS-App,closed,Jenkins test2,[],"jenkins test
+"
+nerzhul/ownCloud-SMS-App,closed,Update lint.xml,[],"It's only a test PR for jenkins integration
+"
+nerzhul/ownCloud-SMS-App,closed,Error #9: Server set unhandled HTTP return code,"[Label(name=""bug"")]","i'am getting on client this error, on logs i see ""Server set unhandled HTTP return code 500"" is a problem with owncloud server, can you make status code 500 handled and set a better error description. From a  owncloud sms client perspective it's not an error, from a owncloud sms server this is an error.
+
+Server
+
+ownCloud version: 7.0.4 (stable)
+PHP version: PHP 5.6.5 
+HTTPd server: Apache/2.4.10
+HTTPS: Apache/2.4.10
+mysqld :  5.6.17
+
+Client
+
+Android version: 4.2.2
+Phone: - 
+ownCloud SMS app version: 0.17.0
+
+Thank you
+"
+nerzhul/ownCloud-SMS-App,closed,merge functions in SmsFetcher,"[Label(name=""enhancement"")]","### reasons for PR
+
+merging the three main functions into one in order to 
+- reduce duplicate code,
+- enhance maintainability
+### changes in details
+
+(`* improvements, + additions, - removals, . enum`):
+
+```
+* rename bufferizeMailboxMessages() -> addMailboxMessagesToJson()
+  + parameter JSONArray jsonDataDump
+  + parameter Long sinceDate
+  * generalize handling in order to use the same function from
+    . fetchAllMessages()
+    . getLastMessage()
+    . bufferizeMessagesSinceDate()
+* fetchAllMessages()
+  * use addMailboxMessagesToJson()
+* getLastMessage()
+  * use addMailboxMessagesToJson()
+* bufferizeMessagesSinceDate()
+  * use addMailboxMessagesToJson()
+* buildExistingMessagesString()
+  * make it compatible to be used with mbID = MailboxID.ALL
+```
+### references
+- https://github.com/nerzhul/ocsms/issues/39#issuecomment-74420974
+- https://github.com/nerzhul/ownCloud-SMS-App/commit/48ec96f41bb8862163da8d85c96707febfbb01e0#commitcomment-9763194
+### notice
+
+code is untested. not even compiled. as i don't have any running java DE at the moment ...
+### questions
+
+in `getLastMessage()` all the messages of all mailboxes get selected. does the curser limit the records due to the `_context` variable? or why did you use `c.moveToNext()`. what would be the current record? what if there where still more?
+
+```
+// Fetch Sent SMS Message from Built-in Content Provider
+Cursor c = (new SmsDataProvider(_context)).query(mbURI);
+c.moveToNext();
+```
+
+the implementation of this PR does (should) not change the behaviour of the code in any way. this questions just arose. 
+"
+nerzhul/ownCloud-SMS-App,closed,Czech translation update,[],
+nerzhul/ownCloud-SMS-App,closed,App crashes OS,[],"Installing this app got my phone stuck in a boot logo loop - it would show the boot logo, then the lock screen for a few seconds, then repeat. Rebooting did not solve the issue.
+
+I wish I could give more info but I had to restore my phone! The issue only started after setting up the app. I installed it from F-Droid.
+
+I'm on Fairphone OS 1.8, based on Android 4.2.2. The Owncloud version is 8.0.0.
+"
+nerzhul/ownCloud-SMS-App,closed,Crashing app when syncing,"[Label(name=""bug"")]","Hi,
+
+First of all, thks for your work, i was looking for this kind of software for a long time !
+
+I just got a little problem : when i start syncing, app crashes after some seconds displaying : ""Unfortunatly, owncloud SMS"" has stopped"". ( this kind of android system error : http://www.ekoob.com/wp-content/uploads/2012/07/app-has-stopped-crashed-android-nexus-7.png ).
+
+Above, you'll find information about my client/server configuration.
+Btw, I've got a bit more than 25000 sms to sync...
+
+Server
+
+```
+ownCloud version: 7.0.4
+PHP version: 5.4
+HTTPd server: Apache
+HTTPS: wat do you mean ? :)
+```
+
+Client
+
+```
+Android version: 4.2.2
+Phone: Samsung galaxy S2
+ownCloud SMS app version: 0.16.1
+```
+
+Thks a lot and have a nice day :).
+"
+nerzhul/ownCloud-SMS-App,closed,Update google_playstore_strings.xml,[],
+nerzhul/ownCloud-SMS-App,closed,Update strings.xml,[],"Translate line
+"
+nerzhul/ownCloud-SMS-App,closed,Spanish translation of Play Store Description,[],"La aplicación ownCloud SMS sincroniza sus mensajes SMS en un servidor ownCloud remoto y le permite leer sus mensajes desde él.
+
+El envio de SMS desde el servidor ownCloud será implementado en futuras versiones.
+
+La aplicación es totalmente compatible con Android 4.0 a 5.0
+"
+nerzhul/ownCloud-SMS-App,closed,Czech translation update,"[Label(name=""enhancement"")]","to v3
+"
+nerzhul/ownCloud-SMS-App,closed,https not connection to host with other port than 443,"[Label(name=""invalid"")]","```
+Android version: 4.3.1 (CM 10.2.1.3)
+Phone: Samsung Galaxy S4 Mini
+ownCloud SMS app version: 0.16.1
+ownCloud Version: 7.0.4 (stable)
+ocsms Version: 1.4.1
+```
+
+I can successfully connect to my owncloud instance with this URL:
+http://sub.myhost.org
+
+It won't connect, asking if it is the correct server address with these URL(s) with self signed certificate:
+https://sub.myhost.org:50666
+https://sub.myhost.org:50666/
+- Opening owncloud in the Android browser works with these two URLs.
+- Certificate is already imported to Android
+- Owncloud sync with calendar and contacts is up and running on the same phone
+
+Greetings
+Martin
+"
+nerzhul/ownCloud-SMS-App,closed,Restore messages from ownCloud instance,"[Label(name=""Protocol bump""), Label(name=""enhancement"")]","As the title says: I had to wipe my device and had my SMS backed up to ownCloud with your App.
+After the wipe I installed the App again and tried to restore them.
+It says syncing and there are no errors but the SMS are not shown in the Messenger App.
+"
+nerzhul/ownCloud-SMS-App,closed,No sms synched on first install neither when received/sent,[],"I installed the app on my server, in the appropriate directory, activated it in Owncloud, bought the Android app and created my owncloud-sms account.
+It says it synchronizes, for a few seconds, but nothing appears in Owncloud.
+
+Any solution ?
+
+Thank you.
+
+MK
+"
+nerzhul/ownCloud-SMS-App,closed,"Install doesn't create a shortcut, running from play store doesn't work","[Label(name=""enhancement"")]","Hi. Just bought and installed the app from play store (LG G3 with lollipop) and it didn't install a shortcut, and doesn't work when I open it from the play store using the ... button from the search dialog (no other way available of opening it).
+Strangely if I go into the list of apps in the play store there is an ""open"" button for all apps but this one, just uninstall available, the open option only appears by searching for the app and click only the vertical row of dots. Hope that makes sense.
+Any ideas?
+Thanks
+Andy
+"
+nerzhul/ownCloud-SMS-App,closed,Fdroid?,"[Label(name=""enhancement"")]","Have you considered pushing this app into fdroid?  Any reason doing so would be a bad idea?  I can look into it if you don't have anything against that.
+"
+nerzhul/ownCloud-SMS-App,closed,Enhancement: Ignoring specific conversations of texts?,"[Label(name=""enhancement"")]","I would like to propose that we ignore conversations (Texts) that are from senders with less than 6 numbers for a number. 
+As most routing of phones requires a minimum of 7 numbers for a phone number to be valid. 
+
+(I get texts from my voicemail telling me I have voicemail, and its just stupid.)
+"
+nerzhul/ownCloud-SMS-App,closed,Update strings.xml,[],"Migrated changes from strings.xml under values-en to the default folder.
+"
+nerzhul/ownCloud-SMS-App,closed,Update strings.xml,"[Label(name=""enhancement"")]","Changed the wording of some errors for less experienced users, may or may not help.
+"
+nerzhul/ownCloud-SMS-App,closed,Update google_playstore_strings.xml,"[Label(name=""wontfix"")]","Changed German Umlaute (ÄÖÜäöüß) to HTML Entities for correct display.
+"
+nerzhul/ownCloud-SMS-App,closed,Update strings.xml,"[Label(name=""wontfix"")]","Changed German Umlaute (äöüÄÖÜß) to HTML Entities for correct display.
+"
+nerzhul/ownCloud-SMS-App,closed,Create google_playstore_strings.xml (de_DE) < ownCloud SMS App 0.16,[],"...and here are the German playstore strings.
+"
+nerzhul/ownCloud-SMS-App,closed,Create strings.xml (de_DE) < ownCloud SMS App 0.16,[],"German strings.xml
+"
+nerzhul/ownCloud-SMS-App,closed,res/values-de,"[Label(name=""duplicate"")]","Hello Nerzhul,
+
+you were asking for a German (de_DE) localization.
+
+Well, here are the files, based off 0.16/20141203. I hope I have gotten this githubby stuff right - I am not sure if I should have deleted all the non-relevant files or not:
+
+The ""create pull request"" button disappears when I try to send you only the ""values-de"" directory or a single resx file, and the res/values-de branch I created while being in the ""values-de"" directory still doesn't exclude all the deletions - is there a trick (using the web interface)?
+
+Kind regards,
+Liantefaron
+"
+nerzhul/ownCloud-SMS-App,closed,Error #9 on synce,[],"During sync from Android phone, get ""Fatal error ! Error #9: Server set unhandled HTTP return code
+
+Messages are no longer being synced with owncloud
+
+Server:
+Owncloud version: 7.0.3
+HTTPd server: Apache/2.2.22
+MySQL 5.5.40
+
+Client
+Android version: 4.1.2
+phone samsung sph-l300
+OwnCloud SMS app version: 0.15.3
+"
+nerzhul/ownCloud-SMS-App,closed,Czech translation created,[],
+nerzhul/ownCloud-SMS-App,closed,[sync] owncloud sms tab empty,"[Label(name=""duplicate""), Label(name=""invalid"")]","Hello. My Android apps syncs normally, nothing seems to be strange on owncloud log (or IIS log) except that nothing syncs: the OCSMS tab remains empty: no conversation, no messages. The OCSMS commit is the one correcting the #9 error.
+Thanx
+"
+nerzhul/ownCloud-SMS-App,closed,Compatibility with Android 5 Lollipop,"[Label(name=""enhancement"")]","I want to say #8 it's ok, but for that, I need an app compatible with Android 5 :D
+
+Client
+
+Android version: 5.0
+Phone: Nexus 5
+"
+nerzhul/ownCloud-SMS-App,closed,Sync error,"[Label(name=""bug"")]","When i create the account on my phone, the sync process failed with ""Error 9: Server set unhandle..."".
+I tried with disable https and bug is always here.
+Sorry but i have no more information.
+"
+nerzhul/ownCloud-SMS-App,open,Also sync deleted messages with 2-way sync,"[Label(name=""enhancement"")]","As it is today, the app syncs all the messages but doesn´t delete deleted messages, because deleted messages are not synced. The app should sync 2-way, not only from phone --> server.
+"
+nerzhul/ownCloud-SMS-App,closed,Messages sent or received while data is disabled are not sync until next complete synchro,"[Label(name=""enhancement"")]","Shouldn't the app queue sent and received messages to sync them as soon as the data connection is back ?
+
+Indeed, if this is done well no more ""complete syncs"" would be needed...
+"
+nerzhul/ownCloud-SMS-App,closed,Synchronise by using timestamp instead of msg id comparison (was: Too heavy synchronisation process),"[Label(name=""enhancement"")]","On my phone are stored more than 20000 messages, thus making complete synchronizations very long (around fifteen minutes).
+This is normal for a first sync, but it is the same each time the app synchronizes, and this cause a huge battery drain.
+
+It seems that each synchronization compare all the messages. It should be far more efficient to sync only messages which are more recent than the last synchronization.
+"
+nerzhul/ownCloud-SMS-App,closed,Errror message date,"[Label(name=""bug"")]","Hi,
+Thanks a lot for this application, I have an issue with the oc_ocsms_smsdatas.sms_date.
+it's always the same value '2147483647' Screen : http://hpics.li/fef5634
+
+I don't know if it's an error in the Owncloud App or in the Android App...
+Please don't hesitate to contact me if you need more informations ;)
+
+(sorry for my english I'm french...)
+
+Thanks for your time.
+Have a good day.
+"
+nerzhul/ownCloud-SMS-App,closed,[bug]  Conversations splitted in two because of Intl number format,"[Label(name=""enhancement"")]","from https://github.com/nerzhul/ocsms/issues/6#issuecomment-60221396, It might be a good idea to re-implement the international/local number mapping inside the app, ideed.
+"
+nerzhul/ownCloud-SMS-App,closed,Spanish translation of strings.xml,"[Label(name=""enhancement"")]","<?xml version=""1.0"" encoding=""utf-8""?>
+
+<!--
+ /*
+ * Copyright (c) 2014, Loic Blot <loic.blot@unix-experience.fr>
+ * All rights reserved.
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ */
+-->
+
+<resources>
+
+```
+<string name=""app_name"">ownCloud-SMS</string>
+<string name=""account_type"">fr.unix_experience.owncloud_sms</string>
+<string name=""account_authority"">fr.unix_experience.owncloud_sms.datasync.provider</string>
+
+<string name=""target_package"">fr.unix_experience.owncloud_sms</string>
+<string name=""pref_title_sync_frequency"">Frecuencia de sincronización</string>
+
+<!-- Translations must begin there -->
+<!-- Preferences -->
+<string name=""action_settings"">Configuración</string>
+<string name=""sync_now"">Sincronizar ahora</string>
+<string name=""pref_category_sync"">Sincronización</string>
+
+<string name=""title_global_pref_to_general_prefs"">Preferencias generales</string>
+<string name=""summary_global_pref_to_general_prefs"">Opciones de sincronización</string>
+<string name=""summary_notif_prefs"">Notificaciones</string>
+
+<string name=""pref_header_data_sync"">Data &amp; sync</string>
+
+<string name=""title_activity_general_settings"">Configuración general</string>
+
+<string name=""pref_title_sync_frequency"">Frecuencia de sincronización</string>
+
+<string-array name=""pref_sync_frequency_titles"">
+    <item>15 minutos</item>
+    <item>30 minutos</item>
+    <item>1 hora</item>
+    <item>3 horas</item>
+    <item>6 horas</item>
+    <item>12 horas</item>
+    <item>24 horas</item>
+    <item>Nunca</item>
+</string-array>
+<string-array name=""pref_sync_frequency_values"">
+    <item>15</item>
+    <item>30</item>
+    <item>60</item>
+    <item>180</item>
+    <item>360</item>
+    <item>720</item>
+    <item>1440</item>
+    <item>-1</item>
+</string-array>
+
+<string name=""title_activity_login"">Unirse</string>
+
+<!-- Login -->
+<string name=""prompt_login"">Usuario</string>
+<string name=""prompt_password"">Contraseña</string>
+<string name=""action_sign_in"">Unirse o registrarse</string>
+<string name=""action_sign_in_short"">Unirse</string>
+<string name=""error_invalid_login"">Usuario o contraseña incorrecto</string>
+<string name=""error_invalid_password"">Contraseña demasiado corta</string>
+<string name=""error_field_required"">Campo requerido</string>
+<string name=""prompt_serverURI"">Dirección del servidor</string>
+<string name=""error_invalid_server_address"">Dirección inválida</string>
+<string name=""error_connection_failed"">Imposible conectar al servidor. Por favor asegúrese que la dirección del servidor es correcta</string>
+<string name=""error_http_connection_failed"">Imposible establecer una conexión HTTP. Por favor asegúrese que el servidor HTTP esta ejecutándose</string>
+
+<string-array name=""protocol_array"">
+    <item>https://</item>
+    <item>http://</item>
+</string-array>
+
+<!-- Notifications -->
+<string name=""sync_title"">Proceso de sincronización</string>
+<string name=""sync_inprogress"">Sincronización en progreso...</string>
+<string name=""fatal_error"">Error Fatal ! </string>
+```
+
+</resources>
+"
+nerzhul/ownCloud-SMS-App,closed,Android Client: installed but no laucher to launch,"[Label(name=""help wanted"")]","Android version: 4.4.4
+Phone: kltevzw (Galaxy S 5 verizon)
+
+Even tap on the installed notification, nothing happened.
+"

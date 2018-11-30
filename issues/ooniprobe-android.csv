@@ -1,0 +1,1251 @@
+repository,state,title,label,body
+TheTorProject/ooniprobe-android,open,Delete scripts and files that have been migrated to ooni/translations,[],"All app translations shall from now on be managed via: https://github.com/ooni/translations.
+
+In this branch I delete all the deprecated code to avoid duplication."
+TheTorProject/ooniprobe-android,open,Verbose logs should use the maximum verbosity of MK,"[Label(name=""bug"")]",
+TheTorProject/ooniprobe-android,closed,Release/2.0.0,[],
+TheTorProject/ooniprobe-android,open,test non-existent domains,[],Are there any tests that try to check if your service provider redirects bad domain names to something else?  I would think you'd want a few completely made up domains that do not exist so you can see if DNS manipulation is being done.
+TheTorProject/ooniprobe-android,closed,Update/mk,[],
+TheTorProject/ooniprobe-android,closed,Fix/receiver crash,[],
+TheTorProject/ooniprobe-android,closed,Wrong version date in releases,[],"All releases of 2018 have a wrong release date (year) set:
+`ooniprobe-android 1.3.0+21 [2017-01-12]`
+`ooniprobe-android 1.3.1+24 [2017-01-30]`
+`ooniprobe-android 1.3.2+27 [2017-05-16]`"
+TheTorProject/ooniprobe-android,open,Update version in F-Droid,[],It seems that the latest version of ooniprobe-android is outdated as of today version 24 is in [F-Droid repository](https://f-droid.org/packages/org.openobservatory.ooniprobe/).
+TheTorProject/ooniprobe-android,closed,Update/measurement kit 0.9,[],
+TheTorProject/ooniprobe-android,closed,Update/settings screen,[],
+TheTorProject/ooniprobe-android,closed,Release/2.0.0,[],
+TheTorProject/ooniprobe-android,closed,Clients should never register twice,[],"Currently the OONI Probe Android app will sometimes end in a race condition and registering twice or even more times.
+
+The apps should have a mutex lock for registration requests and wait on the lock before issuing another request to create an account.
+
+On Android I see that there are 90'000+ duplicate accounts.
+
+xref: https://github.com/ooni/probe-ios/issues/180"
+TheTorProject/ooniprobe-android,open,Allowing users to select NDT server will be top,"[Label(name=""wishlist"")]","I was browsing through the OONI Probe reviews on the Play Store, and noticed a user who expressed this specific feature request. I'm not sure this can be done easily and soon, but let's track it."
+TheTorProject/ooniprobe-android,closed,Refactor/virgin,[],
+TheTorProject/ooniprobe-android,closed,Update/libraries,[],
+TheTorProject/ooniprobe-android,closed,[Request] Check Signal Messenger,"[Label(name=""duplicate"")]","Can you please also add Signal messenger in the instant messaging checking section.
+Thanks"
+TheTorProject/ooniprobe-android,open,Some compatibility issues,[],"Hi,
+
+I noticed that you have used `onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)` in the class `BrowserActivity` to show a network error in webview window.
+
+For your reference, `onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)` is added in API version 23. For the devices with API version <=22, `onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)` does not work because there is no such a method. (See this [link](https://stackoverflow.com/questions/32769505/webviewclient-onreceivederror-deprecated-new-version-does-not-detect-all-errors))
+
+A possible fix is to add deprecated method `void onReceivedError (WebView view, int errorCode,String description,String failingUrl)` since this method supports all API versions.
+
+Hope this information can help you. Thanks."
+TheTorProject/ooniprobe-android,closed,Notifications in Android Oreo,[],"It happened in some other of my apps that users on Android Oreo complained they don't receive push notifications.
+Apparently there is a fix to do app side and add a ""channel"":
+https://www.androidauthority.com/android-8-0-oreo-app-implementing-notification-channels-801097/
+https://stackoverflow.com/questions/43093260/notification-not-showing-in-android-8-oreo
+https://stackoverflow.com/questions/46990995/on-android-8-1-api-27-notification-does-not-display
+https://stackoverflow.com/questions/45395669/notifications-fail-to-display-in-android-oreo-api-26"
+TheTorProject/ooniprobe-android,closed,Fixing entry bug,[],
+TheTorProject/ooniprobe-android,closed,Closing screen when mv param is missing,[],
+TheTorProject/ooniprobe-android,open,Web connectivity website descriptions,[],I think you should include a basic description of each web site on the web connectivity section so people know what sort of sites are actually been blocked
+TheTorProject/ooniprobe-android,closed,Sync f-droid with master,[],
+TheTorProject/ooniprobe-android,closed,Release/1.3.1,[],
+TheTorProject/ooniprobe-android,open,Evaluate what are the best translations for commonly used OONI lingo,[],"There are various words we use in the OONI Probe app that are hard to translate in the various languages.
+
+We should come up with some best practices for translating these in the various languages for the upcoming revamped app.
+
+A partial list of these terms are:
+
+* Middleboxes
+* Instant Messagging
+* NDT Speed Test
+* Performance
+
+As we identify more, let's add them to this ticket"
+TheTorProject/ooniprobe-android,closed,Update/strings,[],
+TheTorProject/ooniprobe-android,closed,Feature/im tests,[],
+TheTorProject/ooniprobe-android,closed,web-connectivity test fails to record when completing when app in background,[],"Per IRC
+
+Steps to reproduce:
+```
+* Start many tests.
+* Switch to the ""past tests"" screen.
+* Toggle home. (ie. app is running in the background)
+* Wait until all tests have finished. All tests produce notifications.
+* All tests except web-connectivity are appended to ""past tests"".
+```
+
+Environment:
+Fdroid (1.2.3-fdroid.1).  Android 8.1.0
+
+Running additional tests does not cause the missing one to show up. Closing / relaunching the app has no effect either.
+"
+TheTorProject/ooniprobe-android,closed,fixing issue#108,[],"As this app uses an application class, Firebase may not initialize itself, So it need to be initialized in the application class."
+TheTorProject/ooniprobe-android,closed,Newux/onboarding,[],
+TheTorProject/ooniprobe-android,closed,Onboarding/swipe,[],
+TheTorProject/ooniprobe-android,closed,Feature/add testlists,[],Waiting for Android wrapper
+TheTorProject/ooniprobe-android,closed,app/build.gradle: now use MK v0.8.0-1,"[Label(name=""enhancement""), Label(name=""hotfix"")]",
+TheTorProject/ooniprobe-android,closed,Add support for measuring data usage,"[Label(name=""enhancement"")]","As part of MK v0.8.0-x on Android, I'll add bindings for that. When ready, the app should use it."
+TheTorProject/ooniprobe-android,closed,Update to MK v0.8.0-beta.1-1,"[Label(name=""enhancement"")]",@lorenzoPrimi I've also updated Android!
+TheTorProject/ooniprobe-android,open,Introduce network bandwidth quotas in ooniprobe-android,[],"Add support for network bandwidth quotas.
+Similar to https://github.com/TheTorProject/ooniprobe-ios/issues/154"
+TheTorProject/ooniprobe-android,closed,Refactor/test data,[],
+TheTorProject/ooniprobe-android,closed,Removed collector_address in test and settings,[],
+TheTorProject/ooniprobe-android,open,Automate uploading metadata and description to stores,[],"As pointed out in: https://github.com/TheTorProject/ooniprobe-android/pull/124#issuecomment-337154133, following suggestion from @eighthave (https://github.com/TheTorProject/ooniprobe-android/issues/87#issuecomment-337036169), we may want to use something like fastlane to automatically update app descriptions in the various languages.
+
+This would also make updating f-droid descriptions easier (see: https://github.com/TheTorProject/ooniprobe-android/issues/87)"
+TheTorProject/ooniprobe-android,closed,Edited the mobile app description,[],@lorenzoPrimi @hellais I've updated/edited the app description (the same has been done for f-droid).
+TheTorProject/ooniprobe-android,closed,Update f-droid to v1.2.3,[],Closes #122 
+TheTorProject/ooniprobe-android,closed,Update the f-droid branch to v1.2.3,"[Label(name=""bug"")]",
+TheTorProject/ooniprobe-android,closed,Release/1.2.3,[],Release 1.2.3
+TheTorProject/ooniprobe-android,closed,ndt: make sure we use both single and multi stream,"[Label(name=""question"")]","By using both, we can more accurately measure the last mile bandwidth and the quality of the internet connection. The sad truth is that there is a little bit of an indetermination-principle-like problem with measuring speed, where, if you measure the last mile more accurately (with parallel streams) you end up not understanding very well if there's congestion in the backhaul. And the other way round."
+TheTorProject/ooniprobe-android,closed,Fix/115,[],Closes #115 
+TheTorProject/ooniprobe-android,closed,Fix/results list,[],
+TheTorProject/ooniprobe-android,closed,Solving #112,[],"Needs more testing, but I guess it's ok
+
+Closes #112 "
+TheTorProject/ooniprobe-android,closed,[UI bug] Wrong units in NDT Speed Test results,[],"The up- and download is speed is incorrectly labeled to be in ""MBps"", but the number displayed is actually in Mbps. I confirmed this by monitoring the actual bandwidth used on my phone with other apps while running the tests.
+One should either adjust the number displayed to one eighth or correct the unit."
+TheTorProject/ooniprobe-android,closed,When a big list of URLs is shown the text is a bit cropped,"[Label(name=""bug""), Label(name=""usability"")]","The link in this page is what I used: https://jsfiddle.net/7hsk33u6/1/
+
+See the screenshot:
+
+![screenshot_20170927-125557](https://user-images.githubusercontent.com/424620/30910120-c85f354c-a383-11e7-9e6f-a575af3e5fdd.png)
+"
+TheTorProject/ooniprobe-android,closed,When I open a big list of URLs from run I see a white screen,"[Label(name=""bug""), Label(name=""usability"")]","Instead we should show a loader.
+
+The link in this page is what I used: https://jsfiddle.net/7hsk33u6/1/"
+TheTorProject/ooniprobe-android,closed,If a single URL in web_connectivity is tested I get the list view,"[Label(name=""bug""), Label(name=""usability"")]","What I mean is that if a single URL is tested on iOS I get ""redirected"" to the detail of that single measurement, while on Android I get a list with a single URL in it."
+TheTorProject/ooniprobe-android,closed,The run view persists if not dismissed,[],The bug reported in: https://github.com/TheTorProject/ooniprobe-ios/issues/132 also happens on Android in `1.2.2-rc.1`
+TheTorProject/ooniprobe-android,closed,hotfix(VersionUtility): do not include build number,"[Label(name=""hotfix"")]","This breaks OONI Backend.
+
+See TheTorProject/ooni-backend#111 and TheTorProject/ooni-sysadmin#164."
+TheTorProject/ooniprobe-android,closed,Final changes for v1.2.1,[],Version 1.2.1
+TheTorProject/ooniprobe-android,closed,crash: orchestration token is a null string,"[Label(name=""bug"")]","I am copying details from the report received through fabric.
+
+- device: samsung
+- android: 5
+- version: 1.1.5 (11)
+- fatal exception:
+
+```
+Fatal Exception: java.lang.RuntimeException: Unable to start activity ComponentInfo{org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.MainActivity}: java.lang.NullPointerException: null string
+       at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2702)
+       at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2767)
+       at android.app.ActivityThread.access$900(ActivityThread.java:177)
+       at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1449)
+       at android.os.Handler.dispatchMessage(Handler.java:102)
+       at android.os.Looper.loop(Looper.java:145)
+       at android.app.ActivityThread.main(ActivityThread.java:5951)
+       at java.lang.reflect.Method.invoke(Method.java)
+       at java.lang.reflect.Method.invoke(Method.java:372)
+       at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1388)
+       at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1183)
+Caused by java.lang.NullPointerException: null string
+       at org.openobservatory.measurement_kit.swig.mk_swig_ooniJNI.OrchestrateClient_set_network_type(mk_swig_ooniJNI.java)
+       at org.openobservatory.measurement_kit.swig.OrchestrateClient.set_network_type(OrchestrateClient.java:95)
+       at org.openobservatory.ooniprobe.utils.NotificationService.sendRegistrationToServer(NotificationService.java:106)
+       at org.openobservatory.ooniprobe.activity.MainActivity.onCreate(MainActivity.java:144)
+       at android.app.Activity.performCreate(Activity.java:6289)
+       at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1119)
+       at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2655)
+       at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2767)
+       at android.app.ActivityThread.access$900(ActivityThread.java:177)
+       at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1449)
+       at android.os.Handler.dispatchMessage(Handler.java:102)
+       at android.os.Looper.loop(Looper.java:145)
+       at android.app.ActivityThread.main(ActivityThread.java:5951)
+       at java.lang.reflect.Method.invoke(Method.java)
+       at java.lang.reflect.Method.invoke(Method.java:372)
+       at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1388)
+       at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1183)
+```
+
+This seems to me clearly the case where the orchestration token is `null` because the user has not agreed with sending the notifications to us. 
+
+I believe this has already been fixed by @lorenzoPrimi (it would be nice for hotfixes like this to land in master separately from big integration PRs, so it's easier for everybody to have an idea).
+
+I am closing the issue on fabric since it has been moved here."
+TheTorProject/ooniprobe-android,closed,crash: firebase not initialized in this app,"[Label(name=""bug"")]","I am copying details from the report received through fabric.
+
+- _device_: samsung
+- _android_: 6
+- _version_: 1.1.5 (11)
+- _fatal exception_:
+
+```
+Fatal Exception: java.lang.RuntimeException: Unable to start activity ComponentInfo{org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.MainActivity}: java.lang.IllegalStateException: Default FirebaseApp is not initialized in this process org.openobservatory.ooniprobe. Make sure to call FirebaseApp.initializeApp(Context) first.
+       at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3320)
+       at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3416)
+       at android.app.ActivityThread.access$1100(ActivityThread.java:229)
+       at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1821)
+       at android.os.Handler.dispatchMessage(Handler.java:102)
+       at android.os.Looper.loop(Looper.java:148)
+       at android.app.ActivityThread.main(ActivityThread.java:7407)
+       at java.lang.reflect.Method.invoke(Method.java)
+       at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1230)
+       at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1120)
+Caused by java.lang.IllegalStateException: Default FirebaseApp is not initialized in this process org.openobservatory.ooniprobe. Make sure to call FirebaseApp.initializeApp(Context) first.
+       at com.google.firebase.FirebaseApp.getInstance(Unknown Source)
+       at com.google.firebase.iid.FirebaseInstanceId.getInstance(Unknown Source)
+       at org.openobservatory.ooniprobe.activity.MainActivity.onCreate(MainActivity.java:140)
+       at android.app.Activity.performCreate(Activity.java:6904)
+       at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1136)
+       at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3267)
+       at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3416)
+       at android.app.ActivityThread.access$1100(ActivityThread.java:229)
+       at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1821)
+       at android.os.Handler.dispatchMessage(Handler.java:102)
+       at android.os.Looper.loop(Looper.java:148)
+       at android.app.ActivityThread.main(ActivityThread.java:7407)
+       at java.lang.reflect.Method.invoke(Method.java)
+       at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1230)
+       at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1120)
+```
+
+The firebase report also includes threads state. I feel like, however, this may already be enough information for starting working on the bug and finding a solution to it. Plus, looking at the threads state, I did not see anything that smells like ""MK! MK! MK!"" so, I think that is a purely Android related issue.
+
+It seems to me what is happening is that firebase is not fully initialized.
+
+I am marking the corresponding firebase issue to closed since it has been added here."
+TheTorProject/ooniprobe-android,closed,Fixes url for gay.com,"[Label(name=""invalid"")]","Addresses #106 
+I built and verified that this fix works on a Nexus 5X running CopperheadOS"
+TheTorProject/ooniprobe-android,closed,Update URL for gay.com,[],"As of 03 August 2017, `gay.com` has changed ownership. It appears that the website no longer has an HTTPS version, just an HTTP connection that redirects to `https://vanguardnow.org/`
+
+This causes a problem in the ""Web Connectivity"" test, which expects ""https://gay.com"" to resolve correctly.
+
+Relevant line:
+https://github.com/TheTorProject/ooniprobe-android/blob/8550eda6b036879fc86d0e42a0ac81e5738fd3fb/app/src/main/res/raw/global.txt#L527
+
+More information:
+This was tested and verified by performing
+```bash
+# Checks open ports
+nmap gay.com
+# Checks HTTPS
+curl -v https://gay.com
+```
+from 3 locations:
+* Home internet
+* School internet (MTSU)
+* DigitalOcean droplet (NYC)
+
+On all 3 locations, port 443 does not show as open, and performing `curl` fails to connect using HTTPS"
+TheTorProject/ooniprobe-android,closed,Improvements to URL list management for web_connectivity,[],"We would like to improve how URL lists are managed inside of web_connectivity. The main things we would like to support are:
+
+1. Allowing users to choose which categories they are going to be testing when running ooniprobe on mobile
+2. Testing also the country specific lists together with the global list
+
+Before outlining my proposes solution I would like to take a step back and thing of this from a user perspective.
+
+As a ooniprobe user when I choose the categories to be tested and click on the web connectivity ""Run"" button what I am most interested in is:
+
+a. If any site of the categories I have picked there is blocked on my network
+b. Contribute more measurements of that type to the ooniprobe dataset
+
+Given the limitations on mobile we don't actually scan the full list but in most cases (with the default timeout of 90 seconds) will likely be testing only about a dozen sites in total.
+
+URL lists are by nature something that is dynamic so in coming up with a solution for this we should take this into account and it's probably not ideal to have to make a new app release in order to update the testing lists (this is why ooniprobe on desktop, for example, has a dynamic resources update system).
+
+In light of a., maybe we don't actually want to give users all URLs to test, but maybe we want to give them a set that includes some known blocked websites (to give them gratification when they find them to be blocked by running the app) and also some URLs that have not been tested, to improve the ooni dataset (b.).
+
+Given these requirements and reasoning, this is starting do sound a lot like probe orchestration. So what if the running of web connectivity was simply a special orchestration request for accepting a task that is going to be run immediately?
+
+The workflow would look something like the following:
+
+* User configures some settings and chooses which categories of sites they want to test
+* Client sends request to orchestration system saying ""I am from country XX, I want to test these categories and my test runtime is YY, give me some URLs""
+* Orchestration system compiles a list of URLs that includes only the categories chosen by the user, long enough to take at least YY to run, but not too long to not waste bandwidth and returns it to the probe
+* The probe takes the URLs and runs the test
+
+Thoughts?"
+TheTorProject/ooniprobe-android,closed,Allow user-set urls on ooni mobile apps,[],"@Tafiti commented on [Sun Aug 06 2017](https://github.com/TheTorProject/ooni-probe/issues/776)
+
+### Description
+
+Enabling ooni mobile users to input specific urls or at the least test their country's test list. 
+
+### Further information
+Currently, ooni mobile tests random urls and it seems there is no user control of the 'web connectivity' test list. 
+It would be a significant utility to introduce such a functionality where users can easily paste a url on the app (like in the WebUI or CLI) and get instant report about it. 
+At the very least though, it should be possible to test using the specific country citizenlab url list where the test is being run from. 
+
+
+
+
+
+"
+TheTorProject/ooniprobe-android,closed,Feature/uri scheme,[],
+TheTorProject/ooniprobe-android,closed,Simplify the notification icon,[],"Now it's just a hollow circle with a dot inside (the OONI octopus head, but without the neck)"
+TheTorProject/ooniprobe-android,closed,Update README.md,"[Label(name=""enhancement""), Label(name=""hotfix"")]","This small PR adds a button to get your app on F-Droid, and improve the one for Google Play.
+
+Thanks for developing Ooniprobe :)"
+TheTorProject/ooniprobe-android,closed,Delete all *.iml files,[],"I would done this right away, but don't want to create issues to @lorenzoPrimi who's working around the clock to bring us a browser component for Android. Will do that when `1.1.5` is landing.
+
+See https://github.com/TheTorProject/ooniprobe-android/issues/91#issuecomment-318974453"
+TheTorProject/ooniprobe-android,closed,Define a release checklist,[],"This should include, at a minimum, forward porting the `f-droid` branch.
+
+See https://github.com/TheTorProject/ooniprobe-android/issues/91#issuecomment-318974453"
+TheTorProject/ooniprobe-android,closed,Integration branch for v1.1.5-fdroid,"[Label(name=""enhancement"")]",
+TheTorProject/ooniprobe-android,closed,Settings seem to persist app deletion,"[Label(name=""bug"")]","I deleted the app on my device. Then, installed another version of the app from Android Studio. I was not presented the on-boarding procedure and settings where already set. This led us to understand that the actual default for `probe_asn` was not correct (see: 22731da).
+
+This issue with settings persisting is also the reason why I dismantled the copying of resources as it was implemented before and replaced it with the current checks on file existence."
+TheTorProject/ooniprobe-android,closed,Automatically delete measurement files,[],"Especially relevant for unattended usage and possibly a requirement for orchestration, ooniprobe should automatically delete measurements that:
+
+a. Are older than a certain configurable amount of time
+b. Once a certain quota has been reached
+
+Ideally we would store on the device the report ID and support fetching the individual measurements or full report from the ooniprobe backend for displaying it on the device."
+TheTorProject/ooniprobe-android,closed,Finish off notifications implementation,"[Label(name=""enhancement"")]",To be merged inside the integration branch for v1.1.5 when ready.
+TheTorProject/ooniprobe-android,closed,Integration branch for ooniprobe-android v1.1.5,"[Label(name=""enhancement"")]","Contains the following improvements:
+
+1. notifications combined with probe orchestration
+
+2. neubot's dash test"
+TheTorProject/ooniprobe-android,closed,Uninitialised http_code variable in ooniprobe-android=1.1.2,[],"I've found something like a bug in MK / oonirpobe-android while digging TheTorProject/ooni-pipeline#62
+
+Interesting part of the measurement is:
+```
+        ""method"": ""GET"",
+        ""response"": {
+          ""body"": """",
+          ""response_line"": """",
+          ""code"": 2520491460
+        }
+```
+
+It looks like uninitialised variable to me. It may be already fixed for sure, just close the ticket if it's so.
+
+IDs that can be used to lookup [the measurement](https://s3.amazonaws.com/ooni-public/sanitised/2017-03-21/20170320T151801Z-NL-AS202952-web_connectivity-20170320T151809Z_AS202952_nlgC69Tyar66FNQJhQDIreRRkYVYUSYzszVxSvb2dIeWogDiJx-0.2.0-probe.json):
+```
+  ""software_name"": ""ooniprobe-android"",
+  ""software_version"": ""1.1.2"",
+  ""report_filename"": ""2017-03-21/20170320T151801Z-NL-AS202952-web_connectivity-20170320T151809Z_AS202952_nlgC69Tyar66FNQJhQDIreRRkYVYUSYzszVxSvb2dIeWogDiJx-0.2.0-probe.json"",
+  ""input"": ""http://cartercenter.org"",
+  ""report_id"": ""20170320T151809Z_AS202952_nlgC69Tyar66FNQJhQDIreRRkYVYUSYzszVxSvb2dIeWogDiJx"",
+  ""measurement_start_time"": ""2017-03-20 15:19:03"",
+```
+
+"
+TheTorProject/ooniprobe-android,closed,Update to MK v0.7.0-alpha.2-2,[],This diff updates the Android app to use MK v0.7.0-alpha.2-2. This version of MK includes code for performing orchestration. [See example in android-libs](https://github.com/measurement-kit/android-libs/blob/feature/orchestration/example/java/OrchestrateExample.java).
+TheTorProject/ooniprobe-android,closed,Why isn't the newest version on F-Droid?,"[Label(name=""bug"")]",I can't infer from the [F-Droid wiki page](https://f-droid.org/wiki/page/org.openobservatory.ooniprobe) what the problem is.
+TheTorProject/ooniprobe-android,closed,Unpopulated placeholders,"[Label(name=""bug""), Label(name=""usability"")]","I noticed that some link placeholders aren't populated properly, see the screenshot below.
+
+Using a Fairphone 2 with Android 5.1. As I'm not very familiar with reporting bugs for mobile devices, is there any extra info you need?
+
+![ooniprobe-placeholders](https://cloud.githubusercontent.com/assets/9423417/26439233/8ab99322-4127-11e7-82e1-29f045b353c7.jpg)
+"
+TheTorProject/ooniprobe-android,open,Can't run tests automatically,"[Label(name=""bug""), Label(name=""cannot_reproduce_bug""), Label(name=""help wanted"")]","On my Android 7.0, when it's time to run scheduled tests I get no results and the following message: ""the test has no results or it was aborted"".
+
+ooniprobe version 1.1.4"
+TheTorProject/ooniprobe-android,closed,How to send report ro your database after you read it?,[],I have switched off the default send option. But how can i trigger a manual upload after i have read them to get sure that it didn't contain sensible information above one of my own systems??
+TheTorProject/ooniprobe-android,open,fix(f-droid): description truncated,"[Label(name=""bug"")]",The app description on fdroid ends in the middle of a sentence. Please fix that. Thanks
+TheTorProject/ooniprobe-android,closed,"Calligrafy crash with Nexus S, API 13, armeabi emulator","[Label(name=""bug"")]","Hello! While testing v1.1.4-dev on Nexus S, API 13, armeabi emulator I see this easily reproducible crash that happens every time the app finishes the on-boarding procedure on such emulated device.
+
+By reading the error, it seems to me that Calligrafy expects a specific compatibility class that is actually not present in the emulator. I did not experience this issue with previous versions of the app.
+
+Relevant (in my opinion) snippet of the crash log:
+
+```
+Caused by: java.lang.NoClassDefFoundError: android.support.v7.widget.SwitchCompat$1
+                                                                               at android.support.v7.widget.SwitchCompat.<clinit>(SwitchCompat.java:102)
+                                                                               at java.lang.reflect.Constructor.constructNative(Native Method) 
+                                                                               at java.lang.reflect.Constructor.newInstance(Constructor.java:416) 
+                                                                               at android.view.LayoutInflater.createView(LayoutInflater.java:576) 
+                                                                               at uk.co.chrisjenx.calligraphy.CalligraphyLayoutInflater.createCustomViewInternal(CalligraphyLayoutInflater.java:211)
+```
+This is the full log of the crash:
+
+```
+05-03 18:32:50.075 435-435/org.openobservatory.ooniprobe W/dalvikvm: VFY: unable to resolve virtual method 18914: Landroid/widget/CompoundButton;.onPopulateAccessibilityEvent (Landroid/view/accessibility/AccessibilityEvent;)V
+05-03 18:32:50.085 435-435/org.openobservatory.ooniprobe D/dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+05-03 18:32:50.085 435-435/org.openobservatory.ooniprobe W/dalvikvm: Exception Ljava/lang/NoClassDefFoundError; thrown while initializing Landroid/support/v7/widget/SwitchCompat;
+05-03 18:32:50.085 435-435/org.openobservatory.ooniprobe W/dalvikvm: Class init failed in Constructor.constructNative (Landroid/support/v7/widget/SwitchCompat;)
+05-03 18:32:50.095 435-435/org.openobservatory.ooniprobe D/AndroidRuntime: Shutting down VM
+05-03 18:32:50.095 435-435/org.openobservatory.ooniprobe W/dalvikvm: threadid=1: thread exiting with uncaught exception (group=0x40014760)
+05-03 18:32:50.105 435-435/org.openobservatory.ooniprobe E/AndroidRuntime: FATAL EXCEPTION: main
+                                                                           java.lang.ExceptionInInitializerError
+                                                                               at java.lang.reflect.Constructor.constructNative(Native Method)
+                                                                               at java.lang.reflect.Constructor.newInstance(Constructor.java:416)
+                                                                               at android.view.LayoutInflater.createView(LayoutInflater.java:576)
+                                                                               at uk.co.chrisjenx.calligraphy.CalligraphyLayoutInflater.createCustomViewInternal(CalligraphyLayoutInflater.java:211)
+                                                                               at uk.co.chrisjenx.calligraphy.CalligraphyLayoutInflater.access$000(CalligraphyLayoutInflater.java:20)
+                                                                               at uk.co.chrisjenx.calligraphy.CalligraphyLayoutInflater$PrivateWrapperFactory2.onCreateView(CalligraphyLayoutInflater.java:302)
+                                                                               at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:664)
+                                                                               at android.view.LayoutInflater.rInflate(LayoutInflater.java:724)
+                                                                               at android.view.LayoutInflater.rInflate(LayoutInflater.java:727)
+                                                                               at android.view.LayoutInflater.inflate(LayoutInflater.java:479)
+                                                                               at uk.co.chrisjenx.calligraphy.CalligraphyLayoutInflater.inflate(CalligraphyLayoutInflater.java:60)
+                                                                               at android.view.LayoutInflater.inflate(LayoutInflater.java:391)
+                                                                               at org.openobservatory.ooniprobe.fragment.IConsentPage5Fragment.onCreateView(IConsentPage5Fragment.java:63)
+                                                                               at android.support.v4.app.Fragment.performCreateView(Fragment.java:2192)
+                                                                               at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1299)
+                                                                               at android.support.v4.app.FragmentManagerImpl.moveFragmentToExpectedState(FragmentManager.java:1528)
+                                                                               at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1595)
+                                                                               at android.support.v4.app.BackStackRecord.executeOps(BackStackRecord.java:758)
+                                                                               at android.support.v4.app.FragmentManagerImpl.executeOps(FragmentManager.java:2363)
+                                                                               at android.support.v4.app.FragmentManagerImpl.executeOpsTogether(FragmentManager.java:2149)
+                                                                               at android.support.v4.app.FragmentManagerImpl.optimizeAndExecuteOps(FragmentManager.java:2103)
+                                                                               at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:2013)
+                                                                               at android.support.v4.app.FragmentManagerImpl.executePendingTransactions(FragmentManager.java:763)
+                                                                               at me.panavtec.wizard.Wizard.navigateNext(Wizard.java:94)
+                                                                               at org.openobservatory.ooniprobe.fragment.IConsentPage4Fragment.next(IConsentPage4Fragment.java:110)
+                                                                               at org.openobservatory.ooniprobe.fragment.IConsentPage4Fragment.access$000(IConsentPage4Fragment.java:20)
+                                                                               at org.openobservatory.ooniprobe.fragment.IConsentPage4Fragment$1.onClick(IConsentPage4Fragment.java:66)
+                                                                               at android.view.View.performClick(View.java:3110)
+                                                                               at android.view.View$PerformClick.run(View.java:11934)
+                                                                               at android.os.Handler.handleCallback(Handler.java:587)
+                                                                               at android.os.Handler.dispatchMessage(Handler.java:92)
+                                                                               at android.os.Looper.loop(Looper.java:132)
+                                                                               at android.app.ActivityThread.main(ActivityThread.java:4123)
+                                                                               at java.lang.reflect.Method.invokeNative(Native Method)
+                                                                               at java.lang.reflect.Method.invoke(Method.java:491)
+                                                                               at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:841)
+                                                                               at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:599)
+                                                                               at dalvik.system.NativeStart.main(Native Method)
+                                                                            Caused by: java.lang.NoClassDefFoundError: android.support.v7.widget.SwitchCompat$1
+                                                                               at android.support.v7.widget.SwitchCompat.<clinit>(SwitchCompat.java:102)
+                                                                               at java.lang.reflect.Constructor.constructNative(Native Method) 
+                                                                               at java.lang.reflect.Constructor.newInstance(Constructor.java:416) 
+                                                                               at android.view.LayoutInflater.createView(LayoutInflater.java:576) 
+                                                                               at uk.co.chrisjenx.calligraphy.CalligraphyLayoutInflater.createCustomViewInternal(CalligraphyLayoutInflater.java:211) 
+                                                                               at uk.co.chrisjenx.calligraphy.CalligraphyLayoutInflater.access$000(CalligraphyLayoutInflater.java:20) 
+                                                                               at uk.co.chrisjenx.calligraphy.CalligraphyLayoutInflater$PrivateWrapperFactory2.onCreateView(CalligraphyLayoutInflater.java:302) 
+                                                                               at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:664) 
+                                                                               at android.view.LayoutInflater.rInflate(LayoutInflater.java:724) 
+                                                                               at android.view.LayoutInflater.rInflate(LayoutInflater.java:727) 
+                                                                               at android.view.LayoutInflater.inflate(LayoutInflater.java:479) 
+                                                                               at uk.co.chrisjenx.calligraphy.CalligraphyLayoutInflater.inflate(CalligraphyLayoutInflater.java:60) 
+                                                                               at android.view.LayoutInflater.inflate(LayoutInflater.java:391) 
+                                                                               at org.openobservatory.ooniprobe.fragment.IConsentPage5Fragment.onCreateView(IConsentPage5Fragment.java:63) 
+                                                                               at android.support.v4.app.Fragment.performCreateView(Fragment.java:2192) 
+                                                                               at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1299) 
+                                                                               at android.support.v4.app.FragmentManagerImpl.moveFragmentToExpectedState(FragmentManager.java:1528) 
+                                                                               at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1595) 
+                                                                               at android.support.v4.app.BackStackRecord.executeOps(BackStackRecord.java:758) 
+                                                                               at android.support.v4.app.FragmentManagerImpl.executeOps(FragmentManager.java:2363) 
+                                                                               at android.support.v4.app.FragmentManagerImpl.executeOpsTogether(FragmentManager.java:2149) 
+                                                                               at android.support.v4.app.FragmentManagerImpl.optimizeAndExecuteOps(FragmentManager.java:2103) 
+                                                                               at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:2013) 
+                                                                               at android.support.v4.app.FragmentManagerImpl.executePendingTransactions(FragmentManager.java:763) 
+                                                                               at me.panavtec.wizard.Wizard.navigateNext(Wizard.java:94) 
+                                                                               at org.openobservatory.ooniprobe.fragment.IConsentPage4Fragment.next(IConsentPage4Fragment.java:110) 
+                                                                               at org.openobservatory.ooniprobe.fragment.IConsentPage4Fragment.access$000(IConsentPage4Fragment.java:20) 
+                                                                               at org.openobservatory.ooniprobe.fragment.IConsentPage4Fragment$1.onClick(IConsentPage4Fragment.java:66) 
+                                                                               at android.view.View.performClick(View.java:3110) 
+                                                                               at android.view.View$PerformClick.run(View.java:11934) 
+                                                                               at android.os.Handler.handleCallback(Handler.java:587) 
+                                                                               at android.os.Handler.dispatchMessage(Handler.java:92) 
+                                                                               at android.os.Looper.loop(Looper.java:132) 
+                                                                               at android.app.ActivityThread.main(ActivityThread.java:4123) 
+                                                                               at java.lang.reflect.Method.invokeNative(Native Method) 
+                                                                               at java.lang.reflect.Method.invoke(Method.java:491) 
+                                                                               at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:841) 
+                                                                               at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:599) 
+                                                                               at dalvik.system.NativeStart.main(Native Method) 
+05-03 18:32:50.125 72-78/system_process W/ActivityManager:   Force finishing activity org.openobservatory.ooniprobe/.activity.InformedConsentActivity
+05-03 18:32:50.125 72-78/system_process W/WindowManager: Failure taking screenshot for (230x383) to layer 21010
+05-03 18:32:50.645 72-81/system_process W/ActivityManager: Activity pause timeout for ActivityRecord{40a806a8 org.openobservatory.ooniprobe/.activity.InformedConsentActivity}
+05-03 18:32:54.745 435-435/org.openobservatory.ooniprobe I/Process: Sending signal. PID: 435 SIG: 9
+```
+"
+TheTorProject/ooniprobe-android,closed,Norwegian Bokmål translation.,"[Label(name=""enhancement""), Label(name=""invalid"")]",
+TheTorProject/ooniprobe-android,closed,Use mk 0.6.0 beta,[],
+TheTorProject/ooniprobe-android,closed,Release/1.1.4,[],
+TheTorProject/ooniprobe-android,closed,Download AAR from jcenter and use it,"[Label(name=""enhancement""), Label(name=""help wanted"")]","<strike>This implementation also validates the AAR using gpg. For this reason we don' use gradle. It seems there is no satisfying, automated way to verify digital signature of dependencies.</strike>
+
+Use gradle. Discussed with @hellais."
+TheTorProject/ooniprobe-android,closed,Fixes image redirect on README,[],When clicking the header image of the README it redirects to the actual image hosted on github.  It now redirects to the OONI website.
+TheTorProject/ooniprobe-android,closed,Overwrite resources after update,"[Label(name=""bug"")]","As far as I can tell, after d88c285, resources are only copied if they're not present. This means that, after an upgrade, they are not overwritten, which is probably not what we want."
+TheTorProject/ooniprobe-android,closed,MainActivity.java: more robust resource copying,[],"Rather than relying on a shared preference, directly check whether
+the file is there or not and, in the latter case, copy it.
+
+Observed during #76. Depends on #78."
+TheTorProject/ooniprobe-android,closed,NetworkMeasurement.java: initialize all attributes,[],"Make sure all attributes are initialized, so to ensure that there
+are no surprises if the constructor is not called.
+
+It might be that the diff would be correct in C++ and correct and
+overkill in Java, but what mattes is that it fixes #76.
+
+Now, there is another pending diff to make sure we have completely
+addressed all the issues exposed during #76."
+TheTorProject/ooniprobe-android,open,Add functionality to automatically test new networks,"[Label(name=""enhancement""), Label(name=""wishlist"")]",The app currently allows for scheduled tests but it would be more effective if it had a setting for testing only untested networks at the scheduled time. Another useful option would be automatic testing of previously untested networks once the initial connection to them was made.
+TheTorProject/ooniprobe-android,closed,Crash when visualising results with tests in progress,"[Label(name=""bug"")]","On Android emulator, architecture i386, API 24, with 124f32c570 as the tip, you can sometimes provoke a crash by following this procedure (it occurred to me twice, once with another emulator and I am trying to understand how to make this more easily reproducible):
+
+- run all tests concurrently
+- as soon as http-invalid-request-line terminates, go to results view
+
+When you're lucky (well, or unlucky, I guess that depends on your objective function), the app will crash like this:
+
+
+```
+03-20 16:00:49.860 2252-2252/org.openobservatory.ooniprobe E/AndroidRuntime: FATAL EXCEPTION: main
+ Process: org.openobservatory.ooniprobe, PID: 2252
+ java.lang.NullPointerException: Attempt to invoke virtual method 'boolean java.lang.Boolean.booleanValue()' on a null object reference
+     at org.openobservatory.ooniprobe.data.TestStorage.loadTestsReverse(TestStorage.java:69)
+     at org.openobservatory.ooniprobe.fragment.PastTestsFragment.updateList(PastTestsFragment.java:94)
+     at org.openobservatory.ooniprobe.fragment.PastTestsFragment.onResume(PastTestsFragment.java:51)
+     at android.support.v4.app.Fragment.performResume(Fragment.java:2235)
+     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1346)
+     at android.support.v4.app.FragmentManagerImpl.moveFragmentToExpectedState(FragmentManager.java:1528)
+     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1595)
+     at android.support.v4.app.BackStackRecord.executeOps(BackStackRecord.java:757)
+     at android.support.v4.app.FragmentManagerImpl.executeOps(FragmentManager.java:2355)
+     at android.support.v4.app.FragmentManagerImpl.executeOpsTogether(FragmentManager.java:2146)
+     at android.support.v4.app.FragmentManagerImpl.optimizeAndExecuteOps(FragmentManager.java:2098)
+     at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:2008)
+     at android.support.v4.app.FragmentManagerImpl$1.run(FragmentManager.java:710)
+     at android.os.Handler.handleCallback(Handler.java:751)
+     at android.os.Handler.dispatchMessage(Handler.java:95)
+     at android.os.Looper.loop(Looper.java:154)
+     at android.app.ActivityThread.main(ActivityThread.java:6077)
+     at java.lang.reflect.Method.invoke(Native Method)
+     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:865)
+     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:755)
+```
+
+Also, interestingly, this *does not* cause the measurement to be stopped with API 24."
+TheTorProject/ooniprobe-android,closed,Editing of app store description,[],
+TheTorProject/ooniprobe-android,closed,Test a random sample of URLs from all 31 categories (included in Citizen Lab repo),"[Label(name=""wishlist"")]","Currently ooniprobe's mobile app tests a random sample of URLs from the Citizen Lab's global test list every time the user runs Web Connectivity. This means that, in some cases, users might only be testing pornographic sites (or other sites that might be of less interest to them), instead of testing ""more interesting"" sites (such as news media, human rights sites, etc.).
+
+A quick fix to this problem could be re-configuring the web connectivity test to test a random sample of URLs that are fetched from all 31 categories (https://github.com/citizenlab/test-lists/blob/master/lists/00-LEGEND-new_category_codes.csv). That way, a user tests a little bit of everything every time he/she runs web connectivity."
+TheTorProject/ooniprobe-android,closed,"More explicit ""view log"", like in iOS","[Label(name=""usability""), Label(name=""wishlist"")]","While replying to detailed feedback we received, I noticed that the feature for viewing logs is too much hidden on Android, as compared to iOS (see https://github.com/TheTorProject/ooniprobe-ios/issues/103 for a screenshot). It would be nice if, instead, it would be possible to view logs as easily as we do on iOS."
+TheTorProject/ooniprobe-android,open,Show only logs of a specific input,"[Label(name=""question""), Label(name=""usability""), Label(name=""wishlist"")]","User story: I am an advanced user, I have run a test, I have seen some anomalies and I'd like to understand more one of them, hence I'd like to see only logs related to such anomaly.
+
+xref: https://github.com/measurement-kit/measurement-kit/issues/1160, https://github.com/TheTorProject/ooniprobe-ios/issues/102"
+TheTorProject/ooniprobe-android,open,Unclear how to get test methodology information,"[Label(name=""question""), Label(name=""usability""), Label(name=""wishlist"")]","User story: I am an advanced user, I end up in the Run Tests section where I am clearly hinted to hit the Run button to start tests, then I am hinted to go into the Past Tests section, where I can see results; at this point, I see anomalies that I think should not be anomalies, and I don't have a quick way to see the test methodology from the results (not to mention that it's not obvious to me that I can get info on a specific test by going on the Run Tests section and running it).
+
+(*IMHO* this history seems to suggest that the place where one may want to know about the methodology is indeed when he/she is looking at results, no?)
+
+xref: https://github.com/TheTorProject/ooniprobe-ios/issues/101"
+TheTorProject/ooniprobe-android,closed,web_connectivity: allow to visit specific URL,"[Label(name=""question""), Label(name=""usability""), Label(name=""wishlist"")]","User story: I am a user, I see that a site is an anomaly, I really can't believe it, and I want to see for myself whether that site is actually blocked, by opening it in the browser, and perhaps after that I may also want to provide some sort of feedback to the app developers.
+
+[Edit: maybe this works best for the converse case where I see that a site is not treated as an anomaly, but I know it's somehow blocked in my country (i.e. with a blockpage) and I really want to check right away what I can see from my phone, and possibly report a false negative.]
+
+xref: https://github.com/TheTorProject/ooniprobe-ios/issues/100"
+TheTorProject/ooniprobe-android,open,web_connectivity: allow to repeating test for selected URLs,"[Label(name=""question""), Label(name=""usability""), Label(name=""wishlist"")]","User story: I am a user of the app, I have seen anomalies for a specific set of URLs, there is one URL that I am really surprised to see showing an anomaly, and I want to re-run the test for such URL only, to understand whether we're talking about a transient error or a real anomaly.
+
+xref: https://github.com/TheTorProject/ooniprobe-ios/issues/99"
+TheTorProject/ooniprobe-android,closed,Release/1.1.3,[],
+TheTorProject/ooniprobe-android,closed,Changing color used to indicate anomalies?,"[Label(name=""question""), Label(name=""usability""), Label(name=""wishlist"")]","I was discussing with a user that submitted a long and informative bug report and he/she was commenting that red is, in his/her opinion, too aggressive for what we consider anomalies, as red is usually used to indicate very-bad-things. He maintains that perhaps yellow or pink would better convey the meaning of ""look closely at this"". I think this makes sense.
+
+xref: https://github.com/TheTorProject/ooniprobe-ios/issues/97"
+TheTorProject/ooniprobe-android,closed,Add mobile deep linking support,[],"This was a request from a user.
+
+The basic idea is that I want to invite people to test the reachability of my site say `http://example.com`. When a certain site I want to embed on this page a button that the user can click on and it will:
+
+1. If the app is installed open the app and run the specified test against the url `http://example.com`/ (by first showing confirmation that the specified test is about to run on that site).
+
+2. If the app is not installed redirect me to the market so I can install the app
+
+I believe this can be done by registering a custom schema in the app.
+
+See: http://stackoverflow.com/questions/3469908/make-a-link-in-the-android-browser-start-up-my-app
+
+Edit: It seems like this thing has a name: [Mobile Deep Linking](https://en.wikipedia.org/wiki/Mobile_deep_linking)"
+TheTorProject/ooniprobe-android,closed,Add support for Farsi (text displayed from right to left),"[Label(name=""usability""), Label(name=""wishlist"")]","Elections in Iran are approaching (April 2017) and it would be good to have translated the app to Farsi in advance. However, a prerequisite is adding support for Farsi so that text can be displayed from right to left."
+TheTorProject/ooniprobe-android,closed,Edited the copy on ooniprobe android,[],Please merge this asap so that translations can start.
+TheTorProject/ooniprobe-android,closed,App dies when tapping outside the buttons area.,"[Label(name=""bug""), Label(name=""cannot_reproduce_bug""), Label(name=""ready for review"")]","Going through the setup wizard and tapping outside the predefined button area causes the app to crash.
+
+`$ getprop ro.build.version.release`
+`4.1.1`
+`$ getprop ro.build.version.sdk`
+`16`
+`$ dumpsys window |grep Display`
+```
+dumpsys window |grep Display                               
+    startingWindow=null startingView=null startingDisplayed=true startingMovedtrue
+  Display: init=768x1024 cur=768x1024 app=768x976 rng=768x720-1024x976
+```
+The crash occurs on the following views:
+- What is ooniprobe?
+- Potential risks
+- Pop quiz (very tricky to pass the quiz since the bullets are quite small)
+
+<details><summary>Relative logcat output.</summary>
+```
+I/ActivityManager( 3650): START {act=android.intent.action.VIEW dat=file:///storage/sdcard0/bluetooth/ooniprobe-v0.1.0-rc.3.apk typ=application/vnd.android.package-archive flg=0x10000000 cmp=com.android.packageinstaller/.PackageInstallerActivity u=0} from pid 4438
+I/ActivityManager( 3650): START {dat=file:///storage/sdcard0/bluetooth/ooniprobe-v0.1.0-rc.3.apk cmp=com.android.packageinstaller/.InstallAppProgress (has extras) u=0} from pid 5002
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///storage/sdcard0/bluetooth/ooniprobe-v0.1.0-rc.3.apk
+I/ActivityManager( 3650): START {act=android.intent.action.VIEW dat=file:///mnt/sdcard/bluetooth/ooniprobe-v0.1.0-rc.3.apk typ=application/vnd.android.package-archive flg=0x10000000 cmp=com.android.packageinstaller/.PackageInstallerActivity u=0} from pid 5265
+I/ActivityManager( 3650): START {dat=file:///mnt/sdcard/bluetooth/ooniprobe-v0.1.0-rc.3.apk cmp=com.android.packageinstaller/.InstallAppProgress (has extras) u=0} from pid 5002
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///mnt/sdcard/bluetooth/ooniprobe-v0.1.0-rc.3.apk
+I/ActivityManager( 3650): START {act=android.intent.action.VIEW dat=file:///mnt/sdcard/bluetooth/ooniprobe-v0.1.0-rc.3.apk typ=application/vnd.android.package-archive flg=0x10000000 cmp=com.android.packageinstaller/.PackageInstallerActivity u=0} from pid 5265
+I/ActivityManager( 3650): START {dat=file:///mnt/sdcard/bluetooth/ooniprobe-v0.1.0-rc.3.apk cmp=com.android.packageinstaller/.InstallAppProgress (has extras) u=0} from pid 5002
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///mnt/sdcard/bluetooth/ooniprobe-v0.1.0-rc.3.apk
+I/DefContainer( 5022): Copied /mnt/sdcard/bluetooth/ooniprobe-v0.1.0-rc.3.apk to /mnt/asec/smdl2tmp1/pkg.apk
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///mnt/sdcard/bluetooth/ooniprobe-v0.1.0-rc.3.apk
+D/VoldCmdListener( 2505): asec rename smdl2tmp1 org.openobservatory.ooniprobe-1
+E/VoldConnector( 3650): NDC Command {18 asec rename smdl2tmp1 org.openobservatory.ooniprobe-1} took too long (1695ms)
+W/PackageManager( 3650): Mounting container org.openobservatory.ooniprobe-1
+D/VoldCmdListener( 2505): asec mount org.openobservatory.ooniprobe-1 {} 1000
+D/VoldCmdListener( 2505): asec path org.openobservatory.ooniprobe-1
+I/PackageManager( 3650): Linking native library dir for /mnt/asec/org.openobservatory.ooniprobe-1/pkg.apk
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+D/VoldCmdListener( 2505): asec fixperms org.openobservatory.ooniprobe-1 -1 null
+D/BackupManagerService( 3650): Received broadcast Intent { act=android.intent.action.PACKAGE_ADDED dat=package:org.openobservatory.ooniprobe flg=0x8000010 (has extras) }
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 pkg=org.openobservatory.ooniprobe cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 5002
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=5394 uid=10055 gids={3003, 1028}
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 5394
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 5394
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 5394
+I/ActivityManager( 3650): START {act=android.intent.action.VIEW dat=file:///mnt/sdcard/get-started-ooniprobe.png typ=image/* flg=0x10000000 cmp=com.android.gallery3d/.app.Gallery u=0} from pid 5265
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[408,960][768,1024] u=0} from pid -1
+W/ActivityManager( 3650): startActivity called from non-Activity context; forcing Intent.FLAG_ACTIVITY_NEW_TASK for: Intent { cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[408,960][768,1024] }
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 5394
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[306,893][752,957] u=0} from pid -1
+W/ActivityManager( 3650): startActivity called from non-Activity context; forcing Intent.FLAG_ACTIVITY_NEW_TASK for: Intent { cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[306,893][752,957] }
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 5394
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[306,893][752,957] u=0} from pid -1
+W/ActivityManager( 3650): startActivity called from non-Activity context; forcing Intent.FLAG_ACTIVITY_NEW_TASK for: Intent { cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[306,893][752,957] }
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 5394
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 5394
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 5394
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 5394
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 5394
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+I/ActivityManager( 3650): Killing proc 5394:org.openobservatory.ooniprobe/u0a55: force stop
+I/ActivityManager( 3650):   Force finishing activity ActivityRecord{414b9f10 org.openobservatory.ooniprobe/.activity.MainActivity}
+I/ActivityManager( 3650):   Force finishing activity ActivityRecord{4182e8e0 org.openobservatory.ooniprobe/.activity.InformedConsentActivity}
+I/ActivityManager( 3650):   Force finishing activity ActivityRecord{414fdc90 org.openobservatory.ooniprobe/.activity.MainActivity}
+I/ActivityManager( 3650):   Force finishing activity ActivityRecord{416187d0 org.openobservatory.ooniprobe/.activity.InformedConsentActivity}
+I/ActivityManager( 3650):   Force finishing activity ActivityRecord{4181e770 org.openobservatory.ooniprobe/.activity.MainActivity}
+I/ActivityManager( 3650):   Force finishing activity ActivityRecord{41493760 org.openobservatory.ooniprobe/.activity.MainActivity}
+I/ActivityManager( 3650):   Force finishing activity ActivityRecord{41640a18 org.openobservatory.ooniprobe/.activity.ResultActivity}
+I/ActivityManager( 3650):   Force finishing activity ActivityRecord{414f9748 org.openobservatory.ooniprobe/.activity.MainActivity}
+I/WindowState( 3650): WIN DEATH: Window{414adac8 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=true}
+I/WindowState( 3650): WIN DEATH: Window{414d4d30 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.ResultActivity paused=true}
+I/WindowState( 3650): WIN DEATH: Window{417fa198 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.MainActivity paused=true}
+I/WindowState( 3650): WIN DEATH: Window{414b4718 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=true}
+I/WindowState( 3650): WIN DEATH: Window{414d9698 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.MainActivity paused=true}
+I/WindowState( 3650): WIN DEATH: Window{41643d88 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.MainActivity paused=true}
+I/WindowManager( 3650): WINDOW DIED Window{414adac8 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=true}
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10104000 pkg=org.openobservatory.ooniprobe cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 3879
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=6361 uid=10055 gids={3003, 1028}
+W/ActivityThread( 6361): Application org.openobservatory.ooniprobe is waiting for the debugger on port 8100...
+W/ActivityManager( 3650):   Force finishing activity org.openobservatory.ooniprobe/.activity.MainActivity
+I/ActivityManager( 3650): Killing ProcessRecord{414ea4f0 6361:org.openobservatory.ooniprobe/u0a55}: user's request
+I/ActivityManager( 3650): Process org.openobservatory.ooniprobe (pid 6361) has died.
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=6378 uid=10055 gids={3003, 1028}
+W/ActivityThread( 6378): Application org.openobservatory.ooniprobe is waiting for the debugger on port 8100...
+W/ActivityManager( 3650):   Force finishing activity org.openobservatory.ooniprobe/.activity.MainActivity
+I/ActivityManager( 3650): Killing ProcessRecord{41721c08 6378:org.openobservatory.ooniprobe/u0a55}: user's request
+I/ActivityManager( 3650): Process org.openobservatory.ooniprobe (pid 6378) has died.
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=6393 uid=10055 gids={3003, 1028}
+W/ActivityThread( 6393): Application org.openobservatory.ooniprobe is waiting for the debugger on port 8100...
+W/ActivityManager( 3650):   Force finishing activity org.openobservatory.ooniprobe/.activity.MainActivity
+I/ActivityManager( 3650): Killing ProcessRecord{4180dd60 6393:org.openobservatory.ooniprobe/u0a55}: user's request
+I/ActivityManager( 3650): Process org.openobservatory.ooniprobe (pid 6393) has died.
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=6437 uid=10055 gids={3003, 1028}
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 6437
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 6437
+I/ActivityManager( 3650): START {act=android.intent.action.VIEW dat=file:///mnt/sdcard/get-started-ooniprobe.png typ=image/* flg=0x10104000 cmp=com.android.gallery3d/.app.Gallery u=0} from pid 3879
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 6437
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 6437
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 6437
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 6437
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10304000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[600,357][696,453] u=0} from pid 3879
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 6437
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[306,893][752,957] u=0} from pid -1
+W/ActivityManager( 3650): startActivity called from non-Activity context; forcing Intent.FLAG_ACTIVITY_NEW_TASK for: Intent { cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[306,893][752,957] }
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[306,893][752,957] u=0} from pid -1
+W/ActivityManager( 3650): startActivity called from non-Activity context; forcing Intent.FLAG_ACTIVITY_NEW_TASK for: Intent { cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[306,893][752,957] }
+I/ActivityManager( 3650): START {act=android.intent.action.DELETE dat=package:org.openobservatory.ooniprobe flg=0x10800000 cmp=com.android.packageinstaller/.UninstallerActivity u=0} from pid 4114
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+I/ActivityManager( 3650): Killing proc 6437:org.openobservatory.ooniprobe/u0a55: force stop
+I/ActivityManager( 3650):   Force finishing activity ActivityRecord{416d1fd8 org.openobservatory.ooniprobe/.activity.MainActivity}
+I/WindowState( 3650): WIN DEATH: Window{41cbc888 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.MainActivity paused=true}
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+D/BackupManagerService( 3650): Received broadcast Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:org.openobservatory.ooniprobe flg=0x8000010 (has extras) }
+D/VoldCmdListener( 2505): asec unmount org.openobservatory.ooniprobe-1 force
+W/Vold    ( 2505): org.openobservatory.ooniprobe-1 unmount attempt 1 failed (Device or resource busy)
+E/ProcessKiller( 2505): Process android.process.acore (4090) has open file /mnt/asec/org.openobservatory.ooniprobe-1/pkg.apk
+W/Vold    ( 2505): org.openobservatory.ooniprobe-1 unmount attempt 2 failed (Device or resource busy)
+E/ProcessKiller( 2505): Process android.process.acore (4090) has open file /mnt/asec/org.openobservatory.ooniprobe-1/pkg.apk
+W/Vold    ( 2505): org.openobservatory.ooniprobe-1 unmount attempt 3 failed (Device or resource busy)
+E/ProcessKiller( 2505): Process android.process.acore (4090) has open file /mnt/asec/org.openobservatory.ooniprobe-1/pkg.apk
+E/VoldConnector( 3650): NDC Command {39 asec unmount org.openobservatory.ooniprobe-1 force} took too long (4087ms)
+D/VoldCmdListener( 2505): asec destroy org.openobservatory.ooniprobe-1 force
+I/ActivityManager( 3650): START {act=android.intent.action.VIEW dat=file:///storage/sdcard0/bluetooth/ooniprobe-android-1.1.0.apk typ=application/vnd.android.package-archive flg=0x10000000 cmp=com.android.packageinstaller/.PackageInstallerActivity u=0} from pid 4438
+I/ActivityManager( 3650): START {dat=file:///storage/sdcard0/bluetooth/ooniprobe-android-1.1.0.apk cmp=com.android.packageinstaller/.InstallAppProgress (has extras) u=0} from pid 7242
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///storage/sdcard0/bluetooth/ooniprobe-android-1.1.0.apk
+I/DefContainer( 7294): Copied /storage/sdcard0/bluetooth/ooniprobe-android-1.1.0.apk to /mnt/asec/smdl2tmp1/pkg.apk
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///storage/sdcard0/bluetooth/ooniprobe-android-1.1.0.apk
+D/VoldCmdListener( 2505): asec rename smdl2tmp1 org.openobservatory.ooniprobe-1
+E/VoldConnector( 3650): NDC Command {53 asec rename smdl2tmp1 org.openobservatory.ooniprobe-1} took too long (2039ms)
+W/PackageManager( 3650): Mounting container org.openobservatory.ooniprobe-1
+D/VoldCmdListener( 2505): asec mount org.openobservatory.ooniprobe-1 {} 1000
+D/VoldCmdListener( 2505): asec path org.openobservatory.ooniprobe-1
+I/PackageManager( 3650): Linking native library dir for /mnt/asec/org.openobservatory.ooniprobe-1/pkg.apk
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+D/VoldCmdListener( 2505): asec fixperms org.openobservatory.ooniprobe-1 -1 null
+D/BackupManagerService( 3650): Received broadcast Intent { act=android.intent.action.PACKAGE_ADDED dat=package:org.openobservatory.ooniprobe flg=0x8000010 (has extras) }
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 pkg=org.openobservatory.ooniprobe cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 7242
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=7974 uid=10055 gids={3003, 1028}
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 7974
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 7974
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 7974
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 7974
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 7974
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 7974
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 7974
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 7974
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.ResultActivity (has extras) u=0} from pid 7974
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///mnt/asec/org.openobservatory.ooniprobe-1/pkg.apk
+W/PackageManager( 3650): Package source /data/app/org.openobservatory.ooniprobe-1.apk does not exist.
+W/PackageManager( 3650): Package source /data/app/org.openobservatory.ooniprobe-1.apk does not exist.
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[306,893][752,957] u=0} from pid -1
+W/ActivityManager( 3650): startActivity called from non-Activity context; forcing Intent.FLAG_ACTIVITY_NEW_TASK for: Intent { cmp=org.openobservatory.ooniprobe/.activity.MainActivity bnds=[306,893][752,957] }
+D/DownloadManager( 4002): cleanupDestination() deleting /storage/sdcard0/Download/ooniprobe-android-1.1.1.apk
+D/DownloadManager( 4002): cleanupDestination() deleting /storage/sdcard0/Download/ooniprobe-android-1.1.1.apk
+D/DownloadManager( 4002): cleanupDestination() deleting /storage/sdcard0/Download/ooniprobe-android-1.1.1.apk
+I/ActivityManager( 3650): START {act=android.intent.action.DELETE dat=package:org.openobservatory.ooniprobe flg=0x10800000 cmp=com.android.packageinstaller/.UninstallerActivity u=0} from pid 4114
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+I/ActivityManager( 3650): Killing proc 7974:org.openobservatory.ooniprobe/u0a55: force stop
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+D/BackupManagerService( 3650): Received broadcast Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:org.openobservatory.ooniprobe flg=0x8000010 (has extras) }
+D/VoldCmdListener( 2505): asec unmount org.openobservatory.ooniprobe-1 force
+D/VoldCmdListener( 2505): asec destroy org.openobservatory.ooniprobe-1 force
+I/ActivityManager( 3650): START {act=android.intent.action.VIEW dat=file:///storage/sdcard0/bluetooth/ooniprobe-android-1.1.1.apk typ=application/vnd.android.package-archive flg=0x10000000 cmp=com.android.packageinstaller/.PackageInstallerActivity u=0} from pid 4438
+I/ActivityManager( 3650): START {dat=file:///storage/sdcard0/bluetooth/ooniprobe-android-1.1.1.apk cmp=com.android.packageinstaller/.InstallAppProgress (has extras) u=0} from pid 10482
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///storage/sdcard0/bluetooth/ooniprobe-android-1.1.1.apk
+I/DefContainer( 7294): Copied /storage/sdcard0/bluetooth/ooniprobe-android-1.1.1.apk to /mnt/asec/smdl2tmp1/pkg.apk
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///storage/sdcard0/bluetooth/ooniprobe-android-1.1.1.apk
+D/VoldCmdListener( 2505): asec rename smdl2tmp1 org.openobservatory.ooniprobe-1
+E/VoldConnector( 3650): NDC Command {76 asec rename smdl2tmp1 org.openobservatory.ooniprobe-1} took too long (1904ms)
+W/PackageManager( 3650): Mounting container org.openobservatory.ooniprobe-1
+D/VoldCmdListener( 2505): asec mount org.openobservatory.ooniprobe-1 {} 1000
+D/VoldCmdListener( 2505): asec path org.openobservatory.ooniprobe-1
+I/PackageManager( 3650): Linking native library dir for /mnt/asec/org.openobservatory.ooniprobe-1/pkg.apk
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+D/VoldCmdListener( 2505): asec fixperms org.openobservatory.ooniprobe-1 -1 null
+D/BackupManagerService( 3650): Received broadcast Intent { act=android.intent.action.PACKAGE_ADDED dat=package:org.openobservatory.ooniprobe flg=0x8000010 (has extras) }
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=11300 uid=10055 gids={3003, 1028}
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 11300
+W/ActivityManager( 3650):   Force finishing activity org.openobservatory.ooniprobe/.activity.InformedConsentActivity
+W/ActivityManager( 3650): Activity pause timeout for ActivityRecord{415b8e70 org.openobservatory.ooniprobe/.activity.InformedConsentActivity}
+I/ActivityManager( 3650): Process org.openobservatory.ooniprobe (pid 11300) has died.
+I/WindowState( 3650): WIN DEATH: Window{414abf58 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=false}
+I/WindowManager( 3650): WINDOW DIED Window{414abf58 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=false}
+W/ActivityManager( 3650): Force removing ActivityRecord{414f6ae0 org.openobservatory.ooniprobe/.activity.MainActivity}: app died, no saved state
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=11332 uid=10055 gids={3003, 1028}
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 11332
+W/ActivityManager( 3650):   Force finishing activity org.openobservatory.ooniprobe/.activity.InformedConsentActivity
+W/ActivityManager( 3650): Activity pause timeout for ActivityRecord{416518e0 org.openobservatory.ooniprobe/.activity.InformedConsentActivity}
+I/ActivityManager( 3650): Process org.openobservatory.ooniprobe (pid 11332) has died.
+I/WindowState( 3650): WIN DEATH: Window{414ef7c8 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=false}
+W/ActivityManager( 3650): Force removing ActivityRecord{41641e98 org.openobservatory.ooniprobe/.activity.MainActivity}: app died, no saved state
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+I/ActivityManager( 3650): START {act=android.intent.action.VIEW dat=file:///storage/sdcard0/bluetooth/ooniprobe-android-1.1.2.apk typ=application/vnd.android.package-archive flg=0x10000000 cmp=com.android.packageinstaller/.PackageInstallerActivity u=0} from pid 4438
+I/ActivityManager( 3650): START {dat=file:///storage/sdcard0/bluetooth/ooniprobe-android-1.1.2.apk cmp=com.android.packageinstaller/.InstallAppProgress (has extras) u=0} from pid 10482
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///storage/sdcard0/bluetooth/ooniprobe-android-1.1.2.apk
+I/DefContainer( 7294): Copied /storage/sdcard0/bluetooth/ooniprobe-android-1.1.2.apk to /mnt/asec/smdl2tmp1/pkg.apk
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///storage/sdcard0/bluetooth/ooniprobe-android-1.1.2.apk
+D/VoldCmdListener( 2505): asec rename smdl2tmp1 org.openobservatory.ooniprobe-2
+E/VoldConnector( 3650): NDC Command {114 asec rename smdl2tmp1 org.openobservatory.ooniprobe-2} took too long (1570ms)
+W/PackageManager( 3650): Mounting container org.openobservatory.ooniprobe-2
+D/VoldCmdListener( 2505): asec mount org.openobservatory.ooniprobe-2 {} 1000
+D/VoldCmdListener( 2505): asec path org.openobservatory.ooniprobe-2
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+I/PackageManager( 3650): Package org.openobservatory.ooniprobe codePath changed from /mnt/asec/org.openobservatory.ooniprobe-1/pkg.apk to /mnt/asec/org.openobservatory.ooniprobe-2/pkg.apk; Retaining data and using new
+I/PackageManager( 3650): Linking native library dir for /mnt/asec/org.openobservatory.ooniprobe-2/pkg.apk
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+W/PackageManager( 3650): Code path for pkg : org.openobservatory.ooniprobe changing from /mnt/asec/org.openobservatory.ooniprobe-1/pkg.apk to /mnt/asec/org.openobservatory.ooniprobe-2/pkg.apk
+W/PackageManager( 3650): Resource path for pkg : org.openobservatory.ooniprobe changing from /mnt/asec/org.openobservatory.ooniprobe-1/pkg.apk to /mnt/asec/org.openobservatory.ooniprobe-2/pkg.apk
+D/VoldCmdListener( 2505): asec fixperms org.openobservatory.ooniprobe-2 -1 null
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+D/BackupManagerService( 3650): Received broadcast Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:org.openobservatory.ooniprobe flg=0x8000010 (has extras) }
+D/BackupManagerService( 3650): Received broadcast Intent { act=android.intent.action.PACKAGE_ADDED dat=package:org.openobservatory.ooniprobe flg=0x8000010 (has extras) }
+D/VoldCmdListener( 2505): asec unmount org.openobservatory.ooniprobe-1 force
+D/VoldCmdListener( 2505): asec destroy org.openobservatory.ooniprobe-1 force
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 pkg=org.openobservatory.ooniprobe cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 10482
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=13019 uid=10055 gids={3003, 1028}
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 13019
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 13019
+W/ActivityManager( 3650):   Force finishing activity org.openobservatory.ooniprobe/.activity.InformedConsentActivity
+W/ActivityManager( 3650): Activity pause timeout for ActivityRecord{41dc57c8 org.openobservatory.ooniprobe/.activity.InformedConsentActivity}
+I/WindowState( 3650): WIN DEATH: Window{414ab3f0 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=false}
+I/ActivityManager( 3650): Process org.openobservatory.ooniprobe (pid 13019) has died.
+W/ActivityManager( 3650): Force removing ActivityRecord{41ff81d0 org.openobservatory.ooniprobe/.activity.MainActivity}: app died, no saved state
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=13210 uid=10055 gids={3003, 1028}
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 13210
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 13210
+W/ActivityManager( 3650):   Force finishing activity org.openobservatory.ooniprobe/.activity.InformedConsentActivity
+W/ActivityManager( 3650): Activity pause timeout for ActivityRecord{417cc0f8 org.openobservatory.ooniprobe/.activity.InformedConsentActivity}
+I/ActivityManager( 3650): Process org.openobservatory.ooniprobe (pid 13210) has died.
+I/WindowState( 3650): WIN DEATH: Window{41b90230 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=false}
+W/ActivityManager( 3650): Force removing ActivityRecord{41e71798 org.openobservatory.ooniprobe/.activity.MainActivity}: app died, no saved state
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=13298 uid=10055 gids={3003, 1028}
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 13298
+W/ActivityManager( 3650):   Force finishing activity org.openobservatory.ooniprobe/.activity.InformedConsentActivity
+W/ActivityManager( 3650): Activity pause timeout for ActivityRecord{4141ac90 org.openobservatory.ooniprobe/.activity.InformedConsentActivity}
+W/ActivityManager( 3650): Activity idle timeout for ActivityRecord{413c5c18 org.openobservatory.ooniprobe/.activity.MainActivity}
+I/WindowState( 3650): WIN DEATH: Window{41491e18 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=false}
+I/ActivityManager( 3650): Process org.openobservatory.ooniprobe (pid 13298) has died.
+W/ActivityManager( 3650): Force removing ActivityRecord{413c5c18 org.openobservatory.ooniprobe/.activity.MainActivity}: app died, no saved state
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=13390 uid=10055 gids={3003, 1028}
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 13390
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-2
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-2
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-2
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 13390
+W/ActivityManager( 3650):   Force finishing activity org.openobservatory.ooniprobe/.activity.InformedConsentActivity
+W/ActivityManager( 3650): Activity pause timeout for ActivityRecord{4141ac80 org.openobservatory.ooniprobe/.activity.InformedConsentActivity}
+I/ActivityManager( 3650): Process org.openobservatory.ooniprobe (pid 13390) has died.
+I/WindowState( 3650): WIN DEATH: Window{4146c870 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=false}
+I/WindowManager( 3650): WINDOW DIED Window{4146c870 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=false}
+W/ActivityManager( 3650): Force removing ActivityRecord{413c5c18 org.openobservatory.ooniprobe/.activity.MainActivity}: app died, no saved state
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=13566 uid=10055 gids={3003, 1028}
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 13566
+I/ActivityManager( 3650): START {act=android.intent.action.DELETE dat=package:org.openobservatory.ooniprobe flg=0x10800000 cmp=com.android.packageinstaller/.UninstallerActivity u=0} from pid 4114
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+I/ActivityManager( 3650): Killing proc 13566:org.openobservatory.ooniprobe/u0a55: force stop
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+D/BackupManagerService( 3650): Received broadcast Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:org.openobservatory.ooniprobe flg=0x8000010 (has extras) }
+D/VoldCmdListener( 2505): asec unmount org.openobservatory.ooniprobe-2 force
+W/Vold    ( 2505): org.openobservatory.ooniprobe-2 unmount attempt 1 failed (Device or resource busy)
+E/ProcessKiller( 2505): Process android.process.acore (7940) has open file /mnt/asec/org.openobservatory.ooniprobe-2/pkg.apk
+W/Vold    ( 2505): org.openobservatory.ooniprobe-2 unmount attempt 2 failed (Device or resource busy)
+E/ProcessKiller( 2505): Process android.process.acore (7940) has open file /mnt/asec/org.openobservatory.ooniprobe-2/pkg.apk
+W/Vold    ( 2505): org.openobservatory.ooniprobe-2 unmount attempt 3 failed (Device or resource busy)
+E/ProcessKiller( 2505): Process android.process.acore (7940) has open file /mnt/asec/org.openobservatory.ooniprobe-2/pkg.apk
+E/VoldConnector( 3650): NDC Command {129 asec unmount org.openobservatory.ooniprobe-2 force} took too long (3961ms)
+D/VoldCmdListener( 2505): asec destroy org.openobservatory.ooniprobe-2 force
+I/ActivityManager( 3650): START {act=android.intent.action.VIEW dat=file:///mnt/sdcard/bluetooth/ooniprobe-android-1.1.2.apk typ=application/vnd.android.package-archive flg=0x10000000 cmp=com.android.packageinstaller/.PackageInstallerActivity u=0} from pid 13631
+I/ActivityManager( 3650): START {dat=file:///mnt/sdcard/bluetooth/ooniprobe-android-1.1.2.apk cmp=com.android.packageinstaller/.InstallAppProgress (has extras) u=0} from pid 10482
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///mnt/sdcard/bluetooth/ooniprobe-android-1.1.2.apk
+I/DefContainer( 7294): Copied /mnt/sdcard/bluetooth/ooniprobe-android-1.1.2.apk to /mnt/asec/smdl2tmp1/pkg.apk
+W/ActivityManager( 3650): No content provider found for permission revoke: file:///mnt/sdcard/bluetooth/ooniprobe-android-1.1.2.apk
+D/VoldCmdListener( 2505): asec rename smdl2tmp1 org.openobservatory.ooniprobe-1
+E/VoldConnector( 3650): NDC Command {139 asec rename smdl2tmp1 org.openobservatory.ooniprobe-1} took too long (1720ms)
+W/PackageManager( 3650): Mounting container org.openobservatory.ooniprobe-1
+D/VoldCmdListener( 2505): asec mount org.openobservatory.ooniprobe-1 {} 1000
+D/VoldCmdListener( 2505): asec path org.openobservatory.ooniprobe-1
+I/PackageManager( 3650): Linking native library dir for /mnt/asec/org.openobservatory.ooniprobe-1/pkg.apk
+I/ActivityManager( 3650): Force stopping package org.openobservatory.ooniprobe uid=10055
+D/VoldCmdListener( 2505): asec fixperms org.openobservatory.ooniprobe-1 -1 null
+D/BackupManagerService( 3650): Received broadcast Intent { act=android.intent.action.PACKAGE_ADDED dat=package:org.openobservatory.ooniprobe flg=0x8000010 (has extras) }
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.ooniprobe/.activity.MainActivity: pid=13737 uid=10055 gids={3003, 1028}
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 13737
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): START {cmp=org.openobservatory.ooniprobe/.activity.InformedConsentActivity u=0} from pid 13737
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+D/VoldCmdListener( 2505): asec fspath org.openobservatory.ooniprobe-1
+W/ActivityManager( 3650):   Force finishing activity org.openobservatory.ooniprobe/.activity.InformedConsentActivity
+W/ActivityManager( 3650): Activity pause timeout for ActivityRecord{413c5c18 org.openobservatory.ooniprobe/.activity.InformedConsentActivity}
+I/ActivityManager( 3650): Process org.openobservatory.ooniprobe (pid 13737) has died.
+W/InputDispatcher( 3650): channel '4143f278 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity (server)' ~ Consumer closed input channel or an error occurred.  events=0xd
+E/InputDispatcher( 3650): channel '4143f278 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity (server)' ~ Channel is unrecoverably broken and will be disposed!
+W/InputDispatcher( 3650): Attempted to unregister already unregistered input channel '4143f278 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity (server)'
+I/WindowState( 3650): WIN DEATH: Window{4143f278 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=false}
+W/ActivityManager( 3650): Force removing ActivityRecord{413c23f8 org.openobservatory.ooniprobe/.activity.MainActivity}: app died, no saved state
+I/WindowManager( 3650): WINDOW DIED Window{4143f278 org.openobservatory.ooniprobe/org.openobservatory.ooniprobe.activity.InformedConsentActivity paused=false}
+I/ActivityManager( 3650): START {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=org.openobservatory.ooniprobe/.activity.MainActivity u=0} from pid 4114
+I/ActivityManager( 3650): Start proc org.openobservatory.ooniprobe for activity org.openobservatory.oonip
+```"
+TheTorProject/ooniprobe-android,closed,--DELETE--,"[Label(name=""duplicate"")]",
+TheTorProject/ooniprobe-android,closed,Release/1.1.2,[],
+TheTorProject/ooniprobe-android,closed,"Android app ""local reference table overflow"" crash",[],"Migrated from: https://github.com/measurement-kit/measurement-kit/issues/1125
+
+Diagnosis: I noticed that, commenting out the following code:
+
+```Java
+.on_entry(new org.openobservatory.measurement_kit.nettests.EntryCallback() {
+    @Override
+    public void callback(String entry) {
+        setAnomaly(entry, currentTest);
+    }
+})
+```
+
+made the crash disappear. As such, I am inclined to think that the issue lies in the Java side (or perhaps is *implied* by the currently used design, but still the fix must be done here)."
+TheTorProject/ooniprobe-android,closed,Separate anomalous websites from normal sites in result list,[],"It seems like users are confused as to what green/red means in the website list view.
+
+We should probably add a separator between the anomalous and normal sites and write some text above indicating what it means.
+
+See quick mockup:
+![screen shot 2017-02-12 at 11 46 08 0000](https://cloud.githubusercontent.com/assets/424620/22861772/1859402e-f119-11e6-9b96-fa26720f17b7.png)
+"
+TheTorProject/ooniprobe-android,closed,Toasts notifications lasts for too long,[],"Once a test is done, the Toast Notifications lasts indefinitely/for a very long time. Even if you visit the past tests screen right after a test is completed, the notification is not cleared. Moreover, if you completely exit the application, the notification is not killed and tapping on it does not clear it.
+
+![screenshot_1486819261](https://cloud.githubusercontent.com/assets/12133996/22854083/07d55e08-f066-11e6-9a2b-44b1968f3c1a.png)
+
+"
+TheTorProject/ooniprobe-android,closed,Click on ooniprobe icon on drawer causes crash,[],"As for title, the app crashes if the icon is tapped. (Crash report below)
+
+![screenshot_20170211-125731 copy](https://cloud.githubusercontent.com/assets/12133996/22853668/f266788a-f05c-11e6-96ce-403f6b395581.png)
+
+It's un unhandled index in the code that sets the title, so I'm guessing it's supposed not to be clickable or just return nothing if tapped.
+I think it should be another way to open the about window.
+
+```
+E/AndroidRuntime: FATAL EXCEPTION: main
+                  Process: org.openobservatory.ooniprobe, PID: 4318
+                  java.lang.ArrayIndexOutOfBoundsException: length=4; index=4
+                      at org.openobservatory.ooniprobe.activity.MainActivity$override.selectItem(MainActivity.java:155)
+                      at org.openobservatory.ooniprobe.activity.MainActivity$override.static$access$200(MainActivity.java:48)
+                      at org.openobservatory.ooniprobe.activity.MainActivity$override.access$dispatch(MainActivity.java)
+                      at org.openobservatory.ooniprobe.activity.MainActivity.access$200(MainActivity.java:0)
+                      at org.openobservatory.ooniprobe.activity.MainActivity$DrawerItemClickListener.onItemClick(MainActivity.java:134)
+                      at android.widget.AdapterView.performItemClick(AdapterView.java:310)
+                      at android.widget.AbsListView.performItemClick(AbsListView.java:1145)
+                      at android.widget.AbsListView$PerformClick.run(AbsListView.java:3042)
+                      at android.widget.AbsListView$3.run(AbsListView.java:3879)
+                      at android.os.Handler.handleCallback(Handler.java:739)
+                      at android.os.Handler.dispatchMessage(Handler.java:95)
+                      at android.os.Looper.loop(Looper.java:148)
+                      at android.app.ActivityThread.main(ActivityThread.java:5417)
+                      at java.lang.reflect.Method.invoke(Native Method)
+                      at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+                      at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+```"
+TheTorProject/ooniprobe-android,closed,"Edit NDT description to say ""measure"" instead of ""measurement""",[],"On the NDT tab it says ""Measurement network speed and performance"" instead of ""Measure network speed and performance"". This needs to be edited."
+TheTorProject/ooniprobe-android,closed,External link in web_connectiity result WebView is opened in the same webview instead of browser,[],"UI screen with web_connectivity result contains several external links:
+- https link to the http website
+- https://www.torproject.org/…
+- https://github.com/… (mirror of tor browser)
+
+Clicking these links opens the webpage within ooniprobe app instead of default browser.
+
+That's not 100% UI issue, as downloading files via this webview is not possible, so the user can't actually download Orbot from github :-)"
+TheTorProject/ooniprobe-android,closed,Compile everything from scratch for f-droid,[],"The pre-requisite is to have a Linux system with NDK installed. We have been compiling for Android using macOS for quite some time now (my Ubuntu box died ten months ago).
+
+Anyway (this is a *ghetto* procedure to have it compiled, we will make the process more smooth with also the use case of f-droid in mind in subsequent releases):
+
+# clone the repositories
+- git clone --branch stable https://github.com/measurement-kit/measurement-kit
+- git clone --branch release/v0.4.0 https://github.com/measurement-kit/android-libs
+- git clone --branch f-droid https://github.com/TheTorProject/ooniprobe-android
+
+# cross compile dependencies
+- cd measurement-kit
+- ./build/android/dependency *path-to-ndk-dir* geoip
+- ./build/android/dependency *path-to-ndk-dir* libressl
+- ./build/android/dependency *path-to-ndk-dir* libevent
+- ./build/android/archive-deps  # ignore gpg error [1]
+- sign generated archive with your pgp key
+
+# cross compile measurement-kit
+- cd ../android-libs
+- cp ../measurement-kit/*archive* .
+- cp ../measurement-kit/*archive*.asc .
+- *make sure that the Makefile mentions exactly the same archive name* [2]
+- make dist NDK_BUILD=*path-to-ndk-build*  # ignore pgp error [1]
+- sign the generated archive with your pgp key
+
+# move MK and dependencies into app
+- cd ../ooniprobe-android
+- cp ../android-libs/*archive* .  # not the dependencies the measurement_kit named archive
+- cp ../android-libs/*archive*.asc .
+- *make sure the Makefile mentions exactly the same archive name* [2]
+- make unpack
+- gradle build  # I think
+
+[1] I hope you are not able to sign things on my behalf using my pgp key :)
+[2] if the name is correct, the Makefile does not download it"
+TheTorProject/ooniprobe-android,open,Show high level stats about censored sites for web_connectivity,"[Label(name=""enhancement""), Label(name=""usability""), Label(name=""wishlist"")]","It was requested by a user, but I think we had also discussed this internally, about exposing some view that shows some high level stats about how many sites were found to be blocked vs the number of sites not blocked.
+
+This could be I guess integrated into some sort of dashboard."
+TheTorProject/ooniprobe-android,closed,Expose app version number in app,[],It should be possible from inside the app to check what is the version of the currently installed app.
+TheTorProject/ooniprobe-android,closed,Release/1.1.1,[],
+TheTorProject/ooniprobe-android,closed,Communicate max_runtime meaning more clearly,"[Label(name=""usability"")]","#### Description
+Setting a value to the max runtime option has no effect.
+
+#### Steps to reproduce
+Set any positive integer to the max runtime option (in advanced settings).
+
+#### Expected behaviour
+Test runtime should adhere to the max runtime setting.
+
+#### Actual behavior
+Test runtime is not in accordance with the max runtime setting.
+"
+TheTorProject/ooniprobe-android,closed,Greeting (Get started) view not properly aligned,"[Label(name=""bug""), Label(name=""cannot_reproduce_bug""), Label(name=""ready for review""), Label(name=""wontfix"")]","```
+$ getprop ro.build.version.release
+4.1.1
+
+$ getprop ro.build.version.sdk
+16
+
+$ dumpsys window |grep Display
+Display: init=768x1024 cur=768x1024 app=768x976 rng=768x720-1024x976
+```
+
+The greeting (Get started) view is not properly alligned.
+![get-started-ooniprobe](https://cloud.githubusercontent.com/assets/4969544/22752374/f13f441e-ee40-11e6-8726-b47aa024851e.png)
+"
+TheTorProject/ooniprobe-android,closed,Failed/Incomplete NDT Speed Test view is displaying Loading,[],"Failed or incomplete NDT Speed Test reports are displaying the text `Loading` instead of the actual report file.
+
+![ndt-test-ooniprobe](https://cloud.githubusercontent.com/assets/4969544/22752255/84d17770-ee40-11e6-908f-8ae7fe6f4ef0.png)
+"
+TheTorProject/ooniprobe-android,closed,Detect when there is no network connectivity,[],"There is no error or any other indication when running tests without network connectivity.
+
+A user may be confused that is running ooniprobe tests and submits measurements to the collector while not connected to any network."
+TheTorProject/ooniprobe-android,closed,Added changelog,[],
+TheTorProject/ooniprobe-android,closed,[Android 2.1] Parser Error: There is a problem parsing the package,"[Label(name=""wontfix"")]","Device: `Huawei U8120 / Vodafone 845`
+
+```
+ro.build.id=B233
+ro.build.version.sdk=7
+ro.build.version.codename=REL
+ro.build.version.release=2.1-update1
+ro.build.date=Tue Aug  3 19:52:45 HKT 2010
+ro.build.date.utc=1280836365
+ro.build.type=user
+ro.build.user=huawei
+ro.build.host=huawei-desktop
+ro.product.cpu.abi=armeabi
+ro.board.platform=msm7k
+```
+
+Logcat relevant debug message:
+
+```
+W/ResourceType(  827): Bad string block: last string is not 0-terminated
+W/PackageParser(  827): /sdcard/Download/ooniprobe-v0.1.0-rc.3.apk (at Binary XML file line #7): Requires newer sdk version #9 (current version is #7)
+W/PackageInstaller(  827): Parse error when parsing manifest. Discontinuing installation
+```"
+TheTorProject/ooniprobe-android,closed,Show toast when rest finished running,[],In test info screen
+TheTorProject/ooniprobe-android,closed,Test info add back button,[],"In the test info screen we need a back button, for the moment the menu button is enabled also in this screen"
+TheTorProject/ooniprobe-android,closed,Green dot indicating completed test missing,[],"I guess this is already known and possibly already being worked on. Nonetheless, lest we forget, I am leaving here this issue documenting that the green dot is missing (using the code in #33 updated to the following commit 6afbc8a197fee plus local changes to use v0.4.0-beta.3)."
+TheTorProject/ooniprobe-android,closed,Test reminder/scheduler issues,"[Label(name=""bug"")]","1. it seems confusing that you set a timer and said timer expires ""around"" that time: for example, I set a test for 9:40 PM and it started at 9:30 PM (and same happened today as said on IRC)
+
+2. apparently, powering off and on again the device loses memory about the fact that tests were scheduled at a fixed time, which does not appear to be the desired behaviour."
+TheTorProject/ooniprobe-android,closed,Properly set the title for the Web Connectivity test result,[],"Fixes #39
+
+* Make the setting of the title in ResultListFragment more ""dynamic"""
+TheTorProject/ooniprobe-android,closed,Test name is missing in title bar,[],"The title bar on Android is missing the test name.
+
+![screen shot 2017-02-05 at 01 05 30 0000](https://cloud.githubusercontent.com/assets/424620/22622866/4a8239dc-eb3f-11e6-908d-8fd5cc530c40.png)
+"
+TheTorProject/ooniprobe-android,closed,Display loader when measurement result is loading,[],Currently when I load a measurement and the web UI has not yet rendered I just see a blank screen with no loader. There should be a loader.
+TheTorProject/ooniprobe-android,closed,Missing back button on test result page,[],"In the test result page the back button is missing.
+
+![screen shot 2017-02-05 at 00 56 28 0000](https://cloud.githubusercontent.com/assets/424620/22622830/1161e5ea-eb3e-11e6-8dd7-705af273f402.png)
+
+Edit: the back button is also missing when I am on the pages containing descriptions of tests.
+"
+TheTorProject/ooniprobe-android,closed,Create 1.1.0 ooniprobe-android release,"[Label(name=""Epic"")]","I am going to make a checklist of some of the things we should be sure to address before we make the release:
+
+* [x] Address pending critical bugs
+
+* [ ] -Change the icon to the rounded box icon as in the ios version-
+
+* [x] Update link to NDT description to the published page on the website
+
+* [x] Update to latest version of measurement-kit
+
+* [x] Create ChangeLog and write in Changelog how all versions < 1.1.0 contained the `measurement_kit` string instead of `ooniprobe-android` and note the measurement_kit and ooni-wui version
+
+* [x] Update to the latest version of the ooni-wui (https://github.com/TheTorProject/ooni-wui/releases/download/v2.2.0-rc.0/ooni-wui.mobile.2.2.0-rc.0.zip)
+
+* [ ] Tag and sign release 1.1.0
+
+* [ ] Upload to Android Market 🎉 "
+TheTorProject/ooniprobe-android,closed,"UI: empty screen in ""Past Tests"" on init",[],"UI screen is empty right after app v0.1.0-rc.3 install.
+That's expected, but empty state [may be improved](https://material.io/guidelines/patterns/empty-states.html) per material design guidelines. :-)
+
+![empty_screen](https://cloud.githubusercontent.com/assets/21046/22496438/305fdd4a-e863-11e6-9f10-0ac4b01dddd5.jpeg)"
+TheTorProject/ooniprobe-android,closed,Background mode,[],check if need merge
+TheTorProject/ooniprobe-android,closed,New ux,[],
+TheTorProject/ooniprobe-android,closed,Specify application name and version,[],"    .set_options(""software_name"", ""ooniprobe-android"")
+    .set_options(""software_version"", ""1.2.3"")
+"
+TheTorProject/ooniprobe-android,closed,Integrate fabric,"[Label(name=""enhancement"")]",
+TheTorProject/ooniprobe-android,closed,Update README with build instructions,[],
+TheTorProject/ooniprobe-android,closed,Cannot (install) upgrade ooniprobe application,[],"### Description
+Installing a newer version of ooniprobe application fails to install (upgrade).
+
+### Steps to Reproduce
+- Install [ooniprobe-android v0.1.0-rc](https://github.com/measurement-kit/ooniprobe-android/releases/tag/v0.1.0-rc)
+- Install [ooniprobe-android v0.1.0-rc.2](https://github.com/measurement-kit/ooniprobe-android/releases/tag/v0.1.0-rc.2)
+
+ **Expected behavior:** 
+Install (upgrade) ooniprobe app ooniprobe-android v0.1.0-rc.2
+
+**Actual behavior:**
+Installation fails with the error:
+`An existing package by the same name with a conflicting signature is already installed.`"
+TheTorProject/ooniprobe-android,closed,Test reminder is not triggered at the default time,[],"### Description
+Test reminder is not respecting the (default) time set for notifications.
+
+### Steps to Reproduce
+Enable the option `Run test reminder` with (default) Time `18:00`. 
+
+**Expected behavior:** 
+Test reminder notification sent at desired (set) time.
+
+**Actual behavior:**
+Test reminder notifications sent every 15 minutes."
+TheTorProject/ooniprobe-android,closed,TestData.java and app changes after code review,"[Label(name=""cleanup"")]","1. remove the now-unneeded cacert.pem
+
+2. use whenever possible Java classes rather than swig wrappers
+
+3. update to MK v0.4.0-alpha.1-1
+
+4. make sure we use log defines not just numbers
+
+5. use utility functions to get device's DNS
+
+6. other, minor changes"
+TheTorProject/ooniprobe-android,closed,Background mode,[],"Local notifications when test end and app is in background.
+Test reminder and auto run tests in background."
+TheTorProject/ooniprobe-android,closed,Update to the latest geoip databases,[],
+TheTorProject/ooniprobe-android,closed,Generate input test-lists for first release,"[Label(name=""enhancement"")]",
+TheTorProject/ooniprobe-android,closed,Working progress bar,[],
+TheTorProject/ooniprobe-android,closed,Make sure the app works for API >= 9,[],xref: measurement-kit/measurement-kit#1051
+TheTorProject/ooniprobe-android,closed,Ui/redesigned,"[Label(name=""enhancement"")]",I guess we are ready to merge.
+TheTorProject/ooniprobe-android,closed,Tag a release candidate and upload apk,[],A tag for the downloadable apk should be created and the apk should be uploaded there.
+TheTorProject/ooniprobe-android,closed,Improve the user interface of the network Android client,[],"I am opening this ticket to show what is the current implementation of the user interface for the ooniprobe Android and discuss potential improvements to the user interface before dedicated tickets for each improvement is created.
+
+Here are screenshots for each of the views.
+## First start wizard
+### Step 1 - Introduction
+
+![screenshot_20161112-131950](https://cloud.githubusercontent.com/assets/1616097/20237740/122e79b6-a8db-11e6-9279-d18973b567ee.png)
+### Step 2 - Risks
+
+![screenshot_20161112-131955](https://cloud.githubusercontent.com/assets/1616097/20237747/2345cc7c-a8db-11e6-8dce-a1305776e5b5.png)
+### Step 3 - Quiz
+![screenshot_20161004-101041](https://cloud.githubusercontent.com/assets/1616097/20237655/4ea64efc-a8d9-11e6-9cf7-411f9730a6aa.png)
+![screenshot_20161112-132000](https://cloud.githubusercontent.com/assets/1616097/20237751/31cc44d8-a8db-11e6-821f-4e8fda65ecdc.png)
+![screenshot_20161112-132007](https://cloud.githubusercontent.com/assets/1616097/20237752/31d10e3c-a8db-11e6-8d40-a3523a450c0d.png)
+
+### Step 4 - Configuration
+
+![screenshot_20161112-132010](https://cloud.githubusercontent.com/assets/1616097/20237755/372353fe-a8db-11e6-9bd6-013472d04c94.png)
+## Settings
+
+![screenshot_20161112-130201](https://cloud.githubusercontent.com/assets/1616097/20237671/c9f3d9da-a8d9-11e6-9a07-44094b0b6b4b.png)
+### Select a test
+
+![screenshot_20161112-130218](https://cloud.githubusercontent.com/assets/1616097/20237669/c035d4d4-a8d9-11e6-8e76-0dfa51546ea7.png)
+## Running tests
+
+![screenshot_20161112-132026](https://cloud.githubusercontent.com/assets/1616097/20237756/3d7c5b10-a8db-11e6-9602-9e647c153d73.png)
+## Finished tests
+
+![screenshot_20161112-130204](https://cloud.githubusercontent.com/assets/1616097/20237699/474ca024-a8da-11e6-9d80-2c1a0a13e314.png)
+
+## Delete test
+
+![screenshot_20161112-130247](https://cloud.githubusercontent.com/assets/1616097/20237682/fe288340-a8d9-11e6-8d8e-80ca65a509ce.png)
+### Click on measurement with many inputs
+
+![screenshot_20161112-130256](https://cloud.githubusercontent.com/assets/1616097/20237674/e2d5e934-a8d9-11e6-8ae2-32d3f896004d.png)
+### Measurement - Web connectivity
+
+![screenshot_20161112-130301](https://cloud.githubusercontent.com/assets/1616097/20237675/e3a82156-a8d9-11e6-8d00-51a1395e6d68.png)
+
+
+"
+TheTorProject/ooniprobe-android,closed,Rename app in ooniprobe,[],"This renaming consists in three phases:
+1) Renaming executable in ooniprobe
+2) Renaming app id ""org.openobservatory.netprobe""
+3) Refactoring the project and all its directory"
+TheTorProject/ooniprobe-android,closed,Progress bar is not updated,"[Label(name=""enhancement"")]","The progress bar should update its progress from the real test progress through the on_log function
+"
+TheTorProject/ooniprobe-android,closed,Address feedback from UX review,[],"# First start
+- [ ] Move the next button into the bottom
+## Step 1
+## Step 2
+
+Suggestions to make it understand that it's scrollable:
+- [ ](A) Transparency of the last lines of texts fading
+- [ ](B) Scrollbar always visible
+- [ ] Potentially reduce the amount of text for mobile
+## Step 3
+- [ ] Use the default widgets for the selector and options
+## Step 4
+- [ ] Use the default widgets for the selector and options
+# Main page
+- [ ] Info buttons should be less bright
+- [ ] When you click on the actual measurement it opens the log
+- [ ] Remove log view from the title of the measurement info page
+- [ ] Info box with test description should give hint that the box is scrollable
+- [ ] The portolan and check port should be disabled if we can't present the results
+# Settings page
+- [ ] Reduce the amount of text in the settings options
+- [ ] Make buttons 
+# Measurement view
+- [ ] 
+
+cc @scouttle
+"
+TheTorProject/ooniprobe-android,closed,Informed consent,"[Label(name=""on hold"")]",
+TheTorProject/ooniprobe-android,closed,Update to MK v0.3.2 and use working testing collector,"[Label(name=""enhancement""), Label(name=""help wanted"")]",
+TheTorProject/ooniprobe-android,closed,Result view,[],"Finally working, and with possibility to change test result when multiple inputs
+"
+TheTorProject/ooniprobe-android,closed,Use SWIG API and MK 0.3.0,"[Label(name=""enhancement""), Label(name=""help wanted"")]","@lorenzoPrimi to test this you need to recompile yourself the `-android` repository and copy the files in the rootdir of the repository and then run `make unpack`. In my experience, it's better to close AndroidStudio, clean up everything in the repo (using `git clean -dfx`), run `make unpack`, and then start AndroidStudio again.
+"
+TheTorProject/ooniprobe-android,closed,Allow periodic measurements,"[Label(name=""enhancement"")]","It would be great to have a way to schedule measurements to run periodically, rather than only when explicitly run by the user.
+"
+TheTorProject/ooniprobe-android,closed,Porting of app to v0.2.0,"[Label(name=""enhancement"")]","In this branch we'll working on porting the app to v0.2.0 and testing it. At the moment of creating this pull request, the ported app was tested in the emulator with many things to fix before merging is possible.
+"
+TheTorProject/ooniprobe-android,closed,App v0.1.0 ,[],"- GUI totally redesigned and improved
+- Background tests with AsyncTask
+- Different logs for different tests
+- Renamed package
+- Re-structured project
+"
+TheTorProject/ooniprobe-android,closed,Adding a method to get DNS from device,[]," The `getDNS()` method asks the device fro DNS resolvers, both for mobile and WiFi. If it fails for some reason, the app will just use the Google DNS instead.
+
+Tested on API 22 (device) and 23 (emulator).
+
+Also changed the compile SDK and target to API 23 and build-tools to 23.0.1.
+"
+TheTorProject/ooniprobe-android,closed,README.md: explain how to import my gpg key,"[Label(name=""enhancement""), Label(name=""hotfix"")]","Suggested by and discussed with @Lymphatus.
+"
+TheTorProject/ooniprobe-android,closed,On the gpg key check,"[Label(name=""help wanted""), Label(name=""question"")]","The README should mention that the user should import my gpg key with which binary packages uploaded at github are signed. Or should the command to import the gpg key be added directly into the Makefile? This would simplify the process, of course, but is this a good idea security wise?
+"
+TheTorProject/ooniprobe-android,closed,Understand how to notify the view that a test completed,"[Label(name=""enhancement""), Label(name=""help wanted"")]","Code is currently using the `BroadcastReceiver`. It is not clear yet what one should do in its `onReceive` callback to notify the view.
+"
+TheTorProject/ooniprobe-android,closed,Find a reliable way to get the device's dns,"[Label(name=""bug"")]",
+TheTorProject/ooniprobe-android,closed,Write last report and logs on device,"[Label(name=""enhancement"")]","<strike>Ongoing work **not ready to be merged yet**, based on measurement-kit/measurement-kit-android#2.</strike>
+
+This can now be tested and merged since the above mentioned pull request was merged.
+"
+TheTorProject/ooniprobe-android,closed,Prototype Android application (try 2),[],"This prototype Android application is based on the new repository hosting Measurement Kit JNI libs available at:
+
+```
+https://github.com/bassosimone/measurement-kit-jni-libs
+```
+
+The implementation uses the JNI libs and their interface to run in synchronous mode OONI tests. The basic mechanism to run in background (inside a so-called service) and to notify back the main thread when work is done is already implemented.
+
+Compared to #1, this is significantly simpler in terms of JNI code and interfaces involved.
+"
+TheTorProject/ooniprobe-android,closed,Prototype app,"[Label(name=""enhancement""), Label(name=""help wanted"")]","This pull request introduces the prototype Android app. There are still number of limitations, such as that currently tests cannot run in parallel. However this is already used by me on the emulator as well as on a real Android device (Nexus 7 using Android 5.1.1).
+
+This pull request currently contains also the _devpack_ for Android generated using MeasurementKit. I've not figured out yet whether this is the optimal way to bundle it with the application (I dislike adding binary libraries to master because they weight quite a lot -- for this reason for now I've included only x86 and armeabi, rather than including all the available architectures).
+
+---
+
+Note: the `io/github/measurement_kit/{common,ooni}` dirs are copied from measurement-kit's main repository. I don't know if this is the best approach. Open-peer provided the `.class` files, but I thought providing the sources was more transparent to the user.
+"

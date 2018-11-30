@@ -1,0 +1,28 @@
+repository,state,title,label,body
+kibab/encpasschanger,open,resurrection of EncPassChanger,[],"@kibab do you think it is possible to update this app for newer android versions?
+
+since the debug output looks good until the password-change itself, i guess just the syntax needs an update to the current one `vdc cryptfs changepw password 'current-password' 'new-password'`.
+for more information have a look at [my comment](https://github.com/nelenkov/cryptfs-password-manager/issues/19#issuecomment-341988458) (especially the bigger part).
+i know the app is FOSS but i'm sadly not a developer, just familiar with the command-line... else i would have done it.
+
+_it would be awesome to have have a GUI (again) for non-experts to change/set the disk encryption password (independent from the lock screen password), since also [SnooperStopper](https://github.com/xmikos/SnooperStopper) and [Cryptfs Password](https://github.com/nelenkov/cryptfs-password-manager) (on which SnooperStopper is based) also stopped working quite a while ago.
+it seems that this app is the easiest one and has the fewest bugs to fix (the other ones close immediately and pretend that they can't get root-access, although they ask for it and i granted it permanently)._
+
+my additional 2 cents:
+if it is easily possible i would also add a waring to backup all data before every time using the app (on their own risk) and maybe also a hint to run the app again and change/set the boot-password after every change of the lock-screen."
+kibab/encpasschanger,open,Not working on Android 5.0,[],"On Android 5.0 it just displays progress indicator forever.
+![screenshot_2015-05-26-13-02-27](https://cloud.githubusercontent.com/assets/1442206/7818124/5b657d9a-03e2-11e5-8185-2eefc584540c.png)
+"
+kibab/encpasschanger,open,basic support for reboot on configurable failed unlock attempts,[],"Implemented a device administration component that reboots the phone on a configurable fialed unlock attempts.
+
+It works for me (in a nexus 4), but it needs some love in the gui and a code cleanup.
+"
+kibab/encpasschanger,open,Add ACCESS_SUPERUSER to permissions list,[],"Feature request: add support for ACCESS_SUPERUSER permission as supported by koush's Superuser app. [1]
+This can be accomplished by adding this line to AndroidManifest.xml :
+
+`<uses-permission android:name=""android.permission.ACCESS_SUPERUSER"" />`
+
+[1] https://plus.google.com/103583939320326217147/posts/T9xnMJEnzf1
+"
+kibab/encpasschanger,closed,License,[],"Could you release the code with a license? I would like to submit the app to f-droid Foss repo, but it needs to have a license.
+"

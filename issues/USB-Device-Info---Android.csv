@@ -1,0 +1,116 @@
+repository,state,title,label,body
+alt236/USB-Device-Info---Android,open,NullPointerException,[],"//package name: aws.apps.usbDeviceEnumerator
+//version: 1.0.0
+ java.lang.NullPointerException
+ 	at aws.apps.usbDeviceEnumerator.ui.progress.ProgressDialogFragment.setTitle(ProgressDialogFragment.java:48)
+ 	at aws.apps.usbDeviceEnumerator.ui.progress.ProgressDialogControl.updateProgress(ProgressDialogControl.java:37)
+ 	at aws.apps.usbDeviceEnumerator.ui.dbupdate.FileDownloadTask.onProgressUpdate(FileDownloadTask.java:137)
+ 	at aws.apps.usbDeviceEnumerator.ui.dbupdate.FileDownloadTask.onProgressUpdate(FileDownloadTask.java:21)
+ 	at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:647)
+ 	at android.os.Handler.dispatchMessage(Handler.java:99)
+ 	at android.os.Looper.loop(Looper.java:137)
+ 	at android.app.ActivityThread.main(ActivityThread.java:5103)
+ 	at java.lang.reflect.Method.invokeNative(Native Method)
+ 	at java.lang.reflect.Method.invoke(Method.java:525)
+ 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:737)
+ 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:553)
+ 	at dalvik.system.NativeStart.main(Native Method)"
+alt236/USB-Device-Info---Android,open,Link missing in README,[],Market Link and Webpage 404 ?
+alt236/USB-Device-Info---Android,open,"Hi, is there some questions",[],"When I use a usb storage, it has device info under api, but has nothing under linux
+I want to know, why doesn't it have ？
+And I got a other usb equipment (not a usb storage), it has 3 devices under linux
+""/sys/bus/usb/devices""  is what ? How can we read files from the usb equipment, is there any path ?"
+alt236/USB-Device-Info---Android,closed,Update readme,[],
+alt236/USB-Device-Info---Android,closed,May SysBusUsbDevice implements Parcelable?,[],"I using aidl, so SysBusUsbDevice implements Parcelable is necessary."
+alt236/USB-Device-Info---Android,closed,Releases/v2.0.0,[],
+alt236/USB-Device-Info---Android,closed,Tech/turn library into a plain java project,[],
+alt236/USB-Device-Info---Android,closed,Sharing now uses the correct intent when firing the chooser,[],
+alt236/USB-Device-Info---Android,open,Get file from USB device.,[],"The USB device path is the file storage path? If not, how can i get it?"
+alt236/USB-Device-Info---Android,closed,Sharing doesn't work properly,[],
+alt236/USB-Device-Info---Android,closed,Techtask/refactor sysbususbmanager,[],"Broke down SysBusUsbManager into discreet components.
+Added validation tests."
+alt236/USB-Device-Info---Android,closed,"Fix, show all endpoint information",[],related to issue #11 
+alt236/USB-Device-Info---Android,closed,some endpoint information are missing in Android (API) view,[],"In the bottom table, in the list of all endpoints, all the information from 'Direction' until 'Attributes' are missing."
+alt236/USB-Device-Info---Android,closed,Correct vendor and product informations in Android view,[],"As already mentioned on Google Play the product ID in the
+Android (API) view was completely wrong (because the so
+named device ID was displayed). Further the view has not
+shown the reported vendor and product name. From API level
+21 (Android 5.0 Lollipop) it is possible.
+
+This will fix issue #9.
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>"
+alt236/USB-Device-Info---Android,closed,wrong product ID in Android (API) view,[],"As already mentioned on Google Play the product ID in the Android (API) view is wrong. Refer to:
+
+- [recession #1](https://play.google.com/store/apps/details?id=aws.apps.usbDeviceEnumerator&reviewId=Z3A6QU9xcFRPRkhpUFJGOGw3UkRGRjFGZmlJenc0RmJ1R0pmejB3NFFKTl9lY0oyZXhtNjRVZVFMcWxHOEpIT3RQOG42ODUxYWxCZkFkb2ZJWUxJaUw2QnBj)
+- [recession #2](https://play.google.com/store/apps/details?id=aws.apps.usbDeviceEnumerator&reviewId=bGc6QU9xcFRPR1NRYVBZMFltM1hJbXY1VmhJMEpHbkZnV1RYU1d4U0l1Mnc3NWZsMjFzdkxTQjFXVFZKbVd4bmxhN3N3Z0JERi1SMGpyUHB1TkJERVJhVGY4)"
+alt236/USB-Device-Info---Android,closed,App crash if dir.getFiles returns null - Nougat,[],"ava.lang.RuntimeException: Unable to start activity ComponentInfo{aws.apps.usbDeviceEnumerator/aws.apps.usbDeviceEnumerator.ui.main.MainActivity}: java.lang.NullPointerException: Attempt to get length of null array
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2646)
+    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2707)
+    at android.app.ActivityThread.-wrap12(ActivityThread.java)
+    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1460)
+    at android.os.Handler.dispatchMessage(Handler.java:102)
+    at android.os.Looper.loop(Looper.java:154)
+    at android.app.ActivityThread.main(ActivityThread.java:6077)
+    at java.lang.reflect.Method.invoke(Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:865)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:755)
+Caused by: java.lang.NullPointerException: Attempt to get length of null array
+    at uk.co.alt236.usbdeviceenumerator.sysbususb.SysBusUsbManager.populateList(SysBusUsbManager.java:77)
+    at uk.co.alt236.usbdeviceenumerator.sysbususb.SysBusUsbManager.getUsbDevices(SysBusUsbManager.java:61)
+    at aws.apps.usbDeviceEnumerator.ui.main.MainActivity.refreshUsbDevices(MainActivity.java:203)
+    at aws.apps.usbDeviceEnumerator.ui.main.MainActivity.onCreate(MainActivity.java:132)
+    at android.app.Activity.performCreate(Activity.java:6664)
+    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1118)
+    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2599)
+    ... 9 more
+"
+alt236/USB-Device-Info---Android,closed,Updated Readme to reflect v1.0.0,[],
+alt236/USB-Device-Info---Android,closed,Materialise,[],
+alt236/USB-Device-Info---Android,closed,Migrate to android studio,[],
+alt236/USB-Device-Info---Android,open,how to debug app?,[],"As the app requires a USB device, so emulator cannot be connected to USB device. Then, if I run the app with my android phone, usb still cannot be connected as I already plug in the cable from PC to my phone.. Do I need to buy a usb cable that have many branch for phone? or  is this impossible.?
+"
+alt236/USB-Device-Info---Android,open,how to control linux USB?,[],"hi, this is a bit unrelated to your project -- how do i control a USB device (Arduino Uno R3) from the linux side? it does not show up on the android side on a phone (Micromax, running KitKat 4.4.2) but it does power up (USB host mode?) and is recognized on the linux side. strangely this seems to be a problem with phones (i tried a few others), NOT with tablets, i'm able to control the arduino as a serial device using UsbManager. rooting the phone cannot be part of the solution.
+
+here's the info your .apk generates:
+""Device Info 
+Device Path: /sys/bus/usb/devices/1-1/
+Device Class: Communication Device (0x2)
+Vendor ID:  2341
+Vendor Name (reported):  Arduino (www.arduino.cc)
+Vendor Name (from DB):  Arduino SA
+Product ID:  0043
+Product Name (reported):  
+Product Name (from DB):  Uno R3 (CDC ACM)
+
+Additional Info 
+USB Version: 1.10
+Speed: 12
+Protocol: 00
+Maximum Power: 100mA
+Serial Number: 7493730393635180E122""
+
+The USB Host Controller app (https://play.google.com/store/apps/details?id=hu.sztupy.android.usbhostcontroller&hl=en) gives the following information:
+
+""USB Host Mode API
+supported?
+
+usb host controller  v 0.44
+Usb Host Controller
+Version number 0.44
+S3C USB Host driver NOT found!
+
+Root hub present, USB Host mode is active!""
+
+i've no problems with a Tesco Hudl tablet (Jellybean 4.3.2, this is a UK low-mid end tablet) and a Samsung tablet (running KitKat 4.4.2). i'm  able to send data from both of these tablets  to the arduino as a serial device (57600 baud rate, 8, N, 1) and it does what i want . i only need to SEND it data, no need to read data from the arduino. the code used is essentially from android.serverbox.ch/?p=549. any pointers would be very, very, very helpful. thanks!
+"
+alt236/USB-Device-Info---Android,closed,USB recognized in Linux??,[],"I'm using a nexus 7 (version 4.4.4) and my USB port stopped working properly a few days ago and I downloaded the USB device Info to troubleshoot
+
+My USB devices (connected via 2 separate OTG cables... One brand new) don't show up in the android section, but even when nothing is plugged in I see ""usb1"" under the Linux tab.  When I click it the app freezes
+
+Any idea why the application would not detect devices (phone, camera or thumb drive) or how I can troubleshoot?
+
+Thanks!
+"
+alt236/USB-Device-Info---Android,open,Detection of USB,[],"Your app is working fine on my tablet as well as my mobile. I'm trying to do same thing (to detect usb) in other app but it is not working. I browsed through your source code and found that you are using ""usbMan = (UsbManager) context.getSystemService(Context.USB_SERVICE);"" I'm doing same thing but its not working. What may be cause?
+"

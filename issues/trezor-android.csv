@@ -1,0 +1,463 @@
+repository,state,title,label,body
+trezor/trezor-android,closed,Cannot resolve symbol 'TrezorMessage',[],"I complie project Ok, but in MainActivity.java file occure Cannot reslove symbol 'TrezorMessage', what should I do, help me , many Thanks
+
+my build.gradle file
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath files('libs/gradle-witness.jar')
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    project.ext {
+        support_version = ""27.0.2""
+        sdk = 27
+        minsdk = 15
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+"
+trezor/trezor-android,closed,gradle sync failed,[],"I download the latest version from github, then open project with android studio 3.2.1, occure error at during rebuild project. 
+error log: No dependency for integrity assertion 'com.android.tools.analytics-library:protos:26.1.2:protos-26.1.2.jar:52672a0b42b572a06aecc3535d5068eb46c0e15d129b9f1085d3c16a1da5cdbb'
+
+Do I have to install anything else, please guide me, many thanks"
+trezor/trezor-android,open,Outdated help link,[],please change help url from http://doc.satoshilabs.com to https://wiki.trezor.io in app 
+trezor/trezor-android,open,Can't perform ETH transaction on Android / blank screen on trezor device (model T),[],"Hi team
+I'm trying to perform an ETH transaction using a trezor model T and getting a blank screen on the trezor when trying to sign a transaction, am I passing the params correctly? Previously the trezor would return ""failed safety check"" however since manually converting the to address to a `byte[]` (see the initial `for` loop) the device screen is just blank....
+```
+                String toMinusZerox = to.substring(2, to.length());
+
+                int len = toMinusZerox.length();
+                byte[] data = new byte[len / 2];
+                for (int i = 0; i < len; i += 2) {
+                    data[i / 2] = (byte) ((Character.digit(toMinusZerox.charAt(i), 16) << 4)
+                            + Character.digit(toMinusZerox.charAt(i+1), 16));
+                }
+
+
+                BigDecimal weiValue = Convert.toWei(amount, Convert.Unit.ETHER);
+                ByteString toByteString = ByteString.copyFrom(data);
+                ByteString weiValueByteString = ByteString.copyFrom(weiValue.toBigInteger().toByteArray());
+                ByteString gasPriceByteString = ByteString.copyFrom(GAS_PRICE.toByteArray());  //BigInteger.valueOf(2500)
+                ByteString gasLimitByteString = ByteString.copyFrom(GAS_LIMIT.toByteArray());  //BigInteger.valueOf(21000)
+                ByteString noOnceByteString = ByteString.copyFrom(noOnce.toByteArray());
+
+                TrezorMessage.EthereumSignTx.Builder builder = TrezorMessage.EthereumSignTx.newBuilder();
+                builder.clear();
+
+
+                TrezorMessage.EthereumSignTx ethReq2 = builder
+                        .setTo(toByteString)
+                        .setValue(weiValueByteString)
+                        .setGasLimit(gasLimitByteString)
+                        .setGasPrice(gasPriceByteString)
+                        .setNonce(noOnceByteString)
+                        .setChainId(4) //rinkerby
+                        .setDataInitialChunk(ByteString.EMPTY)
+                        .setDataLength(0)
+                        .setTxType(1)
+                        .build();
+
+                Message result = trezorDevice.sendMessage(ethReq2);
+
+                new android.support.v7.app.AlertDialog.Builder(this).setTitle(""Success"")
+                        .setMessage(result.toByteString().toStringUtf8().concat("" something concat-ed""))
+                        .create()
+                        .show();```"
+trezor/trezor-android,closed,New logo/icon proposal,[],Good day sir. I am a graphic designer and i am interested in designing a logo for your good project. I will be doing it as a gift for free. I just need your permission first before I begin my design. Hoping for your positive feedback. Thanks
+trezor/trezor-android,closed,Does not work with TREZOR 1 anymore,[],"While investigating https://github.com/walleth/walleth/issues/255 - I noticed that even the stock TREZOR manager does not work with TREZOR 1 anymore - Model T works
+
+PS: I do not run the latest firmware 1.6.1 on the TREZOR one - perhaps this is part of the problem - but I also currently do not want to update in case this has anything to do with the errors"
+trezor/trezor-android,closed,error,[],"I downloaded the latest version trezor-android,But still can`t build.
+![error](https://user-images.githubusercontent.com/36216120/41211779-2ee2ef18-6d6c-11e8-9bba-6e3c0235083c.png)
+"
+trezor/trezor-android,closed,Change order of jcenter() and google(),[],"fixes #38
+context: https://twitter.com/dannyroa/status/1004751524394778631
+Someone was mirroring google projects on jcenter and this was causing trouble"
+trezor/trezor-android,closed,File not found,[],"I compile trezor-android resource code,But show me file not found:https://jcenter.bintray.com/android/arch/lifecycle/runtime/1.0.3/runtime-1.0.3.aar,Help me please!Thank you!"
+trezor/trezor-android,closed,Set distributionSha256Sum,[],Context: https://docs.gradle.org/current/userguide/gradle_wrapper.html#sec:verification
+trezor/trezor-android,closed,Remove old version reference and add jitpack badge,[],The readme was referencing an outdated version. Remove version completely so this does not happen again. Also add jitpack badge so users see latest pushed version very easily. 
+trezor/trezor-android,closed,Activate gradle witness for the app,[],"@akwizgran made it possible to have witness also activated for the app - only one module missing now.
+
+context: https://github.com/trezor/trezor-android/pull/34#issuecomment-385984367"
+trezor/trezor-android,closed,Bring back gradle witness,[],"not yet for all modules - with some modules there is a problem - but I care most about trezor-lib anyway - and this one is covered ;-)
+
+Also bumps build-plugin to 3.1.2 and gradle to 4.7
+
+Uses this gradle-witness fork: https://github.com/akwizgran/gradle-witness to be able to deal with ""implementation""
+
+big thanks to @akwizgran for the work on gradle-witness!
+
+just for the record - here the error for the app-module:
+
+```
+⋊> ~/g/3/trezor-android on bring_back_gradle_witness ⨯ ./gradlew :android-app:calculateChecksums                                                    17:09:04
+Starting a Gradle Daemon, 1 incompatible and 1 stopped Daemons could not be reused, use --status for details
+
+> Configure project :android-styled-dialog
+Observed package id 'add-ons;addon-google_apis-google-19' in inconsistent location '/home/ligi/bin/android-sdk/add-ons/addon-google_apis-google-19-1' (Expected '/home/ligi/bin/android-sdk/add-ons/addon-google_apis-google-19')
+Verifying android.arch.core:common:1.0.0:common-1.0.0.jar
+Verifying android.arch.lifecycle:common:1.0.3:common-1.0.3.jar
+Verifying android.arch.lifecycle:runtime:1.0.3:runtime-1.0.3.aar
+Verifying com.android.support:support-annotations:27.0.2:support-annotations-27.0.2.jar
+Verifying com.android.support:support-compat:27.0.2:support-compat-27.0.2.aar
+Verifying com.android.support:support-core-ui:27.0.2:support-core-ui-27.0.2.aar
+Verifying com.android.support:support-core-utils:27.0.2:support-core-utils-27.0.2.aar
+Verifying com.android.support:support-fragment:27.0.2:support-fragment-27.0.2.aar
+Verifying com.android.support:support-media-compat:27.0.2:support-media-compat-27.0.2.aar
+Verifying com.android.support:support-v4:27.0.2:support-v4-27.0.2.aar
+Verifying com.android.tools.analytics-library:protos:26.1.2:protos-26.1.2.jar
+Verifying com.android.tools.analytics-library:shared:26.1.2:shared-26.1.2.jar
+Verifying com.android.tools.analytics-library:tracker:26.1.2:tracker-26.1.2.jar
+Verifying com.android.tools.build:apksig:3.1.2:apksig-3.1.2.jar
+Verifying com.android.tools.build:builder-model:3.1.2:builder-model-3.1.2.jar
+Verifying com.android.tools.build:builder-test-api:3.1.2:builder-test-api-3.1.2.jar
+Verifying com.android.tools.build:builder:3.1.2:builder-3.1.2.jar
+Verifying com.android.tools.build:gradle-api:3.1.2:gradle-api-3.1.2.jar
+Verifying com.android.tools.build:manifest-merger:26.1.2:manifest-merger-26.1.2.jar
+Verifying com.android.tools.ddms:ddmlib:26.1.2:ddmlib-26.1.2.jar
+Verifying com.android.tools.external.com-intellij:intellij-core:26.1.2:intellij-core-26.1.2.jar
+Verifying com.android.tools.external.com-intellij:kotlin-compiler:26.1.2:kotlin-compiler-26.1.2.jar
+Verifying com.android.tools.external.org-jetbrains:uast:26.1.2:uast-26.1.2.jar
+Verifying com.android.tools.layoutlib:layoutlib-api:26.1.2:layoutlib-api-26.1.2.jar
+Verifying com.android.tools.lint:lint-api:26.1.2:lint-api-26.1.2.jar
+Verifying com.android.tools.lint:lint-checks:26.1.2:lint-checks-26.1.2.jar
+Verifying com.android.tools.lint:lint-gradle-api:26.1.2:lint-gradle-api-26.1.2.jar
+Verifying com.android.tools.lint:lint-gradle:26.1.2:lint-gradle-26.1.2.jar
+Verifying com.android.tools.lint:lint-kotlin:26.1.2:lint-kotlin-26.1.2.jar
+Verifying com.android.tools.lint:lint:26.1.2:lint-26.1.2.jar
+Verifying com.android.tools:annotations:26.1.2:annotations-26.1.2.jar
+Verifying com.android.tools:common:26.1.2:common-26.1.2.jar
+Verifying com.android.tools:dvlib:26.1.2:dvlib-26.1.2.jar
+Verifying com.android.tools:repository:26.1.2:repository-26.1.2.jar
+Verifying com.android.tools:sdk-common:26.1.2:sdk-common-26.1.2.jar
+Verifying com.android.tools:sdklib:26.1.2:sdklib-26.1.2.jar
+Verifying com.google.code.findbugs:jsr305:1.3.9:jsr305-1.3.9.jar
+Verifying com.google.code.gson:gson:2.7:gson-2.7.jar
+Verifying com.google.errorprone:error_prone_annotations:2.0.18:error_prone_annotations-2.0.18.jar
+Verifying com.google.guava:guava:22.0:guava-22.0.jar
+Verifying com.google.j2objc:j2objc-annotations:1.1:j2objc-annotations-1.1.jar
+Verifying com.google.jimfs:jimfs:1.1:jimfs-1.1.jar
+Verifying com.google.protobuf:protobuf-java:3.4.0:protobuf-java-3.4.0.jar
+Verifying com.googlecode.json-simple:json-simple:1.1:json-simple-1.1.jar
+Verifying com.squareup:javawriter:2.5.0:javawriter-2.5.0.jar
+Verifying com.sun.activation:javax.activation:1.2.0:javax.activation-1.2.0.jar
+Verifying com.sun.istack:istack-commons-runtime:2.21:istack-commons-runtime-2.21.jar
+Verifying com.sun.xml.fastinfoset:FastInfoset:1.2.13:FastInfoset-1.2.13.jar
+Verifying commons-codec:commons-codec:1.6:commons-codec-1.6.jar
+Verifying commons-logging:commons-logging:1.1.1:commons-logging-1.1.1.jar
+Verifying it.unimi.dsi:fastutil:7.2.0:fastutil-7.2.0.jar
+Verifying javax.xml.bind:jaxb-api:2.2.12-b140109.1041:jaxb-api-2.2.12-b140109.1041.jar
+Verifying net.sf.jopt-simple:jopt-simple:4.9:jopt-simple-4.9.jar
+Verifying net.sf.kxml:kxml2:2.3.0:kxml2-2.3.0.jar
+Verifying org.apache.commons:commons-compress:1.12:commons-compress-1.12.jar
+Verifying org.apache.httpcomponents:httpclient:4.2.6:httpclient-4.2.6.jar
+Verifying org.apache.httpcomponents:httpcore:4.2.5:httpcore-4.2.5.jar
+Verifying org.apache.httpcomponents:httpmime:4.1:httpmime-4.1.jar
+Verifying org.bouncycastle:bcpkix-jdk15on:1.56:bcpkix-jdk15on-1.56.jar
+Verifying org.bouncycastle:bcprov-jdk15on:1.56:bcprov-jdk15on-1.56.jar
+Verifying org.codehaus.groovy:groovy-all:2.4.12:groovy-all-2.4.12.jar
+Verifying org.codehaus.mojo:animal-sniffer-annotations:1.14:animal-sniffer-annotations-1.14.jar
+Verifying org.glassfish.jaxb:jaxb-core:2.2.11:jaxb-core-2.2.11.jar
+Verifying org.glassfish.jaxb:jaxb-runtime:2.2.11:jaxb-runtime-2.2.11.jar
+Verifying org.glassfish.jaxb:txw2:2.2.11:txw2-2.2.11.jar
+Verifying org.jetbrains.kotlin:kotlin-reflect:1.2.0:kotlin-reflect-1.2.0.jar
+Verifying org.jetbrains.kotlin:kotlin-stdlib-jre7:1.2.0:kotlin-stdlib-jre7-1.2.0.jar
+Verifying org.jetbrains.kotlin:kotlin-stdlib-jre8:1.2.0:kotlin-stdlib-jre8-1.2.0.jar
+Verifying org.jetbrains.kotlin:kotlin-stdlib:1.2.0:kotlin-stdlib-1.2.0.jar
+Verifying org.jetbrains.trove4j:trove4j:20160824:trove4j-20160824.jar
+Verifying org.jetbrains:annotations:13.0:annotations-13.0.jar
+Verifying org.jvnet.staxex:stax-ex:1.7.7:stax-ex-1.7.7.jar
+Verifying org.ow2.asm:asm-analysis:5.1:asm-analysis-5.1.jar
+Verifying org.ow2.asm:asm-commons:5.1:asm-commons-5.1.jar
+Verifying org.ow2.asm:asm-tree:5.1:asm-tree-5.1.jar
+Verifying org.ow2.asm:asm-util:5.1:asm-util-5.1.jar
+Verifying org.ow2.asm:asm:5.1:asm-5.1.jar
+
+> Configure project :trezor-lib
+Verifying android.arch.core:common:1.0.0:common-1.0.0.jar
+Verifying android.arch.lifecycle:common:1.0.3:common-1.0.3.jar
+Verifying android.arch.lifecycle:runtime:1.0.3:runtime-1.0.3.aar
+Verifying com.android.support:support-annotations:27.0.2:support-annotations-27.0.2.jar
+Verifying com.android.support:support-compat:27.0.2:support-compat-27.0.2.aar
+Verifying com.android.support:support-core-ui:27.0.2:support-core-ui-27.0.2.aar
+Verifying com.android.support:support-core-utils:27.0.2:support-core-utils-27.0.2.aar
+Verifying com.android.support:support-fragment:27.0.2:support-fragment-27.0.2.aar
+Verifying com.android.support:support-media-compat:27.0.2:support-media-compat-27.0.2.aar
+Verifying com.android.support:support-v4:27.0.2:support-v4-27.0.2.aar
+Verifying com.android.tools.analytics-library:protos:26.1.2:protos-26.1.2.jar
+Verifying com.android.tools.analytics-library:shared:26.1.2:shared-26.1.2.jar
+Verifying com.android.tools.analytics-library:tracker:26.1.2:tracker-26.1.2.jar
+Verifying com.android.tools.build:apksig:3.1.2:apksig-3.1.2.jar
+Verifying com.android.tools.build:builder-model:3.1.2:builder-model-3.1.2.jar
+Verifying com.android.tools.build:builder-test-api:3.1.2:builder-test-api-3.1.2.jar
+Verifying com.android.tools.build:builder:3.1.2:builder-3.1.2.jar
+Verifying com.android.tools.build:gradle-api:3.1.2:gradle-api-3.1.2.jar
+Verifying com.android.tools.build:manifest-merger:26.1.2:manifest-merger-26.1.2.jar
+Verifying com.android.tools.ddms:ddmlib:26.1.2:ddmlib-26.1.2.jar
+Verifying com.android.tools.external.com-intellij:intellij-core:26.1.2:intellij-core-26.1.2.jar
+Verifying com.android.tools.external.com-intellij:kotlin-compiler:26.1.2:kotlin-compiler-26.1.2.jar
+Verifying com.android.tools.external.org-jetbrains:uast:26.1.2:uast-26.1.2.jar
+Verifying com.android.tools.layoutlib:layoutlib-api:26.1.2:layoutlib-api-26.1.2.jar
+Verifying com.android.tools.lint:lint-api:26.1.2:lint-api-26.1.2.jar
+Verifying com.android.tools.lint:lint-checks:26.1.2:lint-checks-26.1.2.jar
+Verifying com.android.tools.lint:lint-gradle-api:26.1.2:lint-gradle-api-26.1.2.jar
+Verifying com.android.tools.lint:lint-gradle:26.1.2:lint-gradle-26.1.2.jar
+Verifying com.android.tools.lint:lint-kotlin:26.1.2:lint-kotlin-26.1.2.jar
+Verifying com.android.tools.lint:lint:26.1.2:lint-26.1.2.jar
+Verifying com.android.tools:annotations:26.1.2:annotations-26.1.2.jar
+Verifying com.android.tools:common:26.1.2:common-26.1.2.jar
+Verifying com.android.tools:dvlib:26.1.2:dvlib-26.1.2.jar
+Verifying com.android.tools:repository:26.1.2:repository-26.1.2.jar
+Verifying com.android.tools:sdk-common:26.1.2:sdk-common-26.1.2.jar
+Verifying com.android.tools:sdklib:26.1.2:sdklib-26.1.2.jar
+Verifying com.google.code.findbugs:jsr305:1.3.9:jsr305-1.3.9.jar
+Verifying com.google.code.gson:gson:2.7:gson-2.7.jar
+Verifying com.google.errorprone:error_prone_annotations:2.0.18:error_prone_annotations-2.0.18.jar
+Verifying com.google.guava:guava:22.0:guava-22.0.jar
+Verifying com.google.j2objc:j2objc-annotations:1.1:j2objc-annotations-1.1.jar
+Verifying com.google.jimfs:jimfs:1.1:jimfs-1.1.jar
+Verifying com.google.protobuf:protobuf-java:3.3.0:protobuf-java-3.3.0.jar
+Verifying com.google.protobuf:protobuf-java:3.4.0:protobuf-java-3.4.0.jar
+Verifying com.googlecode.json-simple:json-simple:1.1:json-simple-1.1.jar
+Verifying com.jakewharton.timber:timber:4.5.1:timber-4.5.1.aar
+Verifying com.jcraft:jzlib:1.1.3:jzlib-1.1.3.jar
+Verifying com.squareup:javawriter:2.5.0:javawriter-2.5.0.jar
+Verifying com.sun.activation:javax.activation:1.2.0:javax.activation-1.2.0.jar
+Verifying com.sun.istack:istack-commons-runtime:2.21:istack-commons-runtime-2.21.jar
+Verifying com.sun.xml.fastinfoset:FastInfoset:1.2.13:FastInfoset-1.2.13.jar
+Verifying commons-codec:commons-codec:1.6:commons-codec-1.6.jar
+Verifying commons-logging:commons-logging:1.1.1:commons-logging-1.1.1.jar
+Verifying it.unimi.dsi:fastutil:7.2.0:fastutil-7.2.0.jar
+Verifying javax.xml.bind:jaxb-api:2.2.12-b140109.1041:jaxb-api-2.2.12-b140109.1041.jar
+Verifying net.sf.jopt-simple:jopt-simple:4.9:jopt-simple-4.9.jar
+Verifying net.sf.kxml:kxml2:2.3.0:kxml2-2.3.0.jar
+Verifying org.apache.commons:commons-compress:1.12:commons-compress-1.12.jar
+Verifying org.apache.httpcomponents:httpclient:4.2.6:httpclient-4.2.6.jar
+Verifying org.apache.httpcomponents:httpcore:4.2.5:httpcore-4.2.5.jar
+Verifying org.apache.httpcomponents:httpmime:4.1:httpmime-4.1.jar
+Verifying org.bouncycastle:bcpkix-jdk15on:1.56:bcpkix-jdk15on-1.56.jar
+Verifying org.bouncycastle:bcprov-jdk15on:1.56:bcprov-jdk15on-1.56.jar
+Verifying org.codehaus.groovy:groovy-all:2.4.12:groovy-all-2.4.12.jar
+Verifying org.codehaus.mojo:animal-sniffer-annotations:1.14:animal-sniffer-annotations-1.14.jar
+Verifying org.glassfish.jaxb:jaxb-core:2.2.11:jaxb-core-2.2.11.jar
+Verifying org.glassfish.jaxb:jaxb-runtime:2.2.11:jaxb-runtime-2.2.11.jar
+Verifying org.glassfish.jaxb:txw2:2.2.11:txw2-2.2.11.jar
+Verifying org.jetbrains.kotlin:kotlin-reflect:1.2.0:kotlin-reflect-1.2.0.jar
+Verifying org.jetbrains.kotlin:kotlin-stdlib-jre7:1.2.0:kotlin-stdlib-jre7-1.2.0.jar
+Verifying org.jetbrains.kotlin:kotlin-stdlib-jre8:1.2.0:kotlin-stdlib-jre8-1.2.0.jar
+Verifying org.jetbrains.kotlin:kotlin-stdlib:1.2.0:kotlin-stdlib-1.2.0.jar
+Verifying org.jetbrains.trove4j:trove4j:20160824:trove4j-20160824.jar
+Verifying org.jetbrains:annotations:13.0:annotations-13.0.jar
+Verifying org.jvnet.staxex:stax-ex:1.7.7:stax-ex-1.7.7.jar
+Verifying org.ow2.asm:asm-analysis:5.1:asm-analysis-5.1.jar
+Verifying org.ow2.asm:asm-commons:5.1:asm-commons-5.1.jar
+Verifying org.ow2.asm:asm-tree:5.1:asm-tree-5.1.jar
+Verifying org.ow2.asm:asm-util:5.1:asm-util-5.1.jar
+Verifying org.ow2.asm:asm:5.1:asm-5.1.jar
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+A problem occurred configuring project ':trezor-app'.
+> Could not resolve all dependencies for configuration ':trezor-app:debugAndroidTestCompileClasspath'.
+   > More than one variant of project :android-styled-dialog matches the consumer attributes:
+       - Configuration ':android-styled-dialog:debugApiElements' variant android-aidl:
+           - Found artifactType 'android-aidl' but wasn't required.
+           - Required com.android.build.api.attributes.BuildTypeAttr 'debug' and found compatible value 'debug'.
+           - Found com.android.build.api.attributes.VariantAttr 'debug' but wasn't required.
+           - Required com.android.build.gradle.internal.dependency.AndroidTypeAttr 'Aar' and found compatible value 'Aar'.
+           - Required org.gradle.usage 'java-api' and found compatible value 'java-api'.
+       - Configuration ':android-styled-dialog:debugApiElements' variant android-classes:
+           - Found artifactType 'android-classes' but wasn't required.
+           - Required com.android.build.api.attributes.BuildTypeAttr 'debug' and found compatible value 'debug'.
+           - Found com.android.build.api.attributes.VariantAttr 'debug' but wasn't required.
+           - Required com.android.build.gradle.internal.dependency.AndroidTypeAttr 'Aar' and found compatible value 'Aar'.
+           - Required org.gradle.usage 'java-api' and found compatible value 'java-api'.
+       - Configuration ':android-styled-dialog:debugApiElements' variant android-manifest:
+           - Found artifactType 'android-manifest' but wasn't required.
+           - Required com.android.build.api.attributes.BuildTypeAttr 'debug' and found compatible value 'debug'.
+           - Found com.android.build.api.attributes.VariantAttr 'debug' but wasn't required.
+           - Required com.android.build.gradle.internal.dependency.AndroidTypeAttr 'Aar' and found compatible value 'Aar'.
+           - Required org.gradle.usage 'java-api' and found compatible value 'java-api'.
+       - Configuration ':android-styled-dialog:debugApiElements' variant android-renderscript:
+           - Found artifactType 'android-renderscript' but wasn't required.
+           - Required com.android.build.api.attributes.BuildTypeAttr 'debug' and found compatible value 'debug'.
+           - Found com.android.build.api.attributes.VariantAttr 'debug' but wasn't required.
+           - Required com.android.build.gradle.internal.dependency.AndroidTypeAttr 'Aar' and found compatible value 'Aar'.
+           - Required org.gradle.usage 'java-api' and found compatible value 'java-api'.
+       - Configuration ':android-styled-dialog:debugApiElements' variant jar:
+           - Found artifactType 'jar' but wasn't required.
+           - Required com.android.build.api.attributes.BuildTypeAttr 'debug' and found compatible value 'debug'.
+           - Found com.android.build.api.attributes.VariantAttr 'debug' but wasn't required.
+           - Required com.android.build.gradle.internal.dependency.AndroidTypeAttr 'Aar' and found compatible value 'Aar'.
+           - Required org.gradle.usage 'java-api' and found compatible value 'java-api'.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 28s
+```"
+trezor/trezor-android,closed,update firmware to 1.6.1,[],TREZOR Manager App doesn't offer update firmware to 1.6.1
+trezor/trezor-android,closed,Update protobuf definitions (for Model T PWD interaction),[],need this to get passphrase working with Model T - need PassphraseState*
+trezor/trezor-android,closed,Release for TREZOR T,[],The IDs are already added via 6530585 - but there was no release with this change yet.
+trezor/trezor-android,closed,Add EthereumSignMessage,[],"I would like to use message signing in the app, but it seems like it is not yet supported by the android sdk.
+"
+trezor/trezor-android,open,Replace protobuf client implementation with wire,[],"Protobuf is still quite heavy - especially method-count wise - perhaps (opinions welcome - cc @prusnak) we should replace it with wire: 
+https://github.com/square/wire"
+trezor/trezor-android,closed,Google Play version serving older firmware,[],"Version on Google Play (1.0.3) is still serving 1.4.2 FW
+
+https://play.google.com/store/apps/details?id=io.trezor.app"
+trezor/trezor-android,closed,Cleanup,[],
+trezor/trezor-android,closed,Housekeeping / slimming down trezor-lib,[],"Some housekeeping and slimming down trezor lib by removing dependency cgcmn-liban (and therefore android-styled-dialog) 
+Also decouple logging (this was the only function used from the big cgcmn-liban lib) with timber"
+trezor/trezor-android,closed,Remove constraintlayout dependency,[],"Not only makes things leaner - but also helps with this issue:
+https://f-droid.org/wiki/page/io.trezor.app/lastbuild_8"
+trezor/trezor-android,closed,Use build-plugin 2.3.3,[],
+trezor/trezor-android,closed,Add some Ethereum logos for homescreen,[],"Currently you have a lot of Options for using the Bitcoin-Logo on the HomeScreen. 
+I would like to see some options with the Ethereum logo here - as I rarely use Bitcoin lately and will use the TREZOR mainly in the Ethereum context ;-)
+I think at some point there will be more users using TREZOR in combination with Ethereum than with Bitcoin.."
+trezor/trezor-android,closed,Cleanup - remove unreferenced/dead XpubActivity and collateral,[],
+trezor/trezor-android,closed,Add info on howto add library via jitpack - closes #1,[],
+trezor/trezor-android,closed,Add gradle witness build-plugin and library whitelists - closes #16,[],WIP - please do not merge yet
+trezor/trezor-android,closed,Cleanup,[],"This PR has the following goals:
+ * reduce the size/method count of the library - when including it in WALLETH (http://walleth.org) I instantly got over the 65k method limit and I do not want to use multidex - after this PR I am below the 65k method limit
+ * remove the guava jar - this was now the last binary/jar dependency and this prepares #15 
+
++123 −6,993 just in this codebase - and as guava and joda-time are removed this gets even lighter"
+trezor/trezor-android,closed,Missing LICENSE,[],"Just realized there is no licence here  - this blocks #15 and https://github.com/walleth/walleth/issues/15
+I would suggest MIT here"
+trezor/trezor-android,closed,Replace JARs with maven dependencies for tagsoup and joda-time,[],"this prepares #15 
+one jar is left - the guava-compressed - unfortunately this is not an easy replacement as when exchanging for the guava version on maven-central we get over the 64k method limit.
+Not yet sure how to deal with this - I don't use guava anymore - when using Kotlin you do not really need it anymore
+Also joda-time should be replaced with https://github.com/JakeWharton/ThreeTenABP - even the creator of joda-time advocates for jsr-310 for this case now ;-)"
+trezor/trezor-android,closed,Add gradle-witness,[],"As this is security-relevant software it should use:
+
+https://github.com/WhisperSystems/gradle-witness
+
+I can PR it if wanted"
+trezor/trezor-android,closed,Add to FDroid,[],can be assigned to me - will make the PR for FDroid
+trezor/trezor-android,closed,"Use kontinuum, care for lint-errors(*) & Cleanup",[],"(*) care in the sense of a small fix and errors->warning
+so it does not light up red on kontinuum - that said:
+the things lint point out there should really be addressed (should I create issues for this?)
+
+context: https://github.com/trezor/trezor-android/pull/13#issuecomment-304707292
+![trezor_kontinuum](https://cloud.githubusercontent.com/assets/111600/26579000/5f822eee-4532-11e7-8084-3c3ccfad721d.png)
+
+Note: this PR configures kontinuum - but you also need to install the kontinuum GitHub app on the organisation: https://github.com/apps/kontinuum (permissions are very minimal - only read of public stuff anyway + one write for the statuses)
+
+
+"
+trezor/trezor-android,closed,"Modernize (gradle 3.5, sdk/support 25) and DRY/Cleanup",[],"This is needed so I can use the current AndroidStudio without it yelling at me all the time and we have better build-speeds.
+DRY  by using a global project configuration so the diff for such and update is way smaller next time and we do not forget a thing;-)
+
+Also I see that the travis-build is currently broken on master: perhaps you are open to switch to kontinuum:
+https://github.com/ligi/kontinuum
+Then we will also have archived reports on IPFS ;-)"
+trezor/trezor-android,closed,Firmware 1.4.2,[],Adding new firmware
+trezor/trezor-android,open,Set u2f counter after recovery,[],"Set U2F counter after recovery.
+
+This is how I do it in mytrezor in beta
+
+``` javascript
+setU2FCounter(session: TrezorJsSession): Promise<any> {
+    if (this.supports('u2f')) {
+        const timestamp: number = Math.floor(Date.now() / 1000);
+        return session.setU2FCounter(timestamp);
+    } else {
+        return Promise.resolve();
+    }                                                                                                          
+}
+```
+
+`setU2FCounter` calls the message `SetU2FCounter`.
+"
+trezor/trezor-android,open,TREZOR Manager steals the session from Mycelium?,[],"I can't use Mycelium with TREZOR since I installed TREZOR Manager app.
+
+When I connect TREZOR to my phone, TREZOR Manager asks: ""Open TREZOR Manager when this USB device is connected?"". If I press OK, it opens the manager app. If I press Cancel, nothing happens.
+
+In any case, when I run Mycelium, it doesn't ask me if I want to use the USB device in Mycelium and I can't force Mycelium to ""search"" for it in any way.
+"
+trezor/trezor-android,open,Doesn't work with Alcatel tablet,[],"Application doesn't work with tablet Alcatel One-Touch Tab 8HD
+
+Android 4.1.1
+
+It works with MyCelium.
+"
+trezor/trezor-android,open,App gets into inconsistent state,[],"App gets into inconsistent state with these steps:
+1. start app, connect device
+2. turn passphrase on (or off, if it's on)
+3. disconnect the device
+4. the device is still showing up as connected, even when it's connected
+5. clicking on any action shows up ""loading"" animation, which never stops
+
+Interestingly, there is no way to stop this animation. Even when I uninstall and re-install the app (!!!), the loading is still showing. The only way to stop it is to reboot the phone.
+
+Similar way to get to the same state (doesn't work 100% always) is:
+1. start app, connect device
+2. exit from the app by tapping ""home"" button
+3. disconnect device (without the app on screen)
+4. go back to the app, the device is showing as connected
+5. clicking on any action shows up ""loading"" animation, which never stops
+
+My phone is Lenovo P70. I couldn't reproduce the bug on a different Samsung phone. But the first sequence of steps always reproduces the error on my Lenovo.
+
+Trezor is working fine with MyCelium on the same phone, but I haven't tested it as thoroughly as this app.
+"
+trezor/trezor-android,closed,Update README.rst,[],
+trezor/trezor-android,closed,Protocol buffers not released,[],"Without the protocol buffer source, it's not really possible to do pretty much anything without this library.
+
+I started copy&pasting this library into my own test project (because this project doesn't work at all in Android Studio and it's not really anything you can import as a java lib), and it's not even possible to fetch keys from testnet, only a numeric counter of keys.
+
+I'd like to extend this a little bit, but with generated classes only, it's pretty much impossible
+"
+trezor/trezor-android,closed,Questions about GetPublicKey and Xpub.,[],"Hello,
+  I've implemented an extension to trezor-android that exposes a few of the Message types and provides a default handler for Trezor responses.  This comes with an interface for two GUI callbacks, PinMatrix and Passphrase.
+
+I've hit a wall trying to fetch the PublicKey(s) in Xpub format.
+
+Things to note:
+1. This is my first attempt a Java, let me know if I'm doing something wrong.
+2. I don't understand the mathematics involved.  If there is a reference that would help me understand the  HDNodeType better that just may answer my question.
+
+What I expect is to read or construct a BIP32 Deterministic Key Generator's Derived Public Key as one would use on http://bip32.org/'s JavaScript example.  When I plug one of these into BIP32 Extended Key I'm able to clearly demonstrate how to build a list of Bitcoin Addresses.
+
+If I'm not mistaken this is the same key provided by mytrezor.com's log, listed under ""Subscribing"".
+
+The current goal is to probe a Trezor device and populate ""something like"" myTREZOR Lite, instead of scanning the code with the electronic eye or entering it with the keypad.
+
+Cheers!
+"
+trezor/trezor-android,closed,Missing source files for Protobuffer generator,[],"Missing source files declared in `com.satoshilabs.trezor.protobuf/*.java` files  
+namely
+- messages.proto
+- storage.proto
+- types.proto
+"
+trezor/trezor-android,closed,Tag master branch with release numbers,[],"As of now, missing tags on master branch, declaring version of library.
+Please add tags and keep changelog between versions.
+"
+trezor/trezor-android,closed,"Added Gradle support, Added application tag for sake of correctness and manifest merger",[],"Not adding Gradle Wrapper (gradlew), but like this, library can be easily integrated into other Gradle projects
+
+Uses mavenCentral() and Android Gradle plugin repositories, so the files in `libs` directory are ignored
+"
+trezor/trezor-android,closed,Maven repository,[],"Can you please publish both snapshots and releases on Maven repository?
+Either create Maven repository in branch here on Github or publish into Maven Central.
+"

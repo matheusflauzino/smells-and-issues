@@ -1,0 +1,228 @@
+repository,state,title,label,body
+intrications/intent-intercept,open,Usability improvement: History button after edit to recall last used edit values,[],If you press the history-button after action/data/mime/uri edit you can recall one of the last 10 previous values of the edit.
+intrications/intent-intercept,open,Why isn't the newest version on F-Droid?,[],F-Droid only has 2.2.4. (Trying not to be rude; I'm just curious.)
+intrications/intent-intercept,open,doesn't catch intents sent to the launcher,[],
+intrications/intent-intercept,closed,Someome is using intent-intercept to block me out of my phone,[],"They are using this:  how can i fix this theyve changed my phome num
+
+intent://github.com/intrications/intent-intercept#Intent;scheme=https;category=android.intent.category.BROWSABLE;i.com.google.android.apps.gsa.shared.util.starter.IntentStarter.USE_TRANSITION=1;i.com.google.android.apps.gsa.customtabs.SOURCE=1;i.com.google.android.apps.gsa.customtabs.DEFAULT_ACTION_BUTTON_ID=2;i.com.google.android.apps.gsa.shared.util.starter.IntentStarter.ERROR_TOAST_ID=2131494210;B.com.google.android.apps.gsa.customtabs.EXTRA_CUSTOMTABS_RESOLVED=true;B.com.android.chrome.append_task=true;end    ------------    ACTION: android.intent.action.VIEW    DATA: intent://github.com/intrications/intent-intercept#Intent;scheme=https;category=android.intent.category.BROWSABLE;i.com.google.android.apps.gsa.shared.util.starter.IntentStarter.USE_TRANSITION=1;i.com.google.android.apps.gsa.customtabs.SOURCE=1;i.com.google.android.apps.gsa.customtabs.DEFAULT_ACTION_BUTTON_ID=2;i.com.google.android.apps.gsa.shared.util.starter.IntentStarter.ERROR_TOAST_ID=2131494210;B.com.google.android.apps.gsa.customtabs.EXTRA_CUSTOMTABS_RESOLVED=true;B.com.android.chrome.append_task=true;end    URI: intent://github.com/intrications/intent-intercept#Intent;scheme=https;category=android.intent.category.BROWSABLE;i.com.google.android.apps.gsa.shared.util.starter.IntentStarter.USE_TRANSITION=1;i.com.google.android.apps.gsa.customtabs.SOURCE=1;i.com.google.android.apps.gsa.customtabs.DEFAULT_ACTION_BUTTON_ID=2;i.com.google.android.apps.gsa.shared.util.starter.IntentStarter.ERROR_TOAST_ID=2131494210;B.com.google.android.apps.gsa.customtabs.EXTRA_CUSTOMTABS_RESOLVED=true;B.com.android.chrome.append_task=true;end    FLAGS:    none    EXTRAS:    1 Class: android.net.Uri$HierarchicalUri    Key: android.intent.extra.REFERRER    Value: https://www.google.com    2 Class: android.os.Bundle    Key: com.android.browser.headers 
+
+
+------------    MATCHING ACTIVITIES:    none "
+intrications/intent-intercept,closed,"Doesn't intercept firefox ""open externally"" intents",[],"Sorry for the non-technical writing, I'm on my phone and don't want to try to slog through the mozilla codebase from it. I don't think I even have enough storage space. But if you open a direct link to an image, an android logo appears in the URL bar (at least in Aurora), letting you open the image in an external app. However, the photo viewer I want to use is not listed, and since this doesn't catch it I can't figure out which intent it's using.
+
+I can try to gather details later, but I thought I'd report the bug.
+"
+intrications/intent-intercept,open,Add ability to view raw Bitmap images.,[],"If you think the checkerboard pattern background looks off against certain drawables.
+
+We can go for some kind of `OnClickListener` which toggles the background colour from black to white when the `ImageView` is clicked.
+"
+intrications/intent-intercept,closed,Add more schemes to intercept.,[],
+intrications/intent-intercept,open,Doesn't catch some android.intent.action.VIEW when mime type is NULL ?,[],"""termux-notification -u""  generates this intents with a NULL mimetype (https://github.com/termux/termux-api/issues/35)
+
+Intent Intercept catches the intent when it has scheme ""http:"" but not when it has scheme ""file:""
+
+This one works:
+  termux-notification -c xxxx -u http://www.google.com
+this not:
+  termux-notification -c xxxx -u file:///sdcard/xxx.html
+
+Example caught:
+## intent://www.google.com#Intent;scheme=http;launchFlags=0x13000000;end
+
+ACTION: android.intent.action.VIEW
+DATA: http://www.google.com
+URI: intent://www.google.com#Intent;scheme=http;launchFlags=0x13000000;end
+FLAGS:
+FLAG_ACTIVITY_FORWARD_RESULT
+FLAG_ACTIVITY_PREVIOUS_IS_TOP
+FLAG_RECEIVER_FOREGROUND
+
+Providing the example for the not caught one is not so easy, GhostCommander catches the view intent and opens a directory.
+"
+intrications/intent-intercept,closed,Edit value history: remember the last values and allow to pick previous values,[],"- In order to test some ""ACTION_PICK"" implementations 
+- i want to add a history funktion to some edit fields 
+- so that i can select a previously entered string from a list without the need to retype the text.
+
+This will make intent-intercept independant of first intercepting an intent.
+
+Since i already have implemented this for android before I will add this in the next weeks and supply a merge request when done.
+"
+intrications/intent-intercept,closed,Refactored string resources introduced in #29: ,[],"... to make it much easier for translators to add a new language. Only 38 items have to be translated instead of 75 before
+- renamed string-ids to become more contextsesitive so translaters know more about their meaning
+  - Example: strings for the settings activity are prefixed with ""settings_""
+- renamed some resource-ids  
+  - Example: R.id.data becomes R.id.data_edit
+  - Example: R.id.activities_layout becomes R.id.intent_matchin_activities_layout
+- moved non translatable strings.xml to donottranslate.xml
+  - text_plain in strings.xml becomes mime_type_text_plain in donottranslate.xml  
+- removed fromatting from string resources to code making translating much easier for translators 
+  - the new intent_extras_title replaces the old extras, extra, extra_count, extras_title_bold, bundle_title_bold, bundle_title_bold_uppercase
+- moved some string resources back to code. 
+  - for example preference-id: @string/intercept_enable_pref
+- added those german translations that are not Intend-api specific
+- reimplemented parts of getIntentDetailsStrings
+"
+intrications/intent-intercept,closed,[squid:HiddenFieldCheck] Local variables should not shadow class fields,[],"This pull request is focused on resolving occurrences of Sonar rule 
+squid:HiddenFieldCheck - “Local variables should not shadow class fields”. 
+
+You can find more information about the issues here: 
+https://dev.eclipse.org/sonar/rules/show/squid:HiddenFieldCheck
+
+Please let me know if you have any questions.
+Ayman Abdelghany.
+"
+intrications/intent-intercept,closed,[squid:S1155] Using Collection.isEmpty() to test for emptiness,[],"This pull request is focused on resolving occurrences of Sonar rule 
+squid:S1155 - “Collection.isEmpty() should be used to test for emptiness”. 
+
+You can find more information about the issue here: 
+https://dev.eclipse.org/sonar/rules/show/squid:S1155
+
+Please let me know if you have any questions.
+Ayman Abdelghany.
+"
+intrications/intent-intercept,closed,[squid:S1118] Utility classes should not have public constructors,[],"This pull request is focused on resolving occurrences of Sonar rule 
+squid:S1118 - “Utility classes should not have public constructors ”. 
+
+You can find more information about the issue here: 
+https://dev.eclipse.org/sonar/rules/show/squid:S1118
+
+Please let me know if you have any questions.
+Ayman Abdelghany.
+"
+intrications/intent-intercept,closed,Please make all the text fields on the entire screen copyable,[],"Currently only the area intended for ""send edited intent"" is copyable via the cursor.
+
+But there is much more above and below that one might wish to copy.
+
+Please make all the text fields on the entire screen copyable.
+"
+intrications/intent-intercept,closed,Link to this issue tracker from within the app and Google Play,[],"Link to this issue tracker from within the app and Google Play,
+else one would never know it exists.
+"
+intrications/intent-intercept,closed,Make Movable to External Storage,[],"According to http://developer.android.com/guide/topics/data/install-location.html, adding`android:installLocation=auto`to the app manifest should do it.
+"
+intrications/intent-intercept,closed,Catch Various File Chooser Dialogs,[],"https://github.com/openintents/notepad has the option to open an arbitrary file, which https://github.com/openintents/filemanager & some other apps catch, but not Intent Intercept.
+"
+intrications/intent-intercept,closed,"Add  <category android:name=""android.intent.category.BROWSABLE""/> to SEND action",[],"Hey,
+
+I am coming up with some ways to invoke sharing from the web by creating and intent: url that has an action of SEND, right now next to 0 apps include category browsable in their manifest for the SEND action and I need a way to debug it and it would be great if this app had browsable on the url.
+
+intent:#Intent;action=android.intent.action.SEND;S.android.intent.extra.TEXT=https%3A%2F%2Fpaul.kinlan.me%2F;S.browser_fallback_url=https:%3A%2F%2Ftwitter.com%2Fintent%2Ftweet;end
+"
+intrications/intent-intercept,closed,Extracted hardcoded Strings from,[],"```
+Explode.java
+explode.xml
+SettingsUtil.java
+```
+
+into strings.xml
+
+Strings with html tags were wrapped in <![CDATA[ ...html... ]]> tags and output as formatted text when you use Html.fromHtml(htmlString);
+"
+intrications/intent-intercept,closed,Extra values are not copied into clipboard,[],"In version 2.2.1 not all extra values are copied to clipboard. For example, in http://paste.ubuntu.com/12070915/ extra 3 value contains URL to file, which is shown in Intent Intercept interface, but not in the clipboard.
+
+```
+EXTRA 3:
+Class: android.net.Uri$HierarchicalUri 
+Key: android.intent.extra.STREAM 
+```
+
+The intent is generated by ""Graph Paper"" Export PDF event.
+"
+intrications/intent-intercept,closed,Hardcoded Strings,[],"There are still hardcoded strings in some java files. They should be extracted to string- and plurals-resources in oder to be translated.
+
+Some examples:
+
+https://github.com/intrications/intent-intercept/blob/master/app/src/main/java/uk/co/ashtonbrsc/intentexplode/Explode.java#L625
+https://github.com/intrications/intent-intercept/blob/master/app/src/main/java/uk/co/ashtonbrsc/intentexplode/SettingsUtil.java#L45
+"
+intrications/intent-intercept,closed,new german translations,[],"this should fix the travis build
+"
+intrications/intent-intercept,closed,Use an intent label,[],"This way the action can be translated way better.
+"
+intrications/intent-intercept,closed,Improve travis builds,[],
+intrications/intent-intercept,closed,Extract String Resources and add german translation,[],
+intrications/intent-intercept,closed,Added finish() to StartupActivity.,[],"Added finish() to StartupActivity to avoid having a blank screen after pressing the back button.
+"
+intrications/intent-intercept,closed,Update README.md,[],"add download badges
+"
+intrications/intent-intercept,closed,Show uri value in extras.,[],"When an intent's extra is a Uri, its value is now shown in the
+list of extras.
+"
+intrications/intent-intercept,closed,Fixed StartupActivity issue; Made Version-Info visible,[],"Bug-Fix: After closing the SettingsActivity the StartupActivity remainded visible
+Improvements: SettingsActivity and Intent-Dump show App-Versionnumber
+Fixed some minor lint-warnings
+
+Note: i removed some local branches from my repro and merged all my changes into main. 
+
+Unfortunately this
+- automatically closed my previous pull request so i had had to re-issue a pull request.
+- destroyed the github-networ graph
+"
+intrications/intent-intercept,closed,Fixed StartupActivity issue; Made Version-Info visible,[],"Bug-Fix: After closing the SettingsActivity the StartupActivity remainded visible
+Improvements: SettingsActivity  and Intent-Dump show App-Versionnumber
+Fixed some minor lint-warnings
+"
+intrications/intent-intercept,closed,Merge pull request #1 from intrications/master,[],"get changes from original
+"
+intrications/intent-intercept,closed,Merge pull request #1 from intrications/master,[],"get changes from original
+"
+intrications/intent-intercept,closed,Restore minSDK to 7,[],"This is a developer tool. It should probably work on the widest range of devices.
+"
+intrications/intent-intercept,closed,Removed dependencies to app-compat. Fixed some lint warnings,[],"I assume that compatible with android-2.1 is not neccessary any more so i removed the dependencies to app-compat and some lint-warnings. in my opinion this could be the release version
+"
+intrications/intent-intercept,closed,fix issue#14 lost extras,[],
+intrications/intent-intercept,closed,Does not show all Extra-items,[],"If intercepted intent contains ""android.intent.extra.STREAM"" it is not shown in the extras-listing.
+"
+intrications/intent-intercept,closed,increase apps versionnumber to allow update in fdroid store,[],
+intrications/intent-intercept,closed,Add Visual Clue if current edited Intent-Settings match any Intent-Handler,[],"While i modify Intent-Settings i want to see if the current settings are valid (no typos, match at least one intent-handler).
+
+Currently i have to scroll down to see if there are matching.
+
+My first attempt to do this is by putting the number of matches in the header - but this looks very ugly. can we somehow  give the user a feedback without the need to scroll down?
+"
+intrications/intent-intercept,closed,"Is there any way to capture Intents that do not show the ""Open with"" dialog?",[],"For example, when searching for ""lady gaga youtube"" on Chrome for Android, clicking in the video opens the YouTube app directly, without any chance to open it with Intent Intercept. Do you know if these intents are impossible to capture in a non-rooted phone?
+"
+intrications/intent-intercept,closed,Fix issue#7; Backport android-7; Support Intent-uri; Support onActivityResult,[],"This is my android-7 backport that works on android-7 emulator and on my android-8 phone.
+
+The new feature Intent-uri editing allows you to edit extras and flags.
+
+With onActivityResult-support you can analyse the result of ""send edited intent"" via the share menue:
+- OriginatorActivity -> resendIntentActivity->OriginatorActivity 
+- has the same effect as
+- OriginatorActivity -> IntentIntercept -> resendIntentActivity->intentIntercept->OriginatorActivity 
+
+with
+- OriginatorActivity -> IntentIntercept -> resendIntentActivity->intentIntercept->copyToClipboard
+
+you get the text of the intent plus the result of resendIntentActivity
+
+Note: i have removed the android-studio-iml files from the repository. so you better back them up before merging
+"
+intrications/intent-intercept,open,copy as command line,[],"the ""send edited"" feature is useful, but short of becoming a generic intent generator, can't do all possibly intereting resends (eg adding removing flags or extras).
+
+i suggest adding a ""copy commandline"" option, which serialises the intent to an ""am broadcast"" commandline. that would allow arbitrary modification as well as more versatile experimentation without firing up the ide.
+"
+intrications/intent-intercept,closed,Spruced up build files,[],"This will allow the project to build on the latest Android Studio.
+
+Also got rid of files which shouldn't have been tracked in git (based on .gitignore).
+"
+intrications/intent-intercept,closed,After editing intent no activities match the intent any more,[],"I have installed Intent Interceptor to debug our app's intent. But after changing an intent no activities match any more. As I only changed description (url parameter) and left everything else intact intent should be still matched by all apps.
+See attached images.
+![2014-07-23 09 50 21](https://cloud.githubusercontent.com/assets/832407/3670013/570d9e8a-123e-11e4-9438-697aad981fab.png)
+![2014-07-23 09 50 26](https://cloud.githubusercontent.com/assets/832407/3670014/57102d58-123e-11e4-9b38-8fe18849c982.png)
+"
+intrications/intent-intercept,closed,SCAN intent is missing,[],"Please add com.google.zxing.client.android.SCAN
+Usually invoked from apps which want to scan some barcode, like https://play.google.com/store/apps/details?id=com.app.grandag.trackchecker
+"
+intrications/intent-intercept,closed,Here is an intent not intercepted,[],"I/ActivityManager(  769): START u0 {act=android.intent.action.VIEW dat=http://www.visorando.com/randonnee-de-gare-a-gare-dans-la-foret-de-fontaine/10498.gpx typ=application/octet-stream cmp=android/com.android.internal.app.ResolverActivity} from pid 8268
+
+thanks for that usefull app !
+"
+intrications/intent-intercept,closed,Cannot intercept some of the intent,[],"When choosing ringtone for specific contact, ""ES File Explorer and ""Media Storage"" will be shown on the appChooser dialog. But intent-intercept didn't show.
+"
+intrications/intent-intercept,closed,No category information shown,[],"Is that possible to provide a view to retrieve the category field of the intent?
+"
+intrications/intent-intercept,closed,unable to display (MIME) type ,[],"it seems that intent-intercept unable to display (MIME) type for URI. This will also lead problem when finding apps matching edited intent.
+"
+intrications/intent-intercept,closed,The app crashes when try to catch system generated intent.,[],"How to replay bug: When you get a Gmail notice at the up-right corner of your phone. Click it and then intent-intercept will catch an intent. If you choose intent-intercept to process this intent, the app will crash.
+"

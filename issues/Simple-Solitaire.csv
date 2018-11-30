@@ -1,0 +1,422 @@
+repository,state,title,label,body
+TobiasBielefeld/Simple-Solitaire,open,Fixed typo in TriPeak->Game Rules,[],Fixed an open issue about a typo on TriPeak. 
+TobiasBielefeld/Simple-Solitaire,open,Implent adaptive icon,[],"See title, for a better user experience at every device :)
+
+I maybe would even flatten the icon background (do not use a gradient but only green)"
+TobiasBielefeld/Simple-Solitaire,open,Typo in directions,[],"TriPeaks>Instructions>Structure
+(Expect from using undo button)
+Should be Except"
+TobiasBielefeld/Simple-Solitaire,closed,"adds a new game Spiderette, a mix between spider and kondlike",[],I didn't add the menu image yet.
+TobiasBielefeld/Simple-Solitaire,closed,Testing,[],"Fixing a lot of stuff for the ""ensure movability"" feature"
+TobiasBielefeld/Simple-Solitaire,closed,New game: Maze.,[],"Based on the description at https://en.wikipedia.org/wiki/Maze_(solitaire).
+
+As discussed in #133, I didn't update the menu icons."
+TobiasBielefeld/Simple-Solitaire,closed,Reduce APK size,[],"Before any changes: 22,232,255 bytes
+After optipng: 21,691,271 bytes
+After converting all mp3 files to ogg 64kbps: 16,624,735 bytes
+
+Tested working.
+Minor note: From what I found Vorbis decoding is supported by all versions of Android, but if someone can test with a Honeycomb device that'd be appreciated."
+TobiasBielefeld/Simple-Solitaire,open,[Bug] in Forty&Eight,[],"From an e-mail I received:
+
+> I have noticed a bug in the game called Forty&Eight. Sometimes when trying to resume a game after the app has been closed it will deal another four rows of cards on top of what remains from the previous session. These new cards are dealt ""face down"" so I cannot see their values. I can play cards onto them. Of course the game is ruined by this bug and must be restarted. The bug is reproducible, but I am not certain of the cause. It has occurred several times, but not every time I resume a previously interrupted game."
+TobiasBielefeld/Simple-Solitaire,open,[Question] How can a game remove a card?,[],"I'm trying to implement [Maze](https://en.wikipedia.org/wiki/Maze_(solitaire)), which deals all 52 cards then removes the kings from play entirely. I tried calling `Card.removeFromCurrentStack()` on the kings, but that didn't seem to update the display of the game, and the game crashes when I try to move one of the kings that shouldn't even be there. It looks like none of the `SharedData.moveToStack` methods are meant to be called with a null destination stack. Is there some other way to remove a card from a stack without moving it to another stack?"
+TobiasBielefeld/Simple-Solitaire,closed,Increase played games counter after first movement,[],"Hello,
+
+I see in the code that (presumably) in the past the game counter was updated only after the first movement:
+
+````
+    public void checkFirstMovement() {
+        if (!movedFirstCard) {
+         //   incrementPlayedGames();
+            movedFirstCard = true;
+        }
+    }
+````
+
+Which makes more sense than the current behavior of increasing the counter after dealing regardless of if the game was actually played.
+
+Is there any reason this change was rolled back? Would you accept a pull request to make it optional perhaps?
+"
+TobiasBielefeld/Simple-Solitaire,open,Klondike options,[],"Hi,
+
+I am playing klondike a lot :-) and noticed several things which each may be a separate request and of which they might apply to other solitaire games.
+
+- Empty spots are only fillable by a king, something which in some games leads to an unwinnable situation. And a rule which was allowed when I learned it years ago.
+- Total hiding of scoring, because I play the game for fun so even hinting at statistics activates my wanting to win mode, instead of simple relaxation
+- Already seen a similar issue: implementarion of a heuristic/algorithm to only generate winnable games. To shift impact this list could be generated during compilation as a hash table. New game would compare the generated game with the lookup table and try again if it is not in that that winnable game list.
+
+These items can be parameterized to not break other peoples experience of course
+
+Thanks"
+TobiasBielefeld/Simple-Solitaire,closed,Napoleon's Tomb - get infinite score,[],"In Napoleon's Tomb, you can apparently gain free points by repeatedly moving a card between a foundation stack and a tableau stack. 
+
+For example, if there is a 7 in a foundation stack, move it into an empty tableau stack and then back to the foundation stack to gain 60 points for free. Repeat as many times as you want.
+
+Tested with version 3.12.1, installed from Google store."
+TobiasBielefeld/Simple-Solitaire,closed,add translated metadata for F-Droid,[],"I prepared translated [metadata for F-Droid](https://f-droid.org/en/docs/All_About_Descriptions_Graphics_and_Screenshots/), please also consider adding some screenshots."
+TobiasBielefeld/Simple-Solitaire,closed,Screen rotation causes autocomplete to pause,[],"If screen rotation is enabled in Android and the phone happens to get turned while an autocomplete is in progress (such as by setting the phone down and walking away), the autocomplete stops happening and the autocomplete button has to be pushed again for it to finish.
+
+I've seen this in Klondike, but it may affect the other games too. Klondike is just the main one that I play. I use app version 3.12.1 (from F-droid) in Lineage OS 15.1 (Android 8.1.0) on a OnePlus 3T."
+TobiasBielefeld/Simple-Solitaire,closed,Ensure Movability,[],finally adding a test if a game has at least x possible moves before starting it
+TobiasBielefeld/Simple-Solitaire,closed,Settings per game,[],"Adding the possibility to apply the appearance settings on a per game basis.
+Useful to set up 4 color mode for only specific games and more."
+TobiasBielefeld/Simple-Solitaire,closed,Text colour when background is set to black,[],"Brilliant set of games - just one small snag. I've set my background colour to black. This means I can't see the time, or the hide menu button.
+
+Here the hide menu button is only visible when you drag a card over it.
+![screenshot_20180507-124412](https://user-images.githubusercontent.com/837136/39703508-2c685548-5200-11e8-951d-9cfb1d5403e0.jpg)
+
+Here a few pixels of the time is viewable on the bottom right card.
+![screenshot_20180507-124358](https://user-images.githubusercontent.com/837136/39703509-2c843c36-5200-11e8-9940-ad674e4da4a7.jpg)
+
+I use a black background to save battery and the stop eye strain.
+
+Please could you add a white stroke to the text? Or something similar?"
+TobiasBielefeld/Simple-Solitaire,closed,Adding a new game: Napoleons Tomb,[],
+TobiasBielefeld/Simple-Solitaire,closed,Klondike zoom out when the screen is locked and unlocked,[],"When Klondike game is running and portrait mode is forced, if you lock the screen with the game open and then unlock the screen, the game area is reduced until a card is moved, then it come back at the normal size.
+
+I attach a screenshot with the problem: https://i.imgur.com/G8iMqIf.jpg
+
+Game version: 3.11.3
+Installed from F-Droid.
+Android 8.0 Stock
+Motorola Z play"
+TobiasBielefeld/Simple-Solitaire,closed,Klondike reset score when collapsing the menu,[],"Hi, I noticed that when I collapse the menu in Klondike the score is set to 195.
+
+![2018-04-20 17 51 33](https://user-images.githubusercontent.com/976087/39041427-b32ae3ba-44c3-11e8-92b1-b94c943b3e44.png)
+![2018-04-20 17 51 40](https://user-images.githubusercontent.com/976087/39041432-b58ee66a-44c3-11e8-81fa-7f2feb3fb087.png)
+
+I'm using a Pixel 1 (Android 8.1.0), the version is 3.11.2 installed from F-Droid."
+TobiasBielefeld/Simple-Solitaire,closed,Canfield's foundation starting value changes on hiding menu,[],"After upgrading to version 3.11.2, I'm running into a bug with Canfield:
+
+1. Force landscape orientation.
+2. Open Canfield.
+3. Start a new game.
+4. Start a new game, again.
+5. Tap the `>` button to hide the menu.
+6. Sometimes, the value shown on the 3 empty foundation stacks changes."
+TobiasBielefeld/Simple-Solitaire,open,"Main deck in game ""Vegas""",[],"I think I noticed a bug in ""Vegas"": If you have seen all cards of the main deck (top right), it is seems impossible to turn the deck back. Tapping on the ""circular double arrow"" logo has no effect, in contrast to what is described in the manual, and unlike in ""Klondike"" for example. The game itself is not frozen, the other cards are moveable. Can you reproduce this?"
+TobiasBielefeld/Simple-Solitaire,closed,prevent nested weights in the game layout,[],there shouldn't be nested weights in the layout as it affects performance
+TobiasBielefeld/Simple-Solitaire,closed,2/4 color appearance should be per-game,[],"Or at least it should be possible to override the setting on a per-game basis. If you happen to alternate between playing a game with 2-color deck and another with 4-color deck, every time you switch you have to change the global setting first."
+TobiasBielefeld/Simple-Solitaire,closed,Thanks for the updates and the app itself.,[],"I have no other way of contacting you, so I opened an Issue.  Thank you for the updates of late, with bug fixes.  I really appreciate the time you find to maintain this app and listing it on F-Droid.  I use it daily.  Feel free to close this Issue after reading this."
+TobiasBielefeld/Simple-Solitaire,closed,Napoleon's Tomb,[],"Firstly, thank you for this collection! I find it tremendously addictive! I would love this even more if an implementation of Napoleon's Tomb could be added. Having looked over the Klondike implementation, it looks like Napoleon's Tomb would be pretty simple to implement if you were familiar with the code. Unfortunately, I've got little free time to become familiar and open a PR. 
+
+The ruleset for this game can be found at: http://www.pahnation.com/how-to-play-napoleons-tomb
+
+If there's anything else I can do to better describe the game, please let me know. If I happen to fund some free time, I may look at implementing this and issue a pull request, but I wanted to request here to see if this interested anyone else! Thanks!"
+TobiasBielefeld/Simple-Solitaire,closed,Vegas-Flipping deck,[],I am unable to flip the deck after a tapping my way through it on my Nexus 7 Flo.  It works on my Moto X Play Lux.  Both with draw 1 or 3.
+TobiasBielefeld/Simple-Solitaire,open,[Feature] Some features asked in Google Play reviews,[],"* option to hide the in game menu
+* option to deactivate the auto complete button for each game individually
+* show the number of steps made in a  game
+* make fullscreen possible on a galaxy s8+ "
+TobiasBielefeld/Simple-Solitaire,closed,Simpler if construction.,[],This way if constructions are simpler. 
+TobiasBielefeld/Simple-Solitaire,open,Unable to move several cards in correct sequence,[],"Hello Tobias,
+
+Thank you for creating this pleasant distraction! It's nice to play something more than just solitaire after so many years. The layout of the game looks neat, too.
+
+I have noticed, that in Forty&Eight it is not always possible to move several cards in a correct sequence at once, even though the game rules allow it and there are free places in the foundation. Randomly, I can only move the lower two or three cards in a consecutive row of four or five and I am unable to tell what influences it.
+
+You may want to check into that.
+
+Good luck developing!
+
+Mas"
+TobiasBielefeld/Simple-Solitaire,closed,Some small speed-ups were introduced.,[],"Calling of get child count function at each for loop is not needed. To call it once is enough. To have first visible position variable is not needed. The position variable can be initialized with the first visible position and it can be incremented in the for body. Usage of View reference is not needed just for the purpose of a single return statement. Also get child at can be called only once, when it is sure that it will be returned. "
+TobiasBielefeld/Simple-Solitaire,closed,Change of switch construct with if-else cascade.,[],
+TobiasBielefeld/Simple-Solitaire,closed,List references and ArrayList fixed size.,[],It is a better practice to use interfaces for the references than classes. When ArrayList is used with fixed size it can perform faster. 
+TobiasBielefeld/Simple-Solitaire,closed,"Add deprecated ""onAttach()"" to avoid compatibility in API level < 23.",[],"Hi,
+
+I notice that you override callback function `onAttach(Context)` in class [`CustomPreferenceFragment`](https://github.com/TobiasBielefeld/Simple-Solitaire/blob/a761ecb0ca3df9dea1b5bb6f8bea7e50f51a2ab1/app/src/main/java/de/tobiasbielefeld/solitaire/classes/CustomPreferenceFragment.java). For your reference, `onAttach(Context)` was added in API level 23, which means it does not execute in API level < 23 (see this [link](https://stackoverflow.com/questions/32083053/android-fragment-onattach-deprecated)). 
+
+To test this issue, when `CustomPreferenceFragment` starts, function `reinitializeData(context)` written in `onAttach(Context)` runs normally in Android 6.0, but this function does not execute in Android 5.1 or earlier devices, meaning that if the app got killed within the `PreferenceFragment` and restarted, the data will not be reinitialized.
+
+This pull request fixes this issue, hope the information is helpful for you.
+
+Thanks."
+TobiasBielefeld/Simple-Solitaire,closed,New statistics,[],extending the statistics tab to show more infos
+TobiasBielefeld/Simple-Solitaire,closed,Wrong labels for number of cards to draw,[],"Under Settings > Games, the settings for ""Number of cards to draw"" show the wrong labels. They should be ""Draw 1"" and ""Draw 3"", but instead both choices say ""Draw 1"". This applies to Canfield, Klondike, and Vegas. Note that the choices do seem to toggle between 1 and 3 cards, so the setting does work. You just have to guess which one is for three."
+TobiasBielefeld/Simple-Solitaire,closed,Option to disable undo score penalty ?,[],"I'd quite like an option to disable the score penalty from hitting undo. I understand it makes sense for games like Klondike where undo can be used to know about the face-down cards, which is kinda cheating, but in FreeCell for example, undo does not change much."
+TobiasBielefeld/Simple-Solitaire,open,Card themes from Aisleriot project,[],"I just read into the README that you are trying to legally use icons from Kpatience. I just downloaded Aisleriot and saw that it has a quite nice selection of card themes.
+
+Checking into their source, it seems that most of the card themes are in public domain. If you are interested in adding them, here is the link to the resources: https://git.gnome.org/browse/aisleriot/tree/cards."
+TobiasBielefeld/Simple-Solitaire,closed,"[FreeCell] Infinite score ""exploit""",[],"When moving an ordered stack that starts with a king between spaces on the tableau using the automove feature, if the stack has more than just the king the bonus for moving that king to an empty space will be added even though it shouldn't. This makes it possible to get an arbitrary large score by moving stacks around.
+I think the problem comes from this check: `stacks[originIDs[0]].getSize() != 1` at https://github.com/TobiasBielefeld/Simple-Solitaire/blob/master/app/src/main/java/de/tobiasbielefeld/solitaire/games/Freecell.java#L271 . I believe the appropriate check would take into account the size of the stack being moved, i.e. something like `stacks[originIDs[0]].getSize() - cards.size() > 0`."
+TobiasBielefeld/Simple-Solitaire,closed,[FreeCell] Not all starting positions can get you the maximum score,[],"When the starting position includes kings already on the bottom of their stack, it is impossible to get the 20 points bonus that comes from moving that king to a free space, since the king is already on a free space. Thus the total score at the end of the game (not counting time bonus) cannot reach the expected 3200."
+TobiasBielefeld/Simple-Solitaire,closed,Klondike freezes,[],"Since i updated from 3.9.2 to 3.10.1 Klondike (and maybe the other games too) sometimes shows only one black card and isn't usable. After erasing the app data in the android settings it works fine for some time.
+Android is 6.0
+
+![screenshot_20180127-114255](https://user-images.githubusercontent.com/16139662/35528427-b22539bc-0525-11e8-9460-764533c9dc65.png)
+"
+TobiasBielefeld/Simple-Solitaire,closed,Race condition when starting a new game,[],"Steps to reproduce:
+1. Start a game of Spider (others will probably work too)
+2. Tap Menu -> Start new game. An animation will begin, with the cards on the table stacks moving to the main stack
+3. Quickly, before this animation ends and the animation of dealing cards from the main stack back to the tableau begins, tap Home (circle) button.
+4. Tap Recent apps (square) button and close (swipe right or left) Simple Solitaire Collection
+5. Open the application again. 
+
+After that, the game should be in a broken state, where the tableau is empty, there is only one pack in the main stack, which however can be dealt repeatedly until you run out of cards, at which point an exception is raised."
+TobiasBielefeld/Simple-Solitaire,closed,Tip for some icons,[],"Thus, it is purely personal taste, but a couple of icons would see the best of current, for example:
+Score -> https://materialdesignicons.com/icon/trophy-award
+Hint -> https://materialdesignicons.com/icon/lightbulb-on
+ 
+:)"
+TobiasBielefeld/Simple-Solitaire,closed,updated translations (Polish and Esperanto),[],"What is the meaning of ""deal correct sequences"" - it means sequences possible to win, not truly random, yes?"
+TobiasBielefeld/Simple-Solitaire,open,[Feature] Add some new games,[],"Someone on Google Play wants new games:
+1. Indian Rummy  2. Thousand card game (1000)  3. Bluff card game (420)  4. Hearts 
+
+So I put this here, to not forget it"
+TobiasBielefeld/Simple-Solitaire,closed,Better if construction.,[],
+TobiasBielefeld/Simple-Solitaire,closed,New features,[],"- new option to mix cards
+- randomization avoids now similar cards
+- new confirmation dialogs
+- added developer options
+- canfield size of reserve can be changed
+- and some little changes"
+TobiasBielefeld/Simple-Solitaire,closed,Configurable number of undo moves,[],"Currently, it looks like the number of undoable moves is fixed to 20. I think it would be nice if this number were configurable (with perhaps 20 still being the default value).
+
+Thanks"
+TobiasBielefeld/Simple-Solitaire,closed,[SimpleSimon] Ensure game is solvable,[],"I don't know whether this happens with other games, but I certainly saw it in Simple Simon. In my experience, between about 1/5 and 1/6 of the generated Simple Simon games are unsolvable. This forces the user to ""start new game"" and a lost game is recorded in the stats.
+
+I understand that a complete check could be very heavyweight, but I'd appreciate at least some basic checks, starting from the obvious base case where no move is possible from the very beginning - yes it happens - and perhaps checking that after 1, 2, ...N moves (for small values of N, otherwise the possibilities explode) the game doesn't reach an unsolvable state. That would already be a step forward.
+
+Another option could be to modify the board generation algorithm to ensure it generates solvable games (perhaps starting from a solved game, then scrambling the cards ""backwards"" so we're sure that the initial state that is presented to the user can lead to a solved game).
+
+Thanks"
+TobiasBielefeld/Simple-Solitaire,closed,Small spelling suggestion,[],
+TobiasBielefeld/Simple-Solitaire,closed,Score date changed,[],I played several klondike games yesterday and today. The date of the scores shows today's date only
+TobiasBielefeld/Simple-Solitaire,closed,google play 3.9.1 .apk is not working,[],"i can't install this app manually by downloading apk from play store. it says that there is an error while analyzing.
+android 5.1"
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-settings.xml (pl),[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-settings.xml (eo),[],
+TobiasBielefeld/Simple-Solitaire,closed,Klondike scoring system changed? ,[],"Since may, I cannot get anywhere in the score board. Is the pointing system changed? "
+TobiasBielefeld/Simple-Solitaire,closed,"""random"" cards aren't random",[],"I've been playing your solitaire game for quite a while, usually Klondike, and I've come to notice an issue with card distribution.  Way too many times, cards are grouped on the stack, in a non-random order.  For example, cycling through the stack one card at a time, I'll commonly get a BK, RQ, BJ, R10, etc.. in order.  This occurs from the main stack as well as on the lower stacks when turning them over.   Looking into it (I'm not at a place I can compile and test changes myself), it appears that the randomize(Card[] array) function isn't using any kind of seed when randomizing cards.  I realize it's a PRNG, but when receiving things like 4 aces on initial deal, or cards in order for use, it takes away enjoyment from the game.  I really do like it, but sometimes I can nearly clear the board before flipping my first card to the discard stack.
+![4aces](https://user-images.githubusercontent.com/6711457/32436190-3779da80-c2b1-11e7-8e46-b5e998eefd1b.png)
+"
+TobiasBielefeld/Simple-Solitaire,closed,very small details in Esperanto translation,[],
+TobiasBielefeld/Simple-Solitaire,closed,"""Calculation"" game rules translated in French",[],
+TobiasBielefeld/Simple-Solitaire,closed, Simplified NavigationView plus some changes.,[],"**Note**
+This pull request also includes the other, I distinguished it if the changes of icons and colors are not accepted.
+![ux2](https://user-images.githubusercontent.com/7107228/31589290-91dbb25e-b1ff-11e7-97e8-7e05559526ce.png)"
+TobiasBielefeld/Simple-Solitaire,closed,Simplified NavigationView,[],"| Before | After |
+|---|---|
+| ![before1](https://user-images.githubusercontent.com/7107228/31588774-fc79823e-b1f6-11e7-8a64-0e51c9e3b020.png) | ![after1](https://user-images.githubusercontent.com/7107228/31588777-04ad0b9c-b1f7-11e7-820b-8843034ea735.png )|
+"
+TobiasBielefeld/Simple-Solitaire,closed,updates and bugfixes,[],
+TobiasBielefeld/Simple-Solitaire,closed,New stuff,[],
+TobiasBielefeld/Simple-Solitaire,closed,Finnish translation for Calculation,[],
+TobiasBielefeld/Simple-Solitaire,closed,FreeCell - moving a stack of cards,[],"The number of cards that can be moved seems a bit low. I've done a bit of thinking and came up with the following formula:
+
+x = (c+1)*(1<<t);   // 1<<t == pow(2,t)
+
+Where c is the number of free cells, and t is the number of free tableau places. Please double check this.
+Would you implement this as well please?"
+TobiasBielefeld/Simple-Solitaire,closed,Polish and Esperanto translations,[],
+TobiasBielefeld/Simple-Solitaire,closed,FreeCell - autocomplete too strict,[],Please consider making FreeCell offer autocomplete sooner. It seems to me the cards in the stacks only need to be in ascending (or equal) order. The suits don't really matter.
+TobiasBielefeld/Simple-Solitaire,closed,New stuff,[],"- new game: Calculation
+- changed about screen
+- some new settings
+- bug fixes"
+TobiasBielefeld/Simple-Solitaire,closed,[Feature] Hide score/time settings,[],"Adds new options for hiding the time and score.
+
+Adds two new translatable strings
++ settings_hide_time (Hide Time)
++ settings_hide_score (Hide Score)"
+TobiasBielefeld/Simple-Solitaire,closed,Finnish translation fixes,[],
+TobiasBielefeld/Simple-Solitaire,closed,Forty&Eight: score increases when moving an ace,[],"When moving an ace from one base to another, the score is increased by 45."
+TobiasBielefeld/Simple-Solitaire,closed,added turkish language,[],
+TobiasBielefeld/Simple-Solitaire,closed,Switch the position of the cards : right to left,[],"I'm left handed, and it would be more practical for me to tap on the cards if they are of the left of the screen. Not only for me, but for the disabled people too, who play with only one hand. Playing with the left hand makes us hide the entire screen with our hand.
+
+Maybe a option could switch the hidden cards from the right to the left."
+TobiasBielefeld/Simple-Solitaire,closed,updated translations (Esperanto and Polish),[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-about.xml (pl),[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-about.xml (eo),[],
+TobiasBielefeld/Simple-Solitaire,closed,Score is increased after game is won,[],"Occasionally score is increased after game is won. This happens, at least, with Mod3 and Golf.
+
+Example from Mod3:
+
+1.  One move left to win the game, score is 4550.
+2.  The final move is done, score is increased to 4600.
+3.  **Right away score is increased to 13797.**
+4.  Menu pops up.
+
+The increased score is save to high scores.
+
+
+"
+TobiasBielefeld/Simple-Solitaire,closed,Fix French translations,[],"I began fixing a few French translations. Work is in progress: I still need to review the games' manuals.
+Feel free to send comments on the pull request!"
+TobiasBielefeld/Simple-Solitaire,closed,"Highscores not saved after list becomes ""full""",[],"While playing Vegas I observed, that from the point where all highscores are at maximum points, the highscores are no longer updated (even if, for instance, the game is completed in less time).
+
+My guess is that [master/app/src/main/java/de/tobiasbielefeld/solitaire/helper/Scores.java](https://github.com/TobiasBielefeld/Simple-Solitaire/blob/master/app/src/main/java/de/tobiasbielefeld/solitaire/helper/Scores.java) should be:
+
+    /**
+     * Adds a new high score to the list. New score will be inserted at the last position
+     * and moved left until it is in the right position
+     */
+    public void addNewHighScore() {
+        /* ... */
+
+        //if the new score is greater than the last saved one or the last one is empty, override it
+        /*  Should this rather be ""score >= savedScores[index][0]"" ? */
+        if (score > savedScores[index][0] || savedScores[index][0] == 0) {
+            /* ... */
+        }
+    }
+
+The part for inserting the new highscore seems correct, as - as far as I can tell - the time is included in the sorting."
+TobiasBielefeld/Simple-Solitaire,closed,[Vegas] Incorrect score,[],"When moving an Ace to the foundation, score will be increased, however it will also increase if the Ace was moved _from_ foundation _to_ foundation. That way, score can be increased indefinetly by just moving around one Ace within the foundation.
+
+My guess is that something is wrong in [Simple-Solitaire/app/src/main/java/de/tobiasbielefeld/solitaire/games/Vegas.java](Simple-Solitaire/app/src/main/java/de/tobiasbielefeld/solitaire/games/Vegas.java):
+```
+public int addPointsToScore(ArrayList<Card> cards, int[] originIDs, int[] destinationIDs, boolean isUndoMovement) {
+        int originID = originIDs[0];
+        int destinationID = destinationIDs[0];
+
+        if (destinationID >= 7 && destinationID <= 10){ /* <= should check originID as well */
+            return betAmount/10;
+        }
+
+        if (originID >= 7 && originID <= 10){
+            return -2*betAmount/10;
+        }
+
+        return 0;
+}
+```
+"
+TobiasBielefeld/Simple-Solitaire,closed,Updating Finnish translations,[],
+TobiasBielefeld/Simple-Solitaire,closed,translations (eo + pl),[],
+TobiasBielefeld/Simple-Solitaire,closed,Changeable menu order,[],
+TobiasBielefeld/Simple-Solitaire,closed,Copyright violation,[],"Hi @TobiasBielefeld 
+
+I found [this app](https://play.google.com/store/apps/details?id=startandroid.ru.solitairepack) on the Google Play Store. This guy just took your source code and put it on the Store, without warning this is free/libre software...
+
+As you are the owner of the source code, feel free to open a request to google [here](https://support.google.com/legal/contact/lr_dmca?product=googleplay) to remove this false app from the Store, if it's your wish ;)
+
+Don't forget to tell Google that:
+
+* The app is licensed under GNU GPL v3 license and this guy is violating it;
+* He is falsely claiming he made the app.
+
+Maybe add a link to this repo in the request, some screenshots of your original app..."
+TobiasBielefeld/Simple-Solitaire,closed,Two cards removed,[],"When for example in Pyramid, say two 4 lie next to each other and you move a 9 to them, and if your aiming is bad so you touch both 4, both of them will vanish. 
+I don't know much about the other games, just playing the ones I know 😀, but I think it would be in any game where you have to move one card to another. 
+Although I don't have any experience with Android programming, I think you will have to calculate how much of one card lies on the other one and just remove the card with the higher part. 
+
+You may answer in English or German ☺️"
+TobiasBielefeld/Simple-Solitaire,closed,Feature Request: Game rules accessible from game ,[],"Hi there !
+
+I've been using your app for some time now, and I really enjoy it, thanks! Mostly, I'm discovering new solitaires with your included rules. The only issue I have is that I need 7 clicks to go from a solitaire to its rules (back to home screen, into the manual, games rules, and finally click on the right rule). This is painful. Could a shortcut to a game's rules be included straight in the playing screen, please?
+
+Many thanks!
+Adrien "
+TobiasBielefeld/Simple-Solitaire,closed,New sounds,[],adding sounds to the game
+TobiasBielefeld/Simple-Solitaire,closed,In-game Menu bug,[],"Hey! Love the game. However I've noticed there's an issue when restarting the game, or returning to the main menu.
+
+Often when tapping: **Menu > Start new game** OR: **Menu > Return to main menu**, the Menu window disappears and nothing happens!"
+TobiasBielefeld/Simple-Solitaire,closed,Optimized imports and PNGs,[],Reduction of approximately 1.2 MB
+TobiasBielefeld/Simple-Solitaire,closed,translations (eo+pl),[],
+TobiasBielefeld/Simple-Solitaire,closed,New features,[],
+TobiasBielefeld/Simple-Solitaire,closed,display bug,[],"after moving a pile of 4 cards with a king on top from right-most to empty left-most the jack animated back to the right on top of the newly visible king there.
+
+it stayed there even when i moved and removed cards there.
+
+it animated back to the left when i put cards on the left-most pile. 
+
+![screenshot](https://mister-muffin.de/p/Dg2V.png)"
+TobiasBielefeld/Simple-Solitaire,closed,Klondike game is scaled wrong after update.,[],"On my SGS3 the Klondike game is very small. Only while in portrait, landscape is fine.
+
+Looking thru the commits it does seem like you changed some things there, figured I'd let you know. "
+TobiasBielefeld/Simple-Solitaire,closed,Fixing Finnish translations,[],
+TobiasBielefeld/Simple-Solitaire,closed,update french translation,[],"Hi !
+I just updated the french tanslation of new menu items and game manual. If you want to merge this ;)"
+TobiasBielefeld/Simple-Solitaire,closed,Translations (eo+pl),[],
+TobiasBielefeld/Simple-Solitaire,closed,New game: Grandfathers Clock,[],
+TobiasBielefeld/Simple-Solitaire,closed,"Revert ""texts for the new card themes""",[],"the new theme files have some problems, so I give up on them"
+TobiasBielefeld/Simple-Solitaire,closed,texts for the new card themes,[],
+TobiasBielefeld/Simple-Solitaire,closed,New background color chooser,[],
+TobiasBielefeld/Simple-Solitaire,closed,final adjustments to tap-to-select movements,[],
+TobiasBielefeld/Simple-Solitaire,closed,Updated translations (eo+pl),[],
+TobiasBielefeld/Simple-Solitaire,closed,"Mar 29 '17 commit has compile error: Error:(21, 33) No resource found that matches the given name (at 'background' with value '@drawable/card_highlight').",[],"Mar 29 '17 commit has compile error in activity_game_manager.xml Error:(21, 33) No resource found that matches the given name (at 'background' with value '@drawable/card_highlight')."
+TobiasBielefeld/Simple-Solitaire,closed,[Bug] Small Bug on High Scores Page,[],"Hi,
+
+i have found a small Bug on High Scores Page. Somehow i managed to get a win rate greater than 100%. As i started the Game today i had a win rate of 100 % and 10 of 10 games won. After i played another Game i had a win rate of 110% and 11 of 10 games won. 
+
+I managed to capture a Screenshot at the time i firstly noticed the issue.
+[IMGUR](http://imgur.com/a/iG0Rq)
+
+The Version i play is 3.3.5, compiled on 04.03.2017 from FDroid.
+
+If you need some more information, feel free to ask for it.
+"
+TobiasBielefeld/Simple-Solitaire,closed,[Feature Request] Google+ and Facebook authentication and gamification with friends,[],"I am trying to implement Google+ and Facebook authentication and gamification with friends in a fork of your project, any tips help will be appreciated. Great work btw, one of the best solitaire open sources I have come across till date."
+TobiasBielefeld/Simple-Solitaire,closed,Finnish translation,[],
+TobiasBielefeld/Simple-Solitaire,closed,translations polish and Esperanto,[],
+TobiasBielefeld/Simple-Solitaire,closed,[Feature Request] Tap to select/move card,[],"Is it possible that you can please add a way to tap once on a card and then move it by taping on the place where the card should be moved to like the way other apps handle this?
+
+Thanks!"
+TobiasBielefeld/Simple-Solitaire,closed,Date in high scores,[],Wouldn't it be good to have date stamp in high score board? 
+TobiasBielefeld/Simple-Solitaire,closed,4-color deck?,[],"Hi! Thanks for the great games. Some games would be a lot easier with a 4-color deck, just like poker (clubs are green and diamonds are blue). Is this something that could be implemented?"
+TobiasBielefeld/Simple-Solitaire,closed,updating french translation,[],"As promised, here is the french translation update ;)
+Sorry for the delay"
+TobiasBielefeld/Simple-Solitaire,closed,Icons of empty fields in Canfield,[],"Empty fields in Canfield shows ""A"", but in most cases you cannot put aces on them. Maybe the icon should correspond to the true card which can be placed on it?"
+TobiasBielefeld/Simple-Solitaire,closed,Bug in 'Aces Up' with double tap,[],"Version 3.2, when I double tapped the ace, it has been moved against the rules into discard stack.
+![screenshot_2017-02-11-09-11-09](https://cloud.githubusercontent.com/assets/16842967/22852749/5560223e-f043-11e6-888d-5c995a5cc7f0.png)
+"
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-about.xml (pl),[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-about.xml (eo),[],
+TobiasBielefeld/Simple-Solitaire,closed,Update array.xml (pl),[],
+TobiasBielefeld/Simple-Solitaire,closed,Update array.xml (eo),[],
+TobiasBielefeld/Simple-Solitaire,closed,Update translations (eo+pl),[],
+TobiasBielefeld/Simple-Solitaire,closed,Use Material Design Icons,[],"Nice project. The bottom bar looks a bit old-shool.
+What do you think about changing the activity more to a material design?
+The bar could be on the top and display [Material Design Icons](https://materialdesignicons.com). So the overall-feeling would be more modern and well-known by the user.
+
+Regards"
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-settings.xml,[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-settings.xml,[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-statistics.xml,[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-statistics.xml,[],
+TobiasBielefeld/Simple-Solitaire,closed,Improve statistics,[],Please display in statistics window total number of games and percentage of wins.
+TobiasBielefeld/Simple-Solitaire,closed,Allow moving multiple cards in Fourty&Eight,[],"Please allow moving multiple cards in the game Fourty&Eight if free tableau fields are available - similar feature is already available for FreeCell.
+
+Maybe even remove option to disable that behaviour in FreeCell, because it doesn't affects rules of gameplay in any way."
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-settings.xml (pl),[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-manual.xml (pl),[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-settings.xml (eo),[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-manual.xml (eo),[],
+TobiasBielefeld/Simple-Solitaire,closed,french translation,[],"Just finished a french translation :)
+
+btw, I really like this game since found it on fdroid. Good job ;)"
+TobiasBielefeld/Simple-Solitaire,closed,updated japanese translation,[],Hello!
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-settings.xml,[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings.xml,[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings.xml,[],
+TobiasBielefeld/Simple-Solitaire,closed,Update strings-manual.xml,[],
+TobiasBielefeld/Simple-Solitaire,closed,Spider end-of-game issue,[],"As of a couple of releases ago, I've noticed that Spider will often not end the game when the last tableau stack is merged and moved to the foundation stacks, and you're left with an empty tableau and no way to end the game.
+
+Hitting undo and redoing the last move a few times (or splitting the last merge into a couple of additional moves) seems to eventually cause the game to end properly, which makes me think it's something timing-related?
+
+I mostly play Spider and Klondike; I don't see this behavior with Klondike, but I usually auto-complete Klondike (which isn't an option with Spider), so perhaps it's related?
+
+FWIW, I'm using the F-Droid build, on a Nexus 5 running android 7.1.1 (cyanogenmod)."
+TobiasBielefeld/Simple-Solitaire,closed,translation esperanto and polish,[],I completed translation. In Esperanto family names are written CAPITALIZED. I also fixed some typos in manual file.
+TobiasBielefeld/Simple-Solitaire,closed,polish and esperanto translations (excepting manual),[],
+TobiasBielefeld/Simple-Solitaire,closed,Option for change language,"[Label(name=""enhancement"")]","Please add option for change language of the game, instead of depending on system language. It will be useful for selecting languages which are not selectable in Android, for example Esperanto (I can provide translation).
+
+Why some strings like ""Open navigation drawer"" or ""Menu"" are marked as non-translateable?"
+TobiasBielefeld/Simple-Solitaire,closed,Scrollable view changes state on device rotation,[],"When I perform this sequence of events, the scroll view on screen goes back to the top:
+
+1. Click on Settings
+2. Click on About Game
+3. Click on:
+a. License
+b. Changelog
+4. Scroll Down
+5. Orientation Change"
+TobiasBielefeld/Simple-Solitaire,closed,Added Japanese translation,[],Hello!
+TobiasBielefeld/Simple-Solitaire,closed,"feature request, fixed screen orientation","[Label(name=""enhancement"")]","Hi and thanks for this new grate game in fdroid!,
+
+it reminsds me realy much at kPatience (same end animation and card art). I like the handling very much. but there is one thing i am missing: i have seen that the app woekes geate in portrait and in landscape mode, but normaly my device is fixed to portrait mode so that i have to switch to landscape orientation if i want to enyoj the app best. So i would be very happy if you could add an orientation setting where you can select defaulr (as of the android system suggests), fixed landscape, fixed portrait ans landscape upside down mode. thanks in advance. and also i am happy to see more Patience's (like frecell, spider and yukon) in the future.
+
+thanks and keep up the good work"

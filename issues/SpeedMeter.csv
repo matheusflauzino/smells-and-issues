@@ -1,0 +1,128 @@
+repository,state,title,label,body
+flyingrub/SpeedMeter,open,"When more than 9 satellites found, text and satellite numbers is overlapping",[],"![screenshot_20180911-175350](https://user-images.githubusercontent.com/4852079/45476168-932f3500-b73e-11e8-841b-322707f47f86.png)
+
+See screenshot (down right)."
+flyingrub/SpeedMeter,open,changing velocity background for better seeing in bright sunlight,[],"When riding bicycle I use my phone fixed at the handlebar. It would be nice to have an option for changing the background from bright red to a darker for seeing the velocity (white numbers) well in bright sunlight.
+Thank you for this nice speedmeter."
+flyingrub/SpeedMeter,open,Text log of gathered data,[],"Sometimes I wish I had more details about the gathered data (e.g. when was the maximum speed achieved, or a way to investigate if I'm suspecting that the [data is wrong](https://github.com/flyingrub/SpeedMeter/issues/30)). Maybe it should have an option to write gathered data to a file?"
+flyingrub/SpeedMeter,closed,Calculate averages in floating point,[],"Ensure that time is recorded as a long in milliseconds but
+calculations use doubles so that we do not truncate to zero.
+Fixes #33."
+flyingrub/SpeedMeter,closed,getAverageSpeed and getAverageSpeedMotion might return NaN if time or motionTime is smaller than 1000.,[],"getAverageSpeed and getAverageSpeedMotion might return NaN if time or motionTime is smaller than 1000.
+
+The step  (time / 1000) or (motionTime / 1000) will divide (long)/(int) producing long therefore long. 
+if time or motionTime is smaller than 1000 e.g. 6  the division should be 0.006 but since it is long the output will be 0.
+
+The solution would be to change the step to (time / 1000.0) or (motionTime / 1000.0) "
+flyingrub/SpeedMeter,closed,Fix Brazilian Portuguese translation,[],Fix Brazilian Portuguese translation
+flyingrub/SpeedMeter,closed,Brazilian Portuguese Translation,[],
+flyingrub/SpeedMeter,open,Distance & Average Speed are way off…,[],"This morning I tried Speedmeter while cycling to work. The current speed seemed to be accurate in the most cases (difference to actual cycling computer usually 1km/h).
+I travelled my usual 8 km to work, but the distance it said was 12.363 km. The average speed was 28 km/h because of this, the actual average was 19.55 km/h.
+
+It stated the Accuracy would be 2-5m most of the time."
+flyingrub/SpeedMeter,closed,Copyright violation,[],"Hi @flyingrub 
+
+I found [this app](https://play.google.com/store/apps/details?id=com.speedmeter.marcossitdev) on the Google Play Store. This guy just took your source code, added some ads in it and put it on the Store, without warning this is free software...
+
+As you are the owner of the source code, feel free to open a request to google [here](https://support.google.com/legal/contact/lr_dmca?product=googleplay) to remove the false app from the Store, if it's your wish ;)
+
+Don't forget to tell Google that:
+
+* The app is licensed under GNU GPL v2 license and this guy is violating it;
+* He is falsely claiming he made the app;
+* Provide some screenshots and a link to this source code."
+flyingrub/SpeedMeter,closed,"Tweak ""use miles per hour"" setting",[],"F-Droid version 2.3.1.  The option ""Use miles per hour"" in settings really should be ""Use Imperial measurements"" instead.  Those of us in the US who continue to cling to our outdated imperial measurements for distances and speeds would also like to see the distance traveled, max speed, and average speed reported in imperial measurements as well.  Therefore the option ""use miles per hour"" in settings really should toggle all the distances/speeds to display in imperial measurements.  So this is really an ""enhancement"" request.  Thanks."
+flyingrub/SpeedMeter,open,0 process and 1 service ,"[Label(name=""bug"")]","After x hours, this application stopped and when I consult it  I find this line '0 process and 1 service' !
+ can u tell me a bit about this problem if you have an idea 
+thank you in advance  "
+flyingrub/SpeedMeter,closed,Using it in Xamarin Forms,[],"Sorry for the stupid question as I am new to mobile dev.
+Is it possible to integrate this into a Xamarin.Forms (cross platform) project?"
+flyingrub/SpeedMeter,closed,"Format average, maximum, and distance units",[],"Previously Speedmeter only applied imperial units to the current
+speed.  Also isolate the presentation of units into the activity."
+flyingrub/SpeedMeter,closed,French translation + README.md,[],"Hello
+This small PR adds the French translation and moves the buttons in the README.md so that it is easier to reach them (+ restore the link to F-Droid which was broken)
+
+You can ping me in the future if there any new keys to translate
+
+Thanks for this app ;)"
+flyingrub/SpeedMeter,closed,old F-Droid version,[],"Please update F-droid version if you got time, its from 2015! Many privacy concerned users don't have play store access."
+flyingrub/SpeedMeter,closed,Correct km/h to mi/h after conversion,[],Also use mi/h consistently.
+flyingrub/SpeedMeter,closed,Fix source code link,[],Also copy edit various spelling and capitalizations.
+flyingrub/SpeedMeter,closed,Bug :It show only Searching using ,[],I just setup my local system and build this project. I take worth dependency downloaded and I did successfully build gradle but in the app this show on nav bar and in the home page olny searching.
+flyingrub/SpeedMeter,closed,update readme ,"[Label(name=""enhancement"")]",Please provide more info about  project. So it will help to every body basic overview about this project.
+flyingrub/SpeedMeter,closed,Miles per hour option added,[],"I have added MPH capability to the application in response to Issue ""Miles per hour please #16"".
+1. Current Speed changes to miles per hour.
+2. Distance if greater than 1 miles changes to miles.
+3. Average speed changes to miles per hour.
+4. Max Speed changes to miles per hour.
+
+Added checkbox option in settings to switch from KMPH to MPH and back.
+"
+flyingrub/SpeedMeter,open,Landscape orientation,"[Label(name=""enhancement"")]","The app really needs landscape orientation of the screen. Please make it in future versions.
+"
+flyingrub/SpeedMeter,closed,Miles per hour please,"[Label(name=""enhancement"")]","All of the speed limit signs where I live are in miles per hour only.  Would it be possible to make SpeedMeter use miles per hour?
+
+1 meter per second = 2.23693629 miles per hour so that would be the number to use in the code rather than 3.6.  It could be an option.
+"
+flyingrub/SpeedMeter,open,"Stuck on ""waiting for gps fix""","[Label(name=""bug"")]","I've noticed this a few times now. Sometimes the program thinks it has lost GPS, when it hasn't.
+
+http://i.imgur.com/YkCSeUj.png
+
+I just started it and pressed go. It had satellites, then suddenly jumped to 0 and claims to have lost the GPS fix, yet the accuracy keeps getting better (so obviously, there is a fix). It's stuck in this until I switch to another app and back.
+"
+flyingrub/SpeedMeter,closed,Serbian language,[],
+flyingrub/SpeedMeter,closed,App Install Location,[],"The internal memory of my device is quite small, this PR should allow users to easily move the app to the microSD.
+
+""To allow the system to install your application on the external storage, modify your manifest file to include the android:installLocation attribute in the element, with a value of either ""preferExternal"" or ""auto""."" (source: https://developer.android.com/guide/topics/data/install-location.html)
+
+Thank you very much for your awesome app :)
+"
+flyingrub/SpeedMeter,closed,Link to Google play,[],"I changed the link to Google play from https://play.google.com/store/apps/details?id=fly.worship.grub into https://play.google.com/store/apps/details?id=fly.speedmeter.grub
+"
+flyingrub/SpeedMeter,closed,Program gets stuck thinking there's no GPS,[],"I've noticed this a few times now.  Sometimes the program thinks it has lost GPS, when it hasn't.
+
+http://i.imgur.com/YkCSeUj.png
+
+I just started it and pressed go. It had satellites, then suddenly jumped to 0 and claims to have lost the GPS fix, yet the accuracy keeps getting better (so obviously, there is a fix). It's stuck in this until I switch to another app and back.
+"
+flyingrub/SpeedMeter,closed,Update README.md,[],"Updated the description to add informations.
+Also, added the F-droid Link.
+"
+flyingrub/SpeedMeter,closed,Distance decimal point,[],"After working around #8 by keeping the display on, Speedmeter seems to be working so far. And I'm loving the way it looks! There's one issue tho: http://i.imgur.com/O1DzLlr.png
+
+Apparently I travelled 8830 km in less than an hour? But I'm no supersonic jet! :) This is probably supposed to be 8.830 km.
+
+(While I'm here: It should be km, not Km. And why do the speeds get no decimal places?)
+"
+flyingrub/SpeedMeter,closed,Doesn't work with display off,[],"I like starting speedmeter, then putting it into my pocket, to have some stats when I finish my tour. Unfortunately, the new version doesn't work this way, distance and average speed remain at 0. Could it be because the new version shows no notification?
+"
+flyingrub/SpeedMeter,closed,Don't count stops towards time/average speed,[],"When you're stopped (e.g. at a red light), the stop time should not count towards the average speed. This is usually how bike computers work. The time spent at red lights would otherwise unnecessarily decrease the average speed.
+
+There should be two timers, 'time' and 'movement time'. 'Time' is always counting up, while 'Movement time' is only counting as long as speed > 0. 'Movement time' is then used to calculate the average speed. (It would probably be interesting to show both times on the screen tho)
+
+This mode could be made optional and added to the (still empty) settings screen :)
+"
+flyingrub/SpeedMeter,closed,GPS accuracy shown despite no GPS fix,[],"v1.2
+
+When the GPS fix is lost, the app still shows the last accuracy it had before the fix was lost. This is confusing, making the user think he still has a fix.
+
+It would be better if the accuracy was shown as ------ when the fix is lost
+"
+flyingrub/SpeedMeter,closed,Notification issues,[],"v1.2: There are two issues with the notification
+
+a) It is not translated. My system is English, yet I am getting a French notification from the app
+
+b) Tapping the notification does not bring up the app, which would be expected behavior
+"
+flyingrub/SpeedMeter,closed,Current Speed not updated while stopped,[],"I'm using v1.2.
+
+When I was stopped, my speed should be 0km/h. Yet the app consistently showed 4km/h. The distance counter however was not incrementing so internally the program seemed to know that the speed was 0.
+
+During this time, I had good GPS connectivity.
+"
+flyingrub/SpeedMeter,closed,Update LICENSE,[],"Removed the useless part after the end of terms and conditions. ( Also called the 'How to use the terms ?' )
+"
+flyingrub/SpeedMeter,closed,Update strings.xml,[],"Some French typos.
+"
+flyingrub/SpeedMeter,closed,no speed while recording data,[],"Whenever I tpich the ""play"" icon, current speed freezes in the number it was at the moment. Data records fine though, but the speed is not refreshed.
+"

@@ -1,0 +1,323 @@
+repository,state,title,label,body
+qqq3/good-weather,open,crash when searching after setting 'update location' to true on android 19,[],"I am now using good weather, however, these days i found a reproducible crash:
+1.get into the 'widget setting' page, and set 'update locating' to true;
+2.get into search page, and type in hint words like 'london';
+3.select one from the list, and then the crash happens.
+
+the good weather verison is 4.4, which was downloaded from f-droid;
+the device I use is an avd from android studio, android sdk version is 19(4.4), cpu is x86, device type is nexus S;
+would you please confirm it  for me ?"
+qqq3/good-weather,open,Translation,[],"Hi,
+
+I've noticed that my language is not in the list of available language listed in ""settings"" but it is actually translated, as stated here:
+https://hosted.weblate.org/projects/good-weather/strings/
+
+Is there any way to set it up?
+
+Thanks"
+qqq3/good-weather,open,Proposal,[],"First of all I would like to say thank you for this great app, I use it every day.
+I miss a simple feature which have a lot of other weather App: the possibility to switch the view (current/charts/forecast) with just sliding the finger to the left or to the right of the screen. This would make the program use more comfortable and easier to use.
+
+The program could also show a couple of arrows beside each data, in order to show the up/down trend (temperature, humidity, wind)."
+qqq3/good-weather,open,Logo Proposal,[],"It's been awhile since your last update, so I think we should put some beauty on the Project. How about creating a new logo and banner for it ?"
+qqq3/good-weather,open,"An error occurred on the ""Refresh icon"" that caused the Crash app",[],"#### Expected behavior
+Supposedly, When the user presses <code>""Refresh icon""</code> more than once on the <code>""Daily Forecast""</code> menu, the application will not crash.
+
+#### Actual behavior
+At first I did not think it really caused the application to stop. But when I did refresh more than once, the application suddenly happened Crash. That's why I tried to find the error and I found it.
+
+When a user presses <code>""Refresh icon""</code> more than once quickly, on the <code>""Daily Estimates""</code> menu, the app will be paralyzed.
+
+#### How to reproduce
+1. Instal App [here](https://play.google.com/store/apps/details?id=com.ATA_Droid.WeatherForecastRadar)
+2. Sign in ""Feature Forecast Daily"", Click on ""Refresh icon"" more than once quickly. Then the application will crash.
+
+![Screenshot_2018-05-30-00-15-32-394_com.whatsapp.png](https://cdn.steemitimages.com/DQma6MzQn4uQCSfgMBmXSfS6VqY6n4XUuGZziVoo1Et5qda/Screenshot_2018-05-30-00-15-32-394_com.whatsapp.png)
+
+![Screenshot_2018-05-30-00-15-35-761_com.whatsapp.png](https://cdn.steemitimages.com/DQmPrCi9oUNngAypFp33gQq951Cv3qenkad8nMezPRzaC5w/Screenshot_2018-05-30-00-15-35-761_com.whatsapp.png)
+
+![Screenshot_2018-05-30-00-15-38-810_com.whatsapp.png](https://cdn.steemitimages.com/DQmadLQG7tiUtxRY48N54JyGHUmQLEguMsN6xo7VsEnBXoL/Screenshot_2018-05-30-00-15-38-810_com.whatsapp.png)
+
+#### Environment
+* ###### Device : Redmi Note 5A
+* ###### System Operating : 7.1.0 Nougat
+* ###### App Version : 1.4
+
+***
+***
+
+#### <center>Recording Of The Issues</center>
+https://youtu.be/z38QRAaZF4A
+
+***
+
+#### <center>Logcat</center>
+###### <center>Proof of code error, that application was really Crash</center>
+
+```
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: FATAL EXCEPTION: main
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: Process: com.ATA_Droid.WeatherForecastRadar, PID: 20601
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: java.lang.IndexOutOfBoundsException: Index: 6, Size: 0
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at java.util.ArrayList.get(ArrayList.java:411)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at com.ATA_Droid.WeatherForecastRadar.adapter.WeatherForecastAdapter.onBindViewHolder(WeatherForecastAdapter.java:34)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at com.ATA_Droid.WeatherForecastRadar.adapter.WeatherForecastAdapter.onBindViewHolder(WeatherForecastAdapter.java:13)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.RecyclerView$Adapter.onBindViewHolder(RecyclerView.java:6673)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.RecyclerView$Adapter.bindViewHolder(RecyclerView.java:6714)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.RecyclerView$Recycler.tryBindViewHolderByDeadline(RecyclerView.java:5647)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.RecyclerView$Recycler.tryGetViewHolderForPositionByDeadline(RecyclerView.java:5913)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.RecyclerView$Recycler.getViewForPosition(RecyclerView.java:5752)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.RecyclerView$Recycler.getViewForPosition(RecyclerView.java:5748)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.LinearLayoutManager$LayoutState.next(LinearLayoutManager.java:2232)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.LinearLayoutManager.layoutChunk(LinearLayoutManager.java:1559)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.LinearLayoutManager.fill(LinearLayoutManager.java:1519)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.LinearLayoutManager.onLayoutChildren(LinearLayoutManager.java:614)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.RecyclerView.dispatchLayoutStep2(RecyclerView.java:3812)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.RecyclerView.dispatchLayout(RecyclerView.java:3529)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v7.widget.RecyclerView.onLayout(RecyclerView.java:4082)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.View.layout(View.java:17663)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.ViewGroup.layout(ViewGroup.java:5577)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.design.widget.HeaderScrollingViewBehavior.layoutChild(HeaderScrollingViewBehavior.java:132)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.design.widget.ViewOffsetBehavior.onLayoutChild(ViewOffsetBehavior.java:42)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.design.widget.AppBarLayout$ScrollingViewBehavior.onLayoutChild(AppBarLayout.java:1361)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.design.widget.CoordinatorLayout.onLayout(CoordinatorLayout.java:894)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.View.layout(View.java:17663)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.ViewGroup.layout(ViewGroup.java:5577)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.RelativeLayout.onLayout(RelativeLayout.java:1079)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.View.layout(View.java:17663)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.ViewGroup.layout(ViewGroup.java:5577)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.support.v4.widget.DrawerLayout.onLayout(DrawerLayout.java:1171)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.View.layout(View.java:17663)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.ViewGroup.layout(ViewGroup.java:5577)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.FrameLayout.layoutChildren(FrameLayout.java:323)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.FrameLayout.onLayout(FrameLayout.java:261)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.View.layout(View.java:17663)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.ViewGroup.layout(ViewGroup.java:5577)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1741)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1585)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.LinearLayout.onLayout(LinearLayout.java:1494)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.View.layout(View.java:17663)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.ViewGroup.layout(ViewGroup.java:5577)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.FrameLayout.layoutChildren(FrameLayout.java:323)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.FrameLayout.onLayout(FrameLayout.java:261)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.View.layout(View.java:17663)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.ViewGroup.layout(ViewGroup.java:5577)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1741)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1585)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.LinearLayout.onLayout(LinearLayout.java:1494)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.View.layout(View.java:17663)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.ViewGroup.layout(ViewGroup.java:5577)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.FrameLayout.layoutChildren(FrameLayout.java:323)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.widget.FrameLayout.onLayout(FrameLayout.java:261)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at com.android.internal.policy.DecorView.onLayout(DecorView.java:730)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.View.layout(View.java:17663)
+05-29 23:42:24.445 20601 20601 E AndroidRuntime: 	at android.view.ViewGroup.layout(ViewGroup.java:5577)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at android.view.ViewRootImpl.performLayout(ViewRootImpl.java:2388)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:2110)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1296)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:6401)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at android.view.Choreographer$CallbackRecord.run(Choreographer.java:876)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at android.view.Choreographer.doCallbacks(Choreographer.java:688)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at android.view.Choreographer.doFrame(Choreographer.java:623)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:862)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at android.os.Handler.handleCallback(Handler.java:754)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:95)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:163)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:6361)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904)
+05-29 23:42:24.446 20601 20601 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:794)
+```"
+qqq3/good-weather,open,In-day forecast evolution,[],"Is it possible to add the view of the in day weather evolution ?
+Like in my stock weathr app.
+
+Its a usefull information when you go hiking and want to walk between drops !!
+
+See screenshot below :
+![](https://i.imgur.com/hd6srvw.jpg) 
+
+Thanks for the work !"
+qqq3/good-weather,open,"Found Bug in Good-weather App ""Setting & Searching"" Didn't working in Landscape Mode",[],"# Expected behavior
+Supposedly, the ""Setting & Searching"" both works in Landscape mode as works in Portrait  Mode
+
+# Actual behavior
+When I use Setting & Searching in portrait mode it works fine but when I tried this in Landscape mode then this setting didn't change there interface into Landscape mode and another part of Application work perfectly in both modes
+
+# How to reproduce
+1 For Download Click [Here](https://play.google.com/store/apps/details?id=org.asdtm.goodweather&hl=en_US)
+2 Install and open the app
+3 Go to Setting 
+4 Now turn App into Landscape mode 
+5 Go to Searching and turn App into Landscape Mode 
+
+Device: Samsung J5
+Operating system: Android Lollipop 5.1.1 (CPU: Quad-core 1.2 GHz Cortex-A53, RAM: 1.5 GB)
+Application Version: 4.4
+
+# Recording Of The Bug
+
+https://youtu.be/H5XorOiHAU0
+"
+qqq3/good-weather,open,FAQ request,[],"Greetings, I am mayowa, a github promoter and I would love to create a good FAQ page for this project, kindly reply me back to know your consent.
+Thanks."
+qqq3/good-weather,open,Logo/Icon proposal,[],"Hi good day! I would like to ask for your permission to propose a new designs of logo in your application/project. This issue is not saying that your current logo is unsatisfactory, I would just like to propose new designs. Hoping for your positive response Thank You!"
+qqq3/good-weather,open,hi,[],"i design logo/icon for ""open source projects"" on utopian ..
+i thınk your project need a good logo whıch make your applıcatıon vıew better..
+wanna me desıgn a logo ""free"" for your applıcatıon?
+
+please reply my post... ı ll start do design and share with you and than send a post on website ""utopian.io""..
+also u can connect wıth me on discord ""@ahmeterbay#0466"" or emaıl ""ahmeterbay@gmail.com"""
+qqq3/good-weather,open,Overlapping of the bitcoin barcode in good weather app,[],"
+#### Expected behavior
+Good weather app is a very good app which shows you the current weather conditions of the atmosphere for a given location and time ,Normally when trying to pay or while using the app everything  is meant to be okay both in portrait and landscape mode 
+ 
+#### Actual behavior
+so i tried checking out their donating system trying to donate then to discover that it has screen overlapping issue while in landscape mode
+
+#### How to reproduce
+open Good weather app
+Tap on donate bitcoin
+then switch to landscape mode
+
+* Device Used: Samsung Galaxy A3 
+* Android Version: 6.0.1
+
+#### Recording Of The Bug
+Below is an  Image of the bug
+
+![Screenshot_20180222-193852.png](https://res.cloudinary.com/hpiynhbhq/image/upload/v1519611767/o8hf95qrqrk7uxavqn2f.png)
+
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@suleimanz/overlapping-of-the-bitcoin-barcode-in-good-weather-app"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+qqq3/good-weather,open,Random location change,[],"Thanks for this great app! Since manually changing my location, the app changes it to some other one, e.g. Frankfurt, DE, becomes Markt Taschendorf, Offenbach, DE becomes Bischoffen... cannot make out any systematic behind it. Hamburg stays Hamburg. :)"
+qqq3/good-weather,open,Kabyle localization,[],"Hi, please consider the kabyle localization with in the next release."
+qqq3/good-weather,open,Switch OpenWeatherMap API URLs to HTTPS,[],See http://openweathermap.org/news/post/ssl-free-and-startup-accounts
+qqq3/good-weather,closed, Added new widget with a new icon set; various optimizations; logging to file option,[],
+qqq3/good-weather,closed,Weather forecast widget,[],"The current widgets only show the current weather.
+It would be nice if there would be a widget that shows the forecast of today on the home screen."
+qqq3/good-weather,closed,Added icons to preferences,[],"I've added icons to settings for a quick glance.
+
+**General settings:**
+
+<img src=""https://user-images.githubusercontent.com/25173387/30281078-1488f1f8-972f-11e7-8ead-07e56d855f53.png"" width=""360"">
+
+**Widget settings:**
+
+<img src=""https://user-images.githubusercontent.com/25173387/30281379-d436fc66-972f-11e7-990f-ee571ec0c39d.png"" width=""360"">
+
+**About:**
+
+<img src=""https://user-images.githubusercontent.com/25173387/30281432-049a7568-9730-11e7-9ea6-3ad760c58f30.png"" width=""360"">
+
+"
+qqq3/good-weather,closed,Added option to update location by intent from UnifiedNLP and server other improvements,[],I've added intent based API into UnifiedNLP location provider (my changes are in PR right now). This is the major change. I've improved several things - main focus is to keep widget updated even Android sleeps.
+qqq3/good-weather,closed,Copyright violation,[],"Hi @qqq3 
+
+I found [this app](https://play.google.com/store/apps/details?id=org.RoyalBlue.goodweather) on the Google Play Store. This guy just took your source code, added some ads in it and put it on the Store, without warning this is free software...
+
+As you are the owner of the source code, feel free to open a request to google [here](https://support.google.com/legal/contact/lr_dmca?product=googleplay) to remove the false app from the Store, if it's your wish ;)
+
+Don't forget to tell Google that:
+
+* The app is licensed under GNU GPL v3 license and this guy is violating it;
+* He is falsely claiming he made the app...
+
+Maybe you should take some time (one hour or something so) to check the other apps about weather information on Google Play Store, and report them to Google. I think some of them are just ""Good Weather"" with ads in it, and without GNU GPL, code source and your permission... If you do it, please copy-paste the links of the apps you reported in this thread, so that I can track the ""Google developers"" who are stealing your work. Thanks
+
+Regards"
+qqq3/good-weather,open,Data seems wrong,[],"I am in xining, China. Both the current temp and historical data seem very fishy.
+
+I just checked on openweather map. The results do not match their info.
+
+It is the same if I search for xining or if I click on location "
+qqq3/good-weather,open,Add Chinese language support in general setting.,[],
+qqq3/good-weather,open,can't change unit of length,[],"I can change from Celsius to Fahrenheit but not from Metric to Imperial.
+
+F-Droid version 4.4"
+qqq3/good-weather,closed,Restore widget theme and intents on update,[],"For me this change resolves issue #31. It essentially makes sure to set the widget theme and create its intents also whenever the More/LessWidgetService runs onHandleIntent(). This might not be the best possible solution, but it appears to have the desired effect. And so far it does not show bad side-effects."
+qqq3/good-weather,open,Widget problem,[],"Hi
+I have Problem with using the widget (4*2). After phone wakes up from from standby the widget is dark and doesn't react any more (app doesn't open, no actualisation).
+
+
+CyanogenMod 11 Motorola Razer I"
+qqq3/good-weather,open,Add Ability to Use Alternative Weather Sources via Personal API Keys,[],"In particular, I'd like to be able to use my personal/developer Wunderground and Darksky API keys in lieu of or alongside Openweathermap. "
+qqq3/good-weather,open,Change Featured Image,[],"I hope I'm not missing anything obvious here but currently the featured image cannot be changed and seems to be unaffected by the location or the weather.
+
+While it would be fantastic to have it update dynamically with the location and the weather, could we have the option to manually set it until then?
+
+An option to pick an image of your choice could be added to the Display settings, alongside theme and language."
+qqq3/good-weather,open,UV Index,[],Please add uv index info to the app.
+qqq3/good-weather,closed,New italian translation,[],"Hi good-weather teams,
+I added the new italian resource for this great app! I hope it's useful.
+
+Thanks and best regards
+Marco
+"
+qqq3/good-weather,closed,Turkish Translation,[],
+qqq3/good-weather,closed,Catalan translation,[],Add Catalan translation
+qqq3/good-weather,closed,add more languages,[],Can you place the language files on an online translation site like crowdin or hosted.weblate?
+qqq3/good-weather,closed,Transparent widget.,[],Hello. Would you be so kind and add an transparent setting for the widget? Thanks.
+qqq3/good-weather,closed,"Regular network location update, transparent theme, cs location",[],
+qqq3/good-weather,open,Add forecast widget,[],"Would be nice to have a 4x1 widget, which shows the weather icons of a 4 day forecast."
+qqq3/good-weather,closed,Add option for dark theme,[],Please add support for a dark theme for the app.
+qqq3/good-weather,closed,Minor changes to German strings,[],"As suggested by @firebirdberlin in the comments about pull request #5 the string ""nav_menu_graphs"" is changed from 'Diagramme' to 'Graphen'."
+qqq3/good-weather,closed,Update basque and spanish translations,[],And remove some unused imports added for testing
+qqq3/good-weather,closed,F-droid version out of date,[],f-droid has v3.0 as latest. Any chance uploading there the latest v4.0 ? thanks
+qqq3/good-weather,closed,Update app in F-Droid to version 4.0,[],The version in F-Droid is still version 3.0...
+qqq3/good-weather,open,Add Support To Track Multiple Cities,[],"I need to track the weather in multiple cities.
+
+This app could have an editable list inside of it (in the search area) of recent cities searched so I could quickly find my city again.
+
+I would like a section to display of the weather of multiple cites in rows.
+
+Also, when I choose the widget I would like it to ask me which city then keep THAT city in THAT widget. Then I could create multiple widgets with different cities.
+
+The app ""World Clock"" used to do this. I am really sad it is now broken. You might want to look at their code:
+
+https://github.com/arminha/worldclockwidget"
+qqq3/good-weather,closed,Add spanish translation,[],
+qqq3/good-weather,open,crash during search,[],"1) create 3x1 widget - widget reads ""London""
+2) tap widget to open app and tap geo icon
+3) app waits for location but never returns because it can't find a gps signal
+4) in the task manager, close good weather with the ""X""
+5) tap on the widget to reopen good weather and tap on the search icon
+6) begin typing any city name - search activity crashes
+7) try again - it crashes every time.
+8) do something else (like submit a bug report)
+9) come back to the app and try searching - this time it works"
+qqq3/good-weather,closed,Add option to disable weather description,[],"This closes #4 
+
+Please check I haven't broken anything else"
+qqq3/good-weather,closed,"Feature request: add solar hijri , jalali calendar",[],
+qqq3/good-weather,open,Add an option to see the temperature on android status bar ,[],Just simple temperature on status bar. 
+qqq3/good-weather,open,Add option to freely choose the widget size,[],..and its content would realign itself to any size user chooses. 
+qqq3/good-weather,closed,Add option for transparent widget,[],"Could make user selectable option for fully transparent widget. As minimalistic as possible, the more beautiful it would be. I'd like to see it without any colour header bars. Just temperature and maybe a cloud/rain/snow symbol and nothing more. Or maybe user could choose whether he wants to add location too in the widget?
+
+Anyway, I ask for as minimalistic as possible and transparent."
+qqq3/good-weather,closed,Widget becomes transparent and unclickable,[],"Running Good Weather on Android 7.1 (Nitrogen OS on Oneplus One).
+The widget becomes unclickable and transparent every now and then. See the attached screenshot.
+
+I must admit though, that I prefer the transparent outlook, eventhough it is a 
+bug. So I made also an enhancement suggestion. Would be nice to see this without the colored bar. 
+
+
+
+![screenshot_20161113-164839](https://cloud.githubusercontent.com/assets/13743305/20246543/7a4ea2b4-a9c1-11e6-9399-7a134a30af60.png)"
+qqq3/good-weather,closed,Added Japanese translation,[],Hello!
+qqq3/good-weather,closed,German translation corrections,[],"Hello good-weather team,
+I got interessted in this app and while browsing through the code and running it with German localization (since I'm German), some translation issues appeared and I corrected them and reordered the translation strings analogue to the default string.xlm for comparability and maintenance.
+
+If the corrections are ok for you, would you like to pull them in?
+
+Regards,
+mahula"
+qqq3/good-weather,closed,Feature request: add option to disable weather description,[],"Hi! First of all, thank you for your great app, it works very well and is visually beautiful.
+
+I'm not reporting an issue but a doing a feature request. When a language is not supported by openweathermap, it returns the weather description in english. It's not a big problem, but most of the time, the weather icon gives enough information about the weather. So my proposal is to add and option in the settings to allow hiding the description, both from the main screen and from the widget.
+
+Thank you for your time and have a nice day :-)"
+qqq3/good-weather,closed,Add runtime permissions for Android 6.0+,[],"In case permissions are not granted, the app get stuck on ""Find current location"" (without even showing any error message)"
+qqq3/good-weather,closed,Add basque translation,[],
+qqq3/good-weather,closed,Add forecast,[],"Nice app, but currently it shows only current weather.
+A forecast for the next days would be nice.
+"

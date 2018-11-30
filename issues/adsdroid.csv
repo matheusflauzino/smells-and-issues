@@ -1,0 +1,310 @@
+repository,state,title,label,body
+dnet/adsdroid,closed,Updated tr (Turkish) translation,[],Commit made via [Stringlate](https://lonamiwebs.github.io/stringlate/)
+dnet/adsdroid,closed,[CRASH] IllegalArgumentException: Malformed URL,"[Label(name=""bug"")]","logcat excerpt:
+```
+06-02 01:29:06.130   504   577 E AndroidRuntime: FATAL EXCEPTION: AsyncTask #4
+06-02 01:29:06.130   504   577 E AndroidRuntime: Process: hu.vsza.adsdroid, PID: 504
+06-02 01:29:06.130   504   577 E AndroidRuntime: Theme: themes:{default=overlay:org.cyanogenmod.hexolibre, iconPack:system, fontPkg:org.cyanogenmod.hexolibre, com.android.systemui=overlay:org.cyanogenmod.hexolibre, com.android.systemui.navbar=overlay:org.cyanogenmod.hexolibre}
+06-02 01:29:06.130   504   577 E AndroidRuntime: java.lang.RuntimeException: An error occurred while executing doInBackground()
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at android.os.AsyncTask$3.done(AsyncTask.java:309)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:354)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at java.util.concurrent.FutureTask.setException(FutureTask.java:223)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at java.util.concurrent.FutureTask.run(FutureTask.java:242)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:234)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at java.lang.Thread.run(Thread.java:818)
+06-02 01:29:06.130   504   577 E AndroidRuntime: Caused by: java.lang.IllegalArgumentException: Malformed URL: //www.alldatasheet.com/datasheet-pdf/pdf/413767/UTC/LM393-D08-T.html
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at a.a.a.d.a(Unknown Source)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at a.a.a.d.d(Unknown Source)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at a.a.h.a(Unknown Source)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at hu.vsza.a.a.a(Unknown Source)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at hu.vsza.adsdroid.b.a(Unknown Source)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at hu.vsza.adsdroid.b.doInBackground(Unknown Source)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at android.os.AsyncTask$2.call(AsyncTask.java:295)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	... 4 more
+06-02 01:29:06.130   504   577 E AndroidRuntime: Caused by: java.net.MalformedURLException: Protocol not found: //www.alldatasheet.com/datasheet-pdf/pdf/413767/UTC/LM393-D08-T.html
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at java.net.URL.<init>(URL.java:176)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	at java.net.URL.<init>(URL.java:125)
+06-02 01:29:06.130   504   577 E AndroidRuntime: 	... 12 more
+```
+"
+dnet/adsdroid,open,Frequently Asked Questions (FAQ's),[],This file contains the possible frequently asked questions and the answers 
+dnet/adsdroid,closed,LOGO,"[Label(name=""enhancement"")]",
+dnet/adsdroid,open,Crash occurs while canceling and re-searching ,"[Label(name=""bug"")]","How to reproduce 
+- after typing a word to search
+- click the search and and click an empty space to cancel 
+- if search is clicked again, the app crashes after result is displayed.
+
+## Logcat
+`05-12 08:11:34.251 17903 17903 E AndroidRuntime: FATAL EXCEPTION: main
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: Process: com.android.systemui, PID: 17903
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: java.lang.NullPointerException: Attempt to invoke virtual method 'int com.android.systemui.statusbar.notification.HybridNotificationView.getHeight()' on a null object reference
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.stack.NotificationChildrenContainer.getMinHeight(NotificationChildrenContainer.java:812)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.stack.NotificationChildrenContainer.getCollapsedHeight(NotificationChildrenContainer.java:794)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.ExpandableNotificationRow.getCollapsedHeight(ExpandableNotificationRow.java:1522)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.ExpandableNotificationRow.getIntrinsicHeight(ExpandableNotificationRow.java:1236)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.NotificationContentView.calculateVisibleType(NotificationContentView.java:841)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.NotificationContentView.updateExpandButtons(NotificationContentView.java:1104)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.ExpandableNotificationRow.onChildrenCountChanged(ExpandableNotificationRow.java:1252)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.ExpandableNotificationRow.addChildNotification(ExpandableNotificationRow.java:373)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.phone.PhoneStatusBar.addNotificationChildrenAndSort(PhoneStatusBar.java:2550)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.phone.PhoneStatusBar.updateNotificationShade(PhoneStatusBar.java:2484)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.phone.PhoneStatusBar.updateNotifications(PhoneStatusBar.java:2669)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.BaseStatusBar.addNotificationViews(BaseStatusBar.java:2411)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.phone.PhoneStatusBar.addNotification(PhoneStatusBar.java:2230)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.systemui.statusbar.BaseStatusBar$7$2.run(BaseStatusBar.java:687)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at android.os.Handler.handleCallback(Handler.java:836)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:103)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:203)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:6251)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1073)
+05-12 08:11:34.251 17903 17903 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:934)
+05-12 08:11:34.476   914  1089 E ConnectivityService: RemoteException caught trying to send a callback msg for NetworkRequest [ id=283, legacyType=-1, [] ]
+05-12 08:12:56.470   914  1649 E ActivityManager: applyOptionsLocked: Unknown animationType=0
+05-12 08:13:06.172   914   996 E BatteryStatsService: no controller energy info supplied
+05-12 08:13:06.172   914   996 E BatteryStatsService: no controller energy info supplied
+05-12 08:13:06.197   914   996 E BatteryStatsService: modem info is invalid: ModemActivityInfo{ mTimestamp=0 mSleepTimeMs=0 mIdleTimeMs=0 mTxTimeMs[]=[0, 0, 0, 0, 0] mRxTimeMs=0 mEnergyUsed=0}
+05-12 08:13:22.607   914 24553 E ActivityManager: applyOptionsLocked: Unknown animationType=0
+05-12 08:14:42.240   914  1089 E ConnectivityService: RemoteException caught trying to send a callback msg for NetworkRequest [ id=346, legacyType=-1, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED] ]
+05-12 08:14:42.246   914  1089 E ConnectivityService: RemoteException caught trying to send a callback msg for NetworkRequest [ id=344, legacyType=-1, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED] ]
+05-12 08:14:42.263   914   994 E NetdConnector: NDC Command {8443 firewall set_uid_rule dozable 10156 allow} took too long (649ms)
+05-12 08:16:58.905   914  1764 E ActivityManager: getContentProviderImpl: Update provider ProcessRecord{f4323a9 914:system/1000} conProviers's adj. conProviders.provider.proc = ProcessRecord{5394b88 26939:android.process.acore/u0a1} stableCount = 1
+05-12 08:16:59.025   914  1492 E Telecom : CallAudioRouteStateMachine: Unexpected message code: ICA.sAR->CARSM.pM_USER_SWITCH_EARPIECE@EsY_0
+05-12 08:16:59.025   914  1492 E Telecom : java.lang.IllegalStateException
+05-12 08:16:59.025   914  1492 E Telecom : 	at com.android.server.telecom.CallAudioRouteStateMachine.unhandledMessage(CallAudioRouteStateMachine.java:1094)
+05-12 08:16:59.025   914  1492 E Telecom : 	at com.android.internal.util.StateMachine$SmHandler.processMsg(StateMachine.java:989)
+05-12 08:16:59.025   914  1492 E Telecom : 	at com.android.internal.util.StateMachine$SmHandler.handleMessage(StateMachine.java:799)
+05-12 08:16:59.025   914  1492 E Telecom : 	at android.os.Handler.dispatchMessage(Handler.java:110)
+05-12 08:16:59.025   914  1492 E Telecom : 	at android.os.Looper.loop(Looper.java:203)
+05-12 08:16:59.025   914  1492 E Telecom : 	at android.os.HandlerThread.run(HandlerThread.java:61)
+05-12 08:17:38.324   914  1089 E ConnectivityService: RemoteException caught trying to send a callback msg for NetworkRequest [ id=347, legacyType=-1, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED] ]
+05-12 08:18:14.437   914  4443 E ActivityManager: applyOptionsLocked: Unknown animationType=0
+05-12 08:18:41.284   914   996 E BatteryStatsService: no controller energy info supplied
+05-12 08:18:41.284   914   996 E BatteryStatsService: no controller energy info supplied
+05-12 08:18:41.328   914   996 E BatteryStatsService: modem info is invalid: ModemActivityInfo{ mTimestamp=0 mSleepTimeMs=0 mIdleTimeMs=0 mTxTimeMs[]=[0, 0, 0, 0, 0] mRxTimeMs=0 mEnergyUsed=0}
+05-12 08:20:26.555   914  3510 E ActivityManager: applyOptionsLocked: Unknown animationType=0
+05-12 08:22:26.508   914 25453 E ActivityManager: applyOptionsLocked: Unknown animationType=0
+05-12 08:22:52.140   914  1089 E ConnectivityService: RemoteException caught trying to send a callback msg for NetworkRequest [ id=348, legacyType=-1, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED] ]
+05-12 08:22:52.239   914   995 E libprocessgroup: failed to kill 1 processes for processgroup 2807
+05-12 08:23:35.788   914  3193 E NotificationService: Package enqueue rate is 10.233823. Shedding events. package=com.whatsapp
+05-12 08:24:27.188   914   996 E BatteryStatsService: no controller energy info supplied
+05-12 08:24:27.188   914   996 E BatteryStatsService: no controller energy info supplied
+05-12 08:24:27.218   914   996 E BatteryStatsService: modem info is invalid: ModemActivityInfo{ mTimestamp=0 mSleepTimeMs=0 mIdleTimeMs=0 mTxTimeMs[]=[0, 0, 0, 0, 0] mRxTimeMs=0 mEnergyUsed=0}
+05-12 08:24:41.046   914  4449 E NotificationService: Package enqueue rate is 10.819949. Shedding events. package=com.whatsapp
+05-12 08:25:29.835   914   996 E BatteryStatsService: no controller energy info supplied
+05-12 08:25:29.835   914   996 E BatteryStatsService: no controller energy info supplied
+05-12 08:25:30.450   914   996 E BatteryStatsService: modem info is invalid: ModemActivityInfo{ mTimestamp=0 mSleepTimeMs=0 mIdleTimeMs=0 mTxTimeMs[]=[0, 0, 0, 0, 0] mRxTimeMs=0 mEnergyUsed=0}
+05-12 08:26:36.798   914  2102 E NotificationService: Package enqueue rate is 10.691525. Shedding events. package=com.whatsapp
+05-12 08:27:24.123   914   995 E libprocessgroup: failed to kill 1 processes for processgroup 4694
+05-12 08:27:58.415   914   996 E BatteryStatsService: no controller energy info supplied
+05-12 08:27:58.415   914   996 E BatteryStatsService: no controller energy info supplied
+05-12 08:27:58.466   914   996 E BatteryStatsService: modem info is invalid: ModemActivityInfo{ mTimestamp=0 mSleepTimeMs=0 mIdleTimeMs=0 mTxTimeMs[]=[0, 0, 0, 0, 0] mRxTimeMs=0 mEnergyUsed=0}`
+
+#### Video 
+https://youtu.be/Ac6-uqQqCjM"
+dnet/adsdroid,open,The app crashes ,"[Label(name=""bug"")]","
+***Actual Behavior***
+
+well,  it gets to a point that the app crashes on the search results page when it is rotated and then left for some seconds. say 15 seconds
+
+
+***How to produce the bug***
+
+ * open the app
+ * search for an item or just click on the search by parts name button
+ * click on one of the results is brings
+  * while it is downloading some pdf files quickly rotate your screen and rotate it back
+ * wait for like 15 seconds
+ * it will crash
+
+***TEST TOOLS***
+
+* Operating system : Android 6.0
+* Phone : Infinix hot s
+* ADSdroid v1.7
+
+***Recording of the bug is showned below......***
+
+
+
+Watch the video below to see how it behaves.... 
+
+https://youtu.be/bpKH2JjE2mc"
+dnet/adsdroid,closed,The Fdroid Repo shows Known Vulnerability and Disabled Algorithm,"[Label(name=""invalid"")]","Please update the app to latest openssl and if I am not wrong md5 is disabled on frdoid as hashing alg
+
+Please update these so that app will be more secure and I will install without hesitation due to security risk.
+
+_Sent from my OnePlus5T using [FastHub-Libre](https://github.com/thermatk/FastHub-Libre/)_"
+dnet/adsdroid,closed,The Fdroid Repo shows Known Vulnerability and Disabled Algorithm,"[Label(name=""invalid"")]","Please update the app to latest openssl and if I am not wrong md5 is disabled on frdoid as hashing alg
+
+Please update these so that app will be more secure and I can install it without hesitation due to security risk.
+
+_Sent from my OnePlus5T using [FastHub-Libre](https://github.com/thermatk/FastHub-Libre/)_ "
+dnet/adsdroid,closed,[FR] catch a text as Share to ADSDroid,"[Label(name=""enhancement"")]",Need an intent for that...
+dnet/adsdroid,open,[FR] search history,"[Label(name=""enhancement"")]",would be nice though not so necessary.
+dnet/adsdroid,closed,[FR] change download destination,"[Label(name=""enhancement"")]","Probably here: https://github.com/dnet/adsdroid/blob/f12ed6d8f4f27791a2797288d595bab515040d75/src/hu/vsza/adsdroid/PartList.java#L85
+I like the app, are you going to support it further?"
+dnet/adsdroid,closed,Translation to Brazilian Portuguese,[],
+dnet/adsdroid,closed,cannot download your app,[],"I was trying to download your app from fdroid but occurs a message like this 
+https://f-droid.org/repo/hu.vsza.adsdroid_8.apk https://f-droid.org/repo/hu.vsza.adsdroid_8.apk
+and download doesnt start
+What can i do?
+Thank you for the attention
+Marco"
+dnet/adsdroid,open,Added ru (русский) translation,"[Label(name=""translation"")]","I have translated your application into `ru` (*русский*). Here is the xml:
+```xml
+<?xml version=""1.0"" encoding=""utf-8""?>
+<resources>
+    <string name=""app_name"">ADSdroid</string>
+    <string name=""search_mode_prompt"">Режим поиска</string>
+    <string name=""part_list_title"">Результаты поиска</string>
+    <string name=""searching"">Поиск...</string>
+    <string name=""no_results"">Не найдено результатов.</string>
+    <string name=""error_fetching_results"">Ошибка при получении результатов.</string>
+    <string name=""starting_download"">Начато скачивание...</string>
+    <string name=""fetching_pdf_url"">Получение PDF URL...</string>
+    <string name=""connecting_to_pdf_server"">Соединение с PDF сервером...</string>
+    <string name=""download_progress"">Скачивание даташита... (получено  %d байт)</string>
+    <string name=""download_error"">Ошибка при скачивании</string>
+    <string name=""download_done"">Даташит сохранён как %s</string>
+    <string name=""pdf_open_failed"">Сбой открытия PDF просмотрщика, он установлен?</string>
+    <string name=""part_name_label"">Имя части:</string>
+    <string name=""search_by_part_name"">Поиск по имени части</string>
+</resources>
+
+```
+
+---
+
+*Translation made with [Stringlate](https://github.com/LonamiWebs/Stringlate).*"
+dnet/adsdroid,closed,German Translation,"[Label(name=""translation"")]","I translated you App to German using Stringlate:
+
+https://gist.github.com/anonymous/cbb84578414097a68fab967be3f55f38"
+dnet/adsdroid,closed,The new build crashes after searching anything,[],"Tested on Samsung Galaxy SII, Android 4.0.3/cyanogenmod.
+
+ADSDroid 1.5 (built from an hour ago)
+
+While searching for ""TSOP 4838"":
+
+```
+W/dalvikvm(28294): Exception Ljava/lang/NullPointerException; thrown while initializing La/a/b/k;
+W/dalvikvm(28294): Exception Ljava/lang/ExceptionInInitializerError; thrown while initializing La/a/b/l;
+W/dalvikvm(28294): threadid=11: thread exiting with uncaught exception (group=0x40a2a1f8)
+E/AndroidRuntime(28294): FATAL EXCEPTION: AsyncTask #1
+E/AndroidRuntime(28294): java.lang.RuntimeException: An error occured while executing doInBackground()
+E/AndroidRuntime(28294):    at android.os.AsyncTask$3.done(AsyncTask.java:278)
+E/AndroidRuntime(28294):    at java.util.concurrent.FutureTask$Sync.innerSetException(FutureTask.java:273)
+E/AndroidRuntime(28294):    at java.util.concurrent.FutureTask.setException(FutureTask.java:124)
+E/AndroidRuntime(28294):    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:307)
+E/AndroidRuntime(28294):    at java.util.concurrent.FutureTask.run(FutureTask.java:137)
+E/AndroidRuntime(28294):    at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:208)
+E/AndroidRuntime(28294):    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1076)
+E/AndroidRuntime(28294):    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:569)
+E/AndroidRuntime(28294):    at java.lang.Thread.run(Thread.java:856)
+E/AndroidRuntime(28294): Caused by: java.lang.ExceptionInInitializerError
+E/AndroidRuntime(28294):    at a.a.b.f.<init>(Unknown Source)
+E/AndroidRuntime(28294):    at a.a.b.e.<init>(Unknown Source)
+E/AndroidRuntime(28294):    at a.a.c.di.b(Unknown Source)
+E/AndroidRuntime(28294):    at a.a.c.di.a(Unknown Source)
+E/AndroidRuntime(28294):    at a.a.c.b.a(Unknown Source)
+E/AndroidRuntime(28294):    at a.a.c.ae.a(Unknown Source)
+E/AndroidRuntime(28294):    at a.a.a.a.a(Unknown Source)
+E/AndroidRuntime(28294):    at a.a.a.j.e(Unknown Source)
+E/AndroidRuntime(28294):    at a.a.a.e.b(Unknown Source)
+E/AndroidRuntime(28294):    at hu.vsza.a.b.searchByPartName(Unknown Source)
+E/AndroidRuntime(28294):    at hu.vsza.adsdroid.c.a(Unknown Source)
+E/AndroidRuntime(28294):    at hu.vsza.adsdroid.c.doInBackground(Unknown Source)
+E/AndroidRuntime(28294):    at android.os.AsyncTask$2.call(AsyncTask.java:264)
+E/AndroidRuntime(28294):    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:305)
+E/AndroidRuntime(28294):    ... 5 more
+E/AndroidRuntime(28294): Caused by: java.lang.ExceptionInInitializerError
+E/AndroidRuntime(28294):    at a.a.b.l.<clinit>(Unknown Source)
+E/AndroidRuntime(28294):    ... 19 more
+E/AndroidRuntime(28294): Caused by: java.lang.NullPointerException
+E/AndroidRuntime(28294):    at java.util.Properties.load(Properties.java:246)
+E/AndroidRuntime(28294):    at a.a.b.k.d(Unknown Source)
+E/AndroidRuntime(28294):    at a.a.b.k.<clinit>(Unknown Source)
+E/AndroidRuntime(28294):    ... 20 more
+W/ActivityManager( 1798):   Force finishing activity hu.vsza.adsdroid/.SearchPanel
+(...)
+E/WindowManager(28294): Activity hu.vsza.adsdroid.SearchPanel has leaked window com.android.internal.policy.impl.PhoneWindow$DecorView@41380cf8 that was originally added here
+E/WindowManager(28294): android.view.WindowLeaked: Activity hu.vsza.adsdroid.SearchPanel has leaked window com.android.internal.policy.impl.PhoneWindow$DecorView@41380cf8 that was originally added here
+E/WindowManager(28294):     at android.view.ViewRootImpl.<init>(ViewRootImpl.java:344)
+E/WindowManager(28294):     at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:267)
+E/WindowManager(28294):     at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:215)
+E/WindowManager(28294):     at android.view.WindowManagerImpl$CompatModeWrapper.addView(WindowManagerImpl.java:140)
+E/WindowManager(28294):     at android.view.Window$LocalWindowManager.addView(Window.java:537)
+E/WindowManager(28294):     at android.app.Dialog.show(Dialog.java:278)
+E/WindowManager(28294):     at hu.vsza.adsdroid.c.onPreExecute(Unknown Source)
+E/WindowManager(28294):     at android.os.AsyncTask.executeOnExecutor(AsyncTask.java:561)
+E/WindowManager(28294):     at android.os.AsyncTask.execute(AsyncTask.java:511)
+E/WindowManager(28294):     at hu.vsza.adsdroid.SearchPanel.searchByPartName(Unknown Source)
+E/WindowManager(28294):     at java.lang.reflect.Method.invokeNative(Native Method)
+E/WindowManager(28294):     at java.lang.reflect.Method.invoke(Method.java:511)
+E/WindowManager(28294):     at android.view.View$1.onClick(View.java:3039)
+E/WindowManager(28294):     at android.view.View.performClick(View.java:3511)
+E/WindowManager(28294):     at android.view.View$PerformClick.run(View.java:14105)
+E/WindowManager(28294):     at android.os.Handler.handleCallback(Handler.java:605)
+E/WindowManager(28294):     at android.os.Handler.dispatchMessage(Handler.java:92)
+E/WindowManager(28294):     at android.os.Looper.loop(Looper.java:137)
+E/WindowManager(28294):     at android.app.ActivityThread.main(ActivityThread.java:4424)
+E/WindowManager(28294):     at java.lang.reflect.Method.invokeNative(Native Method)
+E/WindowManager(28294):     at java.lang.reflect.Method.invoke(Method.java:511)
+E/WindowManager(28294):     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+E/WindowManager(28294):     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)
+E/WindowManager(28294):     at dalvik.system.NativeStart.main(Native Method)
+(...)
+E/JavaBinder( 1798): !!! FAILED BINDER TRANSACTION !!!
+E/JavaBinder( 1798): !!! FAILED BINDER TRANSACTION !!!
+W/ActivityManager( 1798): Failure sending broadcast Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:hu.vsza.adsdroid flg=0x10000010 (has extras) }
+W/ActivityManager( 1798): android.os.TransactionTooLargeException
+W/ActivityManager( 1798):   at android.os.BinderProxy.transact(Native Method)
+W/ActivityManager( 1798):   at android.app.ApplicationThreadProxy.scheduleRegisteredReceiver(ApplicationThreadNative.java:946)
+W/ActivityManager( 1798):   at com.android.server.am.ActivityManagerService.performReceiveLocked(ActivityManagerService.java:12826)
+W/ActivityManager( 1798):   at com.android.server.am.ActivityManagerService.deliverToRegisteredReceiverLocked(ActivityManagerService.java:12891)
+W/ActivityManager( 1798):   at com.android.server.am.ActivityManagerService.processNextBroadcast(ActivityManagerService.java:12949)
+W/ActivityManager( 1798):   at com.android.server.am.ActivityManagerService.access$100(ActivityManagerService.java:151)
+W/ActivityManager( 1798):   at com.android.server.am.ActivityManagerService$2.handleMessage(ActivityManagerService.java:993)
+W/ActivityManager( 1798):   at android.os.Handler.dispatchMessage(Handler.java:99)
+W/ActivityManager( 1798):   at android.os.Looper.loop(Looper.java:137)
+W/ActivityManager( 1798):   at com.android.server.am.ActivityManagerService$AThread.run(ActivityManagerService.java:1414)
+```
+"
+dnet/adsdroid,closed,Downloaded PDFs are corrupted; alldatasheets blocked you?,[],"When I try to view any datasheet (ex. attiny85), I get an ""cannot open PDF file"" from my pdf reader. The contents of the pdf downloaded to `/sdcard/ATtiny85-20140111-230016.pdf` are:
+
+```
+<script type='text/javascript' src='http://ads.supplyframe.com/openads/adjs.php?​
+n=544970556&what=zone:448&target=_blank
+&taxonomy=/Electronic+Components/​Semiconductors+and+Integrated+Circuits/Microprocessors,+Microcontrollers,+DSPs/​AR​M,+​RISC-Based+Microcontrollers
+&term=ATtiny85&exclude=,'>​</script>
+```
+
+(whitespace trimmed, added line breaks)
+
+Tested on motorola xoom 3g, android 4.0.3, not rooted.
+
+Note: didn't build the app from source, but used the binary distribution from http://techblog.vsza.hu/posts/Unofficial_Android_app_for_alldatasheet.com.html; the filename had a name of adsdroid-release-v1.4 and last commit says ""bumped version to 1.4"", so i guess it's the same (may be mistaken, through).
+"
+dnet/adsdroid,closed,Multiple results for the same part,[],"Example :when searching for atmega168, the last includes 4 results for ATMEGA168-20 with no indication what the differences might be. 
+"
+dnet/adsdroid,closed,Error fetching results,[],"No matter what I search for, I get ""Error fetching results""
+"
+dnet/adsdroid,closed,Search functionality is broken,"[Label(name=""bug"")]","Matthias Müller wrote:
+
+```
+There is a problem with ADSdroid again. I can't find any data sheet.
+```
+"
+dnet/adsdroid,closed,Download functionality is broken,"[Label(name=""bug"")]","Matthias Müller wrote:
+
+```
+yesterday I installed your app „ADSdroid” to download datasheet from
+alldatasheet.com. But there is a problem when I click an item in
+listview to download (“Error happened during download”).
+```
+"
+dnet/adsdroid,closed,Use Theme.Holo when running on ICS,[],"I changed one line in AndroidManifest.xml so the app uses the new Holo theme when running on Android 4.0. It should work normally on other android versions and just use the old theme.
+"

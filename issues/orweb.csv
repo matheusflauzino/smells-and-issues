@@ -1,0 +1,378 @@
+repository,state,title,label,body
+guardianproject/orweb,open,Orfox screen is immune to capture by screencast,[],"This is quite bizarre.  I wanted to capture the Orfox screen to supply it for bug https://github.com/guardianproject/Orweb/issues/72, but it could not be captured. I'm using the stock screencast tool that originally posted at https://code.google.com/p/androidscreencast/ but apparently it's no longer available.  These are the commands I use to execute it:
+```
+typeset -a jars=(/usr/local/androidscreencast/*.jar)
+java -cp ""$(IFS=:; printf %s ""${jars[*]}"")"" net.srcz.android.screencast.Main . &
+```
+That has always worked and still works.  But exceptionally, as soon as I put the Orfox window in focus on the phone, screencast freezes on the previous screen and cannot display Orfox.  When I exit Orfox, screencast works again.
+
+It's a strange bug.  Whoever solves this might want to keep good notes on what causes it, because this bug could actually become a security feature.  Imagine an app prompting for some sensitive bit of info that should never be recorded.. an app could invoke the bug herein to deliberately block screen capture."
+guardianproject/orweb,open,"""The proxy server is refusing connections"" error on AOS 6 (marshmellow)",[],"This is a new AOS 6 device configured as follows:
+
+Netguard
+* runs in white list mode with VPN privileges. This means all apps are blocked by default, and whitelisted apps are forced through Orbot.
+* is set to filter all traffic and SOCK5-proxy it to port 9050
+* Orbot, Orweb & F-Droid all have the ""apply rules and conditions"" box unticked, so they are exempt from Netguard processing.
+
+Orbot
+* does not have VPN privileges
+* listens on port 9050
+
+F-Droid
+* set to use Orbot (this is simply a toggle and strangely has no port parameter - how does it know to use port 9050?)
+
+Orfox
+* has no config option for using Orbot.  No port parameter either.  How can I be sure that Orfox knows what to connect to?
+
+F-Droid and Orfox are both set to bypass Netguard and connect to Orbot.  F-droid works.  Orfox times out when trying to visit check.torproject.org and eventually says ""The proxy server is refusing connections"".
+
+This may be irrelevant, but this command was executed the first time the new phone was USB-attached:
+```
+  $ for app in com.android.printspooler\
+               com.google.android.apps.cloudprint\
+               com.google.android.feedback\
+               com.google.android.gm\
+               com.google.android.googlequicksearchbox\
+               com.google.android.onetimeinitializer\
+               com.google.android.youtube; do adb shell ""pm disable --user 13 $app""; done
+```
+I've attached a screenshot (which I needed to crudely take using another camera due to bug https://github.com/guardianproject/Orweb/issues/73)
+
+![orfox_fail](https://user-images.githubusercontent.com/18015852/43688329-e24bb210-98e6-11e8-810a-b09f5c72ecbb.png)
+
+"
+guardianproject/orweb,closed,"rudimentary panic support, translation and build fixes",[],"This is the first, basic support for responding to panic triggers.  It clears the cache.  I so far have not gotten it to clear the current web page.  Any ideas there?
+
+Lots of translation fixes and updates are included.
+
+This includes lots of build fixes that I needed to do in order to get it to build at all.  I then added the standard build scripts.
+"
+guardianproject/orweb,closed,minor translation updates,[],"This mostly just includes the source and translated files for the app store description.  It includes a fix for a syntax error in an XML file.
+"
+guardianproject/orweb,closed,Critical: WebRTC IP Leak,[],"Critical leak of IP information using WebRTC RTCpeerconnection.
+When JavaScript is enabled the browser allows for direct peer connections to ICE server that reveals the real user IP address.
+"
+guardianproject/orweb,closed,Add a progress bar ?,[],"You can't actually know if a website is loading or not, it's pretty anoying.
+"
+guardianproject/orweb,open,Orweb is vulnerable to FREAK attack,[],"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0204
+
+A test website can be found here: https://freakattack.com/
+"
+guardianproject/orweb,closed,Fixed Spelling/Grammar,[],"Trivial. But needed.
+"
+guardianproject/orweb,closed,Javascript request,[],"I think most orweb users and users of any kind of tor products assume the product is secure by default, and the developer community is making sure that that is the case.
+One of this default security settings is having javascript disabled, however the reality is that sometimes you will be forced to enable javascript to properly use a site. With tor-browser/firefox this is a no brainer with the use of noscript, in the case of orweb you have to ""manually"" enable the setting.
+
+The problem, the way I see it, is that the setting will remain enabled from then on and it will be like that for every site you surf from then on, unless you disable it.
+I'm a fairly technical person and I can see myself disabling the setting and forgetting about it, let alone the regular user who just wants the privacy with no hassle.
+
+Would you guys consider a workaround for this ? One idea is to never save the javascript settings between browser restarts, I'm sure most users can live with the burden of enabling javascript when they need it.
+
+Thanks.
+"
+guardianproject/orweb,closed,Spanish translations,[],"Fixed some translations.
+
+**Please, bring from arrays.xml**:
+
+```
+<string-array name=""cookiePreferences""><item>Accept all cookies</item>
+<item>Only accept whitelisted cookies</item>
+<item>Block all cookies</item>
+</string-array>
+```
+
+In Spanish:
+
+```
+<string-array name=""cookiePreferences""><item>Aceptar todas las cookies</item>
+<item>Aceptar sólo las cookies de la lista blanca</item>
+<item>Bloquear todas las cookies</item>
+</string-array>
+```
+"
+guardianproject/orweb,open,Why a clear history option when Orweb does not store history,[],"It states [here](https://guardianproject.info/apps/orweb/) that Orweb doesn't store browser history, yet the application has a menu option for clearing the history/cache!
+"
+guardianproject/orweb,closed,https-only option?,[],"Sometimes I don't want even the tor network to see my traffic -- hence wishing to be in a https-only mode.  Does this make sense?  is it possible to implement?
+"
+guardianproject/orweb,open,Wrong or spoofable URL in the address bar or title,[],"If a webpage contains a HTTP redirect, the wrong URL is shown in the address bar in the end. You can try it with e.g. https://tinyurl.com/161 which redirects to http://www.google.com/ . During loading the forwarded URL is displayed. Afterwards the title bar will show _page title_ | _original URL_. The address bar does also contain the original instead of the actual URL.
+
+The title bar showing the URL is also vulnerable to _address spoofing_ with enabled JavaScript. In my tests the address could be spoofed with example three, four, five and seven. Examples were taken from here: https://ios.browsr-tests.com/alt/native.abs.php
+"
+guardianproject/orweb,closed,updated German translation,[],"updated German translation, sync from Transifex 19.07.2014
+"
+guardianproject/orweb,open,Socks proxy not supported,[],"I'm trying to get Orweb 0.61 (latest from f-Droid) running on my (rooted) Nexus 10 Android 4.4.4 tablet. Orweb should get access through an tor proxy running on the same network. I've configured Orweb to the proxy address and port of that tor (socks) proxy and ""socks"" as proxy type. 
+
+But it won't work, Orweb won't connect with the socks protocol, instead it seems to use http proctocol (logged by tor in log file) 
+
+Is Socks not supported by current version of Orweb ? 
+"
+guardianproject/orweb,open,removeUnproxyeableElements not working / not called,[],"Hello,
+
+this function in [Browser.java#L1560](https://github.com/guardianproject/Orweb/blob/d33164dead36dfc6b6fdfe574093e0c7c43e5b22/src/info/guardianproject/browser/Browser.java#L1560) isn't called anymore. Maybe you want to remove it?
+
+``` java
+private String removeUnproxyeableElements (InputStream is, String encoding)
+```
+
+Anyway, it wouldn't filter encapsulated elements like `<<audio>video` correctly.
+"
+guardianproject/orweb,open,Ip Leakage through HTML5 Multimedia Elements and Downloads,[],"Orweb is vulnerable to real ip disclosure via HTML5 Video Audio elements and via downloads. More information can be found on http://xordern.net/why-you-really-shouldn't-use-orweb-anymore.html and https://guardianproject.info/2013/08/21/orweb-security-advisory-possible-ip-leakage-with-html5-videoaudio/.
+
+Furthermore, Downloads are performed with the internal Download Manager which also bypasses Orbot and could be used to disclose the real ip.
+
+Live demo: http://xordern.net/checkip
+Download check: http://xordern.net/checkip?extended
+
+Tested with Orweb 0.5.2 on Android 4.3
+"
+guardianproject/orweb,open,"x-wap-profile and X-Requested-With defeat user-agent, de-anonymize users",[],"I'm using Orweb 0.6 via F-Droid.
+On my phone, Orweb sends the following HTTP headers (among others) via port 8118 to Tor on port 9050:
+x-wap-profile: http://218.249.47.94/Xianghe/MTK_Phone_JB_UAprofile.xml
+X-Requested-With: info.guardianproject.browser
+
+I don't know why/where that is added, but these pieces of information certainly defeat the purpose of configurable user-agent strings.  (I didn't check this systematically, but I send the above headers with the default User Agent setting and also pretending to be TorBrowserBundle.)
+People using rare phones (such as myself) are probably identified uniquely.
+
+For the record, here is a sample GET request:
+GET / HTTP/1.1
+Host: heise.de
+Pragma: no-cache
+Cache-Control: no-cache
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,_/_;q=0.8
+x-wap-profile: http://218.249.47.94/Xianghe/MTK_Phone_JB_UAprofile.xml
+X-Requested-With: info.guardianproject.browser
+User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:10.0) Gecko/20100101 Firefox/10.0
+Accept-Encoding: gzip,deflate
+Accept-Language: de-DE, en-US
+Accept-Charset: utf-8, utf-16, *;q=0.7
+Connection: close
+"
+guardianproject/orweb,closed,Orbot WARNs DNSPort and TransPort public address specified,[],"Sorry, I reported this issue in the wrong place.
+
+I have the same issue reported here:
+https://trac.torproject.org/projects/tor/ticket/7254#no2
+
+Using 13.0.7-BETA-1 downloaded from the play store.
+"
+guardianproject/orweb,open,Ignores proxy setting on kitkat,[],"cyanogenmod 11.0 20140320. Orbot running, privoxy running, strace shows Orweb is not even connecting to privoxy process. Orweb has default config (proxy 127.0.0.1:8118).
+
+When manually connecting with telnet to 127.0.0.1:8118, tor connection works OK.
+"
+guardianproject/orweb,closed,Fix typo in 'Deutsch',[],"It must be 'Deutsch' not 'Deutsche'.
+"
+guardianproject/orweb,closed,Basque translations added,[],
+guardianproject/orweb,closed,Updated Orweb useragents,[],"I updated the user agent to match more current version as a fix to issue #48
+https://github.com/guardianproject/Orweb/issues/48 
+"
+guardianproject/orweb,open,User agent strings are outdated,[],"This makes it easier to single out user traffic
+
+Examples
+
+The Tor Browser Bundle says it uses firefox 10 the current version is 24
+Firefox is version 3.5, the current version is 26
+IE is version 8, the current version is 11 (as far as I know)
+iPhone is  iOS 3_1_2, the current version is iOS 7_0_4
+
+These combined with #47 this makes users stand out a lot
+"
+guardianproject/orweb,open,HTTP_ACCEPT leaks locale,[],"It appears that Orweb leaks the phone locale in HTTP_ACCEPT headers, even if the locale is set. Since the locale is, especially for smaller countries a good identifier (https://panopticlick.eff.org/) it makes it easier for an attacker to guess a visitors real identity.
+"
+guardianproject/orweb,open,Orweb not working on Nexus 4 with Android 4.4.2 (KitKat),[],"As of today, December 17th, 2013, Orweb is not working on my Nexus 4 which has been recently updated to Android 4.4.2 (kitkat) - build number KOT49H, kernel version 3.4.0-perf-g2cae413
+
+Orbot starts and connects to the tor network successfully, but when launching orweb it says: ""Sorry. You are not using Tor"". There used to be a message saying that the proxy server could not been configured, but after an update (of Orweb) a couple of weeks ago, the message disappeared. However, orweb is still not able to use the tor network.
+Thanks
+"
+guardianproject/orweb,open,Orweb fails to start Tor process,[],"Orweb fails to start the Tor process on my Samsung Galaxy Tab3 running Android 4.2.2.
+
+I can't sem to figure out how to get the log. Some directions making the bug report would be good.
+"
+guardianproject/orweb,closed,OrWeb does not work on Android 4.4/KitKat - Unable to configure proxy settings,[],"Launch OrBot and turn Tor on.
+
+Launch OrWeb.  Error appears, ""Orweb is unable to configure proxy settings on your device.""  https://check.torproject.org/ confirms that the device is not using Tor.
+
+This is on a Kit Kat device running Android 4.4.
+"
+guardianproject/orweb,open,Cannot copy text from URL bar,[],"I am having some problems copying text in Orweb, specifically in the address bar. I expect to be able to select the URL text in the address bar and copy it. If I double tap on it I am only given the option to paste. If I click and hold on the URL text nothing happens. This happens no matter what page I am looking at. There seems to be no other option for copying the URL in the address bar. The versions of the software I am using are:
+
+CyanogenMod version 10.1.3-yuga
+Android 4.2.2
+Orweb Version 0.5.0-BETA-3
+"
+guardianproject/orweb,open,No easy way (or any way?) to see current version,[],"The 'about' menu item loads a web page.
+
+There is no way for users to see (and thus report, when reporting bugs) what version they are running.
+"
+guardianproject/orweb,open,Javascript not actually disabled,[],"When I browse to http://javatester.org/javascript.html, it tells me that ""JavaScript   IS WORKING   in your web browser"" despite ""Enable JavaScript"" not being checkmarked in settings.
+"
+guardianproject/orweb,closed,Fix for dynamic locale selection bug.,[],"Locale.getLanguage() always returns a lowercase string, which
+would falsely fail comparison with locales you have defined
+with uppercase components like pt_BR and nb_NO, causing the
+Browser activity to restart itself on every onResume() event
+when running in those locales.  I believe that would be an
+infinite loop.
+"
+guardianproject/orweb,open,User agent,[],"Default user agent can contain too much sensitive information, such as mobile phone model number and browser build version. This is not secure, i think orweb surely should change user agent to some anonymous format. 
+"
+guardianproject/orweb,closed,Updated settings language,[],
+guardianproject/orweb,closed,Updated languages list under 'set locale',[],
+guardianproject/orweb,open,No indication that page is loading,[],"When clicking a link or button, there is no indication whether the browser is loading anything or not. This leads to guesswork on the part of the user.
+"
+guardianproject/orweb,closed,i saw a reply that said a new version of orweb would be available soon...any idea how much longer until it's released?,[],
+guardianproject/orweb,closed,"serious privacy leak, browser signature",[],"Please consider https://panopticlick.eff.org/ - the result is that every single orweb user can be identified.
+
+The biggest problems: 
+- User-agent should be set to a value that is widely used and not unique. The default ""android"" will frequently include details like brand, model and build number. Predefined ""Firefox5"" is does not appear to match any real world browser.
+- HTTP headers: seems utf-16 is the privacy culprit here, rarely ever used and pehraps should be filtered
+- screen-size/color-depth gives away too much of information. 
+"
+guardianproject/orweb,open,please make it possible to download pictures using orweb,[],"Pretty please make it possible to download pictures or video using orweb. It would be a perfect app if you couod download
+"
+guardianproject/orweb,open,Request ,[],"Hello, 
+I believe that a picture download function would really make your tool even more helpful. 
+I use Tor for a lot of reasons and the lack of picture download possibilities can somezimes be frustrating.
+
+THX for your consideration
+"
+guardianproject/orweb,closed,save image,[],"i want save image but i can't  if i touch image it'just bigger 
+Please help me
+"
+guardianproject/orweb,closed,Too much informations in user-agent,[],"Hi,
+
+Orweb's user-agent clntains a lot of data, including my phone model, Android version, and build number.
+
+Wouldn't it be best to remove this data to prevent identification?
+
+Regards,
+Valentin
+"
+guardianproject/orweb,closed,Fixed Issue #24 and other changes,[],"- Added a homepage button
+- Now Installs to SD Card if possible
+- Changed MinApi to 8
+- Removed @override lines which caused errors when compiling on Eclipse
+"
+guardianproject/orweb,closed,Fix issue #27: Orweb does not work in Honeycomb,[],"Changed SDK version check to fix issue guardianproject/Orweb#27
+"
+guardianproject/orweb,closed,Orweb does not work in Honeycomb,[],"Tested with head code, in emulators.
+
+In Android 3.0 and 3.1, Orweb crashes on startup. Here's the stack dump from logcat:
+
+```
+08-22 18:06:26.164: W/dalvikvm(703): threadid=9: thread exiting with uncaught exception (group=0x40014760)
+08-22 18:06:26.169: E/AndroidRuntime(703): FATAL EXCEPTION: WebViewCoreThread
+08-22 18:06:26.169: E/AndroidRuntime(703): java.lang.ClassCastException: android.net.ProxyProperties cannot be cast to java.lang.String
+08-22 18:06:26.169: E/AndroidRuntime(703):  at android.webkit.WebViewCore$WebCoreThread$1.handleMessage(WebViewCore.java:696)
+08-22 18:06:26.169: E/AndroidRuntime(703):  at android.os.Handler.dispatchMessage(Handler.java:99)
+08-22 18:06:26.169: E/AndroidRuntime(703):  at android.os.Looper.loop(Looper.java:126)
+08-22 18:06:26.169: E/AndroidRuntime(703):  at android.webkit.WebViewCore$WebCoreThread.run(WebViewCore.java:703)
+08-22 18:06:26.169: E/AndroidRuntime(703):  at java.lang.Thread.run(Thread.java:1020)
+```
+
+In Android 3.2, Orweb simply doesn't proxy its browser. With Orbot not running (or installed), check.torproject.org loads and indicates that the user is not using Tor.
+
+I believe that the problem is this check ([OrbotHelper.java:45](https://github.com/guardianproject/Orweb/blob/master/src/org/torproject/android/OrbotHelper.java#L45)): 
+
+``` java
+if (Build.VERSION.SDK_INT < 11) 
+{
+    worked = setWebkitProxyGingerbread(ctx, host, port);
+}
+else
+{
+    worked = setWebkitProxyICS(ctx, host, port);
+}
+```
+
+I think that the check should be for `SDK_INT < 14` -- i.e., below ICS. (This corresponds to the info in this blog post -- http://manojtk.blogspot.ca/2011/01/android-webview-proxy-setting.html -- and its comments. I think that you used that post for the pre-ICS code, and we at Psiphon used it for the ICS+ code.)
+
+Not really important to the fix, but for interest's sake: Why the difference between 3.0/3.1 and 3.2? As can be seen in the stack, 3.0/3.1 results in an uncaught exception in another thread, so the catches at the bottom of `setWebkitProxyICS()` don't get hit and the app crashes. In 3.2, `setWebkitProxyICS()` appears to succeed, returns true, but doesn't actually set the browser proxy. These wacky behaviours caused me to find a bug in Psiphon which led to finding this problem in Orweb.
+
+I'll submit a pull request with this tiny, tiny fix.
+
+Adam @ Psiphon
+"
+guardianproject/orweb,closed,Added Homepage button to option menu.,[],"Fix for Issue #24
+"
+guardianproject/orweb,closed,Old binary,[],"The apk in the Google Play is 0.4.2 yet the binary for download from here (via guardian project website): https://github.com/guardianproject/Orweb/Orwebv2-280711-0.2.1.b.apk/qr_code and also the the version in F-Droid is 0.2.1. That's 11 months old.
+"
+guardianproject/orweb,closed,Home button?,[],"Simple, really simple request that I am missing soooo much: A home button. What's the point of having a home page when you can't get fast back to it? :-)
+"
+guardianproject/orweb,closed,Orweb always crashes on launch,[],"After updating to 0.4 IIRC Orweb just keeps crashing on launch. I reported the error with Google Feedback reporter. I downgraded to 0.2.x using a Titanium backup I had.
+"
+guardianproject/orweb,closed,Videos are not loaded,[],"Videos are not loaded after clicking on a play button on e.g. http://www.stealthstocksonline.com. The phone is Samsung Galaxy Mini with Android 2.3.4 unrooted.
+"
+guardianproject/orweb,open,linkedin.com does finish loading,[],"Linkedin.com remains in a loading state forever and shows a moving loading symbol.
+"
+guardianproject/orweb,open,Left side of a wide page not shown,[],"The left side of a wide page on https://www.nordnet.fi was not shown. There was also a dark rectangle obscuring text on the top.
+"
+guardianproject/orweb,open,trac.torproject.org Authorization required,[],"https://trac.torproject.org does not render because Orweb cannot handle authorization. Apache gives an error Authorization required. Maybe Orweb does not allow the login pop-up window.
+"
+guardianproject/orweb,closed,500 Internal Privoxy Error,[],"When a web page is unavailable, I get 500 Internal Privoxy Error with Could not find file forwarding-failed or something like that.
+"
+guardianproject/orweb,open,login.yahoo.com,[],"Login.yahoo.com did not render login and password fields visibly after fully loading twice, even if they were shown during the loading. While entering login name and password with captcha, the cursor jumped around and did not show the code's right end. Login failed the first time.
+"
+guardianproject/orweb,closed,Integrate with Download Manager,[],"Currently it is not possible to download .exe/.apk etc. in Orweb onto your device. It would be very beneficial in some cases. Also integrating it with the default Android download manager will display your downloads and their status in the status bar at the top - Dolphin Browser already does this.
+"
+guardianproject/orweb,closed,External proxy support,[],"Seems that the support of other HTTP proxy servers is bugged. I set the proxy server address and port but doesn't seem to connect to the server. Also using a network sniffer to the proxy server place, seems to not receive any request.
+
+Maybe it could be useful to see how this other browser handle the proxy problem: http://code.google.com/p/zirco-browser/
+"
+guardianproject/orweb,closed,typo in settings,[],"In Settings at the bottom, there is a typo: the word ""Behvaior"" should be spelled ""Behavior""...
+"
+guardianproject/orweb,closed,random user agent?,[],"UA info is defined as one among five ua. How about change it at Random from existing ua info like ie6,7,8,9,chrome,safari,Firefox,opera,etc.
+"
+guardianproject/orweb,open,http not keep alive,[],"I found your Http header is not keep alive. It would be great to change it to keep alive, either to select it as option.
+"
+guardianproject/orweb,closed,orweb not clearing cache?,[],"I possibly found a bug in the orweb browser. I am using a Sony Ericsson Xperia Pro and it appears that the cache is not being cleared, when I use that option.
+I did the following: open page with some pictures in it (takes a while). Reboot phone. Start up orbot and orweb and go to the same page, which is to be seen instantly. The cache only seems to be cleared when orweb is being uninstalled, or is the old cache still there but cannot be used anymore? That way I might have lost data on my device which id rather not have.
+"
+guardianproject/orweb,closed, 'clear cache' does nothing.,[],"Bug Report:
+Product: Orweb v2, 0.2.2
+Platform Acer iconia tablet a500
+Os: android 3.2 (honeycomb)
+State: unrooted
+Symptom: 'clear cache' does nothing.
+
+Explanation: normally large images take a while to load.
+If one clears cache, they are still in it and load instamtly.
+
+Workaround: Manually clearing  the application cache
+from the application settings menu is the only reliable
+way to clear the image cache.
+"
+guardianproject/orweb,closed,Unable to route through Tor consistently,[],"I was generally unable to route through Tor using a copy of Orweb 2 downloaded today from the Android Market on an HTC Evo running Android 2.3.3. Verified connection to Tor using Firefox/Orbot.
+
+Loading the test page at https://check.torproject.org/ generally resulted in bypassing the proxy, so the page would say ""Sorry, you are not using Tor."" The few times it did work seemed to be shortly after Orbot finished connecting. Restarting Orbot would sometimes allow the connection to work again briefly.
+"
+guardianproject/orweb,closed,saves login names for some sites,[],"Great concept and execution. One minor privacy issue, the browser saves login names for some sites, and as far as I can tell, the only way to temporarily clear them is to clear the application data from the manage apps Android tool. Would be nice if there was an in app option to turn off as well as manage or clear login info.
+"
+guardianproject/orweb,open,add multi-tab support,[],"tabs are the wave of the future...err, the present!
+"
+guardianproject/orweb,open,tests rec'd from tor-talk list,[],"Yeah, as a heads up to the community, the first tests that we need done
+is to verify that intermediate cert download, HTTPS OCSP, DNS
+prefetch, and FTP are all being properly proxied. There are known
+issues with the Chrome proxy implementation that cause these items to
+bypass proxy settings. It stands to reason that there is a risk for
+similar leaks on the Android browser. 
+
+Some manual and/or stress testing over a wifi link + wireshark should
+be sufficient here (though finding a page that sources ftp:// urls may
+be tricky. You probably will need to create that yourself).
+"
+guardianproject/orweb,closed,test ip-check.info,[],"The anonymity test of Jondonym (http://ip-check.info) does this. They
+embed a link-element to a css stylesheet:
+link rel=""stylesheet"" type=""text/css""
+href=""ftp://ip-check.info/75ad0vlll114ifdqmunejs0ip_ftpxxx.xxx.xxx.xxx/FTPTest.css""
+
+I don't know if the android browser follows such kind of links, but it's
+worth a try if not done yet.
+"
+guardianproject/orweb,closed,Doesn't proxy on 3.1 tablet,[],"http://twitter.com/#!/sp0rkbomb/status/96911074871357441
+"
+guardianproject/orweb,closed,incorrectly reports 'browsing via orbot',[],"Although the browser displays ""browsing via orbot"" at the bottom of the screen, this is not true. A quick visit to check.torproject.org confirms this.
+
+Application info just reports 'version 1'. I am running cyanogenmod 5 on g1.
+"
+guardianproject/orweb,closed,"Orweb doesn't work at all on Android 2.x (Droid, NexusOne)",[],"There doesn't seem to be any proxying going on or SOCKS routing or anything. WTF!?
+"
+guardianproject/orweb,closed,HTTP/S (SSL) does not work,[],"I cannot access any sites that requires the use of HTTP/S aka https://check.torproject.org
+"

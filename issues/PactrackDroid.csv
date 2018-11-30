@@ -1,0 +1,77 @@
+repository,state,title,label,body
+firetech/PactrackDroid,closed,Redistrubute or update app on f-droid,[],"Hi @firetech,
+This app was last updated 2011 on F-droid.
+But there exists a version from 2016 and it still works so I dont see why this hasnt been updated? 
+
+We can submit a request for packaging here https://gitlab.com/fdroid/rfp/issues incase you cant do it yourself anymore.
+
+Ideally the old version needs to be removed. What do you think?
+
+**edit**: I realize now after reading the source that the reason you havent done it is because the packaged version is not open source because of the API key issue. 
+
+Kindly,"
+firetech/PactrackDroid,closed,Updates often get stuck on Android 7.0,[],Probably deadlocks in the connection checking code.
+firetech/PactrackDroid,closed,Implement pull-to-refresh,[],"Pull-to-refresh would be useful, at least in the parcel list, but also in the details view.
+"
+firetech/PactrackDroid,closed,JSON data may be missing statusText.header,[],"Causes a crash here: https://github.com/firetech/PactrackDroid/blob/master/app/src/main/java/nu/firetech/android/pactrack/backend/ParcelJsonParser.java#L129
+"
+firetech/PactrackDroid,closed,Useless getBackgroundDataSetting,[],"Dear developers of PactrackDroid,
+
+I am a student majoring in Computer Science. We are trying to collect existing bug reports and fixes of to help detect and fix similar bugs of other active applications.
+
+I have detected that method ConnectivityManager.getBackgroundDataSetting() is used on line 108 in `nu.firetech.android.pactrack.frontend.ConfigView` and line 64 `nu.firetech.android.pactrack.backend.ServiceStarter`.
+
+However, since this method always return true after API level 14 (Noted in [API Guide](http://developer.android.com/intl/zh-cn/reference/android/net/ConnectivityManager.html#getBackgroundDataSetting%28%29)) and currently the minSDK version of PactrackDroid is 14 so that calling this method is actually useless.
+I found that PactrackDroid has been built since 2009, I think this API may be included long time ago, but now it seems to be outdated for your app.
+
+Thanks a lot for your attention. Hope this information is useful for you.
+"
+firetech/PactrackDroid,closed,"Handle ""shipment ID:s"" with only one parcel",[],"Some vendors, for instance Komplett.se hands out a ""shipment ID"" instead of a parcel ID, even if the shipment is only one parcel. In such cases it would be trivial to identify the situation and replace the ID with the contained parcel ID instead, making the app happy.
+
+One could even argue that we should add all the separate parcels as separate parcels in the app when a shipment with multiple parcels is supplied.
+
+One example shipment ID: 70702055443354238 (contains parcel ID 00370702055138357347)
+"
+firetech/PactrackDroid,closed,Tracking ID:s sometimes needs leading zeroes added,[],"A tracking ID I received recently could not be found in PactrackDroid, but it could be tracked on Postnord's website. After examining the data, it turned out that the tracking ID I'd received lacked two zeroes at the start, making it not match the data received from the API.
+
+We should probably try matching tracking ID:s in the received data by padding with zeroes (before the rest of the ID).
+
+An example for which this happens: 370702055138357347 (should be 00370702055138357347)
+"
+firetech/PactrackDroid,closed,RefreshDialog can be recreated by the system,[],"In some cases, it seems that a RefreshDialog can be recreated by the Android system despite setRetainInstance(true). Seen on an LG G3 in a Play Store report. This makes it throw an IllegalStateException(""RefreshDialog.initValues() has not been called.""). However even if a recreation would succeed, the ProgressHandler pointer it sent out before would not be valid, and the dialog would be useless.
+
+A workaround would be to immediately hide the Dialog in that case. Either by changing the IllegalStateException to a warning in the log followed by return null (unsure if that would work) or by dismissing the dialog directly if recreated (mHandler == null).
+"
+firetech/PactrackDroid,closed,ParcelDetailsFragment.getCurrentRowId() can return null,[],"ParcelDetailsFragment.getCurrentRowId() can return null (and mRowId can be null), and is compared with a primitive long in a number of places (multiple times in https://github.com/firetech/PactrackDroid/blob/master/app/src/main/java/nu/firetech/android/pactrack/frontend/ParcelDetailsFragment.java and https://github.com/firetech/PactrackDroid/blob/master/app/src/main/java/nu/firetech/android/pactrack/frontend/MainActivity.java#L134). This can cause NPEs.
+"
+firetech/PactrackDroid,closed,ParcelDetailsFragment.refreshDone() crashes when not attached to activity.,[],"An isAdded() check is needed. The function (https://github.com/firetech/PactrackDroid/blob/master/app/src/main/java/nu/firetech/android/pactrack/frontend/ParcelDetailsFragment.java#L228) should return without doing anything if isAdded() returns false.
+"
+firetech/PactrackDroid,closed,Double Update actions in two-pane layout (tablets),[],"When viewing a parcel in two-pane layout (on a tablet/xlarge display), both the ""Update"" and ""Update All"" actions are visible in the action bar, with the same icon. A bit confusing.
+
+I see two possible ways of solving this:
+
+1) Set showAsAction for the ""Update All"" menu item to ""never"" in two pane layouts.
+2) Change the icon for either of the actions to make the situation clearer. For example adding a '1' to the ""Update"" icon or something else to the ""Update All"" icon.
+
+I would prefer option 2, but I don't feel confident in editing the icons. Option 1, however, can be implemented in just a few minutes.
+"
+firetech/PactrackDroid,closed,Improve FAB behaviour,[],"Currently the FAB cuts the list short if you have many list items. Is possibly caused by the placement in the XML. Should be investigated and fixed when time permits.
+"
+firetech/PactrackDroid,closed,Correct theme does not apply to Settings Toolbar,[],"The Toolbar in Settings isn't using the intended Light.DarkActionBar look despite being configured as described in the link below. Seems to be a regression from some time ago.
+
+http://android-developers.blogspot.se/2014/10/appcompat-v21-material-design-for-pre.html
+
+Or
+
+http://stackoverflow.com/questions/26503149/how-do-i-style-appcompat-v7-toolbar-like-theme-appcompat-light-darkactionbar
+"
+firetech/PactrackDroid,closed,Felmeddelande vid ändring av kollinummer (från oexisterande till korrekt),[],"Om man matar in ett felaktigt kollinummer får man ett felmeddelande om att kollinumret inte hittades. Om man därefter går tillbaka till huvudskärmen och ändrar till korrekt kollinummer (genom långtrycks-menyn) kommer samma meddelande upp samtidigt som data faktiskt laddas in på nytt.
+
+Ändring av kollinummer borde nollställa felstatus.
+"
+firetech/PactrackDroid,closed,Postförskottsbetalnings paket sökning,[],"Jag vet inte om det har med postförskottsbetalning  att göra alls men av någon anledning kan jag inte i din app söka på kollid:et AF109542749SE men på postens hemsida får jag fram information om det.
+
+Se denna länk för posten: http://www.posten.se/tracktrace/TrackConsignments_do.jsp?trackntraceAction=saveSearch&logisticCustomerNumber=&referenceNumber=&lang=SE&loginHandlerImplClass=se.posten.pse.framework.security.applicationImpl.tracktrace.LoginHandlerImpl&internalPageNumber=0&doNotShowInHistory=true&consignmentId=AF109542749SE
+"
+firetech/PactrackDroid,closed,QVGA-telefoner,[],"Hej, det verkar som att det inte går att hitta pactrackdroid på QVGA-telefoner. Finns det möjlighet att uppdatera manifestet för att fixa detta? 
+"

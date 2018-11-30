@@ -1,0 +1,1472 @@
+repository,state,title,label,body
+wolpi/prim-ftpd,closed,5.11 requires generating key frequently,[],"Androide Version: Android Pie  
+Device: Xiaomi MIX 2S  
+It shows that public key could not be read.
+(I have to give the screenshot later for link failure.)  
+Log: https://mega.nz/#!hdIgQYQZ!Dytrtx7Uyj1VCTcTmuCsbccGmhjK0SmPZcfuuMDnKIs  
+  
+I've got no idea about weather it's bug, though, it didn't occur to me before this time. And that's why i posed a issue here. "
+wolpi/prim-ftpd,open,"In SFTP mode with super user mode selected or SAF, cannot connect","[Label(name=""waiting for response"")]","In SFTP mode with super user mode selected or SAF, cannot connect. Tried with MC and Filezilla. Keys where also generated. 
+
+Phone HTC 10.
+Operating system is LineageOS 7.1.2. Rooted.
+Primitive FTPD version is 5.10 downloaded from f-droid.
+Downloaded file with Filezilla 3.33.0 on Debian Sid."
+wolpi/prim-ftpd,open,Zero file output on ftp mode,[],"In FTP mode with super user mode selected, received jpeg file is corrupt.
+
+Phone HTC 10.
+Operating system is LineageOS 7.1.2. Rooted.
+Primitive FTPD version is 5.10 downloaded from f-droid.
+Downloaded file with Filezilla 3.33.0 on Debian Sid."
+wolpi/prim-ftpd,open,Corrupt file received,"[Label(name=""waiting for response"")]","In super user mode, received jpeg file is corrupt.
+
+- Phone HTC 10.
+- Operating system is LineageOS 7.1.2. Rooted.
+- Primitive FTPD version is 5.10 downloaded from f-droid.
+- Downloaded file with Filezilla 3.33.0 on Debian Sid."
+wolpi/prim-ftpd,open,"""550 No such directory"" in superuser mode",[],"In superuser mode:
+```
+257 ""/mnt/sdcard"" is current directory.
+CWD /mnt/sdcard/
+550 No such directory.
+```
+In normal mode -no problem.
+[prim-ftpd-log-2018-10-15-00-46-44.log](https://github.com/wolpi/prim-ftpd/files/2476914/prim-ftpd-log-2018-10-15-00-46-44.log)
+"
+wolpi/prim-ftpd,open,sshfs fails reset by peer,"[Label(name=""cannot reproduce""), Label(name=""waiting for response"")]","I read #64 #83 #71 but they do not work for me
+
+version 5.10 on fairphone2
+symptoms:
+sshfs -p 1234 user@192.168.1.131:/storage/emulated/0 ~/mnt/fp2/  
+       read: Connection reset by peer
+on server; The public key to authenticate can not be read.
+there is no public key on /storage/emulated/0/.ssh
+
+in the first attempt the application has stopped.
+I have tried with and without public key , and with anonymous login.
+
+How can I find the fault?
+may be i have disable file writing?"
+wolpi/prim-ftpd,open,Always hangs when download transfer is nearly finished (ls output without link count),[],"Whenever I start a transfer from Device to PC, it hangs at 85-99%, depending on the size. Every single time. The opposite instead works (PC -> Device). I'd like to solve this problem. I had a look at the logs and nothing evident came to my eyes. My sensation is: transfer is done with buffer blocks, and when the buffer is fully filled, it is transfered regularly. The last block to be transfered will always be partially filled, and this hangs the server (maybe a condition like testing EOF isn't working as expected on my device, maybe another approach can be tested, like comparing transfered size with original filesize). The problem happens also with small files (i.e. size is smaller than transfer block). Contact me if you want me to test some debugging enabled version on my device."
+wolpi/prim-ftpd,open,Weblate problems,[],"Hi,
+I want to report problems with your Weblate installation. I cannot register a new user, I could only login via github account auth. Once logged in, I cannot add a new email address or change mine. I cannot even change password or issue a contact message.
+Anyway, while you solve Weblate related problems, I did a complete Italian translation for FTPd. Have a look at it."
+wolpi/prim-ftpd,open,Crypto Provider changes in Android 9,[],"https://android-developers.googleblog.com/2018/03/cryptography-changes-in-android-p.html
+
+This causes issues with sftp."
+wolpi/prim-ftpd,closed,5.10 crash,[],"Device: Xiaomi MIX 2S
+API Level: SDK 28
+
+Log collectived by prim-ftpd: 
+https://mega.nz/#!odIF2aLD!HnikUgzWdIzftDkoG053gx3JgMWl6oJk8R1-3ivinyQ
+https://mega.nz/#!kZJhjShI!Usg9rSFgza5nJTdn5151MBCOwZP2uHLkhhPm-OvO9n0
+
+Appearance：Crash when click the ""Start Sever"" button. Setting works well.
+
+I've tried to clear the data and reinstall prim-ftpd, but it dosen't work.
+
+Need any further info?"
+wolpi/prim-ftpd,closed,v5.10 crashes when you try to open the settings,[],With v5.09 - all ok.
+wolpi/prim-ftpd,closed,No menu bar on Android TV Os,[],"I installed it via F-Droid on A95X Pro running stock Android TV Os and there is no menu bar to configure nor start the server.
+Screenshot is provided.
+[![IMG_20180921_103453.jpg](https://i.postimg.cc/bwbnCDvH/IMG_20180921_103453.jpg)](https://postimg.cc/21k335hV)
+
+Not sure if it's a bug or a feature? :)"
+wolpi/prim-ftpd,closed,"""Permission denied"" while copying certain files from /data/data",[],"When I connect to prim-ftpd SFTP with Storage type ""Super user"" with Filezilla and browse to `/data/data/com.whatsapp/databases`, I can list the files and folders just fine. However, if I try to copy `msgstore.db`, I get error ""Permission denied"". If I use my File manager to copy the file to another folder, first - and copy it from there, everything works fine.
+
+Thank you very much in advance. :+1: "
+wolpi/prim-ftpd,closed,update bouncycastle to 1.60,[],bouncycastle (mina sshd uses it) should be updated to most recent version which is 1.60
+wolpi/prim-ftpd,open,Support for SSHFS,"[Label(name=""cannot reproduce""), Label(name=""waiting for response"")]","Hi,
+
+it would be really nice to have primitive FTPd extended enough to support SSHFS. Currently mounting is possible, I was also able to create a directory but creating a file, either with `touch file1` or with `echo content > file1` wasn't possible. Writing into an existing file is possible e.g. with `echo content > fileexists` but appending seems to work but actually overwrites the whole content e.g. `echo addtlcontent >> fileexists`. `cp file1 fileexists` works but `mv file1 fileexists` does not work, `mv file1 newfile` (where newfile doesn't exist, i.e. a rename) works though.
+
+SSHFS should be available on any Linux, e.g. on Fedora as fuse-sshfs, or from https://github.com/libfuse/sshfs
+
+All this works with an OpenSSH server running on another Android device, so it's a limitation of the server, not of the SSHFS implementation. There is only one exception: `touch file` complains that it can't set the date, but that's minimal.
+
+Thanks, Eric"
+wolpi/prim-ftpd,closed,validation for passive ports preference,[],"In google play there are some exceptions reported like this:
+
+```
+  at org.apache.ftpserver.impl.PassivePorts.parse (PassivePorts.java:96)
+   at org.apache.ftpserver.impl.PassivePorts.<init> (PassivePorts.java:148)
+   at org.apache.ftpserver.DataConnectionConfigurationFactory.setPassivePorts (DataConnectionConfigurationFactory.java:280)
+   at org.primftpd.services.FtpServerService.launchServer (FtpServerService.java:76)
+```
+```
+  at org.apache.ftpserver.impl.PassivePorts.verifyPort (PassivePorts.java:143)
+   at org.apache.ftpserver.impl.PassivePorts.parse (PassivePorts.java:98)
+   at org.apache.ftpserver.impl.PassivePorts.<init> (PassivePorts.java:148)
+   at org.apache.ftpserver.DataConnectionConfigurationFactory.setPassivePorts (DataConnectionConfigurationFactory.java:280)
+   at org.primftpd.services.FtpServerService.launchServer (FtpServerService.java:76)
+```
+"
+wolpi/prim-ftpd,open,Save As (Overwrite File),[],"When I use the Share button in Android prim-ftp offers me a ""save-as"" Function, which is great and very useful. But it would be handy to replace a existing file. At the moment every ""share"" call create a new file."
+wolpi/prim-ftpd,closed,Update Greek translation,[],Updated the Greek translation from the latest master branch.
+wolpi/prim-ftpd,open,NullPointerException due to LOST.DIR contents?,[],"prim-ftpd v5.8 (F-Droid build, Android 7.0) log:
+```
+""2018-06-25 02:50:52.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""onResume()"";"""";
+""2018-06-25 02:50:52.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""displayServersState()"";"""";
+""2018-06-25 02:50:52.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""checkServicesRunning()"";"""";
+""2018-06-25 02:50:52.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""updateButtonStates()"";"""";
+""2018-06-25 02:50:52.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""network connectivity changed, data str: 'null', action: 'android.net.conn.CONNECTIVITY_CHANGE'"";"""";
+""2018-06-25 02:50:52.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""addr: '/127.0.0.1', iface name: 'lo', disp name: 'lo', loopback: 'true'"";"""";
+""2018-06-25 02:50:52.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""addr: '/::1', iface name: 'lo', disp name: 'lo', loopback: 'true'"";"""";
+""2018-06-25 02:50:52.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""addr: '/DELETED%dummy0', iface name: 'dummy0', disp name: 'dummy0', loopback: '..."";"""";
+""2018-06-25 02:50:52.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""Skipping IPv6 address 'DELETED%dummy0 (dummy0)'"";"""";
+""2018-06-25 02:50:52.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""addr: '/DELETED', iface name: 'wlan0', disp name: 'wlan0', loopback: 'false'"";"""";
+""2018-06-25 02:50:52.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""addr: '/DELETED%wlan0', iface name: 'wlan0', disp name: 'wlan0', loopback: 'false'"";"""";
+""2018-06-25 02:50:52.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""Skipping IPv6 address 'DELETED%wlan0 (wlan0)'"";"""";
+""2018-06-25 02:50:53.6"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""handling event, offset: 61190 ms"";"""";
+""2018-06-25 02:50:53.6"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""displayServersState()"";"""";
+""2018-06-25 02:50:53.6"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""checkServicesRunning()"";"""";
+""2018-06-25 02:50:53.6"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""updateButtonStates()"";"""";
+""2018-06-25 02:50:54.4"";""DEBUG"";""org.primftpd.services.SshServerService"";""onStartCommand()"";"""";
+""2018-06-25 02:50:54.4"";""DEBUG"";""org.primftpd.services.ServerServiceHandler"";""handleMessage()"";"""";
+""2018-06-25 02:50:54.4"";""DEBUG"";""org.primftpd.services.ServerServiceHandler"";""starting sftp-ssh server"";"""";
+""2018-06-25 02:50:54.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""handling event, offset: 780 ms"";"""";
+""2018-06-25 02:50:54.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""displayServersState()"";"""";
+""2018-06-25 02:50:54.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""checkServicesRunning()"";"""";
+""2018-06-25 02:50:54.4"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""updateButtonStates()"";"""";
+""2018-06-25 02:50:54.4"";""DEBUG"";""org.primftpd.services.ServerServiceHandler"";""acquiring wake lock (sftp-ssh)"";"""";
+""2018-06-25 02:50:59.7"";""INFO"";""org.apache.sshd.server.session.ServerSession"";""Server session created from /DELETED:59150"";"""";
+""2018-06-25 02:50:59.7"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Client version string: SSH-2.0-OpenSSH_7.4"";"""";
+""2018-06-25 02:50:59.7"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Send SSH_MSG_KEXINIT"";"""";
+""2018-06-25 02:50:59.7"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #0: 14 6e 54 de 12 94 76 8b 38 68 30 2d 4c 9d 76 2d 64 00 00 00 b7 64 69 66 66 69 ..."";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #1: 14 9b ed 3f a2 63 8d 25 68 e6 8e fa bc a6 84 23 fb 00 00 01 30 63 75 72 76 65..."";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Received SSH_MSG_KEXINIT"";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Kex: negotiate(kex algorithms) guess=ecdh-sha2-nistp256 (client: curve25519-sha256,curve25519-sha..."";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Kex: negotiate(server host key algorithms) guess=ssh-rsa (client: ssh-rsa-cert-v01@openssh.com,rs..."";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Kex: negotiate(encryption algorithms (client to server)) guess=aes128-ctr (client: chacha20-poly1..."";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Kex: negotiate(encryption algorithms (server to client)) guess=aes128-ctr (client: chacha20-poly1..."";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Kex: negotiate(mac algorithms (client to server)) guess=hmac-sha2-256 (client: umac-64-etm@openss..."";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Kex: negotiate(mac algorithms (server to client)) guess=hmac-sha2-256 (client: umac-64-etm@openss..."";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Kex: negotiate(compression algorithms (client to server)) guess=none (client: none,zlib@openssh.c..."";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Kex: negotiate(compression algorithms (server to client)) guess=none (client: none,zlib@openssh.c..."";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Kex: negotiate(languages (client to server)) guess= (client:  / server: "";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Kex: negotiate(languages (server to client)) guess= (client:  / server: "";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Kex: server->client aes128-ctr hmac-sha2-256 none"";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Kex: client->server aes128-ctr hmac-sha2-256 none"";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #2: 1e 00 00 00 41 04 12 cb 07 5d f8 43 46 ef 59 a9 64 69 30 ab 81 04 72 11 79 22..."";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.kex.ECDHP256"";""Received SSH_MSG_KEXDH_INIT"";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.kex.ECDHP256"";""K_S:  00 00 00 07 73 73 68 2d 72 73 61 00 00 00 03 01 00 01 00 00 01 01 00 a0 94 cb 51 ba 00 6d f..."";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.kex.ECDHP256"";""f:    04 cf 4b 7f 48 8b b5 61 5b af 6e dc c9 6c 9b 47 eb 2c 19 af 41 16 f5 cb ac e4 b9 af 49 e5 a..."";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.kex.ECDHP256"";""sigH: 00 00 00 07 73 73 68 2d 72 73 61 00 00 01 00 93 2f 88 83 8e bb cc 16 3e e0 9f a8 b2 5d 06 5..."";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.kex.ECDHP256"";""Send SSH_MSG_KEXDH_REPLY"";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #1: 1f 00 00 01 17 00 00 00 07 73 73 68 2d 72 73 61 00 00 00 03 01 00 01 00 00 01 ..."";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Send SSH_MSG_NEWKEYS"";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #2: 15"";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #3: 15"";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Received SSH_MSG_NEWKEYS"";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #4: 05 00 00 00 0c 73 73 68 2d 75 73 65 72 61 75 74 68"";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Received SSH_MSG_SERVICE_REQUEST 'ssh-userauth'"";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.session.ServerUserAuthService"";""Authorized authentication methods: password,keyboard-interactive"";"""";
+""2018-06-25 02:50:59.8"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Accepted service ssh-userauth"";"""";
+""2018-06-25 02:50:59.8"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #3: 06 00 00 00 0c 73 73 68 2d 75 73 65 72 61 75 74 68"";"""";
+""2018-06-25 02:50:59.9"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #5: 32 00 00 00 04 75 73 65 72 00 00 00 0e 73 73 68 2d 63 6f 6e 6e 65 63 74 69 6f..."";"""";
+""2018-06-25 02:50:59.9"";""DEBUG"";""org.apache.sshd.server.session.ServerUserAuthService"";""Received SSH_MSG_USERAUTH_REQUEST"";"""";
+""2018-06-25 02:50:59.9"";""DEBUG"";""org.apache.sshd.server.session.ServerUserAuthService"";""Authenticating user 'user' with service 'ssh-connection' and method 'none'"";"""";
+""2018-06-25 02:50:59.9"";""DEBUG"";""org.apache.sshd.server.session.ServerUserAuthService"";""Authentication failed"";"""";
+""2018-06-25 02:50:59.9"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #4: 33 00 00 00 1d 70 61 73 73 77 6f 72 64 2c 6b 65 79 62 6f 61 72 64 2d 69 6e 74 ..."";"""";
+""2018-06-25 02:50:59.9"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #6: 32 00 00 00 04 75 73 65 72 00 00 00 0e 73 73 68 2d 63 6f 6e 6e 65 63 74 69 6f..."";"""";
+""2018-06-25 02:50:59.9"";""DEBUG"";""org.apache.sshd.server.session.ServerUserAuthService"";""Received SSH_MSG_USERAUTH_REQUEST"";"""";
+""2018-06-25 02:50:59.9"";""DEBUG"";""org.apache.sshd.server.session.ServerUserAuthService"";""Authenticating user 'user' with service 'ssh-connection' and method 'keyboard-interactive'"";"""";
+""2018-06-25 02:50:59.9"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #5: 3c 00 00 00 17 50 61 73 73 77 6f 72 64 20 61 75 74 68 65 6e 74 69 63 61 74 69 ..."";"""";
+""2018-06-25 02:50:59.9"";""DEBUG"";""org.apache.sshd.server.session.ServerUserAuthService"";""Authentication not finished"";"""";
+""2018-06-25 02:50:59.9"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #7: 3d 00 00 00 01 00 00 00 0e 6c 69 62 65 72 61 6d 65 44 4f 4d 31 4e 33"";"""";
+""2018-06-25 02:50:59.9"";""DEBUG"";""org.apache.sshd.server.session.ServerUserAuthService"";""Received authentication message 61"";"""";
+""2018-06-25 02:50:59.9"";""DEBUG"";""org.primftpd.services.SshServerService"";""password auth for user: user"";"""";
+""2018-06-25 02:50:59.9"";""DEBUG"";""org.primftpd.AndroidPrefsUserManager"";""rootDir: /storage/emulated/0"";"""";
+""2018-06-25 02:50:59.9"";""DEBUG"";""org.apache.sshd.server.session.ServerUserAuthService"";""Authentication succeeded"";"""";
+""2018-06-25 02:50:59.9"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #6: 34"";"""";
+""2018-06-25 02:50:59.9"";""INFO"";""org.apache.sshd.server.session.ServerUserAuthService"";""Session user@/DELETED:59150 authenticated"";"""";
+""2018-06-25 02:50:59.9"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #8: 5a 00 00 00 07 73 65 73 73 69 6f 6e 00 00 00 00 00 20 00 00 00 00 80 00"";"""";
+""2018-06-25 02:50:59.9"";""DEBUG"";""org.apache.sshd.server.session.ServerConnectionService"";""Received SSH_MSG_CHANNEL_OPEN session"";"""";
+""2018-06-25 02:50:59.9"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #7: 5b 00 00 00 00 00 00 00 00 00 20 00 00 00 00 80 00"";"""";
+""2018-06-25 02:50:59.9"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #9: 62 00 00 00 00 00 00 00 09 73 75 62 73 79 73 74 65 6d 01 00 00 00 04 73 66 74 70"";"""";
+""2018-06-25 02:50:59.9"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Received SSH_MSG_CHANNEL_REQUEST subsystem on channel ChannelSession[id=0, recipient=0] (wantRepl..."";"""";
+""2018-06-25 02:50:59.9"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #8: 63 00 00 00 00"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #10: 5e 00 00 00 00 00 00 00 09 00 00 00 05 01 00 00 00 06"";"""";
+""2018-06-25 02:51:00.0"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Received SSH_MSG_CHANNEL_DATA on channel ChannelSession[id=0, recipient=0]"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""Received channel data: 00 00 00 05 01 00 00 00 06"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.apache.sshd.server.channel.PipeDataReceiver"";""IN:  00 00 00 05 01 00 00 00 06"";"""";
+""2018-06-25 02:51:00.0"";""DEBUG"";""org.apache.sshd.server.sftp.SftpSubsystem"";""Received SSH_FXP_INIT (version=6)"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 00"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 00"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 00"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 05"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 02 00 00 00 03"";"""";
+""2018-06-25 02:51:00.0"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Send SSH_MSG_CHANNEL_DATA on channel 0"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #9: 5e 00 00 00 00 00 00 00 09 00 00 00 05 02 00 00 00 03"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #11: 5e 00 00 00 00 00 00 00 0e 00 00 00 0a 10 00 00 00 01 00 00 00 01 2e"";"""";
+""2018-06-25 02:51:00.0"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Received SSH_MSG_CHANNEL_DATA on channel ChannelSession[id=0, recipient=0]"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""Received channel data: 00 00 00 0a 10 00 00 00 01 00 00 00 01 2e"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.apache.sshd.server.channel.PipeDataReceiver"";""IN:  00 00 00 0a 10 00 00 00 01 00 00 00 01 2e"";"""";
+""2018-06-25 02:51:00.0"";""DEBUG"";""org.apache.sshd.server.sftp.SftpSubsystem"";""Received SSH_FXP_REALPATH (path=.)"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.primftpd.filesystem.SafSshFileSystemView"";""getNormalizedView()"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.primftpd.filesystem.SafSshFileSystemView"";""getFile(.)"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.primftpd.filesystem.SafSshFileSystemView"";""  getFile(abs: /)"";"""";
+""2018-06-25 02:51:00.0"";""TRACE"";""org.primftpd.filesystem.SafSshFileSystemView"";""  getFile(): normalized path parts: '[]'"";"""";
+""2018-06-25 02:51:00.1"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""new SafFile() with documentFile, parent 'A4CD-D2E3' and absPath '/'"";"""";
+""2018-06-25 02:51:00.1"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[A4CD-D2E3] getAbsolutePath() -> '/'"";"""";
+""2018-06-25 02:51:00.1"";""TRACE"";""org.primftpd.filesystem.SafSshFileSystemView"";""getNormalizedView()"";"""";
+""2018-06-25 02:51:00.1"";""TRACE"";""org.primftpd.filesystem.SafSshFileSystemView"";""getFile(/)"";"""";
+""2018-06-25 02:51:00.1"";""TRACE"";""org.primftpd.filesystem.SafSshFileSystemView"";""  getFile(abs: /)"";"""";
+""2018-06-25 02:51:00.1"";""TRACE"";""org.primftpd.filesystem.SafSshFileSystemView"";""  getFile(): normalized path parts: '[]'"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""new SafFile() with documentFile, parent 'A4CD-D2E3' and absPath '/'"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[A4CD-D2E3] getName()"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[A4CD-D2E3] getName()"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 00"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 00"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 00"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 55"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 68 00 00 00 01 00 00 00 01 00 00 00 01 2f 00 00 00 3f 2d 2d 2d 2d 2d 2d 2d 2d 2d 2d 20 20 31..."";"""";
+""2018-06-25 02:51:00.2"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Send SSH_MSG_CHANNEL_DATA on channel 0"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #10: 5e 00 00 00 00 00 00 00 59 00 00 00 55 68 00 00 00 01 00 00 00 01 00 00 00 01..."";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #12: 5e 00 00 00 00 00 00 00 0e 00 00 00 0a 0b 00 00 00 02 00 00 00 01 2f"";"""";
+""2018-06-25 02:51:00.2"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Received SSH_MSG_CHANNEL_DATA on channel ChannelSession[id=0, recipient=0]"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""Received channel data: 00 00 00 0a 0b 00 00 00 02 00 00 00 01 2f"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.apache.sshd.server.channel.PipeDataReceiver"";""IN:  00 00 00 0a 0b 00 00 00 02 00 00 00 01 2f"";"""";
+""2018-06-25 02:51:00.2"";""DEBUG"";""org.apache.sshd.server.sftp.SftpSubsystem"";""Received SSH_FXP_OPENDIR (path=/)"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.primftpd.filesystem.SafSshFileSystemView"";""getNormalizedView()"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.primftpd.filesystem.SafSshFileSystemView"";""getFile(/)"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.primftpd.filesystem.SafSshFileSystemView"";""  getFile(abs: /)"";"""";
+""2018-06-25 02:51:00.2"";""TRACE"";""org.primftpd.filesystem.SafSshFileSystemView"";""  getFile(): normalized path parts: '[]'"";"""";
+""2018-06-25 02:51:00.3"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""new SafFile() with documentFile, parent 'A4CD-D2E3' and absPath '/'"";"""";
+""2018-06-25 02:51:00.4"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[A4CD-D2E3] doesExist() -> true"";"""";
+""2018-06-25 02:51:00.4"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[A4CD-D2E3] isDirectory() -> true"";"""";
+""2018-06-25 02:51:00.4"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[A4CD-D2E3] isReadable() -> true"";"""";
+""2018-06-25 02:51:00.4"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[A4CD-D2E3] listFiles()"";"""";
+""2018-06-25 02:51:00.5"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""new SafFile() with documentFile, parent 'A4CD-D2E3' and absPath '/LOST.DIR'"";"""";
+""2018-06-25 02:51:00.6"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""new SafFile() with documentFile, parent 'A4CD-D2E3' and absPath '/null'"";"""";
+""2018-06-25 02:51:00.7"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""new SafFile() with documentFile, parent 'A4CD-D2E3' and absPath '/Android'"";"""";
+""2018-06-25 02:51:00.8"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""new SafFile() with documentFile, parent 'A4CD-D2E3' and absPath '/.MetaEcfsFile'"";"""";
+""2018-06-25 02:51:00.9"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""new SafFile() with documentFile, parent 'A4CD-D2E3' and absPath '/Books'"";"""";
+""2018-06-25 02:51:01.0"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""new SafFile() with documentFile, parent 'A4CD-D2E3' and absPath '/Tachiyomi'"";"""";
+""2018-06-25 02:51:01.1"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""new SafFile() with documentFile, parent 'A4CD-D2E3' and absPath '/Music'"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""  [A4CD-D2E3] listFiles(): num children: 7"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 00"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 00"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 00"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 2d"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""OUT: 66 00 00 00 02 00 00 00 24 38 61 63 62 61 36 65 66 2d 33 32 66 65 2d 34 30 35 38 2d 38 63 37..."";"""";
+""2018-06-25 02:51:01.2"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Send SSH_MSG_CHANNEL_DATA on channel 0"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #11: 5e 00 00 00 00 00 00 00 31 00 00 00 2d 66 00 00 00 02 00 00 00 24 38 61 63 62..."";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #13: 5e 00 00 00 00 00 00 00 31 00 00 00 2d 0c 00 00 00 03 00 00 00 24 38 61 63 6..."";"""";
+""2018-06-25 02:51:01.2"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Received SSH_MSG_CHANNEL_DATA on channel ChannelSession[id=0, recipient=0]"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.apache.sshd.server.channel.ChannelSession"";""Received channel data: 00 00 00 2d 0c 00 00 00 03 00 00 00 24 38 61 63 62 61 36 65 66 2d 33 32 66..."";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.apache.sshd.server.channel.PipeDataReceiver"";""IN:  00 00 00 2d 0c 00 00 00 03 00 00 00 24 38 61 63 62 61 36 65 66 2d 33 32 66 65 2d 34 30 35 38..."";"""";
+""2018-06-25 02:51:01.2"";""DEBUG"";""org.apache.sshd.server.sftp.SftpSubsystem"";""Received SSH_FXP_READDIR (handle=8acba6ef-32fe-4058-8c7a-d13648b24260)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[A4CD-D2E3] doesExist() -> true"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[A4CD-D2E3] isDirectory() -> true"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[A4CD-D2E3] isReadable() -> true"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getName()"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttributes()"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(Size)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getSize() -> 32768"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(Uid)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(Owner)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getOwner()"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(Gid)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(Group)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getOwner()"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(IsDirectory)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] isDirectory() -> true"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(IsRegularFile)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] isFile() -> false"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(IsSymbolicLink)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(Permissions)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] isReadable() -> true"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] isWritable() -> true"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] isExecutable()"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(CreationTime)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getLastModified() -> 1529633256000"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(LastModifiedTime)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getLastModified() -> 1529633256000"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(LastAccessTime)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getLastModified() -> 1529633256000"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(NLink)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getName()"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] doesExist() -> true"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttributes()"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(Size)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getSize() -> 32768"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(Uid)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(Owner)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getOwner()"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(Gid)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(Group)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getOwner()"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(IsDirectory)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] isDirectory() -> true"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(IsRegularFile)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] isFile() -> false"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(IsSymbolicLink)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(Permissions)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] isReadable() -> true"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] isWritable() -> true"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] isExecutable()"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(CreationTime)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getLastModified() -> 1529633256000"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(LastModifiedTime)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getLastModified() -> 1529633256000"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(LastAccessTime)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getLastModified() -> 1529633256000"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[LOST.DIR] getAttribute(NLink)"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[null] getName()"";"""";
+""2018-06-25 02:51:01.2"";""ERROR"";""org.apache.sshd.server.sftp.SftpSubsystem"";""Exception caught in SFTP subsystem"";""java.lang.NullPointerException: Attempt to invoke virtual method 'byte[] java.lang.String.getBytes()' on a null object reference
+	org.apache.sshd.common.util.Buffer.putString() line: 435
+	org.apache.sshd.server.sftp.SftpSubsystem.sendName() line: 978
+	org.apache.sshd.server.sftp.SftpSubsystem.process() line: 725
+	org.apache.sshd.server.sftp.SftpSubsystem.run() line: 427
+	java.util.concurrent.Executors$RunnableAdapter.call() line: 428
+	java.util.concurrent.FutureTask.run() line: 237
+	java.util.concurrent.ThreadPoolExecutor.runWorker() line: 1133
+	java.util.concurrent.ThreadPoolExecutor$Worker.run() line: 607
+	java.lang.Thread.run() line: 762"";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.primftpd.filesystem.SafSshFile"";""[A4CD-D2E3] handleClose()"";"""";
+""2018-06-25 02:51:01.2"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Send SSH_MSG_CHANNEL_EOF on channel ChannelSession[id=0, recipient=0]"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #12: 60 00 00 00 00"";"""";
+""2018-06-25 02:51:01.2"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Send SSH_MSG_CHANNEL_REQUEST exit-status on channel 0"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #13: 62 00 00 00 00 00 00 00 0b 65 78 69 74 2d 73 74 61 74 75 73 00 00 00 00 00"";"""";
+""2018-06-25 02:51:01.2"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Closing ChannelSession[id=0, recipient=0] gracefully"";"""";
+""2018-06-25 02:51:01.2"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Send SSH_MSG_CHANNEL_CLOSE on channel ChannelSession[id=0, recipient=0]"";"""";
+""2018-06-25 02:51:01.2"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #14: 61 00 00 00 00"";"""";
+""2018-06-25 02:51:01.2"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Message SSH_MSG_CHANNEL_CLOSE written on channel ChannelSession[id=0, recipient=0]"";"""";
+""2018-06-25 02:51:01.3"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #14: 61 00 00 00 00"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Received SSH_MSG_CHANNEL_CLOSE on channel ChannelSession[id=0, recipient=0]"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.server.sftp.SftpSubsystem"";""destroy() - shutdown executor service - runners count=0"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.server.sftp.SftpSubsystem"";""destroy() - mark as closed"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""ChannelSession[id=0, recipient=0] closed"";"""";
+""2018-06-25 02:51:01.3"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #15: 01 00 00 00 0b 00 00 00 14 64 69 73 63 6f 6e 6e 65 63 74 65 64 20 62 79 20 7..."";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Received SSH_MSG_DISCONNECT (reason=11, msg=disconnected by user)"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Closing ServerSession[user@/DELETED:59150] immediately"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.server.session.ServerConnectionService"";""Closing ServerConnectionService[ServerSession[user@/DELETED:59150]] immediately"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.common.forward.DefaultTcpipForwarder"";""Closing DefaultTcpipForwarder[ServerSession[user@/DELETED:59150]] immediately"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.common.forward.DefaultTcpipForwarder"";""DefaultTcpipForwarder[ServerSession[user@/DELETED:59150]] closed"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.agent.common.AgentForwardSupport"";""Closing AgentForwardSupport[ServerSession[user@/DELETED:59150]] immediately"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.agent.common.AgentForwardSupport"";""AgentForwardSupport[ServerSession[user@/DELETED:59150]] closed"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.server.x11.X11ForwardSupport"";""Closing org.apache.sshd.server.x11.X11ForwardSupport@4d42b7b immediately"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.server.x11.X11ForwardSupport"";""org.apache.sshd.server.x11.X11ForwardSupport@4d42b7b closed"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.server.session.ServerConnectionService"";""ServerConnectionService[ServerSession[user@/DELETED:59150]] closed"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.common.io.mina.MinaSession"";""Closing MinaSession[local=/DELETED:2222, remote=/DELETED:59150] immediately"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.common.io.mina.MinaSession"";""MinaSession[local=/DELETED:2222, remote=/DELETED:59150] closed"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""ServerSession[user@/DELETED:59150] closed"";"""";
+""2018-06-25 02:51:01.3"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""ServerSession[user@/DELETED:59150] is already closed"";"""";
+""2018-06-25 02:51:30.3"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""onPause()"";"""";
+""2018-06-25 02:51:30.3"";""DEBUG"";""org.primftpd.prefs.FtpPrefsFragment"";""onCreate()"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""onStart()"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""loadPrefs()"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got anonymousLogin: false"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got userName: user"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got password: DELETED..."";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got startDir: /storage/A4CD-D2E3"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got announce: false"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got announceName: prim-ftpd"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got wakelock: true"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got pubKeyAuth: false"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got 'which server': SFTP"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got ftpPassivePorts: null"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got idleTimeout: null"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got 'port': 22222"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got 'secure port': 2222"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got 'StorageType': SAF"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got safUrl: content://com.android.externalstorage.documents/tree/A4CD-D2E3%3A"";"""";
+""2018-06-25 02:51:31.8"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""got 'logging': TEXT"";"""";
+```
+lftp log:
+```
+---- Running connect program (ssh -a -x -s -l user -p 2222 DELETED sftp)
+---> sending a packet, length=5, type=1(INIT), id=0
+<--- Password authentication
+<--- Password: XXXX
+<--- got a packet, length=5, type=2(VERSION), id=0
+---- protocol version set to 3
+---- path on wire is `/'
+---> sending a packet, length=10, type=11(OPENDIR), id=1
+<--- got a packet, length=45, type=102(HANDLE), id=1
+---- got file handle 36323666376135382D323966392D343134642D393030342D653539656138663935383963 (36)
+---> sending a packet, length=45, type=12(READDIR), id=2
+**** pty read: pseudo-tty: Input/output error
+```
+
+Read-only SAF works fine when pointed at the same location (i.e. root of the SD card) and ""plain old filesystem"" doesn't allow me to upload/remove any files because of a lack of permissions."
+wolpi/prim-ftpd,open,Add option to shutdown after some time of idling.,[],"I sometimes forget to disable the FTP server again, which has the side-effect of preventing my screen to turn off after the display timeout.
+
+It would be a nice option to be able to auto-shutdown the server after some time without connections.
+
+This also is a security plus, in case the server is anonymous or has a weak password."
+wolpi/prim-ftpd,open,"Files modification time as create time, expect it as original modification time.",[],"Hi. I'm using some software to sync all my files on most of my devices. (such as Freefilesync, Beyond Compare)
+It detect files modification time to check if a file has been edited.
+
+I want to use prim-ftpd to make my android devices to be a sftp-server, but I find out when I copy a file from my computer to my phone through sftp, the files modification time is as its create time(aka now), not the original modification time, that causes Freefilesync thinks it's a new version of file.
+
+Can you fix it?
+
+Android version: 4.4
+prim-ftpd version: 5.8"
+wolpi/prim-ftpd,closed,Feature request: add pause/restart button in notification,[],"Would it not be useful if there was a button in the notification that allow to pause and restart the server quickly without reopening the application?
+For those like me who use the start at boot function, have the server always active and often change wifi network it would be useful to be able to pause and restart the service quickly.
+
+Thank you"
+wolpi/prim-ftpd,open,Feature request: make lockout options configurable,[],"Apparently Primitive FTPd locks out an ip address temporarily after 3 failed login attempts. But neither the number of failed attempts before banning nor the length of time for the ban is user-configurable. This is really frustrating when you're just using it on the LAN to transfer files between the phone and desktop, but you start getting ""connection refused"" messages inexplicably.
+
+Also, I tried turning on the log to a text file, but the name and location of the text file is not stated nor configurable, so I couldn't find it. Please make this configurable."
+wolpi/prim-ftpd,open,HTTP Server,[],"When trying to access an address like http://192.168.1.103:12345/ and instead the page never finishes loading or shows this error:
+```
+220 Service ready for new user.
+530 Access denied.
+530 Access denied.
+530 Access denied.
+530 Access denied.
+530 Access denied.
+```
+I think it could be used to add an HTTP server in the application. It would be enough for it to be something similar to [SimpleHTTPServer](https://play.google.com/store/apps/details?id=jp.ubi.common.http.server) and in terms of which library to use or how to implement such functionality, [this](https://stackoverflow.com/questions/6329468/how-to-create-a-http-server-in-android) could be a good starting point.
+I suggest this because Chrome (and probably most of its forks) do not support FTP protocol and therefore only work in Firefox (or some Gecko based browsers), which greatly limits at the users who are just looking for a simple/quick way to share files."
+wolpi/prim-ftpd,closed,Add Russian localization,[],
+wolpi/prim-ftpd,open,"server can't be set to use, exclude ips or ranges",[],"feature request:
+I'm using your beautiful tool as a hack to modify the sdcard from the termux command line and would like to set the server to only talk to 127.0.0.1
+I can easilly imagine use cases where you would only want the server to talk to 192.168.* or block somewhere known for its hackers.
+
+thank you for listening
+and more generally thank you for a great tool.
+"
+wolpi/prim-ftpd,closed,Notification showing server IP/Port,[],"Hey there,
+I love the ability to start a server from a quicktile, but since I change wifi networks a lot, I still end up having to open the app each time to check what the server IP is so I can type it into my client. Would you consider adding an option to display a notification with the server IP/port while the server is switched on?
+
+Or failing that, maybe change the text below the quicktile from 'pFTPD Runnning ..."" to the IP/Port combo when the server is turned on? Or perhaps even a quicktile long-press action which would show a popup with the IP/Port.
+
+Basically anything to avoid having to open the app each time would be absolutely wonderful! Thanks!"
+wolpi/prim-ftpd,closed,Add screenshots that can be used by F-Droid,[],
+wolpi/prim-ftpd,closed,Add android shortcut,[],Add android chortcut preferences
+wolpi/prim-ftpd,open,multiple SAF folder with different names/access,[],"Hello,
+
+Is it possible to add multiple-SAF-folder support, so that I can add several SAF folders, and assign them different names (under /, sort of like virtual folders) and different access (Read/Read+Write)?
+
+Thanks."
+wolpi/prim-ftpd,closed,Can’t access directory problem,[],"i think super user(rooted) mode of storage type has a bug causes message like ‘Error Code 450’. if not it’s not a bug and can fix myself, would you like help me fix the problem??"
+wolpi/prim-ftpd,open,Updated de (German) translation,[],"I have translated your application into `de` (*German*). Here is the xml:
+```xml
+<?xml version=""1.0"" encoding=""utf-8""?>
+<resources>
+
+    <string name=""app_name"">primitive ftpd</string>
+    <string name=""ifacesLabel"">Netzwerkschnittstelle</string>
+    <string name=""ipAddrLabel"">IP-Adresse</string>
+    <string name=""ifacesError"">Fehler:</string>
+    <string name=""protocolLabel"">Protokoll</string>
+    <string name=""portLabel"">Port</string>
+    <string name=""fingerprintsLabel"">Schlüssel-Fingerabdrücke</string>
+    <string name=""generateKeysMessage"">Schlüssel erzeugen?</string>
+    <string name=""generatingKeysMessage"">Schlüssel werden erzeugt …</string>
+    <string name=""generate"">Erzeugen</string>
+    <string name=""cancel"">Abbrechen</string>
+    <string name=""state"">Status</string>
+    <string name=""serverStarted"">Gestartet …</string>
+    <string name=""serverStopped"">Gestoppt</string>
+    <string name=""permissionRequired"">Berechtigung \""%1$s\"" ist notwendig, damit diese App funktioniert!</string>
+    <string name=""permissionNameStorage"">Speicher</string>
+    <string name=""quickSettingsServerStarted"">pFTPd läuft …</string>
+    <string name=""quickSettingsServerStopped"">pFTPd gestoppt</string>
+    <string name=""saveAs"">Speichern unter</string>
+
+    <string name=""startService"">Server starten</string>
+    <string name=""stopService"">Server stoppen</string>
+    <string name=""toggleService"">Server zwischen Start/Stop umschalten</string>
+    <string name=""notificationTitle"">FTP-Server</string>
+
+    <string name=""haveToSetPassword"">Sie müssen erst ein Passwort setzen</string>
+    <string name=""serverRunning"">FTP-Server läuft</string>
+    <string name=""serverCouldNotBeStarted"">Server konnte nicht gestartet werden! Fehlermeldung:</string>
+    <string name=""portInvalid_v2"">Port-Wert ist ungültig. Muss zwischen 1024 und 64000 liegen.</string>
+    <string name=""portsEqual_v2"">Ports sind gleich. Das kann nicht funktionieren.</string>
+    <string name=""restartServer"">Sie müssen den Server neu starten, damit die Änderungen wirksam werden.</string>
+    <string name=""invalidDir"">Verzeichnis ist ungültig.</string>
+    <string name=""couldNotReadKeyAuthKey"">Öffentlicher Schlüssel für Schlüssel- Authentifizierung konnte nicht gelesen werden. Prüfen Sie die Logs.</string>
+
+    <string name=""prefs"">Einstellungen</string>
+    <string name=""prefCategoryTitle"">FTP-Server Einstellungen</string>
+    <string name=""prefTitleUser"">Benutzername</string>
+    <string name=""prefSummaryUser"">FTP-Server Benutzername</string>
+    <string name=""prefTitlePassword"">Passwort</string>
+    <string name=""prefSummaryPassword"">FTP-Server Passwort</string>
+    <string name=""prefTitlePort"">Port</string>
+    <string name=""prefSummaryPort"">FTP-Server Port</string>
+    <string name=""prefTitlePortSecure"">Sicherer Port</string>
+    <string name=""prefSummaryPortSecure"">FTP-Server Port (verschlüsselt)</string>
+    <string name=""prefTitleStartDir"">Server Startverzeichnis</string>
+    <string name=""prefSummaryStartDir"">Erstes Verzeichnis nach Login</string>
+    <string name=""prefTitleAnnounce"">Server im LAN bekanntmachen</string>
+    <string name=""prefSummaryAnnounce"">Bekanntmachung des FTP-Servers im LAN via DNS-SD (Bonjour). Kann auf manchen Geräten Abstürze verursachen.</string>
+    <string name=""prefTitleAnnounceName"">Servername</string>
+    <string name=""prefSummaryAnnounceName"">Name, unter dem der Server im LAN bekanntgemacht wird.</string>
+    <string name=""prefTitleWakelock"">Standby verhindern</string>
+    <string name=""prefSummaryWakelock"">Verhindert Standby während der Server läuft. Standby kann dazu führen, dass Up-/Downloads abgebrochen werden.</string>
+    <string name=""prefTitleWhichServerToStart"">Zu startende Server</string>
+    <string name=""prefSummaryWhichServerToStart"">Welche Server sollen gestartet werden: nur FTP-Server, nur SFTP-Server oder beide.</string>
+    <string name=""prefTitleStartOnBoot"">Start beim Booten</string>
+    <string name=""prefSummaryStartOnBoot"">Server beim System-Boot starten.</string>
+    <string name=""prefTitleStartOnOpen"">Start beim Öffnen</string>
+    <string name=""prefSummaryStartOnOpen"">Starte Server beim Öffnen der App.</string>
+    <string name=""prefTitlePubKeyAuth"">Authentifizierung via öffentl. Schlüssel</string>
+    <string name=""prefSummaryPubKeyAuth"">Wenn aktiviert, legen sie ihren ssh2 public key in %s ab. Nur SFTP.</string>
+    <string name=""prefTitleAnonymousLogin"">Anonymous Login</string>
+    <string name=""prefSummaryAnonymousLogin"">Anonymous Login erlauben.</string>
+    <string name=""prefForegroundService"">Vordergrunddienst(e)</string>
+    <string name=""prefSummaryForegroundService"">Markiert Dienst(e) um im Vordergrund zu laufen. Auf manchen Geräten notwendig, um zu vermeiden, dass Dienst(e) abgebrochen werden.</string>
+    <string name=""prefTitleFtpPassivePorts"">Passiv-FTP-Ports</string>
+    <string name=""prefSummaryFtpPassivePorts"">Ports für Daten-Verbindung bei Passiv-FTP. Kann ein einzelner Port, eine Liste oder Bereich von Ports sein. Z.B. 5678,5700-5710,5800,5900.</string>
+    <string name=""prefTitleIdleTimeout"">Server Idle-Timeout</string>
+    <string name=""prefSummaryIdleTimeout"">Server wird ungenutzte Verbindungen nach dieser Zeit beenden (nur FTP)</string>
+    <string name=""prefTheme"">Theme</string>
+    <string name=""prefSummaryTheme"">Das Theme zu ändern kann einen Neustart der App erfordern.</string>
+    <string name=""prefTitleLogging"">Log</string>
+    <string name=""prefSummaryLogging"">Log dient der Analyse von Fehlern. Falls die App auf ihrem Gerät nicht richtig funktioniert, können sie ein Log an die Entwickler senden. Es kann nötig sein, die App neu zu starten.</string>
+
+    <string name=""licence"">Lizenz</string>
+    <string name=""reset"">Zurücksetzen</string>
+
+    <string name=""widgetTextStart"">Starte (s)ftpd</string>
+    <string name=""widgetTextStop"">Stoppe (s)ftpd</string>
+    <string name=""isAnonymous"">Anonymous Login: %1$b</string>
+    <string name=""selectServerAction"">Serveraktion wählen</string>
+    <string name=""isServerRunning"">Läuft der Server?</string>
+
+    <string name=""storageType"">Art des Speichers</string>
+    <string name=""storageTypePlain"">Gutes, altes Dateisystem</string>
+    <string name=""storageTypeRoot"">Super user (Gerät muss gerooted sein)</string>
+    <string name=""storageTypeSaf"">Android Storage Access Framework (SAF)\n
+  (z.B. für SD-Karte)</string>
+    <string name=""storageTypeRoSaf"">Nur-Lesen SAF (schneller!)</string>
+    <string name=""safExplainHeading"">Wie SAF funktioniert</string>
+    <string name=""safExplain"">Android wird Sie darum bitten, ein Verzeichnis auszuwählen. Dieses wird über die Server verfügbar gemacht. Von Zeit zu Zeit kann die Berechtigung zurückgezogen werden und das Verzeichnis muss erneut ausgewählt werden.</string>
+    <string name=""selectedSafUri"">Ausgewählte SAF-URI:</string>
+
+    <string name=""startServerAndExit"">Starte nur Server</string>
+    <string name=""startServerAndUi"">Starte mit Server</string>
+
+    <string-array name=""prefWhichServerToStartNames"">
+        <item>FTP und SFTP</item>
+        <item>nur FTP</item>
+        <item>nur SFTP</item>
+    </string-array>
+
+    <string-array name=""prefWhichServerToStartValues"">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name=""prefThemeNames"">
+        <item>Dunkel</item>
+        <item>Hell</item>
+    </string-array>
+
+    <string-array name=""prefThemeValues"">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name=""prefLoggingNames"">
+        <item>Kein Log</item>
+        <item>In Textdatei loggen</item>
+        <item>In Android Log loggen</item>
+    </string-array>
+
+    <string-array name=""prefLoggingValues"">
+        <item>0</item>
+        <item>0</item>
+        <item>2</item>
+    </string-array>
+
+</resources>
+
+```
+
+---
+
+*Translation made with [Stringlate](https://github.com/LonamiWebs/Stringlate).*"
+wolpi/prim-ftpd,closed,Server dies,[],I have to restart it nearly every time I need it. Can the server probably be restarted automatically?
+wolpi/prim-ftpd,closed,Exceptions reported in Google Play,[],"Google Play has reporing of Exceptions happening on user's devices. These are some of them.
+
+```
+java.lang.NullPointerException: 
+ 
+  at org.primftpd.remotecontrol.TaskerEditConditionActivity.finish (TaskerEditConditionActivity.java:49)
+ 
+  at android.app.Activity.finishAfterTransition (Activity.java:5442)
+ 
+  at android.app.Activity.onBackPressed (Activity.java:2895)
+ 
+  at android.app.Activity.onKeyUp (Activity.java:2868)
+ 
+  at android.view.KeyEvent.dispatch (KeyEvent.java:3361)
+ 
+  at android.app.Activity.dispatchKeyEvent (Activity.java:3169)
+ 
+  at com.android.internal.policy.DecorView.dispatchKeyEvent (DecorView.java:476)
+ 
+  at android.view.ViewRootImpl$ViewPostImeInputStage.processKeyEvent (ViewRootImpl.java:5048)
+ 
+  at android.view.ViewRootImpl$ViewPostImeInputStage.onProcess (ViewRootImpl.java:5010)
+```
+
+```
+java.lang.RuntimeException: 
+ 
+  at android.os.PowerManager$WakeLock.release (PowerManager.java:1300)
+ 
+  at android.os.PowerManager$WakeLock.release (PowerManager.java:1270)
+ 
+  at org.primftpd.services.ServerServiceHandler.releaseWakeLock (ServerServiceHandler.java:143)
+ 
+  at org.primftpd.services.ServerServiceHandler.handleStop (ServerServiceHandler.java:111)
+ 
+  at org.primftpd.services.ServerServiceHandler.handleMessage (ServerServiceHandler.java:62)
+ 
+  at android.os.Handler.dispatchMessage (Handler.java:102)
+```
+
+```
+Caused by: android.content.ActivityNotFoundException: 
+ 
+  at android.app.Instrumentation.checkStartActivityResult (Instrumentation.java:1818)
+ 
+  at android.app.Instrumentation.execStartActivity (Instrumentation.java:1525)
+ 
+  at android.app.Activity.startActivityForResult (Activity.java:4229)
+ 
+  at android.app.Activity.startActivityForResult (Activity.java:4187)
+ 
+  at org.primftpd.PrimitiveFtpdActivity.onRadioButtonClicked (PrimitiveFtpdActivity.java:263)
+```
+"
+wolpi/prim-ftpd,closed,"// java.lang.NumberFormatException: Invalid int: """"",[],"`Port` does not check empty input. `parseInt` should be used carefully.
+
+```
+// java.lang.NumberFormatException: Invalid int: """"
+//  at java.lang.Integer.invalidInt(Integer.java:138)
+//  at java.lang.Integer.parseInt(Integer.java:358)
+//  at java.lang.Integer.parseInt(Integer.java:334)
+//  at org.primftpd.prefs.PortEditTextPreference.onPreferenceChange(PortEditTextPreference.java:31)
+//  at android.preference.Preference.callChangeListener(Preference.java:939)
+//  at android.preference.EditTextPreference.onDialogClosed(EditTextPreference.java:145)
+//  at android.preference.DialogPreference.onDismiss(DialogPreference.java:395)
+//  at android.app.Dialog$ListenersHandler.handleMessage(Dialog.java:1323)
+//  at android.os.Handler.dispatchMessage(Handler.java:102)
+//  at android.os.Looper.loop(Looper.java:148)
+//  at android.app.ActivityThread.main(ActivityThread.java:5417)
+//  at java.lang.reflect.Method.invoke(Native Method)
+//  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+//  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+```"
+wolpi/prim-ftpd,closed,primitive ftpd is affected by a bug on certain Custom ROMs,[],"Hello,
+using a Samsung Galaxy Grand DUOS GT-I9082 running LineageOS 13.0 6.0.1_r79 from July 2017 I discovered that ""primitive ftpd"" is affected by the bug treated in the following links. In those links you can see that the whole problem is fixed on recent Custom ROMs. Trouble is that a lot of devices are stuck on older ROM releases so ""primitive ftpd"" development should do the necessary steps to avoid it like the developers on the app ""Conversations"" did (look at the last link).
+
+https://issuetracker.google.com/issues/64434571
+
+https://jira.lineageos.org/browse/BUGBASH-1052
+
+https://gitlab.com/fdroid/fdroiddata/issues/979
+
+https://github.com/siacs/Conversations/issues/2785
+
+Thanks and greetings!"
+wolpi/prim-ftpd,closed,3 icons since version 5.5,[],"Hello.
+
+First of all, thanks for the great app!
+With version 5.5 prim-ftpd installs in total 3 icons/shortcuts in the starter.
+Personally I don't want to have 3 icons for one app - are there plans to make that optional?
+
+Best
+m"
+wolpi/prim-ftpd,closed,"App crash when choose collect logs in textfile without ""storage"" permission",[],"App crash when choose collect logs in textfile without ""storage"" permission
+
+How to reproduce:
+1. Reinstall app or clear data or just disable ""storage"" permission for Primitive FTPd
+2. Open Primitive FTPd, go to settings, set collect logs in textfile
+3. Tap on back button (phisical/virtual or button in app)
+4. Get crash
+
+Primitive FTPd - 5.6 from F-Droid"
+wolpi/prim-ftpd,closed,Fix permission for starting servers on boot,[],"currently there is an exception when trying to start servers on boot:
+
+```
+java.lang.SecurityException: Permission Denial: not allowed to send broadcast android.intent.action.BOOT_COMPLETED from pid=3870, uid=2000
+        at android.os.Parcel.readException(Parcel.java:1684)
+        at android.os.Parcel.readException(Parcel.java:1637)
+        at android.app.ActivityManagerProxy.broadcastIntent(ActivityManagerNative.java:3537)
+        at com.android.commands.am.Am.sendBroadcast(Am.java:772)
+        at com.android.commands.am.Am.onRun(Am.java:404)
+        at com.android.internal.os.BaseCommand.run(BaseCommand.java:51)
+        at com.android.commands.am.Am.main(Am.java:121)
+        at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+        at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:262)
+```"
+wolpi/prim-ftpd,closed,Root access issue.,[],"I'm using primitive ftpd on a rooted Marshmallow Sony Z3 compact.
+When I access ftp using Plain old filesystem, I access /storage/emulated/0 correctly. But when I use Root mode, I can't access anything.
+
+Here is a log showing the problem : https://pastebin.com/QXB0Rvnq
+
+I tried the busybox issue from #122 but ls seems to work ok for me.
+
+If you need any other info, just ask me.
+
+Thanks"
+wolpi/prim-ftpd,closed,Improve German interface translation,[],Fixed some spelling and other mistakes
+wolpi/prim-ftpd,open,Extremely slow (with SAF).,[],"Copperhead OS newest version based on Android 8
+
+I am transferring with only 120 Kb/s.
+
+I can do a speedtest in the browser at the same time and I get 11 Mbit/s so its not my wifi speed thats limiting this.
+
+Also sidenotes.
+
+I am not able to connect with password at all with nautilus or filezilla. Unknown error.
+
+With public key I am able to connect with filezilla when selecting normal login method providing a outdated invalid password (filezilla tries public key first I guess)
+
+Commandline sftp does not work either.
+
+```
+$ sftp -P 1234 red@192.168.0.1
+ssh: connect to host 192.168.0.1 port 1234: Connection refused
+Couldn't read packet: Connection reset by peer
+```
+"
+wolpi/prim-ftpd,closed,Start and Menu not appearing on Android TV ,[],"Hello,
+I now tried your app on another TV box, with Android TV 7.1.2
+Menu and Start server button are not appearing ? See screeshot attached.
+
+![2018_01_12_08 40 45](https://user-images.githubusercontent.com/35311509/34894272-008e9988-f7e1-11e7-9295-734c658142f3.png)
+"
+wolpi/prim-ftpd,open,Can't access filesystem as root (config option for path to busybox),[],"I'm using primitive ftpd on a rooted Marshmallow TV box
+When I access sftp (or ftp) using Plain old filesystem, I access /storage/emulated/0 correctly. But when I use Root mode, I can't access anything.
+I had a look to supersu log and what I think is causing my issue is this:
+
+ls -lAd ""/storage/emulated/0""
+ls: Unknown command '-A'. Aborting.
+
+In a terminal emulator, i tried both ls -lAd  and ls -lad and that's true my system is sensitive to the case.
+
+Is it possible to change the command used to use a lower case a when ls ?
+
+Thanks"
+wolpi/prim-ftpd,closed,Issues with gvfs-fuse mount ,[],"I got another bug report by mail:
+
+> On FireOS, app from amazon appstore, but I've seen this in earlier versions as well, and on other devices. FTP server works, SFTP server can connect but crashes when I start to use the connection. Client is XUbuntu 17.10 but other Ubuntu derivatives have done similar. See attached log.
+
+```
+""2017-11-21 10:06:49.1"";""DEBUG"";""org.apache.sshd.server.sftp.SftpSubsystem"";""Received SSH_FXP_STAT (path=.)"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFileSystemView"";""getNormalizedView()"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFileSystemView"";""getFile(.)"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFileSystemView"";""  got abs: /storage/emulated/0"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[0] doesExist(), (/storage/emulated/0): orig val: true, checked val: true"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[0] getAttributes()"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[0] getAttribute(Size)"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[0] getSize() -> 4096"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[0] getAttribute(Uid)"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[0] getAttribute(Owner)"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[0] getOwner()"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[0] getAttribute(Gid)"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[0] getAttribute(Group)"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[0] getOwner()"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[0] getAttribute(IsDirectory)"";"""";
+""2017-11-21 10:06:49.1"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[0] isDirectory() -> true"";"""";
+```
+...
+```
+""2017-11-21 10:07:56.2"";""DEBUG"";""org.apache.sshd.server.sftp.SftpSubsystem"";""Received SSH_FXP_LSTAT (path=/)"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFileSystemView"";""getNormalizedView()"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFileSystemView"";""getFile(/)"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFileSystemView"";""  got abs: /"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[] doesExist(), (/): orig val: true, checked val: true"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[] getAttributes()"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[] getAttribute(Size)"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[] getSize() -> 0"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[] getAttribute(Uid)"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[] getAttribute(Owner)"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[] getOwner()"";"""";
+```
+...
+```
+2017-11-21 10:07:56.2"";""DEBUG"";""org.apache.sshd.server.sftp.SftpSubsystem"";""Received SSH_FXP_READLINK (path=/)"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFileSystemView"";""getNormalizedView()"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFileSystemView"";""getFile(/)"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFileSystemView"";""  got abs: /"";"""";
+""2017-11-21 10:07:56.2"";""TRACE"";""org.primftpd.filesystem.FsSshFile"";""[] readSymbolicLink()"";"""";
+""2017-11-21 10:07:56.2"";""ERROR"";""org.apache.sshd.server.sftp.SftpSubsystem"";""Exception caught in SFTP subsystem"";""java.lang.NullPointerException: Attempt to invoke virtual method 'byte[] java.lang.String.getBytes()' on a null object reference
+	org.apache.sshd.common.util.Buffer.putString() line: 435
+	org.apache.sshd.server.sftp.SftpSubsystem.sendLink() line: 963
+	org.apache.sshd.server.sftp.SftpSubsystem.process() line: 875
+	org.apache.sshd.server.sftp.SftpSubsystem.run() line: 427
+	java.util.concurrent.Executors$RunnableAdapter.call() line: 422
+	java.util.concurrent.FutureTask.run() line: 237
+	java.util.concurrent.ThreadPoolExecutor.runWorker() line: 1112
+	java.util.concurrent.ThreadPoolExecutor$Worker.run() line: 587
+	java.lang.Thread.run() line: 818"";
+""2017-11-21 10:07:56.3"";""DEBUG"";""org.apache.sshd.server.channel.ChannelSession"";""Send SSH_MSG_CHANNEL_EOF on channel ChannelSession[id=0, recipient=0]"";"""";
+```"
+wolpi/prim-ftpd,open,update the app icon to Android Oreo Adaptive Icon,[],"I got another change request by mail:
+
+> Please update the app icon to Android Oreo Adaptive Icon, so we can have all apps in a unified shape.
+
+"
+wolpi/prim-ftpd,open,Can't delete files from droid,"[Label(name=""waiting for response"")]","I'm connecting from Mac to droid; looking at DCIM folder.
+
+But I can't delete any files on droid side. Get permissions error. Tried FTP and SFTP.
+
+Any idea why?
+
+thanks!"
+wolpi/prim-ftpd,closed,SAF write failed bad descriptor ,[],"Hi, I'm using an AcuarisX5 mobile.
+I can start the server and connect, but when I transfer to the mobile long files (longer than about 2Mb) the transfer fails.
+
+I'm using sftp and SAF. (I've tried with  ""Plain old system"" too and it does not even create the file in the remote folder).
+The error message ""SAF write failed bad descriptor"" appears when I try to transfer with ""scp"" command line tool. It does not work when I transfer the files with winscp( version 5.9.4 ).
+
+Am I doing something wrong?
+
+Thanks,
+
+César"
+wolpi/prim-ftpd,closed,sd card access problem,[],"i just cant seem to get access to my sd card over primitive ftpd.
+
+i tried two methods:
+- root (my phone is rooted) - the sd card directory lists but i have no write permission and can't upload files or change them; log: https://pastebin.com/j6DAgmVG
+- saf (and selecting the sd card as the path) - i cant even get the listing of sd card directory, i get: `550 No such directory`; log: https://pastebin.com/LrMAXEZG
+
+the phone is A3 2016 (SM-A310F) and it's running Android 7.0"
+wolpi/prim-ftpd,open,support for ssh-ed25519 keys,"[Label(name=""upstream library"")]","is there any chance you'll be adding support for ed-25519 keys in `authorized_keys`?
+
+love the app btw, appreciate the work :)"
+wolpi/prim-ftpd,closed,About Translation,[],Why not set up a translation entrance and let people translate it.(sorry for my poor english^_^)
+wolpi/prim-ftpd,closed,Allow root access for android 4,[],As discussed in #55 there are people needing root access on android 4. As current limitation to android 5 and above is just necessary for SAF that can be easily refactored.
+wolpi/prim-ftpd,closed,F-Droid release?,[],Could you do one? I really want SD card access on my Kindle Fire without installing the Play Store
+wolpi/prim-ftpd,closed,"Exceptions for StorageTypes, check if SAF is accessible",[],"Via Google Play Developer Console some Exceptions habe been reported (see #55):
+
+```
+ at org.primftpd.PrimitiveFtpdActivity.checkSafAccess (PrimitiveFtpdActivity.java:325)
+ at org.primftpd.PrimitiveFtpdActivity.onResume (PrimitiveFtpdActivity.java:218)`
+```
+
+```
+  at org.primftpd.PrimitiveFtpdActivity.onCreate (PrimitiveFtpdActivity.java:155)
+  at android.app.Activity.performCreate (Activity.java:5242)
+```
+"
+wolpi/prim-ftpd,closed,Filesystem (SD or internal) only readable after Update to tfpd 5.0,[],"Filesystem (SD or internal) only readable after Update to tfpd 5.0 on my Galaxy S8.
+
+Same Problem with ""Gutes, altes Dateisystem"" and ""SAF""
+"
+wolpi/prim-ftpd,closed,Add ru (Russian) localization,[],
+wolpi/prim-ftpd,closed,Add uk (Ukrainian) localization,[],
+wolpi/prim-ftpd,closed,Fix README headers,[],Just a minor improvement
+wolpi/prim-ftpd,closed,Start Servers when UI is launched,[],"I got another feature request by mail:
+
+> Is there any way to allow for an option for the servers to automatically start when the app is started?"
+wolpi/prim-ftpd,closed,Access permissions through Linux sshfs,[],"When I mount through Linux sshfs the mount works without errors, but uid=daemon, gid=daemon and dir ist not readable:
+d--x--x--x  1 daemon daemon     0 Jan  3  1970 mnt
+
+What's going wrong here?
+"
+wolpi/prim-ftpd,closed,Create separate log files for different sessions,[],It's hard to debug when the log gets appended to the same file each startup.
+wolpi/prim-ftpd,closed,Closing the app kills the server,[],"When I close the app, the FTP session terminates and I can't reconnect,
+while the notification still claims that the server is running.
+
+Version 4.9 (code: 24)
+Android 5.0"
+wolpi/prim-ftpd,closed,Please Add TLS/SSL(ftps explicit/implict) Support,[],"The speed through sftp is too slow,hope to add it with a x509 certificate generator(Like Filezilla FTP Server),it would be faster transferring files(sorry for my poor English)😁"
+wolpi/prim-ftpd,closed,Allow customizable announced device name,[],While the device is announced by bonjour it would be nice to be able to define the showed name. If there are more devices in the network it is hard to distinguish between them.
+wolpi/prim-ftpd,closed,Expected ssh pubkey format in KeyParser.java is too strict,[],"In versions after 4.5, I wasn't able to use ssh pubkeys anymore. The error message said that the key could not be read. 
+Today I decided to have a look at the code and found out that you are expecting a very strict key format in https://github.com/wolpi/prim-ftpd/blob/f82dcfee433537a90a9316753a327b136314d29b/pftpd-pojo-lib/src/main/java/org/primftpd/pojo/KeyParser.java#L71
+I expects exactly three parts, separated by space. But an ssh pubkey can have a comment containing several spaces. Mine did, this check failed and the misleading error was, that it could not be read. 
+In my opinion the check should be `if (parts.length >= 2)`."
+wolpi/prim-ftpd,closed,Upgrade apache mina libraries,[],This app does not implement protocols itself but uses libraries from [apache mina](https://mina.apache.org). There have been new versions in meantime. Especially sshd (used for sftp) has been under heavy development.
+wolpi/prim-ftpd,closed,Save As Action: don't use filenames without extension,[],Recently some messengers must have changed the way they pass files to share action. That results in filenames without extension when saved with this app.
+wolpi/prim-ftpd,closed,Allow anonymous login (option) reseting itself to ON,[],"Hi
+When I open settings, scroll down and then back up. the option for allowing anonymous logins toggles itself to ON.
+You might wanna check that out. I'm using latest version from F-Droid (4.8.2)"
+wolpi/prim-ftpd,closed,Support for directory as target,[],"With an normal SSH/SCP server, you can specify an directory as the target and the files are then uploaded to that directory. It makes it really easy to upload many files.
+
+Example from the client:  `scp -P myport * mydevice:/mypath/`. Currently it outputs `File is a directory: org.primftpd.filesystem.SshFile@41982810` and no files are uploaded."
+wolpi/prim-ftpd,closed,Can't change server start directory after setting it to root,[],"I changed the server start directory to / however the app does not have root permissions, I can no longer navigate to the phone storage.
+
+Please add a way to manually specify the path of the server start directory.
+Thank you."
+wolpi/prim-ftpd,closed,Announce server in lan doesn't work.,[],"The announce server in lan feature, which used to work previously, is currently not working.
+
+Version : 4.8.2 installed from fdroid.
+"
+wolpi/prim-ftpd,closed,Updated Gradle + Build-Tools + SDK versions,[],I updated all of them
+wolpi/prim-ftpd,open,Tasker plugin only works when screen is on.,[],"I use Tasker to start and stop PrimitiveFTPd e.g. when entering and exiting my home WLAN. 
+When testing the tasks (manual start, i.e. screen is on), everything is fine. In normal usage however, i.e. the Tasker profiles are usually triggered when the screen is off, all other commands are executed fine. The PrimitiveFTPd plugin commands don't work. There is, however, no discernible error."
+wolpi/prim-ftpd,closed,SSH-2 Public Key not Accepted?,[],"I tried generating an SSH-2 RSA key using Puttygen. However when I put the public key in `/storage/emulated/0/.ssh/authorized_keys` and start the server it gives me the message ""Public key for key authentication could not be read. Check logs"". 
+
+Am I doing something wrong?"
+wolpi/prim-ftpd,closed,Receive Share-Actions to store files for later download,[],for example when users recieve media files via some messenger it would be great if they could store them in filesystem (by using share icon) to download them later with (s)ftp.
+wolpi/prim-ftpd,closed,Another way to start server,[],"I got a feature request by mail. I asked the person to create this issue but obviously he didn't 😉
+
+The original mai was in german, here is a translation:
+
+> Provide a app-launcher-icon which just starts the server instead of showing an activity. Similar to the existing widget. E.g. ""ES File Explorer"" provides that."
+wolpi/prim-ftpd,closed,Preference to set FTP passive ports,[],"I got a feature request by mail. I asked the person to create this issue but obviously he didn't 😉 
+
+Here is the mail text:
+
+>One question/request/suggestion : do you plan to add an option to manually specify the passive ports used by the FTP server?  I suppose you are allocating them at random right now.  
+I'm asking because it is a really useful options for those like me that 1. need FTP to connect to the phone from an external network and 2. have the possibility to configure the port forwarding through the local network's router. "
+wolpi/prim-ftpd,closed,Preference to set timeout,[],"I got a feature request by mail. I asked the person to create this issue but obviously he didn't 😉 
+
+Here is the mail text:
+
+> Could you please add 1 more simple option for choosing default timeout. In my use default 20sec timeout is a bit harsh, I would like to increase it."
+wolpi/prim-ftpd,closed,Folder Creation impossible,[],"CM13.0 with latest December Snapshot
+Nexus 6 & Nexus 7
+Client Filezilla
+
+It is impossible to create new folders.
+
+""
+Error:	Directory /sdcard/0Installation/ROM/Lineage: no such file or directory
+Error:	Verzeichnisinhalt konnte nicht empfangen werden
+"""
+wolpi/prim-ftpd,closed,Files shown als Symlinks/Folders,[],"CM13.0 with latest December Snapshot
+Nexus 6 & Nexus 7
+Client Filezilla
+
+If i want to open a file, first it thinks it is a symlink/folder and want to open it, after a ftp error happen, it will open it like a file.
+
+After switching from ""/sdcard/"" to ""/storage/emulated/0/"", the files are shown as files, instead of be shown as symlinks/folders."
+wolpi/prim-ftpd,closed,Added Greek translation,[],
+wolpi/prim-ftpd,closed,Cannot get external sd directory listing because of .android_secure,[],"When i try to get listing of `/storage/60ed9798-xxx[sdcard uuid]` filezilla fails with
+```
+Status:	Listing directory /storage/60ed9798-xxx
+Error:	Reading directory .: received failure with description '/storage/60ed9798-xxx/.android_secure'
+```
+if I enter the path to a specific directory on external sd manually then all works ok
+```
+Status:	Retrieving directory listing of ""/storage/60ed9798-xxx/Music""...
+Status:	Listing directory /storage/60ed9798-xxx/Music
+Status:	Directory listing of ""/storage/60ed9798-xxx/Music"" successful
+```
+This problem occurs only with sftp server
+Android 6.0.1 / Cyanogenmod 13, primitive ftpd 4.7 (code: 21)"
+wolpi/prim-ftpd,closed,Error with public key,[],"I get this error every time I try to use a custom public key. I tried with 2048 and 1024 ssh2.
+
+![screenshot_20161113-193046](https://cloud.githubusercontent.com/assets/13797216/20248751/f537a7b8-a9ea-11e6-997e-58002245f317.png)
+"
+wolpi/prim-ftpd,open,Tasker plugin does not work (with Automate),[],"Automate cannot control prim-ftpd meanwhile works well on other apps (with Tasker plugin) like Easy Voice Recorder, Overlays. I can select the desired action but nothing happens when triggering."
+wolpi/prim-ftpd,closed,Primitive > Complete FTPD,[]," (I hope it is not a idiotic thing) you might not develop the app as ""Primitive"", but as ""Complete"" FTPD ??
+"
+wolpi/prim-ftpd,closed,Android 7: Display of current ip-address is broken,[],"The app relies on the system event `CONNECTIVITY_ACTION` to show current ip-address but in Android 7 that event is not fired anymore, see https://developer.android.com/about/versions/nougat/android-7.0-changes.html
+"
+wolpi/prim-ftpd,closed,Android 7: Stop-Icon in Notification is not visible anymore,[],"In Android 7 there are changes how notifications are created, see https://developer.android.com/about/versions/nougat/android-7.0-changes.html
+"
+wolpi/prim-ftpd,closed,Add Android M permissions support.,[],"Addresses issue #75. Following the increase of the `targetSdkVersion` to 24.
+We'll need to request the Storage permission manually on Android M upwards otherwise they won't be able to read any of the files.
+"
+wolpi/prim-ftpd,closed,Advertise availability on stores,[],
+wolpi/prim-ftpd,closed,Show SHA256 fingerprint base64 encoded,[],"OpenSSH shows SHA256 fingerprints in this format: `SHA256:x4xld/tPdeOhbyJcTOxd+IbSZ4OpnBzh/IskocyrOM` but prim-ftpd uses hexadecimal. Please allow to show the SHA256 fingerprint in the OpenSSH format.
+"
+wolpi/prim-ftpd,closed,Add support for Android M runtime Permissions,[],"The app doesn't work on Android M and up because we don't request the WRITE_EXTERNAL_STORAGE permission at run time. So all the user is shown is a blank directory.
+
+I've implemented the code on my local machine. But waiting for #74 to be merged in first.
+"
+wolpi/prim-ftpd,closed,Android N quick settings tile support,[],
+wolpi/prim-ftpd,closed,Android N quick settings tile support.,[],
+wolpi/prim-ftpd,closed,slow sFTP,[],"Hi,
+
+is it possible to speed up the sFTP transfere rate? The ftp server is 10 times faster then the sftp server.
+"
+wolpi/prim-ftpd,closed,Path of authorized_key.pub,[],"Hello,
+
+I made some research but didn't find where I should put the authorized_key.pub file. It's only by analyzing the logs that I found the path where the app look :
+
+```
+/storage/emulated/0/.ssh/authorized_key.pub
+```
+
+A little more infos on this should be great ;)
+
+Thanks !
+"
+wolpi/prim-ftpd,closed,Public Key Authentication work only in a particular order,[],"Hello,
+
+I found that the Public Key Authentication work only in a particular order sometimes. I have 2 PC, one desktop and one laptop. The connection to the laptop work only if its public key is the first one in .ssh/authorized_key.pub. The connection to the desktop always work, regardless the order.
+
+I had a hard time figuring out why my laptop didn't want to connect whereas my desktop, set up the same way, worked perfectly.
+
+Is it something that can be fixed in the app ? Or it's a ""problem"" on my side ?
+
+Thanks !
+"
+wolpi/prim-ftpd,closed,Connection by device name,[],"Hello,
+
+It will be great if we can give a name to Android device. That way we can connect to it with its name instead of its ip. With something like that in nautilus :
+
+```
+ssh://Motorola.local
+```
+
+Thanks 
+"
+wolpi/prim-ftpd,closed,"/storage, /sdcard and other directories are not readable using SFTP after upgrade v4.4 => v4.5",[],"After upgrading from v4.4 to v4.5 some directories are not readable anymore. All settings of the phone and this app are the same.
+Downgrading back to v4.4 (after uninstalling v4.5) makes these directories readable again.
+
+When on v4.5 I do `ls -l /` I get an ""Input/output error"" message for every directory that is not readable, and every unreadable directory looks like this: `?????????? ? ?    ?          ?             ? storage`.
+"
+wolpi/prim-ftpd,closed,Setting the server start directory doesn't work; storage directory inaccessible,[],"How to reproduce in version 4.5:
+1. Enable password-authenticated SFTP login.
+2. Set the server start directory to for example `/storage`.
+3. Verify that the ""Directory is not valid"" message does _not_ appear.
+4. Restart the server.
+5. `sshfs phone: /media/phone`
+6. `cd /media/phone`
+
+At this point I'm clearly seeing the root directory of the phone, and the storage directory is not accessible:
+
+```
+$ ls -l 
+ls: cannot access 'sdcard': Input/output error
+ls: cannot access 'storage': Input/output error
+ls: cannot access 'vendor': Input/output error
+ls: cannot access 'd': Input/output error
+ls: cannot access 'etc': Input/output error
+ls: cannot access 'tombstones': Input/output error
+ls: cannot access 'mnt': Input/output error
+total 1476
+[…]
+?????????? ? ?   ?        ?            ? mnt
+[…]
+?????????? ? ?   ?        ?            ? sdcard
+[…]
+```
+"
+wolpi/prim-ftpd,closed,"app crashes from time to time when server is stopped (""WakeLock under-locked"")",[],"To avoid that an additional check has been added. Before the app releases the wakelock it asks the OS if it thinks it has been taken.
+"
+wolpi/prim-ftpd,closed,SD card is not writable,[],"I can read the file in SD card, but have no permission to write SD card. I don't understand Android development, maybe this issue is related to #31 ?
+
+Tested on Acer A3-A30 (Android 5.0.2)
+"
+wolpi/prim-ftpd,closed,can't connect to sftp server - connection reset,[],"#### versions
+- prim-ftpd 4.4 (code: 18)
+#### problem description
+
+I can't connect to the sftp server anymore (didn't change the configuration, it was running before).
+
+I have the ssh key of my client on the phone, but when I try to connect to the server I get the following:
+
+``` bash
+$ sshfs -p 1234 user@192.168.1.197:/storage/emulated/0 /home/user/mnt/phone
+read: Connection reset by peer
+```
+
+Here are the relevant lines from the log, I can't make any sense out of them ([gist](https://gist.github.com/lecagot/23817e2fd6bf8ecbe79a0e96c5d9cd77)):
+
+```
+""2016-04-04 12:52:28.0"";""INFO"";""org.apache.sshd.server.session.ServerSession"";""Server session created from /192.168.1.182:41028"";"""";
+""2016-04-04 12:52:28.0"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Send SSH_MSG_KEXINIT"";"""";
+""2016-04-04 12:52:28.0"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #0: 14 aa d4 ec a3 32 41 6c 42 bf d5 d5 10 74 24 7f d4 00 00 00 b7 64 69 66 66 69 ..."";"""";
+""2016-04-04 12:52:28.0"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Client version string: SSH-2.0-OpenSSH_7.2"";"""";
+""2016-04-04 12:52:28.0"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #1: 14 5e d8 ce 4b f9 01 26 5b 82 a1 4c 91 70 ed 39 fd 00 00 00 c4 63 75 72 76 65..."";"""";
+""2016-04-04 12:52:28.0"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Received SSH_MSG_KEXINIT"";"""";
+""2016-04-04 12:52:28.0"";""INFO"";""org.apache.sshd.server.session.ServerSession"";""Kex: server->client aes128-ctr hmac-sha2-256 none"";"""";
+""2016-04-04 12:52:28.0"";""INFO"";""org.apache.sshd.server.session.ServerSession"";""Kex: client->server aes128-ctr hmac-sha2-256 none"";"""";
+""2016-04-04 12:52:28.1"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Received packet #2: 1e 00 00 00 41 04 ed ae 18 43 72 b9 b5 5e bc 1f 29 a8 d3 3a 01 a1 93 68 c0 1c..."";"""";
+""2016-04-04 12:52:28.1"";""DEBUG"";""org.apache.sshd.server.kex.ECDHP256"";""Received SSH_MSG_KEXDH_INIT"";"""";
+""2016-04-04 12:52:28.2"";""DEBUG"";""org.apache.sshd.server.kex.ECDHP256"";""K_S:  00 00 00 07 73 73 68 2d 72 73 61 00 00 00 03 01 00 01 00 00 01 01 00 d8 ef 71 9d 83 0c 04 e..."";"""";
+""2016-04-04 12:52:28.2"";""DEBUG"";""org.apache.sshd.server.kex.ECDHP256"";""f:    04 24 f3 c8 33 b8 4c 77 37 8f 02 c7 4c 82 63 00 72 2f 0e b5 f9 86 b5 8e e5 3f c6 16 22 bc 3..."";"""";
+""2016-04-04 12:52:28.2"";""DEBUG"";""org.apache.sshd.server.kex.ECDHP256"";""sigH: 00 00 00 07 73 73 68 2d 72 73 61 00 00 01 00 7b 10 8e 4f fc ea fa d5 79 b6 7a d3 3c 4d 8a 5..."";"""";
+""2016-04-04 12:52:28.2"";""DEBUG"";""org.apache.sshd.server.kex.ECDHP256"";""Send SSH_MSG_KEXDH_REPLY"";"""";
+""2016-04-04 12:52:28.2"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #1: 1f 00 00 01 17 00 00 00 07 73 73 68 2d 72 73 61 00 00 00 03 01 00 01 00 00 01 ..."";"""";
+""2016-04-04 12:52:28.2"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Send SSH_MSG_NEWKEYS"";"""";
+""2016-04-04 12:52:28.2"";""TRACE"";""org.apache.sshd.server.session.ServerSession"";""Sending packet #2: 15"";"""";
+""2016-04-04 12:52:28.3"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""Closing ServerSession[null@null] immediately"";"""";
+""2016-04-04 12:52:28.3"";""DEBUG"";""org.apache.sshd.common.io.mina.MinaSession"";""Closing MinaSession[local=/:::1234, remote=null] immediately"";"""";
+""2016-04-04 12:52:28.3"";""DEBUG"";""org.apache.sshd.common.io.mina.MinaSession"";""MinaSession[local=/:::1234, remote=null] closed"";"""";
+""2016-04-04 12:52:28.3"";""DEBUG"";""org.apache.sshd.server.session.ServerSession"";""ServerSession[null@null] closed"";"""";
+""2016-04-04 12:52:29.7"";""DEBUG"";""org.primftpd.PrimitiveFtpdActivity"";""onPause()"";"""";
+```
+
+any ideas? help is appreciated.
+"
+wolpi/prim-ftpd,closed,Add ability to stop the server directly from the notification bar.,[],
+wolpi/prim-ftpd,closed,Add support for anonymous login.,[],
+wolpi/prim-ftpd,closed,Add ECDSA support?,[],"For public key authentication.
+
+I currently get:
+
+```
+29.02.2016 11:05    ERROR   org.primftpd.util.KeyInfoProvider   could not read key auth key ""java.io.IOException: Unable to parse key, format could not be identified
+    com.sshtools.publickey.SshPublicKeyFileFactory.parse() line: 153
+    com.sshtools.publickey.SshPublicKeyFileFactory.parse() line: 179
+    org.primftpd.util.KeyInfoProvider.readKeyAuthKey() line: 127
+    org.primftpd.services.SshServerService.launchServer() line: 123
+    org.primftpd.services.ServerServiceHandler.handleStart() line: 69
+    org.primftpd.services.ServerServiceHandler.handleMessage() line: 53
+    android.os.Handler.dispatchMessage() line: 102
+    android.os.Looper.loop() line: 148
+    android.os.HandlerThread.run() line: 61""
+```
+
+will trying to load a ecdsa-sha2-nistp521 public key.
+"
+wolpi/prim-ftpd,closed,Update the homescreen widget background to be much nicer.,[],
+wolpi/prim-ftpd,closed,Minor features and improvements,[],"Following on from #58, features include:
+- Improving the homescreen widget presentation.
+- Anonymous login support.
+- Ability to stop the server directly from the notification bar.
+- Launch the main activity directly from the widget if a password is required.
+- Using event bus to trigger a page refresh without necessarily having to rely on passing the MenuItem objects around.
+"
+wolpi/prim-ftpd,closed,Support for pull-requests for new features?,[],"I found your project while looking to implement my own FTP client and thought it was interesting enough to expand on.
+
+I ended up playing around with it and adding small features here and there. But I wasn't sure if you were interested in merging features/pull-requests.
+
+The features I implemented include:
+- Anonymous FTP user support - it's a hassle to force a password unto the user. Toggle-able of-course.
+- Expanded notification layout - so that you can expand it to stop/pause the server(s) without having to go to the activity screen.
+- Included state-specific background colours (green and red) on the home screen widget as the current transparent background and white text makes it difficult to view on the homescreen.
+
+If you're open to pull-requests, where do you stand on additional libraries?
+Also, do you prefer including the raw jar libraries over the standard gradle dependency block:
+
+```
+dependencies {
+    //compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'org.apache.ftpserver:ftpserver-core:1.0.6'
+    compile 'org.apache.ftpserver:ftplet-api:1.0.6'
+    compile 'org.slf4j:slf4j-api:1.7.13'
+    compile 'org.slf4j:slf4j-simple:1.7.13'
+    compile 'org.apache.mina:mina-core:2.0.10'
+    compile 'org.apache.sshd:sshd-core:0.13.0'
+    compile 'com.sshtools:j2ssh-maverick:1.5.2'
+    compile 'org.slf4j:slf4j-android:1.6.1-RC1'
+}
+```
+
+If so, why? I'd really like to know.
+
+The library I propose to include is the lightweight [eventbus](https://github.com/greenrobot/EventBus) library to make updating the launcher widget and activity screen state easier rather than making using the static method call.
+I'd also like to include the LeakCanary library to help fix any potential memory leaks.
+
+Regards.
+"
+wolpi/prim-ftpd,closed,The connection is closed (the underlying SSH process exited),[],"Everytime I try to connect to my phone's SFTP server (ssh://ip:port or sftp://ip:port) I get an error message on my computer saying:
+
+Oops! Something went wrong.
+Uhandled error message: The connection is closed (the underlying SSH process exited)
+"
+wolpi/prim-ftpd,closed,Android ICS version support,[],"Any reason for the app to not work on ICS (android:minSdkVersion=""1**5**"") ?
+
+/LE: One build later...
+It generated the keys ok, all the other things looked right, except that it crashes on server start: https://gist.github.com/licaon-kter/4c2af6dc1f950e8a1530
+"
+wolpi/prim-ftpd,closed,Optional root privileges,[],"Is it possible to run Primitive FTPd with root privileges and browse/modify system folders/files?
+"
+wolpi/prim-ftpd,closed,[Req] Power Toggles and/or Tasker plugin,[],"Since the main functionality of this is controlled by a single start/stop switch, a notification-style toggle could streamline things quite a bit.
+
+Power toggles [GPlay,](https://play.google.com/store/apps/details?id=com.painless.pc) [relevant git](https://github.com/sunnygoyal/power-toggle-plugin)
+Tasker [GPlay,](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm) [relevant docs](http://tasker.dinglisch.net/plugins.html)
+"
+wolpi/prim-ftpd,open,FTP does not show dotfiles,"[Label(name=""upstream library"")]","Yet SFTP shows [dotfiles](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory).
+"
+wolpi/prim-ftpd,closed,transfer hangs in a loop,[],"I'd like to be able to backup all my files via ftp. However, I failed to transfer all my files from my Motorola Moto E on my computer. I used FileZilla on Kubuntu 15.10. I tried 2 different WiFis. FileZilla tries to transfer 2 specific files. The transfer fails with a timeout, FileZilla tries again, fails again and so on. I logged the transfer with FileZilla and with primitive ftpd. I upload the last 100 lines from each.
+[filezilla.txt](https://github.com/wolpi/prim-ftpd/files/90521/filezilla.txt)
+[primt-ftp.txt](https://github.com/wolpi/prim-ftpd/files/90533/primt-ftp.txt)
+
+Any ideas what I could do to make this work?
+"
+wolpi/prim-ftpd,closed,No external SD card over sftp,[],"I'm have a Motorola Mote E running Android 5.1. I start ftp and sftp server with prim-ftpd. The Moto E emulates an SD card in the internal memory and mounts that at `/storage/sdcard0` and the external SD card is mounted at `/storage/sdcard1`. If I connect (using FileZilla on Kubuntu 15.10) via ftp I can browse both folders. But if I connect via sftp I can only browse the internal memory (`/storage/sdcard0`) but I cannot access the external SD card (`/storage/sdcard1`). The FileZilla log says:
+
+```
+Status:    Connecting to 10.42.0.55:1234...
+Response:    fzSftp started, protocol_version=2
+Command:    open ""fabian@10.42.0.55"" 1234
+Command:    Pass: **************
+Status:    Connected to 10.42.0.55
+Status:    Retrieving directory listing of ""/storage""...
+Command:    cd ""/storage""
+Response:    New directory is: ""/storage""
+Command:    ls
+Status:    Listing directory /storage
+Status:    Directory listing of ""/storage"" successful
+Status:    Retrieving directory listing of ""/storage/sdcard1""...
+Command:    cd ""/storage/sdcard1""
+Response:    New directory is: ""/storage/sdcard1""
+Command:    ls
+Status:    Listing directory /storage/sdcard1
+Error:    Reading directory .: failure
+Status:    Directory listing of ""/storage/sdcard1"" successful
+```
+"
+wolpi/prim-ftpd,closed,Changing of working dir broken for FTP,[],"It is not possible anymore to change working dir for FTP protocol.
+"
+wolpi/prim-ftpd,closed,directory listing error with FileZilla,[],"latest version on F-droid, version 4.3, doesn't allow to open directories while connected. i downgraded back to version 4.2 and all works fine. let me know if you need more information
+"
+wolpi/prim-ftpd,closed,Google Play(tm) app name,[],"Was intentional? It's hard to change?
+
+_Primitve FTPd_ vs _Primit__**i**__ve FTPd_
+"
+wolpi/prim-ftpd,closed,disable password auth when pub key auth is enabled an password not set,[],"oops, that was missing from #38 
+"
+wolpi/prim-ftpd,closed,Travis CI build,[],"... would be nice
+"
+wolpi/prim-ftpd,open,minifying with proguard without breakage,[],"when minifying is just enabled without further config it causes too many classes to be removed and thus breaks the app
+"
+wolpi/prim-ftpd,closed,avoid activity flash when using widget,[],"for that it is necessary to:
+- refactor loading of preferences to be done outside of activity
+- create start/stop intents (and maybe some stuff surrounding it) outside of activity
+"
+wolpi/prim-ftpd,closed,Server Start Directory setting,[],"Should invoke a Folder Picker of some sort.
+"
+wolpi/prim-ftpd,closed,Removes main window back arrow in titlebar,[],"Fix https://github.com/wolpi/prim-ftpd/issues/39
+"
+wolpi/prim-ftpd,closed,Problem with FTP file upload on KDE,[],"When I use KDE and upload a file, the default setting is to add "".part"" at the end of the file and when the transfer is finished the file is renamed to it's original file name. This isn't working for whatever reason and the final rename fails, so the file transfer finishes with the "".part"" extension. Hopefully this can be fixed.
+
+My actual (disliked) workaround is: http://www.krusader.org/documentation/faq_usage.html#id2672746
+
+> ###### How do not add .part suffix when copying files via FTP?
+> 
+> When uploading files a .part suffix is added to the filename, once the upload is complete the filename is renamed automagically to remove the .part suffix. This works great but sometimes some FTP servers do not allow a rename operation. You can solve this by unchecking the checkbox Mark partially uploaded files in KDE's System Settings. The check box is located at Network Settings → Connection Preferences.
+"
+wolpi/prim-ftpd,closed,Back arrow icon in titlebar,[],"Any reason for it?
+
+Now it just sends the app in background, not sure why that is needed.
+"
+wolpi/prim-ftpd,closed,fully passwordless operation,[],"since #30, login with rsa keys works fine. i just tried to disable password authentication by setting an empty user password, but without, primftpd refuses to start at all (""You have to set a password first""), while technically, the sftp server could just run without one and not offer the password and keyboard-interactive methods. please consider adding that mode of operation.
+
+thanks a lot for writing and maintaining prim-ftpd!
+"
+wolpi/prim-ftpd,closed,Update basque translation,[],
+wolpi/prim-ftpd,closed,Update strings-es,[],"Update spanish translation
+"
+wolpi/prim-ftpd,closed,PrimitiveFtpdActivity - fragment class should be public,[],"Can't compile, I'm getting weird problem
+
+```
+prim-ftpd\primitiveFTPd\src\org\primftpd\PrimitiveFtpdActivity.java
+Error:Error: This fragment class should be public (org.primftpd.PrimitiveFtpdActivity.GenKeysAskDialogFragment) [ValidFragment]
+```
+"
+wolpi/prim-ftpd,closed,dns-sd: should be _sftp-ssh._tcp,[],"prim-ftpd announces its sftp server as _sftp._tcp on dns-sd (zeroconf/bonjour), while it should use _sftp-ssh._tcp according to http://www.dns-sd.org/servicetypes.html ; that would make the server show up in the ""network neighborhood"" of gvfs (used by gnome, xfce and others).
+
+please consider changing the announced service type, or (if there are good reasons to use _sftp._tcp) announcing both.
+"
+wolpi/prim-ftpd,closed,App crash on file rename when connected with FTP,[],"When I try to rename a file while connected via FTP, primitive ftpd crashes.
+"
+wolpi/prim-ftpd,closed,1x1 widget to start/stop server,[],"the title says it all :wink: 
+"
+wolpi/prim-ftpd,closed,android 5 sd-card support,[],"Android 5 introduced a new API to access sd-cards. It is called ""Storage Access Framework"" (SAF):
+
+https://developer.android.com/guide/topics/providers/document-provider.html
+
+I intend to create a new section in main activity to list storage devices and display whether permission to access it has been asked. It would provide an icon to request that permission.
+
+The Filesystem Adapters for both servers would need a new implementation that don't use java.io.File but SAF primitives.
+
+As SAF does not work with file path but with content URIs I think it is necessary to keep an internal mapping file beteween paths and URIs.
+"
+wolpi/prim-ftpd,closed,Support for SSH public key authentication,[],"SSH keyboard-interactive authentication is inconvenient when using SFTP in automounting situations. Please consider adding support for public key authentication against the server. An authorized_keys file could be placed in .ssh/authorized_keys in the home directory, explicitly loaded into the application, or copy-pasted into a text area there. (For starters, any of these would do; I'm not sure which gives the most Android-like user experience).
+"
+wolpi/prim-ftpd,closed,primitive ftpd should use switches instead of checkboxes in the settings to adhere to Google Material Design Guidelines,[],"@wolpi :
+
+Currently primitive ftpd is using checkboxes in the settings.
+
+But the Google Material Design Guidelines clearly say:
+
+> https://www.google.com/design/spec/components/selection-controls.html
+> 
+> [...] If you have a single option, avoid using a checkbox and use an on/off switch instead. [...]
+
+So, could you please replace them with switches?
+
+Regards
+"
+wolpi/prim-ftpd,closed,Material design Icon,[],"Hello!
+Thank you for your work, the app has greatly improved.
+I made a new material design style icon, if you want to change
+
+![ic_launcher_materialhdpi](https://cloud.githubusercontent.com/assets/4024412/9245408/17e07f02-41a4-11e5-8052-760e5196c35e.png)
+![ic_launcher_materialmdpi](https://cloud.githubusercontent.com/assets/4024412/9245407/17e030ec-41a4-11e5-8195-e21c13734376.png)
+![ic_launcher_materialstore](https://cloud.githubusercontent.com/assets/4024412/9245411/17e552fc-41a4-11e5-8d35-66eee445b039.png)
+![ic_launcher_materialxhdpi](https://cloud.githubusercontent.com/assets/4024412/9245409/17e29792-41a4-11e5-9c62-aba7ba02bc8c.png)
+![ic_launcher_materialxxhdpi](https://cloud.githubusercontent.com/assets/4024412/9245406/17ddca1e-41a4-11e5-8b49-2be5291925ee.png)
+![ic_launcher_materialxxxhdpi](https://cloud.githubusercontent.com/assets/4024412/9245410/17e3bcee-41a4-11e5-9ea1-f06ad9111df2.png)
+
+.
+A greeting.
+"
+wolpi/prim-ftpd,closed,Text alignment in version 3.2,[],"Please add an option to switch from the centered alignment back to left alignment.
+"
+wolpi/prim-ftpd,closed,"Please, add ""root dir"" section",[],"default dir
+"
+wolpi/prim-ftpd,closed,"Please add an ""About"" section",[],"Hello,
+
+would there be any chance you could add an ""About"" section to primitve ftpd which shows the version number and so on?
+
+Maybe it could be placed at the bottom of the preferences?
+
+Regards
+"
+wolpi/prim-ftpd,closed,Port 21 for FTP and port 22 for SFTP do not work,[],"Hello,
+
+as far as I understand, the standard port for FTP is port 21 and the standard port for SFTP is port 22.
+
+However, when I try to configure those ports in primitive ftpd, primitive ftpd throws the following error message:
+
+""Port value is invalid. Resetting it to default.""
+
+Tested on LG G2 running latest LG stock ROM (Android 5.0.2 Lollipop).
+
+Why is it doing this?
+
+Regards
+"
+wolpi/prim-ftpd,closed,Icon on main screen toolbar?,[],"Hello,
+
+I noticed that on the [Google Play Store screenshots](https://play.google.com/store/apps/details?id=org.primftpd), the primitive ftpd main screen toolbar shows the primitive ftpd icon, see:
+
+![Image](https://cloud.githubusercontent.com/assets/7558360/8765313/93167cbe-2e06-11e5-97e2-9bcd26790699.png)
+
+However, I have primitive ftpd installed and it does not show the icon on the main screen toolbar.
+
+Tested on LG G2 running latest LG stock ROM (Android 5.0.2 Lollipop).
+
+I'm just wondering:
+
+Is this normal (i.e. the Google Play Store simply shows some older screenshots)?
+
+Or is it a bug?
+
+Regards
+"
+wolpi/prim-ftpd,closed,"Typos in ""Prevent Standby"" option description",[],"Hello,
+
+the description of the ""Prevent Standby"" option has some typos:
+
+It says ""uplodas"". Should be changed to ""uploads"",
+
+It also says ""dwonloads"". Should be changed to ""downloads"".
+
+Regards
+"
+wolpi/prim-ftpd,closed,Please add a light theme,[],"Hello,
+
+currently primitive ftpd only has a dark theme.
+
+Would there be any chance you could also add a light theme?
+
+It would be much appreciated.
+
+Regards
+"
+wolpi/prim-ftpd,closed,Main screen looks cluttered,[],"Hello @wolpi ,
+
+thank you for this great open source app.
+
+It's really useful.
+
+But the main screen looks quite cluttered, because:
+
+It's basically full of text. There is no bold font for the headlines and almost no space between the sections.
+
+I have made a mock-up for an improvement. I'm not really a professional designer at the moment, so I made it with LibreOffice Writer :laughing:. Anyway, here is what it looks like (please also see the notes below the images):
+
+**Server(s) stopped:**
+
+![Image](https://cloud.githubusercontent.com/assets/7558360/8765191/6d561cc2-2e02-11e5-8e1b-8067db338334.png)
+
+**Server(s) running:**
+
+![Image](https://cloud.githubusercontent.com/assets/7558360/8765201/82c59e84-2e02-11e5-9fe0-03a7639b78b8.png)
+
+Notes about this mock-up:
+- Toolbar: The start (play) button has been removed and has been moved from the toolbar to the mainscreen (see below). Also the settings icon has been changed from a wrench icon to a gear icon. 
+- The start/stop button is now on the main screen. It says ""Start server(s)"" when the servers are stopped and says ""Stop server(s)"" when the servers are running.
+- The ""Running server(s)"" section says ""None (Press start button to run)"" when no server is running. And when server(s) are running it only shows the servers which are actually running. Currently primitive ftpd even shows servers which are not running. IMHO it should only show servers which are running. The port of each server is shown in brackets, so, for example ""SFTP (Port 22)"".
+- The ""Username"" section shows the username.
+- The ""Host IPs"" section shows the hosts IPs. To save space and to make it look more tidy, it simply lists the IPs and mentions the network interfaces in brackets.
+- The ""Key fingerprints"" section shows four buttons. The ""(Re-Generate)"" button does (re-)generate the key fingerprints. The ""Show MD5"" button would open a pop-up which shows the MD5. The ""Show SHA1"" button would open a pop-up which shows the SHA1. The ""Show SHA256"" button would open a pop-up which shows the SHA256.
+
+Yeah, that's it.
+
+IMHO it looks much more tidy and cleaner like this.
+
+Any chance you could change primitive ftpd to look more like this?
+
+It would be much appreciated.
+
+Regards
+"
+wolpi/prim-ftpd,open,keepass error,"[Label(name=""upstream library"")]","Took me a while, but I managed to trace down why I could not get keepass (http://keepass.info/) to sync to my tablet via ftp. This ftpd, https://f-droid.org/repository/browse/?fdfilter=ftp&fdid=be.ppareit.swiftp_free , works ok. But not this one, using ngrep, it halts just after getting data from issuing a MDTM comamnd. Keepass throws up a very UN-helpful error message, ""Operation not valid due to the current state of the object"". Googling show many causes of that error.
+"
+wolpi/prim-ftpd,closed,SFTP does not start,[],"I tried v3.0 from f-droid.org on Android 4.4.2 and only FTP starts.
+The OS is rooted and other services like Samba work fine.
+I only need sftp, can you please fix it?
+"
+wolpi/prim-ftpd,closed,Thank you,[],"Didn't say thanks, issue solved thanks!
+This SFTP server is perfect.
+"
+wolpi/prim-ftpd,closed,Material Design,[],"It is planned to update the design to material? This would be very nice
+Thanks for your work!
+"
+wolpi/prim-ftpd,closed,Here is the french translation,[],"I've also changed the way the preference activity close.
+"
+wolpi/prim-ftpd,closed,Update spanish translation,[],
+wolpi/prim-ftpd,closed,Usefull options for daily use and battery life,[],"If you find the following changes usefull, please take them over so that they are reflected in F-Droid.
+Thank you and Merry Christmas.
+
+added autostart option to automatically start the server during bootup
+added wifi mode, which will only bind to a local wifi/wlan ip address
+instead of all possible (and even global) addresses
+changed behaving of notification bar (sticky)
+changed behaving of server in wifi mode, server now shuts down and lets
+device deep sleep if no wifi is available
+changed wake lock from screen dim to partial, a wifi lock should be
+aquired if server shuts down but needs to stay on
+"
+wolpi/prim-ftpd,closed,android freezes or restart,[],"Samsung s2 plus
+android 4.2.2
+
+i start primitive ftpd
+then
+android freezes
+or
+restart !
+
+i must try several times before to use it without freeze or restart
+"
+wolpi/prim-ftpd,closed,[wish] supply secured transfer,[],"it woul be a good thing to have secured transfer .
+
+can you add authentication and encrypting ?
+
+thanks in advance
+"
+wolpi/prim-ftpd,closed,Update strings.xml,[],
+wolpi/prim-ftpd,closed,Added french translation for new strings,[],
+wolpi/prim-ftpd,closed,Spanish translation update for version 2.3,[],"Spanish translation update for version 2.3. 
+"
+wolpi/prim-ftpd,closed,Register a DNS-SD service,[],"This allows to be discoverable through Bonjour/Avahi and saves the user
+from typing the IP address manually.
+"
+wolpi/prim-ftpd,closed,Create strings.xml,[],"Add basque translation
+"
+wolpi/prim-ftpd,closed,Added french translation,[],
+wolpi/prim-ftpd,closed,Cannot transfer directories with all files included,"[Label(name=""enhancement"")]","Hi wolpi
+
+First of all my thank you for your wonderful app. I like it a lot and use it on a daily basis. Clean and small and doing what it should do! :-)
+
+There is one enhancement or bug issue (do not know how to classify) I would like to report. Your primitive ftp is not able to transfer directories with files included. I always first have to create the directories on my smartphone before I can transfer all files to the appropriate directories. Other ftp servers let me transfer everything at once and if sub directories do not exist it will automatically create these. Can you look into this? Thanks
+
+skx7
+"
+wolpi/prim-ftpd,closed,Icon,[],"I'm not sure that low resolutions are the best they can be. I think my management of Gimp does not allow me to do it better. Hope these can serve. As always, any changes in my hand I'll be happy to lend my support.
+"
+wolpi/prim-ftpd,closed,Icon,[],"Hi, 
+I made another icon for the app, although I am not a design expert, hope you like it.
+
+![ftp_logov4](https://f.cloud.github.com/assets/4024412/2310236/be767948-a2e0-11e3-8aab-0840d374c6a5.png)
+"
+wolpi/prim-ftpd,closed,Create strings.xml,[],"Spanish translation
+"

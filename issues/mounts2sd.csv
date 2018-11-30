@@ -1,0 +1,486 @@
+repository,state,title,label,body
+SpazeDog/mounts2sd,open,API Compatibility Issues,[],"Dear developers,
+
+We have recently developed a state-of-the-art static analysis tool for uncovering API compatibility issues in Android apps. Applying this tool to open source apps on F-droid, we have exposed a few instances of compatibility issues and submitting them to development teams for a fix. 
+
+For your app, we have found that this project has accessed the following APIs which are available only on an API level higher than the declared minSdkVersion and which are accessed without proper protection. In other words, if those APIs get called at runtime, it will trigger a NoSuchMethodError and thus result in a crash of the running application.
+
+<android.app.FragmentManager: android.app.FragmentTransaction beginTransaction()>:[11,25]
+<android.app.FragmentTransaction: int commit()>:[11,25]
+<android.app.Fragment: void onPause()>:[11,25]
+<android.app.Fragment: void setRetainInstance(boolean)>:[11,25]
+<android.app.FragmentManager: android.app.Fragment findFragmentByTag(java.lang.String)>:[11,25]
+<android.app.Fragment: void onDestroy()>:[11,25]
+<android.app.Fragment: void onStart()>:[11,25]
+<android.app.Fragment: void onCreate(android.os.Bundle)>:[11,25]
+<android.app.Fragment: void onAttach(android.app.Activity)>:[11,25]
+<android.content.SharedPreferences.Editor: void apply()>:[9,25]
+<android.app.Fragment: android.app.FragmentManager getChildFragmentManager()>:[17,25]
+<android.app.Activity: android.app.FragmentManager getFragmentManager()>:[11,25]
+<android.app.Fragment: void onResume()>:[11,25]
+<android.app.Fragment: android.app.Activity getActivity()>:[11,25]
+<android.app.Fragment: android.app.Fragment getParentFragment()>:[17,25]
+<android.app.FragmentTransaction: android.app.FragmentTransaction add(android.app.Fragment,java.lang.String)>:[11,25]
+<android.app.Fragment: void <init>()>:[11,25]
+
+Note that, because of the nature of the static analysis, we cannot confirm whether the flagged APIs would actually be called at runtime (e.g., unreachable code). However, we still believe that those APIs, which may cause compatibility issues, should not be accessed or at least be accessed with proper protections. 
+
+In addition to the aforementioned APIs (i.e., backward-compatibility), which could cause app crashes if accessed, we have also identified that this project has also accessed some APIs that have been removed from the latest public SDK, making the app possibly suffer from forward-compatibility issues.
+
+NONE
+
+We would be very much appreciated if you can acknowledge to us that those reported APIs are indeed problematic for the project’s long-term stability. please let us know if you need any more information relating to this issue report.
+"
+SpazeDog/mounts2sd,closed,empty paths to binaries,[],"Hi, I own Motorola Photon Q and I tried your script to work around CM13 (6.0 Marshamllow) problem with writing to external sdcard and found weird _bug_.
+
+I just added
+`Log v ""grep binary: '$_grep'""`
+before mmcdevice lookup 
+`for mmcPartition in system data cache; do
+....`
+
+```
+$ logcat| grep -i mounts2sd
+04-04 23:56:25.115   194   194 I sysinit : Running /system/etc/init.d/10mounts2sd-runner 
+04-05 00:56:28.335   656   656 V Mounts2SD: Setting up the script enviroment 
+04-05 00:56:29.354   703   703 V Mounts2SD: Using the shell environment '/system/xbin/busybox sh' 
+04-05 00:56:30.022   736   736 V Mounts2SD: Using the busybox binary located at '/system/xbin/busybox' 
+04-05 00:56:31.182   805   805 V Mounts2SD: Collecting MMC partition information 
+04-05 00:56:31.632   843   843 V Mounts2SD: grep binary: '' 
+04-05 00:56:32.015   869   869 V Mounts2SD: Located the 'system' partition at '' 
+04-05 00:56:32.507   900   900 V Mounts2SD: Located the 'data' partition at '' 
+04-05 00:56:33.017   929   929 V Mounts2SD: Located the 'cache' partition at '' 
+04-05 00:56:33.450   957   957 V Mounts2SD: Optimizing MMC devices and partitions 
+04-05 00:56:34.816  1045  1045 V Mounts2SD: Setting optimized mount parameters on '' 
+04-05 00:56:35.373  1082  1082 V Mounts2SD: Setting optimized mount parameters on '' 
+04-05 00:56:36.054  1147  1147 V Mounts2SD: Setting optimized mount parameters on '' 
+04-05 00:56:37.570  1245  1245 I Mounts2SD: The system partition is S-On protected and it is therefore not possible to link system content to the '/system' location! 
+04-05 00:56:50.998   974   974 W PackageManager: Unknown permission android.permission.ACCESS_SUPERUSER in package com.spazedog.mounts2sd
+04-05 00:56:52.483   974  2010 W PackageManager: Unknown permission android.permission.ACCESS_SUPERUSER in package com.spazedog.mounts2sd
+04-05 00:57:22.061   974  2836 I ActivityManager: Start proc 4666:com.spazedog.mounts2sd/u0a87 for broadcast com.spazedog.mounts2sd/.ReceiverBoot
+04-05 00:57:22.283  4666  4666 W System  : ClassLoader referenced unknown path: /data/app/com.spazedog.mounts2sd-1/lib/arm
+04-05 00:57:22.503  4711  4711 D su      : Checking whether app [uid:10087, pkgName: com.spazedog.mounts2sd] is allowed to be root
+04-05 00:57:25.834  4666  5193 I RootFW.ShellExtender::run(): Running attempt number 1 [( busybox test -e '/mounts2sd-tmp/safemode.result' && echo true ) || ( busybox test ! -e '/mounts2sd-tmp/safemode.result' && echo false ) 2>/dev/null]
+04-05 00:57:25.952  4666  5208 I RootFW.ShellExtender::run(): Running attempt number 1 [( busybox test -e '/mounts2sd-tmp/init.type' && echo true ) || ( busybox test ! -e '/mounts2sd-tmp/init.type' && echo false ) 2>/dev/null]
+04-05 00:57:28.128  4666  5480 I RootFW.ShellExtender::run(): Running attempt number 1 [( busybox test -e '/mounts2sd-tmp/e2fsck.result' && echo true ) || ( busybox test ! -e '/mounts2sd-tmp/e2fsck.result' && echo false ) 2>/dev/null]
+04-05 00:57:31.086  4711  4711 D su      : Finishing su operation for app [uid:10087, pkgName: com.spazedog.mounts2sd]
+```
+
+It looks like $_grep is empty and I suspect that $_awk has same problem. What can be the reason?
+"
+SpazeDog/mounts2sd,open,Reverse Mount Not Available,[],"It seems the ""Reverse Mount"" option disappeared in the current version (3.4.8)
+"
+SpazeDog/mounts2sd,open,ZRAM settings has no effect on ZRAM,[],"Android 4.2.2, stock based (prestigio phone).
+
+This is a quick fix for the script:
+
+```
+--- mounts2sd.sh.orig   2015-04-10 17:30:24.653286825 +0200
++++ mounts2sd.sh    2015-04-10 17:21:33.030236383 +0200
+@@ -112,6 +112,7 @@ touch
+ seq
+ date
+ swapon
++swapoff
+ mkswap
+ insmod
+ readlink
+@@ -974,6 +975,9 @@ ProcessMemory() {
+                         fi
+
+                     elif $_test -b /dev/block/zram0 || ( $_test -e /system/lib/modules/zram.ko && $_insmod /system/lib/modules/zram.ko ); then
++                        $_swapoff /dev/block/zram0;
++                        $_sleep 0.5;
++                        $_echo 1 > /sys/block/zram0/reset;
+                         $_echo ""$(($(($(($lMemory * $lSize)) / 100)) * 1024))"" > /sys/block/zram0/disksize
+                         lDevice=/dev/block/zram0 && $_mkswap $lDevice >/dev/null
+```
+
+You need to stop zram first, reset its value, then start it again with new value (this is what this patch do). However, UI still reports ZRAM as ""disabled"", apparently the app itself needs a fix.
+"
+SpazeDog/mounts2sd,open,"e2fsck and tune2fs installed, but script doesn't see them",[],"Mounts2SD does not see `e2fsck` and `tune2fs` binaries from _/system/(x)bin_. `sqlite3` binary is properly detected. Note: my busybox does not have support for e2fsck (only for fsck) or tune2fs, that's why I have binaries for those.
+"
+SpazeDog/mounts2sd,open,issue with HTC desire 816..,[],"I installed the app, gave it root access then installed the scripts from settings.. rebooted the device but nothing happened. and found this log message : 
+""E/The script has been invoked without super user permissions!"" 
+didn't quite understand the cause as I'm with no coding or developing experience.
+my device is rooted with init.d support & system write enabled of course but no S-OFF.
+"
+SpazeDog/mounts2sd,open,Recomended app/cache cleaning tools with Mounts2SD,[],"I am loving Mounts2SD, after struggling with link2sd over 3 reinstalls i found this app and it works better than i hoped
+
+i am using HTC Desire-Bravo, managed to get Liquid smooth on android 4.4.4 which is running great.
+
+my usage of ur app is Cache enabled, all content options ticked, the 4gb SD is seperated into fat32 SD and 1.48gb ext4 partition.
+
+i have been using SD maid, CM cleanmaster and ES task manager to clean cache and junk data out of the phone, but the last time the extended partition was broken (link2sd) was due to a cleaner program running and it entirely broke everything, needed to wipe and restart. im certiain it was CM cleanmaster that did it.
+
+My question is which of these cleaning programs would you think safe to use in the phone without breaking Mounts2SD or the partition.
+
+im scared to run any of them now :S , this old phone is as good as new and i want it to stay running smooth.
+
+Thankyou for any advice you can give :D 
+"
+SpazeDog/mounts2sd,open,Create scrap2do,[],
+SpazeDog/mounts2sd,open,s-on detection fails to detect s-off,[],"""You device is S-On protected"" but it isn't. I had to upgrade the radio so had to knock it off and it's till is, just checked in bootloader.
+v3.4.8 installed from gplay. device is htc desirehd, using cm11-20141115-unofficial-m12-ace by mustaavalkosta, which is android v4.4.4. supersu is present as well (not that it's related).
+
+(Normal update results failure to copy due to cannot boot into recovery due to ""limited toolbox binary"". It was not trivial to figure out that recovery.zip is a seperate file to be downloaded and cwm installed. It wasn't trivial either to figure out that /system is low on free space and I had to remove some system ringtones to make space for 65k script in recovery.zip. Just sayin'. :smiley: )
+"
+SpazeDog/mounts2sd,open,/system/etc/mounts2sd.sh: line 1: 1: not found,[],"I recently installed mounts2sd on a i9300 (Samsung Galaxy S3) with Replicant (Android 4.2.2). I followed the instruction and created a proper partition layout, but still Mounts2SD can't locate any external sdcard. A look at the adb logcat output shows me a forever on going error line:
+
+```
+I/run-parts( 1899): /system/etc/mounts2sd.sh: line 1: 1: not found
+```
+
+Any suggestions?
+"
+SpazeDog/mounts2sd,open,Moun2SD not functional on Android 4.2.2?,[],"Hi I don't get it. I have a Matricom G-Box Midnight MX2 and Mount2SD. I have a 30GB external SD card. I followed the instructions (as well as I could) and I created two partitions on the SD card. One is a 200MB Fat32 partition and the rest is an ext 4 partition. Both are primary. My device is rooted and is running Android 4.2.2.
+
+I installed the script the app asked me to install when it started up. this went without problems.
+
+I rebooted and looked at the storage structure of this system. Looking at it now, I have ""emulated"" ""external_sd"" ""sdcard0"" and ""usb"" These are located in /storage in the top level of the file system.
+
+I have CWM Recovery and it is fully functional. I tried your Mount2Sd recovery script and successfully ran init.d injector as you advised, but still nothing.  I still get an error message saying ""could not locate SD-EXT. After all of this I am no further along.
+
+Mount to SD has full root permissions.
+
+In the configuration section it says that the ext4 driver is enabled, although all other options are greyed out. It also has a message in a yellow box saying ""could not locate the SD-EXT partition. This should be the second partition on the external SD card. (I do as I said have two partitions on my SD card, but there is nothing located anywhere in my file structure called SD-EXT.)
+
+So what's going on? 
+"
+SpazeDog/mounts2sd,open,"Incorrect information on info-page: mounted external storage shown as not mounted, SWAP/ZRAM is shown at 0% usage",[],"I'm running Mounts2SD on a SE Neo V with CM11 (nightly build). It has a second partition with ext4. It gets mounted well, but is shown as not mounted. Additionally, ZRAM/SWAP is shown as 0% in use, but according to ""free"" it is used.
+
+![screenshot_2014-09-05-22-11-38](https://cloud.githubusercontent.com/assets/1674578/4172897/bf680620-3550-11e4-87ae-b2c06b6561b3.png)
+
+V/Setting up the script enviroment
+V/Using the shell environment '/data/local/busybox sh'
+V/Using the busybox binary located at '/data/local/busybox'
+V/The Android process /system/bin/servicemanager has been detected
+V/Stopping Android's System Server process
+V/Collecting MMC partition information
+V/The external MMC was located at '/dev/block/mmcblk0'
+V/Located the sd-ext partition at '/dev/block/mmcblk0p2'
+V/Located the SWAP partition at '/dev/block/mmcblk0p3'
+V/The internal MMC was located at '/dev/block/mtdblock0'
+V/Located the 'system' partition at '/dev/block/mtdblock0'
+V/Located the 'data' partition at '/dev/block/mtdblock1'
+V/Located the 'cache' partition at '/dev/block/mtdblock2'
+V/Optimizing MMC devices and partitions
+V/Setting readahead on '/dev/block/mtdblock0' to '4kb'
+V/Setting scheduler on '/dev/block/mtdblock0' to 'deadline'
+V/Setting readahead on '/dev/block/mmcblk0' to '512kb'
+V/Setting scheduler on '/dev/block/mmcblk0' to 'cfq'
+V/Setting optimized mount parameters on '/dev/block/mtdblock0'
+V/Setting optimized mount parameters on '/dev/block/mtdblock1'
+V/Setting optimized mount parameters on '/dev/block/mtdblock2'
+D/File system check is disabled. Skipping test on '/dev/block/mmcblk0p2'
+D/Journal handeling is disabled. Leaving journal on '/dev/block/mmcblk0p2' as it is
+V/Attaching '/dev/block/mmcblk0p2' to '/sd-ext'
+D/Mounting '/dev/block/mmcblk0p2' to '/sd-ext' as 'ext4' with options 'noatime,nodiratime,relatime,noauto_da_alloc,data=writeback,commit=15,barrier=1,nouser_xattr,errors=continue,nosuid,nodev'
+V/Checking writable state on '/dev/block/mmcblk0p2'
+V/Preparing to move content between '/data' and '/sd-ext'
+V/Checking '/sd-ext/app-system' to see if something should be moved to '/data/app-system'
+V/Checking '/sd-ext/data' to see if something should be moved to '/data/data'
+D/Comparing '/sd-ext/data' size of '295MB' to remaining spaze on '/data' of '90MB'
+I/Could not move '/sd-ext/data' due to low storage on '/data', trying again later!
+V/Checking '/sd-ext/dalvik-cache' to see if something should be moved to '/data/dalvik-cache'
+V/Checking '/sd-ext/user' to see if something should be moved to '/data/user'
+V/Checking '/sd-ext/media' to see if something should be moved to '/data/media'
+V/Checking '/sd-ext/app-lib' to see if something should be moved to '/data/app-lib'
+D/Comparing '/sd-ext/app-lib' size of '0MB' to remaining spaze on '/data' of '90MB'
+V/Moving '/sd-ext/app-lib' to '/data/app-lib'
+W/Not everything from '/sd-ext/app-lib' could be moved to '/data/app-lib'
+V/Checking '/data/app' to see if something should be moved to '/sd-ext/app'
+V/Attaching '/sd-ext/app' to '/data/app'
+V/Checking '/data/app-private' to see if something should be moved to '/sd-ext/app-private'
+V/Attaching '/sd-ext/app-private' to '/data/app-private'
+V/Checking '/data/app-asec' to see if something should be moved to '/sd-ext/app-asec'
+V/Attaching '/sd-ext/app-asec' to '/data/app-asec'
+V/Checking '/sd-ext/data' to see if something should be moved to '/data/data'
+D/Comparing '/sd-ext/data' size of '295MB' to remaining spaze on '/data' of '74MB'
+I/Could not move '/sd-ext/data' due to low storage on '/data', giving up!
+V/Attaching '/sd-ext/data' to '/data/data'
+D/Running an S-On protection test on '/system'
+V/Linking system content to the '/system' location
+D/Linking content from '/data/app-system' to '/system/app'
+V/Enabling 'ZRAM' on '/dev/block/zram0'
+V/Enabling 'SWAP' on '/dev/block/mmcblk0p3'
+V/Setting swappiness to '0'
+V/Restarting Android's System Server process
+D/The finalizing sub-process has been started
+V/Storage threshold is already set for '1%'. Leaving it as is
+D/The finalizing sub-process has been stopped
+D/The script was executed in 21 seconds
+"
+SpazeDog/mounts2sd,open,"Log entry indicates ""Not everything from '/data/data' could be moved""",[],"This is with reference to: https://github.com/SpazeDog/mounts2sd/issues/11
+
+A year latter but maybe I can help add more information to have this fixed for a similar problem.
+
+I am using Mount2SD(v3.48) on T-mobile Galaxy S2 (SGH-T989) with CM10.2. I am getting similar messages:
+
+```
+W/Not everything from '/data/data' could be moved to '/sd-ext/data'
+W/Not everything from '/data/user' could be moved to '/sd-ext/user'
+```
+
+Some more information to help debug the problem:
+1. I looked at these directories by booting into recovery (i.e. before Mounts2SD mounts partitions):
+[x] /data/user as a file called '0' as already mentioned which is just a symlink to /data/data
+[x] /data/data seems to be populated with data for system apps
+1. If the directories above are emptied (I backed up first though the data seemed mostly redundant only 980 kbytes of files in total and mostly empty directories) Mounts2SD again still gives the same error in the log.
+2. Something seems to be generating the data in the above directories before the Mounts2SD script launches because I seem to have the two directories repopulated again. Its almost as though CM10.2 thinks that it has just been freshly installed and thinks that it needs to populate the data directory for first time boot.
+3. Ofcourse the Warning don't affect normal working of the phone as the mount still completes and Only I want this to be fixed for completeness.
+4. Additional observation. not sure if related: Once booted /sd-ext/data has the symlink '0' !? Even if I delete it, it get regenerated on next boot. Note that this symlink '0' is not in the /data/data directory in the internal memory before boot even in the repopulated /data/data. Not sure how the data is being copied by the Mounts2SD script but I suspect that there is some recursion or link following going on since the symlink '0' points to /data/data
+
+I hope all this is making sense. I can clarify any questions you have or explain further if you like.
+
+Thanks
+"
+SpazeDog/mounts2sd,open,[RFC] Updates system apps -> system,[],"I think what if system apps updates from google store, he occupy storage, and by default (as i understand), script move him to ext.
+Can i try to implement in script option, feature to find system apps updates and integrate him into system?
+It make a sense?
+(sorry for my bad english)
+"
+SpazeDog/mounts2sd,open,Storage is not updated,[],"It seems that everything is correct,
+![screen](https://cloud.githubusercontent.com/assets/3299236/3351614/c6272d18-fa15-11e3-9af5-9f23312c9169.png)
+![screen01](https://cloud.githubusercontent.com/assets/3299236/3351626/a055de08-fa16-11e3-965d-bd74958e67fe.png)
+![screen02](https://cloud.githubusercontent.com/assets/3299236/3351627/a057189a-fa16-11e3-89e6-f3ae2f82f5d6.png)
+![screen03](https://cloud.githubusercontent.com/assets/3299236/3351628/a05969f6-fa16-11e3-85e2-af8915cef7f2.png)
+![screen04](https://cloud.githubusercontent.com/assets/3299236/3351629/a05add7c-fa16-11e3-9947-29f0ac516baa.png)
+![screen05](https://cloud.githubusercontent.com/assets/3299236/3351631/a05ea7ea-fa16-11e3-9c4a-2b5dc7bc832e.png)
+![screen06](https://cloud.githubusercontent.com/assets/3299236/3351630/a05ca63e-fa16-11e3-9786-0d0b47c584c4.png)
+
+ but storage is not updated, and when I install some app memory decreases.
+![screen07](https://cloud.githubusercontent.com/assets/3299236/3351633/aed26064-fa16-11e3-8666-964328face12.png)
+
+My device si HTC Explorer A310e, CyanogenMod 10.2-20131018-UNOFFICIAL-pico
+"
+SpazeDog/mounts2sd,open,Specify external partition by block device,[],"As far as I understood, mounts2sd uses a partition (or two if swap is enabled) based on convention and fails quiet silently if it doesn't find it. Has there been discussion about specifying the partition to use with a path to a block device or a UUID (I don't know if Android has /dev/by-uuid/ mapping). This would not only allow to use specific partitions (rather than ""the largest""), but also to get an immediate feedback when setting the partition in the settings dialog whether it can be used or not (and in this case of course why :)). This would also cover issues like https://github.com/SpazeDog/mounts2sd/issues/26.
+"
+SpazeDog/mounts2sd,closed,Portuguese translation update,[],"Hi,
+
+I´m thinking about updating Portuguese language file for this app. Is that ok or is anyone in charge of it? Please let me know something before starting working on file.
+
+Regards
+"
+SpazeDog/mounts2sd,open,external not mounted,[],"hi there,
+
+i tried many things, but at the end i only get ""not mounted"" on the external storage.  what can i do to get it mounted?  it is an ext3 partition.  i also added a swap partition as 3rd partition on the sdcard, but the configuration tab seems to disable the swap support, what can i do there?
+
+thanks
+"
+SpazeDog/mounts2sd,closed,Create cz-strings,[],"czech translation
+"
+SpazeDog/mounts2sd,open,ROM very slow after installing mounts2SD,[],"Hei,
+
+thanks for the nice program. After I instaleld and set it up my ROM is very slow reacting. Sure, the phone is old and not the fastes, but without the app it was running smooth enough. Here my specs:
+
+ZTE Blade (gen. 2)
+CM 10.2 (Android 4.3.1) from KonstaT with gapps
+ClockWorkMod Version 6.0.1.4.
+Information from the App ""Blade Checker"":
+European Blade (512MB RAM) detected
+TPT Upgrade Gen 2 Phone detected
+Use Gen 1 style TPTs
+Current partition sizes:
+System: 215MB
+Data: 203MB
+Cache: 37MB
+
+Coz, I couldn´t install WhatsApp (too less storage space) I tried your app. It looks like the access to the SD card is very slow (maybe?). It is an 8GB card set up like this:
+
+first partition: 5GB (primary, FAT32)
+2nd partition: 2,6GB (primary, ext3)
+
+Thanks for your help,
+
+DrP
+"
+SpazeDog/mounts2sd,open,Turn off setting storage threshold,[],"Please add an option to turn off the option of setting storage threshold. I tried everything and sqlite3 drops error 132 but if i could turn it off it should work.
+
+Thanks in advance.
+"
+SpazeDog/mounts2sd,open,Mounts2sd causes constant reboot / power off on LG Android 2.2.2,[],"Mounts2sd causes constant reboot / power off on LG Android 2.2.2.
+
+I just opened the app, gave root permissions, and after crunching awhile, it shut down the phone.
+
+Attempts to turn on only made it reboot after a minute or so when Mounts2sd started up again. It kept rebooting until I quickly went in and uninstalled it before it started, (which may or may not be possible on faster phones).
+
+Please issue a warning or make it not start up at start-up if it crashed and wasn't able to start correctly in the first place.
+"
+SpazeDog/mounts2sd,open,USB OTG support for sd-ext,[],"Hi. I'm running CM 10.1 on a Galaxy Nexus (doesn't have SDcard). I have a USB OTG cable and USB stick plugged in. Stick is formatted as recommended for SD-ext (1st partition is FAT32, 2nd is ext4) but your program (and all others I have tried) do not find it.
+
+USB stick shows up as /dev/block/sda, with /dev/block/sda1 and /dev/block/sda2 as partitions. /dev/block/sda2 is the sd-ext partition.
+
+Would you mind fixing your tool to check for that partition setup also?
+
+If it helps for other nexus devices running CM10.x, I think the block devices are handled through /dev/block/vold directory. In my case there are 3 files: 8:0, 8:1, and 8:2 in there that also reference the USB stick. It seems vold it still used even in nexus with JB4.2 (at least for CM10.x)
+"
+SpazeDog/mounts2sd,closed,Hungarian translation,[],
+SpazeDog/mounts2sd,closed,Missing Busybox message,[],"After installation the Mounts2sd say I haven't got busybox on my phone, then my only option is the ""close"" button. Reinstall, reboot didn't help.
+
+Phone: Xperia X8 (E15i)
+Kernel: 2.6.29.6-nAa-14
+Rom: MiniCM7-2.2.2-shakira
+Busybox: BusyBox v1.20.1-cm7 static (2012-05-28 03:57 +0200) multi-call binary
+"
+SpazeDog/mounts2sd,open,"S-On recovery fallback handler failing with ""signature verification failed""",[],"I have a LG P506 (Optimus Thrive) with a CM10.1 ROM installed from here:
+http://forum.xda-developers.com/showthread.php?t=1811325
+
+When m2sd starts posts ""There is no startup script present on your device.  Go to application settings and install it.""  When I go into settings and click the Install Startup Script I get the following:
+""Your device is S-On protected which means that the application cannot write to the system partition from within Android.  Do you want to launch the recovery fallback handler?""
+
+Clicking ""Okay"" copies files into /data/local/ and reboots into CWM recovery and attempts to install the zip.  It fails with ""signature verification failed.""
+
+""Show log"" from CWM recovery shows the following:
+
+Finding update package...
+I:Update location: /data/local/fallback.zip
+Opening update package...
+I:1 key(s) loaded from /res/keys
+Verifying update package...
+I:verify_file returned 1
+E:signature verification failed
+Installation aborted.
+
+I went to look for a /res/keys file and while there is a /res directory there is no keys file.  I can disable the key check, but I can't get back to the zip in /data/local/ after I disable the key check...
+
+Any suggestions?
+"
+SpazeDog/mounts2sd,open,Force close with the new update,[],"Hello,
+
+I have a HTC Wildfire S with Cyanogenmod 10.1 (http://forum.xda-developers.com/showthread.php?t=2248654). It worked perfectly, but after the last update of Mounts2SD, it began to force close lots of processes and the phone was unstable. After a clean reinstall of the rom, Mounts2SD force closes when trying to collect the device configuration.
+
+Should I attach the entire logcat of the full booting process? Or just the portions related to Mounts2SD?
+
+Thank you for your great application :)
+"
+SpazeDog/mounts2sd,closed, 3.4.2 Italian messages translation,[],
+SpazeDog/mounts2sd,closed,Minor typo fix in default locale,[],
+SpazeDog/mounts2sd,closed,Italian translation updated to 3.3.2,[],
+SpazeDog/mounts2sd,closed,Translated V3.2.0 new messages+some improvements,[],
+SpazeDog/mounts2sd,closed,Italian language strings,[],"Italian translation
+"
+SpazeDog/mounts2sd,closed,application data is not all being moved,[],"Output of busybox
+root@android:/ # busybox df -h
+busybox df -h
+Filesystem                Size      Used Available Use% Mounted on
+tmpfs                   202.2M     48.0K    202.2M   0% /dev
+tmpfs                   202.2M         0    202.2M   0% /mnt/secure
+tmpfs                   202.2M         0    202.2M   0% /mnt/asec
+tmpfs                   202.2M         0    202.2M   0% /mnt/obb
+/dev/block/mtdblock3    250.0M    244.4M      5.6M  98% /system
+/dev/block/mtdblock5    147.6M      9.5M    138.1M   6% /data
+/dev/block/mtdblock4     40.0M      1.1M     38.9M   3% /cache
+/dev/block/mmcblk0p2   1006.9M    474.7M    481.1M  50% /sd-ext
+/dev/block/mmcblk0p2   1006.9M    474.7M    481.1M  50% /data/app
+/dev/block/mmcblk0p2   1006.9M    474.7M    481.1M  50% /data/app-private
+/dev/block/mmcblk0p2   1006.9M    474.7M    481.1M  50% /data/app-system
+/dev/block/mmcblk0p2   1006.9M    474.7M    481.1M  50% /data/data
+/dev/block/mmcblk0p2   1006.9M    474.7M    481.1M  50% /data/dalvik-cache
+/dev/block/mmcblk0p2   1006.9M    474.7M    481.1M  50% /data/app-asec
+/dev/block/mmcblk0p2   1006.9M    474.7M    481.1M  50% /data/app-lib
+/dev/block/dm-0          14.0M     12.1M      1.9M  87% /mnt/asec/com.accuweathe
+r.paid.android-2
+/dev/block/dm-1           2.0M    100.0K      1.9M   5% /mnt/asec/com.keramidas.
+TitaniumBackupPro-1
+/dev/block/dm-2          21.0M     18.7M      2.3M  89% /mnt/asec/com.quoord.tap
+atalkHD-2
+/dev/block/vold/179:1
+                         13.8G      4.1G      9.8G  29% /storage/sdcard0
+/dev/block/vold/179:1
+                         13.8G      4.1G      9.8G  29% /mnt/secure/asec
+root@android:/ #
+
+Log of moving data
+V/Setting up the script enviroment
+V/Using the shell environment '/data/local/busybox sh'
+V/Using the busybox binary located at '/data/local/busybox'
+V/Collecting MMC partition information
+V/The external MMC was located at '/dev/block/mmcblk0'
+V/Located the sd-ext partition at '/dev/block/mmcblk0p2'
+V/The internal MMC was located at '/dev/block/mtdblock0'
+V/Located the 'system' partition at '/dev/block/mtdblock3'
+V/Located the 'data' partition at '/dev/block/mtdblock5'
+V/Located the 'cache' partition at '/dev/block/mtdblock4'
+V/Optimizing MMC devices and partitions
+V/Setting readahead on '/dev/block/mtdblock0' to '128kb'
+V/Setting scheduler on '/dev/block/mtdblock0' to 'deadline'
+V/Setting readahead on '/dev/block/mmcblk0' to '128kb'
+V/Setting scheduler on '/dev/block/mmcblk0' to 'deadline'
+V/Setting optimized mount parameters on '/dev/block/mtdblock3'
+V/Setting optimized mount parameters on '/dev/block/mtdblock5'
+V/Setting optimized mount parameters on '/dev/block/mtdblock4'
+V/Running a file system check on '/dev/block/mmcblk0p2'
+D/The file system type on '/dev/block/mmcblk0p2' is not ext4. Disabling journal handling on this device
+V/Attaching '/dev/block/mmcblk0p2' to '/sd-ext'
+D/Mounting '/dev/block/mmcblk0p2' to '/sd-ext' as 'ext4' with options 'noatime,nodiratime,relatime,noauto_da_alloc,data=ordered,commit=15,barrier=1,nouser_xattr,errors=continue,nosuid,nodev'
+V/Checking writable state on '/dev/block/mmcblk0p2'
+V/Preparing to move content between '/data' and '/sd-ext'
+V/Checking '/data/app' to see if something should be moved to '/sd-ext/app'
+V/Attaching '/sd-ext/app' to '/data/app'
+V/Checking '/data/app-private' to see if something should be moved to '/sd-ext/app-private'
+V/Attaching '/sd-ext/app-private' to '/data/app-private'
+V/Checking '/data/app-system' to see if something should be moved to '/sd-ext/app-system'
+V/Attaching '/sd-ext/app-system' to '/data/app-system'
+V/Checking '/data/data' to see if something should be moved to '/sd-ext/data'
+D/Retouching the directory '/sd-ext/data' with permissions '0771' and ownership 'system.system'
+D/Comparing '/data/data' size of '90MB' to remaining spaze on '/sd-ext' of '550MB'
+V/Moving '/data/data' to '/sd-ext/data'
+V/Attaching '/sd-ext/data' to '/data/data'
+V/Checking '/data/dalvik-cache' to see if something should be moved to '/sd-ext/dalvik-cache'
+V/Attaching '/sd-ext/dalvik-cache' to '/data/dalvik-cache'
+V/Checking '/data/app-asec' to see if something should be moved to '/sd-ext/app-asec'
+V/Attaching '/sd-ext/app-asec' to '/data/app-asec'
+V/Checking '/data/app-lib' to see if something should be moved to '/sd-ext/app-lib'
+V/Attaching '/sd-ext/app-lib' to '/data/app-lib'
+D/Running an S-On protection test on '/system'
+V/Linking system content to the '/system' location
+D/Linking content from '/data/app-system' to '/system/app'
+V/Enabling 'ZRAM' on '/dev/block/zram0'
+V/Setting swappiness to '0'
+D/The finalizing sub-process has been started
+V/Storage threshold is already set for '1%'. Leaving it as is
+D/The finalizing sub-process has been stopped
+D/The script was executed in 94 seconds
+
+No errors here
+![screenshot_2013-09-01-14-42-46](https://f.cloud.github.com/assets/5336247/1064000/71a23560-1304-11e3-9930-708eb9f7c3e4.png)
+
+Error is : One or more directories are not moved or linked
+
+All seems to be working...
+"
+SpazeDog/mounts2sd,closed,New temp file has a typo,[],"Directory is mounts2sd-tmp should be mount2sd-tmp
+"
+SpazeDog/mounts2sd,closed,/data/property/m2sd files are empty,[],"Installed 6.0.4
+Ran installer and rebooted phone.
+The files are there but are empty.
+Readahead in gui shows unknown (before with a2sd shows 128 kb)
+Manually changing the files works. (used adb pull and push) (m2sd.move_apps/Dalvik/lib)
+"
+SpazeDog/mounts2sd,closed,Update french locale and fix default one,[],"The french locale update and two fixes in the english one.
+"
+SpazeDog/mounts2sd,closed,3.x,[],"French locale addition and english locale typo fixes.
+"
+SpazeDog/mounts2sd,closed,export: /sys/class/gpio/export: bad variable name,[],"don't know what is exactly the export which is causing troubles.
+"
+SpazeDog/mounts2sd,open,Localization RU,[],"Daniel, do not merge this pull request now. It is still in progress. This is for you can track progress and add comments
+"
+SpazeDog/mounts2sd,open,Fixed typo in mem scheduler CFG -> CFQ,[],"Mistyped scheduler `CFQ`
+"
+SpazeDog/mounts2sd,open,Phone does not boots after init.d was created,[],"After enabling mounts2sd init.d, phone does not boots normally. Only recovery.
+
+Config:
+Motorola Droid (Milestone) A853
+OpenRecovery 2ndboot
+CyanogenMod 7
+Steps to reproduce:
+mounts2sd enable busybox -> reboot
+mounts2sd enable init.d -> reboot = fail
+
+No others ext-sd software was installed.
+"
+SpazeDog/mounts2sd,closed,userinit.d script,[],"I was wondering if you can make a backup script that will be placed in userinit.d just in case of a ROM upgrade. The script in userinit.d can check if the one in init.d has been ran, if it has then it would just exit, if it hasn't been ran then the one in userinit.d will be used.
+"
+SpazeDog/mounts2sd,closed,Add french locale,[],"French locale preview
+"

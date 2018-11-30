@@ -1,0 +1,843 @@
+repository,state,title,label,body
+vijai1996/screenrecorder,open,Distortion in captured Video on Samsung device ,[],"I'm trying to record the screen of Samsung Duos device and I got that distortion and color deviation  
+
+![image](https://user-images.githubusercontent.com/7738296/42870039-02b7ad16-8a77-11e8-8799-4465d907ff2a.png)
+![image](https://user-images.githubusercontent.com/7738296/42870062-0f623522-8a77-11e8-9bf0-da73fc20485b.png)
+"
+vijai1996/screenrecorder,open,How to stop video,[],How to stop video? And I can't play recorded videos
+vijai1996/screenrecorder,closed,I am trying add SettingsPrefrenceFragment to activity not asking runtime permission,"[Label(name=""Not a bug""), Label(name=""question"")]","
+```
+public class SettingActivity extends AppCompatPrefernceActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+         getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsPreferenceFragment()).commit();
+    }
+
+    public static class SettingsPreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
+            , PermissionResultListener, OnDirectorySelectedListerner {
+
+
+        SharedPreferences prefs;
+
+
+        private ListPreference res;
+
+
+        private CheckBoxPreference recaudio;
+
+
+        private CheckBoxPreference floatingControl;
+
+
+
+        private FolderChooser dirChooser;
+
+
+        private MainActivity activity;
+
+        @Override
+        public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        }
+
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.settings);
+
+            setPermissionListener();
+
+
+            String defaultSaveLoc = (new File(Environment
+                    .getExternalStorageDirectory() + File.separator + Const.APPDIR)).getPath();
+
+            prefs = getPreferenceScreen().getSharedPreferences();
+            res = (ListPreference) findPreference(getString(R.string.res_key));
+            ListPreference fps = (ListPreference) findPreference(getString(R.string.fps_key));
+            ListPreference bitrate = (ListPreference) findPreference(getString(R.string.bitrate_key));
+            recaudio = (CheckBoxPreference) findPreference(getString(R.string.audiorec_key));
+            ListPreference filenameFormat = (ListPreference) findPreference(getString(R.string.filename_key));
+            EditTextPreference filenamePrefix = (EditTextPreference) findPreference(getString(R.string.fileprefix_key));
+            dirChooser = (FolderChooser) findPreference(getString(R.string.savelocation_key));
+            floatingControl = (CheckBoxPreference) findPreference(getString(R.string.preference_floating_control_key));
+            CheckBoxPreference touchPointer = (CheckBoxPreference) findPreference(""touch_pointer"");
+            //Set previously chosen directory as initial directory
+            dirChooser.setCurrentDir(getValue(getString(R.string.savelocation_key), defaultSaveLoc));
+
+            ListPreference theme = (ListPreference) findPreference(getString(R.string.preference_theme_key));
+            theme.setSummary(theme.getEntry());
+
+            //Set the summary of preferences dynamically with user choice or default if no user choice is made
+            updateScreenAspectRatio();
+            updateResolution(res);
+            fps.setSummary(getValue(getString(R.string.fps_key), ""30""));
+            float bps = bitsToMb(Integer.parseInt(getValue(getString(R.string.bitrate_key), ""7130317"")));
+            bitrate.setSummary(bps + "" Mbps"");
+            dirChooser.setSummary(getValue(getString(R.string.savelocation_key), defaultSaveLoc));
+            filenameFormat.setSummary(getFileSaveFormat());
+            filenamePrefix.setSummary(getValue(getString(R.string.fileprefix_key), ""recording""));
+
+            //If record audio checkbox is checked, check for record audio permission
+            if (recaudio.isChecked())
+                requestAudioPermission();
+
+            //If floating controls is checked, check for system windows permission
+            if (floatingControl.isChecked())
+                requestSystemWindowsPermission();
+
+
+
+            //set callback for directory change
+            dirChooser.setOnDirectoryClickedListerner(this);
+        }
+
+
+        private void updateResolution(ListPreference pref) {
+            pref.setSummary(getValue(getString(R.string.res_key), getNativeRes()));
+        }
+
+
+        private String getNativeRes() {
+            DisplayMetrics metrics = getRealDisplayMetrics();
+            return getScreenWidth(metrics) + ""x"" + getScreenHeight(metrics);
+        }
+
+
+        private void updateScreenAspectRatio() {
+            Const.ASPECT_RATIO aspect_ratio = getAspectRatio();
+            Log.d(Const.TAG, ""Aspect ratio: "" + aspect_ratio);
+            CharSequence[] entriesValues = getResolutionEntriesValues(aspect_ratio);
+            res.setEntries(entriesValues);
+            res.setEntryValues(entriesValues);
+        }
+
+
+        private CharSequence[] getResolutionEntriesValues(Const.ASPECT_RATIO aspectRatio) {
+
+            ArrayList<String> entries;
+            switch (aspectRatio) {
+                case AR16_9:
+                    entries = buildEntries(R.array.resolutionsArray_16_9);
+                    break;
+                case AR18_9:
+                    entries = buildEntries(R.array.resolutionValues_18_9);
+                    break;
+                default:
+                    entries = buildEntries(R.array.resolutionsArray_16_9);
+                    break;
+            }
+
+            String[] entriesArray = new String[entries.size()];
+            return entries.toArray(entriesArray);
+        }
+
+
+        private ArrayList<String> buildEntries(int resID) {
+            DisplayMetrics metrics = getRealDisplayMetrics();
+            int width = getScreenWidth(metrics);
+            int height = getScreenHeight(metrics);
+            String nativeRes = width + ""x"" + height;
+            ArrayList<String> entries = new ArrayList<>(Arrays.asList(getResources().getStringArray(resID)));
+            Iterator<String> entriesIterator = entries.iterator();
+            while (entriesIterator.hasNext()) {
+                String entry = entriesIterator.next();
+                String[] widthHeight = entry.split(""x"");
+                if (width < Integer.parseInt(widthHeight[0]) || height < Integer.parseInt(widthHeight[1])) {
+                    entriesIterator.remove();
+                }
+            }
+            if (!entries.contains(nativeRes))
+                entries.add(nativeRes);
+            return entries;
+        }
+
+
+
+        private DisplayMetrics getRealDisplayMetrics(){
+            DisplayMetrics metrics = new DisplayMetrics();
+            WindowManager window = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
+            window.getDefaultDisplay().getRealMetrics(metrics);
+            return metrics;
+        }
+
+
+
+        private int getScreenWidth(DisplayMetrics metrics) {
+            return metrics.widthPixels;
+        }
+
+
+        private int getScreenHeight(DisplayMetrics metrics) {
+            return metrics.heightPixels;
+        }
+
+
+
+        private Const.ASPECT_RATIO getAspectRatio() {
+            float screen_width = getScreenWidth(getRealDisplayMetrics());
+            float screen_height = getScreenHeight(getRealDisplayMetrics());
+            float aspectRatio;
+            if (screen_width > screen_height) {
+                aspectRatio = screen_width / screen_height;
+            } else {
+                aspectRatio = screen_height / screen_width;
+            }
+            return Const.ASPECT_RATIO.valueOf(aspectRatio);
+        }
+
+
+        private  void setPermissionListener() {
+            if (getActivity() != null && getActivity() instanceof MainActivity) {
+                Log.d(""TETSTING"",""NOT_NULL"");
+                activity = (MainActivity) getActivity();
+                activity.setPermissionResultListener(activity);
+            }else{
+                Log.d(""TESTING>>>"","""");
+            }
+        }
+
+
+
+
+
+        private String getValue(String key, String defVal) {
+            return prefs.getString(key, defVal);
+        }
+
+
+        private float bitsToMb(float bps) {
+            return bps / (1024 * 1024);
+        }
+
+        //Register for OnSharedPreferenceChangeListener when the fragment resumes
+        @Override
+        public void onResume() {
+            super.onResume();
+            getPreferenceScreen().getSharedPreferences()
+                    .registerOnSharedPreferenceChangeListener(this);
+        }
+
+        //Unregister for OnSharedPreferenceChangeListener when the fragment pauses
+        @Override
+        public void onPause() {
+            super.onPause();
+            getPreferenceScreen().getSharedPreferences()
+                    .unregisterOnSharedPreferenceChangeListener(this);
+        }
+
+        @Override
+        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+
+        //When user changes preferences, update the summary accordingly
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+            Preference pref = findPreference(s);
+            if (pref == null) return;
+            switch (pref.getTitleRes()) {
+                case R.string.preference_resolution_title:
+                    updateResolution((ListPreference) pref);
+                    break;
+                case R.string.preference_fps_title:
+                    String fps = String.valueOf(getValue(getString(R.string.fps_key), ""30""));
+                    pref.setSummary(fps);
+                    break;
+                case R.string.preference_bit_title:
+                    float bps = bitsToMb(Integer.parseInt(getValue(getString(R.string.bitrate_key), ""7130317"")));
+                    pref.setSummary(bps + "" Mbps"");
+                    break;
+                case R.string.preference_filename_format_title:
+                    pref.setSummary(getFileSaveFormat());
+                    break;
+                case R.string.preference_audio_record_title:
+                    requestAudioPermission();
+                    break;
+                case R.string.preference_filename_prefix_title:
+                    EditTextPreference etp = (EditTextPreference) pref;
+                    etp.setSummary(etp.getText());
+                    ListPreference filename = (ListPreference) findPreference(getString(R.string.filename_key));
+                    filename.setSummary(getFileSaveFormat());
+                    break;
+                case R.string.preference_floating_control_title:
+                    requestSystemWindowsPermission();
+                    break;
+                case R.string.preference_show_touch_title:
+                    CheckBoxPreference showTouchCB = (CheckBoxPreference)pref;
+                    if (showTouchCB.isChecked() && !hasPluginInstalled()){
+                        showTouchCB.setChecked(false);
+                        showDownloadAlert();
+                    }
+                    break;
+                case R.string.preference_crash_reporting_title:
+                    CheckBoxPreference crashReporting = (CheckBoxPreference)pref;
+                    CheckBoxPreference anonymousStats = (CheckBoxPreference) findPreference(getString(R.string.preference_anonymous_statistics_key));
+                    if(!crashReporting.isChecked())
+                        anonymousStats.setChecked(false);
+                    break;
+                case R.string.preference_anonymous_statistics_title:
+                    break;
+                case R.string.preference_theme_title:
+                    activity.recreate();
+                    break;
+            }
+        }
+
+
+        private void showDownloadAlert() {
+            new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.alert_plugin_not_found_title)
+                    .setMessage(R.string.alert_plugin_not_found_message)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            try {
+                                getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(""market://details?id=com.orpheusdroid.screencamplugin"")));
+                            } catch (android.content.ActivityNotFoundException e) { // if there is no Google Play on device
+                                getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(""https://play.google.com/store/apps/details?id=com.orpheusdroid.screencamplugin"")));
+                            }
+                        }
+                    })
+                    .setNeutralButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    })
+                    .create().show();
+        }
+
+
+        private boolean hasPluginInstalled(){
+            PackageManager pm = getActivity().getPackageManager();
+            try {
+                pm.getPackageInfo(""com.orpheusdroid.screencamplugin"",PackageManager.GET_META_DATA);
+            } catch (PackageManager.NameNotFoundException e) {
+                Log.d(Const.TAG, ""Plugin not installed"");
+                return false;
+            }
+            return true;
+        }
+
+
+        public String getFileSaveFormat() {
+            String filename = prefs.getString(getString(R.string.filename_key), ""yyyyMMdd_hhmmss"");
+            String prefix = prefs.getString(getString(R.string.fileprefix_key), ""recording"");
+            return prefix + ""_"" + filename;
+        }
+
+
+        public void requestAudioPermission() {
+            if (activity != null) {
+                Log.d(""TESTING"",""finalyyyy"");
+                activity.requestPermissionAudio();
+            }else{
+                Log.d(""TESTING"",""null"");
+
+            }
+        }
+
+
+        private void requestSystemWindowsPermission() {
+            if (activity != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                activity.requestSystemWindowsPermission();
+            } else {
+                Log.d(Const.TAG, ""API is < 23"");
+            }
+        }
+
+
+        private void showSnackbar() {
+            Snackbar.make(getActivity().findViewById(R.id.fab), R.string.snackbar_storage_permission_message,
+                    Snackbar.LENGTH_INDEFINITE).setAction(R.string.snackbar_storage_permission_action_enable,
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (activity != null){
+                                activity.requestPermissionStorage();
+                            }
+                        }
+                    }).show();
+        }
+
+
+        private void showPermissionDeniedDialog(){
+            new AlertDialog.Builder(activity)
+                    .setTitle(R.string.alert_permission_denied_title)
+                    .setMessage(R.string.alert_permission_denied_message)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (activity != null){
+                                activity.requestPermissionStorage();
+                            }
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            showSnackbar();
+                        }
+                    })
+                    .setIconAttribute(android.R.attr.alertDialogIcon)
+                    .setCancelable(false)
+                    .create().show();
+        }
+
+        @Override
+        public void onPermissionResult(int requestCode, String[] permissions, int[] grantResults) {
+            switch (requestCode) {
+                case Const.EXTDIR_REQUEST_CODE:
+                    if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_DENIED)) {
+                        Log.d(Const.TAG, ""Storage permission denied. Requesting again"");
+                        dirChooser.setEnabled(false);
+                        showPermissionDeniedDialog();
+                    } else if((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)){
+                        dirChooser.setEnabled(true);
+                    }
+                    return;
+                case Const.AUDIO_REQUEST_CODE:
+                    if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                        Log.d(Const.TAG, ""Record audio permission granted."");
+                        recaudio.setChecked(true);
+                    } else {
+                        Log.d(Const.TAG, ""Record audio permission denied"");
+                        recaudio.setChecked(false);
+                    }
+                    return;
+                case Const.SYSTEM_WINDOWS_CODE:
+                    if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                        Log.d(Const.TAG, ""System Windows permission granted"");
+                        floatingControl.setChecked(true);
+                    } else {
+                        Log.d(Const.TAG, ""System Windows permission denied"");
+                        floatingControl.setChecked(false);
+                    }
+                default:
+                    Log.d(Const.TAG, ""Unknown permission request with request code: "" + requestCode);
+            }
+        }
+
+        @Override
+        public void onDirectorySelected() {
+            Log.d(Const.TAG, ""In settings fragment"");
+            if (getActivity() != null && getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).onDirectoryChanged();
+            }
+        }
+    }
+
+}
+
+```"
+vijai1996/screenrecorder,open,"prefs_category_experimental_title is ""Expertmental"" in the original strings",[],
+vijai1996/screenrecorder,open,Report notification,"[Label(name=""On Hold"")]",It would be nice to have a notification when an automatic repirt has been sent.
+vijai1996/screenrecorder,open,Crash on select save location,"[Label(name=""Low Priority""), Label(name=""bug"")]","The app crashes (gets closed immediately) when I tap the ""Save location"" button. I have automatic reports on.
+
+App version: 1.8.7 F-Droid
+Stock Android 5.1
+Screen resolution: 480x854px"
+vijai1996/screenrecorder,closed,Bug on Screen Cam,"[Label(name=""duplicate"")]","**Expected Behaviour**
+When ever i start a new recording then stop the recording and go to my recent apps tab on my android phone and exit the ScreenCam app, i expected the app to be taken away without crashing.
+
+**Actual Behaviour**
+When ever i start a new recording then stop the recording and go to my recent apps tab on my android phone and exit the ScreenCam app, the app crashes.
+
+**How To Reproduce**
+* download the add from fdroid
+* open the app and start a new record
+* got to your android notification menu to stop the app from recording
+* go to your recents apps tab on your android phone to exit the app
+
+* Browser: ScreenCam version 1.8.7
+
+* Operating System: Android 7.0
+
+**Recording Of The Bug**
+https://youtu.be/YTD0IdsaYm8"
+vijai1996/screenrecorder,open,Bug on Screen Cam,[],"**Expected Behaviour**
+When ever i stop the cam from recording i expect it to be stopped and i should be able to start another recording immediately.
+
+**Actual Behaviour**
+When ever i stop the cam from recording, it stops but when i go back to the app to start another recording gives me a pop of message saying ""Screen Already Recording*
+
+**How To Reproduce**
+* download the screenCam app from fdroid
+* open the app and start recording
+* go to your android notifications menu to stop the recording
+* then go back the screenCam app to start a new recording
+
+* Browser: ScreenCam version 1.8.7
+* Operating System: Android 7.0
+
+**Recording Of Bug**
+https://youtu.be/SMiC2eXcsZk"
+vijai1996/screenrecorder,open,AWESOME LOGO DESIGN FREE FOR YOU ,[],"Hello, @vijai1996I want to contribute in ""screenrecorder"" so i  want to designed a new logo for ""screenrecorder"" and it's free.
+
+I hope you like it. If you like it, I will send you pull request, editable files/original source and .png format files. If there's something you want to change, I'll do it.
+if you want i will send you my design
+
+contact me on facebook for fast delivary 
+https://www.facebook.com/abdulmalikkhan655"
+vijai1996/screenrecorder,open,The app crashes when deleting all recordings simultaneously,[],"Hello developers.
+I think this is a bug.
+After marking all recording files to be deleted, and pressing the delete feature, the app crashes
+
+How To Reproduce of the bug
+1. Open the app
+2. Go to video files
+3. Mark all to deleted
+4. After marking all recordings, press the delete feature. The application will crashes
+
+Recording Bug video on youtube https://youtu.be/9T83llkyxAs
+
+Operating system on android version 6.0.1"
+vijai1996/screenrecorder,open,App crashes directly after opening ,[],"When opening ScreenCam on a Samsung Galaxy S4, Android 5.0.1,no root, app stops directly when tapped on."
+vijai1996/screenrecorder,closed,[Feature request] Immediately start recording quick settings shortcuts,[],"Hello,
+I think it is useful to start recording without entering the app first. Would appreciate adding a quick settings tile for that.
+Home screen shortcut / app activity would be a nice addition too..
+Keep up the good work! "
+vijai1996/screenrecorder,closed,[feature request] add an option to skip editing,"[Label(name=""Feature Request"")]","I switched from recordable, and I think it would be great to have an option so that it can return to the video list in the app with the recording saved directly when the stop recording notification is clicked"
+vijai1996/screenrecorder,open,Clean status bar,"[Label(name=""Feature Request""), Label(name=""Low Priority"")]","I would love if ScreenCam did something like [Clean Status Bar](https://github.com/emmaguy/clean-status-bar), enhacing the functionality by reading the actual color and letting tho start/stop the recording by tapping on the top bar."
+vijai1996/screenrecorder,closed,feature request: record not only audio input but also output,[],"I would like ro record full a/v device output instead only v output and a input. So i would need a special loopback cable to recordvoutput an i had bad quality do to a/d and d/a conversion and on the most devices get only mono audio do to lack of stereo input. Or i would need another device (which would ironically be esier than soldering et a special loopback cable together...)
+
+If guess the android api suppprts it just like streaming a/v to some hardware (mirrorcast often called, or that undocumented Chromecast stuff)
+
+So it would be possible i assume to do it entyerly in software...
+
+THANKS A LOT"
+vijai1996/screenrecorder,open,feature request: not only portrait in native resolution,"[Label(name=""enhancement"")]","See this:
+
+![screenshot_2018-03-14-10-01-46-195](https://user-images.githubusercontent.com/7935237/37392618-ec82da18-276e-11e8-8c19-92e818ae5b3c.jpeg)
+
+Ive gpt some non native 16:9 resolution andcnative 1440×2560. But whats with 2560x1440 to record in landscape mode without any black bars?
+
+Thanks in advance"
+vijai1996/screenrecorder,closed,Stopped working after deleting the Video and then click on edit option in notification bar,[],"
+#### Expected behavior
+When we rocord a video and done the process we receive a notification in notification bar there is an edit option. If we delete the recorded video and then click on the edit option that is on the notification bar it must showing the message that ""The Video is not found or Delete"".  But its not...
+
+#### Actual behavior
+I record a video and i receive the notification on the notification bar i ignore it and remain it as it is, then i delete my recorded video and click on the edit option that was appeared on the notification bar, and what i get ""The app stopped Working"". It doesn't judge that the the video is deleted. There must be code implementation that describe the App that video is deleted.
+
+#### How to reproduce
+- Download and install the Sreen Recorder app version 1.8.5 
+ [Download Here](https://f-droid.org/app/com.orpheusdroid.screenrecorder)
+- Record a video and you receive a notification as shown in this Screenshot 
+**Note:-** *Do not remove the notification*
+![IMG-20180312-WA0021.jpg](https://res.cloudinary.com/hpiynhbhq/image/upload/v1520855212/dfsjwm4lwosjlzj2uefz.jpg)
+
+<br>
+
+- Now delete the recorded video
+![IMG-20180312-WA0022.jpg](https://res.cloudinary.com/hpiynhbhq/image/upload/v1520855418/utvvzfuxpvufwdnvera3.jpg)
+
+
+
+- After deleting the recorded video click on edit option on the notification bar as shown in this Screenshot 
+
+![IMG-20180312-WA0023.jpg](https://res.cloudinary.com/hpiynhbhq/image/upload/v1520855591/x8naeohfb1jt4x82izab.jpg)
+- The app is stopped working
+
+![IMG-20180312-WA0024.jpg](https://res.cloudinary.com/hpiynhbhq/image/upload/v1520855661/etdjugffr4v4egxvz87j.jpg)
+
+* Screen recorder app: Version 1.8.5
+* Operating system: Android Nougat 7.0
+
+#### Recording Of The Bug
+https://youtu.be/Q0PwbBGiU5U
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@faisalamin/stopped-working-after-deleting-the-video-and-then-click-on-edit-option-in-notification-bar"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+vijai1996/screenrecorder,open,Fatal exception error occurred while trying to end screen recording,"[Label(name=""bug"")]","#### Expected behavior
+Screen cam should be able to save the screen recordings even if they are small. 
+
+#### Actual behavior
+I started recording a screen video by shaking my phone and wanted to end it immediately with another shake but the video was not saved displaying a message ""fatal error occurred"". 
+
+#### How to reproduce
+- Start recording on screen cam by shaking your phone
+- Immediately end it with another shake and the error message will be displayed and video will not be saved. 
+
+* Application : Screen Cam screen recorder v1.8.5
+
+* Operating system: Android 6.0.1
+
+#### Recording Of The Bug
+
+https://youtu.be/QrLld58SUlw    
+
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@syedumair/5khtqk-fatal-expectation-occurred-while-trying-to-end-screen-recording"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+vijai1996/screenrecorder,closed,Bug found in ScreenCam. ,[],"#### Expected behavior
+When I downloaded this app I worked on it for 10- 20 mins then I want to change the saving location of the recording video.
+
+#### Actual behavior
+When i tried to change saving location of the video it brings me to home screen.
+I tried several times but i t always brings me to home screen.
+
+#### How to reproduce
+Download the ScreenCam app from f-droid or play store.
+
+Then open app, it shows some features,
+Also it shows save location option.
+Then click on it.
+Finally it brings us to home screen.
+
+* Browser: ScreenCam
+* version:1.8.5
+* Operating system:5.1.1
+#### Recording Of The Bug
+Here is the GIF of the bug.    
+![20180304_210107.gif](https://res.cloudinary.com/hpiynhbhq/image/upload/v1520190572/jzrtiizkeuvphia7ofut.gif)
+
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@peerzadazeeshan/6zfzsr-bug-found-in-screencam"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+vijai1996/screenrecorder,closed,Error when trying to make multiple delete,[],"
+#### Expected behavior
+When i select multiple videos to delete, i should be able to delete all the selected pictures with a click 
+
+#### Actual behavior
+When i select 2 videos to delete, an error message shows up and when i open the app, only one video was deleted 
+
+#### How to reproduce
+
+*Download Screencam [here](https://play.google.com/store/apps/details?id=com.orpheusdroid.screenrecorder)
+
+*Make at least two video record
+
+* Switch to Video Tab and select the two videos, click on delete icon 
+
+* Browser: Gionee P5 mini
+
+* Operating system: Android version 5.1
+
+*App version: 1.0.14
+
+* App version: 1.8.5
+
+#### Recording Of The Bug
+https://youtu.be/NsdLuV2A3-I
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@darewealth/error-when-trying-to-make-multiple-delete"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+vijai1996/screenrecorder,open,can not change video recording resolution,[],"
+#### Expected behavior
+users should be able to change the video resolution when they want to record the video to be recorded
+#### Actual behavior
+when I try to change the resolution of a video to be recorded to a higher resolution its resolution remains unchanged and only at 360p resolution
+#### How to reproduce
+download the cam cam app after it launches the app and select the settings menu after that select the resolution option then try changing the resolution from 360p resolution to another resolution and see if the video recording resolution can not be changed.
+* Browser: 
+* Operating system: android 5.1 lolipop
+
+#### Recording Of The Bug
+https://www.youtube.com/watch?v=Zc8vkAksIxQ&feature=youtu.be
+    
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@muhammadarif/can-not-change-video-recording-resolution"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+vijai1996/screenrecorder,closed,How to stop?,[],How to stop recording when shake and onscreen controls not chosen? 
+vijai1996/screenrecorder,closed,Crash when scrolling in the videos section ,[],"When trying to scroll down in the Videos section it chrashes.
+V1.8.4"
+vijai1996/screenrecorder,open,Generating html docs,"[Label(name=""enhancement"")]","Prepare comments for classes and methods for auto generating html docs.
+Time line: Near future"
+vijai1996/screenrecorder,closed,no video text dissapeard after update,[],after update the text in video fragments dissapeard
+vijai1996/screenrecorder,closed,crash on almost samsung devices,"[Label(name=""question"")]",first attemp to open app cause crash and never be load into app
+vijai1996/screenrecorder,closed,"[Bug] Unfortunately, System UI has stopped","[Label(name=""Critical"")]","### 1. Briefly
+
+If I record screen video use:
+
++ ScreenCam, I get a window `Unfortunately, System UI has stopped` and black screen,
++ another apps, I haven't bugs.
+
+### 2. Steps to reproduce
+
+I record my screen, see example:
+
++ [**ScreenCam**](https://streamable.com/8ihe2)
+
+I can successful, without bugs, record screen video, use proprietary apps. For example, see my [**Screencast**](https://4pda.ru/forum/index.php?showtopic=446330) video:
+
++ [**Screencast**](https://streamable.com/jv9nd)
+
+### 3. Hardware and software
+
++ ARK Benefit S401,
++ Android 5.1.1,
++ [**VERTEX**](https://4pda.ru/forum/index.php?showtopic=788444&st=80#entry56079362) ROM,
++ ScreenCam 1.8.2 (latest F-Droid version at the moment).
+
+If I can add logs or other debugging information, please, tell me.
+
+Thanks."
+vijai1996/screenrecorder,closed,not starting record on inteniaction start,"[Label(name=""question"")]",hey there why app force closes when i try to call intent.setaction(const.SCREEN_RECORDING_START) from another activity??
+vijai1996/screenrecorder,closed,FR autoswich to a predefined app when recording.,"[Label(name=""Feature Request"")]",
+vijai1996/screenrecorder,closed,Copyright violation,[],"Hi @vijai1996 
+
+I found [this app](https://play.google.com/store/apps/details?id=com.MediumTurquoise.screenrecorder) on the Google Play Store. This guy just took your source code, added some ads in it and put it on the Store, without warning this is free software...
+
+As you are the owner of the source code, feel free to open a request to google [here](https://support.google.com/legal/contact/lr_dmca?product=googleplay) to remove the false app from the Store, if it's your wish ;)
+
+Don't forget to tell Google that:
+
+* The app is licensed under GNU AGPL v3 license and this guy is violating it;
+* He is falsely claiming he made the app;
+* Provide screenshots of your own app, and a link to this repo."
+vijai1996/screenrecorder,closed,crash when editing video,"[Label(name=""bug"")]","hey i have a problem and that is after building project when i try to edit the saved video, app crashesh on multiple devices (m above)"
+vijai1996/screenrecorder,closed,what version of android studio is required for working?,"[Label(name=""Not a bug"")]","hey there and many thanks for this project
+but what version of android studio did you used to create it?
+i'm using studio version 2.3 and  builds version 26.0.2 and have lots of errors when trying to compile
+is it required studio version 3.0?
+regards"
+vijai1996/screenrecorder,closed,Adding dark theme,"[Label(name=""Feature Request"")]",Dark theme is only what's missing to make this app perfect.
+vijai1996/screenrecorder,open,"Save to other file formats, e.g. gif",[],"It would be great if we could save to other file formats. In particular, being able to save as an animated gif would be very useful when reporting bugs, e.g. via github issues.
+
+At the moment, I use another app called ""Screen Recording and Mirror"" (https://play.google.com/store/apps/details?id=com.koushikdutta.mirror) which does allow saving as gifs but the free version has a watermark and it's not open source, so I would prefer to use your app!
+
+Many thanks for making this app and making it open source."
+vijai1996/screenrecorder,closed,Update README.md,[],"This PR restores the broken link to F-Droid and changes both buttons for Google Play and F-Droid
+
+Thanks for this app :)"
+vijai1996/screenrecorder,closed,Doesn't work on my phone (Android 6.0.1 (Marshmallow)),[],"my phone: http://www.gsmarena.com/xiaomi_redmi_4_prime-8263.php
+
+Also there is no stop button (notification only shows time and icon of app, no aciton buttons...), activity also has no button, when I press record button it shows toast _screen already recording_"
+vijai1996/screenrecorder,closed,Blank screenshots after recording a video,[],"So directly after I record all my screenshots are blank and then after some time it isn't, any fix for this?"
+vijai1996/screenrecorder,closed,"App stops after opening ""about"" twice",[],"Open App
+Select about 
+Go back
+Select about 
+
+[https://www.youtube.com/watch?v=moB_sK--ZcU](https://www.youtube.com/watch?v=moB_sK--ZcU)
+"
+vijai1996/screenrecorder,open,FR: Advanced video editing.,"[Label(name=""Feature Request"")]","Most importantely I'd like to see the current frame when moving the start and the end  to their position.
+
+Also It'd be awesome if there was a possibility to create multiple editing lines and import other sources like other casts and audio files."
+vijai1996/screenrecorder,open,Possible way for non-root sound support,[],"The app [Blue mono sound](https://github.com/soynerdito/BlueSound) is able to redirect the sound (btw, if no bt receiver is avalible it redirects to your earphone). Is it possible to use this technique to redirect it to a sort of a custom channel, if you know what I mean?"
+vijai1996/screenrecorder,closed,REMOVE ANALYTICS SERVICES,"[Label(name=""Not a bug""), Label(name=""wontfix"")]",
+vijai1996/screenrecorder,closed,Tracking...?,[],In F-Droid there's a tracking lable on the application and I've noticed that it used the internet connection without any obvious purpose. What kind of data does it send and can there be a possibility to turn that off?
+vijai1996/screenrecorder,closed,File storage path to external SD card,"[Label(name=""enhancement"")]","Nice application!
+Anyway, is it possible to set the recording's storage path to something different as the internal storage, especially to the external SD card?
+Internal storage is rare and valuable...! ;)"
+vijai1996/screenrecorder,closed,Crashes on 6.0.1,[],"Galaxy s6, Android 6.0.1.
+
+When I try to record, the app crashes, android system ui crashes, a toast pops up saying, ""Screen recording permission denied"" and the screen locks.
+
+I know that I've gone through my permissions and disabled many of them (stock bloatware has way too many permissions), but I can't find a ""screen recording permission"" anywhere.
+
+Is there a way this app can check for the permission and request it if not present? Or does it record the screen through android system UI and maybe the bug is in system ui, not this app?"
+vijai1996/screenrecorder,closed,Advanced video saving,"[Label(name=""enhancement"")]","It would be a nice feature if you could cut the videos (just a simple ""cut away the beginning and the end"" in sec.) or at least had a countdown like 3 sec. after starting the recording and thelast 5 sec. not being saved anymore by standard."
+vijai1996/screenrecorder,open,Added de (Deutsch) translation,[],"I have translated your application into `de` (*Deutsch*). Here is the xml:
+```xml
+<resources>
+    <string name=""preference_resolution_title"">Bildschirmauflösung</string>
+    <string name=""preference_resolution_summary"">Wähle die Auflösung zum Aufnehmen mit</string>
+    <string name=""preference_fps_title"">Bilder pro Sekunde</string>
+    <string name=""preference_fps_summary"">Wähle Bilder/Sek. bei der Aufnahme mit</string>
+    <string name=""preference_bit_title"">Bit-Rate</string>
+    <string name=""preference_bit_summary"">Bit-Rate wählen</string>
+    <string name=""preference_audio_record_title"">Audio aufnehmen</string>
+    <string name=""preference_audio_record_summary"">Nimmt zusammen mit dem Bildschirmvideo Audio übers Mikrofon auf</string>
+    <string name=""preference_save_location_title"">Speicherort</string>
+    <string name=""preference_filename_format_title"">Dateinamensformat</string>
+    <string name=""preference_filename_prefix_title"">Dateinamenspräfix</string>
+    <string name=""storage_permission_request_title"">Erlaube Speicherberechtigung</string>
+    <string name=""storage_permission_request_summary"">Schreib-Berechtigung auf dem Speicher ist erforderlich, um das aufgenommene Video zu speichern.</string>
+    <string name=""ok"">OK</string>
+    <string name=""cancel"">Abbrechen</string>
+    <string name=""screen_recording_permission_denied"">Berechtigung zur Bildschirmaufnahme verwehrt</string>
+    <string name=""screen_recording_notification_title"">Bildschirmaufnahme</string>
+    <string name=""screen_recording_notification_action_stop"">Stopp</string>
+    <string name=""screen_recording_notification_action_pause"">Pause</string>
+    <string name=""screen_recording_notification_action_resume"">Fortsetzen</string>
+    <string name=""fatal_exception_message"">ScreenRecorder: Fatale Ausnahmesituation eingetreten. Protokoll ist verschickt worden</string>
+    <string name=""about_activity_label"">Über</string>
+    <string name=""snackbar_storage_permission_message"">Speicherzugriff gewähren</string>
+    <string name=""snackbar_storage_permission_action_enable"">AKTIVIEREN</string>
+    <string name=""menu_about_title"">Über</string>
+    <string name=""about_credits"">Danksagungen</string>
+    <string name=""about_libraries"">Bibliotheken</string>
+    <string name=""about_opensource"">Open Source</string>
+    <string name=""app_icon_credit_Niko"">App-Symbole von %1$s\n\nWebsite: %2$s</string>
+    <string name=""directory_chooser_library_credit"">Ordner-Wähler von %1$s\n\nGithub URL: %2$s\n\nLizenz: %3$s</string>
+    <string name=""opensource_info"">Diese Anwendung ist quelloffen, und der Quellcode kann abgerufen werden unter\n\nGithub URL: %1$s\n\nLizenz: %2$s</string>
+    <string name=""fab_record_hint"">Mitschnitt starten</string>
+    <string name=""recording_failed_toast"">Bildschirmmitschnitt fehlgeschlagen.</string>
+    <string name=""screenrecording_already_active_toast"">Bildschirmmitschnitt läuft schon</string>
+    <string name=""large_resolution_selected_toast"">Die ausgewählte Auflösung ist größer als die Bildschirmauflösung. Wähle stattdessen %1$s Auflösung</string>
+    <string name=""shortcut_short_label"">Aufnahme</string>
+    <string name=""shortcut_long_label"">Schnellaufnahme</string>
+    <string name=""shortcut_disabled_message"">Aufnahme abgeschaltet</string>
+    <string name=""screen_recording_started_toast"">Bildschirmmitschnitt gestartet</string>
+    <string name=""screen_recording_stopped_toast"">Bildschirmmitschnitt gestoppt</string>
+    <string name=""screen_recording_resumed_toast"">Bildschirmmitschnitt fortgesetzt</string>
+    <string name=""screen_recording_paused_toast"">Bildschirmaufnahme angehalten</string>
+    <string name=""fab_stop_hint"">Mitschnitt stoppem</string>
+    <string name=""share_intent_title"">Aufgenommenes teilen</string>
+    <string name=""share_intent_notification_title"">Aufgenommenes Video teilen</string>
+    <string name=""share_intent_notification_content"">Klicken, um das aufgenommene Video zu teilen</string>
+    <string name=""share_intent_notification_action_text"">Teilen</string>
+    <string name=""preference_floating_control_title"">Schwebende Bedienelemente nutzen</string>
+    <string name=""preference_floating_control_summary"">Schwebende Bedienelemente ein-/ausschalten, die über jeden Bildschirm aufzeichen</string>
+    <string name=""tab_settings_title"">Settings</string>
+    <string name=""tab_videos_title"">Videos</string>
+    <string name=""video_list_permission_denied_message"">Speicherzugriffsberechtigung verweigert</string>
+    <string name=""video_list_no_video_message"">Keine Videos verfügbar</string>
+</resources>
+
+```
+
+There were two strings which weren't translated.
+
+Note: Some strings like ""video settings"", ""save options"" and so on aren't contained in the strings.xml
+
+---
+
+*Translation made with [Stringlate](https://github.com/LonamiWebs/Stringlate).*"
+vijai1996/screenrecorder,open,Android automatic refactor - ObsoleteLayoutParam,[],"Hi,
+
+I am developing a tool to automatically refactor Android applications with the goal of improving energy efficiency.
+This pull request has the changes generated while applying the rule ""ObsoleteLayoutParam"".
+
+While developing your application's views you might be specifying attributes in a view's artefact that are not necessary due to the nature of its parent. In this PR, those attributes were replaced by a comment.
+
+I have made a previous validation of the changes and they seem correct.
+Unfortunately, this tool is not able keep the original whitespace of the files, so comparison without ignoring whitespace might be confusing.
+Please consider the changes and let me know if you agree with them.
+
+Best,
+Luis"
+vijai1996/screenrecorder,closed,Full german translation,[],"There are 2 strings which aren't translated yet, I've <a href=""https://gist.github.com/24dc5da583206539121929a9fbd01fbe"">translated them</a> via <a href=""https://github.com/LonamiWebs/Stringlate"">Stringlate</a>"
+vijai1996/screenrecorder,closed,Floating bar,"[Label(name=""bug"")]","1. It is way too big, at least on devices like mine < 720p.
+2. I can't deactivate it, every time I start a recording it switches on by itself.
+3. It should be invisible on the recording itself, like the simulated screen (which you activate in the developer settings) is.
+
+This app is still very cool."
+vijai1996/screenrecorder,closed,Provide pure-floss build flavor,[],"Recent versions started to introduce firebase, which is non-free software. Could you provide a gradle flavor which does not require this?"
+vijai1996/screenrecorder,closed,Unusable on Cyanogenmod 12.1,[],"I'm using Cyanogenmod 12.1 on a Honor Holly and no matter which settings I choose, I always get a colourful pixel salad, but no actual screen recording.
+Might be a codec issue since I was having those with other apps as well."
+vijai1996/screenrecorder,open,Japanese translation,[],
+vijai1996/screenrecorder,closed,Kitkat support,[],"Please add android kitkat support with root, many users still use kitkat, very good system"
+vijai1996/screenrecorder,closed,App crashes,"[Label(name=""bug"")]","[crash.txt](https://github.com/vijai1996/screenrecorder/files/602390/crash.txt)
+
+Hey bro, thanks a lot for this useful app, and thanks even more for having it on f-droid! Unfortunately I the app crashes very frequently on my phone. It's an Android 6.0.1. It seems to be a problem with switch to and from the app with the recent apps menu. After switching back to screenrecorder the rec button shows the stop symbol and the app crashes when I press it. I also get notified that the app crashed if I swipe it away in the recent apps menu.
+I attached a log, hope it can help..."
+vijai1996/screenrecorder,open,Add resolution settings.,[],"I really like your app but there are some problems I have with it.
+
+1. My device's screen resolution is 480 x 854 so for now I can't make videos with the native resolution. I think this shouldn't be solved by adding thousands of resolutions but by making the capture resolution adaptive.
+
+2. You may have noticed this already, but if I switch to landscape format the output video (of course) keeps the resolution and the whole screen is being scaled down. Probably the easiest way to fix this is making a check box with a function to just don't rotate the input."
+vijai1996/screenrecorder,closed,Added Japanese translation,[],Hello!
+vijai1996/screenrecorder,closed,Create french strings.xml,[],Same translation as the master branch + a few new lines.
+vijai1996/screenrecorder,closed,Android 4.3.1 support,"[Label(name=""wontfix"")]",Hi! Is possible add an ability to work on Android 4.3.1 and on corresponding CyanogenMod/Replicant OS versions??
+vijai1996/screenrecorder,open,record media audio instead of microphone audio,[],"hi,
+
+thanks for the app, it is working grate! but could you add an option to record the out going audio (speaker output)  instead of the microphone input along with the video? that would allow to make grate let's plays.
+
+thanks in advance"
+vijai1996/screenrecorder,closed,Add to F-Droid,"[Label(name=""enhancement"")]","Hey, it would be neat to have this on the F-Droid catalog."
+vijai1996/screenrecorder,closed,Create strings.xml,[],"French translation
+Strings ended by ""key"" haven't been translated."
+vijai1996/screenrecorder,closed,Russian translation,[],Credits: @DumF0rGaming#xda

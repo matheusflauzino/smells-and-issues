@@ -1,0 +1,89 @@
+repository,state,title,label,body
+j4velin/SystemAppMover,open,Rotate device needs to reload apps,[],When device is rotated apps are reloaded
+j4velin/SystemAppMover,open,Improve F-Droid listing,[],"I've seen this app on F-Droid, but it lacks screenshots, changelog and a translatable description there. It's pretty easy for you to add these information. Please have a look at [this example](https://github.com/Freeyourgadget/Gadgetbridge/tree/master/fastlane/metadata/android) or at the [F-Droid docs](https://f-droid.org/en/docs/All_About_Descriptions_Graphics_and_Screenshots/#in-the-apps-source-repository) or [fastlane docs](https://github.com/fastlane/fastlane/blob/2.28.7/supply/README.md#images-and-screenshots).
+After you have commited these files to your repo and tagged a new version, you need to remove the `Description` and `Summary` from the metadata file in the [F-Droid Data repo](https://gitlab.com/fdroid/fdroiddata)."
+j4velin/SystemAppMover,open,Updated bg (Bulgarian) translation,[],Commit made via [Stringlate](https://lonamiwebs.github.io/stringlate/)
+j4velin/SystemAppMover,open,Doesn't work on Lineage OS 14.1 (Android 7.1.1),[],"When trying to move an app, there is an error: ""could not remount /system""
+logcat:
+`
+01-05 21:35:55.982 23781 23781 W .systemappmover: type=1400 audit(0.0:149): avc: denied { read } for name=""RootToolsMounts"" dev=""dm-0"" ino=654083 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:system_data_file:s0 tclass=file permissive=0
+`
+(sorry - accidentally clicked enter on the original report with only the title)"
+j4velin/SystemAppMover,closed,RootTools no activity found to handle intent,[],"```
+// CRASH: de.j4velin.systemappmover (pid 4549)
+// Short Msg: android.content.ActivityNotFoundException
+// Long Msg: android.content.ActivityNotFoundException: No Activity found to handle Intent { act=android.intent.action.VIEW dat=market://details?id=stericson.busybox }
+// Build Label: Android/aosp_flo/flo:6.0.1/MOB30P/tianchi10041651:userdebug/test-keys
+// Build Changelist: eng.tianchi.20161004.165046
+// Build Time: 1475571199000
+// android.content.ActivityNotFoundException: No Activity found to handle Intent { act=android.intent.action.VIEW dat=market://details?id=stericson.busybox }
+//  at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:1798)
+//  at android.app.Instrumentation.execStartActivity(Instrumentation.java:1512)
+//  at android.app.Activity.startActivityForResult(Activity.java:3930)
+//  at de.robv.android.xposed.XposedBridge.invokeOriginalMethodNative(Native Method)
+//  at de.robv.android.xposed.XposedBridge.handleHookedMethod(XposedBridge.java:334)
+//  at android.app.Activity.startActivityForResult(<Xposed>)
+//  at android.app.Activity.startActivityForResult(Activity.java:3890)
+//  at de.robv.android.xposed.XposedBridge.invokeOriginalMethodNative(Native Method)
+//  at de.robv.android.xposed.XposedBridge.handleHookedMethod(XposedBridge.java:334)
+//  at android.app.Activity.startActivityForResult(<Xposed>)
+//  at android.support.v4.app.FragmentActivity.startActivityForResult(FragmentActivity.java:820)
+//  at android.app.Activity.startActivity(Activity.java:4213)
+//  at android.app.Activity.startActivity(Activity.java:4181)
+//  at com.stericson.RootTools.internal.RootToolsInternalMethods.offerBusyBox(RootToolsInternalMethods.java:1369)
+//  at com.stericson.RootTools.RootTools.offerBusyBox(RootTools.java:587)
+//  at de.j4velin.systemappmover.MoverActivity$6$2$2.onClick(MoverActivity.java:210)
+//  at android.view.View.performClick(View.java:5204)
+//  at android.view.View$PerformClick.run(View.java:21153)
+//  at android.os.Handler.handleCallback(Handler.java:739)
+//  at android.os.Handler.dispatchMessage(Handler.java:95)
+//  at android.os.Looper.loop(Looper.java:148)
+//  at android.app.ActivityThread.main(ActivityThread.java:5417)
+//  at java.lang.reflect.Method.invoke(Native Method)
+//  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+//  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+//  at de.robv.android.xposed.XposedBridge.main(XposedBridge.java:102)
+//
+```
+"
+j4velin/SystemAppMover,closed,Continue the developing of the F-Droid version,[],
+j4velin/SystemAppMover,closed,Update with Material Design elements,[],"I've add material Toolbar, AlertDialog, and Dialog. I have kept the original dark theme.
+
+However as a consequence of this, ive had to bump the minimum SDK version from _4_ to _7_.
+
+**Images:** http://imgur.com/a/GFQHJ
+"
+j4velin/SystemAppMover,open,Question: Lolipop support,[],"Is full Lollipop support planned?
+Currently. one cannot move system apps in Lollipop.
+"
+j4velin/SystemAppMover,open,"Checkbox for ""Show user apps""",[],"In your app one can click a checkbox to see also system apps.
+
+However when one is looking for _only_ system apps, it is not possible to blend out user apps.
+
+Therefore I suggest to implement another checkbox for ""Show user apps"". Then each of these option can be toggled independently of each other. So it leads to three views:
+- only user apps
+- user and system apps
+- only system apps
+
+Thanks!
+"
+j4velin/SystemAppMover,closed,Update README.md,[],
+j4velin/SystemAppMover,closed,4.4.4 problems?,[],"Doesn't work in 4.4.4? ...can't move any APP Form sytem to normal.
+"
+j4velin/SystemAppMover,open,Feature Request: Take apps to be moved from a (user-)supplied list,[],"Your app sounds promising, thanks for making this available. I would welcome if it would offer the possibility to move apps according to a list of apps to be moved which is a typical use case for ""debloating"" a Stock ROM.
+
+As a further enhancement, the app could supply such lists already for some common ROMs/Devices and (as an even further enhancement) try to auto-detect the device being used to apply a matching debloating list.
+"
+j4velin/SystemAppMover,closed,Icon,"[Label(name=""enhancement"")]","I really like this app and it seems to need an icon so I´m working on something.
+"
+j4velin/SystemAppMover,closed,Misbehavior after system update,[],"I use Omnirom with nightly updates.
+After an system update all apps I had moved from system to normal app are again system apps and all Apps I made system app are lost.
+I think this isn't only a problem on custom ROMs but on all androids. And I think this problem can't be solved...
+"
+j4velin/SystemAppMover,closed,Error,"[Label(name=""bug""), Label(name=""duplicate"")]","Often there is an error: can't move the app or something like that and then the app is uninstalled.
+"
+j4velin/SystemAppMover,closed,F-Droid App is broken,[],"As it is descripted in the issue #1 the app from F-Droid is broken, but if you compile the app yourself with the sourcecode from github, it works. Please update the F-Droid App.
+"
+j4velin/SystemAppMover,closed,F-Droid build doesn't work,"[Label(name=""wontfix"")]","I can't make system app ; when I try I have this message : ""Could not remount / system"". 
+I have SU and Busybox installed. 
+"

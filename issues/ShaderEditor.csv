@@ -1,0 +1,563 @@
+repository,state,title,label,body
+markusfisch/ShaderEditor,closed,Add simple import and export functionality for shaders,[],"Export shaders to Download/ShaderEditor with shader name as filename
+Avoid accidental overwriting when exporting by choosing unique filename
+- an increasing number is appended until the filename is not taken
+Import *.glsl files from Download/ShaderEditor
+Avoid accidental overwriting when importing
+- Always insert, do not overwrite when importing
+Quality and thumbnail are not exported / imported
+
+Fixes #5
+Fixes #84"
+markusfisch/ShaderEditor,closed,Render (possibly gl_FragCoord.y?) issue in portrait mode on 1/1 quality,[],"Hi, thank you for putting this app out there!
+
+I installed the version 2.12.0 recently on a new phone (Huawei P10 Lite running Android 7.0). I've noticed a very specific glitch under particular circumstances.
+
+## Expected Behaviour
+When quality is set to ""1/1"" and the orientation is in portrait mode, a shader program should render correctly.
+
+## Actual Behaviour
+The resulting render is glitched in a very specific way. It appears to be rendering using the value of only the bottom row of pixels. It seems as if the value of `gl_FragCoord.y` specifically does not change.
+
+## Conditions to reproduce
+This only ever seems to happen when quality is set to ""1/1"" and the screen is in portrait mode. When in landscape mode on ""1/1"" quality, the shader program renders as expected. Setting quality to any other level allows the shader program to render correctly regardless of orientation.
+
+## Observations
+This is quite an unfortunate bug seeing as ""1/1"" is the default quality level. I am curious as to whether anybody else has encountered this issue, and if so their phone model and android version. I hope it is not just a weird issue with my phone.
+
+I had a quick look into the codebase and saw a great deal of references to `quality` in `ShaderRenderer.java`, and might have a deeper look into it when I have more time. Do you have any idea of what the underlying cause might be?
+
+### Broken
+<img src=""https://user-images.githubusercontent.com/2551599/44237001-cebdfa00-a1a6-11e8-8095-6a23588e81d5.jpg"" width=""300"">
+
+### Working
+<img src=""https://user-images.githubusercontent.com/2551599/44236994-c82f8280-a1a6-11e8-9449-4f45e2a3f562.jpg"" width=""300"">"
+markusfisch/ShaderEditor,open,"""const bool array[] = true;"" crashes app",[],"Running a shader containing this line crashes ShaderEditor.
+To be honest, I have no idea why this happens, but as this most likely isn't intended, I thought I'd create an issue. I will continue to experiment with arrays... Maybe there are other similar errors?
+Anyway, I would recommend checking shaders using [glValidateProgram](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glValidateProgram.xhtml) before running them. That should take care of this kind of crash."
+markusfisch/ShaderEditor,closed,File location of saved shaders,[],"This may have already been stated somewhere but I have yet to find it, any way I can find where exactly the shader files are saved? It would make things a lot easier if I could do my work from my PC with an actual keyboard but I'm not sure if that is actually possible. Any advice would help."
+markusfisch/ShaderEditor,closed,Syntax highlight switch request,[],I'm doing some raymarching on my phone with the editor and the shader gets really big (couple houndred lines). As I try to scroll through it it gets really slow and choppy. This is a known issue but maybe by turning syntax highlight off it would speed it up by a lot?
+markusfisch/ShaderEditor,open,All errors are claimed to be found in line 1,[],This makes debugging terribly difficult.
+markusfisch/ShaderEditor,open,Suggestion: Capture screen render,[],Would it be possible to integrate a preset similar to backbuffer but instead of capturing the last rendered frame of camera it would capture last rendered frame of screen? Basically sampler2D where texture is what ever is rendered on the phones screen at the moment.
+markusfisch/ShaderEditor,closed,"""#include"" feature",[],I think it is very useful because this app runs on the small display.
+markusfisch/ShaderEditor,closed,Set As Wallpaper Not working In Shader Editor,[],"
+#### Expected behavior
+I launched Shader Editor, created my shader, tapped on the 3 dotted icons by the right, then click set as wallpaper, so i can change my current wallpaper to my shader i just created.
+
+#### Actual behavior
+I launched Shader Editor, created my shader, tapped on the 3 dotted icon by the right, then clicked set as wallpaper, but nothing happened, the wallpaper didnt change.
+
+#### How to reproduce
+[Download](https://play.google.com/store/apps/details?id=de.markusfisch.android.shadereditor)
+
+launch Shader editor,
+tap on the 3 dot by your right,
+select set as wallpaper.
+
+Device Used: Infinix Note 3 or Infinix X601
+
+Operating system: Android 7.0 Nougat
+
+App Version 2.9.1
+
+#### Recording Of The Bug
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/cEZ2fkSJohM"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>
+
+<br /><hr/><em>Posted on <a href=""https://utopian.io/utopian-io/@sahmmie/set-as-wallpaper-not-working-in-shader-editor"">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>"
+markusfisch/ShaderEditor,closed,Added a swirl gun example,[],
+markusfisch/ShaderEditor,open,Camera doesn't work on n7100,[],Just a black texture instead of image from camera. Camera is fully allowed in AppOPs and XPrivacy. The rest of camera apps work fine.
+markusfisch/ShaderEditor,open,Accelerometer/orientation unforms ignore screen rotation,[],"It seems that the various sensor outputs for orientation ignore the rotation of the screen, and since there's no way to determine screen rotation in the shader, this means that things like the gravity vector are just wrong when the screen is rotated into a landscape orientation. You can see this by loading up the Gravity Vector preset. When the device is in a portrait configuration, the screen corresponds to the device orientation quite nicely, but when the device switches to landscape configuration, the motion on the screen stops making sense.
+
+I'm not sure exactly what sensor outputs need to change, but I've had a great deal of difficulty getting any of the accelerator based uniforms to output logical values switching between portrait and landscape configuration.
+
+Other than that, awesome program!"
+markusfisch/ShaderEditor,open,Syntax highlighting disappeared,[],"I moved some code around in my main function and syntax highlighting was gone. I couldn't reproduce it yet. The only way to restore highlighting was to restart the application.
+
+Here's the resulting code after a paste:
+
+```
+void main()
+{
+	vec4 buf=texture(backbuffer,gl_FragCoord.xy/resolution);
+	if(true
+	//	&&texture(backbuffer,vec2(.0)).rgb==vec3(.0) //workaround for rendering only one frame
+		)
+	fc=vec4(render(),1.);
+	else
+	fc=buf;
+	if(gl_FragCoord.xy==vec2(.0))
+	fc.rgb=vec3(.0);
+}
+```
+I tried to create a workaround to be able to render [only one frame](https://github.com/markusfisch/ShaderEditor/issues/58) as this is not a feature in the application.
+"
+markusfisch/ShaderEditor,closed,Adding a camera uniform breaks specifying GLSL version,[],"Specifically, I get this error when I try adding `uniform samplerExternalOES cameraBack;` near the top (but obviously under `#version 100`):
+
+> "":    GLSL error: #version must occur  
+> before any other statement in the program
+
+Yes, the quotation mark and colon are part of the error. Here is a minimal shader that triggers this bug (almost literally the default camera shader, but with `#version 100` added to the top):
+
+```glsl
+#version 100
+
+uniform vec2 resolution;
+uniform vec2 cameraAddent;
+uniform mat2 cameraOrientation;
+uniform samplerExternalOES cameraBack;
+
+void main(void) {
+	vec2 uv = gl_FragCoord.xy / resolution.xy;
+	vec2 st = cameraAddent + uv * cameraOrientation;
+
+	gl_FragColor = vec4(texture2D(cameraBack, st).rgb, 1.0);
+}
+```
+
+Commenting out the first line lets it work just fine."
+markusfisch/ShaderEditor,closed,Shader version mismatch when trying to use OpenGL ES 3.0,[],"I was wanting to use functions like `inverse()`, but it seems the app doesn't support setting the version to '300 es'. Perhaps an option somewhere should be added so that we can choose which version of OpenGL we use?"
+markusfisch/ShaderEditor,closed,Can't set live wallpaper,[],"Hi,
+
+Lovely app but I am unable to set a live wallpaper. Nothing happens when I select the button.
+I'm running android 7.0 on a LG V20.
+
+Let me know if I can help solve the issue in any way."
+markusfisch/ShaderEditor,open,Strange value of gl_FragCoord.y on Honor 7X,[],"on Honor 7X (screen resolution 2160x1080):
+first frame works correctly, after gl_FragCoord.y==0.5 on each pixel,
+so ""gl_FragColor = vec4(vec3(gl_FragCoord.y==.5), 1.0);"" gives white screen"
+markusfisch/ShaderEditor,open,Add optional line numbers to text field,[],Add an optional line numbers to the shader's text field for better shader debugging
+markusfisch/ShaderEditor,closed,Add optional line numbers to text field,[],
+markusfisch/ShaderEditor,open,Edits should be saved as a draft,[],"Backgrounding the app for any reason such as responding to a chat, or accidently pressing home causes the shader in progress to be reverted to the last save.
+
+I'm often loosing tens of minutes of coding time because I forget to save before backgrounding.
+I don't tend to manually run the shader, so the ""Save on run"" setting doesn't help me.
+
+I would prefer if edits were always saved as a draft. There could be a button to revert to the last manual save so that reverting is always an explicit action rather than a surprise."
+markusfisch/ShaderEditor,open,Implement downloading shaders from ShaderToy and GLSLSandbox and other shader-sharing sites,[],"I have tried a couple of shaders and saw them working. So I think, even though not all the shaders would work, having a feature to download and try shaders right in the app would be immediately useful.
+https://www.shadertoy.com/api
+http://glslsandbox.com/"
+markusfisch/ShaderEditor,open,App crashes after plugging in charger,[],"Gear: Samsung GT-i5510 Galaxy, Cyanogenmod 7 (Android 2.3.7)
+Shader Editor version: 2.8.1
+Logcat:
+
+```logcat
+W/ActivityManager( 1717): Permission Denial: Accessing service ComponentInfo{de.markusfisch.android.shadereditor/de.markusfisch.android.shadereditor.service.ShaderWallpaperService} from pid=1717, uid=1000 requires android.permission.BIND_WALLPAPER
+E/AndroidRuntime( 2557): java.lang.RuntimeException: Unable to start receiver de.markusfisch.android.shadereditor.receiver.BatteryLevelReceiver: java.lang.SecurityException: Not allowed to start service Intent { cmp=de.markusfisch.android.shadereditor/.service.ShaderWallpaperService (has extras) } without permission android.permission.BIND_WALLPAPER
+E/AndroidRuntime( 2557): Caused by: java.lang.SecurityException: Not allowed to start service Intent { cmp=de.markusfisch.android.shadereditor/.service.ShaderWallpaperService (has extras) } without permission android.permission.BIND_WALLPAPER
+E/AndroidRuntime( 2557): 	at de.markusfisch.android.shadereditor.receiver.BatteryLevelReceiver.a(Unknown Source)
+E/AndroidRuntime( 2557): 	at de.markusfisch.android.shadereditor.receiver.BatteryLevelReceiver.onReceive(Unknown Source)
+I/WindowManager( 1717): WIN DEATH: Window{407f62a0 de.markusfisch.android.shadereditor/de.markusfisch.android.shadereditor.activity.MainActivity paused=false}
+I/ActivityManager( 1717): Process de.markusfisch.android.shadereditor (pid 2557) has died.
+W/ActivityManager( 1717): Scheduling restart of crashed service de.markusfisch.android.shadereditor/.service.ShaderWallpaperService in 5000ms
+W/WallpaperService( 1717): Wallpaper service gone: ComponentInfo{de.markusfisch.android.shadereditor/de.markusfisch.android.shadereditor.service.ShaderWallpaperService}
+I/WindowManager( 1717): WIN DEATH: Window{407f0fd8 de.markusfisch.android.shadereditor.service.ShaderWallpaperService paused=false}
+```
+Used wallpaper:
+```glsl
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+
+uniform vec2 resolution;
+uniform float battery;
+uniform float time;
+uniform vec3 gravity;
+
+void main(void) {
+  vec2 uv = gl_FragCoord.xy / resolution.xy - 0.5;
+  const float pi = 3.14;
+  const float pih = 1.57;
+  float grot = gravity.y / length(gravity.xy) * pih;
+  float a = gravity.x > 0.0 ? grot : pi - grot;
+  float b = battery;
+  vec2 uvr = vec2(
+    uv.x * cos(a) - uv.y * sin(a),
+    uv.x * sin(a) + uv.y * cos(a)
+  );
+  float t = time;
+  float c = ((uvr.y+ 0.5)/b + 1.0 - 1.0/b + sin(t) *uvr.x*0.2);
+  float cs = abs(sin(t)) * c;
+  float cr = (1.0 - 2.0 * b) * cs;
+  float cg = b * cs;
+  gl_FragColor = vec4(cr, cg, 0.0, 1.0);
+}
+```
+This app is amazing by the way :)"
+markusfisch/ShaderEditor,open,Can it keep the backbuffer when it is reactivated the next time?,[],"Currently: When reactivated, the backbuffer is black.
+Suggestion: Add the ability to keep the backbuffer (as long as possible), and use ""Update Wallpaper"" to reset it."
+markusfisch/ShaderEditor,closed,Fix issue #63 Adaptive Icons,[],Introduces the new [Adaptive Icons](https://developer.android.com/preview/features/adaptive-icons.html) feature of Android O!
+markusfisch/ShaderEditor,closed,Adaptive Icons,[],"Hello,
+
+What do you think about using the new [Adaptive Icons](https://developer.android.com/preview/features/adaptive-icons.html) feature of Android O?
+
+It would be really nice to see them implemented in ShaderEditor! Can I help :wink:?
+
+Thank you very much,"
+markusfisch/ShaderEditor,closed,iDate as in shadertoy.,[],"Can we get iDate as used in shadertoy with iDate.xyzw.
+
+Greets snails"
+markusfisch/ShaderEditor,closed,Default Backbuffer Image,[],"Currently: At the beginning, the backbuffer is black, which doesn't make sense for every shader. (You can work around this with an if statement in the shader...)
+Suggestion: Add the ability to set the backbuffer to some image.
+
+This would be great for procedural effects & other effects that rely a lot on the previous state."
+markusfisch/ShaderEditor,closed,Video Camera,[],It would be pretty cool if the camera's video stream could be accessed with a texture.
+markusfisch/ShaderEditor,closed,Uniform time is not working when live.,[],"I was trying to create a pulse effect by using time with sin. This worked fine in the editor but when I tried to use it as a wallpaper, it froze time and kept the color at one value. Is this something wrong with the app or my galaxy s6?"
+markusfisch/ShaderEditor,open,Rendering only one frame,[],"I created some shaders with heavy raymarching computations which are rendering with less than 10 fps.
+I then tried to render only one frame but I had to hack it in GLSL like this:
+
+    //main...
+    if (time < 1./60.)
+        render();
+    else
+        renderBackbuffer();
+
+I understand that it can't be used as wallpaper with rendering speeds as low as this, but it would be a nice feature to create a still image.
+Also saving the rendered frame as an image would be a nice thing (instead of screenshotting and cropping)
+
+"
+markusfisch/ShaderEditor,open,Include-like feature request,[],"I find myself writing or copying the same functions and constants over and over to a new shader. I know that GLSL doesn't have any include (although it is a reserved keyword). It is possible to concatenate multiple sources with the glShaderSources call but you have no control over it.
+My suggestion is to have the ability to choose a shader file which contains no uniforms and no main function to be used as a utility library. This way you don't have to create the same codes and also it will reduce file sizes and possibly solve the scrolling problem on large files."
+markusfisch/ShaderEditor,closed,Texture loading doesn't work on Xiaomi phones,[],"After adding the default noise texture via 'Add uniform/texture' menu and filling out the rest of the method that tiles the noise texture all over the screen, the app renders a black shader instead of repeating the texture. I'm not well familiarized with OpenGL, so apologies, if I'm doing something wrong. This issue has been reproduced on Xiaomi Mi4c and Xiaomi Redmi 4 Prime/Pro. The code that does the tiling itself is below.
+```
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+
+uniform vec2 resolution;
+uniform sampler2D noise;
+
+void main( void )
+{
+vec2 tempPos= vec2(mod(gl_FragCoord.x,256.),mod(gl_FragCoord.y,256.));
+vec3 uv = texture2D(noise, tempPos).rgb;
+
+gl_FragColor = vec4( uv, 1.0 );
+}
+```"
+markusfisch/ShaderEditor,closed,Accuracy problem with gl_FragCoord.y,[],"I have found a problem with the accuracy of `gl_FragCoord.y`.
+
+Here is a shader to visually see the problem:
+```
+#ifdef GL_FRAGMENT_PRECISION
+precision highp float;
+#else
+precision mediump float;
+#endif
+
+uniform float time;
+uniform vec2 resolution;
+
+void main( void )
+{
+  if(floor(gl_FragCoord.y) == mod(floor(time*2.0), resolution.y))
+    gl_FragColor = vec4(1.0);
+}
+```
+This shader is suppose to simply light up one row at a time based on the timer.
+On my device (Moto G 2015), the line sometime disappear or even, sometime two rows are light up.
+This problem doesn't occur with `gl_FragCoord.x`, which is working correctly.
+I tested on another device (Alcatel One Touch Fierce 2) and the problem still persists.
+
+I tested an equivalent of the previous shader on [http://editor.thebookofshaders.com/](url) and everything seems fine:
+```
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main( void )
+{
+  if(floor(gl_FragCoord.y) == mod(floor(u_time*2.0), u_resolution.y))
+    gl_FragColor = vec4(1.0);
+}
+```
+
+There is definitely something wrong with `gl_FragCoord.y` in ShaderEditor and I guess it should be solved ASAP since it affect all shaders.
+"
+markusfisch/ShaderEditor,open,Tab alternates component focus rather than indenting code.,[],"I'm using a bluetooth keyboard, I doesn't have the exact model number but it's a 7-color backlight manufactured by jellycomb with 3 button layouts - 'iOS', 'Android' and 'Windows'.
+
+Pressing tab on all 3 layouts alternates focus between components, instead of indenting code as expected. Shift+tab works the same way but iterates backwards."
+markusfisch/ShaderEditor,closed,Enable/disable BatteryLevelReceiver,[],"ShaderWallpaperService onCreate gets called when you set a wallpaper, onDestroy gets called when you set a wallpaper (edit: from a different app) . So that works fine.
+BatteryLevelReceiver should only call the service if it's being used."
+markusfisch/ShaderEditor,closed,App/service is always running in the background,[],Go to android settings > developer options > running services; there's a service running even though I'm not using a wallpaper and haven't used the app in quite a while
+markusfisch/ShaderEditor,closed,Rotation values,[],"The explanation of the rotation values (vec3 rotation) is rather unhelpful. Also, I'm not sure if they work correctly on my device.
+
+After some quick testing, it seems that:
+1) They are angles. 
+2) If you want them to be in a sensible range, (e.g. 0 to 1) you have to use mod(). (Because those angles apparently range from -infinity to +infinity)
+3) y = tilting my device right and left
+4) z = turning around
+5) x is a weirdo. I have no clue what it represents. (It might seem like it should be: tilting my device forwards and backwards, but that doesn't seem to be the case?)
+
+My code:
+This code works perfectly fine with y and z.
+mod(rotation.x / 6.2831, 1.0)
+
+P.S. Awesome app! :)"
+markusfisch/ShaderEditor,closed,Load Syntax Highlighting Colours from XML ,[],"**Wow, what a great app!**
+
+[I am making an IDE](https://github.com/TheDiamondYT1/ModPEStudio) and i have used your syntax highlighting code but modified it quite alot. Some changes i've made that you could incorporate into ShaderEditor:
+
+* **Loading words to highlight and the colours to highlight them**  
+As you can see [in this java file](https://github.com/TheDiamondYT1/ModPEStudio/blob/master/app/src/main/java/tk/thediamondyt/modpeide/widget/CodeEditor.java#L87) i have loaded an [xml file](https://github.com/TheDiamondYT1/ModPEStudio/blob/master/app/src/main/assets/default.xml).  
+    [Now here's where the magic happens](https://github.com/TheDiamondYT1/ModPEStudio/blob/master/app/src/main/java/tk/thediamondyt/modpeide/widget/CodeEditor.java#L115). No additional libraries needed. This also allows for custom themes.    
+  
+* **Scrapping the runnable**  
+Im not sure if this is possible in your case, but i scrapped the runnable and update handler for a simple `setHighlighted` method in the `onDraw` method. Its super fast.   
+  
+---
+
+I hope you take my ideas into consideration! \<3"
+markusfisch/ShaderEditor,closed,missing mod() and floor() functions,[],"Hi I hope this is not an out of place question, I don't know almost anything about shaders, but the opengl docs says there is a floor() and a mod() function, that doesn't seem to be available in the app, I suppose many others functions would be missing too.
+
+Why is that? Is there a way to use those functions?"
+markusfisch/ShaderEditor,open,Tutorial,[],I think we need small tutorial to pick up basic things
+markusfisch/ShaderEditor,open,Infinite loop protection,[],"This app appears to have no protection against infinite loops. My device crashed when I accidentally typed:
+```c++
+for (int i; i < x; i = i) { // Was to become i = i + 1
+  ...
+}
+```
+It crashed because it ran the code before I was able to type ` + 1`. Luckily it didn't autosave...
+
+I'm using a OnePlus One with Android 6.0.1 and Cyanogen OS 13.1.2-ZNH2KAS3P0-bacon. App version is 2.4.1.
+
+PS: I know `i++` is a thing but I was just experimenting."
+markusfisch/ShaderEditor,closed,gl_FragCoord.y is always 0 on a Huawei P9,[],
+markusfisch/ShaderEditor,open,Keywords in comments get highlighted,[],
+markusfisch/ShaderEditor,open,Add daydream support,[],"I usually charge my phone on a dock. And it has the possibility to activate a selected daydream when it's there... 
+
+Would be awesome to use a shader as a Daydream, just like we add to live wallpaper. "
+markusfisch/ShaderEditor,closed,Renaming Shaders,[],"A great addition would be the ability to rename shaders.
+It would make it far easier to organize them. "
+markusfisch/ShaderEditor,closed,Request: AutoSave / Confirm Exit,[],"That MUST go into the app!
+"
+markusfisch/ShaderEditor,closed,Chromecast compatibility?,[],"Hi,
+
+The README states ""_Live preview in background or on an extra screen_"", but I suppose the extra screen is a physically connected screen?
+
+It would be quite cool if this app had support for cast on secondary screens, so it could adapt to the native resolution of the display and output better quality than the basic Android mirroring.
+
+Is it something you have thought about? If not, I may give it a try to see whether this is worth doing.
+"
+markusfisch/ShaderEditor,open,"Got it to run ShaderToy shaders, kind of.",[],"Simple ones work at least.
+
+Added iResolution.
+
+I will fix tabs/spaces soon, just wanted to get this out there see if I'm going in the right direction...
+"
+markusfisch/ShaderEditor,open,Make compatible with Shadertoy.com?,[],"I tried pasting in a shader from shadertoy.com but it doesn't look like the names are the same. Is there an easy way to do this?
+
+Otherwise I can add some kind of alias system for each variable, so it checks both `mouse` (ShaderEditor) and `iMouse` (ShaderToy) and binds to whichever one the script is using. Does that sound like a good idea?
+"
+markusfisch/ShaderEditor,open,Suggestion:   add support for compute shaders,[],"Is there any chance to add support for OpenGL ES 3.1 compute shaders?
+
+Best regards,
+MroowaZ
+"
+markusfisch/ShaderEditor,open,Suggestion — New uniform: persistent runtime timer,[],"USE CASE:  Jane wrote a new shader that changes visibly with time, but in a slow and smooth manner based on one of the existing timer uniforms.
+She then decided to set her shader as a home/lockscreen wallpaper.
+The shader worked fine, but when she opened an app and later returned to the home screen, there was a discontinuity in the time uniform, between the time she left and then returned to the home screen.
+
+This might've been easy to overlook, if not for one detail: the _system cached an image of the last frame of the wallpaper as it left the home screen and displayed momentarily (a split second) before starting the shader again._
+
+This caused the screen to visibly flicker from the cached image to a freshly rendered image, causing discomfort due to the jarring change.
+
+Proposed way to fix it: a persistent timer uniform that stops when the shader isn't running.
+
+Things to consider:
+- A system-dependent offset may need to be applied to a persisted value upon loading, to compensate system idiosyncrasies.
+- Precision issues if the uniform is to be a floating point number (in cases when it runs for too long).
+- Some people may want a version that oscillates between two numbers; others might prefer one that grows up to a maximum and then resets back to a starting value.
+- Different contexts should have different timers; hacking around in the shader code editor shouldn't change the state of the timer used for wallpapers.
+
+Alternatively/additionally: persist the last frame of the last shader that ran as a wallpaper and provide it as an uniform so it can be used in a fading animation.
+"
+markusfisch/ShaderEditor,closed,"Option ""set as wallpaper""",[],"I very much like your work, a way to donate something would be great!
+
+An option to set the shader one is currently editing or viewing as wallpaper would be great.
+"
+markusfisch/ShaderEditor,closed,Preview keeps open,[],"Since the latest update running the shader in a seperate window causes that preview window to remain open when pressing the 'back' button on my xperia z1 compact. This wasn't happening until now.
+"
+markusfisch/ShaderEditor,open,Place to Share Shaders,[],"It would be nice to see other people's shaders somewhere.
+
+Here is a rolling sphere I made on my SGH-T399 this past week or two: https://gist.github.com/309a5df6e9d1c34cfda55292d5d4acc0
+"
+markusfisch/ShaderEditor,closed,"""time"" uniform loses accuracy",[],"As some time goes by, the ""time"" uniform becomes increasingly inaccurate for me.  This makes animations appear very jerky pretty quickly.
+
+One way this could be resolved would be by providing an ""animation length"" in the settings, and then passing time as a fraction of that length.  For example, if ""animation length"" was 5 seconds, then ""time"" might be 0.4 after 2 seconds, and then 0.4 again after 7 seconds.
+"
+markusfisch/ShaderEditor,closed,"Crashing shader, uneditable",[],"I foolishly had 'save on run' active on this shader which crashes the app whenever it is run, and now I can no longer even open it.
+
+I can't even find the shader on the sdcard.  Are they stored somewhere I can access without a rooted phone?
+"
+markusfisch/ShaderEditor,open,Unresponsive editor,[],"Any shader that increases in size gets really unresponsive, deleting/adding characters become **really** slow. Even scrolling will be laggy. I'm using it by turning off the compiling on editing but it isn't helping. Please increase responsiveness on the texteditor.
+
+Edit: I think the ShaderEditor.hightlight() method is the bottleneck, it matches a **lot** of regular expressions. Maybe turning highlighting off on scrolling/selecting would decrease the time spent on highlighting.
+"
+markusfisch/ShaderEditor,closed,Duplicate file,[],"`app/src/main/java/de/markusfisch/android/shadereditor/widget/TouchThruDrawer`**`L`**`ayout.java`
+
+and
+
+`app/src/main/java/de/markusfisch/android/shadereditor/widget/TouchThruDrawer`**`l`**`ayout.java`
+
+seem to be duplicated and the program can't be compiled without removing the second one.
+"
+markusfisch/ShaderEditor,closed,"Fixed date uniform, now updates properly every second",[],"I was trying to create a clock shader using the date uniform but it didn't update at all. Looks like you have to get a new instance of Calendar every time you want to read the current time. This version seems to work.
+"
+markusfisch/ShaderEditor,open,multipass ?,[],"Hi Markus, do you plan to implement multipass rendering ? I don't know how difficult it would be to implement but it would allow a lot of new cool things like creating z-buffer for SSAO.
+
+It has been implemented on shadertoy.com:
+
+> 03/01/2016 - Release 0.8
+> - Multipass rendering is here! Intermediate render targets are 16 bit (which means no hacky pack/unpack operations)
+>   Hello proper Depth of Field, SSAO, Motion Blur, HDR, gamma control, incremental monte carlo rendering, games...
+"
+markusfisch/ShaderEditor,open,It is great to add more uniform type(PCM Data),[],"Maybe using android visualizer to capture PCM data , use it as a PCM waveform source. Through shader to visualize music 😀
+"
+markusfisch/ShaderEditor,closed,samplerCube and textureCube support,[],"Is this possible for ShaderEditor to support textureCube and samplerCube?
+"
+markusfisch/ShaderEditor,open,Rendering to file,[],"It would be a nice feature to render the shader output to a file (only an image, or even a video).
+It is possible to capture the output with screenshot or screen recording but with low-fps shaders the video will be lagging.
+"
+markusfisch/ShaderEditor,open,Minor identation annoyance,[],"I noticed a minor annoyance with the indenting code. The easiest way to reproduce the issue, is to delete all the code in a new shader and then type in:
+
+```
+void main( void ) {
+float r = 0.2;
+}
+```
+
+When typing the above code, the code indentation becomes:
+
+```
+void main( void ) {
+  float r = 0.2;
+  }
+```
+
+Instead of:
+
+```
+void main( void ) {
+  float r = 0.2;
+}
+```
+
+I had a look with the debugger https://github.com/markusfisch/ShaderEditor/blob/master/ShaderEditor/src/main/java/de/markusfisch/android/shadereditor/widget/ShaderEditor.java but couldn't really understand what was going on.
+"
+markusfisch/ShaderEditor,closed,Add a random uniform that changes every time the shader loads,[],"Hello, I'd like to make the shader look different every time it loads. Would It be possible to add some uniform that gets randomized at the load of the shader and then stays constant? It would help me a lot, thanks!
+"
+markusfisch/ShaderEditor,closed,samplerCube ,[],"Hi, I tried to play with samplerCube and textureCube() but it seems to stop the rendering. Is it possible to use that type of samplers ? (I'd like to import shaders I made on Shadertoy)
+"
+markusfisch/ShaderEditor,closed,Editing when an error is highlighted,[],"Since some versions now when an error occured and you try to edit, the cursor ('|' character) isn't appearing in the text, making it really difficult to resolve the error. It seems as if the red highlight color is over the editing rendering.
+"
+markusfisch/ShaderEditor,closed,Add support for the magnetic sensor,[],"Would be nice to have the magnetic sensor of the phone exposed on the phone. Mostly because the sensor detects a lot of magnetic activity while I'm on the subway, and I'd like to use that to make more dynamic shaders. 
+
+I don't know if there is a specific area for feature request. So I'm posting here, sorry if it is on the wrong place.
+"
+markusfisch/ShaderEditor,closed,Shader gets jagged with time,[],"Shader starts running just fine, but it gets losing definition, to get really pixelated and ugly. I don't know if its a problem with how my graphics chip deals with the repetitions, or my shader code is problematic. My phone is a Xperia Z3 Compact. And attached are the images of how its looking, less than 30 sec between one image and another.
+
+![screenshot_2015-12-07-16-38-01](https://cloud.githubusercontent.com/assets/7526047/11636112/9163b89a-9d01-11e5-83ac-8cabce1972ab.png)
+![screenshot_2015-12-07-16-38-28](https://cloud.githubusercontent.com/assets/7526047/11636111/91616d7e-9d01-11e5-81f3-4f3edb9ac6c4.png)
+"
+markusfisch/ShaderEditor,closed,Discard is not working properly,[],"According to the the OpenGL ES 1.00 specification the discard keyword will not update the buffer if called. Thus it should contain the last written pixel value in the buffer until overwritten.
+In the ShaderEditor discard will cause the (not) written pixel to be black. I think this is caused by the clear command at the start of rendering. It would be nice to make use of the discard keyword!
+"
+markusfisch/ShaderEditor,closed,"Added texture input from bitmap,  and saveShader in onPause.",[],"Hi, I wanted to experiment with iq's bitmap-derived noise from shadertoy.com, so I added texture input. 
+
+It's not really ready to just include as It currently reads from a hard coded path on the sd card and dies spectacularly if the file is missing. I also added a call to saveShader in MainActivity.onPause() because I kept losing my work after rotating or pressing the back button.
+
+Feel free to use or ignore, thought I should at least share it with you :)
+
+Oh, I should note that I haven't been able to get the noise working without artifacts, not sure why.
+"
+markusfisch/ShaderEditor,closed,Slow shaders,[],"Hello.
+
+Thanks for this app. I'm having too much fun with it. 
+
+I notice that when I make a ""heavy"" shader with low fps, the UI slows down to a point of become unusable. Shouldn't the rendering side be separated of the UI side, option menu, spinner etc ? I mean, is there a way to play with low fps shaders and still have an usable UI ? 
+
+Thanks
+"
+markusfisch/ShaderEditor,closed,Touch pressure or similar.,[],"The coordinates of the touch screen are available, but there is no way to tell if the user is pressing or not. Maybe the coordinates can be set to impossible values (-1.0,-1.0 for example) to know that.
+
+EDIT: Never mind, it's already here: https://github.com/markusfisch/ShaderEditor/issues/9
+"
+markusfisch/ShaderEditor,closed,Time uniform accuracy.,[],"Shouldn't time be an integer value? Float values have problems with accuracy after some time, specially 32 bit floats. I know that most times the effect is only visible for a few seconds and accuracy shouldn't be an issue, but this kind of wallpapers are used to show off, so it would be a good idea to make them work fine even if they are active more than a few seconds. Some effects i've tested (like this one: http://glslsandbox.com/e#26016.0) begin to show problems after 20 seconds or so... The problem is the accuracy, not the frame rate. The FPS meter shows the same FPS before and after the problems are noticeable.
+
+Maybe it would be a better idea to add a ""frame count"" uniform.
+
+I'm using a Motorola Moto G 2, Android 5.0.1
+"
+markusfisch/ShaderEditor,closed,Rendering issue,[],"For some reason my phone renders only first frame, then on next frames shows only black screen. I'm not using this app for while now only because of this issue. (phone: motorola moto g 1st gen; android 5.0.2)
+"
+markusfisch/ShaderEditor,closed,Lowering framerate when in battery saver mode,[],"It's kind of disconcerting that in Battery Saver, where all animations are disabled, Android does nothing to limit live wallpapers, so my Shader Editor live wallpaper keeps scrolling at a buttery-smooth 60fps.
+
+It'd be better if, when in Battery Saver, Shader Editor lowered the framerate to at most 1 FPS.
+"
+markusfisch/ShaderEditor,closed,Problem with loops,[],"I am trying to alternate colors so I used this loop 
+float j;
+do {
+if(j==.8){
+//b for blue
+b = uv.y+j;
+j -= .1;
+} else if ( j== .4){
+b = uv.y+j;
+j -= .1;
+} j=.4;
+} while (j!=1.0);
+
+It freezes and crashes on compile. I wanted to use
+ ctime for a delay but is there a better way I 
+should be doing this, I an Very new too OpenGL 
+"
+markusfisch/ShaderEditor,closed,Live wallpaper: framerate drops over time,[],"This is a behavior I've noticed on my Nexus 6, even when the phone is plugged in: the framerate of the live wallpaper reduces every 15 seconds or so, by about half each time. The framerate of the UI itself is not affected.
+"
+markusfisch/ShaderEditor,closed,Multitouch,[],"It would be cool if `touch` were changed to be an array of (up to 10)? touches on-screen, for recognizing multi-touch. Each touch could be a `vec2`, with touches that aren't down set to `(-1, -1)`.
+
+(I had some crazier ideas about representing touch state, including the `vec3` pattern Shadertoy uses for mouse input where `z` acts as an up/down boolean, but ultimately the best ideas I had were just awkward gestures at an incomplete persistence model.)
+"
+markusfisch/ShaderEditor,closed,glsl.heroku.com has moved,[],"It's GLSL Sandbox now
+"
+markusfisch/ShaderEditor,closed,"""Set as wallpaper"" option in overflow menu",[],"This is possibly my most-used feature in the app, and having to go into Preferences to change it is a total pain. I'd rather just open my shader, then choose ""Set as Wallpaper"" in the overflow menu. (If I can figure out how, I might submit a PR for this - I'm pretty allergic to native Android/Java development.)
+"
+markusfisch/ShaderEditor,closed,Docs / examples for all exposed inputs,[],"It would be useful if there were either documentation of the names and values of the inputs to shaders in the README, or a shader/shaders that used them out-of-the-box (or, ideally, both).
+
+I guess they're implemented somewhere around [here](https://github.com/markusfisch/ShaderEditor/blob/master/src/de/markusfisch/android/shadereditor/ShaderRenderer.java#L327-350)?
+
+This is an awesome app, BTW - basically an open-source Android alternative to [Shaderific](http://www.shaderific.com/). Found it through F-Droid. I'm becoming obsessed with creating shader-based wallpapers for my new Nexus 6.
+"
+markusfisch/ShaderEditor,closed,Exposing shader scripts in the filesystem?,[],"This app looks pretty neat, but the lack of an easy way to manipulate and externally edit the shaders it uses is something of a dealbreaker. (On top of not being able to import a file I've typed up on my PC, it's kind of hard to develop shaders when I'm not even able to name them.)
+
+What I'd like to see is an option somewhere in the UI to set a directory to use for shader files. This would let me do any fancy file importing / exporting / naming / versioning etc. using any file browser (along with other stuff like a Git client and/or an external text editor), while still making the elements of the UI such as the dropdown as usable as they currently are.
+"
+markusfisch/ShaderEditor,closed,License?,[],"Hi. Would you please specify the license this great and cool app is released in? I hope it would be a free one 😊 It is needed for adding this app to F-Droid, [more info](https://gitlab.com/fdroid/fdroiddata/merge_requests/727). Thank you
+"
+markusfisch/ShaderEditor,closed,still the backbuffer,[],"Hi again!
+
+I tried some little code out that uses the backbuffer and the result image started ""swimming"" away to the top right direction. So I tried to compensate the movement by adding values to the 2nd parameter of texture2D. It seems the value of +vec2(0.001) solved this.
+I hope I'm using the function correctly, by writing:
+texture2D(backbuffer,gl_FragCoord.xy/resolution.xy+vec2(0.001))
+"
+markusfisch/ShaderEditor,closed,Unable to open the menu,[],"I love this application but it has two major flaws and a minor flaw that make using it difficult. 
+
+First, after I updated my phone to Android Lolipop I lost the ability to open the menu. I can still switch between shaders, but holding down the selector no longer opens the menu. This is not a bug in your application, but severely limits the application's usefulness in my case. I would like to see a more intuitive and universal menu activation, such as a sliding drawer from the left.
+
+Second, the inability to disable the live preview from the text editor causes issues when editing bright, noisy, or slow shaders. I would like an option to disable live preview, please.
+
+Finally, the text editor makes editing long lines of code difficult as touching nearby shorter lines scrolls back to the left side. I'm not sure if improving this experience is within your ability, but I thought I'd mention it away.
+
+I wrote about my inability to open the menu in an app review, but I realized you did not check there regularly. I created this account to thank you for making this awesome app and request a few changes. Thank you.
+"
+markusfisch/ShaderEditor,closed,Backbuffer inverted problem,[],"Hi!
+
+I know this project was updated about a year ago but I wanted to inform you about the issue with the backbuffer variable. The result texture in the shader gets flipped on the x-axis.
+"

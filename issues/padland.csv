@@ -1,0 +1,224 @@
+repository,state,title,label,body
+mikifus/padland,closed,Fix the forgotten versionname,[],"...so F-Droid can build
+
+/LE: on a second thought, the Tag already points to the wrong commit, not sure it will help F-Droid ( [I've worked around it](https://gitlab.com/fdroid/fdroiddata/merge_requests/3473/diffs) ), but at least for consistency."
+mikifus/padland,closed,Allow to open an existing pad by giving the full URL,[],"As stated in the summary, it should also be possible to open a pad by just giving the full URL."
+mikifus/padland,open,Allow to simply copy URL of a pad,[],"As mentioned in the summary, simply allow to copy a pad's URL from the main menu and maybe from inside the pad could be an handy feature."
+mikifus/padland,open,Allow import/export/backup of pads,[],"It would be a pretty handy feature to be able to import/export one or more pads, and also everything, for backup/transfer purpose."
+mikifus/padland,open,Recognize URL schemes to propose opening pads directly into Padland,[],"It would be really nice to be able to directly open pads URLs, like clicking one anywhere in Android and besides allowing to open it in the browser, also offer to open it into padland.
+
+I'm not sure this is possible as there isn't really a defined URI like `git://` and so on so it would require to use either the whole list of known instances, or some keywords in URLs (risk of false positives I guess)."
+mikifus/padland,open,Add support for MyPads and password-protected pads,[],"Some services now rely on MyPads, something on top of traditional pads to manage them with an account, be able to have a ""library of pads"" or protect them with a password.
+For example, the one with Framasoft can be found here: https://mypads.framapad.org/mypads/?/login
+Trying to open such a document seems as of now to result in a white, empty screen and stuck the application. It's still possible to go back (no crash), but not even a screen stating this is unsupported.
+
+So, this is kind of a double issue, but unsupported pads and so on should be presented as being unsupported, and the best would be to support MyPad and password-protected pads."
+mikifus/padland,closed,"""onReceivedError"" does not execute in API level < 23.",[],"Hi,
+
+I found that you have used `onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)` in [PadViewActivity](https://github.com/mikifus/padland/blob/38f7e6651940f8cf603b860d53d9cd99d1935bd8/app/src/main/java/com/mikifus/padland/PadViewActivity.java), which is added in API level 23. However, it does not exist in API level < 22, meaning that the code logic you wrote to handle webview error will not take effect. (See this [link](https://stackoverflow.com/questions/32769505/webviewclient-onreceivederror-deprecated-new-version-does-not-detect-all-errors))
+
+To fix this issue, add deprecated `onReceivedError (WebView view, int errorCode, String description, String failingUrl)` to make it compatible for API level < 22.
+
+Thanks."
+mikifus/padland,closed,Can't add existing pad - pad name not accepted,[],"Created this pad: https://etherpad.wikimedia.org/p/thisisonlysomerandomtestcase
+
+When I try to add the pad to Padland (note: I've added the wikimedia Server to my server list) by entering _thisisonlysomerandomtestcase_ in the field _Pad name_ and press _Create or go to_ I get this message _**The pad name contains invalid characters**_ and the pad is not opened.
+
+Is the name maybe too long?"
+mikifus/padland,open,Hide the chat window,[],"When I load a pad, the chat window is always displayed in full size. I think it would be better if it started out minimalised, or smaller at least. Even better would be if the chat window could be displayed on a different panem such that I could swipe left and right to switch between pad and chat window. Thanks!"
+mikifus/padland,closed,Parse padname & server from URL,[],"I often have a URL and right now, I have to manually cut out the pad name, as well as the server, when in fact this should be trivially possible for the app to do. Please consider this a wishlist! ;) "
+mikifus/padland,closed,Update strings.xml,[],Now it should works
+mikifus/padland,open,Framacalc and Framaslide,[],"Framasoft, which already provide framapad.org also provide : 
+
+* [Framacalc](https://lite.framacalc.org/), based on Ethercalc. I opened one in Padland. It was difficult, but it works (I assume your app is based on Webview for editing the pads?)
+
+* [Framaslide](https://framaslides.org/login) based on [Strut](https://strut.io/). I didn't try to open one.
+
+Is it possible to add them to the list of servers available in the app, with a special message that this aren't classical pad from Etherpad or framapas, but more something like excel and powerpoint? Also is it possible to add different icons for documents: one for classical ""pads"", one for ""calcs"" and one for ""slides"", so that we can see the different sorts of documents easily?"
+mikifus/padland,closed,Updated fr (French) translation,[],"Here is an update for the french translation, commit made via Stringlate
+
+I would like to say thank you, mikifus. Padland was one of the first repo (the second one, in fact) I contributed to on Github two years ago. You took some time to help me, and you welcomed me well. That's not a lot, but I will say it again: thank you! 🥇 "
+mikifus/padland,closed,Allow to give a local name to a pad,[],"Independently of the URL, which might or might not contain a meaningful and easy to read name, it would be nice to be able to enter a local name associated to the URL and shown instead of it in the list."
+mikifus/padland,closed,Creating and Opening oft Pad fails because oft wrong url,[],"Sadly the base function of the app does not work.
+How I get the issue:
+1) Click on Create new Pad
+2) Type in Name (e.g. Testpad)
+3) Click on Create or go to
+4) Error pages show ""Cannot GET /http://pad.riseup.net/p/test
+
+When I look into the pad settings the app tells me that the pad URL is "" http://pad.riseup.net/p/http://pad.riseup.net/p/test""
+
+*Please remove the double occurencie of the URL.* Hopefully works again afterwards."
+mikifus/padland,closed,Where are settings?,[],"Sorry if this is a stupid question but not sure if I'm stupid or had some trouble at my end, but I can't find how to reach settings to create a new server.
+
+I'm using 1.3.6 Fdroid version in a CyanogenMod 11 (Android 4.4).
+
+As you can see at attached image I just have two icons for new group and new pad. This one ask me for name and server but it only offer a list with predefined path.
+There are no menu icons at all, the menu button does nothing and no way to slide from side or other ways to show a Preferences menu.
+
+Also as you can see at the screenshot, the path for riseup pad created has the url included twice and does not work.
+
+![image-1373272175](https://user-images.githubusercontent.com/5110784/30772217-6aa39544-a057-11e7-81b0-e582a534427f.jpg)
+
+Regards!
+Colegota
+"
+mikifus/padland,open,offline view mode feature : have a local copy ,[],"use https://[host]/p/[padName]/export/txt   to  get the text ,save to local storage/file_system
+
+from this
+https://github.com/ether/etherpad-lite/wiki/Backing-up-and-Restoring-Etherpad-Lite-Pads
+
+Thanks!
+
+maybe it's possible to change the div to textarea in padview.html ,  <textarea id=""pad"" class=""active"">"
+mikifus/padland,closed,Update strings.xml,[],"Improve the french translation
+
+You can notify me in the future if there are new keys to translate"
+mikifus/padland,closed,"Doubled slash in custom pad urls, if server url has a trailing slash",[],"Reproduction: If a trailing slash / is written by the user in the custom server url field (for example `http://mypadserver.com/` (is not a real etherpad site)), padland will generate pad urls such as `http://mypadserver.com//p/some-pad`, with two slashes, which fails to load properly.
+
+Fix suggestion: padland should not add an extra / if the url already ends with it.
+
+(And btw thanks for a great app!)"
+mikifus/padland,closed,Accent unsupported,[],"It is possible to create a pad with accents in the address. But Padland refuse to open this kind of pad because ""The pad name contains invalid characters"".
+Example with [https://mensuel.framapad.org/p/testaccentué](https://mensuel.framapad.org/p/testaccentué) (https://mensuel.framapad.org/p/testaccentu%C3%A9)"
+mikifus/padland,closed,Added a button to get your app easily on fdroid ;),[],
+mikifus/padland,closed,ListView changes state on device rotation,[],"When I perform this sequence of events, the scrollable view on screen goes back to the top:
+
+1. Click on Settings Icon
+2. Scroll Down
+3. Orientation Change"
+mikifus/padland,closed,No error when using HTTPS and unknown certificate,[],"Hardware: Fairphone 2
+Android: 5.1 patch level 5th October 2016
+Build: r4275.1_FP2_gms66_1.8.1
+
+When trying to use an already created pad from a custom server on HTTPS, if the CA is unknown by Android, a blank white screen is displayed without any error.
+Once you install the certificate manually, the pad does display.
+Could some kind of error be displayed when the certificate is not known/trusted rather than a blank screen, as not all users would know that it could be an SSL problem.
+"
+mikifus/padland,closed,External links ,[],External links doesn open with the browser
+mikifus/padland,closed,Contextual action bar disappears on device rotation,[],"When i perform this sequence of events the action bar on the screen disappears
+1. Long click on a doc item
+2. Orientation Change"
+mikifus/padland,closed,Crash on device rotation,[],"When I perform this sequence of events the app crashes
+
+1. Click on Settings
+2. Click on Server List
+3. Click on Add Server
+4. Orientation Change"
+mikifus/padland,closed,Dialogs disappear on device rotation,[],"When I perform this sequence of events, the dialog on screen disappears:
+
+Sequence 1:
+1. Long click on document item
+2. Click on Delete
+3. Orientation change
+
+Sequence 2:
+1. Long click on document item
+2. Click on Add to group
+3. Orientation change
+
+Sequence 3: 
+1. Long click on group item
+2. Orientation Change
+
+Sequence 4:
+1. Click on Settings
+2. Click on Default Pad Server
+3. Orientation Change
+
+Sequence 5:
+1. Click on Settings
+2. Click on Default Username
+3. Orientation Change
+
+Sequence 6:
+1. Click on Settings
+2. Click on Default Color
+3. Orientation Change"
+mikifus/padland,closed,translation,[],
+mikifus/padland,closed,French translation,[],new translations
+mikifus/padland,closed,support for pads with authentication,[],"It doesn't prompt for authentication.. It says ""Authentication required"" when I try to access the pad. (I'm running a custom server)
+"
+mikifus/padland,closed,Create strings.xml,[],"Added Italian translations. Please ping me if new keys are added.
+"
+mikifus/padland,closed,Fixed keys,[],"- to contact someone
+- PadLand → Padland
+"
+mikifus/padland,closed,Bug tracking via email or via GitHub?,[],"In About section of the app you say:
+
+> This app is under development. To provide feedback and report bugs please contact with the developer at xxx@yyy.zzz
+
+Are you sure that reporting bugs should be done via email and not via GitHub?
+"
+mikifus/padland,closed,Separate changelog from README,[],"I separated changelog from README in order to make a list in another file so it will grow more and more without creating confusion in main file README.
+
+The new page can be linked directly in F-Droid too.
+"
+mikifus/padland,closed,Better wording for better UX,[],"As mentioned in https://github.com/mikifus/padland/issues/2#issuecomment-237941263
+"
+mikifus/padland,closed,jQuery Etherpad?,[],"I don't really know what the jQuery option is supposed to do.
+
+I mean:
+- What is the difference of the non-jquery/jquery version?
+- Is it recommend to use the jquery version? Why?
+- And how to install this jquery plugin on the server? It does not appear in the default plugin list of Etherpad-lite.
+"
+mikifus/padland,closed,Mismatching version information,[],"You tagged 1.1.4 and updated the AndroidManifest.xml, however app/build.gradle still says this is 1.1.3.
+"
+mikifus/padland,closed,Malayalam Updatestring.xml,[],"Malayalam update of padland
+"
+mikifus/padland,closed,Include support for piratenpad.de,[],"Hello, 
+
+Please consider adding support for https://www.piratenpad.de/
+
+Thanks for creating this application!
+"
+mikifus/padland,closed,french translation,[],"All the translations are done. I wrote \' when i wanted to wrote ' . I think it's the good way, but don't know at all, tell me if I'm wrong... I don't know if there is any other change to do in an other file to add the french translation, tell me if there is any :)
+"
+mikifus/padland,closed,French translation,[],"Hello guys, (sorry for my bad english...)
+
+I'm very new to github.
+So i wrote the french translation for this app, and pull a request, but it's on my own repo. Because this is the first time I pull a request, I don't know if you're able to see or to use my new file?
+
+It'll be great if someone can tell me if I have something else to do, or if I did something wrong... ^^""
+Tell me if I have something else to do in my translation :)
+
+Thanks for attention and bye
+"
+mikifus/padland,closed,Requirement on the READ_PHONE_STATE permission,[],"Hi there,
+
+I just discovered your interesting app on [F-Droid](https://f-droid.org/wiki/page/com.mikifus.padland), being a pad junkie myself I'm looking forward to trying it.
+
+When trying to install it though I was a bit puzzled to see that it asks for access to the phone state and identity (`android.permission.READ_PHONE_STATE`, https://github.com/mikifus/padland/blob/master/app/src/main/AndroidManifest.xml#L14). It also asks for access to the SD card contents and network connection, but those two sound pretty normal for the app's purpose.
+
+I'm a bit touchy about what applications want to access from my personal data, and I'm not sure to understand why knowing the phone state and identity would be relevant. Could you clarify the situation?
+
+Thanks in advance.
+
+_Edit:_ I checked the git history and apparently it has always been required: https://github.com/mikifus/padland/blob/565a289d06380baaa107e33b5b1c45c73a712d58/app/src/main/AndroidManifest.xml#L13
+"
+mikifus/padland,closed,Offer color picker,[],"Please offer a color picker with colors from Material Design and a manual override. As intermediate goal, show the color for which the RGB value has been entered.
+"
+mikifus/padland,closed,Support default pad server etherpad.net,[],"Please, support default pad server https://etherpad.net.
+"
+mikifus/padland,closed,German translation was added here,[],"I don't know why, I hope it merges well.
+"
+mikifus/padland,closed,Do not put binaries into repos,[],"You should not place binaries into your repo. (here the apk file).
+
+Rather publish them [in the releases section](https://github.com/mikifus/padland/releases).
+"
+mikifus/padland,closed,Added Japanese translation,[],
+mikifus/padland,closed,German translation,[],"Closes https://github.com/mikifus/padland/issues/5
+"
+mikifus/padland,closed,German translation,[],"I can help with the German translation of you tell me what file I should edit.
+"
+mikifus/padland,open,Black design,[],"A black design (suitable for AMOLED screens) would be nice.
+"
+mikifus/padland,closed,GitHub link does not work,[],"In the apps' about screen I can tap on the LICENSE link, but not on the GitHub link.
+
+Android 6/CM 13
+"
+mikifus/padland,closed,Custom Server,[],"If we could add our own etherpad instance, it would make this app very much more useful.
+"
+mikifus/padland,closed,"Padgroups, translations and many improvements",[],"Ready for release.
+"

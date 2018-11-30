@@ -1,0 +1,202 @@
+repository,state,title,label,body
+Kaljurand/Diktofon,open,Archive,[],"The app now is in f-droid's archive. https://f-droid.org/wiki/page/kaljurand_at_gmail_dot_com.diktofon
+
+Could you fix it?
+
+Also it's sad that the app is no longer maintained. It's my first and favorite recording app."
+Kaljurand/Diktofon,open,start a recording by pressing a volume button,[],"Can you start a recording by pressing a volume button, like https://github.com/anselm94/Torchie-Android
+
+Thanks."
+Kaljurand/Diktofon,open,Add a Codacy badge to README.md,[],
+Kaljurand/Diktofon,open,Menu is no more,[],"It seems that you need to add a menu button to the UI itself.
+"
+Kaljurand/Diktofon,closed,Dpocock enhancements,[],"There was a bug in my log message commit and you didn't update the version in AndroidManifest.xml before making the tag.  This pull request addresses all those issues.  After accepting it, could you please tag 0.9.83
+"
+Kaljurand/Diktofon,closed,Add workaround for #28,[],"This helps avoid the force close when recording finishes, described in issue #28 
+"
+Kaljurand/Diktofon,open,app sometimes crashes when recording finishes,[],"I've noticed that the app sometimes crashes (force close by Android) when a recording finishes.  The recording file is complete and valid but the crash gives a bad impression of the app.
+
+Here is the stack from logcat:
+
+```
+E/AndroidRuntime(11593): java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=1, result=-1, data=Intent { dat=file:///sdcard/.../whatever.wav }} to activity {kaljurand_at_gmail_dot_com.diktofon/kaljurand_at_gmail_dot_com.diktofon.activity.RecordingListActivity}: java.lang.NullPointerException
+E/AndroidRuntime(11593):        at android.app.ActivityThread.deliverResults(ActivityThread.java:3389)
+E/AndroidRuntime(11593):        at android.app.ActivityThread.handleSendResult(ActivityThread.java:3432)
+E/AndroidRuntime(11593):        at android.app.ActivityThread.access$1300(ActivityThread.java:144)
+E/AndroidRuntime(11593):        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1253)
+E/AndroidRuntime(11593):        at android.os.Handler.dispatchMessage(Handler.java:102)
+E/AndroidRuntime(11593):        at android.os.Looper.loop(Looper.java:136)
+E/AndroidRuntime(11593):        at android.app.ActivityThread.main(ActivityThread.java:5146)
+E/AndroidRuntime(11593):        at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(11593):        at java.lang.reflect.Method.invoke(Method.java:515)
+E/AndroidRuntime(11593):        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:732)
+E/AndroidRuntime(11593):        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:566)
+E/AndroidRuntime(11593):        at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime(11593): Caused by: java.lang.NullPointerException
+E/AndroidRuntime(11593):        at kaljurand_at_gmail_dot_com.diktofon.activity.RecordingListActivity.a(Unknown Source)
+E/AndroidRuntime(11593):        at kaljurand_at_gmail_dot_com.diktofon.activity.RecordingListActivity.onActivityResult(Unknown Source)
+E/AndroidRuntime(11593):        at android.app.Activity.dispatchActivityResult(Activity.java:5423)
+E/AndroidRuntime(11593):        at android.app.ActivityThread.deliverResults(ActivityThread.java:3385)
+E/AndroidRuntime(11593):        ... 11 more
+W/ActivityManager(  684):   Force finishing activity kaljurand_at_gmail_dot_com.diktofon/.activity.RecordingListActivity
+```
+
+The crash appears to be in the method `RecordingListActivity.addRecording(File file)`
+
+I use the internal recorder mode `MY_ACTIVITY_RECORD_SOUND`
+
+It looks like the argument `file` is already checked for `null` in `onActivityResult`
+
+Maybe `mRecordings == null` because the `AsyncTask` for `loadRecordingsInBackground` hasn't finished?
+"
+Kaljurand/Diktofon,closed,new release?,[],"Hi, could you tag a new release with the recent fixes I contributed?  I would like to publish a blog about how I use the app but I want to make sure people will be getting the latest version.
+"
+Kaljurand/Diktofon,closed,Add license + 48kHz support + disable ACG,[],
+Kaljurand/Diktofon,closed,"Add 48kHz support, disable AGC",[],"48kHz support is common in better Android devices.  48kHz recordings are useful when combining multiple audio files from different sources.
+
+Disabling AGC is necessary for making high quality recordings, especially when using external microphones.  According to the Android docs, choosing the VOICE_RECOGNITION mode should disable AGC.  Some Android devices fail to respect this but it seems to work OK for me.
+"
+Kaljurand/Diktofon,open,[FR] use codecs for recorded files,[],"most of the Android devices have hardware codecs. Please utilize them.
+"
+Kaljurand/Diktofon,open,Can it be possible to change location of where files get written to?,"[Label(name=""Priority-Medium""), Label(name=""Type-Enhancement"")]","Original [issue 22](https://code.google.com/p/diktofon/issues/detail?id=22) created by Kaljurand on 2014-09-03T20:31:56.000Z:
+
+Can it be possible to change location of where the audio files get written to?
+"
+Kaljurand/Diktofon,open,Feature request: Shortcuts,"[Label(name=""Priority-Low""), Label(name=""Type-Enhancement"")]","Original [issue 21](https://code.google.com/p/diktofon/issues/detail?id=21) created by Kaljurand on 2014-01-02T20:07:09.000Z:
+
+Shortcuts for recording related actions would be very useful. E.g., a shortcut that starts/stops recording. 
+"
+Kaljurand/Diktofon,closed,Sharing into Diktofon causes NPE,"[Label(name=""Priority-High""), Label(name=""Type-Defect"")]","Original [issue 20](https://code.google.com/p/diktofon/issues/detail?id=20) created by Kaljurand on 2013-02-23T14:06:12.000Z:
+
+Sharing a recording into Diktofon crashes it with NullPointerException. The recording is successfully copied into Diktofon's directory though and shows up when Diktofon is (re)launched.
+
+Tested with:
+- Diktofon 0.9.78
+- Samsung Galaxy SII, Android 4.1.2
+- Easy Voice Recorder Free 1.6.2
+"
+Kaljurand/Diktofon,closed,Can't un-set tag,"[Label(name=""Priority-High""), Label(name=""Type-Defect"")]","Original [issue 19](https://code.google.com/p/diktofon/issues/detail?id=19) created by Kaljurand on 2013-02-03T22:19:43.000Z:
+
+I have assigned the tag for recording.
+
+Now I'm trying to de-assign tag. I doing long-tap on the recorded item, then select  &quot;Edit tags&quot; in the menu. Unchecking the tag and click &quot;Apply&quot;. The list of recording updates fine (showing no tag assigned anymore). But when I re-start the application the tag is appear assigned again.
+
+Device: LG L7 Phone,Android 4.0.3
+"
+Kaljurand/Diktofon,open,English language recognition,"[Label(name=""Priority-Medium""), Label(name=""Type-Enhancement"")]","Original [issue 18](https://code.google.com/p/diktofon/issues/detail?id=18) created by Kaljurand on 2013-02-03T22:03:31.000Z:
+
+Hi!
+Is  it possible to add English voice recognition. That would help a lot. Thank you!
+"
+Kaljurand/Diktofon,open,Improve audio playback,"[Label(name=""Priority-Medium""), Label(name=""Type-Defect"")]","Original [issue 17](https://code.google.com/p/diktofon/issues/detail?id=17) created by Kaljurand on 2012-10-14T00:21:26.000Z:
+
+Mainly:
+- support hardware media controls
+- stop/pause audio if requested from external apps
+
+See more:
+
+http://developer.android.com/training/managing-audio/index.html
+"
+Kaljurand/Diktofon,closed,Replace polling by GCM,"[Label(name=""Priority-Medium""), Label(name=""Type-Enhancement"")]","Original [issue 16](https://code.google.com/p/diktofon/issues/detail?id=16) created by Kaljurand on 2012-06-30T23:04:35.000Z:
+
+http://developer.android.com/guide/google/gcm/index.html
+"
+Kaljurand/Diktofon,open,Show notifications for the currently uploaded recordings,"[Label(name=""Priority-Medium""), Label(name=""Type-Defect"")]","Original [issue 15](https://code.google.com/p/diktofon/issues/detail?id=15) created by Kaljurand on 2012-05-06T19:32:21.000Z:
+
+Show the list of currently uploaded recordings in the notification bar and allow the upload to be cancelled.
+"
+Kaljurand/Diktofon,open,UI enhancement proposal,"[Label(name=""Priority-Medium""), Label(name=""Type-Defect"")]","Original [issue 14](https://code.google.com/p/diktofon/issues/detail?id=14) created by Kaljurand on 2011-10-24T08:40:08.000Z:
+
+It seems to me that pressing the Back button is a bit non-intuitive for ending the recording session. I propose to replace this with &quot;two big red buttons&quot; [Start/Pause/Continue] and [End]
+"
+Kaljurand/Diktofon,open,Warn when transcribing over mobile data,"[Label(name=""Priority-Medium""), Label(name=""Type-Defect"")]","Original [issue 13](https://code.google.com/p/diktofon/issues/detail?id=13) created by Kaljurand on 2011-10-24T08:11:44.000Z:
+
+Diktofon should warn (with an option to turn off future warnings) when sending a recording to the server over mobile data connection.
+"
+Kaljurand/Diktofon,open,Play audio cues before/after recording,"[Label(name=""Component-UI""), Label(name=""Priority-Medium""), Label(name=""Type-Enhancement""), Label(name=""Usability"")]","Original [issue 12](https://code.google.com/p/diktofon/issues/detail?id=12) created by Kaljurand on 2011-10-10T08:53:04.000Z:
+
+Optionally beep before/after recording
+"
+Kaljurand/Diktofon,closed,Implement support for incoming Intent.ACTION_SEND,"[Label(name=""Priority-High""), Label(name=""Type-Enhancement"")]","Original [issue 11](https://code.google.com/p/diktofon/issues/detail?id=11) created by Kaljurand on 2011-09-20T06:38:09.000Z:
+
+In other words: allow other apps (e.g. recorders and media players) to send audio files into Diktofon using their Share-menu. This would simplify the transcription of e.g. podcasts.
+"
+Kaljurand/Diktofon,open,Improve the way the currently applying preferences are shown,"[Label(name=""Priority-Low""), Label(name=""Type-Enhancement"")]","Original [issue 10](https://code.google.com/p/diktofon/issues/detail?id=10) created by Kaljurand on 2011-07-06T11:46:08.000Z:
+
+The preferences-activity could show all the current preferences in a more convenient way, i.e. as part of the preference summary so that the user does not have to launch the preference changing dialog (edit text, radio buttons, etc.) to see what the current setting is.
+"
+Kaljurand/Diktofon,closed,Search by voice,"[Label(name=""Priority-Medium""), Label(name=""Type-Enhancement"")]","Original [issue 9](https://code.google.com/p/diktofon/issues/detail?id=9) created by Kaljurand on 2011-07-06T07:53:26.000Z:
+
+Support search by voice, i.e. enable the search bar that is available in several of the Google apps (Maps, Docs, Listen, YouTube).
+"
+Kaljurand/Diktofon,open,Search by clicking on the waveform,"[Label(name=""Priority-Low""), Label(name=""Type-Enhancement"")]","Original [issue 8](https://code.google.com/p/diktofon/issues/detail?id=8) created by Kaljurand on 2011-07-06T07:51:16.000Z:
+
+In the Read&amp;Listen view, add a menu that would display the waveform of the complete audio and allow the user to select a certain region for reading/listening.
+"
+Kaljurand/Diktofon,open,Full support for speakers,"[Label(name=""Priority-Low""), Label(name=""Type-Enhancement"")]","Original [issue 7](https://code.google.com/p/diktofon/issues/detail?id=7) created by Kaljurand on 2011-06-17T15:07:54.000Z:
+
+This is a meta-issue listing various desirable features that have to with managing speakers identified in the transcriptions.
+- Human readable labels for speakers (instead of IDs). Editable by the user.
+- Filtering recordings by speakers
+- Speaker statistics
+- Extract sentences with the same speaker and paste together a new recording (i.e. new audio + new transcription)
+- ...
+"
+Kaljurand/Diktofon,open,Allow the user to override the URLs of the transcription service,"[Label(name=""Priority-Medium""), Label(name=""Type-Defect"")]","Original [issue 6](https://code.google.com/p/diktofon/issues/detail?id=6) created by Kaljurand on 2011-06-17T14:51:56.000Z:
+
+Add 2 textfields to the preferences which show the URLs of the transcription service (audio uploader, transcription downloader), and allow the user to edit them.
+"
+Kaljurand/Diktofon,closed,Cannot re-transcribe an already transcribed audio,"[Label(name=""Priority-Medium""), Label(name=""Type-Defect"")]","Original [issue 5](https://code.google.com/p/diktofon/issues/detail?id=5) created by Kaljurand on 2011-06-17T14:46:00.000Z:
+
+<b>What steps will reproduce the problem?</b>
+1. Record
+2. Transcribe
+3. (with a file manager) Delete the corresponding transcription file (in directory trans/) and the corresponding token file (in tokens/)
+4. &quot;Reload all recordings&quot;
+5. Transcribe
+
+<b>What is the expected output? What do you see instead?</b>
+
+Expecting to get the audio transcribed again, but instead seeing an error message (toast):
+
+Illegal token: &lt;html&gt;... Oled juba sellise nimega faili &amp;uuml;les laadinud ...&lt;/html&gt;
+
+This problem can be fixed if the name of the uploaded file is changed to some random string, but with an extension that matches the audio file's MIME type. Renaming the file for the POST request is supported by the latest estspeechapi.jar provided that httpmime-4.1.1.jar is used.
+"
+Kaljurand/Diktofon,closed,Empty list of recordings not updated when a new recording is added,"[Label(name=""Priority-High""), Label(name=""Type-Defect"")]","Original [issue 4](https://code.google.com/p/diktofon/issues/detail?id=4) created by Kaljurand on 2011-05-24T10:32:22.000Z:
+
+Reproduce:
+1. Delete all the recordings so that the list of recordings becomes empty
+2. Destroy the Diktofon task: Settings -&gt; Applications -&gt; Manage applications -&gt; Diktofon -&gt; Force stop
+3. Launch Diktofon
+4. Record a new recording
+
+The title and the toast message indicate that a recording was added, but nothing shows up in the list, it remains empty.
+
+To display the recording one needs to use the menu to &quot;reload all the recordings&quot;. After that everything will start working as expected.
+"
+Kaljurand/Diktofon,open,Search does not work after there has been a search via QSB,"[Label(name=""Priority-Medium""), Label(name=""Type-Defect"")]","Original [issue 3](https://code.google.com/p/diktofon/issues/detail?id=3) created by Kaljurand on 2011-05-24T10:24:04.000Z:
+
+Reproduce:
+1. Search Diktofon using QSB: everything as expected
+2. Now search using Diktofon's own search dialog: search is completely ignored (onNewIntent is not fired)
+
+To recover from this situation you have to Force close the app.
+"
+Kaljurand/Diktofon,closed,Diktofon crashes when created via Quick Search Box,"[Label(name=""Priority-High""), Label(name=""Type-Defect"")]","Original [issue 2](https://code.google.com/p/diktofon/issues/detail?id=2) created by Kaljurand on 2011-05-20T14:53:19.000Z:
+
+Reproduce:
+1. Settings -&gt; Applications -&gt; Manage applications -&gt; Diktofon -&gt; Force stop
+2. HOME
+3. Launch QSB and search something using Diktofon
+
+Expecting to see the matching recordings highlighted, but instead Diktofon crashes with NullPointerException in NoteListView.handleIntent()
+"
+Kaljurand/Diktofon,open,Test if works with external (Bluetooth) microphone,"[Label(name=""Priority-Medium""), Label(name=""Type-Defect"")]","Original [issue 1](https://code.google.com/p/diktofon/issues/detail?id=1) created by Kaljurand on 2011-03-30T20:27:43.000Z:
+
+Using an external (high quality) microphone would enhance the recording quality and as a result the transcription quality. It should be tested if Diktofon supports external microphones or are additional permissions and code needed.
+
+Also, is it possible to get input from multiple microphones simultaneously (and record into separate tracks)? Is it possible that one microphone broadcasts to multiple Android devices simultaneously? (Imagine a press-conference setting with multiple speakers each with his/her own microphone and multiple journalists each with his/her own dictaphone.)
+"
+Kaljurand/Diktofon,closed,Add license,[],

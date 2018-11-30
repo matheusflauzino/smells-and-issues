@@ -1,0 +1,119 @@
+repository,state,title,label,body
+nicolas-raoul/OxygenGuide-Android,closed,Uses the wrong path to open the HTML,[],"Can't open the HTML; the browsers/viewers say `file://sdcard/OxygenGuide/index.html` is 404.  Android 5.1.
+"
+nicolas-raoul/OxygenGuide-Android,open,Access files in zip,[],"This major commit keeps the files compressed in the zip archive,
+accessing them on the fly. For that an independent library called
+zipfileprovider was created. (It is also hosted on a different github repo).
+"
+nicolas-raoul/OxygenGuide-Android,open,Backport to Android 2.1,"[Label(name=""enhancement"")]","By Alex:
+
+I think it'd be cool if Wikivoyage would work on devices running Android
+2.1; an example would be the Nook Simple Touch.
+
+I've actually used apktool to build myself an apk with
+android:minSdkVersion=""7"" and it seems to work. The only problem I've
+noticed is that after a few clicks, it doesn't load further pages (e.g.
+Europe->United Kingdom->England->Bristol changes the title bar, but doesn't
+load)
+"
+nicolas-raoul/OxygenGuide-Android,open,NullPointerException at MainActivity.java:176,"[Label(name=""bug"")]","```
+03-04 17:29:04.719 E/AndroidRuntime( 2275): FATAL EXCEPTION: main
+03-04 17:29:04.719 E/AndroidRuntime( 2275): java.lang.NullPointerException
+03-04 17:29:04.719 E/AndroidRuntime( 2275):     at org.github.OxygenGuide.MainActivity$DownloadFile.onPostExecute(MainActivity.java:176)
+03-04 17:29:04.719 E/AndroidRuntime( 2275):     at org.github.OxygenGuide.MainActivity$DownloadFile.onPostExecute(MainActivity.java:1)
+03-04 17:29:04.719 E/AndroidRuntime( 2275):     at android.os.AsyncTask.finish(AsyncTask.java:602)
+```
+"
+nicolas-raoul/OxygenGuide-Android,open,Download from F-droid not working ,"[Label(name=""bug"")]","clicking download button in the application  says the download file is corrupt 
+"
+nicolas-raoul/OxygenGuide-Android,open,Download Wikivoyage in the user's language,[],"Wikivoyage is available in several languages, let's take advantage of that.
+
+Language should be a setting, so that someone with a German phone can download the Spanish version, for instance.
+
+First, OxygenGuide must be extended to the other languages: https://code.google.com/p/oxygenguide/issues/detail?id=41
+"
+nicolas-raoul/OxygenGuide-Android,open,Clicking on 'travel guide (android browser)' causes fatal crash,"[Label(name=""bug"")]","This is the output of adb logcat...
+
+I/ActivityManager(  188): START {act=android.intent.action.VIEW dat=file://sdcard/OxygenGuide/index.html typ=text/html cmp=com.android.browser/.BrowserActivity} from pid 21500
+D/AndroidRuntime(21500): Shutting down VM
+W/dalvikvm(21500): threadid=1: thread exiting with uncaught exception (group=0x40a3d1f8)
+E/AndroidRuntime(21500): FATAL EXCEPTION: main
+E/AndroidRuntime(21500): java.lang.IllegalStateException: Could not execute method of the activity
+E/AndroidRuntime(21500):    at android.view.View$1.onClick(View.java:3044)
+E/AndroidRuntime(21500):    at android.view.View.performClick(View.java:3511)
+E/AndroidRuntime(21500):    at android.view.View$PerformClick.run(View.java:14105)
+E/AndroidRuntime(21500):    at android.os.Handler.handleCallback(Handler.java:605)
+E/AndroidRuntime(21500):    at android.os.Handler.dispatchMessage(Handler.java:92)
+E/AndroidRuntime(21500):    at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime(21500):    at android.app.ActivityThread.main(ActivityThread.java:4424)
+E/AndroidRuntime(21500):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(21500):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime(21500):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+E/AndroidRuntime(21500):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)
+E/AndroidRuntime(21500):    at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime(21500): Caused by: java.lang.reflect.InvocationTargetException
+E/AndroidRuntime(21500):    at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(21500):    at java.lang.reflect.Method.invoke(Method.java:511)
+E/AndroidRuntime(21500):    at android.view.View$1.onClick(View.java:3039)
+E/AndroidRuntime(21500):    ... 11 more
+E/AndroidRuntime(21500): Caused by: android.content.ActivityNotFoundException: Unable to find explicit activity class {com.android.browser/com.android.browser.BrowserActivity}; have you declared this activity in your AndroidManifest.xml?
+E/AndroidRuntime(21500):    at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:1508)
+E/AndroidRuntime(21500):    at android.app.Instrumentation.execStartActivity(Instrumentation.java:1384)
+E/AndroidRuntime(21500):    at android.app.Activity.startActivityForResult(Activity.java:3190)
+E/AndroidRuntime(21500):    at android.app.Activity.startActivity(Activity.java:3297)
+E/AndroidRuntime(21500):    at org.github.OxygenGuide.MainActivity.launchAndroidBrowser(MainActivity.java:125)
+E/AndroidRuntime(21500):    ... 14 more
+W/ActivityManager(  188):   Force finishing activity org.github.OxygenGuide/.MainActivity
+W/ActivityManager(  188): Activity pause timeout for ActivityRecord{41a45800 org.github.OxygenGuide/.MainActivity}
+D/dalvikvm(  407): GC_CONCURRENT freed 2451K, 27% free 18803K/25479K, paused 3ms+7ms
+"
+nicolas-raoul/OxygenGuide-Android,open,Find article by GPS,"[Label(name=""enhancement"")]","Find the most relevant article for the place I am in right now.
+"
+nicolas-raoul/OxygenGuide-Android,open,Full text search on all articles' body,"[Label(name=""enhancement"")]","Anyone knows an indexing engine we could use? Lucene?
+"
+nicolas-raoul/OxygenGuide-Android,open,Find article by name,"[Label(name=""enhancement"")]",
+nicolas-raoul/OxygenGuide-Android,open,"Add listing, upload when Internet available","[Label(name=""enhancement"")]",
+nicolas-raoul/OxygenGuide-Android,open,"Write article-related tip, upload to talk page when Internet available","[Label(name=""enhancement"")]",
+nicolas-raoul/OxygenGuide-Android,open,"Take article-related picture, upload when Internet available","[Label(name=""enhancement"")]",
+nicolas-raoul/OxygenGuide-Android,open,Pretty UI,"[Label(name=""enhancement"")]","Now it is really ugly.
+Maybe white + large logo in background?
+"
+nicolas-raoul/OxygenGuide-Android,open,Update mechanism,"[Label(name=""enhancement"")]","While the metadata is protocol is present for update, the feature is not implemented yet.
+"
+nicolas-raoul/OxygenGuide-Android,open,Browser choice: make it a preference,"[Label(name=""enhancement"")]",
+nicolas-raoul/OxygenGuide-Android,open,"""Download(only the first time)"" don't work on HTC Explorer","[Label(name=""bug"")]","Hello,
+
+On my HTC explorer, the android application don't allow me to download the data.
+I checked my sd card and there is enough free size on it (700 Gb)
+
+There is the logcat when I tried to download:
+`D/WifiStateTracker(  363): get mPhoneStateListener
+D/dalvikvm(  363): GC_CONCURRENT freed 1272K, 45% free 8576K/15559K, external 371K/788K, paused 20ms+12ms
+D/WifiStateTracker(  363): get mPhoneStateListener
+D/View    ( 9790): onTouchEvent: viewFlags: 0x18004001
+D/View    ( 9790): onTouchEvent: isFocusable: true, isFocusableInTouchMode: false, isFocused: false; focusTaken: false
+D/OxygenGuide( 9790): Entering download method.
+D/WindowManagerImpl( 9790): addView, new view, mViews[1]: com.android.internal.policy.impl.PhoneWindow$DecorView@40625978
+E/OxygenGuide( 9790): Exception:Only the original thread that created a view hierarchy can touch its views.
+D/WindowManagerImpl( 9790): finishRemoveViewLocked, mViews[1]: com.android.internal.policy.impl.PhoneWindow$DecorView@40625978
+D/InputManagerService(  363): Window already focused, ignoring focus gain of: com.android.internal.view.IInputMethodClient$Stub$Proxy@40d0eca0
+D/WifiStateTracker(  363): get mPhoneStateListener`
+
+There are also some useful information about my device:
+HTC explorer/pico (as known as A310e)
+Rooted
+Custom rom (jaggyrom 3.x.x)
+Kernel 2.6.38.6
+Android 2.3.5
+HTC Sense 3.5
+
+Thank you
+"
+nicolas-raoul/OxygenGuide-Android,open,Integrate maps,"[Label(name=""enhancement"")]","By Alexander:
+
+Several Android apps allow the download of OSM maps for one particular city/region. Do you know how it works, and did you think about integrating this feature? It could be a great way of getting travel guide plus zoomable map in one package
+"
+nicolas-raoul/OxygenGuide-Android,open,Split into regions,"[Label(name=""enhancement"")]","By Alexander:
+
+Will it be possible to split this content into regions? When the full download takes one hour, frequent updates become difficult. 
+"

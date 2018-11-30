@@ -1,0 +1,1620 @@
+repository,state,title,label,body
+codebutler/farebot,closed,A few ORCA fixes,[],"This PR fixes a few issues with ORCA cards:
+
+1. It now parses the serial number of U-PASSes correctly. The CSN is actually four bytes long, and is already parsed correctly in parseIdentity.
+2. It adds more stops for the Sounder, and one additional terminal for the ferries.
+3. It (probably) supports coach IDs above 65535. Apparently Sound Transit actually has some of these.
+4. The Fare Transaction Processor type is parsed, which is now used to differentiate between ST buses/Link/Sounder instead of relying on hardcoded ""coach"" IDs.
+
+I believe FTP type 0xFA is used for KCM RapidRide stops, but I don't have any stop IDs yet."
+codebutler/farebot,closed,Add Kitsap Transit to ORCA,[],Rode two buses and the fast ferry (using a [PFTP](https://www.flickr.com/photos/viriyincy/3561731244/)); all showed up as agency 5.
+codebutler/farebot,closed,FareBot KMT Update,[],"Updates on Indonesian Kartu Multi Trip:
+
+- Update card logo (clean and smaller)
+- Changes on how to read timestamp data (synch with Metrodroid branch)
+- Add support to decode station data
+- Station data description and location (~ 80% completed)"
+codebutler/farebot,closed,FareBot KMT Updates,[],"Updates on Indonesian Kartu Multi Trip:
+- Update card logo (clean and smaller)
+- Changes on how to read timestamp data (synch with Metrodroid branch)
+- Add support to decode station data
+- Station data description and location _(~ 80% completed)_"
+codebutler/farebot,closed,Add support for Indonesia Kartu Multi Trip ,[],"Adding new support to read Indonesia CommuterLine's KMT cards which is using FeliCa. Basically just refactor `farebot-transit-edy`:
+
+- Introduce `farebot-transit-kmt`
+- Change service code for KMT
+- Add checking to `getService` result to avoid `nullPointerException`
+- Stripped `Trips` implementation, need to do some research to read historical data"
+codebutler/farebot,open,Not working Pixel 2 XL,[],Farebot does not do anything on my Pixel 2 XL when I place a clipper card in front of the NFC sensor with the app open.
+codebutler/farebot,open,Implement TransitCardRegistryCompiler,[],"This implements a `TransitCardRegistryCompiler` annotation processor that uses [Crumb](https://github.com/uber/crumb) to automatically track transit cards and generate them in a top level registry.
+
+High level architecture:
+- Three modules
+  - `farebot-transit-registry-annotations` for the `@TransitCard` and `@TransitCardRegistry` annotations
+  - `farebot-transit-registry-compiler` for the actual annotation processor (for both producing and consuming annotations)
+  - `farebot-transit-registry` for a simple registry instance for use upstream. Separate module for modularity
+- Transit cards need only be annotated with `@TransitCard` now to be registered
+- The compiler generates kotlin code via kotlinpoet, and can statically generate the full mapping of card types and list of available cards into a simple `create()` extension function
+
+I didn't know if you wanted to tweak anything about the top level registry API, so left that mostly alone right now and just made it wrap the generated registry."
+codebutler/farebot,closed,Update dependencies,[],
+codebutler/farebot,closed,Update all the things!,[],
+codebutler/farebot,closed,Update ORCA station information,[],"Rename the nonexistent ""University Station"" to ""University Street Station"" and add the ID for Angle Lake Station."
+codebutler/farebot,closed,Update dependencies,[],
+codebutler/farebot,open,"Add support for Ventra tickets (Chicago, IL)",[],"The CTA Ventra cards present as MasterCard NFC credit cards, and so balance information cannot be read from them. However, they also sell single use [tickets and passes](http://www.transitchicago.com/fares/) that last multiple days. These are Mifare Ultralight C cards. I can provide hex dumps of cards in various states (used, unused, one transfer left, etc) if necessary."
+codebutler/farebot,open,"Add support for URBS bus cards (Curitiba, BR)",[],
+codebutler/farebot,closed,added San Leandro Station to the BART station list,[],"https://goo.gl/maps/T6RFs9SLvx22
+
+Noticed it was missing when I scanned my friend's Clipper Card"
+codebutler/farebot,closed,Null reference error reading PASMO ,[],"```
+net.kazzz.felica.lib.FeliCaLib$IDm.getBytes()
+```
+
+On latest version of Android using the Pixel. Repro is 100%: just scan the pasmo.
+
+For what it's worth, the card is old (~7 years) and used to have a commuter pass attached, though I believe it used to work with an older version of this app. Other suica reader apps don't have this problem.
+
+Please let me know if there's anything else I can provide to help! "
+codebutler/farebot,closed,Support For Touch n Go cards (Malaysia),[],"Hi , it would be great for support of Malaysia's main transit card , Touch n Go. It uses Mifare Classic."
+codebutler/farebot,closed,CEPAS 2.0 card 'Invalid Response',[],"## Issue
+Hi I'm having an issue when attempting to scan a CEPAS 2.0 card and I'm getting **Invalid Response**
+
+![device-2017-08-23-235523](https://user-images.githubusercontent.com/8582659/29625666-f8b1fddc-885e-11e7-9d15-31a06ba70ac0.png)
+
+## Error 1
+After some digging, I got an error log which is [full log here](https://gist.github.com/Vantablack/546383d301d0f96b12ace544253593e8#file-error1-log)
+
+```
+E/com.codebutler.farebot.app.feature.main.MainActivity: Invalid response java.lang.Exception: Invalid response at com.codebutler.farebot.card.desfire.DesfireProtocol.sendRequest(DesfireProtocol.java:141)
+```
+
+From here I deduced that **DesfireTagReader** is called instead of **CEPASTagReader**. So I swapped the order in `TagReaderFactory.kt`
+
+## Error 2
+Error 1 was fixed but another was created (Error 2), [full log here](https://gist.github.com/Vantablack/546383d301d0f96b12ace544253593e8#file-error2-log)
+
+```
+E/AndroidRuntime: FATAL EXCEPTION: main Process: com.codebutler.farebot, PID: 27383 io.reactivex.exceptions.OnErrorNotImplementedException: Invalid index 3, size is 0
+```
+
+And this was caused by the ArrayList having a size() of 0 and so I tried using Arrays [] instead by [following what was done in v0.5](https://github.com/codebutler/farebot/blob/v0.5/src/com/codebutler/farebot/cepas/CEPASCard.java#L47)
+
+![code_ss](https://user-images.githubusercontent.com/8582659/29626109-4dc639fe-8860-11e7-85c9-47e4bca8770a.png)
+
+## Error 3
+
+Error 2 was fixed but Error 3 was created, [full log here](https://gist.github.com/Vantablack/546383d301d0f96b12ace544253593e8#file-error3-log)
+
+It was due to invalid purses having null values for `getCAN`, `getCSN`, `getLastCreditTransactionHeader`, `getLastTransactionRecord` and `getIssuerSpecificData` in `CEPASPurse.java`, and adding @Nullable seems to solve the issue.
+
+Similar to [this merge request](https://github.com/codebutler/farebot/pull/3), its seems like data is stored in purse 3 (I've tested 3 recent cards).
+
+## Possible Fix
+
+I'm not sure if I should open a merge request but here's my current fixes.
+
+https://github.com/Vantablack/farebot/commit/a0c1f97f433c2d363203936b1384c31c12b0be06
+
+![device-2017-08-23-235150](https://user-images.githubusercontent.com/8582659/29626858-ba92cdd4-8862-11e7-899b-2910a92046c3.png)
+"
+codebutler/farebot,closed," ""Attempt to invoke virtual method 'short android.os.Bundle.getShort(java.lang.String)' on a null object reference""",[],"The card is  an OV-chipkaart scanned by an oneplus 5 running stock android N.
+
+Logcat:
+https://pastebin.com/Jzd5Nwb8
+
+Looks like the same issue here:
+https://github.com/codebutler/farebot/issues/97"
+codebutler/farebot,open,Trimet hop fastpass,[],"```<?xml version=""1.0"" encoding=""UTF-8""?>
+<scan>
+	<version>4.23</version>
+	<date>2017-08-05 22:39:53</date>
+	<title>NXP Semiconductors MIFARE DESFire EV1 tag</title>
+	<uid nxp=""true"">04:2E:7B:1A:14:4D:80</uid>
+	<hasndef>false</hasndef>
+	<section>
+		<subsection title=""IC manufacturer"">
+			<block type=""text"">
+	<content>NXP Semiconductors</content>
+</block>
+		</subsection>
+		<subsection title=""IC type"">
+			<block type=""text"">
+	<content>MIFARE DESFire EV1</content>
+</block>
+		</subsection>
+		<subsection title=""DESFire Applications"">
+			<block type=""text"">
+	<content>Multi-modal transit #0
+‣ null<hexoutput> (0xF210E0)</hexoutput></content>
+</block>
+		</subsection>
+	</section>
+	<section>
+		<subsection title=""No NDEF data storage populated"">
+			<block type=""text"">
+	<content></content>
+</block>
+		</subsection>
+	</section>
+	<section>
+		<subsection title=""Memory information"">
+			<block type=""text"">
+	<content>Size: 256 bytes
+Available: 128 bytes</content>
+</block>
+		</subsection>
+		<subsection title=""IC detailed information"">
+			<block type=""text"">
+	<content>Capacitance: 17 pF</content>
+</block>
+		</subsection>
+		<subsection title=""Version information"">
+			<block type=""text"">
+	<content>Vendor ID: NXP<hexoutput> (0x04)</hexoutput>
+Hardware info:
+‣ Type/subtype: 0x01/0x01
+‣ Version: 1.0
+‣ Storage size: 256 bytes<hexoutput> (0x10)</hexoutput>
+‣ Protocol: ISO/IEC 14443-2 and -3<hexoutput> (0x05)</hexoutput>
+Software info:
+‣ Type/subtype: 0x01/0x01
+‣ Version: 1.5
+‣ Storage size: 256 bytes<hexoutput> (0x10)</hexoutput>
+‣ Protocol: ISO/IEC 14443-3 and -4<hexoutput> (0x05)</hexoutput>
+Batch no: 0xBA65185590
+Production date: week 48, 2015<hexoutput> (0x4815)</hexoutput></content>
+</block>
+		</subsection>
+	</section>
+	<section>
+		<subsection title=""Technologies supported"">
+			<block type=""text"">
+	<content>ISO/IEC 7816-4 compatible
+Native DESFire APDU framing
+ISO/IEC 14443-4 (Type A) compatible
+ISO/IEC 14443-3 (Type A) compatible
+ISO/IEC 14443-2 (Type A) compatible</content>
+</block>
+		</subsection>
+		<subsection title=""Android technology information"">
+			<block type=""text"">
+	<content>Tag description:
+‣ TAG: Tech [android.nfc.tech.IsoDep, android.nfc.tech.NfcA, android.nfc.tech.NdefFormatable]
+‣ Maximum transceive length: 65279 bytes
+‣ Default maximum transceive time-out: 618 ms
+‣ Extended length APDUs supported
+‣ Maximum transceive length: 253 bytes
+‣ Default maximum transceive time-out: 618 ms
+<hexoutput>MIFARE Classic support present in Android</hexoutput></content>
+</block>
+		</subsection>
+		<subsection title=""Detailed protocol information"">
+			<block type=""text"">
+	<content>ID: 04:2E:7B:1A:14:4D:80
+ATQA: 0x4403
+SAK: 0x20
+ATS: 0x06757781028000
+‣ Max. accepted frame size: 64 bytes (FSCI: 5)
+‣ Supported receive rates:
+	• 106, 212, 424, 848 kbit/s (DR: 1, 2, 4, 8)
+‣ Supported send rates:
+	• 106, 212, 424, 848 kbit/s (DS: 1, 2, 4, 8)
+‣ Different send and receive rates supported
+‣ SFGT: 604.1 µs  (SFGI: 1)
+‣ FWT: 77.33 ms  (FWI: 8)
+‣ NAD not supported
+‣ CID supported
+‣ Historical bytes: 0x80 |·|</content>
+</block>
+		</subsection>
+		<subsection title=""Memory content"">
+			<block type=""text"">
+	<content>PICC level (Application ID 0x000000)
+‣ PICC key configuration:<hexoutput> (0x0F01)</hexoutput>
+  • AES key
+  • PICC key changeable
+  • PICC key required for:
+    ◦ directory list access: no
+    ◦ create/delete applications: no
+  • Configuration changeable
+  • PICC key version: 13</content>
+</block>
+<block type=""text"">
+	<content>
+Application ID 0xF210E0
+‣ Key configuration:<hexoutput> (0x0B82)</hexoutput>
+  • 2 AES keys
+  • Master key changeable
+  • Master key required for:
+    ◦ directory list access: no
+    ◦ create/delete files: yes
+  • Configuration changeable
+  • Master key required for changing a key
+  • Key versions:
+    ◦ Master key: 13
+    ◦ Key #1: 13</content>
+</block>
+<block type=""text"">
+	<content>‣ 2 files present</content>
+</block>
+<block type=""text"">
+	<content>
+  • File ID 0x00: Standard data, 96 bytes
+    ◦ Communication: plain
+    ◦ Read key: free access<hexoutput> (0x0E)</hexoutput>
+    ◦ Write key: blocked<hexoutput> (0x0F)</hexoutput>
+    ◦ Read/Write key: blocked<hexoutput> (0x0F)</hexoutput>
+    ◦ Change key: master key<hexoutput> (0x00)</hexoutput></content>
+</block>
+<block type=""text"">
+	<content>    ◦ Contents:
+</content>
+</block>
+<block type=""DesFire"">
+	<address addrwidth=""4"">0</address>
+	<data>01 54 52 49 31 01 00 0D 10 00 00 00 00 00 3D 3A</data>
+</block>
+<block type=""DesFire"">
+	<address addrwidth=""4"">16</address>
+	<data>00 00 00 00 00 00 00 00 00 00 00 0D 30 34 02 18</data>
+</block>
+<block type=""DesFire"">
+	<address addrwidth=""4"">32</address>
+	<data>3B 55 8A B4 6F BF 8F 5B 70 ED 9B 47 F2 14 80 0B</data>
+</block>
+<block type=""DesFire"">
+	<address addrwidth=""4"">48</address>
+	<data>FB 31 40 F9 E0 5C 2E 9B 02 18 47 BA C7 7B 0C EE</data>
+</block>
+<block type=""DesFire"">
+	<address addrwidth=""4"">64</address>
+	<data>D3 E8 AD AE FB 69 60 97 81 F4 47 CD 90 FF 34 A9</data>
+</block>
+<block type=""DesFire"">
+	<address addrwidth=""4"">80</address>
+	<data>FF 72 00 00 00 00 00 00 00 00 00 00 00 00 00 00</data>
+</block>
+<block type=""text"">
+	<content>
+  • File ID 0x01: Backup data, 48 bytes
+    ◦ Communication: encrypted
+    ◦ Read key: free access<hexoutput> (0x0E)</hexoutput>
+    ◦ Write key: blocked<hexoutput> (0x0F)</hexoutput>
+    ◦ Read/Write key: key #1
+    ◦ Change key: master key<hexoutput> (0x00)</hexoutput></content>
+</block>
+<block type=""text"">
+	<content>    ◦ (No access)</content>
+</block>
+		</subsection>
+	</section>
+</scan>
+```"
+codebutler/farebot,closed,Added support for Taipei EasyCard,[],
+codebutler/farebot,closed,Add Dublin/Pleasanton BART station,[],
+codebutler/farebot,open,Unable to copy serial numbers or other data fields,[],Would be nice to allow these fields to be copy friendly.
+codebutler/farebot,closed,Include fauntleroy ferry terminal,[],
+codebutler/farebot,closed,Completely new modern UI written in Kotlin!,[],
+codebutler/farebot,open,Support for Touch n Go cards (Malaysia) (Above Singapore :),[],"It would be awesome to support fare checker for Malaysia's transit card Touch n Go. I've tried it and it doesn't work. An encryption keys is needed. I'm willing to help to detect any card value differences.
+"
+codebutler/farebot,closed,java.io.IOException reading Clipper since Android N,[],"Motorola Droid Turbo 2 Android v7.0
+
+```
+03-08 11:09:23.780  3847  3847 D NativeNfcTag: Connect to a tech with a different handle
+03-08 11:09:23.780  3847  3847 D NativeNfcTag: isChineseIdTag
+03-08 11:09:23.781  3847  3847 D NativeNfcTag: isChineseIdTag + 3
+03-08 11:09:23.781  3847  3847 D NativeNfcTag: isChineseIdTag + 1
+03-08 11:09:23.861  3847  3847 D NativeNfcTag: Check NDEF Failed - status = 8194
+03-08 11:09:23.901  3847  3847 D NativeNfcTag: Check NDEF Failed - status = 8194
+03-08 11:09:23.924  3847 25651 D NativeNfcTag: Starting background presence check
+03-08 11:09:23.924  3847 25651 D NativeNfcTag: NativeNfcTag.PresenceCheckWatchdog.run: timeout=125
+03-08 11:09:24.050  3847 25651 D NativeNfcTag: Tag lost, restarting polling loop
+03-08 11:09:24.050  3847 25651 E BrcmNfcJni: nativeNfcTag_doDisconnect: tag already deactivated
+03-08 11:09:24.050  3847 25651 D NfcService: Discovery configuration equal, not updating.
+03-08 11:09:24.050  3847 25651 D NativeNfcTag: Stopping background presence check
+03-08 11:09:24.194 22803 22803 W System.err: java.io.IOException
+03-08 11:09:24.196 22803 22803 W System.err: 	at android.nfc.tech.BasicTagTechnology.connect(BasicTagTechnology.java:85)
+03-08 11:09:24.196 22803 22803 W System.err: 	at android.nfc.tech.IsoDep.connect(IsoDep.java)
+03-08 11:09:24.196 22803 22803 W System.err: 	at com.codebutler.farebot.card.desfire.DesfireCard.dumpTag(DesfireCard.java:59)
+03-08 11:09:24.196 22803 22803 W System.err: 	at com.codebutler.farebot.card.Card.dumpTag(Card.java:61)
+03-08 11:09:24.197 22803 22803 W System.err: 	at com.codebutler.farebot.activities.ReadingTagActivity$1.doInBackground(ReadingTagActivity.java:83)
+03-08 11:09:24.197 22803 22803 W System.err: 	at com.codebutler.farebot.activities.ReadingTagActivity$1.doInBackground(ReadingTagActivity.java:77)
+03-08 11:09:24.197 22803 22803 W System.err: 	at android.os.AsyncTask$2.call(AsyncTask.java:304)
+03-08 11:09:24.197 22803 22803 W System.err: 	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+03-08 11:09:24.197 22803 22803 W System.err: 	at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:243)
+03-08 11:09:24.197 22803 22803 W System.err: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1133)
+03-08 11:09:24.197 22803 22803 W System.err: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:607)
+03-08 11:09:24.197 22803 22803 W System.err: 	at java.lang.Thread.run(Thread.java:761)
+```"
+codebutler/farebot,closed,Added CCTA,[],Added CCTA (Contra Costa Transportation Authority)
+codebutler/farebot,open,Support for ITSO cards,[],See https://github.com/codebutler/farebot/pull/56 for initial incomplete implementation.
+codebutler/farebot,open,Support for Suica buses,[],"- Figure out area code
+- Find bus route number
+- Geocode stations
+  - http://www.navitime.co.jp/?keyword=%E9%B6%B4%E8%88%9E%E7%94%BA%E5%85%AD%E4%B8%81%E7%9B%AE&ctl=0110
+  - http://jikoku.narakotsu.co.jp/jikoku_pdf/Bstop_PT.exe?129+0
+
+"
+codebutler/farebot,open,Support for Chinese transit cards,[],Example app: https://market.android.com/details?id=com.sharemore.nfc.transport
+codebutler/farebot,closed,Major Refactor: Split app into multiple modules,[],
+codebutler/farebot,open,"Support for Bangalore's ""Namma Metro"" Varshik Card",[],"Thanks for this app, which seems quite useful.
+
+I wonder if it can be extended to the Bangalore metro card (""[Varshik](http://smartcard.bmrc.co.in/)"").  It is either a [MIFARE DESFire EV1](https://www.mifare.net/bengaluru-metro-system-adopts-nxps-mifare-technology/) or MIFARE DESFire card.  (NXP TagInfo says it is a DESFire card - MF3ICD40, while the MIFARE website state that it is a EV1 card).  What information is needed to figure out if it will work?
+
+Here is the output I get after scanning it in Farebot.
+
+```
+<?xml version=""1.0"" encoding=""UTF-8""?><card type=""2"" id=""04455c4adc4880"" scanned_at=""1485511978401"">
+  <applications>
+    <application id=""4411213"">
+      <files>
+        <file id=""0"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""1"">
+          <error>java.lang.UnsupportedOperationException: Value files not yet supported</error>
+        </file>
+        <file id=""2"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""3"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""4"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""5"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""6"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""8"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""9"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""10"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""11"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""12"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+      </files>
+    </application>
+    <application id=""5067858"">
+      <files>
+        <file id=""0"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""1"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""2"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""3"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""4"">
+          <error>java.lang.UnsupportedOperationException: Value files not yet supported</error>
+        </file>
+        <file id=""6"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""7"">
+          <error>java.lang.UnsupportedOperationException: Value files not yet supported</error>
+        </file>
+        <file id=""8"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""9"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+      </files>
+    </application>
+    <application id=""5264467"">
+      <files>
+        <file id=""0"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""1"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""2"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""6"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""7"">
+          <error>java.lang.UnsupportedOperationException: Value files not yet supported</error>
+        </file>
+        <file id=""8"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""9"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+      </files>
+    </application>
+    <application id=""5395532"">
+      <files>
+        <file id=""0"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""1"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""2"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""6"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""7"">
+          <error>java.lang.UnsupportedOperationException: Value files not yet supported</error>
+        </file>
+        <file id=""8"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+      </files>
+    </application>
+    <application id=""5128531"">
+      <files>
+        <file id=""0"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""1"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""2"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""6"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""7"">
+          <error>java.lang.UnsupportedOperationException: Value files not yet supported</error>
+        </file>
+        <file id=""8"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+      </files>
+    </application>
+    <application id=""5262163"">
+      <files>
+        <file id=""0"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""1"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""2"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""5"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""6"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+        <file id=""7"">
+          <error>java.lang.UnsupportedOperationException: Value files not yet supported</error>
+        </file>
+        <file id=""8"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+      </files>
+    </application>
+  </applications>
+  <manufacturing-data>
+    <hw-vendor-id>4</hw-vendor-id>
+    <hw-type>1</hw-type>
+    <hw-sub-type>1</hw-sub-type>
+    <hw-major-version>1</hw-major-version>
+    <hw-minor-version>0</hw-minor-version>
+    <hw-storage-size>24</hw-storage-size>
+    <hw-protocol>5</hw-protocol>
+    <sw-vendor-id>4</sw-vendor-id>
+    <sw-type>1</sw-type>
+    <sw-sub-type>1</sw-sub-type>
+    <sw-major-version>1</sw-major-version>
+    <sw-minor-version>4</sw-minor-version>
+    <sw-storage-size>24</sw-storage-size>
+    <sw-protocol>5</sw-protocol>
+    <uid>1256230364</uid>
+    <batch-no>1691846506</batch-no>
+    <week-prod>55</week-prod>
+    <year-prod>21</year-prod>
+  </manufacturing-data>
+</card>
+```"
+codebutler/farebot,closed,Merged Octopus card support from Metrodroid,[],"Thanks Michael Farrell!
+
+Fixes #16"
+codebutler/farebot,closed,"Update Grade Wrapper, Fix Travis CI configuration",[],
+codebutler/farebot,closed,Update F-Droid apk,[],"Presently F-Droid hosts FareBot 2.4.1 which is three years old.  Newer versions use a crashlytics binary blob.  F-Droid needs some configuration knob to remove it:
+
+https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.codebutler.farebot.txt"
+codebutler/farebot,closed,Add instructions to build from source,[],
+codebutler/farebot,closed,Upgrade to auto-value-parcel 0.2.5,[],This allows gradle to find the dependency with clean builds.
+codebutler/farebot,closed,Fixed Walnut Creek BART station,[],Fixed bug with Walnut Creek station
+codebutler/farebot,open,Metro Sevilla - Spain ,[],"Can you pls do it for Seville metro? 
+Thanks"
+codebutler/farebot,open,Support for Paris Navigo Cards,[],"Looks like there are quite a few open-source projects that can read these:
+- https://github.com/sp1d3rb0y/Navigoat
+- https://github.com/jmorille/nfcproxy/blob/master/nfcproxy/src/main/java/eu/ttbox/nfcproxy/service/nfc/reader/navigo/NavigoCardReader.java
+- https://github.com/Eric-Bourry/pssi/tree/master/pssi/plugins/navigo
+- https://github.com/L1L1/cardpeek
+"
+codebutler/farebot,closed,How add the private keys (bilhete unico) ?,[],"Hi all!
+
+how i can set/define the keys to this nfc/card.
+
+Thanks!
+"
+codebutler/farebot,open,RTA Tri-Rail EASY Card support (South Florida),[],"If this project is still on going or if someone wants my export data I'm still collecting for the Tri Rail EASY cards let me know. I would really like to see some support for it.
+"
+codebutler/farebot,closed,add disable autostart option when card detected,[],"hi,
+could you please add an option to disable autostart when a card is detected? 
+
+thanks
+"
+codebutler/farebot,open,MetroTransit (Minnesota) GoTo Card Support ,[],"Can someone add support for MetroTransit (MIFare Classic) Cards please?
+
+*\* TagInfo scan (version 4.20.160) 2016-08-27 20:04:08 **
+Report Type: External
+
+-- INFO ------------------------------
+# IC manufacturer:
+
+NXP Semiconductors
+# IC type:
+
+MIFARE Classic (MF1S50)
+
+-- NDEF ------------------------------
+# NFC data set storage not present:
+
+Maximum NDEF storage size after format: 716 bytes
+
+-- EXTRA ------------------------------
+# Memory size:
+
+1 kB
+- 16 sectors, with 4 blocks per sector
+- 64 blocks, with 16 bytes per block
+
+-- TECH ------------------------------
+# Technologies supported:
+
+MIFARE Classic compatible
+ISO/IEC 14443-3 (Type A) compatible
+ISO/IEC 14443-2 (Type A) compatible
+# Android technology information:
+
+Tag description:
+- TAG: Tech [android.nfc.tech.MifareClassic, android.nfc.tech.NfcA, android.nfc.tech.NdefFormatable]
+  android.nfc.tech.NdefFormatable
+  android.nfc.tech.MifareClassic
+  android.nfc.tech.NfcA
+- Maximum transceive length: 253 bytes
+- Default maximum transceive time-out: 20480 ms
+# Detailed protocol information:
+
+ID: 9C:0C:37:01
+ATQA: 0x0400
+SAK: 0x08
+# Memory content:
+
+Sector 0 (0x00)
+[00] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[01] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[02] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[03] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 1 (0x01)
+[04] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[05] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[06] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[07] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 2 (0x02)
+[08] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[09] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[0A] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[0B] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 3 (0x03)
+[0C] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[0D] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[0E] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[0F] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 4 (0x04)
+[10] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[11] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[12] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[13] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 5 (0x05)
+[14] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[15] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[16] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[17] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 6 (0x06)
+[18] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[19] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[1A] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[1B] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 7 (0x07)
+[1C] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[1D] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[1E] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[1F] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 8 (0x08)
+[20] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[21] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[22] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[23] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 9 (0x09)
+[24] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[25] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[26] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[27] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 10 (0x0A)
+[28] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[29] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[2A] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[2B] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 11 (0x0B)
+[2C] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[2D] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[2E] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[2F] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 12 (0x0C)
+[30] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[31] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[32] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[33] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 13 (0x0D)
+[34] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[35] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[36] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[37] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 14 (0x0E)
+[38] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[39] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[3A] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[3B] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+Sector 15 (0x0F)
+[3C] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[3D] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[3E] ???  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+[3F] ???  XX:XX:XX:XX:XX:XX --:--:-- -- XX:XX:XX:XX:XX:XX
+          (unknown key)                 (unknown key)
+
+r/R=read, w/W=write, i/I=increment,
+d=decr/transfer/restore, x=r+w, X=R+W
+data block: r/w/i/d:key A|B, R/W/I:key B only,
+  I/i implies d, *=value block
+trailer (order: key A, AC, key B): r/w:key A,
+  W:key B, R:key A|B, (r)=readable key
+AC: W implies R+r, R implies r
+
+---
+"
+codebutler/farebot,closed,Support Kiev metro cards,[],"Kiev metro cards are physically compatible with FareBot but it could not decode their contents.
+Here is a link to an article (in Russian) which describes with details revere-engineered card protocol and python code snipped to read the card:
+
+https://habrahabr.ru/post/141213/
+"
+codebutler/farebot,open,"Feature Request: enable giving cards ""nicknames""",[],"Today distinguishes the cards it's seen by <SYSTEM>: <ID#>.  When managing multiple cards (e.g. parents managing kids' cards, and so on) it can get confusing to remember which ID# belongs to whom.
+IWBN if e.g. a long-press on a scanned card would allow assigning a ""nickname"" to the card for future display. 
+"
+codebutler/farebot,closed,Add Caltrain refill code 0x173,[],"this refill code from Caltrain is related to a 8-Rides ticket fare.
+
+Screen-shot: https://drive.google.com/file/d/0B2Is7pCs4cszcG9UWmpRY1Q2ZmM/view?usp=sharing
+"
+codebutler/farebot,closed,travis test,[],
+codebutler/farebot,closed,Merge all changes from micolous/metrodroid,[],"Merge (almost) all changes from @micolous's metrodroid fork.
+"
+codebutler/farebot,closed,"Add nickname feature, add option to squash dupes",[],"This adds a feature that allows you to nickname cards, where the
+nickname will be displayed instead of the serial number.
+
+Also added is an option to overwrite current cards that match the
+scanned card's serial number, rather than creating a new entry. If this
+is turned on while there are already duplicate cards in the database, it
+will only overwrite the latest-scanned card to avoid unintended data
+loss.
+
+Also adds whole foods to the agencies for refill data.
+
+I took the liberty of cleaning up some logic relating to the serial number
+as I needed to simplify for the nickname display logic. 
+"
+codebutler/farebot,open,Support for Indonesian KMT Card (Jakarta Commuter Pass),[],"I read that this project could support any transportation card that implements FeliCa or Mifare Classic. So recently the operator of commuter rail service in Jakarta began to implement FeliCa on their electronic ticket, the KMT. I saw some FeliCa transportation cards were already supported by farebot, so I would like to see support for the KMT. Maybe anyone could tell where should I start to read the data inside the FeliCa card?
+"
+codebutler/farebot,closed,A quick fix crash when reading Singapore NETS Flashpay,[],"Now in Singapore, there are many credit cards which contain Nets Flashpay application. However farebot cannot read them correctly. The app crashes with the log:
+
+```
+java.lang.NullPointerException: Attempt to invoke virtual method 'byte[] com.codebutler.farebot.xml.HexString.getData()' on a null object reference
+at com.codebutler.farebot.card.cepas.CEPASPurse.getCAN(CEPASPurse.java:223)
+```
+
+This pull request commits a quick fix by adding select file command before scanning purse files. These credit card with Nets Flashpay can be recognized successfully as Nets card.
+
+I also test this patch with regular EZlink card, it works well too. More tests on more types of CEPAS card are appreciated. 
+"
+codebutler/farebot,closed,San Leandro Bart ,[],"Showing on app as Coliseum/Oak. 
+"
+codebutler/farebot,closed,"Trip list recycles table rows improperly, causing values to move around",[],"Right now, when I scan my Clipper card and go to the Trips tab, I see several rows that say ""Muni"" and ""Fare"". (It literally shows the word ""Fare""; there is no actual fare amount for these rides because they are covered by a monthly pass.)
+
+If I scroll down a bit, I can find some BART rides which say ""BART"", the start/end locations, and ""$8.65"".
+
+But then, if I scroll back **up**, two of the earlier Muni rows that get revealed show ""$8.65"" where they said ""Fare"" previously. (These are obviously not real Muni fare amounts). If I scroll up and down the list some more, the ""$8.65"" strings move around haphazardly.
+
+This is almost certainly related to recycling table row views while scrolling. My guess is that trips with no fare (like my monthly-pass-covered Muni trips) end up not updating whatever value is present in the recycled row view, and they _should_ always be setting it to some value (an empty string, ""Fare"", ""No Fare"", ""$0.00"", etc.).
+"
+codebutler/farebot,open,Support for paper SFMTA/Muni paper Clipper cards.,[],"![screenshot_2015-11-12-09-42-31](https://cloud.githubusercontent.com/assets/658826/11126076/18eb2f58-8922-11e5-9011-8b89cd32cb4d.png)
+The paper Clipper cards provided by SFMTA are not supported. 
+
+How can I gather more info to see what might be useful as a first stab of displayable content? 
+"
+codebutler/farebot,closed,"Merge Farebot M into upstream (Opal, Manly Fast Ferry)",[],"This fork contains the following changes:
+1. [Crashalytics is deprecated](https://www.crashlytics.com/blog/introducing-fabric/), replace with Fabric. Please check that your API key still works.
+2. Detects fully encrypted Mifare Classic (MFC) cards and displays a special warning for them.
+3. Adds licensing screen (upstream was not compliant with licensing requirements)
+4. Adds support for Opal (Sydney, AU) (fixes #105)
+5. Adds support for Manly Fast Ferry Smartcard (Sydney, AU) (requires MFC support + keys)
+6. Adds detection for Mifare Classic support on device
+7. Adds about screen (which shows NFC debug info and version)
+8. Recompresses graphical resources to save space
+9. Tags releases with git metadata
+10. Localises date and time values according to device preferences, rather than hard coding (in a few different ways in different places)
+11. Allows MFC keys to be specified in any order in farebotkeys files, and only once for cards that use the same key for multiple sectors (eg: Manly)
+12. Signing configuration no longer hard coded into Manifest
+13. Supported card lists are now alphabetical, and show when the card is not supported on the device
+
+I haven't completely gone through the other transit providers to check the copyright lists, as copyright assignment state is unknown.
+
+This fork works for me on Manly, Opal and Suica cards.
+"
+codebutler/farebot,open,Oslo travel cards (Ruter),[],"These cards are  Mifare DESFire EV1 MF3ICD41's
+How do you find out which keys to use?
+"
+codebutler/farebot,closed,Opening APK from Google Inbox mysteriously triggers Farebot intent,[],"Reproduce:
+0) Farebot is installed
+1) Receive an APK in an email attachment
+2) In Google Inbox, tap attachment to download/open
+
+Weirdness: Farebot opens up the ""Add a Card"" dialog, and triggers the OS to request enabling NFC
+
+This is especially strange because the gmail app will download/install APKs normally, while Inbox does not. It does not appear to be a Default App issue, either, as opening from Downloads or a file browser will install the APK per usual.
+
+Attached: 1 screen from Inbox, and 2 resulting screens from Farebot
+![screenshot_2015-07-24-17-00-28](https://cloud.githubusercontent.com/assets/7496900/8887018/df97bb54-3228-11e5-9a8c-9d45968ec910.png)
+![screenshot_2015-07-24-17-00-36](https://cloud.githubusercontent.com/assets/7496900/8887019/df98ac3a-3228-11e5-8f78-9656df996d91.png)
+![screenshot_2015-07-24-17-00-41](https://cloud.githubusercontent.com/assets/7496900/8887017/df96f034-3228-11e5-86db-b75b1908ba88.png)
+"
+codebutler/farebot,closed,"Support for Opal (Sydney, Australia), fixes #105.",[],"This adds support for Opal (Sydney, Australia).  All of the fields are read, and their travel states.
+
+This pull request depends on #98, so merging this pull request will also merge #98.
+
+Documentation of the format has been provided in [the project wiki](https://github.com/codebutler/farebot/wiki/Opal).
+
+I've added localization support to the HeaderItem and ListItem types in the process.
+
+This pull request will fix #105.
+
+I pushed a beta to the Play Store.  You need to [join my beta group](https://groups.google.com/forum/#!forum/farebot-m-beta), then after a few minutes [you will have access to the beta via this link](https://play.google.com/apps/testing/au.id.micolous.farebot).
+"
+codebutler/farebot,open,Provide better handling and central data collection for unknown card types,[],"Presently when a card does not have a full parser suite, a user gets a bunch of gory technical details, and it looks like an error.  It would be good to be able to have this be more meaningful, by:
+- Providing an interface for end users to supply their card data, and information about what they see on the card, in order to collect in-the-wild scans.
+- Be able to throw an error when a card has no freely readable sectors, that their card will likely never be supported.
+- Have some stubs for some different public transit networks which metadata is known (ie: application IDs) but more data is required in order to have it be meaningful.
+
+This would:
+- Allow those who are in a position to supply the project with data an outlet for it.
+- Reduce the number of complaints from end-users who do not understand NFC with infeasible requests.
+"
+codebutler/farebot,closed,"Australian Transport Card - Opal (Sydney, NSW)",[],"I'd really love to see support for the Opal card (www.opal.com.au). Scanning a card shows that there is an open area and I've managed to find out that this contains the balance.
+
+With that data being unencrypted do we stand a better chance of trying to integrate this? I'm more than happy to dump some data along with what I know my balance of the card is.
+"
+codebutler/farebot,closed,"Support for Compass Card (Metro Vancouver, British Columbia, Canada)",[],"Compass cards are finally getting into their stable beta phase.
+
+![img_20150519_102242](https://cloud.githubusercontent.com/assets/1839738/7709339/3ae19d14-fe11-11e4-906f-dc358dfe03a0.jpg)
+
+I've scanned the card and got the following:
+
+``` xml
+<?xml version=""1.0"" encoding=""UTF-8""?>
+<card type=""2"" id=""0123456789abcd"" scanned_at=""1432055844418"">
+  <applications>
+    <application id=""65536"">
+      <files>
+        <file id=""0"">
+          <error>java.lang.Exception: Unknown status code: ae</error>
+        </file>
+      </files>
+    </application>
+  </applications>
+  <manufacturing-data>
+    <hw-vendor-id>4</hw-vendor-id>
+    <hw-type>1</hw-type>
+    <hw-sub-type>1</hw-sub-type>
+    <hw-major-version>1</hw-major-version>
+    <hw-minor-version>0</hw-minor-version>
+    <hw-storage-size>24</hw-storage-size>
+    <hw-protocol>5</hw-protocol>
+    <sw-vendor-id>4</sw-vendor-id>
+    <sw-type>1</sw-type>
+    <sw-sub-type>1</sw-sub-type>
+    <sw-major-version>1</sw-major-version>
+    <sw-minor-version>4</sw-minor-version>
+    <sw-storage-size>24</sw-storage-size>
+    <sw-protocol>5</sw-protocol>
+    <uid>-1234567890</uid>
+    <batch-no>123456789</batch-no>
+    <week-prod>8</week-prod>
+    <year-prod>18</year-prod>
+  </manufacturing-data>
+</card>
+```
+
+(anonymized some numeric fields that I imagine are personally identifying)
+
+The card is currently empty (I just got it), I loaded a product on it via their website (I'm a student and eligible for a U-Pass, a monthly pass for post-secondary students) which will be usable starting June 1st. My guess is that the product will be loaded onto the card itself once I tap it in the bus. After I do that I'll post an updated exported XML.
+"
+codebutler/farebot,open,Support for IstanbulKart,[],"I'm new to this NFC programming, but I'm interested in helping get support for IstanbulKart (aka ""Akbil"") for the Istanbul, Turkey transit system.
+
+I've scanned one of my cards and have lots of information, but some that I think is relevant:
+
+IC Type: MIFARE DESFire EV1 (MF3ICD41)
+
+Vendor ID: NXP
+Protocol: ISO/IEC 14443-2 and -3
+
+Taginfo provides a lot more information, but I'm not sure what's useful. I'm able to collect more info, but I need some guidance on what is useful and what to ignore. Also, I understand we need some info before/after a swipe, so I can do that as well.
+"
+codebutler/farebot,closed,Add option to disable background discovery,[],"If an NFC card is stored next to the phone, then any time the phone is turned on this app is opened (even if, say, the phone was unlocked for an email notification). This is an annoyance when scanning a card isn't the intent. Please add an option to ignore tag discoveries while the app isn't open.
+"
+codebutler/farebot,closed,Scanning clipper card on Nexus 5 yields error when,[],"1. Close app
+2. Scan clipper card
+3. App opens with error: `length=1; index=-1;`
+
+This happens intermittently
+"
+codebutler/farebot,open,Pasmo is treated like Suica?,[],"The Pasmo card is not handled correctly, but is treated like a Suica card. Most importantly, the Suica card only holds 20 transactions in the history, while Pasmo has 100.
+Secondary problem is that I can't figure out how to convert from XML to something more usable. Only the one export option?
+"
+codebutler/farebot,closed,Error:Could not find runProguard on com.android.build.gradle.internal.api.ReadOnlyBuildType@5ef8949e,[],"Cant solve this error when i imported the project in Android studio
+"
+codebutler/farebot,closed,Update for AStudio 1.+,[],"[Migrating to AStudio 1.+](http://tools.android.com/tech-docs/new-build-system/migrating-to-1-0-0) requires upgrade to gradle plugin and wrapper version.
+Crashlytics also needs to be upgraded correspondingly, otherwise it will complain about `runProguard` which is already depcrecated.
+"
+codebutler/farebot,closed,Exception while reading card,[],"I'm getting an error ""Attempt to invoke virtual method 'short android.os.Bundle.getShort(java.lang.String)' on a null object reference"" while reading a card. The same card and phone used to work fine, but this error started to appear after the phone was upgraded to Android Lollipop. I've tried both the version in Google Play and have build the latest FareBot from git, but both have the same problem. I'm using a dutch OV-Chipkaart and HTC One M8, but I think the problem is related to Lollipop as this used to work before. Any ideas?
+
+Stacktrace:
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot E/com.codebutler.farebot.activity.ReadingTagActivity﹕ Attempt to invoke virtual method 'short android.os.Bundle.getShort(java.lang.String)' on a null object reference
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ java.lang.NullPointerException: Attempt to invoke virtual method 'short android.os.Bundle.getShort(java.lang.String)' on a null object reference
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at android.nfc.tech.NfcA.<init>(NfcA.java:92)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at android.nfc.tech.NfcA.get(NfcA.java:78)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at android.nfc.tech.MifareClassic.<init>(MifareClassic.java:166)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at android.nfc.tech.MifareClassic.get(MifareClassic.java:156)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at com.codebutler.farebot.card.classic.ClassicCard.dumpTag(ClassicCard.java:70)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at com.codebutler.farebot.card.Card.dumpTag(Card.java:66)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at com.codebutler.farebot.activity.ReadingTagActivity$1.doInBackground(ReadingTagActivity.java:83)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at com.codebutler.farebot.activity.ReadingTagActivity$1.doInBackground(ReadingTagActivity.java:78)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at android.os.AsyncTask$2.call(AsyncTask.java:288)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:231)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)
+02-12 13:38:16.099  18556-18556/com.codebutler.farebot W/System.err﹕ at java.lang.Thread.run(Thread.java:818)
+"
+codebutler/farebot,closed,Add name and authority code for Everett Transit. (ORCA),[],"I noticed Everett Transit trips kept appearing as unknown authority. I went ahead and added the correct definition for Everett Transit. :)
+
+Hope everything looks okay! I did test it and it works correctly on my card with ET trips on it.
+"
+codebutler/farebot,closed,Potential library suggestion,[],"Just a suggestion, I would like to see a full NFC library with the cards supported in this project for usage elsewhere.
+
+It would enable me to add nfc.Clipper.Routes (etc) to another project without needing to find and copy the classes/methods over manually.
+"
+codebutler/farebot,closed,Clipper Card refill appears as Unknown (0x261),[],"These are most likely to be the 8-ride passes I use. Having the ability to see how many are left would also be valuable in my opinion.
+"
+codebutler/farebot,closed,[clipper] Add the new Oakland Airport transfer station.,[],"This pull request removes the OAK designators from Coliseum, as it seems possible to tag in at Coliseum and out at the ""airport"", a mere hundred feet away.
+"
+codebutler/farebot,closed,Unknown (0x9) for Route 200 Bus (vallejo <> sf ferry backup bus route),[],"Here is the website for the route (scroll down past the ferry part to the bus section):
+
+http://sanfranciscobayferry.com/route/vallejo/sffb
+
+Entry from Vallejo show up as Unknown (0x9)
+"
+codebutler/farebot,closed,Unknown (0x1b) for San Francisco Bay Ferry Vallejo route,[],"Here is the website for the route:
+
+http://sanfranciscobayferry.com/route/vallejo/sffb
+
+Entry and exit from Vallejo or SF all show up as Unknown (0x1b)
+"
+codebutler/farebot,closed,Unknown Card for CEPAS card,[],"Having unknown card error with a number of CEPAS card. Attached is the export from the scan.
+
+<?xml version=""1.0"" encoding=""UTF-8""?><card type=""3"" id=""081a6737"" scanned_at=""1416371365855"">
+ <purses>
+   <purse id=""0"" valid=""false"" error=""File 0 was an invalid file.""/>
+   <purse id=""1"" valid=""false"" error=""File 1 was an invalid file.""/>
+   <purse id=""2"" valid=""false"" error=""File 2 was an invalid file.""/>
+   <purse id=""3"" valid=""false"" error=""File 3 was an invalid file.""/>
+   <purse id=""4"" valid=""false"" error=""File 4 was an invalid file.""/>
+   <purse id=""5"" valid=""false"" error=""File 5 was an invalid file.""/>
+   <purse id=""6"" valid=""false"" error=""File 6 was an invalid file.""/>
+   <purse id=""7"" valid=""false"" error=""File 7 was an invalid file.""/>
+   <purse id=""8"" valid=""false"" error=""File 8 was an invalid file.""/>
+   <purse id=""9"" valid=""false"" error=""File 9 was an invalid file.""/>
+   <purse id=""10"" valid=""false"" error=""File 10 was an invalid file.""/>
+   <purse id=""11"" valid=""false"" error=""File 11 was an invalid file.""/>
+   <purse id=""12"" valid=""false"" error=""File 12 was an invalid file.""/>
+   <purse id=""13"" valid=""false"" error=""File 13 was an invalid file.""/>
+   <purse id=""14"" valid=""false"" error=""File 14 was an invalid file.""/>
+   <purse id=""15"" valid=""false"" error=""File 15 was an invalid file.""/>
+ </purses>
+ <histories>
+   <history id=""0"" valid=""false"" error=""""/>
+   <history id=""1"" valid=""false"" error=""""/>
+   <history id=""2"" valid=""false"" error=""""/>
+   <history id=""3"" valid=""false"" error=""""/>
+   <history id=""4"" valid=""false"" error=""""/>
+   <history id=""5"" valid=""false"" error=""""/>
+   <history id=""6"" valid=""false"" error=""""/>
+   <history id=""7"" valid=""false"" error=""""/>
+   <history id=""8"" valid=""false"" error=""""/>
+   <history id=""9"" valid=""false"" error=""""/>
+   <history id=""10"" valid=""false"" error=""""/>
+   <history id=""11"" valid=""false"" error=""""/>
+   <history id=""12"" valid=""false"" error=""""/>
+   <history id=""13"" valid=""false"" error=""""/>
+   <history id=""14"" valid=""false"" error=""""/>
+   <history id=""15"" valid=""false"" error=""""/>
+ </histories>
+</card>
+"
+codebutler/farebot,open,Support for OpenCard (Prague),[],"Hello, What else can I help?
+
+*\* TagInfo scan (version 3.0)  **
+
+-- INFO ------------------------------
+# IC manufacturer:
+
+NXP Semiconductors
+# IC type:
+
+MIFARE DESFire (MF3ICD40)
+# DESFire Applications:
+
+General issuer info
+Transportation ticket #0
+- Haguess s.r.o.
+
+-- NDEF ------------------------------
+# NFC data set storage not present:
+
+Maximum NDEF storage size after format: 3806 bytes
+
+-- EXTRA ------------------------------
+# Memory size:
+
+4 kB
+# IC detailed information:
+
+Capacitance: 17 pF
+# Version information:
+
+Vendor ID: NXP
+Hardware info:
+- Type/subtype: 0x01/0x01
+- Version: 0.2
+- Storage size: 4096 bytes
+- Protocol: ISO/IEC 14443-2 and -3
+  Software info:
+- Type/subtype: 0x01/0x01
+- Version: 0.6
+- Storage size: 4096 bytes
+- Protocol: ISO/IEC 14443-3 and -4
+  Batch no: 0xBA15198E70
+  Production date: week 51, 2010
+
+-- TECH ------------------------------
+# Technologies supported:
+
+ISO/IEC 7816-4 compatible
+Native DESFire APDU framing
+ISO/IEC 14443-4 (Type A) compatible
+ISO/IEC 14443-3 (Type A) compatible
+ISO/IEC 14443-2 (Type A) compatible
+# Android technology information:
+
+Tag description:
+- TAG: Tech [android.nfc.tech.IsoDep, android.nfc.tech.NfcA, android.nfc.tech.NdefFormatable]
+  android.nfc.tech.NdefFormatable
+  android.nfc.tech.IsoDep
+- Maximum transceive length: 65546 bytes
+- Default maximum transceive time-out: 5000 ms
+- Extended length APDUs supported
+  android.nfc.tech.NfcA
+- Maximum transceive length: 253 bytes
+- Default maximum transceive time-out: 5000 ms
+# Detailed protocol information:
+
+ID: 04:1F:2A:3A:C4:20:80
+ATQA: 0x4403
+SAK: 0x20
+ATS: 0x067577810280
+- Max. accepted frame size: 64 bytes (FSCI: 5)
+- Supported receive rates:
+  - 106, 212, 424, 848 kbit/s (DR: 1, 2, 4, 8)
+- Supported send rates:
+  - 106, 212, 424, 848 kbit/s (DS: 1, 2, 4, 8)
+- Different send and receive rates supported
+- SFGT: 604.1 us  (SFGI: 1)
+- FWT: 77.33 ms  (FWI: 8)
+- NAD not supported
+- CID supported
+- Historical bytes: 0x80 |.|
+# Memory content:
+
+PICC level (Application ID 0x000000)
+- PICC key configuration:
+  - (3)DES key
+  - PICC key changeable
+  - PICC key required for:
+    ~ directory list access: no
+    ~ create/delete applications: yes
+  - Configuration changeable
+  - PICC key version: 0
+
+Application ID 0xFFFFFF (General issuer info)
+- Key configuration unavailable (Authentication Error)
+  - No file information (Authentication Error)
+
+Application ID 0xF21150
+- Key configuration:
+  - 5 (3)DES keys
+  - Master key changeable
+  - Master key required for:
+    ~ directory list access: no
+    ~ create/delete files: no
+  - Configuration changeable
+  - Master key required for changing a key
+- 1 file present
+  - File ID 0x00: Backup data, 480 bytes
+    ~ Communication: encrypted
+    ~ Read key: key #2
+    ~ Write key: master key
+    ~ Read/Write key: key #1
+    ~ Change key: master key
+    ~ (No access)
+
+---
+"
+codebutler/farebot,open,HSL card specifications available,[],"Hoping it might be useful for developers, HSL has just published the specifications and example code to access its travel cards. Feedback welcome! http://dev.hsl.fi/#travel-card
+"
+codebutler/farebot,closed,Error when trying to read clipper card,[],"Seems like an issue with the new simple-xml serialization
+![screenshot_2014-10-05-17-46-27](https://cloud.githubusercontent.com/assets/291148/4520557/e34ac91a-4cf2-11e4-94f2-d40f4bcda8a8.png)
+"
+codebutler/farebot,closed,Cleanup build.gradle,[],"- Update to latest tools version (uses Gradle 2.1 with incremental java
+  compilation support)
+- Remove ABS from libs
+- Remove unneeded debug buildType config
+"
+codebutler/farebot,open,Clipper card monthly pass info for Caltrain,[],
+codebutler/farebot,closed,Updating build.gradle and dependencies.,[],
+codebutler/farebot,closed,New phone breaks farebot,[],"I just bought a new android phone with NFC support, but farebot breaks on an exception 'length=39; index=39', it also say the NFC tag is empty, but the message is displayed only shortly.
+
+E/com.codebutler.farebot.activities.ReadingTagActivity( 8041): length=39; index=39
+W/System.err( 8041): java.lang.ArrayIndexOutOfBoundsException: length=39; index=39
+W/System.err( 8041):    at com.codebutler.farebot.keys.ClassicCardKeys.keyForSector(ClassicCardKeys.java:65)
+W/System.err( 8041):    at com.codebutler.farebot.card.classic.ClassicCard.dumpTag(ClassicCard.java:78)
+W/System.err( 8041):    at com.codebutler.farebot.card.Card.dumpTag(Card.java:65)
+W/System.err( 8041):    at com.codebutler.farebot.activities.ReadingTagActivity$1.doInBackground(ReadingTagActivity.java:83)
+W/System.err( 8041):    at com.codebutler.farebot.activities.ReadingTagActivity$1.doInBackground(ReadingTagActivity.java:77)
+W/System.err( 8041):    at android.os.AsyncTask$2.call(AsyncTask.java:287)
+W/System.err( 8041):    at java.util.concurrent.FutureTask.run(FutureTask.java:234)
+W/System.err( 8041):    at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:230)
+W/System.err( 8041):    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1080)
+W/System.err( 8041):    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:573)
+W/System.err( 8041):    at java.lang.Thread.run(Thread.java:841)
+
+I have complete logcat of both the farebot and nfc process but could find a way to attach the file?
+"
+codebutler/farebot,closed,Add support for San Francisco Bay Ferry (Clipper),[],"This PR also includes PR #59 by ingenium13
+"
+codebutler/farebot,closed,Added MacArthur station for BART (0x0e),[],
+codebutler/farebot,closed,MacArthur Station BART,[],"MacArthur station in Oakland is displaying as Station 0xe.
+"
+codebutler/farebot,closed,Update gradle build config to use Gradle 0.9,[],"- Use Gradle 0.9
+- Add Gradle wrapper files
+- Increase build tools version to 19.0.0
+- Update .gitignore to ignore .project file
+"
+codebutler/farebot,closed,please add clipper card suppport for parking,[],"Almost as important as trip info is parking info. I use my clipper card to pay for daily parking and want to see if it works or not. Right now I need to log in to do so. Would pay for this
+"
+codebutler/farebot,open,add support for autoload for clipper card,[],"Currently autoload doesnt seem supported. Can you add support? Btw I would happily pay for additional features.
+"
+codebutler/farebot,open,Malaysia'ss Touch N' Go,[],"Hi
+
+Any plan to include the above card .They should be using MiFare Plus.
+
+Thanks
+"
+codebutler/farebot,closed,Add support for Rav-Kav (רב קו) Israel's public transportation card,[],"I'd love to help out with this if I get a  quick rundown (I'm a fast learner...) of what is required. 
+"
+codebutler/farebot,closed,Show better mifare error messages,[],"For examples 0xAE means unauthorized (keys required), a lot of people are understandably confused by this.
+"
+codebutler/farebot,closed,Add preference to not launch app when card detected,[],"I really like the app, but I'd like a way to only scan a card when the app is already open; I have a [CardNinja wallet](http://www4.pcmag.com/media/images/373914-cardninja.jpg?thumb=y), so my Clipper card is stuck to the back of my phone, and every time I unlock the phone it launches the app. It'd be nice to have a way to only scan the card when the app is open.
+
+I'm actually happy to implement this, but I wanted to confirm that you'd be okay with pulling it into mainline if I did before I start. Thanks!
+"
+codebutler/farebot,open,Support for E-Go ( Luxemburg public transportation ) ,[],"**Tag Type :** Generic NFC FOrum Type 2 ( ISO/IEC 14443 Type A)
+**SAK :** 136 ( Hex 88 )
+**ATQA :** 0004
+**Tag Size :** 128 byte
+**Manufacturer :** Infineon Technologies AG
+**Page Size :** 4
+**No of Pages :** 32
+Got an error reading Data 0 with NFC TAgExplorer
+"
+codebutler/farebot,closed,Add entries for the MacArthur and Fruitvale BART stations.,[],"I found the codes for a couple more BART stations.
+"
+codebutler/farebot,closed,Outdated documentation OV-Chipkaart,[],"I really love the Farebot app.
+I did magaged it to set it up one time, but that was with a prev version.
+How do you import keys now? Because when I open a .farebotkeys but it looks like the app does not import the keys. I checked the file README-OVChipkaart.md but when I follow that steps, the keys still would not import :(
+
+Could you anybody please update the documentation / instruction how to import the keys?
+"
+codebutler/farebot,closed,Nexus 5 Ov-Chipkaart,[],"Hello all,
+
+When i scan my OV-Chipkaart it says:
+
+Unsupported Tag
+Indentifier: 7157d31b
+
+Technologies:
+NfcA
+
+Maybe anyone can fix this?
+
+Thanks,
+Jelmer
+"
+codebutler/farebot,open,Support for Boston MBTA Charlie Cards,[],"I'd really love to see support for these. How can I help gather info to make this happen?
+"
+codebutler/farebot,closed,tag lost error on Singapore ezlink cards,[],"Using galaxy note 3(snapdragon 800 version)
+same card can be read from my old galaxy s3 though
+"
+codebutler/farebot,closed,Add West Dublin/Pleasanton Station to ClipperTransitData,[],"Verified the coordinates on Google Maps:
+https://www.google.com/maps?q=37.699764%2C+-121.928118
+"
+codebutler/farebot,closed,"Clipper card refill appears as ""Unknown (0x248)""",[],"I got a Clipper card and put credit on it at the information desk at San Francisco airport. This refill appears as ""Unknown (0x248)"" in Farebot. On the Clipper website it appears as ""Cash payment at a TOT, TRU or AVM"".
+"
+codebutler/farebot,open,"Support For: Pittsburgh's ""PortAuthority Connectix"" (Mifare Ultralight)",[],"Instructions:
+
+1)   Install ""NFC TagInfo by NXP"" from the play store @
+https://play.google.com/store/apps/details?id=com.nxp.taginfolite&hl=en
+2) Start app, scan your transit card and go to the ""TECH"" tab
+3) Share the raw data dump via email or similar and paste here in this thread
+4) (optional) Include additional information such as type of card (prepaid amount OR ""Ten Trip Ticket"") with notes on current balance, info on last trip (fare, location, mode), and any other relevant information
+"
+codebutler/farebot,open,Support for NY/NJ PATH SmartLink Card,[],"I'm happy to help out reverse engineering this where necessary. Here's an initial dump of data from the card (via the NFC TagInfo app).
+
+```
+<Value name=""rfTechnology"" description=""RF technology"">Type A (ISO/IEC 14443 Type A)</Value>
+<Value name=""tagType"" description=""Tag type"">ISO/IEC 14443-4 Smart Card,
+Mifare DESFire (MF3ICD40)</Value>
+<Value name=""manufacturer"" description=""Manufacturer"">NXP Semiconductors (Germany)</Value>
+<Value name=""atqa"" description=""ATQA"">0344</Value>
+<Value name=""sak"" description=""SAK"">20</Value>
+<Value name=""historicalBytes"" description=""Historical bytes"">80</Value>
+
+Memory Tag: Mifare DESFire (MF3ICD40)
+<Value name=""batchNumber"" description=""Batch number"">BA24139930</Value>
+<Value name=""productionDate"" description=""Production date"">04/2011</Value>
+<Value name=""hardwareVendor"" description=""Hardware vendor"">NXP Semiconductors (Germany)</Value>
+<Value name=""hardwareVersion"" description=""Hardware version"">0.2</Value>
+<Value name=""hardwareType"" description=""Hardware type"">0x0101</Value>
+<Value name=""hardwareCommProtocol"" description=""Hardware communication protocol"">0x05</Value>
+<Value name=""hardwareMemorySize"" description=""Hardware memory size"">4096 Byte</Value>
+<Value name=""softwareVendor"" description=""Software vendor"">NXP Semiconductors (Germany)</Value>
+<Value name=""softwareVersion"" description=""Software version"">0.6</Value>
+<Value name=""softwareType"" description=""Software type"">0x0101</Value>
+<Value name=""softwareCommProtocol"" description=""Software communication protocol"">0x05</Value>
+<Value name=""softwareMemorySize"" description=""Software memory size"">4096 Byte</Value>
+```
+"
+codebutler/farebot,open,Support for Thailand's MRT card,[],"*\* TagInfo scan (version 2.00) 2013-09-19 14:27:09 **
+
+-- INFO ------------------------------
+# IC manufacturer:
+
+Unknown manufacturer
+# IC type:
+
+FeliCa
+
+-- NDEF ------------------------------
+# No NFC data set storage:
+
+-- EXTRA ------------------------------
+
+-- TECH ------------------------------
+# Technologies supported:
+
+JIS X 6319-4 compatible
+# Android technology information:
+
+Tag description:
+- TAG: Tech [android.nfc.tech.NfcF]
+  android.nfc.tech.NfcF
+- Maximum transceive length: 252 bytes
+- Default maximum transceive time-out: 255 ms
+  MIFARE Classic support present in Android
+# Detailed protocol information:
+
+ID: 01:01:06:01:5A:08:73:14
+PMm: 0x03004B024F498A8A
+- IC code: 0x0300
+  - ROM type: 0x03
+  - IC type: 0x00
+- Max. command response times:
+  - Req. Service: 4.83 + n*2.42 ms
+  - Req. Response: 0.91 ms
+  - Authenticate: 9.66 + n*2.42 ms
+  - Read/Check: 2.42 + n*2.42 ms
+  - Write/Update: 14.50 + n*9.66 ms
+  - Issuance command: 14.50 ms
+    ('n': no. of blocks/services)
+
+Primary System Code: 0x812B
+No Advanced Protocol Features supported
+- Supported communication rate: 212 kbit/s
+
+---
+"
+codebutler/farebot,closed,Add support for Kopitiam card,[],"Kopitiam, a foodcourt in Singapore, offers a MiFare Classic card used to pay for meals with discounts. The balance stored in it appears to be in Sector 2. In the NXP TagInfo app:
+
+```
+Sector 2 (0x02)
+[08] rwi  00 00 39 97 AE 00 00 21 78 59 00 00 00 00 00 20 |..9....!xY..... |
+[09] rwi  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 |................|
+[0A] rwi  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 |................|
+[0B] wxx  A0:A1:A2:A3:A4:A5 FF:07:80 69 B0:B1:B2:B3:B4:B5
+          MAD access key                (unknown key) (readable)
+```
+
+where ""39 97"" is the card's balance ($39.97), and ""21 78"" is the amount spent ($21.78)
+
+Maybe support could be added in farebot?
+"
+codebutler/farebot,open,Support for Metrolinx PRESTO Card,[],"I was wondering what the procedure is to either a request a certain transit card to be supported, or to help with the implementation of a new transit card.
+
+The Metrolinx PretoCard is used throughout most the the GTA(Greater Toronto Area) and by adding it Farebot would gain a mountain of new users from this area as the use of the cards is on the rise and the number of users with NFC enabled phones is becoming high in the area.
+
+As I said I'd be willing to help implement and roll out this support if the standard procedures are outlined.
+"
+codebutler/farebot,closed,Added and corrected Clipper stations,[],"The station codes for West Oakland and MacArthur BART stations weren't present. Also, the code for the Ashby Station was incorrectly reported as Pittsburgh/Bay Pt.
+"
+codebutler/farebot,closed,Add Walgreens agency for clipper,[],"Walgreens sells and allows clipper card topups.  I don't think this agency will ever appear as a trip, but it does show up under refills.
+"
+codebutler/farebot,closed,Add Sounder train ORCA transit data.,[],"When scanning an ORCA card, I noticed the Sounder train would show up as a Sound Transit express bus and would not show the appropriate start and end stations along with the final fare price after tapping out. This patch adds support for the Sounder train with incomplete station data. I am only certain that `Coach #3` maps to King Street Station and `Coach #5` maps to Kent Station.
+"
+codebutler/farebot,closed,Begin ITSO card support,[],"[ITSO](http://itso.org.uk) is the UK national standard for contactless travel.
+
+So far, I have collected 23 routes from 3 companies in Oxford. There are probably around 100 companies and thousands of routes on the whole system. I've only supported MiFare DESFire cards, as that is all I have access to but other card types are supported by the system.
+
+I'm putting this PR up so that people can comment on my code - I'm trying to learn native Android development, and am not really sure what I am doing. Once the code is tidy, it may be good to get it merged and we can start crowdsourcing all the routes and companies, but it's not ready yet.
+
+Currently, my card displays nothing in the balance tab (my own card doesn't have a balance, it has unlimited travel up to an expiry date, but N trip cards are available for some routes) and the last 2 trips in the trips tab as that seems to be all that is stored. For some reason, the times of the trips are not showing, even though, as far as I know I am decoding and passing them as part of the timestamp.
+"
+codebutler/farebot,closed,Compilation / building instructions,[],"I find that when I have enough spare time to look at this, I waste all of it trying to get the app to load into eclipse and successfully compile, then I don't have time to actually fix anything.
+
+The README.md file should have some kind of step by step guide on what has to be done, starting with a new install of eclipse with the android tools. The first step would (I assume) be to run:
+
+```
+git checkout git@github.com:codebutler/farebot.git
+```
+
+but I have no idea what to do next - maybe install graddle or something?
+"
+codebutler/farebot,open,Group previous scans by card,[],"Rather than treating each scan as a new card.
+"
+codebutler/farebot,closed,OV-chipkaart key not being read,[],"Farebot doesn't seem to read the OV-chipkaart keys even though ID's match.
+
+Using HTC One 4.2.2
+
+Steps:
+1. Using mfocGUI v29. Make dump of A Keys only, set option 'read everything' on.
+2. Rename and email dump
+3. Open attachment, shows overlay: Tap a card
+4. Hold card
+5. Shows ID, miFare classic, select Key A
+6. Shows key in keylist with same ID as my card
+
+But when I scan my card it says unauthorized and that I need to load keys.
+
+This might be the culprit, I'm not sure cause this is 4 months old.
+https://github.com/codebutler/farebot/issues/41
+
+Any help would be appreciated.
+"
+codebutler/farebot,closed,"Error on:  android:theme=""@style/Theme.Sherlock""",[],"```
+    android:theme=""@style/Theme.Sherlock""
+```
+
+Just got the latest code and put it in Android Studio.  It complains that Sherlock is unknown.
+"
+codebutler/farebot,open,NETS FlashPay topup from ATM appears as SMRT trip,[],"Topping up the NETS FlashPay card from an ATM results in an entry in FareBot recognized as ""SMRT (Unknown Route)"" and the name DBSCATM (for DBS, a bank)
+"
+codebutler/farebot,closed,"Support for the Translink Go Card (Brisbane, Australia)",[],"Would be fantastic if support could be added for Translink's Go card.
+"
+codebutler/farebot,closed,Edy card support,[],"Integrated changes from previous Edy support branch
+"
+codebutler/farebot,closed,"add 12th Street Station, Oakland",[],"this patch adds station code `0x0c` as [12th Street Oakland City Center](http://bart.gov/stations/12th/index.aspx) station to the BART/Clipper Card table. The data should be good; I pulled the station ID from my phone and the lat/long from [OpenStreetMap](http://www.openstreetmap.org/browse/node/2150077203).
+
+I did notice, however, that it seems reasonable to guess most of the missing BART station IDs: `0x0b` is probably West Oakland, the only station between Embarcadero (`0x0a`) and 12th Street, and so on. If you would accept such a patch based on inference rather than real-world data collection, I'd be happy to prepare one.
+
+Thanks!
+"
+codebutler/farebot,open,Bogota - Transmilenio,[],"I am interested in getting the information off of the mifare cards that We use here in Bogota, Colombia. Right now there are a lot of news about this right now because the municipality in the process of changing the technology.
+
+What is the way to add support to a card into farebot? 
+"
+codebutler/farebot,open,Support for Rav Kav (Israel),[],"There is already a separate app for that, perhaps the developer would be willing to share his findings :) (wishful thinking)
+
+https://play.google.com/store/apps/details?id=com.mosko.ravkav
+"
+codebutler/farebot,closed,App randomly opens for any NFC capable card,[],"For example if put my credit card next to my phone, the app opens with a popup saying ""Invalid response""
+
+I think it would be better to ignore cards that aren't recognized instead of opening that dialog.
+
+(Ideally I would prefer to have an option to only scan for cards when the activity is visible)
+"
+codebutler/farebot,closed,Last OV-chipkaart trip event is rendered twice,[],"The last trip event (checkout) is rendered twice.
+![media-20130409](https://f.cloud.github.com/assets/1901782/356728/ca6eecce-a112-11e2-899e-f97df2e942d2.png)
+"
+codebutler/farebot,closed,Reverse sorting of trips,[],"It would be nice to have the most recent trips sorted on top.
+"
+codebutler/farebot,closed,Key import from Farebot,[],"The key import process in Farebot is quite awkward. You need to mail yoursefl a .farebotkeys file and hope the mailclient offers farebot as a handler (which the default imap client doesn't!). It would be nice to have a import button on the keys dialog that could be pointed to a keyfile location on the device, after which a recent existing scan could be mapped to this (without having to rescan the card). Using a recent ""raw"" scan is more intuitive than having to scan the card again.
+"
+codebutler/farebot,closed,Farebot incompatible with recent mfocGUI keyfiles,[],"Looking at the code in Farebot is seems farebot expects a concatenation of 40 6-byte keys in the .farebotkeys file but the last mfocGUI produces a file that contains 40 bytes indicating succes or failure per sector and after that 40 6-byte keys. This makes farebot incompatible with recent mfocGUI keyfiles.
+"
+codebutler/farebot,closed,Alternative keys import method,[],"The only way to import (OV-chipkaart) keys at this moment is by using the mfocGUI keys export file. This file is a binary concatenation of the 40 sector A-keys (it's a bit different, but that's discussed in another issue). The native linux mfoc does not generate such a file, but does display the found keys. Using a combination of output redirection and grep I could create a key-per-line ascii representation of my keys. It would be nice if farebot could read/import such a file as well.
+
+Example keyfile as ascii list:
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+b5ff67cba951
+42316190b265
+3f496ef58187
+31b52d9de071
+babbcfdb2dac
+5969b9f698fd
+81867b5c0a4c
+8e3feb74de95
+c6aa9e28afc7
+e0c68751bef0
+70405fb1ed94
+cd78af652596
+185ae4b09fd6
+d1aac695c8e3
+153cf12e4e83
+aa044ec52db7
+dfe99d49d21e
+eb822f33cddb
+9bf63230d1d6
+"
+codebutler/farebot,closed,BART trips showed on incorrect dates,[],"I took 4 trips on 2 separate days within a month. All 4 trips show up on the same date. This is always the later date. Attaching screenshot. Will try to attach the card data as well.
+
+![Screenshot_2013-03-18-17-18-16](https://f.cloud.github.com/assets/3904575/273666/d4daef0e-902e-11e2-947a-e11e56b8b601.png)
+"
+codebutler/farebot,open,TORONTO Presto Cards,[],"I am interested in getting the information off of the presto cards we have here in the GTA.
+
+I modified one of the other cards class and got the data from one of 2 application addresses with the default key, all zeros. I believe that this only stores the cards id number, just 32 bits long
+
+there is a second application with many more files but they come back null when accessed.  
+
+How do i read these files? do i need another key?
+"
+codebutler/farebot,open,"Support for Ruter/Flexus card Oslo, Norway",[],"Same as for RATB:
+The card is encrypted and no NFC readers seem to be able to ready anything useful from it. I can provide a raw export from Flexus if anyone wants to try and add support for this card.
+"
+codebutler/farebot,open,Support for RATB (Bucharest public transport) Mifare Classic 1K ,[],"The card is encrypted and no NFC readers seem to be able to ready anything useful from it. This [document](http://andreicostin.com/media/blogs/brain/RATB_Card_Security_Assessment_v0_1.pdf) might contain some useful information and I can provide a raw export from FareBot if anyone wants to try and add support for this card.
+"
+codebutler/farebot,closed,Negative credit fix.,[],
+codebutler/farebot,closed,Keyfiles,[],"Hello,
+
+In the last play store release importing keys for mifare classic 4k is quite difficult. I already had the keys on my sd-card and had to think of a work-around to open it. This was using a general available file explorer. Maybe a integrated filebrowser, or still support for key files on the sdcard would be great. Any thoughts?
+"
+codebutler/farebot,closed,Bilhete Único São Paulo / Brazil Support,[],"I've implemented initial support for Bilhete Único São Paulo / Brazil. Feel free to incorporate this patch.
+"
+codebutler/farebot,open,Clipper: Refill location info,[],"Refill: Unknown (0x1db)
+
+Cash payment at a TOT, TRU or AVM
+WALGREENS #6291
+
+I don't know if the cards treat each location as a different id number but there is the info just in case
+"
+codebutler/farebot,closed,Walnut Creek Station (BART),[],"As of yesterday 11/18/2012 Walnut Creek station is now reporting as Station 0x12
+"
+codebutler/farebot,closed,OV-chipkaart bugs,[],"Just did a few quick tests with the latest code and found some bugs.
+- The date displayed under Subscriptions is wrong. The code misses the conversion to the actual date. An example conversion method already exists in OVChipTransitData named convertDate.
+- When importing a key, on selecting 'KeyA', 'KeyB' keeps being selected.
+- Not really a bug but the Java implementation might be confusing. Negative credit shows up between parentheses, for example: (€1,18) instead of -€1,18 or € -1,18.
+- I haven't thoroughly tested this, but when testing dump BD7C7CA0_16 from Huuf's collection the output from Farebot differs from mfocGUI. The amounts are incorrect or missing or maybe even put in the wrong place, duplicates are shown ~~and the banned flag is ignored/not detected~~.
+- Farebot encounters an IOException (""transceive failed"") on sectors where reading is not permitted and stops reading all together. On an original card (or a copy with the same access bits) this happens on sectors 1 to 21. See [this wiki entry](http://ov-chipkaart.pc-active.nl/Sector_trailer) for more info on the access bits.
+
+I will do some more thorough testing when I have some time to spare.
+"
+codebutler/farebot,closed,Bart Station names for Clipper card,[],"Concord Station is shown as Station 0x14
+North Concord/Martinez is shown as Concord
+Walnut Creek Station is shown as Station 0x13
+"
+codebutler/farebot,closed,Clipper cards with Caltrain passes cause farebot to freeze,[],"If a clipper card with a caltrain pass on it is read into farebot the app will sit there with a spinning circle and will not read any other cards until app data is cleared. if you go back to the title screen and examine the scanned cards it will show the scanned card serial number but attempting to bring up it's info will cause the same spinning circle.
+"
+codebutler/farebot,closed,Build problem,[],"I'm trying to build this for F-droid FOSS repository which uses platform tools v14 and ant. I got the following error at e96622
+
+com.codebutler.farebot/res/drawable/list_selector_holo_dark.xml:17: error: No resource identifier found for attribute 'exitFadeDuration' in package 'android'
+"
+codebutler/farebot,closed,Clipper card stopped working,[],"On Galaxy Nexus. Stopped working around the time I upgraded to Jelly Bean, but I don't know exactly when so there may or may not be a relationship.
+
+It's the same problem someone else reported in the Play Store comments - it gets stuck on the Loading screen. If you wait a while then press ""Advanced Info"", Android will say the app has crashed
+
+Versions: Farebot 2.2.1, Android 4.1.1
+"
+codebutler/farebot,open,Marta Breeze card support,[],"I was interested in seeing Marta Breeze card (from Atlanta, Georgia) support in this app, which uses Mifare Classic. Could somebody integrate this feature into farebot?
+"
+codebutler/farebot,open,Read HVD balances from BART,[],"It would be awesome if Farebot could parse out the BART HVD purses stored on Clipper cards, and to identify transactions debiting from that purse separately in the UI.
+
+Currently HVD transactions and refills are just lumped in with cash, which makes it very difficult to figure out what the current state of all the 'buckets' on a card is.
+
+I can provide a dump with these transactions/this purse, just message me.
+"
+codebutler/farebot,closed,Read full transaction log from CEPAS cards & Updates for NETS FlashPay cards,[],"Read purse Lc=01 for transaction log with start offset of 0x00 only returns last 15 transactions. Added a second read starting with offset 0x0F to read the rest, combining the results.
+Also modified wrapMessage to not set parameters.length after Lc field. Looks like parameters were not actually used in the code so far, but adding the offset for the 2nd read in the data field won't work if this length field is added before it, and I can't find this length field in the CEPAS spec.
+
+Added POS transaction type/code & transaction codes for topup, creation for NETS Flashpay cards.
+Show 'NETS' instead of 'EZ-Link' for NETS Flashpay cards, based on issuer id (1st 3 digits of card's CAN/serial no)
+"
+codebutler/farebot,closed,OV-chipkaart (Mifare Classic 4k) support. ,[],
+codebutler/farebot,closed,Update src/com/codebutler/farebot/transit/ClipperTransitData.java,[],"Added Rockridge station.
+"
+codebutler/farebot,closed,Caltrain fare adjustments not reflected in transaction list,[],"Caltrain (and presumably some other transit systems that don't use fare gates) uses a mechanism of deducting the maximum possible fare at the tag-in and rebating the difference on the tag-out. Unfortunately, FareBot does not reflect the rebated fare in the transaction list. However, the Balance amount is consistent with actual value.
+
+FareBot view:
+http://i.imgur.com/6LpPw.png
+
+Clippercard.com history:
+Dual-tag entry transaction, maximum fare deducted (purse debit) 4th and King (Caltrain) Translink E-Cash 12.75 94.65
+Dual-tag exit transaction, fare adjustment (purse rebate) Redwood City Translink E-Cash 8.00 102.65
+"
+codebutler/farebot,closed,"Fix ORCA CSN parsing, some misc cleanup, and transaction type constants",[],"I haven't actually tried to compile this (not having the SDK on my system), but hopefully it should work. :P
+"
+codebutler/farebot,closed,Problem on Galaxy S3,[],"Hello
+Application not work on Galaxy S3: java.lang.NullPointerException
+How i can debug this application?
+"
+codebutler/farebot,closed,Updated ez-link transit data & fixed trip map view,[],"Added new stations that were recently opened, as well as updated their co-ords. Activated the map view for trips.
+"
+codebutler/farebot,closed,Support for HK Octopus Card,[],"Scanning with NFC TagInfo returns a balance for HK Octopus. It doesn't look like there is adequate memory on the card to store transaction history (I may be wrong), but a balance would definitely be a start!
+"
+codebutler/farebot,closed,Added Fremont Station (0x25) to Clipper list.,[],"Got the ID from my phone (Galaxy Nexus). Lat/Long is from Google Maps. Second commit because I forgot to set my home dev editor to spacify tabs.
+
+Also, the app seems to have some difficulty handling cards with multiple protocols. I have a Visa payWave credit card (issued in Taiwan) that has both ISO 14443 (for running the credit card app) as well as MIFARE Classic. farebot just replies with Invalid response when scanning it. Screenshots from the NXP diagnostic app:
+
+http://home.comcast.net/~jashsu/demo/Screenshot_2012-04-26-00-17-17.png
+http://home.comcast.net/~jashsu/demo/Screenshot_2012-04-26-00-17-46.png
+"
+codebutler/farebot,open,Now in thailand launch Rabbitcard,[],"Now i thai land launch rabbit card and i need to fare bot support it. If you need help i can send my card for you and help you about anything.
+"
+codebutler/farebot,closed,Support Sony Xperia S,[],"Someone reported the app does not install on this phone.
+"
+codebutler/farebot,closed,Bart stations,[],"Add some missing BART stations and order the list
+"
+codebutler/farebot,closed,Detect if NFC is turned off,[],"It'd be a nice feature to show a toast or dialog if on application start you detect that NFC is turned off. 
+"
+codebutler/farebot,closed,Australian Transport Card - Go Card (Queensland/Brisbane) support,[],"Hi, 
+
+Not sure how but it would be great if support for the Go Card was added. Not sure exactly how to do this? If someone could either add support or let me know how to that would be great. :)
+
+http://en.wikipedia.org/wiki/Go_card
+
+Kind Regards,
+Andrew
+"
+codebutler/farebot,closed,Australian Transport Card - Myki (Victoria) support,[],"I'm attempting to add support for Myki public transport card. 
+
+http://en.wikipedia.org/wiki/Myki
+
+Its been listed as a MIFARE DESFire card.
+"
+codebutler/farebot,closed,Fix build on Eclipse and Ant.,[],"Here are a few trivial changes to get FareBot to build cleanly in Eclipse and Ant.
+"
+codebutler/farebot,closed,New stations,[],"I filled in a few BART stations that I read from mine or a coworker's Clipper cards, plus I added a couple guesses that seem highly likely based on gaps and the map at http://bart.gov/stations/index.aspx
+"
+codebutler/farebot,closed,Clipper agency name typos,[],
+codebutler/farebot,closed,Improved EZLink handlers,[],"This change adds support for older MRT transaction logs (type 117), as well as support for card creation (type -16).  It also improves layout and adds alternative names for two stations.
+"
+codebutler/farebot,closed,small fixes for problems I ran into with the clipper card,[],"Hi!  I just built farebot at head and loaded it on my phone.  It reads my clipper card wonderfully!
+
+This patch prevents farebot from crashing when you pull away the card too soon.  I noticed that if you pull the card out of range while the progress wheel is still spinning, I could trigger an array out-of-bounds exception.  I tracked that down to the code in this change.  It does two things: 1) more thorough bounds protection in the place where the out of bounds was happening; 2) wrap the call site with your alert-and-exit logic.
+
+It may judicious to also prevent this error with checks in ClipperTransitData's createTrips and createRefill, or to somehow bail out entirely with a nicer user message that the read wasn't complete.  I haven't really digested the code enough to make that judgement or to write that patch yet.
+
+Cheers,
+Mike
+"
+codebutler/farebot,closed,Add Singapore CEPAS support,[],"This patch adds basic support for the Singapore CEPAS standard, along with basic EZ-Link support.
+
+CEPAS is an open system for contactless payment.  You can use it for the train or bus, but also in taxis and at shops.
+
+The most common card is the EZ-Link card.  It's a rechargeable debit card that costs around $5.  If you're interested, I can send you one.  Or I can send you XML from a few cards I've tested.
+
+I have the CEPAS spec, but not the EZ-Link spec, so I've had to infer values.  For example, I'm merely assuming that the string ""SVC"" indicates a trip is a bus trip, but it seems to work.  Interestingly, with buses they deduct the maximum value from the card when you get on, and then give you a refund when you get off.  Both of these events show up as distinct transactions, but the latter has a positive transaction amount.
+
+There also seem to be fundamental differences between EZ-Link and Orca.  For example, the local train (MRT) lists transactions in the form of START-STOP, while buses just list the route number.  This means that I can't get useful information such as lat-long from either value.  I also don't have information such as the new card balance, though it should be possible in theory to work back from the current balance.
+"
+codebutler/farebot,closed,Mifare4K unsupported,[],"Hi, I have a dutch public transport card which results in an error of ""Unsupported Card Type: Mifare4K""
+
+I'de be happy to help you get this card working, is there anything I can do?
+"
+codebutler/farebot,closed,Farebot doesn't read iso14443_3a cards,[],"I'd like to make Farebolt able to read this card, but I need help to understand how this app works.
+I've debugged a little and found that an IOException(""transcieve failed"") is thrown at NfcInternal.java:44.
+"

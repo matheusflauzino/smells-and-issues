@@ -1,0 +1,606 @@
+repository,state,title,label,body
+Yubico/yubioath-android,open,Support otpauth:// urls,[],"I'm using a Mi Max 3 with a yubikey 5C, any time I have to open a link rather than scan a code(e.g. Snapchat) yubico authenticator isn't presented as a choice. QR code scanning in the app DOES work, but it doesn't seem to present itself as a handler of `otpauth://` urls.
+![screenshot_2018-11-27-17-24-12-491_android](https://user-images.githubusercontent.com/1125449/49118298-5cf75100-f269-11e8-882f-ad879122905d.png)
+"
+Yubico/yubioath-android,open,"yubikey 5c (usb-c) popup ""Open Yubico Authenticator when connecting this USB-device?""",[],"Everytime I plug in my yubikey 5c on my android (huawaii p20)I get a message saying ""Open Yubico Authenticator when connecting this USB-device?""
+
+I can only say ""always open with yubico authenticator"" but I can't say ""never"". 
+
+The problem is: If I say always, then I cannot use the stick as u2f device when I login on chrome, because it opens the ""yubico authenticator"" app instead of logging me in.
+It seems that the ""Google Play Services"" must be the default action but yubico authenticator tries to overwrite this each time I plug in my stick.
+
+Any idea how I can get this solved?
+
+"
+Yubico/yubioath-android,open,Communication error Samsung Galaxy S8,[],"Many times when I use my yubikey neo with the authenticator I hear a sound, but a popup is showed saying ""Yubikey Authentication error"".
+
+Sometimes I have to try two or three times in order to get the app show my codes."
+Yubico/yubioath-android,closed,Yubikey Neo doesn't work with Yubico Authenticator for Android,[],"I bought a Yubikey Neo on Amazon and I'm trying to get it to work with the Yubico Authenticator Android app. No success so far.
+Steps:
+1. Open the Yubico Authenticator app. NFC enabled (Google Pixel 2 XL, tried also with Huawei P20 Pro)
+2. Scan a QR Code or manually specify credentials
+3. Click Save
+ -- The app asks me to tap my key against the phone
+4. Tap my key against the back of my phone (I tried multiple times with multiple locations)
+Result: The app tells me ""Requires Yubikey 4 or later""
+
+This is highly unacceptable "
+Yubico/yubioath-android,closed,Passwords should be invisible to the accessibility services,[],"Due to recent attacks, malicious apps that are using the accessibility service can capture all user inputs. In this case, the passwords should be ignored for the accessibility service, so such attacks cannot happen. This is done by our research project in CISPA, Saarland University, Germany."
+Yubico/yubioath-android,open,Translation pt-br,[],"Hi.
+
+What would be the best way to start the translation?
+
+Thanks."
+Yubico/yubioath-android,closed,Confusion about the app,[],"This isn't an issue with the app (though perhaps an issue with documentation), but I'm not sure where to send these questions otherwise
+
+1. What mode should I configure my Yubikey NEO for? It seems it doesn't require either of the configuration slots to be configured for Yubico OTP, OATH-HOTP, or Challenge-Response mode? I set both slots to static passwords just to try it out, and it works fine. So is it using the U2F mode of my Yubikey then (which doesn't consume a configuration slot)?
+2. How exactly does the app store the secrets for the the TOTP accounts I add to this app? Are they stored in plain text somewhere on my phone, and the app merely doesn't generate the 6 digit codes derived from the secrets until I tap my Yubikey? Or are they stored encrypted, and only decrypted when I tap my Yubikey? Or are the secrets stored on the Yubikey itself? That doesn't seem right because when I install the Yubico desktop authenticator app, only one TOTP account shows up (the most recently added one)."
+Yubico/yubioath-android,closed,cccccchekjllhltevtbuhetgbhuvjnvnghvnffueilnn,[],
+Yubico/yubioath-android,open,Press button for code not working on Android Authenticator ,[],"Press button for code not working on Android Authenticator for me on a Samsung S5 running Android 7.1.2 LineageOS version 14.1-20180222-NIGHTLY-llte. 
+
+I have also tried it on a Samsung J5 (SM-J500FN) running Android 6.0.1 Build MMB29M.J500FNXXU1BQF2 and it does the same on that."
+Yubico/yubioath-android,closed,"Fix for Xperia XZ ""Error in Yubikey communication""",[],"This seems to fix #64 for me - it reverses the behaviour which was changed in 1.0.5. I don't know whether it will break things on other devices as I only have the Xperia XZ to test on.
+"
+Yubico/yubioath-android,closed,Feature Request: Option to disable the open with Yubico Authenticator message,[],"I just bought a Yubikey 4C to be able to use USB-C instead of NFC. I was already using Yubico Authenticator with my Yubikey NEO. I want to use the 4C with LastPass's Android app, but I get the message ""Open Yubico Authenticator when this USB device is connected"" every time I plug in the 4C. I can hit cancel, and then press the contacts but I shouldn't have to. There should be an option in the app, and in the dialog box to permanent hide the message on plug in."
+Yubico/yubioath-android,closed,Unfortunately has stopped errors when scanning key after v2 update,[],"Hello!
+
+A few days ago I installed the v2 update, and ever since then I keep getting ""Unfortunately, Yubico Authenticator has stopped"" errors when I scan my YubiKey NEO using NFC on my Nexus 5 running Android 5.1.1 (build number LMY48B). Clearing cache, force stopping and rebooting did not work.
+
+I solved this by uninstalling the app using adb (`adb -d shell`, `pm uninstall -k com.yubico.yubioath`) and then installing the apk of 1.2.1. Fortunately, this allowed me to successfully scan my YubiKey again, and so I have access to my codes again.
+
+I'm not sure what caused this, but needless to say I will stick to 1.2.1 for now. My phone is a bit broken since I rooted it after I got it, and then unrooted it again in an attempt to upgrade to Android 6 (unrooting worked, flashing images failed), so it might be something related to just my phone, but wanted to you let you know regardless. I submitted a report when Android gave me that option, hope that helps."
+Yubico/yubioath-android,closed,"""_hidden"" entries visible in 2.x alpha builds",[],"Since updating to the earliest 2.0.0, I've been seeing two entries that I didn't add, both titled `_hidden`, both identified with `WHello:[...]`. One has `=AuthKey` and the other has `=DeviceKey`. It's not clear if it's safe to delete these, or if they should be hidden by the app (probably?)."
+Yubico/yubioath-android,closed,2.0.0-alpha2 unstable,[],"I installed the beta tester 2.0.0-alpha2 but it's just very unstable.
+
+* Every time I touch my yubikey to my phone it launches the app but there are no codes. I then have to take my yubikey away, wait, then bring it back to generate codes.
+* 80% of the time after fetching codes when I come back to my phone the app has crashed and I send a report through the android or play store crash report system. I'm not sure where these reports go but there should be a number of them in there for this version.
+
+I've reverted back to stable for now.
+
+If this isn't obviously reproducible for others and there are steps I can perform to gather information on these two problems let me know."
+Yubico/yubioath-android,closed,Crash when loading SVG as a custom icon,[],"I tried loading an SVG as an icon. This caused the app to crash and quit.
+
+```
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: FATAL EXCEPTION: main
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: Process: com.yubico.yubioath, PID: 12636
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: java.lang.RuntimeException: Failure delivering result ResultInfo{who=null, request=65538, result=-1, data=Intent { dat=content://com.android.providers.downloads.documents/document/6181 flg=0x1 }} to activity {com.yubico.yubioath/com.yubico.yubioath.ui.main.MainActivity}: java.lang.IllegalStateException: MediaStore.Images.Media.…ntentResolver, data.data) must not be null
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at android.app.ActivityThread.deliverResults(ActivityThread.java:4126)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at android.app.ActivityThread.handleSendResult(ActivityThread.java:4169)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at android.app.ActivityThread.-wrap20(ActivityThread.java)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1552)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:154)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:6186)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:889)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:779)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: Caused by: java.lang.IllegalStateException: MediaStore.Images.Media.…ntentResolver, data.data) must not be null
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at com.yubico.yubioath.ui.main.CredentialsFragment.a(Unknown Source)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at android.support.v4.a.j.onActivityResult(Unknown Source)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at com.yubico.yubioath.ui.main.MainActivity.onActivityResult(Unknown Source)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at android.app.Activity.dispatchActivityResult(Activity.java:6937)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	at android.app.ActivityThread.deliverResults(ActivityThread.java:4122)
+10-21 16:41:15.876 12636 12636 E AndroidRuntime: 	... 9 more
+10-21 16:41:15.879   886  4311 W ActivityManager:   Force finishing activity com.yubico.yubioath/.ui.main.MainActivity
+```
+I used an SVG from my collection of tiny icons - https://github.com/edent/SuperTinySocialIcons
+
+May I suggest pre-loading the app with SVGs of popular services? Most people don't keep icons on their phones.  The SVGs really are tiny, under 1KB each. [Facebook is a mere 244 bytes](https://edent.github.io/SuperTinySocialIcons/tiny/facebook.svg)."
+Yubico/yubioath-android,closed,Thank you for v2,[],"Just wanted to say thank you for the v2. Search, pinning and some fixes that came with these changes actually make it so much more workable with a lot of codes."
+Yubico/yubioath-android,closed,2.0.0 Bigger Touch Targets?,[],"Using the 2 Alpha on Android 7.1.1.
+
+If I tap on the ""copy"" icon, the code copies successfully to the clipboard.
+
+If I tap slightly under the icon, it doesn't copy.
+
+If I tap on the name of the service, or the code itself, or the coloured icon, it doesn't copy.
+
+Could I suggest that you make the entire row a touch-to-copy target?  That way people with small fingers and big phones won't have to be quite so precise in our clicks.
+
+Thanks :-)"
+Yubico/yubioath-android,closed,2.0.0 alpha - Icon is ugly on Android <8,[],"The non-adaptive icon (used on Android <8) seems to have a white square around it, looks weird.
+The margin around the adaptive icon should also probably be increased just a little."
+Yubico/yubioath-android,closed,a,[],
+Yubico/yubioath-android,closed,Neo does not work with Samsung Galaxy S6,[],"I just purchased a yubikey neo and have been trying to get it to work with a Samsung Galaxy S6 without success. The key works with Trigger - Task Launcher (https://play.google.com/store/apps/details?id=com.jwsoft.nfcactionlauncher&hl=en) on the Samsung. Gmail also works successfully with the yubikey neo. But with the authenticator I get ""error in yubikey communication"". I have tried the most recent version of the authenticator and earlier version at the site above again without success. Android version is 7.0 and build number is NRD90M.G920VVRS4DQH1. Any suggestions of what I can do to get this to work? Thanks."
+Yubico/yubioath-android,closed,"Main intent is unresponsive after initial NFC scan then leaving intent, then returning again later",[],"### Device specs:
+
+Android version: 8.0.0 (also affected the previous major version)
+Device: Huawei/Google Nexus 6P
+
+### How to reproduce:
+
+1. From a non-running state, run Yubioath
+2. Scan Yubikey via NFC (Successful)
+3. Turn screen off / go to different apps
+4. Return to Yubioath
+5. Attempt to scan again (No response, though the NFC scan sound does play)
+6. Let out a big sigh
+
+### Workaround:
+
+Simply opening the 'About' intent, then returning to the main intent seems to fix this.
+
+### Thoughts:
+
+Based on the workaround, it seems like either finding the cause of the blocked UI or deliberately refreshing the intent when it comes back into focus should fix the issue."
+Yubico/yubioath-android,closed,Yubikey Authenticator: Installation Issue: Samsung Galaxy S3 Phone,[],"Hello there,
+
+I've already raised Ticket 00021462 with Yubico Support for this issue, and they suggested I raise it here if their suggested remedial steps failed (they did).
+
+I am having problems trying to install Yubikey Authenticator Version 1.2.1 on my Samsung Galaxy S3 phone. Whenever I attempt the install, I receive an error message stating installation was not possible due to ""Error Code 103"". That's all I have.
+
+I am running Android Version 4.1.2 on my phone - the I9300 variant of the Galaxy S3. The last successfully installed version of Yubikey Authenticator I was using was 1.1.0.
+
+I did try uninstalling version 1.1.0 before installing version 1.2.1, but this failed with the same error message (Error Code 103). For the time being, I have re-installed version 1.1.0 with no issues.
+
+Thanks in anticipation for any help.
+
+James
+"
+Yubico/yubioath-android,open,Error in yubikey communication on xperia XZ on 1.2.1,[],"Since a couple of versions I can rarely make yubioath android work. It usually shows ""Error in yubikey communication"" or it just plays the sound and nothing happens.
+
+I re-installed the 1.0.4 version from developers.yubico.com and now it works every time."
+Yubico/yubioath-android,closed,Allow custom time periods,[],"Currently it appears that Authy does not allow for time periods other than [30 seconds](https://github.com/Yubico/yubioath-android/blob/d1b59b6818307dd7a986a0a13495ce75d4b65aec/app/src/main/kotlin/com/yubico/yubioath/fragments/ListCodesFragment.kt#L150). According to [RFC 6238](https://tools.ietf.org/html/rfc6238) while 30 seconds is recommended, it is not required. In fact Authy currently uses a 10 second period for their TOTP codes. I would like to extract a private key from authy so that I can use Yubikey instead of Authy, but can't generate codes accurately without this shorter time period being supported.
+
+An example of how to extract codes from authy, and a QR code for testing can be found here https://gist.github.com/Ingramz/14a9c39f8c306a2d43b4"
+Yubico/yubioath-android,closed,Better UI,[],"The UI for this app is looking extremely dated, both from a beauty standpoint and a usability standpoint. (Look to Authy for better design)
+
+I don't have much experience with Android dev, but I'd be interested in trying to put something together if you'd accept a PR.
+
+_Sent from my Google Pixel using [FastHub](https://play.google.com/store/apps/details?id=com.fastaccess.github)_"
+Yubico/yubioath-android,closed,"when unplugging yubikey-4c, codes do not clear from screen",[],"launch yubico authenticator on android (in my case, a Pixel XL phone). the app says ""Tap your YubiKey to view credentials"". this is correct behavior.
+
+connect the yubikey-4c and the codes display. this is correct behavior.
+
+unplug the yubikey-4c and the codes continue to display, which i believe is incorrect behavior.
+
+when the clock runs down, they do not update, which is fortunate.
+
+i believe that the correct behavior is for the codes to clear once the yubikey-4c is removed.
+"
+Yubico/yubioath-android,closed,Add Chromebook support,[],"I have a Chromebook Plus with Android app support.  The authenticator app (version 1.2.1) installs and launches on the device, but does not respond to taps on the yubikey neo button.
+
+The yubikey is connected via usb-a to usb-c, and I've validated that Android apps can see the ""ccccc..."" input when tapping the button.  The Chromebook itself does not have NFC at all, so will need to use the recently added usb support instead, and it only has usb-c ports.
+
+Any tips / patches to get this working would be much appreciated!"
+Yubico/yubioath-android,closed,Nexus 6 and Nano with OTG,[],"The Nexus 6 is Android 7.1.1 With June 2017 updates
+Yubikey Nano is firmware 4.3.3
+Slot 1 is U2F, Slot 2 is a static password.
+I have an OTG cable Micro USB to USB A.
+When I plug in the Nano, i get a quick flash of the green light, then dark. Android registers it as a keyboard. If I long touch the gold Nano ""button"", nothing is sent the the phone. If I start the Yubico Authenticator 1.2.1 app,  the Nano lights up for about 10 seconds but nothing is listed in the app. When I exit, I get a status message ""Empty credential list"" and the light comes back on for another 10 seconds.
+
+I would like to be able to use the Nano and its static password in the Chrome app. I was hoping that installing the Yubico Authenticator would help. Is this all normal behavior?"
+Yubico/yubioath-android,closed,iOS support?,[],"Apple ""announced"" an ""NFC Reader Mode"" built into iOS 11 using their CoreNFC framework...details here:
+
+https://developer.apple.com/documentation/corenfc
+
+Any thoughts on a port to pull TOTP on iOS in the future?"
+Yubico/yubioath-android,closed,Remove need for enabling NFC,[],Due to the OTG support it seems unnecessary to require NFC functionality.
+Yubico/yubioath-android,closed,Not compatible with Android 7 on Huawei GR3 (2017),[],"I bought a Yubikey Neo. I am using a Huawei GR3 (2017) phone with Google Android 7 and NFC. However your Yubico Authenticator app is not compatible with my phone according to Google Play Store and I cannot even install that application.
+
+Can I expect an update soon?"
+Yubico/yubioath-android,closed,Doesn't work after activity has been recreated,[],"The code list fragment doesn't get updated (no new codes appear) after the activity had to be recreated (e.g. due to OOM). The issue seems to lie in ListCodesFragment.kt:
+
+```java
+    fun showCodes(codeMap: List<Map<String, String>>) {
+        if (activity == null) {
+            initialCodes = codeMap
+            return
+        }
+```
+`activity` is null here after it has been recreated and the function returns without updating the list. Seems the fragment doesn't get properly reattached to its Activity in this case."
+Yubico/yubioath-android,closed,OTG Support?,[],Any chance of supporting Yubikey 4 via OTG cable?
+Yubico/yubioath-android,closed,Fix README.adoc symlink,[],This symlink got corrupted when converting the project to kotlin
+Yubico/yubioath-android,closed,a,[],
+Yubico/yubioath-android,closed,New App Icon + Light Theme,[],"Is there any way to implement a new interface design similar to the current Google authenticator?
+Also a new app icon in material design is really necessary :) 
+
+I could design an icon for you! "
+Yubico/yubioath-android,closed,Blue Timer/token status bar along top is incorrect,[],"It appears that the blue token timer bar along the top is counting down from time from the last scan of the Yubikey rather than timing the time until the token expires.
+
+This is not useful and is not the way the token timers work on Google Authenticator.
+In google authenticator the timers are indicating the validity of the token and are counting down to the expiration of the token.
+I've never understood why google has indicators for all the tokens since they all are minute based, but in order to be useful, any countdown indicator should be showing the validity of the token(s) not just counting a minute from the time the Yubikey was scanned."
+Yubico/yubioath-android,open,Feature Request: Dark(black)/Light theme option,[],"The current background is a dark grey,
+but black is best as it uses less power on certain types of displays.
+Perhaps even have a user option similar to what K-9 email does which has
+a ""Light"" and a ""Dark"" theme which allows users to choose what they like.
+In K-9 ""Dark"" uses a totally black background and whereas the ""Light"" uses white background."
+Yubico/yubioath-android,closed,Feature Request: Larger/configurable font for OTP codes,[],"The font used for the OTP values is quite small.
+It would be nice to make it quite a bit larger, perhaps even user selectable from 3 different sizes.
+And for increased readability a gap between the the 3rd and 4th digit
+would be nice so the user can read it as 2 sets of 3 numbers.
+But if an actual space character is inserted in the display for
+simplicity, then when copying it to the clipboard it should still only
+copy the 6 digits."
+Yubico/yubioath-android,closed,Crash if ZXing Barcode app not installed,[],"If the ZXing Barcode Reader App isn't installed, the Yubico Authenticator App crashes when selected ""Scan Account QR-Code"" from menu.
+
+I have not had the ZXing Barcode reader app installed in the past 6 months or so because I switched to a more powerful barcode reader on my phone. 
+
+Instead of outright crashing, there should at least be a notice mentioning the dependency. I only happened to figure out the solution on accident. 
+
+Yubico Authenticator for Android: version 1.1.0
+Phone: Samsung Galaxy S5 - SM-G900T
+Android: 6.0.1, security patch level July 1st, 2016
+"
+Yubico/yubioath-android,closed,Android vs. Desktop behavior inconsistency,[],"Some of my credentials have titles with multiple colons, for example:
+
+Service:Region:AccountName
+
+The Windows app will represent the above title something like this:
+
+```
+Service
+SOMEOTP
+Region:AccountName
+```
+
+The Android version truncates the title from the 2nd colon onward:
+
+```
+Service
+SOMEOTP
+Region
+```
+
+It looks to me like this is the problem:
+
+https://github.com/Yubico/yubioath-android/blob/master/app/src/main/java/com/yubico/yubioath/fragments/ListCodesFragment.java#L328
+
+Instead of `label.split("":"");`, it should be `label.split("":"", 1);` to only treat the first colon in the string as a delimeter.
+"
+Yubico/yubioath-android,closed,Launch Yubikey Authenticator on NFC tap,[],"It would be fantastic if the authenticator automatically opened when you tapped the Yubikey to the phone. Currently, I have to exit what I'm currently doing, navigate to the tiny icon on my home screen, open it, then tap. The one-time tap would be so much more convenient.
+"
+Yubico/yubioath-android,closed,Wishlist: Better handling of time remaining,[],"Currently, Yubico Authenticator loads tokens from the NEO, and shows a 'full' time bar at the top of the display, when the reality is that there will be less than that time available for the displayed codes. Perhaps the time remaining bar should be initialised to the correct percentage of width for the actual remaining time?
+
+One other issue perhaps related to this that I've noticed is that I have at least once had the codes displayed which are actually 'next' in the sequence; i.e., the codes were different to that shown in QuickAuth on my pebble watch, but after QA cycled to the next set, they were the same as those shown in Yubico Authenticator. This happened when I tapped my Neo about 3-4 seconds before a rollover. Perhaps this is actually a time sync thing?
+"
+Yubico/yubioath-android,closed,ccccccfbbnirvfcehglbktlevdhrirbufnltthtllinb,[],
+Yubico/yubioath-android,closed,Fix for bug #41,[],"Added ""allow rotation"" checkbox, value is stored in SharedPrefs. Default behavior does not change.
+"
+Yubico/yubioath-android,closed,View Resets When Orientation Changes,[],"If a code is loaded and the phone is rotated any time while the code is visible, the view resets and the code goes away.
+
+Ideally, the displayed codes should persist across orientation changes of the device, or, add an option to disable rotation in the app.
+"
+Yubico/yubioath-android,open,Support Steam authenticator codes,"[Label(name=""enhancement"")]","Support [Steam](http://store.steampowered.com/) [authenticator](https://support.steampowered.com/kb_article.php?ref=4440-RTUI-9218) codes.
+
+A Windows .NET desktop app with open code is available [here](https://github.com/Jessecar96/SteamDesktopAuthenticator).
+"
+Yubico/yubioath-android,closed,Master,[],
+Yubico/yubioath-android,closed,Allow adding icons to accounts,[],"If user has a long list of accounts and is fortunate enough that they remembered to add a unique service name (that's what comes in front of the colon in account name, e.g. in `Google:radek.simko@gmail.com` it's `Google`) as not all QR codes are descriptive enough, it may still consume quite significant brain capacity to find the right row in a long list.
+
+I believe that adding icon to at least differentiate services would help the UX a lot.
+
+---
+
+Thanks for all the good work on this app and Yubikey!
+"
+Yubico/yubioath-android,closed,Should case insenitively compare the algorithim parameter in OTP URI in QR codes,[],"I've set up my own FreeIPA instance and tried to add an OTP token to my account within. However, whenever I try to scan the barcode generated, Yubioath pops up with an invalid URI error. Looking at the source code and the URI FreeIPA generated, I think it's because the application expects algorithim to be `SHA1` or `SHA256` while FreeIPA generates the url with algorithim set to either `sha1` or `sha256`. Since it's lowercase instead of uppercase as the application expects, an error is thrown.
+
+Also, FreeIPA provides the option of using SHA384 and SHA512. Is it feesible to include those as well in Yubioath?
+"
+Yubico/yubioath-android,open,Feature Request: Android Wear Support,"[Label(name=""enhancement"")]","Google just updated their app with android support, its really cool.  Hoping to see that in yours too since I like your app better.
+"
+Yubico/yubioath-android,closed,Opt out of reader mode,[],"- By disabling reader mode fully, the behavior of failing reads are
+  identical to before
+- The main reason for reader mode is its much more stable handling of
+  long running transactions, OTP transactions are fairly short so can
+  work well with foreground dispatch
+- Broadcom workarounds need to be disabled since they are only possible
+  in reader mode, but they also only affect long running transactions
+- Document the Nordpol settings currently used
+"
+Yubico/yubioath-android,open,Feature request: Time synchronization,[],"Google Authenticator (at least as of 4.44) has time correction. This would be useful for people without root access and/or ClockSync installed, not to mention various kinds of local network restrictions. Unknown whether GAuth's facility actually sets the system time, but at minimum it should be able to get the correct time for one-shot TOTP.
+
+SNTP would be appreciated, along with the ability to set one or more NTP servers (default CC.pool.ntp.org ?)
+
+If there isn't already suitable SNTP code available for Android, the simplest method would be to use ""HTP"" and allow the user to select a server to sync against (default www.google.com?)
+
+""HTP"": http://linux.die.net/man/8/htpdate
+
+It would also be great if the app got a bit of a UI overhaul a la GAuth 4.44, but I'd guess that would be a low priority... 😉
+"
+Yubico/yubioath-android,closed,Feature request: ability to edit accounts,[],"It would be great if we could get the ability to edit account entries on long-press, instead of just the ability to delete entries. Confirmation before deleting entries would be useful, too.
+"
+Yubico/yubioath-android,closed,Broken on Marshmallow / CM13,[],"Not quite sure if it's only related to Android M or CyanogenMod 13. However, the NEO isn't discovered anymore (other NFC labels work like a charm).
+"
+Yubico/yubioath-android,closed,App sometimes crashes on startup.,[],"Several users have reported app crashes:
+
+```
+java.lang.RuntimeException: Unable to resume activity {com.yubico.yubioath/com.yubico.yubioath.MainActivity}:   java.lang.NullPointerException: Attempt to invoke virtual method 'boolean nordpol.android.TagDispatcher.interceptIntent (android.content.Intent)' on a null object reference
+    at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3050)
+    at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:3081)
+    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2447)
+    at android.app.ActivityThread.access$800(ActivityThread.java:156)
+    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1351)
+    at android.os.Handler.dispatchMessage(Handler.java:102)
+    at android.os.Looper.loop(Looper.java:211)
+    at android.app.ActivityThread.main(ActivityThread.java:5373)
+    at java.lang.reflect.Method.invoke(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:372)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1020)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:815)
+Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean nordpol.android.TagDispatcher.interceptIntent  (android.content.Intent)' on a null object reference
+    at com.yubico.yubioath.MainActivity.onNewIntent(Unknown Source)
+    at android.app.Instrumentation.callActivityOnNewIntent(Instrumentation.java:1216)
+    at android.app.Instrumentation.callActivityOnNewIntent(Instrumentation.java:1228)
+    at android.app.ActivityThread.deliverNewIntents(ActivityThread.java:2511)
+    at android.app.ActivityThread.performResumeActivity(ActivityThread.java:3032)
+    ... 11 more
+```
+
+I haven't been able to find a reliable way of triggering this, but it seems that sometimes onNewIntent is called before onResume, leaving tagDispatcher = null. I've looked at the tutorial for Nordpol, and it seems to follow the same pattern of instantiating tagDispatcher in onResume, deactivating it in onPause, and calling tagDispatcher.interceptIntent() in onNewIntent. @Franzaine, @petter-fidesmo any suggestions on how to do this in a better way? A simple null check would obviously solve the NPE, but if you have any better suggestions please let me know!
+"
+Yubico/yubioath-android,closed,Support non-NFC devices/yubikeys via USB OTG,"[Label(name=""enhancement"")]","Support USB OTG to enable TOTP on non NFC enabled devices and non NFC enabled yubikeys.
+"
+Yubico/yubioath-android,closed,Version 1.0.3 - Somewhat broken on Samsung Galaxy S6,[],"Latest update broke it Latest update 1.0.3 broke it for me. When I try to scan the yubikey, it only returns ""error in yubikey communication"". Makes no difference is the app is already open or not. Worked fine in 1.0.2.
+
+Stock Samsung galaxy S6, SM-G920F
+Android 5.1.1
+Build LMY47X.G920FXXU3COI9
+
+Update:
+Did some testing, and I'm getting mixed results. This is purely an amateurs  fiddling, but here goes.
+
+Version 1.0.2 worked to a near 100%. After updating to 1.0.3, I was unable to retrieve my codes, even after 15-20 attempts. After submitting this Github issue, I tried several things. 
+1. Cleared app cash and data, forced stopped the app and tried to read the yubikey 4-5 times. No luck.
+2. Cleared app cash and data, uninstalled the app and reinstalled it. Tried to read the yubikey 4-5 times. No luck
+3. Forced closed the app, and tried the yubikey directly from the homescreen (which I never usually do) and heard the nfc success sound and was shown the ""choose standard app"" menu. I chose the Yubico Auth app with the ""Just Once"" option. The app opened, but no codes. But then i tried the yubikey again with the app opened, and this time I heard the nfc failure sound but it worked and the codes were shown. Now I no longer get the ""choose app"" menu when trying from the homescreen, and it never takes me to the Yubico Auth app, but i does give the nfc success sound. But if I open the app and try from there, it works about 20% of the time even though I always get the nfc failure sound. It's working in a manner, but in a far less reliable way than the 1.0.2 version.
+"
+Yubico/yubioath-android,closed,Forward intent when the activity is first created,[],"- If the intent contains a valid tag (e.g. the application was invoked
+  by the system due to interaction with a tag) then forward it to the
+  tag dispatcher for immediate dispatch.
+"
+Yubico/yubioath-android,closed,Unable to view codes since updating to version 1.0.3,[],"Since updating to version 1.0.3 (versionCode 26) of Yubico Authenticator via Google Play I can no longer view codes stored on my YubiKey NEO. I enable NFC as usual and tap the YubiKey to my device, the Yubico Authenticator app opens but displays ""Tap your YubiKey NEO to view credentials"".
+
+Reverting to version 1.0.2 fixes the problem.
+
+My device is a HTC One M8s running stock Android 5.0.2.
+"
+Yubico/yubioath-android,closed,Open Yubico Authenticator App with NFC tap,[],"Hey,
+since the update to Android Marshmallow on my Nexus 6 the authenticator app doesn't start automatically after I tap my phone on my Yubikey Neo. Instead of that it opens my browser on https://my.cubico.com/neo/*keyofmyyubikey*
+I also tried to reinstall the app, but no difference..
+
+best regards
+
+Julian
+"
+Yubico/yubioath-android,closed,"RFE: require only one ""touch"" when there's a password",[],"I have a password protecting the credentials on my key. This seems to result in my having to touch the key to my Android device _twice_, i.e:
+1. Start app
+2. Touch key to device
+3. App asks for pw
+4. Enter pw, which app accepts, but no credentials are shown.
+5. Touch key to device
+6. App shows credentials
+
+It would be nice if I only had to do the one touch, here.
+
+Or am I doing something wrong?
+
+thanks much indeed.
+"
+Yubico/yubioath-android,closed,RFE: allow changing of credential name,[],"Please consider adding the ability to change the name of a previously-added credential.
+
+This is the only thing that can be done in the Google Authenticator OATH app that cannot be done in the Yubico app.
+
+It is very handy to be able to do this. e.g. I add a new service, for a remote SSH login to  a server on a remote site which uses pam_google_authenticator. Since there is only one system at the remote site, I call it ""site1"".
+
+A few months later, I add another service for a different server at that site. I would like to rename my existing ""site1"" to ""site1-serverA"", so I can now add ""site1-serverB"".
+
+thanks much indeed.
+
+I am assuming here that it is actually possible to write a new name to the credential on the key, of course.
+"
+Yubico/yubioath-android,closed,Solve galaxy s5 issues using Nordpol,[],"This pull request fixes #9 by introducing NFC handling via the Nordpol library including specific tweaks for Samsung devices. It will automatically choose the best way of handling NFC on different Android devices.
+"
+Yubico/yubioath-android,closed,Authenticating with a backup yubico key?,[],"Is there any way to configure this app such that a second Yubico key could be used to retrieve the authentication codes if the original key is stolen or destroyed?  
+"
+Yubico/yubioath-android,closed,impossible to load the 17th account both with Android and desktop yubiko authenticator,[],"I bought the neo NEO from Amazon.
+The firmware version is 3.4.3
+After having recorded successfully 16 accounts on yubiko authenticator.
+When I record the 17th everything seems to go fine but the code doesn't show up in the list.
+
+I have tried to delete one account and try to record an other one and it works. So my guess is that yubiko authenticator both Android and desktop cannot store or show more than 16 accounts. 
+"
+Yubico/yubioath-android,closed,Cannot authenticate Amazon AWS,[],"Thanks for providing such awesome products in the Yubico Neo key and Yubico Authenticator App. For the most part it has been seamless to get set up.  However, I am not having any luck setting up authentication for Amazon AWS multi-factor authentication.  It looks like hardware authentication is only supported using hardware devices purchased directly through them, which is a shame as I have no desire to carry an additional secure device.  Therefore I'm trying to enable the Yubico Authenticator App to act as my virtual multifactor authentication device.  The Yubico Authenticator app has worked beautifully for me on other platforms (e.g. GitHub ;-)), but no luck with AWS.
+
+After scanning the QR code, the AWS virtual MFA setup asks me enter ""two consecutive keys"".  I enter the key that originally appears after I scan the code and touch my Yubico key to my Android phone.  I then wait until the timeout finishes and touch the key again to get a second code, and enter that as well. However, I always just get a: "" Failed to associate the token "" error.  Have you tested this with AES before?  Any idea what is going wrong?
+"
+Yubico/yubioath-android,closed,"Choosing to ""always"" launch yubico authenticator on NFC swipe is disregarded",[],"Hey,
+
+I really like the new functionality to automatically launch the Yubico Authenticator on NFC swipe as introduced by issue #5. However, if I choose to perform this ""Always"" (instead of ""Just once""), it is disregarded. On the next swipe, I'm presented with the dialog ""Complete action using"" again, with Firefox, YubiClip and the Authenticator to choose from.
+
+Would be nice if this could be fixed.
+"
+Yubico/yubioath-android,closed,Back button closes application,[],"The back-button behavior should be improved to not just close the application.
+"
+Yubico/yubioath-android,closed,URLs with counter parameter do not work,[],"Example:
+
+otpauth://hotp/Issuer/account?secret=222222&counter=0
+"
+Yubico/yubioath-android,closed,Support for Issuer in the list of codes,[],"This patch is adding the support for Issuer in the list of codes. It's
+automatically extracted from the account name if it's in the
+issuer:label format.
+"
+Yubico/yubioath-android,closed,Updated icons for multiple screen resolutions,[],"This patch is adding icons for multiple screen resolution which assures
+that the icons will have no blurred edges. The icons were taken from
+Android platform v22 (platforms/android-22/data/res/).
+"
+Yubico/yubioath-android,closed,Support for adding account manually,[],"This patch is adding the possibility to add account manually without the
+need to scan the QR code. It requires to fill in the name of the account
+the secret key and choose one of the authentication type (TOTP, HOTP).
+"
+Yubico/yubioath-android,closed,Any chance we can get an apk in the releases?,[],"I'm in a bit of a loop when I wipe my phone - I need to install yubico to log into google to get to the play store, but I need to log into google to install yubico!
+
+I realise I can build the app, but that's a long winded process and for many users installing the SDK and maven is a lot just for one app!
+"
+Yubico/yubioath-android,closed,Adding the possibility to add account manually,[],"This patch contains the following changes:
+- Adding the possibility to add account manually without the need to
+  scan the QR code. It requires to fill in the name of the account
+  the secret key and choose one of the authentication type (TOTP, HOTP).
+- Support for Issuer in the list of codes. It's automatically extracted
+  from the account name if it's in the issuer:label format.
+- Updated icons for multiple screen resolutions.
+- General cleanup of the code based on Android Studio suggestions.
+"
+Yubico/yubioath-android,closed,"android-maven-plugin:4.1.0:proguard Unsupported class version number [52.0] (maximum 51.0, Java 1.7)",[],"Does not build with java8. 
+
+Seems that a newer ProGuard is needed.
+I downloaded it from here: http://sourceforge.net/projects/proguard/files/proguard/
+and placed it in $ANDROID_HOME/tools.
+
+Not sure what the best way to fix this is:
+- require java7 or
+- tell Google to update Android's proguard
+- some maven trickery to download a new ProGuard if needed and use it
+
+-Axel
+
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 18 source files to /home/ignisvulpis/development/yubioath-android/target/classes
+[INFO] 
+[INFO] --- android-maven-plugin:4.1.0:emma (default-emma) @ yubioath ---
+[INFO] 
+[INFO] --- android-maven-plugin:4.1.0:proguard (default-proguard) @ yubioath ---
+[INFO] Proguarding output
+[INFO] java.io.IOException: Can't read [/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar](Can't process class [com/oracle/net/Sdp$1.class] %28Unsupported class version number [52.0] %28maximum 51.0, Java 1.7%29%29)
+[INFO]  at proguard.InputReader.readInput(InputReader.java:230)
+[INFO]  at proguard.InputReader.readInput(InputReader.java:200)
+[INFO]  at proguard.InputReader.readInput(InputReader.java:178)
+[INFO]  at proguard.InputReader.execute(InputReader.java:100)
+[INFO]  at proguard.ProGuard.readInput(ProGuard.java:196)
+[INFO]  at proguard.ProGuard.execute(ProGuard.java:78)
+[INFO]  at proguard.ProGuard.main(ProGuard.java:492)
+[INFO] Caused by: java.io.IOException: Can't process class [com/oracle/net/Sdp$1.class](Unsupported class version number [52.0] %28maximum 51.0, Java 1.7%29)
+[INFO]  at proguard.io.ClassReader.read(ClassReader.java:112)
+[INFO]  at proguard.io.FilteredDataEntryReader.read(FilteredDataEntryReader.java:87)
+[INFO]  at proguard.io.JarReader.read(JarReader.java:65)
+[INFO]  at proguard.io.DirectoryPump.readFiles(DirectoryPump.java:65)
+[INFO]  at proguard.io.DirectoryPump.pumpDataEntries(DirectoryPump.java:53)
+[INFO]  at proguard.InputReader.readInput(InputReader.java:226)
+[INFO]  ... 6 more
+[INFO] Caused by: java.lang.UnsupportedOperationException: Unsupported class version number [52.0](maximum 51.0, Java 1.7)
+[INFO]  at proguard.classfile.util.ClassUtil.checkVersionNumbers(ClassUtil.java:140)
+[INFO]  at proguard.classfile.io.LibraryClassReader.visitLibraryClass(LibraryClassReader.java:89)
+[INFO]  at proguard.classfile.LibraryClass.accept(LibraryClass.java:301)
+[INFO]  at proguard.io.ClassReader.read(ClassReader.java:86)
+[INFO]  ... 11 more
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2:26.925s
+[INFO] Finished at: Fri Apr 24 17:41:20 CEST 2015
+[INFO] Final Memory: 24M/159M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.simpligility.maven.plugins:android-maven-plugin:4.1.0:proguard (default-proguard) on project yubioath: MojoExecutionException: ANDROID-040-001: Could not execute: Command = /bin/sh -c cd /home/ignisvulpis/development/yubioath-android && /usr/lib/jvm/java-8-oracle/jre/bin/java -Xmx512M -jar /home/ignisvulpis/Android/Sdk/tools/proguard/lib/proguard.jar @""/home/ignisvulpis/development/yubioath-android/target/proguard/temp_config.cfg"", Result = 1 -> [Help 1]
+"
+Yubico/yubioath-android,closed,0.1.0 crash on Samsung Galaxy S5,[],"The newly released 0.1.0 seems to be crashing on my Samsung Galaxy S5 whenever it (successfully?) reads the Neo. I've sent in the crash report via the automated system. Luckily I also kept the credential I needed in slot 2 for YubiTOTP use. 
+
+Here's a manual excerpt:
+
+Exception class name
+java.lang.ClassCastException
+
+Source file
+SharePreferencesImpl.java
+
+Source Class
+android.app.SharePreferencesImpl
+
+Source method
+getStringSet
+
+Line number
+232
+
+beginning of stack trace (perhaps some typos in my transcription)
+java.lang.ClassCastException: java.lang.String cannot be cast to java.util.Set at android.app.SharedPreferencesImpl.getStringSet(SharedPreferencesImpl.java:232) at com.yubico.yubioath.c.a.a(Unknown Source) at com.yubico.yubioath.c.b.a(Unknown Source) at com.yubico.yubioath.c.b.<init>(Unknown Source) at com.yubico.yubioath.MainActivity.onNewIntenet...
+
+Brendan
+"
+Yubico/yubioath-android,closed,Samsung Galaxy S5 NFC Service Crashes,[],"See http://forum.yubico.com/viewtopic.php?t=1646
+
+I can read the NEO once with the S5 without problem, trying to read it once again just seams to hang the nfc processes on the phone. If i disable NFC on the phone and enable it again I'm able to read the NEO once more. When it's not possible to read the NEO it's not possible to read any other NFC tags. Same scenario works with out problem on S3,S4,Z3 and so on.
+
+Background:
+Model: SM-G900F
+Android 4.4.2
+Kernel 3.4.0-2089850
+Baseband: G900FXXU1ANG2
+
+Symptoms:
+After one read(successful OR failed), it will not read again
+
+Workarounds:
+- wait at least a minute then try again(does not always work, 50/50...)
+- disable/enable NFC
+- lock/unlock the phone
+
+Comments:
+On the first attempt, the S5 seems to be able to successfully read the Neo only about 50% of the time, sometimes I get error ""Unfortunately, NFC Service has stopped"", but most times it just simply will not read again until doing one of the above 'workarounds'. After a failed read, if I immediately exit the Yubico Authenticator then re-load it, I get message ""NFC is disabled"" but when I check, it is actually enabled. So it seems that the NFC service is crashing for some reason. Note: I have never seen ""NFC is disabled"" message after a successful read, but it still will not read again until doing one of the workarounds above.
+
+Additional Info:
+Adb logcat says when scanning Neo first time:
+
+D/NativeNfcTag(11676): connectWithStatus- technology =3
+D/NativeNfcTag(11676): Connect to a tech with a different handle
+D/NativeNfcTag(11676): Starting background presence check
+D/NfcDispatcher(11676): tryStartActivity. Send intent.
+V/ApplicationPolicy( 807): isApplicationStateBlocked userId 0 pkgname com.android.nfc
+D/NfcService(11676): tag value : none
+V/SmartFaceService - 3rd party pause( 807): onReceive [android.intent.action.ACTIVITY_STATE/com.android.nfc/create]
+V/SmartFaceService - 3rd party pause( 807): onReceive [android.intent.action.ACTIVITY_STATE/com.android.nfc/pause]
+D/NativeNfcTag(11676): Tag lost, restarting polling loop
+D/NativeNfcTag(11676): Stopping background presence check
+E/NfcNfa (11676): nfa_dm_act_deactivate (): invalid protocol, mode or state
+
+When trying to scan ANY tag after this, nothing happens.
+
+The 2 last lines look not to good, in my eyes at least... Doing the same on S3 doesn't provide as much detail
+
+D/NfcDispatcher( 2940): tryStartActivity. Send intent.
+D/NfcService( 2940): tag value : none
+D/NativeNfcTag( 2940): Tag lost, restarting polling loop
+
+But on S3 it works all the time.
+"
+Yubico/yubioath-android,closed,QR code scanning unsupported with QR Droid Private,[],"While installing, was unable to successfully add additional account as the application didn't not recognize QR Droid Private as an available barcode scanning application.  QR Droid Private works great with Google Authenticator.
+"
+Yubico/yubioath-android,closed,Additional confirmation of delete / undelete?,[],"Just yesterday I was syncing two yubikeys. I had an extra account on one with a similar name to the others and deleted it, or so I thought - I ended up deleting my only copy of an important account key. Now I'm locked out and dealing with their support line.
+
+Authy has some really good ideas here in terms of user-friendliness. Would it be possible to implement a delete mechanism where the code is simply disabled and recoverable for 48 hours - and if the key is scanned again after that 48 hours is up, the code is permanently deleted. I think a lot of people realize too late when they delete an account and this would be a big help.
+
+Thoughts?
+"
+Yubico/yubioath-android,closed,Change default state of 'save password' checkbox?,[],"Hi!
+
+I currently have the app installed on a Nexus 5, running stock.  I opted to have the app prompt me for a password when I first swipe the NEO, presumably for added security.  When I first start up the app and swipe the NEO, I get a pop-up, showing the NEO's given name and an empty field where I can then type the password I set up; it appears to be behaving normally.  However, the 'save password' checkbox just underneath the password field defaults as checked.
+
+Is there any way to change this behavior so that one has to manually check the box to save the password? If I were to forget to uncheck the box when I use the app, it seems like I would probably have to clear the password and re set it in order to get the app to prompt me for a password again.
+
+I'm not too super computer savvy (nowhere near skilled enough to inspect code), so forgive any obvious mistakes above.   Thanks.
+"
+Yubico/yubioath-android,closed,Autostart on NFC swipe?,[],"The app could autostart if I swipe the NEO, then I don't have to first start the app and then swipe which is easier.  Any reason not to do this?
+"
+Yubico/yubioath-android,closed,Add support for manual input of key,[],"Hi,
+
+Great app! I received my Neo today and started using this straight away. I am used to keeping my secret keys for 2FA (Google Authenticator) in a safe deposit box, just in case I lose my phone. Google Authenticator has support for manually entering keys (ie, without scanning a barcode). It'd be great if there would be a way to manually enter a key again after losing my Neo. Or is there something I'm overseeing that makes this impossible?
+
+Thanks!
+
+  Bas
+"
+Yubico/yubioath-android,closed,Added NFC intent to go straight to app,[],"One more PR from me. I thought it would be useful to go straight to the ListCodes part of the app when the YubiKey NFC intent fires. I'm not an android dev, so this code is entirely non-optimal, but it at least seems to work on my limited set of hardware.
+
+The AndroidManifest.xml now has a filter which listens for a YubiKey neo NDEF_DISCOVERED which should load the main activity. Then, there's some code in onResume which checks the intent, and if it's NDEF_DISCOVERED runs almost the same code again as what's in onIntent. The main difference is that if the password is required, I couldn't figure out how to display the password window - getFragmentManager() seems to return null. I just show a toast instead.
+
+So there's some duplication that's largely unnecessary. Hopefully a useful starting point for what might be quite a useful feature.
+"
+Yubico/yubioath-android,closed,Increased NFC timeout to 3000ms for YubiKeyNeo to resolve 'Tag lost' iss...,[],"...ue on my Nexus 5
+
+As per my review on the Play Store, I was having issues with the app saying 'Error in Yubikey communication'. Increasing the timeout appears to resolve this for me.
+"
+Yubico/yubioath-android,closed,alert user when nfc is off,"[Label(name=""enhancement"")]","When resuming the app and NFC has been disabled, there is no notification that NFC is not enabled and swiping does not work.
+
+Idea: show a button which redirect user to system settings to turn on NFC.
+"

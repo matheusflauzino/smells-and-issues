@@ -1,0 +1,572 @@
+repository,state,title,label,body
+momodalo/vimtouch,open,VIMTouch no longer available on Google Play,[],"Is this project still alive?  Following the Google Play link returns ""Not Found""
+
+I just got a new Android tablet I'd like to install it on, but first, I need to *get* it."
+momodalo/vimtouch,open,blowfish2 please,[],"blowfish2 is not yet supported on android as best I can tell.
+It would be nice."
+momodalo/vimtouch,open,Can't write content back to Content Provider,[],When I try to edit a file in my backup app (Tresorit) the changes don't make it back to the source app.  (This should be possible to do at least in principle since KeePassDroid and QuickEdit are both able to do it.)
+momodalo/vimtouch,open,Plugins and .vimrc support,[]," Do it support ```.vimrc```? 
+Also vim plugins like ```neocomplete,snippets etc```?"
+momodalo/vimtouch,open,Can't open document from within the app.,[],"[Samsung GT-N7100/Android 4.4.2]
+
+When I try to open documents from within the app I get a red error text, too fast to read. I can open documents in vim using a file explorer."
+momodalo/vimtouch,open,Fix 'move up' command in quickbar,[],"The command `m-1` in Vim is correct, but effectively it does nothing (the line stays in the same place). The correct command to move a line up is `m-2`. I know that the quickbar can be easily modified after the app is installed, but I think the default value should also be fixed.
+
+Warning: I haven't compiled the app to check if this solution works. I just checked if the default `m-1` works (it doesn't) and if typing `:m-2` without using the quickbar works as expected (it does). I don't know if this is a correct file to fix this issue (this is the only place where I found `m+1` in this repo). If it's not, please let me know where to change it.
+
+I also didn't run any tests after this change, since there seem to be no tests in this repo (which is not a good thing).
+"
+momodalo/vimtouch,open,"Open the app, touch the screen crazily with multi-fingers, crash",[],"As title
+"
+momodalo/vimtouch,open,Can't download libncurses,[],"I want to build Vimtouch, and I have download the source code by using:
+
+git clone git://github.com/nwf/vimtouch.git
+
+But , When I run prepare-clean-checkout.sh, got an error:
+
+Cloning into 'libncurses'...
+Permission denied(publickey).
+fatal: Could not read from remote repository.
+
+I  checked prepare-clean-checkout.sh, get libncurses source code by using:
+
+git clone git@github.com:momodalo/android_external_libncurses.git -b vimtouch libncurses
+
+looks like can't access the repo.
+
+how to resolve this?
+"
+momodalo/vimtouch,closed,This project looks like it's dead.,[],"@momodalo, are you still planning to work in this port?
+"
+momodalo/vimtouch,closed,Accents do not work with external keyboard.,[],"I am having problems to set up an external keyboard to work with Vim Touch. It is a Logitech K480.
+
+When I try to put an accent (like ã, é, ê etc.), the unaccented letters go to screen (a, e, e).
+
+Using the software keyboard on Vim Touch places the correct characters.
+Using the external keyboard on another apps places the correct characters.
+
+Device: Moto X 2nd gen
+Android Version 5.1
+Kernel Version 3.4.42-g0f47d70
+System Version: 23.16.2.victara_retbr_rebr.en.BR.retbr
+"
+momodalo/vimtouch,open,Maximum file size,[],"What is the maximum file size that can edited in vimtouch?
+"
+momodalo/vimtouch,closed,"vimtouch doesn't accept new file name after ""save as""",[],"After loading a text file onto the screen and editing it, **`:w`** writes the text into the original file. That's fine. Attempting to save the text with an other file name using **`:w <newname>`** works for new files as well. But doing the latter, the current file name does not Change. So subsequent usages of **`:w`** will save the text into the _old_ file again.
+
+Is this a BUG or just a usage mistake on my side? How can I assign a new file name to my buffer in order to be able to use the normal write command **`:w`** to keep its new file name?
+"
+momodalo/vimtouch,open,Switch prepare-clean-checkout.sh and submodules to https,[],"The submodules and the preparation script are using ssh uris, but github restricts those to signed-in users. While this works for me, building fails on a build server, which doesn't have any login to github at all.
+"
+momodalo/vimtouch,open,How can I setup a custom syntax highlight scheme?,[],"Where do I have to put a syntax file e.g. todotxt.vim and what else do I have to do to get syntax highlighting working?
+
+e.g. syntax file from https://github.com/sideshowcoder/vimtodotxt
+
+Jens 
+"
+momodalo/vimtouch,open,allow commands with spaces in the quickbar,[],"The quickbar currently breaks quickbar commands into a command and a caption at the first space. This makes it break it on the last space so that you can use commands with space in them (e.g. :new /mnt/sdcard/long/path/to/my/file) as long as you include a caption
+"
+momodalo/vimtouch,open,Can't edit .vimrc,[],"This is a leftover issue from the Google code page - issue 7. 
+
+The menu option for vimrc is nice but it looks for ~/.vimrc
+The app user's home directory on a Nexus 9 with Lollipop defaults to /data. The user doesn't have permissions to write to /data so the open fails as it tries to make a recovery file. 
+
+I assume that the vimrc file in the vim directory for the application is the one that is actually parsed. If so, then the app should open /data/data/net.momodalo.app.vimtouch/files/vim/vimrc which does have the appropriate permissions.
+
+Until there is some standardization on $HOME I would hard code the location.
+"
+momodalo/vimtouch,open,I can not edit a file opened with the left sliding panel.,[],"In Vim touch, when I open the sliding panel and choose a file , I can see the file contents but my virtual keyboard does not respond ( it appears good but press a button has no effect ) .
+The shortcut menu responds well .
+When I use a file browser to open a file, it asks me what application I want to use to open it, if I choose VimTouch there I can edit the file ( my keyboard responds )
+
+I had the problem on my old galaxy S3 and my new OnePlus .
+"
+momodalo/vimtouch,open,Build fixes,[],"I needed these to build vimtouch.  It looks like the original URL used an ssh config entry for github; as well as using the full address this switches to http so that it should work without a github account.
+
+I also needed to fiddle with the gradle wrapper to make it use a newer version to get rid of a failure that's associated with plugins built for a later version, although I don't know why I needed to do that.  Is there a canonical gradle wrapper setup that should be added to the repository?
+"
+momodalo/vimtouch,open,vim 2.7r1 isn't accessing user's Directory,[],":w fyle  saves the file to an internal vim directory, not /sdcard.
+vim stopped reading my .vimrc file
+ Android 4.4.4
+"
+momodalo/vimtouch,open,Crash: Back key (ESC) vs word-based input,[],"VimTouch crashes when pressing the back key, which is supposed to send ESC, when using word-based input method. This happens on a Nexus 5 (Android 4.4), it also happened on a Nexus S (Android 4.1).
+"
+momodalo/vimtouch,open,set clipboard=unnamed causes crash on large deletes,[],"Take a fairly large file like [my vimrc](https://raw.githubusercontent.com/Spidey01/terry/e5f3719344fa77a7e2543d98bf9cdffc3fe79737/.vim/vimrc) and open it in Vim Touch.
+
+Now delete everything with :%d
+
+Vim will crash. I assume it runs out of memory. Does not work on small files with a few lines. But does work consistently with a big file like my vimrc.
+
+This also crashes Vim Touch if you kill everything in visual mode (e.g. ggvGx). For some reason doing :g/.*/d will not cause a crash the way normal mode commands seem to.
+
+Observed with 2.7.1412291815 from Google Play.
+"
+momodalo/vimtouch,open,set mouse= breaks opening swap files and rendering,[],"Put this in your $MYVIMRC:
+
+```
+set mouse=
+```
+
+If you create a swap file as noted in #83 and attempt to open it you will get a funky text prompt and Vim Touch will partially hang. I assume it is waiting for input as commands DO NOT WORK but Android GUI things like swiping the drawer on the side and the menu do work.
+
+![screenshot_2014-12-29-14-14-13](https://cloud.githubusercontent.com/assets/185985/5571850/b1fd38ac-8f64-11e4-89ba-0270a89a993d.png)
+
+Also it causes some kind of debugging message to be thrown into the rendering. This manifests itself as a ""SHOWTAB:0"" in the screen shot below and such things happen during some editing commands. Like deleting a line with the 'dd' command. It really borks the entire editor!
+
+![screenshots_2014-12-29-14-18-20](https://cloud.githubusercontent.com/assets/185985/5571892/1ede3e76-8f65-11e4-8327-beec977d2c9c.png)
+
+Seems like this only happens if it is in .vimrc at startup. Changing the setting while Vim Touch is up and running doesn't seem to do anything.
+
+Observed with 2.7.1412291815 from Google Play. Also in previous versions I've used in the past.
+"
+momodalo/vimtouch,open,Hitting back at swap file prompt hangs vim touch,[],"Create a swap file, e.g. edit file, force kill vim so that a .filename.swp file exists.
+Restart vim and edit that file.
+A prompt comes up with More and Edit Anyway buttons.
+Hit back.
+Vim Touch is now hanged.
+
+Observed with 2.7.1412291815 from Google Play.
+"
+momodalo/vimtouch,open,Please use patched Vim,[],"Hi, unpatched versions of Vim are known to contain major problems including crashes.
+I suggest you use either latest available version from Vim Mercurial repo or, alternatively, pick a few dozen patches after release from Vim FTP (ftp://ftp.vim.org/pub/vim/patches/7.4)
+"
+momodalo/vimtouch,open,vimtouch did not edit .vimrc without root ,[],"vimtouch can use android 5 now , but did not use .vimrc file 
+"
+momodalo/vimtouch,open,Opening a file with tabnew crashes vimtouch,[],"Dear,
+
+When I open a file with tabnew, the app crashes with a notification that it stopped.
+
+Kind regards,
+
+Ton Akveld
+"
+momodalo/vimtouch,closed,can you compile the source code to a apk ?,[],"hello,this vim app is not run Android 5.0.1 again . please compile it .thank you !
+"
+momodalo/vimtouch,open,Crashes at start on Android 5,[],"I upgraded my Nexus 4 to the official Android 5.0 Lollipop.
+
+Since then, vimtouch crashes on start.
+The window appears shortly with black contents (no text), then after less than a second the window closes itself.
+
+No crash handler is shown, so no idea how to get stack traces in that case.
+"
+momodalo/vimtouch,open,formatoptions 'j' error,[],"I've found a way to transfer my complete Vim runtime from my computer to my phone using a Bash script I wrote. Plugins and all.
+
+The problem is that my runtime configuration (created for PCs) introduces several bugs that basically break VimTouch beyond recognition. I'm going through and testing to see which specific settings and commands are the offenders, and we'll see if I find any other problems where VimTouch is to blame, not my computer-specific settings.
+
+For now, I've discovered this: the following line, which works fine on desktop Vim, produces an error in VimTouch:
+
+```
+set formatoptions=cqrnj1
+```
+
+The error message:
+
+```
+E539: Illegal character <j>: formatoptions=cqrnj1
+```
+
+Presumably this is the fault of a bug or a missing feature in VimTouch?
+"
+momodalo/vimtouch,closed,Remap Caps Lock from analog keyboard?,[],"I'm using VimTouch on an HTC One smartphone. I use a Mac bluetooth keyboard so I can type and edit text files at pretty much the same speed as on my computer when I need to. On my computer I always remap Caps Lock to send an Escape signal, which makes mode shifting so much faster because Caps lock is so close to the home row.
+
+This remapping is a little problematic, even on a PC, because Caps lock doesn't handle input like other keys. I've accomplished it on Windows with AutoHotkey and on Linux with a custom Xmodmap file.
+
+But it gets worse, because now my muscle memory is to hit caps lock when I want to exit insert mode. In VimTouch, this inevitably enables caps lock and causes all sorts of problems due to momentary confusion.
+
+So I don't know if this is the right place to ask (the solution may be beyond the scope of VimTouch), but is there a way I can remap Caps Lock on my analog keyboard while connected to my phone? I would really prefer not to need to maintain two distinct muscle memories (one for Vim editing on my phone, and one for Vim editing on my PC, which allows me to use Caps Lock for escape).
+"
+momodalo/vimtouch,open,Feature request: Hide the menu and button bars,[],"Hi there,
+
+I'm using a bluetooth keyboard to type in vimtouch and it's working quite well for me. Because of this, most if not all of the on-screen buttons have no use for me and as far as I'm concerned, use up precious screen real estate.
+
+I'd like to see an option in the menu to hide the menu bar an button bar, preferably a separate option for each, because while the button bar at the bottom is senseless when equipped with a keyboard, I do sometimes use the bar at the top.
+"
+momodalo/vimtouch,open,Save on exit,[],"Android can choose to kill VimTouch, but VimTouch does not seem to save the file.
+"
+momodalo/vimtouch,open,"Feature request: character-based input in normal mode, word-based input in insert mode",[],"I hope this is the right place to make a feature request. Being an avid user of vi (actually: [Evil](https://gitorious.org/evil/pages/Home)) I am now making more and more use of VimTouch on my Android mobile phone, and phasing out the Notes app.
+
+As I'm not carrying a keyboard while I'm on the move, I rely on the phone's own input methods. There is IMHO no alternative to character-based input in normal mode (and in command mode and in visual mode). However in insert mode I often prefer word-based input, as it allows input by swiping over the virtual keyboard, and as it provides auto-completion. Therefore **I would appreciate being able to define the VimTouch input mode separately at least for insert mode**. Additionally it might help if it were possible to switch the input mode more easily than by going to Preferences. E.g. with a quick button.
+"
+momodalo/vimtouch,closed,Physical keyboard navigation for actionbar/menu items,[],"The tab selector and actionbar items do not receive focus when Menu (keycode 118) is sent.  Therefore, they cannot be traversed via a physical keyboard.  Would be nice if they could.
+
+Tested with Logitech Tablet Keyboard (ipad and windows/android) and Motorola Xoom keyboard on MotoX (4.4.3) and Nook Color (Cyanogenmod 11 / 4.4.3)
+"
+momodalo/vimtouch,closed,Support Blackberry 10.2.1,[],"It would be nice if this can run on Blackberry as well; with the BB's keyboard this can be a killer app.
+"
+momodalo/vimtouch,open,How can I use the vundle to extend my vim?,[],"As I say in the title. or how can I extend my vim by other means?
+Thanks!
+"
+momodalo/vimtouch,open,"Some files open fine in vim, but problems in vimtouch.",[],"I have a lot of files which open fine in vim (on Linux; as well as in other Android text editors like Ted or Text Warrior), but when I open them with vimtouch they display with every space substituted with a green ^@ .
+Any help would be most appreciated.
+Thank you.
+"
+momodalo/vimtouch,open,custom syntax highlight,[],"How can I setup a custom syntax highlight scheme? I have my own syntax file and color files. It is not clear how to do it using the app. If possible, this should be documented somewhere.
+"
+momodalo/vimtouch,open,root mode not working on CM 10.2 - M1,[],"When I enable ""Set user as root"" on CyanogenMod 10.2 M1. Vimtouch doesn't start any more. It will briefly flash up then close. I'm not getting any su prompt. I believe I might have seen the text ""unknown id"" flash up before it closed. Clearing the App data in Android settings lets it start again. I'm not using any custom vimrc or other settings at this stage.
+"
+momodalo/vimtouch,closed,Freeze when pasting over Visual Mode-selected line,[],"If I try to 'p'aste any text over a Shift-V selected line, vimtouch effectively freezes. The menu works, but I can't load other files or access preferences. I have to Force Stop the app to regain control.
+
+On the latest version, 2.6r2.
+
+To recreate:
+Enter 'i'lnsert mode, type something on two different lines, <ESC> to enter Normal Mode. SHIFT-V to select the entire line, 'y'ank the line, move to the second line, SHIFT-V to select the entire line, 'p'aste the line. The main vimtouch window should be frozen.
+
+Thanks,
+Noah
+"
+momodalo/vimtouch,open,Include diff executable.,[],"Apparently, there's no built-in `diff` executable on Android. So, I cannot diff files within Vim:
+
+```
+:diffthis
+:diffsplit foo
+E97: Cannot create diffs
+```
+
+`:echo executable('diff')` yields `0`.
+
+Please include a diff binary with the app; diffing files is a common task in Vim.
+"
+momodalo/vimtouch,closed,Fix some build process issues,[],"Some of these were already described in #61
+"
+momodalo/vimtouch,open,Hide shortcut bar,[],"Is that what it's called, the bar at the top with the VimTouch logo, the pencil, the ESC, and the :Q! ?
+
+I want to remove it -- is that possible? It takes up screen space, and having the possibility of accidentally hitting :q! with a stray finger and losing my document makes me nervous.
+"
+momodalo/vimtouch,closed,Fix build error with NDK R9,[],
+momodalo/vimtouch,closed,Compilation issues,[],"Hello momodalo,
+
+I was trying to update your app on F-Droid from 2.3 to 2.6, and I came across a few issues:
+- No AndroidManifest.xml. It is fine if you want to move them at build time, but we use them to check for updates and check for source code integrity (correct package id, etc). Could you please supply a base AndroidManifest.xml file with the basic info? (I know you put the version data in project.properties, but that's just your format and we really can't adapt to every single specific case). We can work without an update check for your app, but then it might be some time until we notice there had been an update for months (like it is now with 2.3 -> 2.6).
+- You request for ANDROID_SDK_HOME and ANDROID_NDK_ROOT to be declared to run your script. Which is fine, but I'd rather use ANDROID_HOME for the SDK and ANDROID_NDK for the NDK. These are the standards and most systems already have them declared by default.
+- Your README says that the script runs ndk-build, but it doesn't seem to. Either the script or the docs need updating.
+- The build itself fails on NDK r9:
+
+```
+Running ndk-build in build/net.momodalo.app.vimtouch/
+jni/fakegpm.c: In function 'Gpm_GetEvent':
+jni/fakegpm.c:122:13: error: format not a string literal and no format arguments [-Werror=format-security]
+cc1: some warnings being treated as errors
+```
+
+Thank you for your time!
+
+Regards.
+"
+momodalo/vimtouch,closed,Vimtouch crashes when @* is pressed with empty system clipboard,[],"Pressing @\* when the clipboard is empty causes vimtouch to exit.
+
+vimtouch: 2.5r2
+android: 4.2.1
+"
+momodalo/vimtouch,open,Ctrl-S and Ctrl-Q mappings don't work because of terminal flow control.,[],"Many people have an `:nnoremap <C-s> :update<CR>` (to quickly save) in their `.vimrc`. In Vim Touch, this does not work and instead blocks the output until Ctrl-Q is pressed.
+
+This is a well-known phenomenon due to historical terminal implementations. It is typically disabled with a call to
+
+```
+$ stty start undef stop undef
+```
+
+Can you please reconfigure the terminal underlying Vim Touch in this way, so that those Vim mappings work out of the box?!
+
+PS: Thanks for this great app; I hope you maintain this and regularly publish updates (especially once Vim 7.4 is released)!
+"
+momodalo/vimtouch,open,Files deleted on exit,[],"Opening a file from the File Manager with vimtouch allows it to be edited and saved, however the changes do not persist.  After exiting vimtouch, the file is still in its original state and all changes are lost.  
+"
+momodalo/vimtouch,open,Crash when choosing vim in recent apps after closing using :q! ,[],"When closing vim with the :q! button after opening an email attachment (k9) I cannot select vim from the recent apps list
+
+Error message: Unfortunately, System UI has stopped. 
+Android 4.2.2 on Nexus 10
+
+Apart from that I love this port.  Thanks for the great work. 
+"
+momodalo/vimtouch,open,Input method: switch for insert mode,[],"I was just playing a bit with SwiftKey keyboard, which is (imho) a nice on-screen keyboard to input text, since it supports sliding over the letters instead of having to type every individual word. But for this to work in Vim Touch, the input method needs to be set to 'word' based. However, setting it to word based basically brakes normal mode in vimtouch. For example when typing 'o' to go to insert mode on the next line the keyboard will wait for more input. Would it be possible to add an option to Vim Touch to use word-based input method while in insert mode and character-based input method when not in insert mode?
+"
+momodalo/vimtouch,open,Support vba script to install plugins,[],"Easy! Just open gzipball file with Vim (of course!) and use command :source %. All files will be extracted in your Vim home directory. 
+
+$ vim markdown-<version>.vba.gz +"":source % | quit!"" 
+
+http://www.vim.org/scripts/script.php?script_id=2882
+"
+momodalo/vimtouch,open, add an option to choose whether the top shortcut button is ESC or CTRL.,[],"Idea: Maybe you can add an option to choose whether the top shortcut button is ESC or CTRL. For example, I can set the back button to ESC in settings, so then it'd be convenient to be able to choose CTRL for the button at the top.
+
+from /#!/JoePea
+"
+momodalo/vimtouch,closed,the beginning of the line is not completely in view. Part of it is cut off before the start of the zoom view. ,[],"From trusktr@gmail.com
+
+the beginning of the line is not completely in view. Part of it is cut off before the start of the zoom view. 
+"
+momodalo/vimtouch,closed,Problem with windows resize and keyboard.,[],"Hi,
+
+When I first installed VimTouch, opening the software keyboard made the vim window smaller so I could still see the bottom...
+
+But it stopped working. Now the keyboard covers com and I can't see the content at the bottom of the screen or the vim command line.
+
+This is freakin' awesome! I hope it gets fixed soon. :D
+"
+momodalo/vimtouch,closed,Unable to scroll vertical quickbar,[],"When the quickbar is placed on the right or the left, there is no way to scroll it.
+"
+momodalo/vimtouch,closed,clipboard,[],"How do I insert text copied with `yy` -- to other android apps? It seems that android clipboard doesn't know about things I copied in vimtouch.
+"
+momodalo/vimtouch,closed,Support for bigger fonts,[],"I have poor eyesight. I find Vim Touch's largest font setting (20 points) to be still too small. The latest version of Android Terminal Emulator has options to set the font to as large as 72 points. It would be great if Vim Touch would also increase its font size limits. (I can increase  the system font size but doing so destroys the alignment etc of text in the menus and other parts of the user interface.)
+"
+momodalo/vimtouch,closed,Support for bigger fonts,[],
+momodalo/vimtouch,closed,Soft keyboard hide vim command line,[],"When use vimtouch with soft keyboard, I can not see the command bar text at the bottom of the vim window (for example, when I type :tabe).
+
+I'm not sure if it's feasible to resize vim window automatically when the soft keyboard appear so that the command text will be rendered just above the soft keyboard.
+"
+momodalo/vimtouch,open,Scroll by visual line?,"[Label(name=""bug"")]","I use vimtouch to read notebooks, and in notebooks -- I often have long lines. Vimtouch scrolls by a whole line only -- so if I have a line longer then the screen (I read from phone) -- I can't see the whole thing at all.
+
+What do I put in vimrc to make vimtouch scroll (with swipe) by visual lines, not by phisical lines?
+"
+momodalo/vimtouch,closed,Automatically restarts after quitting (:q!),[],"I just upgraded to 2.2 which is a very nice improvement!
+There seems to be a small problem with the new feature to keep Vimtouch alive: it seems to be impossible to quit vimtouch. I understand that the service was added to prevent Vimtouch from being killed on some devices (never had this problem on my Google Nexus 7). But now it seems impossible to exit Vimtouch at all. If I do a ':q' (manually on the cli or using the :Q!-button in the toolbar VimTouch will restart itself after a few seconds. The only solution to really exit vimtouch for now is to kill the vimtouch service.
+Other apps which use a similar solution to stay alive, such as Android Terminal, let the user exit the app, so I guess it is a problem with the VimTouchService.
+"
+momodalo/vimtouch,closed,intent from SL4A issue,"[Label(name=""bug"")]","I have use vimtouch for writting code . This is great editor on android . I really appreciated it.
+
+but I have one issue about this app. I have be using SL4A for develop python application .
+When I select vimtouch to edit source code , it open as new file. 
+I report  this problem although it may be caused by SL4A.
+
+thanks
+"
+momodalo/vimtouch,closed,"Shuts down unexpectedly when not in use, closing any open documents without saving.",[],"What steps will reproduce the problem?
+1. Open a large, important text file.
+2. Leave VimTouch open.
+3. Move on with life.
+4. Come back to work on the text file.
+
+What is the expected output? What do you see instead?
+I expect to be able to start working on my file immediately and find that instead, Vim is started up fresh. Once I've hunted down the file again, it opens in recovery mode, with an empty document at the bottom of the screen.
+
+What version of the product are you using? On what operating system?
+VimTouch 1.7
+Android 4.1.1 on an Asus TF300
+
+Please provide any additional information below.
+I am not sure exactly what could be done about this, since Vim doesn't expect to run in such an environment as Android. Maybe auto-saving the files as Android closes Vim, writing the file names to a 
+"
+momodalo/vimtouch,closed,Please add tags to the version numbers.,[],"Not using these seems to break fdroid's buildbot: http://f-droid.org/wiki/page/net.momodalo.app.vimtouch
+"
+momodalo/vimtouch,closed,The new tab bar breaks the UI,"[Label(name=""bug"")]","The tab bar (with file names) in v 2.1 seems to be a part of the quickbar, which now takes up half the screen. (It doesn't seem to matter how long the filename is).
+
+![Screenshot_2013-02-27-19-23-45](https://f.cloud.github.com/assets/586642/202272/bd51895a-810c-11e2-9e6e-9e76f1801e65.png)
+"
+momodalo/vimtouch,closed,No color in Android terminal,[],"I can run vi from the command line using Android Terminal Emulator, but when I do, no colors for syntax highlighting show up.
+
+If I try to manually enter `:colorscheme molokai`, vi says `'colorscheme' not implemented.`
+
+Please add the colorscheme feature for full runtime.
+"
+momodalo/vimtouch,open,Crash with :Ex,[],"Vimtouch 2.0 with the Vimtouch Full Runtime crashes when launching the netrw plugin with the :Ex command.
+When launching it as ':e /path/to/directory/' it works without any problems.
+
+This was also discussed on the mailinglist: https://groups.google.com/d/topic/vimtouch-general/rMnC-uw8ymo/discussion
+
+Some information I could get from the Android Crash Report:
+Package name: net.momodalo.app.vimtouch
+Package version: 20
+Exception: NullPointerException
+Source file: VimTouch.java
+class: VimTouch$MsgHandler
+source method: handleMessage
+line: 567
+"
+momodalo/vimtouch,closed,256 color support?,[],"As is currently being discussed in the mailing list (https://groups.google.com/forum/?fromgroups=#!topic/vimtouch-general/fQvczWmp0z0), would it be possible to add support for 256 colors?
+"
+momodalo/vimtouch,closed,detect vimtouch in vimrc?,[],"Is it somehow possible to detect that the current vim instance is Vimtouch from inside the .vimrc?
+"
+momodalo/vimtouch,open,Formatting bug using `gq` with `set autoindent`,[],"**Expected behavior:** When typing `gq` in command mode the line should reformat itself and insert line breaks where appropriate so it looks like a nice paragraph.
+
+**Actual behavior:** A line will format neatly into a paragraph UNLESS the line ends with a comma, in which case the lines below the line ending in a comma will all get indented 9-10 spaces. The end result looks like this (copy pasted from a text file after it was formatted with vim touch)...
+
+```
+Lorem ipsum lorem ipsum lorem ipsum lorem ipsum. Lorem ipsum lorem ipsum lorem
+ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.  Lorem ipsum
+lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem,
+      ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
+      ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
+      ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
+      ipsum
+```
+
+The only entries in my vimrc are `set autoindent` and `set formatoptions=tcqn`. The problem I described above occurs in visual mode (when formatting highlighted text) as well.
+"
+momodalo/vimtouch,closed,Doesn't play nicely when file is observed with android.os.FileObserver,[],"I am using [ownCloud](https://github.com/owncloud/android/)'s ""Keep file up to date"" feature to push changes to a text file immediately to the server. This works with most editors, except with VIM Touch, ownCloud doesn't recognize any changes to the file.
+
+Here is the code that ownCloud uses to watch changes of the file: https://github.com/owncloud/android/blob/master/src/com/owncloud/android/files/OwnCloudFileObserver.java
+
+Related issue: owncloud/android#3
+"
+momodalo/vimtouch,closed,A little fix to my last push,[],
+momodalo/vimtouch,closed,Hardware keyboard support,"[Label(name=""wontfix"")]","Good day.
+
+I have problems with XperiaPro hardware keyboard. Two keys do not work: SYM key and Change Language key.
+"
+momodalo/vimtouch,closed,Fix build break + fix most of Lint warnings,[],"Fixed another build breakage that I introduced. Grr.
+
+Ran Lint, fixed most of warnings. We're down from ~65 to 4.
+"
+momodalo/vimtouch,open,Compiling vim with +conceal,[],"Hey there! I love Vim Touch but I'm having a small issue with it. I use Vimwiki, a personal wiki built on top of Vim, and it requires Vim to be compiled with conceal support. It looks like Vim Touch isn't built with +conceal (though I can't get a vim --version so I can't say for sure).
+
+If this could be tweaked, that would be awesome.
+
+Thanks!
+"
+momodalo/vimtouch,closed,config files,[],"can you add information on where to put config files? 
+
+I assume VAM should work, right?
+"
+momodalo/vimtouch,closed,Several fixes,[],"- Fix build break
+- Fix string overrun in copy to clipboard
+- Cleanup of context menu
+- Some smaller cleanup
+"
+momodalo/vimtouch,closed,Context menu no longer works,[],"Commit 04383a153b42c1a78b836f3e1c3bff9c769ec81a has broken the context menu, long press doesn't bring it up anymore.
+"
+momodalo/vimtouch,closed,Automatically generate JNI function signatures,[],"Involves a little juggling with build procedure: ant debug now calls back into ./run for ndk-build.
+"
+momodalo/vimtouch,closed,Does this software have a license?,[],"I would like to submit this to the f-droid.org repository, but the code would need to have a free software license, such as the Vim license.
+"
+momodalo/vimtouch,closed,"Fixed one reported issue, plus some cleanup",[],
+momodalo/vimtouch,closed,Single tap on screen generates slash and garbage,[],"To reproduce:
+
+-open app
+-enter Insert mode
+-tap the screen
+
+Doing this seems to initiate a vim search: on the command line I see a slash character followed by a few other characters, for instance
+
+/^]1
+/Z/
+/X/
+/[-
+
+If ""Single Tap send ESC"" is selected in the preferences, after this sequence vim returns to Normal mode and the cursor is moved to the beginning of the current line.
+
+This is a new copy of issue #12 since I am unable to reopen that one directly.
+"
+momodalo/vimtouch,closed, offer an option to disable the quick bar by default,[],
+momodalo/vimtouch,closed,Open File fails with filenames that have spaces,"[Label(name=""bug"")]","Attempting to use the Open File menu option and activity to open a file fails if the filename has a space in it.  The error message ""E172: Only one file name allowed"" is briefly displayed.  It looks like the filename needs to be escaped somewhere, because I get the same error if I use "":e foo bar"" without a \.
+"
+momodalo/vimtouch,closed,Swype	Insert mode doesn't work correctly with Swype,"[Label(name=""bug"")]","Swype   Insert mode doesn't work correctly with Swype
+"
+momodalo/vimtouch,closed,It's hung when i paste a big text (~200 lines),[],"Comments from Google Play
+"
+momodalo/vimtouch,closed,Slightly improve performance of installZip(),[],"The main gain is from increase of the buffer. Using BufferedInputStream
+also seems to have a little positive effect. It's OK to remove
+zin.closeEntry(), since zin.getNextEntry() will call that anyway.
+
+Log progress as info, not as error.
+"
+momodalo/vimtouch,closed,double click on some tag in taglist does nothing,[],"From Chen Jelly
+I have another problem, double click on some tag in taglist does nothing.
+How to use taglist?
+"
+momodalo/vimtouch,closed,Progress indicator freezes after download is finished,"[Label(name=""bug"")]","Just tried downloading full Vim runtime. The progress indicator spins nicely while downloading, but then freezes while unzipping, and that takes loong time. This really looks scary when you don't know what's going on.
+"
+momodalo/vimtouch,closed,Progress indicator should have some text,"[Label(name=""bug"")]","Having a spinner without any explanation is unfriendly. We need some short description for what's going on behind the spinner.
+"
+momodalo/vimtouch,closed,ctags plugin,"[Label(name=""enhancement"")]","https://groups.google.com/forum/?fromgroups=#!topic/vimtouch-general/Ea70BJC86r8
+"
+momodalo/vimtouch,closed,Fix 'Copy All' functionality,[],"One commit in these series fixes the actual functionality, the 'Copy All' of the context menu. It used to copy current contents of the terminal, now it copies all the buffer.
+
+The rest is various cleanup and convenience code.
+"
+momodalo/vimtouch,closed,Single tap on screen generates slash and garbage,[],"To reproduce:
+
+-upgrade to v1.6
+-open app
+-enter Insert mode
+-tap the screen
+
+Doing this seems to initiate a vim search: on the command line I see a slash character followed by a few other characters, for instance
+
+/^]1
+/Z/
+/X/
+/[-
+
+If ""Single Tap send ESC"" is selected in the preferences, after this sequence vim returns to Normal mode and the cursor is moved to the beginning of the current line. 
+"
+momodalo/vimtouch,closed,"""Edit vimrc"" button freezes the app",[],"To reproduce:
+
+-Upgrade to v1.6
+-Launch vimtouch
+-Hit menu key
+-tap ""Edit vimrc"" button
+
+The button is highlighted on the screen and the app stops responding.
+
+Where does the vimrc live in the device filesystem? can I edit it another way?
+"
+momodalo/vimtouch,closed,"Bugfix, some cleanup and a helper script",[],"- Fixed an annoying bug: context menu used to pop up while pinch to scale was in progress.
+- Several cleanup commits
+- Added a little script to build+run in one command
+"
+momodalo/vimtouch,open,vim-latex,"[Label(name=""bug"")]","email from Roger French
+
+   Can I now use vim-latex inside of it?
+
+From the vim latex instructions it looks like vim touch should work by my just following the below instructions?
+
+Or am I missing something about vim touch?
+
+---
+
+http://vim-latex.sourceforge.net/index.php?subject=download&title=Download  
+Installation Instructions
+
+Step 1 of 4: Download and extract the archives
+
+Extract one of the archives above into your ~/vimfiles directory (if you are using windows) or ~/.vim directory (if you are using *nix).
+If you are updating after a long time, it might be a good idea to remove the ~/vimfiles/ftplugin/latex-suite directory from previous installations before reinstalling.
+
+NOTE: If you already have some latex ftplugin files, read the Advanced Installation Instructions to make sure you do not over-write any of your files.
+
+Step 2 of 4: Set a few things in .vimrc
+
+The recommended settings for vim-latex in your .vimrc file are now only described in the vim-latex manual.
+Step 3 of 4: Install the help files
+
+To install the included latex-suite.txt and latexhelp.txt files as vim help files, start vim and do the following:
+helptags ~/.vim/doc     (for *nix users) 
+helptags ~/vimfiles/doc     (for windows users) 
+Step 4 of 4: Done!
+
+Thats it! You are done! Now start editing a latex file in vim. Latex-Suite should start up automatically. You can do
+
+:help latex-suite.txt
+from within vim to get the online Latex-Suite reference.
+"
+momodalo/vimtouch,closed,:m+1,"[Label(name=""bug"")]",":m+1 (which worked under 1.5) alternatively works or acts as za…
+
+reported by Thierry Guillemin
+"
+momodalo/vimtouch,closed,Removed intent from InstallProgress activity,[],"It doesn't seem to work in any useful way, but displays an extra ""Vim Touch"" item in the list of choices, thus confusing the user.
+"
+momodalo/vimtouch,closed,Plugin manager,"[Label(name=""enhancement"")]","Something like vundle (https://github.com/gmarik/vundle) to help vim to manage and download plugins.
+"
+momodalo/vimtouch,closed,Implement FEAT_GUI,"[Label(name=""enhancement"")]","Currently, vimtouch used the EmulatorView to render the content but it should be better to implement a gui_android.c to provide Android native drawing/scrolling
+"
+momodalo/vimtouch,closed,Integrate with Android InputConnection,"[Label(name=""enhancement"")]","Implement the onCreateInputConnection and InputConnection to integrate with Android IME framework and leverage the auto-complete and auto-correction(?).
+"
+momodalo/vimtouch,closed,Bugfix and doc update,[],"Fixed the bug with UTF-8 filenames and updated build docs, as promised.
+"
+momodalo/vimtouch,closed,Several fixes,[],"Some highlights:
+1. Fixed bug with crash on notifications.
+2. Added several project files to Git. One line there will have non-trivial
+   impact: I've added project.properties, with target=android-16. This means
+   we will have to have synchronised Android SDKs to develop on; I don't see
+   other ways to proceed, since project.properties is meant to be VCS-tracked.
+   Also modified libraries/*/project.properties accordingly.
+3. Got rid of setjmp/longjmp hack, as a fix for a new crash on exit.
+4. Fixed non-fatal, but potentially harmful crash when inflating layout on
+   Gingerbread (like described here:
+   http://stackoverflow.com/questions/9830916/android-theme-holo-previous-version)
+"
+momodalo/vimtouch,closed,"use "":q!"" leave app and relaunch several times will cause hang",[],"launch vimtouch->:q!->launch->:q!->launch and only see title bar.
+
+Samsung Galaxy S3
+"
+momodalo/vimtouch,closed,Can't open unicode/multibyte file path,"[Label(name=""bug"")]","From google play comments, ""if path to file contained cyrilic, file doesn't open.""
+"

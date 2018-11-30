@@ -1,0 +1,211 @@
+repository,state,title,label,body
+greenaddress/abcore,open,Update README.md,[],"0.16.0 ->  0.17.0 
+
+advice -> advise"
+greenaddress/abcore,open,Battery optimization fix wip issue 51,[],"So this is working code to give you an idea of what the user will be required to do. At the moment the dialog will pop up as soon as the user has set the switch to download Core.
+
+This is probably NOT what I would recommend - if the user is using an Android device that is left plugged in, there is no need for this fix, as Doze is not supposed to activate when plugged in ( there are some phones which ignore this, for no particular rhyme or reason). I would recommend either:
+a) another toggle under the ""On / Off Switch"" on Main Activity, or
+b) add it as an option in the settings menu.
+
+It depends where we want to educate the user I guess. They might not find it in the settings, but cluttering the MainActivity UI/UX is rarely a good idea.
+
+I am happy to implement either, just let me know what you prefer."
+greenaddress/abcore,closed,Support Bitcoin Core 0.16.3,[],"Just installed this and it downloaded 0.16.2 when I installed it.  0.16.2 contains a vulnerability.
+
+See: https://bitcoincore.org/en/2018/09/18/release-0.16.3/"
+greenaddress/abcore,open,Improve F-Droid listing,[],"I've seen this app on F-Droid, but it lacks screenshots, changelog and a translatable description there. It's pretty easy for you to add these information. Please have a look at [this example](https://github.com/Freeyourgadget/Gadgetbridge/tree/master/fastlane/metadata/android) or at the [F-Droid docs](https://f-droid.org/en/docs/All_About_Descriptions_Graphics_and_Screenshots/#in-the-apps-source-repository) or [fastlane docs](https://github.com/fastlane/fastlane/blob/2.28.7/supply/README.md#images-and-screenshots).
+After you have commited these files to your repo and tagged a new version, you need to remove the `Description` and `Summary` from the metadata file in the [F-Droid Data repo](https://gitlab.com/fdroid/fdroiddata)."
+greenaddress/abcore,open,Battery optimization on Android 8.0 prevents ABCore from syncing,[],"Android 8.0 has introduced a battery optimization change that creates limits on how freely apps running in background can access to the device's resources. This prevents ABCore and other apps connected to the Bitcoin network from syncing the blocks when the app is running in background.
+
+Luckily this can be solved by going to ""Special app access"" in the device's settings and deactivate the battery optimization feature for individual apps.
+
+Since if not addressed this prevents the users from being able to use the app, I suggest to at least put a helper message somewhere to guide users in deactivating the battery optimization for ABCore.
+
+As a reference: https://developer.android.com/about/versions/oreo/android-8.0-changes
+
+I also reported the same issue to the Andorid Bitcoin-wallet devs and seems like their plan is to rewrite the background process to use WorkManager: https://github.com/bitcoin-wallet/bitcoin-wallet/issues/557#issuecomment-420707493"
+greenaddress/abcore,open,Can't copy commands outputs from console,[],"After successfully syncing the node in testnet, I tried to use the console but I encountered some difficulties since I am unable to copy the output of the commands (e.g. new addresses or signed transactions).
+
+In case it is relevant, I am on an Motorola device with Android 8.0.0  "
+greenaddress/abcore,closed,Add lint option to travis and abort on error,[],
+greenaddress/abcore,open,TransactionTooLargeException on Android 8 (Oreo),[],"```
+java.lang.RuntimeException: 
+  at android.app.ActivityThread$StopInfo.run (ActivityThread.java:4006)
+  at android.os.Handler.handleCallback (Handler.java:789)
+  at android.os.Handler.dispatchMessage (Handler.java:98)
+  at android.os.Looper.loop (Looper.java:164)
+  at android.app.ActivityThread.main (ActivityThread.java:6541)
+  at java.lang.reflect.Method.invoke (Native Method)
+  at com.android.internal.os.Zygote$MethodAndArgsCaller.run (Zygote.java:240)
+  at com.android.internal.os.ZygoteInit.main (ZygoteInit.java:767)
+Caused by: android.os.TransactionTooLargeException: 
+  at android.os.BinderProxy.transactNative (Native Method)
+  at android.os.BinderProxy.transact (Binder.java:748)
+  at android.app.IActivityManager$Stub$Proxy.activityStopped (IActivityManager.java:4636)
+  at android.app.ActivityThread$StopInfo.run (ActivityThread.java:3998)
+```"
+greenaddress/abcore,open,native tgkill/abort crash on android 8 (oreo),[],"```
+
+*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+pid: 0, tid: 0 >>> com.greenaddress.abcore <<<
+
+backtrace:
+  #00  pc 00000000000695d8  /system/lib64/libc.so (tgkill+8)
+  #01  pc 000000000001d990  /system/lib64/libc.so (abort+88)
+  #02  pc 0000000000436868  /system/lib64/libart.so (_ZN3art7Runtime5AbortEPKc+528)
+  #03  pc 0000000000436f78  /system/lib64/libart.so (_ZN3art7Runtime7AborterEPKc+24)
+  #04  pc 00000000005213a0  /system/lib64/libart.so (_ZN7android4base10LogMessageD1Ev+900)
+  #05  pc 0000000000241b64  /system/lib64/libart.so (_ZNK3art2gc12Verification17LogHeapCorruptionENS_6ObjPtrINS_6mirror6ObjectEEENS_12MemberOffsetEPS4_b+1292)
+  #06  pc 00000000001dd964  /system/lib64/libart.so (_ZN3art2gc9collector17ConcurrentCopying13MarkNonMovingEPNS_6mirror6ObjectES5_NS_12MemberOffsetE+492)
+  #07  pc 00000000001df8d4  /system/lib64/libart.so (_ZN3art6mirror6Object15VisitReferencesILb1ELNS_17VerifyObjectFlagsE0ELNS_17ReadBarrierOptionE1ENS_2gc9collector17ConcurrentCopying16RefFieldsVisitorES8_EEvRKT2_RKT3_+388)
+  #08  pc 00000000001d9594  /system/lib64/libart.so (_ZN3art2gc9collector17ConcurrentCopying19ProcessMarkStackRefEPNS_6mirror6ObjectE+164)
+  #09  pc 00000000001d8eb8  /system/lib64/libart.so (_ZN3art2gc9collector17ConcurrentCopying20ProcessMarkStackOnceEv+576)
+  #10  pc 00000000001d8c60  /system/lib64/libart.so (_ZN3art2gc9collector17ConcurrentCopying16ProcessMarkStackEv+28)
+  #11  pc 00000000001d2e04  /system/lib64/libart.so (_ZN3art2gc9collector17ConcurrentCopying12MarkingPhaseEv+700)
+  #12  pc 00000000001d2124  /system/lib64/libart.so (_ZN3art2gc9collector17ConcurrentCopying9RunPhasesEv+760)
+  #13  pc 00000000001e61b8  /system/lib64/libart.so (_ZN3art2gc9collector16GarbageCollector3RunENS0_7GcCauseEb+352)
+  #14  pc 000000000020a344  /system/lib64/libart.so (_ZN3art2gc4Heap22CollectGarbageInternalENS0_9collector6GcTypeENS0_7GcCauseEb+3632)
+  #15  pc 00000000002181e8  /system/lib64/libart.so (_ZN3art2gc4Heap12ConcurrentGCEPNS_6ThreadENS0_7GcCauseEb+128)
+  #16  pc 0000000000220500  /system/lib64/libart.so (_ZN3art2gc4Heap16ConcurrentGCTask3RunEPNS_6ThreadE+40)
+  #17  pc 000000000024106c  /system/lib64/libart.so (_ZN3art2gc13TaskProcessor11RunAllTasksEPNS_6ThreadE+64)
+  #18  pc 00000000002e296c  /system/framework/arm64/boot-core-libart.oat (dalvik.system.VMRuntime.clampGrowthLimit [DEDUPED]+124)
+  #19  pc 00000000002e767c  /system/framework/arm64/boot-core-libart.oat (java.lang.Daemons$HeapTaskDaemon.runInternal+204)
+  #20  pc 00000000002e5f3c  /system/framework/arm64/boot-core-libart.oat (java.lang.Daemons$Daemon.run+76)
+  #21  pc 00000000001fbc0c  /system/framework/arm64/boot.oat (java.lang.Thread.run+76)
+  #22  pc 0000000000506984  /system/lib64/libart.so (art_quick_invoke_stub+580)
+  #23  pc 00000000000d8010  /system/lib64/libart.so (_ZN3art9ArtMethod6InvokeEPNS_6ThreadEPjjPNS_6JValueEPKc+200)
+  #24  pc 000000000042f8d8  /system/lib64/libart.so (_ZN3artL18InvokeWithArgArrayERKNS_33ScopedObjectAccessAlreadyRunnableEPNS_9ArtMethodEPNS_8ArgArrayEPNS_6JValueEPKc+104)
+  #25  pc 0000000000430a64  /system/lib64/libart.so (_ZN3art35InvokeVirtualOrInterfaceWithJValuesERKNS_33ScopedObjectAccessAlreadyRunnableEP8_jobjectP10_jmethodIDP6jvalue+432)
+  #26  pc 0000000000456d88  /system/lib64/libart.so (_ZN3art6Thread14CreateCallbackEPv+1140)
+  #27  pc 0000000000065f88  /system/lib64/libc.so (_ZL15__pthread_startPv+36)
+  #28  pc 000000000001ed24  /system/lib64/libc.so (__start_thread+68)
+```"
+greenaddress/abcore,open,Allow to ask for permission to use external storage,[],"Right now it's impossible to set the `datadir` to an external (or emulated) storage as the app doesn't ask for permissions.
+
+https://developer.android.com/training/data-storage/files.html"
+greenaddress/abcore,closed,"Android Oreo, ABCore breaks (doesn't seem to start)",[],"Android Oreo, ABCore breaks (doesn't seem to start)"
+greenaddress/abcore,closed,Bitcoin Wallet integration,[],"Hi! Please, add a complete and automatic integration with the app ""Bitcoin Wallet"": 
+
+https://wallet.schildbach.de/"
+greenaddress/abcore,closed,French translation + README.md,[],"This small PR adds the french translation and restore a broken link in the README.md
+
+You can ping me in the future if you have new keys to translate
+
+Thanks for this app"
+greenaddress/abcore,closed,port armv8l,[],its possible? for run on a venz pro android box
+greenaddress/abcore,closed,Requesting BIP148 Binary support. ,[],Well...enough said. 
+greenaddress/abcore,open,Does this scan for available storage before?,[],"Say a phone has 32 GB total storage, blockchain initial sync is 110+ GB now.  Does the app check this before trying to download?  How will it handle if it downloads then fills up all the storage part way through?"
+greenaddress/abcore,open,Tor hidden service,[],"Add an ability to run as a tor hidden service, please!"
+greenaddress/abcore,closed,Buttons to get the app,[],More beautiful button for google play and a new one for fdroid ;)
+greenaddress/abcore,closed,German Translation,[],"I translated your App to German using Stringlate:
+
+https://gist.github.com/9ee98f941869f6763827fe3f8e68307a"
+greenaddress/abcore,closed,Use getblockchaininfo for progress estimation,[],"Bitcoin Core has a built in progress estimator for verification progress, in the `getblockchaininfo` RPC, under key `verificationprogress`, which is based on estimated total transaction count rather than block height, and should be more accurate (but it's far from perfect either)."
+greenaddress/abcore,closed,ABCore randomly restarting,[],"This is a problem I've been having for several releases, including the latest (0.48).
+
+After stopping Core (by pressing the slider/button ""Switch Core OFF""), and verifying that it indeed has stopped (debug.log shows ""Shutdown: done""), the tray icon disappears. I leave the ABCore app, and remove it from the view of recently used apps (pressing the square button, and swiping the ABCore window off the screen).
+
+Some time later (I think usually when leaving another, unrelated app), the ABCore tray icon automatically reappears, and it seems that it indeed is running again (by inspecting the debug.log). This makes it nearly unusable, as the memory/CPU/bandwidth usage is something I don't want to see appear unexpectedly.
+
+The problem does not seem to occur if after stopping Core, and leaving ABCore, I go to the apps settings screen, and Force Kill the application.
+
+I don't have the feature for automatically running when on power+wifi enabled.
+"
+greenaddress/abcore,closed,Pruning support,[],"I'm unable to set up abcore with pruning support. Even when adding it manually to bitcoin.conf, setup fails due to alleged lack of storage.
+
+Ideally, there is a config option for pruning (set by default for 0.12!), and this is taken into account for disk space calculations.
+"
+greenaddress/abcore,closed,feature request: run automatically when plugged in and on wifi,[],"feature request: run automatically when plugged in and on wifi
+"
+greenaddress/abcore,closed,"Don't pin packages, download latest and verify signature instead",[],"Currently we are keeping a sha256 of each package hardcoded (pin) in the app which works until mirrors update to a newer unpinned package.
+
+We could either use an archive mirror that contains old versions or even better we could stop pinning packages and verify them by the signatures from upstream.
+"
+greenaddress/abcore,closed,setting screen config changes mangles manual config,[],"In 0.v33-alpha
+
+install.
+manual config.
+twiddle config, removing disablewallet=1
+exit config
+notice that disablewallet is still checked
+uncheck
+manual config
+configuration is all gone (except for disablewallet=1).
+"
+greenaddress/abcore,closed,New store link,[],
+greenaddress/abcore,closed,What's the problem?,[],"For two days now I cannot log in or send my money. I get no 2fa, now when I try loggin in it just says error. No reason why. I can log in with mobile but it never sends me my 2fa in order to withdrawal. Of course no suppose from their email ""help"". Is this a system error or what's going on with my wallet?
+"
+greenaddress/abcore,closed,ABCore don't download SSL libreries both Debian and Arch,[],"While downloading libreries, ABCcore stops at ssl libs, in Debian and Arch packages.
+"
+greenaddress/abcore,closed,User role,[],
+greenaddress/abcore,closed,User role,[],
+greenaddress/abcore,closed,Pages translations,[],
+greenaddress/abcore,open,Add option to restart core when device is restarted,[],"Add option to start core when device is started
+
+(default on?)
+"
+greenaddress/abcore,closed,Added website in readme,[],
+greenaddress/abcore,closed,Added CM to readme.md,[],
+greenaddress/abcore,closed,Added Community Manager in Readme,[],
+greenaddress/abcore,closed,Fix typo in Macintosh name,[],
+greenaddress/abcore,closed,About FIX,[],
+greenaddress/abcore,closed,Timothy added,[],
+greenaddress/abcore,open,Debug,[],"I clicked on Debug while core was running and the app crashed.
+I restarted but when I went in ""peers"" the message ""core is not running"" appeared.
+I closed the app but also reopening it the message was still there.
+There must be an option to reset errors. It seems that closing and reopening it is not enough.
+"
+greenaddress/abcore,closed,Node available throught Tor onion address,[],"Tor Onion address
+"
+greenaddress/abcore,closed,playstore logo,[],
+greenaddress/abcore,closed,Post + graphic,[],"Post + graphic
+"
+greenaddress/abcore,open,ABCore is not detecting all storage available (external SD and USB disks),[],"As per title, ABCore is not detecting all storage available (external SD and USB disks).
+
+I saw various solutions, some using Android's APIs (but didn't work, not even on recent devices), some required hardcoding a number of candidate paths and some other parsed the result of mount.
+
+We need to autodetect the devices that could be used and pick one or ask the user to pick if more than one.
+"
+greenaddress/abcore,open,"Add Tor support, show to the user the onion address of the node to the user via qrcode",[],"Add Tor support such that the node can be reached from anywhere bypassing nat.
+
+Make the onion address available to the user in both text as well as qrcode formats
+
+you can then access your node from anywhere with your SPV mobile wallet for better security and privacy
+"
+greenaddress/abcore,closed,Dns seeds not working,[],"This is caused by dns resolving times out and this is because it tries to resolve via 127.0.0.1
+
+Options:
+
+1) Possible solution:
+Use http://proot.me/ a user space chroot mechanism and setup /etc/resolv.conf or /etc/hosts
+
+2) Faster/hacky solution:
+Use glibc HOSTALIASES env var to pass an arbitrary hosts file ( http://man7.org/linux/man-pages/man3/gethostbyname.3.html )
+
+Either way if the hosts file is used it needs to be generated at run time by resolving the dns servers just before starting the node
+
+3) Preferred solution: reimplement it properly:
+Compile Core using the Android NDK, this should reduce the binary size (and it's dependencies) but it will require building and hosting various architectures just for Android.
+"
+greenaddress/abcore,closed,Added Gabriele,[],"Added Gabriele
+"
+greenaddress/abcore,closed,Menu background color,[],
+greenaddress/abcore,closed,Italian translation and adapted the site for ABCore,[],
+greenaddress/abcore,closed,Italian + de copied,[],"Italian + de copied
+"
+greenaddress/abcore,closed,First post better.,[],"Added a reference to Releases Page.
+"
+greenaddress/abcore,closed,Draft version of the site,[],
+greenaddress/abcore,closed,First version of the site,[],"forked the original repository
+cloned in local
+Checked out gh-pages
+Aplied the site @otta88sun 
+commited 
+modified the file CNAME
+commited
+pushed 
+"
+greenaddress/abcore,closed,"Test1 Lawrance, capiscimi",[],"test
+"
+greenaddress/abcore,closed,Update params.json,[],

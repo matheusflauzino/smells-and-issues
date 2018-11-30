@@ -1,0 +1,115 @@
+repository,state,title,label,body
+mportuesisf/ScreenInfo,open,Manufacturer and build type added,[],"Hello, I've just added the manufacturer name and build type information since it's really important to me because I work with a lot of different devices and this is a fast way to know if it's a user or engineering build and the manufacturer. Hope you find it interesting also. Great work by the way, congrats! Cheers Pedro.
+"
+mportuesisf/ScreenInfo,open,SPIKE: Android Wear support,[],"##### Description
+
+Investigate and decide if supporting Android Wear makes sense.
+##### Assumptions
+- This can be done via emulation - I don't have a Wear device
+##### Acceptance Criteria
+- What does it take to package an app for Android wear?
+- Does Android Wear provide useful info?
+- Can we tell if the screen is round, for instance?
+"
+mportuesisf/ScreenInfo,open,SPIKE: New Info to report in Lollipop,[],"##### Description
+
+Check the release notes between API levels 17 and 22 and see if anything has appeared that would be useful to report via ScreenInfo.
+"
+mportuesisf/ScreenInfo,open,Display dimensions on screen,[],"##### Description
+
+As a developer, I would like to see rule lines on the screen that show the actual dimensions of the screen so that I know exactly how many pixels there are.
+##### Acceptance Criteria
+- Develop a custom view that can display a drafting-style rule line, both horiz and vertically
+- Integrate into the interface
+- Unit tests
+"
+mportuesisf/ScreenInfo,open,DP/DPI Calculator,[],"##### Description
+
+As a developer, I would like to convert between pixel sizes for the various screen densities so I can know what size my assets should be.
+##### Acceptance Criteria
+- Displays fields for DPI ldpi, mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi,  (and also DP)
+- User enters data in one field
+- All other fields are calculated
+- Calculation rounds to nearest whole number
+- Display a square region on the screen of that box, in DP units
+- Unit tests
+"
+mportuesisf/ScreenInfo,open,Display resource lookup string,[],"##### Description
+
+As a developer, I would like to see the resource naming lookup string that matches this device so that I can get a better idea of which layouts and drawables will b
+##### Assumptions
+- We need to stay compatible with old devices
+##### Acceptance Criteria
+- Display a series of strings in matching order, using:
+  -- minWidthDP (for modern devices)
+  -- fully qualified screen size/density (pre-honeycomb)
+  -- qualified just density
+  -- qualified size
+  -- generic
+- Include in screen display
+- Include in share report
+- Unit tests
+"
+mportuesisf/ScreenInfo,open,Screen Aspect Ratio,[],"##### Description
+
+As a developer, I would like to see the screen aspect ratio of the device so that I can better judge how my UX will look/perform.
+##### Assumptions
+- This must be derived from the physical width/height of the display
+##### Acceptance Criteria
+- Calculate Screen Aspect ratio as an integer:integer value
+- Calculate Screen Aspect Ratio as a value over 1 (width over height)
+- Display in Screen Info
+- Include in Share report
+- Unit tests
+"
+mportuesisf/ScreenInfo,closed,"MP: bump to api 22, add xxxhdpi (no drawables yet)",[],"Everything necessary to get back onto Play Store
+"
+mportuesisf/ScreenInfo,closed,Redeploy to Google Play,[],"##### Description
+
+As the developer of ScreenInfo, I want the app to be published in the Play Store once again so that people can use it.
+##### Assumptions
+- Prep a list of the artifacts (promo art, etc) that Play Store requires nowadays for a successful app submission.
+##### Acceptance Criteria
+- App back in Google Play store
+"
+mportuesisf/ScreenInfo,open,Visual Redesign,[],"##### Description
+
+As a user of ScreenInfo, I would like the app to look nicer so that it is pleasing to use.
+##### Assumptions
+- We will use as many modern UI idioms as possible, but must stay compatible with older devices (back to API 8, Froyo)
+- Require a visual mock to start
+##### Acceptance Criteria
+- New look implemented
+- Any requisite tests updated
+- Runs on Froyo device
+- Runs on latest (Lollipop) device
+"
+mportuesisf/ScreenInfo,open,Unit tests,[],"##### Description
+
+As a ScreenInfo developer, I want unit tests so that I can be certain the basic features work properly.
+##### Assumptions
+- We will use the new Android unit test support
+##### Acceptance Criteria
+- Tests for the Screen model object
+- Tests for the main activity
+"
+mportuesisf/ScreenInfo,closed,Lollipop support,[],"##### Description
+
+As an Android developer, I would like ScreenInfo to support the latest release of Android so that its results are meaningful on the latest hardware.
+##### Acceptance Criteria
+- Bump to API 22
+- Add support for new screen sizes/densities with Android API (I think xxxhdpi is missing)
+- Runs on Lollipop
+- Runs on old device (Froyo/Gingerbread)
+"
+mportuesisf/ScreenInfo,closed,Port to Android Studio/Gradle,[],"##### Description
+
+As a potential developer of ScreenInfo, I would like it to work with Android Studio so that I can develop using modern tools.
+##### Acceptance Criteria
+- Import to Android Studio
+- Clean up old Eclipse artifacts
+- Builds and runs in emulator and on real device
+"
+mportuesisf/ScreenInfo,closed,add icon to README,[],
+mportuesisf/ScreenInfo,closed,screenWidthDp crash on pre SDK 13 devices,[],"Only reference Configuration.screenWidthDp / smallestScreenWidthDp on SDK 13 and above devices. Currently crashing on pre 13 devices ..
+"

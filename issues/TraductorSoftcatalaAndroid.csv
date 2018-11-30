@@ -1,0 +1,21 @@
+repository,state,title,label,body
+Softcatala/TraductorSoftcatalaAndroid,closed,Menu is not accessible in Android 4.x devices without physical button ,[],
+Softcatala/TraductorSoftcatalaAndroid,closed,Server translation does not work in Android 4.0 ICS,[],"There's an undocumented problem in ICS related to HttpClient and setDoPost method.
+
+It makes Android convert the HttpRequest from GET to POST, and may break some Apps.
+
+``` diff
+--- ServerTranslation_original.java 2012-03-12 11:25:42.701796237 +0100
++++ ServerTranslation.java  2012-03-12 11:26:21.573797212 +0100
+@@ -89,7 +89,6 @@
+             String url = BuildURL(langCode, text);
+             HttpURLConnection uc = (HttpURLConnection) new URL(url).openConnection();
+             uc.setDoInput(true);
+-            uc.setDoOutput(true);
+
+             InputStream is = uc.getInputStream();
+             String result = toString(is);
+```
+
+References: http://webdiary.com/2011/12/14/ics-get-post/
+"

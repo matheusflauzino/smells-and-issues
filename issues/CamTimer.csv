@@ -1,0 +1,164 @@
+repository,state,title,label,body
+dozingcat/CamTimer,open,Added Dutch translation,[],:)
+dozingcat/CamTimer,closed,Convert from Eclipse to Android Studio.,[],
+dozingcat/CamTimer,open,error broadcasting new picture,[],"hello i just ran this program on pico IMX7 board flashed with ""android things ""
+initially i was able to take first photo ,but when tried for 2nd photo it gave this error
+//------------------------------------------
+01-01 05:31:18.039 182-1040/? E/Camera2-JpegProcessor: Could not find end of JPEG marker
+01-01 05:31:18.198 289-558/system_process I/ActivityManager: START u0 {dat=file:///storage/emulated/0/CamTimer/IMG_20090101_053118.jpg typ=image/jpeg cmp=com.dozingcatsoftware.cameratimer/.ViewImageActivity} from uid 10048
+01-01 05:31:18.228 1001-1001/com.dozingcatsoftware.cameratimer E/CamTimer: Error broadcasting new picture
+                                                                           android.os.FileUriExposedException: file:///storage/emulated/0/CamTimer/IMG_20090101_053118.jpg exposed beyond app through Intent.getData()
+                                                                               at android.os.StrictMode.onFileUriExposed(StrictMode.java:1958)
+                                                                               at android.net.Uri.checkFileUriExposed(Uri.java:2348)
+                                                                               at android.content.Intent.prepareToLeaveProcess(Intent.java:9766)
+                                                                               at android.content.Intent.prepareToLeaveProcess(Intent.java:9720)
+                                                                               at android.app.ContextImpl.sendBroadcast(ContextImpl.java:953)
+                                                                               at android.content.ContextWrapper.sendBroadcast(ContextWrapper.java:431)
+                                                                               at com.dozingcatsoftware.cameratimer.MainActivity.onPictureTaken(MainActivity.java:387)
+                                                                               at android.hardware.Camera$EventHandler.handleMessage(Camera.java:1106)
+                                                                               at android.os.Handler.dispatchMessage(Handler.java:105)
+                                                                               at android.os.Looper.loop(Looper.java:164)
+                                                                               at android.app.ActivityThread.main(ActivityThread.java:6541)
+                                                                               at java.lang.reflect.Method.invoke(Native Method)
+                                                                               at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)
+                                                                               at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767)
+01-01 05:31:18.616 182-182/? I/FslCameraHAL: flushDev:0: Flushing camera device
+01-01 05:31:18.616 182-182/? I/FslCameraHAL: flushDev
+01-01 05:31:21.357 182-182/? I/Camera2Client: Camera 0: Close
+//--------------------------------------------
+can anyone help me with this!!
+
+i have added this piece of code in in onCreate method,apart from that everything is same.
+if (checkSelfPermission(Manifest.permission.CAMERA)
+				!= PackageManager.PERMISSION_GRANTED) {
+			requestPermissions(new String[]{Manifest.permission.CAMERA},
+					MY_CAMERA_REQUEST_CODE);
+		}
+		try {
+			camera = Camera.open();
+		} catch (RuntimeException e) {
+			Log.e(""CameraTest"", ""Camera Open filed"");
+			return;
+		}
+//-----------here is the complete log
+01-01 05:30:36.733 182-182/? I/Camera2ClientBase: Camera 0: Opened. Client: com.dozingcatsoftware.cameratimer (PID 1001, UID 10048)
+01-01 05:30:36.739 182-182/? I/FslCameraHAL: openDev:0: Opening camera device
+01-01 05:30:36.739 182-182/? I/FslCameraHAL: openDev
+01-01 05:30:36.739 182-182/? E/Camera2-Metadata: Mismatched tag type when updating entry transform (1) of type rational; got type float data instead 
+01-01 05:30:36.740 182-182/? E/Camera2-Metadata: Mismatched tag type when updating entry transform (1) of type rational; got type float data instead 
+01-01 05:30:36.751 182-182/? I/Camera2-Parameters: Camera 0: Disabling ZSL mode
+01-01 05:30:36.751 182-182/? I/Camera2-Parameters: initialize: allowZslMode: 0 slowJpegMode 0
+01-01 05:30:36.753 182-182/? W/Camera2-ZslProcessor: ZslProcessor: Unable to find the android.request.pipelineMaxDepth, use default pipeline max depth 4
+01-01 05:30:36.932 182-182/? I/CameraService: CameraService::connect call (PID -1 ""com.dozingcatsoftware.cameratimer"", camera ID 0) for HAL version default and Camera API version 1
+01-01 05:30:36.944 182-182/? E/CameraService: CameraService::connect evicting conflicting client for camera ID 0
+01-01 05:30:36.944 182-182/? E/Camera2Client: notifyError: Error condition 0 reported by HAL, requestId -1
+01-01 05:30:36.945 182-182/? I/FslCameraHAL: flushDev:0: Flushing camera device
+01-01 05:30:36.945 182-182/? I/FslCameraHAL: flushDev
+01-01 05:30:36.953 182-182/? I/Camera3-Device: disconnect: E
+01-01 05:30:36.953 182-182/? I/FslCameraHAL: closeDev:0: Closing camera device
+01-01 05:30:36.953 182-182/? I/FslCameraHAL: closeDev
+01-01 05:30:36.953 182-261/? I/FslCameraHAL: state:0x201 can't go into stop state
+01-01 05:30:36.955 182-182/? I/Camera3-Device: disconnect: X
+01-01 05:30:36.955 182-182/? I/Camera3-Device: disconnect: E
+01-01 05:30:36.957 182-182/? I/CameraService: disconnect: Disconnected client for camera 0 for PID 1001
+01-01 05:30:36.958 182-182/? I/Camera2ClientBase: Camera 0: Opened. Client: com.dozingcatsoftware.cameratimer (PID 1001, UID 10048)
+01-01 05:30:36.961 182-182/? I/FslCameraHAL: openDev:0: Opening camera device
+01-01 05:30:36.961 182-182/? I/FslCameraHAL: openDev
+01-01 05:30:36.961 182-182/? E/Camera2-Metadata: Mismatched tag type when updating entry transform (1) of type rational; got type float data instead 
+01-01 05:30:36.961 182-182/? I/FslCameraHAL: setTemplate:0: Setting already constructed template type CAMERA3_TEMPLATE_PREVIEW(1)
+01-01 05:30:36.962 182-182/? E/Camera2-Metadata: Mismatched tag type when updating entry transform (1) of type rational; got type float data instead 
+01-01 05:30:36.962 182-182/? I/FslCameraHAL: setTemplate:0: Setting already constructed template type CAMERA3_TEMPLATE_STILL_CAPTURE(2)
+01-01 05:30:36.963 182-182/? E/Camera2-Metadata: Mismatched tag type when updating entry transform (1) of type rational; got type float data instead 
+01-01 05:30:36.963 182-182/? I/FslCameraHAL: setTemplate:0: Setting already constructed template type CAMERA3_TEMPLATE_VIDEO_RECORD(3)
+01-01 05:30:36.964 182-182/? E/Camera2-Metadata: Mismatched tag type when updating entry transform (1) of type rational; got type float data instead 
+01-01 05:30:36.964 182-182/? I/FslCameraHAL: setTemplate:0: Setting already constructed template type CAMERA3_TEMPLATE_VIDEO_SNAPSHOT(4)
+01-01 05:30:36.964 182-182/? E/Camera2-Metadata: Mismatched tag type when updating entry transform (1) of type rational; got type float data instead 
+01-01 05:30:36.965 182-182/? I/FslCameraHAL: setTemplate:0: Setting already constructed template type CAMERA3_TEMPLATE_ZERO_SHUTTER_LAG(5)
+01-01 05:30:36.968 182-182/? I/Camera2-Parameters: Camera 0: Disabling ZSL mode
+01-01 05:30:36.968 182-182/? I/Camera2-Parameters: initialize: allowZslMode: 0 slowJpegMode 0
+01-01 05:30:36.970 182-182/? W/Camera2-ZslProcessor: ZslProcessor: Unable to find the android.request.pipelineMaxDepth, use default pipeline max depth 4
+01-01 05:30:36.990 182-266/? I/FslCameraHAL: constructDefaultRequestSettings:0: type=1
+01-01 05:30:36.990 182-266/? I/FslCameraHAL: constructDefaultRequestSettings:0: type=3
+01-01 05:30:37.042 182-182/? I/FslCameraHAL: Stream create preview stream
+01-01 05:30:37.042 182-182/? I/FslCameraHAL: preview, s->format is 0x1, mFormat 0x1
+01-01 05:30:37.042 182-182/? I/FslCameraHAL: stream: this 0xb1539700, w:640, h:480, format:0x1, usage:0xb02, buffers:3
+01-01 05:30:37.042 182-182/? I/FslCameraHAL: Stream create capture stream
+01-01 05:30:37.043 182-182/? I/FslCameraHAL: capture, s->format is 0x21, mFormat 0x21
+01-01 05:30:37.043 182-182/? I/FslCameraHAL: stream: this 0xb15397e0, w:640, h:480, format:0x21, usage:0x303, buffers:2
+01-01 05:30:37.043 182-182/? I/FslCameraHAL: flushDev
+01-01 05:30:37.052 182-182/? W/Camera3-Device: Can't set realtime priority for request processing thread: Operation not permitted (-1)
+01-01 05:30:37.072 182-1037/? I/FslCameraHAL: configure: w:0, h:0, sensor format:0x0, stream format:0x1, fps:30, num:0
+01-01 05:30:37.072 182-261/? I/FslCameraHAL: onDeviceConfigureLocked
+01-01 05:30:37.072 182-261/? I/FslCameraHAL: can't support VIDIOC_S_INPUT
+01-01 05:30:37.072 182-261/? I/FslCameraHAL: onDeviceConfigureLocked
+01-01 05:30:37.072 182-261/? W/FslCameraHAL: onDeviceConfigureLocked, change fps from 15 to 30
+01-01 05:30:37.072 182-261/? I/FslCameraHAL: Width * Height 640 x 480 format YUYV, fps: 30
+01-01 05:30:37.079 1001-1001/com.dozingcatsoftware.cameratimer E/Camera: Error 2
+01-01 05:30:37.758 182-261/? I/FslCameraHAL: allocateBufferFromIon for csc buffer
+01-01 05:30:37.766 182-261/? I/FslCameraHAL: this 0xb1540140, extra csc buf, phy 0x9e900000, vir 0xaefb7000, mCamera 0xb1504a00
+01-01 05:30:37.767 182-261/? I/FslCameraHAL: onDeviceStartLocked
+01-01 05:30:37.779 182-261/? I/FslCameraHAL: onDeviceStartLocked VIDIOC_QBUF phy:0x9eb00000
+01-01 05:30:37.779 182-261/? I/FslCameraHAL: onDeviceStartLocked VIDIOC_QBUF phy:0x9ec00000
+01-01 05:30:37.779 182-261/? I/FslCameraHAL: onDeviceStartLocked VIDIOC_QBUF phy:0x9ed00000
+01-01 05:31:17.592 182-1039/? I/FslCameraHAL: constructDefaultRequestSettings:0: type=2
+01-01 05:31:17.670 182-261/? I/FslCameraHAL: ae precature trigger
+01-01 05:31:17.894 182-261/? E/FslCameraHAL: getGpsCoordinates: error reading jpeg Coordinates tag
+01-01 05:31:17.894 182-261/? E/FslCameraHAL: getGpsTimeStamp: error reading jpeg TimeStamp tag
+01-01 05:31:17.894 182-261/? E/FslCameraHAL: getGpsProcessingMethod: error reading jpeg ProcessingMethod tag
+01-01 05:31:17.894 182-261/? I/FslCameraHAL: processJpegBuffer srcStream->mWidth:640, srcStream->mHeight:480, v4l2Width:640, v4l2Height:480
+01-01 05:31:18.031 182-1040/? W/Camera2-JpegProcessor: Found JPEG transport header with bad Image Start/End
+01-01 05:31:18.039 182-1040/? E/Camera2-JpegProcessor: Could not find end of JPEG marker
+01-01 05:31:18.198 289-558/system_process I/ActivityManager: START u0 {dat=file:///storage/emulated/0/CamTimer/IMG_20090101_053118.jpg typ=image/jpeg cmp=com.dozingcatsoftware.cameratimer/.ViewImageActivity} from uid 10048
+01-01 05:31:18.228 1001-1001/com.dozingcatsoftware.cameratimer E/CamTimer: Error broadcasting new picture
+                                                                           android.os.FileUriExposedException: file:///storage/emulated/0/CamTimer/IMG_20090101_053118.jpg exposed beyond app through Intent.getData()
+                                                                               at android.os.StrictMode.onFileUriExposed(StrictMode.java:1958)
+                                                                               at android.net.Uri.checkFileUriExposed(Uri.java:2348)
+                                                                               at android.content.Intent.prepareToLeaveProcess(Intent.java:9766)
+                                                                               at android.content.Intent.prepareToLeaveProcess(Intent.java:9720)
+                                                                               at android.app.ContextImpl.sendBroadcast(ContextImpl.java:953)
+                                                                               at android.content.ContextWrapper.sendBroadcast(ContextWrapper.java:431)
+                                                                               at com.dozingcatsoftware.cameratimer.MainActivity.onPictureTaken(MainActivity.java:387)
+                                                                               at android.hardware.Camera$EventHandler.handleMessage(Camera.java:1106)
+                                                                               at android.os.Handler.dispatchMessage(Handler.java:105)
+                                                                               at android.os.Looper.loop(Looper.java:164)
+                                                                               at android.app.ActivityThread.main(ActivityThread.java:6541)
+                                                                               at java.lang.reflect.Method.invoke(Native Method)
+                                                                               at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)
+                                                                               at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767)
+01-01 05:31:18.616 182-182/? I/FslCameraHAL: flushDev:0: Flushing camera device
+01-01 05:31:18.616 182-182/? I/FslCameraHAL: flushDev
+01-01 05:31:21.357 182-182/? I/Camera2Client: Camera 0: Closed
+01-01 05:31:21.358 182-182/? I/Camera2ClientBase: Closed Camera 0. Client was: com.dozingcatsoftware.cameratimer (PID 1001, UID 10048)
+01-01 05:31:21.363 182-1017/? E/Camera2Client: notifyError: Error condition 0 reported by HAL, requestId -1
+01-01 05:31:21.363 182-1017/? I/FslCameraHAL: flushDev:0: Flushing camera device
+01-01 05:31:21.363 182-1017/? I/FslCameraHAL: flushDev
+01-01 05:31:21.415 182-1017/? I/CameraLatencyHistogram: Stream 0 dequeueBuffer latency histogram (717) samples:
+01-01 05:31:21.416 182-1017/? I/CameraLatencyHistogram:         5     10     15     20     25     30     35     40     45    inf (max ms)
+01-01 05:31:21.416 182-1017/? I/CameraLatencyHistogram:      28.31   8.93   8.93   9.48   4.74   7.25   3.63   3.07   3.63   22.04 (%)
+01-01 05:31:21.416 182-1017/? I/CameraLatencyHistogram: Stream 0 latency histogram for wait on max_buffers (506) samples:
+01-01 05:31:21.416 182-1017/? I/CameraLatencyHistogram:        33     66     99    132    165    198    231    264    297    inf (max ms)
+01-01 05:31:21.416 182-1017/? I/CameraLatencyHistogram:      22.53   69.37   7.51   0.59   0.00   0.00   0.00   0.00   0.00   0.00 (%)
+01-01 05:31:21.422 182-1017/? I/CameraLatencyHistogram: Stream 1 dequeueBuffer latency histogram (1) samples:
+01-01 05:31:21.423 182-1017/? I/CameraLatencyHistogram:         5     10     15     20     25     30     35     40     45    inf (max ms)
+01-01 05:31:21.423 182-1017/? I/CameraLatencyHistogram:      0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00   100.00   0.00 (%)
+01-01 05:31:21.424 182-1017/? I/Camera3-Device: disconnect: E
+01-01 05:31:21.424 182-1017/? I/CameraLatencyHistogram: ProcessCaptureRequest latency histogram (717) samples:
+01-01 05:31:21.424 182-1017/? I/CameraLatencyHistogram:        40     80    120    160    200    240    280    320    360    inf (max ms)
+01-01 05:31:21.424 182-1017/? I/CameraLatencyHistogram:      99.86   0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.14 (%)
+01-01 05:31:21.433 182-1017/? I/FslCameraHAL: closeDev:0: Closing camera device
+01-01 05:31:21.433 182-1017/? I/FslCameraHAL: closeDev
+01-01 05:31:21.433 182-261/? I/FslCameraHAL: onDeviceStopLocked
+01-01 05:31:21.440 182-261/? I/FslCameraHAL: freeBufferToIon buffer num:1
+01-01 05:31:21.444 182-1017/? I/Camera3-Device: disconnect: X
+01-01 05:31:21.444 182-1017/? I/Camera3-Device: disconnect: E
+01-01 05:31:21.464 182-1017/? I/CameraService: disconnect: Disconnected client for camera 0 for PID 1001
+01-01 05:31:21.464 182-1017/? I/Camera2Client: Camera 0: Closed
+01-01 05:31:21.464 182-1017/? I/Camera2ClientBase: Closed Camera 0. Client was: com.dozingcatsoftware.cameratimer (PID 1001, UID 10048)
+01-01 05:31:21.475 182-1017/? E/CameraService: binderDied: Java client's binder died, removing it from the list of active clients
+"
+dozingcat/CamTimer,open,Adding stopmotion capability,[],"Adding stopmotion capability by expanding Picture Delay and Pictures to take in one run
+"
+dozingcat/CamTimer,open,Stop motion feature,[],"It would be great if this app could have a stop-motion feature. This could be accomplished by adding 30s, 1m, 5m as interval and add an ""infinite"" amount of pictures ... Great for some astral photography or cityscapes for instance.
+
+Will contribute code if you agree this is a good idea :)
+"

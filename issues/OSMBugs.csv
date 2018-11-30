@@ -1,0 +1,110 @@
+repository,state,title,label,body
+Gittner/OSMBugs,closed,why OSM notes are last in the tab list,"[Label(name=""enhancement"")]","Why OSM notes is listed as the last one on the tab view, despite being the best source of complaints? It should be more accessible or at least before Mapdust."
+Gittner/OSMBugs,closed,why Mapdust,"[Label(name=""enhancement"")]","Why on reporting problem it asking user whatever (s)he wants to use Mapdust? It is a private clone of OSM notes, basing on OSM Wiki it seems to be terrible place to send a real feedback.
+
+What worse asking this question on submitting notes makes interface more complicated and cluttered."
+Gittner/OSMBugs,closed,feedback in app goes to broken email address,[],"The recipient server did not accept our requests to connect. Learn more at https://support.google.com/mail/answer/7720 [mail.gittner.org. 91.1.129.239: generic::failed_precondition: connect error (0): error]
+
+
+Final-Recipient: rfc822; christopher@gittner.org
+Action: delayed
+Status: 4.4.1
+Diagnostic-Code: smtp; The recipient server did not accept our requests to connect. Learn more at https://support.google.com/mail/answer/7720
+ [mail.gittner.org. 91.1.129.239: generic::failed_precondition: connect error (0): error]
+Last-Attempt-Date: Fri, 13 Oct 2017 00:10:53 -0700 (PDT)
+Will-Retry-Until: Sat, 14 Oct 2017 23:20:17 -0700 (PDT)
+
+"
+Gittner/OSMBugs,closed,Bugs persistence,"[Label(name=""bug""), Label(name=""question"")]","This may be related to https://github.com/ChristopherGittner/OSMBugs/issues/12 or it may be completely different.
+
+Many bugs never go away.  I fix an error.  The map tile doesn't change (see https://github.com/ChristopherGittner/OSMBugs/issues/12) but in most (all?) cases the bug doesn't go away either.  New bugs I introduce (oops!) appear, but ones I fix hang around.
+
+In some cases maybe my fix was wrong in some way, but I fixed a feature (a footpath passing through a car park that actually terminated at the boundary of the car park and followed a different route anyway) and the bug is still there.  I deleted the existing footpath (which was wrong in so many ways) and added a new footpath.  That's an Osmose bug.  There are other Osmose bugs that are hanging around.
+
+I replaced a URL that Keepright picked up as not containing the name of the location in the web page (it didn't, because the URL was to a site that no longer has content).  Keepright still shows the same bug, relating to the same empty web site.  Etc.
+
+Mapdust has no bugs shown at all.
+
+I'm not sure if OSM notes is keeping up or not.  I didn't really pay attention to it.
+
+They're all enabled in settings.  I've tried settings->keepright->reset visible bugs.  Doesn't seem to do anything.   Similarly android's settings->apps->osmbugs->flush cached data.
+
+The ones I've mentioned are at least a week old.  Do these bug monitors really update so infrequently?  If so, some help information in the app mentioning this would be useful."
+Gittner/OSMBugs,closed,Map tile cacheing,"[Label(name=""bug"")]","A bug (separate from https://github.com/ChristopherGittner/OSMBugs/issues/11) to do with tile cacheing.
+
+This had been driving me mad.  Some changes I made on OSM appeared fairly quickly, others never did even though I'd made the change weeks ago.
+
+Some changes I made a while ago appear at low zooms and high zooms but **not** at one of the intermediate zoom levels.  Another change I made even longer ago doesn't appear at **any** zoom level.  Other changes appear at all zoom levels.
+
+I think I've finally figured out what is going on.  It appears you're never flushing/expiring tiles in your tile cache.  So what I see depends if I've ever looked at a particular area in OSMBugs before I made the change.  If I haven't, then if I make a change and look in OSMBugs the change appears at all zoom levels.  But if I've looked at it before in OSMBugs at some zoom levels, those tiles are frozen to before the change.
+
+I did go to android settings->apps->osmbugs and cleared the cached data, but it didn't help.  I could try clearing all the data, but that means losing settings.  In any case, maybe you're pulling those tiles from a server other than OSM's and it has a never-expiring cache.
+
+Something, somewhere, is giving me stale tiles.  Fresh tiles if I've not looked somewhere at a particular zoom level before, but stale otherwise.  If it's a problem with a server cacheing the tiles then I'd get stale if nobody had ever needed that tile before (which is probably the case, since I'm in an area with a low population density and seem to be the only active mapper for 10 miles around).
+
+Whatever the cause is, it makes OSMBugs rather useless.
+
+"
+Gittner/OSMBugs,closed,"Automatically load Tiles, if above the Tile Providers max zoom level","[Label(name=""bug""), Label(name=""enhancement"")]","Zoom in to the max, click on a bug to get the details.  Go back to map, either by clicking on the bug symbol at top-left (it's not intuitive that takes you back to the map) or the navbar back arror.  Either way the bugs are there but the map tiles are not.  Zoom out a couple of levels and map tiles return.
+
+Also happens one level below max, maybe two levels below.
+
+Related to last set of changes that allowed greater zooming?"
+Gittner/OSMBugs,closed,use more map-levels,"[Label(name=""duplicate"")]","to make better notes (position definiton) it would be better to use more map-levels.
+
+german: es wäre wünschenswert, wenn die Karte weiter aufgezoomt werden könnte um Notes präziser platzieren zu können. Immerhin ist es eine Touchpad-App.
+
+Jan alias Lübeck"
+Gittner/OSMBugs,closed,URL-friendly encoding recurses,[],"Use of double quotes results in URL-friendly encoding, but the resulting percent characters are encoded again. See screenshot. Please fix this.
+
+![tmp_8972-screenshot_20170606-2149291619097369](https://user-images.githubusercontent.com/198964/26848870-4b65deee-4b02-11e7-8f82-e6b35249d407.png)
+"
+Gittner/OSMBugs,open,posibility of persistant data for offline use?,"[Label(name=""enhancement"")]","It would be good if downloaded bugs data was persistent (in the same way that background map seems to be).
+
+Many of the times I'm in the area with bad or nonexistant cell signal, so I need offline functionality - that is, download bugs and background map of the area beforehand when I have data connectivity, and then go out to map non covered area.
+
+OSMBugs does seem to work for a while, but after some nondeterministic time (few to dozens of minuts, usually after switching apps etc) all the bugs dissapear from display (while the background map stays visible ok).
+
+it would be great if keepright/osmose/Notes could persist the same way the background map seems to.
+"
+Gittner/OSMBugs,closed,allow more zoom,"[Label(name=""enhancement"")]","sometimes, it would help to be able to zoom in more to see details of bugs, but ""+"" is disabled at some depth. Would it be possible to increase it by at least 1-2 zoom levels? 
+"
+Gittner/OSMBugs,closed,"Include a Changelog Link, within the F-Droid App', on Info' Page.  Not Present, as of: 0-9-4.","[Label(name=""enhancement"")]",
+Gittner/OSMBugs,closed,OSM Notes ignore user credentials,"[Label(name=""bug"")]","It seems that creating new OSM Note always do it as anonymous, even when username/password for Notes is entered in preferences
+
+(OSMBugs 0.9.1 from f-droid)
+"
+Gittner/OSMBugs,closed,send geo: intents on request (enhancement),"[Label(name=""enhancement"")]","it would be great if (when one opens some specific bug) there would be an option to send geo: intent with that bug location.
+
+That would allow to combine OSMBugs with other apps (for example, with OSMAnd to navigate to the bug, or with Vespucci to fix osmose error etc)
+"
+Gittner/OSMBugs,closed,Integrate Osmose Errors,[],"It would be great if you could integrate Osmose Errors:
+http://wiki.openstreetmap.org/wiki/Osmose/errors
+"
+Gittner/OSMBugs,closed,Disable bug creation on Openstreetbugs,[],"Hi,
+
+the creation of bugs have been disabled on the OSB homepage. The API is still open, but it would be cool If you could disable the creation of new bugs on OSB.
+
+I think the following configuration would be fine:
+- disable creation of new OSB tickets (code)
+- disable usage of OSB by default (configuration)
+- make sure that you're APP is still working if the OSB server disapears some day.
+
+Links:
+- https://wiki.openstreetmap.org/wiki/OpenStreetBugs#Tools_for_Using_and_Exporting_Data
+- https://wiki.openstreetmap.org/wiki/OpenStreetBugs/Phase_Out
+
+BTW: I've currently installed version 0.5.2 on my Android Phone. The about dialog tells that it's version V0.1 beta.
+
+Regards
+Werner
+"
+Gittner/OSMBugs,closed,Wiki page missing on OSM,[],"Hi,
+
+This is not really a software issue, but Wiki page is missing on OSM, please create it, and corresponding entry on 
+
+http://wiki.openstreetmap.org/wiki/Android
+
+Thank you!
+Ferenc
+"
